@@ -1,0 +1,84 @@
+from typing import List, Dict
+from aiohttp import web
+
+from openapi_server.models.csv_import_response import CsvImportResponse
+from openapi_server.models.sirqul_response import SirqulResponse
+from openapi_server import util
+
+
+async def get_status_csv(request: web.Request, version, account_id, batch_id, response_group, start, limit) -> web.Response:
+    """Detail Status
+
+    
+
+    :param version: 
+    :type version: 
+    :param account_id: the id of the logged in user
+    :type account_id: int
+    :param batch_id: the id of the batch
+    :type batch_id: int
+    :param response_group: The group of categories to return: SUMMARY, DETAILS, ERRORS, OR ALL
+    :type response_group: str
+    :param start: the start of the pagination
+    :type start: int
+    :param limit: the limit of the pagination
+    :type limit: int
+
+    """
+    return web.Response(status=200)
+
+
+async def list_status_csv(request: web.Request, version, account_id, start, limit) -> web.Response:
+    """Search Status
+
+    Retrieves batches for a user.
+
+    :param version: 
+    :type version: 
+    :param account_id: the id of the account
+    :type account_id: int
+    :param start: the start of the pagination
+    :type start: int
+    :param limit: the limit of the pagination
+    :type limit: int
+
+    """
+    return web.Response(status=200)
+
+
+async def status_csv(request: web.Request, version, account_id, batch_id) -> web.Response:
+    """Batch Status
+
+    Checks status of batch upload.
+
+    :param version: 
+    :type version: 
+    :param account_id: the id of the account
+    :type account_id: int
+    :param batch_id: the id of the batch to get its status
+    :type batch_id: int
+
+    """
+    return web.Response(status=200)
+
+
+async def upload_csv(request: web.Request, version, account_id, upload_type, import_file, file_format, app_key=None) -> web.Response:
+    """Upload CSV
+
+    Uploads a CSV import file.
+
+    :param version: 
+    :type version: 
+    :param account_id: the id of the account
+    :type account_id: int
+    :param upload_type: the upload type: OFFERS, RETAILERS, RETAILERLOCATIONS, CATEGORIES, OR FILTERS
+    :type upload_type: str
+    :param import_file: the import file to reference
+    :type import_file: str
+    :param file_format: the format of the file
+    :type file_format: str
+    :param app_key: the application key
+    :type app_key: str
+
+    """
+    return web.Response(status=200)

@@ -1,0 +1,87 @@
+package org.openapitools.model
+
+import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonProperty
+import org.openapitools.model.Retailer
+import org.openapitools.model.ServiceHub
+import javax.validation.constraints.DecimalMax
+import javax.validation.constraints.DecimalMin
+import javax.validation.constraints.Email
+import javax.validation.constraints.Max
+import javax.validation.constraints.Min
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Pattern
+import javax.validation.constraints.Size
+import javax.validation.Valid
+import io.swagger.v3.oas.annotations.media.Schema
+
+/**
+ * 
+ * @param id 
+ * @param active 
+ * @param valid 
+ * @param business 
+ * @param hub 
+ * @param name 
+ * @param width 
+ * @param height 
+ * @param depth 
+ * @param volume 
+ * @param weight 
+ * @param loadTime 
+ * @param palletizable 
+ * @param palletRatio 
+ * @param adminOnly 
+ */
+data class CargoType(
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("id") val id: kotlin.Long? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("active") val active: kotlin.Boolean? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("valid") val valid: kotlin.Boolean? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("business") val business: Retailer? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("hub") val hub: ServiceHub? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("name") val name: kotlin.String? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("width") val width: kotlin.Double? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("height") val height: kotlin.Double? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("depth") val depth: kotlin.Double? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("volume") val volume: kotlin.Double? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("weight") val weight: kotlin.Double? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("loadTime") val loadTime: kotlin.Long? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("palletizable") val palletizable: kotlin.Boolean? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("palletRatio") val palletRatio: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("adminOnly") val adminOnly: kotlin.Boolean? = null
+) {
+
+}
+

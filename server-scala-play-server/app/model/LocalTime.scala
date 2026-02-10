@@ -1,0 +1,24 @@
+package model
+
+import play.api.libs.json._
+
+/**
+  * Represents the Swagger definition for LocalTime.
+  */
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+case class LocalTime(
+  chronology: Option[Chronology],
+  hourOfDay: Option[Int],
+  minuteOfHour: Option[Int],
+  secondOfMinute: Option[Int],
+  millisOfSecond: Option[Int],
+  millisOfDay: Option[Int],
+  fields: Option[List[DateTimeField]],
+  values: Option[List[Int]],
+  fieldTypes: Option[List[DateTimeFieldType]]
+)
+
+object LocalTime {
+  implicit lazy val localTimeJsonFormat: Format[LocalTime] = Json.format[LocalTime]
+}
+

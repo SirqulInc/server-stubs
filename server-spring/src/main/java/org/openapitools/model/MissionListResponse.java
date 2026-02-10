@@ -1,0 +1,217 @@
+package org.openapitools.model;
+
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.model.MissionResponse;
+import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
+
+/**
+ * MissionListResponse
+ */
+
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-02-09T20:58:37.853899731Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+public class MissionListResponse {
+
+  private @Nullable Integer start;
+
+  private @Nullable Integer limit;
+
+  private @Nullable Long countTotal;
+
+  @Valid
+  private List<@Valid MissionResponse> items = new ArrayList<>();
+
+  private @Nullable Boolean hasMoreResults;
+
+  private @Nullable Integer count;
+
+  public MissionListResponse start(@Nullable Integer start) {
+    this.start = start;
+    return this;
+  }
+
+  /**
+   * Get start
+   * @return start
+   */
+  
+  @Schema(name = "start", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("start")
+  public @Nullable Integer getStart() {
+    return start;
+  }
+
+  public void setStart(@Nullable Integer start) {
+    this.start = start;
+  }
+
+  public MissionListResponse limit(@Nullable Integer limit) {
+    this.limit = limit;
+    return this;
+  }
+
+  /**
+   * Get limit
+   * @return limit
+   */
+  
+  @Schema(name = "limit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("limit")
+  public @Nullable Integer getLimit() {
+    return limit;
+  }
+
+  public void setLimit(@Nullable Integer limit) {
+    this.limit = limit;
+  }
+
+  public MissionListResponse countTotal(@Nullable Long countTotal) {
+    this.countTotal = countTotal;
+    return this;
+  }
+
+  /**
+   * Get countTotal
+   * @return countTotal
+   */
+  
+  @Schema(name = "countTotal", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("countTotal")
+  public @Nullable Long getCountTotal() {
+    return countTotal;
+  }
+
+  public void setCountTotal(@Nullable Long countTotal) {
+    this.countTotal = countTotal;
+  }
+
+  public MissionListResponse items(List<@Valid MissionResponse> items) {
+    this.items = items;
+    return this;
+  }
+
+  public MissionListResponse addItemsItem(MissionResponse itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Get items
+   * @return items
+   */
+  @Valid 
+  @Schema(name = "items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid MissionResponse> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid MissionResponse> items) {
+    this.items = items;
+  }
+
+  public MissionListResponse hasMoreResults(@Nullable Boolean hasMoreResults) {
+    this.hasMoreResults = hasMoreResults;
+    return this;
+  }
+
+  /**
+   * Get hasMoreResults
+   * @return hasMoreResults
+   */
+  
+  @Schema(name = "hasMoreResults", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("hasMoreResults")
+  public @Nullable Boolean getHasMoreResults() {
+    return hasMoreResults;
+  }
+
+  public void setHasMoreResults(@Nullable Boolean hasMoreResults) {
+    this.hasMoreResults = hasMoreResults;
+  }
+
+  public MissionListResponse count(@Nullable Integer count) {
+    this.count = count;
+    return this;
+  }
+
+  /**
+   * Get count
+   * @return count
+   */
+  
+  @Schema(name = "count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("count")
+  public @Nullable Integer getCount() {
+    return count;
+  }
+
+  public void setCount(@Nullable Integer count) {
+    this.count = count;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MissionListResponse missionListResponse = (MissionListResponse) o;
+    return Objects.equals(this.start, missionListResponse.start) &&
+        Objects.equals(this.limit, missionListResponse.limit) &&
+        Objects.equals(this.countTotal, missionListResponse.countTotal) &&
+        Objects.equals(this.items, missionListResponse.items) &&
+        Objects.equals(this.hasMoreResults, missionListResponse.hasMoreResults) &&
+        Objects.equals(this.count, missionListResponse.count);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(start, limit, countTotal, items, hasMoreResults, count);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class MissionListResponse {\n");
+    sb.append("    start: ").append(toIndentedString(start)).append("\n");
+    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("    countTotal: ").append(toIndentedString(countTotal)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    hasMoreResults: ").append(toIndentedString(hasMoreResults)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(@Nullable Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

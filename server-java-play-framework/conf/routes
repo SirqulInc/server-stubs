@@ -1,0 +1,889 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /api                        controllers.ApiDocController.api
+
+
+#Functions for Account API
+GET     /api/:version/account/search                     controllers.AccountApiController.accountLocationSearch(request: Request, version: BigDecimal)
+POST     /api/:version/account/block                     controllers.AccountApiController.blockAccount(request: Request, version: BigDecimal)
+POST     /api/:version/account/create                     controllers.AccountApiController.createAccount(request: Request, version: BigDecimal)
+POST     /api/:version/account/profile/update                     controllers.AccountApiController.editAccount(request: Request, version: BigDecimal)
+POST     /api/:version/account/username/update                     controllers.AccountApiController.editUsername(request: Request, version: BigDecimal)
+GET     /api/:version/account/profile/get                     controllers.AccountApiController.getAccount(request: Request, version: BigDecimal)
+GET     /api/:version/account/profile/assets                     controllers.AccountApiController.getProfileAssets(request: Request, version: BigDecimal)
+GET     /api/:version/account/referral/list                     controllers.AccountApiController.getReferralList(request: Request, version: BigDecimal)
+GET     /api/:version/account/settings/get                     controllers.AccountApiController.getSettings(request: Request, version: BigDecimal)
+POST     /api/:version/account/login/delegate                     controllers.AccountApiController.loginDelegate(request: Request, version: BigDecimal)
+POST     /api/:version/account/login                     controllers.AccountApiController.loginGeneral(request: Request, version: BigDecimal)
+POST     /api/:version/account/get                     controllers.AccountApiController.loginUsername(request: Request, version: BigDecimal)
+POST     /api/:version/account/logout                     controllers.AccountApiController.logout(request: Request, version: BigDecimal)
+POST     /api/:version/account/merge                     controllers.AccountApiController.mergeAccount(request: Request, version: BigDecimal)
+POST     /api/:version/account/passwordchange                     controllers.AccountApiController.passwordChange(request: Request, version: BigDecimal)
+POST     /api/:version/account/passwordreset                     controllers.AccountApiController.passwordReset(request: Request, version: BigDecimal)
+POST     /api/:version/account/requestpasswordreset                     controllers.AccountApiController.requestPasswordReset(request: Request, version: BigDecimal)
+POST     /api/:version/account/requestValidateAccount                     controllers.AccountApiController.requestValidateAccount(request: Request, version: BigDecimal)
+GET     /api/:version/account/profile/search                     controllers.AccountApiController.searchAccounts(request: Request, version: BigDecimal)
+POST     /api/:version/account/login/validate                     controllers.AccountApiController.secureLogin(request: Request, version: BigDecimal)
+POST     /api/:version/account/create/validate                     controllers.AccountApiController.secureSignup(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/profile/matchToken                     controllers.AccountApiController.setMatchToken(request: Request, version: BigDecimal)
+POST     /api/:version/account/active/update                     controllers.AccountApiController.updateActveStatus(request: Request, version: BigDecimal)
+POST     /api/:version/account/location/update                     controllers.AccountApiController.updateLocation(request: Request, version: BigDecimal)
+POST     /api/:version/account/settings/update                     controllers.AccountApiController.updateSettings(request: Request, version: BigDecimal)
+POST     /api/:version/account/validateAccountSignup                     controllers.AccountApiController.validateAccountSignup(request: Request, version: BigDecimal)
+POST     /api/:version/account/validatepasswordreset                     controllers.AccountApiController.validatePasswordReset(request: Request, version: BigDecimal)
+
+#Functions for Achievement API
+POST     /api/:version/achievement/tier/search                     controllers.AchievementApiController.apiVersionAchievementTierSearchPost(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/create                     controllers.AchievementApiController.createAchievement(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/tier/create                     controllers.AchievementApiController.createAchievementTier(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/delete                     controllers.AchievementApiController.deleteAchievement(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/tier/delete                     controllers.AchievementApiController.deleteAchievementTier(request: Request, version: BigDecimal)
+GET     /api/:version/achievement/get                     controllers.AchievementApiController.getAchievement(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/tier/get                     controllers.AchievementApiController.getAchievementTier(request: Request, version: BigDecimal)
+GET     /api/:version/achievement/progress/get                     controllers.AchievementApiController.getUserAchievements(request: Request, version: BigDecimal)
+GET     /api/:version/achievement/tag/list                     controllers.AchievementApiController.listAchievementTags(request: Request, version: BigDecimal)
+GET     /api/:version/achievement/list                     controllers.AchievementApiController.listAchievements(request: Request, version: BigDecimal)
+GET     /api/:version/achievement/search                     controllers.AchievementApiController.searchAchievements(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/update                     controllers.AchievementApiController.updateAchievement(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/tier/update                     controllers.AchievementApiController.updateAchievementTier(request: Request, version: BigDecimal)
+POST     /api/:version/achievement/progress/update                     controllers.AchievementApiController.updateUserAchievement(request: Request, version: BigDecimal)
+
+#Functions for Activity API
+POST     /api/:version/entity/reference                     controllers.ActivityApiController.createEntityReference(request: Request, version: BigDecimal)
+
+#Functions for Album API
+POST     /api/:version/album/create                     controllers.AlbumApiController.addAlbumCollection(request: Request, version: BigDecimal)
+POST     /api/:version/album/user/add                     controllers.AlbumApiController.addAlbumUsers(request: Request, version: BigDecimal)
+POST     /api/:version/album/approve                     controllers.AlbumApiController.approveAlbum(request: Request, version: BigDecimal)
+GET     /api/:version/album/get                     controllers.AlbumApiController.getAlbumCollection(request: Request, version: BigDecimal)
+POST     /api/:version/album/user/leave                     controllers.AlbumApiController.leaveAlbum(request: Request, version: BigDecimal)
+POST     /api/:version/album/delete                     controllers.AlbumApiController.removeAlbum(request: Request, version: BigDecimal)
+POST     /api/:version/album/user/delete                     controllers.AlbumApiController.removeAlbumUsers(request: Request, version: BigDecimal)
+GET     /api/:version/album/search                     controllers.AlbumApiController.searchAlbums(request: Request, version: BigDecimal)
+POST     /api/:version/album/update                     controllers.AlbumApiController.updateAlbumCollection(request: Request, version: BigDecimal)
+
+#Functions for Amqp API
+POST     /api/:version/queue/consumer/create                     controllers.AmqpApiController.consumerCreate(request: Request, version: BigDecimal)
+POST     /api/:version/queue/consumer/update                     controllers.AmqpApiController.consumerUpdate(request: Request, version: BigDecimal)
+POST     /api/:version/queue/create                     controllers.AmqpApiController.queueCreate(request: Request, version: BigDecimal)
+POST     /api/:version/queue/delete                     controllers.AmqpApiController.queueDelete(request: Request, version: BigDecimal)
+GET     /api/:version/queue/get                     controllers.AmqpApiController.queueGet(request: Request, version: BigDecimal)
+POST     /api/:version/queue/publish                     controllers.AmqpApiController.queuePublish(request: Request, version: BigDecimal)
+GET     /api/:version/queue/search                     controllers.AmqpApiController.queueSearch(request: Request, version: BigDecimal)
+POST     /api/:version/queue/update                     controllers.AmqpApiController.queueUpdate(request: Request, version: BigDecimal)
+
+#Functions for Analytics API
+GET     /api/:version/analytics/useractivity                     controllers.AnalyticsApiController.activities(request: Request, version: BigDecimal)
+GET     /api/:version/analytics/aggregatedFilteredUsage                     controllers.AnalyticsApiController.aggregatedFilteredUsage(request: Request, version: BigDecimal)
+GET     /api/:version/analytics/filteredUsage                     controllers.AnalyticsApiController.filteredUsage(request: Request, version: BigDecimal)
+POST     /api/:version/analytics/usage                     controllers.AnalyticsApiController.usage(request: Request, version: BigDecimal)
+POST     /api/:version/analytics/usage/batch                     controllers.AnalyticsApiController.usageBatch(request: Request, version: BigDecimal)
+
+#Functions for AppData API
+GET     /api/:version/app/get                     controllers.AppDataApiController.getAppData(request: Request, version: BigDecimal)
+POST     /api/:version/app/post                     controllers.AppDataApiController.postAppData(request: Request, version: BigDecimal)
+POST     /api/:version/app/regen                     controllers.AppDataApiController.regenAppData(request: Request, version: BigDecimal)
+
+#Functions for Application API
+POST     /api/:version/application/create                     controllers.ApplicationApiController.createApplication(request: Request, version: BigDecimal)
+POST     /api/:version/application/placement/create                     controllers.ApplicationApiController.createApplicationPlacement(request: Request, version: BigDecimal)
+POST     /api/:version/application/delete                     controllers.ApplicationApiController.deleteApplication(request: Request, version: BigDecimal)
+POST     /api/:version/application/placement/delete                     controllers.ApplicationApiController.deleteApplicationPlacement(request: Request, version: BigDecimal)
+GET     /api/:version/application/get                     controllers.ApplicationApiController.getApplication(request: Request, version: BigDecimal)
+GET     /api/:version/application/placement/get                     controllers.ApplicationApiController.getApplicationPlacement(request: Request, version: BigDecimal)
+GET     /api/:version/application/versions                     controllers.ApplicationApiController.getApplicationVersions(request: Request, version: BigDecimal)
+GET     /api/:version/application/users                     controllers.ApplicationApiController.getUniqueUsersByApp(request: Request, version: BigDecimal)
+GET     /api/:version/application/list                     controllers.ApplicationApiController.listApplications(request: Request, version: BigDecimal)
+GET     /api/:version/application/placement/search                     controllers.ApplicationApiController.searchApplicationPlacement(request: Request, version: BigDecimal)
+GET     /api/:version/application/settings/search                     controllers.ApplicationApiController.searchApplicationSettings(request: Request, version: BigDecimal)
+GET     /api/:version/application/search                     controllers.ApplicationApiController.searchApplications(request: Request, version: BigDecimal)
+POST     /api/:version/application/update                     controllers.ApplicationApiController.updateApplication(request: Request, version: BigDecimal)
+POST     /api/:version/application/active                     controllers.ApplicationApiController.updateApplicationActive(request: Request, version: BigDecimal)
+POST     /api/:version/application/placement/update                     controllers.ApplicationApiController.updateApplicationPlacement(request: Request, version: BigDecimal)
+POST     /api/:version/application/certificate/create                     controllers.ApplicationApiController.uploadApplicationCertificate(request: Request, version: BigDecimal)
+
+#Functions for ApplicationConfig API
+POST     /api/:version/appconfig/create                     controllers.ApplicationConfigApiController.createApplicationConfig(request: Request, version: BigDecimal)
+POST     /api/:version/appconfig/delete                     controllers.ApplicationConfigApiController.deleteApplicationConfig(request: Request, version: BigDecimal)
+GET     /api/:version/appconfig/get                     controllers.ApplicationConfigApiController.getApplicationConfig(request: Request, version: BigDecimal)
+GET     /api/:version/appconfig/getbyversion                     controllers.ApplicationConfigApiController.getApplicationConfigByConfigVersion(request: Request, version: BigDecimal)
+GET     /api/:version/appconfig/search                     controllers.ApplicationConfigApiController.searchApplicationConfig(request: Request, version: BigDecimal)
+POST     /api/:version/appconfig/update                     controllers.ApplicationConfigApiController.updateApplicationConfig(request: Request, version: BigDecimal)
+
+#Functions for Asset API
+GET     /api/:version/asset/download/:filename                     controllers.AssetApiController.assetDownload(request: Request, version: BigDecimal, filename: String)
+POST     /api/:version/asset/morph                     controllers.AssetApiController.assetMorph(request: Request, version: BigDecimal)
+POST     /api/:version/asset/create                     controllers.AssetApiController.createAsset(request: Request, version: BigDecimal)
+POST     /api/:version/asset/delete                     controllers.AssetApiController.deleteAsset(request: Request, version: BigDecimal)
+GET     /api/:version/asset/get                     controllers.AssetApiController.getAsset(request: Request, version: BigDecimal)
+POST     /api/:version/asset/remove                     controllers.AssetApiController.removeAsset(request: Request, version: BigDecimal)
+GET     /api/:version/asset/search                     controllers.AssetApiController.searchAssets(request: Request, version: BigDecimal)
+POST     /api/:version/asset/update                     controllers.AssetApiController.updateAsset(request: Request, version: BigDecimal)
+
+#Functions for Assignment API
+GET     /api/:version/assignment/assignee/search                     controllers.AssignmentApiController.assigmentAssigneeAccountSearch(request: Request, version: BigDecimal)
+POST     /api/:version/assignment/create                     controllers.AssignmentApiController.assignmentCreate(request: Request, version: BigDecimal)
+POST     /api/:version/assignment/delete                     controllers.AssignmentApiController.assignmentDelete(request: Request, version: BigDecimal)
+GET     /api/:version/assignment/get                     controllers.AssignmentApiController.assignmentGet(request: Request, version: BigDecimal)
+GET     /api/:version/assignment/search                     controllers.AssignmentApiController.assignmentSearch(request: Request, version: BigDecimal)
+POST     /api/:version/assignment/status/create                     controllers.AssignmentApiController.assignmentStatusCreate(request: Request, version: BigDecimal)
+POST     /api/:version/assignment/status/delete                     controllers.AssignmentApiController.assignmentStatusDelete(request: Request, version: BigDecimal)
+GET     /api/:version/assignment/status/get                     controllers.AssignmentApiController.assignmentStatusGet(request: Request, version: BigDecimal)
+GET     /api/:version/assignment/status/search                     controllers.AssignmentApiController.assignmentStatusSearch(request: Request, version: BigDecimal)
+POST     /api/:version/assignment/status/update                     controllers.AssignmentApiController.assignmentStatusUpdate(request: Request, version: BigDecimal)
+POST     /api/:version/assignment/update                     controllers.AssignmentApiController.assignmentUpdate(request: Request, version: BigDecimal)
+
+#Functions for Audience API
+POST     /api/:version/audience/create                     controllers.AudienceApiController.createAudience(request: Request, version: BigDecimal)
+POST     /api/:version/audience/delete                     controllers.AudienceApiController.deleteAudience(request: Request, version: BigDecimal)
+GET     /api/:version/audience/ageGroups                     controllers.AudienceApiController.getAgeGroups(request: Request, version: BigDecimal)
+GET     /api/:version/audience/get                     controllers.AudienceApiController.getAudience(request: Request, version: BigDecimal)
+GET     /api/:version/audience/search                     controllers.AudienceApiController.getAudienceList(request: Request, version: BigDecimal)
+GET     /api/:version/audience/devices                     controllers.AudienceApiController.getDevices(request: Request, version: BigDecimal)
+GET     /api/:version/audience/experiences                     controllers.AudienceApiController.getExperiences(request: Request, version: BigDecimal)
+GET     /api/:version/audience/grouped/get                     controllers.AudienceApiController.getGroupedAudiences(request: Request, version: BigDecimal)
+POST     /api/:version/audience/suggestion/list                     controllers.AudienceApiController.listByAccount(request: Request, version: BigDecimal)
+GET     /api/:version/audience/suggestion/offersByAudience                     controllers.AudienceApiController.listByAudience(request: Request, version: BigDecimal)
+GET     /api/:version/audience/suggestion/latest                     controllers.AudienceApiController.listLastestByAccount(request: Request, version: BigDecimal)
+POST     /api/:version/audience/suggestion/send                     controllers.AudienceApiController.sendByAccount(request: Request, version: BigDecimal)
+POST     /api/:version/audience/update                     controllers.AudienceApiController.updateAudience(request: Request, version: BigDecimal)
+
+#Functions for Bid API
+POST     /api/:version/bid/create                     controllers.BidApiController.createBid(request: Request, version: BigDecimal)
+POST     /api/:version/bid/delete                     controllers.BidApiController.deleteBid(request: Request, version: BigDecimal)
+GET     /api/:version/bid/get                     controllers.BidApiController.getBid(request: Request, version: BigDecimal)
+POST     /api/:version/bid/update                     controllers.BidApiController.updateBid(request: Request, version: BigDecimal)
+
+#Functions for BillableEntity API
+POST     /api/:version/billable/create                     controllers.BillableEntityApiController.createBillableEntity(request: Request, version: BigDecimal)
+POST     /api/:version/billable/delete                     controllers.BillableEntityApiController.deleteBillableEntity(request: Request, version: BigDecimal)
+GET     /api/:version/billable/get                     controllers.BillableEntityApiController.getBillableEntity(request: Request, version: BigDecimal)
+POST     /api/:version/billable/update                     controllers.BillableEntityApiController.updateBillableEntity(request: Request, version: BigDecimal)
+
+#Functions for BillingInfo API
+POST     /api/:version/billing/update                     controllers.BillingInfoApiController.addPaymentMethod(request: Request, version: BigDecimal)
+POST     /api/:version/billing/create                     controllers.BillingInfoApiController.createPaymentMethod(request: Request, version: BigDecimal)
+POST     /api/:version/billing/crypto/transfer                     controllers.BillingInfoApiController.createSmartContract(request: Request, version: BigDecimal)
+GET     /api/:version/billing/crypto/get                     controllers.BillingInfoApiController.getCryptoBalance(request: Request, version: BigDecimal)
+GET     /api/:version/billing/get                     controllers.BillingInfoApiController.getPaymentMethod(request: Request, version: BigDecimal)
+GET     /api/:version/billing/search                     controllers.BillingInfoApiController.searchPaymentMethod(request: Request, version: BigDecimal)
+
+#Functions for CargoType API
+POST     /api/:version/cargo/type                     controllers.CargoTypeApiController.createCargoType(request: Request, version: BigDecimal)
+DELETE     /api/:version/cargo/type/:cargoTypeId                     controllers.CargoTypeApiController.deleteCargoType(request: Request, version: BigDecimal, cargoTypeId: Long)
+GET     /api/:version/cargo/type/:cargoTypeId                     controllers.CargoTypeApiController.getCargoType(request: Request, version: BigDecimal, cargoTypeId: Long)
+GET     /api/:version/cargo/type                     controllers.CargoTypeApiController.searchCargoTypes(request: Request, version: BigDecimal)
+PUT     /api/:version/cargo/type/:cargoTypeId                     controllers.CargoTypeApiController.updateCargoType(request: Request, version: BigDecimal, cargoTypeId: Long)
+
+#Functions for Carrier API
+GET     /api/:version/carrier/search                     controllers.CarrierApiController.searchCarriers(request: Request, version: BigDecimal)
+
+#Functions for Category API
+GET     /api/:version/category/distancesearch                     controllers.CategoryApiController.categoryDistanceSearch(request: Request, version: BigDecimal)
+POST     /api/:version/category/create                     controllers.CategoryApiController.createCategory(request: Request, version: BigDecimal)
+POST     /api/:version/category/delete                     controllers.CategoryApiController.deleteCategory(request: Request, version: BigDecimal)
+POST     /api/:version/category/duplicate                     controllers.CategoryApiController.duplicateCategory(request: Request, version: BigDecimal)
+GET     /api/:version/category/get                     controllers.CategoryApiController.getCategory(request: Request, version: BigDecimal)
+GET     /api/:version/category/search                     controllers.CategoryApiController.searchCategories(request: Request, version: BigDecimal)
+POST     /api/:version/category/update                     controllers.CategoryApiController.updateCategory(request: Request, version: BigDecimal)
+
+#Functions for Connection API
+POST     /api/:version/consumer/connection/group/addConnection                     controllers.ConnectionApiController.addConnectionToGroup(request: Request, version: BigDecimal)
+POST     /api/:version/connection/group/addConnections                     controllers.ConnectionApiController.addConnectionsToGroup(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/connection/group/addSubGroup                     controllers.ConnectionApiController.addSubGroups(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/connection/add                     controllers.ConnectionApiController.createOrUpdateConnection(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/connection/group                     controllers.ConnectionApiController.createOrUpdateGroup(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/follow/accept                     controllers.ConnectionApiController.followAccept(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/follow/reject                     controllers.ConnectionApiController.followReject(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/follow/remove                     controllers.ConnectionApiController.followRemove(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/follow/request                     controllers.ConnectionApiController.followRequest(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/friend/accept                     controllers.ConnectionApiController.friendAccept(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/friend/reject                     controllers.ConnectionApiController.friendReject(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/friend/remove                     controllers.ConnectionApiController.friendRemove(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/friend/request                     controllers.ConnectionApiController.friendRequest(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/connection/getRequested                     controllers.ConnectionApiController.getConnectionSentFriendRequests(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/connection/get                     controllers.ConnectionApiController.getConnections(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/connection/group/details/get                     controllers.ConnectionApiController.getGroupDetails(request: Request, version: BigDecimal)
+GET     /api/:version/connection/group/search                     controllers.ConnectionApiController.groupSearch(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/connection/group/removeConnection                     controllers.ConnectionApiController.removeConnectionFromGroup(request: Request, version: BigDecimal)
+POST     /api/:version/connection/group/removeConnections                     controllers.ConnectionApiController.removeConnectionsFromGroup(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/connection/group/remove                     controllers.ConnectionApiController.removeGroup(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/connection/group/removeSubGroup                     controllers.ConnectionApiController.removeSubGroups(request: Request, version: BigDecimal)
+GET     /api/:version/connection/search                     controllers.ConnectionApiController.searchConnections(request: Request, version: BigDecimal)
+
+#Functions for Contest API
+POST     /api/:version/consumer/album/contest                     controllers.ContestApiController.addOrUpdateAlbumContest(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/album/contest/approve                     controllers.ContestApiController.approveAlbumContest(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/album/contest/remove                     controllers.ContestApiController.deleteContest(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/album/contest/get                     controllers.ContestApiController.getAlbumContest(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/album/contest/search                     controllers.ContestApiController.getAlbumContests(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/album/contest/vote                     controllers.ContestApiController.voteOnAlbumContest(request: Request, version: BigDecimal)
+
+#Functions for Creative API
+POST     /api/:version/creative/addpreview                     controllers.CreativeApiController.addPreview(request: Request, version: BigDecimal)
+GET     /api/:version/ads/find                     controllers.CreativeApiController.adsFind(request: Request, version: BigDecimal)
+POST     /api/:version/creative/create                     controllers.CreativeApiController.createCreative(request: Request, version: BigDecimal)
+POST     /api/:version/creative/delete                     controllers.CreativeApiController.deleteCreative(request: Request, version: BigDecimal)
+GET     /api/:version/creative/get                     controllers.CreativeApiController.getCreative(request: Request, version: BigDecimal)
+GET     /api/:version/creative/search                     controllers.CreativeApiController.getCreativesByApplication(request: Request, version: BigDecimal)
+POST     /api/:version/creative/removepreview                     controllers.CreativeApiController.removePreview(request: Request, version: BigDecimal)
+POST     /api/:version/creative/update                     controllers.CreativeApiController.updateCreative(request: Request, version: BigDecimal)
+
+#Functions for CsvImport API
+GET     /api/:version/csvimport/batch/status/details                     controllers.CsvImportApiController.getStatusCSV(request: Request, version: BigDecimal)
+GET     /api/:version/csvimport/batch/list                     controllers.CsvImportApiController.listStatusCSV(request: Request, version: BigDecimal)
+GET     /api/:version/csvimport/batch/status                     controllers.CsvImportApiController.statusCSV(request: Request, version: BigDecimal)
+POST     /api/:version/csvimport/upload                     controllers.CsvImportApiController.uploadCSV(request: Request, version: BigDecimal)
+
+#Functions for Dependent API
+PUT     /api/:version/cargo/dependent/:accountId                     controllers.DependentApiController.create(request: Request, version: BigDecimal, accountId: Long)
+GET     /api/:version/cargo/dependent/:accountId                     controllers.DependentApiController.getDependents(request: Request, version: BigDecimal, accountId: Long)
+DELETE     /api/:version/cargo/dependent/:accountId                     controllers.DependentApiController.removeDependent(request: Request, version: BigDecimal, accountId: Long, dependentId: Long)
+
+#Functions for Disbursement API
+GET     /api/:version/disbursement/check                     controllers.DisbursementApiController.checkDisbursements(request: Request, version: BigDecimal)
+POST     /api/:version/disbursement/create                     controllers.DisbursementApiController.createDisbursement(request: Request, version: BigDecimal)
+GET     /api/:version/disbursement/get                     controllers.DisbursementApiController.getDisbursement(request: Request, version: BigDecimal)
+GET     /api/:version/disbursement/search                     controllers.DisbursementApiController.searchDisbursements(request: Request, version: BigDecimal)
+POST     /api/:version/disbursement/update                     controllers.DisbursementApiController.updateDisbursement(request: Request, version: BigDecimal)
+
+#Functions for Employee API
+POST     /api/:version/employee/assign                     controllers.EmployeeApiController.assignEmployee(request: Request, version: BigDecimal)
+POST     /api/:version/employee/assignToLocation                     controllers.EmployeeApiController.assignToLocationEmployee(request: Request, version: BigDecimal)
+POST     /api/:version/employee/create                     controllers.EmployeeApiController.createEmployee(request: Request, version: BigDecimal)
+POST     /api/:version/employee/delete                     controllers.EmployeeApiController.deleteEmployee(request: Request, version: BigDecimal)
+POST     /api/:version/employee/get                     controllers.EmployeeApiController.getEmployee(request: Request, version: BigDecimal)
+POST     /api/:version/employee/search                     controllers.EmployeeApiController.searchEmployees(request: Request, version: BigDecimal)
+POST     /api/:version/employee/unassign                     controllers.EmployeeApiController.unassignEmployee(request: Request, version: BigDecimal)
+POST     /api/:version/employee/update                     controllers.EmployeeApiController.updateEmployee(request: Request, version: BigDecimal)
+
+#Functions for Event API
+POST     /api/:version/event/attend                     controllers.EventApiController.attendEvent(request: Request, version: BigDecimal)
+POST     /api/:version/event/create                     controllers.EventApiController.createEvent(request: Request, version: BigDecimal)
+POST     /api/:version/event/delete                     controllers.EventApiController.deleteEvent(request: Request, version: BigDecimal)
+GET     /api/:version/event/get                     controllers.EventApiController.getEvent(request: Request, version: BigDecimal)
+GET     /api/:version/event/attendance/search                     controllers.EventApiController.searchEventTransactions(request: Request, version: BigDecimal)
+GET     /api/:version/event/search                     controllers.EventApiController.searchEvents(request: Request, version: BigDecimal)
+POST     /api/:version/event/update                     controllers.EventApiController.updateEvent(request: Request, version: BigDecimal)
+
+#Functions for Facebook API
+GET     /api/:version/facebook/getfbtoken                     controllers.FacebookApiController.getToken(request: Request, version: BigDecimal)
+POST     /api/:version/facebook/graph                     controllers.FacebookApiController.graphInterface(request: Request, version: BigDecimal)
+
+#Functions for Favorite API
+POST     /api/:version/favorite/create                     controllers.FavoriteApiController.addFavorite(request: Request, version: BigDecimal)
+POST     /api/:version/favorite/delete                     controllers.FavoriteApiController.deleteFavorite(request: Request, version: BigDecimal)
+GET     /api/:version/favorite/get                     controllers.FavoriteApiController.getFavorite(request: Request, version: BigDecimal)
+GET     /api/:version/favorite/search                     controllers.FavoriteApiController.searchFavorites(request: Request, version: BigDecimal)
+GET     /api/:version/favorite/whois                     controllers.FavoriteApiController.whoHasFavorited(request: Request, version: BigDecimal)
+
+#Functions for Filter API
+POST     /api/:version/filter/create                     controllers.FilterApiController.createFilter(request: Request, version: BigDecimal)
+POST     /api/:version/filter/delete                     controllers.FilterApiController.deleteFilter(request: Request, version: BigDecimal)
+GET     /api/:version/filter/get                     controllers.FilterApiController.getFilter(request: Request, version: BigDecimal)
+GET     /api/:version/filter/search                     controllers.FilterApiController.searchFilters(request: Request, version: BigDecimal)
+POST     /api/:version/filter/update                     controllers.FilterApiController.updateFilter(request: Request, version: BigDecimal)
+
+#Functions for Flag API
+POST     /api/:version/flag/create                     controllers.FlagApiController.createFlag(request: Request, version: BigDecimal)
+POST     /api/:version/flag/delete                     controllers.FlagApiController.deleteFlag(request: Request, version: BigDecimal)
+GET     /api/:version/flag/get                     controllers.FlagApiController.getFlag(request: Request, version: BigDecimal)
+GET     /api/:version/flag/threshold/get                     controllers.FlagApiController.getFlagThreshold(request: Request, version: BigDecimal)
+POST     /api/:version/flag/threshold/update                     controllers.FlagApiController.updateFlagThreshold(request: Request, version: BigDecimal)
+
+#Functions for Game API
+POST     /api/:version/game/create                     controllers.GameApiController.createGame(request: Request, version: BigDecimal)
+POST     /api/:version/game/delete                     controllers.GameApiController.deleteGame(request: Request, version: BigDecimal)
+GET     /api/:version/game/get                     controllers.GameApiController.getGame(request: Request, version: BigDecimal)
+GET     /api/:version/game/search                     controllers.GameApiController.searchGames(request: Request, version: BigDecimal)
+POST     /api/:version/game/update                     controllers.GameApiController.updateGame(request: Request, version: BigDecimal)
+
+#Functions for GameLevel API
+POST     /api/:version/level/create                     controllers.GameLevelApiController.createGameLevel(request: Request, version: BigDecimal)
+POST     /api/:version/level/delete                     controllers.GameLevelApiController.deleteGameLevel(request: Request, version: BigDecimal)
+GET     /api/:version/level/get                     controllers.GameLevelApiController.getGameLevel(request: Request, version: BigDecimal)
+GET     /api/:version/level/search                     controllers.GameLevelApiController.getGameLevelsByApplication(request: Request, version: BigDecimal)
+GET     /api/:version/level/searchByBillableEntity                     controllers.GameLevelApiController.getGameLevelsByBillableEntity(request: Request, version: BigDecimal)
+GET     /api/:version/level/questions/get                     controllers.GameLevelApiController.getQuestionsInLevel(request: Request, version: BigDecimal)
+GET     /api/:version/level/words/get                     controllers.GameLevelApiController.getWordsInLevel(request: Request, version: BigDecimal)
+POST     /api/:version/level/update                     controllers.GameLevelApiController.updateGameLevel(request: Request, version: BigDecimal)
+POST     /api/:version/level/questions/update                     controllers.GameLevelApiController.updateQuestionsInLevel(request: Request, version: BigDecimal)
+POST     /api/:version/level/words/update                     controllers.GameLevelApiController.updateWordsInLevel(request: Request, version: BigDecimal)
+
+#Functions for Invite API
+POST     /api/:version/invite/accept                     controllers.InviteApiController.acceptInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/albumContest                     controllers.InviteApiController.albumContestInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/album                     controllers.InviteApiController.albumInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/event                     controllers.InviteApiController.eventInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/gameLevel                     controllers.InviteApiController.gameInvite(request: Request, version: BigDecimal)
+GET     /api/:version/invite/get                     controllers.InviteApiController.getInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/mission                     controllers.InviteApiController.missionInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/offer                     controllers.InviteApiController.offerInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/offerLocation                     controllers.InviteApiController.offerLocationInvite(request: Request, version: BigDecimal)
+POST     /api/:version/invite/retailerLocation                     controllers.InviteApiController.retailerLocationInvite(request: Request, version: BigDecimal)
+
+#Functions for Leaderboard API
+POST     /api/:version/leaderboard/create                     controllers.LeaderboardApiController.createLeaderboard(request: Request, version: BigDecimal)
+POST     /api/:version/leaderboard/delete                     controllers.LeaderboardApiController.deleteLeaderboard(request: Request, version: BigDecimal)
+GET     /api/:version/leaderboard/get                     controllers.LeaderboardApiController.getLeaderboard(request: Request, version: BigDecimal)
+GET     /api/:version/leaderboard/search                     controllers.LeaderboardApiController.searchLeaderboards(request: Request, version: BigDecimal)
+POST     /api/:version/leaderboard/update                     controllers.LeaderboardApiController.updateLeaderboard(request: Request, version: BigDecimal)
+
+#Functions for Like API
+POST     /api/:version/like                     controllers.LikeApiController.registerLike(request: Request, version: BigDecimal)
+POST     /api/:version/like/delete                     controllers.LikeApiController.removeLike(request: Request, version: BigDecimal)
+GET     /api/:version/like/search                     controllers.LikeApiController.searchLikes(request: Request, version: BigDecimal)
+
+#Functions for Listing API
+POST     /api/:version/listing/create                     controllers.ListingApiController.createListing(request: Request, version: BigDecimal)
+POST     /api/:version/listing/delete                     controllers.ListingApiController.deleteListing(request: Request, version: BigDecimal)
+GET     /api/:version/listing/get                     controllers.ListingApiController.getListing(request: Request, version: BigDecimal)
+GET     /api/:version/listing/search                     controllers.ListingApiController.searchListing(request: Request, version: BigDecimal)
+GET     /api/:version/listing/summary                     controllers.ListingApiController.summaryListing(request: Request, version: BigDecimal)
+POST     /api/:version/listing/update                     controllers.ListingApiController.updateListing(request: Request, version: BigDecimal)
+
+#Functions for Location API
+POST     /api/:version/location/trilaterate/cache                     controllers.LocationApiController.cacheTrilaterationData(request: Request, version: BigDecimal)
+POST     /api/:version/location/trilaterate/cache/submit                     controllers.LocationApiController.cacheTrilaterationDataGzip(request: Request, version: BigDecimal)
+GET     /api/:version/location/ip                     controllers.LocationApiController.getLocationByIp(request: Request, version: BigDecimal)
+GET     /api/:version/account/location/trilaterate                     controllers.LocationApiController.getLocationByTrilateration(request: Request, version: BigDecimal)
+GET     /api/:version/location/search                     controllers.LocationApiController.getLocations(request: Request, version: BigDecimal)
+
+#Functions for LocationApiV2 API
+POST     /api/:version/location                     controllers.LocationApiV2ApiController.createLocationV2(request: Request, version: BigDecimal)
+POST     /api/:version/location/:id                     controllers.LocationApiV2ApiController.updateLocationV2(request: Request, version: BigDecimal, id: Long)
+
+#Functions for Media API
+POST     /api/:version/media/create                     controllers.MediaApiController.createMedia(request: Request, version: BigDecimal)
+POST     /api/:version/media/delete                     controllers.MediaApiController.deleteMedia(request: Request, version: BigDecimal)
+GET     /api/:version/media/get                     controllers.MediaApiController.getMedia(request: Request, version: BigDecimal)
+GET     /api/:version/media/search                     controllers.MediaApiController.searchMedia(request: Request, version: BigDecimal)
+POST     /api/:version/media/update                     controllers.MediaApiController.updateMedia(request: Request, version: BigDecimal)
+
+#Functions for Mission API
+POST     /api/:version/mission/create                     controllers.MissionApiController.createMission(request: Request, version: BigDecimal)
+POST     /api/:version/mission/delete                     controllers.MissionApiController.deleteMission(request: Request, version: BigDecimal)
+GET     /api/:version/mission/find                     controllers.MissionApiController.findMissions(request: Request, version: BigDecimal)
+GET     /api/:version/mission/get                     controllers.MissionApiController.getMission(request: Request, version: BigDecimal)
+POST     /api/:version/mission/import                     controllers.MissionApiController.importMission(request: Request, version: BigDecimal)
+GET     /api/:version/mission/format/search                     controllers.MissionApiController.searchMissionFormats(request: Request, version: BigDecimal)
+GET     /api/:version/mission/search                     controllers.MissionApiController.searchMissions(request: Request, version: BigDecimal)
+GET     /api/:version/mission/searchByBillableEntity                     controllers.MissionApiController.searchMissionsByBillableEntity(request: Request, version: BigDecimal)
+POST     /api/:version/mission/update                     controllers.MissionApiController.updateMission(request: Request, version: BigDecimal)
+
+#Functions for MissionInvite API
+POST     /api/:version/mission/invite/create                     controllers.MissionInviteApiController.createMissionInvite(request: Request, version: BigDecimal)
+POST     /api/:version/mission/invite/delete                     controllers.MissionInviteApiController.deleteMissionInvite(request: Request, version: BigDecimal)
+GET     /api/:version/mission/invite/get                     controllers.MissionInviteApiController.getMissionInvite(request: Request, version: BigDecimal)
+GET     /api/:version/mission/invite/search                     controllers.MissionInviteApiController.searchMissionInvites(request: Request, version: BigDecimal)
+POST     /api/:version/mission/invite/update                     controllers.MissionInviteApiController.updateMissionInvite(request: Request, version: BigDecimal)
+
+#Functions for Note API
+POST     /api/:version/note/batch                     controllers.NoteApiController.batchOperation(request: Request, version: BigDecimal)
+POST     /api/:version/note/create                     controllers.NoteApiController.createNote(request: Request, version: BigDecimal)
+POST     /api/:version/note/delete                     controllers.NoteApiController.deleteNote(request: Request, version: BigDecimal)
+POST     /api/:version/note/get                     controllers.NoteApiController.getNote(request: Request, version: BigDecimal)
+POST     /api/:version/note/search                     controllers.NoteApiController.searchNotes(request: Request, version: BigDecimal)
+POST     /api/:version/note/update                     controllers.NoteApiController.updateNote(request: Request, version: BigDecimal)
+
+#Functions for Notification API
+POST     /api/:version/notification/template/create                     controllers.NotificationApiController.createNotificationTemplate(request: Request, version: BigDecimal)
+POST     /api/:version/notification/blocked/batch                     controllers.NotificationApiController.createOrUpdateBlockedNotifications(request: Request, version: BigDecimal)
+POST     /api/:version/notification/template/delete                     controllers.NotificationApiController.deleteNotificationTemplate(request: Request, version: BigDecimal)
+GET     /api/:version/notification/template/get                     controllers.NotificationApiController.getNotificationTemplate(request: Request, version: BigDecimal)
+GET     /api/:version/notification/search                     controllers.NotificationApiController.getNotifications(request: Request, version: BigDecimal)
+POST     /api/:version/notification/token                     controllers.NotificationApiController.registerNotificationToken(request: Request, version: BigDecimal)
+GET     /api/:version/notification/blocked/search                     controllers.NotificationApiController.searchBlockedNotifications(request: Request, version: BigDecimal)
+GET     /api/:version/notification/template/search                     controllers.NotificationApiController.searchNotificationTemplate(request: Request, version: BigDecimal)
+GET     /api/:version/notification/recipient/search                     controllers.NotificationApiController.searchRecipients(request: Request, version: BigDecimal)
+GET     /api/:version/notification/recipient/search/count                     controllers.NotificationApiController.searchRecipientsCount(request: Request, version: BigDecimal)
+POST     /api/:version/notification/batch                     controllers.NotificationApiController.sendBatchNotifications(request: Request, version: BigDecimal)
+POST     /api/:version/notification/custom                     controllers.NotificationApiController.sendCustomNotifications(request: Request, version: BigDecimal)
+POST     /api/:version/notification/template/update                     controllers.NotificationApiController.updateNotificationTemplate(request: Request, version: BigDecimal)
+
+#Functions for ObjectStore API
+POST     /api/:version/object/field/add                     controllers.ObjectStoreApiController.addField(request: Request, version: BigDecimal)
+POST     /api/:version/object/data/:objectName                     controllers.ObjectStoreApiController.createData(request: Request, version: BigDecimal, objectName: String)
+POST     /api/:version/object/create                     controllers.ObjectStoreApiController.createObject(request: Request, version: BigDecimal)
+DELETE     /api/:version/object/data/:objectName/:objectId                     controllers.ObjectStoreApiController.deleteData(request: Request, version: BigDecimal, objectName: String, objectId: String)
+POST     /api/:version/object/field/delete                     controllers.ObjectStoreApiController.deleteField(request: Request, version: BigDecimal)
+POST     /api/:version/object/delete                     controllers.ObjectStoreApiController.deleteObject(request: Request, version: BigDecimal)
+GET     /api/:version/object/data/:objectName/:objectId                     controllers.ObjectStoreApiController.getData(request: Request, version: BigDecimal, objectName: String, objectId: String)
+GET     /api/:version/object/get                     controllers.ObjectStoreApiController.getObject(request: Request, version: BigDecimal)
+GET     /api/:version/object/data/:objectName                     controllers.ObjectStoreApiController.searchData(request: Request, version: BigDecimal, objectName: String)
+GET     /api/:version/object/search                     controllers.ObjectStoreApiController.searchObject(request: Request, version: BigDecimal)
+PUT     /api/:version/object/data/:objectName/:objectId                     controllers.ObjectStoreApiController.updateData(request: Request, version: BigDecimal, objectName: String, objectId: String)
+
+#Functions for Offer API
+POST     /api/:version/retailer/offer/location/batchUpdate                     controllers.OfferApiController.batchUpdateOfferLocations(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/offer/create                     controllers.OfferApiController.createOffer(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/offer/delete                     controllers.OfferApiController.deleteOffer(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/offer/location/delete                     controllers.OfferApiController.deleteOfferLocation(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/offer/get                     controllers.OfferApiController.getOffer(request: Request, version: BigDecimal)
+GET     /api/:version/offer/get                     controllers.OfferApiController.getOfferDetails(request: Request, version: BigDecimal)
+GET     /api/:version/offer/lists/count                     controllers.OfferApiController.getOfferListCounts(request: Request, version: BigDecimal)
+GET     /api/:version/offer/location/get                     controllers.OfferApiController.getOfferLocation(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/offer/location/search                     controllers.OfferApiController.getOfferLocationsForRetailers(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/offer/search                     controllers.OfferApiController.getOffersForRetailers(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/offer/transaction/update                     controllers.OfferApiController.redeemOfferTransaction(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/offer/transaction/search                     controllers.OfferApiController.searchOfferTransactionsForRetailers(request: Request, version: BigDecimal)
+GET     /api/:version/offer/lists                     controllers.OfferApiController.searchOffersForConsumer(request: Request, version: BigDecimal)
+GET     /api/:version/offer/top                     controllers.OfferApiController.topOfferTransactions(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/offer/update                     controllers.OfferApiController.updateOffer(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/offer/status                     controllers.OfferApiController.updateOfferStatus(request: Request, version: BigDecimal)
+
+#Functions for OfferStatus API
+POST     /api/:version/offer/status/create                     controllers.OfferStatusApiController.createOfferTransactionStatus(request: Request, version: BigDecimal)
+POST     /api/:version/offer/status/delete                     controllers.OfferStatusApiController.deleteOfferTransactionStatus(request: Request, version: BigDecimal)
+GET     /api/:version/offer/status/get                     controllers.OfferStatusApiController.getOfferTransactionStatus(request: Request, version: BigDecimal)
+GET     /api/:version/offer/status/search                     controllers.OfferStatusApiController.searchOfferTransactionStatuses(request: Request, version: BigDecimal)
+POST     /api/:version/offer/status/update                     controllers.OfferStatusApiController.updateOfferTransactionStatus(request: Request, version: BigDecimal)
+
+#Functions for OpenAi API
+POST     /api/:version/openai/v1/images/generations                     controllers.OpenAiApiController.imageGeneration(request: Request, version: BigDecimal)
+
+#Functions for Optimize API
+GET     /api/:version/optimize/result/:batchID                     controllers.OptimizeApiController.getOptimizationResult(request: Request, version: BigDecimal, batchID: String)
+POST     /api/:version/optimize/request                     controllers.OptimizeApiController.requestOptimization(request: Request, version: BigDecimal)
+
+#Functions for Orson API
+POST     /api/:version/orson/ai/addMovie                     controllers.OrsonApiController.addMovie(request: Request, version: BigDecimal)
+GET     /api/:version/orson/ai/docs                     controllers.OrsonApiController.aiDocs(request: Request, version: BigDecimal)
+GET     /api/:version/orson/ai/img                     controllers.OrsonApiController.aiFindImages(request: Request, version: BigDecimal)
+GET     /api/:version/orson/ai/tags                     controllers.OrsonApiController.aiTags(request: Request, version: BigDecimal)
+GET     /api/:version/orson/ai/text                     controllers.OrsonApiController.aiText(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/batch                     controllers.OrsonApiController.batch(request: Request, version: BigDecimal)
+POST     /api/:version/orson/stories/episodes/instant                     controllers.OrsonApiController.createInstantEpisode(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/voiceCanvas                     controllers.OrsonApiController.createVoiceCanvas(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/emotion                     controllers.OrsonApiController.emotion(request: Request, version: BigDecimal)
+GET     /api/:version/orson/ai/addMovie/:requestId                     controllers.OrsonApiController.getAddMovieResult(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/ai/batch/:requestId                     controllers.OrsonApiController.getBatch(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/ai/emotion/:requestId                     controllers.OrsonApiController.getEmotion(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/stories/episodes/:episodeId/status                     controllers.OrsonApiController.getEpisodeStatus(request: Request, version: BigDecimal, episodeId: Long)
+GET     /api/:version/orson/stories/renders/:renderId/status                     controllers.OrsonApiController.getRenderStatus(request: Request, version: BigDecimal, renderId: String)
+GET     /api/:version/orson/ai/stt/:requestId                     controllers.OrsonApiController.getSTT(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/ai/tts/:requestId                     controllers.OrsonApiController.getTTS(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/ai/techTune/:requestId                     controllers.OrsonApiController.getTechTune(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/ai/topics/:requestId                     controllers.OrsonApiController.getTopics(request: Request, version: BigDecimal, requestId: String)
+GET     /api/:version/orson/ai/voiceCanvas/:requestId                     controllers.OrsonApiController.getVoiceCanvas(request: Request, version: BigDecimal, requestId: String)
+POST     /api/:version/orson/stories/renders                     controllers.OrsonApiController.startVideoRender(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/stt                     controllers.OrsonApiController.stt(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/topics                     controllers.OrsonApiController.summarizeTopics(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/techTune                     controllers.OrsonApiController.techTune(request: Request, version: BigDecimal)
+POST     /api/:version/orson/ai/tts                     controllers.OrsonApiController.tts(request: Request, version: BigDecimal)
+
+#Functions for Pack API
+POST     /api/:version/pack/create                     controllers.PackApiController.createPack(request: Request, version: BigDecimal)
+POST     /api/:version/pack/delete                     controllers.PackApiController.deletePack(request: Request, version: BigDecimal)
+GET     /api/:version/pack/get                     controllers.PackApiController.getPack(request: Request, version: BigDecimal)
+GET     /api/:version/pack/search                     controllers.PackApiController.searchPacks(request: Request, version: BigDecimal)
+POST     /api/:version/pack/update                     controllers.PackApiController.updatePack(request: Request, version: BigDecimal)
+
+#Functions for Participants API
+POST     /api/:version/participant/process/all                     controllers.ParticipantsApiController.processAllParticipants(request: Request, version: BigDecimal)
+POST     /api/:version/participant/process                     controllers.ParticipantsApiController.processParticipants(request: Request, version: BigDecimal)
+
+#Functions for Pathing API
+GET     /api/:version/pathing/compute                     controllers.PathingApiController.computePath(request: Request, version: BigDecimal)
+
+#Functions for PostalCode API
+POST     /api/:version/postalCode/create                     controllers.PostalCodeApiController.createPostalCode(request: Request, version: BigDecimal)
+POST     /api/:version/postalCode/delete                     controllers.PostalCodeApiController.deletePostalCode(request: Request, version: BigDecimal)
+GET     /api/:version/postalCode/get                     controllers.PostalCodeApiController.getPostalCode(request: Request, version: BigDecimal)
+GET     /api/:version/postalCode/search                     controllers.PostalCodeApiController.getPostalCodes(request: Request, version: BigDecimal)
+POST     /api/:version/postalCode/update                     controllers.PostalCodeApiController.updatePostalCode(request: Request, version: BigDecimal)
+
+#Functions for PreviewPersona API
+POST     /api/:version/persona/create                     controllers.PreviewPersonaApiController.createPersona(request: Request, version: BigDecimal)
+POST     /api/:version/persona/delete                     controllers.PreviewPersonaApiController.deletePersona(request: Request, version: BigDecimal)
+GET     /api/:version/persona/get                     controllers.PreviewPersonaApiController.getPersonaList(request: Request, version: BigDecimal)
+GET     /api/:version/persona/search                     controllers.PreviewPersonaApiController.searchPersona(request: Request, version: BigDecimal)
+POST     /api/:version/persona/update                     controllers.PreviewPersonaApiController.updatePersona(request: Request, version: BigDecimal)
+
+#Functions for Program API
+POST     /api/:version/program                     controllers.ProgramApiController.createProgram(request: Request, version: BigDecimal)
+DELETE     /api/:version/program/:id                     controllers.ProgramApiController.deleteProgram(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/program/:id                     controllers.ProgramApiController.getProgram(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/program/:id                     controllers.ProgramApiController.postProgram(request: Request, version: BigDecimal, id: Long)
+PUT     /api/:version/program/:id                     controllers.ProgramApiController.putProgram(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/program                     controllers.ProgramApiController.searchPrograms(request: Request, version: BigDecimal)
+
+#Functions for PurchaseItem API
+POST     /api/:version/purchase/create                     controllers.PurchaseItemApiController.createPurchaseItem(request: Request, version: BigDecimal)
+POST     /api/:version/purchase/delete                     controllers.PurchaseItemApiController.deletePurchaseItem(request: Request, version: BigDecimal)
+GET     /api/:version/purchase/get                     controllers.PurchaseItemApiController.getPurchaseItem(request: Request, version: BigDecimal)
+GET     /api/:version/purchase/search                     controllers.PurchaseItemApiController.searchPurchaseItems(request: Request, version: BigDecimal)
+POST     /api/:version/purchase/update                     controllers.PurchaseItemApiController.updatePurchaseItem(request: Request, version: BigDecimal)
+
+#Functions for PurchaseOrder API
+POST     /api/:version/order/create                     controllers.PurchaseOrderApiController.createOrder(request: Request, version: BigDecimal)
+POST     /api/:version/order/delete                     controllers.PurchaseOrderApiController.deleteOrder(request: Request, version: BigDecimal)
+GET     /api/:version/order/get                     controllers.PurchaseOrderApiController.getOrder(request: Request, version: BigDecimal)
+POST     /api/:version/order/preview                     controllers.PurchaseOrderApiController.previewOrder(request: Request, version: BigDecimal)
+GET     /api/:version/order/search                     controllers.PurchaseOrderApiController.searchOrders(request: Request, version: BigDecimal)
+POST     /api/:version/order/update                     controllers.PurchaseOrderApiController.updateOrder(request: Request, version: BigDecimal)
+
+#Functions for Question API
+POST     /api/:version/game/question/create                     controllers.QuestionApiController.createQuestion(request: Request, version: BigDecimal)
+POST     /api/:version/game/question/delete                     controllers.QuestionApiController.deleteQuestion(request: Request, version: BigDecimal)
+GET     /api/:version/game/question/get                     controllers.QuestionApiController.getQuestion(request: Request, version: BigDecimal)
+GET     /api/:version/game/question/search                     controllers.QuestionApiController.searchQuestions(request: Request, version: BigDecimal)
+POST     /api/:version/game/question/update                     controllers.QuestionApiController.updateQuestion(request: Request, version: BigDecimal)
+
+#Functions for Ranking API
+GET     /api/:version/ranking/historical/search                     controllers.RankingApiController.getHistoricalRankings(request: Request, version: BigDecimal)
+GET     /api/:version/ranking/search                     controllers.RankingApiController.getRankings(request: Request, version: BigDecimal)
+POST     /api/:version/ranking/personal/ranks                     controllers.RankingApiController.getUserRank(request: Request, version: BigDecimal)
+POST     /api/:version/ranking/override                     controllers.RankingApiController.overrideUserRank(request: Request, version: BigDecimal)
+POST     /api/:version/ranking/update                     controllers.RankingApiController.updateRankings(request: Request, version: BigDecimal)
+
+#Functions for Rating API
+POST     /api/:version/rating/create                     controllers.RatingApiController.createRating(request: Request, version: BigDecimal)
+POST     /api/:version/rating/delete                     controllers.RatingApiController.deleteRating(request: Request, version: BigDecimal)
+GET     /api/:version/location/rating/index/search                     controllers.RatingApiController.searchLocationRatingIndexes(request: Request, version: BigDecimal)
+GET     /api/:version/rating/index/search                     controllers.RatingApiController.searchRatingIndexes(request: Request, version: BigDecimal)
+GET     /api/:version/rating/search                     controllers.RatingApiController.searchRatings(request: Request, version: BigDecimal)
+POST     /api/:version/rating/update                     controllers.RatingApiController.updateRating(request: Request, version: BigDecimal)
+
+#Functions for Region API
+POST     /api/:version/region/create                     controllers.RegionApiController.createRegion(request: Request, version: BigDecimal)
+POST     /api/:version/region/delete                     controllers.RegionApiController.deleteRegion(request: Request, version: BigDecimal)
+GET     /api/:version/region/get                     controllers.RegionApiController.getRegion(request: Request, version: BigDecimal)
+GET     /api/:version/region/search                     controllers.RegionApiController.searchRegions(request: Request, version: BigDecimal)
+POST     /api/:version/region/update                     controllers.RegionApiController.updateRegion(request: Request, version: BigDecimal)
+
+#Functions for Reporting API
+POST     /api/:version/report/batch/create                     controllers.ReportingApiController.createBatch(request: Request, version: BigDecimal)
+POST     /api/:version/report/region/summary/batch                     controllers.ReportingApiController.createRegionLegSummaryBatch(request: Request, version: BigDecimal)
+POST     /api/:version/report/batch/delete                     controllers.ReportingApiController.deleteBatch(request: Request, version: BigDecimal)
+GET     /api/:version/report/batch/get                     controllers.ReportingApiController.getReportBatch(request: Request, version: BigDecimal)
+POST     /api/:version/report/run                     controllers.ReportingApiController.runReport(request: Request, version: BigDecimal)
+GET     /api/:version/report/batch/search                     controllers.ReportingApiController.searchBatch(request: Request, version: BigDecimal)
+
+#Functions for Reservation API
+POST     /api/:version/reservation/create                     controllers.ReservationApiController.createReservation(request: Request, version: BigDecimal)
+POST     /api/:version/reservation/delete                     controllers.ReservationApiController.deleteReservation(request: Request, version: BigDecimal)
+POST     /api/:version/reservable/availability/update                     controllers.ReservationApiController.reservableAvailability(request: Request, version: BigDecimal)
+GET     /api/:version/reservable/availability/search                     controllers.ReservationApiController.searchAvailability(request: Request, version: BigDecimal)
+GET     /api/:version/reservation/search                     controllers.ReservationApiController.searchReservations(request: Request, version: BigDecimal)
+GET     /api/:version/reservable/schedule/search                     controllers.ReservationApiController.searchSchedule(request: Request, version: BigDecimal)
+
+#Functions for Retailer API
+POST     /api/:version/retailer/create                     controllers.RetailerApiController.createRetailer(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/delete                     controllers.RetailerApiController.deleteRetailer(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/get                     controllers.RetailerApiController.getRetailer(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/search                     controllers.RetailerApiController.getRetailers(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/login                     controllers.RetailerApiController.retailerLoginCheck(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/update                     controllers.RetailerApiController.updateRetailer(request: Request, version: BigDecimal)
+
+#Functions for RetailerLocation API
+POST     /api/:version/location/create                     controllers.RetailerLocationApiController.createRetailerLocationConsumer(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/location/create                     controllers.RetailerLocationApiController.createRetailerLocations(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/location/delete                     controllers.RetailerLocationApiController.deleteRetailerLocation(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/location/get                     controllers.RetailerLocationApiController.getRetailerLocation(request: Request, version: BigDecimal)
+GET     /api/:version/location/get                     controllers.RetailerLocationApiController.getRetailerLocationConsumer(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/location/idistancesearch                     controllers.RetailerLocationApiController.indexedRetailerLocationDistanceSearch(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/location/isearch                     controllers.RetailerLocationApiController.indexedRetailerLocationSearch(request: Request, version: BigDecimal)
+GET     /api/:version/retailer/location/search                     controllers.RetailerLocationApiController.searchRetailerLocations(request: Request, version: BigDecimal)
+POST     /api/:version/retailer/location/update                     controllers.RetailerLocationApiController.updateRetailerLocations(request: Request, version: BigDecimal)
+
+#Functions for RetailerV2 API
+GET     /api/:version/retailer                     controllers.RetailerV2ApiController.getRetaokiler(request: Request, version: BigDecimal)
+
+#Functions for Route API
+POST     /api/:version/route/:routeId/approve                     controllers.RouteApiController.approveRoute(request: Request, version: BigDecimal, routeId: Long)
+POST     /api/:version/route/:routeId/copy                     controllers.RouteApiController.copyRoute(request: Request, version: BigDecimal, routeId: Long)
+POST     /api/:version/route                     controllers.RouteApiController.createRoute(request: Request, version: BigDecimal)
+PUT     /api/:version/route/:routeId/directions                     controllers.RouteApiController.createRouteDirections(request: Request, version: BigDecimal, routeId: Long)
+PUT     /api/:version/route/:routeId/polyline                     controllers.RouteApiController.createRoutePolyline(request: Request, version: BigDecimal, routeId: Long)
+DELETE     /api/:version/route/:routeId                     controllers.RouteApiController.deleteRoute(request: Request, version: BigDecimal, routeId: Long)
+POST     /api/:version/route/:routeId/disapprove                     controllers.RouteApiController.disapproveRoute(request: Request, version: BigDecimal, routeId: Long)
+GET     /api/:version/route/:routeId                     controllers.RouteApiController.getRoute(request: Request, version: BigDecimal, routeId: Long)
+GET     /api/:version/route/:routeId/directions                     controllers.RouteApiController.getRouteDirections(request: Request, version: BigDecimal, routeId: Long)
+GET     /api/:version/route/:routeId/shipments                     controllers.RouteApiController.getRouteShipments(request: Request, version: BigDecimal, routeId: Long)
+GET     /api/:version/route/:routeId/stop/:stopId                     controllers.RouteApiController.getRouteStop(request: Request, version: BigDecimal, routeId: Long, stopId: Long)
+GET     /api/:version/route/:routeId/stops                     controllers.RouteApiController.getRouteStops(request: Request, version: BigDecimal, routeId: Long)
+GET     /api/:version/route/:routeId/stop/:stopId/shipments                     controllers.RouteApiController.getShipmentsAtStop(request: Request, version: BigDecimal, routeId: Long, stopId: Long)
+POST     /api/:version/route/:routeId/optimize                     controllers.RouteApiController.optimizeRoute(request: Request, version: BigDecimal, routeId: Long)
+DELETE     /api/:version/route/:routeId/stop/:stopId                     controllers.RouteApiController.removeStop(request: Request, version: BigDecimal, routeId: Long, stopId: Long)
+PATCH     /api/:version/route/:routeId/stops/reorder                     controllers.RouteApiController.reorderRouteStopsPatch(request: Request, version: BigDecimal, routeId: Long)
+POST     /api/:version/route/:routeId/stops/reorder                     controllers.RouteApiController.reorderRouteStopsPost(request: Request, version: BigDecimal, routeId: Long)
+GET     /api/:version/route                     controllers.RouteApiController.searchRoutes(request: Request, version: BigDecimal)
+POST     /api/:version/route/:id/driver/:driverId                     controllers.RouteApiController.setDriver(request: Request, version: BigDecimal, id: Long, driverId: Long)
+PUT     /api/:version/route/:routeId                     controllers.RouteApiController.updateRoute(request: Request, version: BigDecimal, routeId: Long)
+PUT     /api/:version/route/:routeId/stop/:stopId                     controllers.RouteApiController.updateRouteStop(request: Request, version: BigDecimal, routeId: Long, stopId: Long)
+
+#Functions for RouteSetting API
+POST     /api/:version/route/setting                     controllers.RouteSettingApiController.createRouteSettings(request: Request, version: BigDecimal)
+DELETE     /api/:version/route/setting/:routeSettingsId                     controllers.RouteSettingApiController.deleteRouteSettings(request: Request, version: BigDecimal, routeSettingsId: Long)
+GET     /api/:version/route/setting/:routeSettingsId                     controllers.RouteSettingApiController.getRouteSettings(request: Request, version: BigDecimal, routeSettingsId: Long)
+GET     /api/:version/route/setting                     controllers.RouteSettingApiController.searchRouteSettings(request: Request, version: BigDecimal)
+PUT     /api/:version/route/setting/:routeSettingsId                     controllers.RouteSettingApiController.updateRouteSettings(request: Request, version: BigDecimal, routeSettingsId: Long)
+
+#Functions for Routing API
+POST     /api/:version/routing/compute                     controllers.RoutingApiController.computeRouting(request: Request, version: BigDecimal)
+
+#Functions for ScheduledNotification API
+POST     /api/:version/notification/schedule/create                     controllers.ScheduledNotificationApiController.createScheduledNotification(request: Request, version: BigDecimal)
+POST     /api/:version/notification/schedule/delete                     controllers.ScheduledNotificationApiController.deleteScheduledNotification(request: Request, version: BigDecimal)
+GET     /api/:version/notification/schedule/get                     controllers.ScheduledNotificationApiController.getScheduledNotification(request: Request, version: BigDecimal)
+POST     /api/:version/notification/schedule/generate                     controllers.ScheduledNotificationApiController.scheduleNotificationListings(request: Request, version: BigDecimal)
+GET     /api/:version/notification/schedule/search                     controllers.ScheduledNotificationApiController.searchScheduledNotifications(request: Request, version: BigDecimal)
+POST     /api/:version/notification/schedule/update                     controllers.ScheduledNotificationApiController.updateScheduledNotification(request: Request, version: BigDecimal)
+
+#Functions for Score API
+POST     /api/:version/score/create                     controllers.ScoreApiController.createScore(request: Request, version: BigDecimal)
+GET     /api/:version/score/get                     controllers.ScoreApiController.getScore(request: Request, version: BigDecimal)
+GET     /api/:version/score/search                     controllers.ScoreApiController.searchScores(request: Request, version: BigDecimal)
+
+#Functions for SecureApp API
+POST     /api/:version/secure/application/create                     controllers.SecureAppApiController.createSecureApplication(request: Request, version: BigDecimal)
+POST     /api/:version/secure/application/delete                     controllers.SecureAppApiController.deleteSecureApplication(request: Request, version: BigDecimal)
+POST     /api/:version/secure/login                     controllers.SecureAppApiController.loginSecure(request: Request, version: BigDecimal)
+POST     /api/:version/secure/purchase                     controllers.SecureAppApiController.purchaseSecure(request: Request, version: BigDecimal)
+POST     /api/:version/secure/application/reset                     controllers.SecureAppApiController.resetSecure(request: Request, version: BigDecimal)
+POST     /api/:version/secure/application/update                     controllers.SecureAppApiController.updateSecureApplication(request: Request, version: BigDecimal)
+
+#Functions for ServiceHub API
+POST     /api/:version/hub                     controllers.ServiceHubApiController.createServiceHub(request: Request, version: BigDecimal)
+DELETE     /api/:version/hub/:id                     controllers.ServiceHubApiController.deleteServiceHub(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/hub/:id                     controllers.ServiceHubApiController.getServiceHub(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/hub/:id                     controllers.ServiceHubApiController.postServiceHub(request: Request, version: BigDecimal, id: Long)
+PUT     /api/:version/hub/:id                     controllers.ServiceHubApiController.putServiceHub(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/hub                     controllers.ServiceHubApiController.searchServiceHubs(request: Request, version: BigDecimal)
+
+#Functions for Shipment API
+POST     /api/:version/shipment/:id/cancel                     controllers.ShipmentApiController.cancelShipment(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/shipment                     controllers.ShipmentApiController.createShipment(request: Request, version: BigDecimal)
+DELETE     /api/:version/shipment/:id                     controllers.ShipmentApiController.deleteShipment(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/shipment/:id                     controllers.ShipmentApiController.getShipment(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/shipment                     controllers.ShipmentApiController.searchShipments(request: Request, version: BigDecimal)
+PUT     /api/:version/shipment/:id                     controllers.ShipmentApiController.updateShipment(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/shipment/:id/status                     controllers.ShipmentApiController.updateShipmentStatus(request: Request, version: BigDecimal, id: Long)
+
+#Functions for ShipmentBatch API
+POST     /api/:version/shipment/batch                     controllers.ShipmentBatchApiController.createShipmentBatch(request: Request, version: BigDecimal)
+DELETE     /api/:version/shipment/batch/:batchId                     controllers.ShipmentBatchApiController.deleteShipmentBatch(request: Request, version: BigDecimal, batchId: Long)
+GET     /api/:version/shipment/batch/:batchId                     controllers.ShipmentBatchApiController.getShipmentBatch(request: Request, version: BigDecimal, batchId: Long)
+GET     /api/:version/shipment/batch/:batchId/status                     controllers.ShipmentBatchApiController.getShipmentBatchStatus(request: Request, version: BigDecimal, batchId: Long)
+GET     /api/:version/shipment/batch                     controllers.ShipmentBatchApiController.searchShipmentBatch(request: Request, version: BigDecimal)
+
+#Functions for Simulation API
+POST     /api/:version/simulation/routing                     controllers.SimulationApiController.simulation(request: Request, version: BigDecimal)
+
+#Functions for Stop API
+GET     /api/:version/stop/:id                     controllers.StopApiController.getStop(request: Request, version: BigDecimal, id: Long)
+PUT     /api/:version/stop/:id                     controllers.StopApiController.updateStop(request: Request, version: BigDecimal, id: Long)
+
+#Functions for Stripe API
+POST     /api/:version/stripe/checkout/session/create                     controllers.StripeApiController.createStripeCheckoutSession(request: Request, version: BigDecimal)
+
+#Functions for Subscription API
+POST     /api/:version/subscription/create                     controllers.SubscriptionApiController.createSubscription(request: Request, version: BigDecimal)
+POST     /api/:version/subscription/delete                     controllers.SubscriptionApiController.deleteSubscription(request: Request, version: BigDecimal)
+GET     /api/:version/subscription/get                     controllers.SubscriptionApiController.getSubscription(request: Request, version: BigDecimal)
+GET     /api/:version/subscription/plan/get                     controllers.SubscriptionApiController.getSubscriptionPlan(request: Request, version: BigDecimal)
+GET     /api/:version/subscription/plan/list                     controllers.SubscriptionApiController.getSubscriptionPlans(request: Request, version: BigDecimal)
+GET     /api/:version/subscription/usage/get                     controllers.SubscriptionApiController.getSubscriptionUsage(request: Request, version: BigDecimal)
+POST     /api/:version/subscription/update                     controllers.SubscriptionApiController.updateSubscription(request: Request, version: BigDecimal)
+
+#Functions for Task API
+POST     /api/:version/task/create                     controllers.TaskApiController.createTask(request: Request, version: BigDecimal)
+POST     /api/:version/task/delete                     controllers.TaskApiController.deleteTask(request: Request, version: BigDecimal)
+GET     /api/:version/task/get                     controllers.TaskApiController.getTask(request: Request, version: BigDecimal)
+GET     /api/:version/task/search                     controllers.TaskApiController.searchTasks(request: Request, version: BigDecimal)
+POST     /api/:version/task/update                     controllers.TaskApiController.updateTask(request: Request, version: BigDecimal)
+
+#Functions for Territory API
+POST     /api/:version/territory/create                     controllers.TerritoryApiController.createTerritory(request: Request, version: BigDecimal)
+POST     /api/:version/territory/delete                     controllers.TerritoryApiController.deleteTerritory(request: Request, version: BigDecimal)
+GET     /api/:version/territory/get                     controllers.TerritoryApiController.getTerritory(request: Request, version: BigDecimal)
+GET     /api/:version/territory/search                     controllers.TerritoryApiController.searchTerritories(request: Request, version: BigDecimal)
+POST     /api/:version/territory/update                     controllers.TerritoryApiController.updateTerritory(request: Request, version: BigDecimal)
+
+#Functions for ThemeDescriptor API
+POST     /api/:version/consumer/theme                     controllers.ThemeDescriptorApiController.addOrUpdateThemeDescriptor(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/theme/get                     controllers.ThemeDescriptorApiController.getThemeDescriptor(request: Request, version: BigDecimal)
+GET     /api/:version/consumer/theme/search                     controllers.ThemeDescriptorApiController.getThemeDescriptors(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/theme/remove                     controllers.ThemeDescriptorApiController.removeThemeDescriptor(request: Request, version: BigDecimal)
+
+#Functions for ThirdPartyCredentials API
+POST     /api/:version/thirdparty/credential/create                     controllers.ThirdPartyCredentialsApiController.createCredential(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/network/create                     controllers.ThirdPartyCredentialsApiController.createNetwork(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/credential/delete                     controllers.ThirdPartyCredentialsApiController.deleteCredential(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/network/delete                     controllers.ThirdPartyCredentialsApiController.deleteNetwork(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/credential/get                     controllers.ThirdPartyCredentialsApiController.getCredential(request: Request, version: BigDecimal)
+GET     /api/:version/thirdparty/network/get                     controllers.ThirdPartyCredentialsApiController.getNetwork(request: Request, version: BigDecimal)
+GET     /api/:version/thirdparty/credential/search                     controllers.ThirdPartyCredentialsApiController.searchCredentials(request: Request, version: BigDecimal)
+GET     /api/:version/thirdparty/network/search                     controllers.ThirdPartyCredentialsApiController.searchNetworks(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/credential/mfa/send                     controllers.ThirdPartyCredentialsApiController.sendMFAChallenge(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/credential/update                     controllers.ThirdPartyCredentialsApiController.updateCredential(request: Request, version: BigDecimal)
+POST     /api/:version/thirdparty/network/update                     controllers.ThirdPartyCredentialsApiController.updateNetwork(request: Request, version: BigDecimal)
+
+#Functions for Ticket API
+GET     /api/:version/ticket/count                     controllers.TicketApiController.getTicketCount(request: Request, version: BigDecimal)
+GET     /api/:version/ticket/getList                     controllers.TicketApiController.getTicketList(request: Request, version: BigDecimal)
+POST     /api/:version/purchase/gift                     controllers.TicketApiController.giftPurchase(request: Request, version: BigDecimal)
+POST     /api/:version/ticket/save                     controllers.TicketApiController.saveTicket(request: Request, version: BigDecimal)
+POST     /api/:version/ticket/save/fileUpload                     controllers.TicketApiController.saveTicketViaFileUpload(request: Request, version: BigDecimal)
+GET     /api/:version/ticket/ticketoffers                     controllers.TicketApiController.ticketOffers(request: Request, version: BigDecimal)
+
+#Functions for Tournament API
+POST     /api/:version/tournament/create                     controllers.TournamentApiController.createTournament(request: Request, version: BigDecimal)
+POST     /api/:version/tournament/delete                     controllers.TournamentApiController.deleteTournament(request: Request, version: BigDecimal)
+GET     /api/:version/tournament/get                     controllers.TournamentApiController.getTournament(request: Request, version: BigDecimal)
+GET     /api/:version/tournament/object/search                     controllers.TournamentApiController.searchObjects(request: Request, version: BigDecimal)
+GET     /api/:version/tournament/round/search                     controllers.TournamentApiController.searchRounds(request: Request, version: BigDecimal)
+GET     /api/:version/tournament/search                     controllers.TournamentApiController.searchTournaments(request: Request, version: BigDecimal)
+POST     /api/:version/tournament/score                     controllers.TournamentApiController.submitTournamentScore(request: Request, version: BigDecimal)
+POST     /api/:version/tournament/vote                     controllers.TournamentApiController.submitTournamentVote(request: Request, version: BigDecimal)
+POST     /api/:version/tournament/substitute                     controllers.TournamentApiController.substituteTournamentPlayer(request: Request, version: BigDecimal)
+POST     /api/:version/tournament/update                     controllers.TournamentApiController.updateTournament(request: Request, version: BigDecimal)
+
+#Functions for Tracking API
+POST     /api/:version/tracking/batch/create                     controllers.TrackingApiController.batchSaveTracking(request: Request, version: BigDecimal)
+GET     /api/:version/tracking/predicted/get                     controllers.TrackingApiController.getPredictedLocations(request: Request, version: BigDecimal)
+GET     /api/:version/tracking/path/get                     controllers.TrackingApiController.getPredictedPath(request: Request, version: BigDecimal)
+GET     /api/:version/tracking/preferred/search                     controllers.TrackingApiController.getPreferredLocations(request: Request, version: BigDecimal)
+GET     /api/:version/tracking/search                     controllers.TrackingApiController.getTrackingLegs(request: Request, version: BigDecimal)
+POST     /api/:version/tracking/leg/create                     controllers.TrackingApiController.saveTrackingLeg(request: Request, version: BigDecimal)
+POST     /api/:version/tracking/step/create                     controllers.TrackingApiController.saveTrackingStep(request: Request, version: BigDecimal)
+GET     /api/:version/tracking/list                     controllers.TrackingApiController.searchAccountsWithTrackingLegs(request: Request, version: BigDecimal)
+GET     /api/:version/tracking/searchByBillable                     controllers.TrackingApiController.searchTrackingLegs(request: Request, version: BigDecimal)
+
+#Functions for Trigger API
+POST     /api/:version/trigger/create                     controllers.TriggerApiController.createTrigger(request: Request, version: BigDecimal)
+POST     /api/:version/trigger/delete                     controllers.TriggerApiController.deleteTrigger(request: Request, version: BigDecimal)
+GET     /api/:version/trigger/get                     controllers.TriggerApiController.getTrigger(request: Request, version: BigDecimal)
+GET     /api/:version/trigger/search                     controllers.TriggerApiController.searchTriggers(request: Request, version: BigDecimal)
+POST     /api/:version/trigger/update                     controllers.TriggerApiController.updateTrigger(request: Request, version: BigDecimal)
+
+#Functions for Trip API
+POST     /api/:version/trip                     controllers.TripApiController.createTrip(request: Request, version: BigDecimal)
+DELETE     /api/:version/trip/:id                     controllers.TripApiController.delete(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/:id/drive                     controllers.TripApiController.driveTrip(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/:id/flexible                     controllers.TripApiController.flexibleTrip(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/trip/:id                     controllers.TripApiController.getTrip(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/trip/:id/match                     controllers.TripApiController.getTripMatches(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/match/process                     controllers.TripApiController.processTripMatches(request: Request, version: BigDecimal)
+POST     /api/:version/trip/:id/ride                     controllers.TripApiController.ride(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/trip                     controllers.TripApiController.search(request: Request, version: BigDecimal)
+GET     /api/:version/trip/match                     controllers.TripApiController.searchTrips(request: Request, version: BigDecimal)
+POST     /api/:version/trip/:id/locations                     controllers.TripApiController.updateLocations(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/:id/locations/recurrence                     controllers.TripApiController.updateRecurrenceLocations(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/:id/shipments/recurrence                     controllers.TripApiController.updateRecurrenceShipments(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/:id/shipments                     controllers.TripApiController.updateShipments(request: Request, version: BigDecimal, id: Long)
+PUT     /api/:version/trip/:id                     controllers.TripApiController.updateTrip(request: Request, version: BigDecimal, id: Long)
+POST     /api/:version/trip/notifications                     controllers.TripApiController.updateTripNotifications(request: Request, version: BigDecimal)
+
+#Functions for Twilio API
+POST     /api/:version/sms/buyoffer/:appKey                     controllers.TwilioApiController.smsBuyOffer(request: Request, version: BigDecimal, appKey: String)
+
+#Functions for Twitter API
+POST     /api/:version/twitter/authorize                     controllers.TwitterApiController.authorizeTwitter(request: Request, version: BigDecimal)
+POST     /api/:version/twitter/login                     controllers.TwitterApiController.loginTwitter(request: Request, version: BigDecimal)
+
+#Functions for UserPermissions API
+POST     /api/:version/consumer/permissions/add                     controllers.UserPermissionsApiController.addUsersToPermissionable(request: Request, version: BigDecimal)
+POST     /api/:version/permissionable/approve                     controllers.UserPermissionsApiController.approvePermissionable(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/permissions/leave                     controllers.UserPermissionsApiController.leaveFromPermissionable(request: Request, version: BigDecimal)
+POST     /api/:version/consumer/permissions/remove                     controllers.UserPermissionsApiController.removeUsersFromPermissionable(request: Request, version: BigDecimal)
+GET     /api/:version/permissions/search                     controllers.UserPermissionsApiController.searchPermissionables(request: Request, version: BigDecimal)
+GET     /api/:version/permissions/distancesearch                     controllers.UserPermissionsApiController.searchPermissionablesFollowingDistance(request: Request, version: BigDecimal)
+
+#Functions for Vatom API
+POST     /api/:version/vatom/me/rels/following/create                     controllers.VatomApiController.createFollowing(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/spaces/create                     controllers.VatomApiController.createSpace(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/events/create                     controllers.VatomApiController.createVatomEvent(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/me/rels/following/delete                     controllers.VatomApiController.deleteFollowing(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/campaign/points/delete                     controllers.VatomApiController.deletePointsBalance(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/spaces/delete                     controllers.VatomApiController.deleteSpace(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/events/delete                     controllers.VatomApiController.deleteVatomEvent(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/vatoms/delete                     controllers.VatomApiController.deleteVatomNFT(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/vatoms/execute-action                     controllers.VatomApiController.executeActionOnNFT(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/vatoms/geo-map/search                     controllers.VatomApiController.geomapSearch(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/behaviors                     controllers.VatomApiController.getBusinessBehaviors(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/coins/get                     controllers.VatomApiController.getBusinessCoinsBalance(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/me/businesses                     controllers.VatomApiController.getBusinessIds(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/get                     controllers.VatomApiController.getBusinessInfo(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/users                     controllers.VatomApiController.getBusinessUsers(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/campaign-groups/entities                     controllers.VatomApiController.getCampaignGroupEntities(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/campaign-groups/rules                     controllers.VatomApiController.getCampaignGroupRules(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/campaign-groups/stats                     controllers.VatomApiController.getCampaignGroupStats(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/campaign-groups/get                     controllers.VatomApiController.getCampaignInfo(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/events/guests/get                     controllers.VatomApiController.getEventGuestList(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/me/inventory                     controllers.VatomApiController.getInventory(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/me/rels/following                     controllers.VatomApiController.getMyFollowing(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/u/campaign/points/get                     controllers.VatomApiController.getPointsBalance(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/campaign/u/points/get                     controllers.VatomApiController.getPointsBalanceAsBusiness(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/spaces/get                     controllers.VatomApiController.getSpace(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/users/coins/get                     controllers.VatomApiController.getUserCoinsAsBusiness(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/u/coins/get                     controllers.VatomApiController.getUserCoinsBalance(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/users/rels/followers                     controllers.VatomApiController.getUserFollowers(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/users/rels/following                     controllers.VatomApiController.getUserFollowing(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/user/get                     controllers.VatomApiController.getUserInfo(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/me/get                     controllers.VatomApiController.getUserProfile(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/events/get                     controllers.VatomApiController.getVatomEvent(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/vatoms/get                     controllers.VatomApiController.getVatomNFT(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/communities/search                     controllers.VatomApiController.listCommunities(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/events/search                     controllers.VatomApiController.listEvents(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/spaces/search                     controllers.VatomApiController.listSpaces(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/u/coins/txns/search                     controllers.VatomApiController.listUserCoinTransactions(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/users/coins/txns/search                     controllers.VatomApiController.listUserCoinTransactionsAsBusiness(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/me/vatoms/actions                     controllers.VatomApiController.performActionOnNFT(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/redemptions                     controllers.VatomApiController.redeemNFT(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/users/coins/redeem                     controllers.VatomApiController.redeemUserCoinsAsBusiness(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/search                     controllers.VatomApiController.searchBusinesses(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/b/campaign-groups/search                     controllers.VatomApiController.searchCampaignGroups(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/me/identities/search                     controllers.VatomApiController.searchIdentities(request: Request, version: BigDecimal)
+GET     /api/:version/vatom/user-inventory/search                     controllers.VatomApiController.searchInventory(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/campaigns/send                     controllers.VatomApiController.sendNFT(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/campaign/u/points/update                     controllers.VatomApiController.setPointsBalanceAsBusiness(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/u/coins/transfer                     controllers.VatomApiController.transferUserCoins(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/coins/update                     controllers.VatomApiController.updateBusinessCoins(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/events/guests/update                     controllers.VatomApiController.updateEventGuestList(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/spaces/update                     controllers.VatomApiController.updateSpace(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/users/coins/update                     controllers.VatomApiController.updateUserCoinsAsBusiness(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/me/update                     controllers.VatomApiController.updateUserProfile(request: Request, version: BigDecimal)
+POST     /api/:version/vatom/b/events/update                     controllers.VatomApiController.updateVatomEvent(request: Request, version: BigDecimal)
+
+#Functions for Vehicle API
+POST     /api/:version/vehicle                     controllers.VehicleApiController.createVehicle(request: Request, version: BigDecimal)
+DELETE     /api/:version/vehicle/:id                     controllers.VehicleApiController.deleteVehicle(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/vehicle/:id                     controllers.VehicleApiController.getVehicle(request: Request, version: BigDecimal, id: Long)
+GET     /api/:version/vehicle                     controllers.VehicleApiController.searchVehicle(request: Request, version: BigDecimal)
+PUT     /api/:version/vehicle/:id                     controllers.VehicleApiController.updateVehicle(request: Request, version: BigDecimal, id: Long)
+
+#Functions for VehicleType API
+POST     /api/:version/vehicle/type                     controllers.VehicleTypeApiController.createVehicleType(request: Request, version: BigDecimal)
+DELETE     /api/:version/vehicle/type/:vehicleTypeId                     controllers.VehicleTypeApiController.deleteVehicleType(request: Request, version: BigDecimal, vehicleTypeId: Long)
+GET     /api/:version/vehicle/type/:vehicleTypeId                     controllers.VehicleTypeApiController.getVehicleType(request: Request, version: BigDecimal, vehicleTypeId: Long)
+GET     /api/:version/vehicle/type                     controllers.VehicleTypeApiController.searchVehicleTypes(request: Request, version: BigDecimal)
+PUT     /api/:version/vehicle/type/:vehicleTypeId                     controllers.VehicleTypeApiController.updateVehicleType(request: Request, version: BigDecimal, vehicleTypeId: Long)
+
+#Functions for Wallet API
+POST     /api/:version/wallet/create                     controllers.WalletApiController.createOfferTransaction(request: Request, version: BigDecimal)
+POST     /api/:version/wallet/delete                     controllers.WalletApiController.deleteOfferTransaction(request: Request, version: BigDecimal)
+GET     /api/:version/wallet/get                     controllers.WalletApiController.getOfferTransaction(request: Request, version: BigDecimal)
+POST     /api/:version/wallet/preview                     controllers.WalletApiController.previewOfferTransaction(request: Request, version: BigDecimal)
+GET     /api/:version/wallet/search                     controllers.WalletApiController.searchOfferTransactions(request: Request, version: BigDecimal)
+POST     /api/:version/wallet/update                     controllers.WalletApiController.updateOfferTransaction(request: Request, version: BigDecimal)
+
+#Functions for Weather API
+GET     /api/:version/weather/search                     controllers.WeatherApiController.searchWeather(request: Request, version: BigDecimal)
+
+#Functions for Word API
+POST     /api/:version/game/word/create                     controllers.WordApiController.createWord(request: Request, version: BigDecimal)
+DELETE     /api/:version/game/word/delete                     controllers.WordApiController.deleteWord(request: Request, version: BigDecimal)
+GET     /api/:version/game/word/get                     controllers.WordApiController.getWord(request: Request, version: BigDecimal)
+GET     /api/:version/game/word/search                     controllers.WordApiController.getWords(request: Request, version: BigDecimal)
+POST     /api/:version/game/word/update                     controllers.WordApiController.updateWord(request: Request, version: BigDecimal)
+
+#Functions for Workflow API
+POST     /api/:version/workflow/run                     controllers.WorkflowApiController.runWorkflow(request: Request, version: BigDecimal)
+
+# Map static resources from the /public folder to the /assets URL path
+GET /assets/*file           controllers.Assets.at(file)
+GET /versionedAssets/*file  controllers.Assets.versioned(file)

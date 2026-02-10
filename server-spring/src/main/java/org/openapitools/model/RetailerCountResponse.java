@@ -1,0 +1,132 @@
+package org.openapitools.model;
+
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
+
+/**
+ * RetailerCountResponse
+ */
+
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-02-09T20:58:37.853899731Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+public class RetailerCountResponse {
+
+  private @Nullable Integer locations;
+
+  private @Nullable Integer transactions;
+
+  private @Nullable Integer offers;
+
+  public RetailerCountResponse locations(@Nullable Integer locations) {
+    this.locations = locations;
+    return this;
+  }
+
+  /**
+   * Get locations
+   * @return locations
+   */
+  
+  @Schema(name = "locations", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("locations")
+  public @Nullable Integer getLocations() {
+    return locations;
+  }
+
+  public void setLocations(@Nullable Integer locations) {
+    this.locations = locations;
+  }
+
+  public RetailerCountResponse transactions(@Nullable Integer transactions) {
+    this.transactions = transactions;
+    return this;
+  }
+
+  /**
+   * Get transactions
+   * @return transactions
+   */
+  
+  @Schema(name = "transactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("transactions")
+  public @Nullable Integer getTransactions() {
+    return transactions;
+  }
+
+  public void setTransactions(@Nullable Integer transactions) {
+    this.transactions = transactions;
+  }
+
+  public RetailerCountResponse offers(@Nullable Integer offers) {
+    this.offers = offers;
+    return this;
+  }
+
+  /**
+   * Get offers
+   * @return offers
+   */
+  
+  @Schema(name = "offers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("offers")
+  public @Nullable Integer getOffers() {
+    return offers;
+  }
+
+  public void setOffers(@Nullable Integer offers) {
+    this.offers = offers;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    RetailerCountResponse retailerCountResponse = (RetailerCountResponse) o;
+    return Objects.equals(this.locations, retailerCountResponse.locations) &&
+        Objects.equals(this.transactions, retailerCountResponse.transactions) &&
+        Objects.equals(this.offers, retailerCountResponse.offers);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(locations, transactions, offers);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class RetailerCountResponse {\n");
+    sb.append("    locations: ").append(toIndentedString(locations)).append("\n");
+    sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
+    sb.append("    offers: ").append(toIndentedString(offers)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(@Nullable Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

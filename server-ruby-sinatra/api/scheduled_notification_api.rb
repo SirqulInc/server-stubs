@@ -1,0 +1,871 @@
+require 'json'
+
+
+MyApp.add_route('POST', '/api/{version}/notification/schedule/create', {
+  "resourcePath" => "/ScheduledNotification",
+  "summary" => "Create Scheduled Notification",
+  "nickname" => "create_scheduled_notification",
+  "responseClass" => "ScheduledNotificationFullResponse",
+  "endpoint" => "/api/{version}/notification/schedule/create",
+  "notes" => "This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods",
+  "parameters" => [
+    {
+      "name" => "account_id",
+      "description" => "The logged in user.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "name",
+      "description" => "The name of the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "type",
+      "description" => "The type of scheduled notification. Supported values include: MOBILE_NOTIFICATION - sends push notifications via APNS and GCM EMAIL - sends email messages SMS - sends text messages",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "message",
+      "description" => "The message to send",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_id",
+      "description" => "The payload content ID that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_name",
+      "description" => "The payload content name that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_type",
+      "description" => "The payload content type that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parent_id",
+      "description" => "The payload parent ID that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parent_type",
+      "description" => "The payload parent type that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "app_key",
+      "description" => "The application that the notifications will send to. If connectionGroupIds, connectionAccountIds, and audienceIds is not set, this will send to all users who have used the application. This parameter is also required when sending push notifications via the MOBILE_NOTIFICATION type.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "grouping_id",
+      "description" => "Client defined identifier for grouping multiple scheduled notifications. This can be used with the search endpoint to return scheduled notifications with the same groupingId for display purposes. Only results that have been created by the user will be returned when using this feature.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "connection_group_ids",
+      "description" => "The connection groups to use to generate the list of recipients (comma separated list of connection group IDs)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "connection_account_ids",
+      "description" => "The connection accounts to use to generate the list of recipients (comma separated list of user account ids)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "audience_id",
+      "description" => "This parameter is deprecated. The audience used to generate the list of recipients",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "audience_ids",
+      "description" => "The audiences used to generate the list of recipients (comma separated list of audience IDs)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "album_ids",
+      "description" => "The album ids to associate with the scheduled notification (comma separated list of album IDs)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "report_id",
+      "description" => "The report used to generate the the list of recipients",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "report_params",
+      "description" => "The parameters to supply to the report used to generate the the list of recipients",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "endpoint_url",
+      "description" => "The URL for making an HTTP call",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "payload",
+      "description" => "The parameters for making an HTTP call",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "scheduled_date",
+      "description" => "The next time when the scheduled notification should begin processing (time in milliseconds). If this is left empty, then the startDate will be used.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "start_date",
+      "description" => "The start time when the scheduled notification should be available to process (time in milliseconds). If this is left empty, then it will be assumed to be available now.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "end_date",
+      "description" => "The end time when the scheduled notification should be available to process (time in milliseconds). If this is left empty, then it will be assumed to not have an expiration date.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "cron_expression",
+      "description" => "The cron expression that represents the processing schedule. This uses the unix cron expression format. For example: 0 0 * * * will run once a day at midnight UTC.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "cron_type",
+      "description" => "The cron expression type: UNIX, CRON4J, QUARTZ",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "meta_data",
+      "description" => "Additional metadata for the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "conditional_input",
+      "description" => "Json input representing conditional logic that has to be met before running the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "template_type",
+      "description" => "This determines if the Scheduled Notification is a template which is used as a basis for dynamically generating re-occurring Scheduled Notifications. The available types include: REPORTING - saves an adhoc report to be able to run again at another time GEOFENCE_OWNER - template for sending notifications to the geofence/audience owner (i.e. the business owner) GEOFENCE_OWNER - template for sending notifications to the geofence/audience owner (i.e. the business employee, retailer location, etc) GEOFENCE_TRIGGER - template for sending notifications to the account that triggered the geofence/audience (i.e. the customer) GEOFENCE_HTTP_CALL - template for making http calls when the geofences are triggered",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "visibility",
+      "description" => "Determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited)",
+      "dataType" => "String",
+      "allowableValues" => "[PUBLIC, PRIVATE, FRIENDS]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "active",
+      "description" => "Sets whether the Scheduled Notification is active or not (inactive Scheduled Notifications are not processed). This is a quick way to toggle on or off without altering its schedule. The default value is &#39;true&#39;.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "send_now",
+      "description" => "",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "event_type",
+      "description" => "Sets the event type for the notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "defaultValue" => "'CUSTOM'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "deep_link_uri",
+      "description" => "The payload deep link URI that can be used by the client app to direct users to a screen in the app",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "send_to_all",
+      "description" => "Determines whether to send to all users of the app if set to true for push notifications (appKey is required)",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "version",
+      "description" => "",
+      "dataType" => "Float",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('POST', '/api/{version}/notification/schedule/delete', {
+  "resourcePath" => "/ScheduledNotification",
+  "summary" => "Delete Scheduled Notification",
+  "nickname" => "delete_scheduled_notification",
+  "responseClass" => "ScheduledNotificationFullResponse",
+  "endpoint" => "/api/{version}/notification/schedule/delete",
+  "notes" => "This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi.",
+  "parameters" => [
+    {
+      "name" => "account_id",
+      "description" => "the id of the logged in user",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "scheduled_notification_id",
+      "description" => "the id of the scheduled notification to delete",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "delete_by_grouping_id",
+      "description" => "If set to true, also deletes Scheduled Notifications under the same account with the same groupingId.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "version",
+      "description" => "",
+      "dataType" => "Float",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('GET', '/api/{version}/notification/schedule/get', {
+  "resourcePath" => "/ScheduledNotification",
+  "summary" => "Get Scheduled Notification",
+  "nickname" => "get_scheduled_notification",
+  "responseClass" => "ScheduledNotificationFullResponse",
+  "endpoint" => "/api/{version}/notification/schedule/get",
+  "notes" => "Get a ScheduledNotification",
+  "parameters" => [
+    {
+      "name" => "account_id",
+      "description" => "the id of the account logged in",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "scheduled_notification_id",
+      "description" => "the id of the scheduled notification to get",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "version",
+      "description" => "",
+      "dataType" => "Float",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('POST', '/api/{version}/notification/schedule/generate', {
+  "resourcePath" => "/ScheduledNotification",
+  "summary" => "Generate Schedule Notifications",
+  "nickname" => "schedule_notification_listings",
+  "responseClass" => "SirqulResponse",
+  "endpoint" => "/api/{version}/notification/schedule/generate",
+  "notes" => "Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users.",
+  "parameters" => [
+    {
+      "name" => "account_id",
+      "description" => "The logged in user.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "app_key",
+      "description" => "The application to target",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "report_name",
+      "description" => "The name of the report used to identify events. The report must return columns named: id, name, date, params, and type otherwise it will fail",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "report_params",
+      "description" => "The parameters of the report used to identify events in a json structure, example: &#x60;&#x60;&#x60;json {   \&quot;string\&quot;: \&quot;value\&quot;,   \&quot;number\&quot;: 3.345,   \&quot;date\&quot;: \&quot;2014-05-01 00:00:00\&quot; } &#x60;&#x60;&#x60; ",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "message",
+      "description" => "The message to be sent to the recipients. If you set %name% the report row name value will be swapped in. If you set %time% or %date% the report row start date/time value will be swapped in",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "offset",
+      "description" => "Time in munites before the event starts to notify recipients",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "type",
+      "description" => "The type of scheduled notification; supported values are: MOBILE_NOTIFICATION",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "recipient_report_id",
+      "description" => "The report id used to generate the recipient list",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "version",
+      "description" => "",
+      "dataType" => "Float",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('GET', '/api/{version}/notification/schedule/search', {
+  "resourcePath" => "/ScheduledNotification",
+  "summary" => "Search Scheduled Notifications",
+  "nickname" => "search_scheduled_notifications",
+  "responseClass" => "ScheduledNotificationFullResponse",
+  "endpoint" => "/api/{version}/notification/schedule/search",
+  "notes" => "This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.  In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators.",
+  "parameters" => [
+    {
+      "name" => "account_id",
+      "description" => "The logged in user.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "grouping_id",
+      "description" => "Filter results by a grouping identifier defined by the client",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "audience_id",
+      "description" => "Filter results by audience",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "filter",
+      "description" => "a comma separated list of filters: MINE - Return scheduled notifications that the user has created. SHARED - Return scheduled notifications that have been shared to the user via addUsersToPermissionable. FOLLOWER - Return scheduled notifications that have been created by the users followers (the content needs to have been APPROVED or FEATURED). FOLLOWING - Return scheduled notifications that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). PUBLIC - Return all PUBLIC scheduled notifications that have been APPROVED or FEATURED. ALL_PUBLIC - Return all PUBLIC scheduled notifications regardless of whether they are approved or not (ignores the approval status). LIKED - Return all scheduled notifications that the user has liked. FEATURED - Return all scheduled notifications that have been featured. PENDING - Return all pending scheduled notifications.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "types",
+      "description" => "Filter results by notification types (comma separated list). Values include: HTTP, EMAIL, SMS, MOBILE_NOTIFICATION",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_ids",
+      "description" => "search using content IDs",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_types",
+      "description" => "search using content types",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parent_ids",
+      "description" => "search using parent IDs",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parent_types",
+      "description" => "search using parent types",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "statuses",
+      "description" => "Filter results by status (comma separated list). Possible values include: NEW - scheduled to run ERROR - encountered an error during processing COMPLETE - processing has completed and it is no longer scheduled to run PROCESSING - currently processing/sending",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "template_types",
+      "description" => "",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "app_key",
+      "description" => "Filter the list by a specific application",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "keyword",
+      "description" => "Keyword search on the scheduled notification names.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "sort_field",
+      "description" => "The field to sort by. Possible values include: ID - order by the scheduledNotificationId CREATED - order by the timestamp it was created UPDATED - order by the timestamp it was last updated ACTIVE - order by whether it is active or inactive NAME - order by the scheduled notification name SCHEDULED_DATE - order by the next scheduled date START_DATE - order by the start date END_DATE - order by the end date",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "descending",
+      "description" => "Determines whether the sorted list is in descending or ascending order",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "start",
+      "description" => "Start the result set at some index.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "limit",
+      "description" => "Limit the result to some number.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "active_only",
+      "description" => "Determines whether to return only active results",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "group_by_grouping_id",
+      "description" => "Determines whether to group results with the same groupingId together.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "return_audience_account_count",
+      "description" => "If true, include audience account counts in the response",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "version",
+      "description" => "",
+      "dataType" => "Float",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('POST', '/api/{version}/notification/schedule/update', {
+  "resourcePath" => "/ScheduledNotification",
+  "summary" => "Update Scheduled Notification",
+  "nickname" => "update_scheduled_notification",
+  "responseClass" => "ScheduledNotificationFullResponse",
+  "endpoint" => "/api/{version}/notification/schedule/update",
+  "notes" => "This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.  Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi.",
+  "parameters" => [
+    {
+      "name" => "scheduled_notification_id",
+      "description" => "The id of scheduled notification to update",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "account_id",
+      "description" => "The logged in user.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "name",
+      "description" => "The name of the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "type",
+      "description" => "The type of scheduled notification. Supported values include: MOBILE_NOTIFICATION - sends push notifications via APNS and GCM EMAIL - sends email messages SMS - sends text messages",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "message",
+      "description" => "The message to send",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "payload",
+      "description" => "The parameters for making an HTTP call",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_id",
+      "description" => "The payload content ID that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_name",
+      "description" => "The payload content name that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "content_type",
+      "description" => "The payload content type that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parent_id",
+      "description" => "The payload parent ID that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parent_type",
+      "description" => "The payload parent type that gets sent along with the message. For push notification, this could be used in client apps to know what the message is referring to and open up the related view.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "app_key",
+      "description" => "The application that the notifications will send to. If connectionGroupIds, connectionAccountIds, and audienceIds is not set, this will send to all users who have used the application. This parameter is also required when sending push notifications via the MOBILE_NOTIFICATION type.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "grouping_id",
+      "description" => "Client defined identifier for grouping multiple scheduled notifications. This can be used with the search endpoint to return scheduled notifications with the same groupingId for display purposes. Only results that have been created by the user will be returned when using this feature.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "connection_group_ids",
+      "description" => "The connection groups to use to generate the list of recipients (comma separated list of connection group IDs)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "connection_account_ids",
+      "description" => "The connection accounts to use to generate the list of recipients (comma separated list of user account ids)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "audience_id",
+      "description" => "This parameter is deprecated. The audience used to generate the list of recipients",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "audience_ids",
+      "description" => "The audiences used to generate the list of recipients (comma separated list of audience IDs)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "album_ids",
+      "description" => "The album ids to associate with the scheduled notification (comma separated list of album IDs)",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "report_id",
+      "description" => "The report used to generate the the list of recipients",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "report_params",
+      "description" => "The parameters to supply to the report used to generate the the list of recipients",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "endpoint_url",
+      "description" => "The URL for making an HTTP call",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "scheduled_date",
+      "description" => "The next time when the scheduled notification should begin processing (time in milliseconds). If this is left empty, then the startDate will be used.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "start_date",
+      "description" => "The start time when the scheduled notification should be available to process (time in milliseconds). If this is left empty, then it will be assumed to be available now.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "end_date",
+      "description" => "The end time when the scheduled notification should be available to process (time in milliseconds). If this is left empty, then it will be assumed to not have an expiration date.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "cron_expression",
+      "description" => "The cron expression that represents the processing schedule. This uses the unix cron expression format. For example: 0 0 * * * will run once a day at midnight UTC.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "cron_type",
+      "description" => "The cron expression type: UNIX, CRON4J, QUARTZ",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "meta_data",
+      "description" => "Additional metadata for the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "conditional_input",
+      "description" => "Json input representing conditional logic that has to be met before running the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "template_type",
+      "description" => "This determines if the Scheduled Notification is a template which is used as a basis for dynamically generating re-occurring Scheduled Notifications. The available types include: REPORTING - saves an adhoc report to be able to run again at another time GEOFENCE_OWNER - template for sending notifications to the geofence/audience owner (i.e. the business owner) GEOFENCE_OWNER - template for sending notifications to the geofence/audience owner (i.e. the business employee, retailer location, etc) GEOFENCE_TRIGGER - template for sending notifications to the account that triggered the geofence/audience (i.e. the customer) GEOFENCE_HTTP_CALL - template for making http calls when the geofences are triggered",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "visibility",
+      "description" => "Determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited)",
+      "dataType" => "String",
+      "allowableValues" => "[PUBLIC, PRIVATE, FRIENDS]",
+      "paramType" => "query",
+    },
+    {
+      "name" => "active",
+      "description" => "Sets whether the Scheduled Notification is active or not (inactive Scheduled Notifications are not processed). This is a quick way to toggle on or off without altering its schedule.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "error_message",
+      "description" => "the error message associated with the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "status",
+      "description" => "the status of the scheduled notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "update_by_grouping_id",
+      "description" => "also updates ScheduledNotifications with the same groupingId and account",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "send_now",
+      "description" => "whether to send the scheduled notification now or not",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "event_type",
+      "description" => "Sets the event type for the notification",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "defaultValue" => "'CUSTOM'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "deep_link_uri",
+      "description" => "The payload deep link URI that can be used by the client app to direct users to a screen in the app",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "send_to_all",
+      "description" => "Determines whether to send to all users of the app if set to true for push notifications (appKey is required)",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "version",
+      "description" => "",
+      "dataType" => "Float",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+

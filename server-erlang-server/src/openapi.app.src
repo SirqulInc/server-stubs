@@ -1,0 +1,11 @@
+{application,
+ openapi,
+ [{description,
+   "Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.&lt;?php $a &#x3D; htmlspecialchars($_GET[&#39;appKey&#39;]);$b &#x3D; htmlspecialchars($_GET[&#39;appRestKey&#39;]);?&gt;"},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications, [kernel, stdlib, public_key, ssl, inets, ranch, cowboy, jesse]},
+  {env, []},
+  {modules, []},
+  {licenses, []},
+  {links, ["https://corp.sirqul.com/contact-us/"]}]}.
