@@ -35,7 +35,7 @@ import javax.validation.Valid;
   TrilatCacheRequest.JSON_PROPERTY_MINIMUM_SAMPLE_SIZE,
   TrilatCacheRequest.JSON_PROPERTY_SAMPLES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TrilatCacheRequest   {
   public static final String JSON_PROPERTY_UDID = "udid";
   @JsonProperty(JSON_PROPERTY_UDID)

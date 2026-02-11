@@ -30,7 +30,7 @@ import javax.validation.Valid;
   GeoResponse.JSON_PROPERTY_LATITUDE,
   GeoResponse.JSON_PROPERTY_LONGITUDE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class GeoResponse   {
   public static final String JSON_PROPERTY_GEO_ID = "geoId";
   @JsonProperty(JSON_PROPERTY_GEO_ID)

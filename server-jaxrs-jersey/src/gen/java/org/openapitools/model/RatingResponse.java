@@ -36,7 +36,7 @@ import javax.validation.Valid;
   RatingResponse.JSON_PROPERTY_CATEGORY,
   RatingResponse.JSON_PROPERTY_OWNER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RatingResponse   {
   public static final String JSON_PROPERTY_RATING_ID = "ratingId";
   @JsonProperty(JSON_PROPERTY_RATING_ID)

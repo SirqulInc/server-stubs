@@ -90,7 +90,7 @@ import javax.validation.Valid;
   MissionResponse.JSON_PROPERTY_SECONDS_BETWEEN_PACKS,
   MissionResponse.JSON_PROPERTY_ADVANCED_REPORTING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class MissionResponse   {
   /**
    * Gets or Sets action

@@ -34,7 +34,7 @@ import javax.validation.Valid;
   ObjectStoreResponse.JSON_PROPERTY_JSON_OBJECT,
   ObjectStoreResponse.JSON_PROPERTY_REQUEST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ObjectStoreResponse   {
   public static final String JSON_PROPERTY_JSON_OBJECT = "jsonObject";
   @JsonProperty(JSON_PROPERTY_JSON_OBJECT)

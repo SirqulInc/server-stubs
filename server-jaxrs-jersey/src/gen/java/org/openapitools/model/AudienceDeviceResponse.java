@@ -33,7 +33,7 @@ import javax.validation.Valid;
   AudienceDeviceResponse.JSON_PROPERTY_MINIMUM,
   AudienceDeviceResponse.JSON_PROPERTY_MAXIMUM
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AudienceDeviceResponse   {
   public static final String JSON_PROPERTY_DEVICE_ID = "deviceId";
   @JsonProperty(JSON_PROPERTY_DEVICE_ID)

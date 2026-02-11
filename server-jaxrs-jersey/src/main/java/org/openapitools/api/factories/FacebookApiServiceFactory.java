@@ -1,0 +1,13 @@
+package org.openapitools.api.factories;
+
+import org.openapitools.api.FacebookApiService;
+import org.openapitools.api.impl.FacebookApiServiceImpl;
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+public class FacebookApiServiceFactory {
+    private static final FacebookApiService service = new FacebookApiServiceImpl();
+
+    public static FacebookApiService getFacebookApi() {
+        return service;
+    }
+}

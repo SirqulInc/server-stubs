@@ -51,7 +51,7 @@ import javax.validation.Valid;
   EmployeeResponse.JSON_PROPERTY_LOCATION_LAST_UPDATED,
   EmployeeResponse.JSON_PROPERTY_LOCATION_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-09T20:50:30.957039503Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-02-11T19:26:26.286774429Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class EmployeeResponse   {
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
   @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
