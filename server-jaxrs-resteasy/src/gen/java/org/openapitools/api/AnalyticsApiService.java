@@ -1,0 +1,36 @@
+package org.openapitools.api;
+
+import org.openapitools.api.*;
+import org.openapitools.model.*;
+
+
+
+import org.openapitools.model.ChartData;
+import org.openapitools.model.SirqulResponse;
+import org.openapitools.model.UserActivityResponse;
+
+import java.util.List;
+import org.openapitools.api.NotFoundException;
+
+import java.io.InputStream;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-02-11T19:26:53.173546244Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+public interface AnalyticsApiService {
+      Response activities(Integer start,Integer limit,Long accountId,SecurityContext securityContext)
+      throws NotFoundException;
+      Response aggregatedFilteredUsage(String deviceId,Long accountId,Long applicationId,String appKey,Long startDate,Long endDate,String deviceType,String device,String deviceOS,String gender,String ageGroup,String country,String state,String city,String zip,String model,String tag,Long userAccountId,String userAccountDisplay,String userAccountUsername,String groupByRoot,String groupBy,String distinctCount,String sortField,Boolean descending,Boolean hideUnknown,String responseFormat,Integer l,Integer limit,Double latitude,Double longitude,SecurityContext securityContext)
+      throws NotFoundException;
+      Response filteredUsage(String deviceId,Long accountId,Long applicationId,String appKey,Long startDate,Long endDate,String deviceType,String device,String deviceOS,String gender,String ageGroup,String country,String state,String city,String zip,String model,String tag,Long userAccountId,String userAccountDisplay,String userAccountUsername,Long customId,String customType,Double customValue,Double customValue2,Long customLong,Long customLong2,String customMessage,String customMessage2,String groupBy,String distinctCount,String sumColumn,String sortField,Boolean descending,Boolean hideUnknown,String responseFormat,Integer l,Integer limit,Double latitude,Double longitude,SecurityContext securityContext)
+      throws NotFoundException;
+      Response usage(String tag,String deviceId,Long accountId,Long applicationId,String appKey,String appVersion,String device,String deviceType,String deviceOS,String model,Double latitude,Double longitude,Long customId,String customType,Long achievementIncrement,String city,String state,String country,String zip,String locationDescription,Long clientTime,String errorMessage,String ip,String userAgent,Boolean backgroundEvent,String customMessage,String customMessage2,Double customValue,Double customValue2,Long customLong,Long customLong2,SecurityContext securityContext)
+      throws NotFoundException;
+      Response usageBatch(String appKey,String device,String data,String deviceId,Long accountId,String appVersion,String deviceType,String deviceOS,String model,Boolean updateRanking,Boolean returnSummaryResponse,SecurityContext securityContext)
+      throws NotFoundException;
+
+
+}
