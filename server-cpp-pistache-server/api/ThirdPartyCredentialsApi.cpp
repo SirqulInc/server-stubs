@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ThirdPartyCredentialsApi::base = "";
+const std::string ThirdPartyCredentialsApi::base = "/api/3.18";
 
 ThirdPartyCredentialsApi::ThirdPartyCredentialsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,17 +32,17 @@ void ThirdPartyCredentialsApi::init() {
 void ThirdPartyCredentialsApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/thirdparty/credential/create", Routes::bind(&ThirdPartyCredentialsApi::create_credential_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/network/create", Routes::bind(&ThirdPartyCredentialsApi::create_network_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/credential/delete", Routes::bind(&ThirdPartyCredentialsApi::delete_credential_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/network/delete", Routes::bind(&ThirdPartyCredentialsApi::delete_network_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/credential/get", Routes::bind(&ThirdPartyCredentialsApi::get_credential_handler, this));
-    Routes::Get(*router, base + "/api/:version/thirdparty/network/get", Routes::bind(&ThirdPartyCredentialsApi::get_network_handler, this));
-    Routes::Get(*router, base + "/api/:version/thirdparty/credential/search", Routes::bind(&ThirdPartyCredentialsApi::search_credentials_handler, this));
-    Routes::Get(*router, base + "/api/:version/thirdparty/network/search", Routes::bind(&ThirdPartyCredentialsApi::search_networks_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/credential/mfa/send", Routes::bind(&ThirdPartyCredentialsApi::send_mfa_challenge_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/credential/update", Routes::bind(&ThirdPartyCredentialsApi::update_credential_handler, this));
-    Routes::Post(*router, base + "/api/:version/thirdparty/network/update", Routes::bind(&ThirdPartyCredentialsApi::update_network_handler, this));
+    Routes::Post(*router, base + "/thirdparty/credential/create", Routes::bind(&ThirdPartyCredentialsApi::create_credential_handler, this));
+    Routes::Post(*router, base + "/thirdparty/network/create", Routes::bind(&ThirdPartyCredentialsApi::create_network_handler, this));
+    Routes::Post(*router, base + "/thirdparty/credential/delete", Routes::bind(&ThirdPartyCredentialsApi::delete_credential_handler, this));
+    Routes::Post(*router, base + "/thirdparty/network/delete", Routes::bind(&ThirdPartyCredentialsApi::delete_network_handler, this));
+    Routes::Post(*router, base + "/thirdparty/credential/get", Routes::bind(&ThirdPartyCredentialsApi::get_credential_handler, this));
+    Routes::Get(*router, base + "/thirdparty/network/get", Routes::bind(&ThirdPartyCredentialsApi::get_network_handler, this));
+    Routes::Get(*router, base + "/thirdparty/credential/search", Routes::bind(&ThirdPartyCredentialsApi::search_credentials_handler, this));
+    Routes::Get(*router, base + "/thirdparty/network/search", Routes::bind(&ThirdPartyCredentialsApi::search_networks_handler, this));
+    Routes::Post(*router, base + "/thirdparty/credential/mfa/send", Routes::bind(&ThirdPartyCredentialsApi::send_mfa_challenge_handler, this));
+    Routes::Post(*router, base + "/thirdparty/credential/update", Routes::bind(&ThirdPartyCredentialsApi::update_credential_handler, this));
+    Routes::Post(*router, base + "/thirdparty/network/update", Routes::bind(&ThirdPartyCredentialsApi::update_network_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ThirdPartyCredentialsApi::third_party_credentials_api_default_handler, this));
@@ -77,8 +77,6 @@ std::pair<Pistache::Http::Code, std::string> ThirdPartyCredentialsApi::handleOpe
 void ThirdPartyCredentialsApi::create_credential_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -227,7 +225,7 @@ void ThirdPartyCredentialsApi::create_credential_handler(const Pistache::Rest::R
 
 
 
-            this->create_credential(version, thirdPartyId, thirdPartyToken, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyName, emailAddress, signinOnlyMode, responseFilters, latitude, longitude, metaData, thirdPartyRefreshToken, audienceIdsToAdd, audienceIdsToRemove, response);
+            this->create_credential(thirdPartyId, thirdPartyToken, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyName, emailAddress, signinOnlyMode, responseFilters, latitude, longitude, metaData, thirdPartyRefreshToken, audienceIdsToAdd, audienceIdsToRemove, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -266,8 +264,6 @@ void ThirdPartyCredentialsApi::create_network_handler(const Pistache::Rest::Requ
 void ThirdPartyCredentialsApi::delete_credential_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -312,7 +308,7 @@ void ThirdPartyCredentialsApi::delete_credential_handler(const Pistache::Rest::R
 
 
 
-            this->delete_credential(version, accountId, networkUID, thirdPartyId, appKey, response);
+            this->delete_credential(accountId, networkUID, thirdPartyId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -331,8 +327,6 @@ void ThirdPartyCredentialsApi::delete_credential_handler(const Pistache::Rest::R
 void ThirdPartyCredentialsApi::delete_network_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -361,7 +355,7 @@ void ThirdPartyCredentialsApi::delete_network_handler(const Pistache::Rest::Requ
 
 
 
-            this->delete_network(version, accountId, networkUID, response);
+            this->delete_network(accountId, networkUID, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -380,8 +374,6 @@ void ThirdPartyCredentialsApi::delete_network_handler(const Pistache::Rest::Requ
 void ThirdPartyCredentialsApi::get_credential_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -514,7 +506,7 @@ void ThirdPartyCredentialsApi::get_credential_handler(const Pistache::Rest::Requ
 
 
 
-            this->get_credential(version, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyCredentialId, thirdPartyToken, thirdPartySecret, createNewAccount, responseFilters, latitude, longitude, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, response);
+            this->get_credential(networkUID, appKey, accountId, deviceId, sessionId, thirdPartyCredentialId, thirdPartyToken, thirdPartySecret, createNewAccount, responseFilters, latitude, longitude, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -533,8 +525,6 @@ void ThirdPartyCredentialsApi::get_credential_handler(const Pistache::Rest::Requ
 void ThirdPartyCredentialsApi::get_network_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -563,7 +553,7 @@ void ThirdPartyCredentialsApi::get_network_handler(const Pistache::Rest::Request
 
 
 
-            this->get_network(version, accountId, networkUID, response);
+            this->get_network(accountId, networkUID, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -582,8 +572,6 @@ void ThirdPartyCredentialsApi::get_network_handler(const Pistache::Rest::Request
 void ThirdPartyCredentialsApi::search_credentials_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -644,7 +632,7 @@ void ThirdPartyCredentialsApi::search_credentials_handler(const Pistache::Rest::
 
 
 
-            this->search_credentials(version, accountId, keyword, networkUID, descending, start, limit, response);
+            this->search_credentials(accountId, keyword, networkUID, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -663,8 +651,6 @@ void ThirdPartyCredentialsApi::search_credentials_handler(const Pistache::Rest::
 void ThirdPartyCredentialsApi::search_networks_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -741,7 +727,7 @@ void ThirdPartyCredentialsApi::search_networks_handler(const Pistache::Rest::Req
 
 
 
-            this->search_networks(version, accountId, sortField, descending, start, limit, activeOnly, keyword, filterBillable, response);
+            this->search_networks(accountId, sortField, descending, start, limit, activeOnly, keyword, filterBillable, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -760,8 +746,6 @@ void ThirdPartyCredentialsApi::search_networks_handler(const Pistache::Rest::Req
 void ThirdPartyCredentialsApi::send_mfa_challenge_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -814,7 +798,7 @@ void ThirdPartyCredentialsApi::send_mfa_challenge_handler(const Pistache::Rest::
 
 
 
-            this->send_mfa_challenge(version, networkUID, appKey, thirdPartyToken, thirdPartyCredentialId, deviceId, response);
+            this->send_mfa_challenge(networkUID, appKey, thirdPartyToken, thirdPartyCredentialId, deviceId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -833,8 +817,6 @@ void ThirdPartyCredentialsApi::send_mfa_challenge_handler(const Pistache::Rest::
 void ThirdPartyCredentialsApi::update_credential_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -919,7 +901,7 @@ void ThirdPartyCredentialsApi::update_credential_handler(const Pistache::Rest::R
 
 
 
-            this->update_credential(version, networkUID, thirdPartyId, appKey, deviceId, thirdPartyName, thirdPartyToken, responseFilters, metaData, thirdPartyRefreshToken, response);
+            this->update_credential(networkUID, thirdPartyId, appKey, deviceId, thirdPartyName, thirdPartyToken, responseFilters, metaData, thirdPartyRefreshToken, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

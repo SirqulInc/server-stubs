@@ -82,12 +82,11 @@ private:
     /// <remarks>
     /// Recieve an SMS payload from Twillio to purchase an offer.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">the application key</param>
     /// <param name="body">the message of the text</param>
     /// <param name="from">the sender of the sms</param>
     /// <param name="currencyType">the type of currency</param>
-    virtual void sms_buy_offer( const double &version, const std::string &appKey, const std::optional<std::string> &body, const std::optional<std::string> &from, const std::optional<std::string> &currencyType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void sms_buy_offer( const std::string &appKey, const std::optional<std::string> &body, const std::optional<std::string> &from, const std::optional<std::string> &currencyType, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

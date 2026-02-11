@@ -93,7 +93,6 @@ private:
     /// <remarks>
     /// Allows a user to accept an invite. The user could also become the inviter&#39;s friend.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="token">the invite token</param>
     /// <param name="accountId">the accountId of the user who is accepting the invite</param>
     /// <param name="albumId">the album id associated with this invite (if applicable) (optional, default to 0L)</param>
@@ -108,14 +107,13 @@ private:
     /// <param name="autoFavoriteOffer">whether to mark the offer as favorited automatically after invite is accepted (optional, default to false)</param>
     /// <param name="autoFavoriteOfferLocation">whether to mark the offer location as favorited automatically after invite is accepted (optional, default to false)</param>
     /// <param name="autoFavoriteRetailerLocation">whether to mark the retailer location as favorited automatically after invite is accepted (optional, default to false)</param>
-    virtual void accept_invite( const double &version, const std::optional<std::string> &token, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, const std::optional<bool> &autoFriend, const std::optional<bool> &autoAttendEvent, const std::optional<bool> &autoFavoriteOffer, const std::optional<bool> &autoFavoriteOfferLocation, const std::optional<bool> &autoFavoriteRetailerLocation, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void accept_invite( const std::optional<std::string> &token, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, const std::optional<bool> &autoFriend, const std::optional<bool> &autoAttendEvent, const std::optional<bool> &autoFavoriteOffer, const std::optional<bool> &autoFavoriteOfferLocation, const std::optional<bool> &autoFavoriteRetailerLocation, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Contest
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appId">This parameter is deprecated. (optional, default to 0L)</param>
@@ -123,14 +121,13 @@ private:
     /// <param name="albumContestId">the album contest to share (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void album_contest_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumContestId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void album_contest_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumContestId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Collection
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appId">This parameter is deprecated. (optional, default to 0L)</param>
@@ -138,27 +135,25 @@ private:
     /// <param name="albumId">the album to share (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void album_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void album_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Event
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user making the share</param>
     /// <param name="appKey">the application key</param>
     /// <param name="listingId">The ID of the event listing</param>
     /// <param name="receiverAccountIds">the account ID of a Sirqul user they would like to share an event with (optional, default to &quot;&quot;)</param>
     /// <param name="retailerLocationId">The retailer location id of where the event will take place (optional, default to 0L)</param>
-    virtual void event_invite( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &listingId, const std::optional<std::string> &receiverAccountIds, const std::optional<int64_t> &retailerLocationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void event_invite( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &listingId, const std::optional<std::string> &receiverAccountIds, const std::optional<int64_t> &retailerLocationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Game Level
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appId">This parameter is deprecated. (optional, default to 0L)</param>
@@ -166,14 +161,13 @@ private:
     /// <param name="gameLevelId">the game level that the user owns and is giving access to (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void game_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &gameLevelId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void game_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &gameLevelId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Invite
     /// </summary>
     /// <remarks>
     /// This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Account ID of the user if they are logged in (optional, default to 0L)</param>
     /// <param name="token">the invite token (optional, default to &quot;&quot;)</param>
     /// <param name="albumId">album id to match the invite against (if applicable) (optional, default to 0L)</param>
@@ -183,14 +177,13 @@ private:
     /// <param name="offerLocationId">offer location id to match the invite against (if applicable) (optional, default to 0L)</param>
     /// <param name="retailerLocationId">retailer location id to match the invite against (if applicable) (optional, default to 0L)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
-    virtual void get_invite( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &token, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_invite( const std::optional<int64_t> &accountId, const std::optional<std::string> &token, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Mission
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appId">This parameter is deprecated. (optional, default to 0L)</param>
@@ -198,41 +191,38 @@ private:
     /// <param name="missionId">the mission to share (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void mission_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void mission_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Offer
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite&#39;s list.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user making the share</param>
     /// <param name="appKey">the application key</param>
     /// <param name="offerId">the ID of the offer used to invite to favorite</param>
-    virtual void offer_invite( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void offer_invite( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Offer Location
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite&#39;s list.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user making the share</param>
     /// <param name="appKey">the application key</param>
     /// <param name="offerLocationId">the id of the offer location to share</param>
-    virtual void offer_location_invite( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void offer_location_invite( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Invite to Retailer Location
     /// </summary>
     /// <remarks>
     /// Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite&#39;s list.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user making the share</param>
     /// <param name="appKey">the application key</param>
     /// <param name="retailerLocationId">The retailer location id of where the event will take place</param>
     /// <param name="albumId">Optional album id to link with the invite (optional, default to 0L)</param>
-    virtual void retailer_location_invite( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &albumId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void retailer_location_invite( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &albumId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

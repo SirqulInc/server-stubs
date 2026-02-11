@@ -122,52 +122,48 @@ private:
     /// <remarks>
     /// Takes in a text string representing one or more sentences and it returns a list of documents which are related to the provided document.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="doc">Doc</param>
     /// <param name="returnTopics">Return Topics (optional, default to false)</param>
     /// <param name="limit">Limit (optional, default to 0)</param>
     /// <param name="offset">Offset (optional, default to 0)</param>
-    virtual void ai_docs( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &doc, const std::optional<bool> &returnTopics, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ai_docs( const std::optional<int64_t> &accountId, const std::optional<std::string> &doc, const std::optional<bool> &returnTopics, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Find images
     /// </summary>
     /// <remarks>
     /// Returns a list of URIs of images that match the text.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="text">Text</param>
     /// <param name="parseFlag">Parse Flag (optional, default to &quot;&quot;)</param>
     /// <param name="fetchFlag">Fetch Flag (optional, default to &quot;&quot;)</param>
     /// <param name="size">Size (optional, default to &quot;&quot;)</param>
-    virtual void ai_find_images( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &parseFlag, const std::optional<std::string> &fetchFlag, const std::optional<std::string> &size, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ai_find_images( const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &parseFlag, const std::optional<std::string> &fetchFlag, const std::optional<std::string> &size, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Tags
     /// </summary>
     /// <remarks>
     /// Search the tags column of user provided tags using this endpoint.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="tags">Tags</param>
     /// <param name="conditional">Conditional (optional, default to &quot;&quot;)</param>
     /// <param name="limit">Limit (optional, default to 0)</param>
     /// <param name="offset">Offset (optional, default to 0)</param>
-    virtual void ai_tags( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ai_tags( const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Text
     /// </summary>
     /// <remarks>
     /// Search the movie text column of movie text using this endpoint.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="terms">Terms</param>
     /// <param name="conditional">Conditional (optional, default to &quot;&quot;)</param>
     /// <param name="limit">Limit (optional, default to 0)</param>
     /// <param name="offset">Offset (optional, default to 0)</param>
-    virtual void ai_text( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &terms, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ai_text( const std::optional<int64_t> &accountId, const std::optional<std::string> &terms, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Batch Analysis
     /// </summary>
@@ -181,10 +177,9 @@ private:
     /// <remarks>
     /// Creates an instant episode for a given StoryStrip by providing all necessary inputs, interview recordings, and pictures, kicking off a render immediately.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="data">Request Data String</param>
-    virtual void create_instant_episode( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_instant_episode( const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create VoiceCanvas images
     /// </summary>
@@ -205,110 +200,99 @@ private:
     /// <remarks>
     /// Get the result of an in progress Add Movie request from an earlier POST.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_add_movie_result( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_add_movie_result( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Batch Analysis Results
     /// </summary>
     /// <remarks>
     /// Gets the completed Video Batch results, if done, or an error or status update if not.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_batch( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_batch( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Emotion Results
     /// </summary>
     /// <remarks>
     /// Checks the Emotion analysis and returns in progress, results, or error.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_emotion( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_emotion( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Check episode status
     /// </summary>
     /// <remarks>
     /// Gets a summary of the episode&#39;s status, including any renders.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="episodeId">Episode ID</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_episode_status( const double &version, const int64_t &episodeId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_episode_status( const int64_t &episodeId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Check episode status
     /// </summary>
     /// <remarks>
     /// Gets a summary of the episode&#39;s status, including any renders.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="renderId">Render ID</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_render_status( const double &version, const std::string &renderId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_render_status( const std::string &renderId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Speach to Text Result
     /// </summary>
     /// <remarks>
     /// The results of the video transcription and optional translation.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_stt( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_stt( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Text to Speach Result
     /// </summary>
     /// <remarks>
     /// Check the status of an in progress Text-to-Speech call or download the result.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_tts( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_tts( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get TechTune Results
     /// </summary>
     /// <remarks>
     /// Get a result or continue waiting for a pending request for TechTune analysis.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_tech_tune( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_tech_tune( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Topics
     /// </summary>
     /// <remarks>
     /// Get the result of an in progress Topics Analysis from an earlier POST.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_topics( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_topics( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get VoiceCanvas images
     /// </summary>
     /// <remarks>
     /// Get a result or continue waiting for a pending request for VoiceCanvas Images.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="requestId">Orson Request Id</param>
     /// <param name="accountId">Sirqul Account Id</param>
-    virtual void get_voice_canvas( const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_voice_canvas( const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Starts a StoryStitch video render
     /// </summary>
     /// <remarks>
     /// Starts a StoryStitch video render to produce your final video, returning the status details.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="data">Request Data String</param>
-    virtual void start_video_render( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void start_video_render( const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Speach to Text
     /// </summary>
@@ -336,14 +320,13 @@ private:
     /// <remarks>
     /// Creates an audio file for the given text, with the option of language and voice selection.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="text">Text</param>
     /// <param name="thirdPartyAccountId">A third-party account id that is meaningful to your systems (optional, default to &quot;&quot;)</param>
     /// <param name="language">The language to use for the speaker and incoming text (optional, default to &quot;&quot;)</param>
     /// <param name="voice">A language-specific voice to use, or picks the language default if not provided (optional, default to &quot;&quot;)</param>
     /// <param name="callback">When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional, default to &quot;&quot;)</param>
-    virtual void tts( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &thirdPartyAccountId, const std::optional<std::string> &language, const std::optional<std::string> &voice, const std::optional<std::string> &callback, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void tts( const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &thirdPartyAccountId, const std::optional<std::string> &language, const std::optional<std::string> &voice, const std::optional<std::string> &callback, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

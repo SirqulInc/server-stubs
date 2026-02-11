@@ -18,7 +18,7 @@ namespace org::openapitools::server::api
 
 using namespace org::openapitools::server::helpers;
 
-const std::string VatomApi::base = "";
+const std::string VatomApi::base = "/api/3.18";
 
 VatomApi::VatomApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -31,60 +31,60 @@ void VatomApi::init() {
 void VatomApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/vatom/me/rels/following/create", Routes::bind(&VatomApi::create_following_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/spaces/create", Routes::bind(&VatomApi::create_space_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/events/create", Routes::bind(&VatomApi::create_vatom_event_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/me/rels/following/delete", Routes::bind(&VatomApi::delete_following_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/campaign/points/delete", Routes::bind(&VatomApi::delete_points_balance_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/spaces/delete", Routes::bind(&VatomApi::delete_space_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/events/delete", Routes::bind(&VatomApi::delete_vatom_event_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/vatoms/delete", Routes::bind(&VatomApi::delete_vatom_nft_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/vatoms/execute-action", Routes::bind(&VatomApi::execute_action_on_nft_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/vatoms/geo-map/search", Routes::bind(&VatomApi::geomap_search_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/behaviors", Routes::bind(&VatomApi::get_business_behaviors_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/coins/get", Routes::bind(&VatomApi::get_business_coins_balance_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/me/businesses", Routes::bind(&VatomApi::get_business_ids_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/get", Routes::bind(&VatomApi::get_business_info_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/users", Routes::bind(&VatomApi::get_business_users_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/campaign-groups/entities", Routes::bind(&VatomApi::get_campaign_group_entities_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/campaign-groups/rules", Routes::bind(&VatomApi::get_campaign_group_rules_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/campaign-groups/stats", Routes::bind(&VatomApi::get_campaign_group_stats_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/campaign-groups/get", Routes::bind(&VatomApi::get_campaign_info_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/events/guests/get", Routes::bind(&VatomApi::get_event_guest_list_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/me/inventory", Routes::bind(&VatomApi::get_inventory_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/me/rels/following", Routes::bind(&VatomApi::get_my_following_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/u/campaign/points/get", Routes::bind(&VatomApi::get_points_balance_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/campaign/u/points/get", Routes::bind(&VatomApi::get_points_balance_as_business_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/spaces/get", Routes::bind(&VatomApi::get_space_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/users/coins/get", Routes::bind(&VatomApi::get_user_coins_as_business_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/u/coins/get", Routes::bind(&VatomApi::get_user_coins_balance_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/users/rels/followers", Routes::bind(&VatomApi::get_user_followers_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/users/rels/following", Routes::bind(&VatomApi::get_user_following_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/user/get", Routes::bind(&VatomApi::get_user_info_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/me/get", Routes::bind(&VatomApi::get_user_profile_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/events/get", Routes::bind(&VatomApi::get_vatom_event_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/vatoms/get", Routes::bind(&VatomApi::get_vatom_nft_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/communities/search", Routes::bind(&VatomApi::list_communities_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/events/search", Routes::bind(&VatomApi::list_events_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/spaces/search", Routes::bind(&VatomApi::list_spaces_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/u/coins/txns/search", Routes::bind(&VatomApi::list_user_coin_transactions_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/users/coins/txns/search", Routes::bind(&VatomApi::list_user_coin_transactions_as_business_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/me/vatoms/actions", Routes::bind(&VatomApi::perform_action_on_nft_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/redemptions", Routes::bind(&VatomApi::redeem_nft_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/users/coins/redeem", Routes::bind(&VatomApi::redeem_user_coins_as_business_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/search", Routes::bind(&VatomApi::search_businesses_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/b/campaign-groups/search", Routes::bind(&VatomApi::search_campaign_groups_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/me/identities/search", Routes::bind(&VatomApi::search_identities_handler, this));
-    Routes::Get(*router, base + "/api/:version/vatom/user-inventory/search", Routes::bind(&VatomApi::search_inventory_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/campaigns/send", Routes::bind(&VatomApi::send_nft_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/campaign/u/points/update", Routes::bind(&VatomApi::set_points_balance_as_business_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/u/coins/transfer", Routes::bind(&VatomApi::transfer_user_coins_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/coins/update", Routes::bind(&VatomApi::update_business_coins_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/events/guests/update", Routes::bind(&VatomApi::update_event_guest_list_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/spaces/update", Routes::bind(&VatomApi::update_space_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/users/coins/update", Routes::bind(&VatomApi::update_user_coins_as_business_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/me/update", Routes::bind(&VatomApi::update_user_profile_handler, this));
-    Routes::Post(*router, base + "/api/:version/vatom/b/events/update", Routes::bind(&VatomApi::update_vatom_event_handler, this));
+    Routes::Post(*router, base + "/vatom/me/rels/following/create", Routes::bind(&VatomApi::create_following_handler, this));
+    Routes::Post(*router, base + "/vatom/b/spaces/create", Routes::bind(&VatomApi::create_space_handler, this));
+    Routes::Post(*router, base + "/vatom/b/events/create", Routes::bind(&VatomApi::create_vatom_event_handler, this));
+    Routes::Post(*router, base + "/vatom/me/rels/following/delete", Routes::bind(&VatomApi::delete_following_handler, this));
+    Routes::Post(*router, base + "/vatom/b/campaign/points/delete", Routes::bind(&VatomApi::delete_points_balance_handler, this));
+    Routes::Post(*router, base + "/vatom/b/spaces/delete", Routes::bind(&VatomApi::delete_space_handler, this));
+    Routes::Post(*router, base + "/vatom/b/events/delete", Routes::bind(&VatomApi::delete_vatom_event_handler, this));
+    Routes::Post(*router, base + "/vatom/vatoms/delete", Routes::bind(&VatomApi::delete_vatom_nft_handler, this));
+    Routes::Post(*router, base + "/vatom/vatoms/execute-action", Routes::bind(&VatomApi::execute_action_on_nft_handler, this));
+    Routes::Get(*router, base + "/vatom/vatoms/geo-map/search", Routes::bind(&VatomApi::geomap_search_handler, this));
+    Routes::Get(*router, base + "/vatom/b/behaviors", Routes::bind(&VatomApi::get_business_behaviors_handler, this));
+    Routes::Get(*router, base + "/vatom/b/coins/get", Routes::bind(&VatomApi::get_business_coins_balance_handler, this));
+    Routes::Get(*router, base + "/vatom/me/businesses", Routes::bind(&VatomApi::get_business_ids_handler, this));
+    Routes::Get(*router, base + "/vatom/b/get", Routes::bind(&VatomApi::get_business_info_handler, this));
+    Routes::Get(*router, base + "/vatom/b/users", Routes::bind(&VatomApi::get_business_users_handler, this));
+    Routes::Get(*router, base + "/vatom/b/campaign-groups/entities", Routes::bind(&VatomApi::get_campaign_group_entities_handler, this));
+    Routes::Get(*router, base + "/vatom/b/campaign-groups/rules", Routes::bind(&VatomApi::get_campaign_group_rules_handler, this));
+    Routes::Get(*router, base + "/vatom/b/campaign-groups/stats", Routes::bind(&VatomApi::get_campaign_group_stats_handler, this));
+    Routes::Get(*router, base + "/vatom/b/campaign-groups/get", Routes::bind(&VatomApi::get_campaign_info_handler, this));
+    Routes::Get(*router, base + "/vatom/b/events/guests/get", Routes::bind(&VatomApi::get_event_guest_list_handler, this));
+    Routes::Get(*router, base + "/vatom/me/inventory", Routes::bind(&VatomApi::get_inventory_handler, this));
+    Routes::Get(*router, base + "/vatom/me/rels/following", Routes::bind(&VatomApi::get_my_following_handler, this));
+    Routes::Get(*router, base + "/vatom/u/campaign/points/get", Routes::bind(&VatomApi::get_points_balance_handler, this));
+    Routes::Get(*router, base + "/vatom/b/campaign/u/points/get", Routes::bind(&VatomApi::get_points_balance_as_business_handler, this));
+    Routes::Get(*router, base + "/vatom/b/spaces/get", Routes::bind(&VatomApi::get_space_handler, this));
+    Routes::Get(*router, base + "/vatom/b/users/coins/get", Routes::bind(&VatomApi::get_user_coins_as_business_handler, this));
+    Routes::Get(*router, base + "/vatom/u/coins/get", Routes::bind(&VatomApi::get_user_coins_balance_handler, this));
+    Routes::Get(*router, base + "/vatom/users/rels/followers", Routes::bind(&VatomApi::get_user_followers_handler, this));
+    Routes::Get(*router, base + "/vatom/users/rels/following", Routes::bind(&VatomApi::get_user_following_handler, this));
+    Routes::Get(*router, base + "/vatom/user/get", Routes::bind(&VatomApi::get_user_info_handler, this));
+    Routes::Get(*router, base + "/vatom/me/get", Routes::bind(&VatomApi::get_user_profile_handler, this));
+    Routes::Get(*router, base + "/vatom/b/events/get", Routes::bind(&VatomApi::get_vatom_event_handler, this));
+    Routes::Get(*router, base + "/vatom/vatoms/get", Routes::bind(&VatomApi::get_vatom_nft_handler, this));
+    Routes::Get(*router, base + "/vatom/b/communities/search", Routes::bind(&VatomApi::list_communities_handler, this));
+    Routes::Get(*router, base + "/vatom/b/events/search", Routes::bind(&VatomApi::list_events_handler, this));
+    Routes::Get(*router, base + "/vatom/b/spaces/search", Routes::bind(&VatomApi::list_spaces_handler, this));
+    Routes::Get(*router, base + "/vatom/u/coins/txns/search", Routes::bind(&VatomApi::list_user_coin_transactions_handler, this));
+    Routes::Get(*router, base + "/vatom/b/users/coins/txns/search", Routes::bind(&VatomApi::list_user_coin_transactions_as_business_handler, this));
+    Routes::Post(*router, base + "/vatom/me/vatoms/actions", Routes::bind(&VatomApi::perform_action_on_nft_handler, this));
+    Routes::Post(*router, base + "/vatom/b/redemptions", Routes::bind(&VatomApi::redeem_nft_handler, this));
+    Routes::Post(*router, base + "/vatom/b/users/coins/redeem", Routes::bind(&VatomApi::redeem_user_coins_as_business_handler, this));
+    Routes::Get(*router, base + "/vatom/b/search", Routes::bind(&VatomApi::search_businesses_handler, this));
+    Routes::Get(*router, base + "/vatom/b/campaign-groups/search", Routes::bind(&VatomApi::search_campaign_groups_handler, this));
+    Routes::Get(*router, base + "/vatom/me/identities/search", Routes::bind(&VatomApi::search_identities_handler, this));
+    Routes::Get(*router, base + "/vatom/user-inventory/search", Routes::bind(&VatomApi::search_inventory_handler, this));
+    Routes::Post(*router, base + "/vatom/b/campaigns/send", Routes::bind(&VatomApi::send_nft_handler, this));
+    Routes::Post(*router, base + "/vatom/b/campaign/u/points/update", Routes::bind(&VatomApi::set_points_balance_as_business_handler, this));
+    Routes::Post(*router, base + "/vatom/u/coins/transfer", Routes::bind(&VatomApi::transfer_user_coins_handler, this));
+    Routes::Post(*router, base + "/vatom/b/coins/update", Routes::bind(&VatomApi::update_business_coins_handler, this));
+    Routes::Post(*router, base + "/vatom/b/events/guests/update", Routes::bind(&VatomApi::update_event_guest_list_handler, this));
+    Routes::Post(*router, base + "/vatom/b/spaces/update", Routes::bind(&VatomApi::update_space_handler, this));
+    Routes::Post(*router, base + "/vatom/b/users/coins/update", Routes::bind(&VatomApi::update_user_coins_as_business_handler, this));
+    Routes::Post(*router, base + "/vatom/me/update", Routes::bind(&VatomApi::update_user_profile_handler, this));
+    Routes::Post(*router, base + "/vatom/b/events/update", Routes::bind(&VatomApi::update_vatom_event_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&VatomApi::vatom_api_default_handler, this));
@@ -119,8 +119,6 @@ std::pair<Pistache::Http::Code, std::string> VatomApi::handleOperationException(
 void VatomApi::create_following_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -157,7 +155,7 @@ void VatomApi::create_following_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_following(version, accountId, vatomParameters, returnRawResponse, response);
+            this->create_following(accountId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -176,8 +174,6 @@ void VatomApi::create_following_handler(const Pistache::Rest::Request& request, 
 void VatomApi::create_space_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -222,7 +218,7 @@ void VatomApi::create_space_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->create_space(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->create_space(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -241,8 +237,6 @@ void VatomApi::create_space_handler(const Pistache::Rest::Request& request, Pist
 void VatomApi::create_vatom_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -287,7 +281,7 @@ void VatomApi::create_vatom_event_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_vatom_event(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->create_vatom_event(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -306,8 +300,6 @@ void VatomApi::create_vatom_event_handler(const Pistache::Rest::Request& request
 void VatomApi::delete_following_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -344,7 +336,7 @@ void VatomApi::delete_following_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_following(version, accountId, vatomRelsKey, returnRawResponse, response);
+            this->delete_following(accountId, vatomRelsKey, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -363,8 +355,6 @@ void VatomApi::delete_following_handler(const Pistache::Rest::Request& request, 
 void VatomApi::delete_points_balance_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -409,7 +399,7 @@ void VatomApi::delete_points_balance_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->delete_points_balance(version, accountId, appKey, vatomCampaignId, returnRawResponse, response);
+            this->delete_points_balance(accountId, appKey, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -428,8 +418,6 @@ void VatomApi::delete_points_balance_handler(const Pistache::Rest::Request& requ
 void VatomApi::delete_space_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -474,7 +462,7 @@ void VatomApi::delete_space_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->delete_space(version, accountId, appKey, vatomSpaceId, returnRawResponse, response);
+            this->delete_space(accountId, appKey, vatomSpaceId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -493,8 +481,6 @@ void VatomApi::delete_space_handler(const Pistache::Rest::Request& request, Pist
 void VatomApi::delete_vatom_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -539,7 +525,7 @@ void VatomApi::delete_vatom_event_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_vatom_event(version, accountId, appKey, vatomEventId, returnRawResponse, response);
+            this->delete_vatom_event(accountId, appKey, vatomEventId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -558,8 +544,6 @@ void VatomApi::delete_vatom_event_handler(const Pistache::Rest::Request& request
 void VatomApi::delete_vatom_nft_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -596,7 +580,7 @@ void VatomApi::delete_vatom_nft_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_vatom_nft(version, accountId, vatomId, returnRawResponse, response);
+            this->delete_vatom_nft(accountId, vatomId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -615,8 +599,6 @@ void VatomApi::delete_vatom_nft_handler(const Pistache::Rest::Request& request, 
 void VatomApi::execute_action_on_nft_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -661,7 +643,7 @@ void VatomApi::execute_action_on_nft_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->execute_action_on_nft(version, accountId, vatomId, vatomParameters, returnRawResponse, response);
+            this->execute_action_on_nft(accountId, vatomId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -680,8 +662,6 @@ void VatomApi::execute_action_on_nft_handler(const Pistache::Rest::Request& requ
 void VatomApi::geomap_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -718,7 +698,7 @@ void VatomApi::geomap_search_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->geomap_search(version, accountId, vatomParameters, returnRawResponse, response);
+            this->geomap_search(accountId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -737,8 +717,6 @@ void VatomApi::geomap_search_handler(const Pistache::Rest::Request& request, Pis
 void VatomApi::get_business_behaviors_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -775,7 +753,7 @@ void VatomApi::get_business_behaviors_handler(const Pistache::Rest::Request& req
 
 
 
-            this->get_business_behaviors(version, accountId, appKey, returnRawResponse, response);
+            this->get_business_behaviors(accountId, appKey, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -794,8 +772,6 @@ void VatomApi::get_business_behaviors_handler(const Pistache::Rest::Request& req
 void VatomApi::get_business_coins_balance_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -832,7 +808,7 @@ void VatomApi::get_business_coins_balance_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_business_coins_balance(version, accountId, appKey, returnRawResponse, response);
+            this->get_business_coins_balance(accountId, appKey, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -851,8 +827,6 @@ void VatomApi::get_business_coins_balance_handler(const Pistache::Rest::Request&
 void VatomApi::get_business_ids_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -881,7 +855,7 @@ void VatomApi::get_business_ids_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_business_ids(version, accountId, returnRawResponse, response);
+            this->get_business_ids(accountId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -900,8 +874,6 @@ void VatomApi::get_business_ids_handler(const Pistache::Rest::Request& request, 
 void VatomApi::get_business_info_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -946,7 +918,7 @@ void VatomApi::get_business_info_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_business_info(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->get_business_info(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -965,8 +937,6 @@ void VatomApi::get_business_info_handler(const Pistache::Rest::Request& request,
 void VatomApi::get_business_users_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1003,7 +973,7 @@ void VatomApi::get_business_users_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_business_users(version, accountId, appKey, returnRawResponse, response);
+            this->get_business_users(accountId, appKey, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1022,8 +992,6 @@ void VatomApi::get_business_users_handler(const Pistache::Rest::Request& request
 void VatomApi::get_campaign_group_entities_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1068,7 +1036,7 @@ void VatomApi::get_campaign_group_entities_handler(const Pistache::Rest::Request
 
 
 
-            this->get_campaign_group_entities(version, accountId, appKey, vatomCampaignId, returnRawResponse, response);
+            this->get_campaign_group_entities(accountId, appKey, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1087,8 +1055,6 @@ void VatomApi::get_campaign_group_entities_handler(const Pistache::Rest::Request
 void VatomApi::get_campaign_group_rules_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1133,7 +1099,7 @@ void VatomApi::get_campaign_group_rules_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_campaign_group_rules(version, accountId, appKey, vatomCampaignId, returnRawResponse, response);
+            this->get_campaign_group_rules(accountId, appKey, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1152,8 +1118,6 @@ void VatomApi::get_campaign_group_rules_handler(const Pistache::Rest::Request& r
 void VatomApi::get_campaign_group_stats_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1198,7 +1162,7 @@ void VatomApi::get_campaign_group_stats_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_campaign_group_stats(version, accountId, appKey, vatomCampaignId, returnRawResponse, response);
+            this->get_campaign_group_stats(accountId, appKey, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1217,8 +1181,6 @@ void VatomApi::get_campaign_group_stats_handler(const Pistache::Rest::Request& r
 void VatomApi::get_campaign_info_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1263,7 +1225,7 @@ void VatomApi::get_campaign_info_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_campaign_info(version, accountId, appKey, vatomCampaignId, returnRawResponse, response);
+            this->get_campaign_info(accountId, appKey, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1282,8 +1244,6 @@ void VatomApi::get_campaign_info_handler(const Pistache::Rest::Request& request,
 void VatomApi::get_event_guest_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1328,7 +1288,7 @@ void VatomApi::get_event_guest_list_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_event_guest_list(version, accountId, appKey, vatomEventId, returnRawResponse, response);
+            this->get_event_guest_list(accountId, appKey, vatomEventId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1347,8 +1307,6 @@ void VatomApi::get_event_guest_list_handler(const Pistache::Rest::Request& reque
 void VatomApi::get_inventory_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1385,7 +1343,7 @@ void VatomApi::get_inventory_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_inventory(version, accountId, vatomParameters, returnRawResponse, response);
+            this->get_inventory(accountId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1404,8 +1362,6 @@ void VatomApi::get_inventory_handler(const Pistache::Rest::Request& request, Pis
 void VatomApi::get_my_following_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1434,7 +1390,7 @@ void VatomApi::get_my_following_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_my_following(version, accountId, returnRawResponse, response);
+            this->get_my_following(accountId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1453,8 +1409,6 @@ void VatomApi::get_my_following_handler(const Pistache::Rest::Request& request, 
 void VatomApi::get_points_balance_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1499,7 +1453,7 @@ void VatomApi::get_points_balance_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_points_balance(version, accountId, vatomUserId, vatomCampaignId, returnRawResponse, response);
+            this->get_points_balance(accountId, vatomUserId, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1518,8 +1472,6 @@ void VatomApi::get_points_balance_handler(const Pistache::Rest::Request& request
 void VatomApi::get_points_balance_as_business_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1572,7 +1524,7 @@ void VatomApi::get_points_balance_as_business_handler(const Pistache::Rest::Requ
 
 
 
-            this->get_points_balance_as_business(version, accountId, appKey, vatomUserId, vatomCampaignId, returnRawResponse, response);
+            this->get_points_balance_as_business(accountId, appKey, vatomUserId, vatomCampaignId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1591,8 +1543,6 @@ void VatomApi::get_points_balance_as_business_handler(const Pistache::Rest::Requ
 void VatomApi::get_space_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1637,7 +1587,7 @@ void VatomApi::get_space_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_space(version, accountId, appKey, vatomSpaceId, returnRawResponse, response);
+            this->get_space(accountId, appKey, vatomSpaceId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1656,8 +1606,6 @@ void VatomApi::get_space_handler(const Pistache::Rest::Request& request, Pistach
 void VatomApi::get_user_coins_as_business_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1702,7 +1650,7 @@ void VatomApi::get_user_coins_as_business_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_user_coins_as_business(version, accountId, vatomUserId, appKey, returnRawResponse, response);
+            this->get_user_coins_as_business(accountId, vatomUserId, appKey, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1721,8 +1669,6 @@ void VatomApi::get_user_coins_as_business_handler(const Pistache::Rest::Request&
 void VatomApi::get_user_coins_balance_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1767,7 +1713,7 @@ void VatomApi::get_user_coins_balance_handler(const Pistache::Rest::Request& req
 
 
 
-            this->get_user_coins_balance(version, accountId, vatomUserId, vatomParameters, returnRawResponse, response);
+            this->get_user_coins_balance(accountId, vatomUserId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1786,8 +1732,6 @@ void VatomApi::get_user_coins_balance_handler(const Pistache::Rest::Request& req
 void VatomApi::get_user_followers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1824,7 +1768,7 @@ void VatomApi::get_user_followers_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_user_followers(version, accountId, vatomUserId, returnRawResponse, response);
+            this->get_user_followers(accountId, vatomUserId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1843,8 +1787,6 @@ void VatomApi::get_user_followers_handler(const Pistache::Rest::Request& request
 void VatomApi::get_user_following_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1881,7 +1823,7 @@ void VatomApi::get_user_following_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_user_following(version, accountId, vatomUserId, returnRawResponse, response);
+            this->get_user_following(accountId, vatomUserId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1900,8 +1842,6 @@ void VatomApi::get_user_following_handler(const Pistache::Rest::Request& request
 void VatomApi::get_user_info_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1938,7 +1878,7 @@ void VatomApi::get_user_info_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_user_info(version, accountId, vatomUserId, returnRawResponse, response);
+            this->get_user_info(accountId, vatomUserId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1957,8 +1897,6 @@ void VatomApi::get_user_info_handler(const Pistache::Rest::Request& request, Pis
 void VatomApi::get_user_profile_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1987,7 +1925,7 @@ void VatomApi::get_user_profile_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_user_profile(version, accountId, returnRawResponse, response);
+            this->get_user_profile(accountId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2006,8 +1944,6 @@ void VatomApi::get_user_profile_handler(const Pistache::Rest::Request& request, 
 void VatomApi::get_vatom_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2052,7 +1988,7 @@ void VatomApi::get_vatom_event_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_vatom_event(version, accountId, appKey, vatomEventId, returnRawResponse, response);
+            this->get_vatom_event(accountId, appKey, vatomEventId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2071,8 +2007,6 @@ void VatomApi::get_vatom_event_handler(const Pistache::Rest::Request& request, P
 void VatomApi::get_vatom_nft_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2109,7 +2043,7 @@ void VatomApi::get_vatom_nft_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_vatom_nft(version, accountId, vatomId, returnRawResponse, response);
+            this->get_vatom_nft(accountId, vatomId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2128,8 +2062,6 @@ void VatomApi::get_vatom_nft_handler(const Pistache::Rest::Request& request, Pis
 void VatomApi::list_communities_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2174,7 +2106,7 @@ void VatomApi::list_communities_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->list_communities(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->list_communities(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2193,8 +2125,6 @@ void VatomApi::list_communities_handler(const Pistache::Rest::Request& request, 
 void VatomApi::list_events_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2239,7 +2169,7 @@ void VatomApi::list_events_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->list_events(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->list_events(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2258,8 +2188,6 @@ void VatomApi::list_events_handler(const Pistache::Rest::Request& request, Pista
 void VatomApi::list_spaces_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2304,7 +2232,7 @@ void VatomApi::list_spaces_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->list_spaces(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->list_spaces(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2323,8 +2251,6 @@ void VatomApi::list_spaces_handler(const Pistache::Rest::Request& request, Pista
 void VatomApi::list_user_coin_transactions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2369,7 +2295,7 @@ void VatomApi::list_user_coin_transactions_handler(const Pistache::Rest::Request
 
 
 
-            this->list_user_coin_transactions(version, accountId, vatomUserId, vatomParameters, returnRawResponse, response);
+            this->list_user_coin_transactions(accountId, vatomUserId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2388,8 +2314,6 @@ void VatomApi::list_user_coin_transactions_handler(const Pistache::Rest::Request
 void VatomApi::list_user_coin_transactions_as_business_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2442,7 +2366,7 @@ void VatomApi::list_user_coin_transactions_as_business_handler(const Pistache::R
 
 
 
-            this->list_user_coin_transactions_as_business(version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse, response);
+            this->list_user_coin_transactions_as_business(accountId, vatomUserId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2461,8 +2385,6 @@ void VatomApi::list_user_coin_transactions_as_business_handler(const Pistache::R
 void VatomApi::perform_action_on_nft_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2515,7 +2437,7 @@ void VatomApi::perform_action_on_nft_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->perform_action_on_nft(version, accountId, vatomId, vatomAction, vatomParameters, returnRawResponse, response);
+            this->perform_action_on_nft(accountId, vatomId, vatomAction, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2534,8 +2456,6 @@ void VatomApi::perform_action_on_nft_handler(const Pistache::Rest::Request& requ
 void VatomApi::redeem_nft_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2580,7 +2500,7 @@ void VatomApi::redeem_nft_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->redeem_nft(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->redeem_nft(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2599,8 +2519,6 @@ void VatomApi::redeem_nft_handler(const Pistache::Rest::Request& request, Pistac
 void VatomApi::redeem_user_coins_as_business_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2653,7 +2571,7 @@ void VatomApi::redeem_user_coins_as_business_handler(const Pistache::Rest::Reque
 
 
 
-            this->redeem_user_coins_as_business(version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse, response);
+            this->redeem_user_coins_as_business(accountId, vatomUserId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2672,8 +2590,6 @@ void VatomApi::redeem_user_coins_as_business_handler(const Pistache::Rest::Reque
 void VatomApi::search_businesses_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2710,7 +2626,7 @@ void VatomApi::search_businesses_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_businesses(version, accountId, vatomParameters, returnRawResponse, response);
+            this->search_businesses(accountId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2729,8 +2645,6 @@ void VatomApi::search_businesses_handler(const Pistache::Rest::Request& request,
 void VatomApi::search_campaign_groups_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2767,7 +2681,7 @@ void VatomApi::search_campaign_groups_handler(const Pistache::Rest::Request& req
 
 
 
-            this->search_campaign_groups(version, accountId, appKey, returnRawResponse, response);
+            this->search_campaign_groups(accountId, appKey, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2786,8 +2700,6 @@ void VatomApi::search_campaign_groups_handler(const Pistache::Rest::Request& req
 void VatomApi::search_identities_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2816,7 +2728,7 @@ void VatomApi::search_identities_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_identities(version, accountId, returnRawResponse, response);
+            this->search_identities(accountId, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2835,8 +2747,6 @@ void VatomApi::search_identities_handler(const Pistache::Rest::Request& request,
 void VatomApi::search_inventory_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2873,7 +2783,7 @@ void VatomApi::search_inventory_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->search_inventory(version, accountId, vatomParameters, returnRawResponse, response);
+            this->search_inventory(accountId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2892,8 +2802,6 @@ void VatomApi::search_inventory_handler(const Pistache::Rest::Request& request, 
 void VatomApi::send_nft_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2946,7 +2854,7 @@ void VatomApi::send_nft_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->send_nft(version, accountId, appKey, vatomCampaignId, vatomParameters, returnRawResponse, response);
+            this->send_nft(accountId, appKey, vatomCampaignId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2965,8 +2873,6 @@ void VatomApi::send_nft_handler(const Pistache::Rest::Request& request, Pistache
 void VatomApi::set_points_balance_as_business_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3027,7 +2933,7 @@ void VatomApi::set_points_balance_as_business_handler(const Pistache::Rest::Requ
 
 
 
-            this->set_points_balance_as_business(version, accountId, appKey, vatomUserId, vatomCampaignId, vatomParameters, returnRawResponse, response);
+            this->set_points_balance_as_business(accountId, appKey, vatomUserId, vatomCampaignId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3046,8 +2952,6 @@ void VatomApi::set_points_balance_as_business_handler(const Pistache::Rest::Requ
 void VatomApi::transfer_user_coins_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3092,7 +2996,7 @@ void VatomApi::transfer_user_coins_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->transfer_user_coins(version, accountId, vatomUserId, vatomParameters, returnRawResponse, response);
+            this->transfer_user_coins(accountId, vatomUserId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3111,8 +3015,6 @@ void VatomApi::transfer_user_coins_handler(const Pistache::Rest::Request& reques
 void VatomApi::update_business_coins_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3157,7 +3059,7 @@ void VatomApi::update_business_coins_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->update_business_coins(version, accountId, appKey, vatomParameters, returnRawResponse, response);
+            this->update_business_coins(accountId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3176,8 +3078,6 @@ void VatomApi::update_business_coins_handler(const Pistache::Rest::Request& requ
 void VatomApi::update_event_guest_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3230,7 +3130,7 @@ void VatomApi::update_event_guest_list_handler(const Pistache::Rest::Request& re
 
 
 
-            this->update_event_guest_list(version, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse, response);
+            this->update_event_guest_list(accountId, appKey, vatomEventId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3249,8 +3149,6 @@ void VatomApi::update_event_guest_list_handler(const Pistache::Rest::Request& re
 void VatomApi::update_space_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3303,7 +3201,7 @@ void VatomApi::update_space_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->update_space(version, accountId, appKey, vatomSpaceId, vatomParameters, returnRawResponse, response);
+            this->update_space(accountId, appKey, vatomSpaceId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3322,8 +3220,6 @@ void VatomApi::update_space_handler(const Pistache::Rest::Request& request, Pist
 void VatomApi::update_user_coins_as_business_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3376,7 +3272,7 @@ void VatomApi::update_user_coins_as_business_handler(const Pistache::Rest::Reque
 
 
 
-            this->update_user_coins_as_business(version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse, response);
+            this->update_user_coins_as_business(accountId, vatomUserId, appKey, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3395,8 +3291,6 @@ void VatomApi::update_user_coins_as_business_handler(const Pistache::Rest::Reque
 void VatomApi::update_user_profile_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3433,7 +3327,7 @@ void VatomApi::update_user_profile_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->update_user_profile(version, accountId, vatomParameters, returnRawResponse, response);
+            this->update_user_profile(accountId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3452,8 +3346,6 @@ void VatomApi::update_user_profile_handler(const Pistache::Rest::Request& reques
 void VatomApi::update_vatom_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3506,7 +3398,7 @@ void VatomApi::update_vatom_event_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_vatom_event(version, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse, response);
+            this->update_vatom_event(accountId, appKey, vatomEventId, vatomParameters, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

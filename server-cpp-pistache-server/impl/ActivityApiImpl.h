@@ -42,7 +42,7 @@ public:
     explicit ActivityApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~ActivityApiImpl() override = default;
 
-    void create_entity_reference(const double &version, const EntityReference &body, Pistache::Http::ResponseWriter &response);
+    void create_entity_reference(const EntityReference &body, Pistache::Http::ResponseWriter &response);
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string FavoriteApi::base = "";
+const std::string FavoriteApi::base = "/api/3.18";
 
 FavoriteApi::FavoriteApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void FavoriteApi::init() {
 void FavoriteApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/favorite/create", Routes::bind(&FavoriteApi::add_favorite_handler, this));
-    Routes::Post(*router, base + "/api/:version/favorite/delete", Routes::bind(&FavoriteApi::delete_favorite_handler, this));
-    Routes::Get(*router, base + "/api/:version/favorite/get", Routes::bind(&FavoriteApi::get_favorite_handler, this));
-    Routes::Get(*router, base + "/api/:version/favorite/search", Routes::bind(&FavoriteApi::search_favorites_handler, this));
-    Routes::Get(*router, base + "/api/:version/favorite/whois", Routes::bind(&FavoriteApi::who_has_favorited_handler, this));
+    Routes::Post(*router, base + "/favorite/create", Routes::bind(&FavoriteApi::add_favorite_handler, this));
+    Routes::Post(*router, base + "/favorite/delete", Routes::bind(&FavoriteApi::delete_favorite_handler, this));
+    Routes::Get(*router, base + "/favorite/get", Routes::bind(&FavoriteApi::get_favorite_handler, this));
+    Routes::Get(*router, base + "/favorite/search", Routes::bind(&FavoriteApi::search_favorites_handler, this));
+    Routes::Get(*router, base + "/favorite/whois", Routes::bind(&FavoriteApi::who_has_favorited_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&FavoriteApi::favorite_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> FavoriteApi::handleOperationExcepti
 void FavoriteApi::add_favorite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -133,7 +131,7 @@ void FavoriteApi::add_favorite_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->add_favorite(version, favoritableId, favoritableType, deviceId, accountId, latitude, longitude, response);
+            this->add_favorite(favoritableId, favoritableType, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -152,8 +150,6 @@ void FavoriteApi::add_favorite_handler(const Pistache::Rest::Request& request, P
 void FavoriteApi::delete_favorite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -206,7 +202,7 @@ void FavoriteApi::delete_favorite_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_favorite(version, deviceId, accountId, favoriteId, favoritableId, favoritableType, response);
+            this->delete_favorite(deviceId, accountId, favoriteId, favoritableId, favoritableType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -225,8 +221,6 @@ void FavoriteApi::delete_favorite_handler(const Pistache::Rest::Request& request
 void FavoriteApi::get_favorite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -279,7 +273,7 @@ void FavoriteApi::get_favorite_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_favorite(version, favoriteId, deviceId, accountId, latitude, longitude, response);
+            this->get_favorite(favoriteId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -298,8 +292,6 @@ void FavoriteApi::get_favorite_handler(const Pistache::Rest::Request& request, P
 void FavoriteApi::search_favorites_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -424,7 +416,7 @@ void FavoriteApi::search_favorites_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->search_favorites(version, favoritableType, sortField, descending, start, limit, activeOnly, returnFullResponse, deviceId, accountId, connectionAccountId, secondaryType, keyword, latitude, longitude, response);
+            this->search_favorites(favoritableType, sortField, descending, start, limit, activeOnly, returnFullResponse, deviceId, accountId, connectionAccountId, secondaryType, keyword, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -443,8 +435,6 @@ void FavoriteApi::search_favorites_handler(const Pistache::Rest::Request& reques
 void FavoriteApi::who_has_favorited_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -529,7 +519,7 @@ void FavoriteApi::who_has_favorited_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->who_has_favorited(version, favoritableId, favoritableType, start, limit, deviceId, accountId, latitude, longitude, keyword, response);
+            this->who_has_favorited(favoritableId, favoritableType, start, limit, deviceId, accountId, latitude, longitude, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

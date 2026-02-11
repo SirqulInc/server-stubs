@@ -87,7 +87,6 @@ private:
     /// <remarks>
     /// Create a region.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The id of the account sending the request</param>
     /// <param name="regionClass">RegionClass of this region</param>
     /// <param name="shortName">Short name of the region. This is optimized for search</param>
@@ -109,34 +108,31 @@ private:
     /// <param name="versionCode">the version code (optional, default to 0)</param>
     /// <param name="root">If this is a root region or not. If true means this region has no parent regions (optional, default to false)</param>
     /// <param name="active">Active or inactive status of the region (optional, default to false)</param>
-    virtual void create_region( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &regionClass, const std::optional<std::string> &shortName, const std::optional<std::string> &fullName, const std::optional<std::string> &parentIds, const std::optional<std::string> &childrenIds, const std::optional<std::string> &postalCodeIds, const std::optional<std::string> &locations, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &visibility, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &polygon, const std::optional<std::string> &metaData, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int32_t> &versionCode, const std::optional<bool> &root, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_region( const std::optional<int64_t> &accountId, const std::optional<std::string> &regionClass, const std::optional<std::string> &shortName, const std::optional<std::string> &fullName, const std::optional<std::string> &parentIds, const std::optional<std::string> &childrenIds, const std::optional<std::string> &postalCodeIds, const std::optional<std::string> &locations, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &visibility, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &polygon, const std::optional<std::string> &metaData, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int32_t> &versionCode, const std::optional<bool> &root, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Region
     /// </summary>
     /// <remarks>
     /// Delete a region.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account logged in</param>
     /// <param name="regionId">the id of the region</param>
-    virtual void delete_region( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &regionId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_region( const std::optional<int64_t> &accountId, const std::optional<int64_t> &regionId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Region
     /// </summary>
     /// <remarks>
     /// Get a region.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="regionId">the id of the region to get</param>
     /// <param name="accountId">the id of the logged in user (optional, default to 0L)</param>
-    virtual void get_region( const double &version, const std::optional<int64_t> &regionId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_region( const std::optional<int64_t> &regionId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Regions
     /// </summary>
     /// <remarks>
     /// Get the list of regions.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the owner account id of the region to be created (optional, default to 0L)</param>
     /// <param name="query">This parameter is deprecated. deprecated - use \&quot;keyword\&quot; (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">the keyword to filter results on (optional, default to &quot;&quot;)</param>
@@ -159,14 +155,13 @@ private:
     /// <param name="lastUpdatedSince">only returns records that have last updated since this date \\(UTC timestamp in milliseconds\\) (optional, default to 0L)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 0)</param>
-    virtual void search_regions( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &query, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &range, const std::optional<std::string> &regionClass, const std::optional<std::string> &visibility, const std::optional<std::string> &searchMode, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeParent, const std::optional<bool> &includeChildren, const std::optional<bool> &includePostalCodes, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int32_t> &versionCode, const std::optional<bool> &activeOnly, const std::optional<bool> &showDeleted, const std::optional<int64_t> &lastUpdatedSince, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_regions( const std::optional<int64_t> &accountId, const std::optional<std::string> &query, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &range, const std::optional<std::string> &regionClass, const std::optional<std::string> &visibility, const std::optional<std::string> &searchMode, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeParent, const std::optional<bool> &includeChildren, const std::optional<bool> &includePostalCodes, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int32_t> &versionCode, const std::optional<bool> &activeOnly, const std::optional<bool> &showDeleted, const std::optional<int64_t> &lastUpdatedSince, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Region
     /// </summary>
     /// <remarks>
     /// Update a region.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The id of the account sending the request</param>
     /// <param name="regionId">The id of the region to be updated</param>
     /// <param name="regionClass">RegionClass of this region (optional, default to &quot;&quot;)</param>
@@ -190,7 +185,7 @@ private:
     /// <param name="root">If this is a root region or not. If true means this region has no parent regions (optional, default to false)</param>
     /// <param name="active">Active or inactive status of the region (optional, default to false)</param>
     /// <param name="clearLists">If true clear the children and postal code lists before add new ones, otherwise just append. (optional, default to false)</param>
-    virtual void update_region( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &regionId, const std::optional<std::string> &regionClass, const std::optional<std::string> &shortName, const std::optional<std::string> &fullName, const std::optional<std::string> &parentIds, const std::optional<std::string> &childrenIds, const std::optional<std::string> &postalCodeIds, const std::optional<std::string> &locations, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &visibility, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &polygon, const std::optional<std::string> &metaData, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int32_t> &versionCode, const std::optional<bool> &root, const std::optional<bool> &active, const std::optional<bool> &clearLists, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_region( const std::optional<int64_t> &accountId, const std::optional<int64_t> &regionId, const std::optional<std::string> &regionClass, const std::optional<std::string> &shortName, const std::optional<std::string> &fullName, const std::optional<std::string> &parentIds, const std::optional<std::string> &childrenIds, const std::optional<std::string> &postalCodeIds, const std::optional<std::string> &locations, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &visibility, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &polygon, const std::optional<std::string> &metaData, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int32_t> &versionCode, const std::optional<bool> &root, const std::optional<bool> &active, const std::optional<bool> &clearLists, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

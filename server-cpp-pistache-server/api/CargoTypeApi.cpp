@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string CargoTypeApi::base = "";
+const std::string CargoTypeApi::base = "/api/3.18";
 
 CargoTypeApi::CargoTypeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void CargoTypeApi::init() {
 void CargoTypeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/cargo/type", Routes::bind(&CargoTypeApi::create_cargo_type_handler, this));
-    Routes::Delete(*router, base + "/api/:version/cargo/type/:cargoTypeId", Routes::bind(&CargoTypeApi::delete_cargo_type_handler, this));
-    Routes::Get(*router, base + "/api/:version/cargo/type/:cargoTypeId", Routes::bind(&CargoTypeApi::get_cargo_type_handler, this));
-    Routes::Get(*router, base + "/api/:version/cargo/type", Routes::bind(&CargoTypeApi::search_cargo_types_handler, this));
-    Routes::Put(*router, base + "/api/:version/cargo/type/:cargoTypeId", Routes::bind(&CargoTypeApi::update_cargo_type_handler, this));
+    Routes::Post(*router, base + "/cargo/type", Routes::bind(&CargoTypeApi::create_cargo_type_handler, this));
+    Routes::Delete(*router, base + "/cargo/type/:cargoTypeId", Routes::bind(&CargoTypeApi::delete_cargo_type_handler, this));
+    Routes::Get(*router, base + "/cargo/type/:cargoTypeId", Routes::bind(&CargoTypeApi::get_cargo_type_handler, this));
+    Routes::Get(*router, base + "/cargo/type", Routes::bind(&CargoTypeApi::search_cargo_types_handler, this));
+    Routes::Put(*router, base + "/cargo/type/:cargoTypeId", Routes::bind(&CargoTypeApi::update_cargo_type_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&CargoTypeApi::cargo_type_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> CargoTypeApi::handleOperationExcept
 void CargoTypeApi::create_cargo_type_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -96,7 +94,7 @@ void CargoTypeApi::create_cargo_type_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->create_cargo_type(version, body, response);
+            this->create_cargo_type(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -116,7 +114,6 @@ void CargoTypeApi::delete_cargo_type_handler(const Pistache::Rest::Request& requ
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto cargoTypeId = request.param(":cargoTypeId").as<int64_t>();
         
         
@@ -129,7 +126,7 @@ void CargoTypeApi::delete_cargo_type_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->delete_cargo_type(version, cargoTypeId, response);
+            this->delete_cargo_type(cargoTypeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -149,7 +146,6 @@ void CargoTypeApi::get_cargo_type_handler(const Pistache::Rest::Request& request
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto cargoTypeId = request.param(":cargoTypeId").as<int64_t>();
         
         
@@ -162,7 +158,7 @@ void CargoTypeApi::get_cargo_type_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_cargo_type(version, cargoTypeId, response);
+            this->get_cargo_type(cargoTypeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -181,8 +177,6 @@ void CargoTypeApi::get_cargo_type_handler(const Pistache::Rest::Request& request
 void CargoTypeApi::search_cargo_types_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -251,7 +245,7 @@ void CargoTypeApi::search_cargo_types_handler(const Pistache::Rest::Request& req
 
 
 
-            this->search_cargo_types(version, sortField, descending, start, limit, activeOnly, retailerId, hubId, response);
+            this->search_cargo_types(sortField, descending, start, limit, activeOnly, retailerId, hubId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -271,7 +265,6 @@ void CargoTypeApi::update_cargo_type_handler(const Pistache::Rest::Request& requ
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto cargoTypeId = request.param(":cargoTypeId").as<int64_t>();
         
         // Getting the body param
@@ -296,7 +289,7 @@ void CargoTypeApi::update_cargo_type_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->update_cargo_type(version, cargoTypeId, body, response);
+            this->update_cargo_type(cargoTypeId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

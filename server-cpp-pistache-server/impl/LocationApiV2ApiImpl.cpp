@@ -29,10 +29,10 @@ LocationApiV2ApiImpl::LocationApiV2ApiImpl(const std::shared_ptr<Pistache::Rest:
 
 }
 
-void LocationApiV2ApiImpl::create_location_v2(const double &version, const Location &body, Pistache::Http::ResponseWriter &response) {
+void LocationApiV2ApiImpl::create_location_v2(const Location &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LocationApiV2ApiImpl::update_location_v2(const double &version, const int64_t &id, const Location &body, Pistache::Http::ResponseWriter &response) {
+void LocationApiV2ApiImpl::update_location_v2(const int64_t &id, const Location &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

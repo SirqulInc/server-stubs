@@ -104,18 +104,16 @@ private:
     /// <remarks>
     /// Batch update offer locations.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="data">JSON string in the following format: &#x60;&#x60;&#x60;json [{   \&quot;offerLocationId\&quot;: 1705,   \&quot;latitude\&quot;: 54.0,   \&quot;longitude\&quot;: -122.0,   \&quot;altitude\&quot;: 1.0,   \&quot;locationDetail\&quot;: \&quot;floor 1\&quot;,   \&quot;locationDescription\&quot;: \&quot;behind the Coke sign\&quot; }, {   \&quot;offerLocationId\&quot;: 1704,   \&quot;latitude\&quot;: 54.1,   \&quot;longitude\&quot;: -122.1 }] &#x60;&#x60;&#x60; </param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void batch_update_offer_locations( const double &version, const std::optional<std::string> &data, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void batch_update_offer_locations( const std::optional<std::string> &data, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Offer
     /// </summary>
     /// <remarks>
     /// Create an offer and assign it to the provided retailer locations.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="includeOfferLocations">If true return all the offer locations associated with the offer</param>
     /// <param name="title">The title (255 char limit)</param>
     /// <param name="barcodeType">The bar code type {NONE, UPC, CODE_128, QR, CUSTOM_MEDIA}</param>
@@ -202,48 +200,44 @@ private:
     /// <param name="deviceInterference">Edysen device inteference setting (optional, default to 0.0)</param>
     /// <param name="availability"> (optional, default to &quot;&quot;)</param>
     /// <param name="availabilitySummary"> (optional, default to &quot;&quot;)</param>
-    virtual void create_offer( const double &version, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &title, const std::optional<std::string> &barcodeType, const std::optional<bool> &noExpiration, const std::optional<int32_t> &availableLimit, const std::optional<int32_t> &availableLimitPerUser, const std::optional<int32_t> &addedLimit, const std::optional<int32_t> &viewLimit, const std::optional<int32_t> &maxPrints, const std::optional<int64_t> &ticketPrice, const std::optional<double> &fullPrice, const std::optional<double> &discountPrice, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &offerVisibility, const std::optional<bool> &active, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<int64_t> &parentOfferId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &offerLocations, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &subDetails, const std::optional<std::string> &finePrint, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &externalRedeemOptions, const std::optional<std::string> &externalUrl, const std::optional<std::string> &externalId, const std::optional<std::string> &ticketsRewardType, const std::optional<int64_t> &ticketsReward, const std::optional<int64_t> &activated, const std::optional<int64_t> &expires, const std::optional<std::string> &ticketPriceType, const std::optional<bool> &showRemaining, const std::optional<bool> &showRedeemed, const std::optional<bool> &replaced, const std::optional<bool> &featured, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int64_t> &barcodeAssetId, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &imageAssetId1, const std::optional<int64_t> &imageAssetId2, const std::optional<int64_t> &imageAssetId3, const std::optional<int64_t> &imageAssetId4, const std::optional<int64_t> &imageAssetId5, const std::optional<std::string> &publisher, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, const std::optional<std::string> &brand, const std::optional<std::string> &productType, const std::optional<std::string> &conditionType, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &catalogNumbers, const std::optional<std::string> &department, const std::optional<std::string> &features, const std::optional<double> &minimumPrice, const std::optional<double> &width, const std::optional<double> &height, const std::optional<double> &depth, const std::optional<double> &weight, const std::optional<std::string> &unit, const std::optional<std::string> &studio, const std::optional<std::string> &parentalRating, const std::optional<int64_t> &publishDate, const std::optional<int64_t> &availabilityDate, const std::optional<int64_t> &sizeId, const std::optional<int64_t> &listingId, const std::optional<std::string> &mediaType, const std::optional<int32_t> &duration, const std::optional<std::string> &author, const std::optional<int64_t> &releaseDate, const std::optional<std::string> &collectionIds, const std::optional<int32_t> &rebootTimeHour, const std::optional<int32_t> &rebootTimeMinute, const std::optional<int32_t> &idleTimeoutInSecond, const std::optional<std::string> &serialNumber, const std::optional<std::string> &udid, const std::optional<std::string> &deviceType, const std::optional<double> &devicePower, const std::optional<double> &deviceInterference, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_offer( const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &title, const std::optional<std::string> &barcodeType, const std::optional<bool> &noExpiration, const std::optional<int32_t> &availableLimit, const std::optional<int32_t> &availableLimitPerUser, const std::optional<int32_t> &addedLimit, const std::optional<int32_t> &viewLimit, const std::optional<int32_t> &maxPrints, const std::optional<int64_t> &ticketPrice, const std::optional<double> &fullPrice, const std::optional<double> &discountPrice, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &offerVisibility, const std::optional<bool> &active, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<int64_t> &parentOfferId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &offerLocations, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &subDetails, const std::optional<std::string> &finePrint, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &externalRedeemOptions, const std::optional<std::string> &externalUrl, const std::optional<std::string> &externalId, const std::optional<std::string> &ticketsRewardType, const std::optional<int64_t> &ticketsReward, const std::optional<int64_t> &activated, const std::optional<int64_t> &expires, const std::optional<std::string> &ticketPriceType, const std::optional<bool> &showRemaining, const std::optional<bool> &showRedeemed, const std::optional<bool> &replaced, const std::optional<bool> &featured, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int64_t> &barcodeAssetId, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &imageAssetId1, const std::optional<int64_t> &imageAssetId2, const std::optional<int64_t> &imageAssetId3, const std::optional<int64_t> &imageAssetId4, const std::optional<int64_t> &imageAssetId5, const std::optional<std::string> &publisher, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, const std::optional<std::string> &brand, const std::optional<std::string> &productType, const std::optional<std::string> &conditionType, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &catalogNumbers, const std::optional<std::string> &department, const std::optional<std::string> &features, const std::optional<double> &minimumPrice, const std::optional<double> &width, const std::optional<double> &height, const std::optional<double> &depth, const std::optional<double> &weight, const std::optional<std::string> &unit, const std::optional<std::string> &studio, const std::optional<std::string> &parentalRating, const std::optional<int64_t> &publishDate, const std::optional<int64_t> &availabilityDate, const std::optional<int64_t> &sizeId, const std::optional<int64_t> &listingId, const std::optional<std::string> &mediaType, const std::optional<int32_t> &duration, const std::optional<std::string> &author, const std::optional<int64_t> &releaseDate, const std::optional<std::string> &collectionIds, const std::optional<int32_t> &rebootTimeHour, const std::optional<int32_t> &rebootTimeMinute, const std::optional<int32_t> &idleTimeoutInSecond, const std::optional<std::string> &serialNumber, const std::optional<std::string> &udid, const std::optional<std::string> &deviceType, const std::optional<double> &devicePower, const std::optional<double> &deviceInterference, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Offer
     /// </summary>
     /// <remarks>
     /// Set the deleted timestamp to current time. This effectively deletes the offer since all queries should ignore any records with a deleted time stamp.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerId">The ID of the offer to be deleted</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account used to perform the delete, must have rights to edit the offer. (optional, default to 0L)</param>
-    virtual void delete_offer( const double &version, const std::optional<int64_t> &offerId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_offer( const std::optional<int64_t> &offerId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Offer Location
     /// </summary>
     /// <remarks>
     /// Set the deleted timestamp to current time. This effectively deletes the offer location since all queries should ignore any records with a deleted time stamp.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerLocationId">The ID of the offer location to be deleted</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account used to perform the delete, must have rights to edit the offer location. (optional, default to 0L)</param>
-    virtual void delete_offer_location( const double &version, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_offer_location( const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offer
     /// </summary>
     /// <remarks>
     /// Gets the details of an offer that the user has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerId">The id of the offer</param>
     /// <param name="includeOfferLocations"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void get_offer( const double &version, const std::optional<int64_t> &offerId, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer( const std::optional<int64_t> &offerId, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offer
     /// </summary>
     /// <remarks>
     /// Gets offer or offer location details as a consumer.  Will check if it is a favorite if the deviceId/accountId is provided.  If the offerId is provided it will look up the main offer and ignore the the offerLocationId. If no offerId is provided then an offerLocationId must be specified.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id for returning account information (i.e. favorites) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id for returning account information (i.e. favorites) (optional, default to 0L)</param>
     /// <param name="offerId">The offer id (either offeLocationId or offerId must be provided) (optional, default to 0L)</param>
@@ -254,36 +248,33 @@ private:
     /// <param name="includeOfferLocations">Determines whether to return offer locations for the offer (optional, default to false)</param>
     /// <param name="includeRetailerLocations">Determines whether to return the retailer location info for each offer location response (includeOfferLocations must also be true for this to work) (optional, default to false)</param>
     /// <param name="includeChildOffers">Determines whether to include child offers in the response (optional, default to false)</param>
-    virtual void get_offer_details( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<double> &distance, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &includeOfferLocations, const std::optional<bool> &includeRetailerLocations, const std::optional<bool> &includeChildOffers, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer_details( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<double> &distance, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &includeOfferLocations, const std::optional<bool> &includeRetailerLocations, const std::optional<bool> &includeChildOffers, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offers (Counts)
     /// </summary>
     /// <remarks>
     /// Gets the offer list counts.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="latitude">The latitude of where the search will center at</param>
     /// <param name="longitude">The longitude of where the search will center at</param>
     /// <param name="searchRange">The range of the search (optional, default to 5)</param>
     /// <param name="distanceUnit">The units to use for distance calculations (e.g. MILES, KILOMETERS) (optional, default to &quot;MILES&quot;)</param>
-    virtual void get_offer_list_counts( const double &version, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &searchRange, const std::optional<std::string> &distanceUnit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer_list_counts( const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &searchRange, const std::optional<std::string> &distanceUnit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offer Location
     /// </summary>
     /// <remarks>
     /// Gets the offer location by offer location id or udid (of a device)
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerLocationId">the id of the offer location to get (optional, default to 0L)</param>
     /// <param name="udid">the UDID of the device (optional, default to &quot;&quot;)</param>
-    virtual void get_offer_location( const double &version, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer_location( const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Offer Locations
     /// </summary>
     /// <remarks>
     /// Searches on offer locations, which are records that represent an offer that has been assigned to a retailer location. If an offer does not have any locations assigned, then it will NOT be returned.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The column to sort the results on. Default is \&quot;TITLE\&quot;, which will sort the results by the offer title. Possible input values: {CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, RETAILER_ID,RETAILER_LOCATION_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY}</param>
     /// <param name="descending">The order to return the results. Default is false, which will return the results in ascending order.</param>
     /// <param name="start">The index into the record set to start with. Default is 0.</param>
@@ -304,14 +295,13 @@ private:
     /// <param name="deviceStatus">Edysen device status, running, warning, or down (optional, default to &quot;&quot;)</param>
     /// <param name="needsNotificationSent"> (optional, default to false)</param>
     /// <param name="lastNotificationSent"> (optional, default to 0L)</param>
-    virtual void get_offer_locations_for_retailers( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includeRetailerLocation, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &barcodeType, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &deviceStatus, const std::optional<bool> &needsNotificationSent, const std::optional<int64_t> &lastNotificationSent, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer_locations_for_retailers( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includeRetailerLocation, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &barcodeType, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &deviceStatus, const std::optional<bool> &needsNotificationSent, const std::optional<int64_t> &lastNotificationSent, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Offers
     /// </summary>
     /// <remarks>
     /// Searches on offers that the account has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerVisibility"></param>
     /// <param name="sortField">The column to sort the search on. Possible values include: ID, CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, ESTIMATED_VALUE, VOUCHER_PRICE, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY</param>
     /// <param name="descending">The order to return the search results</param>
@@ -343,27 +333,25 @@ private:
     /// <param name="deviceStatus">Edysen device status (optional, default to &quot;&quot;)</param>
     /// <param name="needsNotificationSent"> (optional, default to false)</param>
     /// <param name="lastNotificationSent"> (optional, default to 0L)</param>
-    virtual void get_offers_for_retailers( const double &version, const std::optional<std::string> &offerVisibility, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &availableOnly, const std::optional<bool> &activeOnly, const std::optional<bool> &includeCategories, const std::optional<bool> &includeFilters, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &couponType, const std::optional<std::string> &offerType, const std::optional<std::string> &offerTypes, const std::optional<std::string> &specialOfferType, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<std::string> &barcodeType, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &deviceStatus, const std::optional<bool> &needsNotificationSent, const std::optional<int64_t> &lastNotificationSent, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offers_for_retailers( const std::optional<std::string> &offerVisibility, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &availableOnly, const std::optional<bool> &activeOnly, const std::optional<bool> &includeCategories, const std::optional<bool> &includeFilters, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &couponType, const std::optional<std::string> &offerType, const std::optional<std::string> &offerTypes, const std::optional<std::string> &specialOfferType, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<std::string> &barcodeType, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &deviceStatus, const std::optional<bool> &needsNotificationSent, const std::optional<int64_t> &lastNotificationSent, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Offer Transaction
     /// </summary>
     /// <remarks>
     /// Redeems an offer.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerTransactionId">the OfferTransaction ID of the transaction being redeemed</param>
     /// <param name="status">the status to set the offer transaction to - 1 sets it to redeemable and 2 sets it to redeemed</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="offerLocationId">the OfferLocation ID where the offer is being redeemed (optional, default to 0L)</param>
-    virtual void redeem_offer_transaction( const double &version, const std::optional<int64_t> &offerTransactionId, const std::optional<int32_t> &status, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void redeem_offer_transaction( const std::optional<int64_t> &offerTransactionId, const std::optional<int32_t> &status, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Offer Transactions
     /// </summary>
     /// <remarks>
     /// Searches on offer transactions for offers that the account has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">Determines what to sort the results by {CREATED, UPDATED, SEARCH_TAGS, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, CUSTOMER_ID, CUSTOMER_DISPLAY, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY}</param>
     /// <param name="descending">Determines whether the results are in descending order</param>
     /// <param name="start">The start index for pagination</param>
@@ -388,14 +376,13 @@ private:
     /// <param name="redeemableEndDate"> (optional, default to 0L)</param>
     /// <param name="i">This parameter is deprecated. (optional, default to 0)</param>
     /// <param name="l">This parameter is deprecated. (optional, default to 0)</param>
-    virtual void search_offer_transactions_for_retailers( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<bool> &redeemed, const std::optional<bool> &reservationsOnly, const std::optional<std::string> &couponType, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &customerAccountIds, const std::optional<std::string> &categoryIds, const std::optional<int64_t> &redeemableStartDate, const std::optional<int64_t> &redeemableEndDate, const std::optional<int32_t> &i, const std::optional<int32_t> &l, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_offer_transactions_for_retailers( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<bool> &redeemed, const std::optional<bool> &reservationsOnly, const std::optional<std::string> &couponType, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &customerAccountIds, const std::optional<std::string> &categoryIds, const std::optional<int64_t> &redeemableStartDate, const std::optional<int64_t> &redeemableEndDate, const std::optional<int32_t> &i, const std::optional<int32_t> &l, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Offers
     /// </summary>
     /// <remarks>
     /// Searches for offers as a consumer.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="latitude">The latitude of where the search will center at</param>
     /// <param name="longitude">The longitude of where the search will center at</param>
     /// <param name="recommendationType">The method to use to gather recommendations: WALLET base relevance on items in users wallets CLICKS base relevance on items users have clicked on BLENDED blend using all methods available</param>
@@ -427,24 +414,22 @@ private:
     /// <param name="closestOfferOnly">This parameter is deprecated. see groupBy. If true then it only returns the offer location for an offer closest to the given lat/lon (optional, default to false)</param>
     /// <param name="searchExpression"> (optional, default to &quot;&quot;)</param>
     /// <param name="groupBy">groups the results by a certain field. For example, if you want to return the closest offer location of an offer, then pass in groupBy&#x3D;OFFER_ID and sortField&#x3D;DISTANCE (to sort by distance). (optional, default to &quot;&quot;)</param>
-    virtual void search_offers_for_consumer( const double &version, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &recommendationType, const std::optional<int64_t> &locationId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int32_t> &maxRecommendations, const std::optional<std::string> &distanceUnit, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &searchRange, const std::optional<std::string> &tags, const std::optional<std::string> &supportedPostalCodes, const std::optional<std::string> &keyword, const std::optional<std::string> &categories, const std::optional<std::string> &filters, const std::optional<std::string> &offerTypes, const std::optional<std::string> &type, const std::optional<std::string> &sortField, const std::optional<std::string> &recommendOfferIds, const std::optional<std::string> &retailerLocationIds, const std::optional<int64_t> &offerId, const std::optional<bool> &includeMission, const std::optional<bool> &includeCategories, const std::optional<bool> &includeFilters, const std::optional<bool> &includeExpired, const std::optional<bool> &includeFavorite, const std::optional<bool> &closestOfferOnly, const std::optional<std::string> &searchExpression, const std::optional<std::string> &groupBy, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_offers_for_consumer( const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &recommendationType, const std::optional<int64_t> &locationId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int32_t> &maxRecommendations, const std::optional<std::string> &distanceUnit, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &searchRange, const std::optional<std::string> &tags, const std::optional<std::string> &supportedPostalCodes, const std::optional<std::string> &keyword, const std::optional<std::string> &categories, const std::optional<std::string> &filters, const std::optional<std::string> &offerTypes, const std::optional<std::string> &type, const std::optional<std::string> &sortField, const std::optional<std::string> &recommendOfferIds, const std::optional<std::string> &retailerLocationIds, const std::optional<int64_t> &offerId, const std::optional<bool> &includeMission, const std::optional<bool> &includeCategories, const std::optional<bool> &includeFilters, const std::optional<bool> &includeExpired, const std::optional<bool> &includeFavorite, const std::optional<bool> &closestOfferOnly, const std::optional<std::string> &searchExpression, const std::optional<std::string> &groupBy, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offers (Top)
     /// </summary>
     /// <remarks>
     /// Gets the top active offers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="start">The index into the record set to start with. Default is 0. (optional, default to 0)</param>
     /// <param name="limit">The total number of record to return. Default id 20. (optional, default to 20)</param>
-    virtual void top_offer_transactions( const double &version, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void top_offer_transactions( const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Offer
     /// </summary>
     /// <remarks>
     /// Update an offer, must provide a current list of retailer locations or the current offer locations will be marked as deleted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerId">The offer to update</param>
     /// <param name="includeOfferLocations">If true return all the offer locations associated with the offer</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -532,19 +517,18 @@ private:
     /// <param name="deviceInterference"> (optional, default to 0.0)</param>
     /// <param name="availability"> (optional, default to &quot;&quot;)</param>
     /// <param name="availabilitySummary"> (optional, default to &quot;&quot;)</param>
-    virtual void update_offer( const double &version, const std::optional<int64_t> &offerId, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &parentOfferId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &offerLocations, const std::optional<std::string> &tags, const std::optional<std::string> &title, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &subDetails, const std::optional<std::string> &finePrint, const std::optional<std::string> &barcodeType, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &externalRedeemOptions, const std::optional<std::string> &externalUrl, const std::optional<std::string> &externalId, const std::optional<std::string> &ticketsRewardType, const std::optional<int64_t> &ticketsReward, const std::optional<int64_t> &activated, const std::optional<int64_t> &expires, const std::optional<bool> &noExpiration, const std::optional<int32_t> &availableLimit, const std::optional<int32_t> &availableLimitPerUser, const std::optional<int32_t> &addedLimit, const std::optional<int32_t> &viewLimit, const std::optional<int32_t> &maxPrints, const std::optional<std::string> &ticketPriceType, const std::optional<int64_t> &ticketPrice, const std::optional<double> &fullPrice, const std::optional<double> &discountPrice, const std::optional<bool> &showRemaining, const std::optional<bool> &showRedeemed, const std::optional<bool> &replaced, const std::optional<bool> &featured, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &offerVisibility, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &active, const std::optional<int64_t> &barcodeAssetId, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &imageAssetId1, const std::optional<int64_t> &imageAssetId2, const std::optional<int64_t> &imageAssetId3, const std::optional<int64_t> &imageAssetId4, const std::optional<int64_t> &imageAssetId5, const std::optional<std::string> &publisher, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, const std::optional<std::string> &brand, const std::optional<std::string> &productType, const std::optional<std::string> &conditionType, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &catalogNumbers, const std::optional<std::string> &department, const std::optional<std::string> &features, const std::optional<double> &minimumPrice, const std::optional<double> &width, const std::optional<double> &height, const std::optional<double> &depth, const std::optional<double> &weight, const std::optional<std::string> &unit, const std::optional<std::string> &studio, const std::optional<std::string> &parentalRating, const std::optional<int64_t> &publishDate, const std::optional<int64_t> &availabilityDate, const std::optional<int64_t> &sizeId, const std::optional<int64_t> &listingId, const std::optional<std::string> &mediaType, const std::optional<int32_t> &duration, const std::optional<std::string> &author, const std::optional<int64_t> &releaseDate, const std::optional<std::string> &collectionIds, const std::optional<int32_t> &rebootTimeHour, const std::optional<int32_t> &rebootTimeMinute, const std::optional<int32_t> &idleTimeoutInSecond, const std::optional<std::string> &serialNumber, const std::optional<std::string> &udid, const std::optional<std::string> &deviceType, const std::optional<double> &devicePower, const std::optional<double> &deviceInterference, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_offer( const std::optional<int64_t> &offerId, const std::optional<bool> &includeOfferLocations, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &parentOfferId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &offerLocations, const std::optional<std::string> &tags, const std::optional<std::string> &title, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &subDetails, const std::optional<std::string> &finePrint, const std::optional<std::string> &barcodeType, const std::optional<std::string> &barcodeEntry, const std::optional<std::string> &externalRedeemOptions, const std::optional<std::string> &externalUrl, const std::optional<std::string> &externalId, const std::optional<std::string> &ticketsRewardType, const std::optional<int64_t> &ticketsReward, const std::optional<int64_t> &activated, const std::optional<int64_t> &expires, const std::optional<bool> &noExpiration, const std::optional<int32_t> &availableLimit, const std::optional<int32_t> &availableLimitPerUser, const std::optional<int32_t> &addedLimit, const std::optional<int32_t> &viewLimit, const std::optional<int32_t> &maxPrints, const std::optional<std::string> &ticketPriceType, const std::optional<int64_t> &ticketPrice, const std::optional<double> &fullPrice, const std::optional<double> &discountPrice, const std::optional<bool> &showRemaining, const std::optional<bool> &showRedeemed, const std::optional<bool> &replaced, const std::optional<bool> &featured, const std::optional<std::string> &offerType, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &offerVisibility, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &active, const std::optional<int64_t> &barcodeAssetId, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &imageAssetId1, const std::optional<int64_t> &imageAssetId2, const std::optional<int64_t> &imageAssetId3, const std::optional<int64_t> &imageAssetId4, const std::optional<int64_t> &imageAssetId5, const std::optional<std::string> &publisher, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, const std::optional<std::string> &brand, const std::optional<std::string> &productType, const std::optional<std::string> &conditionType, const std::optional<std::string> &isbn, const std::optional<std::string> &asin, const std::optional<std::string> &catalogNumbers, const std::optional<std::string> &department, const std::optional<std::string> &features, const std::optional<double> &minimumPrice, const std::optional<double> &width, const std::optional<double> &height, const std::optional<double> &depth, const std::optional<double> &weight, const std::optional<std::string> &unit, const std::optional<std::string> &studio, const std::optional<std::string> &parentalRating, const std::optional<int64_t> &publishDate, const std::optional<int64_t> &availabilityDate, const std::optional<int64_t> &sizeId, const std::optional<int64_t> &listingId, const std::optional<std::string> &mediaType, const std::optional<int32_t> &duration, const std::optional<std::string> &author, const std::optional<int64_t> &releaseDate, const std::optional<std::string> &collectionIds, const std::optional<int32_t> &rebootTimeHour, const std::optional<int32_t> &rebootTimeMinute, const std::optional<int32_t> &idleTimeoutInSecond, const std::optional<std::string> &serialNumber, const std::optional<std::string> &udid, const std::optional<std::string> &deviceType, const std::optional<double> &devicePower, const std::optional<double> &deviceInterference, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Activate Offer
     /// </summary>
     /// <remarks>
     /// Sets the activated date on offers. This will make offers visible for consumers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerIds">Comma separated list of offer ids</param>
     /// <param name="active">Determines whether to make the offer active as well</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account used to perform the activation, must have rights to edit the offer. (optional, default to 0L)</param>
-    virtual void update_offer_status( const double &version, const std::optional<std::string> &offerIds, const std::optional<bool> &active, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_offer_status( const std::optional<std::string> &offerIds, const std::optional<bool> &active, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

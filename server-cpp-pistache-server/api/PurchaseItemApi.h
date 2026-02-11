@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Creates a purchase item for in app purchases
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key that the purchase can be used in</param>
     /// <param name="name">The name of the purchase item</param>
     /// <param name="purchaseType">The purchase provider &lt;ul&gt; &lt;li&gt;SIRQUL - the Sirqul store to make purchases using tickets&lt;/li&gt; &lt;li&gt;IOS - the iTunes store for iPhone, iPod, iPod Touch&lt;/li&gt; &lt;li&gt;GOOGLE - the Google Play store&lt;/li&gt; &lt;li&gt;AMAZON - the Amazon Android store&lt;/li&gt; &lt;li&gt;MAC - the iTunes store for OSX&lt;/li&gt; &lt;li&gt;WP8 - the Windows Phone 8 store&lt;/li&gt; &lt;li&gt;FREE - used for purchase items that are free (can be used for development/testing purposes)&lt;/li&gt; &lt;/ul&gt;</param>
@@ -110,36 +109,33 @@ private:
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a mission (optional, default to 0L)</param>
     /// <param name="offerLocationId">The offer location that will get added to the user&#39;s wallet after purchase. (optional, default to 0L)</param>
-    virtual void create_purchase_item( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &purchaseType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &description, const std::optional<int32_t> &tickets, const std::optional<float> &price, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &secretKey, const std::optional<int32_t> &purchaseLimit, const std::optional<std::string> &serviceAction, const std::optional<int64_t> &coverAssetId, const std::optional<int64_t> &promoAssetId, const std::optional<bool> &giftable, const std::optional<bool> &assetable, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_purchase_item( const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &purchaseType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &description, const std::optional<int32_t> &tickets, const std::optional<float> &price, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &secretKey, const std::optional<int32_t> &purchaseLimit, const std::optional<std::string> &serviceAction, const std::optional<int64_t> &coverAssetId, const std::optional<int64_t> &promoAssetId, const std::optional<bool> &giftable, const std::optional<bool> &assetable, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Purchase
     /// </summary>
     /// <remarks>
     /// Marks the purchase item as deleted
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="purchaseItemId">The purchase item id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_purchase_item( const double &version, const std::optional<int64_t> &purchaseItemId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_purchase_item( const std::optional<int64_t> &purchaseItemId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Purchase
     /// </summary>
     /// <remarks>
     /// Get detailed information about a purchase item
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="purchaseItemId">The purchase item id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void get_purchase_item( const double &version, const std::optional<int64_t> &purchaseItemId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_purchase_item( const std::optional<int64_t> &purchaseItemId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Purchases
     /// </summary>
     /// <remarks>
     /// Search for purchasable items from the system
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appKey">The application key to filter results by application (optional, default to &quot;&quot;)</param>
@@ -152,14 +148,13 @@ private:
     /// <param name="start">The record to begin the return set on (optional, default to 0)</param>
     /// <param name="limit">The number of records to return (optional, default to 20)</param>
     /// <param name="activeOnly">Return only active results (optional, default to false)</param>
-    virtual void search_purchase_items( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &filterByBillable, const std::optional<std::string> &purchaseType, const std::optional<std::string> &serviceAction, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_purchase_items( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &filterByBillable, const std::optional<std::string> &purchaseType, const std::optional<std::string> &serviceAction, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Purchase
     /// </summary>
     /// <remarks>
     /// Updates a purchase item for in app purchases
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="purchaseItemId">The purchase item id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -181,7 +176,7 @@ private:
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a mission (optional, default to 0L)</param>
     /// <param name="offerLocationId">The offer location that will get added to the user&#39;s wallet after purchase. (optional, default to 0L)</param>
-    virtual void update_purchase_item( const double &version, const std::optional<int64_t> &purchaseItemId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &tickets, const std::optional<float> &price, const std::optional<std::string> &purchaseType, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &secretKey, const std::optional<int32_t> &purchaseLimit, const std::optional<std::string> &serviceAction, const std::optional<int64_t> &coverAssetId, const std::optional<int64_t> &promoAssetId, const std::optional<bool> &giftable, const std::optional<bool> &assetable, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_purchase_item( const std::optional<int64_t> &purchaseItemId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &tickets, const std::optional<float> &price, const std::optional<std::string> &purchaseType, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &secretKey, const std::optional<int32_t> &purchaseLimit, const std::optional<std::string> &serviceAction, const std::optional<int64_t> &coverAssetId, const std::optional<int64_t> &promoAssetId, const std::optional<bool> &giftable, const std::optional<bool> &assetable, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

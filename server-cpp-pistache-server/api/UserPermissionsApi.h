@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Adds a user to a permissionable object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="permissionableType">the permissionable type of the object</param>
     /// <param name="permissionableId">the id of the permissionable object</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -107,41 +106,38 @@ private:
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
     /// <param name="audienceIds">comma separated list of audience ids. This is a feature only available to the permissionable&#39;s application owner (and its employees). This will add all users from these audiences to the permissionable object. Notifications will not be sent to users if this feature is used. (optional, default to &quot;&quot;)</param>
-    virtual void add_users_to_permissionable( const double &version, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &read, const std::optional<bool> &write, const std::optional<bool> &r_delete, const std::optional<bool> &add, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &connectionGroupIds, const std::optional<bool> &pending, const std::optional<bool> &admin, const std::optional<bool> &includeFriendGroup, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &audienceIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_users_to_permissionable( const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &read, const std::optional<bool> &write, const std::optional<bool> &r_delete, const std::optional<bool> &add, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &connectionGroupIds, const std::optional<bool> &pending, const std::optional<bool> &admin, const std::optional<bool> &includeFriendGroup, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &audienceIds, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Approve Permissionable
     /// </summary>
     /// <remarks>
     /// Sets the approval status of a permissionable object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="permissionableType">The permissionable type of the object</param>
     /// <param name="permissionableId">The id of the permissionable object</param>
     /// <param name="deviceId">A unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="approvalStatus">The approval status to set {PENDING, REJECTED, APPROVED, FEATURED} (optional, default to &quot;APPROVED&quot;)</param>
-    virtual void approve_permissionable( const double &version, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &approvalStatus, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void approve_permissionable( const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &approvalStatus, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Leave
     /// </summary>
     /// <remarks>
     /// Used when the user wants to leave from someone else&#39;s permissionable object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="permissionableType">the permissionable type PermissionableType</param>
     /// <param name="permissionableId">the id of the permissionable object</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void leave_from_permissionable( const double &version, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void leave_from_permissionable( const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove User
     /// </summary>
     /// <remarks>
     /// Used to remove someone (assuming they have permission) from a permissionable object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="permissionableType">the permissionable type of the object</param>
     /// <param name="permissionableId">the id of the permissionable object</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -153,14 +149,13 @@ private:
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
     /// <param name="audienceIds">comma separated list of audience ids. This will remove all users from these audiences from the permissionable object. Notifications will not be sent to users if this feature is used. (optional, default to &quot;&quot;)</param>
-    virtual void remove_users_from_permissionable( const double &version, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &connectionGroupIds, const std::optional<bool> &removeFriendGroup, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &audienceIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_users_from_permissionable( const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &connectionGroupIds, const std::optional<bool> &removeFriendGroup, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &audienceIds, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Permissionables
     /// </summary>
     /// <remarks>
     /// Search on UserPermissions
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">A unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="connectionAccountId">Filter results for a specific user account (optional, default to 0L)</param>
@@ -174,14 +169,13 @@ private:
     /// <param name="admin">Return user permissions that are admins (optional, default to false)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 20)</param>
-    virtual void search_permissionables( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &pending, const std::optional<bool> &admin, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_permissionables( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &pending, const std::optional<bool> &admin, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Permissionables by Distnace
     /// </summary>
     /// <remarks>
     /// Search on UserPermissions by distance
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="latitude">The latitude of the current account</param>
     /// <param name="longitude">The longitude of the current account</param>
     /// <param name="deviceId">A unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -196,7 +190,7 @@ private:
     /// <param name="admin">Return user permissions that are admins (optional, default to false)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (optional, default to 20)</param>
-    virtual void search_permissionables_following_distance( const double &version, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<double> &searchRange, const std::optional<std::string> &keyword, const std::optional<bool> &pending, const std::optional<bool> &admin, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_permissionables_following_distance( const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<double> &searchRange, const std::optional<std::string> &keyword, const std::optional<bool> &pending, const std::optional<bool> &admin, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

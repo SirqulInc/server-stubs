@@ -81,12 +81,11 @@ private:
     /// <remarks>
     /// Search the weather forcast for the next 5 days
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="regionId">Region Id (optional, default to 0L)</param>
     /// <param name="latitude">Latitude (optional, default to 0.0)</param>
     /// <param name="longitude">Longitude (optional, default to 0.0)</param>
     /// <param name="timezoneOffset">Timezone Offset (optional, default to -6L)</param>
-    virtual void search_weather( const double &version, const std::optional<int64_t> &regionId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &timezoneOffset, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_weather( const std::optional<int64_t> &regionId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &timezoneOffset, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

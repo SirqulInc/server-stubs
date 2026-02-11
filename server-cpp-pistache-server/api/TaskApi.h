@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create a Task
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the task</param>
     /// <param name="appKey">The application to target (optional, default to &quot;&quot;)</param>
@@ -101,34 +100,31 @@ private:
     /// <param name="cronExpression">The cron expression that represents the task&#39;s schedule (optional, default to &quot;&quot;)</param>
     /// <param name="visibility">The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets whether the Task is active or not (inactive Tasks are not processed) (optional, default to true)</param>
-    virtual void create_task( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_task( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Task
     /// </summary>
     /// <remarks>
     /// Delete a Task
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="taskId">The id of the Task to delete.</param>
-    virtual void delete_task( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_task( const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Task
     /// </summary>
     /// <remarks>
     /// Get a Task
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="taskId">The id of the Task to return.</param>
-    virtual void get_task( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_task( const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Tasks
     /// </summary>
     /// <remarks>
     /// Search on Tasks
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="groupingId">Filter results by a grouping identifier defined by the client (optional, default to &quot;&quot;)</param>
     /// <param name="filter">A comma separated list of filters:  * MINE - Return tasks that the user has created * SHARED - Return tasks that have been shared to the user * FOLLOWER - Return tasks that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return tasks that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC tasks that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC tasks regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all tasks that the user has liked * FEATURED - Return all tasks that have been featured * PENDING - Return all pending tasks  (optional, default to &quot;MINE&quot;)</param>
@@ -141,14 +137,13 @@ private:
     /// <param name="start">Start the result set at some index. (optional, default to 0)</param>
     /// <param name="limit">Limit the result to some number. (optional, default to 20)</param>
     /// <param name="activeOnly">Determines whether to return only active results (optional, default to true)</param>
-    virtual void search_tasks( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<std::string> &filter, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_tasks( const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<std::string> &filter, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Task
     /// </summary>
     /// <remarks>
     /// Update a Task
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="taskId">Task Id</param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the task (optional, default to &quot;&quot;)</param>
@@ -162,7 +157,7 @@ private:
     /// <param name="cronExpression">The cron expression that represents the task&#39;s schedule (optional, default to &quot;&quot;)</param>
     /// <param name="visibility">The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets whether the Task is active or not (inactive Tasks are not processed) (optional, default to false)</param>
-    virtual void update_task( const double &version, const std::optional<int64_t> &taskId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_task( const std::optional<int64_t> &taskId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

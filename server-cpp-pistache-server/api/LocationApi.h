@@ -97,38 +97,34 @@ private:
     /// <remarks>
     /// Creates trilateration samples for a source device (i.e. a router).
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void cache_trilateration_data_gzip( const double &version, const org::openapitools::server::model::TrilatCacheRequest &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void cache_trilateration_data_gzip( const org::openapitools::server::model::TrilatCacheRequest &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Location by IP
     /// </summary>
     /// <remarks>
     /// Get location information based on an IP address.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="ip">the ip address of the client device (optional, default to &quot;&quot;)</param>
-    virtual void get_location_by_ip( const double &version, const std::optional<std::string> &ip, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_location_by_ip( const std::optional<std::string> &ip, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Location by Trilateration
     /// </summary>
     /// <remarks>
     /// Send in device data and calculate a position based on signal strengths.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account making the request, if provided the last know location will be updated (optional, default to 0L)</param>
     /// <param name="latitude">The known GPS latitude to compare to the calculated version (optional, default to 0.0)</param>
     /// <param name="longitude">The known GPS longitude to compare to the calculated version (optional, default to 0.0)</param>
     /// <param name="data">The json formated sample data:  &#x60;&#x60;&#x60;json {    \&quot;count\&quot;: 2,   \&quot;timespan\&quot;: 10,    \&quot;samples\&quot;: [     {       \&quot;deviceId\&quot;: \&quot;device1\&quot;,       \&quot;rssi\&quot;: [-63, -75]     },      {       \&quot;deviceId\&quot;: \&quot;device2\&quot;,       \&quot;rssi\&quot;: [-83, -79]     }   ] } &#x60;&#x60;&#x60;  (optional, default to &quot;&quot;)</param>
     /// <param name="responseFilters">Optional response filters (not used currently) (optional, default to &quot;&quot;)</param>
-    virtual void get_location_by_trilateration( const double &version, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &data, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_location_by_trilateration( const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &data, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Regions or Postal Codes
     /// </summary>
     /// <remarks>
     /// Searches geographic locations by proximity via address or keyword.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id (optional, default to 0L)</param>
     /// <param name="currentlatitude">This parameter is deprecated. (optional, default to 0.0)</param>
@@ -148,7 +144,7 @@ private:
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="l">This parameter is deprecated. (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 20)</param>
-    virtual void get_locations( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &currentlatitude, const std::optional<double> &currentlongitude, const std::optional<double> &currentLatitude, const std::optional<double> &currentLongitude, const std::optional<std::string> &query, const std::optional<std::string> &zipcode, const std::optional<std::string> &zipCode, const std::optional<double> &selectedMaplatitude, const std::optional<double> &selectedMaplongitude, const std::optional<double> &selectedMapLatitude, const std::optional<double> &selectedMapLongitude, const std::optional<double> &searchRange, const std::optional<bool> &useGeocode, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_locations( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &currentlatitude, const std::optional<double> &currentlongitude, const std::optional<double> &currentLatitude, const std::optional<double> &currentLongitude, const std::optional<std::string> &query, const std::optional<std::string> &zipcode, const std::optional<std::string> &zipCode, const std::optional<double> &selectedMaplatitude, const std::optional<double> &selectedMaplongitude, const std::optional<double> &selectedMapLatitude, const std::optional<double> &selectedMapLongitude, const std::optional<double> &searchRange, const std::optional<bool> &useGeocode, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

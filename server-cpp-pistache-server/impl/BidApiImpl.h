@@ -43,10 +43,10 @@ public:
     explicit BidApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~BidApiImpl() override = default;
 
-    void create_bid(const double &version, const std::optional<std::string> &biddableType, const std::optional<int64_t> &biddableId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void delete_bid(const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_bid(const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void update_bid(const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, Pistache::Http::ResponseWriter &response);
+    void create_bid(const std::optional<std::string> &biddableType, const std::optional<int64_t> &biddableId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void delete_bid(const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_bid(const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void update_bid(const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, Pistache::Http::ResponseWriter &response);
 
 };
 

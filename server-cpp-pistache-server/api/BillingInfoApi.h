@@ -87,7 +87,6 @@ private:
     /// <remarks>
     /// Update a method of payment. If the paymentMethodId is not passed in then will update their default payment method.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the the request</param>
     /// <param name="paymentMethodId">Payment Method Id (optional, default to 0L)</param>
     /// <param name="accountName">the name of the account (optional, default to &quot;&quot;)</param>
@@ -111,14 +110,13 @@ private:
     /// <param name="providerCustomerProfileId">Provider customer profile Id (optional, default to &quot;&quot;)</param>
     /// <param name="providerPaymentProfileId">Provider customer payment profile Id (optional, default to &quot;&quot;)</param>
     /// <param name="metaData">Meta Data (optional, default to &quot;&quot;)</param>
-    virtual void add_payment_method( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &accountName, const std::optional<std::string> &firstName, const std::optional<std::string> &lastName, const std::optional<std::string> &address, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &country, const std::optional<std::string> &phone, const std::optional<std::string> &creditCardNumber, const std::optional<std::string> &expirationDate, const std::optional<std::string> &ccv, const std::optional<std::string> &accountNumber, const std::optional<std::string> &bankName, const std::optional<std::string> &routingNumber, const std::optional<bool> &defaultPaymentMethod, const std::optional<std::string> &paymentMethodNickname, const std::optional<std::string> &taxId, const std::optional<std::string> &providerCustomerProfileId, const std::optional<std::string> &providerPaymentProfileId, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_payment_method( const std::optional<int64_t> &accountId, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &accountName, const std::optional<std::string> &firstName, const std::optional<std::string> &lastName, const std::optional<std::string> &address, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &country, const std::optional<std::string> &phone, const std::optional<std::string> &creditCardNumber, const std::optional<std::string> &expirationDate, const std::optional<std::string> &ccv, const std::optional<std::string> &accountNumber, const std::optional<std::string> &bankName, const std::optional<std::string> &routingNumber, const std::optional<bool> &defaultPaymentMethod, const std::optional<std::string> &paymentMethodNickname, const std::optional<std::string> &taxId, const std::optional<std::string> &providerCustomerProfileId, const std::optional<std::string> &providerPaymentProfileId, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Payment Method
     /// </summary>
     /// <remarks>
     /// Add a new method of payment.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the the request</param>
     /// <param name="accountName">Account Name of the credit card user (optional, default to &quot;&quot;)</param>
     /// <param name="firstName">The first name on the credit card (optional, default to &quot;&quot;)</param>
@@ -144,48 +142,44 @@ private:
     /// <param name="providerPaymentProfileId">Provider customer payment profile Id (optional, default to &quot;&quot;)</param>
     /// <param name="metaData">Meta Data (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">Application Key (optional, default to &quot;&quot;)</param>
-    virtual void create_payment_method( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &accountName, const std::optional<std::string> &firstName, const std::optional<std::string> &lastName, const std::optional<std::string> &address, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &country, const std::optional<std::string> &phone, const std::optional<std::string> &creditCardNumber, const std::optional<std::string> &expirationDate, const std::optional<std::string> &ccv, const std::optional<std::string> &accountNumber, const std::optional<std::string> &bankName, const std::optional<std::string> &routingNumber, const std::optional<std::string> &paymentMethodNickname, const std::optional<std::string> &taxId, const std::optional<bool> &defaultPaymentMethod, const std::optional<std::string> &authToken, const std::optional<std::string> &provider, const std::optional<std::string> &providerCustomerProfileId, const std::optional<std::string> &providerPaymentProfileId, const std::optional<std::string> &metaData, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_payment_method( const std::optional<int64_t> &accountId, const std::optional<std::string> &accountName, const std::optional<std::string> &firstName, const std::optional<std::string> &lastName, const std::optional<std::string> &address, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &country, const std::optional<std::string> &phone, const std::optional<std::string> &creditCardNumber, const std::optional<std::string> &expirationDate, const std::optional<std::string> &ccv, const std::optional<std::string> &accountNumber, const std::optional<std::string> &bankName, const std::optional<std::string> &routingNumber, const std::optional<std::string> &paymentMethodNickname, const std::optional<std::string> &taxId, const std::optional<bool> &defaultPaymentMethod, const std::optional<std::string> &authToken, const std::optional<std::string> &provider, const std::optional<std::string> &providerCustomerProfileId, const std::optional<std::string> &providerPaymentProfileId, const std::optional<std::string> &metaData, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Smart Contract
     /// </summary>
     /// <remarks>
     /// Adds a smart contract.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the the request</param>
     /// <param name="tokenName">The token name</param>
     /// <param name="tokenSymbol">The token symbol</param>
     /// <param name="paymentMethodId">The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned. (optional, default to 0L)</param>
-    virtual void create_smart_contract( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &tokenName, const std::optional<std::string> &tokenSymbol, const std::optional<int64_t> &paymentMethodId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_smart_contract( const std::optional<int64_t> &accountId, const std::optional<std::string> &tokenName, const std::optional<std::string> &tokenSymbol, const std::optional<int64_t> &paymentMethodId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Crypto Balances
     /// </summary>
     /// <remarks>
     /// Get the cypto balance details for a user
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the the request</param>
     /// <param name="ownerAccountId">The account to retreive balances for (optional, default to 0L)</param>
     /// <param name="paymentMethodId">The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned. (optional, default to 0L)</param>
-    virtual void get_crypto_balance( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ownerAccountId, const std::optional<int64_t> &paymentMethodId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_crypto_balance( const std::optional<int64_t> &accountId, const std::optional<int64_t> &ownerAccountId, const std::optional<int64_t> &paymentMethodId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Payment Method
     /// </summary>
     /// <remarks>
     /// Get the details of the user&#39;s payment method or their current default method of payment
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the the request</param>
     /// <param name="paymentMethodId">The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned. (optional, default to 0L)</param>
     /// <param name="getCurrentBalance">Determines whether to get the user&#39;s current balance for the requested payment method option (not all payment method options support this) (optional, default to false)</param>
-    virtual void get_payment_method( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &paymentMethodId, const std::optional<bool> &getCurrentBalance, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_payment_method( const std::optional<int64_t> &accountId, const std::optional<int64_t> &paymentMethodId, const std::optional<bool> &getCurrentBalance, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Payment Methods
     /// </summary>
     /// <remarks>
     /// Search the payment methods of an account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Account Id to search on</param>
     /// <param name="provider">Provider to search on (optional, default to &quot;AUTHORIZE_NET&quot;)</param>
     /// <param name="type">the type to search on (optional, default to &quot;&quot;)</param>
@@ -194,7 +188,7 @@ private:
     /// <param name="descending">if the results should be in descending order (optional, default to true)</param>
     /// <param name="start">the start of the search (optional, default to 0)</param>
     /// <param name="limit">the limit of the search (optional, default to 5)</param>
-    virtual void search_payment_method( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &provider, const std::optional<std::string> &type, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_payment_method( const std::optional<int64_t> &accountId, const std::optional<std::string> &provider, const std::optional<std::string> &type, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

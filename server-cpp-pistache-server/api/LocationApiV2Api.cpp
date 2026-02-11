@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string LocationApiV2Api::base = "";
+const std::string LocationApiV2Api::base = "/api/3.18";
 
 LocationApiV2Api::LocationApiV2Api(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,8 +32,8 @@ void LocationApiV2Api::init() {
 void LocationApiV2Api::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/location", Routes::bind(&LocationApiV2Api::create_location_v2_handler, this));
-    Routes::Post(*router, base + "/api/:version/location/:id", Routes::bind(&LocationApiV2Api::update_location_v2_handler, this));
+    Routes::Post(*router, base + "/location", Routes::bind(&LocationApiV2Api::create_location_v2_handler, this));
+    Routes::Post(*router, base + "/location/:id", Routes::bind(&LocationApiV2Api::update_location_v2_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&LocationApiV2Api::location_api_v2_api_default_handler, this));
@@ -68,8 +68,6 @@ std::pair<Pistache::Http::Code, std::string> LocationApiV2Api::handleOperationEx
 void LocationApiV2Api::create_location_v2_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -93,7 +91,7 @@ void LocationApiV2Api::create_location_v2_handler(const Pistache::Rest::Request&
 
 
 
-            this->create_location_v2(version, body, response);
+            this->create_location_v2(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -113,7 +111,6 @@ void LocationApiV2Api::update_location_v2_handler(const Pistache::Rest::Request&
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -138,7 +135,7 @@ void LocationApiV2Api::update_location_v2_handler(const Pistache::Rest::Request&
 
 
 
-            this->update_location_v2(version, id, body, response);
+            this->update_location_v2(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

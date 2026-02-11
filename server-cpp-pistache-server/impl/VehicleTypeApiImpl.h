@@ -43,11 +43,11 @@ public:
     explicit VehicleTypeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~VehicleTypeApiImpl() override = default;
 
-    void create_vehicle_type(const double &version, const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response);
-    void delete_vehicle_type(const double &version, const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response);
-    void get_vehicle_type(const double &version, const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response);
-    void search_vehicle_types(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response);
-    void update_vehicle_type(const double &version, const int64_t &vehicleTypeId, const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response);
+    void create_vehicle_type(const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response);
+    void delete_vehicle_type(const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response);
+    void get_vehicle_type(const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response);
+    void search_vehicle_types(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response);
+    void update_vehicle_type(const int64_t &vehicleTypeId, const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response);
 
 };
 

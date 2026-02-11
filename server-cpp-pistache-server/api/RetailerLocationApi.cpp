@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RetailerLocationApi::base = "";
+const std::string RetailerLocationApi::base = "/api/3.18";
 
 RetailerLocationApi::RetailerLocationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,15 +32,15 @@ void RetailerLocationApi::init() {
 void RetailerLocationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/location/create", Routes::bind(&RetailerLocationApi::create_retailer_location_consumer_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/location/create", Routes::bind(&RetailerLocationApi::create_retailer_locations_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/location/delete", Routes::bind(&RetailerLocationApi::delete_retailer_location_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/location/get", Routes::bind(&RetailerLocationApi::get_retailer_location_handler, this));
-    Routes::Get(*router, base + "/api/:version/location/get", Routes::bind(&RetailerLocationApi::get_retailer_location_consumer_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/location/idistancesearch", Routes::bind(&RetailerLocationApi::indexed_retailer_location_distance_search_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/location/isearch", Routes::bind(&RetailerLocationApi::indexed_retailer_location_search_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/location/search", Routes::bind(&RetailerLocationApi::search_retailer_locations_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/location/update", Routes::bind(&RetailerLocationApi::update_retailer_locations_handler, this));
+    Routes::Post(*router, base + "/location/create", Routes::bind(&RetailerLocationApi::create_retailer_location_consumer_handler, this));
+    Routes::Post(*router, base + "/retailer/location/create", Routes::bind(&RetailerLocationApi::create_retailer_locations_handler, this));
+    Routes::Post(*router, base + "/retailer/location/delete", Routes::bind(&RetailerLocationApi::delete_retailer_location_handler, this));
+    Routes::Get(*router, base + "/retailer/location/get", Routes::bind(&RetailerLocationApi::get_retailer_location_handler, this));
+    Routes::Get(*router, base + "/location/get", Routes::bind(&RetailerLocationApi::get_retailer_location_consumer_handler, this));
+    Routes::Get(*router, base + "/retailer/location/idistancesearch", Routes::bind(&RetailerLocationApi::indexed_retailer_location_distance_search_handler, this));
+    Routes::Get(*router, base + "/retailer/location/isearch", Routes::bind(&RetailerLocationApi::indexed_retailer_location_search_handler, this));
+    Routes::Get(*router, base + "/retailer/location/search", Routes::bind(&RetailerLocationApi::search_retailer_locations_handler, this));
+    Routes::Post(*router, base + "/retailer/location/update", Routes::bind(&RetailerLocationApi::update_retailer_locations_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RetailerLocationApi::retailer_location_api_default_handler, this));
@@ -75,8 +75,6 @@ std::pair<Pistache::Http::Code, std::string> RetailerLocationApi::handleOperatio
 void RetailerLocationApi::create_retailer_location_consumer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -321,7 +319,7 @@ void RetailerLocationApi::create_retailer_location_consumer_handler(const Pistac
 
 
 
-            this->create_retailer_location_consumer(version, appKey, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, detailsHeader, detailsBody, hours, tags, logoAssetId, picture1AssetId, picture2AssetId, categoryIds, filterIds, metaData, publicLocation, active, locationType, latitude, longitude, response);
+            this->create_retailer_location_consumer(appKey, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, detailsHeader, detailsBody, hours, tags, logoAssetId, picture1AssetId, picture2AssetId, categoryIds, filterIds, metaData, publicLocation, active, locationType, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -360,8 +358,6 @@ void RetailerLocationApi::create_retailer_locations_handler(const Pistache::Rest
 void RetailerLocationApi::delete_retailer_location_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -398,7 +394,7 @@ void RetailerLocationApi::delete_retailer_location_handler(const Pistache::Rest:
 
 
 
-            this->delete_retailer_location(version, deviceId, accountId, retailerLocationId, response);
+            this->delete_retailer_location(deviceId, accountId, retailerLocationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -417,8 +413,6 @@ void RetailerLocationApi::delete_retailer_location_handler(const Pistache::Rest:
 void RetailerLocationApi::get_retailer_location_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -463,7 +457,7 @@ void RetailerLocationApi::get_retailer_location_handler(const Pistache::Rest::Re
 
 
 
-            this->get_retailer_location(version, retailerLocationId, deviceId, accountId, retailerLocationToken, response);
+            this->get_retailer_location(retailerLocationId, deviceId, accountId, retailerLocationToken, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -482,8 +476,6 @@ void RetailerLocationApi::get_retailer_location_handler(const Pistache::Rest::Re
 void RetailerLocationApi::get_retailer_location_consumer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -520,7 +512,7 @@ void RetailerLocationApi::get_retailer_location_consumer_handler(const Pistache:
 
 
 
-            this->get_retailer_location_consumer(version, retailerLocationId, deviceId, accountId, response);
+            this->get_retailer_location_consumer(retailerLocationId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -539,8 +531,6 @@ void RetailerLocationApi::get_retailer_location_consumer_handler(const Pistache:
 void RetailerLocationApi::indexed_retailer_location_distance_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -825,7 +815,7 @@ void RetailerLocationApi::indexed_retailer_location_distance_search_handler(cons
 
 
 
-            this->indexed_retailer_location_distance_search(version, latitude, longitude, searchRange, start, limit, accountId, address, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, distanceUnit, returnFavorited, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating, response);
+            this->indexed_retailer_location_distance_search(latitude, longitude, searchRange, start, limit, accountId, address, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, distanceUnit, returnFavorited, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -844,8 +834,6 @@ void RetailerLocationApi::indexed_retailer_location_distance_search_handler(cons
 void RetailerLocationApi::indexed_retailer_location_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1082,7 +1070,7 @@ void RetailerLocationApi::indexed_retailer_location_search_handler(const Pistach
 
 
 
-            this->indexed_retailer_location_search(version, accountId, start, limit, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating, response);
+            this->indexed_retailer_location_search(accountId, start, limit, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1101,8 +1089,6 @@ void RetailerLocationApi::indexed_retailer_location_search_handler(const Pistach
 void RetailerLocationApi::search_retailer_locations_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1315,7 +1301,7 @@ void RetailerLocationApi::search_retailer_locations_handler(const Pistache::Rest
 
 
 
-            this->search_retailer_locations(version, deviceId, accountId, q, keyword, retailerIds, retailerLocationIds, locationType, sortField, descending, i, start, l, limit, showPublicLocations, activeOnly, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, includeFavorite, includeLiked, includeRating, response);
+            this->search_retailer_locations(deviceId, accountId, q, keyword, retailerIds, retailerLocationIds, locationType, sortField, descending, i, start, l, limit, showPublicLocations, activeOnly, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, includeFavorite, includeLiked, includeRating, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

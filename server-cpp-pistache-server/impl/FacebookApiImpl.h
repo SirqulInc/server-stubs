@@ -43,8 +43,8 @@ public:
     explicit FacebookApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~FacebookApiImpl() override = default;
 
-    void get_token(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
-    void graph_interface(const double &version, const std::optional<std::string> &event, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<int64_t> &assetId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void get_token(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void graph_interface(const std::optional<std::string> &event, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<int64_t> &assetId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
 
 };
 

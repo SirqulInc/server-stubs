@@ -90,43 +90,38 @@ private:
     /// <remarks>
     /// Remove shipment from route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the shipment to cancel</param>
-    virtual void cancel_shipment( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void cancel_shipment( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Shipment
     /// </summary>
     /// <remarks>
     /// Create new shipment
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_shipment( const double &version, const org::openapitools::server::model::Shipment &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_shipment( const org::openapitools::server::model::Shipment &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Shipment
     /// </summary>
     /// <remarks>
     /// Delete an existing shipment
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the shipment to delete</param>
-    virtual void delete_shipment( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_shipment( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Shipment
     /// </summary>
     /// <remarks>
     /// Get an existing shipment
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the shipment to get</param>
-    virtual void get_shipment( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_shipment( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Shipments
     /// </summary>
     /// <remarks>
     /// Search for shipments
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
@@ -135,27 +130,25 @@ private:
     /// <param name="ownerId">The owner of the shipment (optional, default to 0L)</param>
     /// <param name="riderId">The rider associate to this shipment (optional, default to 0L)</param>
     /// <param name="routeId">The route associate to this shipment (optional, default to 0L)</param>
-    virtual void search_shipments( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &ownerId, const std::optional<int64_t> &riderId, const std::optional<int64_t> &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_shipments( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &ownerId, const std::optional<int64_t> &riderId, const std::optional<int64_t> &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Shipment
     /// </summary>
     /// <remarks>
     /// Update an existing shipment
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the shipment to update</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_shipment( const double &version, const int64_t &id, const org::openapitools::server::model::Shipment &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_shipment( const int64_t &id, const org::openapitools::server::model::Shipment &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Uupdate Shipment Status
     /// </summary>
     /// <remarks>
     /// Update status of an existing shipment
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the shipment to update status</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_shipment_status( const double &version, const int64_t &id, const std::map<std::string, bool> &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_shipment_status( const int64_t &id, const std::map<std::string, bool> &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

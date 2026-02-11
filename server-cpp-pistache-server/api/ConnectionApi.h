@@ -108,7 +108,6 @@ private:
     /// <remarks>
     /// Adds a connection to a group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="groupId">the group id</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -118,14 +117,13 @@ private:
     /// <param name="pendingId">the pending id (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void add_connection_to_group( const double &version, const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &pendingId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_connection_to_group( const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &pendingId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Add Connections
     /// </summary>
     /// <remarks>
     /// Adds a list of connections to a group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="connectionGroupId">the connection group ID</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -133,14 +131,13 @@ private:
     /// <param name="connectionAccountIds">comma separated list of connection account ids (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void add_connections_to_group( const double &version, const std::optional<int64_t> &connectionGroupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_connections_to_group( const std::optional<int64_t> &connectionGroupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Add Connection Groups
     /// </summary>
     /// <remarks>
     /// Add sub groups to a group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="groupId">the parent group id</param>
     /// <param name="subGroupIds">comma separated list of group IDs to add to the parent group</param>
@@ -148,14 +145,13 @@ private:
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void add_sub_groups( const double &version, const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &subGroupIds, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_sub_groups( const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &subGroupIds, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create or Update Connection
     /// </summary>
     /// <remarks>
     /// Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="connectionId">the connection id for editing (optional, default to 0L)</param>
@@ -170,14 +166,13 @@ private:
     /// <param name="isBlocked">determines whether the user is blocking this account (optional, default to false)</param>
     /// <param name="isFollowing">determines whether the user is following this account (optional, default to false)</param>
     /// <param name="connectionResponse">whether to return the connection response or not (optional, default to false)</param>
-    virtual void create_or_update_connection( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &pendingId, const std::optional<int64_t> &groupId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<bool> &isTrusted, const std::optional<bool> &ignoreFriendRequest, const std::optional<bool> &isContact, const std::optional<bool> &isBlocked, const std::optional<bool> &isFollowing, const std::optional<bool> &connectionResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_or_update_connection( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &pendingId, const std::optional<int64_t> &groupId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<bool> &isTrusted, const std::optional<bool> &ignoreFriendRequest, const std::optional<bool> &isContact, const std::optional<bool> &isBlocked, const std::optional<bool> &isFollowing, const std::optional<bool> &connectionResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create or Update Connection Group
     /// </summary>
     /// <remarks>
     /// Creates a new private group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -192,59 +187,54 @@ private:
     /// <param name="active">Sets whether the connection group is active or inactive (optional, default to false)</param>
     /// <param name="latitude">the latitude of the group (optional, default to 0.0)</param>
     /// <param name="longitude">the longitude of the group (optional, default to 0.0)</param>
-    virtual void create_or_update_group( const double &version, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int64_t> &groupId, const std::optional<int64_t> &assetId, const std::optional<std::string> &connections, const std::optional<std::string> &description, const std::optional<bool> &canViewProfileInfo, const std::optional<bool> &canViewGameInfo, const std::optional<bool> &canViewFriendInfo, const std::optional<bool> &active, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_or_update_group( const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int64_t> &groupId, const std::optional<int64_t> &assetId, const std::optional<std::string> &connections, const std::optional<std::string> &description, const std::optional<bool> &canViewProfileInfo, const std::optional<bool> &canViewGameInfo, const std::optional<bool> &canViewFriendInfo, const std::optional<bool> &active, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Accept Follow Request
     /// </summary>
     /// <remarks>
     /// Accept someone&#39;s follow request.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="connectionAccountId">the account ID of the user who initiated the follow</param>
     /// <param name="appKey">the application key for sending notifications</param>
-    virtual void follow_accept( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void follow_accept( const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Reject Follow Request
     /// </summary>
     /// <remarks>
     /// Reject someone&#39;s follow request or remove them as a follower.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="connectionAccountId">the account ID of the user who initiated the follow</param>
     /// <param name="appKey">the application key for sending notifications</param>
-    virtual void follow_reject( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void follow_reject( const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove Follower / Unfollow
     /// </summary>
     /// <remarks>
     /// Unfollow someone you are following or remove them as a follower.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="connectionAccountId">the account ID of the user who you want to unfollow</param>
     /// <param name="appKey">the application key for sending notifications</param>
-    virtual void follow_remove( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void follow_remove( const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Send Follow Request
     /// </summary>
     /// <remarks>
     /// Send a request to follow someone.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="connectionAccountId">the account ID of the user who you want to follow</param>
     /// <param name="appKey">the application key for sending notifications</param>
     /// <param name="approvalNeeded">determines if the other user needs to confirm the follow request (optional, default to true)</param>
-    virtual void follow_request( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, const std::optional<bool> &approvalNeeded, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void follow_request( const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &appKey, const std::optional<bool> &approvalNeeded, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Accept Friend
     /// </summary>
     /// <remarks>
     /// Accept a friend request and optionally sends a notification.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="friendAccountId">the friend&#39;s account id</param>
     /// <param name="notifyFriend">determines whether to send a notification to the afflicting party</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -252,14 +242,13 @@ private:
     /// <param name="gameType">This parameter is deprecated. (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="notificationMessage">optional message to send in a notification (optional, default to &quot;&quot;)</param>
-    virtual void friend_accept( const double &version, const std::optional<int64_t> &friendAccountId, const std::optional<bool> &notifyFriend, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &notificationMessage, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void friend_accept( const std::optional<int64_t> &friendAccountId, const std::optional<bool> &notifyFriend, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &notificationMessage, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Decline Friend
     /// </summary>
     /// <remarks>
     /// Request a friend request and optionally sends a notification.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="friendAccountId">the friend&#39;s account id</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -267,51 +256,47 @@ private:
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="notifyFriend">determines whether to send a notification to the afflicting party (optional, default to false)</param>
     /// <param name="notificationMessage">optional message to send in a notification (optional, default to &quot;&quot;)</param>
-    virtual void friend_reject( const double &version, const std::optional<int64_t> &friendAccountId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<bool> &notifyFriend, const std::optional<std::string> &notificationMessage, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void friend_reject( const std::optional<int64_t> &friendAccountId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<bool> &notifyFriend, const std::optional<std::string> &notificationMessage, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Friend
     /// </summary>
     /// <remarks>
     /// Removes a friend from the user&#39;s friends list.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="friendAccountId">the account ID of the friend to remove</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="notifyFriend">optionally notifies the connection that they have been removed as a friend (optional, default to false)</param>
     /// <param name="removeFromGroups">optionally removes the connection from the user&#39;s groups (optional, default to false)</param>
-    virtual void friend_remove( const double &version, const std::optional<int64_t> &friendAccountId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &notifyFriend, const std::optional<bool> &removeFromGroups, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void friend_remove( const std::optional<int64_t> &friendAccountId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &notifyFriend, const std::optional<bool> &removeFromGroups, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Request Friend
     /// </summary>
     /// <remarks>
     /// Sends a friend request notification to another user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="friendAccountId">the friend&#39;s account id</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="gameType">This parameter is deprecated. (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="notificationMessage">optional message to send in a notification (optional, default to &quot;&quot;)</param>
-    virtual void friend_request( const double &version, const std::optional<int64_t> &friendAccountId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &notificationMessage, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void friend_request( const std::optional<int64_t> &friendAccountId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &notificationMessage, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Sent Friend Requests
     /// </summary>
     /// <remarks>
     /// Gets the connection sent friend requests.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the ID of the device (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the account (optional, default to 0L)</param>
-    virtual void get_connection_sent_friend_requests( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_connection_sent_friend_requests( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Connections
     /// </summary>
     /// <remarks>
     /// Gets the connections.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="filter">a comma separated list of ConnectionApiMap. (NOTE on FOLLOWER vs FOLLOWING: FOLLOWER will get me a list of followers, FOLLOWING will get me a list of people I am following)</param>
     /// <param name="sortField">sorts the response list by ConnectionApiMap</param>
@@ -327,28 +312,26 @@ private:
     /// <param name="l">This parameter is deprecated. (optional, default to 0)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void get_connections( const double &version, const std::optional<bool> &returnNulls, const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_connections( const std::optional<bool> &returnNulls, const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Connection Group
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="combineConnections">whether to combine connections or not</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="groupId">the group id (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void get_group_details( const double &version, const std::optional<bool> &combineConnections, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &groupId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_group_details( const std::optional<bool> &combineConnections, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &groupId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Connection Groups
     /// </summary>
     /// <remarks>
     /// Gets a user&#39;s private groups and default groups.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">the field to sort by</param>
     /// <param name="descending">whether to return results in descending or ascending order</param>
     /// <param name="activeOnly">to search on active only or not</param>
@@ -359,14 +342,13 @@ private:
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
     /// <param name="keyword">keyword search string (optional, default to &quot;&quot;)</param>
-    virtual void group_search( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void group_search( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Connection
     /// </summary>
     /// <remarks>
     /// Removes the connection from group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="groupId">the group id</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -376,14 +358,13 @@ private:
     /// <param name="pendingId">the pending id (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void remove_connection_from_group( const double &version, const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &pendingId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_connection_from_group( const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &pendingId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove Connections
     /// </summary>
     /// <remarks>
     /// Remove a list of connections from a group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="connectionGroupId">connection group id</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -391,28 +372,26 @@ private:
     /// <param name="connectionAccountIds">comma separated list of connection account ids (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void remove_connections_from_group( const double &version, const std::optional<int64_t> &connectionGroupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_connections_from_group( const std::optional<int64_t> &connectionGroupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionAccountIds, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Connection Group
     /// </summary>
     /// <remarks>
     /// Remove a user&#39;s group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="groupId">the group id</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void remove_group( const double &version, const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_group( const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove Connection Groups
     /// </summary>
     /// <remarks>
     /// Remove sub groups from a group
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">whether to return nulls or not</param>
     /// <param name="groupId">the parent group id</param>
     /// <param name="subGroupIds">comma separated list of group IDs to remove from the parent group</param>
@@ -420,14 +399,13 @@ private:
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void remove_sub_groups( const double &version, const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &subGroupIds, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_sub_groups( const std::optional<bool> &returnNulls, const std::optional<int64_t> &groupId, const std::optional<std::string> &subGroupIds, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Possible Connections
     /// </summary>
     /// <remarks>
     /// Search for accounts that the user may not have a connection with.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">return all json attributes if true. defualt is true.</param>
     /// <param name="start">start index of the pagination</param>
     /// <param name="limit">limit of the pagination</param>
@@ -443,7 +421,7 @@ private:
     /// <param name="l">This parameter is deprecated. (optional, default to 0)</param>
     /// <param name="sortField">the field to sort on (optional, default to &quot;&quot;)</param>
     /// <param name="hasLocation">whether the search has location or not (optional, default to false)</param>
-    virtual void search_connections( const double &version, const std::optional<bool> &returnNulls, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<std::string> &sortField, const std::optional<bool> &hasLocation, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_connections( const std::optional<bool> &returnNulls, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<std::string> &sortField, const std::optional<bool> &hasLocation, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RetailerV2Api::base = "";
+const std::string RetailerV2Api::base = "/api/3.18";
 
 RetailerV2Api::RetailerV2Api(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void RetailerV2Api::init() {
 void RetailerV2Api::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/retailer", Routes::bind(&RetailerV2Api::get_retaokiler_handler, this));
+    Routes::Get(*router, base + "/retailer", Routes::bind(&RetailerV2Api::get_retaokiler_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RetailerV2Api::retailer_v2_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> RetailerV2Api::handleOperationExcep
 void RetailerV2Api::get_retaokiler_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -129,7 +127,7 @@ void RetailerV2Api::get_retaokiler_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->get_retaokiler(version, retailerId, activeOnly, keyword, sortField, start, limit, response);
+            this->get_retaokiler(retailerId, activeOnly, keyword, sortField, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

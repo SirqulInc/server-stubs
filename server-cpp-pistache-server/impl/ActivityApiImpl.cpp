@@ -29,7 +29,7 @@ ActivityApiImpl::ActivityApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 
 }
 
-void ActivityApiImpl::create_entity_reference(const double &version, const EntityReference &body, Pistache::Http::ResponseWriter &response) {
+void ActivityApiImpl::create_entity_reference(const EntityReference &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

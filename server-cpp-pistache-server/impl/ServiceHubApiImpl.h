@@ -44,12 +44,12 @@ public:
     explicit ServiceHubApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~ServiceHubApiImpl() override = default;
 
-    void create_service_hub(const double &version, const ServiceHub &body, Pistache::Http::ResponseWriter &response);
-    void delete_service_hub(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void get_service_hub(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void post_service_hub(const double &version, const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response);
-    void put_service_hub(const double &version, const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response);
-    void search_service_hubs(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response);
+    void create_service_hub(const ServiceHub &body, Pistache::Http::ResponseWriter &response);
+    void delete_service_hub(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void get_service_hub(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void post_service_hub(const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response);
+    void put_service_hub(const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response);
+    void search_service_hubs(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response);
 
 };
 

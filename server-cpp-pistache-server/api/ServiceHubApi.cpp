@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ServiceHubApi::base = "";
+const std::string ServiceHubApi::base = "/api/3.18";
 
 ServiceHubApi::ServiceHubApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ServiceHubApi::init() {
 void ServiceHubApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/hub", Routes::bind(&ServiceHubApi::create_service_hub_handler, this));
-    Routes::Delete(*router, base + "/api/:version/hub/:id", Routes::bind(&ServiceHubApi::delete_service_hub_handler, this));
-    Routes::Get(*router, base + "/api/:version/hub/:id", Routes::bind(&ServiceHubApi::get_service_hub_handler, this));
-    Routes::Post(*router, base + "/api/:version/hub/:id", Routes::bind(&ServiceHubApi::post_service_hub_handler, this));
-    Routes::Put(*router, base + "/api/:version/hub/:id", Routes::bind(&ServiceHubApi::put_service_hub_handler, this));
-    Routes::Get(*router, base + "/api/:version/hub", Routes::bind(&ServiceHubApi::search_service_hubs_handler, this));
+    Routes::Post(*router, base + "/hub", Routes::bind(&ServiceHubApi::create_service_hub_handler, this));
+    Routes::Delete(*router, base + "/hub/:id", Routes::bind(&ServiceHubApi::delete_service_hub_handler, this));
+    Routes::Get(*router, base + "/hub/:id", Routes::bind(&ServiceHubApi::get_service_hub_handler, this));
+    Routes::Post(*router, base + "/hub/:id", Routes::bind(&ServiceHubApi::post_service_hub_handler, this));
+    Routes::Put(*router, base + "/hub/:id", Routes::bind(&ServiceHubApi::put_service_hub_handler, this));
+    Routes::Get(*router, base + "/hub", Routes::bind(&ServiceHubApi::search_service_hubs_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ServiceHubApi::service_hub_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ServiceHubApi::handleOperationExcep
 void ServiceHubApi::create_service_hub_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -97,7 +95,7 @@ void ServiceHubApi::create_service_hub_handler(const Pistache::Rest::Request& re
 
 
 
-            this->create_service_hub(version, body, response);
+            this->create_service_hub(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -117,7 +115,6 @@ void ServiceHubApi::delete_service_hub_handler(const Pistache::Rest::Request& re
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -130,7 +127,7 @@ void ServiceHubApi::delete_service_hub_handler(const Pistache::Rest::Request& re
 
 
 
-            this->delete_service_hub(version, id, response);
+            this->delete_service_hub(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -150,7 +147,6 @@ void ServiceHubApi::get_service_hub_handler(const Pistache::Rest::Request& reque
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -163,7 +159,7 @@ void ServiceHubApi::get_service_hub_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_service_hub(version, id, response);
+            this->get_service_hub(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -183,7 +179,6 @@ void ServiceHubApi::post_service_hub_handler(const Pistache::Rest::Request& requ
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -208,7 +203,7 @@ void ServiceHubApi::post_service_hub_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->post_service_hub(version, id, body, response);
+            this->post_service_hub(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -228,7 +223,6 @@ void ServiceHubApi::put_service_hub_handler(const Pistache::Rest::Request& reque
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -253,7 +247,7 @@ void ServiceHubApi::put_service_hub_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->put_service_hub(version, id, body, response);
+            this->put_service_hub(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -272,8 +266,6 @@ void ServiceHubApi::put_service_hub_handler(const Pistache::Rest::Request& reque
 void ServiceHubApi::search_service_hubs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -342,7 +334,7 @@ void ServiceHubApi::search_service_hubs_handler(const Pistache::Rest::Request& r
 
 
 
-            this->search_service_hubs(version, sortField, descending, start, limit, activeOnly, keyword, retailerId, response);
+            this->search_service_hubs(sortField, descending, start, limit, activeOnly, keyword, retailerId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

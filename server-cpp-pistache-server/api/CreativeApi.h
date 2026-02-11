@@ -92,17 +92,15 @@ private:
     /// <remarks>
     /// Enable this ad for preview for this account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account</param>
     /// <param name="creativeId">The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.</param>
-    virtual void add_preview( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_preview( const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Find Missions
     /// </summary>
     /// <remarks>
     /// Get a set of ad filtered by the parameters provided.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.</param>
     /// <param name="randomize">return a random set of results, default is true. If false returns in nature order.</param>
     /// <param name="targetedAdsOnly">return only ads targets to the specific app, no global ads.</param>
@@ -119,14 +117,13 @@ private:
     /// <param name="includeAudiences">If true then return the audience data in the response. Default is false. (optional, default to false)</param>
     /// <param name="allocatesTickets">If true/false only return missions whose game levels allocate (or don&#39;t allocate) tickets. Do not provide a value to return both. (optional, default to false)</param>
     /// <param name="missionIds">return only ads from the specified campaigns. (optional, default to &quot;&quot;)</param>
-    virtual void ads_find( const double &version, const std::optional<std::string> &appKey, const std::optional<bool> &randomize, const std::optional<bool> &targetedAdsOnly, const std::optional<std::string> &type, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &device, const std::optional<int64_t> &deviceIdentifier, const std::optional<std::string> &deviceVersion, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeAudiences, const std::optional<bool> &allocatesTickets, const std::optional<std::string> &missionIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ads_find( const std::optional<std::string> &appKey, const std::optional<bool> &randomize, const std::optional<bool> &targetedAdsOnly, const std::optional<std::string> &type, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &device, const std::optional<int64_t> &deviceIdentifier, const std::optional<std::string> &deviceVersion, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeAudiences, const std::optional<bool> &allocatesTickets, const std::optional<std::string> &missionIds, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Creative
     /// </summary>
     /// <remarks>
     /// Create a creative
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the level.</param>
     /// <param name="active">If true set the game level as active. Default is false.</param>
@@ -142,58 +139,53 @@ private:
     /// <param name="appVersion">The version of the application, will not return creatives newer than the appVersion. Only used when requesting application configuration creatives. (optional, default to &quot;&quot;)</param>
     /// <param name="missionId">Assign the creative to a campaign for timing and audience matching. (optional, default to 0L)</param>
     /// <param name="offerId">the id of the offer (optional, default to 0L)</param>
-    virtual void create_creative( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, const std::optional<bool> &waitForAsset, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_creative( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, const std::optional<bool> &waitForAsset, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Creative
     /// </summary>
     /// <remarks>
     /// Delete a creative
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="creativeId">the id of the creative to delete</param>
-    virtual void delete_creative( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_creative( const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Creative
     /// </summary>
     /// <remarks>
     /// Get a creative
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="creativeId">the ID of the creative to get</param>
-    virtual void get_creative( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_creative( const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Creatives
     /// </summary>
     /// <remarks>
     /// Get a list of levels for an application, just those the account has permissions to view.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">the application key</param>
     /// <param name="start">Start the result set at some index.</param>
     /// <param name="limit">Limit the result to some number.</param>
     /// <param name="missionId">Creatives contained in the provided mission. (optional, default to 0L)</param>
     /// <param name="keyword">Match the keyword to the owner name or level name. (optional, default to &quot;&quot;)</param>
-    virtual void get_creatives_by_application( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &missionId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_creatives_by_application( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &missionId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove Preview
     /// </summary>
     /// <remarks>
     /// Remove this ad for preview for this account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the ID of the logged in user</param>
     /// <param name="creativeId">the ID of the creative to remove preview</param>
-    virtual void remove_preview( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_preview( const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Creative
     /// </summary>
     /// <remarks>
     /// Update a creative
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="creativeId">the creative Id to upate.</param>
     /// <param name="name">The name of the level. (optional, default to &quot;&quot;)</param>
@@ -208,7 +200,7 @@ private:
     /// <param name="referenceId">if creative related so some other content provided the id (optional, default to 0L)</param>
     /// <param name="appVersion">The version of the application, will not return creatives newer than the appVersion. Only used when requesting application configuration creatives. (optional, default to &quot;&quot;)</param>
     /// <param name="missionId">Assign the creative to a campaign for timing and audience matching. (optional, default to 0L)</param>
-    virtual void update_creative( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_creative( const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -29,19 +29,19 @@ FilterApiImpl::FilterApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void FilterApiImpl::create_filter(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) {
+void FilterApiImpl::create_filter(const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FilterApiImpl::delete_filter(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) {
+void FilterApiImpl::delete_filter(const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FilterApiImpl::get_filter(const double &version, const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) {
+void FilterApiImpl::get_filter(const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FilterApiImpl::search_filters(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &responseGroup, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
+void FilterApiImpl::search_filters(const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &responseGroup, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FilterApiImpl::update_filter(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) {
+void FilterApiImpl::update_filter(const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

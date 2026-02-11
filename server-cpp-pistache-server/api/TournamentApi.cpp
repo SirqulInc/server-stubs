@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TournamentApi::base = "";
+const std::string TournamentApi::base = "/api/3.18";
 
 TournamentApi::TournamentApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,16 +32,16 @@ void TournamentApi::init() {
 void TournamentApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/tournament/create", Routes::bind(&TournamentApi::create_tournament_handler, this));
-    Routes::Post(*router, base + "/api/:version/tournament/delete", Routes::bind(&TournamentApi::delete_tournament_handler, this));
-    Routes::Get(*router, base + "/api/:version/tournament/get", Routes::bind(&TournamentApi::get_tournament_handler, this));
-    Routes::Get(*router, base + "/api/:version/tournament/object/search", Routes::bind(&TournamentApi::search_objects_handler, this));
-    Routes::Get(*router, base + "/api/:version/tournament/round/search", Routes::bind(&TournamentApi::search_rounds_handler, this));
-    Routes::Get(*router, base + "/api/:version/tournament/search", Routes::bind(&TournamentApi::search_tournaments_handler, this));
-    Routes::Post(*router, base + "/api/:version/tournament/score", Routes::bind(&TournamentApi::submit_tournament_score_handler, this));
-    Routes::Post(*router, base + "/api/:version/tournament/vote", Routes::bind(&TournamentApi::submit_tournament_vote_handler, this));
-    Routes::Post(*router, base + "/api/:version/tournament/substitute", Routes::bind(&TournamentApi::substitute_tournament_player_handler, this));
-    Routes::Post(*router, base + "/api/:version/tournament/update", Routes::bind(&TournamentApi::update_tournament_handler, this));
+    Routes::Post(*router, base + "/tournament/create", Routes::bind(&TournamentApi::create_tournament_handler, this));
+    Routes::Post(*router, base + "/tournament/delete", Routes::bind(&TournamentApi::delete_tournament_handler, this));
+    Routes::Get(*router, base + "/tournament/get", Routes::bind(&TournamentApi::get_tournament_handler, this));
+    Routes::Get(*router, base + "/tournament/object/search", Routes::bind(&TournamentApi::search_objects_handler, this));
+    Routes::Get(*router, base + "/tournament/round/search", Routes::bind(&TournamentApi::search_rounds_handler, this));
+    Routes::Get(*router, base + "/tournament/search", Routes::bind(&TournamentApi::search_tournaments_handler, this));
+    Routes::Post(*router, base + "/tournament/score", Routes::bind(&TournamentApi::submit_tournament_score_handler, this));
+    Routes::Post(*router, base + "/tournament/vote", Routes::bind(&TournamentApi::submit_tournament_vote_handler, this));
+    Routes::Post(*router, base + "/tournament/substitute", Routes::bind(&TournamentApi::substitute_tournament_player_handler, this));
+    Routes::Post(*router, base + "/tournament/update", Routes::bind(&TournamentApi::update_tournament_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TournamentApi::tournament_api_default_handler, this));
@@ -76,8 +76,6 @@ std::pair<Pistache::Http::Code, std::string> TournamentApi::handleOperationExcep
 void TournamentApi::create_tournament_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -370,7 +368,7 @@ void TournamentApi::create_tournament_handler(const Pistache::Rest::Request& req
 
 
 
-            this->create_tournament(version, accountId, appKey, title, costToPlay, startDate, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, missionType, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag, response);
+            this->create_tournament(accountId, appKey, title, costToPlay, startDate, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, missionType, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -389,8 +387,6 @@ void TournamentApi::create_tournament_handler(const Pistache::Rest::Request& req
 void TournamentApi::delete_tournament_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -419,7 +415,7 @@ void TournamentApi::delete_tournament_handler(const Pistache::Rest::Request& req
 
 
 
-            this->delete_tournament(version, accountId, missionId, response);
+            this->delete_tournament(accountId, missionId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -438,8 +434,6 @@ void TournamentApi::delete_tournament_handler(const Pistache::Rest::Request& req
 void TournamentApi::get_tournament_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -492,7 +486,7 @@ void TournamentApi::get_tournament_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->get_tournament(version, accountId, missionId, joinCode, includeScores, objectPreviewSize, response);
+            this->get_tournament(accountId, missionId, joinCode, includeScores, objectPreviewSize, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -511,8 +505,6 @@ void TournamentApi::get_tournament_handler(const Pistache::Rest::Request& reques
 void TournamentApi::search_objects_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -573,7 +565,7 @@ void TournamentApi::search_objects_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->search_objects(version, accountId, gameLevelId, sortField, descending, start, limit, response);
+            this->search_objects(accountId, gameLevelId, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -592,8 +584,6 @@ void TournamentApi::search_objects_handler(const Pistache::Rest::Request& reques
 void TournamentApi::search_rounds_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -670,7 +660,7 @@ void TournamentApi::search_rounds_handler(const Pistache::Rest::Request& request
 
 
 
-            this->search_rounds(version, accountId, appKey, status, missionType, currentOnly, visibilities, start, limit, response);
+            this->search_rounds(accountId, appKey, status, missionType, currentOnly, visibilities, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -689,8 +679,6 @@ void TournamentApi::search_rounds_handler(const Pistache::Rest::Request& request
 void TournamentApi::search_tournaments_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -799,7 +787,7 @@ void TournamentApi::search_tournaments_handler(const Pistache::Rest::Request& re
 
 
 
-            this->search_tournaments(version, accountId, appKey, keyword, subType, includeInactive, missionTypes, filter, sortField, descending, visibility, start, limit, response);
+            this->search_tournaments(accountId, appKey, keyword, subType, includeInactive, missionTypes, filter, sortField, descending, visibility, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -818,8 +806,6 @@ void TournamentApi::search_tournaments_handler(const Pistache::Rest::Request& re
 void TournamentApi::submit_tournament_score_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -888,7 +874,7 @@ void TournamentApi::submit_tournament_score_handler(const Pistache::Rest::Reques
 
 
 
-            this->submit_tournament_score(version, accountId, appKey, missionId, gameId, packId, scores, gameLevelId, response);
+            this->submit_tournament_score(accountId, appKey, missionId, gameId, packId, scores, gameLevelId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -907,8 +893,6 @@ void TournamentApi::submit_tournament_score_handler(const Pistache::Rest::Reques
 void TournamentApi::submit_tournament_vote_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -969,7 +953,7 @@ void TournamentApi::submit_tournament_vote_handler(const Pistache::Rest::Request
 
 
 
-            this->submit_tournament_vote(version, accountId, appKey, missionId, gameObjectId, deviceId, checkIfDeviceAlreadyVoted, response);
+            this->submit_tournament_vote(accountId, appKey, missionId, gameObjectId, deviceId, checkIfDeviceAlreadyVoted, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -988,8 +972,6 @@ void TournamentApi::submit_tournament_vote_handler(const Pistache::Rest::Request
 void TournamentApi::substitute_tournament_player_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1034,7 +1016,7 @@ void TournamentApi::substitute_tournament_player_handler(const Pistache::Rest::R
 
 
 
-            this->substitute_tournament_player(version, accountId, missionId, packId, gameLevelId, response);
+            this->substitute_tournament_player(accountId, missionId, packId, gameLevelId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1053,8 +1035,6 @@ void TournamentApi::substitute_tournament_player_handler(const Pistache::Rest::R
 void TournamentApi::update_tournament_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1339,7 +1319,7 @@ void TournamentApi::update_tournament_handler(const Pistache::Rest::Request& req
 
 
 
-            this->update_tournament(version, accountId, missionId, title, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlay, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, startDate, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag, response);
+            this->update_tournament(accountId, missionId, title, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlay, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, startDate, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

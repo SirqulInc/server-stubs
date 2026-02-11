@@ -29,7 +29,7 @@ SimulationApiImpl::SimulationApiImpl(const std::shared_ptr<Pistache::Rest::Route
 
 }
 
-void SimulationApiImpl::simulation(const double &version, const std::optional<std::string> &data, const std::optional<bool> &realTime, Pistache::Http::ResponseWriter &response) {
+void SimulationApiImpl::simulation(const std::optional<std::string> &data, const std::optional<bool> &realTime, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

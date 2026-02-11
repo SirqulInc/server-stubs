@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string InviteApi::base = "";
+const std::string InviteApi::base = "/api/3.18";
 
 InviteApi::InviteApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,16 +32,16 @@ void InviteApi::init() {
 void InviteApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/invite/accept", Routes::bind(&InviteApi::accept_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/albumContest", Routes::bind(&InviteApi::album_contest_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/album", Routes::bind(&InviteApi::album_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/event", Routes::bind(&InviteApi::event_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/gameLevel", Routes::bind(&InviteApi::game_invite_handler, this));
-    Routes::Get(*router, base + "/api/:version/invite/get", Routes::bind(&InviteApi::get_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/mission", Routes::bind(&InviteApi::mission_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/offer", Routes::bind(&InviteApi::offer_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/offerLocation", Routes::bind(&InviteApi::offer_location_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/invite/retailerLocation", Routes::bind(&InviteApi::retailer_location_invite_handler, this));
+    Routes::Post(*router, base + "/invite/accept", Routes::bind(&InviteApi::accept_invite_handler, this));
+    Routes::Post(*router, base + "/invite/albumContest", Routes::bind(&InviteApi::album_contest_invite_handler, this));
+    Routes::Post(*router, base + "/invite/album", Routes::bind(&InviteApi::album_invite_handler, this));
+    Routes::Post(*router, base + "/invite/event", Routes::bind(&InviteApi::event_invite_handler, this));
+    Routes::Post(*router, base + "/invite/gameLevel", Routes::bind(&InviteApi::game_invite_handler, this));
+    Routes::Get(*router, base + "/invite/get", Routes::bind(&InviteApi::get_invite_handler, this));
+    Routes::Post(*router, base + "/invite/mission", Routes::bind(&InviteApi::mission_invite_handler, this));
+    Routes::Post(*router, base + "/invite/offer", Routes::bind(&InviteApi::offer_invite_handler, this));
+    Routes::Post(*router, base + "/invite/offerLocation", Routes::bind(&InviteApi::offer_location_invite_handler, this));
+    Routes::Post(*router, base + "/invite/retailerLocation", Routes::bind(&InviteApi::retailer_location_invite_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&InviteApi::invite_api_default_handler, this));
@@ -76,8 +76,6 @@ std::pair<Pistache::Http::Code, std::string> InviteApi::handleOperationException
 void InviteApi::accept_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -202,7 +200,7 @@ void InviteApi::accept_invite_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->accept_invite(version, token, accountId, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, autoFriend, autoAttendEvent, autoFavoriteOffer, autoFavoriteOfferLocation, autoFavoriteRetailerLocation, response);
+            this->accept_invite(token, accountId, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, autoFriend, autoAttendEvent, autoFavoriteOffer, autoFavoriteOfferLocation, autoFavoriteRetailerLocation, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -221,8 +219,6 @@ void InviteApi::accept_invite_handler(const Pistache::Rest::Request& request, Pi
 void InviteApi::album_contest_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -291,7 +287,7 @@ void InviteApi::album_contest_invite_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->album_contest_invite(version, deviceId, accountId, appId, appKey, albumContestId, latitude, longitude, response);
+            this->album_contest_invite(deviceId, accountId, appId, appKey, albumContestId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -310,8 +306,6 @@ void InviteApi::album_contest_invite_handler(const Pistache::Rest::Request& requ
 void InviteApi::album_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -380,7 +374,7 @@ void InviteApi::album_invite_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->album_invite(version, deviceId, accountId, appId, appKey, albumId, latitude, longitude, response);
+            this->album_invite(deviceId, accountId, appId, appKey, albumId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -399,8 +393,6 @@ void InviteApi::album_invite_handler(const Pistache::Rest::Request& request, Pis
 void InviteApi::event_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -453,7 +445,7 @@ void InviteApi::event_invite_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->event_invite(version, accountId, appKey, listingId, receiverAccountIds, retailerLocationId, response);
+            this->event_invite(accountId, appKey, listingId, receiverAccountIds, retailerLocationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -472,8 +464,6 @@ void InviteApi::event_invite_handler(const Pistache::Rest::Request& request, Pis
 void InviteApi::game_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -542,7 +532,7 @@ void InviteApi::game_invite_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->game_invite(version, deviceId, accountId, appId, appKey, gameLevelId, latitude, longitude, response);
+            this->game_invite(deviceId, accountId, appId, appKey, gameLevelId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -561,8 +551,6 @@ void InviteApi::game_invite_handler(const Pistache::Rest::Request& request, Pist
 void InviteApi::get_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -647,7 +635,7 @@ void InviteApi::get_invite_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->get_invite(version, accountId, token, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, response);
+            this->get_invite(accountId, token, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -666,8 +654,6 @@ void InviteApi::get_invite_handler(const Pistache::Rest::Request& request, Pista
 void InviteApi::mission_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -736,7 +722,7 @@ void InviteApi::mission_invite_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->mission_invite(version, deviceId, accountId, appId, appKey, missionId, latitude, longitude, response);
+            this->mission_invite(deviceId, accountId, appId, appKey, missionId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -755,8 +741,6 @@ void InviteApi::mission_invite_handler(const Pistache::Rest::Request& request, P
 void InviteApi::offer_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -793,7 +777,7 @@ void InviteApi::offer_invite_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->offer_invite(version, accountId, appKey, offerId, response);
+            this->offer_invite(accountId, appKey, offerId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -812,8 +796,6 @@ void InviteApi::offer_invite_handler(const Pistache::Rest::Request& request, Pis
 void InviteApi::offer_location_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -850,7 +832,7 @@ void InviteApi::offer_location_invite_handler(const Pistache::Rest::Request& req
 
 
 
-            this->offer_location_invite(version, accountId, appKey, offerLocationId, response);
+            this->offer_location_invite(accountId, appKey, offerLocationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -869,8 +851,6 @@ void InviteApi::offer_location_invite_handler(const Pistache::Rest::Request& req
 void InviteApi::retailer_location_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -915,7 +895,7 @@ void InviteApi::retailer_location_invite_handler(const Pistache::Rest::Request& 
 
 
 
-            this->retailer_location_invite(version, accountId, appKey, retailerLocationId, albumId, response);
+            this->retailer_location_invite(accountId, appKey, retailerLocationId, albumId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

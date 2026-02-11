@@ -97,7 +97,6 @@ private:
     /// <remarks>
     /// This endpoint creates a third-party login for a Sirqul account. A third party login is a way for external systems (Third Party Networks) to link their own user accounts with a Sirqul account.   The thirdPartyId parameter is used to determine if the user already exists in Sirqul or not. This parameter needs to be unique for each user in the Third Party Network (identified by the networkUID parameter). Note that subsequent calls will update the user&#39;s third-party login credentials for the user with the same thirdPartyId and networkUID combination.    The thirdPartyToken parameter acts as a shared secret and used by client applications to log users into Sirqul without providing a Sirqul username and password. 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="thirdPartyId">the third party user account id</param>
     /// <param name="thirdPartyToken">the access token to authenticate with (ex: username or fb token or phone number)</param>
     /// <param name="networkUID">the access provider to authenticate against</param>
@@ -115,7 +114,7 @@ private:
     /// <param name="thirdPartyRefreshToken">optional refresh token for the third party (optional, default to &quot;&quot;)</param>
     /// <param name="audienceIdsToAdd">audience ids to add to the account (optional, default to &quot;&quot;)</param>
     /// <param name="audienceIdsToRemove">audience ids to remove from the account (optional, default to &quot;&quot;)</param>
-    virtual void create_credential( const double &version, const std::optional<std::string> &thirdPartyId, const std::optional<std::string> &thirdPartyToken, const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<std::string> &deviceId, const std::optional<std::string> &sessionId, const std::optional<std::string> &thirdPartyName, const std::optional<std::string> &emailAddress, const std::optional<bool> &signinOnlyMode, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &metaData, const std::optional<std::string> &thirdPartyRefreshToken, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &audienceIdsToRemove, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_credential( const std::optional<std::string> &thirdPartyId, const std::optional<std::string> &thirdPartyToken, const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<std::string> &deviceId, const std::optional<std::string> &sessionId, const std::optional<std::string> &thirdPartyName, const std::optional<std::string> &emailAddress, const std::optional<bool> &signinOnlyMode, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &metaData, const std::optional<std::string> &thirdPartyRefreshToken, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &audienceIdsToRemove, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Network
     /// </summary>
@@ -129,29 +128,26 @@ private:
     /// <remarks>
     /// Delete a third party network on a Sirqul account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
     /// <param name="networkUID">The third party network identifier</param>
     /// <param name="thirdPartyId">The third party user id</param>
     /// <param name="appKey">the application key</param>
-    virtual void delete_credential( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &networkUID, const std::optional<std::string> &thirdPartyId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_credential( const std::optional<int64_t> &accountId, const std::optional<std::string> &networkUID, const std::optional<std::string> &thirdPartyId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Network
     /// </summary>
     /// <remarks>
     /// Marks a custom third party network as deleted. Only the network owners and managers have access to this.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="networkUID">The unique identifier for the third party network defined by Sirqul</param>
-    virtual void delete_network( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &networkUID, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_network( const std::optional<int64_t> &accountId, const std::optional<std::string> &networkUID, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Credential
     /// </summary>
     /// <remarks>
     /// Gets the account information given a third party token.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="networkUID">the access provider to authenticate against</param>
     /// <param name="appKey">the application key</param>
     /// <param name="accountId">the unique account id of a specific account that will be bound to the third-party credentials (optional, default to 0L)</param>
@@ -167,38 +163,35 @@ private:
     /// <param name="audienceIdsToAdd">audience ids to add to the account (optional, default to &quot;&quot;)</param>
     /// <param name="audienceIdsToRemove">audience ids to remove from the account (optional, default to &quot;&quot;)</param>
     /// <param name="referralAccountId">account id of the referrer (inviter-invitee relationship) (optional, default to 0L)</param>
-    virtual void get_credential( const double &version, const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<std::string> &deviceId, const std::optional<std::string> &sessionId, const std::optional<int64_t> &thirdPartyCredentialId, const std::optional<std::string> &thirdPartyToken, const std::optional<std::string> &thirdPartySecret, const std::optional<bool> &createNewAccount, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &audienceIdsToRemove, const std::optional<int64_t> &referralAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_credential( const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<std::string> &deviceId, const std::optional<std::string> &sessionId, const std::optional<int64_t> &thirdPartyCredentialId, const std::optional<std::string> &thirdPartyToken, const std::optional<std::string> &thirdPartySecret, const std::optional<bool> &createNewAccount, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &audienceIdsToRemove, const std::optional<int64_t> &referralAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Network
     /// </summary>
     /// <remarks>
     /// Get the details of a third party network. Only the network owners and managers have access to this.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id making the request</param>
     /// <param name="networkUID">The unique identifier for the third party network defined by Sirqul</param>
-    virtual void get_network( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &networkUID, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_network( const std::optional<int64_t> &accountId, const std::optional<std::string> &networkUID, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Credentials
     /// </summary>
     /// <remarks>
     /// Search on a user&#39;s linked third party networks.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
     /// <param name="keyword">The keyword used to search on the third party name and network string (optional, default to &quot;&quot;)</param>
     /// <param name="networkUID">The network UID to filter results with (optional, default to &quot;&quot;)</param>
     /// <param name="descending">The order to return the search results (optional, default to false)</param>
     /// <param name="start">The start of the pagination (optional, default to 0)</param>
     /// <param name="limit">The limit of the pagination (optional, default to 20)</param>
-    virtual void search_credentials( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &networkUID, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_credentials( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &networkUID, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Networks
     /// </summary>
     /// <remarks>
     /// Search on supported third party networks and custom networks from external users.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id making the request</param>
     /// <param name="sortField">The column to sort the search on, possible values include: UPDATED (default), CREATED, NAME</param>
     /// <param name="descending">The order to return the search results</param>
@@ -207,27 +200,25 @@ private:
     /// <param name="activeOnly">Return only active results</param>
     /// <param name="keyword">The keyword used to search on the network name and description fields (optional, default to &quot;&quot;)</param>
     /// <param name="filterBillable">Determines whether to only return applications that the user has access to (optional, default to false)</param>
-    virtual void search_networks( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<bool> &filterBillable, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_networks( const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<bool> &filterBillable, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Send MFA Challenge
     /// </summary>
     /// <remarks>
     /// Sends an MFA challenge (SMS or Email) for networks with MFA enabled.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="networkUID">the third party network provider that has MFA enabled</param>
     /// <param name="appKey">the application key</param>
     /// <param name="thirdPartyToken">the access token to authenticate with (optional, default to &quot;&quot;)</param>
     /// <param name="thirdPartyCredentialId">optional id of the existing third party credential (optional, default to 0L)</param>
     /// <param name="deviceId">the unique id of the device making the request (optional, default to &quot;&quot;)</param>
-    virtual void send_mfa_challenge( const double &version, const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<std::string> &thirdPartyToken, const std::optional<int64_t> &thirdPartyCredentialId, const std::optional<std::string> &deviceId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void send_mfa_challenge( const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<std::string> &thirdPartyToken, const std::optional<int64_t> &thirdPartyCredentialId, const std::optional<std::string> &deviceId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Credential
     /// </summary>
     /// <remarks>
     /// Updates a third-party login for an account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="networkUID">the access provider to authenticate against</param>
     /// <param name="thirdPartyId">the third party user account id</param>
     /// <param name="appKey">the application key</param>
@@ -237,7 +228,7 @@ private:
     /// <param name="responseFilters">this determines how much of the profile should be returned, see ProfileFilters (optional, default to &quot;&quot;)</param>
     /// <param name="metaData">External custom client defined data (optional, default to &quot;&quot;)</param>
     /// <param name="thirdPartyRefreshToken">optional refresh token for the third party (optional, default to &quot;&quot;)</param>
-    virtual void update_credential( const double &version, const std::optional<std::string> &networkUID, const std::optional<std::string> &thirdPartyId, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<std::string> &thirdPartyName, const std::optional<std::string> &thirdPartyToken, const std::optional<std::string> &responseFilters, const std::optional<std::string> &metaData, const std::optional<std::string> &thirdPartyRefreshToken, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_credential( const std::optional<std::string> &networkUID, const std::optional<std::string> &thirdPartyId, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<std::string> &thirdPartyName, const std::optional<std::string> &thirdPartyToken, const std::optional<std::string> &responseFilters, const std::optional<std::string> &metaData, const std::optional<std::string> &thirdPartyRefreshToken, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Network
     /// </summary>

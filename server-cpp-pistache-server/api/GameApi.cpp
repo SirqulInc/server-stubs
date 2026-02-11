@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string GameApi::base = "";
+const std::string GameApi::base = "/api/3.18";
 
 GameApi::GameApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void GameApi::init() {
 void GameApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/game/create", Routes::bind(&GameApi::create_game_handler, this));
-    Routes::Post(*router, base + "/api/:version/game/delete", Routes::bind(&GameApi::delete_game_handler, this));
-    Routes::Get(*router, base + "/api/:version/game/get", Routes::bind(&GameApi::get_game_handler, this));
-    Routes::Get(*router, base + "/api/:version/game/search", Routes::bind(&GameApi::search_games_handler, this));
-    Routes::Post(*router, base + "/api/:version/game/update", Routes::bind(&GameApi::update_game_handler, this));
+    Routes::Post(*router, base + "/game/create", Routes::bind(&GameApi::create_game_handler, this));
+    Routes::Post(*router, base + "/game/delete", Routes::bind(&GameApi::delete_game_handler, this));
+    Routes::Get(*router, base + "/game/get", Routes::bind(&GameApi::get_game_handler, this));
+    Routes::Get(*router, base + "/game/search", Routes::bind(&GameApi::search_games_handler, this));
+    Routes::Post(*router, base + "/game/update", Routes::bind(&GameApi::update_game_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&GameApi::game_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> GameApi::handleOperationException(c
 void GameApi::create_game_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -141,7 +139,7 @@ void GameApi::create_game_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create_game(version, accountId, appKey, title, description, metaData, packIds, includeGameData, response);
+            this->create_game(accountId, appKey, title, description, metaData, packIds, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -160,8 +158,6 @@ void GameApi::create_game_handler(const Pistache::Rest::Request& request, Pistac
 void GameApi::delete_game_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -190,7 +186,7 @@ void GameApi::delete_game_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->delete_game(version, accountId, gameId, response);
+            this->delete_game(accountId, gameId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -209,8 +205,6 @@ void GameApi::delete_game_handler(const Pistache::Rest::Request& request, Pistac
 void GameApi::get_game_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -247,7 +241,7 @@ void GameApi::get_game_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_game(version, accountId, gameId, includeGameData, response);
+            this->get_game(accountId, gameId, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -266,8 +260,6 @@ void GameApi::get_game_handler(const Pistache::Rest::Request& request, Pistache:
 void GameApi::search_games_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -344,7 +336,7 @@ void GameApi::search_games_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->search_games(version, accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive, response);
+            this->search_games(accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -363,8 +355,6 @@ void GameApi::search_games_handler(const Pistache::Rest::Request& request, Pista
 void GameApi::update_game_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -441,7 +431,7 @@ void GameApi::update_game_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->update_game(version, accountId, gameId, appKey, title, description, metaData, packIds, includeGameData, response);
+            this->update_game(accountId, gameId, appKey, title, description, metaData, packIds, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

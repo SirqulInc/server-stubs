@@ -89,13 +89,12 @@ private:
     /// <remarks>
     /// Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE). 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="notableId">The id of the notable object the batch operation will affect</param>
     /// <param name="notableType">The notable object type (for example ALBUM, ASSET, OFFER, etc.)</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="batchOperation">The batch operation to perform (e.g., DELETE_ALL_NOTES_IN_NOTABLE). Optional. (optional, default to &quot;&quot;)</param>
-    virtual void batch_operation( const double &version, const std::optional<int64_t> &notableId, const std::optional<std::string> &notableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &batchOperation, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void batch_operation( const std::optional<int64_t> &notableId, const std::optional<std::string> &notableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &batchOperation, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Note
     /// </summary>
@@ -109,33 +108,30 @@ private:
     /// <remarks>
     /// Sets a comment (note) as deleted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="noteId">The ID of the note to delete</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="appKey">The application key used to identify the application (optional, default to &quot;&quot;)</param>
-    virtual void delete_note( const double &version, const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_note( const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Note
     /// </summary>
     /// <remarks>
     /// Get for a note based on its Id.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="noteId">the id of the note to get</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="returnFullResponse">Determines whether to return the NoteFullResponse for the item (optional, default to false)</param>
-    virtual void get_note( const double &version, const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &returnFullResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_note( const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &returnFullResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Notes
     /// </summary>
     /// <remarks>
     /// Search for notes on a notable object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="notableType">The notable object type {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, OFFER, OFFER_LOCATION, RETAILER, RETAILER_LOCATION, THEME_DESCRIPTOR} (optional, default to &quot;&quot;)</param>
@@ -153,7 +149,7 @@ private:
     /// <param name="updatedBefore">return items that have been updated before this date (time-stamp in milliseconds) (optional, default to 0L)</param>
     /// <param name="start">The record to begin the return set on (optional, default to 0)</param>
     /// <param name="limit">The number of records to return (optional, default to 0)</param>
-    virtual void search_notes( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &notableType, const std::optional<int64_t> &notableId, const std::optional<std::string> &noteTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &flagsExceedThreshold, const std::optional<bool> &includeInactive, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &returnFullResponse, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_notes( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &notableType, const std::optional<int64_t> &notableId, const std::optional<std::string> &noteTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &flagsExceedThreshold, const std::optional<bool> &includeInactive, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &returnFullResponse, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Note
     /// </summary>

@@ -91,20 +91,18 @@ private:
     /// <remarks>
     /// Gets the ticket count.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the id of the device that owns the tickets (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the account that owns the tickets (optional, default to 0L)</param>
     /// <param name="gameType">this is deprecated. (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the applicationkey (optional, default to &quot;&quot;)</param>
     /// <param name="ticketType">the type of ticket (optional, default to &quot;&quot;)</param>
-    virtual void get_ticket_count( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &ticketType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_ticket_count( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &ticketType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Ticket List
     /// </summary>
     /// <remarks>
     /// Gets the list of tickets.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the id of the device that owns the tickets (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the account that owns the tickets (optional, default to 0L)</param>
     /// <param name="ticketObjectType">comma separated list of TicketObjectType (optional, default to &quot;&quot;)</param>
@@ -114,14 +112,13 @@ private:
     /// <param name="receiptTokens"> (optional, default to &quot;&quot;)</param>
     /// <param name="gameType"> (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
-    virtual void get_ticket_list( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &ticketObjectType, const std::optional<std::string> &actionType, const std::optional<std::string> &ticketIds, const std::optional<std::string> &objectIds, const std::optional<std::string> &receiptTokens, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_ticket_list( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &ticketObjectType, const std::optional<std::string> &actionType, const std::optional<std::string> &ticketIds, const std::optional<std::string> &objectIds, const std::optional<std::string> &receiptTokens, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Gift Tickets
     /// </summary>
     /// <remarks>
     /// Gift tickets to another user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="receiverAccountId">the id of the account receiving the tickets</param>
     /// <param name="ticketId">the id of the tickets</param>
     /// <param name="deviceId">the id of the device (optional, default to &quot;&quot;)</param>
@@ -130,14 +127,13 @@ private:
     /// <param name="customMessage">a message that can be written to go along with the gift (optional, default to &quot;&quot;)</param>
     /// <param name="gameType">the type of game associated with the tickets (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
-    virtual void gift_purchase( const double &version, const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &ticketId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assetId, const std::optional<std::string> &customMessage, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void gift_purchase( const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &ticketId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assetId, const std::optional<std::string> &customMessage, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Save Ticket
     /// </summary>
     /// <remarks>
     /// Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="actionType">the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER</param>
     /// <param name="ticketObjectType">the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM</param>
     /// <param name="returnNulls">whether to return nulls or not (optional, default to false)</param>
@@ -156,7 +152,7 @@ private:
     /// <param name="returnProfileResponse">returns a ProfileResponse if true, otherwise will return an AppResponse (optional, default to false)</param>
     /// <param name="includeProfileResponse">if returnProfileResponse is false, will return an AppResponse with profile data if true (optional, default to false)</param>
     /// <param name="appVersion">the application version (optional, default to &quot;&quot;)</param>
-    virtual void save_ticket( const double &version, const std::optional<std::string> &actionType, const std::optional<std::string> &ticketObjectType, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<int64_t> &objectId, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &receiptToken, const std::optional<std::string> &receiptData, const std::optional<int64_t> &count, const std::optional<std::string> &ticketType, const std::optional<std::string> &purchaseProvider, const std::optional<std::string> &purchaseType, const std::optional<bool> &returnProfileResponse, const std::optional<bool> &includeProfileResponse, const std::optional<std::string> &appVersion, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void save_ticket( const std::optional<std::string> &actionType, const std::optional<std::string> &ticketObjectType, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<int64_t> &objectId, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &receiptToken, const std::optional<std::string> &receiptData, const std::optional<int64_t> &count, const std::optional<std::string> &ticketType, const std::optional<std::string> &purchaseProvider, const std::optional<std::string> &purchaseType, const std::optional<bool> &returnProfileResponse, const std::optional<bool> &includeProfileResponse, const std::optional<std::string> &appVersion, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Save Ticket with Reciept
     /// </summary>
@@ -170,8 +166,7 @@ private:
     /// <remarks>
     /// Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.
     /// </remarks>
-    /// <param name="version"></param>
-    virtual void ticket_offers( const double &version, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ticket_offers( Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

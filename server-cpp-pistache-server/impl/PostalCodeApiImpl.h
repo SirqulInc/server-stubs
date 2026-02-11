@@ -44,11 +44,11 @@ public:
     explicit PostalCodeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~PostalCodeApiImpl() override = default;
 
-    void create_postal_code(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
-    void delete_postal_code(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response);
-    void get_postal_code(const double &version, const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response);
-    void get_postal_codes(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, const std::optional<double> &miles, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
-    void update_postal_code(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
+    void create_postal_code(const std::optional<int64_t> &accountId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
+    void delete_postal_code(const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response);
+    void get_postal_code(const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response);
+    void get_postal_codes(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, const std::optional<double> &miles, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
+    void update_postal_code(const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
 
 };
 

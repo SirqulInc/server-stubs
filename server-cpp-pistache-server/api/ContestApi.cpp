@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ContestApi::base = "";
+const std::string ContestApi::base = "/api/3.18";
 
 ContestApi::ContestApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ContestApi::init() {
 void ContestApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/consumer/album/contest", Routes::bind(&ContestApi::add_or_update_album_contest_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/album/contest/approve", Routes::bind(&ContestApi::approve_album_contest_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/album/contest/remove", Routes::bind(&ContestApi::delete_contest_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/album/contest/get", Routes::bind(&ContestApi::get_album_contest_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/album/contest/search", Routes::bind(&ContestApi::get_album_contests_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/album/contest/vote", Routes::bind(&ContestApi::vote_on_album_contest_handler, this));
+    Routes::Post(*router, base + "/consumer/album/contest", Routes::bind(&ContestApi::add_or_update_album_contest_handler, this));
+    Routes::Post(*router, base + "/consumer/album/contest/approve", Routes::bind(&ContestApi::approve_album_contest_handler, this));
+    Routes::Post(*router, base + "/consumer/album/contest/remove", Routes::bind(&ContestApi::delete_contest_handler, this));
+    Routes::Get(*router, base + "/consumer/album/contest/get", Routes::bind(&ContestApi::get_album_contest_handler, this));
+    Routes::Get(*router, base + "/consumer/album/contest/search", Routes::bind(&ContestApi::get_album_contests_handler, this));
+    Routes::Post(*router, base + "/consumer/album/contest/vote", Routes::bind(&ContestApi::vote_on_album_contest_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ContestApi::contest_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ContestApi::handleOperationExceptio
 void ContestApi::add_or_update_album_contest_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -286,7 +284,7 @@ void ContestApi::add_or_update_album_contest_handler(const Pistache::Rest::Reque
 
 
 
-            this->add_or_update_album_contest(version, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, deviceId, accountId, gameType, appKey, contestType, albumContestId, title, description, albumId1, removeAlbum1, albumId2, removeAlbum2, startDate, endDate, locationDescription, connectionIdsToAdd, connectionGroupIdsToAdd, latitude, longitude, response);
+            this->add_or_update_album_contest(publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, deviceId, accountId, gameType, appKey, contestType, albumContestId, title, description, albumId1, removeAlbum1, albumId2, removeAlbum2, startDate, endDate, locationDescription, connectionIdsToAdd, connectionGroupIdsToAdd, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -305,8 +303,6 @@ void ContestApi::add_or_update_album_contest_handler(const Pistache::Rest::Reque
 void ContestApi::approve_album_contest_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -351,7 +347,7 @@ void ContestApi::approve_album_contest_handler(const Pistache::Rest::Request& re
 
 
 
-            this->approve_album_contest(version, albumContestId, approvalStatus, deviceId, accountId, response);
+            this->approve_album_contest(albumContestId, approvalStatus, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -370,8 +366,6 @@ void ContestApi::approve_album_contest_handler(const Pistache::Rest::Request& re
 void ContestApi::delete_contest_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -424,7 +418,7 @@ void ContestApi::delete_contest_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_contest(version, albumContestId, deviceId, accountId, latitude, longitude, response);
+            this->delete_contest(albumContestId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -443,8 +437,6 @@ void ContestApi::delete_contest_handler(const Pistache::Rest::Request& request, 
 void ContestApi::get_album_contest_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -497,7 +489,7 @@ void ContestApi::get_album_contest_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->get_album_contest(version, albumContestId, deviceId, accountId, latitude, longitude, response);
+            this->get_album_contest(albumContestId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -516,8 +508,6 @@ void ContestApi::get_album_contest_handler(const Pistache::Rest::Request& reques
 void ContestApi::get_album_contests_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -682,7 +672,7 @@ void ContestApi::get_album_contests_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_album_contests(version, filter, sortField, descending, start, limit, deviceId, accountId, gameType, appKey, appType, contestType, ownerId, q, keyword, i, l, dateCreated, latitude, longitude, response);
+            this->get_album_contests(filter, sortField, descending, start, limit, deviceId, accountId, gameType, appKey, appType, contestType, ownerId, q, keyword, i, l, dateCreated, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -701,8 +691,6 @@ void ContestApi::get_album_contests_handler(const Pistache::Rest::Request& reque
 void ContestApi::vote_on_album_contest_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -771,7 +759,7 @@ void ContestApi::vote_on_album_contest_handler(const Pistache::Rest::Request& re
 
 
 
-            this->vote_on_album_contest(version, albumContestId, albumId, deviceId, accountId, contestType, latitude, longitude, response);
+            this->vote_on_album_contest(albumContestId, albumId, deviceId, accountId, contestType, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -44,11 +44,11 @@ public:
     explicit WordApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~WordApiImpl() override = default;
 
-    void create_word(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &word, const std::optional<std::string> &definition, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<int64_t> &assetId, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response);
-    void delete_word(const double &version, const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_word(const double &version, const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_words(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response);
-    void update_word(const double &version, const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &wordText, const std::optional<std::string> &definition, const std::optional<int64_t> &assetId, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response);
+    void create_word(const std::optional<int64_t> &accountId, const std::optional<std::string> &word, const std::optional<std::string> &definition, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<int64_t> &assetId, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response);
+    void delete_word(const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_word(const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_words(const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response);
+    void update_word(const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &wordText, const std::optional<std::string> &definition, const std::optional<int64_t> &assetId, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response);
 
 };
 

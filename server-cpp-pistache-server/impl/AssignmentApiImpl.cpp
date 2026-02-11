@@ -29,37 +29,37 @@ AssignmentApiImpl::AssignmentApiImpl(const std::shared_ptr<Pistache::Rest::Route
 
 }
 
-void AssignmentApiImpl::assigment_assignee_account_search(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assigment_assignee_account_search(const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_create(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int64_t> &assigneeAccountId, const std::optional<std::string> &description, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_create(const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int64_t> &assigneeAccountId, const std::optional<std::string> &description, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_delete(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_delete(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_get(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_get(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_search(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &creatorAccountId, const std::optional<std::string> &assigneeAccountIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &currentStatusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_search(const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &creatorAccountId, const std::optional<std::string> &assigneeAccountIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &currentStatusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_status_create(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_status_create(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_status_delete(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_status_delete(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_status_get(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_status_get(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_status_search(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &creatorAccountId, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &statusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_status_search(const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &creatorAccountId, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &statusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_status_update(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_status_update(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssignmentApiImpl::assignment_update(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void AssignmentApiImpl::assignment_update(const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

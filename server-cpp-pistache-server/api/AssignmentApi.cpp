@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AssignmentApi::base = "";
+const std::string AssignmentApi::base = "/api/3.18";
 
 AssignmentApi::AssignmentApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,17 +32,17 @@ void AssignmentApi::init() {
 void AssignmentApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/assignment/assignee/search", Routes::bind(&AssignmentApi::assigment_assignee_account_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/assignment/create", Routes::bind(&AssignmentApi::assignment_create_handler, this));
-    Routes::Post(*router, base + "/api/:version/assignment/delete", Routes::bind(&AssignmentApi::assignment_delete_handler, this));
-    Routes::Get(*router, base + "/api/:version/assignment/get", Routes::bind(&AssignmentApi::assignment_get_handler, this));
-    Routes::Get(*router, base + "/api/:version/assignment/search", Routes::bind(&AssignmentApi::assignment_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/assignment/status/create", Routes::bind(&AssignmentApi::assignment_status_create_handler, this));
-    Routes::Post(*router, base + "/api/:version/assignment/status/delete", Routes::bind(&AssignmentApi::assignment_status_delete_handler, this));
-    Routes::Get(*router, base + "/api/:version/assignment/status/get", Routes::bind(&AssignmentApi::assignment_status_get_handler, this));
-    Routes::Get(*router, base + "/api/:version/assignment/status/search", Routes::bind(&AssignmentApi::assignment_status_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/assignment/status/update", Routes::bind(&AssignmentApi::assignment_status_update_handler, this));
-    Routes::Post(*router, base + "/api/:version/assignment/update", Routes::bind(&AssignmentApi::assignment_update_handler, this));
+    Routes::Get(*router, base + "/assignment/assignee/search", Routes::bind(&AssignmentApi::assigment_assignee_account_search_handler, this));
+    Routes::Post(*router, base + "/assignment/create", Routes::bind(&AssignmentApi::assignment_create_handler, this));
+    Routes::Post(*router, base + "/assignment/delete", Routes::bind(&AssignmentApi::assignment_delete_handler, this));
+    Routes::Get(*router, base + "/assignment/get", Routes::bind(&AssignmentApi::assignment_get_handler, this));
+    Routes::Get(*router, base + "/assignment/search", Routes::bind(&AssignmentApi::assignment_search_handler, this));
+    Routes::Post(*router, base + "/assignment/status/create", Routes::bind(&AssignmentApi::assignment_status_create_handler, this));
+    Routes::Post(*router, base + "/assignment/status/delete", Routes::bind(&AssignmentApi::assignment_status_delete_handler, this));
+    Routes::Get(*router, base + "/assignment/status/get", Routes::bind(&AssignmentApi::assignment_status_get_handler, this));
+    Routes::Get(*router, base + "/assignment/status/search", Routes::bind(&AssignmentApi::assignment_status_search_handler, this));
+    Routes::Post(*router, base + "/assignment/status/update", Routes::bind(&AssignmentApi::assignment_status_update_handler, this));
+    Routes::Post(*router, base + "/assignment/update", Routes::bind(&AssignmentApi::assignment_update_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AssignmentApi::assignment_api_default_handler, this));
@@ -77,8 +77,6 @@ std::pair<Pistache::Http::Code, std::string> AssignmentApi::handleOperationExcep
 void AssignmentApi::assigment_assignee_account_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -107,7 +105,7 @@ void AssignmentApi::assigment_assignee_account_search_handler(const Pistache::Re
 
 
 
-            this->assigment_assignee_account_search(version, accountId, keyword, response);
+            this->assigment_assignee_account_search(accountId, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -126,8 +124,6 @@ void AssignmentApi::assigment_assignee_account_search_handler(const Pistache::Re
 void AssignmentApi::assignment_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -196,7 +192,7 @@ void AssignmentApi::assignment_create_handler(const Pistache::Rest::Request& req
 
 
 
-            this->assignment_create(version, accountId, name, assigneeAccountId, description, retailerLocationId, tags, active, response);
+            this->assignment_create(accountId, name, assigneeAccountId, description, retailerLocationId, tags, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -215,8 +211,6 @@ void AssignmentApi::assignment_create_handler(const Pistache::Rest::Request& req
 void AssignmentApi::assignment_delete_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -245,7 +239,7 @@ void AssignmentApi::assignment_delete_handler(const Pistache::Rest::Request& req
 
 
 
-            this->assignment_delete(version, accountId, assignmentId, response);
+            this->assignment_delete(accountId, assignmentId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -264,8 +258,6 @@ void AssignmentApi::assignment_delete_handler(const Pistache::Rest::Request& req
 void AssignmentApi::assignment_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -294,7 +286,7 @@ void AssignmentApi::assignment_get_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->assignment_get(version, accountId, assignmentId, response);
+            this->assignment_get(accountId, assignmentId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -313,8 +305,6 @@ void AssignmentApi::assignment_get_handler(const Pistache::Rest::Request& reques
 void AssignmentApi::assignment_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -415,7 +405,7 @@ void AssignmentApi::assignment_search_handler(const Pistache::Rest::Request& req
 
 
 
-            this->assignment_search(version, accountId, sortField, descending, activeOnly, start, limit, creatorAccountId, assigneeAccountIds, retailerLocationIds, currentStatusType, keyword, response);
+            this->assignment_search(accountId, sortField, descending, activeOnly, start, limit, creatorAccountId, assigneeAccountIds, retailerLocationIds, currentStatusType, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -434,8 +424,6 @@ void AssignmentApi::assignment_search_handler(const Pistache::Rest::Request& req
 void AssignmentApi::assignment_status_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -536,7 +524,7 @@ void AssignmentApi::assignment_status_create_handler(const Pistache::Rest::Reque
 
 
 
-            this->assignment_status_create(version, accountId, assignmentId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active, response);
+            this->assignment_status_create(accountId, assignmentId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -555,8 +543,6 @@ void AssignmentApi::assignment_status_create_handler(const Pistache::Rest::Reque
 void AssignmentApi::assignment_status_delete_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -585,7 +571,7 @@ void AssignmentApi::assignment_status_delete_handler(const Pistache::Rest::Reque
 
 
 
-            this->assignment_status_delete(version, accountId, assignmentStatusId, response);
+            this->assignment_status_delete(accountId, assignmentStatusId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -604,8 +590,6 @@ void AssignmentApi::assignment_status_delete_handler(const Pistache::Rest::Reque
 void AssignmentApi::assignment_status_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -634,7 +618,7 @@ void AssignmentApi::assignment_status_get_handler(const Pistache::Rest::Request&
 
 
 
-            this->assignment_status_get(version, accountId, assignmentStatusId, response);
+            this->assignment_status_get(accountId, assignmentStatusId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -653,8 +637,6 @@ void AssignmentApi::assignment_status_get_handler(const Pistache::Rest::Request&
 void AssignmentApi::assignment_status_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -763,7 +745,7 @@ void AssignmentApi::assignment_status_search_handler(const Pistache::Rest::Reque
 
 
 
-            this->assignment_status_search(version, accountId, sortField, descending, activeOnly, start, limit, assignmentId, creatorAccountId, assigneeAccountId, retailerLocationId, statusType, keyword, response);
+            this->assignment_status_search(accountId, sortField, descending, activeOnly, start, limit, assignmentId, creatorAccountId, assigneeAccountId, retailerLocationId, statusType, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -782,8 +764,6 @@ void AssignmentApi::assignment_status_search_handler(const Pistache::Rest::Reque
 void AssignmentApi::assignment_status_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -884,7 +864,7 @@ void AssignmentApi::assignment_status_update_handler(const Pistache::Rest::Reque
 
 
 
-            this->assignment_status_update(version, accountId, assignmentStatusId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active, response);
+            this->assignment_status_update(accountId, assignmentStatusId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -903,8 +883,6 @@ void AssignmentApi::assignment_status_update_handler(const Pistache::Rest::Reque
 void AssignmentApi::assignment_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -981,7 +959,7 @@ void AssignmentApi::assignment_update_handler(const Pistache::Rest::Request& req
 
 
 
-            this->assignment_update(version, accountId, assignmentId, name, description, assigneeAccountId, retailerLocationId, tags, active, response);
+            this->assignment_update(accountId, assignmentId, name, description, assigneeAccountId, retailerLocationId, tags, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

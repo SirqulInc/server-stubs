@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RetailerApi::base = "";
+const std::string RetailerApi::base = "/api/3.18";
 
 RetailerApi::RetailerApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void RetailerApi::init() {
 void RetailerApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/retailer/create", Routes::bind(&RetailerApi::create_retailer_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/delete", Routes::bind(&RetailerApi::delete_retailer_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/get", Routes::bind(&RetailerApi::get_retailer_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/search", Routes::bind(&RetailerApi::get_retailers_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/login", Routes::bind(&RetailerApi::retailer_login_check_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/update", Routes::bind(&RetailerApi::update_retailer_handler, this));
+    Routes::Post(*router, base + "/retailer/create", Routes::bind(&RetailerApi::create_retailer_handler, this));
+    Routes::Post(*router, base + "/retailer/delete", Routes::bind(&RetailerApi::delete_retailer_handler, this));
+    Routes::Get(*router, base + "/retailer/get", Routes::bind(&RetailerApi::get_retailer_handler, this));
+    Routes::Get(*router, base + "/retailer/search", Routes::bind(&RetailerApi::get_retailers_handler, this));
+    Routes::Post(*router, base + "/retailer/login", Routes::bind(&RetailerApi::retailer_login_check_handler, this));
+    Routes::Post(*router, base + "/retailer/update", Routes::bind(&RetailerApi::update_retailer_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RetailerApi::retailer_api_default_handler, this));
@@ -92,8 +92,6 @@ void RetailerApi::create_retailer_handler(const Pistache::Rest::Request& request
 void RetailerApi::delete_retailer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -130,7 +128,7 @@ void RetailerApi::delete_retailer_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_retailer(version, deviceId, accountId, retailerId, response);
+            this->delete_retailer(deviceId, accountId, retailerId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -149,8 +147,6 @@ void RetailerApi::delete_retailer_handler(const Pistache::Rest::Request& request
 void RetailerApi::get_retailer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -195,7 +191,7 @@ void RetailerApi::get_retailer_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_retailer(version, retailerId, deviceId, accountId, includeCounts, response);
+            this->get_retailer(retailerId, deviceId, accountId, includeCounts, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -214,8 +210,6 @@ void RetailerApi::get_retailer_handler(const Pistache::Rest::Request& request, P
 void RetailerApi::get_retailers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -340,7 +334,7 @@ void RetailerApi::get_retailers_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_retailers(version, visibility, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, categoryIds, filterIds, i, l, response);
+            this->get_retailers(visibility, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, categoryIds, filterIds, i, l, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -359,8 +353,6 @@ void RetailerApi::get_retailers_handler(const Pistache::Rest::Request& request, 
 void RetailerApi::retailer_login_check_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -421,7 +413,7 @@ void RetailerApi::retailer_login_check_handler(const Pistache::Rest::Request& re
 
 
 
-            this->retailer_login_check(version, username, password, deviceId, latitude, longitude, appKey, response);
+            this->retailer_login_check(username, password, deviceId, latitude, longitude, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

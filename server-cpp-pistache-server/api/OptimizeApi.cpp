@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string OptimizeApi::base = "";
+const std::string OptimizeApi::base = "/api/3.18";
 
 OptimizeApi::OptimizeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,8 +32,8 @@ void OptimizeApi::init() {
 void OptimizeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/optimize/result/:batchID", Routes::bind(&OptimizeApi::get_optimization_result_handler, this));
-    Routes::Post(*router, base + "/api/:version/optimize/request", Routes::bind(&OptimizeApi::request_optimization_handler, this));
+    Routes::Get(*router, base + "/optimize/result/:batchID", Routes::bind(&OptimizeApi::get_optimization_result_handler, this));
+    Routes::Post(*router, base + "/optimize/request", Routes::bind(&OptimizeApi::request_optimization_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&OptimizeApi::optimize_api_default_handler, this));
@@ -69,7 +69,6 @@ void OptimizeApi::get_optimization_result_handler(const Pistache::Rest::Request&
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto batchID = request.param(":batchID").as<std::string>();
         
         
@@ -99,7 +98,7 @@ void OptimizeApi::get_optimization_result_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_optimization_result(version, batchID, start, limit, response);
+            this->get_optimization_result(batchID, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -118,8 +117,6 @@ void OptimizeApi::get_optimization_result_handler(const Pistache::Rest::Request&
 void OptimizeApi::request_optimization_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -143,7 +140,7 @@ void OptimizeApi::request_optimization_handler(const Pistache::Rest::Request& re
 
 
 
-            this->request_optimization(version, body, response);
+            this->request_optimization(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

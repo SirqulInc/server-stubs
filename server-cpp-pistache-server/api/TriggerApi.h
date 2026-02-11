@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create a trigger
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user</param>
     /// <param name="name">The name of the trigger</param>
     /// <param name="appKey">The application to target (optional, default to &quot;&quot;)</param>
@@ -102,34 +101,31 @@ private:
     /// <param name="conditionalInput">Json input representing conditional logic that has to be met before running the trigger (optional, default to &quot;&quot;)</param>
     /// <param name="visibility">The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets whether the Trigger is active or not (inactive Triggers are not processed) (optional, default to true)</param>
-    virtual void create_trigger( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_trigger( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Trigger
     /// </summary>
     /// <remarks>
     /// Mark a trigger as deleted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="triggerId">The id of the trigger to delete.</param>
-    virtual void delete_trigger( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &triggerId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_trigger( const std::optional<int64_t> &accountId, const std::optional<int64_t> &triggerId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Trigger
     /// </summary>
     /// <remarks>
     /// Get a trigger
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="triggerId">The id of the Trigger to return.</param>
-    virtual void get_trigger( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &triggerId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_trigger( const std::optional<int64_t> &accountId, const std::optional<int64_t> &triggerId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Triggers
     /// </summary>
     /// <remarks>
     /// Search for triggers
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="groupingId">Filter results by a grouping identifier defined by the client (optional, default to &quot;&quot;)</param>
     /// <param name="filter">A comma separated list of filters. * MINE - Return triggers that the user has created * SHARED - Return triggers that have been shared to the user * FOLLOWER - Return triggers that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return triggers that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC triggers that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC triggers regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all triggers that the user has liked * FEATURED - Return all triggers that have been featured * PENDING - Return all pending triggers  (optional, default to &quot;MINE&quot;)</param>
@@ -142,14 +138,13 @@ private:
     /// <param name="start">Start the result set at some index. (optional, default to 0)</param>
     /// <param name="limit">Limit the result to some number. (optional, default to 20)</param>
     /// <param name="activeOnly">Determines whether to return only active results (optional, default to true)</param>
-    virtual void search_triggers( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<std::string> &filter, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_triggers( const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<std::string> &filter, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Trigger
     /// </summary>
     /// <remarks>
     /// Update a trigger
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="triggerId">The trigger to update</param>
     /// <param name="accountId">The logged in user</param>
     /// <param name="name">The name of the trigger (optional, default to &quot;&quot;)</param>
@@ -164,7 +159,7 @@ private:
     /// <param name="conditionalInput">Json input representing conditional logic that has to be met before running the trigger (optional, default to &quot;&quot;)</param>
     /// <param name="visibility">The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets whether the Trigger is active or not (inactive Triggers are not processed) (optional, default to false)</param>
-    virtual void update_trigger( const double &version, const std::optional<int64_t> &triggerId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_trigger( const std::optional<int64_t> &triggerId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

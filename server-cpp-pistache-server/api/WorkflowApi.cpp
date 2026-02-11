@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string WorkflowApi::base = "";
+const std::string WorkflowApi::base = "/api/3.18";
 
 WorkflowApi::WorkflowApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void WorkflowApi::init() {
 void WorkflowApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/workflow/run", Routes::bind(&WorkflowApi::run_workflow_handler, this));
+    Routes::Post(*router, base + "/workflow/run", Routes::bind(&WorkflowApi::run_workflow_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&WorkflowApi::workflow_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> WorkflowApi::handleOperationExcepti
 void WorkflowApi::run_workflow_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -121,7 +119,7 @@ void WorkflowApi::run_workflow_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->run_workflow(version, accountId, workflowId, skuId, versionCode, parameters, response);
+            this->run_workflow(accountId, workflowId, skuId, versionCode, parameters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -29,46 +29,46 @@ AchievementApiImpl::AchievementApiImpl(const std::shared_ptr<Pistache::Rest::Rou
 
 }
 
-void AchievementApiImpl::api_version_achievement_tier_search_post(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &achievementType, const std::optional<std::string> &rankType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &descendingGoal, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::achievement_tier_search_post(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &achievementType, const std::optional<std::string> &rankType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &descendingGoal, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::create_achievement(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::create_achievement(const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void AchievementApiImpl::create_achievement_tier(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::delete_achievement(const double &version, const std::optional<int64_t> &achievementId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::delete_achievement(const std::optional<int64_t> &achievementId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::delete_achievement_tier(const double &version, const std::optional<int64_t> &achievementTierId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::delete_achievement_tier(const std::optional<int64_t> &achievementTierId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::get_achievement(const double &version, const std::optional<int64_t> &achievementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &achievementType, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::get_achievement(const std::optional<int64_t> &achievementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &achievementType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::get_achievement_tier(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementTierId, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::get_achievement_tier(const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementTierId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::get_user_achievements(const double &version, const std::optional<bool> &returnNulls, const std::optional<std::string> &appKey, const std::optional<bool> &includeUndiscovered, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountEmail, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &rankType, const std::optional<std::string> &achievementType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::get_user_achievements(const std::optional<bool> &returnNulls, const std::optional<std::string> &appKey, const std::optional<bool> &includeUndiscovered, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountEmail, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &rankType, const std::optional<std::string> &achievementType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::list_achievement_tags(const double &version, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::list_achievement_tags(const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::list_achievements(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::list_achievements(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::search_achievements(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeTiers, const std::optional<bool> &includeInactiveTiers, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::search_achievements(const std::optional<std::string> &appKey, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeTiers, const std::optional<bool> &includeInactiveTiers, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::update_achievement(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<bool> &nullMinIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &nullMaxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::update_achievement(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<bool> &nullMinIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &nullMaxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void AchievementApiImpl::update_achievement_tier(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AchievementApiImpl::update_user_achievement(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &tag, const std::optional<int64_t> &customId, const std::optional<int64_t> &increment, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &returnProgress, Pistache::Http::ResponseWriter &response) {
+void AchievementApiImpl::update_user_achievement(const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &tag, const std::optional<int64_t> &customId, const std::optional<int64_t> &increment, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &returnProgress, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

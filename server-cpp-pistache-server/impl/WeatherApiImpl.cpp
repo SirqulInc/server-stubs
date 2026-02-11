@@ -29,7 +29,7 @@ WeatherApiImpl::WeatherApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rt
 
 }
 
-void WeatherApiImpl::search_weather(const double &version, const std::optional<int64_t> &regionId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &timezoneOffset, Pistache::Http::ResponseWriter &response) {
+void WeatherApiImpl::search_weather(const std::optional<int64_t> &regionId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &timezoneOffset, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

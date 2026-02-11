@@ -42,7 +42,7 @@ public:
     explicit WorkflowApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~WorkflowApiImpl() override = default;
 
-    void run_workflow(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &workflowId, const std::optional<int64_t> &skuId, const std::optional<int32_t> &versionCode, const std::optional<std::string> &parameters, Pistache::Http::ResponseWriter &response);
+    void run_workflow(const std::optional<int64_t> &accountId, const std::optional<int64_t> &workflowId, const std::optional<int64_t> &skuId, const std::optional<int32_t> &versionCode, const std::optional<std::string> &parameters, Pistache::Http::ResponseWriter &response);
 
 };
 

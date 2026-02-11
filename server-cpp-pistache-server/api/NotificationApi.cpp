@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string NotificationApi::base = "";
+const std::string NotificationApi::base = "/api/3.18";
 
 NotificationApi::NotificationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,19 +32,19 @@ void NotificationApi::init() {
 void NotificationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/notification/template/create", Routes::bind(&NotificationApi::create_notification_template_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/blocked/batch", Routes::bind(&NotificationApi::create_or_update_blocked_notifications_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/template/delete", Routes::bind(&NotificationApi::delete_notification_template_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/template/get", Routes::bind(&NotificationApi::get_notification_template_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/search", Routes::bind(&NotificationApi::get_notifications_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/token", Routes::bind(&NotificationApi::register_notification_token_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/blocked/search", Routes::bind(&NotificationApi::search_blocked_notifications_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/template/search", Routes::bind(&NotificationApi::search_notification_template_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/recipient/search", Routes::bind(&NotificationApi::search_recipients_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/recipient/search/count", Routes::bind(&NotificationApi::search_recipients_count_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/batch", Routes::bind(&NotificationApi::send_batch_notifications_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/custom", Routes::bind(&NotificationApi::send_custom_notifications_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/template/update", Routes::bind(&NotificationApi::update_notification_template_handler, this));
+    Routes::Post(*router, base + "/notification/template/create", Routes::bind(&NotificationApi::create_notification_template_handler, this));
+    Routes::Post(*router, base + "/notification/blocked/batch", Routes::bind(&NotificationApi::create_or_update_blocked_notifications_handler, this));
+    Routes::Post(*router, base + "/notification/template/delete", Routes::bind(&NotificationApi::delete_notification_template_handler, this));
+    Routes::Get(*router, base + "/notification/template/get", Routes::bind(&NotificationApi::get_notification_template_handler, this));
+    Routes::Get(*router, base + "/notification/search", Routes::bind(&NotificationApi::get_notifications_handler, this));
+    Routes::Post(*router, base + "/notification/token", Routes::bind(&NotificationApi::register_notification_token_handler, this));
+    Routes::Get(*router, base + "/notification/blocked/search", Routes::bind(&NotificationApi::search_blocked_notifications_handler, this));
+    Routes::Get(*router, base + "/notification/template/search", Routes::bind(&NotificationApi::search_notification_template_handler, this));
+    Routes::Get(*router, base + "/notification/recipient/search", Routes::bind(&NotificationApi::search_recipients_handler, this));
+    Routes::Get(*router, base + "/notification/recipient/search/count", Routes::bind(&NotificationApi::search_recipients_count_handler, this));
+    Routes::Post(*router, base + "/notification/batch", Routes::bind(&NotificationApi::send_batch_notifications_handler, this));
+    Routes::Post(*router, base + "/notification/custom", Routes::bind(&NotificationApi::send_custom_notifications_handler, this));
+    Routes::Post(*router, base + "/notification/template/update", Routes::bind(&NotificationApi::update_notification_template_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&NotificationApi::notification_api_default_handler, this));
@@ -79,8 +79,6 @@ std::pair<Pistache::Http::Code, std::string> NotificationApi::handleOperationExc
 void NotificationApi::create_notification_template_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -149,7 +147,7 @@ void NotificationApi::create_notification_template_handler(const Pistache::Rest:
 
 
 
-            this->create_notification_template(version, accountId, conduit, title, body, appKey, event, tags, response);
+            this->create_notification_template(accountId, conduit, title, body, appKey, event, tags, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -168,8 +166,6 @@ void NotificationApi::create_notification_template_handler(const Pistache::Rest:
 void NotificationApi::create_or_update_blocked_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -206,7 +202,7 @@ void NotificationApi::create_or_update_blocked_notifications_handler(const Pista
 
 
 
-            this->create_or_update_blocked_notifications(version, appKey, data, accountId, response);
+            this->create_or_update_blocked_notifications(appKey, data, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -225,8 +221,6 @@ void NotificationApi::create_or_update_blocked_notifications_handler(const Pista
 void NotificationApi::delete_notification_template_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -255,7 +249,7 @@ void NotificationApi::delete_notification_template_handler(const Pistache::Rest:
 
 
 
-            this->delete_notification_template(version, accountId, notificationTemplateId, response);
+            this->delete_notification_template(accountId, notificationTemplateId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -274,8 +268,6 @@ void NotificationApi::delete_notification_template_handler(const Pistache::Rest:
 void NotificationApi::get_notification_template_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -304,7 +296,7 @@ void NotificationApi::get_notification_template_handler(const Pistache::Rest::Re
 
 
 
-            this->get_notification_template(version, accountId, notificationTemplateId, response);
+            this->get_notification_template(accountId, notificationTemplateId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -323,8 +315,6 @@ void NotificationApi::get_notification_template_handler(const Pistache::Rest::Re
 void NotificationApi::get_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -505,7 +495,7 @@ void NotificationApi::get_notifications_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_notifications(version, deviceId, accountId, connectionAccountId, appKey, eventType, contentIds, contentTypes, parentIds, parentTypes, actionCategory, conduits, keyword, returnReadMessages, markAsRead, fromDate, latitude, longitude, returnSent, ignoreFlagged, start, limit, response);
+            this->get_notifications(deviceId, accountId, connectionAccountId, appKey, eventType, contentIds, contentTypes, parentIds, parentTypes, actionCategory, conduits, keyword, returnReadMessages, markAsRead, fromDate, latitude, longitude, returnSent, ignoreFlagged, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -524,8 +514,6 @@ void NotificationApi::get_notifications_handler(const Pistache::Rest::Request& r
 void NotificationApi::register_notification_token_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -618,7 +606,7 @@ void NotificationApi::register_notification_token_handler(const Pistache::Rest::
 
 
 
-            this->register_notification_token(version, token, pushType, deviceId, accountId, environment, appKey, gameType, active, latitude, longitude, response);
+            this->register_notification_token(token, pushType, deviceId, accountId, environment, appKey, gameType, active, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -637,8 +625,6 @@ void NotificationApi::register_notification_token_handler(const Pistache::Rest::
 void NotificationApi::search_blocked_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -747,7 +733,7 @@ void NotificationApi::search_blocked_notifications_handler(const Pistache::Rest:
 
 
 
-            this->search_blocked_notifications(version, appKey, accountId, searchTags, events, conduits, customTypes, contentTypes, contentIds, sortField, descending, start, limit, response);
+            this->search_blocked_notifications(appKey, accountId, searchTags, events, conduits, customTypes, contentTypes, contentIds, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -766,8 +752,6 @@ void NotificationApi::search_blocked_notifications_handler(const Pistache::Rest:
 void NotificationApi::search_notification_template_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -868,7 +852,7 @@ void NotificationApi::search_notification_template_handler(const Pistache::Rest:
 
 
 
-            this->search_notification_template(version, accountId, sortField, descending, start, limit, appKey, event, conduit, globalOnly, reservedOnly, keyword, response);
+            this->search_notification_template(accountId, sortField, descending, start, limit, appKey, event, conduit, globalOnly, reservedOnly, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -887,8 +871,6 @@ void NotificationApi::search_notification_template_handler(const Pistache::Rest:
 void NotificationApi::search_recipients_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1005,7 +987,7 @@ void NotificationApi::search_recipients_handler(const Pistache::Rest::Request& r
 
 
 
-            this->search_recipients(version, sortField, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, recipientAccountIds, descending, start, limit, response);
+            this->search_recipients(sortField, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, recipientAccountIds, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1024,8 +1006,6 @@ void NotificationApi::search_recipients_handler(const Pistache::Rest::Request& r
 void NotificationApi::search_recipients_count_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1134,7 +1114,7 @@ void NotificationApi::search_recipients_count_handler(const Pistache::Rest::Requ
 
 
 
-            this->search_recipients_count(version, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, sortField, descending, start, limit, response);
+            this->search_recipients_count(deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1153,8 +1133,6 @@ void NotificationApi::search_recipients_count_handler(const Pistache::Rest::Requ
 void NotificationApi::send_batch_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1239,7 +1217,7 @@ void NotificationApi::send_batch_notifications_handler(const Pistache::Rest::Req
 
 
 
-            this->send_batch_notifications(version, accountId, appKey, customMessage, conduit, contentId, contentName, contentType, parentId, parentType, response);
+            this->send_batch_notifications(accountId, appKey, customMessage, conduit, contentId, contentName, contentType, parentId, parentType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1258,8 +1236,6 @@ void NotificationApi::send_batch_notifications_handler(const Pistache::Rest::Req
 void NotificationApi::send_custom_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1416,7 +1392,7 @@ void NotificationApi::send_custom_notifications_handler(const Pistache::Rest::Re
 
 
 
-            this->send_custom_notifications(version, deviceId, accountId, receiverAccountIds, includeFriendGroup, appKey, gameType, conduit, contentId, contentName, contentType, parentId, parentType, actionCategory, subject, customMessage, friendOnlyAPNS, latitude, longitude, response);
+            this->send_custom_notifications(deviceId, accountId, receiverAccountIds, includeFriendGroup, appKey, gameType, conduit, contentId, contentName, contentType, parentId, parentType, actionCategory, subject, customMessage, friendOnlyAPNS, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1435,8 +1411,6 @@ void NotificationApi::send_custom_notifications_handler(const Pistache::Rest::Re
 void NotificationApi::update_notification_template_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1489,7 +1463,7 @@ void NotificationApi::update_notification_template_handler(const Pistache::Rest:
 
 
 
-            this->update_notification_template(version, accountId, notificationTemplateId, title, body, tags, response);
+            this->update_notification_template(accountId, notificationTemplateId, title, body, tags, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

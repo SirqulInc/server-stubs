@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TriggerApi::base = "";
+const std::string TriggerApi::base = "/api/3.18";
 
 TriggerApi::TriggerApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void TriggerApi::init() {
 void TriggerApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/trigger/create", Routes::bind(&TriggerApi::create_trigger_handler, this));
-    Routes::Post(*router, base + "/api/:version/trigger/delete", Routes::bind(&TriggerApi::delete_trigger_handler, this));
-    Routes::Get(*router, base + "/api/:version/trigger/get", Routes::bind(&TriggerApi::get_trigger_handler, this));
-    Routes::Get(*router, base + "/api/:version/trigger/search", Routes::bind(&TriggerApi::search_triggers_handler, this));
-    Routes::Post(*router, base + "/api/:version/trigger/update", Routes::bind(&TriggerApi::update_trigger_handler, this));
+    Routes::Post(*router, base + "/trigger/create", Routes::bind(&TriggerApi::create_trigger_handler, this));
+    Routes::Post(*router, base + "/trigger/delete", Routes::bind(&TriggerApi::delete_trigger_handler, this));
+    Routes::Get(*router, base + "/trigger/get", Routes::bind(&TriggerApi::get_trigger_handler, this));
+    Routes::Get(*router, base + "/trigger/search", Routes::bind(&TriggerApi::search_triggers_handler, this));
+    Routes::Post(*router, base + "/trigger/update", Routes::bind(&TriggerApi::update_trigger_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TriggerApi::trigger_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> TriggerApi::handleOperationExceptio
 void TriggerApi::create_trigger_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -189,7 +187,7 @@ void TriggerApi::create_trigger_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_trigger(version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active, response);
+            this->create_trigger(accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -208,8 +206,6 @@ void TriggerApi::create_trigger_handler(const Pistache::Rest::Request& request, 
 void TriggerApi::delete_trigger_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -238,7 +234,7 @@ void TriggerApi::delete_trigger_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_trigger(version, accountId, triggerId, response);
+            this->delete_trigger(accountId, triggerId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -257,8 +253,6 @@ void TriggerApi::delete_trigger_handler(const Pistache::Rest::Request& request, 
 void TriggerApi::get_trigger_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -287,7 +281,7 @@ void TriggerApi::get_trigger_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_trigger(version, accountId, triggerId, response);
+            this->get_trigger(accountId, triggerId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -306,8 +300,6 @@ void TriggerApi::get_trigger_handler(const Pistache::Rest::Request& request, Pis
 void TriggerApi::search_triggers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -416,7 +408,7 @@ void TriggerApi::search_triggers_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_triggers(version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, response);
+            this->search_triggers(accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -435,8 +427,6 @@ void TriggerApi::search_triggers_handler(const Pistache::Rest::Request& request,
 void TriggerApi::update_trigger_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -561,7 +551,7 @@ void TriggerApi::update_trigger_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->update_trigger(version, triggerId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active, response);
+            this->update_trigger(triggerId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

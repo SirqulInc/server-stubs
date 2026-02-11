@@ -29,13 +29,13 @@ LikeApiImpl::LikeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void LikeApiImpl::register_like(const double &version, const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &like, const std::optional<std::string> &app, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void LikeApiImpl::register_like(const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &like, const std::optional<std::string> &app, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LikeApiImpl::remove_like(const double &version, const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void LikeApiImpl::remove_like(const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LikeApiImpl::search_likes(const double &version, const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void LikeApiImpl::search_likes(const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

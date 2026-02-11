@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string BillableEntityApi::base = "";
+const std::string BillableEntityApi::base = "/api/3.18";
 
 BillableEntityApi::BillableEntityApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,10 +32,10 @@ void BillableEntityApi::init() {
 void BillableEntityApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/billable/create", Routes::bind(&BillableEntityApi::create_billable_entity_handler, this));
-    Routes::Post(*router, base + "/api/:version/billable/delete", Routes::bind(&BillableEntityApi::delete_billable_entity_handler, this));
-    Routes::Get(*router, base + "/api/:version/billable/get", Routes::bind(&BillableEntityApi::get_billable_entity_handler, this));
-    Routes::Post(*router, base + "/api/:version/billable/update", Routes::bind(&BillableEntityApi::update_billable_entity_handler, this));
+    Routes::Post(*router, base + "/billable/create", Routes::bind(&BillableEntityApi::create_billable_entity_handler, this));
+    Routes::Post(*router, base + "/billable/delete", Routes::bind(&BillableEntityApi::delete_billable_entity_handler, this));
+    Routes::Get(*router, base + "/billable/get", Routes::bind(&BillableEntityApi::get_billable_entity_handler, this));
+    Routes::Post(*router, base + "/billable/update", Routes::bind(&BillableEntityApi::update_billable_entity_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&BillableEntityApi::billable_entity_api_default_handler, this));
@@ -70,8 +70,6 @@ std::pair<Pistache::Http::Code, std::string> BillableEntityApi::handleOperationE
 void BillableEntityApi::create_billable_entity_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -180,7 +178,7 @@ void BillableEntityApi::create_billable_entity_handler(const Pistache::Rest::Req
 
 
 
-            this->create_billable_entity(version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey, response);
+            this->create_billable_entity(deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -199,8 +197,6 @@ void BillableEntityApi::create_billable_entity_handler(const Pistache::Rest::Req
 void BillableEntityApi::delete_billable_entity_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -229,7 +225,7 @@ void BillableEntityApi::delete_billable_entity_handler(const Pistache::Rest::Req
 
 
 
-            this->delete_billable_entity(version, deviceId, accountId, response);
+            this->delete_billable_entity(deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -248,8 +244,6 @@ void BillableEntityApi::delete_billable_entity_handler(const Pistache::Rest::Req
 void BillableEntityApi::get_billable_entity_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -294,7 +288,7 @@ void BillableEntityApi::get_billable_entity_handler(const Pistache::Rest::Reques
 
 
 
-            this->get_billable_entity(version, deviceId, accountId, includeCounts, includePayments, response);
+            this->get_billable_entity(deviceId, accountId, includeCounts, includePayments, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -313,8 +307,6 @@ void BillableEntityApi::get_billable_entity_handler(const Pistache::Rest::Reques
 void BillableEntityApi::update_billable_entity_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -423,7 +415,7 @@ void BillableEntityApi::update_billable_entity_handler(const Pistache::Rest::Req
 
 
 
-            this->update_billable_entity(version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey, response);
+            this->update_billable_entity(deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

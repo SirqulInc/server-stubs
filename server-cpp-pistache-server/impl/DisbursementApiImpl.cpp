@@ -29,19 +29,19 @@ DisbursementApiImpl::DisbursementApiImpl(const std::shared_ptr<Pistache::Rest::R
 
 }
 
-void DisbursementApiImpl::check_disbursements(const double &version, const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) {
+void DisbursementApiImpl::check_disbursements(const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void DisbursementApiImpl::create_disbursement(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &originalSenderAccountId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) {
+void DisbursementApiImpl::create_disbursement(const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &originalSenderAccountId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void DisbursementApiImpl::get_disbursement(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) {
+void DisbursementApiImpl::get_disbursement(const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void DisbursementApiImpl::search_disbursements(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<std::string> &statuses, const std::optional<std::string> &providers, const std::optional<int64_t> &beforeDate, const std::optional<int64_t> &afterDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &externalId, Pistache::Http::ResponseWriter &response) {
+void DisbursementApiImpl::search_disbursements(const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<std::string> &statuses, const std::optional<std::string> &providers, const std::optional<int64_t> &beforeDate, const std::optional<int64_t> &afterDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &externalId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void DisbursementApiImpl::update_disbursement(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<bool> &retry, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) {
+void DisbursementApiImpl::update_disbursement(const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<bool> &retry, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

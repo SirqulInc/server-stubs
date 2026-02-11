@@ -29,16 +29,16 @@ BidApiImpl::BidApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void BidApiImpl::create_bid(const double &version, const std::optional<std::string> &biddableType, const std::optional<int64_t> &biddableId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void BidApiImpl::create_bid(const std::optional<std::string> &biddableType, const std::optional<int64_t> &biddableId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void BidApiImpl::delete_bid(const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void BidApiImpl::delete_bid(const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void BidApiImpl::get_bid(const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void BidApiImpl::get_bid(const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void BidApiImpl::update_bid(const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, Pistache::Http::ResponseWriter &response) {
+void BidApiImpl::update_bid(const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

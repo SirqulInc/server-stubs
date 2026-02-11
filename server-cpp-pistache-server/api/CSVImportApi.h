@@ -86,34 +86,31 @@ private:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="batchId">the id of the batch</param>
     /// <param name="responseGroup">The group of categories to return: SUMMARY, DETAILS, ERRORS, OR ALL</param>
     /// <param name="start">the start of the pagination</param>
     /// <param name="limit">the limit of the pagination</param>
-    virtual void get_status_csv( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<std::string> &responseGroup, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_status_csv( const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<std::string> &responseGroup, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Status
     /// </summary>
     /// <remarks>
     /// Retrieves batches for a user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account</param>
     /// <param name="start">the start of the pagination</param>
     /// <param name="limit">the limit of the pagination</param>
-    virtual void list_status_csv( const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_status_csv( const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Batch Status
     /// </summary>
     /// <remarks>
     /// Checks status of batch upload.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account</param>
     /// <param name="batchId">the id of the batch to get its status</param>
-    virtual void status_csv( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void status_csv( const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Upload CSV
     /// </summary>

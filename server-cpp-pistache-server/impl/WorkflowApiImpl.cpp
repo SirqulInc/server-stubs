@@ -29,7 +29,7 @@ WorkflowApiImpl::WorkflowApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 
 }
 
-void WorkflowApiImpl::run_workflow(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &workflowId, const std::optional<int64_t> &skuId, const std::optional<int32_t> &versionCode, const std::optional<std::string> &parameters, Pistache::Http::ResponseWriter &response) {
+void WorkflowApiImpl::run_workflow(const std::optional<int64_t> &accountId, const std::optional<int64_t> &workflowId, const std::optional<int64_t> &skuId, const std::optional<int32_t> &versionCode, const std::optional<std::string> &parameters, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

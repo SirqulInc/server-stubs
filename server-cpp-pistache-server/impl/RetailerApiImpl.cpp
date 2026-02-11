@@ -32,16 +32,16 @@ RetailerApiImpl::RetailerApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 void RetailerApiImpl::create_retailer(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RetailerApiImpl::delete_retailer(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) {
+void RetailerApiImpl::delete_retailer(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RetailerApiImpl::get_retailer(const double &version, const std::optional<int64_t> &retailerId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, Pistache::Http::ResponseWriter &response) {
+void RetailerApiImpl::get_retailer(const std::optional<int64_t> &retailerId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RetailerApiImpl::get_retailers(const double &version, const std::optional<std::string> &visibility, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int32_t> &i, const std::optional<int32_t> &l, Pistache::Http::ResponseWriter &response) {
+void RetailerApiImpl::get_retailers(const std::optional<std::string> &visibility, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int32_t> &i, const std::optional<int32_t> &l, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RetailerApiImpl::retailer_login_check(const double &version, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void RetailerApiImpl::retailer_login_check(const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void RetailerApiImpl::update_retailer(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

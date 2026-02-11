@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ScheduledNotificationApi::base = "";
+const std::string ScheduledNotificationApi::base = "/api/3.18";
 
 ScheduledNotificationApi::ScheduledNotificationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ScheduledNotificationApi::init() {
 void ScheduledNotificationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/notification/schedule/create", Routes::bind(&ScheduledNotificationApi::create_scheduled_notification_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/schedule/delete", Routes::bind(&ScheduledNotificationApi::delete_scheduled_notification_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/schedule/get", Routes::bind(&ScheduledNotificationApi::get_scheduled_notification_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/schedule/generate", Routes::bind(&ScheduledNotificationApi::schedule_notification_listings_handler, this));
-    Routes::Get(*router, base + "/api/:version/notification/schedule/search", Routes::bind(&ScheduledNotificationApi::search_scheduled_notifications_handler, this));
-    Routes::Post(*router, base + "/api/:version/notification/schedule/update", Routes::bind(&ScheduledNotificationApi::update_scheduled_notification_handler, this));
+    Routes::Post(*router, base + "/notification/schedule/create", Routes::bind(&ScheduledNotificationApi::create_scheduled_notification_handler, this));
+    Routes::Post(*router, base + "/notification/schedule/delete", Routes::bind(&ScheduledNotificationApi::delete_scheduled_notification_handler, this));
+    Routes::Get(*router, base + "/notification/schedule/get", Routes::bind(&ScheduledNotificationApi::get_scheduled_notification_handler, this));
+    Routes::Post(*router, base + "/notification/schedule/generate", Routes::bind(&ScheduledNotificationApi::schedule_notification_listings_handler, this));
+    Routes::Get(*router, base + "/notification/schedule/search", Routes::bind(&ScheduledNotificationApi::search_scheduled_notifications_handler, this));
+    Routes::Post(*router, base + "/notification/schedule/update", Routes::bind(&ScheduledNotificationApi::update_scheduled_notification_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ScheduledNotificationApi::scheduled_notification_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ScheduledNotificationApi::handleOpe
 void ScheduledNotificationApi::create_scheduled_notification_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -358,7 +356,7 @@ void ScheduledNotificationApi::create_scheduled_notification_handler(const Pista
 
 
 
-            this->create_scheduled_notification(version, accountId, name, type, message, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, sendNow, eventType, deepLinkURI, sendToAll, response);
+            this->create_scheduled_notification(accountId, name, type, message, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, sendNow, eventType, deepLinkURI, sendToAll, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -377,8 +375,6 @@ void ScheduledNotificationApi::create_scheduled_notification_handler(const Pista
 void ScheduledNotificationApi::delete_scheduled_notification_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -415,7 +411,7 @@ void ScheduledNotificationApi::delete_scheduled_notification_handler(const Pista
 
 
 
-            this->delete_scheduled_notification(version, accountId, scheduledNotificationId, deleteByGroupingId, response);
+            this->delete_scheduled_notification(accountId, scheduledNotificationId, deleteByGroupingId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -434,8 +430,6 @@ void ScheduledNotificationApi::delete_scheduled_notification_handler(const Pista
 void ScheduledNotificationApi::get_scheduled_notification_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -464,7 +458,7 @@ void ScheduledNotificationApi::get_scheduled_notification_handler(const Pistache
 
 
 
-            this->get_scheduled_notification(version, accountId, scheduledNotificationId, response);
+            this->get_scheduled_notification(accountId, scheduledNotificationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -483,8 +477,6 @@ void ScheduledNotificationApi::get_scheduled_notification_handler(const Pistache
 void ScheduledNotificationApi::schedule_notification_listings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -561,7 +553,7 @@ void ScheduledNotificationApi::schedule_notification_listings_handler(const Pist
 
 
 
-            this->schedule_notification_listings(version, accountId, appKey, reportName, message, offset, recipientReportId, reportParams, type, response);
+            this->schedule_notification_listings(accountId, appKey, reportName, message, offset, recipientReportId, reportParams, type, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -580,8 +572,6 @@ void ScheduledNotificationApi::schedule_notification_listings_handler(const Pist
 void ScheduledNotificationApi::search_scheduled_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -754,7 +744,7 @@ void ScheduledNotificationApi::search_scheduled_notifications_handler(const Pist
 
 
 
-            this->search_scheduled_notifications(version, accountId, groupingId, audienceId, filter, types, contentIds, contentTypes, parentIds, parentTypes, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, groupByGroupingId, returnAudienceAccountCount, response);
+            this->search_scheduled_notifications(accountId, groupingId, audienceId, filter, types, contentIds, contentTypes, parentIds, parentTypes, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, groupByGroupingId, returnAudienceAccountCount, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -773,8 +763,6 @@ void ScheduledNotificationApi::search_scheduled_notifications_handler(const Pist
 void ScheduledNotificationApi::update_scheduled_notification_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1091,7 +1079,7 @@ void ScheduledNotificationApi::update_scheduled_notification_handler(const Pista
 
 
 
-            this->update_scheduled_notification(version, scheduledNotificationId, accountId, name, type, message, payload, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, errorMessage, status, updateByGroupingId, sendNow, eventType, deepLinkURI, sendToAll, response);
+            this->update_scheduled_notification(scheduledNotificationId, accountId, name, type, message, payload, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, errorMessage, status, updateByGroupingId, sendNow, eventType, deepLinkURI, sendToAll, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

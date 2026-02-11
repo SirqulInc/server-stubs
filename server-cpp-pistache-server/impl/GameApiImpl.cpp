@@ -29,19 +29,19 @@ GameApiImpl::GameApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void GameApiImpl::create_game(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void GameApiImpl::create_game(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void GameApiImpl::delete_game(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, Pistache::Http::ResponseWriter &response) {
+void GameApiImpl::delete_game(const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void GameApiImpl::get_game(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void GameApiImpl::get_game(const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void GameApiImpl::search_games(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &appVersion, const std::optional<bool> &includeGameData, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) {
+void GameApiImpl::search_games(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &appVersion, const std::optional<bool> &includeGameData, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void GameApiImpl::update_game(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void GameApiImpl::update_game(const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

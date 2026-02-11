@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RoutingApi::base = "";
+const std::string RoutingApi::base = "/api/3.18";
 
 RoutingApi::RoutingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void RoutingApi::init() {
 void RoutingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/routing/compute", Routes::bind(&RoutingApi::compute_routing_handler, this));
+    Routes::Post(*router, base + "/routing/compute", Routes::bind(&RoutingApi::compute_routing_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RoutingApi::routing_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> RoutingApi::handleOperationExceptio
 void RoutingApi::compute_routing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -89,7 +87,7 @@ void RoutingApi::compute_routing_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->compute_routing(version, data, response);
+            this->compute_routing(data, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

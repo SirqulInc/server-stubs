@@ -42,7 +42,7 @@ public:
     explicit OpenAIApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~OpenAIApiImpl() override = default;
 
-    void image_generation(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &postBody, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response);
+    void image_generation(const std::optional<int64_t> &accountId, const std::optional<std::string> &postBody, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response);
 
 };
 

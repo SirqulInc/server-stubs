@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string EmployeeApi::base = "";
+const std::string EmployeeApi::base = "/api/3.18";
 
 EmployeeApi::EmployeeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,14 +32,14 @@ void EmployeeApi::init() {
 void EmployeeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/employee/assign", Routes::bind(&EmployeeApi::assign_employee_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/assignToLocation", Routes::bind(&EmployeeApi::assign_to_location_employee_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/create", Routes::bind(&EmployeeApi::create_employee_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/delete", Routes::bind(&EmployeeApi::delete_employee_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/get", Routes::bind(&EmployeeApi::get_employee_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/search", Routes::bind(&EmployeeApi::search_employees_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/unassign", Routes::bind(&EmployeeApi::unassign_employee_handler, this));
-    Routes::Post(*router, base + "/api/:version/employee/update", Routes::bind(&EmployeeApi::update_employee_handler, this));
+    Routes::Post(*router, base + "/employee/assign", Routes::bind(&EmployeeApi::assign_employee_handler, this));
+    Routes::Post(*router, base + "/employee/assignToLocation", Routes::bind(&EmployeeApi::assign_to_location_employee_handler, this));
+    Routes::Post(*router, base + "/employee/create", Routes::bind(&EmployeeApi::create_employee_handler, this));
+    Routes::Post(*router, base + "/employee/delete", Routes::bind(&EmployeeApi::delete_employee_handler, this));
+    Routes::Post(*router, base + "/employee/get", Routes::bind(&EmployeeApi::get_employee_handler, this));
+    Routes::Post(*router, base + "/employee/search", Routes::bind(&EmployeeApi::search_employees_handler, this));
+    Routes::Post(*router, base + "/employee/unassign", Routes::bind(&EmployeeApi::unassign_employee_handler, this));
+    Routes::Post(*router, base + "/employee/update", Routes::bind(&EmployeeApi::update_employee_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&EmployeeApi::employee_api_default_handler, this));
@@ -74,8 +74,6 @@ std::pair<Pistache::Http::Code, std::string> EmployeeApi::handleOperationExcepti
 void EmployeeApi::assign_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -120,7 +118,7 @@ void EmployeeApi::assign_employee_handler(const Pistache::Rest::Request& request
 
 
 
-            this->assign_employee(version, accountId, managerAccountId, employeeAccountId, role, response);
+            this->assign_employee(accountId, managerAccountId, employeeAccountId, role, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -139,8 +137,6 @@ void EmployeeApi::assign_employee_handler(const Pistache::Rest::Request& request
 void EmployeeApi::assign_to_location_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -185,7 +181,7 @@ void EmployeeApi::assign_to_location_employee_handler(const Pistache::Rest::Requ
 
 
 
-            this->assign_to_location_employee(version, accountId, retailerLocationId, employeeAccountId, assign, response);
+            this->assign_to_location_employee(accountId, retailerLocationId, employeeAccountId, assign, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -204,8 +200,6 @@ void EmployeeApi::assign_to_location_employee_handler(const Pistache::Rest::Requ
 void EmployeeApi::create_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -458,7 +452,7 @@ void EmployeeApi::create_employee_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_employee(version, accountId, managerAccountId, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, aboutUs, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId, response);
+            this->create_employee(accountId, managerAccountId, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, aboutUs, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -477,8 +471,6 @@ void EmployeeApi::create_employee_handler(const Pistache::Rest::Request& request
 void EmployeeApi::delete_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -507,7 +499,7 @@ void EmployeeApi::delete_employee_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_employee(version, accountId, employeeAccountId, response);
+            this->delete_employee(accountId, employeeAccountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -526,8 +518,6 @@ void EmployeeApi::delete_employee_handler(const Pistache::Rest::Request& request
 void EmployeeApi::get_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -564,7 +554,7 @@ void EmployeeApi::get_employee_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_employee(version, accountId, employeeAccountId, settingsAppKey, response);
+            this->get_employee(accountId, employeeAccountId, settingsAppKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -583,8 +573,6 @@ void EmployeeApi::get_employee_handler(const Pistache::Rest::Request& request, P
 void EmployeeApi::search_employees_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -733,7 +721,7 @@ void EmployeeApi::search_employees_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->search_employees(version, accountId, role, retailerId, retailerLocationId, q, keyword, sortField, descending, i, start, l, limit, activeOnly, managedOnly, settingsAppKey, categoryIds, query, response);
+            this->search_employees(accountId, role, retailerId, retailerLocationId, q, keyword, sortField, descending, i, start, l, limit, activeOnly, managedOnly, settingsAppKey, categoryIds, query, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -752,8 +740,6 @@ void EmployeeApi::search_employees_handler(const Pistache::Rest::Request& reques
 void EmployeeApi::unassign_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -782,7 +768,7 @@ void EmployeeApi::unassign_employee_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->unassign_employee(version, accountId, employeeAccountId, response);
+            this->unassign_employee(accountId, employeeAccountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -801,8 +787,6 @@ void EmployeeApi::unassign_employee_handler(const Pistache::Rest::Request& reque
 void EmployeeApi::update_employee_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1055,7 +1039,7 @@ void EmployeeApi::update_employee_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_employee(version, accountId, employeeAccountId, managerAccountId, name, prefixName, firstName, middleName, lastName, suffixName, title, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, active, password, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId, response);
+            this->update_employee(accountId, employeeAccountId, managerAccountId, name, prefixName, firstName, middleName, lastName, suffixName, title, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, active, password, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

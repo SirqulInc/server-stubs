@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ShipmentBatchApi::base = "";
+const std::string ShipmentBatchApi::base = "/api/3.18";
 
 ShipmentBatchApi::ShipmentBatchApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void ShipmentBatchApi::init() {
 void ShipmentBatchApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/shipment/batch", Routes::bind(&ShipmentBatchApi::create_shipment_batch_handler, this));
-    Routes::Delete(*router, base + "/api/:version/shipment/batch/:batchId", Routes::bind(&ShipmentBatchApi::delete_shipment_batch_handler, this));
-    Routes::Get(*router, base + "/api/:version/shipment/batch/:batchId", Routes::bind(&ShipmentBatchApi::get_shipment_batch_handler, this));
-    Routes::Get(*router, base + "/api/:version/shipment/batch/:batchId/status", Routes::bind(&ShipmentBatchApi::get_shipment_batch_status_handler, this));
-    Routes::Get(*router, base + "/api/:version/shipment/batch", Routes::bind(&ShipmentBatchApi::search_shipment_batch_handler, this));
+    Routes::Post(*router, base + "/shipment/batch", Routes::bind(&ShipmentBatchApi::create_shipment_batch_handler, this));
+    Routes::Delete(*router, base + "/shipment/batch/:batchId", Routes::bind(&ShipmentBatchApi::delete_shipment_batch_handler, this));
+    Routes::Get(*router, base + "/shipment/batch/:batchId", Routes::bind(&ShipmentBatchApi::get_shipment_batch_handler, this));
+    Routes::Get(*router, base + "/shipment/batch/:batchId/status", Routes::bind(&ShipmentBatchApi::get_shipment_batch_status_handler, this));
+    Routes::Get(*router, base + "/shipment/batch", Routes::bind(&ShipmentBatchApi::search_shipment_batch_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ShipmentBatchApi::shipment_batch_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> ShipmentBatchApi::handleOperationEx
 void ShipmentBatchApi::create_shipment_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -96,7 +94,7 @@ void ShipmentBatchApi::create_shipment_batch_handler(const Pistache::Rest::Reque
 
 
 
-            this->create_shipment_batch(version, body, response);
+            this->create_shipment_batch(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -116,7 +114,6 @@ void ShipmentBatchApi::delete_shipment_batch_handler(const Pistache::Rest::Reque
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto batchId = request.param(":batchId").as<int64_t>();
         
         
@@ -129,7 +126,7 @@ void ShipmentBatchApi::delete_shipment_batch_handler(const Pistache::Rest::Reque
 
 
 
-            this->delete_shipment_batch(version, batchId, response);
+            this->delete_shipment_batch(batchId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -149,7 +146,6 @@ void ShipmentBatchApi::get_shipment_batch_handler(const Pistache::Rest::Request&
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto batchId = request.param(":batchId").as<int64_t>();
         
         
@@ -162,7 +158,7 @@ void ShipmentBatchApi::get_shipment_batch_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_shipment_batch(version, batchId, response);
+            this->get_shipment_batch(batchId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -182,7 +178,6 @@ void ShipmentBatchApi::get_shipment_batch_status_handler(const Pistache::Rest::R
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto batchId = request.param(":batchId").as<int64_t>();
         
         
@@ -284,7 +279,7 @@ void ShipmentBatchApi::get_shipment_batch_status_handler(const Pistache::Rest::R
 
 
 
-            this->get_shipment_batch_status(version, batchId, accountId, sortField, descending, start, limit, valid, started, completed, hasShipment, hasRoute, keyword, response);
+            this->get_shipment_batch_status(batchId, accountId, sortField, descending, start, limit, valid, started, completed, hasShipment, hasRoute, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -303,8 +298,6 @@ void ShipmentBatchApi::get_shipment_batch_status_handler(const Pistache::Rest::R
 void ShipmentBatchApi::search_shipment_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -357,7 +350,7 @@ void ShipmentBatchApi::search_shipment_batch_handler(const Pistache::Rest::Reque
 
 
 
-            this->search_shipment_batch(version, hubId, sortField, descending, start, limit, response);
+            this->search_shipment_batch(hubId, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

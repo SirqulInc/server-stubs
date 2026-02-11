@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the scheduled notification</param>
     /// <param name="type">The type of scheduled notification. Supported values include: MOBILE_NOTIFICATION - sends push notifications via APNS and GCM EMAIL - sends email messages SMS - sends text messages</param>
@@ -123,35 +122,32 @@ private:
     /// <param name="eventType">Sets the event type for the notification (optional, default to &quot;CUSTOM&quot;)</param>
     /// <param name="deepLinkURI">The payload deep link URI that can be used by the client app to direct users to a screen in the app (optional, default to &quot;&quot;)</param>
     /// <param name="sendToAll">Determines whether to send to all users of the app if set to true for push notifications (appKey is required) (optional, default to false)</param>
-    virtual void create_scheduled_notification( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &type, const std::optional<std::string> &message, const std::optional<int64_t> &contentId, const std::optional<std::string> &contentName, const std::optional<std::string> &contentType, const std::optional<int64_t> &parentId, const std::optional<std::string> &parentType, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &connectionGroupIds, const std::optional<std::string> &connectionAccountIds, const std::optional<int64_t> &audienceId, const std::optional<std::string> &audienceIds, const std::optional<std::string> &albumIds, const std::optional<int64_t> &reportId, const std::optional<std::string> &reportParams, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &cronType, const std::optional<std::string> &metaData, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &templateType, const std::optional<std::string> &visibility, const std::optional<bool> &active, const std::optional<bool> &sendNow, const std::optional<std::string> &eventType, const std::optional<std::string> &deepLinkURI, const std::optional<bool> &sendToAll, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_scheduled_notification( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &type, const std::optional<std::string> &message, const std::optional<int64_t> &contentId, const std::optional<std::string> &contentName, const std::optional<std::string> &contentType, const std::optional<int64_t> &parentId, const std::optional<std::string> &parentType, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &connectionGroupIds, const std::optional<std::string> &connectionAccountIds, const std::optional<int64_t> &audienceId, const std::optional<std::string> &audienceIds, const std::optional<std::string> &albumIds, const std::optional<int64_t> &reportId, const std::optional<std::string> &reportParams, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &cronType, const std::optional<std::string> &metaData, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &templateType, const std::optional<std::string> &visibility, const std::optional<bool> &active, const std::optional<bool> &sendNow, const std::optional<std::string> &eventType, const std::optional<std::string> &deepLinkURI, const std::optional<bool> &sendToAll, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Scheduled Notification
     /// </summary>
     /// <remarks>
     /// This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="scheduledNotificationId">the id of the scheduled notification to delete</param>
     /// <param name="deleteByGroupingId">If set to true, also deletes Scheduled Notifications under the same account with the same groupingId. (optional, default to false)</param>
-    virtual void delete_scheduled_notification( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<bool> &deleteByGroupingId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_scheduled_notification( const std::optional<int64_t> &accountId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<bool> &deleteByGroupingId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Scheduled Notification
     /// </summary>
     /// <remarks>
     /// Get a ScheduledNotification
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account logged in</param>
     /// <param name="scheduledNotificationId">the id of the scheduled notification to get</param>
-    virtual void get_scheduled_notification( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &scheduledNotificationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_scheduled_notification( const std::optional<int64_t> &accountId, const std::optional<int64_t> &scheduledNotificationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Generate Schedule Notifications
     /// </summary>
     /// <remarks>
     /// Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The application to target</param>
     /// <param name="reportName">The name of the report used to identify events. The report must return columns named: id, name, date, params, and type otherwise it will fail</param>
@@ -160,14 +156,13 @@ private:
     /// <param name="recipientReportId">The report id used to generate the recipient list</param>
     /// <param name="reportParams">The parameters of the report used to identify events in a json structure, example: &#x60;&#x60;&#x60;json {   \&quot;string\&quot;: \&quot;value\&quot;,   \&quot;number\&quot;: 3.345,   \&quot;date\&quot;: \&quot;2014-05-01 00:00:00\&quot; } &#x60;&#x60;&#x60;  (optional, default to &quot;&quot;)</param>
     /// <param name="type">The type of scheduled notification; supported values are: MOBILE_NOTIFICATION (optional, default to &quot;&quot;)</param>
-    virtual void schedule_notification_listings( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &reportName, const std::optional<std::string> &message, const std::optional<int32_t> &offset, const std::optional<int64_t> &recipientReportId, const std::optional<std::string> &reportParams, const std::optional<std::string> &type, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void schedule_notification_listings( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &reportName, const std::optional<std::string> &message, const std::optional<int32_t> &offset, const std::optional<int64_t> &recipientReportId, const std::optional<std::string> &reportParams, const std::optional<std::string> &type, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Scheduled Notifications
     /// </summary>
     /// <remarks>
     /// This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.  In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="groupingId">Filter results by a grouping identifier defined by the client (optional, default to &quot;&quot;)</param>
     /// <param name="audienceId">Filter results by audience (optional, default to 0L)</param>
@@ -188,14 +183,13 @@ private:
     /// <param name="activeOnly">Determines whether to return only active results (optional, default to false)</param>
     /// <param name="groupByGroupingId">Determines whether to group results with the same groupingId together. (optional, default to false)</param>
     /// <param name="returnAudienceAccountCount">If true, include audience account counts in the response (optional, default to false)</param>
-    virtual void search_scheduled_notifications( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &filter, const std::optional<std::string> &types, const std::optional<std::string> &contentIds, const std::optional<std::string> &contentTypes, const std::optional<std::string> &parentIds, const std::optional<std::string> &parentTypes, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &groupByGroupingId, const std::optional<bool> &returnAudienceAccountCount, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_scheduled_notifications( const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &filter, const std::optional<std::string> &types, const std::optional<std::string> &contentIds, const std::optional<std::string> &contentTypes, const std::optional<std::string> &parentIds, const std::optional<std::string> &parentTypes, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &groupByGroupingId, const std::optional<bool> &returnAudienceAccountCount, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Scheduled Notification
     /// </summary>
     /// <remarks>
     /// This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.  Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="scheduledNotificationId">The id of scheduled notification to update</param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the scheduled notification (optional, default to &quot;&quot;)</param>
@@ -234,7 +228,7 @@ private:
     /// <param name="eventType">Sets the event type for the notification (optional, default to &quot;CUSTOM&quot;)</param>
     /// <param name="deepLinkURI">The payload deep link URI that can be used by the client app to direct users to a screen in the app (optional, default to &quot;&quot;)</param>
     /// <param name="sendToAll">Determines whether to send to all users of the app if set to true for push notifications (appKey is required) (optional, default to false)</param>
-    virtual void update_scheduled_notification( const double &version, const std::optional<int64_t> &scheduledNotificationId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &type, const std::optional<std::string> &message, const std::optional<std::string> &payload, const std::optional<int64_t> &contentId, const std::optional<std::string> &contentName, const std::optional<std::string> &contentType, const std::optional<int64_t> &parentId, const std::optional<std::string> &parentType, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &connectionGroupIds, const std::optional<std::string> &connectionAccountIds, const std::optional<int64_t> &audienceId, const std::optional<std::string> &audienceIds, const std::optional<std::string> &albumIds, const std::optional<int64_t> &reportId, const std::optional<std::string> &reportParams, const std::optional<std::string> &endpointURL, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &cronType, const std::optional<std::string> &metaData, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &templateType, const std::optional<std::string> &visibility, const std::optional<bool> &active, const std::optional<std::string> &errorMessage, const std::optional<std::string> &status, const std::optional<bool> &updateByGroupingId, const std::optional<bool> &sendNow, const std::optional<std::string> &eventType, const std::optional<std::string> &deepLinkURI, const std::optional<bool> &sendToAll, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_scheduled_notification( const std::optional<int64_t> &scheduledNotificationId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &type, const std::optional<std::string> &message, const std::optional<std::string> &payload, const std::optional<int64_t> &contentId, const std::optional<std::string> &contentName, const std::optional<std::string> &contentType, const std::optional<int64_t> &parentId, const std::optional<std::string> &parentType, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &connectionGroupIds, const std::optional<std::string> &connectionAccountIds, const std::optional<int64_t> &audienceId, const std::optional<std::string> &audienceIds, const std::optional<std::string> &albumIds, const std::optional<int64_t> &reportId, const std::optional<std::string> &reportParams, const std::optional<std::string> &endpointURL, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &cronType, const std::optional<std::string> &metaData, const std::optional<std::string> &conditionalInput, const std::optional<std::string> &templateType, const std::optional<std::string> &visibility, const std::optional<bool> &active, const std::optional<std::string> &errorMessage, const std::optional<std::string> &status, const std::optional<bool> &updateByGroupingId, const std::optional<bool> &sendNow, const std::optional<std::string> &eventType, const std::optional<std::string> &deepLinkURI, const std::optional<bool> &sendToAll, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

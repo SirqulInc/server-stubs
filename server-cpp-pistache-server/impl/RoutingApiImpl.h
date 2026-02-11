@@ -42,7 +42,7 @@ public:
     explicit RoutingApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~RoutingApiImpl() override = default;
 
-    void compute_routing(const double &version, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response);
+    void compute_routing(const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response);
 
 };
 

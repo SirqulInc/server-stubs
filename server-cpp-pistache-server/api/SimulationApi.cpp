@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string SimulationApi::base = "";
+const std::string SimulationApi::base = "/api/3.18";
 
 SimulationApi::SimulationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void SimulationApi::init() {
 void SimulationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/simulation/routing", Routes::bind(&SimulationApi::simulation_handler, this));
+    Routes::Post(*router, base + "/simulation/routing", Routes::bind(&SimulationApi::simulation_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&SimulationApi::simulation_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> SimulationApi::handleOperationExcep
 void SimulationApi::simulation_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -97,7 +95,7 @@ void SimulationApi::simulation_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->simulation(version, data, realTime, response);
+            this->simulation(data, realTime, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

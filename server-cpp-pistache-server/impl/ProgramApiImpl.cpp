@@ -29,22 +29,22 @@ ProgramApiImpl::ProgramApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rt
 
 }
 
-void ProgramApiImpl::create_program(const double &version, const Program &body, Pistache::Http::ResponseWriter &response) {
+void ProgramApiImpl::create_program(const Program &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ProgramApiImpl::delete_program(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ProgramApiImpl::delete_program(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ProgramApiImpl::get_program(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ProgramApiImpl::get_program(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ProgramApiImpl::post_program(const double &version, const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response) {
+void ProgramApiImpl::post_program(const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ProgramApiImpl::put_program(const double &version, const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response) {
+void ProgramApiImpl::put_program(const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ProgramApiImpl::search_programs(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void ProgramApiImpl::search_programs(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

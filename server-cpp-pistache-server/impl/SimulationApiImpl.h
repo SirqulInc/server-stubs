@@ -42,7 +42,7 @@ public:
     explicit SimulationApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~SimulationApiImpl() override = default;
 
-    void simulation(const double &version, const std::optional<std::string> &data, const std::optional<bool> &realTime, Pistache::Http::ResponseWriter &response);
+    void simulation(const std::optional<std::string> &data, const std::optional<bool> &realTime, Pistache::Http::ResponseWriter &response);
 
 };
 

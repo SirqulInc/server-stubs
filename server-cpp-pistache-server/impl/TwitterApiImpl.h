@@ -43,8 +43,8 @@ public:
     explicit TwitterApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~TwitterApiImpl() override = default;
 
-    void authorize_twitter(const double &version, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
-    void login_twitter(const double &version, const std::optional<std::string> &accessToken, const std::optional<std::string> &accessTokenSecret, const std::optional<std::string> &appKey, const std::optional<std::string> &responseFilters, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void authorize_twitter(const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
+    void login_twitter(const std::optional<std::string> &accessToken, const std::optional<std::string> &accessTokenSecret, const std::optional<std::string> &appKey, const std::optional<std::string> &responseFilters, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
 
 };
 

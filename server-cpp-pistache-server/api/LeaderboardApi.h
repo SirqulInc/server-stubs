@@ -94,28 +94,25 @@ private:
     /// <remarks>
     /// Removes a leader board id.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="leaderboardId">The leaderboard id to delete.</param>
     /// <param name="accountId">The account id of the user making the request. (optional, default to 0L)</param>
-    virtual void delete_leaderboard( const double &version, const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_leaderboard( const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Read a leaderboard by id and retrieve the matching ranking list
     /// </summary>
     /// <remarks>
     /// Read a leaderboard by id and retrieve the matching ranking list
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="leaderboardId">The leaderboard id.</param>
     /// <param name="accountId">A valid account. (optional, default to 0L)</param>
     /// <param name="includeFullRankingList">set to true if need to return the leaderboard&#39;s full ranking list (optional, default to false)</param>
-    virtual void get_leaderboard( const double &version, const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeFullRankingList, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_leaderboard( const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeFullRankingList, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search leaderboard and retrieve the matching ranking list
     /// </summary>
     /// <remarks>
     /// Search leaderboard and retrieve the matching ranking list
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user requesting the search. (optional, default to 0L)</param>
     /// <param name="appKey">The application key. (optional, default to &quot;&quot;)</param>
     /// <param name="globalOnly">only include global leaderboards (this overrides the appKey filter) (optional, default to false)</param>
@@ -128,7 +125,7 @@ private:
     /// <param name="includeAppResponse">determines whether to include the application response for each leaderboard (optional, default to false)</param>
     /// <param name="start">Start the result set at some index. (optional, default to 0)</param>
     /// <param name="limit">Limit the result to some number. (optional, default to 0)</param>
-    virtual void search_leaderboards( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &globalOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &leaderboardIds, const std::optional<std::string> &rankTypes, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeInactive, const std::optional<bool> &includeAppResponse, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_leaderboards( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &globalOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &leaderboardIds, const std::optional<std::string> &rankTypes, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeInactive, const std::optional<bool> &includeAppResponse, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     /// </summary>

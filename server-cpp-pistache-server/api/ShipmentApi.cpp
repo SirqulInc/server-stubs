@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ShipmentApi::base = "";
+const std::string ShipmentApi::base = "/api/3.18";
 
 ShipmentApi::ShipmentApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,13 +32,13 @@ void ShipmentApi::init() {
 void ShipmentApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/shipment/:id/cancel", Routes::bind(&ShipmentApi::cancel_shipment_handler, this));
-    Routes::Post(*router, base + "/api/:version/shipment", Routes::bind(&ShipmentApi::create_shipment_handler, this));
-    Routes::Delete(*router, base + "/api/:version/shipment/:id", Routes::bind(&ShipmentApi::delete_shipment_handler, this));
-    Routes::Get(*router, base + "/api/:version/shipment/:id", Routes::bind(&ShipmentApi::get_shipment_handler, this));
-    Routes::Get(*router, base + "/api/:version/shipment", Routes::bind(&ShipmentApi::search_shipments_handler, this));
-    Routes::Put(*router, base + "/api/:version/shipment/:id", Routes::bind(&ShipmentApi::update_shipment_handler, this));
-    Routes::Post(*router, base + "/api/:version/shipment/:id/status", Routes::bind(&ShipmentApi::update_shipment_status_handler, this));
+    Routes::Post(*router, base + "/shipment/:id/cancel", Routes::bind(&ShipmentApi::cancel_shipment_handler, this));
+    Routes::Post(*router, base + "/shipment", Routes::bind(&ShipmentApi::create_shipment_handler, this));
+    Routes::Delete(*router, base + "/shipment/:id", Routes::bind(&ShipmentApi::delete_shipment_handler, this));
+    Routes::Get(*router, base + "/shipment/:id", Routes::bind(&ShipmentApi::get_shipment_handler, this));
+    Routes::Get(*router, base + "/shipment", Routes::bind(&ShipmentApi::search_shipments_handler, this));
+    Routes::Put(*router, base + "/shipment/:id", Routes::bind(&ShipmentApi::update_shipment_handler, this));
+    Routes::Post(*router, base + "/shipment/:id/status", Routes::bind(&ShipmentApi::update_shipment_status_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ShipmentApi::shipment_api_default_handler, this));
@@ -74,7 +74,6 @@ void ShipmentApi::cancel_shipment_handler(const Pistache::Rest::Request& request
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -87,7 +86,7 @@ void ShipmentApi::cancel_shipment_handler(const Pistache::Rest::Request& request
 
 
 
-            this->cancel_shipment(version, id, response);
+            this->cancel_shipment(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -106,8 +105,6 @@ void ShipmentApi::cancel_shipment_handler(const Pistache::Rest::Request& request
 void ShipmentApi::create_shipment_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -131,7 +128,7 @@ void ShipmentApi::create_shipment_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_shipment(version, body, response);
+            this->create_shipment(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -151,7 +148,6 @@ void ShipmentApi::delete_shipment_handler(const Pistache::Rest::Request& request
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -164,7 +160,7 @@ void ShipmentApi::delete_shipment_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_shipment(version, id, response);
+            this->delete_shipment(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -184,7 +180,6 @@ void ShipmentApi::get_shipment_handler(const Pistache::Rest::Request& request, P
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -197,7 +192,7 @@ void ShipmentApi::get_shipment_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_shipment(version, id, response);
+            this->get_shipment(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -216,8 +211,6 @@ void ShipmentApi::get_shipment_handler(const Pistache::Rest::Request& request, P
 void ShipmentApi::search_shipments_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -294,7 +287,7 @@ void ShipmentApi::search_shipments_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->search_shipments(version, sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId, response);
+            this->search_shipments(sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -314,7 +307,6 @@ void ShipmentApi::update_shipment_handler(const Pistache::Rest::Request& request
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -339,7 +331,7 @@ void ShipmentApi::update_shipment_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_shipment(version, id, body, response);
+            this->update_shipment(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -359,7 +351,6 @@ void ShipmentApi::update_shipment_status_handler(const Pistache::Rest::Request& 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -382,7 +373,7 @@ void ShipmentApi::update_shipment_status_handler(const Pistache::Rest::Request& 
 
 
 
-            this->update_shipment_status(version, id, body, response);
+            this->update_shipment_status(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

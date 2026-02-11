@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string FlagApi::base = "";
+const std::string FlagApi::base = "/api/3.18";
 
 FlagApi::FlagApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void FlagApi::init() {
 void FlagApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/flag/create", Routes::bind(&FlagApi::create_flag_handler, this));
-    Routes::Post(*router, base + "/api/:version/flag/delete", Routes::bind(&FlagApi::delete_flag_handler, this));
-    Routes::Get(*router, base + "/api/:version/flag/get", Routes::bind(&FlagApi::get_flag_handler, this));
-    Routes::Get(*router, base + "/api/:version/flag/threshold/get", Routes::bind(&FlagApi::get_flag_threshold_handler, this));
-    Routes::Post(*router, base + "/api/:version/flag/threshold/update", Routes::bind(&FlagApi::update_flag_threshold_handler, this));
+    Routes::Post(*router, base + "/flag/create", Routes::bind(&FlagApi::create_flag_handler, this));
+    Routes::Post(*router, base + "/flag/delete", Routes::bind(&FlagApi::delete_flag_handler, this));
+    Routes::Get(*router, base + "/flag/get", Routes::bind(&FlagApi::get_flag_handler, this));
+    Routes::Get(*router, base + "/flag/threshold/get", Routes::bind(&FlagApi::get_flag_threshold_handler, this));
+    Routes::Post(*router, base + "/flag/threshold/update", Routes::bind(&FlagApi::update_flag_threshold_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&FlagApi::flag_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> FlagApi::handleOperationException(c
 void FlagApi::create_flag_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -141,7 +139,7 @@ void FlagApi::create_flag_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create_flag(version, flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude, response);
+            this->create_flag(flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -160,8 +158,6 @@ void FlagApi::create_flag_handler(const Pistache::Rest::Request& request, Pistac
 void FlagApi::delete_flag_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -222,7 +218,7 @@ void FlagApi::delete_flag_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->delete_flag(version, deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId, response);
+            this->delete_flag(deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -241,8 +237,6 @@ void FlagApi::delete_flag_handler(const Pistache::Rest::Request& request, Pistac
 void FlagApi::get_flag_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -303,7 +297,7 @@ void FlagApi::get_flag_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_flag(version, flagableType, flagableId, deviceId, accountId, latitude, longitude, response);
+            this->get_flag(flagableType, flagableId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -322,8 +316,6 @@ void FlagApi::get_flag_handler(const Pistache::Rest::Request& request, Pistache:
 void FlagApi::get_flag_threshold_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -352,7 +344,7 @@ void FlagApi::get_flag_threshold_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_flag_threshold(version, itemBeingFlaggedType, appKey, response);
+            this->get_flag_threshold(itemBeingFlaggedType, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -371,8 +363,6 @@ void FlagApi::get_flag_threshold_handler(const Pistache::Rest::Request& request,
 void FlagApi::update_flag_threshold_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -425,7 +415,7 @@ void FlagApi::update_flag_threshold_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->update_flag_threshold(version, itemBeingFlaggedType, threshold, appKey, deviceId, accountId, response);
+            this->update_flag_threshold(itemBeingFlaggedType, threshold, appKey, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

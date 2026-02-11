@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AssetApi::base = "";
+const std::string AssetApi::base = "/api/3.18";
 
 AssetApi::AssetApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,14 +32,14 @@ void AssetApi::init() {
 void AssetApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/asset/download/:filename", Routes::bind(&AssetApi::asset_download_handler, this));
-    Routes::Post(*router, base + "/api/:version/asset/morph", Routes::bind(&AssetApi::asset_morph_handler, this));
-    Routes::Post(*router, base + "/api/:version/asset/create", Routes::bind(&AssetApi::create_asset_handler, this));
-    Routes::Post(*router, base + "/api/:version/asset/delete", Routes::bind(&AssetApi::delete_asset_handler, this));
-    Routes::Get(*router, base + "/api/:version/asset/get", Routes::bind(&AssetApi::get_asset_handler, this));
-    Routes::Post(*router, base + "/api/:version/asset/remove", Routes::bind(&AssetApi::remove_asset_handler, this));
-    Routes::Get(*router, base + "/api/:version/asset/search", Routes::bind(&AssetApi::search_assets_handler, this));
-    Routes::Post(*router, base + "/api/:version/asset/update", Routes::bind(&AssetApi::update_asset_handler, this));
+    Routes::Get(*router, base + "/asset/download/:filename", Routes::bind(&AssetApi::asset_download_handler, this));
+    Routes::Post(*router, base + "/asset/morph", Routes::bind(&AssetApi::asset_morph_handler, this));
+    Routes::Post(*router, base + "/asset/create", Routes::bind(&AssetApi::create_asset_handler, this));
+    Routes::Post(*router, base + "/asset/delete", Routes::bind(&AssetApi::delete_asset_handler, this));
+    Routes::Get(*router, base + "/asset/get", Routes::bind(&AssetApi::get_asset_handler, this));
+    Routes::Post(*router, base + "/asset/remove", Routes::bind(&AssetApi::remove_asset_handler, this));
+    Routes::Get(*router, base + "/asset/search", Routes::bind(&AssetApi::search_assets_handler, this));
+    Routes::Post(*router, base + "/asset/update", Routes::bind(&AssetApi::update_asset_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AssetApi::asset_api_default_handler, this));
@@ -75,7 +75,6 @@ void AssetApi::asset_download_handler(const Pistache::Rest::Request& request, Pi
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto filename = request.param(":filename").as<std::string>();
         
         
@@ -88,7 +87,7 @@ void AssetApi::asset_download_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->asset_download(version, filename, response);
+            this->asset_download(filename, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -107,8 +106,6 @@ void AssetApi::asset_download_handler(const Pistache::Rest::Request& request, Pi
 void AssetApi::asset_morph_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -177,7 +174,7 @@ void AssetApi::asset_morph_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->asset_morph(version, offerId, adSize, creativeId, width, height, backgroundSize, r_template, response);
+            this->asset_morph(offerId, adSize, creativeId, width, height, backgroundSize, r_template, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -216,8 +213,6 @@ void AssetApi::create_asset_handler(const Pistache::Rest::Request& request, Pist
 void AssetApi::delete_asset_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -270,7 +265,7 @@ void AssetApi::delete_asset_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->delete_asset(version, assetId, deviceId, accountId, latitude, longitude, response);
+            this->delete_asset(assetId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -289,8 +284,6 @@ void AssetApi::delete_asset_handler(const Pistache::Rest::Request& request, Pist
 void AssetApi::get_asset_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -335,7 +328,7 @@ void AssetApi::get_asset_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_asset(version, assetId, deviceId, accountId, noteDescending, response);
+            this->get_asset(assetId, deviceId, accountId, noteDescending, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -354,8 +347,6 @@ void AssetApi::get_asset_handler(const Pistache::Rest::Request& request, Pistach
 void AssetApi::remove_asset_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -432,7 +423,7 @@ void AssetApi::remove_asset_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->remove_asset(version, assetId, deviceId, accountId, albumId, collectionId, removeFromDefaultAlbums, latitude, longitude, response);
+            this->remove_asset(assetId, deviceId, accountId, albumId, collectionId, removeFromDefaultAlbums, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -451,8 +442,6 @@ void AssetApi::remove_asset_handler(const Pistache::Rest::Request& request, Pist
 void AssetApi::search_assets_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -657,7 +646,7 @@ void AssetApi::search_assets_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->search_assets(version, deviceId, accountId, albumIds, assetIds, appKey, mediaType, mimeType, keyword, versionCode, versionName, updatedSince, updatedBefore, sortField, descending, searchMediaLibrary, filterByBillable, activeOnly, returnApp, start, limit, searchMode, assetType, approvalStatus, assignedAccountId, response);
+            this->search_assets(deviceId, accountId, albumIds, assetIds, appKey, mediaType, mimeType, keyword, versionCode, versionName, updatedSince, updatedBefore, sortField, descending, searchMediaLibrary, filterByBillable, activeOnly, returnApp, start, limit, searchMode, assetType, approvalStatus, assignedAccountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

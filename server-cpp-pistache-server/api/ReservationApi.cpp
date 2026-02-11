@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ReservationApi::base = "";
+const std::string ReservationApi::base = "/api/3.18";
 
 ReservationApi::ReservationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ReservationApi::init() {
 void ReservationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/reservation/create", Routes::bind(&ReservationApi::create_reservation_handler, this));
-    Routes::Post(*router, base + "/api/:version/reservation/delete", Routes::bind(&ReservationApi::delete_reservation_handler, this));
-    Routes::Post(*router, base + "/api/:version/reservable/availability/update", Routes::bind(&ReservationApi::reservable_availability_handler, this));
-    Routes::Get(*router, base + "/api/:version/reservable/availability/search", Routes::bind(&ReservationApi::search_availability_handler, this));
-    Routes::Get(*router, base + "/api/:version/reservation/search", Routes::bind(&ReservationApi::search_reservations_handler, this));
-    Routes::Get(*router, base + "/api/:version/reservable/schedule/search", Routes::bind(&ReservationApi::search_schedule_handler, this));
+    Routes::Post(*router, base + "/reservation/create", Routes::bind(&ReservationApi::create_reservation_handler, this));
+    Routes::Post(*router, base + "/reservation/delete", Routes::bind(&ReservationApi::delete_reservation_handler, this));
+    Routes::Post(*router, base + "/reservable/availability/update", Routes::bind(&ReservationApi::reservable_availability_handler, this));
+    Routes::Get(*router, base + "/reservable/availability/search", Routes::bind(&ReservationApi::search_availability_handler, this));
+    Routes::Get(*router, base + "/reservation/search", Routes::bind(&ReservationApi::search_reservations_handler, this));
+    Routes::Get(*router, base + "/reservable/schedule/search", Routes::bind(&ReservationApi::search_schedule_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ReservationApi::reservation_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ReservationApi::handleOperationExce
 void ReservationApi::create_reservation_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -150,7 +148,7 @@ void ReservationApi::create_reservation_handler(const Pistache::Rest::Request& r
 
 
 
-            this->create_reservation(version, deviceId, accountId, startDate, endDate, offerId, offerLocationId, appKey, metaData, response);
+            this->create_reservation(deviceId, accountId, startDate, endDate, offerId, offerLocationId, appKey, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -169,8 +167,6 @@ void ReservationApi::create_reservation_handler(const Pistache::Rest::Request& r
 void ReservationApi::delete_reservation_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -207,7 +203,7 @@ void ReservationApi::delete_reservation_handler(const Pistache::Rest::Request& r
 
 
 
-            this->delete_reservation(version, reservationId, deviceId, accountId, response);
+            this->delete_reservation(reservationId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -226,8 +222,6 @@ void ReservationApi::delete_reservation_handler(const Pistache::Rest::Request& r
 void ReservationApi::reservable_availability_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -288,7 +282,7 @@ void ReservationApi::reservable_availability_handler(const Pistache::Rest::Reque
 
 
 
-            this->reservable_availability(version, reservableId, reservableType, deviceId, accountId, availability, availabilitySummary, response);
+            this->reservable_availability(reservableId, reservableType, deviceId, accountId, availability, availabilitySummary, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -307,8 +301,6 @@ void ReservationApi::reservable_availability_handler(const Pistache::Rest::Reque
 void ReservationApi::search_availability_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -385,7 +377,7 @@ void ReservationApi::search_availability_handler(const Pistache::Rest::Request& 
 
 
 
-            this->search_availability(version, reservableId, reservableType, deviceId, accountId, startDate, endDate, start, limit, response);
+            this->search_availability(reservableId, reservableType, deviceId, accountId, startDate, endDate, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -404,8 +396,6 @@ void ReservationApi::search_availability_handler(const Pistache::Rest::Request& 
 void ReservationApi::search_reservations_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -506,7 +496,7 @@ void ReservationApi::search_reservations_handler(const Pistache::Rest::Request& 
 
 
 
-            this->search_reservations(version, deviceId, appKey, accountId, filterAccountId, reservableId, reservableType, keyword, startDate, endDate, start, limit, response);
+            this->search_reservations(deviceId, appKey, accountId, filterAccountId, reservableId, reservableType, keyword, startDate, endDate, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -525,8 +515,6 @@ void ReservationApi::search_reservations_handler(const Pistache::Rest::Request& 
 void ReservationApi::search_schedule_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -595,7 +583,7 @@ void ReservationApi::search_schedule_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->search_schedule(version, reservableId, reservableType, startDate, endDate, deviceId, accountId, timeBucketMins, response);
+            this->search_schedule(reservableId, reservableType, startDate, endDate, deviceId, accountId, timeBucketMins, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

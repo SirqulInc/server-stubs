@@ -84,29 +84,26 @@ private:
     /// <remarks>
     /// Create dependent of the account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the parent account to create a dependent for</param>
     /// <param name="body"> (optional)</param>
-    virtual void create( const double &version, const int64_t &accountId, const org::openapitools::server::model::Account &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create( const int64_t &accountId, const org::openapitools::server::model::Account &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get dependent list of an account
     /// </summary>
     /// <remarks>
     /// Get the dependent list of an account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the parent account to get a list of dependents</param>
-    virtual void get_dependents( const double &version, const int64_t &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_dependents( const int64_t &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Dependent
     /// </summary>
     /// <remarks>
     /// Delete the Dependent
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the parent account tied to the dependent</param>
     /// <param name="dependentId">the id of the dependent to delete</param>
-    virtual void remove_dependent( const double &version, const int64_t &accountId, const int64_t &dependentId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_dependent( const int64_t &accountId, const int64_t &dependentId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -29,7 +29,7 @@ TwilioApiImpl::TwilioApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void TwilioApiImpl::sms_buy_offer(const double &version, const std::string &appKey, const std::optional<std::string> &body, const std::optional<std::string> &from, const std::optional<std::string> &currencyType, Pistache::Http::ResponseWriter &response) {
+void TwilioApiImpl::sms_buy_offer(const std::string &appKey, const std::optional<std::string> &body, const std::optional<std::string> &from, const std::optional<std::string> &currencyType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

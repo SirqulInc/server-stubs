@@ -29,25 +29,25 @@ ShipmentApiImpl::ShipmentApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 
 }
 
-void ShipmentApiImpl::cancel_shipment(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::cancel_shipment(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentApiImpl::create_shipment(const double &version, const Shipment &body, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::create_shipment(const Shipment &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentApiImpl::delete_shipment(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::delete_shipment(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentApiImpl::get_shipment(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::get_shipment(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentApiImpl::search_shipments(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &ownerId, const std::optional<int64_t> &riderId, const std::optional<int64_t> &routeId, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::search_shipments(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &ownerId, const std::optional<int64_t> &riderId, const std::optional<int64_t> &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentApiImpl::update_shipment(const double &version, const int64_t &id, const Shipment &body, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::update_shipment(const int64_t &id, const Shipment &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentApiImpl::update_shipment_status(const double &version, const int64_t &id, const std::map<std::string, bool> &body, Pistache::Http::ResponseWriter &response) {
+void ShipmentApiImpl::update_shipment_status(const int64_t &id, const std::map<std::string, bool> &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

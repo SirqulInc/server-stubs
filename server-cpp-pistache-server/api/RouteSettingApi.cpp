@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RouteSettingApi::base = "";
+const std::string RouteSettingApi::base = "/api/3.18";
 
 RouteSettingApi::RouteSettingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void RouteSettingApi::init() {
 void RouteSettingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/route/setting", Routes::bind(&RouteSettingApi::create_route_settings_handler, this));
-    Routes::Delete(*router, base + "/api/:version/route/setting/:routeSettingsId", Routes::bind(&RouteSettingApi::delete_route_settings_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/setting/:routeSettingsId", Routes::bind(&RouteSettingApi::get_route_settings_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/setting", Routes::bind(&RouteSettingApi::search_route_settings_handler, this));
-    Routes::Put(*router, base + "/api/:version/route/setting/:routeSettingsId", Routes::bind(&RouteSettingApi::update_route_settings_handler, this));
+    Routes::Post(*router, base + "/route/setting", Routes::bind(&RouteSettingApi::create_route_settings_handler, this));
+    Routes::Delete(*router, base + "/route/setting/:routeSettingsId", Routes::bind(&RouteSettingApi::delete_route_settings_handler, this));
+    Routes::Get(*router, base + "/route/setting/:routeSettingsId", Routes::bind(&RouteSettingApi::get_route_settings_handler, this));
+    Routes::Get(*router, base + "/route/setting", Routes::bind(&RouteSettingApi::search_route_settings_handler, this));
+    Routes::Put(*router, base + "/route/setting/:routeSettingsId", Routes::bind(&RouteSettingApi::update_route_settings_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RouteSettingApi::route_setting_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> RouteSettingApi::handleOperationExc
 void RouteSettingApi::create_route_settings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -96,7 +94,7 @@ void RouteSettingApi::create_route_settings_handler(const Pistache::Rest::Reques
 
 
 
-            this->create_route_settings(version, body, response);
+            this->create_route_settings(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -116,7 +114,6 @@ void RouteSettingApi::delete_route_settings_handler(const Pistache::Rest::Reques
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeSettingsId = request.param(":routeSettingsId").as<int64_t>();
         
         
@@ -129,7 +126,7 @@ void RouteSettingApi::delete_route_settings_handler(const Pistache::Rest::Reques
 
 
 
-            this->delete_route_settings(version, routeSettingsId, response);
+            this->delete_route_settings(routeSettingsId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -149,7 +146,6 @@ void RouteSettingApi::get_route_settings_handler(const Pistache::Rest::Request& 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeSettingsId = request.param(":routeSettingsId").as<int64_t>();
         
         
@@ -162,7 +158,7 @@ void RouteSettingApi::get_route_settings_handler(const Pistache::Rest::Request& 
 
 
 
-            this->get_route_settings(version, routeSettingsId, response);
+            this->get_route_settings(routeSettingsId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -181,8 +177,6 @@ void RouteSettingApi::get_route_settings_handler(const Pistache::Rest::Request& 
 void RouteSettingApi::search_route_settings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -259,7 +253,7 @@ void RouteSettingApi::search_route_settings_handler(const Pistache::Rest::Reques
 
 
 
-            this->search_route_settings(version, sortField, descending, start, limit, activeOnly, hubId, programId, keyword, response);
+            this->search_route_settings(sortField, descending, start, limit, activeOnly, hubId, programId, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -279,7 +273,6 @@ void RouteSettingApi::update_route_settings_handler(const Pistache::Rest::Reques
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeSettingsId = request.param(":routeSettingsId").as<int64_t>();
         
         // Getting the body param
@@ -304,7 +297,7 @@ void RouteSettingApi::update_route_settings_handler(const Pistache::Rest::Reques
 
 
 
-            this->update_route_settings(version, routeSettingsId, body, response);
+            this->update_route_settings(routeSettingsId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

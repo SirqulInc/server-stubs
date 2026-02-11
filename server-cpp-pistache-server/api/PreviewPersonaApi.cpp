@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string PreviewPersonaApi::base = "";
+const std::string PreviewPersonaApi::base = "/api/3.18";
 
 PreviewPersonaApi::PreviewPersonaApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void PreviewPersonaApi::init() {
 void PreviewPersonaApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/persona/create", Routes::bind(&PreviewPersonaApi::create_persona_handler, this));
-    Routes::Post(*router, base + "/api/:version/persona/delete", Routes::bind(&PreviewPersonaApi::delete_persona_handler, this));
-    Routes::Get(*router, base + "/api/:version/persona/get", Routes::bind(&PreviewPersonaApi::get_persona_list_handler, this));
-    Routes::Get(*router, base + "/api/:version/persona/search", Routes::bind(&PreviewPersonaApi::search_persona_handler, this));
-    Routes::Post(*router, base + "/api/:version/persona/update", Routes::bind(&PreviewPersonaApi::update_persona_handler, this));
+    Routes::Post(*router, base + "/persona/create", Routes::bind(&PreviewPersonaApi::create_persona_handler, this));
+    Routes::Post(*router, base + "/persona/delete", Routes::bind(&PreviewPersonaApi::delete_persona_handler, this));
+    Routes::Get(*router, base + "/persona/get", Routes::bind(&PreviewPersonaApi::get_persona_list_handler, this));
+    Routes::Get(*router, base + "/persona/search", Routes::bind(&PreviewPersonaApi::search_persona_handler, this));
+    Routes::Post(*router, base + "/persona/update", Routes::bind(&PreviewPersonaApi::update_persona_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&PreviewPersonaApi::preview_persona_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> PreviewPersonaApi::handleOperationE
 void PreviewPersonaApi::create_persona_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -157,7 +155,7 @@ void PreviewPersonaApi::create_persona_handler(const Pistache::Rest::Request& re
 
 
 
-            this->create_persona(version, accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude, response);
+            this->create_persona(accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -176,8 +174,6 @@ void PreviewPersonaApi::create_persona_handler(const Pistache::Rest::Request& re
 void PreviewPersonaApi::delete_persona_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -206,7 +202,7 @@ void PreviewPersonaApi::delete_persona_handler(const Pistache::Rest::Request& re
 
 
 
-            this->delete_persona(version, accountId, personaId, response);
+            this->delete_persona(accountId, personaId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -225,8 +221,6 @@ void PreviewPersonaApi::delete_persona_handler(const Pistache::Rest::Request& re
 void PreviewPersonaApi::get_persona_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -255,7 +249,7 @@ void PreviewPersonaApi::get_persona_list_handler(const Pistache::Rest::Request& 
 
 
 
-            this->get_persona_list(version, accountId, personaId, response);
+            this->get_persona_list(accountId, personaId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -274,8 +268,6 @@ void PreviewPersonaApi::get_persona_list_handler(const Pistache::Rest::Request& 
 void PreviewPersonaApi::search_persona_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -312,7 +304,7 @@ void PreviewPersonaApi::search_persona_handler(const Pistache::Rest::Request& re
 
 
 
-            this->search_persona(version, accountId, start, limit, response);
+            this->search_persona(accountId, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -331,8 +323,6 @@ void PreviewPersonaApi::search_persona_handler(const Pistache::Rest::Request& re
 void PreviewPersonaApi::update_persona_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -433,7 +423,7 @@ void PreviewPersonaApi::update_persona_handler(const Pistache::Rest::Request& re
 
 
 
-            this->update_persona(version, accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude, response);
+            this->update_persona(accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

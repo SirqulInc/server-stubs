@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string BidApi::base = "";
+const std::string BidApi::base = "/api/3.18";
 
 BidApi::BidApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,10 +32,10 @@ void BidApi::init() {
 void BidApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/bid/create", Routes::bind(&BidApi::create_bid_handler, this));
-    Routes::Post(*router, base + "/api/:version/bid/delete", Routes::bind(&BidApi::delete_bid_handler, this));
-    Routes::Get(*router, base + "/api/:version/bid/get", Routes::bind(&BidApi::get_bid_handler, this));
-    Routes::Post(*router, base + "/api/:version/bid/update", Routes::bind(&BidApi::update_bid_handler, this));
+    Routes::Post(*router, base + "/bid/create", Routes::bind(&BidApi::create_bid_handler, this));
+    Routes::Post(*router, base + "/bid/delete", Routes::bind(&BidApi::delete_bid_handler, this));
+    Routes::Get(*router, base + "/bid/get", Routes::bind(&BidApi::get_bid_handler, this));
+    Routes::Post(*router, base + "/bid/update", Routes::bind(&BidApi::update_bid_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&BidApi::bid_api_default_handler, this));
@@ -70,8 +70,6 @@ std::pair<Pistache::Http::Code, std::string> BidApi::handleOperationException(co
 void BidApi::create_bid_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -148,7 +146,7 @@ void BidApi::create_bid_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->create_bid(version, biddableType, biddableId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, deviceId, accountId, response);
+            this->create_bid(biddableType, biddableId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -167,8 +165,6 @@ void BidApi::create_bid_handler(const Pistache::Rest::Request& request, Pistache
 void BidApi::delete_bid_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -205,7 +201,7 @@ void BidApi::delete_bid_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->delete_bid(version, bidId, deviceId, accountId, response);
+            this->delete_bid(bidId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -224,8 +220,6 @@ void BidApi::delete_bid_handler(const Pistache::Rest::Request& request, Pistache
 void BidApi::get_bid_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -262,7 +256,7 @@ void BidApi::get_bid_handler(const Pistache::Rest::Request& request, Pistache::H
 
 
 
-            this->get_bid(version, bidId, deviceId, accountId, response);
+            this->get_bid(bidId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -281,8 +275,6 @@ void BidApi::get_bid_handler(const Pistache::Rest::Request& request, Pistache::H
 void BidApi::update_bid_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -351,7 +343,7 @@ void BidApi::update_bid_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->update_bid(version, bidId, deviceId, accountId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, response);
+            this->update_bid(bidId, deviceId, accountId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

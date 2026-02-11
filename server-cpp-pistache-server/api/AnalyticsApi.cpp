@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AnalyticsApi::base = "";
+const std::string AnalyticsApi::base = "/api/3.18";
 
 AnalyticsApi::AnalyticsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void AnalyticsApi::init() {
 void AnalyticsApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/analytics/useractivity", Routes::bind(&AnalyticsApi::activities_handler, this));
-    Routes::Get(*router, base + "/api/:version/analytics/aggregatedFilteredUsage", Routes::bind(&AnalyticsApi::aggregated_filtered_usage_handler, this));
-    Routes::Get(*router, base + "/api/:version/analytics/filteredUsage", Routes::bind(&AnalyticsApi::filtered_usage_handler, this));
-    Routes::Post(*router, base + "/api/:version/analytics/usage", Routes::bind(&AnalyticsApi::usage_handler, this));
-    Routes::Post(*router, base + "/api/:version/analytics/usage/batch", Routes::bind(&AnalyticsApi::usage_batch_handler, this));
+    Routes::Get(*router, base + "/analytics/useractivity", Routes::bind(&AnalyticsApi::activities_handler, this));
+    Routes::Get(*router, base + "/analytics/aggregatedFilteredUsage", Routes::bind(&AnalyticsApi::aggregated_filtered_usage_handler, this));
+    Routes::Get(*router, base + "/analytics/filteredUsage", Routes::bind(&AnalyticsApi::filtered_usage_handler, this));
+    Routes::Post(*router, base + "/analytics/usage", Routes::bind(&AnalyticsApi::usage_handler, this));
+    Routes::Post(*router, base + "/analytics/usage/batch", Routes::bind(&AnalyticsApi::usage_batch_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AnalyticsApi::analytics_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> AnalyticsApi::handleOperationExcept
 void AnalyticsApi::activities_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -109,7 +107,7 @@ void AnalyticsApi::activities_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->activities(version, start, limit, accountId, response);
+            this->activities(start, limit, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -128,8 +126,6 @@ void AnalyticsApi::activities_handler(const Pistache::Rest::Request& request, Pi
 void AnalyticsApi::aggregated_filtered_usage_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -390,7 +386,7 @@ void AnalyticsApi::aggregated_filtered_usage_handler(const Pistache::Rest::Reque
 
 
 
-            this->aggregated_filtered_usage(version, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, groupByRoot, groupBy, distinctCount, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude, response);
+            this->aggregated_filtered_usage(deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, groupByRoot, groupBy, distinctCount, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -409,8 +405,6 @@ void AnalyticsApi::aggregated_filtered_usage_handler(const Pistache::Rest::Reque
 void AnalyticsApi::filtered_usage_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -735,7 +729,7 @@ void AnalyticsApi::filtered_usage_handler(const Pistache::Rest::Request& request
 
 
 
-            this->filtered_usage(version, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, customId, customType, customValue, customValue2, customLong, customLong2, customMessage, customMessage2, groupBy, distinctCount, sumColumn, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude, response);
+            this->filtered_usage(deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, customId, customType, customValue, customValue2, customLong, customLong2, customMessage, customMessage2, groupBy, distinctCount, sumColumn, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -754,8 +748,6 @@ void AnalyticsApi::filtered_usage_handler(const Pistache::Rest::Request& request
 void AnalyticsApi::usage_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1016,7 +1008,7 @@ void AnalyticsApi::usage_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->usage(version, tag, deviceId, accountId, applicationId, appKey, appVersion, device, deviceType, deviceOS, model, latitude, longitude, customId, customType, achievementIncrement, city, state, country, zip, locationDescription, clientTime, errorMessage, ip, userAgent, backgroundEvent, customMessage, customMessage2, customValue, customValue2, customLong, customLong2, response);
+            this->usage(tag, deviceId, accountId, applicationId, appKey, appVersion, device, deviceType, deviceOS, model, latitude, longitude, customId, customType, achievementIncrement, city, state, country, zip, locationDescription, clientTime, errorMessage, ip, userAgent, backgroundEvent, customMessage, customMessage2, customValue, customValue2, customLong, customLong2, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1035,8 +1027,6 @@ void AnalyticsApi::usage_handler(const Pistache::Rest::Request& request, Pistach
 void AnalyticsApi::usage_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1137,7 +1127,7 @@ void AnalyticsApi::usage_batch_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->usage_batch(version, appKey, device, data, deviceId, accountId, appVersion, deviceType, deviceOS, model, updateRanking, returnSummaryResponse, response);
+            this->usage_batch(appKey, device, data, deviceId, accountId, appVersion, deviceType, deviceOS, model, updateRanking, returnSummaryResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

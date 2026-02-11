@@ -29,19 +29,19 @@ CargoTypeApiImpl::CargoTypeApiImpl(const std::shared_ptr<Pistache::Rest::Router>
 
 }
 
-void CargoTypeApiImpl::create_cargo_type(const double &version, const CargoType &body, Pistache::Http::ResponseWriter &response) {
+void CargoTypeApiImpl::create_cargo_type(const CargoType &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CargoTypeApiImpl::delete_cargo_type(const double &version, const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) {
+void CargoTypeApiImpl::delete_cargo_type(const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CargoTypeApiImpl::get_cargo_type(const double &version, const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) {
+void CargoTypeApiImpl::get_cargo_type(const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CargoTypeApiImpl::search_cargo_types(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) {
+void CargoTypeApiImpl::search_cargo_types(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CargoTypeApiImpl::update_cargo_type(const double &version, const int64_t &cargoTypeId, const CargoType &body, Pistache::Http::ResponseWriter &response) {
+void CargoTypeApiImpl::update_cargo_type(const int64_t &cargoTypeId, const CargoType &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

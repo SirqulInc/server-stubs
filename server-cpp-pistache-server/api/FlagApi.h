@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Allows a user to flag an object that the user deems inappropriate or offensive. Flagable objects include accounts, albums, album contests, assets, game levels, and theme descriptors
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="flagableType">The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}</param>
     /// <param name="flagableId">The flagable object id</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
@@ -96,58 +95,54 @@ private:
     /// <param name="flagDescription">An optional description of why is it being flagged (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
-    virtual void create_flag( const double &version, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &flagDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_flag( const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &flagDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Flag
     /// </summary>
     /// <remarks>
     /// Deletes a flag.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="itemBeingFlaggedType">This parameter is deprecated. (optional, default to &quot;&quot;)</param>
     /// <param name="itemBeingFlaggedId">This parameter is deprecated. (optional, default to 0L)</param>
     /// <param name="flagableType">The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE} (optional, default to &quot;&quot;)</param>
     /// <param name="flagableId">The flagable object id (optional, default to 0L)</param>
-    virtual void delete_flag( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &itemBeingFlaggedId, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_flag( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &itemBeingFlaggedId, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Flag
     /// </summary>
     /// <remarks>
     /// Gets the details on whether the user has flagged a particular flagable object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="flagableType">The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}</param>
     /// <param name="flagableId">The flagable object id</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
-    virtual void get_flag( const double &version, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_flag( const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Flag Threshold
     /// </summary>
     /// <remarks>
     /// Get the flag threshold value on an object type for a particular application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="itemBeingFlaggedType">The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}</param>
     /// <param name="appKey">The application key</param>
-    virtual void get_flag_threshold( const double &version, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_flag_threshold( const std::optional<std::string> &itemBeingFlaggedType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Flag Threshold
     /// </summary>
     /// <remarks>
     /// Update the flag threshold on an object type for a particular application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="itemBeingFlaggedType">The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}</param>
     /// <param name="threshold">The threshold value</param>
     /// <param name="appKey">The application key</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
-    virtual void update_flag_threshold( const double &version, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &threshold, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_flag_threshold( const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &threshold, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

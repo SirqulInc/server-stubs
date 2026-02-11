@@ -45,8 +45,8 @@ public:
     explicit OptimizeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~OptimizeApiImpl() override = default;
 
-    void get_optimization_result(const double &version, const std::string &batchID, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
-    void request_optimization(const double &version, const Orders &body, Pistache::Http::ResponseWriter &response);
+    void get_optimization_result(const std::string &batchID, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
+    void request_optimization(const Orders &body, Pistache::Http::ResponseWriter &response);
 
 };
 

@@ -96,10 +96,9 @@ private:
     /// <remarks>
     /// Delete a secure application record.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The unique id of the user making the request</param>
     /// <param name="appKey">The application to secure</param>
-    virtual void delete_secure_application( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_secure_application( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login Clear
     /// </summary>
@@ -113,19 +112,17 @@ private:
     /// <remarks>
     /// Purchase via Clear.me. Creates a new account if purchasing for the first time.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body">The payment request object</param>
-    virtual void purchase_secure( const double &version, const org::openapitools::server::model::PaymentRequest &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void purchase_secure( const org::openapitools::server::model::PaymentRequest &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Rest Secure Application
     /// </summary>
     /// <remarks>
     /// Reset a secure application client.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The unique id of the user making the request</param>
     /// <param name="appKey">The application to secure</param>
-    virtual void reset_secure( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reset_secure( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Secure Application
     /// </summary>

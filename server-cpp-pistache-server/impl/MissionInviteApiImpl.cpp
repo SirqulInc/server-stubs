@@ -29,19 +29,19 @@ MissionInviteApiImpl::MissionInviteApiImpl(const std::shared_ptr<Pistache::Rest:
 
 }
 
-void MissionInviteApiImpl::create_mission_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &joinCode, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void MissionInviteApiImpl::create_mission_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &joinCode, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void MissionInviteApiImpl::delete_mission_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void MissionInviteApiImpl::delete_mission_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void MissionInviteApiImpl::get_mission_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, const std::optional<std::string> &includeScores, Pistache::Http::ResponseWriter &response) {
+void MissionInviteApiImpl::get_mission_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, const std::optional<std::string> &includeScores, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void MissionInviteApiImpl::search_mission_invites(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<std::string> &status, const std::optional<int64_t> &lastUpdated, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &missionTypes, const std::optional<bool> &filterByBillable, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void MissionInviteApiImpl::search_mission_invites(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<std::string> &status, const std::optional<int64_t> &lastUpdated, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &missionTypes, const std::optional<bool> &filterByBillable, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void MissionInviteApiImpl::update_mission_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<std::string> &status, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
+void MissionInviteApiImpl::update_mission_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<std::string> &status, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

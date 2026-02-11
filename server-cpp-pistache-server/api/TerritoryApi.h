@@ -88,55 +88,50 @@ private:
     /// <remarks>
     /// Creates a territory.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the territory</param>
     /// <param name="active">If true set the game level as active. Default is true. (optional, default to false)</param>
-    virtual void create_territory( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_territory( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Territory
     /// </summary>
     /// <remarks>
     /// Deletes a territory.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="territoryId">the id of the territory to delete</param>
-    virtual void delete_territory( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_territory( const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Territory
     /// </summary>
     /// <remarks>
     /// Get a territory.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="territoryId">the id of the territory to get</param>
-    virtual void get_territory( const double &version, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_territory( const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Territories
     /// </summary>
     /// <remarks>
     /// Searches on territories.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">the field to sort by. Supported values include: ID, CREATED, UPDATED, NAME</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order</param>
     /// <param name="keyword">Return results that match this keyword. (optional, default to &quot;&quot;)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (optional, default to 0)</param>
-    virtual void search_territories( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_territories( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Territory
     /// </summary>
     /// <remarks>
     /// Updates a territory.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="territoryId">the id of the territory to update</param>
     /// <param name="name">The name of the territory (optional, default to &quot;&quot;)</param>
     /// <param name="active">If true set the game level as active. (optional, default to false)</param>
-    virtual void update_territory( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_territory( const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

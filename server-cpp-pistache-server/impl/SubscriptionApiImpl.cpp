@@ -29,25 +29,25 @@ SubscriptionApiImpl::SubscriptionApiImpl(const std::shared_ptr<Pistache::Rest::R
 
 }
 
-void SubscriptionApiImpl::create_subscription(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::create_subscription(const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SubscriptionApiImpl::delete_subscription(const double &version, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::delete_subscription(const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SubscriptionApiImpl::get_subscription(const double &version, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::get_subscription(const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SubscriptionApiImpl::get_subscription_plan(const double &version, const std::optional<int64_t> &planId, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::get_subscription_plan(const std::optional<int64_t> &planId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SubscriptionApiImpl::get_subscription_plans(const double &version, const std::optional<bool> &visible, const std::optional<std::string> &role, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::get_subscription_plans(const std::optional<bool> &visible, const std::optional<std::string> &role, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SubscriptionApiImpl::get_subscription_usage(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<int64_t> &start, const std::optional<int64_t> &end, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::get_subscription_usage(const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<int64_t> &start, const std::optional<int64_t> &end, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SubscriptionApiImpl::update_subscription(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void SubscriptionApiImpl::update_subscription(const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

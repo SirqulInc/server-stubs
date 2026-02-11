@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create a word by the given params.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="word">The text of the word.</param>
     /// <param name="definition">The definition of the word.</param>
@@ -98,34 +97,31 @@ private:
     /// <param name="assetId">The asset id of the word. (optional, default to 0L)</param>
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a mission (optional, default to 0L)</param>
-    virtual void create_word( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &word, const std::optional<std::string> &definition, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<int64_t> &assetId, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_word( const std::optional<int64_t> &accountId, const std::optional<std::string> &word, const std::optional<std::string> &definition, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<int64_t> &assetId, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Word
     /// </summary>
     /// <remarks>
     /// Delete a word by the given id. The accountId given needs to be the owner or executive to delete.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="wordId">The id of the word to delete.</param>
     /// <param name="accountId">The account vor validating permission</param>
-    virtual void delete_word( const double &version, const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_word( const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Word
     /// </summary>
     /// <remarks>
     /// Get a word by the given id.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="wordId">The id of the word to get.</param>
     /// <param name="accountId">The logged in user.</param>
-    virtual void get_word( const double &version, const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_word( const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Words
     /// </summary>
     /// <remarks>
     /// Search for words by the given params.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="sortField">The column to sort the search on</param>
     /// <param name="descending">The order to return the search results</param>
@@ -133,14 +129,13 @@ private:
     /// <param name="start">The record to begin the return set on.</param>
     /// <param name="limit">The number of records to return.</param>
     /// <param name="keyword">The keyword for searching words with matching definition or word text. (optional, default to &quot;&quot;)</param>
-    virtual void get_words( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_words( const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Word
     /// </summary>
     /// <remarks>
     /// Update a word by the given params.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="wordId">The id of the word to update.</param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="ticketCount">The number of tickets to reward</param>
@@ -151,7 +146,7 @@ private:
     /// <param name="allocateTickets">If true then scoring will give tickets. (optional, default to false)</param>
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a mission (optional, default to 0L)</param>
-    virtual void update_word( const double &version, const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &wordText, const std::optional<std::string> &definition, const std::optional<int64_t> &assetId, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_word( const std::optional<int64_t> &wordId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &wordText, const std::optional<std::string> &definition, const std::optional<int64_t> &assetId, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -29,13 +29,13 @@ CSVImportApiImpl::CSVImportApiImpl(const std::shared_ptr<Pistache::Rest::Router>
 
 }
 
-void CSVImportApiImpl::get_status_csv(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<std::string> &responseGroup, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) {
+void CSVImportApiImpl::get_status_csv(const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<std::string> &responseGroup, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CSVImportApiImpl::list_status_csv(const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void CSVImportApiImpl::list_status_csv(const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CSVImportApiImpl::status_csv(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) {
+void CSVImportApiImpl::status_csv(const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void CSVImportApiImpl::upload_csv(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

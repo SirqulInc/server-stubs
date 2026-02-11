@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string LikeApi::base = "";
+const std::string LikeApi::base = "/api/3.18";
 
 LikeApi::LikeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,9 +32,9 @@ void LikeApi::init() {
 void LikeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/like", Routes::bind(&LikeApi::register_like_handler, this));
-    Routes::Post(*router, base + "/api/:version/like/delete", Routes::bind(&LikeApi::remove_like_handler, this));
-    Routes::Get(*router, base + "/api/:version/like/search", Routes::bind(&LikeApi::search_likes_handler, this));
+    Routes::Post(*router, base + "/like", Routes::bind(&LikeApi::register_like_handler, this));
+    Routes::Post(*router, base + "/like/delete", Routes::bind(&LikeApi::remove_like_handler, this));
+    Routes::Get(*router, base + "/like/search", Routes::bind(&LikeApi::search_likes_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&LikeApi::like_api_default_handler, this));
@@ -69,8 +69,6 @@ std::pair<Pistache::Http::Code, std::string> LikeApi::handleOperationException(c
 void LikeApi::register_like_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -179,7 +177,7 @@ void LikeApi::register_like_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->register_like(version, likableType, likableId, deviceId, accountId, permissionableType, permissionableId, like, app, gameType, appKey, latitude, longitude, response);
+            this->register_like(likableType, likableId, deviceId, accountId, permissionableType, permissionableId, like, app, gameType, appKey, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -198,8 +196,6 @@ void LikeApi::register_like_handler(const Pistache::Rest::Request& request, Pist
 void LikeApi::remove_like_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -260,7 +256,7 @@ void LikeApi::remove_like_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->remove_like(version, likableType, likableId, deviceId, accountId, latitude, longitude, response);
+            this->remove_like(likableType, likableId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -279,8 +275,6 @@ void LikeApi::remove_like_handler(const Pistache::Rest::Request& request, Pistac
 void LikeApi::search_likes_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -381,7 +375,7 @@ void LikeApi::search_likes_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->search_likes(version, likableType, likableId, deviceId, accountId, connectionAccountIds, sortField, descending, updatedSince, updatedBefore, start, limit, response);
+            this->search_likes(likableType, likableId, deviceId, accountId, connectionAccountIds, sortField, descending, updatedSince, updatedBefore, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

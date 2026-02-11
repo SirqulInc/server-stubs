@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string PathingApi::base = "";
+const std::string PathingApi::base = "/api/3.18";
 
 PathingApi::PathingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void PathingApi::init() {
 void PathingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/pathing/compute", Routes::bind(&PathingApi::compute_path_handler, this));
+    Routes::Get(*router, base + "/pathing/compute", Routes::bind(&PathingApi::compute_path_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&PathingApi::pathing_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> PathingApi::handleOperationExceptio
 void PathingApi::compute_path_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -113,7 +111,7 @@ void PathingApi::compute_path_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->compute_path(version, data, units, reducePath, directions, response);
+            this->compute_path(data, units, reducePath, directions, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -29,28 +29,28 @@ CreativeApiImpl::CreativeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 
 }
 
-void CreativeApiImpl::add_preview(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::add_preview(const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::ads_find(const double &version, const std::optional<std::string> &appKey, const std::optional<bool> &randomize, const std::optional<bool> &targetedAdsOnly, const std::optional<std::string> &type, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &device, const std::optional<int64_t> &deviceIdentifier, const std::optional<std::string> &deviceVersion, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeAudiences, const std::optional<bool> &allocatesTickets, const std::optional<std::string> &missionIds, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::ads_find(const std::optional<std::string> &appKey, const std::optional<bool> &randomize, const std::optional<bool> &targetedAdsOnly, const std::optional<std::string> &type, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &device, const std::optional<int64_t> &deviceIdentifier, const std::optional<std::string> &deviceVersion, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeAudiences, const std::optional<bool> &allocatesTickets, const std::optional<std::string> &missionIds, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::create_creative(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, const std::optional<bool> &waitForAsset, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::create_creative(const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, const std::optional<bool> &waitForAsset, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::delete_creative(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::delete_creative(const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::get_creative(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::get_creative(const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::get_creatives_by_application(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &missionId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::get_creatives_by_application(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &missionId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::remove_preview(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::remove_preview(const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void CreativeApiImpl::update_creative(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) {
+void CreativeApiImpl::update_creative(const std::optional<int64_t> &accountId, const std::optional<int64_t> &creativeId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assetImageId, const std::optional<std::string> &action, const std::optional<std::string> &data, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<int64_t> &referenceId, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

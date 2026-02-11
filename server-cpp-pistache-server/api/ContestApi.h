@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Creates or updates a contest.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="publicRead">determines whether the contest&#39;s participants has read permissions</param>
     /// <param name="publicWrite">determines whether the contest&#39;s participants has write permissions</param>
     /// <param name="publicDelete">determines whether the contest&#39;s participants has delete permissions</param>
@@ -115,52 +114,48 @@ private:
     /// <param name="connectionGroupIdsToAdd">comma separated list of connection group IDs (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void add_or_update_album_contest( const double &version, const std::optional<bool> &publicRead, const std::optional<bool> &publicWrite, const std::optional<bool> &publicDelete, const std::optional<bool> &publicAdd, const std::optional<std::string> &visibility, const std::optional<bool> &includeFriendGroup, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &contestType, const std::optional<int64_t> &albumContestId, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<int64_t> &albumId1, const std::optional<bool> &removeAlbum1, const std::optional<int64_t> &albumId2, const std::optional<bool> &removeAlbum2, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &locationDescription, const std::optional<std::string> &connectionIdsToAdd, const std::optional<std::string> &connectionGroupIdsToAdd, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_or_update_album_contest( const std::optional<bool> &publicRead, const std::optional<bool> &publicWrite, const std::optional<bool> &publicDelete, const std::optional<bool> &publicAdd, const std::optional<std::string> &visibility, const std::optional<bool> &includeFriendGroup, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &contestType, const std::optional<int64_t> &albumContestId, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<int64_t> &albumId1, const std::optional<bool> &removeAlbum1, const std::optional<int64_t> &albumId2, const std::optional<bool> &removeAlbum2, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &locationDescription, const std::optional<std::string> &connectionIdsToAdd, const std::optional<std::string> &connectionGroupIdsToAdd, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Approve Contest
     /// </summary>
     /// <remarks>
     /// Sets the approval status of a contest.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumContestId">The ID of the album contest</param>
     /// <param name="approvalStatus">The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}</param>
     /// <param name="deviceId">A unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void approve_album_contest( const double &version, const std::optional<int64_t> &albumContestId, const std::optional<std::string> &approvalStatus, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void approve_album_contest( const std::optional<int64_t> &albumContestId, const std::optional<std::string> &approvalStatus, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Contest
     /// </summary>
     /// <remarks>
     /// Deletes a contest.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumContestId">the album contest ID</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void delete_contest( const double &version, const std::optional<int64_t> &albumContestId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_contest( const std::optional<int64_t> &albumContestId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Contest
     /// </summary>
     /// <remarks>
     /// Gets the contest object including the likes and notes
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumContestId">the album contest ID</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_album_contest( const double &version, const std::optional<int64_t> &albumContestId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_album_contest( const std::optional<int64_t> &albumContestId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Contests
     /// </summary>
     /// <remarks>
     /// Searches on contests.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="filter">a comma separated list of Ownership</param>
     /// <param name="sortField">the field to sort by. See AlbumContestApiMap</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order</param>
@@ -180,14 +175,13 @@ private:
     /// <param name="dateCreated">filter on items that have been created before this date (optional, default to 0L)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_album_contests( const double &version, const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &appType, const std::optional<std::string> &contestType, const std::optional<int64_t> &ownerId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<int64_t> &dateCreated, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_album_contests( const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &appType, const std::optional<std::string> &contestType, const std::optional<int64_t> &ownerId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<int64_t> &dateCreated, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Vote on Contest
     /// </summary>
     /// <remarks>
     /// Vote on a collection in a contest.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumContestId">the album contest ID</param>
     /// <param name="albumId">the ID of the album to vote on</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -195,7 +189,7 @@ private:
     /// <param name="contestType">a custom field used for aggregation and searching (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void vote_on_album_contest( const double &version, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &contestType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void vote_on_album_contest( const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &contestType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -29,10 +29,10 @@ TwitterApiImpl::TwitterApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rt
 
 }
 
-void TwitterApiImpl::authorize_twitter(const double &version, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void TwitterApiImpl::authorize_twitter(const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TwitterApiImpl::login_twitter(const double &version, const std::optional<std::string> &accessToken, const std::optional<std::string> &accessTokenSecret, const std::optional<std::string> &appKey, const std::optional<std::string> &responseFilters, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void TwitterApiImpl::login_twitter(const std::optional<std::string> &accessToken, const std::optional<std::string> &accessTokenSecret, const std::optional<std::string> &appKey, const std::optional<std::string> &responseFilters, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

@@ -92,72 +92,65 @@ private:
     /// <remarks>
     /// Create a subscription for a billable entity.  Provide a planId, if not provided then the base plan will be assigned.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the create, must be the responsible manager</param>
     /// <param name="planId">The plan to subscribe to, if null use default plan (optional, default to 0L)</param>
     /// <param name="promoCode">Set a promo code for a discount. (optional, default to &quot;&quot;)</param>
-    virtual void create_subscription( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_subscription( const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Subscription
     /// </summary>
     /// <remarks>
     /// Suspend the current subscription for the billable entity managed by the account.  The account must be the responsible manager to perform this action
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the delete, must be the responsible manager</param>
-    virtual void delete_subscription( const double &version, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_subscription( const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Subscription
     /// </summary>
     /// <remarks>
     /// Use the accountId to determine the associated BillableEntity.  Then get the subscription.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the lookup</param>
-    virtual void get_subscription( const double &version, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_subscription( const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Subscription Plan
     /// </summary>
     /// <remarks>
     /// Get the matched subscription plan
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="planId">The ID of the plan to get</param>
-    virtual void get_subscription_plan( const double &version, const std::optional<int64_t> &planId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_subscription_plan( const std::optional<int64_t> &planId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Subscription Plans
     /// </summary>
     /// <remarks>
     /// Get the matched subscription plan
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="visible">Include visible only (true), hidden only (false), or all (null) (optional, default to false)</param>
     /// <param name="role">The role the plan is targeted for, values are: DEVELOPER, RETAILER, ADVERTISER (optional, default to &quot;&quot;)</param>
-    virtual void get_subscription_plans( const double &version, const std::optional<bool> &visible, const std::optional<std::string> &role, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_subscription_plans( const std::optional<bool> &visible, const std::optional<std::string> &role, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Subscription Usage
     /// </summary>
     /// <remarks>
     /// Use the accountId to determine the associated BillableEntity.  Then get the application usage.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the lookup</param>
     /// <param name="applicationId">Get for just 1 application instead of the BillableEntity (optional, default to 0L)</param>
     /// <param name="start">The start time frame (optional, default to 0L)</param>
     /// <param name="end">The end time frame (optional, default to 0L)</param>
-    virtual void get_subscription_usage( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<int64_t> &start, const std::optional<int64_t> &end, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_subscription_usage( const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<int64_t> &start, const std::optional<int64_t> &end, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Subscription
     /// </summary>
     /// <remarks>
     /// Updates the subscription for the billable entity for an account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the update, must be the responsible manager</param>
     /// <param name="planId">The plan to subscribe to (optional, default to 0L)</param>
     /// <param name="promoCode">Set a promo code for a discount. (optional, default to &quot;&quot;)</param>
     /// <param name="active">Set active status (optional, default to false)</param>
-    virtual void update_subscription( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_subscription( const std::optional<int64_t> &accountId, const std::optional<int64_t> &planId, const std::optional<std::string> &promoCode, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -85,7 +85,6 @@ private:
     /// <remarks>
     /// Allows a user to like or dislike accounts, albums, album contests, assets, game levels, notes, and theme descriptors. Multiple likes\\dislikes on the same object will replace the previous one.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="likableType">The type of likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}</param>
     /// <param name="likableId">The id of the likable object</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
@@ -98,28 +97,26 @@ private:
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
-    virtual void register_like( const double &version, const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &like, const std::optional<std::string> &app, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void register_like( const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &like, const std::optional<std::string> &app, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Like
     /// </summary>
     /// <remarks>
     /// Removes a like. This will make the user \&quot;neutral\&quot;.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="likableType">The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}</param>
     /// <param name="likableId">The id of the likable object</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
-    virtual void remove_like( const double &version, const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_like( const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Likes
     /// </summary>
     /// <remarks>
     /// Search for likes on a likable object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="likableType">The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}</param>
     /// <param name="likableId">The id of the likable object</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
@@ -131,7 +128,7 @@ private:
     /// <param name="updatedBefore">return items that have been updated before this date (time-stamp in milliseconds) (optional, default to 0L)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 20)</param>
-    virtual void search_likes( const double &version, const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_likes( const std::optional<std::string> &likableType, const std::optional<int64_t> &likableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

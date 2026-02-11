@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string LeaderboardApi::base = "";
+const std::string LeaderboardApi::base = "/api/3.18";
 
 LeaderboardApi::LeaderboardApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void LeaderboardApi::init() {
 void LeaderboardApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/leaderboard/create", Routes::bind(&LeaderboardApi::create_leaderboard_handler, this));
-    Routes::Post(*router, base + "/api/:version/leaderboard/delete", Routes::bind(&LeaderboardApi::delete_leaderboard_handler, this));
-    Routes::Get(*router, base + "/api/:version/leaderboard/get", Routes::bind(&LeaderboardApi::get_leaderboard_handler, this));
-    Routes::Get(*router, base + "/api/:version/leaderboard/search", Routes::bind(&LeaderboardApi::search_leaderboards_handler, this));
-    Routes::Post(*router, base + "/api/:version/leaderboard/update", Routes::bind(&LeaderboardApi::update_leaderboard_handler, this));
+    Routes::Post(*router, base + "/leaderboard/create", Routes::bind(&LeaderboardApi::create_leaderboard_handler, this));
+    Routes::Post(*router, base + "/leaderboard/delete", Routes::bind(&LeaderboardApi::delete_leaderboard_handler, this));
+    Routes::Get(*router, base + "/leaderboard/get", Routes::bind(&LeaderboardApi::get_leaderboard_handler, this));
+    Routes::Get(*router, base + "/leaderboard/search", Routes::bind(&LeaderboardApi::search_leaderboards_handler, this));
+    Routes::Post(*router, base + "/leaderboard/update", Routes::bind(&LeaderboardApi::update_leaderboard_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&LeaderboardApi::leaderboard_api_default_handler, this));
@@ -91,8 +91,6 @@ void LeaderboardApi::create_leaderboard_handler(const Pistache::Rest::Request& r
 void LeaderboardApi::delete_leaderboard_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -121,7 +119,7 @@ void LeaderboardApi::delete_leaderboard_handler(const Pistache::Rest::Request& r
 
 
 
-            this->delete_leaderboard(version, leaderboardId, accountId, response);
+            this->delete_leaderboard(leaderboardId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -140,8 +138,6 @@ void LeaderboardApi::delete_leaderboard_handler(const Pistache::Rest::Request& r
 void LeaderboardApi::get_leaderboard_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -178,7 +174,7 @@ void LeaderboardApi::get_leaderboard_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_leaderboard(version, leaderboardId, accountId, includeFullRankingList, response);
+            this->get_leaderboard(leaderboardId, accountId, includeFullRankingList, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -197,8 +193,6 @@ void LeaderboardApi::get_leaderboard_handler(const Pistache::Rest::Request& requ
 void LeaderboardApi::search_leaderboards_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -307,7 +301,7 @@ void LeaderboardApi::search_leaderboards_handler(const Pistache::Rest::Request& 
 
 
 
-            this->search_leaderboards(version, accountId, appKey, globalOnly, keyword, leaderboardIds, rankTypes, sortField, descending, includeInactive, includeAppResponse, start, limit, response);
+            this->search_leaderboards(accountId, appKey, globalOnly, keyword, leaderboardIds, rankTypes, sortField, descending, includeInactive, includeAppResponse, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

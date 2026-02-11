@@ -92,7 +92,6 @@ private:
     /// <remarks>
     ///  Specify whether the user is attending an event at a particular location. This can also be used as a \&quot;check-in\&quot; action.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appKey">The application of where to send notifications about the attend action (optional, default to &quot;&quot;)</param>
@@ -103,14 +102,13 @@ private:
     /// <param name="status">Sets whether the user is: undecided (0), attending (1), attending and checked in (2), or not attending (3) (optional, default to 0)</param>
     /// <param name="latitude">The location of the status update (optional, default to 0.0)</param>
     /// <param name="longitude">The location of the status update (optional, default to 0.0)</param>
-    virtual void attend_event( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &listingId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &transactionId, const std::optional<int32_t> &status, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void attend_event( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &listingId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &transactionId, const std::optional<int32_t> &status, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Event
     /// </summary>
     /// <remarks>
     /// Create a private event to share with associates.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="title">The event title</param>
     /// <param name="retailerLocationIds">The retailer location to have the event at (optional, default to &quot;&quot;)</param>
@@ -123,34 +121,31 @@ private:
     /// <param name="redeemableStart">The event start date/time (optional, default to 0L)</param>
     /// <param name="redeemableEnd">The event end date/time (optional, default to 0L)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void create_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &active, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_event( const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &active, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Event
     /// </summary>
     /// <remarks>
     /// Delete an event that the user has permissions to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="eventId">the id of the event to update</param>
-    virtual void delete_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &eventId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_event( const std::optional<int64_t> &accountId, const std::optional<int64_t> &eventId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Event
     /// </summary>
     /// <remarks>
     /// Get an event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="eventId">The id of the event to return</param>
-    virtual void get_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &eventId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_event( const std::optional<int64_t> &accountId, const std::optional<int64_t> &eventId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Event Attendance
     /// </summary>
     /// <remarks>
     /// Searches on event type transactions. This can be used to see who is attending an event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appKey">The application key (optional, default to &quot;&quot;)</param>
@@ -170,14 +165,13 @@ private:
     /// <param name="descending">Determines whether the results are in descending order (optional, default to false)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (optional, default to 0)</param>
-    virtual void search_event_transactions( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &excludeRetailerLocationId, const std::optional<int64_t> &listingId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &customerAccountIds, const std::optional<std::string> &affiliatedCategoryIds, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &statuses, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_event_transactions( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &excludeRetailerLocationId, const std::optional<int64_t> &listingId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &customerAccountIds, const std::optional<std::string> &affiliatedCategoryIds, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &statuses, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Events
     /// </summary>
     /// <remarks>
     /// Searches on events that the account has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="keyword">The keyword used to search (optional, default to &quot;&quot;)</param>
     /// <param name="activeOnly">Return only active results (optional, default to false)</param>
@@ -191,14 +185,13 @@ private:
     /// <param name="endDate">Filter the events to return only those that start on or before the date (optional, default to 0L)</param>
     /// <param name="start">The record to begin the return set on (optional, default to 0)</param>
     /// <param name="limit">The number of records to return (optional, default to 0)</param>
-    virtual void search_events( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<bool> &activeOnly, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &offerAudienceIds, const std::optional<std::string> &transactionAudienceIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_events( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<bool> &activeOnly, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &offerAudienceIds, const std::optional<std::string> &transactionAudienceIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Event
     /// </summary>
     /// <remarks>
     /// Update a private event to share with associates.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="eventId">The id of the event to update</param>
     /// <param name="retailerLocationIds">The retailer location to have the event at (optional, default to &quot;&quot;)</param>
@@ -211,7 +204,7 @@ private:
     /// <param name="imageAssetId">The image to show for the event (optional, default to 0L)</param>
     /// <param name="redeemableStart">The event start date/time (optional, default to 0L)</param>
     /// <param name="redeemableEnd">The event end date/time (optional, default to 0L)</param>
-    virtual void update_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &eventId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &title, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &active, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_event( const std::optional<int64_t> &accountId, const std::optional<int64_t> &eventId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &title, const std::optional<std::string> &subTitle, const std::optional<std::string> &details, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &active, const std::optional<int64_t> &imageAssetId, const std::optional<int64_t> &redeemableStart, const std::optional<int64_t> &redeemableEnd, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

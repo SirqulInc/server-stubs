@@ -44,11 +44,11 @@ public:
     explicit TerritoryApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~TerritoryApiImpl() override = default;
 
-    void create_territory(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
-    void delete_territory(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response);
-    void get_territory(const double &version, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response);
-    void search_territories(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
-    void update_territory(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
+    void create_territory(const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
+    void delete_territory(const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response);
+    void get_territory(const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response);
+    void search_territories(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
+    void update_territory(const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response);
 
 };
 

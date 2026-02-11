@@ -87,35 +87,31 @@ private:
     /// <remarks>
     /// Create new vehicle
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="vehicle">A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; </param>
     /// <param name="body"> (optional)</param>
-    virtual void create_vehicle( const double &version, const std::optional<std::string> &vehicle, const org::openapitools::server::model::Vehicle &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_vehicle( const std::optional<std::string> &vehicle, const org::openapitools::server::model::Vehicle &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Vehicle
     /// </summary>
     /// <remarks>
     /// Delete an existing vehicle
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">The id of the vehicle to delete</param>
-    virtual void delete_vehicle( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_vehicle( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vehicle
     /// </summary>
     /// <remarks>
     /// Get an existing vehicle
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">The id of the vehicle requested</param>
-    virtual void get_vehicle( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_vehicle( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Vehicle
     /// </summary>
     /// <remarks>
     /// Search for vehicles
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="hubId">Filter by service hub</param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
@@ -123,18 +119,17 @@ private:
     /// <param name="limit">The limit for pagination</param>
     /// <param name="activeOnly">Return only active results</param>
     /// <param name="keyword">The keyword to search for (optional, default to &quot;&quot;)</param>
-    virtual void search_vehicle( const double &version, const std::optional<int64_t> &hubId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_vehicle( const std::optional<int64_t> &hubId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Vehicle
     /// </summary>
     /// <remarks>
     /// Update an existing vehicle
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">The id of the vehicle to update</param>
     /// <param name="vehicle">A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; </param>
     /// <param name="body"> (optional)</param>
-    virtual void update_vehicle( const double &version, const int64_t &id, const std::optional<std::string> &vehicle, const org::openapitools::server::model::Vehicle &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_vehicle( const int64_t &id, const std::optional<std::string> &vehicle, const org::openapitools::server::model::Vehicle &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

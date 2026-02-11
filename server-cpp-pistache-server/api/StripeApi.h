@@ -82,10 +82,9 @@ private:
     /// <remarks>
     /// Create a Stripe checkout session
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="stripeParameters">Stripe Parameters</param>
-    virtual void create_stripe_checkout_session( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &stripeParameters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_stripe_checkout_session( const std::optional<std::string> &appKey, const std::optional<std::string> &stripeParameters, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

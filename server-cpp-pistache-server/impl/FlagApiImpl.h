@@ -44,11 +44,11 @@ public:
     explicit FlagApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~FlagApiImpl() override = default;
 
-    void create_flag(const double &version, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &flagDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
-    void delete_flag(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &itemBeingFlaggedId, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, Pistache::Http::ResponseWriter &response);
-    void get_flag(const double &version, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
-    void get_flag_threshold(const double &version, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
-    void update_flag_threshold(const double &version, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &threshold, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void create_flag(const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &flagDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void delete_flag(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &itemBeingFlaggedId, const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, Pistache::Http::ResponseWriter &response);
+    void get_flag(const std::optional<std::string> &flagableType, const std::optional<int64_t> &flagableId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void get_flag_threshold(const std::optional<std::string> &itemBeingFlaggedType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
+    void update_flag_threshold(const std::optional<std::string> &itemBeingFlaggedType, const std::optional<int64_t> &threshold, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
 
 };
 

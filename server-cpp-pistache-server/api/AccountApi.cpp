@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AccountApi::base = "";
+const std::string AccountApi::base = "/api/3.18";
 
 AccountApi::AccountApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,33 +32,33 @@ void AccountApi::init() {
 void AccountApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/account/search", Routes::bind(&AccountApi::account_location_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/block", Routes::bind(&AccountApi::block_account_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/create", Routes::bind(&AccountApi::create_account_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/profile/update", Routes::bind(&AccountApi::edit_account_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/username/update", Routes::bind(&AccountApi::edit_username_handler, this));
-    Routes::Get(*router, base + "/api/:version/account/profile/get", Routes::bind(&AccountApi::get_account_handler, this));
-    Routes::Get(*router, base + "/api/:version/account/profile/assets", Routes::bind(&AccountApi::get_profile_assets_handler, this));
-    Routes::Get(*router, base + "/api/:version/account/referral/list", Routes::bind(&AccountApi::get_referral_list_handler, this));
-    Routes::Get(*router, base + "/api/:version/account/settings/get", Routes::bind(&AccountApi::get_settings_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/login/delegate", Routes::bind(&AccountApi::login_delegate_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/login", Routes::bind(&AccountApi::login_general_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/get", Routes::bind(&AccountApi::login_username_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/logout", Routes::bind(&AccountApi::logout_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/merge", Routes::bind(&AccountApi::merge_account_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/passwordchange", Routes::bind(&AccountApi::password_change_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/passwordreset", Routes::bind(&AccountApi::password_reset_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/requestpasswordreset", Routes::bind(&AccountApi::request_password_reset_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/requestValidateAccount", Routes::bind(&AccountApi::request_validate_account_handler, this));
-    Routes::Get(*router, base + "/api/:version/account/profile/search", Routes::bind(&AccountApi::search_accounts_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/login/validate", Routes::bind(&AccountApi::secure_login_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/create/validate", Routes::bind(&AccountApi::secure_signup_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/profile/matchToken", Routes::bind(&AccountApi::set_match_token_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/active/update", Routes::bind(&AccountApi::update_actve_status_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/location/update", Routes::bind(&AccountApi::update_location_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/settings/update", Routes::bind(&AccountApi::update_settings_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/validateAccountSignup", Routes::bind(&AccountApi::validate_account_signup_handler, this));
-    Routes::Post(*router, base + "/api/:version/account/validatepasswordreset", Routes::bind(&AccountApi::validate_password_reset_handler, this));
+    Routes::Get(*router, base + "/account/search", Routes::bind(&AccountApi::account_location_search_handler, this));
+    Routes::Post(*router, base + "/account/block", Routes::bind(&AccountApi::block_account_handler, this));
+    Routes::Post(*router, base + "/account/create", Routes::bind(&AccountApi::create_account_handler, this));
+    Routes::Post(*router, base + "/account/profile/update", Routes::bind(&AccountApi::edit_account_handler, this));
+    Routes::Post(*router, base + "/account/username/update", Routes::bind(&AccountApi::edit_username_handler, this));
+    Routes::Get(*router, base + "/account/profile/get", Routes::bind(&AccountApi::get_account_handler, this));
+    Routes::Get(*router, base + "/account/profile/assets", Routes::bind(&AccountApi::get_profile_assets_handler, this));
+    Routes::Get(*router, base + "/account/referral/list", Routes::bind(&AccountApi::get_referral_list_handler, this));
+    Routes::Get(*router, base + "/account/settings/get", Routes::bind(&AccountApi::get_settings_handler, this));
+    Routes::Post(*router, base + "/account/login/delegate", Routes::bind(&AccountApi::login_delegate_handler, this));
+    Routes::Post(*router, base + "/account/login", Routes::bind(&AccountApi::login_general_handler, this));
+    Routes::Post(*router, base + "/account/get", Routes::bind(&AccountApi::login_username_handler, this));
+    Routes::Post(*router, base + "/account/logout", Routes::bind(&AccountApi::logout_handler, this));
+    Routes::Post(*router, base + "/account/merge", Routes::bind(&AccountApi::merge_account_handler, this));
+    Routes::Post(*router, base + "/account/passwordchange", Routes::bind(&AccountApi::password_change_handler, this));
+    Routes::Post(*router, base + "/account/passwordreset", Routes::bind(&AccountApi::password_reset_handler, this));
+    Routes::Post(*router, base + "/account/requestpasswordreset", Routes::bind(&AccountApi::request_password_reset_handler, this));
+    Routes::Post(*router, base + "/account/requestValidateAccount", Routes::bind(&AccountApi::request_validate_account_handler, this));
+    Routes::Get(*router, base + "/account/profile/search", Routes::bind(&AccountApi::search_accounts_handler, this));
+    Routes::Post(*router, base + "/account/login/validate", Routes::bind(&AccountApi::secure_login_handler, this));
+    Routes::Post(*router, base + "/account/create/validate", Routes::bind(&AccountApi::secure_signup_handler, this));
+    Routes::Post(*router, base + "/consumer/profile/matchToken", Routes::bind(&AccountApi::set_match_token_handler, this));
+    Routes::Post(*router, base + "/account/active/update", Routes::bind(&AccountApi::update_actve_status_handler, this));
+    Routes::Post(*router, base + "/account/location/update", Routes::bind(&AccountApi::update_location_handler, this));
+    Routes::Post(*router, base + "/account/settings/update", Routes::bind(&AccountApi::update_settings_handler, this));
+    Routes::Post(*router, base + "/account/validateAccountSignup", Routes::bind(&AccountApi::validate_account_signup_handler, this));
+    Routes::Post(*router, base + "/account/validatepasswordreset", Routes::bind(&AccountApi::validate_password_reset_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AccountApi::account_api_default_handler, this));
@@ -93,8 +93,6 @@ std::pair<Pistache::Http::Code, std::string> AccountApi::handleOperationExceptio
 void AccountApi::account_location_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -379,7 +377,7 @@ void AccountApi::account_location_search_handler(const Pistache::Rest::Request& 
 
 
 
-            this->account_location_search(version, deviceId, accountId, q, keyword, postalCode, latitude, longitude, appKey, range, locationLastUpdated, gender, minAge, maxAge, companionshipIndex, i, start, l, limit, searchMode, sortField, descending, roles, tags, experience, categoryIds, audienceIds, audienceOperator, updateCurrentLocation, updatePreferredSettings, showExactLocations, showConnectionToSearcher, flagCountMinimum, verifiedUserOnly, contentAdminOnly, response);
+            this->account_location_search(deviceId, accountId, q, keyword, postalCode, latitude, longitude, appKey, range, locationLastUpdated, gender, minAge, maxAge, companionshipIndex, i, start, l, limit, searchMode, sortField, descending, roles, tags, experience, categoryIds, audienceIds, audienceOperator, updateCurrentLocation, updatePreferredSettings, showExactLocations, showConnectionToSearcher, flagCountMinimum, verifiedUserOnly, contentAdminOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -398,8 +396,6 @@ void AccountApi::account_location_search_handler(const Pistache::Rest::Request& 
 void AccountApi::block_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -468,7 +464,7 @@ void AccountApi::block_account_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->block_account(version, accountIdBeingBlocked, deviceId, accountId, blockFlagValue, removeFromGroupsIfBlocked, latitude, longitude, response);
+            this->block_account(accountIdBeingBlocked, deviceId, accountId, blockFlagValue, removeFromGroupsIfBlocked, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -487,8 +483,6 @@ void AccountApi::block_account_handler(const Pistache::Rest::Request& request, P
 void AccountApi::create_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1077,7 +1071,7 @@ void AccountApi::create_account_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_account(version, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, deviceId, deviceIdType, emailAddress, assetId, streetAddress, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, inviteToken, referralAccountId, sendValidation, gameType, appKey, appVersion, responseType, audienceIdsToAdd, appBlob, appEnablePush, appEnableSMS, appEnableEmail, locationVisibility, homeLatitude, homeLongitude, appNickname, personalAudienceId, response);
+            this->create_account(username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, deviceId, deviceIdType, emailAddress, assetId, streetAddress, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, inviteToken, referralAccountId, sendValidation, gameType, appKey, appVersion, responseType, audienceIdsToAdd, appBlob, appEnablePush, appEnableSMS, appEnableEmail, locationVisibility, homeLatitude, homeLongitude, appNickname, personalAudienceId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1096,8 +1090,6 @@ void AccountApi::create_account_handler(const Pistache::Rest::Request& request, 
 void AccountApi::edit_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1766,7 +1758,7 @@ void AccountApi::edit_account_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->edit_account(version, deviceId, accountId, connectionAccountId, role, assetId, name, prefixName, firstName, middleName, lastName, suffixName, title, gender, age, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, makeProfileInfoPublic, makeGameInfoPublic, makeFriendsInfoPublic, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, platforms, tags, aboutUs, matchToken, gameExperience, categories, categoryIds, responseFilters, showAsZipcode, showExactLocation, showOthersExactLocation, acceptedTerms, locationVisibility, appBlob, appEnablePush, appEnableSMS, appEnableEmail, gameType, appKey, latitude, longitude, returnProfile, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, appNickname, personalAudienceId, nonGuestUsername, response);
+            this->edit_account(deviceId, accountId, connectionAccountId, role, assetId, name, prefixName, firstName, middleName, lastName, suffixName, title, gender, age, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, makeProfileInfoPublic, makeGameInfoPublic, makeFriendsInfoPublic, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, platforms, tags, aboutUs, matchToken, gameExperience, categories, categoryIds, responseFilters, showAsZipcode, showExactLocation, showOthersExactLocation, acceptedTerms, locationVisibility, appBlob, appEnablePush, appEnableSMS, appEnableEmail, gameType, appKey, latitude, longitude, returnProfile, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, appNickname, personalAudienceId, nonGuestUsername, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1785,8 +1777,6 @@ void AccountApi::edit_account_handler(const Pistache::Rest::Request& request, Pi
 void AccountApi::edit_username_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1831,7 +1821,7 @@ void AccountApi::edit_username_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->edit_username(version, deviceId, accountId, emailAddress, username, response);
+            this->edit_username(deviceId, accountId, emailAddress, username, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1850,8 +1840,6 @@ void AccountApi::edit_username_handler(const Pistache::Rest::Request& request, P
 void AccountApi::get_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1960,7 +1948,7 @@ void AccountApi::get_account_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_account(version, returnNulls, deviceId, accountId, connectionAccountEmail, connectionAccountId, responseFilters, gameType, appKey, purchaseType, updateViewedDate, latitude, longitude, response);
+            this->get_account(returnNulls, deviceId, accountId, connectionAccountEmail, connectionAccountId, responseFilters, gameType, appKey, purchaseType, updateViewedDate, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1979,8 +1967,6 @@ void AccountApi::get_account_handler(const Pistache::Rest::Request& request, Pis
 void AccountApi::get_profile_assets_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2105,7 +2091,7 @@ void AccountApi::get_profile_assets_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_profile_assets(version, returnNulls, deviceId, accountId, ownerId, mediaTypes, mimeTypes, sortField, descending, latitude, longitude, i, start, l, limit, response);
+            this->get_profile_assets(returnNulls, deviceId, accountId, ownerId, mediaTypes, mimeTypes, sortField, descending, latitude, longitude, i, start, l, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2124,8 +2110,6 @@ void AccountApi::get_profile_assets_handler(const Pistache::Rest::Request& reque
 void AccountApi::get_referral_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2226,7 +2210,7 @@ void AccountApi::get_referral_list_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->get_referral_list(version, accountId, appKey, retrieveType, levelLimit, ancestorLevelLimit, childrenLevelLimit, ancestorListStart, ancestorListLimit, childrenListStart, childrenListLimit, childrenChildren, response);
+            this->get_referral_list(accountId, appKey, retrieveType, levelLimit, ancestorLevelLimit, childrenLevelLimit, ancestorListStart, ancestorListLimit, childrenListStart, childrenListLimit, childrenChildren, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2245,8 +2229,6 @@ void AccountApi::get_referral_list_handler(const Pistache::Rest::Request& reques
 void AccountApi::get_settings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2291,7 +2273,7 @@ void AccountApi::get_settings_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->get_settings(version, deviceId, accountId, latitude, longitude, response);
+            this->get_settings(deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2310,8 +2292,6 @@ void AccountApi::get_settings_handler(const Pistache::Rest::Request& request, Pi
 void AccountApi::login_delegate_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2412,7 +2392,7 @@ void AccountApi::login_delegate_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->login_delegate(version, accessToken, appKey, deviceId, accessTokenSecret, delegatedAccountId, delegatedUsername, networkUID, ageRestriction, responseFilters, latitude, longitude, response);
+            this->login_delegate(accessToken, appKey, deviceId, accessTokenSecret, delegatedAccountId, delegatedUsername, networkUID, ageRestriction, responseFilters, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2431,8 +2411,6 @@ void AccountApi::login_delegate_handler(const Pistache::Rest::Request& request, 
 void AccountApi::login_general_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2549,7 +2527,7 @@ void AccountApi::login_general_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->login_general(version, accessToken, networkUID, appKey, deviceId, deviceIdType, accessTokenSecret, ageRestriction, responseFilters, latitude, longitude, emailMatch, chosenAccountId, thirdPartyCredentialId, response);
+            this->login_general(accessToken, networkUID, appKey, deviceId, deviceIdType, accessTokenSecret, ageRestriction, responseFilters, latitude, longitude, emailMatch, chosenAccountId, thirdPartyCredentialId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2568,8 +2546,6 @@ void AccountApi::login_general_handler(const Pistache::Rest::Request& request, P
 void AccountApi::login_username_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2662,7 +2638,7 @@ void AccountApi::login_username_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->login_username(version, username, password, deviceId, latitude, longitude, app, gameType, appKey, returnProfile, responseFilters, response);
+            this->login_username(username, password, deviceId, latitude, longitude, app, gameType, appKey, returnProfile, responseFilters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2681,8 +2657,6 @@ void AccountApi::login_username_handler(const Pistache::Rest::Request& request, 
 void AccountApi::logout_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2735,7 +2709,7 @@ void AccountApi::logout_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->logout(version, deviceId, deviceIdType, accountId, latitude, longitude, response);
+            this->logout(deviceId, deviceIdType, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2754,8 +2728,6 @@ void AccountApi::logout_handler(const Pistache::Rest::Request& request, Pistache
 void AccountApi::merge_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2800,7 +2772,7 @@ void AccountApi::merge_account_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->merge_account(version, mergeAccountId, appKey, deviceId, accountId, response);
+            this->merge_account(mergeAccountId, appKey, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2819,8 +2791,6 @@ void AccountApi::merge_account_handler(const Pistache::Rest::Request& request, P
 void AccountApi::password_change_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2865,7 +2835,7 @@ void AccountApi::password_change_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->password_change(version, accountId, oldPassword, newPassword, confirmPassword, response);
+            this->password_change(accountId, oldPassword, newPassword, confirmPassword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2884,8 +2854,6 @@ void AccountApi::password_change_handler(const Pistache::Rest::Request& request,
 void AccountApi::password_reset_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2922,7 +2890,7 @@ void AccountApi::password_reset_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->password_reset(version, token, password, confirm, response);
+            this->password_reset(token, password, confirm, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2941,8 +2909,6 @@ void AccountApi::password_reset_handler(const Pistache::Rest::Request& request, 
 void AccountApi::request_password_reset_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2995,7 +2961,7 @@ void AccountApi::request_password_reset_handler(const Pistache::Rest::Request& r
 
 
 
-            this->request_password_reset(version, email, from, domain, subUrl, referer, response);
+            this->request_password_reset(email, from, domain, subUrl, referer, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3014,8 +2980,6 @@ void AccountApi::request_password_reset_handler(const Pistache::Rest::Request& r
 void AccountApi::request_validate_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3036,7 +3000,7 @@ void AccountApi::request_validate_account_handler(const Pistache::Rest::Request&
 
 
 
-            this->request_validate_account(version, accountId, response);
+            this->request_validate_account(accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3055,8 +3019,6 @@ void AccountApi::request_validate_account_handler(const Pistache::Rest::Request&
 void AccountApi::search_accounts_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3213,7 +3175,7 @@ void AccountApi::search_accounts_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_accounts(version, accountId, appKey, keyword, latitude, longitude, radius, gender, gameExperience, age, categoryIds, returnNulls, responseFilters, purchaseType, sortField, descending, start, limit, activeOnly, response);
+            this->search_accounts(accountId, appKey, keyword, latitude, longitude, radius, gender, gameExperience, age, categoryIds, returnNulls, responseFilters, purchaseType, sortField, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3232,8 +3194,6 @@ void AccountApi::search_accounts_handler(const Pistache::Rest::Request& request,
 void AccountApi::secure_login_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3318,7 +3278,7 @@ void AccountApi::secure_login_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->secure_login(version, username, password, gameType, deviceId, charsetName, latitude, longitude, returnProfile, responseFilters, response);
+            this->secure_login(username, password, gameType, deviceId, charsetName, latitude, longitude, returnProfile, responseFilters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3337,8 +3297,6 @@ void AccountApi::secure_login_handler(const Pistache::Rest::Request& request, Pi
 void AccountApi::secure_signup_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3839,7 +3797,7 @@ void AccountApi::secure_signup_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->secure_signup(version, deviceId, username, password, name, inviteToken, prefixName, firstName, middleName, lastName, suffixName, title, deviceIdType, emailAddress, assetId, address, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, charsetName, gameType, appKey, appVersion, responseType, response);
+            this->secure_signup(deviceId, username, password, name, inviteToken, prefixName, firstName, middleName, lastName, suffixName, title, deviceIdType, emailAddress, assetId, address, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, charsetName, gameType, appKey, appVersion, responseType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3858,8 +3816,6 @@ void AccountApi::secure_signup_handler(const Pistache::Rest::Request& request, P
 void AccountApi::set_match_token_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3928,7 +3884,7 @@ void AccountApi::set_match_token_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->set_match_token(version, deviceId, accountId, matchToken, gameType, appKey, latitude, longitude, response);
+            this->set_match_token(deviceId, accountId, matchToken, gameType, appKey, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3947,8 +3903,6 @@ void AccountApi::set_match_token_handler(const Pistache::Rest::Request& request,
 void AccountApi::update_actve_status_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -4001,7 +3955,7 @@ void AccountApi::update_actve_status_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->update_actve_status(version, accountId, connectionAccountId, active, deviceId, appKey, response);
+            this->update_actve_status(accountId, connectionAccountId, active, deviceId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -4020,8 +3974,6 @@ void AccountApi::update_actve_status_handler(const Pistache::Rest::Request& requ
 void AccountApi::update_location_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -4074,7 +4026,7 @@ void AccountApi::update_location_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->update_location(version, deviceId, accountId, latitude, longitude, clientTime, response);
+            this->update_location(deviceId, accountId, latitude, longitude, clientTime, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -4093,8 +4045,6 @@ void AccountApi::update_location_handler(const Pistache::Rest::Request& request,
 void AccountApi::update_settings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -4203,7 +4153,7 @@ void AccountApi::update_settings_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->update_settings(version, deviceId, accountId, blockedNotifications, suggestionMethod, suggestionCount, suggestionTimeFrame, showOthersExactLocation, showAsZipcode, showExactLocation, favoriteVisibility, latitude, longitude, response);
+            this->update_settings(deviceId, accountId, blockedNotifications, suggestionMethod, suggestionCount, suggestionTimeFrame, showOthersExactLocation, showAsZipcode, showExactLocation, favoriteVisibility, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -4222,8 +4172,6 @@ void AccountApi::update_settings_handler(const Pistache::Rest::Request& request,
 void AccountApi::validate_account_signup_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -4244,7 +4192,7 @@ void AccountApi::validate_account_signup_handler(const Pistache::Rest::Request& 
 
 
 
-            this->validate_account_signup(version, token, response);
+            this->validate_account_signup(token, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -4263,8 +4211,6 @@ void AccountApi::validate_account_signup_handler(const Pistache::Rest::Request& 
 void AccountApi::validate_password_reset_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -4285,7 +4231,7 @@ void AccountApi::validate_password_reset_handler(const Pistache::Rest::Request& 
 
 
 
-            this->validate_password_reset(version, token, response);
+            this->validate_password_reset(token, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ListingApi::base = "";
+const std::string ListingApi::base = "/api/3.18";
 
 ListingApi::ListingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ListingApi::init() {
 void ListingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/listing/create", Routes::bind(&ListingApi::create_listing_handler, this));
-    Routes::Post(*router, base + "/api/:version/listing/delete", Routes::bind(&ListingApi::delete_listing_handler, this));
-    Routes::Get(*router, base + "/api/:version/listing/get", Routes::bind(&ListingApi::get_listing_handler, this));
-    Routes::Get(*router, base + "/api/:version/listing/search", Routes::bind(&ListingApi::search_listing_handler, this));
-    Routes::Get(*router, base + "/api/:version/listing/summary", Routes::bind(&ListingApi::summary_listing_handler, this));
-    Routes::Post(*router, base + "/api/:version/listing/update", Routes::bind(&ListingApi::update_listing_handler, this));
+    Routes::Post(*router, base + "/listing/create", Routes::bind(&ListingApi::create_listing_handler, this));
+    Routes::Post(*router, base + "/listing/delete", Routes::bind(&ListingApi::delete_listing_handler, this));
+    Routes::Get(*router, base + "/listing/get", Routes::bind(&ListingApi::get_listing_handler, this));
+    Routes::Get(*router, base + "/listing/search", Routes::bind(&ListingApi::search_listing_handler, this));
+    Routes::Get(*router, base + "/listing/summary", Routes::bind(&ListingApi::summary_listing_handler, this));
+    Routes::Post(*router, base + "/listing/update", Routes::bind(&ListingApi::update_listing_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ListingApi::listing_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ListingApi::handleOperationExceptio
 void ListingApi::create_listing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -198,7 +196,7 @@ void ListingApi::create_listing_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_listing(version, accountId, name, filterIds, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData, response);
+            this->create_listing(accountId, name, filterIds, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -217,8 +215,6 @@ void ListingApi::create_listing_handler(const Pistache::Rest::Request& request, 
 void ListingApi::delete_listing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -247,7 +243,7 @@ void ListingApi::delete_listing_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_listing(version, accountId, listingId, response);
+            this->delete_listing(accountId, listingId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -266,8 +262,6 @@ void ListingApi::delete_listing_handler(const Pistache::Rest::Request& request, 
 void ListingApi::get_listing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -288,7 +282,7 @@ void ListingApi::get_listing_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_listing(version, listingId, response);
+            this->get_listing(listingId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -307,8 +301,6 @@ void ListingApi::get_listing_handler(const Pistache::Rest::Request& request, Pis
 void ListingApi::search_listing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -441,7 +433,7 @@ void ListingApi::search_listing_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->search_listing(version, accountId, keyword, start, limit, activeOnly, latitude, longitude, startDate, endDate, categoryIds, filterIds, useListingOrderIds, externalId, externalId2, externalGroupId, response);
+            this->search_listing(accountId, keyword, start, limit, activeOnly, latitude, longitude, startDate, endDate, categoryIds, filterIds, useListingOrderIds, externalId, externalId2, externalGroupId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -460,8 +452,6 @@ void ListingApi::search_listing_handler(const Pistache::Rest::Request& request, 
 void ListingApi::summary_listing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -514,7 +504,7 @@ void ListingApi::summary_listing_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->summary_listing(version, accountId, startDate, categoryIds, daysToInclude, useListingOrderIds, response);
+            this->summary_listing(accountId, startDate, categoryIds, daysToInclude, useListingOrderIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -533,8 +523,6 @@ void ListingApi::summary_listing_handler(const Pistache::Rest::Request& request,
 void ListingApi::update_listing_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -667,7 +655,7 @@ void ListingApi::update_listing_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->update_listing(version, accountId, listingId, filterIds, name, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData, response);
+            this->update_listing(accountId, listingId, filterIds, name, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

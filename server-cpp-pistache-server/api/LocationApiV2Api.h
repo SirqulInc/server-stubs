@@ -83,19 +83,17 @@ private:
     /// <remarks>
     /// Create a new location from a real object location.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_location_v2( const double &version, const org::openapitools::server::model::Location &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_location_v2( const org::openapitools::server::model::Location &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update an existing location
     /// </summary>
     /// <remarks>
     /// Update an existing location
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the location to update</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_location_v2( const double &version, const int64_t &id, const org::openapitools::server::model::Location &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_location_v2( const int64_t &id, const org::openapitools::server::model::Location &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

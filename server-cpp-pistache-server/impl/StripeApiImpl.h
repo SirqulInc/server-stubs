@@ -42,7 +42,7 @@ public:
     explicit StripeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~StripeApiImpl() override = default;
 
-    void create_stripe_checkout_session(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &stripeParameters, Pistache::Http::ResponseWriter &response);
+    void create_stripe_checkout_session(const std::optional<std::string> &appKey, const std::optional<std::string> &stripeParameters, Pistache::Http::ResponseWriter &response);
 
 };
 

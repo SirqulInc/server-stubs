@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string MediaApi::base = "";
+const std::string MediaApi::base = "/api/3.18";
 
 MediaApi::MediaApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void MediaApi::init() {
 void MediaApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/media/create", Routes::bind(&MediaApi::create_media_handler, this));
-    Routes::Post(*router, base + "/api/:version/media/delete", Routes::bind(&MediaApi::delete_media_handler, this));
-    Routes::Get(*router, base + "/api/:version/media/get", Routes::bind(&MediaApi::get_media_handler, this));
-    Routes::Get(*router, base + "/api/:version/media/search", Routes::bind(&MediaApi::search_media_handler, this));
-    Routes::Post(*router, base + "/api/:version/media/update", Routes::bind(&MediaApi::update_media_handler, this));
+    Routes::Post(*router, base + "/media/create", Routes::bind(&MediaApi::create_media_handler, this));
+    Routes::Post(*router, base + "/media/delete", Routes::bind(&MediaApi::delete_media_handler, this));
+    Routes::Get(*router, base + "/media/get", Routes::bind(&MediaApi::get_media_handler, this));
+    Routes::Get(*router, base + "/media/search", Routes::bind(&MediaApi::search_media_handler, this));
+    Routes::Post(*router, base + "/media/update", Routes::bind(&MediaApi::update_media_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&MediaApi::media_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> MediaApi::handleOperationException(
 void MediaApi::create_media_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -541,7 +539,7 @@ void MediaApi::create_media_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->create_media(version, accountId, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, specialOfferType, offerVisibility, active, retailerLocationIds, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, parentalRating, availabilityDate, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary, response);
+            this->create_media(accountId, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, specialOfferType, offerVisibility, active, retailerLocationIds, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, parentalRating, availabilityDate, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -560,8 +558,6 @@ void MediaApi::create_media_handler(const Pistache::Rest::Request& request, Pist
 void MediaApi::delete_media_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -590,7 +586,7 @@ void MediaApi::delete_media_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->delete_media(version, accountId, mediaId, response);
+            this->delete_media(accountId, mediaId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -609,8 +605,6 @@ void MediaApi::delete_media_handler(const Pistache::Rest::Request& request, Pist
 void MediaApi::get_media_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -639,7 +633,7 @@ void MediaApi::get_media_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_media(version, accountId, mediaId, response);
+            this->get_media(accountId, mediaId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -658,8 +652,6 @@ void MediaApi::get_media_handler(const Pistache::Rest::Request& request, Pistach
 void MediaApi::search_media_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -744,7 +736,7 @@ void MediaApi::search_media_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->search_media(version, accountId, activeOnly, sortField, descending, keyword, categoryIds, filterIds, start, limit, response);
+            this->search_media(accountId, activeOnly, sortField, descending, keyword, categoryIds, filterIds, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -763,8 +755,6 @@ void MediaApi::search_media_handler(const Pistache::Rest::Request& request, Pist
 void MediaApi::update_media_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1249,7 +1239,7 @@ void MediaApi::update_media_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->update_media(version, accountId, mediaId, retailerLocationIds, offerLocations, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, availabilityDate, parentalRating, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary, response);
+            this->update_media(accountId, mediaId, retailerLocationIds, offerLocations, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, availabilityDate, parentalRating, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

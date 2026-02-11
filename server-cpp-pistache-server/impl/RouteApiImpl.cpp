@@ -29,67 +29,67 @@ RouteApiImpl::RouteApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void RouteApiImpl::approve_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::approve_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::copy_route(const double &version, const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::copy_route(const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::create_route(const double &version, const Route &body, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::create_route(const Route &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::create_route_directions(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::create_route_directions(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::create_route_polyline(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::create_route_polyline(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::delete_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::delete_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::disapprove_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::disapprove_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::get_route(const double &version, const int64_t &routeId, const std::optional<bool> &showInheritedProperties, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::get_route(const int64_t &routeId, const std::optional<bool> &showInheritedProperties, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::get_route_directions(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::get_route_directions(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::get_route_shipments(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::get_route_shipments(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::get_route_stop(const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::get_route_stop(const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::get_route_stops(const double &version, const int64_t &routeId, const std::optional<bool> &confirmedOnly, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::get_route_stops(const int64_t &routeId, const std::optional<bool> &confirmedOnly, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::get_shipments_at_stop(const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::get_shipments_at_stop(const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::optimize_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::optimize_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::remove_stop(const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::remove_stop(const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::reorder_route_stops_patch(const double &version, const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::reorder_route_stops_patch(const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::reorder_route_stops_post(const double &version, const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::reorder_route_stops_post(const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::search_routes(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includesEmpty, const std::optional<bool> &rootOnly, const std::optional<bool> &showInheritedProperties, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<int64_t> &scheduledStart, const std::optional<int64_t> &scheduledEnd, const std::optional<int64_t> &updatedStart, const std::optional<int64_t> &updatedEnd, const std::optional<bool> &featured, const std::optional<int32_t> &seatCount, const std::optional<bool> &approved, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &valid, const std::optional<int64_t> &parentId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::search_routes(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includesEmpty, const std::optional<bool> &rootOnly, const std::optional<bool> &showInheritedProperties, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<int64_t> &scheduledStart, const std::optional<int64_t> &scheduledEnd, const std::optional<int64_t> &updatedStart, const std::optional<int64_t> &updatedEnd, const std::optional<bool> &featured, const std::optional<int32_t> &seatCount, const std::optional<bool> &approved, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &valid, const std::optional<int64_t> &parentId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::set_driver(const double &version, const int64_t &id, const int64_t &driverId, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::set_driver(const int64_t &id, const int64_t &driverId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::update_route(const double &version, const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::update_route(const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteApiImpl::update_route_stop(const double &version, const int64_t &routeId, const int64_t &stopId, const Stop &body, Pistache::Http::ResponseWriter &response) {
+void RouteApiImpl::update_route_stop(const int64_t &routeId, const int64_t &stopId, const Stop &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

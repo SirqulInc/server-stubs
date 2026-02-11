@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string UserPermissionsApi::base = "";
+const std::string UserPermissionsApi::base = "/api/3.18";
 
 UserPermissionsApi::UserPermissionsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void UserPermissionsApi::init() {
 void UserPermissionsApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/consumer/permissions/add", Routes::bind(&UserPermissionsApi::add_users_to_permissionable_handler, this));
-    Routes::Post(*router, base + "/api/:version/permissionable/approve", Routes::bind(&UserPermissionsApi::approve_permissionable_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/permissions/leave", Routes::bind(&UserPermissionsApi::leave_from_permissionable_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/permissions/remove", Routes::bind(&UserPermissionsApi::remove_users_from_permissionable_handler, this));
-    Routes::Get(*router, base + "/api/:version/permissions/search", Routes::bind(&UserPermissionsApi::search_permissionables_handler, this));
-    Routes::Get(*router, base + "/api/:version/permissions/distancesearch", Routes::bind(&UserPermissionsApi::search_permissionables_following_distance_handler, this));
+    Routes::Post(*router, base + "/consumer/permissions/add", Routes::bind(&UserPermissionsApi::add_users_to_permissionable_handler, this));
+    Routes::Post(*router, base + "/permissionable/approve", Routes::bind(&UserPermissionsApi::approve_permissionable_handler, this));
+    Routes::Post(*router, base + "/consumer/permissions/leave", Routes::bind(&UserPermissionsApi::leave_from_permissionable_handler, this));
+    Routes::Post(*router, base + "/consumer/permissions/remove", Routes::bind(&UserPermissionsApi::remove_users_from_permissionable_handler, this));
+    Routes::Get(*router, base + "/permissions/search", Routes::bind(&UserPermissionsApi::search_permissionables_handler, this));
+    Routes::Get(*router, base + "/permissions/distancesearch", Routes::bind(&UserPermissionsApi::search_permissionables_following_distance_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&UserPermissionsApi::user_permissions_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> UserPermissionsApi::handleOperation
 void UserPermissionsApi::add_users_to_permissionable_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -222,7 +220,7 @@ void UserPermissionsApi::add_users_to_permissionable_handler(const Pistache::Res
 
 
 
-            this->add_users_to_permissionable(version, permissionableType, permissionableId, deviceId, accountId, read, write, r_delete, add, connectionIds, connectionAccountIds, connectionGroupIds, pending, admin, includeFriendGroup, latitude, longitude, audienceIds, response);
+            this->add_users_to_permissionable(permissionableType, permissionableId, deviceId, accountId, read, write, r_delete, add, connectionIds, connectionAccountIds, connectionGroupIds, pending, admin, includeFriendGroup, latitude, longitude, audienceIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -241,8 +239,6 @@ void UserPermissionsApi::add_users_to_permissionable_handler(const Pistache::Res
 void UserPermissionsApi::approve_permissionable_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -295,7 +291,7 @@ void UserPermissionsApi::approve_permissionable_handler(const Pistache::Rest::Re
 
 
 
-            this->approve_permissionable(version, permissionableType, permissionableId, deviceId, accountId, approvalStatus, response);
+            this->approve_permissionable(permissionableType, permissionableId, deviceId, accountId, approvalStatus, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -314,8 +310,6 @@ void UserPermissionsApi::approve_permissionable_handler(const Pistache::Rest::Re
 void UserPermissionsApi::leave_from_permissionable_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -376,7 +370,7 @@ void UserPermissionsApi::leave_from_permissionable_handler(const Pistache::Rest:
 
 
 
-            this->leave_from_permissionable(version, permissionableType, permissionableId, deviceId, accountId, latitude, longitude, response);
+            this->leave_from_permissionable(permissionableType, permissionableId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -395,8 +389,6 @@ void UserPermissionsApi::leave_from_permissionable_handler(const Pistache::Rest:
 void UserPermissionsApi::remove_users_from_permissionable_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -497,7 +489,7 @@ void UserPermissionsApi::remove_users_from_permissionable_handler(const Pistache
 
 
 
-            this->remove_users_from_permissionable(version, permissionableType, permissionableId, deviceId, accountId, connectionIds, connectionAccountIds, connectionGroupIds, removeFriendGroup, latitude, longitude, audienceIds, response);
+            this->remove_users_from_permissionable(permissionableType, permissionableId, deviceId, accountId, connectionIds, connectionAccountIds, connectionGroupIds, removeFriendGroup, latitude, longitude, audienceIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -516,8 +508,6 @@ void UserPermissionsApi::remove_users_from_permissionable_handler(const Pistache
 void UserPermissionsApi::search_permissionables_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -634,7 +624,7 @@ void UserPermissionsApi::search_permissionables_handler(const Pistache::Rest::Re
 
 
 
-            this->search_permissionables(version, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, keyword, sortField, descending, pending, admin, start, limit, response);
+            this->search_permissionables(deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, keyword, sortField, descending, pending, admin, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -653,8 +643,6 @@ void UserPermissionsApi::search_permissionables_handler(const Pistache::Rest::Re
 void UserPermissionsApi::search_permissionables_following_distance_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -779,7 +767,7 @@ void UserPermissionsApi::search_permissionables_following_distance_handler(const
 
 
 
-            this->search_permissionables_following_distance(version, latitude, longitude, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, searchRange, keyword, pending, admin, start, limit, response);
+            this->search_permissionables_following_distance(latitude, longitude, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, searchRange, keyword, pending, admin, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

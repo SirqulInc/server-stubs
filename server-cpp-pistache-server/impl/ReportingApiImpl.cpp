@@ -29,22 +29,22 @@ ReportingApiImpl::ReportingApiImpl(const std::shared_ptr<Pistache::Rest::Router>
 
 }
 
-void ReportingApiImpl::create_batch(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &status, const std::optional<int32_t> &previewLimit, const std::optional<std::string> &appKey, const std::optional<std::string> &endpoint, const std::optional<std::string> &parameters, const std::optional<std::string> &name, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &description, const std::optional<std::string> &pageUrl, Pistache::Http::ResponseWriter &response) {
+void ReportingApiImpl::create_batch(const std::optional<int64_t> &accountId, const std::optional<std::string> &status, const std::optional<int32_t> &previewLimit, const std::optional<std::string> &appKey, const std::optional<std::string> &endpoint, const std::optional<std::string> &parameters, const std::optional<std::string> &name, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &description, const std::optional<std::string> &pageUrl, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReportingApiImpl::create_region_leg_summary_batch(const double &version, const std::vector<org::openapitools::server::model::RegionLegSummary> &body, Pistache::Http::ResponseWriter &response) {
+void ReportingApiImpl::create_region_leg_summary_batch(const std::vector<org::openapitools::server::model::RegionLegSummary> &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReportingApiImpl::delete_batch(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) {
+void ReportingApiImpl::delete_batch(const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReportingApiImpl::get_report_batch(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<bool> &allResults, Pistache::Http::ResponseWriter &response) {
+void ReportingApiImpl::get_report_batch(const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<bool> &allResults, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReportingApiImpl::run_report(const double &version, const std::optional<bool> &desc, const std::optional<int64_t> &accountId, const std::optional<std::string> &query, const std::optional<std::string> &parameters, const std::optional<std::string> &order, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<std::string> &responseFormat, Pistache::Http::ResponseWriter &response) {
+void ReportingApiImpl::run_report(const std::optional<bool> &desc, const std::optional<int64_t> &accountId, const std::optional<std::string> &query, const std::optional<std::string> &parameters, const std::optional<std::string> &order, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<std::string> &responseFormat, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReportingApiImpl::search_batch(const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &names, const std::optional<std::string> &appKey, const std::optional<std::string> &status, const std::optional<bool> &globalAppSearch, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, Pistache::Http::ResponseWriter &response) {
+void ReportingApiImpl::search_batch(const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &names, const std::optional<std::string> &appKey, const std::optional<std::string> &status, const std::optional<bool> &globalAppSearch, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

@@ -28,166 +28,166 @@ VatomApiImpl::VatomApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void VatomApiImpl::create_following(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::create_following(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::create_space(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::create_space(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::create_vatom_event(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::create_vatom_event(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::delete_following(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomRelsKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::delete_following(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomRelsKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::delete_points_balance(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::delete_points_balance(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::delete_space(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::delete_space(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::delete_vatom_event(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::delete_vatom_event(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::delete_vatom_nft(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::delete_vatom_nft(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::execute_action_on_nft(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::execute_action_on_nft(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::geomap_search(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::geomap_search(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_business_behaviors(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_business_behaviors(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_business_coins_balance(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_business_coins_balance(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_business_ids(const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_business_ids(const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_business_info(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_business_info(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_business_users(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_business_users(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_campaign_group_entities(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_campaign_group_entities(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_campaign_group_rules(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_campaign_group_rules(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_campaign_group_stats(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_campaign_group_stats(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_campaign_info(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_campaign_info(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_event_guest_list(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_event_guest_list(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_inventory(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_inventory(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_my_following(const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_my_following(const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_points_balance(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_points_balance(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_points_balance_as_business(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_points_balance_as_business(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_space(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_space(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_user_coins_as_business(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_user_coins_as_business(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_user_coins_balance(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_user_coins_balance(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_user_followers(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_user_followers(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_user_following(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_user_following(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_user_info(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_user_info(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_user_profile(const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_user_profile(const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_vatom_event(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_vatom_event(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::get_vatom_nft(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::get_vatom_nft(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::list_communities(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::list_communities(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::list_events(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::list_events(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::list_spaces(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::list_spaces(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::list_user_coin_transactions(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::list_user_coin_transactions(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::list_user_coin_transactions_as_business(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::list_user_coin_transactions_as_business(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::perform_action_on_nft(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomAction, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::perform_action_on_nft(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomAction, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::redeem_nft(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::redeem_nft(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::redeem_user_coins_as_business(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::redeem_user_coins_as_business(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::search_businesses(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::search_businesses(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::search_campaign_groups(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::search_campaign_groups(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::search_identities(const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::search_identities(const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::search_inventory(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::search_inventory(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::send_nft(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::send_nft(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::set_points_balance_as_business(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::set_points_balance_as_business(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::transfer_user_coins(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::transfer_user_coins(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::update_business_coins(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::update_business_coins(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::update_event_guest_list(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::update_event_guest_list(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::update_space(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::update_space(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::update_user_coins_as_business(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::update_user_coins_as_business(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::update_user_profile(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::update_user_profile(const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VatomApiImpl::update_vatom_event(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
+void VatomApiImpl::update_vatom_event(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

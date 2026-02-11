@@ -44,13 +44,13 @@ public:
     explicit ShipmentApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~ShipmentApiImpl() override = default;
 
-    void cancel_shipment(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void create_shipment(const double &version, const Shipment &body, Pistache::Http::ResponseWriter &response);
-    void delete_shipment(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void get_shipment(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void search_shipments(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &ownerId, const std::optional<int64_t> &riderId, const std::optional<int64_t> &routeId, Pistache::Http::ResponseWriter &response);
-    void update_shipment(const double &version, const int64_t &id, const Shipment &body, Pistache::Http::ResponseWriter &response);
-    void update_shipment_status(const double &version, const int64_t &id, const std::map<std::string, bool> &body, Pistache::Http::ResponseWriter &response);
+    void cancel_shipment(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void create_shipment(const Shipment &body, Pistache::Http::ResponseWriter &response);
+    void delete_shipment(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void get_shipment(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void search_shipments(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &ownerId, const std::optional<int64_t> &riderId, const std::optional<int64_t> &routeId, Pistache::Http::ResponseWriter &response);
+    void update_shipment(const int64_t &id, const Shipment &body, Pistache::Http::ResponseWriter &response);
+    void update_shipment_status(const int64_t &id, const std::map<std::string, bool> &body, Pistache::Http::ResponseWriter &response);
 
 };
 

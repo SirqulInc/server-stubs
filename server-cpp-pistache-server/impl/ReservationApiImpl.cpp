@@ -29,22 +29,22 @@ ReservationApiImpl::ReservationApiImpl(const std::shared_ptr<Pistache::Rest::Rou
 
 }
 
-void ReservationApiImpl::create_reservation(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &appKey, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) {
+void ReservationApiImpl::create_reservation(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &appKey, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReservationApiImpl::delete_reservation(const double &version, const std::optional<int64_t> &reservationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void ReservationApiImpl::delete_reservation(const std::optional<int64_t> &reservationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReservationApiImpl::reservable_availability(const double &version, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) {
+void ReservationApiImpl::reservable_availability(const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReservationApiImpl::search_availability(const double &version, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ReservationApiImpl::search_availability(const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReservationApiImpl::search_reservations(const double &version, const std::optional<std::string> &deviceId, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterAccountId, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &keyword, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ReservationApiImpl::search_reservations(const std::optional<std::string> &deviceId, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterAccountId, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &keyword, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ReservationApiImpl::search_schedule(const double &version, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &timeBucketMins, Pistache::Http::ResponseWriter &response) {
+void ReservationApiImpl::search_schedule(const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &timeBucketMins, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

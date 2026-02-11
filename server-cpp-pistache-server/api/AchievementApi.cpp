@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AchievementApi::base = "";
+const std::string AchievementApi::base = "/api/3.18";
 
 AchievementApi::AchievementApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,20 +32,20 @@ void AchievementApi::init() {
 void AchievementApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/achievement/tier/search", Routes::bind(&AchievementApi::api_version_achievement_tier_search_post_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/create", Routes::bind(&AchievementApi::create_achievement_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/tier/create", Routes::bind(&AchievementApi::create_achievement_tier_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/delete", Routes::bind(&AchievementApi::delete_achievement_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/tier/delete", Routes::bind(&AchievementApi::delete_achievement_tier_handler, this));
-    Routes::Get(*router, base + "/api/:version/achievement/get", Routes::bind(&AchievementApi::get_achievement_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/tier/get", Routes::bind(&AchievementApi::get_achievement_tier_handler, this));
-    Routes::Get(*router, base + "/api/:version/achievement/progress/get", Routes::bind(&AchievementApi::get_user_achievements_handler, this));
-    Routes::Get(*router, base + "/api/:version/achievement/tag/list", Routes::bind(&AchievementApi::list_achievement_tags_handler, this));
-    Routes::Get(*router, base + "/api/:version/achievement/list", Routes::bind(&AchievementApi::list_achievements_handler, this));
-    Routes::Get(*router, base + "/api/:version/achievement/search", Routes::bind(&AchievementApi::search_achievements_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/update", Routes::bind(&AchievementApi::update_achievement_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/tier/update", Routes::bind(&AchievementApi::update_achievement_tier_handler, this));
-    Routes::Post(*router, base + "/api/:version/achievement/progress/update", Routes::bind(&AchievementApi::update_user_achievement_handler, this));
+    Routes::Post(*router, base + "/achievement/tier/search", Routes::bind(&AchievementApi::achievement_tier_search_post_handler, this));
+    Routes::Post(*router, base + "/achievement/create", Routes::bind(&AchievementApi::create_achievement_handler, this));
+    Routes::Post(*router, base + "/achievement/tier/create", Routes::bind(&AchievementApi::create_achievement_tier_handler, this));
+    Routes::Post(*router, base + "/achievement/delete", Routes::bind(&AchievementApi::delete_achievement_handler, this));
+    Routes::Post(*router, base + "/achievement/tier/delete", Routes::bind(&AchievementApi::delete_achievement_tier_handler, this));
+    Routes::Get(*router, base + "/achievement/get", Routes::bind(&AchievementApi::get_achievement_handler, this));
+    Routes::Post(*router, base + "/achievement/tier/get", Routes::bind(&AchievementApi::get_achievement_tier_handler, this));
+    Routes::Get(*router, base + "/achievement/progress/get", Routes::bind(&AchievementApi::get_user_achievements_handler, this));
+    Routes::Get(*router, base + "/achievement/tag/list", Routes::bind(&AchievementApi::list_achievement_tags_handler, this));
+    Routes::Get(*router, base + "/achievement/list", Routes::bind(&AchievementApi::list_achievements_handler, this));
+    Routes::Get(*router, base + "/achievement/search", Routes::bind(&AchievementApi::search_achievements_handler, this));
+    Routes::Post(*router, base + "/achievement/update", Routes::bind(&AchievementApi::update_achievement_handler, this));
+    Routes::Post(*router, base + "/achievement/tier/update", Routes::bind(&AchievementApi::update_achievement_tier_handler, this));
+    Routes::Post(*router, base + "/achievement/progress/update", Routes::bind(&AchievementApi::update_user_achievement_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AchievementApi::achievement_api_default_handler, this));
@@ -77,11 +77,9 @@ std::pair<Pistache::Http::Code, std::string> AchievementApi::handleOperationExce
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void AchievementApi::api_version_achievement_tier_search_post_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
+void AchievementApi::achievement_tier_search_post_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -182,7 +180,7 @@ void AchievementApi::api_version_achievement_tier_search_post_handler(const Pist
 
 
 
-            this->api_version_achievement_tier_search_post(version, deviceId, accountId, appKey, keyword, achievementType, rankType, sortField, descending, descendingGoal, start, limit, response);
+            this->achievement_tier_search_post(deviceId, accountId, appKey, keyword, achievementType, rankType, sortField, descending, descendingGoal, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -201,8 +199,6 @@ void AchievementApi::api_version_achievement_tier_search_post_handler(const Pist
 void AchievementApi::create_achievement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -319,7 +315,7 @@ void AchievementApi::create_achievement_handler(const Pistache::Rest::Request& r
 
 
 
-            this->create_achievement(version, appKey, title, deviceId, accountId, analyticsTag, description, rankType, rankIncrement, minIncrement, maxIncrement, validate, active, triggerDefinition, response);
+            this->create_achievement(appKey, title, deviceId, accountId, analyticsTag, description, rankType, rankIncrement, minIncrement, maxIncrement, validate, active, triggerDefinition, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -358,8 +354,6 @@ void AchievementApi::create_achievement_tier_handler(const Pistache::Rest::Reque
 void AchievementApi::delete_achievement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -388,7 +382,7 @@ void AchievementApi::delete_achievement_handler(const Pistache::Rest::Request& r
 
 
 
-            this->delete_achievement(version, achievementId, accountId, response);
+            this->delete_achievement(achievementId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -407,8 +401,6 @@ void AchievementApi::delete_achievement_handler(const Pistache::Rest::Request& r
 void AchievementApi::delete_achievement_tier_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -437,7 +429,7 @@ void AchievementApi::delete_achievement_tier_handler(const Pistache::Rest::Reque
 
 
 
-            this->delete_achievement_tier(version, achievementTierId, accountId, response);
+            this->delete_achievement_tier(achievementTierId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -456,8 +448,6 @@ void AchievementApi::delete_achievement_tier_handler(const Pistache::Rest::Reque
 void AchievementApi::get_achievement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -502,7 +492,7 @@ void AchievementApi::get_achievement_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_achievement(version, achievementId, deviceId, accountId, achievementType, response);
+            this->get_achievement(achievementId, deviceId, accountId, achievementType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -521,8 +511,6 @@ void AchievementApi::get_achievement_handler(const Pistache::Rest::Request& requ
 void AchievementApi::get_achievement_tier_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -551,7 +539,7 @@ void AchievementApi::get_achievement_tier_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_achievement_tier(version, accountId, achievementTierId, response);
+            this->get_achievement_tier(accountId, achievementTierId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -570,8 +558,6 @@ void AchievementApi::get_achievement_tier_handler(const Pistache::Rest::Request&
 void AchievementApi::get_user_achievements_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -672,7 +658,7 @@ void AchievementApi::get_user_achievements_handler(const Pistache::Rest::Request
 
 
 
-            this->get_user_achievements(version, returnNulls, appKey, includeUndiscovered, deviceId, accountId, connectionAccountEmail, connectionAccountId, rankType, achievementType, latitude, longitude, response);
+            this->get_user_achievements(returnNulls, appKey, includeUndiscovered, deviceId, accountId, connectionAccountEmail, connectionAccountId, rankType, achievementType, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -691,8 +677,6 @@ void AchievementApi::get_user_achievements_handler(const Pistache::Rest::Request
 void AchievementApi::list_achievement_tags_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -713,7 +697,7 @@ void AchievementApi::list_achievement_tags_handler(const Pistache::Rest::Request
 
 
 
-            this->list_achievement_tags(version, appKey, response);
+            this->list_achievement_tags(appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -732,8 +716,6 @@ void AchievementApi::list_achievement_tags_handler(const Pistache::Rest::Request
 void AchievementApi::list_achievements_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -834,7 +816,7 @@ void AchievementApi::list_achievements_handler(const Pistache::Rest::Request& re
 
 
 
-            this->list_achievements(version, sortField, descending, start, limit, activeOnly, deviceId, accountId, appKey, keyword, achievementType, rankType, response);
+            this->list_achievements(sortField, descending, start, limit, activeOnly, deviceId, accountId, appKey, keyword, achievementType, rankType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -853,8 +835,6 @@ void AchievementApi::list_achievements_handler(const Pistache::Rest::Request& re
 void AchievementApi::search_achievements_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -963,7 +943,7 @@ void AchievementApi::search_achievements_handler(const Pistache::Rest::Request& 
 
 
 
-            this->search_achievements(version, appKey, sortField, descending, includeTiers, includeInactiveTiers, start, limit, deviceId, accountId, keyword, achievementType, rankType, response);
+            this->search_achievements(appKey, sortField, descending, includeTiers, includeInactiveTiers, start, limit, deviceId, accountId, keyword, achievementType, rankType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -982,8 +962,6 @@ void AchievementApi::search_achievements_handler(const Pistache::Rest::Request& 
 void AchievementApi::update_achievement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1116,7 +1094,7 @@ void AchievementApi::update_achievement_handler(const Pistache::Rest::Request& r
 
 
 
-            this->update_achievement(version, deviceId, accountId, achievementId, analyticsTag, title, description, rankType, rankIncrement, minIncrement, nullMinIncrement, maxIncrement, nullMaxIncrement, validate, active, triggerDefinition, response);
+            this->update_achievement(deviceId, accountId, achievementId, analyticsTag, title, description, rankType, rankIncrement, minIncrement, nullMinIncrement, maxIncrement, nullMaxIncrement, validate, active, triggerDefinition, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1155,8 +1133,6 @@ void AchievementApi::update_achievement_tier_handler(const Pistache::Rest::Reque
 void AchievementApi::update_user_achievement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1233,7 +1209,7 @@ void AchievementApi::update_user_achievement_handler(const Pistache::Rest::Reque
 
 
 
-            this->update_user_achievement(version, accountId, achievementId, tag, customId, increment, startDate, endDate, returnProgress, response);
+            this->update_user_achievement(accountId, achievementId, tag, customId, increment, startDate, endDate, returnProgress, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -29,10 +29,10 @@ StopApiImpl::StopApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void StopApiImpl::get_stop(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void StopApiImpl::get_stop(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void StopApiImpl::update_stop(const double &version, const int64_t &id, const Stop &body, Pistache::Http::ResponseWriter &response) {
+void StopApiImpl::update_stop(const int64_t &id, const Stop &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RatingApi::base = "";
+const std::string RatingApi::base = "/api/3.18";
 
 RatingApi::RatingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void RatingApi::init() {
 void RatingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/rating/create", Routes::bind(&RatingApi::create_rating_handler, this));
-    Routes::Post(*router, base + "/api/:version/rating/delete", Routes::bind(&RatingApi::delete_rating_handler, this));
-    Routes::Get(*router, base + "/api/:version/location/rating/index/search", Routes::bind(&RatingApi::search_location_rating_indexes_handler, this));
-    Routes::Get(*router, base + "/api/:version/rating/index/search", Routes::bind(&RatingApi::search_rating_indexes_handler, this));
-    Routes::Get(*router, base + "/api/:version/rating/search", Routes::bind(&RatingApi::search_ratings_handler, this));
-    Routes::Post(*router, base + "/api/:version/rating/update", Routes::bind(&RatingApi::update_rating_handler, this));
+    Routes::Post(*router, base + "/rating/create", Routes::bind(&RatingApi::create_rating_handler, this));
+    Routes::Post(*router, base + "/rating/delete", Routes::bind(&RatingApi::delete_rating_handler, this));
+    Routes::Get(*router, base + "/location/rating/index/search", Routes::bind(&RatingApi::search_location_rating_indexes_handler, this));
+    Routes::Get(*router, base + "/rating/index/search", Routes::bind(&RatingApi::search_rating_indexes_handler, this));
+    Routes::Get(*router, base + "/rating/search", Routes::bind(&RatingApi::search_ratings_handler, this));
+    Routes::Post(*router, base + "/rating/update", Routes::bind(&RatingApi::update_rating_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RatingApi::rating_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> RatingApi::handleOperationException
 void RatingApi::create_rating_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -174,7 +172,7 @@ void RatingApi::create_rating_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->create_rating(version, ratableType, ratableId, ratingValue, deviceId, accountId, categoryId, display, description, locationDescription, latitude, longitude, response);
+            this->create_rating(ratableType, ratableId, ratingValue, deviceId, accountId, categoryId, display, description, locationDescription, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -193,8 +191,6 @@ void RatingApi::create_rating_handler(const Pistache::Rest::Request& request, Pi
 void RatingApi::delete_rating_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -231,7 +227,7 @@ void RatingApi::delete_rating_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->delete_rating(version, ratingId, deviceId, accountId, response);
+            this->delete_rating(ratingId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -250,8 +246,6 @@ void RatingApi::delete_rating_handler(const Pistache::Rest::Request& request, Pi
 void RatingApi::search_location_rating_indexes_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -400,7 +394,7 @@ void RatingApi::search_location_rating_indexes_handler(const Pistache::Rest::Req
 
 
 
-            this->search_location_rating_indexes(version, categoryIds, keyword, locationType, sortField, descending, start, limit, searchRange, latitude, longitude, returnOverallRating, distanceUnit, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, response);
+            this->search_location_rating_indexes(categoryIds, keyword, locationType, sortField, descending, start, limit, searchRange, latitude, longitude, returnOverallRating, distanceUnit, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -419,8 +413,6 @@ void RatingApi::search_location_rating_indexes_handler(const Pistache::Rest::Req
 void RatingApi::search_rating_indexes_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -537,7 +529,7 @@ void RatingApi::search_rating_indexes_handler(const Pistache::Rest::Request& req
 
 
 
-            this->search_rating_indexes(version, ratableType, ratableIds, categoryIds, secondaryType, keyword, sortField, descending, start, limit, latitude, longitude, returnRatable, returnOverallRating, response);
+            this->search_rating_indexes(ratableType, ratableIds, categoryIds, secondaryType, keyword, sortField, descending, start, limit, latitude, longitude, returnRatable, returnOverallRating, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -556,8 +548,6 @@ void RatingApi::search_rating_indexes_handler(const Pistache::Rest::Request& req
 void RatingApi::search_ratings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -658,7 +648,7 @@ void RatingApi::search_ratings_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->search_ratings(version, deviceId, accountId, filterAccountId, ratableType, ratableId, categoryIds, keyword, sortField, descending, start, limit, response);
+            this->search_ratings(deviceId, accountId, filterAccountId, ratableType, ratableId, categoryIds, keyword, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -677,8 +667,6 @@ void RatingApi::search_ratings_handler(const Pistache::Rest::Request& request, P
 void RatingApi::update_rating_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -771,7 +759,7 @@ void RatingApi::update_rating_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->update_rating(version, ratingId, deviceId, accountId, ratingValue, categoryId, display, description, locationDescription, latitude, longitude, response);
+            this->update_rating(ratingId, deviceId, accountId, ratingValue, categoryId, display, description, locationDescription, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

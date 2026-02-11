@@ -100,7 +100,6 @@ private:
     /// <remarks>
     /// Create a user defined audience.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the audience</param>
     /// <param name="description">The description of the audience (optional, default to &quot;&quot;)</param>
@@ -130,46 +129,42 @@ private:
     /// <param name="appKey">Filter results by application key (optional, default to &quot;&quot;)</param>
     /// <param name="trilaterationTypes">Trilateration types (optional, default to &quot;&quot;)</param>
     /// <param name="uniqueName">If true, makes sure the audience name is unique (optional, default to false)</param>
-    virtual void create_audience( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroups, const std::optional<std::string> &categoryIds, const std::optional<std::string> &applicationIds, const std::optional<std::string> &gameExperienceLevel, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, const std::optional<int32_t> &startTimeOffset, const std::optional<int32_t> &endTimeOffset, const std::optional<bool> &sendSuggestion, const std::optional<std::string> &associateDescription, const std::optional<std::string> &associateType, const std::optional<int64_t> &associateId, const std::optional<std::string> &groupingId, const std::optional<std::string> &metaData, const std::optional<std::string> &visibility, const std::optional<std::string> &audienceType, const std::optional<bool> &useOrder, const std::optional<std::string> &cohortRegionsData, const std::optional<std::string> &appKey, const std::optional<std::string> &trilaterationTypes, const std::optional<bool> &uniqueName, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_audience( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroups, const std::optional<std::string> &categoryIds, const std::optional<std::string> &applicationIds, const std::optional<std::string> &gameExperienceLevel, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, const std::optional<int32_t> &startTimeOffset, const std::optional<int32_t> &endTimeOffset, const std::optional<bool> &sendSuggestion, const std::optional<std::string> &associateDescription, const std::optional<std::string> &associateType, const std::optional<int64_t> &associateId, const std::optional<std::string> &groupingId, const std::optional<std::string> &metaData, const std::optional<std::string> &visibility, const std::optional<std::string> &audienceType, const std::optional<bool> &useOrder, const std::optional<std::string> &cohortRegionsData, const std::optional<std::string> &appKey, const std::optional<std::string> &trilaterationTypes, const std::optional<bool> &uniqueName, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Audience
     /// </summary>
     /// <remarks>
     /// Delete an audience. The audience and account must be valid and have the appropirate permissions to view the content.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="audienceId">The id of the audience to delete.</param>
-    virtual void delete_audience( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &audienceId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_audience( const std::optional<int64_t> &accountId, const std::optional<int64_t> &audienceId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Age Groups
     /// </summary>
     /// <remarks>
     /// Gets the list of available age groups that can be selected by consumers and retailers targeting offers.
     /// </remarks>
-    /// <param name="version"></param>
-    virtual void get_age_groups( const double &version, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_age_groups( Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Audience
     /// </summary>
     /// <remarks>
     /// Get an audience. The audience and account must be valid and have the appropriate permissions to view the content.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="audienceId">The id of the audience to return.</param>
     /// <param name="appKey">The application key (optional). If provided, results may be scoped to this application. (optional, default to &quot;&quot;)</param>
     /// <param name="returnAccountCount">(boolean) set to true to include the accountCount associated with current audience of the current app (optional, default to false)</param>
     /// <param name="returnAlbumCount">(boolean) set to true to include the albumCount associated with current audience of the current app (optional, default to false)</param>
     /// <param name="albumTypesForCount">(String) comma separated list, return an array with each item is the count of each album type. If not provided, \&quot;all_types\&quot; count is returned. (optional, default to &quot;&quot;)</param>
-    virtual void get_audience( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &appKey, const std::optional<bool> &returnAccountCount, const std::optional<bool> &returnAlbumCount, const std::optional<std::string> &albumTypesForCount, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_audience( const std::optional<int64_t> &accountId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &appKey, const std::optional<bool> &returnAccountCount, const std::optional<bool> &returnAlbumCount, const std::optional<std::string> &albumTypesForCount, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Audiences
     /// </summary>
     /// <remarks>
     /// Get the list audiences owned by the account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user. (optional, default to 0L)</param>
     /// <param name="albumIds">Comma separated list of album IDs to filter results with (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">The keyword used to search (optional, default to &quot;&quot;)</param>
@@ -189,88 +184,80 @@ private:
     /// <param name="returnAccountCount">(boolean) set to true to include the accountCount associated with current audience of the current app (optional, default to false)</param>
     /// <param name="returnAlbumCount">(boolean) set to true to include the albumCount associated with current audience of the current app (optional, default to false)</param>
     /// <param name="albumTypesForCount">(String) comma separated list, return an array with each item is the count of each album type. If not provided, \&quot;all_types\&quot; count is returned. (optional, default to &quot;&quot;)</param>
-    virtual void get_audience_list( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &albumIds, const std::optional<std::string> &keyword, const std::optional<std::string> &keywordFields, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &sendSuggestion, const std::optional<bool> &activeOnly, const std::optional<bool> &groupByGroupingId, const std::optional<std::string> &appKey, const std::optional<bool> &returnGlobal, const std::optional<bool> &exactKeyword, const std::optional<std::string> &audienceType, const std::optional<std::string> &audienceTypes, const std::optional<bool> &returnAccountCount, const std::optional<bool> &returnAlbumCount, const std::optional<std::string> &albumTypesForCount, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_audience_list( const std::optional<int64_t> &accountId, const std::optional<std::string> &albumIds, const std::optional<std::string> &keyword, const std::optional<std::string> &keywordFields, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &sendSuggestion, const std::optional<bool> &activeOnly, const std::optional<bool> &groupByGroupingId, const std::optional<std::string> &appKey, const std::optional<bool> &returnGlobal, const std::optional<bool> &exactKeyword, const std::optional<std::string> &audienceType, const std::optional<std::string> &audienceTypes, const std::optional<bool> &returnAccountCount, const std::optional<bool> &returnAlbumCount, const std::optional<std::string> &albumTypesForCount, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Devices
     /// </summary>
     /// <remarks>
     /// Gets the list of available devices that can be selected by consumers and retailers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="includeInactive">If true return inactive record as well. default is false.</param>
-    virtual void get_devices( const double &version, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_devices( const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Experiences
     /// </summary>
     /// <remarks>
     /// Gets the list of available experiences that can be selected by consumers and retailers.
     /// </remarks>
-    /// <param name="version"></param>
-    virtual void get_experiences( const double &version, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_experiences( Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get GroupedAudiences
     /// </summary>
     /// <remarks>
     /// Get a group of audiences. The audience and account must be valid and have the appropriate permissions to view the content.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="audienceGroupingId">The audience grouping id to return.</param>
-    virtual void get_grouped_audiences( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &audienceGroupingId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_grouped_audiences( const std::optional<int64_t> &accountId, const std::optional<std::string> &audienceGroupingId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Suggestions by Audience
     /// </summary>
     /// <remarks>
     /// List either Missions or Offers that the user matches the assigned audience.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account to match offers for.</param>
     /// <param name="limit">the limit of the index</param>
     /// <param name="suggestionType">the type of suggestion</param>
-    virtual void list_by_account( const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &limit, const std::optional<std::string> &suggestionType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_by_account( const std::optional<int64_t> &accountId, const std::optional<int32_t> &limit, const std::optional<std::string> &suggestionType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Offers by Audience
     /// </summary>
     /// <remarks>
     /// Get a list of offer locations based on audience information provided.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="limit">this is the limit of the index</param>
     /// <param name="gender">this is the gender to list offers by (optional, default to &quot;&quot;)</param>
     /// <param name="age">this is the age to list offers by (optional, default to 0)</param>
     /// <param name="categoryIds">this is the category IDs to list offers by (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">this is the latitude to list offers by (optional, default to 0.0)</param>
     /// <param name="longitude">this is the longitude to list offers by (optional, default to 0.0)</param>
-    virtual void list_by_audience( const double &version, const std::optional<int32_t> &limit, const std::optional<std::string> &gender, const std::optional<int32_t> &age, const std::optional<std::string> &categoryIds, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_by_audience( const std::optional<int32_t> &limit, const std::optional<std::string> &gender, const std::optional<int32_t> &age, const std::optional<std::string> &categoryIds, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Sent Suggestions 
     /// </summary>
     /// <remarks>
     /// Return list of recent trigger suggestions that have been sent to the user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account to match offers for.</param>
     /// <param name="timeframe">The timeframe in seconds of the latest suggestions</param>
     /// <param name="suggestionType">The type of trigger suggestions to return</param>
-    virtual void list_lastest_by_account( const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &timeframe, const std::optional<std::string> &suggestionType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_lastest_by_account( const std::optional<int64_t> &accountId, const std::optional<int32_t> &timeframe, const std::optional<std::string> &suggestionType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Send Suggestions
     /// </summary>
     /// <remarks>
     /// Use the accountId to determine the associated BillableEntity. From there get a list of all triggers associated with the BillableEntity.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account to match offers for.</param>
     /// <param name="latitude">the latitude</param>
     /// <param name="longitude">the longitude</param>
-    virtual void send_by_account( const double &version, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void send_by_account( const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Audience
     /// </summary>
     /// <remarks>
     /// Update a user defined audience.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="audienceId">The id of the audience to update.</param>
     /// <param name="name">The name of the audience (optional, default to &quot;&quot;)</param>
@@ -302,7 +289,7 @@ private:
     /// <param name="appKey">Filter results by application key (optional, default to &quot;&quot;)</param>
     /// <param name="trilaterationTypes">Trilateration types (optional, default to &quot;&quot;)</param>
     /// <param name="uniqueName">If true, makes sure the audience name is unique (optional, default to false)</param>
-    virtual void update_audience( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroups, const std::optional<std::string> &categoryIds, const std::optional<std::string> &applicationIds, const std::optional<std::string> &gameExperienceLevel, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, const std::optional<bool> &active, const std::optional<bool> &sendSuggestion, const std::optional<int32_t> &startTimeOffset, const std::optional<int32_t> &endTimeOffset, const std::optional<std::string> &associateDescription, const std::optional<std::string> &associateType, const std::optional<int64_t> &associateId, const std::optional<std::string> &groupingId, const std::optional<std::string> &metaData, const std::optional<std::string> &visibility, const std::optional<std::string> &audienceType, const std::optional<bool> &useOrder, const std::optional<std::string> &cohortRegionsData, const std::optional<std::string> &appKey, const std::optional<std::string> &trilaterationTypes, const std::optional<bool> &uniqueName, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_audience( const std::optional<int64_t> &accountId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroups, const std::optional<std::string> &categoryIds, const std::optional<std::string> &applicationIds, const std::optional<std::string> &gameExperienceLevel, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, const std::optional<bool> &active, const std::optional<bool> &sendSuggestion, const std::optional<int32_t> &startTimeOffset, const std::optional<int32_t> &endTimeOffset, const std::optional<std::string> &associateDescription, const std::optional<std::string> &associateType, const std::optional<int64_t> &associateId, const std::optional<std::string> &groupingId, const std::optional<std::string> &metaData, const std::optional<std::string> &visibility, const std::optional<std::string> &audienceType, const std::optional<bool> &useOrder, const std::optional<std::string> &cohortRegionsData, const std::optional<std::string> &appKey, const std::optional<std::string> &trilaterationTypes, const std::optional<bool> &uniqueName, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RegionApi::base = "";
+const std::string RegionApi::base = "/api/3.18";
 
 RegionApi::RegionApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void RegionApi::init() {
 void RegionApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/region/create", Routes::bind(&RegionApi::create_region_handler, this));
-    Routes::Post(*router, base + "/api/:version/region/delete", Routes::bind(&RegionApi::delete_region_handler, this));
-    Routes::Get(*router, base + "/api/:version/region/get", Routes::bind(&RegionApi::get_region_handler, this));
-    Routes::Get(*router, base + "/api/:version/region/search", Routes::bind(&RegionApi::search_regions_handler, this));
-    Routes::Post(*router, base + "/api/:version/region/update", Routes::bind(&RegionApi::update_region_handler, this));
+    Routes::Post(*router, base + "/region/create", Routes::bind(&RegionApi::create_region_handler, this));
+    Routes::Post(*router, base + "/region/delete", Routes::bind(&RegionApi::delete_region_handler, this));
+    Routes::Get(*router, base + "/region/get", Routes::bind(&RegionApi::get_region_handler, this));
+    Routes::Get(*router, base + "/region/search", Routes::bind(&RegionApi::search_regions_handler, this));
+    Routes::Post(*router, base + "/region/update", Routes::bind(&RegionApi::update_region_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RegionApi::region_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> RegionApi::handleOperationException
 void RegionApi::create_region_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -253,7 +251,7 @@ void RegionApi::create_region_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->create_region(version, accountId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, response);
+            this->create_region(accountId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -272,8 +270,6 @@ void RegionApi::create_region_handler(const Pistache::Rest::Request& request, Pi
 void RegionApi::delete_region_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -302,7 +298,7 @@ void RegionApi::delete_region_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->delete_region(version, accountId, regionId, response);
+            this->delete_region(accountId, regionId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -321,8 +317,6 @@ void RegionApi::delete_region_handler(const Pistache::Rest::Request& request, Pi
 void RegionApi::get_region_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -351,7 +345,7 @@ void RegionApi::get_region_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->get_region(version, regionId, accountId, response);
+            this->get_region(regionId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -370,8 +364,6 @@ void RegionApi::get_region_handler(const Pistache::Rest::Request& request, Pista
 void RegionApi::search_regions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -560,7 +552,7 @@ void RegionApi::search_regions_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->search_regions(version, accountId, query, keyword, latitude, longitude, range, regionClass, visibility, searchMode, sortField, descending, includeParent, includeChildren, includePostalCodes, categoryIds, filterIds, versionCode, activeOnly, showDeleted, lastUpdatedSince, start, limit, response);
+            this->search_regions(accountId, query, keyword, latitude, longitude, range, regionClass, visibility, searchMode, sortField, descending, includeParent, includeChildren, includePostalCodes, categoryIds, filterIds, versionCode, activeOnly, showDeleted, lastUpdatedSince, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -579,8 +571,6 @@ void RegionApi::search_regions_handler(const Pistache::Rest::Request& request, P
 void RegionApi::update_region_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -777,7 +767,7 @@ void RegionApi::update_region_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->update_region(version, accountId, regionId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, clearLists, response);
+            this->update_region(accountId, regionId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, clearLists, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

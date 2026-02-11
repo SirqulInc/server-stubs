@@ -44,11 +44,11 @@ public:
     explicit RouteSettingApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~RouteSettingApiImpl() override = default;
 
-    void create_route_settings(const double &version, const RouteSettings &body, Pistache::Http::ResponseWriter &response);
-    void delete_route_settings(const double &version, const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response);
-    void get_route_settings(const double &version, const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response);
-    void search_route_settings(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response);
-    void update_route_settings(const double &version, const int64_t &routeSettingsId, const RouteSettings &body, Pistache::Http::ResponseWriter &response);
+    void create_route_settings(const RouteSettings &body, Pistache::Http::ResponseWriter &response);
+    void delete_route_settings(const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response);
+    void get_route_settings(const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response);
+    void search_route_settings(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response);
+    void update_route_settings(const int64_t &routeSettingsId, const RouteSettings &body, Pistache::Http::ResponseWriter &response);
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string CSVImportApi::base = "";
+const std::string CSVImportApi::base = "/api/3.18";
 
 CSVImportApi::CSVImportApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,10 +32,10 @@ void CSVImportApi::init() {
 void CSVImportApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/csvimport/batch/status/details", Routes::bind(&CSVImportApi::get_status_csv_handler, this));
-    Routes::Get(*router, base + "/api/:version/csvimport/batch/list", Routes::bind(&CSVImportApi::list_status_csv_handler, this));
-    Routes::Get(*router, base + "/api/:version/csvimport/batch/status", Routes::bind(&CSVImportApi::status_csv_handler, this));
-    Routes::Post(*router, base + "/api/:version/csvimport/upload", Routes::bind(&CSVImportApi::upload_csv_handler, this));
+    Routes::Get(*router, base + "/csvimport/batch/status/details", Routes::bind(&CSVImportApi::get_status_csv_handler, this));
+    Routes::Get(*router, base + "/csvimport/batch/list", Routes::bind(&CSVImportApi::list_status_csv_handler, this));
+    Routes::Get(*router, base + "/csvimport/batch/status", Routes::bind(&CSVImportApi::status_csv_handler, this));
+    Routes::Post(*router, base + "/csvimport/upload", Routes::bind(&CSVImportApi::upload_csv_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&CSVImportApi::csv_import_api_default_handler, this));
@@ -70,8 +70,6 @@ std::pair<Pistache::Http::Code, std::string> CSVImportApi::handleOperationExcept
 void CSVImportApi::get_status_csv_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -124,7 +122,7 @@ void CSVImportApi::get_status_csv_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_status_csv(version, accountId, batchId, responseGroup, start, limit, response);
+            this->get_status_csv(accountId, batchId, responseGroup, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -143,8 +141,6 @@ void CSVImportApi::get_status_csv_handler(const Pistache::Rest::Request& request
 void CSVImportApi::list_status_csv_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -181,7 +177,7 @@ void CSVImportApi::list_status_csv_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->list_status_csv(version, accountId, start, limit, response);
+            this->list_status_csv(accountId, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -200,8 +196,6 @@ void CSVImportApi::list_status_csv_handler(const Pistache::Rest::Request& reques
 void CSVImportApi::status_csv_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -230,7 +224,7 @@ void CSVImportApi::status_csv_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->status_csv(version, accountId, batchId, response);
+            this->status_csv(accountId, batchId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

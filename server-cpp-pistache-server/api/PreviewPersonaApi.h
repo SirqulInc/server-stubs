@@ -87,7 +87,6 @@ private:
     /// <remarks>
     /// Creates a new persona. If the given params are null those attributes will be override by null.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user</param>
     /// <param name="title">the title of the persona</param>
     /// <param name="previewAccounts">the accounts that are able to preview from this persona (optional, default to &quot;&quot;)</param>
@@ -97,45 +96,41 @@ private:
     /// <param name="gameExperienceLevel">the specified experience level of the persona (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">the specified latitude of the persona (optional, default to 0.0)</param>
     /// <param name="longitude">the specified longitude of the persona (optional, default to 0.0)</param>
-    virtual void create_persona( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_persona( const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Persona
     /// </summary>
     /// <remarks>
     /// Mark the persona for deletion.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="personaId">the id of the persona to delete</param>
-    virtual void delete_persona( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_persona( const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Persona
     /// </summary>
     /// <remarks>
     /// Get the persona by the given persona ID. If the persona cannot be found, a invalid response is returned.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user</param>
     /// <param name="personaId">the persona ID of the persona</param>
-    virtual void get_persona_list( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_persona_list( const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Personas
     /// </summary>
     /// <remarks>
     /// Search for persona that the account owns by the given account ID.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user</param>
     /// <param name="start">the start index for pagination</param>
     /// <param name="limit">the limit for pagination (There is a hard limit of 100)</param>
-    virtual void search_persona( const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_persona( const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Persona
     /// </summary>
     /// <remarks>
     /// Update the persona by the given personaId. If the given params are null those attributes will be override by null. If active is assigned, all other params will be ignored.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID of the user</param>
     /// <param name="personaId">the persona ID of the persona to update</param>
     /// <param name="title">the title of the persona (optional, default to &quot;&quot;)</param>
@@ -147,7 +142,7 @@ private:
     /// <param name="gameExperienceLevel">the specified experience level of the persona (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">the specified latitude of the persona (optional, default to 0.0)</param>
     /// <param name="longitude">the specified longitude of the persona (optional, default to 0.0)</param>
-    virtual void update_persona( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<bool> &active, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_persona( const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<bool> &active, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

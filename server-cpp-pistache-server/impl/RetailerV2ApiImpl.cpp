@@ -29,7 +29,7 @@ RetailerV2ApiImpl::RetailerV2ApiImpl(const std::shared_ptr<Pistache::Rest::Route
 
 }
 
-void RetailerV2ApiImpl::get_retaokiler(const double &version, const std::optional<int64_t> &retailerId, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) {
+void RetailerV2ApiImpl::get_retaokiler(const std::optional<int64_t> &retailerId, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

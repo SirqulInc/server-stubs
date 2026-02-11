@@ -29,22 +29,22 @@ TicketApiImpl::TicketApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void TicketApiImpl::get_ticket_count(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &ticketType, Pistache::Http::ResponseWriter &response) {
+void TicketApiImpl::get_ticket_count(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &ticketType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TicketApiImpl::get_ticket_list(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &ticketObjectType, const std::optional<std::string> &actionType, const std::optional<std::string> &ticketIds, const std::optional<std::string> &objectIds, const std::optional<std::string> &receiptTokens, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void TicketApiImpl::get_ticket_list(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &ticketObjectType, const std::optional<std::string> &actionType, const std::optional<std::string> &ticketIds, const std::optional<std::string> &objectIds, const std::optional<std::string> &receiptTokens, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TicketApiImpl::gift_purchase(const double &version, const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &ticketId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assetId, const std::optional<std::string> &customMessage, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void TicketApiImpl::gift_purchase(const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &ticketId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assetId, const std::optional<std::string> &customMessage, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TicketApiImpl::save_ticket(const double &version, const std::optional<std::string> &actionType, const std::optional<std::string> &ticketObjectType, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<int64_t> &objectId, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &receiptToken, const std::optional<std::string> &receiptData, const std::optional<int64_t> &count, const std::optional<std::string> &ticketType, const std::optional<std::string> &purchaseProvider, const std::optional<std::string> &purchaseType, const std::optional<bool> &returnProfileResponse, const std::optional<bool> &includeProfileResponse, const std::optional<std::string> &appVersion, Pistache::Http::ResponseWriter &response) {
+void TicketApiImpl::save_ticket(const std::optional<std::string> &actionType, const std::optional<std::string> &ticketObjectType, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<int64_t> &objectId, const std::optional<std::string> &purchaseCode, const std::optional<std::string> &receiptToken, const std::optional<std::string> &receiptData, const std::optional<int64_t> &count, const std::optional<std::string> &ticketType, const std::optional<std::string> &purchaseProvider, const std::optional<std::string> &purchaseType, const std::optional<bool> &returnProfileResponse, const std::optional<bool> &includeProfileResponse, const std::optional<std::string> &appVersion, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void TicketApiImpl::save_ticket_via_file_upload(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TicketApiImpl::ticket_offers(const double &version, Pistache::Http::ResponseWriter &response) {
+void TicketApiImpl::ticket_offers(Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string DependentApi::base = "";
+const std::string DependentApi::base = "/api/3.18";
 
 DependentApi::DependentApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,9 +32,9 @@ void DependentApi::init() {
 void DependentApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Put(*router, base + "/api/:version/cargo/dependent/:accountId", Routes::bind(&DependentApi::create_handler, this));
-    Routes::Get(*router, base + "/api/:version/cargo/dependent/:accountId", Routes::bind(&DependentApi::get_dependents_handler, this));
-    Routes::Delete(*router, base + "/api/:version/cargo/dependent/:accountId", Routes::bind(&DependentApi::remove_dependent_handler, this));
+    Routes::Put(*router, base + "/cargo/dependent/:accountId", Routes::bind(&DependentApi::create_handler, this));
+    Routes::Get(*router, base + "/cargo/dependent/:accountId", Routes::bind(&DependentApi::get_dependents_handler, this));
+    Routes::Delete(*router, base + "/cargo/dependent/:accountId", Routes::bind(&DependentApi::remove_dependent_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&DependentApi::dependent_api_default_handler, this));
@@ -70,7 +70,6 @@ void DependentApi::create_handler(const Pistache::Rest::Request& request, Pistac
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto accountId = request.param(":accountId").as<int64_t>();
         
         // Getting the body param
@@ -95,7 +94,7 @@ void DependentApi::create_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create(version, accountId, body, response);
+            this->create(accountId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -115,7 +114,6 @@ void DependentApi::get_dependents_handler(const Pistache::Rest::Request& request
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto accountId = request.param(":accountId").as<int64_t>();
         
         
@@ -128,7 +126,7 @@ void DependentApi::get_dependents_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_dependents(version, accountId, response);
+            this->get_dependents(accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -148,7 +146,6 @@ void DependentApi::remove_dependent_handler(const Pistache::Rest::Request& reque
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto accountId = request.param(":accountId").as<int64_t>();
         auto dependentId = request.param(":dependentId").as<int64_t>();
         
@@ -162,7 +159,7 @@ void DependentApi::remove_dependent_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->remove_dependent(version, accountId, dependentId, response);
+            this->remove_dependent(accountId, dependentId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

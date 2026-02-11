@@ -96,17 +96,15 @@ private:
     /// <remarks>
     /// Search for avaiable users for creating or updating assignment.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id sending the request</param>
     /// <param name="keyword">The keyword to filter the returned results (optional, default to &quot;&quot;)</param>
-    virtual void assigment_assignee_account_search( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assigment_assignee_account_search( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Assignment
     /// </summary>
     /// <remarks>
     /// Create an assignment.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="name">the name for the assignment</param>
     /// <param name="assigneeAccountId">the account id to assign to</param>
@@ -114,34 +112,31 @@ private:
     /// <param name="retailerLocationId">the retailer location id (optional, default to 0L)</param>
     /// <param name="tags">the tags (optional, default to &quot;&quot;)</param>
     /// <param name="active">determines whether the assignment is active or inactive (optional, default to false)</param>
-    virtual void assignment_create( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int64_t> &assigneeAccountId, const std::optional<std::string> &description, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_create( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int64_t> &assigneeAccountId, const std::optional<std::string> &description, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Assignment
     /// </summary>
     /// <remarks>
     /// Delete an assignment.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentId">the assignment id</param>
-    virtual void assignment_delete( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_delete( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Assignment
     /// </summary>
     /// <remarks>
     /// Get the details of an assignment.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentId">the assignment id</param>
-    virtual void assignment_get( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_get( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Assignments
     /// </summary>
     /// <remarks>
     /// Search for assignments by the given parameters.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account sending the request</param>
     /// <param name="sortField">sort by table field</param>
     /// <param name="descending">return results in descending order or not</param>
@@ -153,14 +148,13 @@ private:
     /// <param name="retailerLocationIds">filter results by retailer locations (optional, default to &quot;&quot;)</param>
     /// <param name="currentStatusType">filter results by assignment status (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">filter results by keyword search that matches the assignee, creator, or retailer location name (optional, default to &quot;&quot;)</param>
-    virtual void assignment_search( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &creatorAccountId, const std::optional<std::string> &assigneeAccountIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &currentStatusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_search( const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &creatorAccountId, const std::optional<std::string> &assigneeAccountIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &currentStatusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Assignment Status
     /// </summary>
     /// <remarks>
     /// Create an assignment status.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentId">the assignment id</param>
     /// <param name="scheduledNotificationId">the scheduled notification id for reminders (optional, default to 0L)</param>
@@ -172,34 +166,31 @@ private:
     /// <param name="message">the message from the assignee (optional, default to &quot;&quot;)</param>
     /// <param name="followUp">the date to follow up by (optional, default to 0L)</param>
     /// <param name="active">determines whether the assignment status is active or inactive (optional, default to false)</param>
-    virtual void assignment_status_create( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_status_create( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Deletes Assignment Status
     /// </summary>
     /// <remarks>
     /// Deletes an assignment status.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentStatusId">the assignment status id</param>
-    virtual void assignment_status_delete( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_status_delete( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Assignment Status
     /// </summary>
     /// <remarks>
     /// Get an assignment status.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentStatusId">the assignment status id</param>
-    virtual void assignment_status_get( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_status_get( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Assignment Statuses
     /// </summary>
     /// <remarks>
     /// Search on assignment statuses.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="sortField">the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order</param>
@@ -212,14 +203,13 @@ private:
     /// <param name="retailerLocationId">filter results by by retailer location (optional, default to 0L)</param>
     /// <param name="statusType">filter results by the status type (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">filter results by keyword search (optional, default to &quot;&quot;)</param>
-    virtual void assignment_status_search( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &creatorAccountId, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &statusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_status_search( const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &assignmentId, const std::optional<int64_t> &creatorAccountId, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &statusType, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Assignment Status
     /// </summary>
     /// <remarks>
     /// Updates an assignment status.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentStatusId">the assignment status id</param>
     /// <param name="scheduledNotificationId">the scheduled notification id for reminders (optional, default to 0L)</param>
@@ -231,14 +221,13 @@ private:
     /// <param name="message">the message from the assignee (optional, default to &quot;&quot;)</param>
     /// <param name="followUp">the date to follow up by (optional, default to 0L)</param>
     /// <param name="active">determines whether the assignment status is active or inactive (optional, default to false)</param>
-    virtual void assignment_status_update( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_status_update( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentStatusId, const std::optional<int64_t> &scheduledNotificationId, const std::optional<std::string> &toDo, const std::optional<std::string> &connection, const std::optional<std::string> &method, const std::optional<std::string> &status, const std::optional<std::string> &closure, const std::optional<std::string> &message, const std::optional<int64_t> &followUp, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Assignment
     /// </summary>
     /// <remarks>
     /// Updates an assignment.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user account id</param>
     /// <param name="assignmentId">the assignment id</param>
     /// <param name="name">the name of the assignment (optional, default to &quot;&quot;)</param>
@@ -247,7 +236,7 @@ private:
     /// <param name="retailerLocationId">the retailer location id (optional, default to 0L)</param>
     /// <param name="tags">the tags (optional, default to &quot;&quot;)</param>
     /// <param name="active">determines whether the assignment is active or inactive (optional, default to false)</param>
-    virtual void assignment_update( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assignment_update( const std::optional<int64_t> &accountId, const std::optional<int64_t> &assignmentId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &assigneeAccountId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &tags, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

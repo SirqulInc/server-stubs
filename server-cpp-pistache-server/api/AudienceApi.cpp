@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AudienceApi::base = "";
+const std::string AudienceApi::base = "/api/3.18";
 
 AudienceApi::AudienceApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,19 +32,19 @@ void AudienceApi::init() {
 void AudienceApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/audience/create", Routes::bind(&AudienceApi::create_audience_handler, this));
-    Routes::Post(*router, base + "/api/:version/audience/delete", Routes::bind(&AudienceApi::delete_audience_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/ageGroups", Routes::bind(&AudienceApi::get_age_groups_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/get", Routes::bind(&AudienceApi::get_audience_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/search", Routes::bind(&AudienceApi::get_audience_list_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/devices", Routes::bind(&AudienceApi::get_devices_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/experiences", Routes::bind(&AudienceApi::get_experiences_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/grouped/get", Routes::bind(&AudienceApi::get_grouped_audiences_handler, this));
-    Routes::Post(*router, base + "/api/:version/audience/suggestion/list", Routes::bind(&AudienceApi::list_by_account_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/suggestion/offersByAudience", Routes::bind(&AudienceApi::list_by_audience_handler, this));
-    Routes::Get(*router, base + "/api/:version/audience/suggestion/latest", Routes::bind(&AudienceApi::list_lastest_by_account_handler, this));
-    Routes::Post(*router, base + "/api/:version/audience/suggestion/send", Routes::bind(&AudienceApi::send_by_account_handler, this));
-    Routes::Post(*router, base + "/api/:version/audience/update", Routes::bind(&AudienceApi::update_audience_handler, this));
+    Routes::Post(*router, base + "/audience/create", Routes::bind(&AudienceApi::create_audience_handler, this));
+    Routes::Post(*router, base + "/audience/delete", Routes::bind(&AudienceApi::delete_audience_handler, this));
+    Routes::Get(*router, base + "/audience/ageGroups", Routes::bind(&AudienceApi::get_age_groups_handler, this));
+    Routes::Get(*router, base + "/audience/get", Routes::bind(&AudienceApi::get_audience_handler, this));
+    Routes::Get(*router, base + "/audience/search", Routes::bind(&AudienceApi::get_audience_list_handler, this));
+    Routes::Get(*router, base + "/audience/devices", Routes::bind(&AudienceApi::get_devices_handler, this));
+    Routes::Get(*router, base + "/audience/experiences", Routes::bind(&AudienceApi::get_experiences_handler, this));
+    Routes::Get(*router, base + "/audience/grouped/get", Routes::bind(&AudienceApi::get_grouped_audiences_handler, this));
+    Routes::Post(*router, base + "/audience/suggestion/list", Routes::bind(&AudienceApi::list_by_account_handler, this));
+    Routes::Get(*router, base + "/audience/suggestion/offersByAudience", Routes::bind(&AudienceApi::list_by_audience_handler, this));
+    Routes::Get(*router, base + "/audience/suggestion/latest", Routes::bind(&AudienceApi::list_lastest_by_account_handler, this));
+    Routes::Post(*router, base + "/audience/suggestion/send", Routes::bind(&AudienceApi::send_by_account_handler, this));
+    Routes::Post(*router, base + "/audience/update", Routes::bind(&AudienceApi::update_audience_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AudienceApi::audience_api_default_handler, this));
@@ -79,8 +79,6 @@ std::pair<Pistache::Http::Code, std::string> AudienceApi::handleOperationExcepti
 void AudienceApi::create_audience_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -325,7 +323,7 @@ void AudienceApi::create_audience_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_audience(version, accountId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, startTimeOffset, endTimeOffset, sendSuggestion, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName, response);
+            this->create_audience(accountId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, startTimeOffset, endTimeOffset, sendSuggestion, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -344,8 +342,6 @@ void AudienceApi::create_audience_handler(const Pistache::Rest::Request& request
 void AudienceApi::delete_audience_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -374,7 +370,7 @@ void AudienceApi::delete_audience_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_audience(version, accountId, audienceId, response);
+            this->delete_audience(accountId, audienceId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -393,8 +389,6 @@ void AudienceApi::delete_audience_handler(const Pistache::Rest::Request& request
 void AudienceApi::get_age_groups_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
     
@@ -406,7 +400,7 @@ void AudienceApi::get_age_groups_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_age_groups(version, response);
+            this->get_age_groups(response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -425,8 +419,6 @@ void AudienceApi::get_age_groups_handler(const Pistache::Rest::Request& request,
 void AudienceApi::get_audience_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -487,7 +479,7 @@ void AudienceApi::get_audience_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_audience(version, accountId, audienceId, appKey, returnAccountCount, returnAlbumCount, albumTypesForCount, response);
+            this->get_audience(accountId, audienceId, appKey, returnAccountCount, returnAlbumCount, albumTypesForCount, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -506,8 +498,6 @@ void AudienceApi::get_audience_handler(const Pistache::Rest::Request& request, P
 void AudienceApi::get_audience_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -672,7 +662,7 @@ void AudienceApi::get_audience_list_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_audience_list(version, accountId, albumIds, keyword, keywordFields, sortField, descending, start, limit, sendSuggestion, activeOnly, groupByGroupingId, appKey, returnGlobal, exactKeyword, audienceType, audienceTypes, returnAccountCount, returnAlbumCount, albumTypesForCount, response);
+            this->get_audience_list(accountId, albumIds, keyword, keywordFields, sortField, descending, start, limit, sendSuggestion, activeOnly, groupByGroupingId, appKey, returnGlobal, exactKeyword, audienceType, audienceTypes, returnAccountCount, returnAlbumCount, albumTypesForCount, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -691,8 +681,6 @@ void AudienceApi::get_audience_list_handler(const Pistache::Rest::Request& reque
 void AudienceApi::get_devices_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -713,7 +701,7 @@ void AudienceApi::get_devices_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->get_devices(version, includeInactive, response);
+            this->get_devices(includeInactive, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -732,8 +720,6 @@ void AudienceApi::get_devices_handler(const Pistache::Rest::Request& request, Pi
 void AudienceApi::get_experiences_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
     
@@ -745,7 +731,7 @@ void AudienceApi::get_experiences_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_experiences(version, response);
+            this->get_experiences(response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -764,8 +750,6 @@ void AudienceApi::get_experiences_handler(const Pistache::Rest::Request& request
 void AudienceApi::get_grouped_audiences_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -794,7 +778,7 @@ void AudienceApi::get_grouped_audiences_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_grouped_audiences(version, accountId, audienceGroupingId, response);
+            this->get_grouped_audiences(accountId, audienceGroupingId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -813,8 +797,6 @@ void AudienceApi::get_grouped_audiences_handler(const Pistache::Rest::Request& r
 void AudienceApi::list_by_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -851,7 +833,7 @@ void AudienceApi::list_by_account_handler(const Pistache::Rest::Request& request
 
 
 
-            this->list_by_account(version, accountId, limit, suggestionType, response);
+            this->list_by_account(accountId, limit, suggestionType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -870,8 +852,6 @@ void AudienceApi::list_by_account_handler(const Pistache::Rest::Request& request
 void AudienceApi::list_by_audience_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -932,7 +912,7 @@ void AudienceApi::list_by_audience_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->list_by_audience(version, limit, gender, age, categoryIds, latitude, longitude, response);
+            this->list_by_audience(limit, gender, age, categoryIds, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -951,8 +931,6 @@ void AudienceApi::list_by_audience_handler(const Pistache::Rest::Request& reques
 void AudienceApi::list_lastest_by_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -989,7 +967,7 @@ void AudienceApi::list_lastest_by_account_handler(const Pistache::Rest::Request&
 
 
 
-            this->list_lastest_by_account(version, accountId, timeframe, suggestionType, response);
+            this->list_lastest_by_account(accountId, timeframe, suggestionType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1008,8 +986,6 @@ void AudienceApi::list_lastest_by_account_handler(const Pistache::Rest::Request&
 void AudienceApi::send_by_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1046,7 +1022,7 @@ void AudienceApi::send_by_account_handler(const Pistache::Rest::Request& request
 
 
 
-            this->send_by_account(version, accountId, latitude, longitude, response);
+            this->send_by_account(accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1065,8 +1041,6 @@ void AudienceApi::send_by_account_handler(const Pistache::Rest::Request& request
 void AudienceApi::update_audience_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1327,7 +1301,7 @@ void AudienceApi::update_audience_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_audience(version, accountId, audienceId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, active, sendSuggestion, startTimeOffset, endTimeOffset, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName, response);
+            this->update_audience(accountId, audienceId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, active, sendSuggestion, startTimeOffset, endTimeOffset, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

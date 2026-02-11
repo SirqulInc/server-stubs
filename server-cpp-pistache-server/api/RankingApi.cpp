@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RankingApi::base = "";
+const std::string RankingApi::base = "/api/3.18";
 
 RankingApi::RankingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void RankingApi::init() {
 void RankingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/ranking/historical/search", Routes::bind(&RankingApi::get_historical_rankings_handler, this));
-    Routes::Get(*router, base + "/api/:version/ranking/search", Routes::bind(&RankingApi::get_rankings_handler, this));
-    Routes::Post(*router, base + "/api/:version/ranking/personal/ranks", Routes::bind(&RankingApi::get_user_rank_handler, this));
-    Routes::Post(*router, base + "/api/:version/ranking/override", Routes::bind(&RankingApi::override_user_rank_handler, this));
-    Routes::Post(*router, base + "/api/:version/ranking/update", Routes::bind(&RankingApi::update_rankings_handler, this));
+    Routes::Get(*router, base + "/ranking/historical/search", Routes::bind(&RankingApi::get_historical_rankings_handler, this));
+    Routes::Get(*router, base + "/ranking/search", Routes::bind(&RankingApi::get_rankings_handler, this));
+    Routes::Post(*router, base + "/ranking/personal/ranks", Routes::bind(&RankingApi::get_user_rank_handler, this));
+    Routes::Post(*router, base + "/ranking/override", Routes::bind(&RankingApi::override_user_rank_handler, this));
+    Routes::Post(*router, base + "/ranking/update", Routes::bind(&RankingApi::update_rankings_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RankingApi::ranking_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> RankingApi::handleOperationExceptio
 void RankingApi::get_historical_rankings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -165,7 +163,7 @@ void RankingApi::get_historical_rankings_handler(const Pistache::Rest::Request& 
 
 
 
-            this->get_historical_rankings(version, appKey, rankType, startDate, endDate, deviceId, accountId, sortField, descending, start, limit, response);
+            this->get_historical_rankings(appKey, rankType, startDate, endDate, deviceId, accountId, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -184,8 +182,6 @@ void RankingApi::get_historical_rankings_handler(const Pistache::Rest::Request& 
 void RankingApi::get_rankings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -342,7 +338,7 @@ void RankingApi::get_rankings_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->get_rankings(version, deviceId, accountId, gameType, appKey, q, keyword, rankType, leaderboardMode, withinAccountIds, returnUserRank, albumId, audienceId, sortField, descending, i, start, l, limit, response);
+            this->get_rankings(deviceId, accountId, gameType, appKey, q, keyword, rankType, leaderboardMode, withinAccountIds, returnUserRank, albumId, audienceId, sortField, descending, i, start, l, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -361,8 +357,6 @@ void RankingApi::get_rankings_handler(const Pistache::Rest::Request& request, Pi
 void RankingApi::get_user_rank_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -463,7 +457,7 @@ void RankingApi::get_user_rank_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_user_rank(version, deviceId, accountId, appKey, rankType, returnUserRank, leaderboardMode, sortField, keyword, descending, start, limit, response);
+            this->get_user_rank(deviceId, accountId, appKey, rankType, returnUserRank, leaderboardMode, sortField, keyword, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -482,8 +476,6 @@ void RankingApi::get_user_rank_handler(const Pistache::Rest::Request& request, P
 void RankingApi::override_user_rank_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -672,7 +664,7 @@ void RankingApi::override_user_rank_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->override_user_rank(version, accountId, ownerAccountId, appKey, rankType, totalScore, totalCount, totalTime, dailyScore, dailyCount, dailyTime, weeklyScore, weeklyCount, weeklyTime, monthlyScore, monthlyCount, monthlyTime, topScore, lowestScore, streakCount, streakBestCount, startDate, endDate, response);
+            this->override_user_rank(accountId, ownerAccountId, appKey, rankType, totalScore, totalCount, totalTime, dailyScore, dailyCount, dailyTime, weeklyScore, weeklyCount, weeklyTime, monthlyScore, monthlyCount, monthlyTime, topScore, lowestScore, streakCount, streakBestCount, startDate, endDate, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -691,8 +683,6 @@ void RankingApi::override_user_rank_handler(const Pistache::Rest::Request& reque
 void RankingApi::update_rankings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -785,7 +775,7 @@ void RankingApi::update_rankings_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->update_rankings(version, accountId, appKey, rankType, increment, timeIncrement, tag, startDate, endDate, updateGlobal, createLeaderboard, response);
+            this->update_rankings(accountId, appKey, rankType, increment, timeIncrement, tag, startDate, endDate, updateGlobal, createLeaderboard, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

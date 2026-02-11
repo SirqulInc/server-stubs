@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string PurchaseOrderApi::base = "";
+const std::string PurchaseOrderApi::base = "/api/3.18";
 
 PurchaseOrderApi::PurchaseOrderApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void PurchaseOrderApi::init() {
 void PurchaseOrderApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/order/create", Routes::bind(&PurchaseOrderApi::create_order_handler, this));
-    Routes::Post(*router, base + "/api/:version/order/delete", Routes::bind(&PurchaseOrderApi::delete_order_handler, this));
-    Routes::Get(*router, base + "/api/:version/order/get", Routes::bind(&PurchaseOrderApi::get_order_handler, this));
-    Routes::Post(*router, base + "/api/:version/order/preview", Routes::bind(&PurchaseOrderApi::preview_order_handler, this));
-    Routes::Get(*router, base + "/api/:version/order/search", Routes::bind(&PurchaseOrderApi::search_orders_handler, this));
-    Routes::Post(*router, base + "/api/:version/order/update", Routes::bind(&PurchaseOrderApi::update_order_handler, this));
+    Routes::Post(*router, base + "/order/create", Routes::bind(&PurchaseOrderApi::create_order_handler, this));
+    Routes::Post(*router, base + "/order/delete", Routes::bind(&PurchaseOrderApi::delete_order_handler, this));
+    Routes::Get(*router, base + "/order/get", Routes::bind(&PurchaseOrderApi::get_order_handler, this));
+    Routes::Post(*router, base + "/order/preview", Routes::bind(&PurchaseOrderApi::preview_order_handler, this));
+    Routes::Get(*router, base + "/order/search", Routes::bind(&PurchaseOrderApi::search_orders_handler, this));
+    Routes::Post(*router, base + "/order/update", Routes::bind(&PurchaseOrderApi::update_order_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&PurchaseOrderApi::purchase_order_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> PurchaseOrderApi::handleOperationEx
 void PurchaseOrderApi::create_order_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -182,7 +180,7 @@ void PurchaseOrderApi::create_order_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->create_order(version, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode, response);
+            this->create_order(appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -201,8 +199,6 @@ void PurchaseOrderApi::create_order_handler(const Pistache::Rest::Request& reque
 void PurchaseOrderApi::delete_order_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -239,7 +235,7 @@ void PurchaseOrderApi::delete_order_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->delete_order(version, orderId, deviceId, accountId, response);
+            this->delete_order(orderId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -258,8 +254,6 @@ void PurchaseOrderApi::delete_order_handler(const Pistache::Rest::Request& reque
 void PurchaseOrderApi::get_order_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -304,7 +298,7 @@ void PurchaseOrderApi::get_order_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_order(version, deviceId, accountId, orderId, externalOrderId, response);
+            this->get_order(deviceId, accountId, orderId, externalOrderId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -323,8 +317,6 @@ void PurchaseOrderApi::get_order_handler(const Pistache::Rest::Request& request,
 void PurchaseOrderApi::preview_order_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -433,7 +425,7 @@ void PurchaseOrderApi::preview_order_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->preview_order(version, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode, response);
+            this->preview_order(appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -452,8 +444,6 @@ void PurchaseOrderApi::preview_order_handler(const Pistache::Rest::Request& requ
 void PurchaseOrderApi::search_orders_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -714,7 +704,7 @@ void PurchaseOrderApi::search_orders_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->search_orders(version, appKey, deviceId, accountId, start, limit, descending, activeOnly, ignoreCustomerFilter, orderItemTypes, orderItemIds, orderCustomTypes, orderCustomIds, sortField, offerTypes, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, offerIds, offerLocationIds, retailerIds, retailerLocationIds, statuses, keyword, redeemableStartDate, redeemableEndDate, startedSince, startedBefore, endedSince, endedBefore, response);
+            this->search_orders(appKey, deviceId, accountId, start, limit, descending, activeOnly, ignoreCustomerFilter, orderItemTypes, orderItemIds, orderCustomTypes, orderCustomIds, sortField, offerTypes, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, offerIds, offerLocationIds, retailerIds, retailerLocationIds, statuses, keyword, redeemableStartDate, redeemableEndDate, startedSince, startedBefore, endedSince, endedBefore, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -733,8 +723,6 @@ void PurchaseOrderApi::search_orders_handler(const Pistache::Rest::Request& requ
 void PurchaseOrderApi::update_order_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -835,7 +823,7 @@ void PurchaseOrderApi::update_order_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->update_order(version, orderId, appKey, cart, deviceId, accountId, paymentTransactionId, description, currencyType, paymentMethodId, externalPaymentId, externalDate, response);
+            this->update_order(orderId, appKey, cart, deviceId, accountId, paymentTransactionId, description, currencyType, paymentMethodId, externalPaymentId, externalDate, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

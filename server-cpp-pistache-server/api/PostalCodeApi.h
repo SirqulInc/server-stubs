@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create a Postal Code
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="code">the postal code</param>
     /// <param name="latitude">the latitude of the postal code</param>
@@ -96,33 +95,30 @@ private:
     /// <param name="stateCode">the state code (e.g WA, WV, WI) that the postal code is located (optional, default to &quot;&quot;)</param>
     /// <param name="city">the city that the postal code is located (optional, default to &quot;&quot;)</param>
     /// <param name="active">whether the postal code created should be active or inactive (optional, default to false)</param>
-    virtual void create_postal_code( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_postal_code( const std::optional<int64_t> &accountId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Postal Code
     /// </summary>
     /// <remarks>
     /// Delete a Postal Code
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="postalCodeId">the id of the postal code to delete</param>
-    virtual void delete_postal_code( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_postal_code( const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Postal Code
     /// </summary>
     /// <remarks>
     /// Get a Postal Code
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="postalCodeId">the id of the postal code to get</param>
-    virtual void get_postal_code( const double &version, const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_postal_code( const std::optional<int64_t> &postalCodeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Postal Codes
     /// </summary>
     /// <remarks>
     /// Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">the field to sort the results on</param>
     /// <param name="descending">whether to order results in ascending or descending order</param>
     /// <param name="latitude">the latitude of the postal code to search on (optional, default to 0.0)</param>
@@ -131,14 +127,13 @@ private:
     /// <param name="miles">how far (in miles) to search on for the postal code (optional, default to 0.0)</param>
     /// <param name="start">the start of the index and/or pagination (optional, default to 0)</param>
     /// <param name="limit">the limit of the index and/or pagination (optional, default to 0)</param>
-    virtual void get_postal_codes( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, const std::optional<double> &miles, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_postal_codes( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, const std::optional<double> &miles, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Postal Code
     /// </summary>
     /// <remarks>
     /// Update a Postal Code
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="postalCodeId">the id of the postal code to update</param>
     /// <param name="code">the postal code to update (optional, default to &quot;&quot;)</param>
@@ -147,7 +142,7 @@ private:
     /// <param name="stateCode">the state code (e.g. WA, WI, WY) where the postal code is located (optional, default to &quot;&quot;)</param>
     /// <param name="city">the city where the postal code is located (optional, default to &quot;&quot;)</param>
     /// <param name="active">whether the postal code is active or inactive (optional, default to false)</param>
-    virtual void update_postal_code( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_postal_code( const std::optional<int64_t> &accountId, const std::optional<int64_t> &postalCodeId, const std::optional<std::string> &code, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &stateCode, const std::optional<std::string> &city, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

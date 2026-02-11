@@ -90,7 +90,6 @@ private:
     /// <remarks>
     /// Create a connection to an existing amqp queue and register as a consumer.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.</param>
     /// <param name="name">The name of the queue to connect to</param>
     /// <param name="hostname">The hostname of the server the queue is hosted on</param>
@@ -105,28 +104,26 @@ private:
     /// <param name="exchangerType">The exchanger type of the queue to connect to (optional, default to &quot;&quot;)</param>
     /// <param name="workers">The number of workers to generate  (optional, default to 1)</param>
     /// <param name="useSSL">Use SSL (optional, default to false)</param>
-    virtual void consumer_create( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &hostname, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &dataMapping, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &port, const std::optional<std::string> &virtualHost, const std::optional<std::string> &exchanger, const std::optional<std::string> &exchangerType, const std::optional<int32_t> &workers, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void consumer_create( const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &hostname, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &dataMapping, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &port, const std::optional<std::string> &virtualHost, const std::optional<std::string> &exchanger, const std::optional<std::string> &exchangerType, const std::optional<int32_t> &workers, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Consumer
     /// </summary>
     /// <remarks>
     /// Update an existing amqp queue&#39;s data mapping.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.</param>
     /// <param name="queueId">The queue to update</param>
     /// <param name="dataMapping">The data mapping information in the format of AMQPRequest</param>
     /// <param name="deviceId">The client deviceID (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The logged in user ID (optional, default to 0L)</param>
     /// <param name="useSSL">Use SSL (optional, default to false)</param>
-    virtual void consumer_update( const double &version, const std::optional<std::string> &appKey, const std::optional<int64_t> &queueId, const std::optional<std::string> &dataMapping, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void consumer_update( const std::optional<std::string> &appKey, const std::optional<int64_t> &queueId, const std::optional<std::string> &dataMapping, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Queue
     /// </summary>
     /// <remarks>
     /// Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key unique to each application.</param>
     /// <param name="name">The name of the queue to create</param>
     /// <param name="deviceId">The client deviceID (optional, default to &quot;&quot;)</param>
@@ -139,25 +136,23 @@ private:
     /// <param name="password">The password to access the queue to connect to (optional, default to &quot;&quot;)</param>
     /// <param name="virtualHost">The virtual host defined on the server to queue (optional, default to &quot;&quot;)</param>
     /// <param name="useSSL">Use SSL (optional, default to false)</param>
-    virtual void queue_create( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &workers, const std::optional<std::string> &analyticTags, const std::optional<std::string> &hostname, const std::optional<int32_t> &port, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &virtualHost, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void queue_create( const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &workers, const std::optional<std::string> &analyticTags, const std::optional<std::string> &hostname, const std::optional<int32_t> &port, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &virtualHost, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Queue
     /// </summary>
     /// <remarks>
     /// Delete the stored queue record and close any active connections to the AMQP servers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="queueId">The id of the queue to find</param>
     /// <param name="deviceId">The client device ID (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The logged in user ID (optional, default to 0L)</param>
-    virtual void queue_delete( const double &version, const std::optional<int64_t> &queueId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void queue_delete( const std::optional<int64_t> &queueId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Queue
     /// </summary>
     /// <remarks>
     /// Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The client device ID (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The logged in user ID (optional, default to 0L)</param>
     /// <param name="queueId">The id of the queue to find (optional, default to 0L)</param>
@@ -165,42 +160,39 @@ private:
     /// <param name="name">The name of the queue to find (optional, default to &quot;&quot;)</param>
     /// <param name="hostname">The hostname of the queue to find (optional, default to &quot;&quot;)</param>
     /// <param name="virtualHost">The virtual host of the queue to find (optional, default to &quot;&quot;)</param>
-    virtual void queue_get( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &queueId, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &hostname, const std::optional<std::string> &virtualHost, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void queue_get( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &queueId, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &hostname, const std::optional<std::string> &virtualHost, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Publish Queue
     /// </summary>
     /// <remarks>
     /// Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="message">The payload to send to the queue</param>
     /// <param name="queueId">The id of the queue to publish to (optional, default to 0L)</param>
     /// <param name="appKey">The application key the queue was assigned to (optional, default to &quot;&quot;)</param>
     /// <param name="name">The name of the queue to publish to or the analytic tag to handle if the analytic param is true (optional, default to &quot;&quot;)</param>
     /// <param name="hostname">The hostname of the server the queue is hosted on (optional, default to &quot;&quot;)</param>
     /// <param name="virtualHost">The virtual host defined on the server to queue (optional, default to &quot;&quot;)</param>
-    virtual void queue_publish( const double &version, const std::optional<std::string> &message, const std::optional<int64_t> &queueId, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &hostname, const std::optional<std::string> &virtualHost, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void queue_publish( const std::optional<std::string> &message, const std::optional<int64_t> &queueId, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &hostname, const std::optional<std::string> &virtualHost, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Queue
     /// </summary>
     /// <remarks>
     /// Get the queues setup for the BillableEntity&#39;s applications.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="queueId">The id of the queue to find (optional, default to 0L)</param>
     /// <param name="deviceId">The client device ID (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The logged in user ID (optional, default to 0L)</param>
     /// <param name="name">The name of the queue to find (optional, default to &quot;&quot;)</param>
     /// <param name="start">Start of the index (optional, default to 0)</param>
     /// <param name="limit">Limit of the index (optional, default to 10)</param>
-    virtual void queue_search( const double &version, const std::optional<int64_t> &queueId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void queue_search( const std::optional<int64_t> &queueId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Queue
     /// </summary>
     /// <remarks>
     /// Update the basic AMQP queue.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="queueId">The id of the queue to update</param>
     /// <param name="deviceId">The client deviceID (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The logged in user ID (optional, default to 0L)</param>
@@ -213,7 +205,7 @@ private:
     /// <param name="password">The password to access the queue to connect to (optional, default to &quot;&quot;)</param>
     /// <param name="virtualHost">The virtual host defined on the server to queue (optional, default to &quot;&quot;)</param>
     /// <param name="useSSL">the SSL to use (optional, default to false)</param>
-    virtual void queue_update( const double &version, const std::optional<int64_t> &queueId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &workers, const std::optional<std::string> &analyticTags, const std::optional<std::string> &hostname, const std::optional<int32_t> &port, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &virtualHost, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void queue_update( const std::optional<int64_t> &queueId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &workers, const std::optional<std::string> &analyticTags, const std::optional<std::string> &hostname, const std::optional<int32_t> &port, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &virtualHost, const std::optional<bool> &useSSL, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

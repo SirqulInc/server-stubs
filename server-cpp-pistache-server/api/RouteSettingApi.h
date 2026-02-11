@@ -88,34 +88,30 @@ private:
     /// <remarks>
     /// Create a new route setting
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_route_settings( const double &version, const org::openapitools::server::model::RouteSettings &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_route_settings( const org::openapitools::server::model::RouteSettings &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Route Setting
     /// </summary>
     /// <remarks>
     /// Delete an existing route setting
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeSettingsId">the id of the route setting to delete</param>
-    virtual void delete_route_settings( const double &version, const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_route_settings( const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Route Setting
     /// </summary>
     /// <remarks>
     /// Get an existing route settings
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeSettingsId">the id of the route settings to get</param>
-    virtual void get_route_settings( const double &version, const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_route_settings( const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Route Settings
     /// </summary>
     /// <remarks>
     /// Search for route settings
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
@@ -124,17 +120,16 @@ private:
     /// <param name="hubId">The service hub that the route belongs under (optional, default to 0L)</param>
     /// <param name="programId">The program that the route belongs under (optional, default to 0L)</param>
     /// <param name="keyword">The keyword to search for the route (optional, default to &quot;&quot;)</param>
-    virtual void search_route_settings( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_route_settings( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Route Setting
     /// </summary>
     /// <remarks>
     /// Update an existing route setting
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeSettingsId">the id of the route settings to update</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_route_settings( const double &version, const int64_t &routeSettingsId, const org::openapitools::server::model::RouteSettings &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_route_settings( const int64_t &routeSettingsId, const org::openapitools::server::model::RouteSettings &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

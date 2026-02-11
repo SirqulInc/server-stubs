@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string StripeApi::base = "";
+const std::string StripeApi::base = "/api/3.18";
 
 StripeApi::StripeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void StripeApi::init() {
 void StripeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/stripe/checkout/session/create", Routes::bind(&StripeApi::create_stripe_checkout_session_handler, this));
+    Routes::Post(*router, base + "/stripe/checkout/session/create", Routes::bind(&StripeApi::create_stripe_checkout_session_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&StripeApi::stripe_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> StripeApi::handleOperationException
 void StripeApi::create_stripe_checkout_session_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -97,7 +95,7 @@ void StripeApi::create_stripe_checkout_session_handler(const Pistache::Rest::Req
 
 
 
-            this->create_stripe_checkout_session(version, appKey, stripeParameters, response);
+            this->create_stripe_checkout_session(appKey, stripeParameters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

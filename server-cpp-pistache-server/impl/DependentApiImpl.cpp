@@ -29,13 +29,13 @@ DependentApiImpl::DependentApiImpl(const std::shared_ptr<Pistache::Rest::Router>
 
 }
 
-void DependentApiImpl::create(const double &version, const int64_t &accountId, const Account &body, Pistache::Http::ResponseWriter &response) {
+void DependentApiImpl::create(const int64_t &accountId, const Account &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void DependentApiImpl::get_dependents(const double &version, const int64_t &accountId, Pistache::Http::ResponseWriter &response) {
+void DependentApiImpl::get_dependents(const int64_t &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void DependentApiImpl::remove_dependent(const double &version, const int64_t &accountId, const int64_t &dependentId, Pistache::Http::ResponseWriter &response) {
+void DependentApiImpl::remove_dependent(const int64_t &accountId, const int64_t &dependentId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

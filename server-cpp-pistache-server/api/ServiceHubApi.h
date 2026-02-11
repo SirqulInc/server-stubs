@@ -89,54 +89,48 @@ private:
     /// <remarks>
     /// Create new service hub
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_service_hub( const double &version, const org::openapitools::server::model::ServiceHub &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_service_hub( const org::openapitools::server::model::ServiceHub &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Service Hub
     /// </summary>
     /// <remarks>
     /// Delete an existing service hub
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the service hub to delete</param>
-    virtual void delete_service_hub( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_service_hub( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Service Hub
     /// </summary>
     /// <remarks>
     /// Get an existing service hub
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the service hub to get</param>
-    virtual void get_service_hub( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_service_hub( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Service Hub
     /// </summary>
     /// <remarks>
     /// Update an existing service hub
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the service hub</param>
     /// <param name="body"> (optional)</param>
-    virtual void post_service_hub( const double &version, const int64_t &id, const org::openapitools::server::model::ServiceHub &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void post_service_hub( const int64_t &id, const org::openapitools::server::model::ServiceHub &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Service Hub
     /// </summary>
     /// <remarks>
     /// Update an existing service hub
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the service hub</param>
     /// <param name="body"> (optional)</param>
-    virtual void put_service_hub( const double &version, const int64_t &id, const org::openapitools::server::model::ServiceHub &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void put_service_hub( const int64_t &id, const org::openapitools::server::model::ServiceHub &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Service Hubs
     /// </summary>
     /// <remarks>
     /// Search for service hubs.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
@@ -144,7 +138,7 @@ private:
     /// <param name="activeOnly">Return only active results</param>
     /// <param name="keyword">The keyword to search for (optional, default to &quot;&quot;)</param>
     /// <param name="retailerId">The retailer belongs to (optional, default to 0L)</param>
-    virtual void search_service_hubs( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_service_hubs( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

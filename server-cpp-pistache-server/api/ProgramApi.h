@@ -88,61 +88,55 @@ private:
     /// <remarks>
     /// Create a new program
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_program( const double &version, const org::openapitools::server::model::Program &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_program( const org::openapitools::server::model::Program &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Program
     /// </summary>
     /// <remarks>
     /// Delete an existing program
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the program</param>
-    virtual void delete_program( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_program( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Program
     /// </summary>
     /// <remarks>
     /// Get an existing program
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the program</param>
-    virtual void get_program( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_program( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Program
     /// </summary>
     /// <remarks>
     /// Update an existing program
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the program</param>
     /// <param name="body"> (optional)</param>
-    virtual void post_program( const double &version, const int64_t &id, const org::openapitools::server::model::Program &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void post_program( const int64_t &id, const org::openapitools::server::model::Program &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Program
     /// </summary>
     /// <remarks>
     /// Update an existing program
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the program</param>
     /// <param name="body"> (optional)</param>
-    virtual void put_program( const double &version, const int64_t &id, const org::openapitools::server::model::Program &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void put_program( const int64_t &id, const org::openapitools::server::model::Program &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Programs
     /// </summary>
     /// <remarks>
     /// Search for programs
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
     /// <param name="limit">The limit for pagination</param>
     /// <param name="activeOnly">Return only active results</param>
     /// <param name="keyword">The keyword to filter results by (optional, default to &quot;&quot;)</param>
-    virtual void search_programs( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_programs( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

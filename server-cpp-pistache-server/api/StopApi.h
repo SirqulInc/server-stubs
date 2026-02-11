@@ -82,19 +82,17 @@ private:
     /// <remarks>
     /// Get an existing stop
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the stop to get</param>
-    virtual void get_stop( const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_stop( const int64_t &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Stop
     /// </summary>
     /// <remarks>
     /// Update an existing stop
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the stop to update</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_stop( const double &version, const int64_t &id, const org::openapitools::server::model::Stop &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_stop( const int64_t &id, const org::openapitools::server::model::Stop &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

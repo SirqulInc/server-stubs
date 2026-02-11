@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TripApi::base = "";
+const std::string TripApi::base = "/api/3.18";
 
 TripApi::TripApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,22 +32,22 @@ void TripApi::init() {
 void TripApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/trip", Routes::bind(&TripApi::create_trip_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/drive", Routes::bind(&TripApi::drive_trip_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/flexible", Routes::bind(&TripApi::flexible_trip_handler, this));
-    Routes::Get(*router, base + "/api/:version/trip/:id", Routes::bind(&TripApi::get_trip_handler, this));
-    Routes::Get(*router, base + "/api/:version/trip/:id/match", Routes::bind(&TripApi::get_trip_matches_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/match/process", Routes::bind(&TripApi::process_trip_matches_handler, this));
-    Routes::Delete(*router, base + "/api/:version/trip/:id", Routes::bind(&TripApi::r_delete_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/ride", Routes::bind(&TripApi::ride_handler, this));
-    Routes::Get(*router, base + "/api/:version/trip", Routes::bind(&TripApi::search_handler, this));
-    Routes::Get(*router, base + "/api/:version/trip/match", Routes::bind(&TripApi::search_trips_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/locations", Routes::bind(&TripApi::update_locations_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/locations/recurrence", Routes::bind(&TripApi::update_recurrence_locations_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/shipments/recurrence", Routes::bind(&TripApi::update_recurrence_shipments_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/:id/shipments", Routes::bind(&TripApi::update_shipments_handler, this));
-    Routes::Put(*router, base + "/api/:version/trip/:id", Routes::bind(&TripApi::update_trip_handler, this));
-    Routes::Post(*router, base + "/api/:version/trip/notifications", Routes::bind(&TripApi::update_trip_notifications_handler, this));
+    Routes::Post(*router, base + "/trip", Routes::bind(&TripApi::create_trip_handler, this));
+    Routes::Post(*router, base + "/trip/:id/drive", Routes::bind(&TripApi::drive_trip_handler, this));
+    Routes::Post(*router, base + "/trip/:id/flexible", Routes::bind(&TripApi::flexible_trip_handler, this));
+    Routes::Get(*router, base + "/trip/:id", Routes::bind(&TripApi::get_trip_handler, this));
+    Routes::Get(*router, base + "/trip/:id/match", Routes::bind(&TripApi::get_trip_matches_handler, this));
+    Routes::Post(*router, base + "/trip/match/process", Routes::bind(&TripApi::process_trip_matches_handler, this));
+    Routes::Delete(*router, base + "/trip/:id", Routes::bind(&TripApi::r_delete_handler, this));
+    Routes::Post(*router, base + "/trip/:id/ride", Routes::bind(&TripApi::ride_handler, this));
+    Routes::Get(*router, base + "/trip", Routes::bind(&TripApi::search_handler, this));
+    Routes::Get(*router, base + "/trip/match", Routes::bind(&TripApi::search_trips_handler, this));
+    Routes::Post(*router, base + "/trip/:id/locations", Routes::bind(&TripApi::update_locations_handler, this));
+    Routes::Post(*router, base + "/trip/:id/locations/recurrence", Routes::bind(&TripApi::update_recurrence_locations_handler, this));
+    Routes::Post(*router, base + "/trip/:id/shipments/recurrence", Routes::bind(&TripApi::update_recurrence_shipments_handler, this));
+    Routes::Post(*router, base + "/trip/:id/shipments", Routes::bind(&TripApi::update_shipments_handler, this));
+    Routes::Put(*router, base + "/trip/:id", Routes::bind(&TripApi::update_trip_handler, this));
+    Routes::Post(*router, base + "/trip/notifications", Routes::bind(&TripApi::update_trip_notifications_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TripApi::trip_api_default_handler, this));
@@ -82,8 +82,6 @@ std::pair<Pistache::Http::Code, std::string> TripApi::handleOperationException(c
 void TripApi::create_trip_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -107,7 +105,7 @@ void TripApi::create_trip_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create_trip(version, body, response);
+            this->create_trip(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -127,7 +125,6 @@ void TripApi::drive_trip_handler(const Pistache::Rest::Request& request, Pistach
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -149,7 +146,7 @@ void TripApi::drive_trip_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->drive_trip(version, id, recurrence, response);
+            this->drive_trip(id, recurrence, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -169,7 +166,6 @@ void TripApi::flexible_trip_handler(const Pistache::Rest::Request& request, Pist
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -191,7 +187,7 @@ void TripApi::flexible_trip_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->flexible_trip(version, id, recurrence, response);
+            this->flexible_trip(id, recurrence, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -211,7 +207,6 @@ void TripApi::get_trip_handler(const Pistache::Rest::Request& request, Pistache:
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -224,7 +219,7 @@ void TripApi::get_trip_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_trip(version, id, response);
+            this->get_trip(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -244,7 +239,6 @@ void TripApi::get_trip_matches_handler(const Pistache::Rest::Request& request, P
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -314,7 +308,7 @@ void TripApi::get_trip_matches_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_trip_matches(version, id, sortField, descending, start, limit, activeOnly, matchedHasRoute, matchedHasDriver, response);
+            this->get_trip_matches(id, sortField, descending, start, limit, activeOnly, matchedHasRoute, matchedHasDriver, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -333,8 +327,6 @@ void TripApi::get_trip_matches_handler(const Pistache::Rest::Request& request, P
 void TripApi::process_trip_matches_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -371,7 +363,7 @@ void TripApi::process_trip_matches_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->process_trip_matches(version, startDate, endDate, tripId, response);
+            this->process_trip_matches(startDate, endDate, tripId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -391,7 +383,6 @@ void TripApi::r_delete_handler(const Pistache::Rest::Request& request, Pistache:
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -404,7 +395,7 @@ void TripApi::r_delete_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->r_delete(version, id, response);
+            this->r_delete(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -424,7 +415,6 @@ void TripApi::ride_handler(const Pistache::Rest::Request& request, Pistache::Htt
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -446,7 +436,7 @@ void TripApi::ride_handler(const Pistache::Rest::Request& request, Pistache::Htt
 
 
 
-            this->ride(version, id, recurrence, response);
+            this->ride(id, recurrence, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -465,8 +455,6 @@ void TripApi::ride_handler(const Pistache::Rest::Request& request, Pistache::Htt
 void TripApi::search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -551,7 +539,7 @@ void TripApi::search_handler(const Pistache::Rest::Request& request, Pistache::H
 
 
 
-            this->search(version, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, hasNotifications, response);
+            this->search(accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, hasNotifications, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -570,8 +558,6 @@ void TripApi::search_handler(const Pistache::Rest::Request& request, Pistache::H
 void TripApi::search_trips_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -664,7 +650,7 @@ void TripApi::search_trips_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->search_trips(version, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, matchedHasRoute, matchedHasDriver, response);
+            this->search_trips(accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, matchedHasRoute, matchedHasDriver, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -684,7 +670,6 @@ void TripApi::update_locations_handler(const Pistache::Rest::Request& request, P
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -709,7 +694,7 @@ void TripApi::update_locations_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->update_locations(version, id, body, response);
+            this->update_locations(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -729,7 +714,6 @@ void TripApi::update_recurrence_locations_handler(const Pistache::Rest::Request&
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -754,7 +738,7 @@ void TripApi::update_recurrence_locations_handler(const Pistache::Rest::Request&
 
 
 
-            this->update_recurrence_locations(version, id, body, response);
+            this->update_recurrence_locations(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -774,7 +758,6 @@ void TripApi::update_recurrence_shipments_handler(const Pistache::Rest::Request&
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -799,7 +782,7 @@ void TripApi::update_recurrence_shipments_handler(const Pistache::Rest::Request&
 
 
 
-            this->update_recurrence_shipments(version, id, body, response);
+            this->update_recurrence_shipments(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -819,7 +802,6 @@ void TripApi::update_shipments_handler(const Pistache::Rest::Request& request, P
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -844,7 +826,7 @@ void TripApi::update_shipments_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->update_shipments(version, id, body, response);
+            this->update_shipments(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -864,7 +846,6 @@ void TripApi::update_trip_handler(const Pistache::Rest::Request& request, Pistac
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -889,7 +870,7 @@ void TripApi::update_trip_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->update_trip(version, id, body, response);
+            this->update_trip(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -908,8 +889,6 @@ void TripApi::update_trip_handler(const Pistache::Rest::Request& request, Pistac
 void TripApi::update_trip_notifications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -938,7 +917,7 @@ void TripApi::update_trip_notifications_handler(const Pistache::Rest::Request& r
 
 
 
-            this->update_trip_notifications(version, id, notifications, response);
+            this->update_trip_notifications(id, notifications, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

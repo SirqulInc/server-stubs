@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string WordApi::base = "";
+const std::string WordApi::base = "/api/3.18";
 
 WordApi::WordApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void WordApi::init() {
 void WordApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/game/word/create", Routes::bind(&WordApi::create_word_handler, this));
-    Routes::Delete(*router, base + "/api/:version/game/word/delete", Routes::bind(&WordApi::delete_word_handler, this));
-    Routes::Get(*router, base + "/api/:version/game/word/get", Routes::bind(&WordApi::get_word_handler, this));
-    Routes::Get(*router, base + "/api/:version/game/word/search", Routes::bind(&WordApi::get_words_handler, this));
-    Routes::Post(*router, base + "/api/:version/game/word/update", Routes::bind(&WordApi::update_word_handler, this));
+    Routes::Post(*router, base + "/game/word/create", Routes::bind(&WordApi::create_word_handler, this));
+    Routes::Delete(*router, base + "/game/word/delete", Routes::bind(&WordApi::delete_word_handler, this));
+    Routes::Get(*router, base + "/game/word/get", Routes::bind(&WordApi::get_word_handler, this));
+    Routes::Get(*router, base + "/game/word/search", Routes::bind(&WordApi::get_words_handler, this));
+    Routes::Post(*router, base + "/game/word/update", Routes::bind(&WordApi::update_word_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&WordApi::word_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> WordApi::handleOperationException(c
 void WordApi::create_word_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -157,7 +155,7 @@ void WordApi::create_word_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create_word(version, accountId, word, definition, active, allocateTickets, ticketCount, assetId, ticketType, points, response);
+            this->create_word(accountId, word, definition, active, allocateTickets, ticketCount, assetId, ticketType, points, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -176,8 +174,6 @@ void WordApi::create_word_handler(const Pistache::Rest::Request& request, Pistac
 void WordApi::delete_word_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -206,7 +202,7 @@ void WordApi::delete_word_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->delete_word(version, wordId, accountId, response);
+            this->delete_word(wordId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -225,8 +221,6 @@ void WordApi::delete_word_handler(const Pistache::Rest::Request& request, Pistac
 void WordApi::get_word_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -255,7 +249,7 @@ void WordApi::get_word_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_word(version, wordId, accountId, response);
+            this->get_word(wordId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -274,8 +268,6 @@ void WordApi::get_word_handler(const Pistache::Rest::Request& request, Pistache:
 void WordApi::get_words_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -344,7 +336,7 @@ void WordApi::get_words_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->get_words(version, accountId, sortField, descending, activeOnly, start, limit, keyword, response);
+            this->get_words(accountId, sortField, descending, activeOnly, start, limit, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -363,8 +355,6 @@ void WordApi::get_words_handler(const Pistache::Rest::Request& request, Pistache
 void WordApi::update_word_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -457,7 +447,7 @@ void WordApi::update_word_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->update_word(version, wordId, accountId, ticketCount, wordText, definition, assetId, active, allocateTickets, ticketType, points, response);
+            this->update_word(wordId, accountId, ticketCount, wordText, definition, assetId, active, allocateTickets, ticketType, points, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

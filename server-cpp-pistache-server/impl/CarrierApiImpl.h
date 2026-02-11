@@ -43,7 +43,7 @@ public:
     explicit CarrierApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~CarrierApiImpl() override = default;
 
-    void search_carriers(const double &version, const std::optional<std::string> &keyword, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response);
+    void search_carriers(const std::optional<std::string> &keyword, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response);
 
 };
 

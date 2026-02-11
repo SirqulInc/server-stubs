@@ -29,19 +29,19 @@ VehicleTypeApiImpl::VehicleTypeApiImpl(const std::shared_ptr<Pistache::Rest::Rou
 
 }
 
-void VehicleTypeApiImpl::create_vehicle_type(const double &version, const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response) {
+void VehicleTypeApiImpl::create_vehicle_type(const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VehicleTypeApiImpl::delete_vehicle_type(const double &version, const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) {
+void VehicleTypeApiImpl::delete_vehicle_type(const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VehicleTypeApiImpl::get_vehicle_type(const double &version, const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) {
+void VehicleTypeApiImpl::get_vehicle_type(const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VehicleTypeApiImpl::search_vehicle_types(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) {
+void VehicleTypeApiImpl::search_vehicle_types(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void VehicleTypeApiImpl::update_vehicle_type(const double &version, const int64_t &vehicleTypeId, const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response) {
+void VehicleTypeApiImpl::update_vehicle_type(const int64_t &vehicleTypeId, const std::optional<std::string> &vehicleType, const VehicleType &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

@@ -89,18 +89,16 @@ private:
     /// <remarks>
     /// Get an activity feed by user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="start">The start of the pagination</param>
     /// <param name="limit">The limit of the pagination</param>
     /// <param name="accountId">the account id of the user</param>
-    virtual void activities( const double &version, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void activities( const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Aggregated Filtered Usage
     /// </summary>
     /// <remarks>
     /// Query analytics to get data used for nested graphs and charts
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="applicationId">This parameter is deprecated. (optional, default to 0L)</param>
@@ -132,14 +130,13 @@ private:
     /// <param name="limit">Used to limit results to get a cleaner graph. The results that gets filtered out will be combined (optional, default to 0)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void aggregated_filtered_usage( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<std::string> &appKey, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceType, const std::optional<std::string> &device, const std::optional<std::string> &deviceOS, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroup, const std::optional<std::string> &country, const std::optional<std::string> &state, const std::optional<std::string> &city, const std::optional<std::string> &zip, const std::optional<std::string> &model, const std::optional<std::string> &tag, const std::optional<int64_t> &userAccountId, const std::optional<std::string> &userAccountDisplay, const std::optional<std::string> &userAccountUsername, const std::optional<std::string> &groupByRoot, const std::optional<std::string> &groupBy, const std::optional<std::string> &distinctCount, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &hideUnknown, const std::optional<std::string> &responseFormat, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void aggregated_filtered_usage( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<std::string> &appKey, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceType, const std::optional<std::string> &device, const std::optional<std::string> &deviceOS, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroup, const std::optional<std::string> &country, const std::optional<std::string> &state, const std::optional<std::string> &city, const std::optional<std::string> &zip, const std::optional<std::string> &model, const std::optional<std::string> &tag, const std::optional<int64_t> &userAccountId, const std::optional<std::string> &userAccountDisplay, const std::optional<std::string> &userAccountUsername, const std::optional<std::string> &groupByRoot, const std::optional<std::string> &groupBy, const std::optional<std::string> &distinctCount, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &hideUnknown, const std::optional<std::string> &responseFormat, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Filtered Usage
     /// </summary>
     /// <remarks>
     /// Query analytics to get data used for graphs and charts
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="applicationId">This parameter is deprecated. (optional, default to 0L)</param>
@@ -179,14 +176,13 @@ private:
     /// <param name="limit">Used to limit results to get a cleaner graph. The results that gets filtered out will be combined (optional, default to 0)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void filtered_usage( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<std::string> &appKey, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceType, const std::optional<std::string> &device, const std::optional<std::string> &deviceOS, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroup, const std::optional<std::string> &country, const std::optional<std::string> &state, const std::optional<std::string> &city, const std::optional<std::string> &zip, const std::optional<std::string> &model, const std::optional<std::string> &tag, const std::optional<int64_t> &userAccountId, const std::optional<std::string> &userAccountDisplay, const std::optional<std::string> &userAccountUsername, const std::optional<int64_t> &customId, const std::optional<std::string> &customType, const std::optional<double> &customValue, const std::optional<double> &customValue2, const std::optional<int64_t> &customLong, const std::optional<int64_t> &customLong2, const std::optional<std::string> &customMessage, const std::optional<std::string> &customMessage2, const std::optional<std::string> &groupBy, const std::optional<std::string> &distinctCount, const std::optional<std::string> &sumColumn, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &hideUnknown, const std::optional<std::string> &responseFormat, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void filtered_usage( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<std::string> &appKey, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceType, const std::optional<std::string> &device, const std::optional<std::string> &deviceOS, const std::optional<std::string> &gender, const std::optional<std::string> &ageGroup, const std::optional<std::string> &country, const std::optional<std::string> &state, const std::optional<std::string> &city, const std::optional<std::string> &zip, const std::optional<std::string> &model, const std::optional<std::string> &tag, const std::optional<int64_t> &userAccountId, const std::optional<std::string> &userAccountDisplay, const std::optional<std::string> &userAccountUsername, const std::optional<int64_t> &customId, const std::optional<std::string> &customType, const std::optional<double> &customValue, const std::optional<double> &customValue2, const std::optional<int64_t> &customLong, const std::optional<int64_t> &customLong2, const std::optional<std::string> &customMessage, const std::optional<std::string> &customMessage2, const std::optional<std::string> &groupBy, const std::optional<std::string> &distinctCount, const std::optional<std::string> &sumColumn, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &hideUnknown, const std::optional<std::string> &responseFormat, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Usage Record
     /// </summary>
     /// <remarks>
     /// Record an analytic record for a known state within the application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="tag">The tag to apply: the name of the action or thing being logged.</param>
     /// <param name="deviceId">The client deviceID (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The logged in user ID (optional, default to 0L)</param>
@@ -218,14 +214,13 @@ private:
     /// <param name="customValue2">a custom value for the usage record (optional, default to 0.0)</param>
     /// <param name="customLong">a custom long value for the usage record (optional, default to 0L)</param>
     /// <param name="customLong2">a custom long value for the usage record (optional, default to 0L)</param>
-    virtual void usage( const double &version, const std::optional<std::string> &tag, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<std::string> &device, const std::optional<std::string> &deviceType, const std::optional<std::string> &deviceOS, const std::optional<std::string> &model, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &customId, const std::optional<std::string> &customType, const std::optional<int64_t> &achievementIncrement, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &country, const std::optional<std::string> &zip, const std::optional<std::string> &locationDescription, const std::optional<int64_t> &clientTime, const std::optional<std::string> &errorMessage, const std::optional<std::string> &ip, const std::optional<std::string> &userAgent, const std::optional<bool> &backgroundEvent, const std::optional<std::string> &customMessage, const std::optional<std::string> &customMessage2, const std::optional<double> &customValue, const std::optional<double> &customValue2, const std::optional<int64_t> &customLong, const std::optional<int64_t> &customLong2, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void usage( const std::optional<std::string> &tag, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &applicationId, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<std::string> &device, const std::optional<std::string> &deviceType, const std::optional<std::string> &deviceOS, const std::optional<std::string> &model, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &customId, const std::optional<std::string> &customType, const std::optional<int64_t> &achievementIncrement, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &country, const std::optional<std::string> &zip, const std::optional<std::string> &locationDescription, const std::optional<int64_t> &clientTime, const std::optional<std::string> &errorMessage, const std::optional<std::string> &ip, const std::optional<std::string> &userAgent, const std::optional<bool> &backgroundEvent, const std::optional<std::string> &customMessage, const std::optional<std::string> &customMessage2, const std::optional<double> &customValue, const std::optional<double> &customValue2, const std::optional<int64_t> &customLong, const std::optional<int64_t> &customLong2, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Multiple Usage Records
     /// </summary>
     /// <remarks>
     /// Sends multiple analytics. Can be used to send in the user&#39;s stored usage when they did not have internet access. Should not include more than 100 items per batch.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key unique to each application.</param>
     /// <param name="device">The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)</param>
     /// <param name="data">The analytic data AnalyticListResponse</param>
@@ -237,7 +232,7 @@ private:
     /// <param name="model">The model of the device (iPhone5,1 , Nexus One, etc.) (optional, default to &quot;&quot;)</param>
     /// <param name="updateRanking">Will create a leaderboard if one does not exist for the \&quot;tag\&quot; yet (optional, default to false)</param>
     /// <param name="returnSummaryResponse">Returns a summary response of the achievements that have been completed due to the analytics (optional, default to false)</param>
-    virtual void usage_batch( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &device, const std::optional<std::string> &data, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<std::string> &deviceType, const std::optional<std::string> &deviceOS, const std::optional<std::string> &model, const std::optional<bool> &updateRanking, const std::optional<bool> &returnSummaryResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void usage_batch( const std::optional<std::string> &appKey, const std::optional<std::string> &device, const std::optional<std::string> &data, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<std::string> &deviceType, const std::optional<std::string> &deviceOS, const std::optional<std::string> &model, const std::optional<bool> &updateRanking, const std::optional<bool> &returnSummaryResponse, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

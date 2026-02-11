@@ -45,10 +45,10 @@ public:
     ~SecureAppApiImpl() override = default;
 
     void create_secure_application(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
-    void delete_secure_application(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
+    void delete_secure_application(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
     void login_secure(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
-    void purchase_secure(const double &version, const PaymentRequest &body, Pistache::Http::ResponseWriter &response);
-    void reset_secure(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
+    void purchase_secure(const PaymentRequest &body, Pistache::Http::ResponseWriter &response);
+    void reset_secure(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response);
     void update_secure_application(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
 
 };

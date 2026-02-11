@@ -82,9 +82,8 @@ private:
     /// <remarks>
     /// Creates a reference for an entity for syncing data between servers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body">The entity reference object</param>
-    virtual void create_entity_reference( const double &version, const org::openapitools::server::model::EntityReference &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_entity_reference( const org::openapitools::server::model::EntityReference &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -42,7 +42,7 @@ public:
     explicit ParticipantsApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~ParticipantsApiImpl() override = default;
 
-    void process_all_participants(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &useShortNameAsID, Pistache::Http::ResponseWriter &response);
+    void process_all_participants(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &useShortNameAsID, Pistache::Http::ResponseWriter &response);
     void process_participants(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
 
 };

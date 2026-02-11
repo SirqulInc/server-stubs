@@ -134,635 +134,581 @@ private:
     /// <remarks>
     /// Create following.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void create_following( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_following( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Vatom Space
     /// </summary>
     /// <remarks>
     /// Create a Vatom space.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void create_space( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_space( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Vatom Event
     /// </summary>
     /// <remarks>
     /// Create a Vatom event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void create_vatom_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_vatom_event( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete following
     /// </summary>
     /// <remarks>
     /// Delete following.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomRelsKey">Vatom Rels Key</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void delete_following( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomRelsKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_following( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomRelsKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Reset All Points Balance
     /// </summary>
     /// <remarks>
     /// Reset All Points Balance.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void delete_points_balance( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_points_balance( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Vatom Space
     /// </summary>
     /// <remarks>
     /// Delete a Vatom space.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomSpaceId">Vatom Space Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void delete_space( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_space( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Vatom Event
     /// </summary>
     /// <remarks>
     /// Delete a Vatom event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomEventId">Vatom Event Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void delete_vatom_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_vatom_event( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Vatom NFT
     /// </summary>
     /// <remarks>
     /// Delete Vatom NFT
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomId">Vatom NFT Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void delete_vatom_nft( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_vatom_nft( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Execute Action on NFT
     /// </summary>
     /// <remarks>
     /// Execute Action on NFT.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomId">Vatom NFT Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void execute_action_on_nft( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void execute_action_on_nft( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Vatom Geo Map
     /// </summary>
     /// <remarks>
     /// Search Vatom Geo Map
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void geomap_search( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void geomap_search( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom Business Behaviors
     /// </summary>
     /// <remarks>
     /// Gets the behaviors of a business.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_business_behaviors( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_behaviors( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get the coins for a Business
     /// </summary>
     /// <remarks>
     /// Get the coins for a Businesss.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_business_coins_balance( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_coins_balance( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get the user business ids
     /// </summary>
     /// <remarks>
     /// Get the business ids the logged in user has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_business_ids( const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_ids( const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom Business Info
     /// </summary>
     /// <remarks>
     /// Gets the business info tied to this account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_business_info( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_info( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom Business Users
     /// </summary>
     /// <remarks>
     /// Gets the users of a business.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_business_users( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_users( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Campaign Group Entities
     /// </summary>
     /// <remarks>
     /// Get campaign group entities.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_campaign_group_entities( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_campaign_group_entities( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Campaign Group Rules
     /// </summary>
     /// <remarks>
     /// Get campaign group rules.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_campaign_group_rules( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_campaign_group_rules( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Campaign Group Stats
     /// </summary>
     /// <remarks>
     /// Get campaign group stats.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_campaign_group_stats( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_campaign_group_stats( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Campaign Info
     /// </summary>
     /// <remarks>
     /// Gets the info on a campaign.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_campaign_info( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_campaign_info( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom Event Guest List
     /// </summary>
     /// <remarks>
     /// Gets the guest list of an event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomEventId">Vatom Event Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_event_guest_list( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_event_guest_list( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom User&#39;s Inventory
     /// </summary>
     /// <remarks>
     /// Gets the logged in user&#39;s Vatom Inventory.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_inventory( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_inventory( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get following
     /// </summary>
     /// <remarks>
     /// Get following.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_my_following( const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_my_following( const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Points Balance
     /// </summary>
     /// <remarks>
     /// Gets the points balance of a Vatom user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_points_balance( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_points_balance( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Points Balance as Business
     /// </summary>
     /// <remarks>
     /// Gets the points balance of a Vatom user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_points_balance_as_business( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_points_balance_as_business( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom Space
     /// </summary>
     /// <remarks>
     /// Gets the details of a space.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomSpaceId">Vatom Space Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_space( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_space( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get the coins for a user (as a Business)
     /// </summary>
     /// <remarks>
     /// Get the coins for a user (as a Business).
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_user_coins_as_business( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_coins_as_business( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Gets the coins balance for a Vatom User
     /// </summary>
     /// <remarks>
     /// Gets the coins balance for a Vatom User.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_user_coins_balance( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_coins_balance( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user followers
     /// </summary>
     /// <remarks>
     /// Get user followers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_user_followers( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_followers( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user following
     /// </summary>
     /// <remarks>
     /// Get user following.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_user_following( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_following( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get User Info
     /// </summary>
     /// <remarks>
     /// Get a User&#39;s Info.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_user_info( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_info( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom User Profile
     /// </summary>
     /// <remarks>
     /// Gets the logged in user&#39;s profile in Vatom.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_user_profile( const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_profile( const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom Event
     /// </summary>
     /// <remarks>
     /// Gets the details of a event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomEventId">Vatom Event Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_vatom_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_vatom_event( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vatom NFT Details
     /// </summary>
     /// <remarks>
     /// Get Vatom NFT Details
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomId">Vatom NFT Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void get_vatom_nft( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_vatom_nft( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Vatom Communities
     /// </summary>
     /// <remarks>
     /// Gets the communities tied to a business.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void list_communities( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_communities( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Vatom Events
     /// </summary>
     /// <remarks>
     /// Gets the events tied to a business.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void list_events( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_events( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Vatom Spaces
     /// </summary>
     /// <remarks>
     /// Gets the spaces tied to a business.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void list_spaces( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_spaces( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Coin Transactions for a Vatom User
     /// </summary>
     /// <remarks>
     /// Gets the logged in user&#39;s Vatom coin transactions.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void list_user_coin_transactions( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_user_coin_transactions( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List coin transactions for a user (as a Business)
     /// </summary>
     /// <remarks>
     /// List coin transactions for a user (as a Business).
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void list_user_coin_transactions_as_business( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_user_coin_transactions_as_business( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Perform Action on NFT
     /// </summary>
     /// <remarks>
     /// Perform Action on NFT.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomId">Vatom NFT Id</param>
     /// <param name="vatomAction">Vatom Action</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void perform_action_on_nft( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomAction, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void perform_action_on_nft( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomId, const std::optional<std::string> &vatomAction, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Redeem NFT
     /// </summary>
     /// <remarks>
     /// Redeem an NFT.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void redeem_nft( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void redeem_nft( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Redeem the coins for a user (as a Business)
     /// </summary>
     /// <remarks>
     /// Redeem the coins for a user (as a Business).
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void redeem_user_coins_as_business( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void redeem_user_coins_as_business( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search for Vatom Businesses
     /// </summary>
     /// <remarks>
     /// Searches for Vatom businesses.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void search_businesses( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_businesses( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Campaign Groups
     /// </summary>
     /// <remarks>
     /// Search campaign groups.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void search_campaign_groups( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_campaign_groups( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search User Identities
     /// </summary>
     /// <remarks>
     /// Search User Identities.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void search_identities( const double &version, const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_identities( const std::optional<int64_t> &accountId, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Vatom User&#39;s Inventory
     /// </summary>
     /// <remarks>
     /// Searches the logged in user&#39;s Vatom Inventory.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomParameters">Vatom Parameters (optional, default to &quot;&quot;)</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void search_inventory( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_inventory( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Send NFT
     /// </summary>
     /// <remarks>
     /// Send an NFT.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void send_nft( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void send_nft( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Set Points Balance as Business
     /// </summary>
     /// <remarks>
     /// Sets the points balance of a Vatom user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="vatomCampaignId">Vatom Campaign Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void set_points_balance_as_business( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void set_points_balance_as_business( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomCampaignId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Transfer coins from Vatom Users
     /// </summary>
     /// <remarks>
     /// Transfer coins from Vatom Users.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void transfer_user_coins( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void transfer_user_coins( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Fund coins for a Business
     /// </summary>
     /// <remarks>
     /// Fund/update coins for a Businesss.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void update_business_coins( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_business_coins( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Vatom Event Guest List
     /// </summary>
     /// <remarks>
     /// Update the guest list of an event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomEventId">Vatom Event Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void update_event_guest_list( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_event_guest_list( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Vatom Space
     /// </summary>
     /// <remarks>
     /// Update a Vatom space.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomSpaceId">Vatom Space Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void update_space( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_space( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomSpaceId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update the coins for a user (as a Business)
     /// </summary>
     /// <remarks>
     /// Update the coins for a user (as a Business).
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomUserId">Vatom User Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void update_user_coins_as_business( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_user_coins_as_business( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomUserId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Vatom User Profile
     /// </summary>
     /// <remarks>
     /// Gets the logged in user&#39;s profile in Vatom.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void update_user_profile( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_user_profile( const std::optional<int64_t> &accountId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Vatom Event
     /// </summary>
     /// <remarks>
     /// Update a Vatom event.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="appKey">Sirqul Application Key</param>
     /// <param name="vatomEventId">Vatom Event Id</param>
     /// <param name="vatomParameters">Vatom Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void update_vatom_event( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_vatom_event( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &vatomEventId, const std::optional<std::string> &vatomParameters, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

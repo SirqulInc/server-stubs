@@ -42,7 +42,7 @@ public:
     explicit TwilioApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~TwilioApiImpl() override = default;
 
-    void sms_buy_offer(const double &version, const std::string &appKey, const std::optional<std::string> &body, const std::optional<std::string> &from, const std::optional<std::string> &currencyType, Pistache::Http::ResponseWriter &response);
+    void sms_buy_offer(const std::string &appKey, const std::optional<std::string> &body, const std::optional<std::string> &from, const std::optional<std::string> &currencyType, Pistache::Http::ResponseWriter &response);
 
 };
 

@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create a question and related answers by the given params.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="question">the text of the question</param>
     /// <param name="answers">&#x60;&#x60;&#x60;json [   {     \&quot;text\&quot;: \&quot;1942\&quot;,     \&quot;image\&quot;: 123,     \&quot;videoURL\&quot;: \&quot;http://www.here.com\&quot;,     \&quot;correct\&quot;: true   },   {     \&quot;text\&quot;: \&quot;1943\&quot;,     \&quot;image\&quot;: 124,     \&quot;videoURL\&quot;: \&quot;http://www.there.com\&quot;,     \&quot;correct\&quot;: false   } ] &#x60;&#x60;&#x60; </param>
@@ -100,34 +99,31 @@ private:
     /// <param name="assetId">The asset id of the question. (optional, default to 0L)</param>
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a mission (optional, default to 0L)</param>
-    virtual void create_question( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &question, const std::optional<std::string> &answers, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &tags, const std::optional<std::string> &videoURL, const std::optional<int64_t> &assetId, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_question( const std::optional<int64_t> &accountId, const std::optional<std::string> &question, const std::optional<std::string> &answers, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &tags, const std::optional<std::string> &videoURL, const std::optional<int64_t> &assetId, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Question
     /// </summary>
     /// <remarks>
     /// Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="questionId">the id of the question to delete</param>
     /// <param name="accountId">the id of the account that can execute this request</param>
-    virtual void delete_question( const double &version, const std::optional<int64_t> &questionId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_question( const std::optional<int64_t> &questionId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Question
     /// </summary>
     /// <remarks>
     /// Get a question by the given id.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="questionId">the id of the question to get</param>
     /// <param name="accountId">the id of the account that can make this request</param>
-    virtual void get_question( const double &version, const std::optional<int64_t> &questionId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_question( const std::optional<int64_t> &questionId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Questions
     /// </summary>
     /// <remarks>
     /// Search for questions by the given params.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="sortField">The column to sort the search on</param>
     /// <param name="descending">The order to return the search results</param>
@@ -135,14 +131,13 @@ private:
     /// <param name="start">The record to begin the return set on.</param>
     /// <param name="limit">The number of records to return.</param>
     /// <param name="keyword">The keyword for searching questions with matching tags or question text. (optional, default to &quot;&quot;)</param>
-    virtual void search_questions( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_questions( const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Question
     /// </summary>
     /// <remarks>
     /// Update a question and related answers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="questionId">The id of the question to update.</param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="ticketCount">The number of tickets to reward</param>
@@ -155,7 +150,7 @@ private:
     /// <param name="allocateTickets">If true then scoring will give tickets. (optional, default to false)</param>
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a mission (optional, default to 0L)</param>
-    virtual void update_question( const double &version, const std::optional<int64_t> &questionId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &question, const std::optional<std::string> &answers, const std::optional<std::string> &tags, const std::optional<std::string> &videoURL, const std::optional<int64_t> &assetId, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_question( const std::optional<int64_t> &questionId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &question, const std::optional<std::string> &answers, const std::optional<std::string> &tags, const std::optional<std::string> &videoURL, const std::optional<int64_t> &assetId, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AlbumApi::base = "";
+const std::string AlbumApi::base = "/api/3.18";
 
 AlbumApi::AlbumApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,15 +32,15 @@ void AlbumApi::init() {
 void AlbumApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/album/create", Routes::bind(&AlbumApi::add_album_collection_handler, this));
-    Routes::Post(*router, base + "/api/:version/album/user/add", Routes::bind(&AlbumApi::add_album_users_handler, this));
-    Routes::Post(*router, base + "/api/:version/album/approve", Routes::bind(&AlbumApi::approve_album_handler, this));
-    Routes::Get(*router, base + "/api/:version/album/get", Routes::bind(&AlbumApi::get_album_collection_handler, this));
-    Routes::Post(*router, base + "/api/:version/album/user/leave", Routes::bind(&AlbumApi::leave_album_handler, this));
-    Routes::Post(*router, base + "/api/:version/album/delete", Routes::bind(&AlbumApi::remove_album_handler, this));
-    Routes::Post(*router, base + "/api/:version/album/user/delete", Routes::bind(&AlbumApi::remove_album_users_handler, this));
-    Routes::Get(*router, base + "/api/:version/album/search", Routes::bind(&AlbumApi::search_albums_handler, this));
-    Routes::Post(*router, base + "/api/:version/album/update", Routes::bind(&AlbumApi::update_album_collection_handler, this));
+    Routes::Post(*router, base + "/album/create", Routes::bind(&AlbumApi::add_album_collection_handler, this));
+    Routes::Post(*router, base + "/album/user/add", Routes::bind(&AlbumApi::add_album_users_handler, this));
+    Routes::Post(*router, base + "/album/approve", Routes::bind(&AlbumApi::approve_album_handler, this));
+    Routes::Get(*router, base + "/album/get", Routes::bind(&AlbumApi::get_album_collection_handler, this));
+    Routes::Post(*router, base + "/album/user/leave", Routes::bind(&AlbumApi::leave_album_handler, this));
+    Routes::Post(*router, base + "/album/delete", Routes::bind(&AlbumApi::remove_album_handler, this));
+    Routes::Post(*router, base + "/album/user/delete", Routes::bind(&AlbumApi::remove_album_users_handler, this));
+    Routes::Get(*router, base + "/album/search", Routes::bind(&AlbumApi::search_albums_handler, this));
+    Routes::Post(*router, base + "/album/update", Routes::bind(&AlbumApi::update_album_collection_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AlbumApi::album_api_default_handler, this));
@@ -95,8 +95,6 @@ void AlbumApi::add_album_collection_handler(const Pistache::Rest::Request& reque
 void AlbumApi::add_album_users_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -189,7 +187,7 @@ void AlbumApi::add_album_users_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->add_album_users(version, albumId, includeFriendGroup, deviceId, accountId, read, write, r_delete, add, connections, connectionGroups, response);
+            this->add_album_users(albumId, includeFriendGroup, deviceId, accountId, read, write, r_delete, add, connections, connectionGroups, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -208,8 +206,6 @@ void AlbumApi::add_album_users_handler(const Pistache::Rest::Request& request, P
 void AlbumApi::approve_album_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -262,7 +258,7 @@ void AlbumApi::approve_album_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->approve_album(version, albumId, deviceId, accountId, approvalStatus, verified, response);
+            this->approve_album(albumId, deviceId, accountId, approvalStatus, verified, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -281,8 +277,6 @@ void AlbumApi::approve_album_handler(const Pistache::Rest::Request& request, Pis
 void AlbumApi::get_album_collection_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -367,7 +361,7 @@ void AlbumApi::get_album_collection_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_album_collection(version, returnNulls, albumId, deviceId, accountId, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize, response);
+            this->get_album_collection(returnNulls, albumId, deviceId, accountId, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -386,8 +380,6 @@ void AlbumApi::get_album_collection_handler(const Pistache::Rest::Request& reque
 void AlbumApi::leave_album_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -424,7 +416,7 @@ void AlbumApi::leave_album_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->leave_album(version, albumId, deviceId, accountId, response);
+            this->leave_album(albumId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -443,8 +435,6 @@ void AlbumApi::leave_album_handler(const Pistache::Rest::Request& request, Pista
 void AlbumApi::remove_album_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -481,7 +471,7 @@ void AlbumApi::remove_album_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->remove_album(version, albumId, deviceId, accountId, response);
+            this->remove_album(albumId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -500,8 +490,6 @@ void AlbumApi::remove_album_handler(const Pistache::Rest::Request& request, Pist
 void AlbumApi::remove_album_users_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -562,7 +550,7 @@ void AlbumApi::remove_album_users_handler(const Pistache::Rest::Request& request
 
 
 
-            this->remove_album_users(version, albumId, removeFriendGroup, deviceId, accountId, connections, connectionGroups, response);
+            this->remove_album_users(albumId, removeFriendGroup, deviceId, accountId, connections, connectionGroups, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -581,8 +569,6 @@ void AlbumApi::remove_album_users_handler(const Pistache::Rest::Request& request
 void AlbumApi::search_albums_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1075,7 +1061,7 @@ void AlbumApi::search_albums_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->search_albums(version, filter, albumTypeId, subType, includeInactive, sortField, descending, start, limit, range, includeLiked, includeFavorited, includePermissions, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize, deviceId, accountId, connectionAccountId, ownerId, albumIds, excludeAlbumIds, mediaId, keyword, albumType, limitPerAlbumType, dateCreated, updatedSince, updatedBefore, createdSince, createdBefore, startedSince, startedBefore, endedSince, endedBefore, latitude, longitude, appKey, categoryIds, categoryFilterIds, audienceIds, excludeAudienceIds, includeCompletable, includeRating, searchMode, stackSearch, stackWindowSize, minStackPerPage, stackPaginationIdentifier, stackDetails, flagCountMinimum, removeFlaggedContent, verifiedFilter, linkedObjectType, linkedObjectId, orderAudienceId, ignoreDefaultAppFilter, searchExpression, generateAlbums, response);
+            this->search_albums(filter, albumTypeId, subType, includeInactive, sortField, descending, start, limit, range, includeLiked, includeFavorited, includePermissions, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize, deviceId, accountId, connectionAccountId, ownerId, albumIds, excludeAlbumIds, mediaId, keyword, albumType, limitPerAlbumType, dateCreated, updatedSince, updatedBefore, createdSince, createdBefore, startedSince, startedBefore, endedSince, endedBefore, latitude, longitude, appKey, categoryIds, categoryFilterIds, audienceIds, excludeAudienceIds, includeCompletable, includeRating, searchMode, stackSearch, stackWindowSize, minStackPerPage, stackPaginationIdentifier, stackDetails, flagCountMinimum, removeFlaggedContent, verifiedFilter, linkedObjectType, linkedObjectId, orderAudienceId, ignoreDefaultAppFilter, searchExpression, generateAlbums, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

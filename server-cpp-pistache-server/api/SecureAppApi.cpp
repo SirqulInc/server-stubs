@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string SecureAppApi::base = "";
+const std::string SecureAppApi::base = "/api/3.18";
 
 SecureAppApi::SecureAppApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void SecureAppApi::init() {
 void SecureAppApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/secure/application/create", Routes::bind(&SecureAppApi::create_secure_application_handler, this));
-    Routes::Post(*router, base + "/api/:version/secure/application/delete", Routes::bind(&SecureAppApi::delete_secure_application_handler, this));
-    Routes::Post(*router, base + "/api/:version/secure/login", Routes::bind(&SecureAppApi::login_secure_handler, this));
-    Routes::Post(*router, base + "/api/:version/secure/purchase", Routes::bind(&SecureAppApi::purchase_secure_handler, this));
-    Routes::Post(*router, base + "/api/:version/secure/application/reset", Routes::bind(&SecureAppApi::reset_secure_handler, this));
-    Routes::Post(*router, base + "/api/:version/secure/application/update", Routes::bind(&SecureAppApi::update_secure_application_handler, this));
+    Routes::Post(*router, base + "/secure/application/create", Routes::bind(&SecureAppApi::create_secure_application_handler, this));
+    Routes::Post(*router, base + "/secure/application/delete", Routes::bind(&SecureAppApi::delete_secure_application_handler, this));
+    Routes::Post(*router, base + "/secure/login", Routes::bind(&SecureAppApi::login_secure_handler, this));
+    Routes::Post(*router, base + "/secure/purchase", Routes::bind(&SecureAppApi::purchase_secure_handler, this));
+    Routes::Post(*router, base + "/secure/application/reset", Routes::bind(&SecureAppApi::reset_secure_handler, this));
+    Routes::Post(*router, base + "/secure/application/update", Routes::bind(&SecureAppApi::update_secure_application_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&SecureAppApi::secure_app_api_default_handler, this));
@@ -92,8 +92,6 @@ void SecureAppApi::create_secure_application_handler(const Pistache::Rest::Reque
 void SecureAppApi::delete_secure_application_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -122,7 +120,7 @@ void SecureAppApi::delete_secure_application_handler(const Pistache::Rest::Reque
 
 
 
-            this->delete_secure_application(version, accountId, appKey, response);
+            this->delete_secure_application(accountId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -161,8 +159,6 @@ void SecureAppApi::login_secure_handler(const Pistache::Rest::Request& request, 
 void SecureAppApi::purchase_secure_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -186,7 +182,7 @@ void SecureAppApi::purchase_secure_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->purchase_secure(version, body, response);
+            this->purchase_secure(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -205,8 +201,6 @@ void SecureAppApi::purchase_secure_handler(const Pistache::Rest::Request& reques
 void SecureAppApi::reset_secure_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -235,7 +229,7 @@ void SecureAppApi::reset_secure_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->reset_secure(version, accountId, appKey, response);
+            this->reset_secure(accountId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

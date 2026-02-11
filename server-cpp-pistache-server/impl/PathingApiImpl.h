@@ -42,7 +42,7 @@ public:
     explicit PathingApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~PathingApiImpl() override = default;
 
-    void compute_path(const double &version, const std::optional<std::string> &data, const std::optional<std::string> &units, const std::optional<bool> &reducePath, const std::optional<bool> &directions, Pistache::Http::ResponseWriter &response);
+    void compute_path(const std::optional<std::string> &data, const std::optional<std::string> &units, const std::optional<bool> &reducePath, const std::optional<bool> &directions, Pistache::Http::ResponseWriter &response);
 
 };
 

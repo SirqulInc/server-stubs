@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string MissionApi::base = "";
+const std::string MissionApi::base = "/api/3.18";
 
 MissionApi::MissionApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,15 +32,15 @@ void MissionApi::init() {
 void MissionApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/mission/create", Routes::bind(&MissionApi::create_mission_handler, this));
-    Routes::Post(*router, base + "/api/:version/mission/delete", Routes::bind(&MissionApi::delete_mission_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/find", Routes::bind(&MissionApi::find_missions_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/get", Routes::bind(&MissionApi::get_mission_handler, this));
-    Routes::Post(*router, base + "/api/:version/mission/import", Routes::bind(&MissionApi::import_mission_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/format/search", Routes::bind(&MissionApi::search_mission_formats_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/search", Routes::bind(&MissionApi::search_missions_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/searchByBillableEntity", Routes::bind(&MissionApi::search_missions_by_billable_entity_handler, this));
-    Routes::Post(*router, base + "/api/:version/mission/update", Routes::bind(&MissionApi::update_mission_handler, this));
+    Routes::Post(*router, base + "/mission/create", Routes::bind(&MissionApi::create_mission_handler, this));
+    Routes::Post(*router, base + "/mission/delete", Routes::bind(&MissionApi::delete_mission_handler, this));
+    Routes::Get(*router, base + "/mission/find", Routes::bind(&MissionApi::find_missions_handler, this));
+    Routes::Get(*router, base + "/mission/get", Routes::bind(&MissionApi::get_mission_handler, this));
+    Routes::Post(*router, base + "/mission/import", Routes::bind(&MissionApi::import_mission_handler, this));
+    Routes::Get(*router, base + "/mission/format/search", Routes::bind(&MissionApi::search_mission_formats_handler, this));
+    Routes::Get(*router, base + "/mission/search", Routes::bind(&MissionApi::search_missions_handler, this));
+    Routes::Get(*router, base + "/mission/searchByBillableEntity", Routes::bind(&MissionApi::search_missions_by_billable_entity_handler, this));
+    Routes::Post(*router, base + "/mission/update", Routes::bind(&MissionApi::update_mission_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&MissionApi::mission_api_default_handler, this));
@@ -75,8 +75,6 @@ std::pair<Pistache::Http::Code, std::string> MissionApi::handleOperationExceptio
 void MissionApi::create_mission_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -297,7 +295,7 @@ void MissionApi::create_mission_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_mission(version, accountId, title, description, subType, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, missionTask, formatType, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, metaData, applicationIds, devices, deviceIds, deviceVersions, locations, radius, response);
+            this->create_mission(accountId, title, description, subType, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, missionTask, formatType, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, metaData, applicationIds, devices, deviceIds, deviceVersions, locations, radius, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -316,8 +314,6 @@ void MissionApi::create_mission_handler(const Pistache::Rest::Request& request, 
 void MissionApi::delete_mission_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -346,7 +342,7 @@ void MissionApi::delete_mission_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_mission(version, accountId, missionId, response);
+            this->delete_mission(accountId, missionId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -365,8 +361,6 @@ void MissionApi::delete_mission_handler(const Pistache::Rest::Request& request, 
 void MissionApi::find_missions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -531,7 +525,7 @@ void MissionApi::find_missions_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->find_missions(version, appKey, suffix, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeGameData, includeAudiences, allocatesTickets, randomize, targetedAdsOnly, missionIds, audienceOperator, response);
+            this->find_missions(appKey, suffix, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeGameData, includeAudiences, allocatesTickets, randomize, targetedAdsOnly, missionIds, audienceOperator, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -550,8 +544,6 @@ void MissionApi::find_missions_handler(const Pistache::Rest::Request& request, P
 void MissionApi::get_mission_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -588,7 +580,7 @@ void MissionApi::get_mission_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_mission(version, accountId, missionId, returnCreative, response);
+            this->get_mission(accountId, missionId, returnCreative, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -607,8 +599,6 @@ void MissionApi::get_mission_handler(const Pistache::Rest::Request& request, Pis
 void MissionApi::import_mission_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -685,7 +675,7 @@ void MissionApi::import_mission_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->import_mission(version, accountId, latitude, longitude, appKey, keyword, start, limit, adSize, response);
+            this->import_mission(accountId, latitude, longitude, appKey, keyword, start, limit, adSize, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -704,8 +694,6 @@ void MissionApi::import_mission_handler(const Pistache::Rest::Request& request, 
 void MissionApi::search_mission_formats_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -742,7 +730,7 @@ void MissionApi::search_mission_formats_handler(const Pistache::Rest::Request& r
 
 
 
-            this->search_mission_formats(version, start, limit, activeOnly, response);
+            this->search_mission_formats(start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -761,8 +749,6 @@ void MissionApi::search_mission_formats_handler(const Pistache::Rest::Request& r
 void MissionApi::search_missions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -863,7 +849,7 @@ void MissionApi::search_missions_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_missions(version, accountId, keyword, subType, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending, response);
+            this->search_missions(accountId, keyword, subType, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -882,8 +868,6 @@ void MissionApi::search_missions_handler(const Pistache::Rest::Request& request,
 void MissionApi::search_missions_by_billable_entity_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -976,7 +960,7 @@ void MissionApi::search_missions_by_billable_entity_handler(const Pistache::Rest
 
 
 
-            this->search_missions_by_billable_entity(version, accountId, keyword, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending, response);
+            this->search_missions_by_billable_entity(accountId, keyword, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -995,8 +979,6 @@ void MissionApi::search_missions_by_billable_entity_handler(const Pistache::Rest
 void MissionApi::update_mission_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1209,7 +1191,7 @@ void MissionApi::update_mission_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->update_mission(version, accountId, missionId, title, description, subType, metaData, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, applicationIds, devices, deviceIds, deviceVersions, locations, radius, response);
+            this->update_mission(accountId, missionId, title, description, subType, metaData, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, applicationIds, devices, deviceIds, deviceVersions, locations, radius, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

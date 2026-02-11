@@ -29,16 +29,16 @@ BillableEntityApiImpl::BillableEntityApiImpl(const std::shared_ptr<Pistache::Res
 
 }
 
-void BillableEntityApiImpl::create_billable_entity(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) {
+void BillableEntityApiImpl::create_billable_entity(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void BillableEntityApiImpl::delete_billable_entity(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void BillableEntityApiImpl::delete_billable_entity(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void BillableEntityApiImpl::get_billable_entity(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, const std::optional<bool> &includePayments, Pistache::Http::ResponseWriter &response) {
+void BillableEntityApiImpl::get_billable_entity(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, const std::optional<bool> &includePayments, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void BillableEntityApiImpl::update_billable_entity(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) {
+void BillableEntityApiImpl::update_billable_entity(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

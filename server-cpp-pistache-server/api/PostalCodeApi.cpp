@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string PostalCodeApi::base = "";
+const std::string PostalCodeApi::base = "/api/3.18";
 
 PostalCodeApi::PostalCodeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void PostalCodeApi::init() {
 void PostalCodeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/postalCode/create", Routes::bind(&PostalCodeApi::create_postal_code_handler, this));
-    Routes::Post(*router, base + "/api/:version/postalCode/delete", Routes::bind(&PostalCodeApi::delete_postal_code_handler, this));
-    Routes::Get(*router, base + "/api/:version/postalCode/get", Routes::bind(&PostalCodeApi::get_postal_code_handler, this));
-    Routes::Get(*router, base + "/api/:version/postalCode/search", Routes::bind(&PostalCodeApi::get_postal_codes_handler, this));
-    Routes::Post(*router, base + "/api/:version/postalCode/update", Routes::bind(&PostalCodeApi::update_postal_code_handler, this));
+    Routes::Post(*router, base + "/postalCode/create", Routes::bind(&PostalCodeApi::create_postal_code_handler, this));
+    Routes::Post(*router, base + "/postalCode/delete", Routes::bind(&PostalCodeApi::delete_postal_code_handler, this));
+    Routes::Get(*router, base + "/postalCode/get", Routes::bind(&PostalCodeApi::get_postal_code_handler, this));
+    Routes::Get(*router, base + "/postalCode/search", Routes::bind(&PostalCodeApi::get_postal_codes_handler, this));
+    Routes::Post(*router, base + "/postalCode/update", Routes::bind(&PostalCodeApi::update_postal_code_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&PostalCodeApi::postal_code_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> PostalCodeApi::handleOperationExcep
 void PostalCodeApi::create_postal_code_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -141,7 +139,7 @@ void PostalCodeApi::create_postal_code_handler(const Pistache::Rest::Request& re
 
 
 
-            this->create_postal_code(version, accountId, code, latitude, longitude, stateCode, city, active, response);
+            this->create_postal_code(accountId, code, latitude, longitude, stateCode, city, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -160,8 +158,6 @@ void PostalCodeApi::create_postal_code_handler(const Pistache::Rest::Request& re
 void PostalCodeApi::delete_postal_code_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -190,7 +186,7 @@ void PostalCodeApi::delete_postal_code_handler(const Pistache::Rest::Request& re
 
 
 
-            this->delete_postal_code(version, accountId, postalCodeId, response);
+            this->delete_postal_code(accountId, postalCodeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -209,8 +205,6 @@ void PostalCodeApi::delete_postal_code_handler(const Pistache::Rest::Request& re
 void PostalCodeApi::get_postal_code_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -231,7 +225,7 @@ void PostalCodeApi::get_postal_code_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_postal_code(version, postalCodeId, response);
+            this->get_postal_code(postalCodeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -250,8 +244,6 @@ void PostalCodeApi::get_postal_code_handler(const Pistache::Rest::Request& reque
 void PostalCodeApi::get_postal_codes_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -328,7 +320,7 @@ void PostalCodeApi::get_postal_codes_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_postal_codes(version, sortField, descending, latitude, longitude, keyword, miles, start, limit, response);
+            this->get_postal_codes(sortField, descending, latitude, longitude, keyword, miles, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -347,8 +339,6 @@ void PostalCodeApi::get_postal_codes_handler(const Pistache::Rest::Request& requ
 void PostalCodeApi::update_postal_code_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -425,7 +415,7 @@ void PostalCodeApi::update_postal_code_handler(const Pistache::Rest::Request& re
 
 
 
-            this->update_postal_code(version, accountId, postalCodeId, code, latitude, longitude, stateCode, city, active, response);
+            this->update_postal_code(accountId, postalCodeId, code, latitude, longitude, stateCode, city, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -83,13 +83,12 @@ private:
     /// <remarks>
     /// Search on supported mobile telephone carriers that can be used to send SMS notifications via email.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="keyword">The keyword to search on (optional, default to &quot;&quot;)</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order (optional, default to false)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (optional, default to 20)</param>
     /// <param name="activeOnly">Determines whether to return inactive results (optional, default to true)</param>
-    virtual void search_carriers( const double &version, const std::optional<std::string> &keyword, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_carriers( const std::optional<std::string> &keyword, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

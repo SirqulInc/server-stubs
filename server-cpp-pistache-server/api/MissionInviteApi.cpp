@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string MissionInviteApi::base = "";
+const std::string MissionInviteApi::base = "/api/3.18";
 
 MissionInviteApi::MissionInviteApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void MissionInviteApi::init() {
 void MissionInviteApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/mission/invite/create", Routes::bind(&MissionInviteApi::create_mission_invite_handler, this));
-    Routes::Post(*router, base + "/api/:version/mission/invite/delete", Routes::bind(&MissionInviteApi::delete_mission_invite_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/invite/get", Routes::bind(&MissionInviteApi::get_mission_invite_handler, this));
-    Routes::Get(*router, base + "/api/:version/mission/invite/search", Routes::bind(&MissionInviteApi::search_mission_invites_handler, this));
-    Routes::Post(*router, base + "/api/:version/mission/invite/update", Routes::bind(&MissionInviteApi::update_mission_invite_handler, this));
+    Routes::Post(*router, base + "/mission/invite/create", Routes::bind(&MissionInviteApi::create_mission_invite_handler, this));
+    Routes::Post(*router, base + "/mission/invite/delete", Routes::bind(&MissionInviteApi::delete_mission_invite_handler, this));
+    Routes::Get(*router, base + "/mission/invite/get", Routes::bind(&MissionInviteApi::get_mission_invite_handler, this));
+    Routes::Get(*router, base + "/mission/invite/search", Routes::bind(&MissionInviteApi::search_mission_invites_handler, this));
+    Routes::Post(*router, base + "/mission/invite/update", Routes::bind(&MissionInviteApi::update_mission_invite_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&MissionInviteApi::mission_invite_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> MissionInviteApi::handleOperationEx
 void MissionInviteApi::create_mission_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -125,7 +123,7 @@ void MissionInviteApi::create_mission_invite_handler(const Pistache::Rest::Reque
 
 
 
-            this->create_mission_invite(version, deviceId, accountId, missionId, joinCode, includeGameData, response);
+            this->create_mission_invite(deviceId, accountId, missionId, joinCode, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -144,8 +142,6 @@ void MissionInviteApi::create_mission_invite_handler(const Pistache::Rest::Reque
 void MissionInviteApi::delete_mission_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -198,7 +194,7 @@ void MissionInviteApi::delete_mission_invite_handler(const Pistache::Rest::Reque
 
 
 
-            this->delete_mission_invite(version, deviceId, accountId, missionId, missionInviteId, includeGameData, response);
+            this->delete_mission_invite(deviceId, accountId, missionId, missionInviteId, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -217,8 +213,6 @@ void MissionInviteApi::delete_mission_invite_handler(const Pistache::Rest::Reque
 void MissionInviteApi::get_mission_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -279,7 +273,7 @@ void MissionInviteApi::get_mission_invite_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_mission_invite(version, deviceId, accountId, missionId, missionInviteId, includeGameData, includeScores, response);
+            this->get_mission_invite(deviceId, accountId, missionId, missionInviteId, includeGameData, includeScores, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -298,8 +292,6 @@ void MissionInviteApi::get_mission_invite_handler(const Pistache::Rest::Request&
 void MissionInviteApi::search_mission_invites_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -416,7 +408,7 @@ void MissionInviteApi::search_mission_invites_handler(const Pistache::Rest::Requ
 
 
 
-            this->search_mission_invites(version, deviceId, accountId, appKey, appVersion, missionId, status, lastUpdated, start, limit, keyword, missionTypes, filterByBillable, includeGameData, response);
+            this->search_mission_invites(deviceId, accountId, appKey, appVersion, missionId, status, lastUpdated, start, limit, keyword, missionTypes, filterByBillable, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -435,8 +427,6 @@ void MissionInviteApi::search_mission_invites_handler(const Pistache::Rest::Requ
 void MissionInviteApi::update_mission_invite_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -537,7 +527,7 @@ void MissionInviteApi::update_mission_invite_handler(const Pistache::Rest::Reque
 
 
 
-            this->update_mission_invite(version, deviceId, accountId, appKey, missionId, missionInviteId, packId, gameLevelId, status, permissionableType, permissionableId, includeGameData, response);
+            this->update_mission_invite(deviceId, accountId, appKey, missionId, missionInviteId, packId, gameLevelId, status, permissionableType, permissionableId, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

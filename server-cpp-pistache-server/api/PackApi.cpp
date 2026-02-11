@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string PackApi::base = "";
+const std::string PackApi::base = "/api/3.18";
 
 PackApi::PackApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void PackApi::init() {
 void PackApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/pack/create", Routes::bind(&PackApi::create_pack_handler, this));
-    Routes::Post(*router, base + "/api/:version/pack/delete", Routes::bind(&PackApi::delete_pack_handler, this));
-    Routes::Get(*router, base + "/api/:version/pack/get", Routes::bind(&PackApi::get_pack_handler, this));
-    Routes::Get(*router, base + "/api/:version/pack/search", Routes::bind(&PackApi::search_packs_handler, this));
-    Routes::Post(*router, base + "/api/:version/pack/update", Routes::bind(&PackApi::update_pack_handler, this));
+    Routes::Post(*router, base + "/pack/create", Routes::bind(&PackApi::create_pack_handler, this));
+    Routes::Post(*router, base + "/pack/delete", Routes::bind(&PackApi::delete_pack_handler, this));
+    Routes::Get(*router, base + "/pack/get", Routes::bind(&PackApi::get_pack_handler, this));
+    Routes::Get(*router, base + "/pack/search", Routes::bind(&PackApi::search_packs_handler, this));
+    Routes::Post(*router, base + "/pack/update", Routes::bind(&PackApi::update_pack_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&PackApi::pack_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> PackApi::handleOperationException(c
 void PackApi::create_pack_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -277,7 +275,7 @@ void PackApi::create_pack_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create_pack(version, accountId, title, packOrder, price, highest, allocateTickets, ticketCount, description, searchTags, active, gameType, appKey, packType, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, priceType, gameLevelIds, inGame, ticketType, points, response);
+            this->create_pack(accountId, title, packOrder, price, highest, allocateTickets, ticketCount, description, searchTags, active, gameType, appKey, packType, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, priceType, gameLevelIds, inGame, ticketType, points, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -296,8 +294,6 @@ void PackApi::create_pack_handler(const Pistache::Rest::Request& request, Pistac
 void PackApi::delete_pack_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -326,7 +322,7 @@ void PackApi::delete_pack_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->delete_pack(version, accountId, packId, response);
+            this->delete_pack(accountId, packId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -345,8 +341,6 @@ void PackApi::delete_pack_handler(const Pistache::Rest::Request& request, Pistac
 void PackApi::get_pack_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -383,7 +377,7 @@ void PackApi::get_pack_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_pack(version, accountId, packId, includeGameData, response);
+            this->get_pack(accountId, packId, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -402,8 +396,6 @@ void PackApi::get_pack_handler(const Pistache::Rest::Request& request, Pistache:
 void PackApi::search_packs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -496,7 +488,7 @@ void PackApi::search_packs_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->search_packs(version, accountId, sortField, descending, keyword, packType, start, limit, includeGameData, includeInactive, appKey, response);
+            this->search_packs(accountId, sortField, descending, keyword, packType, start, limit, includeGameData, includeInactive, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -515,8 +507,6 @@ void PackApi::search_packs_handler(const Pistache::Rest::Request& request, Pista
 void PackApi::update_pack_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -729,7 +719,7 @@ void PackApi::update_pack_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->update_pack(version, accountId, packId, allocateTickets, ticketCount, title, description, searchTags, active, gameType, appKey, packType, packOrder, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, price, priceType, gameLevelIds, inGame, highest, ticketType, points, response);
+            this->update_pack(accountId, packId, allocateTickets, ticketCount, title, description, searchTags, active, gameType, appKey, packType, packOrder, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, price, priceType, gameLevelIds, inGame, highest, ticketType, points, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

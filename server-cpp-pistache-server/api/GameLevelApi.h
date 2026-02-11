@@ -95,7 +95,6 @@ private:
     /// <remarks>
     /// Create a game level. Currently does NOT support game objects.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="name">The name of the level.</param>
     /// <param name="gameData">The game level data: xml, json, or other text based format.</param>
@@ -122,35 +121,32 @@ private:
     /// <param name="tutorialImageAssetId">Asset id of the tutorial image. (optional, default to 0L)</param>
     /// <param name="offerId">id of the offer (optional, default to 0L)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void create_game_level( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &gameData, const std::optional<std::string> &gameDataSuffix, const std::optional<std::string> &appKey, const std::optional<std::string> &description, const std::optional<std::string> &difficulty, const std::optional<std::string> &appVersion, const std::optional<int64_t> &assetImageId, const std::optional<int64_t> &assetIconId, const std::optional<std::string> &visibility, const std::optional<bool> &friendGroup, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionGroupIds, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &tutorialTitle, const std::optional<std::string> &tutorialMessage, const std::optional<std::string> &tutorialAlignment, const std::optional<int64_t> &tutorialImageAssetId, const std::optional<int64_t> &offerId, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_game_level( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &gameData, const std::optional<std::string> &gameDataSuffix, const std::optional<std::string> &appKey, const std::optional<std::string> &description, const std::optional<std::string> &difficulty, const std::optional<std::string> &appVersion, const std::optional<int64_t> &assetImageId, const std::optional<int64_t> &assetIconId, const std::optional<std::string> &visibility, const std::optional<bool> &friendGroup, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionGroupIds, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &tutorialTitle, const std::optional<std::string> &tutorialMessage, const std::optional<std::string> &tutorialAlignment, const std::optional<int64_t> &tutorialImageAssetId, const std::optional<int64_t> &offerId, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Game Level
     /// </summary>
     /// <remarks>
     /// Delete a game level. The level and account must be valid and have the appropirate permissions to view the content.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="levelId">The id of the level to return.</param>
-    virtual void delete_game_level( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &levelId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_game_level( const std::optional<int64_t> &accountId, const std::optional<int64_t> &levelId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Game Level
     /// </summary>
     /// <remarks>
     /// Get a game level. The level and account must be valid and have the appropirate permissions to view the content.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="levelId">The id of the level to return.</param>
     /// <param name="includeGameData">If true include the game level data, otherwise don&#39;t. default is false. (optional, default to false)</param>
-    virtual void get_game_level( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &levelId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_game_level( const std::optional<int64_t> &accountId, const std::optional<int64_t> &levelId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Game Levels
     /// </summary>
     /// <remarks>
     /// Get a list of levels for an application, just those the account has permissions to view.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">the application key</param>
     /// <param name="keyword">Match the keyword to the owner name or level name. (optional, default to &quot;&quot;)</param>
@@ -161,14 +157,13 @@ private:
     /// <param name="appVersion">The maximum version of the level to return. (optional, default to &quot;&quot;)</param>
     /// <param name="includeGameData">If true include the game level data, otherwise don&#39;t. default is false. (optional, default to false)</param>
     /// <param name="filters"> (optional, default to &quot;&quot;)</param>
-    virtual void get_game_levels_by_application( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &appVersion, const std::optional<bool> &includeGameData, const std::optional<std::string> &filters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_game_levels_by_application( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &appVersion, const std::optional<bool> &includeGameData, const std::optional<std::string> &filters, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Game Level by Billable Entity
     /// </summary>
     /// <remarks>
     /// Searches on game levels that the logged in user has access to. A user would have access if the creator of the game level is managed under the same BillableEntity.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">The keyword used to search (optional, default to &quot;&quot;)</param>
@@ -177,34 +172,31 @@ private:
     /// <param name="activeOnly">Return only active results (optional, default to false)</param>
     /// <param name="start">The record to begin the return set on (optional, default to 0L)</param>
     /// <param name="limit">The number of records to return (optional, default to 0L)</param>
-    virtual void get_game_levels_by_billable_entity( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_game_levels_by_billable_entity( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Level Questions
     /// </summary>
     /// <remarks>
     /// Get questions within a level.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="levelId">the id of the level to get questions from</param>
     /// <param name="accountId">the id of the logged in user</param>
-    virtual void get_questions_in_level( const double &version, const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_questions_in_level( const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Level Words
     /// </summary>
     /// <remarks>
     /// Get words within a level.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="levelId">the id of the level to get words for</param>
     /// <param name="accountId">the id of the logged in user</param>
-    virtual void get_words_in_level( const double &version, const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_words_in_level( const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Game Level
     /// </summary>
     /// <remarks>
     /// Update a game level. Currently does NOT support game objects.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="levelId">If update then include the level Id.</param>
     /// <param name="appKey">The game application key to save the level for. (optional, default to &quot;&quot;)</param>
@@ -232,29 +224,27 @@ private:
     /// <param name="tutorialImageAssetId">Asset id of the tutorial image. (optional, default to 0L)</param>
     /// <param name="offerId"> (optional, default to 0L)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void update_game_level( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &levelId, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &difficulty, const std::optional<std::string> &appVersion, const std::optional<int64_t> &assetImageId, const std::optional<int64_t> &assetIconId, const std::optional<std::string> &gameData, const std::optional<std::string> &gameDataSuffix, const std::optional<std::string> &visibility, const std::optional<bool> &friendGroup, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionGroupIds, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &tutorialTitle, const std::optional<std::string> &tutorialMessage, const std::optional<std::string> &tutorialAlignment, const std::optional<int64_t> &tutorialImageAssetId, const std::optional<int64_t> &offerId, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_game_level( const std::optional<int64_t> &accountId, const std::optional<int64_t> &levelId, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &difficulty, const std::optional<std::string> &appVersion, const std::optional<int64_t> &assetImageId, const std::optional<int64_t> &assetIconId, const std::optional<std::string> &gameData, const std::optional<std::string> &gameDataSuffix, const std::optional<std::string> &visibility, const std::optional<bool> &friendGroup, const std::optional<std::string> &connectionIds, const std::optional<std::string> &connectionGroupIds, const std::optional<double> &balance, const std::optional<bool> &active, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &tutorialTitle, const std::optional<std::string> &tutorialMessage, const std::optional<std::string> &tutorialAlignment, const std::optional<int64_t> &tutorialImageAssetId, const std::optional<int64_t> &offerId, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Level Questions
     /// </summary>
     /// <remarks>
     /// Updates a level with question game objects.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="levelId">the id of the level to update questions on</param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="questionIds">the IDs of the questions to update</param>
-    virtual void update_questions_in_level( const double &version, const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, const std::optional<std::string> &questionIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_questions_in_level( const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, const std::optional<std::string> &questionIds, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Level Words
     /// </summary>
     /// <remarks>
     /// Updates a level with word game objects.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="levelId">the id of the level to update words for</param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="wordIds">the ids of the words to update for the level</param>
-    virtual void update_words_in_level( const double &version, const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, const std::optional<std::string> &wordIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_words_in_level( const std::optional<int64_t> &levelId, const std::optional<int64_t> &accountId, const std::optional<std::string> &wordIds, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

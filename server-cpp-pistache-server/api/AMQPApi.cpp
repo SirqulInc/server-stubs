@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AMQPApi::base = "";
+const std::string AMQPApi::base = "/api/3.18";
 
 AMQPApi::AMQPApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,14 +32,14 @@ void AMQPApi::init() {
 void AMQPApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/queue/consumer/create", Routes::bind(&AMQPApi::consumer_create_handler, this));
-    Routes::Post(*router, base + "/api/:version/queue/consumer/update", Routes::bind(&AMQPApi::consumer_update_handler, this));
-    Routes::Post(*router, base + "/api/:version/queue/create", Routes::bind(&AMQPApi::queue_create_handler, this));
-    Routes::Post(*router, base + "/api/:version/queue/delete", Routes::bind(&AMQPApi::queue_delete_handler, this));
-    Routes::Get(*router, base + "/api/:version/queue/get", Routes::bind(&AMQPApi::queue_get_handler, this));
-    Routes::Post(*router, base + "/api/:version/queue/publish", Routes::bind(&AMQPApi::queue_publish_handler, this));
-    Routes::Get(*router, base + "/api/:version/queue/search", Routes::bind(&AMQPApi::queue_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/queue/update", Routes::bind(&AMQPApi::queue_update_handler, this));
+    Routes::Post(*router, base + "/queue/consumer/create", Routes::bind(&AMQPApi::consumer_create_handler, this));
+    Routes::Post(*router, base + "/queue/consumer/update", Routes::bind(&AMQPApi::consumer_update_handler, this));
+    Routes::Post(*router, base + "/queue/create", Routes::bind(&AMQPApi::queue_create_handler, this));
+    Routes::Post(*router, base + "/queue/delete", Routes::bind(&AMQPApi::queue_delete_handler, this));
+    Routes::Get(*router, base + "/queue/get", Routes::bind(&AMQPApi::queue_get_handler, this));
+    Routes::Post(*router, base + "/queue/publish", Routes::bind(&AMQPApi::queue_publish_handler, this));
+    Routes::Get(*router, base + "/queue/search", Routes::bind(&AMQPApi::queue_search_handler, this));
+    Routes::Post(*router, base + "/queue/update", Routes::bind(&AMQPApi::queue_update_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AMQPApi::amqp_api_default_handler, this));
@@ -74,8 +74,6 @@ std::pair<Pistache::Http::Code, std::string> AMQPApi::handleOperationException(c
 void AMQPApi::consumer_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -200,7 +198,7 @@ void AMQPApi::consumer_create_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->consumer_create(version, appKey, name, hostname, username, password, dataMapping, deviceId, accountId, port, virtualHost, exchanger, exchangerType, workers, useSSL, response);
+            this->consumer_create(appKey, name, hostname, username, password, dataMapping, deviceId, accountId, port, virtualHost, exchanger, exchangerType, workers, useSSL, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -219,8 +217,6 @@ void AMQPApi::consumer_create_handler(const Pistache::Rest::Request& request, Pi
 void AMQPApi::consumer_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -281,7 +277,7 @@ void AMQPApi::consumer_update_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->consumer_update(version, appKey, queueId, dataMapping, deviceId, accountId, useSSL, response);
+            this->consumer_update(appKey, queueId, dataMapping, deviceId, accountId, useSSL, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -300,8 +296,6 @@ void AMQPApi::consumer_update_handler(const Pistache::Rest::Request& request, Pi
 void AMQPApi::queue_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -410,7 +404,7 @@ void AMQPApi::queue_create_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->queue_create(version, appKey, name, deviceId, accountId, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL, response);
+            this->queue_create(appKey, name, deviceId, accountId, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -429,8 +423,6 @@ void AMQPApi::queue_create_handler(const Pistache::Rest::Request& request, Pista
 void AMQPApi::queue_delete_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -467,7 +459,7 @@ void AMQPApi::queue_delete_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->queue_delete(version, queueId, deviceId, accountId, response);
+            this->queue_delete(queueId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -486,8 +478,6 @@ void AMQPApi::queue_delete_handler(const Pistache::Rest::Request& request, Pista
 void AMQPApi::queue_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -556,7 +546,7 @@ void AMQPApi::queue_get_handler(const Pistache::Rest::Request& request, Pistache
 
 
 
-            this->queue_get(version, deviceId, accountId, queueId, appKey, name, hostname, virtualHost, response);
+            this->queue_get(deviceId, accountId, queueId, appKey, name, hostname, virtualHost, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -575,8 +565,6 @@ void AMQPApi::queue_get_handler(const Pistache::Rest::Request& request, Pistache
 void AMQPApi::queue_publish_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -637,7 +625,7 @@ void AMQPApi::queue_publish_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->queue_publish(version, message, queueId, appKey, name, hostname, virtualHost, response);
+            this->queue_publish(message, queueId, appKey, name, hostname, virtualHost, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -656,8 +644,6 @@ void AMQPApi::queue_publish_handler(const Pistache::Rest::Request& request, Pist
 void AMQPApi::queue_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -718,7 +704,7 @@ void AMQPApi::queue_search_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->queue_search(version, queueId, deviceId, accountId, name, start, limit, response);
+            this->queue_search(queueId, deviceId, accountId, name, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -737,8 +723,6 @@ void AMQPApi::queue_search_handler(const Pistache::Rest::Request& request, Pista
 void AMQPApi::queue_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -847,7 +831,7 @@ void AMQPApi::queue_update_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->queue_update(version, queueId, deviceId, accountId, appKey, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL, response);
+            this->queue_update(queueId, deviceId, accountId, appKey, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

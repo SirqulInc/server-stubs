@@ -87,16 +87,14 @@ private:
     /// <remarks>
     /// Checks the status of a captured disbrusement to see if it has been settled.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="disbursementId">the ID of the disbursement being checked on</param>
-    virtual void check_disbursements( const double &version, const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void check_disbursements( const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Disbursement
     /// </summary>
     /// <remarks>
     /// Creates a Disbursement for sending money to a retailer
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the ID of the logging in user (must be an EXECUTIVE account)</param>
     /// <param name="receiverAccountId">the ID of the account receiving the disbursement</param>
     /// <param name="originalSenderAccountId">the ID of the original sender account</param>
@@ -107,24 +105,22 @@ private:
     /// <param name="comment">a comment that could be made for a disbursement (optional, default to &quot;&quot;)</param>
     /// <param name="externalId">external ID, which can be used as a way to reference the disbursement (optional, default to &quot;&quot;)</param>
     /// <param name="introspectionParams">This is for specifying parameters to make an http callback request for validating that the disbursement is valid (optional, default to &quot;&quot;)</param>
-    virtual void create_disbursement( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &originalSenderAccountId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_disbursement( const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<int64_t> &originalSenderAccountId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Disbursement
     /// </summary>
     /// <remarks>
     /// Get Disbursement details
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="disbursementId">the id of the disbursement</param>
-    virtual void get_disbursement( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_disbursement( const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Disbursements
     /// </summary>
     /// <remarks>
     /// Search Disbursements
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="receiverAccountId">filter results by the id of the account receiving the disbursement (optional, default to 0L)</param>
     /// <param name="statuses">comma separated list of status values to search for, possilbe values include: NEW, APPROVED, VALIDATING, ERROR, AUTHORIZED, CAPTURED, SETTLED (optional, default to &quot;&quot;)</param>
@@ -135,14 +131,13 @@ private:
     /// <param name="limit">the limit per result set for pagination (optional, default to 20)</param>
     /// <param name="activeOnly">search on disbursements that are active only (optional, default to false)</param>
     /// <param name="externalId">search results by this external ID (that can be used to reference the disbursement) (optional, default to &quot;&quot;)</param>
-    virtual void search_disbursements( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<std::string> &statuses, const std::optional<std::string> &providers, const std::optional<int64_t> &beforeDate, const std::optional<int64_t> &afterDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &externalId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_disbursements( const std::optional<int64_t> &accountId, const std::optional<int64_t> &receiverAccountId, const std::optional<std::string> &statuses, const std::optional<std::string> &providers, const std::optional<int64_t> &beforeDate, const std::optional<int64_t> &afterDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &externalId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Disbursement
     /// </summary>
     /// <remarks>
     /// Update Disbursement
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="disbursementId">the id of the disbursement being updated</param>
     /// <param name="amount">the disbursement dollar amount being updated (optional, default to 0.0)</param>
@@ -153,7 +148,7 @@ private:
     /// <param name="externalId">an external ID that can be used to reference the disbursement (optional, default to &quot;&quot;)</param>
     /// <param name="retry">determines whether to try sending the disbursement again in the case of a previous failure (optional, default to false)</param>
     /// <param name="introspectionParams">for specifying parameters to make an http callback request for validating that the disbursement is valid (optional, default to &quot;&quot;)</param>
-    virtual void update_disbursement( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<bool> &retry, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_disbursement( const std::optional<int64_t> &accountId, const std::optional<int64_t> &disbursementId, const std::optional<double> &amount, const std::optional<std::string> &provider, const std::optional<int64_t> &scheduledDate, const std::optional<std::string> &title, const std::optional<std::string> &comment, const std::optional<std::string> &externalId, const std::optional<bool> &retry, const std::optional<std::string> &introspectionParams, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

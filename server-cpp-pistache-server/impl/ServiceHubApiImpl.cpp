@@ -29,22 +29,22 @@ ServiceHubApiImpl::ServiceHubApiImpl(const std::shared_ptr<Pistache::Rest::Route
 
 }
 
-void ServiceHubApiImpl::create_service_hub(const double &version, const ServiceHub &body, Pistache::Http::ResponseWriter &response) {
+void ServiceHubApiImpl::create_service_hub(const ServiceHub &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ServiceHubApiImpl::delete_service_hub(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ServiceHubApiImpl::delete_service_hub(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ServiceHubApiImpl::get_service_hub(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response) {
+void ServiceHubApiImpl::get_service_hub(const int64_t &id, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ServiceHubApiImpl::post_service_hub(const double &version, const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response) {
+void ServiceHubApiImpl::post_service_hub(const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ServiceHubApiImpl::put_service_hub(const double &version, const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response) {
+void ServiceHubApiImpl::put_service_hub(const int64_t &id, const ServiceHub &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ServiceHubApiImpl::search_service_hubs(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) {
+void ServiceHubApiImpl::search_service_hubs(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

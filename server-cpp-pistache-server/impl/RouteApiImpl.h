@@ -46,27 +46,27 @@ public:
     explicit RouteApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~RouteApiImpl() override = default;
 
-    void approve_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void copy_route(const double &version, const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response);
-    void create_route(const double &version, const Route &body, Pistache::Http::ResponseWriter &response);
-    void create_route_directions(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void create_route_polyline(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void delete_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void disapprove_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void get_route(const double &version, const int64_t &routeId, const std::optional<bool> &showInheritedProperties, Pistache::Http::ResponseWriter &response);
-    void get_route_directions(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void get_route_shipments(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void get_route_stop(const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response);
-    void get_route_stops(const double &version, const int64_t &routeId, const std::optional<bool> &confirmedOnly, Pistache::Http::ResponseWriter &response);
-    void get_shipments_at_stop(const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response);
-    void optimize_route(const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response);
-    void remove_stop(const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response);
-    void reorder_route_stops_patch(const double &version, const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response);
-    void reorder_route_stops_post(const double &version, const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response);
-    void search_routes(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includesEmpty, const std::optional<bool> &rootOnly, const std::optional<bool> &showInheritedProperties, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<int64_t> &scheduledStart, const std::optional<int64_t> &scheduledEnd, const std::optional<int64_t> &updatedStart, const std::optional<int64_t> &updatedEnd, const std::optional<bool> &featured, const std::optional<int32_t> &seatCount, const std::optional<bool> &approved, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &valid, const std::optional<int64_t> &parentId, Pistache::Http::ResponseWriter &response);
-    void set_driver(const double &version, const int64_t &id, const int64_t &driverId, Pistache::Http::ResponseWriter &response);
-    void update_route(const double &version, const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response);
-    void update_route_stop(const double &version, const int64_t &routeId, const int64_t &stopId, const Stop &body, Pistache::Http::ResponseWriter &response);
+    void approve_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void copy_route(const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response);
+    void create_route(const Route &body, Pistache::Http::ResponseWriter &response);
+    void create_route_directions(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void create_route_polyline(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void delete_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void disapprove_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void get_route(const int64_t &routeId, const std::optional<bool> &showInheritedProperties, Pistache::Http::ResponseWriter &response);
+    void get_route_directions(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void get_route_shipments(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void get_route_stop(const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response);
+    void get_route_stops(const int64_t &routeId, const std::optional<bool> &confirmedOnly, Pistache::Http::ResponseWriter &response);
+    void get_shipments_at_stop(const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response);
+    void optimize_route(const int64_t &routeId, Pistache::Http::ResponseWriter &response);
+    void remove_stop(const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response);
+    void reorder_route_stops_patch(const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response);
+    void reorder_route_stops_post(const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response);
+    void search_routes(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includesEmpty, const std::optional<bool> &rootOnly, const std::optional<bool> &showInheritedProperties, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<int64_t> &scheduledStart, const std::optional<int64_t> &scheduledEnd, const std::optional<int64_t> &updatedStart, const std::optional<int64_t> &updatedEnd, const std::optional<bool> &featured, const std::optional<int32_t> &seatCount, const std::optional<bool> &approved, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &valid, const std::optional<int64_t> &parentId, Pistache::Http::ResponseWriter &response);
+    void set_driver(const int64_t &id, const int64_t &driverId, Pistache::Http::ResponseWriter &response);
+    void update_route(const int64_t &routeId, const Route &body, Pistache::Http::ResponseWriter &response);
+    void update_route_stop(const int64_t &routeId, const int64_t &stopId, const Stop &body, Pistache::Http::ResponseWriter &response);
 
 };
 

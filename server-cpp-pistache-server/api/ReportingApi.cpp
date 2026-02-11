@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ReportingApi::base = "";
+const std::string ReportingApi::base = "/api/3.18";
 
 ReportingApi::ReportingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ReportingApi::init() {
 void ReportingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/report/batch/create", Routes::bind(&ReportingApi::create_batch_handler, this));
-    Routes::Post(*router, base + "/api/:version/report/region/summary/batch", Routes::bind(&ReportingApi::create_region_leg_summary_batch_handler, this));
-    Routes::Post(*router, base + "/api/:version/report/batch/delete", Routes::bind(&ReportingApi::delete_batch_handler, this));
-    Routes::Get(*router, base + "/api/:version/report/batch/get", Routes::bind(&ReportingApi::get_report_batch_handler, this));
-    Routes::Post(*router, base + "/api/:version/report/run", Routes::bind(&ReportingApi::run_report_handler, this));
-    Routes::Get(*router, base + "/api/:version/report/batch/search", Routes::bind(&ReportingApi::search_batch_handler, this));
+    Routes::Post(*router, base + "/report/batch/create", Routes::bind(&ReportingApi::create_batch_handler, this));
+    Routes::Post(*router, base + "/report/region/summary/batch", Routes::bind(&ReportingApi::create_region_leg_summary_batch_handler, this));
+    Routes::Post(*router, base + "/report/batch/delete", Routes::bind(&ReportingApi::delete_batch_handler, this));
+    Routes::Get(*router, base + "/report/batch/get", Routes::bind(&ReportingApi::get_report_batch_handler, this));
+    Routes::Post(*router, base + "/report/run", Routes::bind(&ReportingApi::run_report_handler, this));
+    Routes::Get(*router, base + "/report/batch/search", Routes::bind(&ReportingApi::search_batch_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ReportingApi::reporting_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ReportingApi::handleOperationExcept
 void ReportingApi::create_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -174,7 +172,7 @@ void ReportingApi::create_batch_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_batch(version, accountId, status, previewLimit, appKey, endpoint, parameters, name, startDate, endDate, description, pageUrl, response);
+            this->create_batch(accountId, status, previewLimit, appKey, endpoint, parameters, name, startDate, endDate, description, pageUrl, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -193,8 +191,6 @@ void ReportingApi::create_batch_handler(const Pistache::Rest::Request& request, 
 void ReportingApi::create_region_leg_summary_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
                 std::vector<RegionLegSummary> body;
@@ -217,7 +213,7 @@ void ReportingApi::create_region_leg_summary_batch_handler(const Pistache::Rest:
 
 
 
-            this->create_region_leg_summary_batch(version, body, response);
+            this->create_region_leg_summary_batch(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -236,8 +232,6 @@ void ReportingApi::create_region_leg_summary_batch_handler(const Pistache::Rest:
 void ReportingApi::delete_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -266,7 +260,7 @@ void ReportingApi::delete_batch_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_batch(version, accountId, batchId, response);
+            this->delete_batch(accountId, batchId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -285,8 +279,6 @@ void ReportingApi::delete_batch_handler(const Pistache::Rest::Request& request, 
 void ReportingApi::get_report_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -323,7 +315,7 @@ void ReportingApi::get_report_batch_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_report_batch(version, accountId, batchId, allResults, response);
+            this->get_report_batch(accountId, batchId, allResults, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -342,8 +334,6 @@ void ReportingApi::get_report_batch_handler(const Pistache::Rest::Request& reque
 void ReportingApi::run_report_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -420,7 +410,7 @@ void ReportingApi::run_report_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->run_report(version, desc, accountId, query, parameters, order, start, limit, responseFormat, response);
+            this->run_report(desc, accountId, query, parameters, order, start, limit, responseFormat, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -439,8 +429,6 @@ void ReportingApi::run_report_handler(const Pistache::Rest::Request& request, Pi
 void ReportingApi::search_batch_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -525,7 +513,7 @@ void ReportingApi::search_batch_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->search_batch(version, accountId, start, limit, names, appKey, status, globalAppSearch, startDate, endDate, response);
+            this->search_batch(accountId, start, limit, names, appKey, status, globalAppSearch, startDate, endDate, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

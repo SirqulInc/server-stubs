@@ -41,7 +41,7 @@ public:
     explicit WeatherApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~WeatherApiImpl() override = default;
 
-    void search_weather(const double &version, const std::optional<int64_t> &regionId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &timezoneOffset, Pistache::Http::ResponseWriter &response);
+    void search_weather(const std::optional<int64_t> &regionId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &timezoneOffset, Pistache::Http::ResponseWriter &response);
 
 };
 

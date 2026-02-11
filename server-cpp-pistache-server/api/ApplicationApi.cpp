@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ApplicationApi::base = "";
+const std::string ApplicationApi::base = "/api/3.18";
 
 ApplicationApi::ApplicationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,22 +32,22 @@ void ApplicationApi::init() {
 void ApplicationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/application/create", Routes::bind(&ApplicationApi::create_application_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/placement/create", Routes::bind(&ApplicationApi::create_application_placement_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/delete", Routes::bind(&ApplicationApi::delete_application_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/placement/delete", Routes::bind(&ApplicationApi::delete_application_placement_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/get", Routes::bind(&ApplicationApi::get_application_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/placement/get", Routes::bind(&ApplicationApi::get_application_placement_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/versions", Routes::bind(&ApplicationApi::get_application_versions_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/users", Routes::bind(&ApplicationApi::get_unique_users_by_app_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/list", Routes::bind(&ApplicationApi::list_applications_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/placement/search", Routes::bind(&ApplicationApi::search_application_placement_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/settings/search", Routes::bind(&ApplicationApi::search_application_settings_handler, this));
-    Routes::Get(*router, base + "/api/:version/application/search", Routes::bind(&ApplicationApi::search_applications_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/update", Routes::bind(&ApplicationApi::update_application_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/active", Routes::bind(&ApplicationApi::update_application_active_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/placement/update", Routes::bind(&ApplicationApi::update_application_placement_handler, this));
-    Routes::Post(*router, base + "/api/:version/application/certificate/create", Routes::bind(&ApplicationApi::upload_application_certificate_handler, this));
+    Routes::Post(*router, base + "/application/create", Routes::bind(&ApplicationApi::create_application_handler, this));
+    Routes::Post(*router, base + "/application/placement/create", Routes::bind(&ApplicationApi::create_application_placement_handler, this));
+    Routes::Post(*router, base + "/application/delete", Routes::bind(&ApplicationApi::delete_application_handler, this));
+    Routes::Post(*router, base + "/application/placement/delete", Routes::bind(&ApplicationApi::delete_application_placement_handler, this));
+    Routes::Get(*router, base + "/application/get", Routes::bind(&ApplicationApi::get_application_handler, this));
+    Routes::Get(*router, base + "/application/placement/get", Routes::bind(&ApplicationApi::get_application_placement_handler, this));
+    Routes::Get(*router, base + "/application/versions", Routes::bind(&ApplicationApi::get_application_versions_handler, this));
+    Routes::Get(*router, base + "/application/users", Routes::bind(&ApplicationApi::get_unique_users_by_app_handler, this));
+    Routes::Get(*router, base + "/application/list", Routes::bind(&ApplicationApi::list_applications_handler, this));
+    Routes::Get(*router, base + "/application/placement/search", Routes::bind(&ApplicationApi::search_application_placement_handler, this));
+    Routes::Get(*router, base + "/application/settings/search", Routes::bind(&ApplicationApi::search_application_settings_handler, this));
+    Routes::Get(*router, base + "/application/search", Routes::bind(&ApplicationApi::search_applications_handler, this));
+    Routes::Post(*router, base + "/application/update", Routes::bind(&ApplicationApi::update_application_handler, this));
+    Routes::Post(*router, base + "/application/active", Routes::bind(&ApplicationApi::update_application_active_handler, this));
+    Routes::Post(*router, base + "/application/placement/update", Routes::bind(&ApplicationApi::update_application_placement_handler, this));
+    Routes::Post(*router, base + "/application/certificate/create", Routes::bind(&ApplicationApi::upload_application_certificate_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ApplicationApi::application_api_default_handler, this));
@@ -102,8 +102,6 @@ void ApplicationApi::create_application_handler(const Pistache::Rest::Request& r
 void ApplicationApi::create_application_placement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -204,7 +202,7 @@ void ApplicationApi::create_application_placement_handler(const Pistache::Rest::
 
 
 
-            this->create_application_placement(version, appKey, size, deviceId, accountId, name, description, height, width, refreshInterval, defaultImageId, active, response);
+            this->create_application_placement(appKey, size, deviceId, accountId, name, description, height, width, refreshInterval, defaultImageId, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -223,8 +221,6 @@ void ApplicationApi::create_application_placement_handler(const Pistache::Rest::
 void ApplicationApi::delete_application_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -253,7 +249,7 @@ void ApplicationApi::delete_application_handler(const Pistache::Rest::Request& r
 
 
 
-            this->delete_application(version, accountId, appKey, response);
+            this->delete_application(accountId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -272,8 +268,6 @@ void ApplicationApi::delete_application_handler(const Pistache::Rest::Request& r
 void ApplicationApi::delete_application_placement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -310,7 +304,7 @@ void ApplicationApi::delete_application_placement_handler(const Pistache::Rest::
 
 
 
-            this->delete_application_placement(version, placementId, deviceId, accountId, response);
+            this->delete_application_placement(placementId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -329,8 +323,6 @@ void ApplicationApi::delete_application_placement_handler(const Pistache::Rest::
 void ApplicationApi::get_application_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -359,7 +351,7 @@ void ApplicationApi::get_application_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_application(version, appKey, applicationId, response);
+            this->get_application(appKey, applicationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -378,8 +370,6 @@ void ApplicationApi::get_application_handler(const Pistache::Rest::Request& requ
 void ApplicationApi::get_application_placement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -416,7 +406,7 @@ void ApplicationApi::get_application_placement_handler(const Pistache::Rest::Req
 
 
 
-            this->get_application_placement(version, placementId, deviceId, accountId, response);
+            this->get_application_placement(placementId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -435,8 +425,6 @@ void ApplicationApi::get_application_placement_handler(const Pistache::Rest::Req
 void ApplicationApi::get_application_versions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
     
@@ -448,7 +436,7 @@ void ApplicationApi::get_application_versions_handler(const Pistache::Rest::Requ
 
 
 
-            this->get_application_versions(version, response);
+            this->get_application_versions(response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -467,8 +455,6 @@ void ApplicationApi::get_application_versions_handler(const Pistache::Rest::Requ
 void ApplicationApi::get_unique_users_by_app_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -545,7 +531,7 @@ void ApplicationApi::get_unique_users_by_app_handler(const Pistache::Rest::Reque
 
 
 
-            this->get_unique_users_by_app(version, appKey, q, keyword, since, i, start, l, limit, response);
+            this->get_unique_users_by_app(appKey, q, keyword, since, i, start, l, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -564,8 +550,6 @@ void ApplicationApi::get_unique_users_by_app_handler(const Pistache::Rest::Reque
 void ApplicationApi::list_applications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -738,7 +722,7 @@ void ApplicationApi::list_applications_handler(const Pistache::Rest::Request& re
 
 
 
-            this->list_applications(version, accountId, q, keyword, platforms, deviceIds, deviceVersions, categoryIds, sortField, hasAds, publicNotifications, filterBillable, filterContentAdmin, descending, i, start, l, limit, applicationIds, hasObjectStore, activeOnly, response);
+            this->list_applications(accountId, q, keyword, platforms, deviceIds, deviceVersions, categoryIds, sortField, hasAds, publicNotifications, filterBillable, filterContentAdmin, descending, i, start, l, limit, applicationIds, hasObjectStore, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -757,8 +741,6 @@ void ApplicationApi::list_applications_handler(const Pistache::Rest::Request& re
 void ApplicationApi::search_application_placement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -811,7 +793,7 @@ void ApplicationApi::search_application_placement_handler(const Pistache::Rest::
 
 
 
-            this->search_application_placement(version, appKey, deviceId, accountId, start, limit, response);
+            this->search_application_placement(appKey, deviceId, accountId, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -830,8 +812,6 @@ void ApplicationApi::search_application_placement_handler(const Pistache::Rest::
 void ApplicationApi::search_application_settings_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -908,7 +888,7 @@ void ApplicationApi::search_application_settings_handler(const Pistache::Rest::R
 
 
 
-            this->search_application_settings(version, deviceId, accountId, connectionAccountId, keyword, sortField, descending, start, limit, response);
+            this->search_application_settings(deviceId, accountId, connectionAccountId, keyword, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -927,8 +907,6 @@ void ApplicationApi::search_application_settings_handler(const Pistache::Rest::R
 void ApplicationApi::search_applications_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1069,7 +1047,7 @@ void ApplicationApi::search_applications_handler(const Pistache::Rest::Request& 
 
 
 
-            this->search_applications(version, deviceId, accountId, latitude, longitude, q, keyword, qSearchFields, sortField, descending, i, start, l, limit, hasAds, publicNotifications, activeOnly, response);
+            this->search_applications(deviceId, accountId, latitude, longitude, q, keyword, qSearchFields, sortField, descending, i, start, l, limit, hasAds, publicNotifications, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1108,8 +1086,6 @@ void ApplicationApi::update_application_handler(const Pistache::Rest::Request& r
 void ApplicationApi::update_application_active_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1146,7 +1122,7 @@ void ApplicationApi::update_application_active_handler(const Pistache::Rest::Req
 
 
 
-            this->update_application_active(version, accountId, appKey, active, response);
+            this->update_application_active(accountId, appKey, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1165,8 +1141,6 @@ void ApplicationApi::update_application_active_handler(const Pistache::Rest::Req
 void ApplicationApi::update_application_placement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1267,7 +1241,7 @@ void ApplicationApi::update_application_placement_handler(const Pistache::Rest::
 
 
 
-            this->update_application_placement(version, placementId, deviceId, accountId, name, description, size, height, width, refreshInterval, defaultImageId, active, response);
+            this->update_application_placement(placementId, deviceId, accountId, name, description, size, height, width, refreshInterval, defaultImageId, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

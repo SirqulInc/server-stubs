@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Create a filter
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (must have permissions to the target application)</param>
     /// <param name="name">The name of the filter</param>
     /// <param name="appKey">The appKey of the application to assign the filter to, if not provided then the filter will be applied to the global application (if the account has permissions) (optional, default to &quot;&quot;)</param>
@@ -99,33 +98,30 @@ private:
     /// <param name="externalType">A string type used by client applications to store external information (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets whether the filter is active or inactive (hidden from consumers) (optional, default to false)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void create_filter( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_filter( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Filter
     /// </summary>
     /// <remarks>
     /// Delete a filter.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (must have permissions to the filter&#39;s assigned application)</param>
     /// <param name="filterId">The ID of the filter to delete</param>
-    virtual void delete_filter( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_filter( const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Filter
     /// </summary>
     /// <remarks>
     /// Get the details of a specific filter. Recursively include all child filters and their children.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="filterId">the id of the filter to get</param>
-    virtual void get_filter( const double &version, const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_filter( const std::optional<int64_t> &filterId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Filters
     /// </summary>
     /// <remarks>
     /// Search for filters.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (optional, default to 0L)</param>
     /// <param name="keyword">The string to search on (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the appKey of the application to retrieve filters for (optional, default to &quot;&quot;)</param>
@@ -136,14 +132,13 @@ private:
     /// <param name="start">The record to begin the return set on (optional, default to 0)</param>
     /// <param name="limit">The number of records to return (optional, default to 20)</param>
     /// <param name="activeOnly">Determines whether to return only active categories (optional, default to true)</param>
-    virtual void search_filters( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &responseGroup, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_filters( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &responseGroup, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Filter
     /// </summary>
     /// <remarks>
     /// Update a filter.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
     /// <param name="filterId">The ID of the filter to edit</param>
     /// <param name="parentFilterId">The ID of the parent filter, if not provided then the parent filter will be null (optional, default to 0L)</param>
@@ -153,7 +148,7 @@ private:
     /// <param name="externalType">A string type used by client applications to store external information (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets whether the filter is active or inactive (hidden from consumers) (optional, default to false)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void update_filter( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_filter( const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterId, const std::optional<int64_t> &parentFilterId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -43,11 +43,11 @@ public:
     explicit PreviewPersonaApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~PreviewPersonaApiImpl() override = default;
 
-    void create_persona(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
-    void delete_persona(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response);
-    void get_persona_list(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response);
-    void search_persona(const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
-    void update_persona(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<bool> &active, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void create_persona(const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
+    void delete_persona(const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response);
+    void get_persona_list(const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, Pistache::Http::ResponseWriter &response);
+    void search_persona(const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
+    void update_persona(const std::optional<int64_t> &accountId, const std::optional<int64_t> &personaId, const std::optional<std::string> &title, const std::optional<std::string> &previewAccounts, const std::optional<bool> &active, const std::optional<int64_t> &date, const std::optional<int32_t> &age, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperienceLevel, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response);
 
 };
 

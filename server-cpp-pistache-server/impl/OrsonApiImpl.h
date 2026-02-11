@@ -53,29 +53,29 @@ public:
     ~OrsonApiImpl() override = default;
 
     void add_movie(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
-    void ai_docs(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &doc, const std::optional<bool> &returnTopics, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response);
-    void ai_find_images(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &parseFlag, const std::optional<std::string> &fetchFlag, const std::optional<std::string> &size, Pistache::Http::ResponseWriter &response);
-    void ai_tags(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response);
-    void ai_text(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &terms, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response);
+    void ai_docs(const std::optional<int64_t> &accountId, const std::optional<std::string> &doc, const std::optional<bool> &returnTopics, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response);
+    void ai_find_images(const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &parseFlag, const std::optional<std::string> &fetchFlag, const std::optional<std::string> &size, Pistache::Http::ResponseWriter &response);
+    void ai_tags(const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response);
+    void ai_text(const std::optional<int64_t> &accountId, const std::optional<std::string> &terms, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response);
     void batch(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
-    void create_instant_episode(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response);
+    void create_instant_episode(const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response);
     void create_voice_canvas(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
     void emotion(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
-    void get_add_movie_result(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_batch(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_emotion(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_episode_status(const double &version, const int64_t &episodeId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_render_status(const double &version, const std::string &renderId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_stt(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_tts(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_tech_tune(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_topics(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void get_voice_canvas(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
-    void start_video_render(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response);
+    void get_add_movie_result(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_batch(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_emotion(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_episode_status(const int64_t &episodeId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_render_status(const std::string &renderId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_stt(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_tts(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_tech_tune(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_topics(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void get_voice_canvas(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response);
+    void start_video_render(const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response);
     void stt(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
     void summarize_topics(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
     void tech_tune(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
-    void tts(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &thirdPartyAccountId, const std::optional<std::string> &language, const std::optional<std::string> &voice, const std::optional<std::string> &callback, Pistache::Http::ResponseWriter &response);
+    void tts(const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &thirdPartyAccountId, const std::optional<std::string> &language, const std::optional<std::string> &voice, const std::optional<std::string> &callback, Pistache::Http::ResponseWriter &response);
 
 };
 

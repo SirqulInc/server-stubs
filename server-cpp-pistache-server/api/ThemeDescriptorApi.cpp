@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ThemeDescriptorApi::base = "";
+const std::string ThemeDescriptorApi::base = "/api/3.18";
 
 ThemeDescriptorApi::ThemeDescriptorApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,10 +32,10 @@ void ThemeDescriptorApi::init() {
 void ThemeDescriptorApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/consumer/theme", Routes::bind(&ThemeDescriptorApi::add_or_update_theme_descriptor_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/theme/get", Routes::bind(&ThemeDescriptorApi::get_theme_descriptor_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/theme/search", Routes::bind(&ThemeDescriptorApi::get_theme_descriptors_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/theme/remove", Routes::bind(&ThemeDescriptorApi::remove_theme_descriptor_handler, this));
+    Routes::Post(*router, base + "/consumer/theme", Routes::bind(&ThemeDescriptorApi::add_or_update_theme_descriptor_handler, this));
+    Routes::Get(*router, base + "/consumer/theme/get", Routes::bind(&ThemeDescriptorApi::get_theme_descriptor_handler, this));
+    Routes::Get(*router, base + "/consumer/theme/search", Routes::bind(&ThemeDescriptorApi::get_theme_descriptors_handler, this));
+    Routes::Post(*router, base + "/consumer/theme/remove", Routes::bind(&ThemeDescriptorApi::remove_theme_descriptor_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ThemeDescriptorApi::theme_descriptor_api_default_handler, this));
@@ -90,8 +90,6 @@ void ThemeDescriptorApi::add_or_update_theme_descriptor_handler(const Pistache::
 void ThemeDescriptorApi::get_theme_descriptor_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -152,7 +150,7 @@ void ThemeDescriptorApi::get_theme_descriptor_handler(const Pistache::Rest::Requ
 
 
 
-            this->get_theme_descriptor(version, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude, response);
+            this->get_theme_descriptor(themeDescriptorId, deviceId, accountId, gameType, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -171,8 +169,6 @@ void ThemeDescriptorApi::get_theme_descriptor_handler(const Pistache::Rest::Requ
 void ThemeDescriptorApi::get_theme_descriptors_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -329,7 +325,7 @@ void ThemeDescriptorApi::get_theme_descriptors_handler(const Pistache::Rest::Req
 
 
 
-            this->get_theme_descriptors(version, filter, sortField, descending, start, limit, deviceId, accountId, gameType, contestType, ownerId, q, keyword, i, l, dateCreated, appVersion, latitude, longitude, response);
+            this->get_theme_descriptors(filter, sortField, descending, start, limit, deviceId, accountId, gameType, contestType, ownerId, q, keyword, i, l, dateCreated, appVersion, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -348,8 +344,6 @@ void ThemeDescriptorApi::get_theme_descriptors_handler(const Pistache::Rest::Req
 void ThemeDescriptorApi::remove_theme_descriptor_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -410,7 +404,7 @@ void ThemeDescriptorApi::remove_theme_descriptor_handler(const Pistache::Rest::R
 
 
 
-            this->remove_theme_descriptor(version, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude, response);
+            this->remove_theme_descriptor(themeDescriptorId, deviceId, accountId, gameType, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

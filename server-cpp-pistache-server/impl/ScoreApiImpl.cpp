@@ -29,13 +29,13 @@ ScoreApiImpl::ScoreApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void ScoreApiImpl::create_score(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &points, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<int32_t> &timeTaken, const std::optional<bool> &highest, Pistache::Http::ResponseWriter &response) {
+void ScoreApiImpl::create_score(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &points, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<int32_t> &timeTaken, const std::optional<bool> &highest, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ScoreApiImpl::get_score(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<std::string> &scoreObjectType, const std::optional<std::string> &scoreStatus, Pistache::Http::ResponseWriter &response) {
+void ScoreApiImpl::get_score(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<std::string> &scoreObjectType, const std::optional<std::string> &scoreStatus, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ScoreApiImpl::search_scores(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, Pistache::Http::ResponseWriter &response) {
+void ScoreApiImpl::search_scores(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

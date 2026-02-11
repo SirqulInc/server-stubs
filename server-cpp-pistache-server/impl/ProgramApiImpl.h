@@ -43,12 +43,12 @@ public:
     explicit ProgramApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~ProgramApiImpl() override = default;
 
-    void create_program(const double &version, const Program &body, Pistache::Http::ResponseWriter &response);
-    void delete_program(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void get_program(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void post_program(const double &version, const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response);
-    void put_program(const double &version, const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response);
-    void search_programs(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response);
+    void create_program(const Program &body, Pistache::Http::ResponseWriter &response);
+    void delete_program(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void get_program(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void post_program(const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response);
+    void put_program(const int64_t &id, const Program &body, Pistache::Http::ResponseWriter &response);
+    void search_programs(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response);
 
 };
 

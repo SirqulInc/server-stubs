@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Creates a new application configuration. If the configVersion provided already exists for the given app, an invalid response is returned and the application configuration won&#39;t be created.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account ID of the user</param>
     /// <param name="appKey">The application key that the newly created applicationConfig will be associated to</param>
     /// <param name="configVersion">The application configuration, has to be unique within the application</param>
@@ -97,48 +96,44 @@ private:
     /// <param name="retailerId">The retailer id for retailer specific configurations (optional, default to 0L)</param>
     /// <param name="retailerLocationId">The retailer location id for retailer location specific configurations (optional, default to 0L)</param>
     /// <param name="udid">The device udid for device specific configurations (optional, default to &quot;&quot;)</param>
-    virtual void create_application_config( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_application_config( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete AppConfig
     /// </summary>
     /// <remarks>
     /// Mark the application configuration for deletion.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account ID of the user</param>
     /// <param name="configId">The config ID of the application configuration to delete</param>
-    virtual void delete_application_config( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_application_config( const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get AppConfig
     /// </summary>
     /// <remarks>
     /// Gets the appConfig data by the given configId. If appConfig cannot be found, it returns an invalid response.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account ID of the user</param>
     /// <param name="configId">The config ID of the application configuration</param>
-    virtual void get_application_config( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_application_config( const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get AppConfig by Version
     /// </summary>
     /// <remarks>
     /// Gets the appConfig data by the given appKey and app configVersion number.If the appKey is is invalid or appConfig is not found, it returns an invalid response. 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key</param>
     /// <param name="configVersion">The version of the application configuration</param>
     /// <param name="retailerId">Only returns the config that matches the given retailer (optional, default to 0L)</param>
     /// <param name="retailerLocationId">Only returns the config that matches the given retailer location (optional, default to 0L)</param>
     /// <param name="udid">Only returns only returns the config that matches the given device udid (optional, default to &quot;&quot;)</param>
     /// <param name="allowOlderVersions">Determines whether to return older config versions if the exact version is not found. If this happens, will try to return the latest version. (optional, default to false)</param>
-    virtual void get_application_config_by_config_version( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<bool> &allowOlderVersions, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_application_config_by_config_version( const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<bool> &allowOlderVersions, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search AppConfigs
     /// </summary>
     /// <remarks>
     /// Gets all versions of application configurations in a particular app by the given appKey.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account ID of the user</param>
     /// <param name="appKey">The application key to filter results by application Leaving this empty will return all application configurations for all applications (executive user only) (optional, default to &quot;&quot;)</param>
     /// <param name="retailerId">Only returns the configs that matches the given retailer (optional, default to 0L)</param>
@@ -149,14 +144,13 @@ private:
     /// <param name="descending">Determines whether the results are in descending or ascending order (optional, default to true)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (There is a hard limit of 100) (optional, default to 20)</param>
-    virtual void search_application_config( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<std::string> &configVersion, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_application_config( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<std::string> &configVersion, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update AppConfig
     /// </summary>
     /// <remarks>
     /// pdates an existing application configuration. If the configVersion provided already exists for the given app the application configuration won&#39;t be updated.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account ID of the user</param>
     /// <param name="configId">The config ID of the application configuration to update</param>
     /// <param name="appKey">The application key that the updated applicationConfig will be associated to (optional, default to &quot;&quot;)</param>
@@ -165,7 +159,7 @@ private:
     /// <param name="retailerId">The retailer id for retailer specific configurations (optional, default to 0L)</param>
     /// <param name="retailerLocationId">The retailer location id for retailer location specific configurations (optional, default to 0L)</param>
     /// <param name="udid">The device udid for device specific configurations (optional, default to &quot;&quot;)</param>
-    virtual void update_application_config( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_application_config( const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

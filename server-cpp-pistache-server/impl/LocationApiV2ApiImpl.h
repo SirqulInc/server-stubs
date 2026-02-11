@@ -42,8 +42,8 @@ public:
     explicit LocationApiV2ApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~LocationApiV2ApiImpl() override = default;
 
-    void create_location_v2(const double &version, const Location &body, Pistache::Http::ResponseWriter &response);
-    void update_location_v2(const double &version, const int64_t &id, const Location &body, Pistache::Http::ResponseWriter &response);
+    void create_location_v2(const Location &body, Pistache::Http::ResponseWriter &response);
+    void update_location_v2(const int64_t &id, const Location &body, Pistache::Http::ResponseWriter &response);
 
 };
 

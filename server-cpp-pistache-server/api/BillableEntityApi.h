@@ -86,7 +86,6 @@ private:
     /// <remarks>
     /// reate a billable entity for an account. The creator is assumed to be the responsible account. An account can only have one billable entity
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="name">The name of the entity responsible for billing  (optional, default to &quot;&quot;)</param>
@@ -99,36 +98,33 @@ private:
     /// <param name="businessPhoneExt">The business phone extension (optional, default to &quot;&quot;)</param>
     /// <param name="authorizeNetApiKey">Authorize Net Api Key (optional, default to &quot;&quot;)</param>
     /// <param name="authorizeNetTransactionKey">Authorize Net Transaction Key (optional, default to &quot;&quot;)</param>
-    virtual void create_billable_entity( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_billable_entity( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Billable
     /// </summary>
     /// <remarks>
     /// Mark the billable as deleted
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account used to perform the delete, must have rights to edit the billable entity. (optional, default to 0L)</param>
-    virtual void delete_billable_entity( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_billable_entity( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Billable
     /// </summary>
     /// <remarks>
     /// Used to determine the associated BillableEntity of an account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
     /// <param name="includeCounts">Determines whether to include the retailer dash board counts into the response (optional, default to false)</param>
     /// <param name="includePayments">Whether to enable payments or not (optional, default to true)</param>
-    virtual void get_billable_entity( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, const std::optional<bool> &includePayments, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_billable_entity( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, const std::optional<bool> &includePayments, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Billable
     /// </summary>
     /// <remarks>
     /// Updates the billable record for an account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity. (optional, default to 0L)</param>
     /// <param name="name">The name of the entity responsible for billing  (optional, default to &quot;&quot;)</param>
@@ -141,7 +137,7 @@ private:
     /// <param name="businessPhoneExt">The business phone extension of the billable entity (optional, default to &quot;&quot;)</param>
     /// <param name="authorizeNetApiKey">Authorize Net Api Key of the billable entity (optional, default to &quot;&quot;)</param>
     /// <param name="authorizeNetTransactionKey">Authorize Net Transaction Key of the billable entity (optional, default to &quot;&quot;)</param>
-    virtual void update_billable_entity( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_billable_entity( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &authorizeNetApiKey, const std::optional<std::string> &authorizeNetTransactionKey, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

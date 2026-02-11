@@ -115,7 +115,6 @@ private:
     /// <remarks>
     /// Search accounts by their location. This only searches on users that have location data. Use ConnectionApi to perform a regular search on accounts.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="q">Deprecated - legacy query parameter (optional, default to &quot;&quot;)</param>
@@ -150,14 +149,13 @@ private:
     /// <param name="flagCountMinimum">Return any results that have a minimum of the specified flag count (even ones that have met the flag threshold) (optional, default to 0L)</param>
     /// <param name="verifiedUserOnly">Returns only verified users (optional, default to false)</param>
     /// <param name="contentAdminOnly">Returns only content admin users (optional, default to false)</param>
-    virtual void account_location_search( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &postalCode, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, const std::optional<double> &range, const std::optional<int64_t> &locationLastUpdated, const std::optional<std::string> &gender, const std::optional<int32_t> &minAge, const std::optional<int32_t> &maxAge, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<std::string> &searchMode, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &roles, const std::optional<std::string> &tags, const std::optional<std::string> &experience, const std::optional<std::string> &categoryIds, const std::optional<std::string> &audienceIds, const std::optional<std::string> &audienceOperator, const std::optional<bool> &updateCurrentLocation, const std::optional<bool> &updatePreferredSettings, const std::optional<bool> &showExactLocations, const std::optional<bool> &showConnectionToSearcher, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &verifiedUserOnly, const std::optional<bool> &contentAdminOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void account_location_search( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &postalCode, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, const std::optional<double> &range, const std::optional<int64_t> &locationLastUpdated, const std::optional<std::string> &gender, const std::optional<int32_t> &minAge, const std::optional<int32_t> &maxAge, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<std::string> &searchMode, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &roles, const std::optional<std::string> &tags, const std::optional<std::string> &experience, const std::optional<std::string> &categoryIds, const std::optional<std::string> &audienceIds, const std::optional<std::string> &audienceOperator, const std::optional<bool> &updateCurrentLocation, const std::optional<bool> &updatePreferredSettings, const std::optional<bool> &showExactLocations, const std::optional<bool> &showConnectionToSearcher, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &verifiedUserOnly, const std::optional<bool> &contentAdminOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Block Account
     /// </summary>
     /// <remarks>
     /// Moves or removes an account into the user&#39;s blocked group.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountIdBeingBlocked">The id of the account to be blocked/unblocked</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -165,14 +163,13 @@ private:
     /// <param name="removeFromGroupsIfBlocked">Determines whether the account is removed from all other groups if blocked (optional, default to false)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void block_account( const double &version, const std::optional<int64_t> &accountIdBeingBlocked, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &blockFlagValue, const std::optional<bool> &removeFromGroupsIfBlocked, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void block_account( const std::optional<int64_t> &accountIdBeingBlocked, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &blockFlagValue, const std::optional<bool> &removeFromGroupsIfBlocked, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Account
     /// </summary>
     /// <remarks>
     /// Create a new account by role.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="username">The access token to authenticate with (ex: username)</param>
     /// <param name="password">The secret to authenticate with (ex: password)</param>
     /// <param name="name">The full name of the user. If this parameter is NOT empty, the following parameters will be ignored: prefixName, firstName, middleName, lastName, and suffixName (optional, default to &quot;&quot;)</param>
@@ -245,14 +242,13 @@ private:
     /// <param name="homeLongitude">Home longitude (optional, default to 0.0)</param>
     /// <param name="appNickname">The nickname used in the application for this account (optional, default to &quot;&quot;)</param>
     /// <param name="personalAudienceId">Personal audience id to associate with this account (optional, default to 0L)</param>
-    virtual void create_account( const double &version, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &deviceId, const std::optional<std::string> &deviceIdType, const std::optional<std::string> &emailAddress, const std::optional<int64_t> &assetId, const std::optional<std::string> &streetAddress, const std::optional<std::string> &zipcode, const std::optional<std::string> &gender, const std::optional<int64_t> &birthday, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &role, const std::optional<std::string> &platforms, const std::optional<std::string> &tags, const std::optional<std::string> &aboutUs, const std::optional<std::string> &gameExperience, const std::optional<std::string> &categoryIds, const std::optional<std::string> &hometown, const std::optional<std::string> &height, const std::optional<int32_t> &heightIndex, const std::optional<std::string> &ethnicity, const std::optional<std::string> &bodyType, const std::optional<std::string> &maritalStatus, const std::optional<std::string> &children, const std::optional<std::string> &religion, const std::optional<std::string> &education, const std::optional<int32_t> &educationIndex, const std::optional<std::string> &smoke, const std::optional<std::string> &drink, const std::optional<std::string> &companionship, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &preferredMinAge, const std::optional<int32_t> &preferredMaxAge, const std::optional<int32_t> &preferredMinHeight, const std::optional<int32_t> &preferredMaxHeight, const std::optional<std::string> &preferredGender, const std::optional<std::string> &preferredEducation, const std::optional<int32_t> &preferredEducationIndex, const std::optional<std::string> &preferredBodyType, const std::optional<std::string> &preferredEthnicity, const std::optional<std::string> &preferredLocation, const std::optional<double> &preferredLocationRange, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &acceptedTerms, const std::optional<std::string> &inviteToken, const std::optional<int64_t> &referralAccountId, const std::optional<bool> &sendValidation, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<std::string> &responseType, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &appBlob, const std::optional<bool> &appEnablePush, const std::optional<bool> &appEnableSMS, const std::optional<bool> &appEnableEmail, const std::optional<std::string> &locationVisibility, const std::optional<double> &homeLatitude, const std::optional<double> &homeLongitude, const std::optional<std::string> &appNickname, const std::optional<int64_t> &personalAudienceId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_account( const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &deviceId, const std::optional<std::string> &deviceIdType, const std::optional<std::string> &emailAddress, const std::optional<int64_t> &assetId, const std::optional<std::string> &streetAddress, const std::optional<std::string> &zipcode, const std::optional<std::string> &gender, const std::optional<int64_t> &birthday, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &role, const std::optional<std::string> &platforms, const std::optional<std::string> &tags, const std::optional<std::string> &aboutUs, const std::optional<std::string> &gameExperience, const std::optional<std::string> &categoryIds, const std::optional<std::string> &hometown, const std::optional<std::string> &height, const std::optional<int32_t> &heightIndex, const std::optional<std::string> &ethnicity, const std::optional<std::string> &bodyType, const std::optional<std::string> &maritalStatus, const std::optional<std::string> &children, const std::optional<std::string> &religion, const std::optional<std::string> &education, const std::optional<int32_t> &educationIndex, const std::optional<std::string> &smoke, const std::optional<std::string> &drink, const std::optional<std::string> &companionship, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &preferredMinAge, const std::optional<int32_t> &preferredMaxAge, const std::optional<int32_t> &preferredMinHeight, const std::optional<int32_t> &preferredMaxHeight, const std::optional<std::string> &preferredGender, const std::optional<std::string> &preferredEducation, const std::optional<int32_t> &preferredEducationIndex, const std::optional<std::string> &preferredBodyType, const std::optional<std::string> &preferredEthnicity, const std::optional<std::string> &preferredLocation, const std::optional<double> &preferredLocationRange, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &acceptedTerms, const std::optional<std::string> &inviteToken, const std::optional<int64_t> &referralAccountId, const std::optional<bool> &sendValidation, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<std::string> &responseType, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &appBlob, const std::optional<bool> &appEnablePush, const std::optional<bool> &appEnableSMS, const std::optional<bool> &appEnableEmail, const std::optional<std::string> &locationVisibility, const std::optional<double> &homeLatitude, const std::optional<double> &homeLongitude, const std::optional<std::string> &appNickname, const std::optional<int64_t> &personalAudienceId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Account
     /// </summary>
     /// <remarks>
     /// Edit the user&#39;s profile information
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="connectionAccountId">The account id used to edit another person&#39;s account (optional, default to 0L)</param>
@@ -335,26 +331,24 @@ private:
     /// <param name="appNickname">App nickname (optional, default to &quot;&quot;)</param>
     /// <param name="personalAudienceId">Personal Audience (optional, default to 0L)</param>
     /// <param name="nonGuestUsername">The user&#39;s username to update with if they currently have a guest username (optional, default to &quot;&quot;)</param>
-    virtual void edit_account( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &role, const std::optional<int64_t> &assetId, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &gender, const std::optional<int32_t> &age, const std::optional<int64_t> &birthday, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &emailAddress, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &zipcode, const std::optional<std::string> &country, const std::optional<bool> &makeProfileInfoPublic, const std::optional<bool> &makeGameInfoPublic, const std::optional<bool> &makeFriendsInfoPublic, const std::optional<std::string> &hometown, const std::optional<std::string> &height, const std::optional<int32_t> &heightIndex, const std::optional<std::string> &ethnicity, const std::optional<std::string> &bodyType, const std::optional<std::string> &maritalStatus, const std::optional<std::string> &children, const std::optional<std::string> &religion, const std::optional<std::string> &education, const std::optional<int32_t> &educationIndex, const std::optional<std::string> &smoke, const std::optional<std::string> &drink, const std::optional<std::string> &companionship, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &preferredMinAge, const std::optional<int32_t> &preferredMaxAge, const std::optional<int32_t> &preferredMinHeight, const std::optional<int32_t> &preferredMaxHeight, const std::optional<std::string> &preferredGender, const std::optional<std::string> &preferredEducation, const std::optional<int32_t> &preferredEducationIndex, const std::optional<std::string> &preferredBodyType, const std::optional<std::string> &preferredEthnicity, const std::optional<std::string> &preferredLocation, const std::optional<double> &preferredLocationRange, const std::optional<std::string> &platforms, const std::optional<std::string> &tags, const std::optional<std::string> &aboutUs, const std::optional<std::string> &matchToken, const std::optional<std::string> &gameExperience, const std::optional<std::string> &categories, const std::optional<std::string> &categoryIds, const std::optional<std::string> &responseFilters, const std::optional<bool> &showAsZipcode, const std::optional<bool> &showExactLocation, const std::optional<bool> &showOthersExactLocation, const std::optional<bool> &acceptedTerms, const std::optional<std::string> &locationVisibility, const std::optional<std::string> &appBlob, const std::optional<bool> &appEnablePush, const std::optional<bool> &appEnableSMS, const std::optional<bool> &appEnableEmail, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnProfile, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &audienceIdsToRemove, const std::optional<int64_t> &referralAccountId, const std::optional<std::string> &appNickname, const std::optional<int64_t> &personalAudienceId, const std::optional<std::string> &nonGuestUsername, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void edit_account( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &role, const std::optional<int64_t> &assetId, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &gender, const std::optional<int32_t> &age, const std::optional<int64_t> &birthday, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &emailAddress, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &zipcode, const std::optional<std::string> &country, const std::optional<bool> &makeProfileInfoPublic, const std::optional<bool> &makeGameInfoPublic, const std::optional<bool> &makeFriendsInfoPublic, const std::optional<std::string> &hometown, const std::optional<std::string> &height, const std::optional<int32_t> &heightIndex, const std::optional<std::string> &ethnicity, const std::optional<std::string> &bodyType, const std::optional<std::string> &maritalStatus, const std::optional<std::string> &children, const std::optional<std::string> &religion, const std::optional<std::string> &education, const std::optional<int32_t> &educationIndex, const std::optional<std::string> &smoke, const std::optional<std::string> &drink, const std::optional<std::string> &companionship, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &preferredMinAge, const std::optional<int32_t> &preferredMaxAge, const std::optional<int32_t> &preferredMinHeight, const std::optional<int32_t> &preferredMaxHeight, const std::optional<std::string> &preferredGender, const std::optional<std::string> &preferredEducation, const std::optional<int32_t> &preferredEducationIndex, const std::optional<std::string> &preferredBodyType, const std::optional<std::string> &preferredEthnicity, const std::optional<std::string> &preferredLocation, const std::optional<double> &preferredLocationRange, const std::optional<std::string> &platforms, const std::optional<std::string> &tags, const std::optional<std::string> &aboutUs, const std::optional<std::string> &matchToken, const std::optional<std::string> &gameExperience, const std::optional<std::string> &categories, const std::optional<std::string> &categoryIds, const std::optional<std::string> &responseFilters, const std::optional<bool> &showAsZipcode, const std::optional<bool> &showExactLocation, const std::optional<bool> &showOthersExactLocation, const std::optional<bool> &acceptedTerms, const std::optional<std::string> &locationVisibility, const std::optional<std::string> &appBlob, const std::optional<bool> &appEnablePush, const std::optional<bool> &appEnableSMS, const std::optional<bool> &appEnableEmail, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnProfile, const std::optional<std::string> &audienceIdsToAdd, const std::optional<std::string> &audienceIdsToRemove, const std::optional<int64_t> &referralAccountId, const std::optional<std::string> &appNickname, const std::optional<int64_t> &personalAudienceId, const std::optional<std::string> &nonGuestUsername, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Username and Email
     /// </summary>
     /// <remarks>
     /// Update account&#39;s own username and/or emailAddress
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="emailAddress">the user&#39;s contact email address (NOT the username) which is also used for email validation (optional, default to &quot;&quot;)</param>
     /// <param name="username">the user&#39;s username to update with if they currently have a guest username (optional, default to &quot;&quot;)</param>
-    virtual void edit_username( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &emailAddress, const std::optional<std::string> &username, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void edit_username( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &emailAddress, const std::optional<std::string> &username, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Account
     /// </summary>
     /// <remarks>
     /// Gets a user&#39;s account profile. Application settings and account settings will also be returned for the owner of the account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">Return Nulls (optional, default to false)</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -367,14 +361,13 @@ private:
     /// <param name="updateViewedDate">Determines whether to track if a person has viewed someone&#39;s profile (optional, default to false)</param>
     /// <param name="latitude">Latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">Longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_account( const double &version, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountEmail, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &responseFilters, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &purchaseType, const std::optional<bool> &updateViewedDate, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_account( const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountEmail, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &responseFilters, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &purchaseType, const std::optional<bool> &updateViewedDate, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Profile Assets
     /// </summary>
     /// <remarks>
     /// Get a list of assets a person has ever uploaded. Filters the list based on parameters.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">Determines whether to return null fields in the response (optional, default to false)</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -389,14 +382,13 @@ private:
     /// <param name="start">Start of the pagination (optional, default to 0)</param>
     /// <param name="l">_l (optional, default to 0)</param>
     /// <param name="limit">Limit of the pagination (optional, default to 0)</param>
-    virtual void get_profile_assets( const double &version, const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ownerId, const std::optional<std::string> &mediaTypes, const std::optional<std::string> &mimeTypes, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_profile_assets( const std::optional<bool> &returnNulls, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ownerId, const std::optional<std::string> &mediaTypes, const std::optional<std::string> &mimeTypes, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Accounts
     /// </summary>
     /// <remarks>
     /// Gets a user&#39;s account profile and their referral List.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appKey">The application key (optional, default to &quot;&quot;)</param>
     /// <param name="retrieveType">one of these option - GET_CHILDREN will get all accounts that had signed up using the current account invite link - GET_ANCESTOR will get all accounts that referred the current account and it&#39;s parents, recursively - GET_ALL will get all of the above (optional, default to &quot;&quot;)</param>
@@ -408,26 +400,24 @@ private:
     /// <param name="childrenListStart">pagination start for children list (optional, default to 0.0)</param>
     /// <param name="childrenListLimit">pagination limit for children list (optional, default to 0.0)</param>
     /// <param name="childrenChildren">if true, on each item in ancestor and children list, return the childrenTotalNumber and ancestorTotalNumber for that item (optional, default to true)</param>
-    virtual void get_referral_list( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &retrieveType, const std::optional<double> &levelLimit, const std::optional<double> &ancestorLevelLimit, const std::optional<double> &childrenLevelLimit, const std::optional<double> &ancestorListStart, const std::optional<double> &ancestorListLimit, const std::optional<double> &childrenListStart, const std::optional<double> &childrenListLimit, const std::optional<bool> &childrenChildren, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_referral_list( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &retrieveType, const std::optional<double> &levelLimit, const std::optional<double> &ancestorLevelLimit, const std::optional<double> &childrenLevelLimit, const std::optional<double> &ancestorListStart, const std::optional<double> &ancestorListLimit, const std::optional<double> &childrenListStart, const std::optional<double> &childrenListLimit, const std::optional<bool> &childrenChildren, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Account Settings
     /// </summary>
     /// <remarks>
     /// Get the account settings for a user
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void get_settings( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_settings( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login as Account
     /// </summary>
     /// <remarks>
     /// A login service that supports logging in as someone else (accounts that the user manages). Intended for internal use for now.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accessToken"></param>
     /// <param name="appKey"></param>
     /// <param name="deviceId"> (optional, default to &quot;&quot;)</param>
@@ -439,14 +429,13 @@ private:
     /// <param name="responseFilters">This determines how much of the profile should be returned, see ProfileFilters (optional, default to &quot;PROFILE&quot;)</param>
     /// <param name="latitude"> (optional, default to 0.0)</param>
     /// <param name="longitude"> (optional, default to 0.0)</param>
-    virtual void login_delegate( const double &version, const std::optional<std::string> &accessToken, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<std::string> &accessTokenSecret, const std::optional<int64_t> &delegatedAccountId, const std::optional<std::string> &delegatedUsername, const std::optional<std::string> &networkUID, const std::optional<int32_t> &ageRestriction, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void login_delegate( const std::optional<std::string> &accessToken, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<std::string> &accessTokenSecret, const std::optional<int64_t> &delegatedAccountId, const std::optional<std::string> &delegatedUsername, const std::optional<std::string> &networkUID, const std::optional<int32_t> &ageRestriction, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login Account
     /// </summary>
     /// <remarks>
     /// General login service that supports various authentication methods. Currently supports Facebook, Twitter, Sirqul Username, and Sirqul Phone by default. Can also support custom networks created using the {@link ThirdPartyApi}
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accessToken">The access token to authenticate with (ex: username or fb token)</param>
     /// <param name="networkUID">The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE </param>
     /// <param name="appKey">The application key</param>
@@ -460,14 +449,13 @@ private:
     /// <param name="emailMatch">Option to check for email if username doesn&#39;t match, also support multiple accounts (optional, default to false)</param>
     /// <param name="chosenAccountId">Chosen account Id sent from the app - pass in the 2nd request to choose an account from multiple accounts matching the email - use one of the account id from the previous request (optional, default to 0L)</param>
     /// <param name="thirdPartyCredentialId">Third-party credential Id, pass in the 2nd request to choose an account from multiple accounts matching the email - use the id from the previous call ThirdPartyCredential object (optional, default to 0L)</param>
-    virtual void login_general( const double &version, const std::optional<std::string> &accessToken, const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<std::string> &deviceIdType, const std::optional<std::string> &accessTokenSecret, const std::optional<int32_t> &ageRestriction, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &emailMatch, const std::optional<int64_t> &chosenAccountId, const std::optional<int64_t> &thirdPartyCredentialId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void login_general( const std::optional<std::string> &accessToken, const std::optional<std::string> &networkUID, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<std::string> &deviceIdType, const std::optional<std::string> &accessTokenSecret, const std::optional<int32_t> &ageRestriction, const std::optional<std::string> &responseFilters, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &emailMatch, const std::optional<int64_t> &chosenAccountId, const std::optional<int64_t> &thirdPartyCredentialId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login Account (Username)
     /// </summary>
     /// <remarks>
     /// Login to system with an account
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="username">the user&#39;s email address they used to sign-up</param>
     /// <param name="password">the password</param>
     /// <param name="deviceId">the device id (optional, default to &quot;&quot;)</param>
@@ -478,84 +466,77 @@ private:
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="returnProfile">the profile to return (optional, default to false)</param>
     /// <param name="responseFilters">a comma separated list of ProfileFilters for filtering the returned response data (optional, default to &quot;&quot;)</param>
-    virtual void login_username( const double &version, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &app, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<bool> &returnProfile, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void login_username( const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &app, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<bool> &returnProfile, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Logout Account
     /// </summary>
     /// <remarks>
     /// Cleans up the users data for logging out.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="deviceIdType">Device Id Type (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void logout( const double &version, const std::optional<std::string> &deviceId, const std::optional<std::string> &deviceIdType, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void logout( const std::optional<std::string> &deviceId, const std::optional<std::string> &deviceIdType, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Merge Account
     /// </summary>
     /// <remarks>
     /// Merges the analytics, achievements, leaderboards of two accounts.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="mergeAccountId">The id of the account to being merged</param>
     /// <param name="appKey">The application key</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void merge_account( const double &version, const std::optional<int64_t> &mergeAccountId, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void merge_account( const std::optional<int64_t> &mergeAccountId, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Password
     /// </summary>
     /// <remarks>
     /// Update the account password.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account to update</param>
     /// <param name="oldPassword">The current password, used to validate access</param>
     /// <param name="newPassword">The new password to set, cannot be empty</param>
     /// <param name="confirmPassword">The new password to confirm, must match newPassword</param>
-    virtual void password_change( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &oldPassword, const std::optional<std::string> &newPassword, const std::optional<std::string> &confirmPassword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void password_change( const std::optional<int64_t> &accountId, const std::optional<std::string> &oldPassword, const std::optional<std::string> &newPassword, const std::optional<std::string> &confirmPassword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Reset Password
     /// </summary>
     /// <remarks>
     /// Reset the account password. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="token">The token associated with the account to update, good for 24 hours</param>
     /// <param name="password">The new password to set, cannot be empty</param>
     /// <param name="confirm">The new password to confirm, must match newPassword</param>
-    virtual void password_reset( const double &version, const std::optional<std::string> &token, const std::optional<std::string> &password, const std::optional<std::string> &confirm, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void password_reset( const std::optional<std::string> &token, const std::optional<std::string> &password, const std::optional<std::string> &confirm, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Request Password Reset
     /// </summary>
     /// <remarks>
     /// Request that an account password be reset. The account is looked up by email address and then a link is sent via email to that account with a reset token. The token is valid for 24 hours.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="email">The email/username of the account</param>
     /// <param name="from">this is the sender email (optional, default to &quot;Sirqul&quot;)</param>
     /// <param name="domain">this is the domain (like dev.sirqul.com) used to generate the password reset link (optional, default to &quot;&quot;)</param>
     /// <param name="subUrl">this is the the subUrl (like resetpassword) used to generate a password reset link (optional, default to &quot;&quot;)</param>
     /// <param name="referer">this is used to generate a password reset link (optional, default to &quot;http://dev.sirqul.com/resetpassword&quot;)</param>
-    virtual void request_password_reset( const double &version, const std::optional<std::string> &email, const std::optional<std::string> &from, const std::optional<std::string> &domain, const std::optional<std::string> &subUrl, const std::optional<std::string> &referer, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void request_password_reset( const std::optional<std::string> &email, const std::optional<std::string> &from, const std::optional<std::string> &domain, const std::optional<std::string> &subUrl, const std::optional<std::string> &referer, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Send Validation Request
     /// </summary>
     /// <remarks>
     /// Send an email to validate a user&#39;s account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
-    virtual void request_validate_account( const double &version, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void request_validate_account( const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Accounts
     /// </summary>
     /// <remarks>
     /// Search for account profiles.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The id of the account requesting</param>
     /// <param name="appKey">The application key</param>
     /// <param name="keyword">The keyword for for querying the account (optional, default to &quot;&quot;)</param>
@@ -574,14 +555,13 @@ private:
     /// <param name="start">The index into the record set to start with. (optional, default to 0)</param>
     /// <param name="limit">The total number of record to return. (optional, default to 20)</param>
     /// <param name="activeOnly">Determines whether to return only active results. Default is false. (optional, default to false)</param>
-    virtual void search_accounts( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &radius, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperience, const std::optional<int32_t> &age, const std::optional<std::string> &categoryIds, const std::optional<bool> &returnNulls, const std::optional<std::string> &responseFilters, const std::optional<std::string> &purchaseType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_accounts( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &radius, const std::optional<std::string> &gender, const std::optional<std::string> &gameExperience, const std::optional<int32_t> &age, const std::optional<std::string> &categoryIds, const std::optional<bool> &returnNulls, const std::optional<std::string> &responseFilters, const std::optional<std::string> &purchaseType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login Account (Encrypted Username)
     /// </summary>
     /// <remarks>
     /// ogin with encrypted user-name and password.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="username">The user&#39;s encrypted email address they used to sign-up</param>
     /// <param name="password">The encrypted password</param>
     /// <param name="gameType">The application key</param>
@@ -591,14 +571,13 @@ private:
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
     /// <param name="returnProfile">Return Profile (optional, default to false)</param>
     /// <param name="responseFilters">A comma separated list of ProfileFilters for filtering the returned response data (optional, default to &quot;PROFILE&quot;)</param>
-    virtual void secure_login( const double &version, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &gameType, const std::optional<std::string> &deviceId, const std::optional<std::string> &charsetName, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnProfile, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void secure_login( const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &gameType, const std::optional<std::string> &deviceId, const std::optional<std::string> &charsetName, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnProfile, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Account (Encrypted Username)
     /// </summary>
     /// <remarks>
     /// Create a new account by role (with encrypted user-name and password)
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id</param>
     /// <param name="username">The encrypted email of the user, this is what will be used when they login</param>
     /// <param name="password">The encrypted password of the user</param>
@@ -660,14 +639,13 @@ private:
     /// <param name="appKey">The application key (optional, default to &quot;&quot;)</param>
     /// <param name="appVersion">App Version (optional, default to &quot;&quot;)</param>
     /// <param name="responseType">Response Type (optional, default to &quot;&quot;)</param>
-    virtual void secure_signup( const double &version, const std::optional<std::string> &deviceId, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &name, const std::optional<std::string> &inviteToken, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &deviceIdType, const std::optional<std::string> &emailAddress, const std::optional<int64_t> &assetId, const std::optional<std::string> &address, const std::optional<std::string> &zipcode, const std::optional<std::string> &gender, const std::optional<int64_t> &birthday, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &role, const std::optional<std::string> &platforms, const std::optional<std::string> &tags, const std::optional<std::string> &aboutUs, const std::optional<std::string> &gameExperience, const std::optional<std::string> &categoryIds, const std::optional<std::string> &hometown, const std::optional<std::string> &height, const std::optional<int32_t> &heightIndex, const std::optional<std::string> &ethnicity, const std::optional<std::string> &bodyType, const std::optional<std::string> &maritalStatus, const std::optional<std::string> &children, const std::optional<std::string> &religion, const std::optional<std::string> &education, const std::optional<int32_t> &educationIndex, const std::optional<std::string> &smoke, const std::optional<std::string> &drink, const std::optional<std::string> &companionship, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &preferredMinAge, const std::optional<int32_t> &preferredMaxAge, const std::optional<int32_t> &preferredMinHeight, const std::optional<int32_t> &preferredMaxHeight, const std::optional<std::string> &preferredGender, const std::optional<std::string> &preferredEducation, const std::optional<int32_t> &preferredEducationIndex, const std::optional<std::string> &preferredBodyType, const std::optional<std::string> &preferredEthnicity, const std::optional<std::string> &preferredLocation, const std::optional<double> &preferredLocationRange, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &acceptedTerms, const std::optional<std::string> &charsetName, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<std::string> &responseType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void secure_signup( const std::optional<std::string> &deviceId, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &name, const std::optional<std::string> &inviteToken, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &deviceIdType, const std::optional<std::string> &emailAddress, const std::optional<int64_t> &assetId, const std::optional<std::string> &address, const std::optional<std::string> &zipcode, const std::optional<std::string> &gender, const std::optional<int64_t> &birthday, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &role, const std::optional<std::string> &platforms, const std::optional<std::string> &tags, const std::optional<std::string> &aboutUs, const std::optional<std::string> &gameExperience, const std::optional<std::string> &categoryIds, const std::optional<std::string> &hometown, const std::optional<std::string> &height, const std::optional<int32_t> &heightIndex, const std::optional<std::string> &ethnicity, const std::optional<std::string> &bodyType, const std::optional<std::string> &maritalStatus, const std::optional<std::string> &children, const std::optional<std::string> &religion, const std::optional<std::string> &education, const std::optional<int32_t> &educationIndex, const std::optional<std::string> &smoke, const std::optional<std::string> &drink, const std::optional<std::string> &companionship, const std::optional<int32_t> &companionshipIndex, const std::optional<int32_t> &preferredMinAge, const std::optional<int32_t> &preferredMaxAge, const std::optional<int32_t> &preferredMinHeight, const std::optional<int32_t> &preferredMaxHeight, const std::optional<std::string> &preferredGender, const std::optional<std::string> &preferredEducation, const std::optional<int32_t> &preferredEducationIndex, const std::optional<std::string> &preferredBodyType, const std::optional<std::string> &preferredEthnicity, const std::optional<std::string> &preferredLocation, const std::optional<double> &preferredLocationRange, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &acceptedTerms, const std::optional<std::string> &charsetName, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<std::string> &responseType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Save Match Token
     /// </summary>
     /// <remarks>
     /// Save user&#39;s match token to be used for profile match making
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="matchToken">A string of numbers (optional, default to &quot;&quot;)</param>
@@ -675,40 +653,37 @@ private:
     /// <param name="appKey">The application key (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void set_match_token( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &matchToken, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void set_match_token( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &matchToken, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Account Active Status
     /// </summary>
     /// <remarks>
     /// Activate or deactivate an account (requires appropriate permissions).
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required)</param>
     /// <param name="connectionAccountId">The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead)</param>
     /// <param name="active">true will activate the user and false will deactivate</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the application key that the user belongs to (optional, default to &quot;&quot;)</param>
-    virtual void update_actve_status( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<bool> &active, const std::optional<std::string> &deviceId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_actve_status( const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<bool> &active, const std::optional<std::string> &deviceId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Location
     /// </summary>
     /// <remarks>
     /// Update the account location
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
     /// <param name="clientTime">The time of the update (optional, default to 0L)</param>
-    virtual void update_location( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &clientTime, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_location( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &clientTime, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Account Settings
     /// </summary>
     /// <remarks>
     /// Update the account settings for a user
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="blockedNotifications">The notifications to be blocked (optional, default to &quot;&quot;)</param>
@@ -721,25 +696,23 @@ private:
     /// <param name="favoriteVisibility">Show favorites (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void update_settings( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &blockedNotifications, const std::optional<std::string> &suggestionMethod, const std::optional<int32_t> &suggestionCount, const std::optional<int32_t> &suggestionTimeFrame, const std::optional<bool> &showOthersExactLocation, const std::optional<bool> &showAsZipcode, const std::optional<bool> &showExactLocation, const std::optional<std::string> &favoriteVisibility, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_settings( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &blockedNotifications, const std::optional<std::string> &suggestionMethod, const std::optional<int32_t> &suggestionCount, const std::optional<int32_t> &suggestionTimeFrame, const std::optional<bool> &showOthersExactLocation, const std::optional<bool> &showAsZipcode, const std::optional<bool> &showExactLocation, const std::optional<std::string> &favoriteVisibility, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Save Validation Status
     /// </summary>
     /// <remarks>
     /// Validate the account&#39;s email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="token">The token associated with the account to update, good for 24 hours</param>
-    virtual void validate_account_signup( const double &version, const std::optional<std::string> &token, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void validate_account_signup( const std::optional<std::string> &token, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Validate Password Reset Token
     /// </summary>
     /// <remarks>
     /// Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="token">The token associated with the account to update, good for 24 hours</param>
-    virtual void validate_password_reset( const double &version, const std::optional<std::string> &token, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void validate_password_reset( const std::optional<std::string> &token, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

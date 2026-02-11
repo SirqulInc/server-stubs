@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ObjectStoreApi::base = "";
+const std::string ObjectStoreApi::base = "/api/3.18";
 
 ObjectStoreApi::ObjectStoreApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,17 +32,17 @@ void ObjectStoreApi::init() {
 void ObjectStoreApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/object/field/add", Routes::bind(&ObjectStoreApi::add_field_handler, this));
-    Routes::Post(*router, base + "/api/:version/object/data/:objectName", Routes::bind(&ObjectStoreApi::create_data_handler, this));
-    Routes::Post(*router, base + "/api/:version/object/create", Routes::bind(&ObjectStoreApi::create_object_handler, this));
-    Routes::Delete(*router, base + "/api/:version/object/data/:objectName/:objectId", Routes::bind(&ObjectStoreApi::delete_data_handler, this));
-    Routes::Post(*router, base + "/api/:version/object/field/delete", Routes::bind(&ObjectStoreApi::delete_field_handler, this));
-    Routes::Post(*router, base + "/api/:version/object/delete", Routes::bind(&ObjectStoreApi::delete_object_handler, this));
-    Routes::Get(*router, base + "/api/:version/object/data/:objectName/:objectId", Routes::bind(&ObjectStoreApi::get_data_handler, this));
-    Routes::Get(*router, base + "/api/:version/object/get", Routes::bind(&ObjectStoreApi::get_object_handler, this));
-    Routes::Get(*router, base + "/api/:version/object/data/:objectName", Routes::bind(&ObjectStoreApi::search_data_handler, this));
-    Routes::Get(*router, base + "/api/:version/object/search", Routes::bind(&ObjectStoreApi::search_object_handler, this));
-    Routes::Put(*router, base + "/api/:version/object/data/:objectName/:objectId", Routes::bind(&ObjectStoreApi::update_data_handler, this));
+    Routes::Post(*router, base + "/object/field/add", Routes::bind(&ObjectStoreApi::add_field_handler, this));
+    Routes::Post(*router, base + "/object/data/:objectName", Routes::bind(&ObjectStoreApi::create_data_handler, this));
+    Routes::Post(*router, base + "/object/create", Routes::bind(&ObjectStoreApi::create_object_handler, this));
+    Routes::Delete(*router, base + "/object/data/:objectName/:objectId", Routes::bind(&ObjectStoreApi::delete_data_handler, this));
+    Routes::Post(*router, base + "/object/field/delete", Routes::bind(&ObjectStoreApi::delete_field_handler, this));
+    Routes::Post(*router, base + "/object/delete", Routes::bind(&ObjectStoreApi::delete_object_handler, this));
+    Routes::Get(*router, base + "/object/data/:objectName/:objectId", Routes::bind(&ObjectStoreApi::get_data_handler, this));
+    Routes::Get(*router, base + "/object/get", Routes::bind(&ObjectStoreApi::get_object_handler, this));
+    Routes::Get(*router, base + "/object/data/:objectName", Routes::bind(&ObjectStoreApi::search_data_handler, this));
+    Routes::Get(*router, base + "/object/search", Routes::bind(&ObjectStoreApi::search_object_handler, this));
+    Routes::Put(*router, base + "/object/data/:objectName/:objectId", Routes::bind(&ObjectStoreApi::update_data_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ObjectStoreApi::object_store_api_default_handler, this));
@@ -77,8 +77,6 @@ std::pair<Pistache::Http::Code, std::string> ObjectStoreApi::handleOperationExce
 void ObjectStoreApi::add_field_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -131,7 +129,7 @@ void ObjectStoreApi::add_field_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->add_field(version, accountId, appKey, objectName, fieldName, fieldType, response);
+            this->add_field(accountId, appKey, objectName, fieldName, fieldType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -151,7 +149,6 @@ void ObjectStoreApi::create_data_handler(const Pistache::Rest::Request& request,
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto objectName = request.param(":objectName").as<std::string>();
         
         // Getting the body param
@@ -181,7 +178,7 @@ void ObjectStoreApi::create_data_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->create_data(version, objectName, accountId, body, response);
+            this->create_data(objectName, accountId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -200,8 +197,6 @@ void ObjectStoreApi::create_data_handler(const Pistache::Rest::Request& request,
 void ObjectStoreApi::create_object_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -238,7 +233,7 @@ void ObjectStoreApi::create_object_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->create_object(version, accountId, appKey, objectName, response);
+            this->create_object(accountId, appKey, objectName, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -258,7 +253,6 @@ void ObjectStoreApi::delete_data_handler(const Pistache::Rest::Request& request,
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto objectName = request.param(":objectName").as<std::string>();
         auto objectId = request.param(":objectId").as<std::string>();
         
@@ -281,7 +275,7 @@ void ObjectStoreApi::delete_data_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->delete_data(version, objectName, objectId, accountId, response);
+            this->delete_data(objectName, objectId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -300,8 +294,6 @@ void ObjectStoreApi::delete_data_handler(const Pistache::Rest::Request& request,
 void ObjectStoreApi::delete_field_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -346,7 +338,7 @@ void ObjectStoreApi::delete_field_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_field(version, accountId, appKey, objectName, fieldName, response);
+            this->delete_field(accountId, appKey, objectName, fieldName, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -365,8 +357,6 @@ void ObjectStoreApi::delete_field_handler(const Pistache::Rest::Request& request
 void ObjectStoreApi::delete_object_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -403,7 +393,7 @@ void ObjectStoreApi::delete_object_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->delete_object(version, accountId, appKey, objectName, response);
+            this->delete_object(accountId, appKey, objectName, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -423,7 +413,6 @@ void ObjectStoreApi::get_data_handler(const Pistache::Rest::Request& request, Pi
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto objectName = request.param(":objectName").as<std::string>();
         auto objectId = request.param(":objectId").as<std::string>();
         
@@ -454,7 +443,7 @@ void ObjectStoreApi::get_data_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->get_data(version, objectName, objectId, accountId, include, response);
+            this->get_data(objectName, objectId, accountId, include, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -473,8 +462,6 @@ void ObjectStoreApi::get_data_handler(const Pistache::Rest::Request& request, Pi
 void ObjectStoreApi::get_object_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -511,7 +498,7 @@ void ObjectStoreApi::get_object_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_object(version, accountId, appKey, objectName, response);
+            this->get_object(accountId, appKey, objectName, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -531,7 +518,6 @@ void ObjectStoreApi::search_data_handler(const Pistache::Rest::Request& request,
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto objectName = request.param(":objectName").as<std::string>();
         
         
@@ -601,7 +587,7 @@ void ObjectStoreApi::search_data_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_data(version, objectName, count, start, limit, accountId, criteria, order, include, response);
+            this->search_data(objectName, count, start, limit, accountId, criteria, order, include, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -620,8 +606,6 @@ void ObjectStoreApi::search_data_handler(const Pistache::Rest::Request& request,
 void ObjectStoreApi::search_object_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -674,7 +658,7 @@ void ObjectStoreApi::search_object_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->search_object(version, accountId, appKey, start, limit, keyword, response);
+            this->search_object(accountId, appKey, start, limit, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -694,7 +678,6 @@ void ObjectStoreApi::update_data_handler(const Pistache::Rest::Request& request,
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto objectName = request.param(":objectName").as<std::string>();
         auto objectId = request.param(":objectId").as<std::string>();
         
@@ -725,7 +708,7 @@ void ObjectStoreApi::update_data_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->update_data(version, objectName, objectId, accountId, body, response);
+            this->update_data(objectName, objectId, accountId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -90,7 +90,6 @@ private:
     /// <remarks>
     /// This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="ratableType">The ratable object type {RETAILER_LOCATION}</param>
     /// <param name="ratableId">The id of the ratable object</param>
     /// <param name="ratingValue">The integer value of 0-100</param>
@@ -102,25 +101,23 @@ private:
     /// <param name="locationDescription">The description of the location (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
-    virtual void create_rating( const double &version, const std::optional<std::string> &ratableType, const std::optional<int64_t> &ratableId, const std::optional<int32_t> &ratingValue, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, const std::optional<std::string> &display, const std::optional<std::string> &description, const std::optional<std::string> &locationDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_rating( const std::optional<std::string> &ratableType, const std::optional<int64_t> &ratableId, const std::optional<int32_t> &ratingValue, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, const std::optional<std::string> &display, const std::optional<std::string> &description, const std::optional<std::string> &locationDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Rating
     /// </summary>
     /// <remarks>
     /// Sets a rating as deleted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="ratingId">The ID of the rating to delete</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
-    virtual void delete_rating( const double &version, const std::optional<int64_t> &ratingId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_rating( const std::optional<int64_t> &ratingId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Location Rating Indexes
     /// </summary>
     /// <remarks>
     /// Search for retailer locations by averages near you.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="categoryIds">Comma separated list of category ids to filter the results by (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">The keyword used to search (optional, default to &quot;&quot;)</param>
     /// <param name="locationType">The type of location to filter the results by (optional, default to &quot;&quot;)</param>
@@ -138,14 +135,13 @@ private:
     /// <param name="returnOffers">whether to return the offers or not (optional, default to false)</param>
     /// <param name="returnCategories">whether to return the categories or not (optional, default to false)</param>
     /// <param name="returnFilters">whether to return the filters or not (optional, default to false)</param>
-    virtual void search_location_rating_indexes( const double &version, const std::optional<std::string> &categoryIds, const std::optional<std::string> &keyword, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &searchRange, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnOverallRating, const std::optional<std::string> &distanceUnit, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_location_rating_indexes( const std::optional<std::string> &categoryIds, const std::optional<std::string> &keyword, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &searchRange, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnOverallRating, const std::optional<std::string> &distanceUnit, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Rating Indexes
     /// </summary>
     /// <remarks>
     /// Search for ratable items by averages.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="ratableType">Filter results by a ratable type {RETAILER_LOCATION}</param>
     /// <param name="ratableIds">Comma separated list of ratable ids to filter the resuts by (optional, default to &quot;&quot;)</param>
     /// <param name="categoryIds">Comma separated list of category ids to filter the results by (optional, default to &quot;&quot;)</param>
@@ -159,14 +155,13 @@ private:
     /// <param name="longitude"> (optional, default to 0.0)</param>
     /// <param name="returnRatable">Determines whether to return the ratable object in the response (optional, default to false)</param>
     /// <param name="returnOverallRating">Determines whether to return the overall rating record instead (optional, default to false)</param>
-    virtual void search_rating_indexes( const double &version, const std::optional<std::string> &ratableType, const std::optional<std::string> &ratableIds, const std::optional<std::string> &categoryIds, const std::optional<std::string> &secondaryType, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnRatable, const std::optional<bool> &returnOverallRating, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_rating_indexes( const std::optional<std::string> &ratableType, const std::optional<std::string> &ratableIds, const std::optional<std::string> &categoryIds, const std::optional<std::string> &secondaryType, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnRatable, const std::optional<bool> &returnOverallRating, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Ratings
     /// </summary>
     /// <remarks>
     /// Search for ratings on a ratable object.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="filterAccountId">Filter results for a particular account (optional, default to 0L)</param>
@@ -178,14 +173,13 @@ private:
     /// <param name="descending">The order to return the search results (optional, default to false)</param>
     /// <param name="start">The record to begin the return set on (optional, default to 0)</param>
     /// <param name="limit">The number of records to return (optional, default to 0)</param>
-    virtual void search_ratings( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterAccountId, const std::optional<std::string> &ratableType, const std::optional<int64_t> &ratableId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_ratings( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterAccountId, const std::optional<std::string> &ratableType, const std::optional<int64_t> &ratableId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Rating
     /// </summary>
     /// <remarks>
     /// Update an existing rating. Only the creator of the rating have permission to update.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="ratingId">The id of the rating (Note: this is not the ratable object id)</param>
     /// <param name="deviceId">The unique device identifier that made the request (either deviceId or accountId must be used) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The unique accountId that made the request (either deviceId or accountId must be used) (optional, default to 0L)</param>
@@ -196,7 +190,7 @@ private:
     /// <param name="locationDescription">The description of the location (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current location of the user (optional, default to 0.0)</param>
-    virtual void update_rating( const double &version, const std::optional<int64_t> &ratingId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &ratingValue, const std::optional<int64_t> &categoryId, const std::optional<std::string> &display, const std::optional<std::string> &description, const std::optional<std::string> &locationDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_rating( const std::optional<int64_t> &ratingId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &ratingValue, const std::optional<int64_t> &categoryId, const std::optional<std::string> &display, const std::optional<std::string> &description, const std::optional<std::string> &locationDescription, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -43,22 +43,22 @@ public:
     explicit TripApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~TripApiImpl() override = default;
 
-    void create_trip(const double &version, const Trip &body, Pistache::Http::ResponseWriter &response);
-    void drive_trip(const double &version, const int64_t &id, const std::optional<bool> &recurrence, Pistache::Http::ResponseWriter &response);
-    void flexible_trip(const double &version, const int64_t &id, const std::optional<bool> &recurrence, Pistache::Http::ResponseWriter &response);
-    void get_trip(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void get_trip_matches(const double &version, const int64_t &id, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &matchedHasRoute, const std::optional<bool> &matchedHasDriver, Pistache::Http::ResponseWriter &response);
-    void process_trip_matches(const double &version, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int64_t> &tripId, Pistache::Http::ResponseWriter &response);
-    void r_delete(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void ride(const double &version, const int64_t &id, const std::optional<bool> &recurrence, Pistache::Http::ResponseWriter &response);
-    void search(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &hasNotifications, Pistache::Http::ResponseWriter &response);
-    void search_trips(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &matchedHasRoute, const std::optional<bool> &matchedHasDriver, Pistache::Http::ResponseWriter &response);
-    void update_locations(const double &version, const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
-    void update_recurrence_locations(const double &version, const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
-    void update_recurrence_shipments(const double &version, const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
-    void update_shipments(const double &version, const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
-    void update_trip(const double &version, const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
-    void update_trip_notifications(const double &version, const std::optional<int64_t> &id, const std::optional<std::string> &notifications, Pistache::Http::ResponseWriter &response);
+    void create_trip(const Trip &body, Pistache::Http::ResponseWriter &response);
+    void drive_trip(const int64_t &id, const std::optional<bool> &recurrence, Pistache::Http::ResponseWriter &response);
+    void flexible_trip(const int64_t &id, const std::optional<bool> &recurrence, Pistache::Http::ResponseWriter &response);
+    void get_trip(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void get_trip_matches(const int64_t &id, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &matchedHasRoute, const std::optional<bool> &matchedHasDriver, Pistache::Http::ResponseWriter &response);
+    void process_trip_matches(const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int64_t> &tripId, Pistache::Http::ResponseWriter &response);
+    void r_delete(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void ride(const int64_t &id, const std::optional<bool> &recurrence, Pistache::Http::ResponseWriter &response);
+    void search(const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &hasNotifications, Pistache::Http::ResponseWriter &response);
+    void search_trips(const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &matchedHasRoute, const std::optional<bool> &matchedHasDriver, Pistache::Http::ResponseWriter &response);
+    void update_locations(const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
+    void update_recurrence_locations(const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
+    void update_recurrence_shipments(const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
+    void update_shipments(const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
+    void update_trip(const int64_t &id, const Trip &body, Pistache::Http::ResponseWriter &response);
+    void update_trip_notifications(const std::optional<int64_t> &id, const std::optional<std::string> &notifications, Pistache::Http::ResponseWriter &response);
 
 };
 

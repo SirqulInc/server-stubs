@@ -106,168 +106,150 @@ private:
     /// <remarks>
     /// Approve a route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to approve</param>
-    virtual void approve_route( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void approve_route( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Copy Route
     /// </summary>
     /// <remarks>
     /// Make an copy of the given route with optional overriding properties
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to duplicate</param>
     /// <param name="body"> (optional)</param>
-    virtual void copy_route( const double &version, const int64_t &routeId, const org::openapitools::server::model::Route &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void copy_route( const int64_t &routeId, const org::openapitools::server::model::Route &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Route
     /// </summary>
     /// <remarks>
     /// Create new route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_route( const double &version, const org::openapitools::server::model::Route &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_route( const org::openapitools::server::model::Route &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Route Directions
     /// </summary>
     /// <remarks>
     /// Regenerate the directions of a route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to update directions for</param>
-    virtual void create_route_directions( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_route_directions( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Route Polyline
     /// </summary>
     /// <remarks>
     /// Update the polyline of the requested route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to create a polyline for</param>
-    virtual void create_route_polyline( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_route_polyline( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Route
     /// </summary>
     /// <remarks>
     /// Delete an existing route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
-    virtual void delete_route( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_route( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Disapprove Route
     /// </summary>
     /// <remarks>
     /// Disapprove a route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to reject</param>
-    virtual void disapprove_route( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void disapprove_route( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Route
     /// </summary>
     /// <remarks>
     /// Get an existing route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to get</param>
     /// <param name="showInheritedProperties">return inherited properties from parent or not</param>
-    virtual void get_route( const double &version, const int64_t &routeId, const std::optional<bool> &showInheritedProperties, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_route( const int64_t &routeId, const std::optional<bool> &showInheritedProperties, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Route Directions
     /// </summary>
     /// <remarks>
     /// Get the directions of a route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to get directions for</param>
-    virtual void get_route_directions( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_route_directions( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Route Shipments
     /// </summary>
     /// <remarks>
     /// Get the shipments on the requested route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to get shipments for</param>
-    virtual void get_route_shipments( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_route_shipments( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Route Stop
     /// </summary>
     /// <remarks>
     /// Get the specific stop on a route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to get stops for</param>
     /// <param name="stopId">the id of the specific stop on the route</param>
-    virtual void get_route_stop( const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_route_stop( const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Route Stops
     /// </summary>
     /// <remarks>
     /// The stops of the route requested
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
     /// <param name="confirmedOnly">only get stops that have been confirmed or not</param>
-    virtual void get_route_stops( const double &version, const int64_t &routeId, const std::optional<bool> &confirmedOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_route_stops( const int64_t &routeId, const std::optional<bool> &confirmedOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Shipments At Stop
     /// </summary>
     /// <remarks>
     /// Get the list of shipments on the requested route at a stop
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
     /// <param name="stopId">the id of the stop to get shipments on</param>
-    virtual void get_shipments_at_stop( const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_shipments_at_stop( const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Optimize Route
     /// </summary>
     /// <remarks>
     /// Optimize a route. The optimization method based on how the server is configured.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to optimize</param>
-    virtual void optimize_route( const double &version, const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void optimize_route( const int64_t &routeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Stop
     /// </summary>
     /// <remarks>
     /// Delete a stop on a route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
     /// <param name="stopId">the id of the specific stop to delete on the route</param>
-    virtual void remove_stop( const double &version, const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_stop( const int64_t &routeId, const int64_t &stopId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Reorder Route Stops
     /// </summary>
     /// <remarks>
     /// Reordering the stops on the route with and update route distance, time, direction, and polyline
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
     /// <param name="body"> (optional)</param>
-    virtual void reorder_route_stops_patch( const double &version, const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reorder_route_stops_patch( const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Reorder Route Stops
     /// </summary>
     /// <remarks>
     /// Reordering the stops on the route with and update route distance, time, direction, and polyline
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
     /// <param name="body"> (optional)</param>
-    virtual void reorder_route_stops_post( const double &version, const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reorder_route_stops_post( const int64_t &routeId, const std::vector<org::openapitools::server::model::Stop> &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Routes
     /// </summary>
     /// <remarks>
     /// Search for routes.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
@@ -289,38 +271,35 @@ private:
     /// <param name="completed">Has completed or not (optional, default to false)</param>
     /// <param name="valid">Is valid or not (optional, default to false)</param>
     /// <param name="parentId">If it is a recurring route based on the parent route (optional, default to 0L)</param>
-    virtual void search_routes( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includesEmpty, const std::optional<bool> &rootOnly, const std::optional<bool> &showInheritedProperties, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<int64_t> &scheduledStart, const std::optional<int64_t> &scheduledEnd, const std::optional<int64_t> &updatedStart, const std::optional<int64_t> &updatedEnd, const std::optional<bool> &featured, const std::optional<int32_t> &seatCount, const std::optional<bool> &approved, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &valid, const std::optional<int64_t> &parentId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_routes( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &includesEmpty, const std::optional<bool> &rootOnly, const std::optional<bool> &showInheritedProperties, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<int64_t> &scheduledStart, const std::optional<int64_t> &scheduledEnd, const std::optional<int64_t> &updatedStart, const std::optional<int64_t> &updatedEnd, const std::optional<bool> &featured, const std::optional<int32_t> &seatCount, const std::optional<bool> &approved, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &valid, const std::optional<int64_t> &parentId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Set Driver
     /// </summary>
     /// <remarks>
     /// Update the driver of the route.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="id">the id of the route</param>
     /// <param name="driverId">the id of the driver</param>
-    virtual void set_driver( const double &version, const int64_t &id, const int64_t &driverId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void set_driver( const int64_t &id, const int64_t &driverId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Route
     /// </summary>
     /// <remarks>
     /// Update an existing route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_route( const double &version, const int64_t &routeId, const org::openapitools::server::model::Route &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_route( const int64_t &routeId, const org::openapitools::server::model::Route &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Route Stop
     /// </summary>
     /// <remarks>
     /// Update a stop on a specified route
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="routeId">the id of the route to update stops for</param>
     /// <param name="stopId">the id of the specific stop to update on the route</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_route_stop( const double &version, const int64_t &routeId, const int64_t &stopId, const org::openapitools::server::model::Stop &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_route_stop( const int64_t &routeId, const int64_t &stopId, const org::openapitools::server::model::Stop &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

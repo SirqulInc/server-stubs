@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string NoteApi::base = "";
+const std::string NoteApi::base = "/api/3.18";
 
 NoteApi::NoteApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void NoteApi::init() {
 void NoteApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/note/batch", Routes::bind(&NoteApi::batch_operation_handler, this));
-    Routes::Post(*router, base + "/api/:version/note/create", Routes::bind(&NoteApi::create_note_handler, this));
-    Routes::Post(*router, base + "/api/:version/note/delete", Routes::bind(&NoteApi::delete_note_handler, this));
-    Routes::Post(*router, base + "/api/:version/note/get", Routes::bind(&NoteApi::get_note_handler, this));
-    Routes::Post(*router, base + "/api/:version/note/search", Routes::bind(&NoteApi::search_notes_handler, this));
-    Routes::Post(*router, base + "/api/:version/note/update", Routes::bind(&NoteApi::update_note_handler, this));
+    Routes::Post(*router, base + "/note/batch", Routes::bind(&NoteApi::batch_operation_handler, this));
+    Routes::Post(*router, base + "/note/create", Routes::bind(&NoteApi::create_note_handler, this));
+    Routes::Post(*router, base + "/note/delete", Routes::bind(&NoteApi::delete_note_handler, this));
+    Routes::Post(*router, base + "/note/get", Routes::bind(&NoteApi::get_note_handler, this));
+    Routes::Post(*router, base + "/note/search", Routes::bind(&NoteApi::search_notes_handler, this));
+    Routes::Post(*router, base + "/note/update", Routes::bind(&NoteApi::update_note_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&NoteApi::note_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> NoteApi::handleOperationException(c
 void NoteApi::batch_operation_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -126,7 +124,7 @@ void NoteApi::batch_operation_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->batch_operation(version, notableId, notableType, deviceId, accountId, batchOperation, response);
+            this->batch_operation(notableId, notableType, deviceId, accountId, batchOperation, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -165,8 +163,6 @@ void NoteApi::create_note_handler(const Pistache::Rest::Request& request, Pistac
 void NoteApi::delete_note_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -227,7 +223,7 @@ void NoteApi::delete_note_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->delete_note(version, noteId, deviceId, accountId, latitude, longitude, appKey, response);
+            this->delete_note(noteId, deviceId, accountId, latitude, longitude, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -246,8 +242,6 @@ void NoteApi::delete_note_handler(const Pistache::Rest::Request& request, Pistac
 void NoteApi::get_note_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -292,7 +286,7 @@ void NoteApi::get_note_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_note(version, noteId, deviceId, accountId, returnFullResponse, response);
+            this->get_note(noteId, deviceId, accountId, returnFullResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -311,8 +305,6 @@ void NoteApi::get_note_handler(const Pistache::Rest::Request& request, Pistache:
 void NoteApi::search_notes_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -461,7 +453,7 @@ void NoteApi::search_notes_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->search_notes(version, deviceId, accountId, notableType, notableId, noteTypes, appKey, keyword, flagCountMinimum, flagsExceedThreshold, includeInactive, sortField, descending, returnFullResponse, updatedSince, updatedBefore, start, limit, response);
+            this->search_notes(deviceId, accountId, notableType, notableId, noteTypes, appKey, keyword, flagCountMinimum, flagsExceedThreshold, includeInactive, sortField, descending, returnFullResponse, updatedSince, updatedBefore, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

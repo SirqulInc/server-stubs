@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string WeatherApi::base = "";
+const std::string WeatherApi::base = "/api/3.18";
 
 WeatherApi::WeatherApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void WeatherApi::init() {
 void WeatherApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/weather/search", Routes::bind(&WeatherApi::search_weather_handler, this));
+    Routes::Get(*router, base + "/weather/search", Routes::bind(&WeatherApi::search_weather_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&WeatherApi::weather_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> WeatherApi::handleOperationExceptio
 void WeatherApi::search_weather_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -113,7 +111,7 @@ void WeatherApi::search_weather_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->search_weather(version, regionId, latitude, longitude, timezoneOffset, response);
+            this->search_weather(regionId, latitude, longitude, timezoneOffset, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

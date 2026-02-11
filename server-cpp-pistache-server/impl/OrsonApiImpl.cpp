@@ -32,22 +32,22 @@ OrsonApiImpl::OrsonApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 void OrsonApiImpl::add_movie(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::ai_docs(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &doc, const std::optional<bool> &returnTopics, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::ai_docs(const std::optional<int64_t> &accountId, const std::optional<std::string> &doc, const std::optional<bool> &returnTopics, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::ai_find_images(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &parseFlag, const std::optional<std::string> &fetchFlag, const std::optional<std::string> &size, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::ai_find_images(const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &parseFlag, const std::optional<std::string> &fetchFlag, const std::optional<std::string> &size, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::ai_tags(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::ai_tags(const std::optional<int64_t> &accountId, const std::optional<std::string> &tags, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::ai_text(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &terms, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::ai_text(const std::optional<int64_t> &accountId, const std::optional<std::string> &terms, const std::optional<std::string> &conditional, const std::optional<int32_t> &limit, const std::optional<int32_t> &offset, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void OrsonApiImpl::batch(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::create_instant_episode(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::create_instant_episode(const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void OrsonApiImpl::create_voice_canvas(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
@@ -56,37 +56,37 @@ void OrsonApiImpl::create_voice_canvas(const Pistache::Rest::Request &request, P
 void OrsonApiImpl::emotion(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_add_movie_result(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_add_movie_result(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_batch(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_batch(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_emotion(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_emotion(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_episode_status(const double &version, const int64_t &episodeId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_episode_status(const int64_t &episodeId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_render_status(const double &version, const std::string &renderId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_render_status(const std::string &renderId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_stt(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_stt(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_tts(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_tts(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_tech_tune(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_tech_tune(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_topics(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_topics(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::get_voice_canvas(const double &version, const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::get_voice_canvas(const std::string &requestId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::start_video_render(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::start_video_render(const std::optional<int64_t> &accountId, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void OrsonApiImpl::stt(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
@@ -98,7 +98,7 @@ void OrsonApiImpl::summarize_topics(const Pistache::Rest::Request &request, Pist
 void OrsonApiImpl::tech_tune(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OrsonApiImpl::tts(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &thirdPartyAccountId, const std::optional<std::string> &language, const std::optional<std::string> &voice, const std::optional<std::string> &callback, Pistache::Http::ResponseWriter &response) {
+void OrsonApiImpl::tts(const std::optional<int64_t> &accountId, const std::optional<std::string> &text, const std::optional<std::string> &thirdPartyAccountId, const std::optional<std::string> &language, const std::optional<std::string> &voice, const std::optional<std::string> &callback, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

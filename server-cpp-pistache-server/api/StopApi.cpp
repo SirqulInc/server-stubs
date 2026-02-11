@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string StopApi::base = "";
+const std::string StopApi::base = "/api/3.18";
 
 StopApi::StopApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,8 +32,8 @@ void StopApi::init() {
 void StopApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/stop/:id", Routes::bind(&StopApi::get_stop_handler, this));
-    Routes::Put(*router, base + "/api/:version/stop/:id", Routes::bind(&StopApi::update_stop_handler, this));
+    Routes::Get(*router, base + "/stop/:id", Routes::bind(&StopApi::get_stop_handler, this));
+    Routes::Put(*router, base + "/stop/:id", Routes::bind(&StopApi::update_stop_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&StopApi::stop_api_default_handler, this));
@@ -69,7 +69,6 @@ void StopApi::get_stop_handler(const Pistache::Rest::Request& request, Pistache:
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -82,7 +81,7 @@ void StopApi::get_stop_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_stop(version, id, response);
+            this->get_stop(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -102,7 +101,6 @@ void StopApi::update_stop_handler(const Pistache::Rest::Request& request, Pistac
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -127,7 +125,7 @@ void StopApi::update_stop_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->update_stop(version, id, body, response);
+            this->update_stop(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -93,16 +93,14 @@ private:
     /// <remarks>
     /// Downloads an asset from the server for assets that have been uploaded to the server.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="filename">the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}</param>
-    virtual void asset_download( const double &version, const std::string &filename, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void asset_download( const std::string &filename, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Convert Offer to Creative
     /// </summary>
     /// <remarks>
     /// Converts an offer image + text into a creative image.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="offerId">offer id used for inserting offer text/flavor</param>
     /// <param name="adSize">the ad size used for selecting a format for the creative image</param>
     /// <param name="creativeId">used for inserting the newly created image into (optional, default to 0L)</param>
@@ -110,7 +108,7 @@ private:
     /// <param name="height">total height of the creative image (optional, default to 0)</param>
     /// <param name="backgroundSize">the size of the background (optional, default to &quot;&quot;)</param>
     /// <param name="r_template">the template to use (optional, default to &quot;&quot;)</param>
-    virtual void asset_morph( const double &version, const std::optional<int64_t> &offerId, const std::optional<std::string> &adSize, const std::optional<int64_t> &creativeId, const std::optional<int32_t> &width, const std::optional<int32_t> &height, const std::optional<std::string> &backgroundSize, const std::optional<std::string> &r_template, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void asset_morph( const std::optional<int64_t> &offerId, const std::optional<std::string> &adSize, const std::optional<int64_t> &creativeId, const std::optional<int32_t> &width, const std::optional<int32_t> &height, const std::optional<std::string> &backgroundSize, const std::optional<std::string> &r_template, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Asset
     /// </summary>
@@ -124,32 +122,29 @@ private:
     /// <remarks>
     /// Delete an asset.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="assetId">the id of the asset to delete</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void delete_asset( const double &version, const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_asset( const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Asset
     /// </summary>
     /// <remarks>
     /// Gets the full asset response including attached likes and notes.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="assetId">the asset ID</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="noteDescending">determines whether the notes on the asset are in descending order (optional, default to false)</param>
-    virtual void get_asset( const double &version, const std::optional<int64_t> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &noteDescending, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_asset( const std::optional<int64_t> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &noteDescending, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove Asset from Collection
     /// </summary>
     /// <remarks>
     /// Remove assets from collections
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="assetId">the id of the asset to remove</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -158,14 +153,13 @@ private:
     /// <param name="removeFromDefaultAlbums">remove from the user&#39;s profile album (optional, default to false)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void remove_asset( const double &version, const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &collectionId, const std::optional<bool> &removeFromDefaultAlbums, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_asset( const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &collectionId, const std::optional<bool> &removeFromDefaultAlbums, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Assets
     /// </summary>
     /// <remarks>
     /// Searches for assets
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="albumIds">comma separated list of album ids to search on (optional, default to &quot;&quot;)</param>
@@ -190,7 +184,7 @@ private:
     /// <param name="assetType">filter by asset type (optional, default to &quot;&quot;)</param>
     /// <param name="approvalStatus">filter by approval status (optional, default to &quot;&quot;)</param>
     /// <param name="assignedAccountId">filter results by an assigned account id (optional, default to 0L)</param>
-    virtual void search_assets( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &albumIds, const std::optional<std::string> &assetIds, const std::optional<std::string> &appKey, const std::optional<std::string> &mediaType, const std::optional<std::string> &mimeType, const std::optional<std::string> &keyword, const std::optional<int32_t> &versionCode, const std::optional<std::string> &versionName, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &searchMediaLibrary, const std::optional<bool> &filterByBillable, const std::optional<bool> &activeOnly, const std::optional<bool> &returnApp, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &searchMode, const std::optional<std::string> &assetType, const std::optional<std::string> &approvalStatus, const std::optional<int64_t> &assignedAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_assets( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &albumIds, const std::optional<std::string> &assetIds, const std::optional<std::string> &appKey, const std::optional<std::string> &mediaType, const std::optional<std::string> &mimeType, const std::optional<std::string> &keyword, const std::optional<int32_t> &versionCode, const std::optional<std::string> &versionName, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &searchMediaLibrary, const std::optional<bool> &filterByBillable, const std::optional<bool> &activeOnly, const std::optional<bool> &returnApp, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &searchMode, const std::optional<std::string> &assetType, const std::optional<std::string> &approvalStatus, const std::optional<int64_t> &assignedAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Asset
     /// </summary>

@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Adds offers to the wallet
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="offerId">The id of the offer being added (offerId or offeLocationId required) (optional, default to 0L)</param>
@@ -101,25 +100,23 @@ private:
     /// <param name="metaData">External custom client defined data (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">The application requesting the purchase, required when currencyType is TICKETS (optional, default to &quot;&quot;)</param>
     /// <param name="status">Custom status value to change to (0 or 1 for redeem, 5 or 6 for membership) (optional, default to 0)</param>
-    virtual void create_offer_transaction( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &offerCart, const std::optional<std::string> &promoCode, const std::optional<std::string> &currencyType, const std::optional<bool> &usePoints, const std::optional<std::string> &metaData, const std::optional<std::string> &appKey, const std::optional<int32_t> &status, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_offer_transaction( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &offerCart, const std::optional<std::string> &promoCode, const std::optional<std::string> &currencyType, const std::optional<bool> &usePoints, const std::optional<std::string> &metaData, const std::optional<std::string> &appKey, const std::optional<int32_t> &status, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Wallet Offer
     /// </summary>
     /// <remarks>
     /// Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="transactionId">The offer transaction id to remove</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_offer_transaction( const double &version, const std::optional<int64_t> &transactionId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_offer_transaction( const std::optional<int64_t> &transactionId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Wallet Offer
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="transactionId">The offer transaction id to get details of</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -127,14 +124,13 @@ private:
     /// <param name="latitude">The latitude location of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The latitude location of the user (optional, default to 0.0)</param>
     /// <param name="returnFullResponse">Determines whether to return a detailed version of the response (optional, default to true)</param>
-    virtual void get_offer_transaction( const double &version, const std::optional<int64_t> &transactionId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeMission, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnFullResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer_transaction( const std::optional<int64_t> &transactionId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeMission, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<bool> &returnFullResponse, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Preview Wallet Offers
     /// </summary>
     /// <remarks>
     /// Preview the final cost of a transaction without charging the user
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="offerId">The id of the offer being added (offerId or offeLocationId required) (optional, default to 0L)</param>
@@ -145,14 +141,13 @@ private:
     /// <param name="usePoints">Sets the currencyType to POINTS (optional, default to false)</param>
     /// <param name="metaData">External custom client defined data (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">The application requesting the purchase, required when currencyType is TICKETS (optional, default to &quot;&quot;)</param>
-    virtual void preview_offer_transaction( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &offerCart, const std::optional<std::string> &promoCode, const std::optional<std::string> &currencyType, const std::optional<bool> &usePoints, const std::optional<std::string> &metaData, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void preview_offer_transaction( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &offerCart, const std::optional<std::string> &promoCode, const std::optional<std::string> &currencyType, const std::optional<bool> &usePoints, const std::optional<std::string> &metaData, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Wallet Offers
     /// </summary>
     /// <remarks>
     /// Search on active offers currently in the user&#39;s wallet, or past offers the user has already redeemed.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="keyword">The keyword to search for (optional, default to &quot;&quot;)</param>
@@ -194,14 +189,13 @@ private:
     /// <param name="recurringStartedBefore">Filter results by the recurring billing start date (optional, default to 0L)</param>
     /// <param name="recurringExpirationSince">Filter results by the recurring billing expiration date (optional, default to 0L)</param>
     /// <param name="recurringExpirationBefore">Filter results by the recurring billing expiration date (optional, default to 0L)</param>
-    virtual void search_offer_transactions( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<std::string> &retailerIds, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &excludeRetailerLocationIds, const std::optional<int64_t> &offerId, const std::optional<std::string> &offerIds, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &offerLocationIds, const std::optional<std::string> &offerType, const std::optional<std::string> &offerTypes, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &specialOfferTypes, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &offerAudienceIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &redeemableStartDate, const std::optional<int64_t> &redeemableEndDate, const std::optional<bool> &filterByParentOffer, const std::optional<int64_t> &startedSince, const std::optional<int64_t> &startedBefore, const std::optional<int64_t> &endedSince, const std::optional<int64_t> &endedBefore, const std::optional<bool> &redeemed, const std::optional<std::string> &statuses, const std::optional<bool> &reservationsOnly, const std::optional<bool> &activeOnly, const std::optional<bool> &returnFullResponse, const std::optional<int64_t> &recurringStartedSince, const std::optional<int64_t> &recurringStartedBefore, const std::optional<int64_t> &recurringExpirationSince, const std::optional<int64_t> &recurringExpirationBefore, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_offer_transactions( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int64_t> &retailerId, const std::optional<std::string> &retailerIds, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &excludeRetailerLocationIds, const std::optional<int64_t> &offerId, const std::optional<std::string> &offerIds, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &offerLocationIds, const std::optional<std::string> &offerType, const std::optional<std::string> &offerTypes, const std::optional<std::string> &specialOfferType, const std::optional<std::string> &specialOfferTypes, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &offerAudienceIds, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &redeemableStartDate, const std::optional<int64_t> &redeemableEndDate, const std::optional<bool> &filterByParentOffer, const std::optional<int64_t> &startedSince, const std::optional<int64_t> &startedBefore, const std::optional<int64_t> &endedSince, const std::optional<int64_t> &endedBefore, const std::optional<bool> &redeemed, const std::optional<std::string> &statuses, const std::optional<bool> &reservationsOnly, const std::optional<bool> &activeOnly, const std::optional<bool> &returnFullResponse, const std::optional<int64_t> &recurringStartedSince, const std::optional<int64_t> &recurringStartedBefore, const std::optional<int64_t> &recurringExpirationSince, const std::optional<int64_t> &recurringExpirationBefore, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Wallet Offer
     /// </summary>
     /// <remarks>
     /// Update offer status. The status values are: 0 - not redeemable, 1 - redeemable.  Not redeemable means the customer has received the offer but has not decided to use (or print) it yet.  Until they choose to do this the merchant cannot redeem the offer (has not been given permission yet).   Redeemable means the customer has chosen to use the offer and wishes to redeem it.  Redeemed means the merchant has accepted the offer and the given the customer its value, then marked it a used in the system.  This status change is handled by a merchant end point.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="transactionId">The offer transaction id to remove</param>
     /// <param name="status">The status value to change to (0 or 1)</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -215,7 +209,7 @@ private:
     /// <param name="metaData">External custom client defined data (optional, default to &quot;&quot;)</param>
     /// <param name="returnFullResponse">Determines whether to return a detailed version of the response (optional, default to false)</param>
     /// <param name="exceptionMembershipOfferIds">Exception Offers, transaction audiences of these offers won&#39;t be removed out of the account when up (optional, default to &quot;&quot;)</param>
-    virtual void update_offer_transaction( const double &version, const std::optional<int64_t> &transactionId, const std::optional<int32_t> &status, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &currencyType, const std::optional<bool> &usePoints, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &metaData, const std::optional<bool> &returnFullResponse, const std::optional<std::string> &exceptionMembershipOfferIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_offer_transaction( const std::optional<int64_t> &transactionId, const std::optional<int32_t> &status, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &currencyType, const std::optional<bool> &usePoints, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &metaData, const std::optional<bool> &returnFullResponse, const std::optional<std::string> &exceptionMembershipOfferIds, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

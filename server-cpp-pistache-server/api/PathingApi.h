@@ -82,12 +82,11 @@ private:
     /// <remarks>
     /// Calculates the shortest path from point to point on a grid
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="data">the data to with start, end point and exclusion points</param>
     /// <param name="units">the system of measurement for directions: {METRIC, IMPERIAL}</param>
     /// <param name="reducePath">determines whether to reduce the path to go in diagonal lines</param>
     /// <param name="directions">determines whether to return text directions</param>
-    virtual void compute_path( const double &version, const std::optional<std::string> &data, const std::optional<std::string> &units, const std::optional<bool> &reducePath, const std::optional<bool> &directions, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void compute_path( const std::optional<std::string> &data, const std::optional<std::string> &units, const std::optional<bool> &reducePath, const std::optional<bool> &directions, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

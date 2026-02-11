@@ -29,34 +29,34 @@ InviteApiImpl::InviteApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void InviteApiImpl::accept_invite(const double &version, const std::optional<std::string> &token, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, const std::optional<bool> &autoFriend, const std::optional<bool> &autoAttendEvent, const std::optional<bool> &autoFavoriteOffer, const std::optional<bool> &autoFavoriteOfferLocation, const std::optional<bool> &autoFavoriteRetailerLocation, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::accept_invite(const std::optional<std::string> &token, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, const std::optional<bool> &autoFriend, const std::optional<bool> &autoAttendEvent, const std::optional<bool> &autoFavoriteOffer, const std::optional<bool> &autoFavoriteOfferLocation, const std::optional<bool> &autoFavoriteRetailerLocation, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::album_contest_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumContestId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::album_contest_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumContestId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::album_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::album_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &albumId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::event_invite(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &listingId, const std::optional<std::string> &receiverAccountIds, const std::optional<int64_t> &retailerLocationId, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::event_invite(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &listingId, const std::optional<std::string> &receiverAccountIds, const std::optional<int64_t> &retailerLocationId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::game_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &gameLevelId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::game_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &gameLevelId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::get_invite(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &token, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::get_invite(const std::optional<int64_t> &accountId, const std::optional<std::string> &token, const std::optional<int64_t> &albumId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &albumContestId, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::mission_invite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::mission_invite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &appId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::offer_invite(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::offer_invite(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::offer_location_invite(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::offer_location_invite(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &offerLocationId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void InviteApiImpl::retailer_location_invite(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &albumId, Pistache::Http::ResponseWriter &response) {
+void InviteApiImpl::retailer_location_invite(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &albumId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

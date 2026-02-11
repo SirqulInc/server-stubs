@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ActivityApi::base = "";
+const std::string ActivityApi::base = "/api/3.18";
 
 ActivityApi::ActivityApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void ActivityApi::init() {
 void ActivityApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/entity/reference", Routes::bind(&ActivityApi::create_entity_reference_handler, this));
+    Routes::Post(*router, base + "/entity/reference", Routes::bind(&ActivityApi::create_entity_reference_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ActivityApi::activity_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> ActivityApi::handleOperationExcepti
 void ActivityApi::create_entity_reference_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -92,7 +90,7 @@ void ActivityApi::create_entity_reference_handler(const Pistache::Rest::Request&
 
 
 
-            this->create_entity_reference(version, body, response);
+            this->create_entity_reference(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

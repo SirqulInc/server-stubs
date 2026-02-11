@@ -93,7 +93,6 @@ private:
     /// <remarks>
     /// Create a tournament.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The appKey the tournament is created for.</param>
     /// <param name="title">The title of the tournament</param>
@@ -129,51 +128,47 @@ private:
     /// <param name="featured">This determines whether the tournament is \&quot;featured\&quot; or not (optional, default to false)</param>
     /// <param name="winnerTag">This sets what analytic tag is used when a winner is determined (optional, default to &quot;&quot;)</param>
     /// <param name="tieTag">This sets what analytic tag is used when a tie has occurred (optional, default to &quot;&quot;)</param>
-    virtual void create_tournament( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<int32_t> &costToPlay, const std::optional<int64_t> &startDate, const std::optional<std::string> &subType, const std::optional<int64_t> &imageAssetId, const std::optional<int32_t> &secondsBetweenLevels, const std::optional<int32_t> &secondsForTieBreaker, const std::optional<int32_t> &secondsBetweenPacks, const std::optional<int32_t> &maximumLevelLength, const std::optional<std::string> &costToPlayType, const std::optional<int32_t> &minimumToPlay, const std::optional<int32_t> &startingLimit, const std::optional<int32_t> &availableLimit, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &audienceIds, const std::optional<bool> &active, const std::optional<bool> &enableBuyBack, const std::optional<std::string> &offerIds, const std::optional<int64_t> &offerAssetId, const std::optional<bool> &fixedReward, const std::optional<std::string> &splitReward, const std::optional<bool> &allocateTickets, const std::optional<std::string> &tournamentData, const std::optional<std::string> &missionType, const std::optional<std::string> &visibility, const std::optional<int32_t> &preliminaryGroups, const std::optional<std::string> &preliminaryGroupAdvancements, const std::optional<bool> &enableMultipleEntries, const std::optional<bool> &enableMultipleVotes, const std::optional<bool> &featured, const std::optional<std::string> &winnerTag, const std::optional<std::string> &tieTag, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_tournament( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<int32_t> &costToPlay, const std::optional<int64_t> &startDate, const std::optional<std::string> &subType, const std::optional<int64_t> &imageAssetId, const std::optional<int32_t> &secondsBetweenLevels, const std::optional<int32_t> &secondsForTieBreaker, const std::optional<int32_t> &secondsBetweenPacks, const std::optional<int32_t> &maximumLevelLength, const std::optional<std::string> &costToPlayType, const std::optional<int32_t> &minimumToPlay, const std::optional<int32_t> &startingLimit, const std::optional<int32_t> &availableLimit, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &audienceIds, const std::optional<bool> &active, const std::optional<bool> &enableBuyBack, const std::optional<std::string> &offerIds, const std::optional<int64_t> &offerAssetId, const std::optional<bool> &fixedReward, const std::optional<std::string> &splitReward, const std::optional<bool> &allocateTickets, const std::optional<std::string> &tournamentData, const std::optional<std::string> &missionType, const std::optional<std::string> &visibility, const std::optional<int32_t> &preliminaryGroups, const std::optional<std::string> &preliminaryGroupAdvancements, const std::optional<bool> &enableMultipleEntries, const std::optional<bool> &enableMultipleVotes, const std::optional<bool> &featured, const std::optional<std::string> &winnerTag, const std::optional<std::string> &tieTag, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Tournament
     /// </summary>
     /// <remarks>
     /// Delete a tournament.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="missionId">the id of the mission to delete</param>
-    virtual void delete_tournament( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_tournament( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Tournament
     /// </summary>
     /// <remarks>
     /// Get a tournament.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The id of the logged in user</param>
     /// <param name="missionId">The id of the mission to return (either missionId or joinCode is required) (optional, default to 0L)</param>
     /// <param name="joinCode">Optional identifier for getting the tournament (either missionId or joinCode is required) (optional, default to &quot;&quot;)</param>
     /// <param name="includeScores">Determines which type of scores are returned. Possible values include: ALL, MINE (optional, default to &quot;&quot;)</param>
     /// <param name="objectPreviewSize">Determines the max number of game objects that will get returned for each game level response (optional, default to 50)</param>
-    virtual void get_tournament( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &joinCode, const std::optional<std::string> &includeScores, const std::optional<int32_t> &objectPreviewSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_tournament( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &joinCode, const std::optional<std::string> &includeScores, const std::optional<int32_t> &objectPreviewSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Tournament Objects
     /// </summary>
     /// <remarks>
     /// Search on game objects of tournaments
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID</param>
     /// <param name="gameLevelId">the game level id to filter results by</param>
     /// <param name="sortField">the field to sort by (optional, default to &quot;PLAYER_SCORE_COUNT&quot;)</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order (optional, default to true)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 20)</param>
-    virtual void search_objects( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameLevelId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_objects( const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameLevelId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Tournament Rounds
     /// </summary>
     /// <remarks>
     /// Search for the user&#39;s tournament games.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account ID</param>
     /// <param name="appKey">the application key</param>
     /// <param name="status">comma separated list of statuses to filter results by (optional, default to &quot;ACCEPTED,ACTIVE&quot;)</param>
@@ -182,14 +177,13 @@ private:
     /// <param name="visibilities">Filter tournament rounds by the mission visibility flag (optional, default to &quot;PUBLIC&quot;)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 20)</param>
-    virtual void search_rounds( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &status, const std::optional<std::string> &missionType, const std::optional<bool> &currentOnly, const std::optional<std::string> &visibilities, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_rounds( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &status, const std::optional<std::string> &missionType, const std::optional<bool> &currentOnly, const std::optional<std::string> &visibilities, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Tournaments
     /// </summary>
     /// <remarks>
     /// Search for tournaments
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The application key</param>
     /// <param name="keyword">the keyword to search tournament on (optional, default to &quot;&quot;)</param>
@@ -202,14 +196,13 @@ private:
     /// <param name="visibility">Comma separated list of visibility flags for search for, possible values include: PUBLIC, LISTABLE, REWARDABLE, TRIGGERABLE, PRIVATE (optional, default to &quot;PUBLIC&quot;)</param>
     /// <param name="start">Start the result set at some index. (optional, default to 0)</param>
     /// <param name="limit">Limit the result to some number (optional, default to 20)</param>
-    virtual void search_tournaments( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &subType, const std::optional<bool> &includeInactive, const std::optional<std::string> &missionTypes, const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &visibility, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_tournaments( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &subType, const std::optional<bool> &includeInactive, const std::optional<std::string> &missionTypes, const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &visibility, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Submit Tournament Score
     /// </summary>
     /// <remarks>
     /// Submit an array of scores for a tournament match. 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user account ID.</param>
     /// <param name="appKey">The application key.</param>
     /// <param name="missionId">The missionId to score for</param>
@@ -217,40 +210,37 @@ private:
     /// <param name="packId">The packId to score for</param>
     /// <param name="scores">a JSON Array of scores to submit for a tournament match &#x60;&#x60;&#x60;json [   {     \&quot;accountId\&quot;: 2,     \&quot;points\&quot;: 3   },   {     \&quot;accountId\&quot;: 1777662,     \&quot;points\&quot;: 7   } ] &#x60;&#x60;&#x60; </param>
     /// <param name="gameLevelId">The gameLevelId to score for (optional, default to 0L)</param>
-    virtual void submit_tournament_score( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<std::string> &scores, const std::optional<int64_t> &gameLevelId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void submit_tournament_score( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<std::string> &scores, const std::optional<int64_t> &gameLevelId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Submit a vote for a multi-stage album tournament.
     /// </summary>
     /// <remarks>
     /// Submit a vote for a multi-stage album tournament.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The application to target</param>
     /// <param name="missionId">The tournament&#39;s primary id</param>
     /// <param name="gameObjectId">The tournament game object the user wants to vote on</param>
     /// <param name="deviceId">The unique id of the device making the request (optional) (optional, default to &quot;&quot;)</param>
     /// <param name="checkIfDeviceAlreadyVoted">When true, check if the device already voted to prevent duplicate votes from the same device (optional, default to false)</param>
-    virtual void submit_tournament_vote( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameObjectId, const std::optional<std::string> &deviceId, const std::optional<bool> &checkIfDeviceAlreadyVoted, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void submit_tournament_vote( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameObjectId, const std::optional<std::string> &deviceId, const std::optional<bool> &checkIfDeviceAlreadyVoted, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Substitute Tournament Player
     /// </summary>
     /// <remarks>
     /// Service to replace the user&#39;s opponent in the current level - pack - mission with an AI account.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="missionId">the id of the mission</param>
     /// <param name="packId">the id of the pack</param>
     /// <param name="gameLevelId">the id of the game level</param>
-    virtual void substitute_tournament_player( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void substitute_tournament_player( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Tournament
     /// </summary>
     /// <remarks>
     /// Update a tournament.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="missionId">The mission/tournament to update</param>
     /// <param name="title">The title of the tournament (optional, default to &quot;&quot;)</param>
@@ -285,7 +275,7 @@ private:
     /// <param name="featured">This determines whether the tournament is \&quot;featured\&quot; or not (optional, default to false)</param>
     /// <param name="winnerTag">This sets what analytic tag is used when a winner is determined (optional, default to &quot;&quot;)</param>
     /// <param name="tieTag">This sets what analytic tag is used when a winner is determined (optional, default to &quot;&quot;)</param>
-    virtual void update_tournament( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &title, const std::optional<std::string> &subType, const std::optional<int64_t> &imageAssetId, const std::optional<int32_t> &secondsBetweenLevels, const std::optional<int32_t> &secondsForTieBreaker, const std::optional<int32_t> &secondsBetweenPacks, const std::optional<int32_t> &maximumLevelLength, const std::optional<int32_t> &costToPlay, const std::optional<std::string> &costToPlayType, const std::optional<int32_t> &minimumToPlay, const std::optional<int32_t> &startingLimit, const std::optional<int32_t> &availableLimit, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<int64_t> &startDate, const std::optional<std::string> &audienceIds, const std::optional<bool> &active, const std::optional<bool> &enableBuyBack, const std::optional<std::string> &offerIds, const std::optional<int64_t> &offerAssetId, const std::optional<bool> &fixedReward, const std::optional<std::string> &splitReward, const std::optional<bool> &allocateTickets, const std::optional<std::string> &tournamentData, const std::optional<std::string> &visibility, const std::optional<int32_t> &preliminaryGroups, const std::optional<std::string> &preliminaryGroupAdvancements, const std::optional<bool> &enableMultipleEntries, const std::optional<bool> &enableMultipleVotes, const std::optional<bool> &featured, const std::optional<std::string> &winnerTag, const std::optional<std::string> &tieTag, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_tournament( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &title, const std::optional<std::string> &subType, const std::optional<int64_t> &imageAssetId, const std::optional<int32_t> &secondsBetweenLevels, const std::optional<int32_t> &secondsForTieBreaker, const std::optional<int32_t> &secondsBetweenPacks, const std::optional<int32_t> &maximumLevelLength, const std::optional<int32_t> &costToPlay, const std::optional<std::string> &costToPlayType, const std::optional<int32_t> &minimumToPlay, const std::optional<int32_t> &startingLimit, const std::optional<int32_t> &availableLimit, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<int64_t> &startDate, const std::optional<std::string> &audienceIds, const std::optional<bool> &active, const std::optional<bool> &enableBuyBack, const std::optional<std::string> &offerIds, const std::optional<int64_t> &offerAssetId, const std::optional<bool> &fixedReward, const std::optional<std::string> &splitReward, const std::optional<bool> &allocateTickets, const std::optional<std::string> &tournamentData, const std::optional<std::string> &visibility, const std::optional<int32_t> &preliminaryGroups, const std::optional<std::string> &preliminaryGroupAdvancements, const std::optional<bool> &enableMultipleEntries, const std::optional<bool> &enableMultipleVotes, const std::optional<bool> &featured, const std::optional<std::string> &winnerTag, const std::optional<std::string> &tieTag, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

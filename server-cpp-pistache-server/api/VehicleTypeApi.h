@@ -87,35 +87,31 @@ private:
     /// <remarks>
     /// Create a new vehicle type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="vehicleType">A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; </param>
     /// <param name="body"> (optional)</param>
-    virtual void create_vehicle_type( const double &version, const std::optional<std::string> &vehicleType, const org::openapitools::server::model::VehicleType &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_vehicle_type( const std::optional<std::string> &vehicleType, const org::openapitools::server::model::VehicleType &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Vehicle Type
     /// </summary>
     /// <remarks>
     /// Delete a vehicle type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="vehicleTypeId">The id of the requested vehicle type</param>
-    virtual void delete_vehicle_type( const double &version, const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_vehicle_type( const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Vehicle Type
     /// </summary>
     /// <remarks>
     /// Get a vehicle type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="vehicleTypeId">The id of the requested vehicle type</param>
-    virtual void get_vehicle_type( const double &version, const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_vehicle_type( const int64_t &vehicleTypeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Vehicle Type
     /// </summary>
     /// <remarks>
     /// Search for types of vehicles
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
@@ -123,18 +119,17 @@ private:
     /// <param name="activeOnly">Return only active results</param>
     /// <param name="retailerId">Filter by retailer (optional, default to 0L)</param>
     /// <param name="hubId">Filter by service hub (optional, default to 0L)</param>
-    virtual void search_vehicle_types( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_vehicle_types( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Vehicle Type
     /// </summary>
     /// <remarks>
     /// Update a vehicle type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="vehicleTypeId">The id of the vehicle type to update</param>
     /// <param name="vehicleType">The new data for the vehicle type to update to. A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; </param>
     /// <param name="body"> (optional)</param>
-    virtual void update_vehicle_type( const double &version, const int64_t &vehicleTypeId, const std::optional<std::string> &vehicleType, const org::openapitools::server::model::VehicleType &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_vehicle_type( const int64_t &vehicleTypeId, const std::optional<std::string> &vehicleType, const org::openapitools::server::model::VehicleType &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ConnectionApi::base = "";
+const std::string ConnectionApi::base = "/api/3.18";
 
 ConnectionApi::ConnectionApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,28 +32,28 @@ void ConnectionApi::init() {
 void ConnectionApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/consumer/connection/group/addConnection", Routes::bind(&ConnectionApi::add_connection_to_group_handler, this));
-    Routes::Post(*router, base + "/api/:version/connection/group/addConnections", Routes::bind(&ConnectionApi::add_connections_to_group_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/connection/group/addSubGroup", Routes::bind(&ConnectionApi::add_sub_groups_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/connection/add", Routes::bind(&ConnectionApi::create_or_update_connection_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/connection/group", Routes::bind(&ConnectionApi::create_or_update_group_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/follow/accept", Routes::bind(&ConnectionApi::follow_accept_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/follow/reject", Routes::bind(&ConnectionApi::follow_reject_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/follow/remove", Routes::bind(&ConnectionApi::follow_remove_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/follow/request", Routes::bind(&ConnectionApi::follow_request_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/friend/accept", Routes::bind(&ConnectionApi::friend_accept_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/friend/reject", Routes::bind(&ConnectionApi::friend_reject_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/friend/remove", Routes::bind(&ConnectionApi::friend_remove_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/friend/request", Routes::bind(&ConnectionApi::friend_request_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/connection/getRequested", Routes::bind(&ConnectionApi::get_connection_sent_friend_requests_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/connection/get", Routes::bind(&ConnectionApi::get_connections_handler, this));
-    Routes::Get(*router, base + "/api/:version/consumer/connection/group/details/get", Routes::bind(&ConnectionApi::get_group_details_handler, this));
-    Routes::Get(*router, base + "/api/:version/connection/group/search", Routes::bind(&ConnectionApi::group_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/connection/group/removeConnection", Routes::bind(&ConnectionApi::remove_connection_from_group_handler, this));
-    Routes::Post(*router, base + "/api/:version/connection/group/removeConnections", Routes::bind(&ConnectionApi::remove_connections_from_group_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/connection/group/remove", Routes::bind(&ConnectionApi::remove_group_handler, this));
-    Routes::Post(*router, base + "/api/:version/consumer/connection/group/removeSubGroup", Routes::bind(&ConnectionApi::remove_sub_groups_handler, this));
-    Routes::Get(*router, base + "/api/:version/connection/search", Routes::bind(&ConnectionApi::search_connections_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/group/addConnection", Routes::bind(&ConnectionApi::add_connection_to_group_handler, this));
+    Routes::Post(*router, base + "/connection/group/addConnections", Routes::bind(&ConnectionApi::add_connections_to_group_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/group/addSubGroup", Routes::bind(&ConnectionApi::add_sub_groups_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/add", Routes::bind(&ConnectionApi::create_or_update_connection_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/group", Routes::bind(&ConnectionApi::create_or_update_group_handler, this));
+    Routes::Post(*router, base + "/consumer/follow/accept", Routes::bind(&ConnectionApi::follow_accept_handler, this));
+    Routes::Post(*router, base + "/consumer/follow/reject", Routes::bind(&ConnectionApi::follow_reject_handler, this));
+    Routes::Post(*router, base + "/consumer/follow/remove", Routes::bind(&ConnectionApi::follow_remove_handler, this));
+    Routes::Post(*router, base + "/consumer/follow/request", Routes::bind(&ConnectionApi::follow_request_handler, this));
+    Routes::Post(*router, base + "/consumer/friend/accept", Routes::bind(&ConnectionApi::friend_accept_handler, this));
+    Routes::Post(*router, base + "/consumer/friend/reject", Routes::bind(&ConnectionApi::friend_reject_handler, this));
+    Routes::Post(*router, base + "/consumer/friend/remove", Routes::bind(&ConnectionApi::friend_remove_handler, this));
+    Routes::Post(*router, base + "/consumer/friend/request", Routes::bind(&ConnectionApi::friend_request_handler, this));
+    Routes::Get(*router, base + "/consumer/connection/getRequested", Routes::bind(&ConnectionApi::get_connection_sent_friend_requests_handler, this));
+    Routes::Get(*router, base + "/consumer/connection/get", Routes::bind(&ConnectionApi::get_connections_handler, this));
+    Routes::Get(*router, base + "/consumer/connection/group/details/get", Routes::bind(&ConnectionApi::get_group_details_handler, this));
+    Routes::Get(*router, base + "/connection/group/search", Routes::bind(&ConnectionApi::group_search_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/group/removeConnection", Routes::bind(&ConnectionApi::remove_connection_from_group_handler, this));
+    Routes::Post(*router, base + "/connection/group/removeConnections", Routes::bind(&ConnectionApi::remove_connections_from_group_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/group/remove", Routes::bind(&ConnectionApi::remove_group_handler, this));
+    Routes::Post(*router, base + "/consumer/connection/group/removeSubGroup", Routes::bind(&ConnectionApi::remove_sub_groups_handler, this));
+    Routes::Get(*router, base + "/connection/search", Routes::bind(&ConnectionApi::search_connections_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ConnectionApi::connection_api_default_handler, this));
@@ -88,8 +88,6 @@ std::pair<Pistache::Http::Code, std::string> ConnectionApi::handleOperationExcep
 void ConnectionApi::add_connection_to_group_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -174,7 +172,7 @@ void ConnectionApi::add_connection_to_group_handler(const Pistache::Rest::Reques
 
 
 
-            this->add_connection_to_group(version, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude, response);
+            this->add_connection_to_group(returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -193,8 +191,6 @@ void ConnectionApi::add_connection_to_group_handler(const Pistache::Rest::Reques
 void ConnectionApi::add_connections_to_group_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -263,7 +259,7 @@ void ConnectionApi::add_connections_to_group_handler(const Pistache::Rest::Reque
 
 
 
-            this->add_connections_to_group(version, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude, response);
+            this->add_connections_to_group(connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -282,8 +278,6 @@ void ConnectionApi::add_connections_to_group_handler(const Pistache::Rest::Reque
 void ConnectionApi::add_sub_groups_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -352,7 +346,7 @@ void ConnectionApi::add_sub_groups_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->add_sub_groups(version, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude, response);
+            this->add_sub_groups(returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -371,8 +365,6 @@ void ConnectionApi::add_sub_groups_handler(const Pistache::Rest::Request& reques
 void ConnectionApi::create_or_update_connection_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -497,7 +489,7 @@ void ConnectionApi::create_or_update_connection_handler(const Pistache::Rest::Re
 
 
 
-            this->create_or_update_connection(version, deviceId, accountId, connectionId, connectionAccountId, pendingId, groupId, gameType, appKey, isTrusted, ignoreFriendRequest, isContact, isBlocked, isFollowing, connectionResponse, response);
+            this->create_or_update_connection(deviceId, accountId, connectionId, connectionAccountId, pendingId, groupId, gameType, appKey, isTrusted, ignoreFriendRequest, isContact, isBlocked, isFollowing, connectionResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -516,8 +508,6 @@ void ConnectionApi::create_or_update_connection_handler(const Pistache::Rest::Re
 void ConnectionApi::create_or_update_group_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -642,7 +632,7 @@ void ConnectionApi::create_or_update_group_handler(const Pistache::Rest::Request
 
 
 
-            this->create_or_update_group(version, returnNulls, deviceId, accountId, name, groupId, assetId, connections, description, canViewProfileInfo, canViewGameInfo, canViewFriendInfo, active, latitude, longitude, response);
+            this->create_or_update_group(returnNulls, deviceId, accountId, name, groupId, assetId, connections, description, canViewProfileInfo, canViewGameInfo, canViewFriendInfo, active, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -661,8 +651,6 @@ void ConnectionApi::create_or_update_group_handler(const Pistache::Rest::Request
 void ConnectionApi::follow_accept_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -699,7 +687,7 @@ void ConnectionApi::follow_accept_handler(const Pistache::Rest::Request& request
 
 
 
-            this->follow_accept(version, accountId, connectionAccountId, appKey, response);
+            this->follow_accept(accountId, connectionAccountId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -718,8 +706,6 @@ void ConnectionApi::follow_accept_handler(const Pistache::Rest::Request& request
 void ConnectionApi::follow_reject_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -756,7 +742,7 @@ void ConnectionApi::follow_reject_handler(const Pistache::Rest::Request& request
 
 
 
-            this->follow_reject(version, accountId, connectionAccountId, appKey, response);
+            this->follow_reject(accountId, connectionAccountId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -775,8 +761,6 @@ void ConnectionApi::follow_reject_handler(const Pistache::Rest::Request& request
 void ConnectionApi::follow_remove_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -813,7 +797,7 @@ void ConnectionApi::follow_remove_handler(const Pistache::Rest::Request& request
 
 
 
-            this->follow_remove(version, accountId, connectionAccountId, appKey, response);
+            this->follow_remove(accountId, connectionAccountId, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -832,8 +816,6 @@ void ConnectionApi::follow_remove_handler(const Pistache::Rest::Request& request
 void ConnectionApi::follow_request_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -878,7 +860,7 @@ void ConnectionApi::follow_request_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->follow_request(version, accountId, connectionAccountId, appKey, approvalNeeded, response);
+            this->follow_request(accountId, connectionAccountId, appKey, approvalNeeded, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -897,8 +879,6 @@ void ConnectionApi::follow_request_handler(const Pistache::Rest::Request& reques
 void ConnectionApi::friend_accept_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -967,7 +947,7 @@ void ConnectionApi::friend_accept_handler(const Pistache::Rest::Request& request
 
 
 
-            this->friend_accept(version, friendAccountId, notifyFriend, deviceId, accountId, gameType, appKey, notificationMessage, response);
+            this->friend_accept(friendAccountId, notifyFriend, deviceId, accountId, gameType, appKey, notificationMessage, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -986,8 +966,6 @@ void ConnectionApi::friend_accept_handler(const Pistache::Rest::Request& request
 void ConnectionApi::friend_reject_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1056,7 +1034,7 @@ void ConnectionApi::friend_reject_handler(const Pistache::Rest::Request& request
 
 
 
-            this->friend_reject(version, friendAccountId, deviceId, accountId, gameType, appKey, notifyFriend, notificationMessage, response);
+            this->friend_reject(friendAccountId, deviceId, accountId, gameType, appKey, notifyFriend, notificationMessage, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1075,8 +1053,6 @@ void ConnectionApi::friend_reject_handler(const Pistache::Rest::Request& request
 void ConnectionApi::friend_remove_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1129,7 +1105,7 @@ void ConnectionApi::friend_remove_handler(const Pistache::Rest::Request& request
 
 
 
-            this->friend_remove(version, friendAccountId, deviceId, accountId, notifyFriend, removeFromGroups, response);
+            this->friend_remove(friendAccountId, deviceId, accountId, notifyFriend, removeFromGroups, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1148,8 +1124,6 @@ void ConnectionApi::friend_remove_handler(const Pistache::Rest::Request& request
 void ConnectionApi::friend_request_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1210,7 +1184,7 @@ void ConnectionApi::friend_request_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->friend_request(version, friendAccountId, deviceId, accountId, gameType, appKey, notificationMessage, response);
+            this->friend_request(friendAccountId, deviceId, accountId, gameType, appKey, notificationMessage, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1229,8 +1203,6 @@ void ConnectionApi::friend_request_handler(const Pistache::Rest::Request& reques
 void ConnectionApi::get_connection_sent_friend_requests_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1259,7 +1231,7 @@ void ConnectionApi::get_connection_sent_friend_requests_handler(const Pistache::
 
 
 
-            this->get_connection_sent_friend_requests(version, deviceId, accountId, response);
+            this->get_connection_sent_friend_requests(deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1278,8 +1250,6 @@ void ConnectionApi::get_connection_sent_friend_requests_handler(const Pistache::
 void ConnectionApi::get_connections_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1412,7 +1382,7 @@ void ConnectionApi::get_connections_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_connections(version, returnNulls, filter, sortField, descending, start, limit, deviceId, accountId, connectionAccountId, q, keyword, i, l, latitude, longitude, response);
+            this->get_connections(returnNulls, filter, sortField, descending, start, limit, deviceId, accountId, connectionAccountId, q, keyword, i, l, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1431,8 +1401,6 @@ void ConnectionApi::get_connections_handler(const Pistache::Rest::Request& reque
 void ConnectionApi::get_group_details_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1493,7 +1461,7 @@ void ConnectionApi::get_group_details_handler(const Pistache::Rest::Request& req
 
 
 
-            this->get_group_details(version, combineConnections, deviceId, accountId, groupId, latitude, longitude, response);
+            this->get_group_details(combineConnections, deviceId, accountId, groupId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1512,8 +1480,6 @@ void ConnectionApi::get_group_details_handler(const Pistache::Rest::Request& req
 void ConnectionApi::group_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1606,7 +1572,7 @@ void ConnectionApi::group_search_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->group_search(version, sortField, descending, activeOnly, start, limit, deviceId, accountId, latitude, longitude, keyword, response);
+            this->group_search(sortField, descending, activeOnly, start, limit, deviceId, accountId, latitude, longitude, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1625,8 +1591,6 @@ void ConnectionApi::group_search_handler(const Pistache::Rest::Request& request,
 void ConnectionApi::remove_connection_from_group_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1711,7 +1675,7 @@ void ConnectionApi::remove_connection_from_group_handler(const Pistache::Rest::R
 
 
 
-            this->remove_connection_from_group(version, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude, response);
+            this->remove_connection_from_group(returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1730,8 +1694,6 @@ void ConnectionApi::remove_connection_from_group_handler(const Pistache::Rest::R
 void ConnectionApi::remove_connections_from_group_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1800,7 +1762,7 @@ void ConnectionApi::remove_connections_from_group_handler(const Pistache::Rest::
 
 
 
-            this->remove_connections_from_group(version, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude, response);
+            this->remove_connections_from_group(connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1819,8 +1781,6 @@ void ConnectionApi::remove_connections_from_group_handler(const Pistache::Rest::
 void ConnectionApi::remove_group_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1881,7 +1841,7 @@ void ConnectionApi::remove_group_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->remove_group(version, returnNulls, groupId, deviceId, accountId, latitude, longitude, response);
+            this->remove_group(returnNulls, groupId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1900,8 +1860,6 @@ void ConnectionApi::remove_group_handler(const Pistache::Rest::Request& request,
 void ConnectionApi::remove_sub_groups_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1970,7 +1928,7 @@ void ConnectionApi::remove_sub_groups_handler(const Pistache::Rest::Request& req
 
 
 
-            this->remove_sub_groups(version, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude, response);
+            this->remove_sub_groups(returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1989,8 +1947,6 @@ void ConnectionApi::remove_sub_groups_handler(const Pistache::Rest::Request& req
 void ConnectionApi::search_connections_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2123,7 +2079,7 @@ void ConnectionApi::search_connections_handler(const Pistache::Rest::Request& re
 
 
 
-            this->search_connections(version, returnNulls, start, limit, deviceId, accountId, q, keyword, latitude, longitude, gameType, appKey, i, l, sortField, hasLocation, response);
+            this->search_connections(returnNulls, start, limit, deviceId, accountId, q, keyword, latitude, longitude, gameType, appKey, i, l, sortField, hasLocation, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

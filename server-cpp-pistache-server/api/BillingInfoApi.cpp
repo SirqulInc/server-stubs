@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string BillingInfoApi::base = "";
+const std::string BillingInfoApi::base = "/api/3.18";
 
 BillingInfoApi::BillingInfoApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void BillingInfoApi::init() {
 void BillingInfoApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/billing/update", Routes::bind(&BillingInfoApi::add_payment_method_handler, this));
-    Routes::Post(*router, base + "/api/:version/billing/create", Routes::bind(&BillingInfoApi::create_payment_method_handler, this));
-    Routes::Post(*router, base + "/api/:version/billing/crypto/transfer", Routes::bind(&BillingInfoApi::create_smart_contract_handler, this));
-    Routes::Get(*router, base + "/api/:version/billing/crypto/get", Routes::bind(&BillingInfoApi::get_crypto_balance_handler, this));
-    Routes::Get(*router, base + "/api/:version/billing/get", Routes::bind(&BillingInfoApi::get_payment_method_handler, this));
-    Routes::Get(*router, base + "/api/:version/billing/search", Routes::bind(&BillingInfoApi::search_payment_method_handler, this));
+    Routes::Post(*router, base + "/billing/update", Routes::bind(&BillingInfoApi::add_payment_method_handler, this));
+    Routes::Post(*router, base + "/billing/create", Routes::bind(&BillingInfoApi::create_payment_method_handler, this));
+    Routes::Post(*router, base + "/billing/crypto/transfer", Routes::bind(&BillingInfoApi::create_smart_contract_handler, this));
+    Routes::Get(*router, base + "/billing/crypto/get", Routes::bind(&BillingInfoApi::get_crypto_balance_handler, this));
+    Routes::Get(*router, base + "/billing/get", Routes::bind(&BillingInfoApi::get_payment_method_handler, this));
+    Routes::Get(*router, base + "/billing/search", Routes::bind(&BillingInfoApi::search_payment_method_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&BillingInfoApi::billing_info_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> BillingInfoApi::handleOperationExce
 void BillingInfoApi::add_payment_method_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -270,7 +268,7 @@ void BillingInfoApi::add_payment_method_handler(const Pistache::Rest::Request& r
 
 
 
-            this->add_payment_method(version, accountId, paymentMethodId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, defaultPaymentMethod, paymentMethodNickname, taxId, providerCustomerProfileId, providerPaymentProfileId, metaData, response);
+            this->add_payment_method(accountId, paymentMethodId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, defaultPaymentMethod, paymentMethodNickname, taxId, providerCustomerProfileId, providerPaymentProfileId, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -289,8 +287,6 @@ void BillingInfoApi::add_payment_method_handler(const Pistache::Rest::Request& r
 void BillingInfoApi::create_payment_method_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -503,7 +499,7 @@ void BillingInfoApi::create_payment_method_handler(const Pistache::Rest::Request
 
 
 
-            this->create_payment_method(version, accountId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, paymentMethodNickname, taxId, defaultPaymentMethod, authToken, provider, providerCustomerProfileId, providerPaymentProfileId, metaData, appKey, response);
+            this->create_payment_method(accountId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, paymentMethodNickname, taxId, defaultPaymentMethod, authToken, provider, providerCustomerProfileId, providerPaymentProfileId, metaData, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -522,8 +518,6 @@ void BillingInfoApi::create_payment_method_handler(const Pistache::Rest::Request
 void BillingInfoApi::create_smart_contract_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -568,7 +562,7 @@ void BillingInfoApi::create_smart_contract_handler(const Pistache::Rest::Request
 
 
 
-            this->create_smart_contract(version, accountId, tokenName, tokenSymbol, paymentMethodId, response);
+            this->create_smart_contract(accountId, tokenName, tokenSymbol, paymentMethodId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -587,8 +581,6 @@ void BillingInfoApi::create_smart_contract_handler(const Pistache::Rest::Request
 void BillingInfoApi::get_crypto_balance_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -625,7 +617,7 @@ void BillingInfoApi::get_crypto_balance_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_crypto_balance(version, accountId, ownerAccountId, paymentMethodId, response);
+            this->get_crypto_balance(accountId, ownerAccountId, paymentMethodId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -644,8 +636,6 @@ void BillingInfoApi::get_crypto_balance_handler(const Pistache::Rest::Request& r
 void BillingInfoApi::get_payment_method_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -682,7 +672,7 @@ void BillingInfoApi::get_payment_method_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_payment_method(version, accountId, paymentMethodId, getCurrentBalance, response);
+            this->get_payment_method(accountId, paymentMethodId, getCurrentBalance, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -701,8 +691,6 @@ void BillingInfoApi::get_payment_method_handler(const Pistache::Rest::Request& r
 void BillingInfoApi::search_payment_method_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -779,7 +767,7 @@ void BillingInfoApi::search_payment_method_handler(const Pistache::Rest::Request
 
 
 
-            this->search_payment_method(version, accountId, provider, type, keyword, sortField, descending, start, limit, response);
+            this->search_payment_method(accountId, provider, type, keyword, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

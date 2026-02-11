@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ProgramApi::base = "";
+const std::string ProgramApi::base = "/api/3.18";
 
 ProgramApi::ProgramApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ProgramApi::init() {
 void ProgramApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/program", Routes::bind(&ProgramApi::create_program_handler, this));
-    Routes::Delete(*router, base + "/api/:version/program/:id", Routes::bind(&ProgramApi::delete_program_handler, this));
-    Routes::Get(*router, base + "/api/:version/program/:id", Routes::bind(&ProgramApi::get_program_handler, this));
-    Routes::Post(*router, base + "/api/:version/program/:id", Routes::bind(&ProgramApi::post_program_handler, this));
-    Routes::Put(*router, base + "/api/:version/program/:id", Routes::bind(&ProgramApi::put_program_handler, this));
-    Routes::Get(*router, base + "/api/:version/program", Routes::bind(&ProgramApi::search_programs_handler, this));
+    Routes::Post(*router, base + "/program", Routes::bind(&ProgramApi::create_program_handler, this));
+    Routes::Delete(*router, base + "/program/:id", Routes::bind(&ProgramApi::delete_program_handler, this));
+    Routes::Get(*router, base + "/program/:id", Routes::bind(&ProgramApi::get_program_handler, this));
+    Routes::Post(*router, base + "/program/:id", Routes::bind(&ProgramApi::post_program_handler, this));
+    Routes::Put(*router, base + "/program/:id", Routes::bind(&ProgramApi::put_program_handler, this));
+    Routes::Get(*router, base + "/program", Routes::bind(&ProgramApi::search_programs_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ProgramApi::program_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ProgramApi::handleOperationExceptio
 void ProgramApi::create_program_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -97,7 +95,7 @@ void ProgramApi::create_program_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->create_program(version, body, response);
+            this->create_program(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -117,7 +115,6 @@ void ProgramApi::delete_program_handler(const Pistache::Rest::Request& request, 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -130,7 +127,7 @@ void ProgramApi::delete_program_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->delete_program(version, id, response);
+            this->delete_program(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -150,7 +147,6 @@ void ProgramApi::get_program_handler(const Pistache::Rest::Request& request, Pis
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         
@@ -163,7 +159,7 @@ void ProgramApi::get_program_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_program(version, id, response);
+            this->get_program(id, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -183,7 +179,6 @@ void ProgramApi::post_program_handler(const Pistache::Rest::Request& request, Pi
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -208,7 +203,7 @@ void ProgramApi::post_program_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->post_program(version, id, body, response);
+            this->post_program(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -228,7 +223,6 @@ void ProgramApi::put_program_handler(const Pistache::Rest::Request& request, Pis
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         
         // Getting the body param
@@ -253,7 +247,7 @@ void ProgramApi::put_program_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->put_program(version, id, body, response);
+            this->put_program(id, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -272,8 +266,6 @@ void ProgramApi::put_program_handler(const Pistache::Rest::Request& request, Pis
 void ProgramApi::search_programs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -334,7 +326,7 @@ void ProgramApi::search_programs_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_programs(version, sortField, descending, start, limit, activeOnly, keyword, response);
+            this->search_programs(sortField, descending, start, limit, activeOnly, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

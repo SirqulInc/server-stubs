@@ -89,7 +89,6 @@ private:
     /// <remarks>
     /// Creates a new purchase with some number of items associated with it. The purchase is added to the order that was created
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application requesting the purchase</param>
     /// <param name="cart">&#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; </param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -102,37 +101,34 @@ private:
     /// <param name="remoteRefType">Remote Reference type (optional, default to &quot;&quot;)</param>
     /// <param name="externalDate">External Date (optional, default to 0L)</param>
     /// <param name="promoCode">The Promo Code (optional, default to &quot;&quot;)</param>
-    virtual void create_order( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &cart, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &description, const std::optional<std::string> &currencyType, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &externalOrderId, const std::optional<std::string> &externalPaymentId, const std::optional<std::string> &remoteRefType, const std::optional<int64_t> &externalDate, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_order( const std::optional<std::string> &appKey, const std::optional<std::string> &cart, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &description, const std::optional<std::string> &currencyType, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &externalOrderId, const std::optional<std::string> &externalPaymentId, const std::optional<std::string> &remoteRefType, const std::optional<int64_t> &externalDate, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Order
     /// </summary>
     /// <remarks>
     /// Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="orderId">Order Id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_order( const double &version, const std::optional<int64_t> &orderId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_order( const std::optional<int64_t> &orderId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Order
     /// </summary>
     /// <remarks>
     /// Get an order record
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="orderId">The order id to get details of, either orderId or externalOrderId must be provided (optional, default to 0L)</param>
     /// <param name="externalOrderId">The external order id to get details of, either orderId or externalOrderId must be provided (optional, default to &quot;&quot;)</param>
-    virtual void get_order( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &orderId, const std::optional<std::string> &externalOrderId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_order( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &orderId, const std::optional<std::string> &externalOrderId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Preview Order
     /// </summary>
     /// <remarks>
     /// Previews a purchase to see the total cost before making it.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application requesting the purchase</param>
     /// <param name="cart">A JSON list of items to purchase</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -145,14 +141,13 @@ private:
     /// <param name="remoteRefType">Remote Reference type (optional, default to &quot;&quot;)</param>
     /// <param name="externalDate">External Date (optional, default to 0L)</param>
     /// <param name="promoCode">The Promo Code (optional, default to &quot;&quot;)</param>
-    virtual void preview_order( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &cart, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &description, const std::optional<std::string> &currencyType, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &externalOrderId, const std::optional<std::string> &externalPaymentId, const std::optional<std::string> &remoteRefType, const std::optional<int64_t> &externalDate, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void preview_order( const std::optional<std::string> &appKey, const std::optional<std::string> &cart, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &description, const std::optional<std::string> &currencyType, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &externalOrderId, const std::optional<std::string> &externalPaymentId, const std::optional<std::string> &remoteRefType, const std::optional<int64_t> &externalDate, const std::optional<std::string> &promoCode, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Orders
     /// </summary>
     /// <remarks>
     /// Search on active orders by customer
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application requesting the purchase</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -184,14 +179,13 @@ private:
     /// <param name="startedBefore">Filter results by the offer start date (optional, default to 0L)</param>
     /// <param name="endedSince">Filter results by the offer end date (optional, default to 0L)</param>
     /// <param name="endedBefore">Filter results by the offer end date (optional, default to 0L)</param>
-    virtual void search_orders( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<bool> &ignoreCustomerFilter, const std::optional<std::string> &orderItemTypes, const std::optional<std::string> &orderItemIds, const std::optional<std::string> &orderCustomTypes, const std::optional<std::string> &orderCustomIds, const std::optional<std::string> &sortField, const std::optional<std::string> &offerTypes, const std::optional<std::string> &specialOfferTypes, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &offerAudienceIds, const std::optional<std::string> &transactionAudienceIds, const std::optional<std::string> &offerIds, const std::optional<std::string> &offerLocationIds, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &statuses, const std::optional<std::string> &keyword, const std::optional<int64_t> &redeemableStartDate, const std::optional<int64_t> &redeemableEndDate, const std::optional<int64_t> &startedSince, const std::optional<int64_t> &startedBefore, const std::optional<int64_t> &endedSince, const std::optional<int64_t> &endedBefore, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_orders( const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &descending, const std::optional<bool> &activeOnly, const std::optional<bool> &ignoreCustomerFilter, const std::optional<std::string> &orderItemTypes, const std::optional<std::string> &orderItemIds, const std::optional<std::string> &orderCustomTypes, const std::optional<std::string> &orderCustomIds, const std::optional<std::string> &sortField, const std::optional<std::string> &offerTypes, const std::optional<std::string> &specialOfferTypes, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &offerAudienceIds, const std::optional<std::string> &transactionAudienceIds, const std::optional<std::string> &offerIds, const std::optional<std::string> &offerLocationIds, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &statuses, const std::optional<std::string> &keyword, const std::optional<int64_t> &redeemableStartDate, const std::optional<int64_t> &redeemableEndDate, const std::optional<int64_t> &startedSince, const std::optional<int64_t> &startedBefore, const std::optional<int64_t> &endedSince, const std::optional<int64_t> &endedBefore, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Order
     /// </summary>
     /// <remarks>
     /// Updates new purchase with some number of items associated with it. The orderId provided is used to retrieve the record and the payment is added to it.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="orderId">The order to add the purchase to, leave null for new order.</param>
     /// <param name="appKey">The application requesting the purchase</param>
     /// <param name="cart">&#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; </param>
@@ -203,7 +197,7 @@ private:
     /// <param name="paymentMethodId">Use a specific payment method (CASH), if not provided use default (optional, default to 0L)</param>
     /// <param name="externalPaymentId">Store identifier from external system (optional, default to &quot;&quot;)</param>
     /// <param name="externalDate">External Date (optional, default to 0L)</param>
-    virtual void update_order( const double &version, const std::optional<int64_t> &orderId, const std::optional<std::string> &appKey, const std::optional<std::string> &cart, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &paymentTransactionId, const std::optional<std::string> &description, const std::optional<std::string> &currencyType, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &externalPaymentId, const std::optional<int64_t> &externalDate, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_order( const std::optional<int64_t> &orderId, const std::optional<std::string> &appKey, const std::optional<std::string> &cart, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &paymentTransactionId, const std::optional<std::string> &description, const std::optional<std::string> &currencyType, const std::optional<int64_t> &paymentMethodId, const std::optional<std::string> &externalPaymentId, const std::optional<int64_t> &externalDate, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

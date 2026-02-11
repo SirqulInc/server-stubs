@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Get historical leaderboard rankings by time-frame.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">the application key for filtering results by application</param>
     /// <param name="rankType">the rank type to return</param>
     /// <param name="startDate">timestamp in milliseconds to filter results with</param>
@@ -99,14 +98,13 @@ private:
     /// <param name="descending">determines whether to return results in ascending or descending order (optional, default to true)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 100)</param>
-    virtual void get_historical_rankings( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_historical_rankings( const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Rankings
     /// </summary>
     /// <remarks>
     /// Get leader board rankings. This is an all in one endpoint that can return multiple ranking types and also the current user rank.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="gameType">This parameter is deprecated. (optional, default to &quot;&quot;)</param>
@@ -125,14 +123,13 @@ private:
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="l">This parameter is deprecated. (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 100)</param>
-    virtual void get_rankings( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &rankType, const std::optional<std::string> &leaderboardMode, const std::optional<std::string> &withinAccountIds, const std::optional<bool> &returnUserRank, const std::optional<int64_t> &albumId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_rankings( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &rankType, const std::optional<std::string> &leaderboardMode, const std::optional<std::string> &withinAccountIds, const std::optional<bool> &returnUserRank, const std::optional<int64_t> &albumId, const std::optional<int64_t> &audienceId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Personal Rankings
     /// </summary>
     /// <remarks>
     /// Returns the user&#39;s ranks for one or more rank types and modes.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (optional, default to 0L)</param>
     /// <param name="appKey">the application key for filtering results by application (required) (optional, default to &quot;&quot;)</param>
@@ -144,14 +141,13 @@ private:
     /// <param name="descending">determines whether to return results in descending order (optional, default to true)</param>
     /// <param name="start">the start index for pagination (optional, default to 0)</param>
     /// <param name="limit">the limit for pagination (optional, default to 100)</param>
-    virtual void get_user_rank( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<bool> &returnUserRank, const std::optional<std::string> &leaderboardMode, const std::optional<std::string> &sortField, const std::optional<std::string> &keyword, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_rank( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<bool> &returnUserRank, const std::optional<std::string> &leaderboardMode, const std::optional<std::string> &sortField, const std::optional<std::string> &keyword, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Override User Rank
     /// </summary>
     /// <remarks>
     /// Allows an admin of an application to override a user&#39;s scores for a leaderboard.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the logged in user&#39;s account id (must have permissions to manage data for the application)</param>
     /// <param name="ownerAccountId">the end user&#39;s account id to override</param>
     /// <param name="appKey">the application key the leaderboard is for</param>
@@ -174,14 +170,13 @@ private:
     /// <param name="streakBestCount">the best streak count to update (optional, default to 0L)</param>
     /// <param name="startDate">the start date to update (optional, default to 0L)</param>
     /// <param name="endDate">the end date to update (optional, default to 0L)</param>
-    virtual void override_user_rank( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &ownerAccountId, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<int64_t> &totalScore, const std::optional<int64_t> &totalCount, const std::optional<int64_t> &totalTime, const std::optional<int64_t> &dailyScore, const std::optional<int64_t> &dailyCount, const std::optional<int64_t> &dailyTime, const std::optional<int64_t> &weeklyScore, const std::optional<int64_t> &weeklyCount, const std::optional<int64_t> &weeklyTime, const std::optional<int64_t> &monthlyScore, const std::optional<int64_t> &monthlyCount, const std::optional<int64_t> &monthlyTime, const std::optional<int64_t> &topScore, const std::optional<int64_t> &lowestScore, const std::optional<int64_t> &streakCount, const std::optional<int64_t> &streakBestCount, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void override_user_rank( const std::optional<int64_t> &accountId, const std::optional<int64_t> &ownerAccountId, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<int64_t> &totalScore, const std::optional<int64_t> &totalCount, const std::optional<int64_t> &totalTime, const std::optional<int64_t> &dailyScore, const std::optional<int64_t> &dailyCount, const std::optional<int64_t> &dailyTime, const std::optional<int64_t> &weeklyScore, const std::optional<int64_t> &weeklyCount, const std::optional<int64_t> &weeklyTime, const std::optional<int64_t> &monthlyScore, const std::optional<int64_t> &monthlyCount, const std::optional<int64_t> &monthlyTime, const std::optional<int64_t> &topScore, const std::optional<int64_t> &lowestScore, const std::optional<int64_t> &streakCount, const std::optional<int64_t> &streakBestCount, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Ranking
     /// </summary>
     /// <remarks>
     /// Update the rank value 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="appKey">the application key for filtering results by application</param>
     /// <param name="rankType">a unique label for identifying the ranking. This can be any alphanumeric string (no spaces or special characters) with a maximum length of 64 characters. There are also default rank types to use which include: POINTS, DOWNLOADS, INVITATIONS, CREATIONS, VOTES, REDEEMED, ACTIONS</param>
@@ -192,7 +187,7 @@ private:
     /// <param name="endDate">custom date you can save along with the score for the user (optional, default to 0L)</param>
     /// <param name="updateGlobal">update the global rankings if true, default is false (optional, default to false)</param>
     /// <param name="createLeaderboard">create the leaderboard if it does not exist (default false) (optional, default to false)</param>
-    virtual void update_rankings( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<int64_t> &increment, const std::optional<int64_t> &timeIncrement, const std::optional<std::string> &tag, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &updateGlobal, const std::optional<bool> &createLeaderboard, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_rankings( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &rankType, const std::optional<int64_t> &increment, const std::optional<int64_t> &timeIncrement, const std::optional<std::string> &tag, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &updateGlobal, const std::optional<bool> &createLeaderboard, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

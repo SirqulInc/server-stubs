@@ -93,7 +93,6 @@ private:
     /// <remarks>
     /// Create a user defined mission.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="title">The title of the mission</param>
     /// <param name="description">The description of the mission (optional, default to &quot;&quot;)</param>
@@ -120,24 +119,22 @@ private:
     /// <param name="deviceVersions">Comma separated list of device version ranges (optional, default to &quot;&quot;)</param>
     /// <param name="locations">List of lat/long pairs for mission locations (optional, default to &quot;&quot;)</param>
     /// <param name="radius">Comma separated list of radii for locations (optional, default to &quot;&quot;)</param>
-    virtual void create_mission( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &subType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &active, const std::optional<std::string> &gameLevelIds, const std::optional<std::string> &creativeIds, const std::optional<std::string> &audienceIds, const std::optional<std::string> &missionTask, const std::optional<std::string> &formatType, const std::optional<int64_t> &offerId, const std::optional<double> &balance, const std::optional<bool> &advancedReporting, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &metaData, const std::optional<std::string> &applicationIds, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_mission( const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &subType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &active, const std::optional<std::string> &gameLevelIds, const std::optional<std::string> &creativeIds, const std::optional<std::string> &audienceIds, const std::optional<std::string> &missionTask, const std::optional<std::string> &formatType, const std::optional<int64_t> &offerId, const std::optional<double> &balance, const std::optional<bool> &advancedReporting, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &metaData, const std::optional<std::string> &applicationIds, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Mission
     /// </summary>
     /// <remarks>
     /// Delete a mission.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="missionId">the id of the mission to delete</param>
-    virtual void delete_mission( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_mission( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Find Missions
     /// </summary>
     /// <remarks>
     /// Get a set of ad filtered by the parameters provided.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.</param>
     /// <param name="suffix">The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip (optional, default to &quot;&quot;)</param>
     /// <param name="type">The type of ads to get, possible values are: BANNER, LEADERBOARD, SKYSCRAPER, FULL, VIDEO, ZIP, CONFIG. Use this instead of suffix. (optional, default to &quot;&quot;)</param>
@@ -157,25 +154,23 @@ private:
     /// <param name="targetedAdsOnly">return only ads targeted to the specific app, no global ads. (optional, default to false)</param>
     /// <param name="missionIds">return only ads from the specified campaigns. (optional, default to &quot;&quot;)</param>
     /// <param name="audienceOperator">will return the items that have at least 1 or all of their audiences exist in the logged in user’s audiences, depending if the value is OR or AND (optional, default to &quot;&quot;)</param>
-    virtual void find_missions( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &device, const std::optional<int64_t> &deviceIdentifier, const std::optional<std::string> &deviceVersion, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeAudiences, const std::optional<bool> &allocatesTickets, const std::optional<bool> &randomize, const std::optional<bool> &targetedAdsOnly, const std::optional<std::string> &missionIds, const std::optional<std::string> &audienceOperator, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void find_missions( const std::optional<std::string> &appKey, const std::optional<std::string> &suffix, const std::optional<std::string> &type, const std::optional<int64_t> &accountId, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &device, const std::optional<int64_t> &deviceIdentifier, const std::optional<std::string> &deviceVersion, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeAudiences, const std::optional<bool> &allocatesTickets, const std::optional<bool> &randomize, const std::optional<bool> &targetedAdsOnly, const std::optional<std::string> &missionIds, const std::optional<std::string> &audienceOperator, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Mission
     /// </summary>
     /// <remarks>
     /// Get a mission.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="missionId">The id of the mission to return.</param>
     /// <param name="returnCreative">Return creatives associated with the mission when true (optional, default to false)</param>
-    virtual void get_mission( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<bool> &returnCreative, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_mission( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<bool> &returnCreative, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Import Mission
     /// </summary>
     /// <remarks>
     /// Create a mission using a source item such as an offer location.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="latitude">The current location of the requesting device</param>
     /// <param name="longitude">The current location of the requesting device</param>
@@ -184,25 +179,23 @@ private:
     /// <param name="start">The starting index in the result set to return. Default is 0. (optional, default to 0)</param>
     /// <param name="limit">The total number of records to return. Default is 20. (optional, default to 0)</param>
     /// <param name="adSize">the size of the ad (optional, default to &quot;&quot;)</param>
-    virtual void import_mission( const double &version, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &adSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void import_mission( const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &adSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Mission Formats
     /// </summary>
     /// <remarks>
     /// Searches on pre-defined mission formats
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="start">The starting index in the result set to return. Default is 0.</param>
     /// <param name="limit">The total number of records to return. Default is 20.</param>
     /// <param name="activeOnly">Determines whether to return only active results. Default is false.</param>
-    virtual void search_mission_formats( const double &version, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_mission_formats( const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Missions
     /// </summary>
     /// <remarks>
     /// Get the list missions available to the account.  
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="keyword">Filter by keyword (optional, default to &quot;&quot;)</param>
     /// <param name="subType">Custom string client apps can use for searching/filtering missions (optional, default to &quot;&quot;)</param>
@@ -214,14 +207,13 @@ private:
     /// <param name="suffix">A list of game types to include; click_leaderboard, click_banner, click_skyscraper, click_full, click_video, click_zip, create, vote, question, invite, share, json, xml (optional, default to &quot;&quot;)</param>
     /// <param name="sortField">The field to sort the search on (for example TITLE) (optional, default to &quot;&quot;)</param>
     /// <param name="descending">Whether to sort in descending order (default true) (optional, default to false)</param>
-    virtual void search_missions( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &subType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeAudiences, const std::optional<bool> &includeInactive, const std::optional<std::string> &suffix, const std::optional<std::string> &sortField, const std::optional<bool> &descending, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_missions( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &subType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeAudiences, const std::optional<bool> &includeInactive, const std::optional<std::string> &suffix, const std::optional<std::string> &sortField, const std::optional<bool> &descending, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Missions by Billable Entity
     /// </summary>
     /// <remarks>
     /// Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="keyword">Filter by keyword (optional, default to &quot;&quot;)</param>
     /// <param name="start">The index into the record set to start with. Default is 0. (optional, default to 0)</param>
@@ -232,14 +224,13 @@ private:
     /// <param name="suffix">A list of game types to include; click_leaderboard, click_banner, click_skyscraper, click_full, click_video, click_zip, create, vote, question, invite, share, json, xml (optional, default to &quot;&quot;)</param>
     /// <param name="sortField">The field to sort the search on (for example TITLE) (optional, default to &quot;&quot;)</param>
     /// <param name="descending">Whether to sort in descending order (default true) (optional, default to false)</param>
-    virtual void search_missions_by_billable_entity( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeAudiences, const std::optional<bool> &includeInactive, const std::optional<std::string> &suffix, const std::optional<std::string> &sortField, const std::optional<bool> &descending, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_missions_by_billable_entity( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeAudiences, const std::optional<bool> &includeInactive, const std::optional<std::string> &suffix, const std::optional<std::string> &sortField, const std::optional<bool> &descending, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Mission
     /// </summary>
     /// <remarks>
     /// Update a mission.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="missionId">The id of the mission to update.</param>
     /// <param name="title">The title of the mission (optional, default to &quot;&quot;)</param>
@@ -265,7 +256,7 @@ private:
     /// <param name="deviceVersions">Comma separated list of device version ranges (optional, default to &quot;&quot;)</param>
     /// <param name="locations">List of lat/long pairs for mission locations (optional, default to &quot;&quot;)</param>
     /// <param name="radius">Comma separated list of radii for locations (optional, default to &quot;&quot;)</param>
-    virtual void update_mission( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &subType, const std::optional<std::string> &metaData, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &active, const std::optional<std::string> &gameLevelIds, const std::optional<std::string> &creativeIds, const std::optional<std::string> &audienceIds, const std::optional<int64_t> &offerId, const std::optional<double> &balance, const std::optional<bool> &advancedReporting, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &applicationIds, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_mission( const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &subType, const std::optional<std::string> &metaData, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &active, const std::optional<std::string> &gameLevelIds, const std::optional<std::string> &creativeIds, const std::optional<std::string> &audienceIds, const std::optional<int64_t> &offerId, const std::optional<double> &balance, const std::optional<bool> &advancedReporting, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, const std::optional<std::string> &applicationIds, const std::optional<std::string> &devices, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &locations, const std::optional<std::string> &radius, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

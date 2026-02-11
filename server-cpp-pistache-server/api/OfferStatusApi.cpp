@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string OfferStatusApi::base = "";
+const std::string OfferStatusApi::base = "/api/3.18";
 
 OfferStatusApi::OfferStatusApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void OfferStatusApi::init() {
 void OfferStatusApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/offer/status/create", Routes::bind(&OfferStatusApi::create_offer_transaction_status_handler, this));
-    Routes::Post(*router, base + "/api/:version/offer/status/delete", Routes::bind(&OfferStatusApi::delete_offer_transaction_status_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/status/get", Routes::bind(&OfferStatusApi::get_offer_transaction_status_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/status/search", Routes::bind(&OfferStatusApi::search_offer_transaction_statuses_handler, this));
-    Routes::Post(*router, base + "/api/:version/offer/status/update", Routes::bind(&OfferStatusApi::update_offer_transaction_status_handler, this));
+    Routes::Post(*router, base + "/offer/status/create", Routes::bind(&OfferStatusApi::create_offer_transaction_status_handler, this));
+    Routes::Post(*router, base + "/offer/status/delete", Routes::bind(&OfferStatusApi::delete_offer_transaction_status_handler, this));
+    Routes::Get(*router, base + "/offer/status/get", Routes::bind(&OfferStatusApi::get_offer_transaction_status_handler, this));
+    Routes::Get(*router, base + "/offer/status/search", Routes::bind(&OfferStatusApi::search_offer_transaction_statuses_handler, this));
+    Routes::Post(*router, base + "/offer/status/update", Routes::bind(&OfferStatusApi::update_offer_transaction_status_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&OfferStatusApi::offer_status_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> OfferStatusApi::handleOperationExce
 void OfferStatusApi::create_offer_transaction_status_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -165,7 +163,7 @@ void OfferStatusApi::create_offer_transaction_status_handler(const Pistache::Res
 
 
 
-            this->create_offer_transaction_status(version, name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds, response);
+            this->create_offer_transaction_status(name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -184,8 +182,6 @@ void OfferStatusApi::create_offer_transaction_status_handler(const Pistache::Res
 void OfferStatusApi::delete_offer_transaction_status_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -238,7 +234,7 @@ void OfferStatusApi::delete_offer_transaction_status_handler(const Pistache::Res
 
 
 
-            this->delete_offer_transaction_status(version, statusId, deviceId, accountId, latitude, longitude, response);
+            this->delete_offer_transaction_status(statusId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -257,8 +253,6 @@ void OfferStatusApi::delete_offer_transaction_status_handler(const Pistache::Res
 void OfferStatusApi::get_offer_transaction_status_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -311,7 +305,7 @@ void OfferStatusApi::get_offer_transaction_status_handler(const Pistache::Rest::
 
 
 
-            this->get_offer_transaction_status(version, statusId, deviceId, accountId, latitude, longitude, response);
+            this->get_offer_transaction_status(statusId, deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -330,8 +324,6 @@ void OfferStatusApi::get_offer_transaction_status_handler(const Pistache::Rest::
 void OfferStatusApi::search_offer_transaction_statuses_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -440,7 +432,7 @@ void OfferStatusApi::search_offer_transaction_statuses_handler(const Pistache::R
 
 
 
-            this->search_offer_transaction_statuses(version, deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive, response);
+            this->search_offer_transaction_statuses(deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -459,8 +451,6 @@ void OfferStatusApi::search_offer_transaction_statuses_handler(const Pistache::R
 void OfferStatusApi::update_offer_transaction_status_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -561,7 +551,7 @@ void OfferStatusApi::update_offer_transaction_status_handler(const Pistache::Res
 
 
 
-            this->update_offer_transaction_status(version, deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds, response);
+            this->update_offer_transaction_status(deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

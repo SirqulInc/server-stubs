@@ -92,7 +92,6 @@ private:
     /// <remarks>
     /// Creates a location record for an application that can support crowd sourced locations.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">the application key</param>
     /// <param name="name">The name of the retailer location</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -122,7 +121,7 @@ private:
     /// <param name="locationType">External custom type identifier (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The latitude to center the search on (optional, default to 0.0)</param>
     /// <param name="longitude">The longitude to center the search on (optional, default to 0.0)</param>
-    virtual void create_retailer_location_consumer( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &country, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &website, const std::optional<std::string> &email, const std::optional<std::string> &detailsHeader, const std::optional<std::string> &detailsBody, const std::optional<std::string> &hours, const std::optional<std::string> &tags, const std::optional<int64_t> &logoAssetId, const std::optional<int64_t> &picture1AssetId, const std::optional<int64_t> &picture2AssetId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &metaData, const std::optional<bool> &publicLocation, const std::optional<bool> &active, const std::optional<std::string> &locationType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_retailer_location_consumer( const std::optional<std::string> &appKey, const std::optional<std::string> &name, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &postalCode, const std::optional<std::string> &country, const std::optional<std::string> &businessPhone, const std::optional<std::string> &businessPhoneExt, const std::optional<std::string> &website, const std::optional<std::string> &email, const std::optional<std::string> &detailsHeader, const std::optional<std::string> &detailsBody, const std::optional<std::string> &hours, const std::optional<std::string> &tags, const std::optional<int64_t> &logoAssetId, const std::optional<int64_t> &picture1AssetId, const std::optional<int64_t> &picture2AssetId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<std::string> &metaData, const std::optional<bool> &publicLocation, const std::optional<bool> &active, const std::optional<std::string> &locationType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Retailer Location
     /// </summary>
@@ -136,41 +135,37 @@ private:
     /// <remarks>
     /// Set the deleted timestamp to current time. This effectively deletes the retailer location since all queries should ignore any records with a deleted time stamp.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the logged in user (optional, default to 0L)</param>
     /// <param name="retailerLocationId">the id of the retailer location to delete (optional, default to 0L)</param>
-    virtual void delete_retailer_location( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerLocationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_retailer_location( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerLocationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Retailer Location
     /// </summary>
     /// <remarks>
     /// Gets a retailer location. Only the owner and the employees of the retailer have access to view its information.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="retailerLocationId">The ID of the retailer location</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="retailerLocationToken">the unique token of the retailer location (optional, default to &quot;&quot;)</param>
-    virtual void get_retailer_location( const double &version, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &retailerLocationToken, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_retailer_location( const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &retailerLocationToken, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Retailer Location (Consumer)
     /// </summary>
     /// <remarks>
     /// Gets the details of a retailer location as a consumer.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="retailerLocationId">The retailer location id</param>
     /// <param name="deviceId">The device id for returning account information (i.e. favorites) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id for returning account information (i.e. favorites) (optional, default to 0L)</param>
-    virtual void get_retailer_location_consumer( const double &version, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_retailer_location_consumer( const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Distance Search Retailer Locations (Indexed)
     /// </summary>
     /// <remarks>
     /// Retailer location indexed search by distance. This searches on any retailer location with location data and returns the results sorted by distance.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="latitude">The latitude to center the search on</param>
     /// <param name="longitude">The longitude to center the search on</param>
     /// <param name="searchRange">The search range in the distanceUnit specified; default is MILES.</param>
@@ -205,14 +200,13 @@ private:
     /// <param name="includeFavorite">Include favorites in response (optional, default to false)</param>
     /// <param name="includeLiked">Include liked flag in response (optional, default to false)</param>
     /// <param name="includeRating">Include rating info in response (optional, default to false)</param>
-    virtual void indexed_retailer_location_distance_search( const double &version, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &searchRange, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &accountId, const std::optional<std::string> &address, const std::optional<bool> &hasOffers, const std::optional<std::string> &categories, const std::optional<std::string> &filters, const std::optional<std::string> &audiences, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &tags, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &keywordOperator, const std::optional<std::string> &searchExpression, const std::optional<std::string> &distanceUnit, const std::optional<bool> &returnFavorited, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, const std::optional<bool> &returnAudiences, const std::optional<bool> &returnQrCode, const std::optional<bool> &returnExternalCategoryData, const std::optional<bool> &includeFavorite, const std::optional<bool> &includeLiked, const std::optional<bool> &includeRating, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void indexed_retailer_location_distance_search( const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &searchRange, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<int64_t> &accountId, const std::optional<std::string> &address, const std::optional<bool> &hasOffers, const std::optional<std::string> &categories, const std::optional<std::string> &filters, const std::optional<std::string> &audiences, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &tags, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &keywordOperator, const std::optional<std::string> &searchExpression, const std::optional<std::string> &distanceUnit, const std::optional<bool> &returnFavorited, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, const std::optional<bool> &returnAudiences, const std::optional<bool> &returnQrCode, const std::optional<bool> &returnExternalCategoryData, const std::optional<bool> &includeFavorite, const std::optional<bool> &includeLiked, const std::optional<bool> &includeRating, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Keyword Search Retailer Locations (Indexed)
     /// </summary>
     /// <remarks>
     /// Retailer location (faster) indexed search. This searches all retailer locations.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (optional, default to 0L)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (optional, default to 0)</param>
@@ -241,14 +235,13 @@ private:
     /// <param name="includeFavorite">Include favorites in response (optional, default to false)</param>
     /// <param name="includeLiked">Include liked flag in response (optional, default to false)</param>
     /// <param name="includeRating">Include rating info in response (optional, default to false)</param>
-    virtual void indexed_retailer_location_search( const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &hasOffers, const std::optional<std::string> &categories, const std::optional<std::string> &filters, const std::optional<std::string> &audiences, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &tags, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &keywordOperator, const std::optional<std::string> &searchExpression, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, const std::optional<bool> &returnAudiences, const std::optional<bool> &returnQrCode, const std::optional<bool> &returnExternalCategoryData, const std::optional<bool> &includeFavorite, const std::optional<bool> &includeLiked, const std::optional<bool> &includeRating, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void indexed_retailer_location_search( const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &hasOffers, const std::optional<std::string> &categories, const std::optional<std::string> &filters, const std::optional<std::string> &audiences, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &tags, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &keywordOperator, const std::optional<std::string> &searchExpression, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, const std::optional<bool> &returnAudiences, const std::optional<bool> &returnQrCode, const std::optional<bool> &returnExternalCategoryData, const std::optional<bool> &includeFavorite, const std::optional<bool> &includeLiked, const std::optional<bool> &includeRating, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Retailer Locations (Owned)
     /// </summary>
     /// <remarks>
     /// Searches on retailer locations that the account has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="q">This parameter is deprecated. (optional, default to &quot;&quot;)</param>
@@ -274,7 +267,7 @@ private:
     /// <param name="includeFavorite">Include favorites in response (optional, default to false)</param>
     /// <param name="includeLiked">Include liked flag in response (optional, default to false)</param>
     /// <param name="includeRating">Include rating info in response (optional, default to false)</param>
-    virtual void search_retailer_locations( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &showPublicLocations, const std::optional<bool> &activeOnly, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, const std::optional<bool> &returnAudiences, const std::optional<bool> &returnQrCode, const std::optional<bool> &includeFavorite, const std::optional<bool> &includeLiked, const std::optional<bool> &includeRating, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_retailer_locations( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &retailerIds, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &locationType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &showPublicLocations, const std::optional<bool> &activeOnly, const std::optional<bool> &returnRetailer, const std::optional<bool> &returnAssets, const std::optional<bool> &returnOffers, const std::optional<bool> &returnCategories, const std::optional<bool> &returnFilters, const std::optional<bool> &returnAudiences, const std::optional<bool> &returnQrCode, const std::optional<bool> &includeFavorite, const std::optional<bool> &includeLiked, const std::optional<bool> &includeRating, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Retailer Location
     /// </summary>

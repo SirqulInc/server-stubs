@@ -91,31 +91,28 @@ private:
     /// <remarks>
     /// Assign An existing account to be an employee
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the logged in user</param>
     /// <param name="managerAccountId">The account id of the manager to assign under</param>
     /// <param name="employeeAccountId">The account id of the user to be assigned as employee</param>
     /// <param name="role">The role to assign to the employee (e.g. RETAILER or RETAILER_LIMITED) (optional, default to &quot;&quot;)</param>
-    virtual void assign_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &managerAccountId, const std::optional<int64_t> &employeeAccountId, const std::optional<std::string> &role, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assign_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &managerAccountId, const std::optional<int64_t> &employeeAccountId, const std::optional<std::string> &role, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Assign Employee to Location
     /// </summary>
     /// <remarks>
     /// Assign or unassign the account to a retailer location.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the logged in user</param>
     /// <param name="retailerLocationId">The retailer location to apply the change to</param>
     /// <param name="employeeAccountId">The account id of the user to apply the change to (optional, default to 0L)</param>
     /// <param name="assign">If true (default) assign to the location, otherwise remove from the retailer (optional, default to true)</param>
-    virtual void assign_to_location_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &employeeAccountId, const std::optional<bool> &assign, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void assign_to_location_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerLocationId, const std::optional<int64_t> &employeeAccountId, const std::optional<bool> &assign, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Employee
     /// </summary>
     /// <remarks>
     /// Create a new account record with the provided information.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the logged in user</param>
     /// <param name="managerAccountId">The account id of the manager to assign under</param>
     /// <param name="username">The username/email for the new user. This must be unique across the entire the system.</param>
@@ -146,35 +143,32 @@ private:
     /// <param name="settingsAppKey">Determines whether to return the application settings for the employee for a particular application (optional, default to &quot;&quot;)</param>
     /// <param name="appBlob">external custom client defined data (per Application) (optional, default to &quot;&quot;)</param>
     /// <param name="assignedDeviceId">The device id to assign to the user (used for IPS beacon tracking) (optional, default to &quot;&quot;)</param>
-    virtual void create_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &managerAccountId, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &aboutUs, const std::optional<int64_t> &assetId, const std::optional<std::string> &gender, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &emailAddress, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &zipcode, const std::optional<std::string> &country, const std::optional<std::string> &role, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &settingsAppKey, const std::optional<std::string> &appBlob, const std::optional<std::string> &assignedDeviceId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &managerAccountId, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<std::string> &aboutUs, const std::optional<int64_t> &assetId, const std::optional<std::string> &gender, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &emailAddress, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &zipcode, const std::optional<std::string> &country, const std::optional<std::string> &role, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &settingsAppKey, const std::optional<std::string> &appBlob, const std::optional<std::string> &assignedDeviceId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Employee
     /// </summary>
     /// <remarks>
     /// Set the deleted date field which marks the record as deleted.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="employeeAccountId">the id of the employee to delete</param>
-    virtual void delete_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Employee
     /// </summary>
     /// <remarks>
     /// Get the account record for the account id provided.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of logged in user</param>
     /// <param name="employeeAccountId">the id of the employee account to get</param>
     /// <param name="settingsAppKey">Determines whether to return the application settings for the employee for a particular application (optional, default to &quot;&quot;)</param>
-    virtual void get_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, const std::optional<std::string> &settingsAppKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, const std::optional<std::string> &settingsAppKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Employees
     /// </summary>
     /// <remarks>
     /// Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the logged in user</param>
     /// <param name="role">The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles. (optional, default to &quot;&quot;)</param>
     /// <param name="retailerId">Filters employees by retailer (optional, default to 0L)</param>
@@ -192,24 +186,22 @@ private:
     /// <param name="settingsAppKey">Determines whether to return the application settings for the employee for a particular application (optional, default to &quot;&quot;)</param>
     /// <param name="categoryIds">Comma separated list of category ids to filter results (optional, default to &quot;&quot;)</param>
     /// <param name="query">Legacy/reporting query parameter used for formatting employee responses (optional, default to &quot;&quot;)</param>
-    virtual void search_employees( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &role, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &managedOnly, const std::optional<std::string> &settingsAppKey, const std::optional<std::string> &categoryIds, const std::optional<std::string> &query, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_employees( const std::optional<int64_t> &accountId, const std::optional<std::string> &role, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &managedOnly, const std::optional<std::string> &settingsAppKey, const std::optional<std::string> &categoryIds, const std::optional<std::string> &query, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Unassign Employee
     /// </summary>
     /// <remarks>
     /// Unassign An existing account to be an employee
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the logged in user</param>
     /// <param name="employeeAccountId">The account id of the user to be unassigned</param>
-    virtual void unassign_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void unassign_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Employee
     /// </summary>
     /// <remarks>
     /// Update the account record with the provided information.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the logged in user</param>
     /// <param name="employeeAccountId">the id of the employee account</param>
     /// <param name="managerAccountId">The account id of the manager to assign under (optional, default to 0L)</param>
@@ -240,7 +232,7 @@ private:
     /// <param name="settingsAppKey">Determines whether to return the application settings for the employee for a particular application (optional, default to &quot;&quot;)</param>
     /// <param name="appBlob">external custom client defined data (per Application) (optional, default to &quot;&quot;)</param>
     /// <param name="assignedDeviceId">The device id to assign to the user (used for IPS beacon tracking) (optional, default to &quot;&quot;)</param>
-    virtual void update_employee( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, const std::optional<int64_t> &managerAccountId, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<int64_t> &assetId, const std::optional<std::string> &gender, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &emailAddress, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &zipcode, const std::optional<std::string> &country, const std::optional<std::string> &role, const std::optional<bool> &active, const std::optional<std::string> &password, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &settingsAppKey, const std::optional<std::string> &appBlob, const std::optional<std::string> &assignedDeviceId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_employee( const std::optional<int64_t> &accountId, const std::optional<int64_t> &employeeAccountId, const std::optional<int64_t> &managerAccountId, const std::optional<std::string> &name, const std::optional<std::string> &prefixName, const std::optional<std::string> &firstName, const std::optional<std::string> &middleName, const std::optional<std::string> &lastName, const std::optional<std::string> &suffixName, const std::optional<std::string> &title, const std::optional<int64_t> &assetId, const std::optional<std::string> &gender, const std::optional<std::string> &homePhone, const std::optional<std::string> &cellPhone, const std::optional<std::string> &cellPhoneCarrier, const std::optional<std::string> &businessPhone, const std::optional<std::string> &emailAddress, const std::optional<std::string> &streetAddress, const std::optional<std::string> &streetAddress2, const std::optional<std::string> &city, const std::optional<std::string> &state, const std::optional<std::string> &zipcode, const std::optional<std::string> &country, const std::optional<std::string> &role, const std::optional<bool> &active, const std::optional<std::string> &password, const std::optional<std::string> &retailerLocationIds, const std::optional<std::string> &settingsAppKey, const std::optional<std::string> &appBlob, const std::optional<std::string> &assignedDeviceId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

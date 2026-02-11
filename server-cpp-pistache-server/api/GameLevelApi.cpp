@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string GameLevelApi::base = "";
+const std::string GameLevelApi::base = "/api/3.18";
 
 GameLevelApi::GameLevelApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,16 +32,16 @@ void GameLevelApi::init() {
 void GameLevelApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/level/create", Routes::bind(&GameLevelApi::create_game_level_handler, this));
-    Routes::Post(*router, base + "/api/:version/level/delete", Routes::bind(&GameLevelApi::delete_game_level_handler, this));
-    Routes::Get(*router, base + "/api/:version/level/get", Routes::bind(&GameLevelApi::get_game_level_handler, this));
-    Routes::Get(*router, base + "/api/:version/level/search", Routes::bind(&GameLevelApi::get_game_levels_by_application_handler, this));
-    Routes::Get(*router, base + "/api/:version/level/searchByBillableEntity", Routes::bind(&GameLevelApi::get_game_levels_by_billable_entity_handler, this));
-    Routes::Get(*router, base + "/api/:version/level/questions/get", Routes::bind(&GameLevelApi::get_questions_in_level_handler, this));
-    Routes::Get(*router, base + "/api/:version/level/words/get", Routes::bind(&GameLevelApi::get_words_in_level_handler, this));
-    Routes::Post(*router, base + "/api/:version/level/update", Routes::bind(&GameLevelApi::update_game_level_handler, this));
-    Routes::Post(*router, base + "/api/:version/level/questions/update", Routes::bind(&GameLevelApi::update_questions_in_level_handler, this));
-    Routes::Post(*router, base + "/api/:version/level/words/update", Routes::bind(&GameLevelApi::update_words_in_level_handler, this));
+    Routes::Post(*router, base + "/level/create", Routes::bind(&GameLevelApi::create_game_level_handler, this));
+    Routes::Post(*router, base + "/level/delete", Routes::bind(&GameLevelApi::delete_game_level_handler, this));
+    Routes::Get(*router, base + "/level/get", Routes::bind(&GameLevelApi::get_game_level_handler, this));
+    Routes::Get(*router, base + "/level/search", Routes::bind(&GameLevelApi::get_game_levels_by_application_handler, this));
+    Routes::Get(*router, base + "/level/searchByBillableEntity", Routes::bind(&GameLevelApi::get_game_levels_by_billable_entity_handler, this));
+    Routes::Get(*router, base + "/level/questions/get", Routes::bind(&GameLevelApi::get_questions_in_level_handler, this));
+    Routes::Get(*router, base + "/level/words/get", Routes::bind(&GameLevelApi::get_words_in_level_handler, this));
+    Routes::Post(*router, base + "/level/update", Routes::bind(&GameLevelApi::update_game_level_handler, this));
+    Routes::Post(*router, base + "/level/questions/update", Routes::bind(&GameLevelApi::update_questions_in_level_handler, this));
+    Routes::Post(*router, base + "/level/words/update", Routes::bind(&GameLevelApi::update_words_in_level_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&GameLevelApi::game_level_api_default_handler, this));
@@ -76,8 +76,6 @@ std::pair<Pistache::Http::Code, std::string> GameLevelApi::handleOperationExcept
 void GameLevelApi::create_game_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -298,7 +296,7 @@ void GameLevelApi::create_game_level_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->create_game_level(version, accountId, name, gameData, gameDataSuffix, appKey, description, difficulty, appVersion, assetImageId, assetIconId, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData, response);
+            this->create_game_level(accountId, name, gameData, gameDataSuffix, appKey, description, difficulty, appVersion, assetImageId, assetIconId, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -317,8 +315,6 @@ void GameLevelApi::create_game_level_handler(const Pistache::Rest::Request& requ
 void GameLevelApi::delete_game_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -347,7 +343,7 @@ void GameLevelApi::delete_game_level_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->delete_game_level(version, accountId, levelId, response);
+            this->delete_game_level(accountId, levelId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -366,8 +362,6 @@ void GameLevelApi::delete_game_level_handler(const Pistache::Rest::Request& requ
 void GameLevelApi::get_game_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -404,7 +398,7 @@ void GameLevelApi::get_game_level_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_game_level(version, accountId, levelId, includeGameData, response);
+            this->get_game_level(accountId, levelId, includeGameData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -423,8 +417,6 @@ void GameLevelApi::get_game_level_handler(const Pistache::Rest::Request& request
 void GameLevelApi::get_game_levels_by_application_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -517,7 +509,7 @@ void GameLevelApi::get_game_levels_by_application_handler(const Pistache::Rest::
 
 
 
-            this->get_game_levels_by_application(version, accountId, appKey, keyword, sortField, descending, start, limit, appVersion, includeGameData, filters, response);
+            this->get_game_levels_by_application(accountId, appKey, keyword, sortField, descending, start, limit, appVersion, includeGameData, filters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -536,8 +528,6 @@ void GameLevelApi::get_game_levels_by_application_handler(const Pistache::Rest::
 void GameLevelApi::get_game_levels_by_billable_entity_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -614,7 +604,7 @@ void GameLevelApi::get_game_levels_by_billable_entity_handler(const Pistache::Re
 
 
 
-            this->get_game_levels_by_billable_entity(version, accountId, appKey, keyword, sortField, descending, activeOnly, start, limit, response);
+            this->get_game_levels_by_billable_entity(accountId, appKey, keyword, sortField, descending, activeOnly, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -633,8 +623,6 @@ void GameLevelApi::get_game_levels_by_billable_entity_handler(const Pistache::Re
 void GameLevelApi::get_questions_in_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -663,7 +651,7 @@ void GameLevelApi::get_questions_in_level_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_questions_in_level(version, levelId, accountId, response);
+            this->get_questions_in_level(levelId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -682,8 +670,6 @@ void GameLevelApi::get_questions_in_level_handler(const Pistache::Rest::Request&
 void GameLevelApi::get_words_in_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -712,7 +698,7 @@ void GameLevelApi::get_words_in_level_handler(const Pistache::Rest::Request& req
 
 
 
-            this->get_words_in_level(version, levelId, accountId, response);
+            this->get_words_in_level(levelId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -731,8 +717,6 @@ void GameLevelApi::get_words_in_level_handler(const Pistache::Rest::Request& req
 void GameLevelApi::update_game_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -961,7 +945,7 @@ void GameLevelApi::update_game_level_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->update_game_level(version, accountId, levelId, appKey, name, description, difficulty, appVersion, assetImageId, assetIconId, gameData, gameDataSuffix, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData, response);
+            this->update_game_level(accountId, levelId, appKey, name, description, difficulty, appVersion, assetImageId, assetIconId, gameData, gameDataSuffix, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -980,8 +964,6 @@ void GameLevelApi::update_game_level_handler(const Pistache::Rest::Request& requ
 void GameLevelApi::update_questions_in_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1018,7 +1000,7 @@ void GameLevelApi::update_questions_in_level_handler(const Pistache::Rest::Reque
 
 
 
-            this->update_questions_in_level(version, levelId, accountId, questionIds, response);
+            this->update_questions_in_level(levelId, accountId, questionIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1037,8 +1019,6 @@ void GameLevelApi::update_questions_in_level_handler(const Pistache::Rest::Reque
 void GameLevelApi::update_words_in_level_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1075,7 +1055,7 @@ void GameLevelApi::update_words_in_level_handler(const Pistache::Rest::Request& 
 
 
 
-            this->update_words_in_level(version, levelId, accountId, wordIds, response);
+            this->update_words_in_level(levelId, accountId, wordIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

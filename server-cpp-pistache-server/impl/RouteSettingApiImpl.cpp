@@ -29,19 +29,19 @@ RouteSettingApiImpl::RouteSettingApiImpl(const std::shared_ptr<Pistache::Rest::R
 
 }
 
-void RouteSettingApiImpl::create_route_settings(const double &version, const RouteSettings &body, Pistache::Http::ResponseWriter &response) {
+void RouteSettingApiImpl::create_route_settings(const RouteSettings &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteSettingApiImpl::delete_route_settings(const double &version, const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) {
+void RouteSettingApiImpl::delete_route_settings(const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteSettingApiImpl::get_route_settings(const double &version, const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) {
+void RouteSettingApiImpl::get_route_settings(const int64_t &routeSettingsId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteSettingApiImpl::search_route_settings(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void RouteSettingApiImpl::search_route_settings(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &hubId, const std::optional<int64_t> &programId, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void RouteSettingApiImpl::update_route_settings(const double &version, const int64_t &routeSettingsId, const RouteSettings &body, Pistache::Http::ResponseWriter &response) {
+void RouteSettingApiImpl::update_route_settings(const int64_t &routeSettingsId, const RouteSettings &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

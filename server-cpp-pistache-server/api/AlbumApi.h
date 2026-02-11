@@ -101,7 +101,6 @@ private:
     /// <remarks>
     /// Add users to an album as participants.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumId">the album ID</param>
     /// <param name="includeFriendGroup">determines whether to include all friends as participants</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -112,27 +111,25 @@ private:
     /// <param name="add">determines whether the users being added have add permissions (optional, default to false)</param>
     /// <param name="connections">comma separated list of connection IDs (optional, default to &quot;&quot;)</param>
     /// <param name="connectionGroups">comma separated list of connection group IDs (optional, default to &quot;&quot;)</param>
-    virtual void add_album_users( const double &version, const std::optional<int64_t> &albumId, const std::optional<bool> &includeFriendGroup, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &read, const std::optional<bool> &write, const std::optional<bool> &r_delete, const std::optional<bool> &add, const std::optional<std::string> &connections, const std::optional<std::string> &connectionGroups, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_album_users( const std::optional<int64_t> &albumId, const std::optional<bool> &includeFriendGroup, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &read, const std::optional<bool> &write, const std::optional<bool> &r_delete, const std::optional<bool> &add, const std::optional<std::string> &connections, const std::optional<std::string> &connectionGroups, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Approve Album
     /// </summary>
     /// <remarks>
     /// Sets the approval status of an Album.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumId">The ID of the album</param>
     /// <param name="deviceId">A unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="approvalStatus">The approval status to set {PENDING, REJECTED, APPROVED, FEATURED} (optional, default to &quot;&quot;)</param>
     /// <param name="verified">Sets whether the album should be marked as \&quot;verified\&quot; (optional, default to false)</param>
-    virtual void approve_album( const double &version, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &approvalStatus, const std::optional<bool> &verified, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void approve_album( const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &approvalStatus, const std::optional<bool> &verified, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     ///  Get Album
     /// </summary>
     /// <remarks>
     /// Get an Album.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">This parameter is deprecated.</param>
     /// <param name="albumId">the album to look up</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -142,50 +139,46 @@ private:
     /// <param name="notePreviewSize">returns the last X notes. To search on and paginate the remaining notes - please use the \&quot;/note/search\&quot; endpoint. (optional, default to 0)</param>
     /// <param name="connectionPreviewSize">returns the first X users/connections. To search on and paginate the remaining connections - please use the \&quot;/permissions/search\&quot; endpoint. (optional, default to 0)</param>
     /// <param name="audiencePreviewSize">returns the first X audiences. To search on and paginate the remaining audiences - please use the \&quot;/audience/search\&quot; endpoint. (optional, default to 0)</param>
-    virtual void get_album_collection( const double &version, const std::optional<bool> &returnNulls, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &likePreviewSize, const std::optional<int32_t> &assetPreviewSize, const std::optional<int32_t> &notePreviewSize, const std::optional<int32_t> &connectionPreviewSize, const std::optional<int32_t> &audiencePreviewSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_album_collection( const std::optional<bool> &returnNulls, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &likePreviewSize, const std::optional<int32_t> &assetPreviewSize, const std::optional<int32_t> &notePreviewSize, const std::optional<int32_t> &connectionPreviewSize, const std::optional<int32_t> &audiencePreviewSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Leave Album
     /// </summary>
     /// <remarks>
     ///  Allows a user to leave an album (they are no longer considered a participant). The album creator cannot leave their own albums.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumId">the album ID</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void leave_album( const double &version, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void leave_album( const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Album
     /// </summary>
     /// <remarks>
     /// Deletes an Album
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumId">the album ID to delete</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void remove_album( const double &version, const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_album( const std::optional<int64_t> &albumId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Remove Album Users
     /// </summary>
     /// <remarks>
     /// Remove participants of an album.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="albumId">the album ID</param>
     /// <param name="removeFriendGroup">remove friend group</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="connections">comma separated list of connection IDs (optional, default to &quot;&quot;)</param>
     /// <param name="connectionGroups">comma separated list of connection group IDs (optional, default to &quot;&quot;)</param>
-    virtual void remove_album_users( const double &version, const std::optional<int64_t> &albumId, const std::optional<bool> &removeFriendGroup, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connections, const std::optional<std::string> &connectionGroups, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_album_users( const std::optional<int64_t> &albumId, const std::optional<bool> &removeFriendGroup, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connections, const std::optional<std::string> &connectionGroups, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Albums
     /// </summary>
     /// <remarks>
     /// Searches on Albums.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="filter">a comma separated list of filters: * MINE - Return albums that the user has created. * SHARED - Return albums that have been shared to the user via addAlbumUsers, or addUsersToPermissionable . * FOLLOWER - Return albums that have been created by the user&#39;s followers (the content needs to have been APPROVED or FEATURED). * FOLLOWING - Return albums that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). * PUBLIC - Return all PUBLIC albums that have been APPROVED or FEATURED. * ALL_PUBLIC - Return all PUBLIC albums regardless of whether they are approved or not (ignores the approval status). * LIKED - Return all albums that the user has liked. * FEATURED - Return all albums that have been featured. * PENDING - Return all pending albums. </param>
     /// <param name="albumTypeId">id of custom albumType</param>
     /// <param name="subType">filter albums with this album sub type</param>
@@ -246,7 +239,7 @@ private:
     /// <param name="ignoreDefaultAppFilter">if true, ignore the application&#39;s default app filter when searching (optional, default to false)</param>
     /// <param name="searchExpression">Advanced search expression to be used by the server (optional, default to &quot;&quot;)</param>
     /// <param name="generateAlbums">If true and results are empty, attempt to generate albums via templates (optional, default to false)</param>
-    virtual void search_albums( const double &version, const std::optional<std::string> &filter, const std::optional<int64_t> &albumTypeId, const std::optional<std::string> &subType, const std::optional<bool> &includeInactive, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &range, const std::optional<bool> &includeLiked, const std::optional<bool> &includeFavorited, const std::optional<bool> &includePermissions, const std::optional<int32_t> &likePreviewSize, const std::optional<int32_t> &assetPreviewSize, const std::optional<int32_t> &notePreviewSize, const std::optional<int32_t> &connectionPreviewSize, const std::optional<int32_t> &audiencePreviewSize, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &ownerId, const std::optional<std::string> &albumIds, const std::optional<std::string> &excludeAlbumIds, const std::optional<int64_t> &mediaId, const std::optional<std::string> &keyword, const std::optional<std::string> &albumType, const std::optional<int32_t> &limitPerAlbumType, const std::optional<int64_t> &dateCreated, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int64_t> &createdSince, const std::optional<int64_t> &createdBefore, const std::optional<int64_t> &startedSince, const std::optional<int64_t> &startedBefore, const std::optional<int64_t> &endedSince, const std::optional<int64_t> &endedBefore, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, const std::optional<std::string> &categoryIds, const std::optional<std::string> &categoryFilterIds, const std::optional<std::string> &audienceIds, const std::optional<std::string> &excludeAudienceIds, const std::optional<bool> &includeCompletable, const std::optional<bool> &includeRating, const std::optional<std::string> &searchMode, const std::optional<bool> &stackSearch, const std::optional<int32_t> &stackWindowSize, const std::optional<int32_t> &minStackPerPage, const std::optional<std::string> &stackPaginationIdentifier, const std::optional<bool> &stackDetails, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &removeFlaggedContent, const std::optional<bool> &verifiedFilter, const std::optional<std::string> &linkedObjectType, const std::optional<int64_t> &linkedObjectId, const std::optional<int64_t> &orderAudienceId, const std::optional<bool> &ignoreDefaultAppFilter, const std::optional<std::string> &searchExpression, const std::optional<bool> &generateAlbums, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_albums( const std::optional<std::string> &filter, const std::optional<int64_t> &albumTypeId, const std::optional<std::string> &subType, const std::optional<bool> &includeInactive, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<double> &range, const std::optional<bool> &includeLiked, const std::optional<bool> &includeFavorited, const std::optional<bool> &includePermissions, const std::optional<int32_t> &likePreviewSize, const std::optional<int32_t> &assetPreviewSize, const std::optional<int32_t> &notePreviewSize, const std::optional<int32_t> &connectionPreviewSize, const std::optional<int32_t> &audiencePreviewSize, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<int64_t> &ownerId, const std::optional<std::string> &albumIds, const std::optional<std::string> &excludeAlbumIds, const std::optional<int64_t> &mediaId, const std::optional<std::string> &keyword, const std::optional<std::string> &albumType, const std::optional<int32_t> &limitPerAlbumType, const std::optional<int64_t> &dateCreated, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int64_t> &createdSince, const std::optional<int64_t> &createdBefore, const std::optional<int64_t> &startedSince, const std::optional<int64_t> &startedBefore, const std::optional<int64_t> &endedSince, const std::optional<int64_t> &endedBefore, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, const std::optional<std::string> &categoryIds, const std::optional<std::string> &categoryFilterIds, const std::optional<std::string> &audienceIds, const std::optional<std::string> &excludeAudienceIds, const std::optional<bool> &includeCompletable, const std::optional<bool> &includeRating, const std::optional<std::string> &searchMode, const std::optional<bool> &stackSearch, const std::optional<int32_t> &stackWindowSize, const std::optional<int32_t> &minStackPerPage, const std::optional<std::string> &stackPaginationIdentifier, const std::optional<bool> &stackDetails, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &removeFlaggedContent, const std::optional<bool> &verifiedFilter, const std::optional<std::string> &linkedObjectType, const std::optional<int64_t> &linkedObjectId, const std::optional<int64_t> &orderAudienceId, const std::optional<bool> &ignoreDefaultAppFilter, const std::optional<std::string> &searchExpression, const std::optional<bool> &generateAlbums, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Album
     /// </summary>

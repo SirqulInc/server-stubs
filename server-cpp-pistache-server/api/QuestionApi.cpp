@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string QuestionApi::base = "";
+const std::string QuestionApi::base = "/api/3.18";
 
 QuestionApi::QuestionApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void QuestionApi::init() {
 void QuestionApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/game/question/create", Routes::bind(&QuestionApi::create_question_handler, this));
-    Routes::Post(*router, base + "/api/:version/game/question/delete", Routes::bind(&QuestionApi::delete_question_handler, this));
-    Routes::Get(*router, base + "/api/:version/game/question/get", Routes::bind(&QuestionApi::get_question_handler, this));
-    Routes::Get(*router, base + "/api/:version/game/question/search", Routes::bind(&QuestionApi::search_questions_handler, this));
-    Routes::Post(*router, base + "/api/:version/game/question/update", Routes::bind(&QuestionApi::update_question_handler, this));
+    Routes::Post(*router, base + "/game/question/create", Routes::bind(&QuestionApi::create_question_handler, this));
+    Routes::Post(*router, base + "/game/question/delete", Routes::bind(&QuestionApi::delete_question_handler, this));
+    Routes::Get(*router, base + "/game/question/get", Routes::bind(&QuestionApi::get_question_handler, this));
+    Routes::Get(*router, base + "/game/question/search", Routes::bind(&QuestionApi::search_questions_handler, this));
+    Routes::Post(*router, base + "/game/question/update", Routes::bind(&QuestionApi::update_question_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&QuestionApi::question_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> QuestionApi::handleOperationExcepti
 void QuestionApi::create_question_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -173,7 +171,7 @@ void QuestionApi::create_question_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_question(version, accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points, response);
+            this->create_question(accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -192,8 +190,6 @@ void QuestionApi::create_question_handler(const Pistache::Rest::Request& request
 void QuestionApi::delete_question_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -222,7 +218,7 @@ void QuestionApi::delete_question_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_question(version, questionId, accountId, response);
+            this->delete_question(questionId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -241,8 +237,6 @@ void QuestionApi::delete_question_handler(const Pistache::Rest::Request& request
 void QuestionApi::get_question_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -271,7 +265,7 @@ void QuestionApi::get_question_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_question(version, questionId, accountId, response);
+            this->get_question(questionId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -290,8 +284,6 @@ void QuestionApi::get_question_handler(const Pistache::Rest::Request& request, P
 void QuestionApi::search_questions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -360,7 +352,7 @@ void QuestionApi::search_questions_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->search_questions(version, accountId, sortField, descending, activeOnly, start, limit, keyword, response);
+            this->search_questions(accountId, sortField, descending, activeOnly, start, limit, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -379,8 +371,6 @@ void QuestionApi::search_questions_handler(const Pistache::Rest::Request& reques
 void QuestionApi::update_question_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -489,7 +479,7 @@ void QuestionApi::update_question_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_question(version, questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points, response);
+            this->update_question(questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

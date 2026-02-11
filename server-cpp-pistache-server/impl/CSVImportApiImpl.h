@@ -43,9 +43,9 @@ public:
     explicit CSVImportApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~CSVImportApiImpl() override = default;
 
-    void get_status_csv(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<std::string> &responseGroup, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response);
-    void list_status_csv(const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
-    void status_csv(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response);
+    void get_status_csv(const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<std::string> &responseGroup, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response);
+    void list_status_csv(const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response);
+    void status_csv(const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response);
     void upload_csv(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response);
 
 };

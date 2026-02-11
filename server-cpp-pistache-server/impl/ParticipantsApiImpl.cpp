@@ -29,7 +29,7 @@ ParticipantsApiImpl::ParticipantsApiImpl(const std::shared_ptr<Pistache::Rest::R
 
 }
 
-void ParticipantsApiImpl::process_all_participants(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &useShortNameAsID, Pistache::Http::ResponseWriter &response) {
+void ParticipantsApiImpl::process_all_participants(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &useShortNameAsID, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void ParticipantsApiImpl::process_participants(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

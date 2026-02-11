@@ -32,13 +32,13 @@ LeaderboardApiImpl::LeaderboardApiImpl(const std::shared_ptr<Pistache::Rest::Rou
 void LeaderboardApiImpl::create_leaderboard(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LeaderboardApiImpl::delete_leaderboard(const double &version, const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void LeaderboardApiImpl::delete_leaderboard(const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LeaderboardApiImpl::get_leaderboard(const double &version, const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeFullRankingList, Pistache::Http::ResponseWriter &response) {
+void LeaderboardApiImpl::get_leaderboard(const std::optional<int64_t> &leaderboardId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeFullRankingList, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LeaderboardApiImpl::search_leaderboards(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &globalOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &leaderboardIds, const std::optional<std::string> &rankTypes, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeInactive, const std::optional<bool> &includeAppResponse, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void LeaderboardApiImpl::search_leaderboards(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &globalOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &leaderboardIds, const std::optional<std::string> &rankTypes, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeInactive, const std::optional<bool> &includeAppResponse, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void LeaderboardApiImpl::update_leaderboard(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

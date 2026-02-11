@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string CreativeApi::base = "";
+const std::string CreativeApi::base = "/api/3.18";
 
 CreativeApi::CreativeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,14 +32,14 @@ void CreativeApi::init() {
 void CreativeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/creative/addpreview", Routes::bind(&CreativeApi::add_preview_handler, this));
-    Routes::Get(*router, base + "/api/:version/ads/find", Routes::bind(&CreativeApi::ads_find_handler, this));
-    Routes::Post(*router, base + "/api/:version/creative/create", Routes::bind(&CreativeApi::create_creative_handler, this));
-    Routes::Post(*router, base + "/api/:version/creative/delete", Routes::bind(&CreativeApi::delete_creative_handler, this));
-    Routes::Get(*router, base + "/api/:version/creative/get", Routes::bind(&CreativeApi::get_creative_handler, this));
-    Routes::Get(*router, base + "/api/:version/creative/search", Routes::bind(&CreativeApi::get_creatives_by_application_handler, this));
-    Routes::Post(*router, base + "/api/:version/creative/removepreview", Routes::bind(&CreativeApi::remove_preview_handler, this));
-    Routes::Post(*router, base + "/api/:version/creative/update", Routes::bind(&CreativeApi::update_creative_handler, this));
+    Routes::Post(*router, base + "/creative/addpreview", Routes::bind(&CreativeApi::add_preview_handler, this));
+    Routes::Get(*router, base + "/ads/find", Routes::bind(&CreativeApi::ads_find_handler, this));
+    Routes::Post(*router, base + "/creative/create", Routes::bind(&CreativeApi::create_creative_handler, this));
+    Routes::Post(*router, base + "/creative/delete", Routes::bind(&CreativeApi::delete_creative_handler, this));
+    Routes::Get(*router, base + "/creative/get", Routes::bind(&CreativeApi::get_creative_handler, this));
+    Routes::Get(*router, base + "/creative/search", Routes::bind(&CreativeApi::get_creatives_by_application_handler, this));
+    Routes::Post(*router, base + "/creative/removepreview", Routes::bind(&CreativeApi::remove_preview_handler, this));
+    Routes::Post(*router, base + "/creative/update", Routes::bind(&CreativeApi::update_creative_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&CreativeApi::creative_api_default_handler, this));
@@ -74,8 +74,6 @@ std::pair<Pistache::Http::Code, std::string> CreativeApi::handleOperationExcepti
 void CreativeApi::add_preview_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -104,7 +102,7 @@ void CreativeApi::add_preview_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->add_preview(version, accountId, creativeId, response);
+            this->add_preview(accountId, creativeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -123,8 +121,6 @@ void CreativeApi::add_preview_handler(const Pistache::Rest::Request& request, Pi
 void CreativeApi::ads_find_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -265,7 +261,7 @@ void CreativeApi::ads_find_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->ads_find(version, appKey, randomize, targetedAdsOnly, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeAudiences, allocatesTickets, missionIds, response);
+            this->ads_find(appKey, randomize, targetedAdsOnly, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeAudiences, allocatesTickets, missionIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -284,8 +280,6 @@ void CreativeApi::ads_find_handler(const Pistache::Rest::Request& request, Pista
 void CreativeApi::create_creative_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -418,7 +412,7 @@ void CreativeApi::create_creative_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_creative(version, accountId, name, active, waitForAsset, description, assetImageId, action, data, suffix, type, balance, referenceId, appVersion, missionId, offerId, response);
+            this->create_creative(accountId, name, active, waitForAsset, description, assetImageId, action, data, suffix, type, balance, referenceId, appVersion, missionId, offerId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -437,8 +431,6 @@ void CreativeApi::create_creative_handler(const Pistache::Rest::Request& request
 void CreativeApi::delete_creative_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -467,7 +459,7 @@ void CreativeApi::delete_creative_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_creative(version, accountId, creativeId, response);
+            this->delete_creative(accountId, creativeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -486,8 +478,6 @@ void CreativeApi::delete_creative_handler(const Pistache::Rest::Request& request
 void CreativeApi::get_creative_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -516,7 +506,7 @@ void CreativeApi::get_creative_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_creative(version, accountId, creativeId, response);
+            this->get_creative(accountId, creativeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -535,8 +525,6 @@ void CreativeApi::get_creative_handler(const Pistache::Rest::Request& request, P
 void CreativeApi::get_creatives_by_application_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -597,7 +585,7 @@ void CreativeApi::get_creatives_by_application_handler(const Pistache::Rest::Req
 
 
 
-            this->get_creatives_by_application(version, accountId, appKey, start, limit, missionId, keyword, response);
+            this->get_creatives_by_application(accountId, appKey, start, limit, missionId, keyword, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -616,8 +604,6 @@ void CreativeApi::get_creatives_by_application_handler(const Pistache::Rest::Req
 void CreativeApi::remove_preview_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -646,7 +632,7 @@ void CreativeApi::remove_preview_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->remove_preview(version, accountId, creativeId, response);
+            this->remove_preview(accountId, creativeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -665,8 +651,6 @@ void CreativeApi::remove_preview_handler(const Pistache::Rest::Request& request,
 void CreativeApi::update_creative_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -791,7 +775,7 @@ void CreativeApi::update_creative_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_creative(version, accountId, creativeId, name, description, assetImageId, action, data, suffix, type, balance, active, referenceId, appVersion, missionId, response);
+            this->update_creative(accountId, creativeId, name, description, assetImageId, action, data, suffix, type, balance, active, referenceId, appVersion, missionId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

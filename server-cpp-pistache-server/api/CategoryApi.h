@@ -91,7 +91,6 @@ private:
     /// <remarks>
     /// Search for categories by distance.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (optional, default to 0L)</param>
     /// <param name="keyword">The keyword string to search on (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the appKey of the application to retrieve categories for, if not specified then search on the global application. (optional, default to &quot;&quot;)</param>
@@ -112,14 +111,13 @@ private:
     /// <param name="latitude">the latitude of where the search is centered on (optional, default to 0.0)</param>
     /// <param name="longitude">the longitude of where the search is centered on (optional, default to 0.0)</param>
     /// <param name="range">the maximum range the category can be from the center (optional, default to 0.0)</param>
-    virtual void category_distance_search( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &categoryIds, const std::optional<std::string> &parentCategoryIds, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<std::string> &responseGroup, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnExternal, const std::optional<bool> &exactMatch, const std::optional<std::string> &type, const std::optional<std::string> &externalType, const std::optional<int32_t> &minOfferCount, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &range, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void category_distance_search( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &categoryIds, const std::optional<std::string> &parentCategoryIds, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<std::string> &responseGroup, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnExternal, const std::optional<bool> &exactMatch, const std::optional<std::string> &type, const std::optional<std::string> &externalType, const std::optional<int32_t> &minOfferCount, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<double> &range, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Category
     /// </summary>
     /// <remarks>
     /// Create a new category.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (must have permissions to the target application)</param>
     /// <param name="name">The name of the category</param>
     /// <param name="appKey">The appKey of the application to assign the category to, if not provided then the category will be applied to the global application (if the account has permissions) (optional, default to &quot;&quot;)</param>
@@ -134,46 +132,42 @@ private:
     /// <param name="active">Sets whether the category is active or inactive (hidden from consumers) (optional, default to false)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
     /// <param name="searchTags">user defined strings for searching (optional, default to &quot;&quot;)</param>
-    virtual void create_category( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentCategoryId, const std::optional<std::string> &description, const std::optional<std::string> &type, const std::optional<int64_t> &assetId, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<std::string> &externalCategorySlug, const std::optional<std::string> &sqootSlug, const std::optional<bool> &active, const std::optional<std::string> &metaData, const std::optional<std::string> &searchTags, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_category( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentCategoryId, const std::optional<std::string> &description, const std::optional<std::string> &type, const std::optional<int64_t> &assetId, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<std::string> &externalCategorySlug, const std::optional<std::string> &sqootSlug, const std::optional<bool> &active, const std::optional<std::string> &metaData, const std::optional<std::string> &searchTags, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Category
     /// </summary>
     /// <remarks>
     /// Delete a category.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the ID of the account</param>
     /// <param name="categoryId">the ID of the category</param>
-    virtual void delete_category( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_category( const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Duplicate Category
     /// </summary>
     /// <remarks>
     /// Duplicate a category, including all its children.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (must have permissions to the target application)</param>
     /// <param name="categoryId">The category ID to duplicate (includes all children)</param>
     /// <param name="appKey">The application to assign the new category to, may be different then the application the source category is assigned to (optional, default to &quot;&quot;)</param>
     /// <param name="parentCategoryId">The parent category ID to add the target category to. (optional, default to 0L)</param>
-    virtual void duplicate_category( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentCategoryId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void duplicate_category( const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, const std::optional<std::string> &appKey, const std::optional<int64_t> &parentCategoryId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Category
     /// </summary>
     /// <remarks>
     /// Get the details of a specific category. Recursively include all child categories and their children.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="categoryId">the ID of the category</param>
     /// <param name="returnExternal">Determines whether to return extra info about the category&#39;s \&quot;Participant\&quot; reference (optional, default to true)</param>
-    virtual void get_category( const double &version, const std::optional<int64_t> &categoryId, const std::optional<bool> &returnExternal, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_category( const std::optional<int64_t> &categoryId, const std::optional<bool> &returnExternal, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Categories
     /// </summary>
     /// <remarks>
     /// Search for categories.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user (optional, default to 0L)</param>
     /// <param name="keyword">The string to search on (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">the appKey of the application to retrieve categories for, if not specified then search on the global application. (optional, default to &quot;&quot;)</param>
@@ -195,14 +189,13 @@ private:
     /// <param name="minOfferCount">Filters results to only return Categories that have been referenced by a minimum number of Offers (optional, default to 0)</param>
     /// <param name="searchDepth">When searching by a specific parent category (to return sub children), this determines the number of child layers to search in. The minimum is 1, the maximum is 4. (optional, default to 4)</param>
     /// <param name="searchMode">The search index mode to use (e.g. OPENSEARCH or RDS) (optional, default to &quot;&quot;)</param>
-    virtual void search_categories( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &categoryId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &parentCategoryIds, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<std::string> &responseGroup, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnExternal, const std::optional<bool> &exactMatch, const std::optional<std::string> &type, const std::optional<std::string> &externalType, const std::optional<bool> &excludeExternalType, const std::optional<int32_t> &minOfferCount, const std::optional<int32_t> &searchDepth, const std::optional<std::string> &searchMode, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_categories( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &appKey, const std::optional<std::string> &categoryId, const std::optional<std::string> &categoryIds, const std::optional<std::string> &parentCategoryIds, const std::optional<bool> &rootOnly, const std::optional<std::string> &sortField, const std::optional<std::string> &responseGroup, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnExternal, const std::optional<bool> &exactMatch, const std::optional<std::string> &type, const std::optional<std::string> &externalType, const std::optional<bool> &excludeExternalType, const std::optional<int32_t> &minOfferCount, const std::optional<int32_t> &searchDepth, const std::optional<std::string> &searchMode, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Category
     /// </summary>
     /// <remarks>
     /// Update a category.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
     /// <param name="categoryId">The ID of the category to edit</param>
     /// <param name="parentCategoryId">The ID of the parent category, if not provided then the parent category will be null (optional, default to 0L)</param>
@@ -217,7 +210,7 @@ private:
     /// <param name="active">Sets whether the category is active or inactive (hidden from consumers) (optional, default to false)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
     /// <param name="searchTags">user defined strings for searching (optional, default to &quot;&quot;)</param>
-    virtual void update_category( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, const std::optional<int64_t> &parentCategoryId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &type, const std::optional<int64_t> &assetId, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<std::string> &externalCategorySlug, const std::optional<std::string> &sqootSlug, const std::optional<bool> &active, const std::optional<std::string> &metaData, const std::optional<std::string> &searchTags, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_category( const std::optional<int64_t> &accountId, const std::optional<int64_t> &categoryId, const std::optional<int64_t> &parentCategoryId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &type, const std::optional<int64_t> &assetId, const std::optional<std::string> &externalId, const std::optional<std::string> &externalType, const std::optional<std::string> &externalCategorySlug, const std::optional<std::string> &sqootSlug, const std::optional<bool> &active, const std::optional<std::string> &metaData, const std::optional<std::string> &searchTags, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

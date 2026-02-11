@@ -86,7 +86,6 @@ private:
     /// <remarks>
     /// Creates a bid on a biddable object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="biddableType">A biddable object type. Possible values include: CREATIVE (ads).</param>
     /// <param name="biddableId">The id of the biddable object</param>
     /// <param name="amountPerView">The bid amount for views. For ads, this is the amount that will be taken for each impression.</param>
@@ -95,36 +94,33 @@ private:
     /// <param name="budgetSchedule">The schedule for when the allocated budget amount is reset</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void create_bid( const double &version, const std::optional<std::string> &biddableType, const std::optional<int64_t> &biddableId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_bid( const std::optional<std::string> &biddableType, const std::optional<int64_t> &biddableId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Bid
     /// </summary>
     /// <remarks>
     /// Deleted a bid on a biddable object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="bidId">The bid id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_bid( const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_bid( const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Bid
     /// </summary>
     /// <remarks>
     /// Get the bid details of a biddable object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="bidId">The bid id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void get_bid( const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_bid( const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Bid
     /// </summary>
     /// <remarks>
     /// Updates a bid on a biddable object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="bidId">The bid id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -132,7 +128,7 @@ private:
     /// <param name="amountPerAction">The bid amount for actions. For ads, this is the amount that will be taken for each click. (optional, default to 0.0)</param>
     /// <param name="budgetAmount">The allocated budget amount that will be used (optional, default to 0.0)</param>
     /// <param name="budgetSchedule">The schedule for when the allocated budget amount is reset (optional, default to &quot;&quot;)</param>
-    virtual void update_bid( const double &version, const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_bid( const std::optional<int64_t> &bidId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &amountPerView, const std::optional<double> &amountPerAction, const std::optional<double> &budgetAmount, const std::optional<std::string> &budgetSchedule, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create an offer status record
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="name">The name of the status</param>
     /// <param name="code">The status code, must be unique </param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -99,40 +98,37 @@ private:
     /// <param name="role">The actor that uses the status (optional, default to &quot;ANY&quot;)</param>
     /// <param name="active">The active status (optional, default to true)</param>
     /// <param name="applicationIds">The applications to associate the status with, if null then for all. (optional, default to &quot;&quot;)</param>
-    virtual void create_offer_transaction_status( const double &version, const std::optional<std::string> &name, const std::optional<int32_t> &code, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &description, const std::optional<std::string> &role, const std::optional<bool> &active, const std::optional<std::string> &applicationIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_offer_transaction_status( const std::optional<std::string> &name, const std::optional<int32_t> &code, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &description, const std::optional<std::string> &role, const std::optional<bool> &active, const std::optional<std::string> &applicationIds, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Offer Status
     /// </summary>
     /// <remarks>
     /// Mark an offer status record as deleted
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="statusId">The id of the record to delete</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">Used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">Used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void delete_offer_transaction_status( const double &version, const std::optional<int64_t> &statusId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_offer_transaction_status( const std::optional<int64_t> &statusId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offer Status
     /// </summary>
     /// <remarks>
     /// Get an offer status record
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="statusId">The id of the record to get </param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">Used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">Used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_offer_transaction_status( const double &version, const std::optional<int64_t> &statusId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_offer_transaction_status( const std::optional<int64_t> &statusId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Offer Status
     /// </summary>
     /// <remarks>
     /// Search for the available offer statuses
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">Used to update the user&#39;s current location (optional, default to 0.0)</param>
@@ -145,14 +141,13 @@ private:
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit for pagination (optional, default to 20)</param>
     /// <param name="includeInactive">If true include inactive items (optional, default to false)</param>
-    virtual void search_offer_transaction_statuses( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, const std::optional<std::string> &role, const std::optional<std::string> &appKey, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_offer_transaction_statuses( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, const std::optional<std::string> &role, const std::optional<std::string> &appKey, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Offer Status
     /// </summary>
     /// <remarks>
     /// Update an offer status record
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">Used to update the user&#39;s current location (optional, default to 0.0)</param>
@@ -164,7 +159,7 @@ private:
     /// <param name="role">The actor that uses the status (optional, default to &quot;&quot;)</param>
     /// <param name="active">The active status (optional, default to false)</param>
     /// <param name="applicationIds">The applications to associate the status with, if null then for all. (optional, default to &quot;&quot;)</param>
-    virtual void update_offer_transaction_status( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &statusId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &code, const std::optional<std::string> &role, const std::optional<bool> &active, const std::optional<std::string> &applicationIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_offer_transaction_status( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &statusId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &code, const std::optional<std::string> &role, const std::optional<bool> &active, const std::optional<std::string> &applicationIds, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -84,19 +84,17 @@ private:
     /// <remarks>
     /// Gets a user&#39;s Facebook token.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_token( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_token( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Post to Facebook
     /// </summary>
     /// <remarks>
     /// Make Facebook posts on behalf of the user.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="event">the type of Sirqul event {DOWNLOADED_APP, CHALLENGE, LEVEL_COMPLETED, LEVEL_CREATED}</param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -107,7 +105,7 @@ private:
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void graph_interface( const double &version, const std::optional<std::string> &event, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<int64_t> &assetId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void graph_interface( const std::optional<std::string> &event, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<int64_t> &assetId, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

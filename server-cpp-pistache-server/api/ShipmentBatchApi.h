@@ -88,34 +88,30 @@ private:
     /// <remarks>
     /// Create a new shipment batch
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_shipment_batch( const double &version, const org::openapitools::server::model::ShipmentBatch &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_shipment_batch( const org::openapitools::server::model::ShipmentBatch &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Shipment Batch
     /// </summary>
     /// <remarks>
     /// Search for shipment batches
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="batchId">the id of the shipment batch to delete</param>
-    virtual void delete_shipment_batch( const double &version, const int64_t &batchId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_shipment_batch( const int64_t &batchId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Shipment Batch
     /// </summary>
     /// <remarks>
     /// Get an existing shipment batch
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="batchId">the id of the shipment batch to get</param>
-    virtual void get_shipment_batch( const double &version, const int64_t &batchId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_shipment_batch( const int64_t &batchId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Shipment Batch Status
     /// </summary>
     /// <remarks>
     /// Get the import status list of the import shipment batch
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="batchId">The id of the requested shipment batch</param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="sortField">The field to sort by</param>
@@ -128,20 +124,19 @@ private:
     /// <param name="hasShipment">Has shipment associate to the status (optional, default to false)</param>
     /// <param name="hasRoute">Has route associate to the status (optional, default to false)</param>
     /// <param name="keyword">The keyword to search for (optional, default to &quot;&quot;)</param>
-    virtual void get_shipment_batch_status( const double &version, const int64_t &batchId, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &valid, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &hasShipment, const std::optional<bool> &hasRoute, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_shipment_batch_status( const int64_t &batchId, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &valid, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &hasShipment, const std::optional<bool> &hasRoute, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Shipment Batch
     /// </summary>
     /// <remarks>
     /// Search for shipment batches
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="hubId">The associated service hub</param>
     /// <param name="sortField">The field to sort by</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">The start index for pagination</param>
     /// <param name="limit">The limit for pagination</param>
-    virtual void search_shipment_batch( const double &version, const std::optional<int64_t> &hubId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_shipment_batch( const std::optional<int64_t> &hubId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

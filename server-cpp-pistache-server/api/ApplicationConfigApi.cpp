@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ApplicationConfigApi::base = "";
+const std::string ApplicationConfigApi::base = "/api/3.18";
 
 ApplicationConfigApi::ApplicationConfigApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void ApplicationConfigApi::init() {
 void ApplicationConfigApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/appconfig/create", Routes::bind(&ApplicationConfigApi::create_application_config_handler, this));
-    Routes::Post(*router, base + "/api/:version/appconfig/delete", Routes::bind(&ApplicationConfigApi::delete_application_config_handler, this));
-    Routes::Get(*router, base + "/api/:version/appconfig/get", Routes::bind(&ApplicationConfigApi::get_application_config_handler, this));
-    Routes::Get(*router, base + "/api/:version/appconfig/getbyversion", Routes::bind(&ApplicationConfigApi::get_application_config_by_config_version_handler, this));
-    Routes::Get(*router, base + "/api/:version/appconfig/search", Routes::bind(&ApplicationConfigApi::search_application_config_handler, this));
-    Routes::Post(*router, base + "/api/:version/appconfig/update", Routes::bind(&ApplicationConfigApi::update_application_config_handler, this));
+    Routes::Post(*router, base + "/appconfig/create", Routes::bind(&ApplicationConfigApi::create_application_config_handler, this));
+    Routes::Post(*router, base + "/appconfig/delete", Routes::bind(&ApplicationConfigApi::delete_application_config_handler, this));
+    Routes::Get(*router, base + "/appconfig/get", Routes::bind(&ApplicationConfigApi::get_application_config_handler, this));
+    Routes::Get(*router, base + "/appconfig/getbyversion", Routes::bind(&ApplicationConfigApi::get_application_config_by_config_version_handler, this));
+    Routes::Get(*router, base + "/appconfig/search", Routes::bind(&ApplicationConfigApi::search_application_config_handler, this));
+    Routes::Post(*router, base + "/appconfig/update", Routes::bind(&ApplicationConfigApi::update_application_config_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ApplicationConfigApi::application_config_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> ApplicationConfigApi::handleOperati
 void ApplicationConfigApi::create_application_config_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -142,7 +140,7 @@ void ApplicationConfigApi::create_application_config_handler(const Pistache::Res
 
 
 
-            this->create_application_config(version, accountId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid, response);
+            this->create_application_config(accountId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -161,8 +159,6 @@ void ApplicationConfigApi::create_application_config_handler(const Pistache::Res
 void ApplicationConfigApi::delete_application_config_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -191,7 +187,7 @@ void ApplicationConfigApi::delete_application_config_handler(const Pistache::Res
 
 
 
-            this->delete_application_config(version, accountId, configId, response);
+            this->delete_application_config(accountId, configId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -210,8 +206,6 @@ void ApplicationConfigApi::delete_application_config_handler(const Pistache::Res
 void ApplicationConfigApi::get_application_config_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -240,7 +234,7 @@ void ApplicationConfigApi::get_application_config_handler(const Pistache::Rest::
 
 
 
-            this->get_application_config(version, accountId, configId, response);
+            this->get_application_config(accountId, configId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -259,8 +253,6 @@ void ApplicationConfigApi::get_application_config_handler(const Pistache::Rest::
 void ApplicationConfigApi::get_application_config_by_config_version_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -321,7 +313,7 @@ void ApplicationConfigApi::get_application_config_by_config_version_handler(cons
 
 
 
-            this->get_application_config_by_config_version(version, appKey, configVersion, retailerId, retailerLocationId, udid, allowOlderVersions, response);
+            this->get_application_config_by_config_version(appKey, configVersion, retailerId, retailerLocationId, udid, allowOlderVersions, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -340,8 +332,6 @@ void ApplicationConfigApi::get_application_config_by_config_version_handler(cons
 void ApplicationConfigApi::search_application_config_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -434,7 +424,7 @@ void ApplicationConfigApi::search_application_config_handler(const Pistache::Res
 
 
 
-            this->search_application_config(version, accountId, appKey, retailerId, retailerLocationId, udid, configVersion, sortField, descending, start, limit, response);
+            this->search_application_config(accountId, appKey, retailerId, retailerLocationId, udid, configVersion, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -453,8 +443,6 @@ void ApplicationConfigApi::search_application_config_handler(const Pistache::Res
 void ApplicationConfigApi::update_application_config_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -531,7 +519,7 @@ void ApplicationConfigApi::update_application_config_handler(const Pistache::Res
 
 
 
-            this->update_application_config(version, accountId, configId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid, response);
+            this->update_application_config(accountId, configId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

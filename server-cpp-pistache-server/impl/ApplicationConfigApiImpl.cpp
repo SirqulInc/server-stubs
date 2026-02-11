@@ -29,22 +29,22 @@ ApplicationConfigApiImpl::ApplicationConfigApiImpl(const std::shared_ptr<Pistach
 
 }
 
-void ApplicationConfigApiImpl::create_application_config(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) {
+void ApplicationConfigApiImpl::create_application_config(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationConfigApiImpl::delete_application_config(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) {
+void ApplicationConfigApiImpl::delete_application_config(const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationConfigApiImpl::get_application_config(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) {
+void ApplicationConfigApiImpl::get_application_config(const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationConfigApiImpl::get_application_config_by_config_version(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<bool> &allowOlderVersions, Pistache::Http::ResponseWriter &response) {
+void ApplicationConfigApiImpl::get_application_config_by_config_version(const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<bool> &allowOlderVersions, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationConfigApiImpl::search_application_config(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<std::string> &configVersion, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ApplicationConfigApiImpl::search_application_config(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, const std::optional<std::string> &configVersion, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationConfigApiImpl::update_application_config(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) {
+void ApplicationConfigApiImpl::update_application_config(const std::optional<int64_t> &accountId, const std::optional<int64_t> &configId, const std::optional<std::string> &appKey, const std::optional<std::string> &configVersion, const std::optional<int64_t> &assetId, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &retailerLocationId, const std::optional<std::string> &udid, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

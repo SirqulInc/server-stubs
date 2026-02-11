@@ -88,47 +88,43 @@ private:
     /// <remarks>
     /// Create the mission invite. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (deviceId or accountId required). (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required). (optional, default to 0L)</param>
     /// <param name="missionId">The mission to find the invite for. (optional, default to 0L)</param>
     /// <param name="joinCode">code to be entered for user to join the mission (optional, default to &quot;&quot;)</param>
     /// <param name="includeGameData">Include the game level data with the mission. (optional, default to false)</param>
-    virtual void create_mission_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &joinCode, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_mission_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<std::string> &joinCode, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Mission Invite
     /// </summary>
     /// <remarks>
     /// Update the mission invite status to quit.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (deviceId or accountId required). (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required). (optional, default to 0L)</param>
     /// <param name="missionId">The mission to find the invite for (missionId or missionInviteId requried). (optional, default to 0L)</param>
     /// <param name="missionInviteId">The mission invite id. This checks on the user&#39;s billable for permission (missionId or missionInviteId requried). (optional, default to 0L)</param>
     /// <param name="includeGameData">Include the game level data with the mission. (optional, default to false)</param>
-    virtual void delete_mission_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_mission_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Mission Invite
     /// </summary>
     /// <remarks>
     /// Get the mission invite. An account can only be invited to a mission one time.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (deviceId or accountId required). (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required). (optional, default to 0L)</param>
     /// <param name="missionId">The mission to find the invite for (missionId or missionInviteId requried). (optional, default to 0L)</param>
     /// <param name="missionInviteId">The mission invite id. This checks on the user&#39;s billable for permission (missionId or missionInviteId requried). (optional, default to 0L)</param>
     /// <param name="includeGameData">Include the game level data with the mission. (optional, default to false)</param>
     /// <param name="includeScores">include the scores with the mission (optional, default to &quot;&quot;)</param>
-    virtual void get_mission_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, const std::optional<std::string> &includeScores, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_mission_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<bool> &includeGameData, const std::optional<std::string> &includeScores, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Mission Invites
     /// </summary>
     /// <remarks>
     /// Get a list of mission invites that the account has.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (deviceId or accountId required). (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required). (optional, default to 0L)</param>
     /// <param name="appKey">the app to retrieve the data for, use your application key. (optional, default to &quot;&quot;)</param>
@@ -142,14 +138,13 @@ private:
     /// <param name="missionTypes"> (optional, default to &quot;&quot;)</param>
     /// <param name="filterByBillable">filter results by the account&#39;s billable (optional, default to false)</param>
     /// <param name="includeGameData">Include the game level data with the mission. (optional, default to false)</param>
-    virtual void search_mission_invites( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<std::string> &status, const std::optional<int64_t> &lastUpdated, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &missionTypes, const std::optional<bool> &filterByBillable, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_mission_invites( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &appVersion, const std::optional<int64_t> &missionId, const std::optional<std::string> &status, const std::optional<int64_t> &lastUpdated, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &missionTypes, const std::optional<bool> &filterByBillable, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Mission Invite
     /// </summary>
     /// <remarks>
     /// Update the mission invite status. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">the device id (deviceId or accountId required). (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required). (optional, default to 0L)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
@@ -161,7 +156,7 @@ private:
     /// <param name="permissionableType">This is the content type for missions that require user submission. Note that user submitted content must require a status of PENDING_REVIEW to be accpeted. {ACCOUNT, GAMELEVEL, COLLECTION, ALBUM_CONTEST, THEME_DESCRIPTOR, ALBUM} (optional, default to &quot;&quot;)</param>
     /// <param name="permissionableId">The id of the content being submitted. (optional, default to 0L)</param>
     /// <param name="includeGameData">Include the game level data with the mission. (optional, default to false)</param>
-    virtual void update_mission_invite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<std::string> &status, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_mission_invite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &missionInviteId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<std::string> &status, const std::optional<std::string> &permissionableType, const std::optional<int64_t> &permissionableId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

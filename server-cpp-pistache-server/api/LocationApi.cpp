@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string LocationApi::base = "";
+const std::string LocationApi::base = "/api/3.18";
 
 LocationApi::LocationApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void LocationApi::init() {
 void LocationApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/location/trilaterate/cache", Routes::bind(&LocationApi::cache_trilateration_data_handler, this));
-    Routes::Post(*router, base + "/api/:version/location/trilaterate/cache/submit", Routes::bind(&LocationApi::cache_trilateration_data_gzip_handler, this));
-    Routes::Get(*router, base + "/api/:version/location/ip", Routes::bind(&LocationApi::get_location_by_ip_handler, this));
-    Routes::Get(*router, base + "/api/:version/account/location/trilaterate", Routes::bind(&LocationApi::get_location_by_trilateration_handler, this));
-    Routes::Get(*router, base + "/api/:version/location/search", Routes::bind(&LocationApi::get_locations_handler, this));
+    Routes::Post(*router, base + "/location/trilaterate/cache", Routes::bind(&LocationApi::cache_trilateration_data_handler, this));
+    Routes::Post(*router, base + "/location/trilaterate/cache/submit", Routes::bind(&LocationApi::cache_trilateration_data_gzip_handler, this));
+    Routes::Get(*router, base + "/location/ip", Routes::bind(&LocationApi::get_location_by_ip_handler, this));
+    Routes::Get(*router, base + "/account/location/trilaterate", Routes::bind(&LocationApi::get_location_by_trilateration_handler, this));
+    Routes::Get(*router, base + "/location/search", Routes::bind(&LocationApi::get_locations_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&LocationApi::location_api_default_handler, this));
@@ -91,8 +91,6 @@ void LocationApi::cache_trilateration_data_handler(const Pistache::Rest::Request
 void LocationApi::cache_trilateration_data_gzip_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -116,7 +114,7 @@ void LocationApi::cache_trilateration_data_gzip_handler(const Pistache::Rest::Re
 
 
 
-            this->cache_trilateration_data_gzip(version, body, response);
+            this->cache_trilateration_data_gzip(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -135,8 +133,6 @@ void LocationApi::cache_trilateration_data_gzip_handler(const Pistache::Rest::Re
 void LocationApi::get_location_by_ip_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -157,7 +153,7 @@ void LocationApi::get_location_by_ip_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_location_by_ip(version, ip, response);
+            this->get_location_by_ip(ip, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -176,8 +172,6 @@ void LocationApi::get_location_by_ip_handler(const Pistache::Rest::Request& requ
 void LocationApi::get_location_by_trilateration_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -230,7 +224,7 @@ void LocationApi::get_location_by_trilateration_handler(const Pistache::Rest::Re
 
 
 
-            this->get_location_by_trilateration(version, accountId, latitude, longitude, data, responseFilters, response);
+            this->get_location_by_trilateration(accountId, latitude, longitude, data, responseFilters, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -249,8 +243,6 @@ void LocationApi::get_location_by_trilateration_handler(const Pistache::Rest::Re
 void LocationApi::get_locations_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -415,7 +407,7 @@ void LocationApi::get_locations_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_locations(version, deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit, response);
+            this->get_locations(deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

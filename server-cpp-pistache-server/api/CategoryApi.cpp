@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string CategoryApi::base = "";
+const std::string CategoryApi::base = "/api/3.18";
 
 CategoryApi::CategoryApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,13 +32,13 @@ void CategoryApi::init() {
 void CategoryApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/category/distancesearch", Routes::bind(&CategoryApi::category_distance_search_handler, this));
-    Routes::Post(*router, base + "/api/:version/category/create", Routes::bind(&CategoryApi::create_category_handler, this));
-    Routes::Post(*router, base + "/api/:version/category/delete", Routes::bind(&CategoryApi::delete_category_handler, this));
-    Routes::Post(*router, base + "/api/:version/category/duplicate", Routes::bind(&CategoryApi::duplicate_category_handler, this));
-    Routes::Get(*router, base + "/api/:version/category/get", Routes::bind(&CategoryApi::get_category_handler, this));
-    Routes::Get(*router, base + "/api/:version/category/search", Routes::bind(&CategoryApi::search_categories_handler, this));
-    Routes::Post(*router, base + "/api/:version/category/update", Routes::bind(&CategoryApi::update_category_handler, this));
+    Routes::Get(*router, base + "/category/distancesearch", Routes::bind(&CategoryApi::category_distance_search_handler, this));
+    Routes::Post(*router, base + "/category/create", Routes::bind(&CategoryApi::create_category_handler, this));
+    Routes::Post(*router, base + "/category/delete", Routes::bind(&CategoryApi::delete_category_handler, this));
+    Routes::Post(*router, base + "/category/duplicate", Routes::bind(&CategoryApi::duplicate_category_handler, this));
+    Routes::Get(*router, base + "/category/get", Routes::bind(&CategoryApi::get_category_handler, this));
+    Routes::Get(*router, base + "/category/search", Routes::bind(&CategoryApi::search_categories_handler, this));
+    Routes::Post(*router, base + "/category/update", Routes::bind(&CategoryApi::update_category_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&CategoryApi::category_api_default_handler, this));
@@ -73,8 +73,6 @@ std::pair<Pistache::Http::Code, std::string> CategoryApi::handleOperationExcepti
 void CategoryApi::category_distance_search_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -247,7 +245,7 @@ void CategoryApi::category_distance_search_handler(const Pistache::Rest::Request
 
 
 
-            this->category_distance_search(version, accountId, keyword, appKey, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, minOfferCount, latitude, longitude, range, response);
+            this->category_distance_search(accountId, keyword, appKey, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, minOfferCount, latitude, longitude, range, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -266,8 +264,6 @@ void CategoryApi::category_distance_search_handler(const Pistache::Rest::Request
 void CategoryApi::create_category_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -392,7 +388,7 @@ void CategoryApi::create_category_handler(const Pistache::Rest::Request& request
 
 
 
-            this->create_category(version, accountId, name, appKey, parentCategoryId, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags, response);
+            this->create_category(accountId, name, appKey, parentCategoryId, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -411,8 +407,6 @@ void CategoryApi::create_category_handler(const Pistache::Rest::Request& request
 void CategoryApi::delete_category_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -441,7 +435,7 @@ void CategoryApi::delete_category_handler(const Pistache::Rest::Request& request
 
 
 
-            this->delete_category(version, accountId, categoryId, response);
+            this->delete_category(accountId, categoryId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -460,8 +454,6 @@ void CategoryApi::delete_category_handler(const Pistache::Rest::Request& request
 void CategoryApi::duplicate_category_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -506,7 +498,7 @@ void CategoryApi::duplicate_category_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->duplicate_category(version, accountId, categoryId, appKey, parentCategoryId, response);
+            this->duplicate_category(accountId, categoryId, appKey, parentCategoryId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -525,8 +517,6 @@ void CategoryApi::duplicate_category_handler(const Pistache::Rest::Request& requ
 void CategoryApi::get_category_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -555,7 +545,7 @@ void CategoryApi::get_category_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_category(version, categoryId, returnExternal, response);
+            this->get_category(categoryId, returnExternal, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -574,8 +564,6 @@ void CategoryApi::get_category_handler(const Pistache::Rest::Request& request, P
 void CategoryApi::search_categories_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -756,7 +744,7 @@ void CategoryApi::search_categories_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->search_categories(version, accountId, keyword, appKey, categoryId, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, excludeExternalType, minOfferCount, searchDepth, searchMode, response);
+            this->search_categories(accountId, keyword, appKey, categoryId, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, excludeExternalType, minOfferCount, searchDepth, searchMode, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -775,8 +763,6 @@ void CategoryApi::search_categories_handler(const Pistache::Rest::Request& reque
 void CategoryApi::update_category_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -901,7 +887,7 @@ void CategoryApi::update_category_handler(const Pistache::Rest::Request& request
 
 
 
-            this->update_category(version, accountId, categoryId, parentCategoryId, name, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags, response);
+            this->update_category(accountId, categoryId, parentCategoryId, name, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

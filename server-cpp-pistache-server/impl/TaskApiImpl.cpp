@@ -29,19 +29,19 @@ TaskApiImpl::TaskApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void TaskApiImpl::create_task(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void TaskApiImpl::create_task(const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TaskApiImpl::delete_task(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) {
+void TaskApiImpl::delete_task(const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TaskApiImpl::get_task(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) {
+void TaskApiImpl::get_task(const std::optional<int64_t> &accountId, const std::optional<int64_t> &taskId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TaskApiImpl::search_tasks(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<std::string> &filter, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
+void TaskApiImpl::search_tasks(const std::optional<int64_t> &accountId, const std::optional<std::string> &groupingId, const std::optional<std::string> &filter, const std::optional<std::string> &statuses, const std::optional<std::string> &templateTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TaskApiImpl::update_task(const double &version, const std::optional<int64_t> &taskId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void TaskApiImpl::update_task(const std::optional<int64_t> &taskId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &appKey, const std::optional<std::string> &groupingId, const std::optional<std::string> &endpointURL, const std::optional<std::string> &payload, const std::optional<int64_t> &scheduledDate, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &cronExpression, const std::optional<std::string> &visibility, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

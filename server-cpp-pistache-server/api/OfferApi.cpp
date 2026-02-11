@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string OfferApi::base = "";
+const std::string OfferApi::base = "/api/3.18";
 
 OfferApi::OfferApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,22 +32,22 @@ void OfferApi::init() {
 void OfferApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/retailer/offer/location/batchUpdate", Routes::bind(&OfferApi::batch_update_offer_locations_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/offer/create", Routes::bind(&OfferApi::create_offer_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/offer/delete", Routes::bind(&OfferApi::delete_offer_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/offer/location/delete", Routes::bind(&OfferApi::delete_offer_location_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/offer/get", Routes::bind(&OfferApi::get_offer_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/get", Routes::bind(&OfferApi::get_offer_details_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/lists/count", Routes::bind(&OfferApi::get_offer_list_counts_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/location/get", Routes::bind(&OfferApi::get_offer_location_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/offer/location/search", Routes::bind(&OfferApi::get_offer_locations_for_retailers_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/offer/search", Routes::bind(&OfferApi::get_offers_for_retailers_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/offer/transaction/update", Routes::bind(&OfferApi::redeem_offer_transaction_handler, this));
-    Routes::Get(*router, base + "/api/:version/retailer/offer/transaction/search", Routes::bind(&OfferApi::search_offer_transactions_for_retailers_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/lists", Routes::bind(&OfferApi::search_offers_for_consumer_handler, this));
-    Routes::Get(*router, base + "/api/:version/offer/top", Routes::bind(&OfferApi::top_offer_transactions_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/offer/update", Routes::bind(&OfferApi::update_offer_handler, this));
-    Routes::Post(*router, base + "/api/:version/retailer/offer/status", Routes::bind(&OfferApi::update_offer_status_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/location/batchUpdate", Routes::bind(&OfferApi::batch_update_offer_locations_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/create", Routes::bind(&OfferApi::create_offer_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/delete", Routes::bind(&OfferApi::delete_offer_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/location/delete", Routes::bind(&OfferApi::delete_offer_location_handler, this));
+    Routes::Get(*router, base + "/retailer/offer/get", Routes::bind(&OfferApi::get_offer_handler, this));
+    Routes::Get(*router, base + "/offer/get", Routes::bind(&OfferApi::get_offer_details_handler, this));
+    Routes::Get(*router, base + "/offer/lists/count", Routes::bind(&OfferApi::get_offer_list_counts_handler, this));
+    Routes::Get(*router, base + "/offer/location/get", Routes::bind(&OfferApi::get_offer_location_handler, this));
+    Routes::Get(*router, base + "/retailer/offer/location/search", Routes::bind(&OfferApi::get_offer_locations_for_retailers_handler, this));
+    Routes::Get(*router, base + "/retailer/offer/search", Routes::bind(&OfferApi::get_offers_for_retailers_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/transaction/update", Routes::bind(&OfferApi::redeem_offer_transaction_handler, this));
+    Routes::Get(*router, base + "/retailer/offer/transaction/search", Routes::bind(&OfferApi::search_offer_transactions_for_retailers_handler, this));
+    Routes::Get(*router, base + "/offer/lists", Routes::bind(&OfferApi::search_offers_for_consumer_handler, this));
+    Routes::Get(*router, base + "/offer/top", Routes::bind(&OfferApi::top_offer_transactions_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/update", Routes::bind(&OfferApi::update_offer_handler, this));
+    Routes::Post(*router, base + "/retailer/offer/status", Routes::bind(&OfferApi::update_offer_status_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&OfferApi::offer_api_default_handler, this));
@@ -82,8 +82,6 @@ std::pair<Pistache::Http::Code, std::string> OfferApi::handleOperationException(
 void OfferApi::batch_update_offer_locations_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -120,7 +118,7 @@ void OfferApi::batch_update_offer_locations_handler(const Pistache::Rest::Reques
 
 
 
-            this->batch_update_offer_locations(version, data, deviceId, accountId, response);
+            this->batch_update_offer_locations(data, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -139,8 +137,6 @@ void OfferApi::batch_update_offer_locations_handler(const Pistache::Rest::Reques
 void OfferApi::create_offer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -841,7 +837,7 @@ void OfferApi::create_offer_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->create_offer(version, includeOfferLocations, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, offerType, specialOfferType, offerVisibility, active, deviceId, accountId, tags, parentOfferId, retailerLocationIds, offerLocations, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary, response);
+            this->create_offer(includeOfferLocations, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, offerType, specialOfferType, offerVisibility, active, deviceId, accountId, tags, parentOfferId, retailerLocationIds, offerLocations, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -860,8 +856,6 @@ void OfferApi::create_offer_handler(const Pistache::Rest::Request& request, Pist
 void OfferApi::delete_offer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -898,7 +892,7 @@ void OfferApi::delete_offer_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->delete_offer(version, offerId, deviceId, accountId, response);
+            this->delete_offer(offerId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -917,8 +911,6 @@ void OfferApi::delete_offer_handler(const Pistache::Rest::Request& request, Pist
 void OfferApi::delete_offer_location_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -955,7 +947,7 @@ void OfferApi::delete_offer_location_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->delete_offer_location(version, offerLocationId, deviceId, accountId, response);
+            this->delete_offer_location(offerLocationId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -974,8 +966,6 @@ void OfferApi::delete_offer_location_handler(const Pistache::Rest::Request& requ
 void OfferApi::get_offer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1020,7 +1010,7 @@ void OfferApi::get_offer_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_offer(version, offerId, includeOfferLocations, deviceId, accountId, response);
+            this->get_offer(offerId, includeOfferLocations, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1039,8 +1029,6 @@ void OfferApi::get_offer_handler(const Pistache::Rest::Request& request, Pistach
 void OfferApi::get_offer_details_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1133,7 +1121,7 @@ void OfferApi::get_offer_details_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_offer_details(version, deviceId, accountId, offerId, offerLocationId, distance, latitude, longitude, includeOfferLocations, includeRetailerLocations, includeChildOffers, response);
+            this->get_offer_details(deviceId, accountId, offerId, offerLocationId, distance, latitude, longitude, includeOfferLocations, includeRetailerLocations, includeChildOffers, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1152,8 +1140,6 @@ void OfferApi::get_offer_details_handler(const Pistache::Rest::Request& request,
 void OfferApi::get_offer_list_counts_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1198,7 +1184,7 @@ void OfferApi::get_offer_list_counts_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_offer_list_counts(version, latitude, longitude, searchRange, distanceUnit, response);
+            this->get_offer_list_counts(latitude, longitude, searchRange, distanceUnit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1217,8 +1203,6 @@ void OfferApi::get_offer_list_counts_handler(const Pistache::Rest::Request& requ
 void OfferApi::get_offer_location_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1247,7 +1231,7 @@ void OfferApi::get_offer_location_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_offer_location(version, offerLocationId, udid, response);
+            this->get_offer_location(offerLocationId, udid, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1266,8 +1250,6 @@ void OfferApi::get_offer_location_handler(const Pistache::Rest::Request& request
 void OfferApi::get_offer_locations_for_retailers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1440,7 +1422,7 @@ void OfferApi::get_offer_locations_for_retailers_handler(const Pistache::Rest::R
 
 
 
-            this->get_offer_locations_for_retailers(version, sortField, descending, start, limit, activeOnly, includeRetailerLocation, deviceId, accountId, keyword, retailerId, retailerLocationId, offerType, specialOfferType, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent, response);
+            this->get_offer_locations_for_retailers(sortField, descending, start, limit, activeOnly, includeRetailerLocation, deviceId, accountId, keyword, retailerId, retailerLocationId, offerType, specialOfferType, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1459,8 +1441,6 @@ void OfferApi::get_offer_locations_for_retailers_handler(const Pistache::Rest::R
 void OfferApi::get_offers_for_retailers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1721,7 +1701,7 @@ void OfferApi::get_offers_for_retailers_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_offers_for_retailers(version, offerVisibility, sortField, descending, start, limit, availableOnly, activeOnly, includeCategories, includeFilters, includeOfferLocations, deviceId, accountId, categoryIds, filterIds, q, keyword, retailerId, retailerLocationId, couponType, offerType, offerTypes, specialOfferType, i, l, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent, response);
+            this->get_offers_for_retailers(offerVisibility, sortField, descending, start, limit, availableOnly, activeOnly, includeCategories, includeFilters, includeOfferLocations, deviceId, accountId, categoryIds, filterIds, q, keyword, retailerId, retailerLocationId, couponType, offerType, offerTypes, specialOfferType, i, l, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1740,8 +1720,6 @@ void OfferApi::get_offers_for_retailers_handler(const Pistache::Rest::Request& r
 void OfferApi::redeem_offer_transaction_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1794,7 +1772,7 @@ void OfferApi::redeem_offer_transaction_handler(const Pistache::Rest::Request& r
 
 
 
-            this->redeem_offer_transaction(version, offerTransactionId, status, deviceId, accountId, offerLocationId, response);
+            this->redeem_offer_transaction(offerTransactionId, status, deviceId, accountId, offerLocationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1813,8 +1791,6 @@ void OfferApi::redeem_offer_transaction_handler(const Pistache::Rest::Request& r
 void OfferApi::search_offer_transactions_for_retailers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2019,7 +1995,7 @@ void OfferApi::search_offer_transactions_for_retailers_handler(const Pistache::R
 
 
 
-            this->search_offer_transactions_for_retailers(version, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, retailerId, retailerLocationId, offerId, offerLocationId, redeemed, reservationsOnly, couponType, offerType, specialOfferType, customerAccountIds, categoryIds, redeemableStartDate, redeemableEndDate, i, l, response);
+            this->search_offer_transactions_for_retailers(sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, retailerId, retailerLocationId, offerId, offerLocationId, redeemed, reservationsOnly, couponType, offerType, specialOfferType, customerAccountIds, categoryIds, redeemableStartDate, redeemableEndDate, i, l, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2038,8 +2014,6 @@ void OfferApi::search_offer_transactions_for_retailers_handler(const Pistache::R
 void OfferApi::search_offers_for_consumer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2300,7 +2274,7 @@ void OfferApi::search_offers_for_consumer_handler(const Pistache::Rest::Request&
 
 
 
-            this->search_offers_for_consumer(version, latitude, longitude, recommendationType, locationId, start, limit, maxRecommendations, distanceUnit, appKey, deviceId, accountId, searchRange, tags, supportedPostalCodes, keyword, categories, filters, offerTypes, type, sortField, recommendOfferIds, retailerLocationIds, offerId, includeMission, includeCategories, includeFilters, includeExpired, includeFavorite, closestOfferOnly, searchExpression, groupBy, response);
+            this->search_offers_for_consumer(latitude, longitude, recommendationType, locationId, start, limit, maxRecommendations, distanceUnit, appKey, deviceId, accountId, searchRange, tags, supportedPostalCodes, keyword, categories, filters, offerTypes, type, sortField, recommendOfferIds, retailerLocationIds, offerId, includeMission, includeCategories, includeFilters, includeExpired, includeFavorite, closestOfferOnly, searchExpression, groupBy, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2319,8 +2293,6 @@ void OfferApi::search_offers_for_consumer_handler(const Pistache::Rest::Request&
 void OfferApi::top_offer_transactions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -2349,7 +2321,7 @@ void OfferApi::top_offer_transactions_handler(const Pistache::Rest::Request& req
 
 
 
-            this->top_offer_transactions(version, start, limit, response);
+            this->top_offer_transactions(start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -2368,8 +2340,6 @@ void OfferApi::top_offer_transactions_handler(const Pistache::Rest::Request& req
 void OfferApi::update_offer_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3078,7 +3048,7 @@ void OfferApi::update_offer_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->update_offer(version, offerId, includeOfferLocations, deviceId, accountId, parentOfferId, retailerLocationIds, offerLocations, tags, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, offerType, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary, response);
+            this->update_offer(offerId, includeOfferLocations, deviceId, accountId, parentOfferId, retailerLocationIds, offerLocations, tags, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, offerType, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -3097,8 +3067,6 @@ void OfferApi::update_offer_handler(const Pistache::Rest::Request& request, Pist
 void OfferApi::update_offer_status_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -3143,7 +3111,7 @@ void OfferApi::update_offer_status_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->update_offer_status(version, offerIds, active, deviceId, accountId, response);
+            this->update_offer_status(offerIds, active, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

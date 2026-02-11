@@ -32,16 +32,16 @@ SecureAppApiImpl::SecureAppApiImpl(const std::shared_ptr<Pistache::Rest::Router>
 void SecureAppApiImpl::create_secure_application(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SecureAppApiImpl::delete_secure_application(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void SecureAppApiImpl::delete_secure_application(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void SecureAppApiImpl::login_secure(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SecureAppApiImpl::purchase_secure(const double &version, const PaymentRequest &body, Pistache::Http::ResponseWriter &response) {
+void SecureAppApiImpl::purchase_secure(const PaymentRequest &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void SecureAppApiImpl::reset_secure(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void SecureAppApiImpl::reset_secure(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void SecureAppApiImpl::update_secure_application(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

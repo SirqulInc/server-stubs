@@ -29,7 +29,7 @@ RoutingApiImpl::RoutingApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rt
 
 }
 
-void RoutingApiImpl::compute_routing(const double &version, const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) {
+void RoutingApiImpl::compute_routing(const std::optional<std::string> &data, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

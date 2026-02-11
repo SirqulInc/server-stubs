@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TrackingApi::base = "";
+const std::string TrackingApi::base = "/api/3.18";
 
 TrackingApi::TrackingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,15 +32,15 @@ void TrackingApi::init() {
 void TrackingApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/tracking/batch/create", Routes::bind(&TrackingApi::batch_save_tracking_handler, this));
-    Routes::Get(*router, base + "/api/:version/tracking/predicted/get", Routes::bind(&TrackingApi::get_predicted_locations_handler, this));
-    Routes::Get(*router, base + "/api/:version/tracking/path/get", Routes::bind(&TrackingApi::get_predicted_path_handler, this));
-    Routes::Get(*router, base + "/api/:version/tracking/preferred/search", Routes::bind(&TrackingApi::get_preferred_locations_handler, this));
-    Routes::Get(*router, base + "/api/:version/tracking/search", Routes::bind(&TrackingApi::get_tracking_legs_handler, this));
-    Routes::Post(*router, base + "/api/:version/tracking/leg/create", Routes::bind(&TrackingApi::save_tracking_leg_handler, this));
-    Routes::Post(*router, base + "/api/:version/tracking/step/create", Routes::bind(&TrackingApi::save_tracking_step_handler, this));
-    Routes::Get(*router, base + "/api/:version/tracking/list", Routes::bind(&TrackingApi::search_accounts_with_tracking_legs_handler, this));
-    Routes::Get(*router, base + "/api/:version/tracking/searchByBillable", Routes::bind(&TrackingApi::search_tracking_legs_handler, this));
+    Routes::Post(*router, base + "/tracking/batch/create", Routes::bind(&TrackingApi::batch_save_tracking_handler, this));
+    Routes::Get(*router, base + "/tracking/predicted/get", Routes::bind(&TrackingApi::get_predicted_locations_handler, this));
+    Routes::Get(*router, base + "/tracking/path/get", Routes::bind(&TrackingApi::get_predicted_path_handler, this));
+    Routes::Get(*router, base + "/tracking/preferred/search", Routes::bind(&TrackingApi::get_preferred_locations_handler, this));
+    Routes::Get(*router, base + "/tracking/search", Routes::bind(&TrackingApi::get_tracking_legs_handler, this));
+    Routes::Post(*router, base + "/tracking/leg/create", Routes::bind(&TrackingApi::save_tracking_leg_handler, this));
+    Routes::Post(*router, base + "/tracking/step/create", Routes::bind(&TrackingApi::save_tracking_step_handler, this));
+    Routes::Get(*router, base + "/tracking/list", Routes::bind(&TrackingApi::search_accounts_with_tracking_legs_handler, this));
+    Routes::Get(*router, base + "/tracking/searchByBillable", Routes::bind(&TrackingApi::search_tracking_legs_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TrackingApi::tracking_api_default_handler, this));
@@ -75,8 +75,6 @@ std::pair<Pistache::Http::Code, std::string> TrackingApi::handleOperationExcepti
 void TrackingApi::batch_save_tracking_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -145,7 +143,7 @@ void TrackingApi::batch_save_tracking_handler(const Pistache::Rest::Request& req
 
 
 
-            this->batch_save_tracking(version, data, deviceId, accountId, generateAccounts, updateAccountLocations, defaultTag, slaveUID, response);
+            this->batch_save_tracking(data, deviceId, accountId, generateAccounts, updateAccountLocations, defaultTag, slaveUID, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -164,8 +162,6 @@ void TrackingApi::batch_save_tracking_handler(const Pistache::Rest::Request& req
 void TrackingApi::get_predicted_locations_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -250,7 +246,7 @@ void TrackingApi::get_predicted_locations_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_predicted_locations(version, accountId, latitude, longitude, dateCheck, hourCheck, threshold, distanceUnit, searchRange, sortOrder, response);
+            this->get_predicted_locations(accountId, latitude, longitude, dateCheck, hourCheck, threshold, distanceUnit, searchRange, sortOrder, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -269,8 +265,6 @@ void TrackingApi::get_predicted_locations_handler(const Pistache::Rest::Request&
 void TrackingApi::get_predicted_path_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -307,7 +301,7 @@ void TrackingApi::get_predicted_path_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_predicted_path(version, accountId, startStepId, endStepId, response);
+            this->get_predicted_path(accountId, startStepId, endStepId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -326,8 +320,6 @@ void TrackingApi::get_predicted_path_handler(const Pistache::Rest::Request& requ
 void TrackingApi::get_preferred_locations_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -428,7 +420,7 @@ void TrackingApi::get_preferred_locations_handler(const Pistache::Rest::Request&
 
 
 
-            this->get_preferred_locations(version, accountId, latitude, longitude, dateCheck, hourCheck, sortField, descending, start, limit, searchRange, distanceUnit, response);
+            this->get_preferred_locations(accountId, latitude, longitude, dateCheck, hourCheck, sortField, descending, start, limit, searchRange, distanceUnit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -447,8 +439,6 @@ void TrackingApi::get_preferred_locations_handler(const Pistache::Rest::Request&
 void TrackingApi::get_tracking_legs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -525,7 +515,7 @@ void TrackingApi::get_tracking_legs_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_tracking_legs(version, deviceId, accountId, ownerId, trackingDeviceId, startDate, endDate, tags, getLastPoint, response);
+            this->get_tracking_legs(deviceId, accountId, ownerId, trackingDeviceId, startDate, endDate, tags, getLastPoint, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -544,8 +534,6 @@ void TrackingApi::get_tracking_legs_handler(const Pistache::Rest::Request& reque
 void TrackingApi::save_tracking_leg_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -654,7 +642,7 @@ void TrackingApi::save_tracking_leg_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->save_tracking_leg(version, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, steps, tags, response);
+            this->save_tracking_leg(startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, steps, tags, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -673,8 +661,6 @@ void TrackingApi::save_tracking_leg_handler(const Pistache::Rest::Request& reque
 void TrackingApi::save_tracking_step_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -775,7 +761,7 @@ void TrackingApi::save_tracking_step_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->save_tracking_step(version, legId, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, response);
+            this->save_tracking_step(legId, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -794,8 +780,6 @@ void TrackingApi::save_tracking_step_handler(const Pistache::Rest::Request& requ
 void TrackingApi::search_accounts_with_tracking_legs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -920,7 +904,7 @@ void TrackingApi::search_accounts_with_tracking_legs_handler(const Pistache::Res
 
 
 
-            this->search_accounts_with_tracking_legs(version, accountId, keyword, startDate, endDate, tags, audienceIds, latitude, longitude, range, sortField, descending, start, limit, activeOnly, response);
+            this->search_accounts_with_tracking_legs(accountId, keyword, startDate, endDate, tags, audienceIds, latitude, longitude, range, sortField, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -939,8 +923,6 @@ void TrackingApi::search_accounts_with_tracking_legs_handler(const Pistache::Res
 void TrackingApi::search_tracking_legs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1017,7 +999,7 @@ void TrackingApi::search_tracking_legs_handler(const Pistache::Rest::Request& re
 
 
 
-            this->search_tracking_legs(version, accountId, appKey, trackingDeviceId, startDate, endDate, tags, start, limit, response);
+            this->search_tracking_legs(accountId, appKey, trackingDeviceId, startDate, endDate, tags, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -88,7 +88,6 @@ private:
     /// <remarks>
     /// Create a pack.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="title">The title of the pack</param>
     /// <param name="packOrder">The order of the pack</param>
@@ -113,35 +112,32 @@ private:
     /// <param name="inGame"> (optional, default to false)</param>
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a pack (optional, default to 0L)</param>
-    virtual void create_pack( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<int64_t> &packOrder, const std::optional<int32_t> &price, const std::optional<bool> &highest, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<bool> &active, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &packType, const std::optional<std::string> &sequenceType, const std::optional<int64_t> &backgroundId, const std::optional<int64_t> &imageId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &authorOverride, const std::optional<std::string> &priceType, const std::optional<std::string> &gameLevelIds, const std::optional<bool> &inGame, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_pack( const std::optional<int64_t> &accountId, const std::optional<std::string> &title, const std::optional<int64_t> &packOrder, const std::optional<int32_t> &price, const std::optional<bool> &highest, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<bool> &active, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &packType, const std::optional<std::string> &sequenceType, const std::optional<int64_t> &backgroundId, const std::optional<int64_t> &imageId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &authorOverride, const std::optional<std::string> &priceType, const std::optional<std::string> &gameLevelIds, const std::optional<bool> &inGame, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Pack
     /// </summary>
     /// <remarks>
     /// Delete a pack.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="packId">the id of the pack to delete</param>
-    virtual void delete_pack( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &packId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_pack( const std::optional<int64_t> &accountId, const std::optional<int64_t> &packId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Pack
     /// </summary>
     /// <remarks>
     /// Get a pack.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="packId">The id of the pack to return.</param>
     /// <param name="includeGameData">If true include the game level data, otherwise don&#39;t. default is false.</param>
-    virtual void get_pack( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &packId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_pack( const std::optional<int64_t> &accountId, const std::optional<int64_t> &packId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Packs
     /// </summary>
     /// <remarks>
     /// Search on packs.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="sortField">The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED</param>
     /// <param name="descending">Determines whether the sorted list is in descending or ascending order</param>
@@ -152,14 +148,13 @@ private:
     /// <param name="includeGameData">Determines whether to include game data in the results (optional, default to false)</param>
     /// <param name="includeInactive">Determines whether to include inactive results (optional, default to false)</param>
     /// <param name="appKey">The application to filter results on (optional, default to &quot;&quot;)</param>
-    virtual void search_packs( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<std::string> &packType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeInactive, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_packs( const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<std::string> &packType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &includeGameData, const std::optional<bool> &includeInactive, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Pack
     /// </summary>
     /// <remarks>
     /// Update a pack.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="packId">The id of the pack to update.</param>
     /// <param name="allocateTickets">Flag to indicate owner should receive tickets for completed packs</param>
@@ -185,7 +180,7 @@ private:
     /// <param name="highest">The scoring is highest is best (optional, default to false)</param>
     /// <param name="ticketType">The type of ticket to reward, null means default type (optional, default to &quot;&quot;)</param>
     /// <param name="points">The number of points to award for completing a pack (optional, default to 0L)</param>
-    virtual void update_pack( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &packId, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<bool> &active, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &packType, const std::optional<int64_t> &packOrder, const std::optional<std::string> &sequenceType, const std::optional<int64_t> &backgroundId, const std::optional<int64_t> &imageId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &authorOverride, const std::optional<int32_t> &price, const std::optional<std::string> &priceType, const std::optional<std::string> &gameLevelIds, const std::optional<bool> &inGame, const std::optional<bool> &highest, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_pack( const std::optional<int64_t> &accountId, const std::optional<int64_t> &packId, const std::optional<bool> &allocateTickets, const std::optional<int64_t> &ticketCount, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &searchTags, const std::optional<bool> &active, const std::optional<std::string> &gameType, const std::optional<std::string> &appKey, const std::optional<std::string> &packType, const std::optional<int64_t> &packOrder, const std::optional<std::string> &sequenceType, const std::optional<int64_t> &backgroundId, const std::optional<int64_t> &imageId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &authorOverride, const std::optional<int32_t> &price, const std::optional<std::string> &priceType, const std::optional<std::string> &gameLevelIds, const std::optional<bool> &inGame, const std::optional<bool> &highest, const std::optional<std::string> &ticketType, const std::optional<int64_t> &points, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

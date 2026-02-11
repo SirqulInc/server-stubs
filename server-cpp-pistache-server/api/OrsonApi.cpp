@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string OrsonApi::base = "";
+const std::string OrsonApi::base = "/api/3.18";
 
 OrsonApi::OrsonApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,30 +32,30 @@ void OrsonApi::init() {
 void OrsonApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/orson/ai/addMovie", Routes::bind(&OrsonApi::add_movie_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/docs", Routes::bind(&OrsonApi::ai_docs_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/img", Routes::bind(&OrsonApi::ai_find_images_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/tags", Routes::bind(&OrsonApi::ai_tags_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/text", Routes::bind(&OrsonApi::ai_text_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/batch", Routes::bind(&OrsonApi::batch_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/stories/episodes/instant", Routes::bind(&OrsonApi::create_instant_episode_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/voiceCanvas", Routes::bind(&OrsonApi::create_voice_canvas_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/emotion", Routes::bind(&OrsonApi::emotion_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/addMovie/:requestId", Routes::bind(&OrsonApi::get_add_movie_result_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/batch/:requestId", Routes::bind(&OrsonApi::get_batch_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/emotion/:requestId", Routes::bind(&OrsonApi::get_emotion_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/stories/episodes/:episodeId/status", Routes::bind(&OrsonApi::get_episode_status_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/stories/renders/:renderId/status", Routes::bind(&OrsonApi::get_render_status_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/stt/:requestId", Routes::bind(&OrsonApi::get_stt_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/tts/:requestId", Routes::bind(&OrsonApi::get_tts_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/techTune/:requestId", Routes::bind(&OrsonApi::get_tech_tune_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/topics/:requestId", Routes::bind(&OrsonApi::get_topics_handler, this));
-    Routes::Get(*router, base + "/api/:version/orson/ai/voiceCanvas/:requestId", Routes::bind(&OrsonApi::get_voice_canvas_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/stories/renders", Routes::bind(&OrsonApi::start_video_render_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/stt", Routes::bind(&OrsonApi::stt_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/topics", Routes::bind(&OrsonApi::summarize_topics_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/techTune", Routes::bind(&OrsonApi::tech_tune_handler, this));
-    Routes::Post(*router, base + "/api/:version/orson/ai/tts", Routes::bind(&OrsonApi::tts_handler, this));
+    Routes::Post(*router, base + "/orson/ai/addMovie", Routes::bind(&OrsonApi::add_movie_handler, this));
+    Routes::Get(*router, base + "/orson/ai/docs", Routes::bind(&OrsonApi::ai_docs_handler, this));
+    Routes::Get(*router, base + "/orson/ai/img", Routes::bind(&OrsonApi::ai_find_images_handler, this));
+    Routes::Get(*router, base + "/orson/ai/tags", Routes::bind(&OrsonApi::ai_tags_handler, this));
+    Routes::Get(*router, base + "/orson/ai/text", Routes::bind(&OrsonApi::ai_text_handler, this));
+    Routes::Post(*router, base + "/orson/ai/batch", Routes::bind(&OrsonApi::batch_handler, this));
+    Routes::Post(*router, base + "/orson/stories/episodes/instant", Routes::bind(&OrsonApi::create_instant_episode_handler, this));
+    Routes::Post(*router, base + "/orson/ai/voiceCanvas", Routes::bind(&OrsonApi::create_voice_canvas_handler, this));
+    Routes::Post(*router, base + "/orson/ai/emotion", Routes::bind(&OrsonApi::emotion_handler, this));
+    Routes::Get(*router, base + "/orson/ai/addMovie/:requestId", Routes::bind(&OrsonApi::get_add_movie_result_handler, this));
+    Routes::Get(*router, base + "/orson/ai/batch/:requestId", Routes::bind(&OrsonApi::get_batch_handler, this));
+    Routes::Get(*router, base + "/orson/ai/emotion/:requestId", Routes::bind(&OrsonApi::get_emotion_handler, this));
+    Routes::Get(*router, base + "/orson/stories/episodes/:episodeId/status", Routes::bind(&OrsonApi::get_episode_status_handler, this));
+    Routes::Get(*router, base + "/orson/stories/renders/:renderId/status", Routes::bind(&OrsonApi::get_render_status_handler, this));
+    Routes::Get(*router, base + "/orson/ai/stt/:requestId", Routes::bind(&OrsonApi::get_stt_handler, this));
+    Routes::Get(*router, base + "/orson/ai/tts/:requestId", Routes::bind(&OrsonApi::get_tts_handler, this));
+    Routes::Get(*router, base + "/orson/ai/techTune/:requestId", Routes::bind(&OrsonApi::get_tech_tune_handler, this));
+    Routes::Get(*router, base + "/orson/ai/topics/:requestId", Routes::bind(&OrsonApi::get_topics_handler, this));
+    Routes::Get(*router, base + "/orson/ai/voiceCanvas/:requestId", Routes::bind(&OrsonApi::get_voice_canvas_handler, this));
+    Routes::Post(*router, base + "/orson/stories/renders", Routes::bind(&OrsonApi::start_video_render_handler, this));
+    Routes::Post(*router, base + "/orson/ai/stt", Routes::bind(&OrsonApi::stt_handler, this));
+    Routes::Post(*router, base + "/orson/ai/topics", Routes::bind(&OrsonApi::summarize_topics_handler, this));
+    Routes::Post(*router, base + "/orson/ai/techTune", Routes::bind(&OrsonApi::tech_tune_handler, this));
+    Routes::Post(*router, base + "/orson/ai/tts", Routes::bind(&OrsonApi::tts_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&OrsonApi::orson_api_default_handler, this));
@@ -110,8 +110,6 @@ void OrsonApi::add_movie_handler(const Pistache::Rest::Request& request, Pistach
 void OrsonApi::ai_docs_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -164,7 +162,7 @@ void OrsonApi::ai_docs_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->ai_docs(version, accountId, doc, returnTopics, limit, offset, response);
+            this->ai_docs(accountId, doc, returnTopics, limit, offset, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -183,8 +181,6 @@ void OrsonApi::ai_docs_handler(const Pistache::Rest::Request& request, Pistache:
 void OrsonApi::ai_find_images_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -237,7 +233,7 @@ void OrsonApi::ai_find_images_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->ai_find_images(version, accountId, text, parseFlag, fetchFlag, size, response);
+            this->ai_find_images(accountId, text, parseFlag, fetchFlag, size, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -256,8 +252,6 @@ void OrsonApi::ai_find_images_handler(const Pistache::Rest::Request& request, Pi
 void OrsonApi::ai_tags_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -310,7 +304,7 @@ void OrsonApi::ai_tags_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->ai_tags(version, accountId, tags, conditional, limit, offset, response);
+            this->ai_tags(accountId, tags, conditional, limit, offset, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -329,8 +323,6 @@ void OrsonApi::ai_tags_handler(const Pistache::Rest::Request& request, Pistache:
 void OrsonApi::ai_text_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -383,7 +375,7 @@ void OrsonApi::ai_text_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->ai_text(version, accountId, terms, conditional, limit, offset, response);
+            this->ai_text(accountId, terms, conditional, limit, offset, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -422,8 +414,6 @@ void OrsonApi::batch_handler(const Pistache::Rest::Request& request, Pistache::H
 void OrsonApi::create_instant_episode_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -452,7 +442,7 @@ void OrsonApi::create_instant_episode_handler(const Pistache::Rest::Request& req
 
 
 
-            this->create_instant_episode(version, accountId, data, response);
+            this->create_instant_episode(accountId, data, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -512,7 +502,6 @@ void OrsonApi::get_add_movie_result_handler(const Pistache::Rest::Request& reque
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -534,7 +523,7 @@ void OrsonApi::get_add_movie_result_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_add_movie_result(version, requestId, accountId, response);
+            this->get_add_movie_result(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -554,7 +543,6 @@ void OrsonApi::get_batch_handler(const Pistache::Rest::Request& request, Pistach
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -576,7 +564,7 @@ void OrsonApi::get_batch_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_batch(version, requestId, accountId, response);
+            this->get_batch(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -596,7 +584,6 @@ void OrsonApi::get_emotion_handler(const Pistache::Rest::Request& request, Pista
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -618,7 +605,7 @@ void OrsonApi::get_emotion_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->get_emotion(version, requestId, accountId, response);
+            this->get_emotion(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -638,7 +625,6 @@ void OrsonApi::get_episode_status_handler(const Pistache::Rest::Request& request
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto episodeId = request.param(":episodeId").as<int64_t>();
         
         
@@ -660,7 +646,7 @@ void OrsonApi::get_episode_status_handler(const Pistache::Rest::Request& request
 
 
 
-            this->get_episode_status(version, episodeId, accountId, response);
+            this->get_episode_status(episodeId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -680,7 +666,6 @@ void OrsonApi::get_render_status_handler(const Pistache::Rest::Request& request,
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto renderId = request.param(":renderId").as<std::string>();
         
         
@@ -702,7 +687,7 @@ void OrsonApi::get_render_status_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_render_status(version, renderId, accountId, response);
+            this->get_render_status(renderId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -722,7 +707,6 @@ void OrsonApi::get_stt_handler(const Pistache::Rest::Request& request, Pistache:
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -744,7 +728,7 @@ void OrsonApi::get_stt_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_stt(version, requestId, accountId, response);
+            this->get_stt(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -764,7 +748,6 @@ void OrsonApi::get_tts_handler(const Pistache::Rest::Request& request, Pistache:
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -786,7 +769,7 @@ void OrsonApi::get_tts_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_tts(version, requestId, accountId, response);
+            this->get_tts(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -806,7 +789,6 @@ void OrsonApi::get_tech_tune_handler(const Pistache::Rest::Request& request, Pis
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -828,7 +810,7 @@ void OrsonApi::get_tech_tune_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->get_tech_tune(version, requestId, accountId, response);
+            this->get_tech_tune(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -848,7 +830,6 @@ void OrsonApi::get_topics_handler(const Pistache::Rest::Request& request, Pistac
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -870,7 +851,7 @@ void OrsonApi::get_topics_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->get_topics(version, requestId, accountId, response);
+            this->get_topics(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -890,7 +871,6 @@ void OrsonApi::get_voice_canvas_handler(const Pistache::Rest::Request& request, 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto requestId = request.param(":requestId").as<std::string>();
         
         
@@ -912,7 +892,7 @@ void OrsonApi::get_voice_canvas_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_voice_canvas(version, requestId, accountId, response);
+            this->get_voice_canvas(requestId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -931,8 +911,6 @@ void OrsonApi::get_voice_canvas_handler(const Pistache::Rest::Request& request, 
 void OrsonApi::start_video_render_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -961,7 +939,7 @@ void OrsonApi::start_video_render_handler(const Pistache::Rest::Request& request
 
 
 
-            this->start_video_render(version, accountId, data, response);
+            this->start_video_render(accountId, data, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -1040,8 +1018,6 @@ void OrsonApi::tech_tune_handler(const Pistache::Rest::Request& request, Pistach
 void OrsonApi::tts_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -1102,7 +1078,7 @@ void OrsonApi::tts_handler(const Pistache::Rest::Request& request, Pistache::Htt
 
 
 
-            this->tts(version, accountId, text, thirdPartyAccountId, language, voice, callback, response);
+            this->tts(accountId, text, thirdPartyAccountId, language, voice, callback, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

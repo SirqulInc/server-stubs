@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TwitterApi::base = "";
+const std::string TwitterApi::base = "/api/3.18";
 
 TwitterApi::TwitterApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,8 +32,8 @@ void TwitterApi::init() {
 void TwitterApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/twitter/authorize", Routes::bind(&TwitterApi::authorize_twitter_handler, this));
-    Routes::Post(*router, base + "/api/:version/twitter/login", Routes::bind(&TwitterApi::login_twitter_handler, this));
+    Routes::Post(*router, base + "/twitter/authorize", Routes::bind(&TwitterApi::authorize_twitter_handler, this));
+    Routes::Post(*router, base + "/twitter/login", Routes::bind(&TwitterApi::login_twitter_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TwitterApi::twitter_api_default_handler, this));
@@ -68,8 +68,6 @@ std::pair<Pistache::Http::Code, std::string> TwitterApi::handleOperationExceptio
 void TwitterApi::authorize_twitter_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -90,7 +88,7 @@ void TwitterApi::authorize_twitter_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->authorize_twitter(version, appKey, response);
+            this->authorize_twitter(appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -109,8 +107,6 @@ void TwitterApi::authorize_twitter_handler(const Pistache::Rest::Request& reques
 void TwitterApi::login_twitter_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -179,7 +175,7 @@ void TwitterApi::login_twitter_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->login_twitter(version, accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude, response);
+            this->login_twitter(accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string SubscriptionApi::base = "";
+const std::string SubscriptionApi::base = "/api/3.18";
 
 SubscriptionApi::SubscriptionApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,13 +32,13 @@ void SubscriptionApi::init() {
 void SubscriptionApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/subscription/create", Routes::bind(&SubscriptionApi::create_subscription_handler, this));
-    Routes::Post(*router, base + "/api/:version/subscription/delete", Routes::bind(&SubscriptionApi::delete_subscription_handler, this));
-    Routes::Get(*router, base + "/api/:version/subscription/get", Routes::bind(&SubscriptionApi::get_subscription_handler, this));
-    Routes::Get(*router, base + "/api/:version/subscription/plan/get", Routes::bind(&SubscriptionApi::get_subscription_plan_handler, this));
-    Routes::Get(*router, base + "/api/:version/subscription/plan/list", Routes::bind(&SubscriptionApi::get_subscription_plans_handler, this));
-    Routes::Get(*router, base + "/api/:version/subscription/usage/get", Routes::bind(&SubscriptionApi::get_subscription_usage_handler, this));
-    Routes::Post(*router, base + "/api/:version/subscription/update", Routes::bind(&SubscriptionApi::update_subscription_handler, this));
+    Routes::Post(*router, base + "/subscription/create", Routes::bind(&SubscriptionApi::create_subscription_handler, this));
+    Routes::Post(*router, base + "/subscription/delete", Routes::bind(&SubscriptionApi::delete_subscription_handler, this));
+    Routes::Get(*router, base + "/subscription/get", Routes::bind(&SubscriptionApi::get_subscription_handler, this));
+    Routes::Get(*router, base + "/subscription/plan/get", Routes::bind(&SubscriptionApi::get_subscription_plan_handler, this));
+    Routes::Get(*router, base + "/subscription/plan/list", Routes::bind(&SubscriptionApi::get_subscription_plans_handler, this));
+    Routes::Get(*router, base + "/subscription/usage/get", Routes::bind(&SubscriptionApi::get_subscription_usage_handler, this));
+    Routes::Post(*router, base + "/subscription/update", Routes::bind(&SubscriptionApi::update_subscription_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&SubscriptionApi::subscription_api_default_handler, this));
@@ -73,8 +73,6 @@ std::pair<Pistache::Http::Code, std::string> SubscriptionApi::handleOperationExc
 void SubscriptionApi::create_subscription_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -111,7 +109,7 @@ void SubscriptionApi::create_subscription_handler(const Pistache::Rest::Request&
 
 
 
-            this->create_subscription(version, accountId, planId, promoCode, response);
+            this->create_subscription(accountId, planId, promoCode, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -130,8 +128,6 @@ void SubscriptionApi::create_subscription_handler(const Pistache::Rest::Request&
 void SubscriptionApi::delete_subscription_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -152,7 +148,7 @@ void SubscriptionApi::delete_subscription_handler(const Pistache::Rest::Request&
 
 
 
-            this->delete_subscription(version, accountId, response);
+            this->delete_subscription(accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -171,8 +167,6 @@ void SubscriptionApi::delete_subscription_handler(const Pistache::Rest::Request&
 void SubscriptionApi::get_subscription_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -193,7 +187,7 @@ void SubscriptionApi::get_subscription_handler(const Pistache::Rest::Request& re
 
 
 
-            this->get_subscription(version, accountId, response);
+            this->get_subscription(accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -212,8 +206,6 @@ void SubscriptionApi::get_subscription_handler(const Pistache::Rest::Request& re
 void SubscriptionApi::get_subscription_plan_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -234,7 +226,7 @@ void SubscriptionApi::get_subscription_plan_handler(const Pistache::Rest::Reques
 
 
 
-            this->get_subscription_plan(version, planId, response);
+            this->get_subscription_plan(planId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -253,8 +245,6 @@ void SubscriptionApi::get_subscription_plan_handler(const Pistache::Rest::Reques
 void SubscriptionApi::get_subscription_plans_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -283,7 +273,7 @@ void SubscriptionApi::get_subscription_plans_handler(const Pistache::Rest::Reque
 
 
 
-            this->get_subscription_plans(version, visible, role, response);
+            this->get_subscription_plans(visible, role, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -302,8 +292,6 @@ void SubscriptionApi::get_subscription_plans_handler(const Pistache::Rest::Reque
 void SubscriptionApi::get_subscription_usage_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -348,7 +336,7 @@ void SubscriptionApi::get_subscription_usage_handler(const Pistache::Rest::Reque
 
 
 
-            this->get_subscription_usage(version, accountId, applicationId, start, end, response);
+            this->get_subscription_usage(accountId, applicationId, start, end, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -367,8 +355,6 @@ void SubscriptionApi::get_subscription_usage_handler(const Pistache::Rest::Reque
 void SubscriptionApi::update_subscription_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -413,7 +399,7 @@ void SubscriptionApi::update_subscription_handler(const Pistache::Rest::Request&
 
 
 
-            this->update_subscription(version, accountId, planId, promoCode, active, response);
+            this->update_subscription(accountId, planId, promoCode, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

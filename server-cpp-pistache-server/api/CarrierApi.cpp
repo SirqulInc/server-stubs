@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string CarrierApi::base = "";
+const std::string CarrierApi::base = "/api/3.18";
 
 CarrierApi::CarrierApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void CarrierApi::init() {
 void CarrierApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/carrier/search", Routes::bind(&CarrierApi::search_carriers_handler, this));
+    Routes::Get(*router, base + "/carrier/search", Routes::bind(&CarrierApi::search_carriers_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&CarrierApi::carrier_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> CarrierApi::handleOperationExceptio
 void CarrierApi::search_carriers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -121,7 +119,7 @@ void CarrierApi::search_carriers_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->search_carriers(version, keyword, descending, start, limit, activeOnly, response);
+            this->search_carriers(keyword, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TerritoryApi::base = "";
+const std::string TerritoryApi::base = "/api/3.18";
 
 TerritoryApi::TerritoryApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void TerritoryApi::init() {
 void TerritoryApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/territory/create", Routes::bind(&TerritoryApi::create_territory_handler, this));
-    Routes::Post(*router, base + "/api/:version/territory/delete", Routes::bind(&TerritoryApi::delete_territory_handler, this));
-    Routes::Get(*router, base + "/api/:version/territory/get", Routes::bind(&TerritoryApi::get_territory_handler, this));
-    Routes::Get(*router, base + "/api/:version/territory/search", Routes::bind(&TerritoryApi::search_territories_handler, this));
-    Routes::Post(*router, base + "/api/:version/territory/update", Routes::bind(&TerritoryApi::update_territory_handler, this));
+    Routes::Post(*router, base + "/territory/create", Routes::bind(&TerritoryApi::create_territory_handler, this));
+    Routes::Post(*router, base + "/territory/delete", Routes::bind(&TerritoryApi::delete_territory_handler, this));
+    Routes::Get(*router, base + "/territory/get", Routes::bind(&TerritoryApi::get_territory_handler, this));
+    Routes::Get(*router, base + "/territory/search", Routes::bind(&TerritoryApi::search_territories_handler, this));
+    Routes::Post(*router, base + "/territory/update", Routes::bind(&TerritoryApi::update_territory_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TerritoryApi::territory_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> TerritoryApi::handleOperationExcept
 void TerritoryApi::create_territory_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -109,7 +107,7 @@ void TerritoryApi::create_territory_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->create_territory(version, accountId, name, active, response);
+            this->create_territory(accountId, name, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -128,8 +126,6 @@ void TerritoryApi::create_territory_handler(const Pistache::Rest::Request& reque
 void TerritoryApi::delete_territory_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -158,7 +154,7 @@ void TerritoryApi::delete_territory_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->delete_territory(version, accountId, territoryId, response);
+            this->delete_territory(accountId, territoryId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -177,8 +173,6 @@ void TerritoryApi::delete_territory_handler(const Pistache::Rest::Request& reque
 void TerritoryApi::get_territory_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -199,7 +193,7 @@ void TerritoryApi::get_territory_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_territory(version, territoryId, response);
+            this->get_territory(territoryId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -218,8 +212,6 @@ void TerritoryApi::get_territory_handler(const Pistache::Rest::Request& request,
 void TerritoryApi::search_territories_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -272,7 +264,7 @@ void TerritoryApi::search_territories_handler(const Pistache::Rest::Request& req
 
 
 
-            this->search_territories(version, sortField, descending, keyword, start, limit, response);
+            this->search_territories(sortField, descending, keyword, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -291,8 +283,6 @@ void TerritoryApi::search_territories_handler(const Pistache::Rest::Request& req
 void TerritoryApi::update_territory_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -337,7 +327,7 @@ void TerritoryApi::update_territory_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->update_territory(version, accountId, territoryId, name, active, response);
+            this->update_territory(accountId, territoryId, name, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string FilterApi::base = "";
+const std::string FilterApi::base = "/api/3.18";
 
 FilterApi::FilterApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void FilterApi::init() {
 void FilterApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/filter/create", Routes::bind(&FilterApi::create_filter_handler, this));
-    Routes::Post(*router, base + "/api/:version/filter/delete", Routes::bind(&FilterApi::delete_filter_handler, this));
-    Routes::Get(*router, base + "/api/:version/filter/get", Routes::bind(&FilterApi::get_filter_handler, this));
-    Routes::Get(*router, base + "/api/:version/filter/search", Routes::bind(&FilterApi::search_filters_handler, this));
-    Routes::Post(*router, base + "/api/:version/filter/update", Routes::bind(&FilterApi::update_filter_handler, this));
+    Routes::Post(*router, base + "/filter/create", Routes::bind(&FilterApi::create_filter_handler, this));
+    Routes::Post(*router, base + "/filter/delete", Routes::bind(&FilterApi::delete_filter_handler, this));
+    Routes::Get(*router, base + "/filter/get", Routes::bind(&FilterApi::get_filter_handler, this));
+    Routes::Get(*router, base + "/filter/search", Routes::bind(&FilterApi::search_filters_handler, this));
+    Routes::Post(*router, base + "/filter/update", Routes::bind(&FilterApi::update_filter_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&FilterApi::filter_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> FilterApi::handleOperationException
 void FilterApi::create_filter_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -157,7 +155,7 @@ void FilterApi::create_filter_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->create_filter(version, accountId, name, appKey, parentFilterId, description, externalId, externalType, active, metaData, response);
+            this->create_filter(accountId, name, appKey, parentFilterId, description, externalId, externalType, active, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -176,8 +174,6 @@ void FilterApi::create_filter_handler(const Pistache::Rest::Request& request, Pi
 void FilterApi::delete_filter_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -206,7 +202,7 @@ void FilterApi::delete_filter_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->delete_filter(version, accountId, filterId, response);
+            this->delete_filter(accountId, filterId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -225,8 +221,6 @@ void FilterApi::delete_filter_handler(const Pistache::Rest::Request& request, Pi
 void FilterApi::get_filter_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -247,7 +241,7 @@ void FilterApi::get_filter_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->get_filter(version, filterId, response);
+            this->get_filter(filterId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -266,8 +260,6 @@ void FilterApi::get_filter_handler(const Pistache::Rest::Request& request, Pista
 void FilterApi::search_filters_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -360,7 +352,7 @@ void FilterApi::search_filters_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->search_filters(version, accountId, keyword, appKey, responseGroup, rootOnly, sortField, descending, start, limit, activeOnly, response);
+            this->search_filters(accountId, keyword, appKey, responseGroup, rootOnly, sortField, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -379,8 +371,6 @@ void FilterApi::search_filters_handler(const Pistache::Rest::Request& request, P
 void FilterApi::update_filter_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -465,7 +455,7 @@ void FilterApi::update_filter_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->update_filter(version, accountId, filterId, parentFilterId, name, description, externalId, externalType, active, metaData, response);
+            this->update_filter(accountId, filterId, parentFilterId, name, description, externalId, externalType, active, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -94,21 +94,19 @@ private:
     /// <remarks>
     /// Gets a theme.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="themeDescriptorId">the theme id</param>
     /// <param name="deviceId">a unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="gameType">the application key (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_theme_descriptor( const double &version, const std::optional<int64_t> &themeDescriptorId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_theme_descriptor( const std::optional<int64_t> &themeDescriptorId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Themes
     /// </summary>
     /// <remarks>
     /// Searches for themes.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="filter">a comma separated list of Ownership</param>
     /// <param name="sortField">the field to sort by. See ThemeDescriptorApiMap</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order</param>
@@ -127,21 +125,20 @@ private:
     /// <param name="appVersion">application version of the theme to filter by (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void get_theme_descriptors( const double &version, const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &contestType, const std::optional<int64_t> &ownerId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<int64_t> &dateCreated, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_theme_descriptors( const std::optional<std::string> &filter, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<std::string> &contestType, const std::optional<int64_t> &ownerId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int32_t> &i, const std::optional<int32_t> &l, const std::optional<int64_t> &dateCreated, const std::optional<std::string> &appVersion, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Theme
     /// </summary>
     /// <remarks>
     /// Removes a theme.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="themeDescriptorId">the theme id to remove</param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="gameType">the unique title of an application given from the admin tool (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">latitude used to update the user&#39;s current location (optional, default to 0.0)</param>
     /// <param name="longitude">longitude used to update the user&#39;s current location (optional, default to 0.0)</param>
-    virtual void remove_theme_descriptor( const double &version, const std::optional<int64_t> &themeDescriptorId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void remove_theme_descriptor( const std::optional<int64_t> &themeDescriptorId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &gameType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

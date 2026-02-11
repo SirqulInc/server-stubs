@@ -90,47 +90,43 @@ private:
     /// <remarks>
     /// Adds an offer, offer location, retailer location, or category to your favorites.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="favoritableId">The ID of the object to favorite {offerId, offerLocationId, retailerLocationId, categoryId}</param>
     /// <param name="favoritableType">The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY, ALBUM}</param>
     /// <param name="deviceId">The unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void add_favorite( const double &version, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void add_favorite( const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Favorite
     /// </summary>
     /// <remarks>
     /// Removes a favorited item from the user&#39;s favorites list.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="favoriteId">The ID of the favorite reference record (only optional if favoritableId &amp; favoritableType is pass in instead) (optional, default to 0L)</param>
     /// <param name="favoritableId">The ID of the object to un-favorite {offerId, offerLocationId, retailerLocationId, categoryId} (this is required if favoriteId is NOT passed in) (optional, default to 0L)</param>
     /// <param name="favoritableType">The type of the object to un-favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY} (this is required if favoriteId is NOT passed in) (optional, default to &quot;&quot;)</param>
-    virtual void delete_favorite( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &favoriteId, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_favorite( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &favoriteId, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Favorite
     /// </summary>
     /// <remarks>
     /// Retrieves a single favorited item.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="favoriteId">The ID of the favorite reference record</param>
     /// <param name="deviceId">The unique ID given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account ID of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void get_favorite( const double &version, const std::optional<int64_t> &favoriteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_favorite( const std::optional<int64_t> &favoriteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Favorites
     /// </summary>
     /// <remarks>
     /// Searches on the user&#39;s favorites.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="favoritableType">The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}</param>
     /// <param name="sortField">Determines what to sort the results by {CREATED, UPDATED, DISPLAY}</param>
     /// <param name="descending">Determines whether the results are in descending order</param>
@@ -145,14 +141,13 @@ private:
     /// <param name="keyword">The keyword to search for (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void search_favorites( const double &version, const std::optional<std::string> &favoritableType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnFullResponse, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &secondaryType, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_favorites( const std::optional<std::string> &favoritableType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnFullResponse, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &secondaryType, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Who has Favorited
     /// </summary>
     /// <remarks>
     /// Searches for everyone that has favorited an item
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="favoritableId">The ID of the favoritableType to search on</param>
     /// <param name="favoritableType">The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}</param>
     /// <param name="start">The start index for pagination</param>
@@ -162,7 +157,7 @@ private:
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
     /// <param name="keyword">The keyword to limit that account list (optional, default to &quot;&quot;)</param>
-    virtual void who_has_favorited( const double &version, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void who_has_favorited( const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

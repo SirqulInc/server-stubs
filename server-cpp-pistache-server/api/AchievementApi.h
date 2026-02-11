@@ -50,7 +50,7 @@ public:
 private:
     void setupRoutes();
 
-    void api_version_achievement_tier_search_post_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response);
+    void achievement_tier_search_post_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response);
     void create_achievement_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response);
     void create_achievement_tier_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response);
     void delete_achievement_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response);
@@ -100,7 +100,6 @@ private:
     /// <remarks>
     /// Searches a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
@@ -112,14 +111,13 @@ private:
     /// <param name="descendingGoal">determines whether the results are in descending or ascending order by the tier goal count (after the initial sort on the achievement) (optional, default to false)</param>
     /// <param name="start">The start of the index for pagination (optional, default to 0L)</param>
     /// <param name="limit">the limit for pagination (has a hard limit of 1000) (optional, default to 0L)</param>
-    virtual void api_version_achievement_tier_search_post( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &achievementType, const std::optional<std::string> &rankType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &descendingGoal, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void achievement_tier_search_post( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &achievementType, const std::optional<std::string> &rankType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &descendingGoal, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Achievement
     /// </summary>
     /// <remarks>
     /// Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">the application key the achievement is for</param>
     /// <param name="title">the title of the achievement (255 character limit)</param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -133,7 +131,7 @@ private:
     /// <param name="validate">determines whether the customId on analytics are used to validate a user&#39;s achievement progress. (optional, default to false)</param>
     /// <param name="active">achievement is active or inactive (optional, default to false)</param>
     /// <param name="triggerDefinition">if provided will define what triggers to run after a tier is completed (optional, default to &quot;&quot;)</param>
-    virtual void create_achievement( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_achievement( const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Achievement Tier
     /// </summary>
@@ -147,49 +145,44 @@ private:
     /// <remarks>
     /// Deletes an achievement (for developer/retailer use). User must have permissions to the application the achievement was created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="achievementId">The ID of the achievement</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_achievement( const double &version, const std::optional<int64_t> &achievementId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_achievement( const std::optional<int64_t> &achievementId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Achievement Tier
     /// </summary>
     /// <remarks>
     /// Deletes an achievement tier (for developer/retailer use). User must have permissions to the application the achievement was created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="achievementTierId">the achievement id for deletion</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required). (optional, default to 0L)</param>
-    virtual void delete_achievement_tier( const double &version, const std::optional<int64_t> &achievementTierId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_achievement_tier( const std::optional<int64_t> &achievementTierId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Achievement
     /// </summary>
     /// <remarks>
     /// Get an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="achievementId">The ID of the achievement</param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="achievementType">achievementType (optional, default to &quot;&quot;)</param>
-    virtual void get_achievement( const double &version, const std::optional<int64_t> &achievementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &achievementType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_achievement( const std::optional<int64_t> &achievementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &achievementType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Gets an achievement tier
     /// </summary>
     /// <remarks>
     /// Gets an achievement tier (for developer/retailer use). User must have permissions to the application the achievement is created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required)</param>
     /// <param name="achievementTierId">the achievement tier id that is being retrieved</param>
-    virtual void get_achievement_tier( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementTierId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_achievement_tier( const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementTierId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Achievement Progress
     /// </summary>
     /// <remarks>
     /// Gets a list of user achievements.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="returnNulls">determines whether to return null fields in the response</param>
     /// <param name="appKey">the application key for filtering results by application</param>
     /// <param name="includeUndiscovered">determines whether to return achievements that the user has not discovered yet</param>
@@ -201,23 +194,21 @@ private:
     /// <param name="achievementType">filter results by achievement type (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
-    virtual void get_user_achievements( const double &version, const std::optional<bool> &returnNulls, const std::optional<std::string> &appKey, const std::optional<bool> &includeUndiscovered, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountEmail, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &rankType, const std::optional<std::string> &achievementType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_user_achievements( const std::optional<bool> &returnNulls, const std::optional<std::string> &appKey, const std::optional<bool> &includeUndiscovered, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &connectionAccountEmail, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &rankType, const std::optional<std::string> &achievementType, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Achievement Tags
     /// </summary>
     /// <remarks>
     /// List achievement tags by application
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">filter results by application key (optional, default to &quot;&quot;)</param>
-    virtual void list_achievement_tags( const double &version, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_achievement_tags( const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Achievements
     /// </summary>
     /// <remarks>
     /// List achievements by billable.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">the field to sort by. See AchievementApiMap</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order</param>
     /// <param name="start">the start index for pagination</param>
@@ -229,14 +220,13 @@ private:
     /// <param name="keyword">the keyword used to filter results with (this returns results that have the keyword in the title or description of the achievement) (optional, default to &quot;&quot;)</param>
     /// <param name="achievementType">filter results by the achievementType (these are exact case sensitive matches) (optional, default to &quot;&quot;)</param>
     /// <param name="rankType">filter results by the rankType (these are exact case sensitive matches) (optional, default to &quot;&quot;)</param>
-    virtual void list_achievements( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_achievements( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Achievements
     /// </summary>
     /// <remarks>
     /// Searches achievements by application for consumers.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">the application key</param>
     /// <param name="sortField">the field to sort by. See AchievementApiMap</param>
     /// <param name="descending">determines whether the sorted list is in descending or ascending order</param>
@@ -249,14 +239,13 @@ private:
     /// <param name="keyword">the keyword used to filter results with (this returns results that have the keyword in the title or description of the achievement) (optional, default to &quot;&quot;)</param>
     /// <param name="achievementType">filter results by the achievementType (these are exact case sensitive matches) (optional, default to &quot;&quot;)</param>
     /// <param name="rankType">filter results by the rankType (these are exact case sensitive matches) (optional, default to &quot;&quot;)</param>
-    virtual void search_achievements( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeTiers, const std::optional<bool> &includeInactiveTiers, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_achievements( const std::optional<std::string> &appKey, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &includeTiers, const std::optional<bool> &includeInactiveTiers, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<std::string> &achievementType, const std::optional<std::string> &rankType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Achievement
     /// </summary>
     /// <remarks>
     /// Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">a unique id given by the device (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="achievementId">the achievement ID for updating an existing achievement (optional, default to 0L)</param>
@@ -272,7 +261,7 @@ private:
     /// <param name="validate">determines whether the customId on analytics are used to validate a user&#39;s achievement progress. (optional, default to false)</param>
     /// <param name="active">if it&#39;s active or inactive (optional, default to false)</param>
     /// <param name="triggerDefinition">if provided will define what triggers to run after a tier is completed (optional, default to &quot;&quot;)</param>
-    virtual void update_achievement( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<bool> &nullMinIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &nullMaxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_achievement( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &analyticsTag, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &rankType, const std::optional<int32_t> &rankIncrement, const std::optional<int32_t> &minIncrement, const std::optional<bool> &nullMinIncrement, const std::optional<int32_t> &maxIncrement, const std::optional<bool> &nullMaxIncrement, const std::optional<bool> &validate, const std::optional<bool> &active, const std::optional<std::string> &triggerDefinition, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Achievement Tier
     /// </summary>
@@ -286,7 +275,6 @@ private:
     /// <remarks>
     /// Update user achievement progress.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user</param>
     /// <param name="achievementId">the achievement id (achievementId or tag required) (optional, default to 0L)</param>
     /// <param name="tag">the analytic tag to identify an achievement (achievementId or tag required) (optional, default to &quot;&quot;)</param>
@@ -295,7 +283,7 @@ private:
     /// <param name="startDate">a custom start date that the client can set (not yet used in server logic) (optional, default to 0L)</param>
     /// <param name="endDate">a custom end date that the client can set (not yet used in server logic) (optional, default to 0L)</param>
     /// <param name="returnProgress">determines whether to return the achievement progress response (optional, default to false)</param>
-    virtual void update_user_achievement( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &tag, const std::optional<int64_t> &customId, const std::optional<int64_t> &increment, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &returnProgress, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_user_achievement( const std::optional<int64_t> &accountId, const std::optional<int64_t> &achievementId, const std::optional<std::string> &tag, const std::optional<int64_t> &customId, const std::optional<int64_t> &increment, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<bool> &returnProgress, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

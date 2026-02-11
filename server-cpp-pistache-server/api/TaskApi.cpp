@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TaskApi::base = "";
+const std::string TaskApi::base = "/api/3.18";
 
 TaskApi::TaskApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void TaskApi::init() {
 void TaskApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/task/create", Routes::bind(&TaskApi::create_task_handler, this));
-    Routes::Post(*router, base + "/api/:version/task/delete", Routes::bind(&TaskApi::delete_task_handler, this));
-    Routes::Get(*router, base + "/api/:version/task/get", Routes::bind(&TaskApi::get_task_handler, this));
-    Routes::Get(*router, base + "/api/:version/task/search", Routes::bind(&TaskApi::search_tasks_handler, this));
-    Routes::Post(*router, base + "/api/:version/task/update", Routes::bind(&TaskApi::update_task_handler, this));
+    Routes::Post(*router, base + "/task/create", Routes::bind(&TaskApi::create_task_handler, this));
+    Routes::Post(*router, base + "/task/delete", Routes::bind(&TaskApi::delete_task_handler, this));
+    Routes::Get(*router, base + "/task/get", Routes::bind(&TaskApi::get_task_handler, this));
+    Routes::Get(*router, base + "/task/search", Routes::bind(&TaskApi::search_tasks_handler, this));
+    Routes::Post(*router, base + "/task/update", Routes::bind(&TaskApi::update_task_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TaskApi::task_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> TaskApi::handleOperationException(c
 void TaskApi::create_task_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -181,7 +179,7 @@ void TaskApi::create_task_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->create_task(version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active, response);
+            this->create_task(accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -200,8 +198,6 @@ void TaskApi::create_task_handler(const Pistache::Rest::Request& request, Pistac
 void TaskApi::delete_task_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -230,7 +226,7 @@ void TaskApi::delete_task_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->delete_task(version, accountId, taskId, response);
+            this->delete_task(accountId, taskId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -249,8 +245,6 @@ void TaskApi::delete_task_handler(const Pistache::Rest::Request& request, Pistac
 void TaskApi::get_task_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -279,7 +273,7 @@ void TaskApi::get_task_handler(const Pistache::Rest::Request& request, Pistache:
 
 
 
-            this->get_task(version, accountId, taskId, response);
+            this->get_task(accountId, taskId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -298,8 +292,6 @@ void TaskApi::get_task_handler(const Pistache::Rest::Request& request, Pistache:
 void TaskApi::search_tasks_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -408,7 +400,7 @@ void TaskApi::search_tasks_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->search_tasks(version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, response);
+            this->search_tasks(accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -427,8 +419,6 @@ void TaskApi::search_tasks_handler(const Pistache::Rest::Request& request, Pista
 void TaskApi::update_task_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -545,7 +535,7 @@ void TaskApi::update_task_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->update_task(version, taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active, response);
+            this->update_task(taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -98,30 +98,27 @@ private:
     /// <remarks>
     /// Set the deleted timestamp to current time.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account used to perform the delete, must have rights to edit the retailer. (optional, default to 0L)</param>
     /// <param name="retailerId">The ID of the retailer to be deleted (optional, default to 0L)</param>
-    virtual void delete_retailer( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_retailer( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &retailerId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Retailer
     /// </summary>
     /// <remarks>
     /// Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="retailerId">the ID of the retailer</param>
     /// <param name="deviceId">the device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="includeCounts">Determines whether to include counts in the response (default true) (optional, default to false)</param>
-    virtual void get_retailer( const double &version, const std::optional<int64_t> &retailerId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_retailer( const std::optional<int64_t> &retailerId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &includeCounts, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Retailers
     /// </summary>
     /// <remarks>
     /// earches on retailers that the account has access to.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="visibility"></param>
     /// <param name="sortField">The column to sort the search on</param>
     /// <param name="descending">The order to return the search results</param>
@@ -136,21 +133,20 @@ private:
     /// <param name="filterIds">the filters that the retailer is associated with (optional, default to &quot;&quot;)</param>
     /// <param name="i">This parameter is deprecated. (optional, default to 0)</param>
     /// <param name="l">This parameter is deprecated. (optional, default to 0)</param>
-    virtual void get_retailers( const double &version, const std::optional<std::string> &visibility, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int32_t> &i, const std::optional<int32_t> &l, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_retailers( const std::optional<std::string> &visibility, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<int32_t> &i, const std::optional<int32_t> &l, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login Retailer
     /// </summary>
     /// <remarks>
     /// Retailer login check.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="username">the user&#39;s email address they used to sign-up</param>
     /// <param name="password">the password</param>
     /// <param name="deviceId">the device id (optional) (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">the current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">the current longitude of the user (optional, default to 0.0)</param>
     /// <param name="appKey">the application key (optional, default to &quot;&quot;)</param>
-    virtual void retailer_login_check( const double &version, const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void retailer_login_check( const std::optional<std::string> &username, const std::optional<std::string> &password, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Retailer
     /// </summary>

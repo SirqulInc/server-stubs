@@ -90,7 +90,6 @@ private:
     /// <remarks>
     /// Creates a reservation on an offer object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="startDate">The start date (optional, default to 0L)</param>
@@ -99,39 +98,36 @@ private:
     /// <param name="offerLocationId">The id of the offer location being added (offerId or offeLocationId required) (optional, default to 0L)</param>
     /// <param name="appKey">The application requesting the reservation (optional, default to &quot;&quot;)</param>
     /// <param name="metaData">External custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void create_reservation( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &appKey, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_reservation( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int64_t> &offerId, const std::optional<int64_t> &offerLocationId, const std::optional<std::string> &appKey, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Reservation
     /// </summary>
     /// <remarks>
     /// Deleted a reservation on a reservation object
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="reservationId">The reservation id</param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_reservation( const double &version, const std::optional<int64_t> &reservationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_reservation( const std::optional<int64_t> &reservationId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Availability
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="reservableId">the id of the reservation</param>
     /// <param name="reservableType">the type of reservation</param>
     /// <param name="deviceId">the device id of the reservation (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the logged in user (optional, default to 0L)</param>
     /// <param name="availability">Availability (optional, default to &quot;&quot;)</param>
     /// <param name="availabilitySummary">Availability Summary (optional, default to &quot;&quot;)</param>
-    virtual void reservable_availability( const double &version, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reservable_availability( const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &availability, const std::optional<std::string> &availabilitySummary, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Availability
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="reservableId">the id of the reservation</param>
     /// <param name="reservableType">the reservable type</param>
     /// <param name="deviceId">the device ID that the reservation is on (optional, default to &quot;&quot;)</param>
@@ -140,14 +136,13 @@ private:
     /// <param name="endDate">the end date of the reservation (optional, default to 0L)</param>
     /// <param name="start">the start of the index and/or pagination (optional, default to 0)</param>
     /// <param name="limit">the limit of the index and/or pagination (optional, default to 100)</param>
-    virtual void search_availability( const double &version, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_availability( const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Reservations
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">Device Id (optional, default to &quot;&quot;)</param>
     /// <param name="appKey">Appilcation Key (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the logged in user (optional, default to 0L)</param>
@@ -159,14 +154,13 @@ private:
     /// <param name="endDate">the end date of the reservation search (optional, default to 0L)</param>
     /// <param name="start">the start of the index and/or pagination (optional, default to 0)</param>
     /// <param name="limit">the limit of the index and/or pagination (optional, default to 100)</param>
-    virtual void search_reservations( const double &version, const std::optional<std::string> &deviceId, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterAccountId, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &keyword, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_reservations( const std::optional<std::string> &deviceId, const std::optional<std::string> &appKey, const std::optional<int64_t> &accountId, const std::optional<int64_t> &filterAccountId, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<std::string> &keyword, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Schedule
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="reservableId">the id of the reservation</param>
     /// <param name="reservableType">the reservation type</param>
     /// <param name="startDate">the start date of the reservation</param>
@@ -174,7 +168,7 @@ private:
     /// <param name="deviceId">the id of the device that the reservation is on (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">the id of the logged in user (optional, default to 0L)</param>
     /// <param name="timeBucketMins">the length of time in minutes to search on for reservation (optional, default to 30)</param>
-    virtual void search_schedule( const double &version, const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &timeBucketMins, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_schedule( const std::optional<int64_t> &reservableId, const std::optional<std::string> &reservableType, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &timeBucketMins, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

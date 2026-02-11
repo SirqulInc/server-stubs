@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string DisbursementApi::base = "";
+const std::string DisbursementApi::base = "/api/3.18";
 
 DisbursementApi::DisbursementApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void DisbursementApi::init() {
 void DisbursementApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/disbursement/check", Routes::bind(&DisbursementApi::check_disbursements_handler, this));
-    Routes::Post(*router, base + "/api/:version/disbursement/create", Routes::bind(&DisbursementApi::create_disbursement_handler, this));
-    Routes::Get(*router, base + "/api/:version/disbursement/get", Routes::bind(&DisbursementApi::get_disbursement_handler, this));
-    Routes::Get(*router, base + "/api/:version/disbursement/search", Routes::bind(&DisbursementApi::search_disbursements_handler, this));
-    Routes::Post(*router, base + "/api/:version/disbursement/update", Routes::bind(&DisbursementApi::update_disbursement_handler, this));
+    Routes::Get(*router, base + "/disbursement/check", Routes::bind(&DisbursementApi::check_disbursements_handler, this));
+    Routes::Post(*router, base + "/disbursement/create", Routes::bind(&DisbursementApi::create_disbursement_handler, this));
+    Routes::Get(*router, base + "/disbursement/get", Routes::bind(&DisbursementApi::get_disbursement_handler, this));
+    Routes::Get(*router, base + "/disbursement/search", Routes::bind(&DisbursementApi::search_disbursements_handler, this));
+    Routes::Post(*router, base + "/disbursement/update", Routes::bind(&DisbursementApi::update_disbursement_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&DisbursementApi::disbursement_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> DisbursementApi::handleOperationExc
 void DisbursementApi::check_disbursements_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -93,7 +91,7 @@ void DisbursementApi::check_disbursements_handler(const Pistache::Rest::Request&
 
 
 
-            this->check_disbursements(version, disbursementId, response);
+            this->check_disbursements(disbursementId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -112,8 +110,6 @@ void DisbursementApi::check_disbursements_handler(const Pistache::Rest::Request&
 void DisbursementApi::create_disbursement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -206,7 +202,7 @@ void DisbursementApi::create_disbursement_handler(const Pistache::Rest::Request&
 
 
 
-            this->create_disbursement(version, accountId, receiverAccountId, originalSenderAccountId, amount, provider, scheduledDate, title, comment, externalId, introspectionParams, response);
+            this->create_disbursement(accountId, receiverAccountId, originalSenderAccountId, amount, provider, scheduledDate, title, comment, externalId, introspectionParams, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -225,8 +221,6 @@ void DisbursementApi::create_disbursement_handler(const Pistache::Rest::Request&
 void DisbursementApi::get_disbursement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -255,7 +249,7 @@ void DisbursementApi::get_disbursement_handler(const Pistache::Rest::Request& re
 
 
 
-            this->get_disbursement(version, accountId, disbursementId, response);
+            this->get_disbursement(accountId, disbursementId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -274,8 +268,6 @@ void DisbursementApi::get_disbursement_handler(const Pistache::Rest::Request& re
 void DisbursementApi::search_disbursements_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -368,7 +360,7 @@ void DisbursementApi::search_disbursements_handler(const Pistache::Rest::Request
 
 
 
-            this->search_disbursements(version, accountId, receiverAccountId, statuses, providers, beforeDate, afterDate, start, limit, activeOnly, externalId, response);
+            this->search_disbursements(accountId, receiverAccountId, statuses, providers, beforeDate, afterDate, start, limit, activeOnly, externalId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -387,8 +379,6 @@ void DisbursementApi::search_disbursements_handler(const Pistache::Rest::Request
 void DisbursementApi::update_disbursement_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -481,7 +471,7 @@ void DisbursementApi::update_disbursement_handler(const Pistache::Rest::Request&
 
 
 
-            this->update_disbursement(version, accountId, disbursementId, amount, provider, scheduledDate, title, comment, externalId, retry, introspectionParams, response);
+            this->update_disbursement(accountId, disbursementId, amount, provider, scheduledDate, title, comment, externalId, retry, introspectionParams, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

@@ -82,14 +82,13 @@ private:
     /// <remarks>
     /// Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="retailerId">the id of the retailer</param>
     /// <param name="activeOnly">whether to return results that are active only or all</param>
     /// <param name="keyword">the keyword to search on to get retailer (optional, default to &quot;&quot;)</param>
     /// <param name="sortField">the field to sort on (optional, default to &quot;id&quot;)</param>
     /// <param name="start">the start of the index and/or pagination (optional, default to 0L)</param>
     /// <param name="limit">the limit of the index and/or pagination (optional, default to 20L)</param>
-    virtual void get_retaokiler( const double &version, const std::optional<int64_t> &retailerId, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_retaokiler( const std::optional<int64_t> &retailerId, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

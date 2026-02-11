@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TwilioApi::base = "";
+const std::string TwilioApi::base = "/api/3.18";
 
 TwilioApi::TwilioApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void TwilioApi::init() {
 void TwilioApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/sms/buyoffer/:appKey", Routes::bind(&TwilioApi::sms_buy_offer_handler, this));
+    Routes::Post(*router, base + "/sms/buyoffer/:appKey", Routes::bind(&TwilioApi::sms_buy_offer_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TwilioApi::twilio_api_default_handler, this));
@@ -68,7 +68,6 @@ void TwilioApi::sms_buy_offer_handler(const Pistache::Rest::Request& request, Pi
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto appKey = request.param(":appKey").as<std::string>();
         
         
@@ -106,7 +105,7 @@ void TwilioApi::sms_buy_offer_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->sms_buy_offer(version, appKey, body, from, currencyType, response);
+            this->sms_buy_offer(appKey, body, from, currencyType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

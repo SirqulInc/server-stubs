@@ -92,7 +92,6 @@ private:
     /// <remarks>
     /// Create an entry for the batch for offline report
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user for passing account related params</param>
     /// <param name="status">the status of the report</param>
     /// <param name="previewLimit">the limit on how much you can preview of the batch report</param>
@@ -104,44 +103,40 @@ private:
     /// <param name="endDate">the end date of the batch report (optional, default to 0L)</param>
     /// <param name="description">the description of the batch report (optional, default to &quot;&quot;)</param>
     /// <param name="pageUrl"> (optional, default to &quot;&quot;)</param>
-    virtual void create_batch( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &status, const std::optional<int32_t> &previewLimit, const std::optional<std::string> &appKey, const std::optional<std::string> &endpoint, const std::optional<std::string> &parameters, const std::optional<std::string> &name, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &description, const std::optional<std::string> &pageUrl, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_batch( const std::optional<int64_t> &accountId, const std::optional<std::string> &status, const std::optional<int32_t> &previewLimit, const std::optional<std::string> &appKey, const std::optional<std::string> &endpoint, const std::optional<std::string> &parameters, const std::optional<std::string> &name, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &description, const std::optional<std::string> &pageUrl, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Offline Report
     /// </summary>
     /// <remarks>
     /// Create an entry for the batch for offline report
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_region_leg_summary_batch( const double &version, const std::vector<org::openapitools::server::model::RegionLegSummary> &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_region_leg_summary_batch( const std::vector<org::openapitools::server::model::RegionLegSummary> &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Offline Report
     /// </summary>
     /// <remarks>
     /// Deletes a batch report.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account</param>
     /// <param name="batchId">the id of the batch to delete</param>
-    virtual void delete_batch( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_batch( const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Offline Report
     /// </summary>
     /// <remarks>
     /// Checks status of batch report.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="batchId">returned by /report/batch/create</param>
     /// <param name="allResults">whether to return all batch results or not</param>
-    virtual void get_report_batch( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<bool> &allResults, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_report_batch( const std::optional<int64_t> &accountId, const std::optional<int64_t> &batchId, const std::optional<bool> &allResults, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Run Report
     /// </summary>
     /// <remarks>
     ///  This endpoint allows you to run a set of predefined reports that can be used to understand your users&#39; behavior as well as trends within your application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="desc">If true then descending order, false is ascending</param>
     /// <param name="accountId">The account id of the user for passing account related params (optional, default to 0L)</param>
     /// <param name="query">The named identifier of the query (optional, default to &quot;&quot;)</param>
@@ -150,14 +145,13 @@ private:
     /// <param name="start">The start of the pagination (optional, default to 0L)</param>
     /// <param name="limit">The limit of the pagination (optional, default to 0L)</param>
     /// <param name="responseFormat">Determines what response format to return. Options are: JSON or CSV (optional, default to &quot;&quot;)</param>
-    virtual void run_report( const double &version, const std::optional<bool> &desc, const std::optional<int64_t> &accountId, const std::optional<std::string> &query, const std::optional<std::string> &parameters, const std::optional<std::string> &order, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<std::string> &responseFormat, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void run_report( const std::optional<bool> &desc, const std::optional<int64_t> &accountId, const std::optional<std::string> &query, const std::optional<std::string> &parameters, const std::optional<std::string> &order, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<std::string> &responseFormat, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Offline Reports
     /// </summary>
     /// <remarks>
     /// Retrieves batches for a user..
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the account logged in</param>
     /// <param name="start">the start of the index and/or pagination</param>
     /// <param name="limit">the limit of the index and/or pagination</param>
@@ -167,7 +161,7 @@ private:
     /// <param name="globalAppSearch">the global app to search on (optional, default to false)</param>
     /// <param name="startDate">the start date of the report batch to search on (optional, default to 0L)</param>
     /// <param name="endDate">the end date of the report batch to search on (optional, default to 0L)</param>
-    virtual void search_batch( const double &version, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &names, const std::optional<std::string> &appKey, const std::optional<std::string> &status, const std::optional<bool> &globalAppSearch, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_batch( const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &names, const std::optional<std::string> &appKey, const std::optional<std::string> &status, const std::optional<bool> &globalAppSearch, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

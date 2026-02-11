@@ -87,34 +87,30 @@ private:
     /// <remarks>
     /// Create new cargo type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void create_cargo_type( const double &version, const org::openapitools::server::model::CargoType &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_cargo_type( const org::openapitools::server::model::CargoType &body, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Cargo Type
     /// </summary>
     /// <remarks>
     /// Delete a type of cargo
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="cargoTypeId">the ID of the cargo type</param>
-    virtual void delete_cargo_type( const double &version, const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_cargo_type( const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Cargo Type
     /// </summary>
     /// <remarks>
     /// Get an existing cargo type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="cargoTypeId">the cargo type ID</param>
-    virtual void get_cargo_type( const double &version, const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_cargo_type( const int64_t &cargoTypeId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Cargo Type
     /// </summary>
     /// <remarks>
     /// Search for types of cargo
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="sortField">the sort field to use for the cargo type</param>
     /// <param name="descending">if the cargo type should be should be in descending order</param>
     /// <param name="start">the start of the search</param>
@@ -122,17 +118,16 @@ private:
     /// <param name="activeOnly">if search should be on active only</param>
     /// <param name="retailerId">the id of the retailer location (optional, default to 0L)</param>
     /// <param name="hubId">the ID of the hub (optional, default to 0L)</param>
-    virtual void search_cargo_types( const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_cargo_types( const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<int64_t> &retailerId, const std::optional<int64_t> &hubId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Cargo Type
     /// </summary>
     /// <remarks>
     /// Update an existing cargo type
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="cargoTypeId">the ID of the cargo type</param>
     /// <param name="body"> (optional)</param>
-    virtual void update_cargo_type( const double &version, const int64_t &cargoTypeId, const org::openapitools::server::model::CargoType &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_cargo_type( const int64_t &cargoTypeId, const org::openapitools::server::model::CargoType &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

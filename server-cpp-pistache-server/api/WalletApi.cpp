@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string WalletApi::base = "";
+const std::string WalletApi::base = "/api/3.18";
 
 WalletApi::WalletApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void WalletApi::init() {
 void WalletApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/wallet/create", Routes::bind(&WalletApi::create_offer_transaction_handler, this));
-    Routes::Post(*router, base + "/api/:version/wallet/delete", Routes::bind(&WalletApi::delete_offer_transaction_handler, this));
-    Routes::Get(*router, base + "/api/:version/wallet/get", Routes::bind(&WalletApi::get_offer_transaction_handler, this));
-    Routes::Post(*router, base + "/api/:version/wallet/preview", Routes::bind(&WalletApi::preview_offer_transaction_handler, this));
-    Routes::Get(*router, base + "/api/:version/wallet/search", Routes::bind(&WalletApi::search_offer_transactions_handler, this));
-    Routes::Post(*router, base + "/api/:version/wallet/update", Routes::bind(&WalletApi::update_offer_transaction_handler, this));
+    Routes::Post(*router, base + "/wallet/create", Routes::bind(&WalletApi::create_offer_transaction_handler, this));
+    Routes::Post(*router, base + "/wallet/delete", Routes::bind(&WalletApi::delete_offer_transaction_handler, this));
+    Routes::Get(*router, base + "/wallet/get", Routes::bind(&WalletApi::get_offer_transaction_handler, this));
+    Routes::Post(*router, base + "/wallet/preview", Routes::bind(&WalletApi::preview_offer_transaction_handler, this));
+    Routes::Get(*router, base + "/wallet/search", Routes::bind(&WalletApi::search_offer_transactions_handler, this));
+    Routes::Post(*router, base + "/wallet/update", Routes::bind(&WalletApi::update_offer_transaction_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&WalletApi::wallet_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> WalletApi::handleOperationException
 void WalletApi::create_offer_transaction_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -174,7 +172,7 @@ void WalletApi::create_offer_transaction_handler(const Pistache::Rest::Request& 
 
 
 
-            this->create_offer_transaction(version, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, status, response);
+            this->create_offer_transaction(deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, status, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -193,8 +191,6 @@ void WalletApi::create_offer_transaction_handler(const Pistache::Rest::Request& 
 void WalletApi::delete_offer_transaction_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -231,7 +227,7 @@ void WalletApi::delete_offer_transaction_handler(const Pistache::Rest::Request& 
 
 
 
-            this->delete_offer_transaction(version, transactionId, deviceId, accountId, response);
+            this->delete_offer_transaction(transactionId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -250,8 +246,6 @@ void WalletApi::delete_offer_transaction_handler(const Pistache::Rest::Request& 
 void WalletApi::get_offer_transaction_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -320,7 +314,7 @@ void WalletApi::get_offer_transaction_handler(const Pistache::Rest::Request& req
 
 
 
-            this->get_offer_transaction(version, transactionId, deviceId, accountId, includeMission, latitude, longitude, returnFullResponse, response);
+            this->get_offer_transaction(transactionId, deviceId, accountId, includeMission, latitude, longitude, returnFullResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -339,8 +333,6 @@ void WalletApi::get_offer_transaction_handler(const Pistache::Rest::Request& req
 void WalletApi::preview_offer_transaction_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -433,7 +425,7 @@ void WalletApi::preview_offer_transaction_handler(const Pistache::Rest::Request&
 
 
 
-            this->preview_offer_transaction(version, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, response);
+            this->preview_offer_transaction(deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -452,8 +444,6 @@ void WalletApi::preview_offer_transaction_handler(const Pistache::Rest::Request&
 void WalletApi::search_offer_transactions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -794,7 +784,7 @@ void WalletApi::search_offer_transactions_handler(const Pistache::Rest::Request&
 
 
 
-            this->search_offer_transactions(version, deviceId, accountId, keyword, retailerId, retailerIds, retailerLocationId, retailerLocationIds, excludeRetailerLocationIds, offerId, offerIds, offerLocationId, offerLocationIds, offerType, offerTypes, specialOfferType, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, sortField, descending, start, limit, latitude, longitude, redeemableStartDate, redeemableEndDate, filterByParentOffer, startedSince, startedBefore, endedSince, endedBefore, redeemed, statuses, reservationsOnly, activeOnly, returnFullResponse, recurringStartedSince, recurringStartedBefore, recurringExpirationSince, recurringExpirationBefore, response);
+            this->search_offer_transactions(deviceId, accountId, keyword, retailerId, retailerIds, retailerLocationId, retailerLocationIds, excludeRetailerLocationIds, offerId, offerIds, offerLocationId, offerLocationIds, offerType, offerTypes, specialOfferType, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, sortField, descending, start, limit, latitude, longitude, redeemableStartDate, redeemableEndDate, filterByParentOffer, startedSince, startedBefore, endedSince, endedBefore, redeemed, statuses, reservationsOnly, activeOnly, returnFullResponse, recurringStartedSince, recurringStartedBefore, recurringExpirationSince, recurringExpirationBefore, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -813,8 +803,6 @@ void WalletApi::search_offer_transactions_handler(const Pistache::Rest::Request&
 void WalletApi::update_offer_transaction_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -931,7 +919,7 @@ void WalletApi::update_offer_transaction_handler(const Pistache::Rest::Request& 
 
 
 
-            this->update_offer_transaction(version, transactionId, status, deviceId, accountId, offerLocationId, currencyType, usePoints, appKey, latitude, longitude, metaData, returnFullResponse, exceptionMembershipOfferIds, response);
+            this->update_offer_transaction(transactionId, status, deviceId, accountId, offerLocationId, currencyType, usePoints, appKey, latitude, longitude, metaData, returnFullResponse, exceptionMembershipOfferIds, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

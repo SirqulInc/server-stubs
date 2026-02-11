@@ -29,37 +29,37 @@ ObjectStoreApiImpl::ObjectStoreApiImpl(const std::shared_ptr<Pistache::Rest::Rou
 
 }
 
-void ObjectStoreApiImpl::add_field(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, const std::optional<std::string> &fieldName, const std::optional<std::string> &fieldType, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::add_field(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, const std::optional<std::string> &fieldName, const std::optional<std::string> &fieldType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::create_data(const double &version, const std::string &objectName, const std::optional<int64_t> &accountId, const std::string &body, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::create_data(const std::string &objectName, const std::optional<int64_t> &accountId, const std::string &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::create_object(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::create_object(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::delete_data(const double &version, const std::string &objectName, const std::string &objectId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::delete_data(const std::string &objectName, const std::string &objectId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::delete_field(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, const std::optional<std::string> &fieldName, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::delete_field(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, const std::optional<std::string> &fieldName, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::delete_object(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::delete_object(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::get_data(const double &version, const std::string &objectName, const std::string &objectId, const std::optional<int64_t> &accountId, const std::optional<std::string> &include, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::get_data(const std::string &objectName, const std::string &objectId, const std::optional<int64_t> &accountId, const std::optional<std::string> &include, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::get_object(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::get_object(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &objectName, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::search_data(const double &version, const std::string &objectName, const std::optional<bool> &count, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<int64_t> &accountId, const std::optional<std::string> &criteria, const std::optional<std::string> &order, const std::optional<std::string> &include, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::search_data(const std::string &objectName, const std::optional<bool> &count, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<int64_t> &accountId, const std::optional<std::string> &criteria, const std::optional<std::string> &order, const std::optional<std::string> &include, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::search_object(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::search_object(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ObjectStoreApiImpl::update_data(const double &version, const std::string &objectName, const std::string &objectId, const std::optional<int64_t> &accountId, const std::string &body, Pistache::Http::ResponseWriter &response) {
+void ObjectStoreApiImpl::update_data(const std::string &objectName, const std::string &objectId, const std::optional<int64_t> &accountId, const std::string &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

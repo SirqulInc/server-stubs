@@ -87,7 +87,6 @@ private:
     /// <remarks>
     /// Create a Game.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user. (optional, default to 0L)</param>
     /// <param name="appKey">The game application key to save the level for. (optional, default to &quot;&quot;)</param>
     /// <param name="title">Title of the game. (optional, default to &quot;&quot;)</param>
@@ -95,35 +94,32 @@ private:
     /// <param name="metaData">metaData of the Game. (optional, default to &quot;&quot;)</param>
     /// <param name="packIds">comma separated String of pack Ids that will associate with the game. (optional, default to &quot;&quot;)</param>
     /// <param name="includeGameData">Show more details in response. (optional, default to false)</param>
-    virtual void create_game( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_game( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete a Game
     /// </summary>
     /// <remarks>
     /// Delete a game.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="gameId">the updating game&#39;s id.</param>
-    virtual void delete_game( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_game( const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get a Game by id
     /// </summary>
     /// <remarks>
     /// Get a Game by id.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="gameId">the updating game&#39;s id.</param>
     /// <param name="includeGameData">If true include the game level data, otherwise don&#39;t. default is false. (optional, default to false)</param>
-    virtual void get_game( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_game( const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search a Game
     /// </summary>
     /// <remarks>
     /// Get a list of games for an application, just those the account has permissions to view.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">the application key</param>
     /// <param name="start">Start the result set at some index.</param>
@@ -132,14 +128,13 @@ private:
     /// <param name="appVersion">The maximum version of the level to return. (optional, default to &quot;&quot;)</param>
     /// <param name="includeGameData">more details in response (optional, default to false)</param>
     /// <param name="includeInactive">more details in response (optional, default to false)</param>
-    virtual void search_games( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &appVersion, const std::optional<bool> &includeGameData, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_games( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &keyword, const std::optional<std::string> &appVersion, const std::optional<bool> &includeGameData, const std::optional<bool> &includeInactive, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update a Game
     /// </summary>
     /// <remarks>
     /// Update a Game
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user. (optional, default to 0L)</param>
     /// <param name="gameId">the updating game&#39;s id (optional, default to 0L)</param>
     /// <param name="appKey">The game application key to save the level for. (optional, default to &quot;&quot;)</param>
@@ -148,7 +143,7 @@ private:
     /// <param name="metaData">metaData of the Game. (optional, default to &quot;&quot;)</param>
     /// <param name="packIds">comma separated String of pack Ids that will associate with the game. (optional, default to &quot;&quot;)</param>
     /// <param name="includeGameData">show more details in response. (optional, default to false)</param>
-    virtual void update_game( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_game( const std::optional<int64_t> &accountId, const std::optional<int64_t> &gameId, const std::optional<std::string> &appKey, const std::optional<std::string> &title, const std::optional<std::string> &description, const std::optional<std::string> &metaData, const std::optional<std::string> &packIds, const std::optional<bool> &includeGameData, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

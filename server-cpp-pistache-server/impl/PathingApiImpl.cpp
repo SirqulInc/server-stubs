@@ -29,7 +29,7 @@ PathingApiImpl::PathingApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rt
 
 }
 
-void PathingApiImpl::compute_path(const double &version, const std::optional<std::string> &data, const std::optional<std::string> &units, const std::optional<bool> &reducePath, const std::optional<bool> &directions, Pistache::Http::ResponseWriter &response) {
+void PathingApiImpl::compute_path(const std::optional<std::string> &data, const std::optional<std::string> &units, const std::optional<bool> &reducePath, const std::optional<bool> &directions, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

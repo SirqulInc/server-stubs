@@ -29,19 +29,19 @@ TerritoryApiImpl::TerritoryApiImpl(const std::shared_ptr<Pistache::Rest::Router>
 
 }
 
-void TerritoryApiImpl::create_territory(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void TerritoryApiImpl::create_territory(const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TerritoryApiImpl::delete_territory(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) {
+void TerritoryApiImpl::delete_territory(const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TerritoryApiImpl::get_territory(const double &version, const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) {
+void TerritoryApiImpl::get_territory(const std::optional<int64_t> &territoryId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TerritoryApiImpl::search_territories(const double &version, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void TerritoryApiImpl::search_territories(const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void TerritoryApiImpl::update_territory(const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void TerritoryApiImpl::update_territory(const std::optional<int64_t> &accountId, const std::optional<int64_t> &territoryId, const std::optional<std::string> &name, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

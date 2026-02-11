@@ -85,7 +85,6 @@ private:
     /// <remarks>
     /// Create a score.  The response object will contain a series of   coded messages detailing what items were completed, the score registered,   and any tickets allocated.  Scoring a  level could complete the pack it   is in, completing that pack could complete the game, which  in turn could   complete the mission.  This completion chain is indicated to the client   via  a list of {@link MessageResponse}.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The game application key to save the score for.</param>
     /// <param name="points">The score</param>
@@ -96,14 +95,13 @@ private:
     /// <param name="gameObjectId">The gameObjectId to score for, ignore if level based scoring. (optional, default to 0L)</param>
     /// <param name="timeTaken">The time taken to complete task (optional, default to 0)</param>
     /// <param name="highest"> (optional, default to false)</param>
-    virtual void create_score( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &points, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<int32_t> &timeTaken, const std::optional<bool> &highest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_score( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int32_t> &points, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<int32_t> &timeTaken, const std::optional<bool> &highest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Score
     /// </summary>
     /// <remarks>
     /// Get the high score for an item.  Pass in the full path IDs for the score.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The game application key to get the level for.</param>
     /// <param name="missionId">The missionId to score for, null if not playing mission. (optional, default to 0L)</param>
@@ -113,14 +111,13 @@ private:
     /// <param name="gameObjectId">The gameObjectId to score for, null if level based scoring. (optional, default to 0L)</param>
     /// <param name="scoreObjectType">The object type to filter scores by (TicketObjectType) (optional, default to &quot;&quot;)</param>
     /// <param name="scoreStatus">The status of the score to filter (ScoreStatus) (optional, default to &quot;&quot;)</param>
-    virtual void get_score( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<std::string> &scoreObjectType, const std::optional<std::string> &scoreStatus, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_score( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, const std::optional<std::string> &scoreObjectType, const std::optional<std::string> &scoreStatus, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Score
     /// </summary>
     /// <remarks>
     /// Search the scores for an item.  Pass in the full path IDs for the scores.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The logged in user.</param>
     /// <param name="appKey">The game application key to get the level for.</param>
     /// <param name="missionId">The missionId to score for, null if not playing mission. (optional, default to 0L)</param>
@@ -128,7 +125,7 @@ private:
     /// <param name="packId">The packId to score for, null if playing community levels. (optional, default to 0L)</param>
     /// <param name="gameLevelId">The gameLevelId to score for. (optional, default to 0L)</param>
     /// <param name="gameObjectId">The gameObjectId to score for, null if level based scoring. (optional, default to 0L)</param>
-    virtual void search_scores( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_scores( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<int64_t> &missionId, const std::optional<int64_t> &gameId, const std::optional<int64_t> &packId, const std::optional<int64_t> &gameLevelId, const std::optional<int64_t> &gameObjectId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

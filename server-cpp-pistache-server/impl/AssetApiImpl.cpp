@@ -29,25 +29,25 @@ AssetApiImpl::AssetApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void AssetApiImpl::asset_download(const double &version, const std::string &filename, Pistache::Http::ResponseWriter &response) {
+void AssetApiImpl::asset_download(const std::string &filename, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssetApiImpl::asset_morph(const double &version, const std::optional<int64_t> &offerId, const std::optional<std::string> &adSize, const std::optional<int64_t> &creativeId, const std::optional<int32_t> &width, const std::optional<int32_t> &height, const std::optional<std::string> &backgroundSize, const std::optional<std::string> &r_template, Pistache::Http::ResponseWriter &response) {
+void AssetApiImpl::asset_morph(const std::optional<int64_t> &offerId, const std::optional<std::string> &adSize, const std::optional<int64_t> &creativeId, const std::optional<int32_t> &width, const std::optional<int32_t> &height, const std::optional<std::string> &backgroundSize, const std::optional<std::string> &r_template, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void AssetApiImpl::create_asset(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssetApiImpl::delete_asset(const double &version, const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void AssetApiImpl::delete_asset(const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssetApiImpl::get_asset(const double &version, const std::optional<int64_t> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &noteDescending, Pistache::Http::ResponseWriter &response) {
+void AssetApiImpl::get_asset(const std::optional<int64_t> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &noteDescending, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssetApiImpl::remove_asset(const double &version, const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &collectionId, const std::optional<bool> &removeFromDefaultAlbums, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void AssetApiImpl::remove_asset(const std::optional<std::string> &assetId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &albumId, const std::optional<int64_t> &collectionId, const std::optional<bool> &removeFromDefaultAlbums, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void AssetApiImpl::search_assets(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &albumIds, const std::optional<std::string> &assetIds, const std::optional<std::string> &appKey, const std::optional<std::string> &mediaType, const std::optional<std::string> &mimeType, const std::optional<std::string> &keyword, const std::optional<int32_t> &versionCode, const std::optional<std::string> &versionName, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &searchMediaLibrary, const std::optional<bool> &filterByBillable, const std::optional<bool> &activeOnly, const std::optional<bool> &returnApp, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &searchMode, const std::optional<std::string> &assetType, const std::optional<std::string> &approvalStatus, const std::optional<int64_t> &assignedAccountId, Pistache::Http::ResponseWriter &response) {
+void AssetApiImpl::search_assets(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &albumIds, const std::optional<std::string> &assetIds, const std::optional<std::string> &appKey, const std::optional<std::string> &mediaType, const std::optional<std::string> &mimeType, const std::optional<std::string> &keyword, const std::optional<int32_t> &versionCode, const std::optional<std::string> &versionName, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &searchMediaLibrary, const std::optional<bool> &filterByBillable, const std::optional<bool> &activeOnly, const std::optional<bool> &returnApp, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &searchMode, const std::optional<std::string> &assetType, const std::optional<std::string> &approvalStatus, const std::optional<int64_t> &assignedAccountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void AssetApiImpl::update_asset(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

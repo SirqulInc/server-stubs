@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ParticipantsApi::base = "";
+const std::string ParticipantsApi::base = "/api/3.18";
 
 ParticipantsApi::ParticipantsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,8 +32,8 @@ void ParticipantsApi::init() {
 void ParticipantsApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/participant/process/all", Routes::bind(&ParticipantsApi::process_all_participants_handler, this));
-    Routes::Post(*router, base + "/api/:version/participant/process", Routes::bind(&ParticipantsApi::process_participants_handler, this));
+    Routes::Post(*router, base + "/participant/process/all", Routes::bind(&ParticipantsApi::process_all_participants_handler, this));
+    Routes::Post(*router, base + "/participant/process", Routes::bind(&ParticipantsApi::process_participants_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ParticipantsApi::participants_api_default_handler, this));
@@ -68,8 +68,6 @@ std::pair<Pistache::Http::Code, std::string> ParticipantsApi::handleOperationExc
 void ParticipantsApi::process_all_participants_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -106,7 +104,7 @@ void ParticipantsApi::process_all_participants_handler(const Pistache::Rest::Req
 
 
 
-            this->process_all_participants(version, accountId, appKey, useShortNameAsID, response);
+            this->process_all_participants(accountId, appKey, useShortNameAsID, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

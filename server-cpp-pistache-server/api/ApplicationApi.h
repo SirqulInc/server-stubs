@@ -110,7 +110,6 @@ private:
     /// <remarks>
     /// Creates a new ad placement for an application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The appKey of the application the ad placement is for</param>
     /// <param name="size">The ad placement size {BANNER, LEADERBOARD, SKYSCRAPER, INTERSTITIAL, CUSTOM</param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
@@ -122,64 +121,58 @@ private:
     /// <param name="refreshInterval">The refresh interval in seconds (optional, default to 0)</param>
     /// <param name="defaultImageId">Default Image Id (optional, default to 0L)</param>
     /// <param name="active">Active (optional, default to false)</param>
-    virtual void create_application_placement( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &size, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_application_placement( const std::optional<std::string> &appKey, const std::optional<std::string> &size, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Application
     /// </summary>
     /// <remarks>
     /// Set the deleted timestamp to current time. This effectively deletes the application since all queries should ignore any records with a deleted timestamp
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the delete, must have rights to edit the application. (optional, default to 0L)</param>
     /// <param name="appKey">The key of the application to be deleted (optional, default to &quot;&quot;)</param>
-    virtual void delete_application( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_application( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Ad Placement
     /// </summary>
     /// <remarks>
     /// Deletes an ad placement for an application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="placementId">The id of the placement to delete, the user must have rights to the application the ad placement is for</param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void delete_application_placement( const double &version, const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_application_placement( const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Application
     /// </summary>
     /// <remarks>
     /// Get a specific application by appKey
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The key of the application (optional, default to &quot;&quot;)</param>
     /// <param name="applicationId">Application Id (optional, default to 0L)</param>
-    virtual void get_application( const double &version, const std::optional<std::string> &appKey, const std::optional<int64_t> &applicationId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_application( const std::optional<std::string> &appKey, const std::optional<int64_t> &applicationId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Ad Placement
     /// </summary>
     /// <remarks>
     /// Get details of an ad placement
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="placementId">The id of the placement</param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
-    virtual void get_application_placement( const double &version, const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_application_placement( const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get API versions
     /// </summary>
     /// <remarks>
     /// Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8
     /// </remarks>
-    /// <param name="version"></param>
-    virtual void get_application_versions( const double &version, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_application_versions( Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Application Users
     /// </summary>
     /// <remarks>
     /// Get a list of users per application
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The application key</param>
     /// <param name="q">Q (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">The keyword used to search (optional, default to &quot;&quot;)</param>
@@ -188,14 +181,13 @@ private:
     /// <param name="start">The start of the pagination (optional, default to 0)</param>
     /// <param name="l">the limit of the index (optional, default to 0)</param>
     /// <param name="limit">The limit of the pagination (optional, default to 20)</param>
-    virtual void get_unique_users_by_app( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &since, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_unique_users_by_app( const std::optional<std::string> &appKey, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &since, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Applications
     /// </summary>
     /// <remarks>
     /// List active applications matching the criteria (as a consumer)
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the application owner/manager (optional, default to 0L)</param>
     /// <param name="q">Q (optional, default to &quot;&quot;)</param>
     /// <param name="keyword">The keyword used to search for title, about, and description fields (optional, default to &quot;&quot;)</param>
@@ -216,27 +208,25 @@ private:
     /// <param name="applicationIds">The list of application ids, comma separated. If provided will ignore all other params. (optional, default to &quot;&quot;)</param>
     /// <param name="hasObjectStore">Only include applications with a object store (default is false) (optional, default to false)</param>
     /// <param name="activeOnly">Return only active results (optional, default to true)</param>
-    virtual void list_applications( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &platforms, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &categoryIds, const std::optional<std::string> &sortField, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &filterBillable, const std::optional<bool> &filterContentAdmin, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<std::string> &applicationIds, const std::optional<bool> &hasObjectStore, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void list_applications( const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &platforms, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &categoryIds, const std::optional<std::string> &sortField, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &filterBillable, const std::optional<bool> &filterContentAdmin, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<std::string> &applicationIds, const std::optional<bool> &hasObjectStore, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search for Ad Placements
     /// </summary>
     /// <remarks>
     /// Searches placements for an application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">The key of the application</param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="start">The start of the pagination (optional, default to 0)</param>
     /// <param name="limit">The limit of the pagination (optional, default to 100)</param>
-    virtual void search_application_placement( const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_application_placement( const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search for Application Settings
     /// </summary>
     /// <remarks>
     /// Returns a list of applications that the user has logged into before, and returns specific settings for that application and user
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The device id (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="connectionAccountId">The account id used to view another person&#39;s account (optional, default to 0L)</param>
@@ -245,14 +235,13 @@ private:
     /// <param name="descending">The order to return the search results (optional, default to false)</param>
     /// <param name="start">The start index for pagination (optional, default to 0)</param>
     /// <param name="limit">The limit per result set for pagination (optional, default to 20)</param>
-    virtual void search_application_settings( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_application_settings( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Applications
     /// </summary>
     /// <remarks>
     /// Search for applications matching the criteria that the logged in user has access to
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
     /// <param name="latitude">The location of the device (optional, default to 0.0)</param>
@@ -269,7 +258,7 @@ private:
     /// <param name="hasAds">Filter results on whether the application supports ads or not. Ignore this parameter to return all results. (optional, default to false)</param>
     /// <param name="publicNotifications">Filter results on whether the application is available for public trigger notifications (optional, default to false)</param>
     /// <param name="activeOnly">Return only active results (optional, default to false)</param>
-    virtual void search_applications( const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &qSearchFields, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_applications( const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &qSearchFields, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Application
     /// </summary>
@@ -283,18 +272,16 @@ private:
     /// <remarks>
     /// Set the application&#39;s active flag to true/false. This effectively activates or deactivates the application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account used to perform the delete, must have rights to edit the application.</param>
     /// <param name="appKey">The key of the application to be deleted</param>
     /// <param name="active">If true then set to active, false otherwise</param>
-    virtual void update_application_active( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_application_active( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Ad Placement
     /// </summary>
     /// <remarks>
     /// Updates an ad placement for an application.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="placementId">The id of the placement to update, the user must have rights to the application the ad placement is for</param>
     /// <param name="deviceId">The unique id of the device making the request (deviceId or accountId required) (optional, default to &quot;&quot;)</param>
     /// <param name="accountId">The account id of the user (deviceId or accountId required) (optional, default to 0L)</param>
@@ -306,7 +293,7 @@ private:
     /// <param name="refreshInterval">The refresh interval in seconds (optional, default to 0)</param>
     /// <param name="defaultImageId">Default Image Id (optional, default to 0L)</param>
     /// <param name="active">Active (optional, default to false)</param>
-    virtual void update_application_placement( const double &version, const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &size, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_application_placement( const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &size, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Application Certificate
     /// </summary>

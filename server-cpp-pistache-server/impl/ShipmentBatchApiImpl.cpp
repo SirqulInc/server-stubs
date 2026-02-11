@@ -29,19 +29,19 @@ ShipmentBatchApiImpl::ShipmentBatchApiImpl(const std::shared_ptr<Pistache::Rest:
 
 }
 
-void ShipmentBatchApiImpl::create_shipment_batch(const double &version, const ShipmentBatch &body, Pistache::Http::ResponseWriter &response) {
+void ShipmentBatchApiImpl::create_shipment_batch(const ShipmentBatch &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentBatchApiImpl::delete_shipment_batch(const double &version, const int64_t &batchId, Pistache::Http::ResponseWriter &response) {
+void ShipmentBatchApiImpl::delete_shipment_batch(const int64_t &batchId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentBatchApiImpl::get_shipment_batch(const double &version, const int64_t &batchId, Pistache::Http::ResponseWriter &response) {
+void ShipmentBatchApiImpl::get_shipment_batch(const int64_t &batchId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentBatchApiImpl::get_shipment_batch_status(const double &version, const int64_t &batchId, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &valid, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &hasShipment, const std::optional<bool> &hasRoute, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void ShipmentBatchApiImpl::get_shipment_batch_status(const int64_t &batchId, const std::optional<int64_t> &accountId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &valid, const std::optional<bool> &started, const std::optional<bool> &completed, const std::optional<bool> &hasShipment, const std::optional<bool> &hasRoute, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ShipmentBatchApiImpl::search_shipment_batch(const double &version, const std::optional<int64_t> &hubId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ShipmentBatchApiImpl::search_shipment_batch(const std::optional<int64_t> &hubId, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

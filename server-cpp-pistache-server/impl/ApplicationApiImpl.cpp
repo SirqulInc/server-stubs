@@ -32,46 +32,46 @@ ApplicationApiImpl::ApplicationApiImpl(const std::shared_ptr<Pistache::Rest::Rou
 void ApplicationApiImpl::create_application(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::create_application_placement(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &size, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::create_application_placement(const std::optional<std::string> &appKey, const std::optional<std::string> &size, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::delete_application(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::delete_application(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::delete_application_placement(const double &version, const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::delete_application_placement(const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::get_application(const double &version, const std::optional<std::string> &appKey, const std::optional<int64_t> &applicationId, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::get_application(const std::optional<std::string> &appKey, const std::optional<int64_t> &applicationId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::get_application_placement(const double &version, const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::get_application_placement(const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::get_application_versions(const double &version, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::get_application_versions(Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::get_unique_users_by_app(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &since, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::get_unique_users_by_app(const std::optional<std::string> &appKey, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<int64_t> &since, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::list_applications(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &platforms, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &categoryIds, const std::optional<std::string> &sortField, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &filterBillable, const std::optional<bool> &filterContentAdmin, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<std::string> &applicationIds, const std::optional<bool> &hasObjectStore, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::list_applications(const std::optional<int64_t> &accountId, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &platforms, const std::optional<std::string> &deviceIds, const std::optional<std::string> &deviceVersions, const std::optional<std::string> &categoryIds, const std::optional<std::string> &sortField, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &filterBillable, const std::optional<bool> &filterContentAdmin, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<std::string> &applicationIds, const std::optional<bool> &hasObjectStore, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::search_application_placement(const double &version, const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::search_application_placement(const std::optional<std::string> &appKey, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::search_application_settings(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::search_application_settings(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::search_applications(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &qSearchFields, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::search_applications(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &q, const std::optional<std::string> &keyword, const std::optional<std::string> &qSearchFields, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, const std::optional<bool> &hasAds, const std::optional<bool> &publicNotifications, const std::optional<bool> &activeOnly, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void ApplicationApiImpl::update_application(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::update_application_active(const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::update_application_active(const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void ApplicationApiImpl::update_application_placement(const double &version, const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &size, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
+void ApplicationApiImpl::update_application_placement(const std::optional<int64_t> &placementId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<std::string> &size, const std::optional<int32_t> &height, const std::optional<int32_t> &width, const std::optional<int32_t> &refreshInterval, const std::optional<int64_t> &defaultImageId, const std::optional<bool> &active, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void ApplicationApiImpl::upload_application_certificate(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

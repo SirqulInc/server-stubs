@@ -42,7 +42,7 @@ public:
     explicit RetailerV2ApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~RetailerV2ApiImpl() override = default;
 
-    void get_retaokiler(const double &version, const std::optional<int64_t> &retailerId, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response);
+    void get_retaokiler(const std::optional<int64_t> &retailerId, const std::optional<bool> &activeOnly, const std::optional<std::string> &keyword, const std::optional<std::string> &sortField, const std::optional<int64_t> &start, const std::optional<int64_t> &limit, Pistache::Http::ResponseWriter &response);
 
 };
 

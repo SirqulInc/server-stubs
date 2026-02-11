@@ -41,8 +41,8 @@ public:
     explicit StopApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~StopApiImpl() override = default;
 
-    void get_stop(const double &version, const int64_t &id, Pistache::Http::ResponseWriter &response);
-    void update_stop(const double &version, const int64_t &id, const Stop &body, Pistache::Http::ResponseWriter &response);
+    void get_stop(const int64_t &id, Pistache::Http::ResponseWriter &response);
+    void update_stop(const int64_t &id, const Stop &body, Pistache::Http::ResponseWriter &response);
 
 };
 

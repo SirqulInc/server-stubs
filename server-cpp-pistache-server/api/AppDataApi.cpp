@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string AppDataApi::base = "";
+const std::string AppDataApi::base = "/api/3.18";
 
 AppDataApi::AppDataApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,9 +32,9 @@ void AppDataApi::init() {
 void AppDataApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/app/get", Routes::bind(&AppDataApi::get_app_data_handler, this));
-    Routes::Post(*router, base + "/api/:version/app/post", Routes::bind(&AppDataApi::post_app_data_handler, this));
-    Routes::Post(*router, base + "/api/:version/app/regen", Routes::bind(&AppDataApi::regen_app_data_handler, this));
+    Routes::Get(*router, base + "/app/get", Routes::bind(&AppDataApi::get_app_data_handler, this));
+    Routes::Post(*router, base + "/app/post", Routes::bind(&AppDataApi::post_app_data_handler, this));
+    Routes::Post(*router, base + "/app/regen", Routes::bind(&AppDataApi::regen_app_data_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&AppDataApi::app_data_api_default_handler, this));
@@ -69,8 +69,6 @@ std::pair<Pistache::Http::Code, std::string> AppDataApi::handleOperationExceptio
 void AppDataApi::get_app_data_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -283,7 +281,7 @@ void AppDataApi::get_app_data_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->get_app_data(version, start, limit, deviceId, accountId, gameType, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType, response);
+            this->get_app_data(start, limit, deviceId, accountId, gameType, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -302,8 +300,6 @@ void AppDataApi::get_app_data_handler(const Pistache::Rest::Request& request, Pi
 void AppDataApi::post_app_data_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -524,7 +520,7 @@ void AppDataApi::post_app_data_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->post_app_data(version, gameType, start, limit, data, deviceId, accountId, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType, response);
+            this->post_app_data(gameType, start, limit, data, deviceId, accountId, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -543,8 +539,6 @@ void AppDataApi::post_app_data_handler(const Pistache::Rest::Request& request, P
 void AppDataApi::regen_app_data_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -589,7 +583,7 @@ void AppDataApi::regen_app_data_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->regen_app_data(version, accountId, appKey, buildVersion, apiVersion, response);
+            this->regen_app_data(accountId, appKey, buildVersion, apiVersion, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

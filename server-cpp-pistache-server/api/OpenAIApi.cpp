@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string OpenAIApi::base = "";
+const std::string OpenAIApi::base = "/api/3.18";
 
 OpenAIApi::OpenAIApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,7 +32,7 @@ void OpenAIApi::init() {
 void OpenAIApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/openai/v1/images/generations", Routes::bind(&OpenAIApi::image_generation_handler, this));
+    Routes::Post(*router, base + "/openai/v1/images/generations", Routes::bind(&OpenAIApi::image_generation_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&OpenAIApi::open_ai_api_default_handler, this));
@@ -67,8 +67,6 @@ std::pair<Pistache::Http::Code, std::string> OpenAIApi::handleOperationException
 void OpenAIApi::image_generation_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -105,7 +103,7 @@ void OpenAIApi::image_generation_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->image_generation(version, accountId, postBody, returnRawResponse, response);
+            this->image_generation(accountId, postBody, returnRawResponse, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

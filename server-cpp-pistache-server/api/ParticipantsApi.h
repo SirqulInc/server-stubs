@@ -83,11 +83,10 @@ private:
     /// <remarks>
     /// Processes all supported participant feeds.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">The account id of the user</param>
     /// <param name="appKey">The application key used to identify the application (optional, default to &quot;&quot;)</param>
     /// <param name="useShortNameAsID">Whether to use short name as the participant ID (optional, default to false)</param>
-    virtual void process_all_participants( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &useShortNameAsID, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void process_all_participants( const std::optional<int64_t> &accountId, const std::optional<std::string> &appKey, const std::optional<bool> &useShortNameAsID, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Process Participants Feed
     /// </summary>

@@ -29,19 +29,19 @@ NoteApiImpl::NoteApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
 
 }
 
-void NoteApiImpl::batch_operation(const double &version, const std::optional<int64_t> &notableId, const std::optional<std::string> &notableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &batchOperation, Pistache::Http::ResponseWriter &response) {
+void NoteApiImpl::batch_operation(const std::optional<int64_t> &notableId, const std::optional<std::string> &notableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &batchOperation, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void NoteApiImpl::create_note(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void NoteApiImpl::delete_note(const double &version, const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
+void NoteApiImpl::delete_note(const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void NoteApiImpl::get_note(const double &version, const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &returnFullResponse, Pistache::Http::ResponseWriter &response) {
+void NoteApiImpl::get_note(const std::optional<int64_t> &noteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<bool> &returnFullResponse, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void NoteApiImpl::search_notes(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &notableType, const std::optional<int64_t> &notableId, const std::optional<std::string> &noteTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &flagsExceedThreshold, const std::optional<bool> &includeInactive, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &returnFullResponse, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void NoteApiImpl::search_notes(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<std::string> &notableType, const std::optional<int64_t> &notableId, const std::optional<std::string> &noteTypes, const std::optional<std::string> &appKey, const std::optional<std::string> &keyword, const std::optional<int64_t> &flagCountMinimum, const std::optional<bool> &flagsExceedThreshold, const std::optional<bool> &includeInactive, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<bool> &returnFullResponse, const std::optional<int64_t> &updatedSince, const std::optional<int64_t> &updatedBefore, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 void NoteApiImpl::update_note(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {

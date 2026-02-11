@@ -29,19 +29,19 @@ FavoriteApiImpl::FavoriteApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 
 }
 
-void FavoriteApiImpl::add_favorite(const double &version, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void FavoriteApiImpl::add_favorite(const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FavoriteApiImpl::delete_favorite(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &favoriteId, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, Pistache::Http::ResponseWriter &response) {
+void FavoriteApiImpl::delete_favorite(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &favoriteId, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FavoriteApiImpl::get_favorite(const double &version, const std::optional<int64_t> &favoriteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void FavoriteApiImpl::get_favorite(const std::optional<int64_t> &favoriteId, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FavoriteApiImpl::search_favorites(const double &version, const std::optional<std::string> &favoritableType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnFullResponse, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &secondaryType, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
+void FavoriteApiImpl::search_favorites(const std::optional<std::string> &favoritableType, const std::optional<std::string> &sortField, const std::optional<bool> &descending, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<bool> &returnFullResponse, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<int64_t> &connectionAccountId, const std::optional<std::string> &secondaryType, const std::optional<std::string> &keyword, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void FavoriteApiImpl::who_has_favorited(const double &version, const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
+void FavoriteApiImpl::who_has_favorited(const std::optional<int64_t> &favoritableId, const std::optional<std::string> &favoritableType, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &keyword, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

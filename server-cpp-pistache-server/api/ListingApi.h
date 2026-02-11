@@ -91,7 +91,6 @@ private:
     /// <remarks>
     /// Creates a listing.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user&#39;s account ID</param>
     /// <param name="name">the name of the listing</param>
     /// <param name="filterIds">comma separated list of filter IDs (optional, default to &quot;&quot;)</param>
@@ -106,33 +105,30 @@ private:
     /// <param name="externalGroupId">external group identifier used by a third party (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets the active flag (optional, default to false)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void create_listing( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &filterIds, const std::optional<std::string> &description, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &locationName, const std::optional<std::string> &locationDescription, const std::optional<bool> &isPrivate, const std::optional<std::string> &externalId, const std::optional<std::string> &externalId2, const std::optional<std::string> &externalGroupId, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_listing( const std::optional<int64_t> &accountId, const std::optional<std::string> &name, const std::optional<std::string> &filterIds, const std::optional<std::string> &description, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &locationName, const std::optional<std::string> &locationDescription, const std::optional<bool> &isPrivate, const std::optional<std::string> &externalId, const std::optional<std::string> &externalId2, const std::optional<std::string> &externalGroupId, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Listing
     /// </summary>
     /// <remarks>
     /// Delete a listing.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the id of the logged in user</param>
     /// <param name="listingId">the id of the listing to delete</param>
-    virtual void delete_listing( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &listingId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_listing( const std::optional<int64_t> &accountId, const std::optional<int64_t> &listingId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Listing
     /// </summary>
     /// <remarks>
     /// Get a listing by id.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="listingId">the id of the listing to get</param>
-    virtual void get_listing( const double &version, const std::optional<int64_t> &listingId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_listing( const std::optional<int64_t> &listingId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search Listings
     /// </summary>
     /// <remarks>
     /// Search for event listings from the start time to end time
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user (optional, default to 0L)</param>
     /// <param name="keyword">search the event name and description for this keyword (optional, default to &quot;&quot;)</param>
     /// <param name="start">the record to begin the return set on (optional, default to 0)</param>
@@ -148,27 +144,25 @@ private:
     /// <param name="externalId">external identifier used by a third party (optional, default to &quot;&quot;)</param>
     /// <param name="externalId2">secondary external identifier used by a third party (optional, default to &quot;&quot;)</param>
     /// <param name="externalGroupId">external group identifier used by a third party (optional, default to &quot;&quot;)</param>
-    virtual void search_listing( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &useListingOrderIds, const std::optional<std::string> &externalId, const std::optional<std::string> &externalId2, const std::optional<std::string> &externalGroupId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_listing( const std::optional<int64_t> &accountId, const std::optional<std::string> &keyword, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, const std::optional<bool> &activeOnly, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<int64_t> &startDate, const std::optional<int64_t> &endDate, const std::optional<std::string> &categoryIds, const std::optional<std::string> &filterIds, const std::optional<bool> &useListingOrderIds, const std::optional<std::string> &externalId, const std::optional<std::string> &externalId2, const std::optional<std::string> &externalGroupId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Summary Listing
     /// </summary>
     /// <remarks>
     /// Search for a list of summary listings from the start time up to 8 days out.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the account id of the user (optional, default to 0L)</param>
     /// <param name="startDate">the start date to search from (optional, default to 0L)</param>
     /// <param name="categoryIds">the list of categories to search on (optional, default to &quot;&quot;)</param>
     /// <param name="daysToInclude">how far out to search, in days (optional, default to 15)</param>
     /// <param name="useListingOrderIds">determines whether to use configured listing order ids (optional, default to true)</param>
-    virtual void summary_listing( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<std::string> &categoryIds, const std::optional<int32_t> &daysToInclude, const std::optional<bool> &useListingOrderIds, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void summary_listing( const std::optional<int64_t> &accountId, const std::optional<int64_t> &startDate, const std::optional<std::string> &categoryIds, const std::optional<int32_t> &daysToInclude, const std::optional<bool> &useListingOrderIds, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Listing
     /// </summary>
     /// <remarks>
     /// Updates a listing.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">the user&#39;s account ID</param>
     /// <param name="listingId">the listing to update</param>
     /// <param name="filterIds">comma separated list of filter IDs (optional, default to &quot;&quot;)</param>
@@ -184,7 +178,7 @@ private:
     /// <param name="externalGroupId">external group identifier used by a third party (optional, default to &quot;&quot;)</param>
     /// <param name="active">Sets the active flag (optional, default to false)</param>
     /// <param name="metaData">external custom client defined data (optional, default to &quot;&quot;)</param>
-    virtual void update_listing( const double &version, const std::optional<int64_t> &accountId, const std::optional<int64_t> &listingId, const std::optional<std::string> &filterIds, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &locationName, const std::optional<std::string> &locationDescription, const std::optional<bool> &isPrivate, const std::optional<std::string> &externalId, const std::optional<std::string> &externalId2, const std::optional<std::string> &externalGroupId, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_listing( const std::optional<int64_t> &accountId, const std::optional<int64_t> &listingId, const std::optional<std::string> &filterIds, const std::optional<std::string> &name, const std::optional<std::string> &description, const std::optional<int64_t> &start, const std::optional<int64_t> &end, const std::optional<std::string> &locationName, const std::optional<std::string> &locationDescription, const std::optional<bool> &isPrivate, const std::optional<std::string> &externalId, const std::optional<std::string> &externalId2, const std::optional<std::string> &externalGroupId, const std::optional<bool> &active, const std::optional<std::string> &metaData, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

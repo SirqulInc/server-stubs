@@ -86,20 +86,18 @@ private:
     /// <remarks>
     /// Get the results of the import batch.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="batchID">The batchID for getting the import status of.</param>
     /// <param name="start">The start index for pagination</param>
     /// <param name="limit">The limit for pagination</param>
-    virtual void get_optimization_result( const double &version, const std::string &batchID, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_optimization_result( const std::string &batchID, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Request Optimization
     /// </summary>
     /// <remarks>
     /// Request and upload of shipment orders and create ShipmentImportBatch for optimization.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="body"> (optional)</param>
-    virtual void request_optimization( const double &version, const org::openapitools::server::model::Orders &body, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void request_optimization( const org::openapitools::server::model::Orders &body, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

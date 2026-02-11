@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string PurchaseItemApi::base = "";
+const std::string PurchaseItemApi::base = "/api/3.18";
 
 PurchaseItemApi::PurchaseItemApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void PurchaseItemApi::init() {
 void PurchaseItemApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/purchase/create", Routes::bind(&PurchaseItemApi::create_purchase_item_handler, this));
-    Routes::Post(*router, base + "/api/:version/purchase/delete", Routes::bind(&PurchaseItemApi::delete_purchase_item_handler, this));
-    Routes::Get(*router, base + "/api/:version/purchase/get", Routes::bind(&PurchaseItemApi::get_purchase_item_handler, this));
-    Routes::Get(*router, base + "/api/:version/purchase/search", Routes::bind(&PurchaseItemApi::search_purchase_items_handler, this));
-    Routes::Post(*router, base + "/api/:version/purchase/update", Routes::bind(&PurchaseItemApi::update_purchase_item_handler, this));
+    Routes::Post(*router, base + "/purchase/create", Routes::bind(&PurchaseItemApi::create_purchase_item_handler, this));
+    Routes::Post(*router, base + "/purchase/delete", Routes::bind(&PurchaseItemApi::delete_purchase_item_handler, this));
+    Routes::Get(*router, base + "/purchase/get", Routes::bind(&PurchaseItemApi::get_purchase_item_handler, this));
+    Routes::Get(*router, base + "/purchase/search", Routes::bind(&PurchaseItemApi::search_purchase_items_handler, this));
+    Routes::Post(*router, base + "/purchase/update", Routes::bind(&PurchaseItemApi::update_purchase_item_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&PurchaseItemApi::purchase_item_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> PurchaseItemApi::handleOperationExc
 void PurchaseItemApi::create_purchase_item_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -245,7 +243,7 @@ void PurchaseItemApi::create_purchase_item_handler(const Pistache::Rest::Request
 
 
 
-            this->create_purchase_item(version, appKey, name, purchaseType, deviceId, accountId, description, tickets, price, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, allocateTickets, ticketType, points, offerLocationId, response);
+            this->create_purchase_item(appKey, name, purchaseType, deviceId, accountId, description, tickets, price, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, allocateTickets, ticketType, points, offerLocationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -264,8 +262,6 @@ void PurchaseItemApi::create_purchase_item_handler(const Pistache::Rest::Request
 void PurchaseItemApi::delete_purchase_item_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -302,7 +298,7 @@ void PurchaseItemApi::delete_purchase_item_handler(const Pistache::Rest::Request
 
 
 
-            this->delete_purchase_item(version, purchaseItemId, deviceId, accountId, response);
+            this->delete_purchase_item(purchaseItemId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -321,8 +317,6 @@ void PurchaseItemApi::delete_purchase_item_handler(const Pistache::Rest::Request
 void PurchaseItemApi::get_purchase_item_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -359,7 +353,7 @@ void PurchaseItemApi::get_purchase_item_handler(const Pistache::Rest::Request& r
 
 
 
-            this->get_purchase_item(version, purchaseItemId, deviceId, accountId, response);
+            this->get_purchase_item(purchaseItemId, deviceId, accountId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -378,8 +372,6 @@ void PurchaseItemApi::get_purchase_item_handler(const Pistache::Rest::Request& r
 void PurchaseItemApi::search_purchase_items_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -488,7 +480,7 @@ void PurchaseItemApi::search_purchase_items_handler(const Pistache::Rest::Reques
 
 
 
-            this->search_purchase_items(version, deviceId, accountId, appKey, filterByBillable, purchaseType, serviceAction, keyword, sortField, descending, start, limit, activeOnly, response);
+            this->search_purchase_items(deviceId, accountId, appKey, filterByBillable, purchaseType, serviceAction, keyword, sortField, descending, start, limit, activeOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -507,8 +499,6 @@ void PurchaseItemApi::search_purchase_items_handler(const Pistache::Rest::Reques
 void PurchaseItemApi::update_purchase_item_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -689,7 +679,7 @@ void PurchaseItemApi::update_purchase_item_handler(const Pistache::Rest::Request
 
 
 
-            this->update_purchase_item(version, purchaseItemId, deviceId, accountId, name, description, tickets, price, purchaseType, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, active, allocateTickets, ticketType, points, offerLocationId, response);
+            this->update_purchase_item(purchaseItemId, deviceId, accountId, name, description, tickets, price, purchaseType, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, active, allocateTickets, ticketType, points, offerLocationId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

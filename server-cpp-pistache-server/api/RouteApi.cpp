@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string RouteApi::base = "";
+const std::string RouteApi::base = "/api/3.18";
 
 RouteApi::RouteApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,27 +32,27 @@ void RouteApi::init() {
 void RouteApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/route/:routeId/approve", Routes::bind(&RouteApi::approve_route_handler, this));
-    Routes::Post(*router, base + "/api/:version/route/:routeId/copy", Routes::bind(&RouteApi::copy_route_handler, this));
-    Routes::Post(*router, base + "/api/:version/route", Routes::bind(&RouteApi::create_route_handler, this));
-    Routes::Put(*router, base + "/api/:version/route/:routeId/directions", Routes::bind(&RouteApi::create_route_directions_handler, this));
-    Routes::Put(*router, base + "/api/:version/route/:routeId/polyline", Routes::bind(&RouteApi::create_route_polyline_handler, this));
-    Routes::Delete(*router, base + "/api/:version/route/:routeId", Routes::bind(&RouteApi::delete_route_handler, this));
-    Routes::Post(*router, base + "/api/:version/route/:routeId/disapprove", Routes::bind(&RouteApi::disapprove_route_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/:routeId", Routes::bind(&RouteApi::get_route_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/:routeId/directions", Routes::bind(&RouteApi::get_route_directions_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/:routeId/shipments", Routes::bind(&RouteApi::get_route_shipments_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/:routeId/stop/:stopId", Routes::bind(&RouteApi::get_route_stop_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/:routeId/stops", Routes::bind(&RouteApi::get_route_stops_handler, this));
-    Routes::Get(*router, base + "/api/:version/route/:routeId/stop/:stopId/shipments", Routes::bind(&RouteApi::get_shipments_at_stop_handler, this));
-    Routes::Post(*router, base + "/api/:version/route/:routeId/optimize", Routes::bind(&RouteApi::optimize_route_handler, this));
-    Routes::Delete(*router, base + "/api/:version/route/:routeId/stop/:stopId", Routes::bind(&RouteApi::remove_stop_handler, this));
-    Routes::Patch(*router, base + "/api/:version/route/:routeId/stops/reorder", Routes::bind(&RouteApi::reorder_route_stops_patch_handler, this));
-    Routes::Post(*router, base + "/api/:version/route/:routeId/stops/reorder", Routes::bind(&RouteApi::reorder_route_stops_post_handler, this));
-    Routes::Get(*router, base + "/api/:version/route", Routes::bind(&RouteApi::search_routes_handler, this));
-    Routes::Post(*router, base + "/api/:version/route/:id/driver/:driverId", Routes::bind(&RouteApi::set_driver_handler, this));
-    Routes::Put(*router, base + "/api/:version/route/:routeId", Routes::bind(&RouteApi::update_route_handler, this));
-    Routes::Put(*router, base + "/api/:version/route/:routeId/stop/:stopId", Routes::bind(&RouteApi::update_route_stop_handler, this));
+    Routes::Post(*router, base + "/route/:routeId/approve", Routes::bind(&RouteApi::approve_route_handler, this));
+    Routes::Post(*router, base + "/route/:routeId/copy", Routes::bind(&RouteApi::copy_route_handler, this));
+    Routes::Post(*router, base + "/route", Routes::bind(&RouteApi::create_route_handler, this));
+    Routes::Put(*router, base + "/route/:routeId/directions", Routes::bind(&RouteApi::create_route_directions_handler, this));
+    Routes::Put(*router, base + "/route/:routeId/polyline", Routes::bind(&RouteApi::create_route_polyline_handler, this));
+    Routes::Delete(*router, base + "/route/:routeId", Routes::bind(&RouteApi::delete_route_handler, this));
+    Routes::Post(*router, base + "/route/:routeId/disapprove", Routes::bind(&RouteApi::disapprove_route_handler, this));
+    Routes::Get(*router, base + "/route/:routeId", Routes::bind(&RouteApi::get_route_handler, this));
+    Routes::Get(*router, base + "/route/:routeId/directions", Routes::bind(&RouteApi::get_route_directions_handler, this));
+    Routes::Get(*router, base + "/route/:routeId/shipments", Routes::bind(&RouteApi::get_route_shipments_handler, this));
+    Routes::Get(*router, base + "/route/:routeId/stop/:stopId", Routes::bind(&RouteApi::get_route_stop_handler, this));
+    Routes::Get(*router, base + "/route/:routeId/stops", Routes::bind(&RouteApi::get_route_stops_handler, this));
+    Routes::Get(*router, base + "/route/:routeId/stop/:stopId/shipments", Routes::bind(&RouteApi::get_shipments_at_stop_handler, this));
+    Routes::Post(*router, base + "/route/:routeId/optimize", Routes::bind(&RouteApi::optimize_route_handler, this));
+    Routes::Delete(*router, base + "/route/:routeId/stop/:stopId", Routes::bind(&RouteApi::remove_stop_handler, this));
+    Routes::Patch(*router, base + "/route/:routeId/stops/reorder", Routes::bind(&RouteApi::reorder_route_stops_patch_handler, this));
+    Routes::Post(*router, base + "/route/:routeId/stops/reorder", Routes::bind(&RouteApi::reorder_route_stops_post_handler, this));
+    Routes::Get(*router, base + "/route", Routes::bind(&RouteApi::search_routes_handler, this));
+    Routes::Post(*router, base + "/route/:id/driver/:driverId", Routes::bind(&RouteApi::set_driver_handler, this));
+    Routes::Put(*router, base + "/route/:routeId", Routes::bind(&RouteApi::update_route_handler, this));
+    Routes::Put(*router, base + "/route/:routeId/stop/:stopId", Routes::bind(&RouteApi::update_route_stop_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&RouteApi::route_api_default_handler, this));
@@ -88,7 +88,6 @@ void RouteApi::approve_route_handler(const Pistache::Rest::Request& request, Pis
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -101,7 +100,7 @@ void RouteApi::approve_route_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->approve_route(version, routeId, response);
+            this->approve_route(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -121,7 +120,6 @@ void RouteApi::copy_route_handler(const Pistache::Rest::Request& request, Pistac
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         // Getting the body param
@@ -146,7 +144,7 @@ void RouteApi::copy_route_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->copy_route(version, routeId, body, response);
+            this->copy_route(routeId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -165,8 +163,6 @@ void RouteApi::copy_route_handler(const Pistache::Rest::Request& request, Pistac
 void RouteApi::create_route_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -190,7 +186,7 @@ void RouteApi::create_route_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->create_route(version, body, response);
+            this->create_route(body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -210,7 +206,6 @@ void RouteApi::create_route_directions_handler(const Pistache::Rest::Request& re
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -223,7 +218,7 @@ void RouteApi::create_route_directions_handler(const Pistache::Rest::Request& re
 
 
 
-            this->create_route_directions(version, routeId, response);
+            this->create_route_directions(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -243,7 +238,6 @@ void RouteApi::create_route_polyline_handler(const Pistache::Rest::Request& requ
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -256,7 +250,7 @@ void RouteApi::create_route_polyline_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->create_route_polyline(version, routeId, response);
+            this->create_route_polyline(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -276,7 +270,6 @@ void RouteApi::delete_route_handler(const Pistache::Rest::Request& request, Pist
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -289,7 +282,7 @@ void RouteApi::delete_route_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->delete_route(version, routeId, response);
+            this->delete_route(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -309,7 +302,6 @@ void RouteApi::disapprove_route_handler(const Pistache::Rest::Request& request, 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -322,7 +314,7 @@ void RouteApi::disapprove_route_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->disapprove_route(version, routeId, response);
+            this->disapprove_route(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -342,7 +334,6 @@ void RouteApi::get_route_handler(const Pistache::Rest::Request& request, Pistach
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -364,7 +355,7 @@ void RouteApi::get_route_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_route(version, routeId, showInheritedProperties, response);
+            this->get_route(routeId, showInheritedProperties, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -384,7 +375,6 @@ void RouteApi::get_route_directions_handler(const Pistache::Rest::Request& reque
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -397,7 +387,7 @@ void RouteApi::get_route_directions_handler(const Pistache::Rest::Request& reque
 
 
 
-            this->get_route_directions(version, routeId, response);
+            this->get_route_directions(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -417,7 +407,6 @@ void RouteApi::get_route_shipments_handler(const Pistache::Rest::Request& reques
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -430,7 +419,7 @@ void RouteApi::get_route_shipments_handler(const Pistache::Rest::Request& reques
 
 
 
-            this->get_route_shipments(version, routeId, response);
+            this->get_route_shipments(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -450,7 +439,6 @@ void RouteApi::get_route_stop_handler(const Pistache::Rest::Request& request, Pi
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         auto stopId = request.param(":stopId").as<int64_t>();
         
@@ -464,7 +452,7 @@ void RouteApi::get_route_stop_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->get_route_stop(version, routeId, stopId, response);
+            this->get_route_stop(routeId, stopId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -484,7 +472,6 @@ void RouteApi::get_route_stops_handler(const Pistache::Rest::Request& request, P
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -506,7 +493,7 @@ void RouteApi::get_route_stops_handler(const Pistache::Rest::Request& request, P
 
 
 
-            this->get_route_stops(version, routeId, confirmedOnly, response);
+            this->get_route_stops(routeId, confirmedOnly, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -526,7 +513,6 @@ void RouteApi::get_shipments_at_stop_handler(const Pistache::Rest::Request& requ
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         auto stopId = request.param(":stopId").as<int64_t>();
         
@@ -540,7 +526,7 @@ void RouteApi::get_shipments_at_stop_handler(const Pistache::Rest::Request& requ
 
 
 
-            this->get_shipments_at_stop(version, routeId, stopId, response);
+            this->get_shipments_at_stop(routeId, stopId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -560,7 +546,6 @@ void RouteApi::optimize_route_handler(const Pistache::Rest::Request& request, Pi
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         
@@ -573,7 +558,7 @@ void RouteApi::optimize_route_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->optimize_route(version, routeId, response);
+            this->optimize_route(routeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -593,7 +578,6 @@ void RouteApi::remove_stop_handler(const Pistache::Rest::Request& request, Pista
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         auto stopId = request.param(":stopId").as<int64_t>();
         
@@ -607,7 +591,7 @@ void RouteApi::remove_stop_handler(const Pistache::Rest::Request& request, Pista
 
 
 
-            this->remove_stop(version, routeId, stopId, response);
+            this->remove_stop(routeId, stopId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -627,7 +611,6 @@ void RouteApi::reorder_route_stops_patch_handler(const Pistache::Rest::Request& 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         // Getting the body param
@@ -651,7 +634,7 @@ void RouteApi::reorder_route_stops_patch_handler(const Pistache::Rest::Request& 
 
 
 
-            this->reorder_route_stops_patch(version, routeId, body, response);
+            this->reorder_route_stops_patch(routeId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -671,7 +654,6 @@ void RouteApi::reorder_route_stops_post_handler(const Pistache::Rest::Request& r
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         // Getting the body param
@@ -695,7 +677,7 @@ void RouteApi::reorder_route_stops_post_handler(const Pistache::Rest::Request& r
 
 
 
-            this->reorder_route_stops_post(version, routeId, body, response);
+            this->reorder_route_stops_post(routeId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -714,8 +696,6 @@ void RouteApi::reorder_route_stops_post_handler(const Pistache::Rest::Request& r
 void RouteApi::search_routes_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -896,7 +876,7 @@ void RouteApi::search_routes_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->search_routes(version, sortField, descending, start, limit, activeOnly, includesEmpty, rootOnly, showInheritedProperties, hubId, programId, scheduledStart, scheduledEnd, updatedStart, updatedEnd, featured, seatCount, approved, started, completed, valid, parentId, response);
+            this->search_routes(sortField, descending, start, limit, activeOnly, includesEmpty, rootOnly, showInheritedProperties, hubId, programId, scheduledStart, scheduledEnd, updatedStart, updatedEnd, featured, seatCount, approved, started, completed, valid, parentId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -916,7 +896,6 @@ void RouteApi::set_driver_handler(const Pistache::Rest::Request& request, Pistac
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto id = request.param(":id").as<int64_t>();
         auto driverId = request.param(":driverId").as<int64_t>();
         
@@ -930,7 +909,7 @@ void RouteApi::set_driver_handler(const Pistache::Rest::Request& request, Pistac
 
 
 
-            this->set_driver(version, id, driverId, response);
+            this->set_driver(id, driverId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -950,7 +929,6 @@ void RouteApi::update_route_handler(const Pistache::Rest::Request& request, Pist
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         
         // Getting the body param
@@ -975,7 +953,7 @@ void RouteApi::update_route_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->update_route(version, routeId, body, response);
+            this->update_route(routeId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -995,7 +973,6 @@ void RouteApi::update_route_stop_handler(const Pistache::Rest::Request& request,
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto routeId = request.param(":routeId").as<int64_t>();
         auto stopId = request.param(":stopId").as<int64_t>();
         
@@ -1021,7 +998,7 @@ void RouteApi::update_route_stop_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->update_route_stop(version, routeId, stopId, body, response);
+            this->update_route_stop(routeId, stopId, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

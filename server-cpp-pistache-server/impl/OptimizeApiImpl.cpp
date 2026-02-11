@@ -29,10 +29,10 @@ OptimizeApiImpl::OptimizeApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 
 }
 
-void OptimizeApiImpl::get_optimization_result(const double &version, const std::string &batchID, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void OptimizeApiImpl::get_optimization_result(const std::string &batchID, const std::optional<int32_t> &start, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void OptimizeApiImpl::request_optimization(const double &version, const Orders &body, Pistache::Http::ResponseWriter &response) {
+void OptimizeApiImpl::request_optimization(const Orders &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 

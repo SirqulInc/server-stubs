@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string TicketApi::base = "";
+const std::string TicketApi::base = "/api/3.18";
 
 TicketApi::TicketApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,12 +32,12 @@ void TicketApi::init() {
 void TicketApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/ticket/count", Routes::bind(&TicketApi::get_ticket_count_handler, this));
-    Routes::Get(*router, base + "/api/:version/ticket/getList", Routes::bind(&TicketApi::get_ticket_list_handler, this));
-    Routes::Post(*router, base + "/api/:version/purchase/gift", Routes::bind(&TicketApi::gift_purchase_handler, this));
-    Routes::Post(*router, base + "/api/:version/ticket/save", Routes::bind(&TicketApi::save_ticket_handler, this));
-    Routes::Post(*router, base + "/api/:version/ticket/save/fileUpload", Routes::bind(&TicketApi::save_ticket_via_file_upload_handler, this));
-    Routes::Get(*router, base + "/api/:version/ticket/ticketoffers", Routes::bind(&TicketApi::ticket_offers_handler, this));
+    Routes::Get(*router, base + "/ticket/count", Routes::bind(&TicketApi::get_ticket_count_handler, this));
+    Routes::Get(*router, base + "/ticket/getList", Routes::bind(&TicketApi::get_ticket_list_handler, this));
+    Routes::Post(*router, base + "/purchase/gift", Routes::bind(&TicketApi::gift_purchase_handler, this));
+    Routes::Post(*router, base + "/ticket/save", Routes::bind(&TicketApi::save_ticket_handler, this));
+    Routes::Post(*router, base + "/ticket/save/fileUpload", Routes::bind(&TicketApi::save_ticket_via_file_upload_handler, this));
+    Routes::Get(*router, base + "/ticket/ticketoffers", Routes::bind(&TicketApi::ticket_offers_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&TicketApi::ticket_api_default_handler, this));
@@ -72,8 +72,6 @@ std::pair<Pistache::Http::Code, std::string> TicketApi::handleOperationException
 void TicketApi::get_ticket_count_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -126,7 +124,7 @@ void TicketApi::get_ticket_count_handler(const Pistache::Rest::Request& request,
 
 
 
-            this->get_ticket_count(version, deviceId, accountId, gameType, appKey, ticketType, response);
+            this->get_ticket_count(deviceId, accountId, gameType, appKey, ticketType, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -145,8 +143,6 @@ void TicketApi::get_ticket_count_handler(const Pistache::Rest::Request& request,
 void TicketApi::get_ticket_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -231,7 +227,7 @@ void TicketApi::get_ticket_list_handler(const Pistache::Rest::Request& request, 
 
 
 
-            this->get_ticket_list(version, deviceId, accountId, ticketObjectType, actionType, ticketIds, objectIds, receiptTokens, gameType, appKey, response);
+            this->get_ticket_list(deviceId, accountId, ticketObjectType, actionType, ticketIds, objectIds, receiptTokens, gameType, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -250,8 +246,6 @@ void TicketApi::get_ticket_list_handler(const Pistache::Rest::Request& request, 
 void TicketApi::gift_purchase_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -328,7 +322,7 @@ void TicketApi::gift_purchase_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->gift_purchase(version, receiverAccountId, ticketId, deviceId, accountId, assetId, customMessage, gameType, appKey, response);
+            this->gift_purchase(receiverAccountId, ticketId, deviceId, accountId, assetId, customMessage, gameType, appKey, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -347,8 +341,6 @@ void TicketApi::gift_purchase_handler(const Pistache::Rest::Request& request, Pi
 void TicketApi::save_ticket_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -505,7 +497,7 @@ void TicketApi::save_ticket_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->save_ticket(version, actionType, ticketObjectType, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, receiptData, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion, response);
+            this->save_ticket(actionType, ticketObjectType, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, receiptData, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -544,8 +536,6 @@ void TicketApi::save_ticket_via_file_upload_handler(const Pistache::Rest::Reques
 void TicketApi::ticket_offers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
     
@@ -557,7 +547,7 @@ void TicketApi::ticket_offers_handler(const Pistache::Rest::Request& request, Pi
 
 
 
-            this->ticket_offers(version, response);
+            this->ticket_offers(response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

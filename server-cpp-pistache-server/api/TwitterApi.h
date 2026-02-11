@@ -84,16 +84,14 @@ private:
     /// <remarks>
     /// Makes an authorization call to twitter for a user to login and allow any app permissions.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="appKey">the application key</param>
-    virtual void authorize_twitter( const double &version, const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void authorize_twitter( const std::optional<std::string> &appKey, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Login Twitter
     /// </summary>
     /// <remarks>
     /// Returns the user profile information given an access token and the secret access token. This call verifies the tokens with twitter and creates a Sirqul account for the user if its their first time logging in.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accessToken">The access token</param>
     /// <param name="accessTokenSecret">The secret access token</param>
     /// <param name="appKey">The application key</param>
@@ -101,7 +99,7 @@ private:
     /// <param name="deviceId">The device id (optional, default to &quot;&quot;)</param>
     /// <param name="latitude">The current latitude of the user (optional, default to 0.0)</param>
     /// <param name="longitude">The current longitude of the user (optional, default to 0.0)</param>
-    virtual void login_twitter( const double &version, const std::optional<std::string> &accessToken, const std::optional<std::string> &accessTokenSecret, const std::optional<std::string> &appKey, const std::optional<std::string> &responseFilters, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void login_twitter( const std::optional<std::string> &accessToken, const std::optional<std::string> &accessTokenSecret, const std::optional<std::string> &appKey, const std::optional<std::string> &responseFilters, const std::optional<std::string> &deviceId, const std::optional<double> &latitude, const std::optional<double> &longitude, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string VehicleTypeApi::base = "";
+const std::string VehicleTypeApi::base = "/api/3.18";
 
 VehicleTypeApi::VehicleTypeApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,11 +32,11 @@ void VehicleTypeApi::init() {
 void VehicleTypeApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/vehicle/type", Routes::bind(&VehicleTypeApi::create_vehicle_type_handler, this));
-    Routes::Delete(*router, base + "/api/:version/vehicle/type/:vehicleTypeId", Routes::bind(&VehicleTypeApi::delete_vehicle_type_handler, this));
-    Routes::Get(*router, base + "/api/:version/vehicle/type/:vehicleTypeId", Routes::bind(&VehicleTypeApi::get_vehicle_type_handler, this));
-    Routes::Get(*router, base + "/api/:version/vehicle/type", Routes::bind(&VehicleTypeApi::search_vehicle_types_handler, this));
-    Routes::Put(*router, base + "/api/:version/vehicle/type/:vehicleTypeId", Routes::bind(&VehicleTypeApi::update_vehicle_type_handler, this));
+    Routes::Post(*router, base + "/vehicle/type", Routes::bind(&VehicleTypeApi::create_vehicle_type_handler, this));
+    Routes::Delete(*router, base + "/vehicle/type/:vehicleTypeId", Routes::bind(&VehicleTypeApi::delete_vehicle_type_handler, this));
+    Routes::Get(*router, base + "/vehicle/type/:vehicleTypeId", Routes::bind(&VehicleTypeApi::get_vehicle_type_handler, this));
+    Routes::Get(*router, base + "/vehicle/type", Routes::bind(&VehicleTypeApi::search_vehicle_types_handler, this));
+    Routes::Put(*router, base + "/vehicle/type/:vehicleTypeId", Routes::bind(&VehicleTypeApi::update_vehicle_type_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&VehicleTypeApi::vehicle_type_api_default_handler, this));
@@ -71,8 +71,6 @@ std::pair<Pistache::Http::Code, std::string> VehicleTypeApi::handleOperationExce
 void VehicleTypeApi::create_vehicle_type_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         // Getting the body param
         
@@ -105,7 +103,7 @@ void VehicleTypeApi::create_vehicle_type_handler(const Pistache::Rest::Request& 
 
 
 
-            this->create_vehicle_type(version, vehicleType, body, response);
+            this->create_vehicle_type(vehicleType, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -125,7 +123,6 @@ void VehicleTypeApi::delete_vehicle_type_handler(const Pistache::Rest::Request& 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto vehicleTypeId = request.param(":vehicleTypeId").as<int64_t>();
         
         
@@ -138,7 +135,7 @@ void VehicleTypeApi::delete_vehicle_type_handler(const Pistache::Rest::Request& 
 
 
 
-            this->delete_vehicle_type(version, vehicleTypeId, response);
+            this->delete_vehicle_type(vehicleTypeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -158,7 +155,6 @@ void VehicleTypeApi::get_vehicle_type_handler(const Pistache::Rest::Request& req
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto vehicleTypeId = request.param(":vehicleTypeId").as<int64_t>();
         
         
@@ -171,7 +167,7 @@ void VehicleTypeApi::get_vehicle_type_handler(const Pistache::Rest::Request& req
 
 
 
-            this->get_vehicle_type(version, vehicleTypeId, response);
+            this->get_vehicle_type(vehicleTypeId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -190,8 +186,6 @@ void VehicleTypeApi::get_vehicle_type_handler(const Pistache::Rest::Request& req
 void VehicleTypeApi::search_vehicle_types_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -260,7 +254,7 @@ void VehicleTypeApi::search_vehicle_types_handler(const Pistache::Rest::Request&
 
 
 
-            this->search_vehicle_types(version, sortField, descending, start, limit, activeOnly, retailerId, hubId, response);
+            this->search_vehicle_types(sortField, descending, start, limit, activeOnly, retailerId, hubId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -280,7 +274,6 @@ void VehicleTypeApi::update_vehicle_type_handler(const Pistache::Rest::Request& 
     try {
 
         // Getting the path params
-        auto version = request.param(":version").as<double>();
         auto vehicleTypeId = request.param(":vehicleTypeId").as<int64_t>();
         
         // Getting the body param
@@ -314,7 +307,7 @@ void VehicleTypeApi::update_vehicle_type_handler(const Pistache::Rest::Request& 
 
 
 
-            this->update_vehicle_type(version, vehicleTypeId, vehicleType, body, response);
+            this->update_vehicle_type(vehicleTypeId, vehicleType, body, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

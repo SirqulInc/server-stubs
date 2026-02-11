@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string ScoreApi::base = "";
+const std::string ScoreApi::base = "/api/3.18";
 
 ScoreApi::ScoreApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,9 +32,9 @@ void ScoreApi::init() {
 void ScoreApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/score/create", Routes::bind(&ScoreApi::create_score_handler, this));
-    Routes::Get(*router, base + "/api/:version/score/get", Routes::bind(&ScoreApi::get_score_handler, this));
-    Routes::Get(*router, base + "/api/:version/score/search", Routes::bind(&ScoreApi::search_scores_handler, this));
+    Routes::Post(*router, base + "/score/create", Routes::bind(&ScoreApi::create_score_handler, this));
+    Routes::Get(*router, base + "/score/get", Routes::bind(&ScoreApi::get_score_handler, this));
+    Routes::Get(*router, base + "/score/search", Routes::bind(&ScoreApi::search_scores_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&ScoreApi::score_api_default_handler, this));
@@ -69,8 +69,6 @@ std::pair<Pistache::Http::Code, std::string> ScoreApi::handleOperationException(
 void ScoreApi::create_score_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -163,7 +161,7 @@ void ScoreApi::create_score_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->create_score(version, accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest, response);
+            this->create_score(accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -182,8 +180,6 @@ void ScoreApi::create_score_handler(const Pistache::Rest::Request& request, Pist
 void ScoreApi::get_score_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -268,7 +264,7 @@ void ScoreApi::get_score_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_score(version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus, response);
+            this->get_score(accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -287,8 +283,6 @@ void ScoreApi::get_score_handler(const Pistache::Rest::Request& request, Pistach
 void ScoreApi::search_scores_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -357,7 +351,7 @@ void ScoreApi::search_scores_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->search_scores(version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, response);
+            this->search_scores(accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

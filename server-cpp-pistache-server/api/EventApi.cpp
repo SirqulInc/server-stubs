@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string EventApi::base = "";
+const std::string EventApi::base = "/api/3.18";
 
 EventApi::EventApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,13 +32,13 @@ void EventApi::init() {
 void EventApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Post(*router, base + "/api/:version/event/attend", Routes::bind(&EventApi::attend_event_handler, this));
-    Routes::Post(*router, base + "/api/:version/event/create", Routes::bind(&EventApi::create_event_handler, this));
-    Routes::Post(*router, base + "/api/:version/event/delete", Routes::bind(&EventApi::delete_event_handler, this));
-    Routes::Get(*router, base + "/api/:version/event/get", Routes::bind(&EventApi::get_event_handler, this));
-    Routes::Get(*router, base + "/api/:version/event/attendance/search", Routes::bind(&EventApi::search_event_transactions_handler, this));
-    Routes::Get(*router, base + "/api/:version/event/search", Routes::bind(&EventApi::search_events_handler, this));
-    Routes::Post(*router, base + "/api/:version/event/update", Routes::bind(&EventApi::update_event_handler, this));
+    Routes::Post(*router, base + "/event/attend", Routes::bind(&EventApi::attend_event_handler, this));
+    Routes::Post(*router, base + "/event/create", Routes::bind(&EventApi::create_event_handler, this));
+    Routes::Post(*router, base + "/event/delete", Routes::bind(&EventApi::delete_event_handler, this));
+    Routes::Get(*router, base + "/event/get", Routes::bind(&EventApi::get_event_handler, this));
+    Routes::Get(*router, base + "/event/attendance/search", Routes::bind(&EventApi::search_event_transactions_handler, this));
+    Routes::Get(*router, base + "/event/search", Routes::bind(&EventApi::search_events_handler, this));
+    Routes::Post(*router, base + "/event/update", Routes::bind(&EventApi::update_event_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&EventApi::event_api_default_handler, this));
@@ -73,8 +73,6 @@ std::pair<Pistache::Http::Code, std::string> EventApi::handleOperationException(
 void EventApi::attend_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -167,7 +165,7 @@ void EventApi::attend_event_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->attend_event(version, deviceId, accountId, appKey, listingId, retailerLocationId, offerLocationId, transactionId, status, latitude, longitude, response);
+            this->attend_event(deviceId, accountId, appKey, listingId, retailerLocationId, offerLocationId, transactionId, status, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -186,8 +184,6 @@ void EventApi::attend_event_handler(const Pistache::Rest::Request& request, Pist
 void EventApi::create_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -296,7 +292,7 @@ void EventApi::create_event_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->create_event(version, accountId, title, retailerLocationIds, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, metaData, response);
+            this->create_event(accountId, title, retailerLocationIds, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, metaData, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -315,8 +311,6 @@ void EventApi::create_event_handler(const Pistache::Rest::Request& request, Pist
 void EventApi::delete_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -345,7 +339,7 @@ void EventApi::delete_event_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->delete_event(version, accountId, eventId, response);
+            this->delete_event(accountId, eventId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -364,8 +358,6 @@ void EventApi::delete_event_handler(const Pistache::Rest::Request& request, Pist
 void EventApi::get_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -394,7 +386,7 @@ void EventApi::get_event_handler(const Pistache::Rest::Request& request, Pistach
 
 
 
-            this->get_event(version, accountId, eventId, response);
+            this->get_event(accountId, eventId, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -413,8 +405,6 @@ void EventApi::get_event_handler(const Pistache::Rest::Request& request, Pistach
 void EventApi::search_event_transactions_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -579,7 +569,7 @@ void EventApi::search_event_transactions_handler(const Pistache::Rest::Request& 
 
 
 
-            this->search_event_transactions(version, deviceId, accountId, appKey, keyword, retailerId, retailerLocationId, excludeRetailerLocationId, listingId, offerId, offerLocationId, customerAccountIds, affiliatedCategoryIds, startDate, endDate, statuses, sortField, descending, start, limit, response);
+            this->search_event_transactions(deviceId, accountId, appKey, keyword, retailerId, retailerLocationId, excludeRetailerLocationId, listingId, offerId, offerLocationId, customerAccountIds, affiliatedCategoryIds, startDate, endDate, statuses, sortField, descending, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -598,8 +588,6 @@ void EventApi::search_event_transactions_handler(const Pistache::Rest::Request& 
 void EventApi::search_events_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -716,7 +704,7 @@ void EventApi::search_events_handler(const Pistache::Rest::Request& request, Pis
 
 
 
-            this->search_events(version, accountId, keyword, activeOnly, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, sortField, descending, startDate, endDate, start, limit, response);
+            this->search_events(accountId, keyword, activeOnly, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, sortField, descending, startDate, endDate, start, limit, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -735,8 +723,6 @@ void EventApi::search_events_handler(const Pistache::Rest::Request& request, Pis
 void EventApi::update_event_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -845,7 +831,7 @@ void EventApi::update_event_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->update_event(version, accountId, eventId, retailerLocationIds, title, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, response);
+            this->update_event(accountId, eventId, retailerLocationIds, title, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

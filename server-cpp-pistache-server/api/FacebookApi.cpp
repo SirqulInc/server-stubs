@@ -19,7 +19,7 @@ namespace org::openapitools::server::api
 using namespace org::openapitools::server::helpers;
 using namespace org::openapitools::server::model;
 
-const std::string FacebookApi::base = "";
+const std::string FacebookApi::base = "/api/3.18";
 
 FacebookApi::FacebookApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
@@ -32,8 +32,8 @@ void FacebookApi::init() {
 void FacebookApi::setupRoutes() {
     using namespace Pistache::Rest;
 
-    Routes::Get(*router, base + "/api/:version/facebook/getfbtoken", Routes::bind(&FacebookApi::get_token_handler, this));
-    Routes::Post(*router, base + "/api/:version/facebook/graph", Routes::bind(&FacebookApi::graph_interface_handler, this));
+    Routes::Get(*router, base + "/facebook/getfbtoken", Routes::bind(&FacebookApi::get_token_handler, this));
+    Routes::Post(*router, base + "/facebook/graph", Routes::bind(&FacebookApi::graph_interface_handler, this));
 
     // Default handler, called when a route is not found
     router->addCustomHandler(Routes::bind(&FacebookApi::facebook_api_default_handler, this));
@@ -68,8 +68,6 @@ std::pair<Pistache::Http::Code, std::string> FacebookApi::handleOperationExcepti
 void FacebookApi::get_token_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -114,7 +112,7 @@ void FacebookApi::get_token_handler(const Pistache::Rest::Request& request, Pist
 
 
 
-            this->get_token(version, deviceId, accountId, latitude, longitude, response);
+            this->get_token(deviceId, accountId, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;
@@ -133,8 +131,6 @@ void FacebookApi::get_token_handler(const Pistache::Rest::Request& request, Pist
 void FacebookApi::graph_interface_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-        // Getting the path params
-        auto version = request.param(":version").as<double>();
         
         
         // Getting the query params
@@ -227,7 +223,7 @@ void FacebookApi::graph_interface_handler(const Pistache::Rest::Request& request
 
 
 
-            this->graph_interface(version, event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude, response);
+            this->graph_interface(event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude, response);
             } catch (Pistache::Http::HttpError &e) {
                 response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
                 return;

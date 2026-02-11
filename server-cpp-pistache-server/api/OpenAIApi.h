@@ -82,11 +82,10 @@ private:
     /// <remarks>
     /// Generate images with OpenAI.
     /// </remarks>
-    /// <param name="version"></param>
     /// <param name="accountId">Sirqul Account Id</param>
     /// <param name="postBody">Post Body Parameters</param>
     /// <param name="returnRawResponse">Return raw response (optional, default to false)</param>
-    virtual void image_generation( const double &version, const std::optional<int64_t> &accountId, const std::optional<std::string> &postBody, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void image_generation( const std::optional<int64_t> &accountId, const std::optional<std::string> &postBody, const std::optional<bool> &returnRawResponse, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

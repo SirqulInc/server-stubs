@@ -32,16 +32,16 @@ LocationApiImpl::LocationApiImpl(const std::shared_ptr<Pistache::Rest::Router>& 
 void LocationApiImpl::cache_trilateration_data(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LocationApiImpl::cache_trilateration_data_gzip(const double &version, const TrilatCacheRequest &body, Pistache::Http::ResponseWriter &response) {
+void LocationApiImpl::cache_trilateration_data_gzip(const TrilatCacheRequest &body, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LocationApiImpl::get_location_by_ip(const double &version, const std::optional<std::string> &ip, Pistache::Http::ResponseWriter &response) {
+void LocationApiImpl::get_location_by_ip(const std::optional<std::string> &ip, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LocationApiImpl::get_location_by_trilateration(const double &version, const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &data, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) {
+void LocationApiImpl::get_location_by_trilateration(const std::optional<int64_t> &accountId, const std::optional<double> &latitude, const std::optional<double> &longitude, const std::optional<std::string> &data, const std::optional<std::string> &responseFilters, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
-void LocationApiImpl::get_locations(const double &version, const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &currentlatitude, const std::optional<double> &currentlongitude, const std::optional<double> &currentLatitude, const std::optional<double> &currentLongitude, const std::optional<std::string> &query, const std::optional<std::string> &zipcode, const std::optional<std::string> &zipCode, const std::optional<double> &selectedMaplatitude, const std::optional<double> &selectedMaplongitude, const std::optional<double> &selectedMapLatitude, const std::optional<double> &selectedMapLongitude, const std::optional<double> &searchRange, const std::optional<bool> &useGeocode, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
+void LocationApiImpl::get_locations(const std::optional<std::string> &deviceId, const std::optional<int64_t> &accountId, const std::optional<double> &currentlatitude, const std::optional<double> &currentlongitude, const std::optional<double> &currentLatitude, const std::optional<double> &currentLongitude, const std::optional<std::string> &query, const std::optional<std::string> &zipcode, const std::optional<std::string> &zipCode, const std::optional<double> &selectedMaplatitude, const std::optional<double> &selectedMaplongitude, const std::optional<double> &selectedMapLatitude, const std::optional<double> &selectedMapLongitude, const std::optional<double> &searchRange, const std::optional<bool> &useGeocode, const std::optional<int32_t> &i, const std::optional<int32_t> &start, const std::optional<int32_t> &l, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");
 }
 
