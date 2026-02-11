@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/secure/application/create', {
+MyApp.add_route('POST', '/api/3.18/secure/application/create', {
   "resourcePath" => "/SecureApp",
   "summary" => "Create Secure Application",
   "nickname" => "create_secure_application",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/secure/application/create",
+  "endpoint" => "/secure/application/create",
   "notes" => "Create a secure application record.",
   "parameters" => [
     {
@@ -83,12 +83,6 @@ MyApp.add_route('POST', '/api/{version}/secure/application/create', {
       "defaultValue" => "'UNKNOWN'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -97,12 +91,12 @@ MyApp.add_route('POST', '/api/{version}/secure/application/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/secure/application/delete', {
+MyApp.add_route('POST', '/api/3.18/secure/application/delete', {
   "resourcePath" => "/SecureApp",
   "summary" => "Delete Secure Application",
   "nickname" => "delete_secure_application",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/secure/application/delete",
+  "endpoint" => "/secure/application/delete",
   "notes" => "Delete a secure application record.",
   "parameters" => [
     {
@@ -119,12 +113,6 @@ MyApp.add_route('POST', '/api/{version}/secure/application/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -133,12 +121,12 @@ MyApp.add_route('POST', '/api/{version}/secure/application/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/secure/login', {
+MyApp.add_route('POST', '/api/3.18/secure/login', {
   "resourcePath" => "/SecureApp",
   "summary" => "Login Clear",
   "nickname" => "login_secure",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/secure/login",
+  "endpoint" => "/secure/login",
   "notes" => "Login via Clear.me. Creates a new account if logging in for the first time.",
   "parameters" => [
     {
@@ -207,12 +195,6 @@ MyApp.add_route('POST', '/api/{version}/secure/login', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -221,20 +203,14 @@ MyApp.add_route('POST', '/api/{version}/secure/login', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/secure/purchase', {
+MyApp.add_route('POST', '/api/3.18/secure/purchase', {
   "resourcePath" => "/SecureApp",
   "summary" => "Purchase Clear",
   "nickname" => "purchase_secure",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/secure/purchase",
+  "endpoint" => "/secure/purchase",
   "notes" => "Purchase via Clear.me. Creates a new account if purchasing for the first time.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "The payment request object",
@@ -249,12 +225,12 @@ MyApp.add_route('POST', '/api/{version}/secure/purchase', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/secure/application/reset', {
+MyApp.add_route('POST', '/api/3.18/secure/application/reset', {
   "resourcePath" => "/SecureApp",
   "summary" => "Rest Secure Application",
   "nickname" => "reset_secure",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/secure/application/reset",
+  "endpoint" => "/secure/application/reset",
   "notes" => "Reset a secure application client.",
   "parameters" => [
     {
@@ -271,12 +247,6 @@ MyApp.add_route('POST', '/api/{version}/secure/application/reset', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -285,12 +255,12 @@ MyApp.add_route('POST', '/api/{version}/secure/application/reset', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/secure/application/update', {
+MyApp.add_route('POST', '/api/3.18/secure/application/update', {
   "resourcePath" => "/SecureApp",
   "summary" => "Update Secure Application",
   "nickname" => "update_secure_application",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/secure/application/update",
+  "endpoint" => "/secure/application/update",
   "notes" => "Update a secure application record.",
   "parameters" => [
     {
@@ -362,12 +332,6 @@ MyApp.add_route('POST', '/api/{version}/secure/application/update', {
       "dataType" => "String",
       "allowableValues" => "[UNKNOWN, LEFT_INDEX, LEFT_MIDDLE, LEFT_RING, LEFT_LITTLE, LEFT_THUMB, RIGHT_INDEX, RIGHT_MIDDLE, RIGHT_RING, RIGHT_LITTLE, RIGHT_THUMB, LEFT, RIGHT]",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

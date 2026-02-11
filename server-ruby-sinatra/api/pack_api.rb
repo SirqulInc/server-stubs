@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/pack/create', {
+MyApp.add_route('POST', '/api/3.18/pack/create', {
   "resourcePath" => "/Pack",
   "summary" => "Create Pack",
   "nickname" => "create_pack",
   "responseClass" => "PackResponse",
-  "endpoint" => "/api/{version}/pack/create",
+  "endpoint" => "/pack/create",
   "notes" => "Create a pack.",
   "parameters" => [
     {
@@ -177,12 +177,6 @@ MyApp.add_route('POST', '/api/{version}/pack/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -191,12 +185,12 @@ MyApp.add_route('POST', '/api/{version}/pack/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/pack/delete', {
+MyApp.add_route('POST', '/api/3.18/pack/delete', {
   "resourcePath" => "/Pack",
   "summary" => "Delete Pack",
   "nickname" => "delete_pack",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/pack/delete",
+  "endpoint" => "/pack/delete",
   "notes" => "Delete a pack.",
   "parameters" => [
     {
@@ -213,12 +207,6 @@ MyApp.add_route('POST', '/api/{version}/pack/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -227,12 +215,12 @@ MyApp.add_route('POST', '/api/{version}/pack/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/pack/get', {
+MyApp.add_route('GET', '/api/3.18/pack/get', {
   "resourcePath" => "/Pack",
   "summary" => "Get Pack",
   "nickname" => "get_pack",
   "responseClass" => "PackResponse",
-  "endpoint" => "/api/{version}/pack/get",
+  "endpoint" => "/pack/get",
   "notes" => "Get a pack.",
   "parameters" => [
     {
@@ -256,12 +244,6 @@ MyApp.add_route('GET', '/api/{version}/pack/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -270,12 +252,12 @@ MyApp.add_route('GET', '/api/{version}/pack/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/pack/search', {
+MyApp.add_route('GET', '/api/3.18/pack/search', {
   "resourcePath" => "/Pack",
   "summary" => "Search Packs",
   "nickname" => "search_packs",
   "responseClass" => "Array<PackResponse>",
-  "endpoint" => "/api/{version}/pack/search",
+  "endpoint" => "/pack/search",
   "notes" => "Search on packs.",
   "parameters" => [
     {
@@ -348,12 +330,6 @@ MyApp.add_route('GET', '/api/{version}/pack/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -362,12 +338,12 @@ MyApp.add_route('GET', '/api/{version}/pack/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/pack/update', {
+MyApp.add_route('POST', '/api/3.18/pack/update', {
   "resourcePath" => "/Pack",
   "summary" => "Update Pack",
   "nickname" => "update_pack",
   "responseClass" => "PackResponse",
-  "endpoint" => "/api/{version}/pack/update",
+  "endpoint" => "/pack/update",
   "notes" => "Update a pack.",
   "parameters" => [
     {
@@ -544,12 +520,6 @@ MyApp.add_route('POST', '/api/{version}/pack/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

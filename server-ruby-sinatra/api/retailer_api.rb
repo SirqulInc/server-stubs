@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/create', {
+MyApp.add_route('POST', '/api/3.18/retailer/create', {
   "resourcePath" => "/Retailer",
   "summary" => "Create Retailer",
   "nickname" => "create_retailer",
   "responseClass" => "RetailerFullResponse",
-  "endpoint" => "/api/{version}/retailer/create",
+  "endpoint" => "/retailer/create",
   "notes" => "Create a retailer record. A billable entity must be created first before a retailer record can be made.",
   "parameters" => [
     {
@@ -240,12 +240,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/create', {
       "allowableValues" => "[HTML, XML, JSON, CSV]",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -254,12 +248,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/delete', {
+MyApp.add_route('POST', '/api/3.18/retailer/delete', {
   "resourcePath" => "/Retailer",
   "summary" => "Delete Retailer",
   "nickname" => "delete_retailer",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/delete",
+  "endpoint" => "/retailer/delete",
   "notes" => "Set the deleted timestamp to current time.",
   "parameters" => [
     {
@@ -283,12 +277,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -297,12 +285,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/get', {
+MyApp.add_route('GET', '/api/3.18/retailer/get', {
   "resourcePath" => "/Retailer",
   "summary" => "Get Retailer",
   "nickname" => "get_retailer",
   "responseClass" => "RetailerFullResponse",
-  "endpoint" => "/api/{version}/retailer/get",
+  "endpoint" => "/retailer/get",
   "notes" => "Gets a retailer. Only the owner and the employees of a retailer have access to view its information.",
   "parameters" => [
     {
@@ -333,12 +321,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -347,12 +329,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/search', {
+MyApp.add_route('GET', '/api/3.18/retailer/search', {
   "resourcePath" => "/Retailer",
   "summary" => "Search Retailers",
   "nickname" => "get_retailers",
   "responseClass" => "Array<RetailerResponse>",
-  "endpoint" => "/api/{version}/retailer/search",
+  "endpoint" => "/retailer/search",
   "notes" => "earches on retailers that the account has access to.",
   "parameters" => [
     {
@@ -453,12 +435,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -467,12 +443,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/login', {
+MyApp.add_route('POST', '/api/3.18/retailer/login', {
   "resourcePath" => "/Retailer",
   "summary" => "Login Retailer",
   "nickname" => "retailer_login_check",
   "responseClass" => "AccountLoginResponse",
-  "endpoint" => "/api/{version}/retailer/login",
+  "endpoint" => "/retailer/login",
   "notes" => "Retailer login check.",
   "parameters" => [
     {
@@ -517,12 +493,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/login', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -531,12 +501,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/login', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/update', {
+MyApp.add_route('POST', '/api/3.18/retailer/update', {
   "resourcePath" => "/Retailer",
   "summary" => "Update Retailer",
   "nickname" => "update_retailer",
   "responseClass" => "RetailerFullResponse",
-  "endpoint" => "/api/{version}/retailer/update",
+  "endpoint" => "/retailer/update",
   "notes" => "Update a retailer record. Only the owner and the employees of the retailer have access to update its information.",
   "parameters" => [
     {
@@ -762,12 +732,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/update', {
       "dataType" => "String",
       "allowableValues" => "[HTML, XML, JSON, CSV]",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

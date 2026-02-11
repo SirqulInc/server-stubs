@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/vehicle', {
+MyApp.add_route('POST', '/api/3.18/vehicle', {
   "resourcePath" => "/Vehicle",
   "summary" => "Create Vehicle",
   "nickname" => "create_vehicle",
   "responseClass" => "Vehicle",
-  "endpoint" => "/api/{version}/vehicle",
+  "endpoint" => "/vehicle",
   "notes" => "Create new vehicle",
   "parameters" => [
     {
@@ -15,12 +15,6 @@ MyApp.add_route('POST', '/api/{version}/vehicle', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "body",
@@ -36,20 +30,14 @@ MyApp.add_route('POST', '/api/{version}/vehicle', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/vehicle/{id}', {
+MyApp.add_route('DELETE', '/api/3.18/vehicle/{id}', {
   "resourcePath" => "/Vehicle",
   "summary" => "Delete Vehicle",
   "nickname" => "delete_vehicle",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vehicle/{id}",
+  "endpoint" => "/vehicle/{id}",
   "notes" => "Delete an existing vehicle",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "The id of the vehicle to delete",
@@ -64,20 +52,14 @@ MyApp.add_route('DELETE', '/api/{version}/vehicle/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vehicle/{id}', {
+MyApp.add_route('GET', '/api/3.18/vehicle/{id}', {
   "resourcePath" => "/Vehicle",
   "summary" => "Get Vehicle",
   "nickname" => "get_vehicle",
   "responseClass" => "Vehicle",
-  "endpoint" => "/api/{version}/vehicle/{id}",
+  "endpoint" => "/vehicle/{id}",
   "notes" => "Get an existing vehicle",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "The id of the vehicle requested",
@@ -92,12 +74,12 @@ MyApp.add_route('GET', '/api/{version}/vehicle/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vehicle', {
+MyApp.add_route('GET', '/api/3.18/vehicle', {
   "resourcePath" => "/Vehicle",
   "summary" => "Search Vehicle",
   "nickname" => "search_vehicle",
   "responseClass" => "Array<Vehicle>",
-  "endpoint" => "/api/{version}/vehicle",
+  "endpoint" => "/vehicle",
   "notes" => "Search for vehicles",
   "parameters" => [
     {
@@ -154,12 +136,6 @@ MyApp.add_route('GET', '/api/{version}/vehicle', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -168,12 +144,12 @@ MyApp.add_route('GET', '/api/{version}/vehicle', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/vehicle/{id}', {
+MyApp.add_route('PUT', '/api/3.18/vehicle/{id}', {
   "resourcePath" => "/Vehicle",
   "summary" => "Update Vehicle",
   "nickname" => "update_vehicle",
   "responseClass" => "Vehicle",
-  "endpoint" => "/api/{version}/vehicle/{id}",
+  "endpoint" => "/vehicle/{id}",
   "notes" => "Update an existing vehicle",
   "parameters" => [
     {
@@ -182,12 +158,6 @@ MyApp.add_route('PUT', '/api/{version}/vehicle/{id}', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "id",

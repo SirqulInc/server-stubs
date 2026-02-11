@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/stripe/checkout/session/create', {
+MyApp.add_route('POST', '/api/3.18/stripe/checkout/session/create', {
   "resourcePath" => "/Stripe",
   "summary" => "Create Stripe Checkout Session",
   "nickname" => "create_stripe_checkout_session",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/stripe/checkout/session/create",
+  "endpoint" => "/stripe/checkout/session/create",
   "notes" => "Create a Stripe checkout session",
   "parameters" => [
     {
@@ -22,12 +22,6 @@ MyApp.add_route('POST', '/api/{version}/stripe/checkout/session/create', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

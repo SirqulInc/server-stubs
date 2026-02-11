@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/game/question/create', {
+MyApp.add_route('POST', '/api/3.18/game/question/create', {
   "resourcePath" => "/Question",
   "summary" => "Create Question",
   "nickname" => "create_question",
   "responseClass" => "QuestionResponse",
-  "endpoint" => "/api/{version}/game/question/create",
+  "endpoint" => "/game/question/create",
   "notes" => "Create a question and related answers by the given params.",
   "parameters" => [
     {
@@ -86,12 +86,6 @@ MyApp.add_route('POST', '/api/{version}/game/question/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -100,12 +94,12 @@ MyApp.add_route('POST', '/api/{version}/game/question/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/game/question/delete', {
+MyApp.add_route('POST', '/api/3.18/game/question/delete', {
   "resourcePath" => "/Question",
   "summary" => "Delete Question",
   "nickname" => "delete_question",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/game/question/delete",
+  "endpoint" => "/game/question/delete",
   "notes" => "Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete.",
   "parameters" => [
     {
@@ -122,12 +116,6 @@ MyApp.add_route('POST', '/api/{version}/game/question/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -136,12 +124,12 @@ MyApp.add_route('POST', '/api/{version}/game/question/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/game/question/get', {
+MyApp.add_route('GET', '/api/3.18/game/question/get', {
   "resourcePath" => "/Question",
   "summary" => "Get Question",
   "nickname" => "get_question",
   "responseClass" => "QuestionResponse",
-  "endpoint" => "/api/{version}/game/question/get",
+  "endpoint" => "/game/question/get",
   "notes" => "Get a question by the given id.",
   "parameters" => [
     {
@@ -158,12 +146,6 @@ MyApp.add_route('GET', '/api/{version}/game/question/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -172,12 +154,12 @@ MyApp.add_route('GET', '/api/{version}/game/question/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/game/question/search', {
+MyApp.add_route('GET', '/api/3.18/game/question/search', {
   "resourcePath" => "/Question",
   "summary" => "Search Questions",
   "nickname" => "search_questions",
   "responseClass" => "Array<QuestionResponse>",
-  "endpoint" => "/api/{version}/game/question/search",
+  "endpoint" => "/game/question/search",
   "notes" => "Search for questions by the given params.",
   "parameters" => [
     {
@@ -229,12 +211,6 @@ MyApp.add_route('GET', '/api/{version}/game/question/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -243,12 +219,12 @@ MyApp.add_route('GET', '/api/{version}/game/question/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/game/question/update', {
+MyApp.add_route('POST', '/api/3.18/game/question/update', {
   "resourcePath" => "/Question",
   "summary" => "Update Question",
   "nickname" => "update_question",
   "responseClass" => "QuestionResponse",
-  "endpoint" => "/api/{version}/game/question/update",
+  "endpoint" => "/game/question/update",
   "notes" => "Update a question and related answers.",
   "parameters" => [
     {
@@ -334,12 +310,6 @@ MyApp.add_route('POST', '/api/{version}/game/question/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

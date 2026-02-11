@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/sms/buyoffer/{appKey}', {
+MyApp.add_route('POST', '/api/3.18/sms/buyoffer/{appKey}', {
   "resourcePath" => "/Twilio",
   "summary" => "Buy Offer by SMS",
   "nickname" => "sms_buy_offer",
   "responseClass" => "TwiMLResponse",
-  "endpoint" => "/api/{version}/sms/buyoffer/{appKey}",
+  "endpoint" => "/sms/buyoffer/{appKey}",
   "notes" => "Recieve an SMS payload from Twillio to purchase an offer.",
   "parameters" => [
     {
@@ -29,12 +29,6 @@ MyApp.add_route('POST', '/api/{version}/sms/buyoffer/{appKey}', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "app_key",

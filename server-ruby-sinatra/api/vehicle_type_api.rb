@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/vehicle/type', {
+MyApp.add_route('POST', '/api/3.18/vehicle/type', {
   "resourcePath" => "/VehicleType",
   "summary" => "Create Vehicle Type",
   "nickname" => "create_vehicle_type",
   "responseClass" => "VehicleType",
-  "endpoint" => "/api/{version}/vehicle/type",
+  "endpoint" => "/vehicle/type",
   "notes" => "Create a new vehicle type",
   "parameters" => [
     {
@@ -15,12 +15,6 @@ MyApp.add_route('POST', '/api/{version}/vehicle/type', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "body",
@@ -36,20 +30,14 @@ MyApp.add_route('POST', '/api/{version}/vehicle/type', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/vehicle/type/{vehicleTypeId}', {
+MyApp.add_route('DELETE', '/api/3.18/vehicle/type/{vehicleTypeId}', {
   "resourcePath" => "/VehicleType",
   "summary" => "Delete Vehicle Type",
   "nickname" => "delete_vehicle_type",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vehicle/type/{vehicleTypeId}",
+  "endpoint" => "/vehicle/type/{vehicleTypeId}",
   "notes" => "Delete a vehicle type",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "vehicle_type_id",
       "description" => "The id of the requested vehicle type",
@@ -64,20 +52,14 @@ MyApp.add_route('DELETE', '/api/{version}/vehicle/type/{vehicleTypeId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vehicle/type/{vehicleTypeId}', {
+MyApp.add_route('GET', '/api/3.18/vehicle/type/{vehicleTypeId}', {
   "resourcePath" => "/VehicleType",
   "summary" => "Get Vehicle Type",
   "nickname" => "get_vehicle_type",
   "responseClass" => "VehicleType",
-  "endpoint" => "/api/{version}/vehicle/type/{vehicleTypeId}",
+  "endpoint" => "/vehicle/type/{vehicleTypeId}",
   "notes" => "Get a vehicle type",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "vehicle_type_id",
       "description" => "The id of the requested vehicle type",
@@ -92,12 +74,12 @@ MyApp.add_route('GET', '/api/{version}/vehicle/type/{vehicleTypeId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vehicle/type', {
+MyApp.add_route('GET', '/api/3.18/vehicle/type', {
   "resourcePath" => "/VehicleType",
   "summary" => "Search Vehicle Type",
   "nickname" => "search_vehicle_types",
   "responseClass" => "Array<VehicleType>",
-  "endpoint" => "/api/{version}/vehicle/type",
+  "endpoint" => "/vehicle/type",
   "notes" => "Search for types of vehicles",
   "parameters" => [
     {
@@ -154,12 +136,6 @@ MyApp.add_route('GET', '/api/{version}/vehicle/type', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -168,12 +144,12 @@ MyApp.add_route('GET', '/api/{version}/vehicle/type', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/vehicle/type/{vehicleTypeId}', {
+MyApp.add_route('PUT', '/api/3.18/vehicle/type/{vehicleTypeId}', {
   "resourcePath" => "/VehicleType",
   "summary" => "Update Vehicle Type",
   "nickname" => "update_vehicle_type",
   "responseClass" => "VehicleType",
-  "endpoint" => "/api/{version}/vehicle/type/{vehicleTypeId}",
+  "endpoint" => "/vehicle/type/{vehicleTypeId}",
   "notes" => "Update a vehicle type",
   "parameters" => [
     {
@@ -182,12 +158,6 @@ MyApp.add_route('PUT', '/api/{version}/vehicle/type/{vehicleTypeId}', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "vehicle_type_id",

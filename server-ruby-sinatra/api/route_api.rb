@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/route/{routeId}/approve', {
+MyApp.add_route('POST', '/api/3.18/route/{routeId}/approve', {
   "resourcePath" => "/Route",
   "summary" => "Approve Route",
   "nickname" => "approve_route",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route/{routeId}/approve",
+  "endpoint" => "/route/{routeId}/approve",
   "notes" => "Approve a route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to approve",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/route/{routeId}/approve', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/route/{routeId}/copy', {
+MyApp.add_route('POST', '/api/3.18/route/{routeId}/copy', {
   "resourcePath" => "/Route",
   "summary" => "Copy Route",
   "nickname" => "copy_route",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route/{routeId}/copy",
+  "endpoint" => "/route/{routeId}/copy",
   "notes" => "Make an copy of the given route with optional overriding properties",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to duplicate",
@@ -63,20 +51,14 @@ MyApp.add_route('POST', '/api/{version}/route/{routeId}/copy', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/route', {
+MyApp.add_route('POST', '/api/3.18/route', {
   "resourcePath" => "/Route",
   "summary" => "Create Route",
   "nickname" => "create_route",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route",
+  "endpoint" => "/route",
   "notes" => "Create new route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -91,20 +73,14 @@ MyApp.add_route('POST', '/api/{version}/route', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/route/{routeId}/directions', {
+MyApp.add_route('PUT', '/api/3.18/route/{routeId}/directions', {
   "resourcePath" => "/Route",
   "summary" => "Update Route Directions",
   "nickname" => "create_route_directions",
   "responseClass" => "Array<Direction>",
-  "endpoint" => "/api/{version}/route/{routeId}/directions",
+  "endpoint" => "/route/{routeId}/directions",
   "notes" => "Regenerate the directions of a route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to update directions for",
@@ -119,20 +95,14 @@ MyApp.add_route('PUT', '/api/{version}/route/{routeId}/directions', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/route/{routeId}/polyline', {
+MyApp.add_route('PUT', '/api/3.18/route/{routeId}/polyline', {
   "resourcePath" => "/Route",
   "summary" => "Create Route Polyline",
   "nickname" => "create_route_polyline",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route/{routeId}/polyline",
+  "endpoint" => "/route/{routeId}/polyline",
   "notes" => "Update the polyline of the requested route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to create a polyline for",
@@ -147,20 +117,14 @@ MyApp.add_route('PUT', '/api/{version}/route/{routeId}/polyline', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/route/{routeId}', {
+MyApp.add_route('DELETE', '/api/3.18/route/{routeId}', {
   "resourcePath" => "/Route",
   "summary" => "Delete Route",
   "nickname" => "delete_route",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/route/{routeId}",
+  "endpoint" => "/route/{routeId}",
   "notes" => "Delete an existing route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route",
@@ -175,20 +139,14 @@ MyApp.add_route('DELETE', '/api/{version}/route/{routeId}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/route/{routeId}/disapprove', {
+MyApp.add_route('POST', '/api/3.18/route/{routeId}/disapprove', {
   "resourcePath" => "/Route",
   "summary" => "Disapprove Route",
   "nickname" => "disapprove_route",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route/{routeId}/disapprove",
+  "endpoint" => "/route/{routeId}/disapprove",
   "notes" => "Disapprove a route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to reject",
@@ -203,12 +161,12 @@ MyApp.add_route('POST', '/api/{version}/route/{routeId}/disapprove', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route/{routeId}', {
+MyApp.add_route('GET', '/api/3.18/route/{routeId}', {
   "resourcePath" => "/Route",
   "summary" => "Get Route",
   "nickname" => "get_route",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route/{routeId}",
+  "endpoint" => "/route/{routeId}",
   "notes" => "Get an existing route",
   "parameters" => [
     {
@@ -217,12 +175,6 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "route_id",
@@ -238,20 +190,14 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route/{routeId}/directions', {
+MyApp.add_route('GET', '/api/3.18/route/{routeId}/directions', {
   "resourcePath" => "/Route",
   "summary" => "Get Route Directions",
   "nickname" => "get_route_directions",
   "responseClass" => "Array<Direction>",
-  "endpoint" => "/api/{version}/route/{routeId}/directions",
+  "endpoint" => "/route/{routeId}/directions",
   "notes" => "Get the directions of a route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to get directions for",
@@ -266,20 +212,14 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}/directions', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route/{routeId}/shipments', {
+MyApp.add_route('GET', '/api/3.18/route/{routeId}/shipments', {
   "resourcePath" => "/Route",
   "summary" => "Get Route Shipments",
   "nickname" => "get_route_shipments",
   "responseClass" => "Array<Shipment>",
-  "endpoint" => "/api/{version}/route/{routeId}/shipments",
+  "endpoint" => "/route/{routeId}/shipments",
   "notes" => "Get the shipments on the requested route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to get shipments for",
@@ -294,20 +234,14 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}/shipments', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route/{routeId}/stop/{stopId}', {
+MyApp.add_route('GET', '/api/3.18/route/{routeId}/stop/{stopId}', {
   "resourcePath" => "/Route",
   "summary" => "Get Route Stop",
   "nickname" => "get_route_stop",
   "responseClass" => "Stop",
-  "endpoint" => "/api/{version}/route/{routeId}/stop/{stopId}",
+  "endpoint" => "/route/{routeId}/stop/{stopId}",
   "notes" => "Get the specific stop on a route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to get stops for",
@@ -328,12 +262,12 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}/stop/{stopId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route/{routeId}/stops', {
+MyApp.add_route('GET', '/api/3.18/route/{routeId}/stops', {
   "resourcePath" => "/Route",
   "summary" => "Get Route Stops",
   "nickname" => "get_route_stops",
   "responseClass" => "Array<Stop>",
-  "endpoint" => "/api/{version}/route/{routeId}/stops",
+  "endpoint" => "/route/{routeId}/stops",
   "notes" => "The stops of the route requested",
   "parameters" => [
     {
@@ -342,12 +276,6 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}/stops', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "route_id",
@@ -363,20 +291,14 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}/stops', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route/{routeId}/stop/{stopId}/shipments', {
+MyApp.add_route('GET', '/api/3.18/route/{routeId}/stop/{stopId}/shipments', {
   "resourcePath" => "/Route",
   "summary" => "Get Shipments At Stop",
   "nickname" => "get_shipments_at_stop",
   "responseClass" => "Array<Shipment>",
-  "endpoint" => "/api/{version}/route/{routeId}/stop/{stopId}/shipments",
+  "endpoint" => "/route/{routeId}/stop/{stopId}/shipments",
   "notes" => "Get the list of shipments on the requested route at a stop",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route",
@@ -397,20 +319,14 @@ MyApp.add_route('GET', '/api/{version}/route/{routeId}/stop/{stopId}/shipments',
 end
 
 
-MyApp.add_route('POST', '/api/{version}/route/{routeId}/optimize', {
+MyApp.add_route('POST', '/api/3.18/route/{routeId}/optimize', {
   "resourcePath" => "/Route",
   "summary" => "Optimize Route",
   "nickname" => "optimize_route",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/route/{routeId}/optimize",
+  "endpoint" => "/route/{routeId}/optimize",
   "notes" => "Optimize a route. The optimization method based on how the server is configured.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to optimize",
@@ -425,20 +341,14 @@ MyApp.add_route('POST', '/api/{version}/route/{routeId}/optimize', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/route/{routeId}/stop/{stopId}', {
+MyApp.add_route('DELETE', '/api/3.18/route/{routeId}/stop/{stopId}', {
   "resourcePath" => "/Route",
   "summary" => "Delete Stop",
   "nickname" => "remove_stop",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/route/{routeId}/stop/{stopId}",
+  "endpoint" => "/route/{routeId}/stop/{stopId}",
   "notes" => "Delete a stop on a route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route",
@@ -459,20 +369,14 @@ MyApp.add_route('DELETE', '/api/{version}/route/{routeId}/stop/{stopId}', {
 end
 
 
-MyApp.add_route('PATCH', '/api/{version}/route/{routeId}/stops/reorder', {
+MyApp.add_route('PATCH', '/api/3.18/route/{routeId}/stops/reorder', {
   "resourcePath" => "/Route",
   "summary" => "Reorder Route Stops",
   "nickname" => "reorder_route_stops_patch",
   "responseClass" => "Array<Stop>",
-  "endpoint" => "/api/{version}/route/{routeId}/stops/reorder",
+  "endpoint" => "/route/{routeId}/stops/reorder",
   "notes" => "Reordering the stops on the route with and update route distance, time, direction, and polyline",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route",
@@ -493,20 +397,14 @@ MyApp.add_route('PATCH', '/api/{version}/route/{routeId}/stops/reorder', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/route/{routeId}/stops/reorder', {
+MyApp.add_route('POST', '/api/3.18/route/{routeId}/stops/reorder', {
   "resourcePath" => "/Route",
   "summary" => "Reorder Route Stops",
   "nickname" => "reorder_route_stops_post",
   "responseClass" => "Array<Stop>",
-  "endpoint" => "/api/{version}/route/{routeId}/stops/reorder",
+  "endpoint" => "/route/{routeId}/stops/reorder",
   "notes" => "Reordering the stops on the route with and update route distance, time, direction, and polyline",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route",
@@ -527,12 +425,12 @@ MyApp.add_route('POST', '/api/{version}/route/{routeId}/stops/reorder', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/route', {
+MyApp.add_route('GET', '/api/3.18/route', {
   "resourcePath" => "/Route",
   "summary" => "Search Routes",
   "nickname" => "search_routes",
   "responseClass" => "Array<Route>",
-  "endpoint" => "/api/{version}/route",
+  "endpoint" => "/route",
   "notes" => "Search for routes.",
   "parameters" => [
     {
@@ -682,12 +580,6 @@ MyApp.add_route('GET', '/api/{version}/route', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -696,20 +588,14 @@ MyApp.add_route('GET', '/api/{version}/route', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/route/{id}/driver/{driverId}', {
+MyApp.add_route('POST', '/api/3.18/route/{id}/driver/{driverId}', {
   "resourcePath" => "/Route",
   "summary" => "Set Driver",
   "nickname" => "set_driver",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/route/{id}/driver/{driverId}",
+  "endpoint" => "/route/{id}/driver/{driverId}",
   "notes" => "Update the driver of the route.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the route",
@@ -730,20 +616,14 @@ MyApp.add_route('POST', '/api/{version}/route/{id}/driver/{driverId}', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/route/{routeId}', {
+MyApp.add_route('PUT', '/api/3.18/route/{routeId}', {
   "resourcePath" => "/Route",
   "summary" => "Update Route",
   "nickname" => "update_route",
   "responseClass" => "Route",
-  "endpoint" => "/api/{version}/route/{routeId}",
+  "endpoint" => "/route/{routeId}",
   "notes" => "Update an existing route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route",
@@ -764,20 +644,14 @@ MyApp.add_route('PUT', '/api/{version}/route/{routeId}', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/route/{routeId}/stop/{stopId}', {
+MyApp.add_route('PUT', '/api/3.18/route/{routeId}/stop/{stopId}', {
   "resourcePath" => "/Route",
   "summary" => "Update Route Stop",
   "nickname" => "update_route_stop",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/route/{routeId}/stop/{stopId}",
+  "endpoint" => "/route/{routeId}/stop/{stopId}",
   "notes" => "Update a stop on a specified route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "route_id",
       "description" => "the id of the route to update stops for",

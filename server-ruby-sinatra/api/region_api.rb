@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/region/create', {
+MyApp.add_route('POST', '/api/3.18/region/create', {
   "resourcePath" => "/Region",
   "summary" => "Create Region",
   "nickname" => "create_region",
   "responseClass" => "RegionResponse",
-  "endpoint" => "/api/{version}/region/create",
+  "endpoint" => "/region/create",
   "notes" => "Create a region.",
   "parameters" => [
     {
@@ -156,12 +156,6 @@ MyApp.add_route('POST', '/api/{version}/region/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -170,12 +164,12 @@ MyApp.add_route('POST', '/api/{version}/region/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/region/delete', {
+MyApp.add_route('POST', '/api/3.18/region/delete', {
   "resourcePath" => "/Region",
   "summary" => "Delete Region",
   "nickname" => "delete_region",
   "responseClass" => "RegionResponse",
-  "endpoint" => "/api/{version}/region/delete",
+  "endpoint" => "/region/delete",
   "notes" => "Delete a region.",
   "parameters" => [
     {
@@ -192,12 +186,6 @@ MyApp.add_route('POST', '/api/{version}/region/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -206,12 +194,12 @@ MyApp.add_route('POST', '/api/{version}/region/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/region/get', {
+MyApp.add_route('GET', '/api/3.18/region/get', {
   "resourcePath" => "/Region",
   "summary" => "Get Region",
   "nickname" => "get_region",
   "responseClass" => "RegionResponse",
-  "endpoint" => "/api/{version}/region/get",
+  "endpoint" => "/region/get",
   "notes" => "Get a region.",
   "parameters" => [
     {
@@ -228,12 +216,6 @@ MyApp.add_route('GET', '/api/{version}/region/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -242,12 +224,12 @@ MyApp.add_route('GET', '/api/{version}/region/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/region/search', {
+MyApp.add_route('GET', '/api/3.18/region/search', {
   "resourcePath" => "/Region",
   "summary" => "Search Regions",
   "nickname" => "search_regions",
   "responseClass" => "Array<RegionResponse>",
-  "endpoint" => "/api/{version}/region/search",
+  "endpoint" => "/region/search",
   "notes" => "Get the list of regions.",
   "parameters" => [
     {
@@ -404,12 +386,6 @@ MyApp.add_route('GET', '/api/{version}/region/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -418,12 +394,12 @@ MyApp.add_route('GET', '/api/{version}/region/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/region/update', {
+MyApp.add_route('POST', '/api/3.18/region/update', {
   "resourcePath" => "/Region",
   "summary" => "Update Region",
   "nickname" => "update_region",
   "responseClass" => "RegionResponse",
-  "endpoint" => "/api/{version}/region/update",
+  "endpoint" => "/region/update",
   "notes" => "Update a region.",
   "parameters" => [
     {
@@ -586,12 +562,6 @@ MyApp.add_route('POST', '/api/{version}/region/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

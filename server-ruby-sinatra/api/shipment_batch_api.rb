@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/shipment/batch', {
+MyApp.add_route('POST', '/api/3.18/shipment/batch', {
   "resourcePath" => "/ShipmentBatch",
   "summary" => "Create Shipment Batch",
   "nickname" => "create_shipment_batch",
   "responseClass" => "ShipmentBatch",
-  "endpoint" => "/api/{version}/shipment/batch",
+  "endpoint" => "/shipment/batch",
   "notes" => "Create a new shipment batch",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/shipment/batch', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/shipment/batch/{batchId}', {
+MyApp.add_route('DELETE', '/api/3.18/shipment/batch/{batchId}', {
   "resourcePath" => "/ShipmentBatch",
   "summary" => "Delete Shipment Batch",
   "nickname" => "delete_shipment_batch",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/shipment/batch/{batchId}",
+  "endpoint" => "/shipment/batch/{batchId}",
   "notes" => "Search for shipment batches",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "batch_id",
       "description" => "the id of the shipment batch to delete",
@@ -57,20 +45,14 @@ MyApp.add_route('DELETE', '/api/{version}/shipment/batch/{batchId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/shipment/batch/{batchId}', {
+MyApp.add_route('GET', '/api/3.18/shipment/batch/{batchId}', {
   "resourcePath" => "/ShipmentBatch",
   "summary" => "Get Shipment Batch",
   "nickname" => "get_shipment_batch",
   "responseClass" => "ShipmentBatch",
-  "endpoint" => "/api/{version}/shipment/batch/{batchId}",
+  "endpoint" => "/shipment/batch/{batchId}",
   "notes" => "Get an existing shipment batch",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "batch_id",
       "description" => "the id of the shipment batch to get",
@@ -85,12 +67,12 @@ MyApp.add_route('GET', '/api/{version}/shipment/batch/{batchId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/shipment/batch/{batchId}/status', {
+MyApp.add_route('GET', '/api/3.18/shipment/batch/{batchId}/status', {
   "resourcePath" => "/ShipmentBatch",
   "summary" => "Get Shipment Batch Status",
   "nickname" => "get_shipment_batch_status",
   "responseClass" => "Array<ShipmentImportStatus>",
-  "endpoint" => "/api/{version}/shipment/batch/{batchId}/status",
+  "endpoint" => "/shipment/batch/{batchId}/status",
   "notes" => "Get the import status list of the import shipment batch",
   "parameters" => [
     {
@@ -171,12 +153,6 @@ MyApp.add_route('GET', '/api/{version}/shipment/batch/{batchId}/status', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "batch_id",
       "description" => "The id of the requested shipment batch",
       "dataType" => "Integer",
@@ -190,12 +166,12 @@ MyApp.add_route('GET', '/api/{version}/shipment/batch/{batchId}/status', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/shipment/batch', {
+MyApp.add_route('GET', '/api/3.18/shipment/batch', {
   "resourcePath" => "/ShipmentBatch",
   "summary" => "Search Shipment Batch",
   "nickname" => "search_shipment_batch",
   "responseClass" => "Array<ShipmentBatch>",
-  "endpoint" => "/api/{version}/shipment/batch",
+  "endpoint" => "/shipment/batch",
   "notes" => "Search for shipment batches",
   "parameters" => [
     {
@@ -232,12 +208,6 @@ MyApp.add_route('GET', '/api/{version}/shipment/batch', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

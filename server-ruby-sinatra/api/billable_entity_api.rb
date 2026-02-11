@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/billable/create', {
+MyApp.add_route('POST', '/api/3.18/billable/create', {
   "resourcePath" => "/BillableEntity",
   "summary" => "Create Billable",
   "nickname" => "create_billable_entity",
   "responseClass" => "BillableEntityResponse",
-  "endpoint" => "/api/{version}/billable/create",
+  "endpoint" => "/billable/create",
   "notes" => "reate a billable entity for an account. The creator is assumed to be the responsible account. An account can only have one billable entity",
   "parameters" => [
     {
@@ -93,12 +93,6 @@ MyApp.add_route('POST', '/api/{version}/billable/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -107,12 +101,12 @@ MyApp.add_route('POST', '/api/{version}/billable/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/billable/delete', {
+MyApp.add_route('POST', '/api/3.18/billable/delete', {
   "resourcePath" => "/BillableEntity",
   "summary" => "Delete Billable",
   "nickname" => "delete_billable_entity",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/billable/delete",
+  "endpoint" => "/billable/delete",
   "notes" => "Mark the billable as deleted",
   "parameters" => [
     {
@@ -129,12 +123,6 @@ MyApp.add_route('POST', '/api/{version}/billable/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -143,12 +131,12 @@ MyApp.add_route('POST', '/api/{version}/billable/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/billable/get', {
+MyApp.add_route('GET', '/api/3.18/billable/get', {
   "resourcePath" => "/BillableEntity",
   "summary" => "Get Billable",
   "nickname" => "get_billable_entity",
   "responseClass" => "BillableEntityResponse",
-  "endpoint" => "/api/{version}/billable/get",
+  "endpoint" => "/billable/get",
   "notes" => "Used to determine the associated BillableEntity of an account",
   "parameters" => [
     {
@@ -181,12 +169,6 @@ MyApp.add_route('GET', '/api/{version}/billable/get', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -195,12 +177,12 @@ MyApp.add_route('GET', '/api/{version}/billable/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/billable/update', {
+MyApp.add_route('POST', '/api/3.18/billable/update', {
   "resourcePath" => "/BillableEntity",
   "summary" => "Update Billable",
   "nickname" => "update_billable_entity",
   "responseClass" => "BillableEntityResponse",
-  "endpoint" => "/api/{version}/billable/update",
+  "endpoint" => "/billable/update",
   "notes" => "Updates the billable record for an account",
   "parameters" => [
     {
@@ -286,12 +268,6 @@ MyApp.add_route('POST', '/api/{version}/billable/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

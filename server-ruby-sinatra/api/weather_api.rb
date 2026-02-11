@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/weather/search', {
+MyApp.add_route('GET', '/api/3.18/weather/search', {
   "resourcePath" => "/Weather",
   "summary" => "Search Weather",
   "nickname" => "search_weather",
   "responseClass" => "WeatherResponse",
-  "endpoint" => "/api/{version}/weather/search",
+  "endpoint" => "/weather/search",
   "notes" => "Search the weather forcast for the next 5 days",
   "parameters" => [
     {
@@ -37,12 +37,6 @@ MyApp.add_route('GET', '/api/{version}/weather/search', {
       "allowableValues" => "",
       "defaultValue" => "-6",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

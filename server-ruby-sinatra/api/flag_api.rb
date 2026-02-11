@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/flag/create', {
+MyApp.add_route('POST', '/api/3.18/flag/create', {
   "resourcePath" => "/Flag",
   "summary" => "Create Flag",
   "nickname" => "create_flag",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/flag/create",
+  "endpoint" => "/flag/create",
   "notes" => "Allows a user to flag an object that the user deems inappropriate or offensive. Flagable objects include accounts, albums, album contests, assets, game levels, and theme descriptors",
   "parameters" => [
     {
@@ -58,12 +58,6 @@ MyApp.add_route('POST', '/api/{version}/flag/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -72,12 +66,12 @@ MyApp.add_route('POST', '/api/{version}/flag/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/flag/delete', {
+MyApp.add_route('POST', '/api/3.18/flag/delete', {
   "resourcePath" => "/Flag",
   "summary" => "Delete Flag",
   "nickname" => "delete_flag",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/flag/delete",
+  "endpoint" => "/flag/delete",
   "notes" => "Deletes a flag.",
   "parameters" => [
     {
@@ -122,12 +116,6 @@ MyApp.add_route('POST', '/api/{version}/flag/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -136,12 +124,12 @@ MyApp.add_route('POST', '/api/{version}/flag/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/flag/get', {
+MyApp.add_route('GET', '/api/3.18/flag/get', {
   "resourcePath" => "/Flag",
   "summary" => "Get Flag",
   "nickname" => "get_flag",
   "responseClass" => "FlagResponse",
-  "endpoint" => "/api/{version}/flag/get",
+  "endpoint" => "/flag/get",
   "notes" => "Gets the details on whether the user has flagged a particular flagable object.",
   "parameters" => [
     {
@@ -186,12 +174,6 @@ MyApp.add_route('GET', '/api/{version}/flag/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -200,12 +182,12 @@ MyApp.add_route('GET', '/api/{version}/flag/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/flag/threshold/get', {
+MyApp.add_route('GET', '/api/3.18/flag/threshold/get', {
   "resourcePath" => "/Flag",
   "summary" => "Get Flag Threshold",
   "nickname" => "get_flag_threshold",
   "responseClass" => "CountResponse",
-  "endpoint" => "/api/{version}/flag/threshold/get",
+  "endpoint" => "/flag/threshold/get",
   "notes" => "Get the flag threshold value on an object type for a particular application.",
   "parameters" => [
     {
@@ -222,12 +204,6 @@ MyApp.add_route('GET', '/api/{version}/flag/threshold/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -236,12 +212,12 @@ MyApp.add_route('GET', '/api/{version}/flag/threshold/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/flag/threshold/update', {
+MyApp.add_route('POST', '/api/3.18/flag/threshold/update', {
   "resourcePath" => "/Flag",
   "summary" => "Update Flag Threshold",
   "nickname" => "update_flag_threshold",
   "responseClass" => "CountResponse",
-  "endpoint" => "/api/{version}/flag/threshold/update",
+  "endpoint" => "/flag/threshold/update",
   "notes" => "Update the flag threshold on an object type for a particular application.",
   "parameters" => [
     {
@@ -278,12 +254,6 @@ MyApp.add_route('POST', '/api/{version}/flag/threshold/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

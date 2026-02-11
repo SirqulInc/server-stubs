@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/carrier/search', {
+MyApp.add_route('GET', '/api/3.18/carrier/search', {
   "resourcePath" => "/Carrier",
   "summary" => "Search Carriers",
   "nickname" => "search_carriers",
   "responseClass" => "Array<CellCarrierResponse>",
-  "endpoint" => "/api/{version}/carrier/search",
+  "endpoint" => "/carrier/search",
   "notes" => "Search on supported mobile telephone carriers that can be used to send SMS notifications via email.",
   "parameters" => [
     {
@@ -47,12 +47,6 @@ MyApp.add_route('GET', '/api/{version}/carrier/search', {
       "allowableValues" => "",
       "defaultValue" => "true",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

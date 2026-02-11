@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/me/rels/following/create', {
+MyApp.add_route('POST', '/api/3.18/vatom/me/rels/following/create', {
   "resourcePath" => "/Vatom",
   "summary" => "Create following",
   "nickname" => "create_following",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/rels/following/create",
+  "endpoint" => "/vatom/me/rels/following/create",
   "notes" => "Create following.",
   "parameters" => [
     {
@@ -30,12 +30,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/rels/following/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -44,12 +38,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/rels/following/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/create', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/spaces/create', {
   "resourcePath" => "/Vatom",
   "summary" => "Create Vatom Space",
   "nickname" => "create_space",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/spaces/create",
+  "endpoint" => "/vatom/b/spaces/create",
   "notes" => "Create a Vatom space.",
   "parameters" => [
     {
@@ -80,12 +74,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -94,12 +82,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/events/create', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/events/create', {
   "resourcePath" => "/Vatom",
   "summary" => "Create Vatom Event",
   "nickname" => "create_vatom_event",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/create",
+  "endpoint" => "/vatom/b/events/create",
   "notes" => "Create a Vatom event.",
   "parameters" => [
     {
@@ -130,12 +118,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -144,12 +126,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/me/rels/following/delete', {
+MyApp.add_route('POST', '/api/3.18/vatom/me/rels/following/delete', {
   "resourcePath" => "/Vatom",
   "summary" => "Delete following",
   "nickname" => "delete_following",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/rels/following/delete",
+  "endpoint" => "/vatom/me/rels/following/delete",
   "notes" => "Delete following.",
   "parameters" => [
     {
@@ -173,12 +155,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/rels/following/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -187,12 +163,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/rels/following/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/campaign/points/delete', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/campaign/points/delete', {
   "resourcePath" => "/Vatom",
   "summary" => "Reset All Points Balance",
   "nickname" => "delete_points_balance",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign/points/delete",
+  "endpoint" => "/vatom/b/campaign/points/delete",
   "notes" => "Reset All Points Balance.",
   "parameters" => [
     {
@@ -223,12 +199,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/campaign/points/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -237,12 +207,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/campaign/points/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/delete', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/spaces/delete', {
   "resourcePath" => "/Vatom",
   "summary" => "Delete Vatom Space",
   "nickname" => "delete_space",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/spaces/delete",
+  "endpoint" => "/vatom/b/spaces/delete",
   "notes" => "Delete a Vatom space.",
   "parameters" => [
     {
@@ -273,12 +243,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -287,12 +251,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/events/delete', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/events/delete', {
   "resourcePath" => "/Vatom",
   "summary" => "Delete Vatom Event",
   "nickname" => "delete_vatom_event",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/delete",
+  "endpoint" => "/vatom/b/events/delete",
   "notes" => "Delete a Vatom event.",
   "parameters" => [
     {
@@ -323,12 +287,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -337,12 +295,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/vatoms/delete', {
+MyApp.add_route('POST', '/api/3.18/vatom/vatoms/delete', {
   "resourcePath" => "/Vatom",
   "summary" => "Delete Vatom NFT",
   "nickname" => "delete_vatom_nft",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/vatoms/delete",
+  "endpoint" => "/vatom/vatoms/delete",
   "notes" => "Delete Vatom NFT",
   "parameters" => [
     {
@@ -366,12 +324,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/vatoms/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -380,12 +332,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/vatoms/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/vatoms/execute-action', {
+MyApp.add_route('POST', '/api/3.18/vatom/vatoms/execute-action', {
   "resourcePath" => "/Vatom",
   "summary" => "Execute Action on NFT",
   "nickname" => "execute_action_on_nft",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/vatoms/execute-action",
+  "endpoint" => "/vatom/vatoms/execute-action",
   "notes" => "Execute Action on NFT.",
   "parameters" => [
     {
@@ -416,12 +368,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/vatoms/execute-action', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -430,12 +376,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/vatoms/execute-action', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/vatoms/geo-map/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/vatoms/geo-map/search', {
   "resourcePath" => "/Vatom",
   "summary" => "Search Vatom Geo Map",
   "nickname" => "geomap_search",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/vatoms/geo-map/search",
+  "endpoint" => "/vatom/vatoms/geo-map/search",
   "notes" => "Search Vatom Geo Map",
   "parameters" => [
     {
@@ -459,12 +405,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/vatoms/geo-map/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -473,12 +413,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/vatoms/geo-map/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/behaviors', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/behaviors', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom Business Behaviors",
   "nickname" => "get_business_behaviors",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/behaviors",
+  "endpoint" => "/vatom/b/behaviors",
   "notes" => "Gets the behaviors of a business.",
   "parameters" => [
     {
@@ -502,12 +442,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/behaviors', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -516,12 +450,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/behaviors', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/coins/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/coins/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get the coins for a Business",
   "nickname" => "get_business_coins_balance",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/coins/get",
+  "endpoint" => "/vatom/b/coins/get",
   "notes" => "Get the coins for a Businesss.",
   "parameters" => [
     {
@@ -545,12 +479,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/coins/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -559,12 +487,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/coins/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/me/businesses', {
+MyApp.add_route('GET', '/api/3.18/vatom/me/businesses', {
   "resourcePath" => "/Vatom",
   "summary" => "Get the user business ids",
   "nickname" => "get_business_ids",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/businesses",
+  "endpoint" => "/vatom/me/businesses",
   "notes" => "Get the business ids the logged in user has access to.",
   "parameters" => [
     {
@@ -581,12 +509,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/businesses', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -595,12 +517,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/businesses', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom Business Info",
   "nickname" => "get_business_info",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/get",
+  "endpoint" => "/vatom/b/get",
   "notes" => "Gets the business info tied to this account.",
   "parameters" => [
     {
@@ -631,12 +553,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -645,12 +561,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/users', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/users', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom Business Users",
   "nickname" => "get_business_users",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/users",
+  "endpoint" => "/vatom/b/users",
   "notes" => "Gets the users of a business.",
   "parameters" => [
     {
@@ -674,12 +590,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/users', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -688,12 +598,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/users', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/entities', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/campaign-groups/entities', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Campaign Group Entities",
   "nickname" => "get_campaign_group_entities",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign-groups/entities",
+  "endpoint" => "/vatom/b/campaign-groups/entities",
   "notes" => "Get campaign group entities.",
   "parameters" => [
     {
@@ -724,12 +634,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/entities', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -738,12 +642,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/entities', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/rules', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/campaign-groups/rules', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Campaign Group Rules",
   "nickname" => "get_campaign_group_rules",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign-groups/rules",
+  "endpoint" => "/vatom/b/campaign-groups/rules",
   "notes" => "Get campaign group rules.",
   "parameters" => [
     {
@@ -774,12 +678,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/rules', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -788,12 +686,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/rules', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/stats', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/campaign-groups/stats', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Campaign Group Stats",
   "nickname" => "get_campaign_group_stats",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign-groups/stats",
+  "endpoint" => "/vatom/b/campaign-groups/stats",
   "notes" => "Get campaign group stats.",
   "parameters" => [
     {
@@ -824,12 +722,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/stats', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -838,12 +730,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/stats', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/campaign-groups/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Campaign Info",
   "nickname" => "get_campaign_info",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign-groups/get",
+  "endpoint" => "/vatom/b/campaign-groups/get",
   "notes" => "Gets the info on a campaign.",
   "parameters" => [
     {
@@ -874,12 +766,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -888,12 +774,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/events/guests/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/events/guests/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom Event Guest List",
   "nickname" => "get_event_guest_list",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/guests/get",
+  "endpoint" => "/vatom/b/events/guests/get",
   "notes" => "Gets the guest list of an event.",
   "parameters" => [
     {
@@ -924,12 +810,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/events/guests/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -938,12 +818,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/events/guests/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/me/inventory', {
+MyApp.add_route('GET', '/api/3.18/vatom/me/inventory', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom User's Inventory",
   "nickname" => "get_inventory",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/inventory",
+  "endpoint" => "/vatom/me/inventory",
   "notes" => "Gets the logged in user's Vatom Inventory.",
   "parameters" => [
     {
@@ -967,12 +847,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/inventory', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -981,12 +855,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/inventory', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/me/rels/following', {
+MyApp.add_route('GET', '/api/3.18/vatom/me/rels/following', {
   "resourcePath" => "/Vatom",
   "summary" => "Get following",
   "nickname" => "get_my_following",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/rels/following",
+  "endpoint" => "/vatom/me/rels/following",
   "notes" => "Get following.",
   "parameters" => [
     {
@@ -1003,12 +877,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/rels/following', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1017,12 +885,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/rels/following', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/u/campaign/points/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/u/campaign/points/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Points Balance",
   "nickname" => "get_points_balance",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/u/campaign/points/get",
+  "endpoint" => "/vatom/u/campaign/points/get",
   "notes" => "Gets the points balance of a Vatom user.",
   "parameters" => [
     {
@@ -1053,12 +921,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/u/campaign/points/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1067,12 +929,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/u/campaign/points/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/campaign/u/points/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/campaign/u/points/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Points Balance as Business",
   "nickname" => "get_points_balance_as_business",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign/u/points/get",
+  "endpoint" => "/vatom/b/campaign/u/points/get",
   "notes" => "Gets the points balance of a Vatom user.",
   "parameters" => [
     {
@@ -1110,12 +972,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign/u/points/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1124,12 +980,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign/u/points/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/spaces/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/spaces/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom Space",
   "nickname" => "get_space",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/spaces/get",
+  "endpoint" => "/vatom/b/spaces/get",
   "notes" => "Gets the details of a space.",
   "parameters" => [
     {
@@ -1160,12 +1016,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/spaces/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1174,12 +1024,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/spaces/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/users/coins/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/users/coins/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get the coins for a user (as a Business)",
   "nickname" => "get_user_coins_as_business",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/users/coins/get",
+  "endpoint" => "/vatom/b/users/coins/get",
   "notes" => "Get the coins for a user (as a Business).",
   "parameters" => [
     {
@@ -1210,12 +1060,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/users/coins/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1224,12 +1068,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/users/coins/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/u/coins/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/u/coins/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Gets the coins balance for a Vatom User",
   "nickname" => "get_user_coins_balance",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/u/coins/get",
+  "endpoint" => "/vatom/u/coins/get",
   "notes" => "Gets the coins balance for a Vatom User.",
   "parameters" => [
     {
@@ -1260,12 +1104,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/u/coins/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1274,12 +1112,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/u/coins/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/users/rels/followers', {
+MyApp.add_route('GET', '/api/3.18/vatom/users/rels/followers', {
   "resourcePath" => "/Vatom",
   "summary" => "Get user followers",
   "nickname" => "get_user_followers",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/users/rels/followers",
+  "endpoint" => "/vatom/users/rels/followers",
   "notes" => "Get user followers.",
   "parameters" => [
     {
@@ -1303,12 +1141,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/users/rels/followers', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1317,12 +1149,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/users/rels/followers', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/users/rels/following', {
+MyApp.add_route('GET', '/api/3.18/vatom/users/rels/following', {
   "resourcePath" => "/Vatom",
   "summary" => "Get user following",
   "nickname" => "get_user_following",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/users/rels/following",
+  "endpoint" => "/vatom/users/rels/following",
   "notes" => "Get user following.",
   "parameters" => [
     {
@@ -1346,12 +1178,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/users/rels/following', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1360,12 +1186,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/users/rels/following', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/user/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/user/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get User Info",
   "nickname" => "get_user_info",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/user/get",
+  "endpoint" => "/vatom/user/get",
   "notes" => "Get a User's Info.",
   "parameters" => [
     {
@@ -1389,12 +1215,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/user/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1403,12 +1223,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/user/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/me/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/me/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom User Profile",
   "nickname" => "get_user_profile",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/get",
+  "endpoint" => "/vatom/me/get",
   "notes" => "Gets the logged in user's profile in Vatom.",
   "parameters" => [
     {
@@ -1425,12 +1245,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1439,12 +1253,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/events/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/events/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom Event",
   "nickname" => "get_vatom_event",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/get",
+  "endpoint" => "/vatom/b/events/get",
   "notes" => "Gets the details of a event.",
   "parameters" => [
     {
@@ -1475,12 +1289,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/events/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1489,12 +1297,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/events/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/vatoms/get', {
+MyApp.add_route('GET', '/api/3.18/vatom/vatoms/get', {
   "resourcePath" => "/Vatom",
   "summary" => "Get Vatom NFT Details",
   "nickname" => "get_vatom_nft",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/vatoms/get",
+  "endpoint" => "/vatom/vatoms/get",
   "notes" => "Get Vatom NFT Details",
   "parameters" => [
     {
@@ -1518,12 +1326,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/vatoms/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1532,12 +1334,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/vatoms/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/communities/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/communities/search', {
   "resourcePath" => "/Vatom",
   "summary" => "List Vatom Communities",
   "nickname" => "list_communities",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/communities/search",
+  "endpoint" => "/vatom/b/communities/search",
   "notes" => "Gets the communities tied to a business.",
   "parameters" => [
     {
@@ -1568,12 +1370,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/communities/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1582,12 +1378,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/communities/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/events/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/events/search', {
   "resourcePath" => "/Vatom",
   "summary" => "List Vatom Events",
   "nickname" => "list_events",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/search",
+  "endpoint" => "/vatom/b/events/search",
   "notes" => "Gets the events tied to a business.",
   "parameters" => [
     {
@@ -1618,12 +1414,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/events/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1632,12 +1422,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/events/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/spaces/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/spaces/search', {
   "resourcePath" => "/Vatom",
   "summary" => "List Vatom Spaces",
   "nickname" => "list_spaces",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/spaces/search",
+  "endpoint" => "/vatom/b/spaces/search",
   "notes" => "Gets the spaces tied to a business.",
   "parameters" => [
     {
@@ -1668,12 +1458,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/spaces/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1682,12 +1466,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/spaces/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/u/coins/txns/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/u/coins/txns/search', {
   "resourcePath" => "/Vatom",
   "summary" => "List Coin Transactions for a Vatom User",
   "nickname" => "list_user_coin_transactions",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/u/coins/txns/search",
+  "endpoint" => "/vatom/u/coins/txns/search",
   "notes" => "Gets the logged in user's Vatom coin transactions.",
   "parameters" => [
     {
@@ -1718,12 +1502,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/u/coins/txns/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1732,12 +1510,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/u/coins/txns/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/users/coins/txns/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/users/coins/txns/search', {
   "resourcePath" => "/Vatom",
   "summary" => "List coin transactions for a user (as a Business)",
   "nickname" => "list_user_coin_transactions_as_business",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/users/coins/txns/search",
+  "endpoint" => "/vatom/b/users/coins/txns/search",
   "notes" => "List coin transactions for a user (as a Business).",
   "parameters" => [
     {
@@ -1775,12 +1553,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/users/coins/txns/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1789,12 +1561,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/users/coins/txns/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/me/vatoms/actions', {
+MyApp.add_route('POST', '/api/3.18/vatom/me/vatoms/actions', {
   "resourcePath" => "/Vatom",
   "summary" => "Perform Action on NFT",
   "nickname" => "perform_action_on_nft",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/vatoms/actions",
+  "endpoint" => "/vatom/me/vatoms/actions",
   "notes" => "Perform Action on NFT.",
   "parameters" => [
     {
@@ -1832,12 +1604,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/vatoms/actions', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1846,12 +1612,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/vatoms/actions', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/redemptions', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/redemptions', {
   "resourcePath" => "/Vatom",
   "summary" => "Redeem NFT",
   "nickname" => "redeem_nft",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/redemptions",
+  "endpoint" => "/vatom/b/redemptions",
   "notes" => "Redeem an NFT.",
   "parameters" => [
     {
@@ -1882,12 +1648,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/redemptions', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1896,12 +1656,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/redemptions', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/users/coins/redeem', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/users/coins/redeem', {
   "resourcePath" => "/Vatom",
   "summary" => "Redeem the coins for a user (as a Business)",
   "nickname" => "redeem_user_coins_as_business",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/users/coins/redeem",
+  "endpoint" => "/vatom/b/users/coins/redeem",
   "notes" => "Redeem the coins for a user (as a Business).",
   "parameters" => [
     {
@@ -1939,12 +1699,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/users/coins/redeem', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1953,12 +1707,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/users/coins/redeem', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/search', {
   "resourcePath" => "/Vatom",
   "summary" => "Search for Vatom Businesses",
   "nickname" => "search_businesses",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/search",
+  "endpoint" => "/vatom/b/search",
   "notes" => "Searches for Vatom businesses.",
   "parameters" => [
     {
@@ -1982,12 +1736,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1996,12 +1744,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/b/campaign-groups/search', {
   "resourcePath" => "/Vatom",
   "summary" => "Search Campaign Groups",
   "nickname" => "search_campaign_groups",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign-groups/search",
+  "endpoint" => "/vatom/b/campaign-groups/search",
   "notes" => "Search campaign groups.",
   "parameters" => [
     {
@@ -2025,12 +1773,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2039,12 +1781,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/b/campaign-groups/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/me/identities/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/me/identities/search', {
   "resourcePath" => "/Vatom",
   "summary" => "Search User Identities",
   "nickname" => "search_identities",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/identities/search",
+  "endpoint" => "/vatom/me/identities/search",
   "notes" => "Search User Identities.",
   "parameters" => [
     {
@@ -2061,12 +1803,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/identities/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2075,12 +1811,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/me/identities/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/vatom/user-inventory/search', {
+MyApp.add_route('GET', '/api/3.18/vatom/user-inventory/search', {
   "resourcePath" => "/Vatom",
   "summary" => "Search Vatom User's Inventory",
   "nickname" => "search_inventory",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/user-inventory/search",
+  "endpoint" => "/vatom/user-inventory/search",
   "notes" => "Searches the logged in user's Vatom Inventory.",
   "parameters" => [
     {
@@ -2104,12 +1840,6 @@ MyApp.add_route('GET', '/api/{version}/vatom/user-inventory/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2118,12 +1848,12 @@ MyApp.add_route('GET', '/api/{version}/vatom/user-inventory/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/campaigns/send', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/campaigns/send', {
   "resourcePath" => "/Vatom",
   "summary" => "Send NFT",
   "nickname" => "send_nft",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaigns/send",
+  "endpoint" => "/vatom/b/campaigns/send",
   "notes" => "Send an NFT.",
   "parameters" => [
     {
@@ -2161,12 +1891,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/campaigns/send', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2175,12 +1899,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/campaigns/send', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/campaign/u/points/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/campaign/u/points/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Set Points Balance as Business",
   "nickname" => "set_points_balance_as_business",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/campaign/u/points/update",
+  "endpoint" => "/vatom/b/campaign/u/points/update",
   "notes" => "Sets the points balance of a Vatom user.",
   "parameters" => [
     {
@@ -2225,12 +1949,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/campaign/u/points/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2239,12 +1957,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/campaign/u/points/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/u/coins/transfer', {
+MyApp.add_route('POST', '/api/3.18/vatom/u/coins/transfer', {
   "resourcePath" => "/Vatom",
   "summary" => "Transfer coins from Vatom Users",
   "nickname" => "transfer_user_coins",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/u/coins/transfer",
+  "endpoint" => "/vatom/u/coins/transfer",
   "notes" => "Transfer coins from Vatom Users.",
   "parameters" => [
     {
@@ -2275,12 +1993,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/u/coins/transfer', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2289,12 +2001,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/u/coins/transfer', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/coins/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/coins/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Fund coins for a Business",
   "nickname" => "update_business_coins",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/coins/update",
+  "endpoint" => "/vatom/b/coins/update",
   "notes" => "Fund/update coins for a Businesss.",
   "parameters" => [
     {
@@ -2325,12 +2037,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/coins/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2339,12 +2045,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/coins/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/events/guests/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/events/guests/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Update Vatom Event Guest List",
   "nickname" => "update_event_guest_list",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/guests/update",
+  "endpoint" => "/vatom/b/events/guests/update",
   "notes" => "Update the guest list of an event.",
   "parameters" => [
     {
@@ -2382,12 +2088,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/guests/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2396,12 +2096,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/guests/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/spaces/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Update Vatom Space",
   "nickname" => "update_space",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/spaces/update",
+  "endpoint" => "/vatom/b/spaces/update",
   "notes" => "Update a Vatom space.",
   "parameters" => [
     {
@@ -2439,12 +2139,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2453,12 +2147,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/spaces/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/users/coins/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/users/coins/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Update the coins for a user (as a Business)",
   "nickname" => "update_user_coins_as_business",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/users/coins/update",
+  "endpoint" => "/vatom/b/users/coins/update",
   "notes" => "Update the coins for a user (as a Business).",
   "parameters" => [
     {
@@ -2496,12 +2190,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/users/coins/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2510,12 +2198,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/users/coins/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/me/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/me/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Update Vatom User Profile",
   "nickname" => "update_user_profile",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/me/update",
+  "endpoint" => "/vatom/me/update",
   "notes" => "Gets the logged in user's profile in Vatom.",
   "parameters" => [
     {
@@ -2539,12 +2227,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2553,12 +2235,12 @@ MyApp.add_route('POST', '/api/{version}/vatom/me/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/vatom/b/events/update', {
+MyApp.add_route('POST', '/api/3.18/vatom/b/events/update', {
   "resourcePath" => "/Vatom",
   "summary" => "Update Vatom Event",
   "nickname" => "update_vatom_event",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/vatom/b/events/update",
+  "endpoint" => "/vatom/b/events/update",
   "notes" => "Update a Vatom event.",
   "parameters" => [
     {
@@ -2595,12 +2277,6 @@ MyApp.add_route('POST', '/api/{version}/vatom/b/events/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

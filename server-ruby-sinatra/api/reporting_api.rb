@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/report/batch/create', {
+MyApp.add_route('POST', '/api/3.18/report/batch/create', {
   "resourcePath" => "/Reporting",
   "summary" => "Create Offline Report",
   "nickname" => "create_batch",
   "responseClass" => "ReportBatchResponse",
-  "endpoint" => "/api/{version}/report/batch/create",
+  "endpoint" => "/report/batch/create",
   "notes" => "Create an entry for the batch for offline report",
   "parameters" => [
     {
@@ -86,12 +86,6 @@ MyApp.add_route('POST', '/api/{version}/report/batch/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -100,20 +94,14 @@ MyApp.add_route('POST', '/api/{version}/report/batch/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/report/region/summary/batch', {
+MyApp.add_route('POST', '/api/3.18/report/region/summary/batch', {
   "resourcePath" => "/Reporting",
   "summary" => "Create Offline Report",
   "nickname" => "create_region_leg_summary_batch",
   "responseClass" => "ReportRegionLegSummaryBatchResponse",
-  "endpoint" => "/api/{version}/report/region/summary/batch",
+  "endpoint" => "/report/region/summary/batch",
   "notes" => "Create an entry for the batch for offline report",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -128,12 +116,12 @@ MyApp.add_route('POST', '/api/{version}/report/region/summary/batch', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/report/batch/delete', {
+MyApp.add_route('POST', '/api/3.18/report/batch/delete', {
   "resourcePath" => "/Reporting",
   "summary" => "Delete Offline Report",
   "nickname" => "delete_batch",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/report/batch/delete",
+  "endpoint" => "/report/batch/delete",
   "notes" => "Deletes a batch report.",
   "parameters" => [
     {
@@ -150,12 +138,6 @@ MyApp.add_route('POST', '/api/{version}/report/batch/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -164,12 +146,12 @@ MyApp.add_route('POST', '/api/{version}/report/batch/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/report/batch/get', {
+MyApp.add_route('GET', '/api/3.18/report/batch/get', {
   "resourcePath" => "/Reporting",
   "summary" => "Get Offline Report",
   "nickname" => "get_report_batch",
   "responseClass" => "ReportBatchResponse",
-  "endpoint" => "/api/{version}/report/batch/get",
+  "endpoint" => "/report/batch/get",
   "notes" => "Checks status of batch report.",
   "parameters" => [
     {
@@ -193,12 +175,6 @@ MyApp.add_route('GET', '/api/{version}/report/batch/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -207,12 +183,12 @@ MyApp.add_route('GET', '/api/{version}/report/batch/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/report/run', {
+MyApp.add_route('POST', '/api/3.18/report/run', {
   "resourcePath" => "/Reporting",
   "summary" => "Run Report",
   "nickname" => "run_report",
   "responseClass" => "ReportResponse",
-  "endpoint" => "/api/{version}/report/run",
+  "endpoint" => "/report/run",
   "notes" => " This endpoint allows you to run a set of predefined reports that can be used to understand your users' behavior as well as trends within your application.",
   "parameters" => [
     {
@@ -271,12 +247,6 @@ MyApp.add_route('POST', '/api/{version}/report/run', {
       "allowableValues" => "[HTML, XML, JSON, CSV]",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -285,12 +255,12 @@ MyApp.add_route('POST', '/api/{version}/report/run', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/report/batch/search', {
+MyApp.add_route('GET', '/api/3.18/report/batch/search', {
   "resourcePath" => "/Reporting",
   "summary" => "Search Offline Reports",
   "nickname" => "search_batch",
   "responseClass" => "Array<ReportBatchResponse>",
-  "endpoint" => "/api/{version}/report/batch/search",
+  "endpoint" => "/report/batch/search",
   "notes" => "Retrieves batches for a user..",
   "parameters" => [
     {
@@ -355,12 +325,6 @@ MyApp.add_route('GET', '/api/{version}/report/batch/search', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

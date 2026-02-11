@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/task/create', {
+MyApp.add_route('POST', '/api/3.18/task/create', {
   "resourcePath" => "/Task",
   "summary" => "Create Task",
   "nickname" => "create_task",
   "responseClass" => "TaskResponse",
-  "endpoint" => "/api/{version}/task/create",
+  "endpoint" => "/task/create",
   "notes" => "Create a Task",
   "parameters" => [
     {
@@ -94,12 +94,6 @@ MyApp.add_route('POST', '/api/{version}/task/create', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -108,12 +102,12 @@ MyApp.add_route('POST', '/api/{version}/task/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/task/delete', {
+MyApp.add_route('POST', '/api/3.18/task/delete', {
   "resourcePath" => "/Task",
   "summary" => "Delete Task",
   "nickname" => "delete_task",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/task/delete",
+  "endpoint" => "/task/delete",
   "notes" => "Delete a Task",
   "parameters" => [
     {
@@ -130,12 +124,6 @@ MyApp.add_route('POST', '/api/{version}/task/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -144,12 +132,12 @@ MyApp.add_route('POST', '/api/{version}/task/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/task/get', {
+MyApp.add_route('GET', '/api/3.18/task/get', {
   "resourcePath" => "/Task",
   "summary" => "Get Task",
   "nickname" => "get_task",
   "responseClass" => "TaskResponse",
-  "endpoint" => "/api/{version}/task/get",
+  "endpoint" => "/task/get",
   "notes" => "Get a Task",
   "parameters" => [
     {
@@ -166,12 +154,6 @@ MyApp.add_route('GET', '/api/{version}/task/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -180,12 +162,12 @@ MyApp.add_route('GET', '/api/{version}/task/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/task/search', {
+MyApp.add_route('GET', '/api/3.18/task/search', {
   "resourcePath" => "/Task",
   "summary" => "Search Tasks",
   "nickname" => "search_tasks",
   "responseClass" => "Array<TaskResponse>",
-  "endpoint" => "/api/{version}/task/search",
+  "endpoint" => "/task/search",
   "notes" => "Search on Tasks",
   "parameters" => [
     {
@@ -279,12 +261,6 @@ MyApp.add_route('GET', '/api/{version}/task/search', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -293,12 +269,12 @@ MyApp.add_route('GET', '/api/{version}/task/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/task/update', {
+MyApp.add_route('POST', '/api/3.18/task/update', {
   "resourcePath" => "/Task",
   "summary" => "Update Task",
   "nickname" => "update_task",
   "responseClass" => "TaskResponse",
-  "endpoint" => "/api/{version}/task/update",
+  "endpoint" => "/task/update",
   "notes" => "Update a Task",
   "parameters" => [
     {
@@ -391,12 +367,6 @@ MyApp.add_route('POST', '/api/{version}/task/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

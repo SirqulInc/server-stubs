@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/postalCode/create', {
+MyApp.add_route('POST', '/api/3.18/postalCode/create', {
   "resourcePath" => "/PostalCode",
   "summary" => "Create Postal Code",
   "nickname" => "create_postal_code",
   "responseClass" => "PostalCodeResponse",
-  "endpoint" => "/api/{version}/postalCode/create",
+  "endpoint" => "/postalCode/create",
   "notes" => "Create a Postal Code",
   "parameters" => [
     {
@@ -58,12 +58,6 @@ MyApp.add_route('POST', '/api/{version}/postalCode/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -72,12 +66,12 @@ MyApp.add_route('POST', '/api/{version}/postalCode/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/postalCode/delete', {
+MyApp.add_route('POST', '/api/3.18/postalCode/delete', {
   "resourcePath" => "/PostalCode",
   "summary" => "Delete Postal Code",
   "nickname" => "delete_postal_code",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/postalCode/delete",
+  "endpoint" => "/postalCode/delete",
   "notes" => "Delete a Postal Code",
   "parameters" => [
     {
@@ -94,12 +88,6 @@ MyApp.add_route('POST', '/api/{version}/postalCode/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -108,12 +96,12 @@ MyApp.add_route('POST', '/api/{version}/postalCode/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/postalCode/get', {
+MyApp.add_route('GET', '/api/3.18/postalCode/get', {
   "resourcePath" => "/PostalCode",
   "summary" => "Get Postal Code",
   "nickname" => "get_postal_code",
   "responseClass" => "PostalCodeResponse",
-  "endpoint" => "/api/{version}/postalCode/get",
+  "endpoint" => "/postalCode/get",
   "notes" => "Get a Postal Code",
   "parameters" => [
     {
@@ -123,12 +111,6 @@ MyApp.add_route('GET', '/api/{version}/postalCode/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -137,12 +119,12 @@ MyApp.add_route('GET', '/api/{version}/postalCode/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/postalCode/search', {
+MyApp.add_route('GET', '/api/3.18/postalCode/search', {
   "resourcePath" => "/PostalCode",
   "summary" => "Search Postal Codes",
   "nickname" => "get_postal_codes",
   "responseClass" => "Array<PostalCodeResponse>",
-  "endpoint" => "/api/{version}/postalCode/search",
+  "endpoint" => "/postalCode/search",
   "notes" => "Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response.",
   "parameters" => [
     {
@@ -201,12 +183,6 @@ MyApp.add_route('GET', '/api/{version}/postalCode/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -215,12 +191,12 @@ MyApp.add_route('GET', '/api/{version}/postalCode/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/postalCode/update', {
+MyApp.add_route('POST', '/api/3.18/postalCode/update', {
   "resourcePath" => "/PostalCode",
   "summary" => "Update Postal Code",
   "nickname" => "update_postal_code",
   "responseClass" => "PostalCodeResponse",
-  "endpoint" => "/api/{version}/postalCode/update",
+  "endpoint" => "/postalCode/update",
   "notes" => "Update a Postal Code",
   "parameters" => [
     {
@@ -278,12 +254,6 @@ MyApp.add_route('POST', '/api/{version}/postalCode/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

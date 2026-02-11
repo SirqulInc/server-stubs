@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/participant/process/all', {
+MyApp.add_route('POST', '/api/3.18/participant/process/all', {
   "resourcePath" => "/Participants",
   "summary" => "Process All Participant Feeds",
   "nickname" => "process_all_participants",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/participant/process/all",
+  "endpoint" => "/participant/process/all",
   "notes" => "Processes all supported participant feeds.",
   "parameters" => [
     {
@@ -30,12 +30,6 @@ MyApp.add_route('POST', '/api/{version}/participant/process/all', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -44,12 +38,12 @@ MyApp.add_route('POST', '/api/{version}/participant/process/all', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/participant/process', {
+MyApp.add_route('POST', '/api/3.18/participant/process', {
   "resourcePath" => "/Participants",
   "summary" => "Process Participants Feed",
   "nickname" => "process_participants",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/participant/process",
+  "endpoint" => "/participant/process",
   "notes" => "Processes a participant feed or uploaded file for a specific league.",
   "parameters" => [
     {
@@ -86,12 +80,6 @@ MyApp.add_route('POST', '/api/{version}/participant/process', {
       "dataType" => "File",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

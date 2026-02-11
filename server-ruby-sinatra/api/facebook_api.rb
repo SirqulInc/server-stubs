@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/facebook/getfbtoken', {
+MyApp.add_route('GET', '/api/3.18/facebook/getfbtoken', {
   "resourcePath" => "/Facebook",
   "summary" => "Get Facebook Token",
   "nickname" => "get_token",
   "responseClass" => "TokenResponse",
-  "endpoint" => "/api/{version}/facebook/getfbtoken",
+  "endpoint" => "/facebook/getfbtoken",
   "notes" => "Gets a user's Facebook token.",
   "parameters" => [
     {
@@ -37,12 +37,6 @@ MyApp.add_route('GET', '/api/{version}/facebook/getfbtoken', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -51,12 +45,12 @@ MyApp.add_route('GET', '/api/{version}/facebook/getfbtoken', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/facebook/graph', {
+MyApp.add_route('POST', '/api/3.18/facebook/graph', {
   "resourcePath" => "/Facebook",
   "summary" => "Post to Facebook",
   "nickname" => "graph_interface",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/facebook/graph",
+  "endpoint" => "/facebook/graph",
   "notes" => "Make Facebook posts on behalf of the user.",
   "parameters" => [
     {
@@ -128,12 +122,6 @@ MyApp.add_route('POST', '/api/{version}/facebook/graph', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

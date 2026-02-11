@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/tier/search', {
+MyApp.add_route('POST', '/api/3.18/achievement/tier/search', {
   "resourcePath" => "/Achievement",
   "summary" => "Searches an Achievement Tier",
-  "nickname" => "api_version_achievement_tier_search_post",
+  "nickname" => "achievement_tier_search_post",
   "responseClass" => "AchievementTierResponse",
-  "endpoint" => "/api/{version}/achievement/tier/search",
+  "endpoint" => "/achievement/tier/search",
   "notes" => "Searches a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -86,12 +86,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -100,12 +94,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/create', {
+MyApp.add_route('POST', '/api/3.18/achievement/create', {
   "resourcePath" => "/Achievement",
   "summary" => "Create Achievement",
   "nickname" => "create_achievement",
   "responseClass" => "AchievementResponse",
-  "endpoint" => "/api/{version}/achievement/create",
+  "endpoint" => "/achievement/create",
   "notes" => "Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -199,12 +193,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -213,12 +201,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/tier/create', {
+MyApp.add_route('POST', '/api/3.18/achievement/tier/create', {
   "resourcePath" => "/Achievement",
   "summary" => "Create Achievement Tier",
   "nickname" => "create_achievement_tier",
   "responseClass" => "AchievementTierResponse",
-  "endpoint" => "/api/{version}/achievement/tier/create",
+  "endpoint" => "/achievement/tier/create",
   "notes" => "Create a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -319,12 +307,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -333,12 +315,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/delete', {
+MyApp.add_route('POST', '/api/3.18/achievement/delete', {
   "resourcePath" => "/Achievement",
   "summary" => "Delete Achievement",
   "nickname" => "delete_achievement",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/achievement/delete",
+  "endpoint" => "/achievement/delete",
   "notes" => "Deletes an achievement (for developer/retailer use). User must have permissions to the application the achievement was created for.",
   "parameters" => [
     {
@@ -355,12 +337,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -369,12 +345,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/tier/delete', {
+MyApp.add_route('POST', '/api/3.18/achievement/tier/delete', {
   "resourcePath" => "/Achievement",
   "summary" => "Delete Achievement Tier",
   "nickname" => "delete_achievement_tier",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/achievement/tier/delete",
+  "endpoint" => "/achievement/tier/delete",
   "notes" => "Deletes an achievement tier (for developer/retailer use). User must have permissions to the application the achievement was created for.",
   "parameters" => [
     {
@@ -391,12 +367,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -405,12 +375,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/achievement/get', {
+MyApp.add_route('GET', '/api/3.18/achievement/get', {
   "resourcePath" => "/Achievement",
   "summary" => "Get Achievement",
   "nickname" => "get_achievement",
   "responseClass" => "AchievementTierResponse",
-  "endpoint" => "/api/{version}/achievement/get",
+  "endpoint" => "/achievement/get",
   "notes" => "Get an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -441,12 +411,6 @@ MyApp.add_route('GET', '/api/{version}/achievement/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -455,12 +419,12 @@ MyApp.add_route('GET', '/api/{version}/achievement/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/tier/get', {
+MyApp.add_route('POST', '/api/3.18/achievement/tier/get', {
   "resourcePath" => "/Achievement",
   "summary" => "Gets an achievement tier",
   "nickname" => "get_achievement_tier",
   "responseClass" => "AchievementTierResponse",
-  "endpoint" => "/api/{version}/achievement/tier/get",
+  "endpoint" => "/achievement/tier/get",
   "notes" => "Gets an achievement tier (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -477,12 +441,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -491,12 +449,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/achievement/progress/get', {
+MyApp.add_route('GET', '/api/3.18/achievement/progress/get', {
   "resourcePath" => "/Achievement",
   "summary" => "Get Achievement Progress",
   "nickname" => "get_user_achievements",
   "responseClass" => "Array<AchievementProgressResponse>",
-  "endpoint" => "/api/{version}/achievement/progress/get",
+  "endpoint" => "/achievement/progress/get",
   "notes" => "Gets a list of user achievements.",
   "parameters" => [
     {
@@ -578,12 +536,6 @@ MyApp.add_route('GET', '/api/{version}/achievement/progress/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -592,12 +544,12 @@ MyApp.add_route('GET', '/api/{version}/achievement/progress/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/achievement/tag/list', {
+MyApp.add_route('GET', '/api/3.18/achievement/tag/list', {
   "resourcePath" => "/Achievement",
   "summary" => "List Achievement Tags",
   "nickname" => "list_achievement_tags",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/achievement/tag/list",
+  "endpoint" => "/achievement/tag/list",
   "notes" => "List achievement tags by application",
   "parameters" => [
     {
@@ -607,12 +559,6 @@ MyApp.add_route('GET', '/api/{version}/achievement/tag/list', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -621,12 +567,12 @@ MyApp.add_route('GET', '/api/{version}/achievement/tag/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/achievement/list', {
+MyApp.add_route('GET', '/api/3.18/achievement/list', {
   "resourcePath" => "/Achievement",
   "summary" => "List Achievements",
   "nickname" => "list_achievements",
   "responseClass" => "Array<AchievementShortResponse>",
-  "endpoint" => "/api/{version}/achievement/list",
+  "endpoint" => "/achievement/list",
   "notes" => "List achievements by billable.",
   "parameters" => [
     {
@@ -706,12 +652,6 @@ MyApp.add_route('GET', '/api/{version}/achievement/list', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -720,12 +660,12 @@ MyApp.add_route('GET', '/api/{version}/achievement/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/achievement/search', {
+MyApp.add_route('GET', '/api/3.18/achievement/search', {
   "resourcePath" => "/Achievement",
   "summary" => "Search Achievements",
   "nickname" => "search_achievements",
   "responseClass" => "Array<AchievementShortResponse>",
-  "endpoint" => "/api/{version}/achievement/search",
+  "endpoint" => "/achievement/search",
   "notes" => "Searches achievements by application for consumers.",
   "parameters" => [
     {
@@ -818,12 +758,6 @@ MyApp.add_route('GET', '/api/{version}/achievement/search', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -832,12 +766,12 @@ MyApp.add_route('GET', '/api/{version}/achievement/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/update', {
+MyApp.add_route('POST', '/api/3.18/achievement/update', {
   "resourcePath" => "/Achievement",
   "summary" => "Update Achievement",
   "nickname" => "update_achievement",
   "responseClass" => "AchievementResponse",
-  "endpoint" => "/api/{version}/achievement/update",
+  "endpoint" => "/achievement/update",
   "notes" => "Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -945,12 +879,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -959,12 +887,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/tier/update', {
+MyApp.add_route('POST', '/api/3.18/achievement/tier/update', {
   "resourcePath" => "/Achievement",
   "summary" => "Update Achievement Tier",
   "nickname" => "update_achievement_tier",
   "responseClass" => "AchievementTierResponse",
-  "endpoint" => "/api/{version}/achievement/tier/update",
+  "endpoint" => "/achievement/tier/update",
   "notes" => "Updates a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.",
   "parameters" => [
     {
@@ -1065,12 +993,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1079,12 +1001,12 @@ MyApp.add_route('POST', '/api/{version}/achievement/tier/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/achievement/progress/update', {
+MyApp.add_route('POST', '/api/3.18/achievement/progress/update', {
   "resourcePath" => "/Achievement",
   "summary" => "Update Achievement Progress",
   "nickname" => "update_user_achievement",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/achievement/progress/update",
+  "endpoint" => "/achievement/progress/update",
   "notes" => "Update user achievement progress.",
   "parameters" => [
     {
@@ -1142,12 +1064,6 @@ MyApp.add_route('POST', '/api/{version}/achievement/progress/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

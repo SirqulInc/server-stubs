@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/assignment/assignee/search', {
+MyApp.add_route('GET', '/api/3.18/assignment/assignee/search', {
   "resourcePath" => "/Assignment",
   "summary" => "Search Assignment Assignees",
   "nickname" => "assigment_assignee_account_search",
   "responseClass" => "Array<AccountMiniResponse>",
-  "endpoint" => "/api/{version}/assignment/assignee/search",
+  "endpoint" => "/assignment/assignee/search",
   "notes" => "Search for avaiable users for creating or updating assignment.",
   "parameters" => [
     {
@@ -23,12 +23,6 @@ MyApp.add_route('GET', '/api/{version}/assignment/assignee/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -37,12 +31,12 @@ MyApp.add_route('GET', '/api/{version}/assignment/assignee/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/assignment/create', {
+MyApp.add_route('POST', '/api/3.18/assignment/create', {
   "resourcePath" => "/Assignment",
   "summary" => "Create Assignment",
   "nickname" => "assignment_create",
   "responseClass" => "AssignmentResponse",
-  "endpoint" => "/api/{version}/assignment/create",
+  "endpoint" => "/assignment/create",
   "notes" => "Create an assignment.",
   "parameters" => [
     {
@@ -94,12 +88,6 @@ MyApp.add_route('POST', '/api/{version}/assignment/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -108,12 +96,12 @@ MyApp.add_route('POST', '/api/{version}/assignment/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/assignment/delete', {
+MyApp.add_route('POST', '/api/3.18/assignment/delete', {
   "resourcePath" => "/Assignment",
   "summary" => "Delete Assignment",
   "nickname" => "assignment_delete",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/assignment/delete",
+  "endpoint" => "/assignment/delete",
   "notes" => "Delete an assignment.",
   "parameters" => [
     {
@@ -130,12 +118,6 @@ MyApp.add_route('POST', '/api/{version}/assignment/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -144,12 +126,12 @@ MyApp.add_route('POST', '/api/{version}/assignment/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/assignment/get', {
+MyApp.add_route('GET', '/api/3.18/assignment/get', {
   "resourcePath" => "/Assignment",
   "summary" => "Get Assignment",
   "nickname" => "assignment_get",
   "responseClass" => "AssignmentResponse",
-  "endpoint" => "/api/{version}/assignment/get",
+  "endpoint" => "/assignment/get",
   "notes" => "Get the details of an assignment.",
   "parameters" => [
     {
@@ -166,12 +148,6 @@ MyApp.add_route('GET', '/api/{version}/assignment/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -180,12 +156,12 @@ MyApp.add_route('GET', '/api/{version}/assignment/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/assignment/search', {
+MyApp.add_route('GET', '/api/3.18/assignment/search', {
   "resourcePath" => "/Assignment",
   "summary" => "Search Assignments",
   "nickname" => "assignment_search",
   "responseClass" => "Array<AssignmentResponse>",
-  "endpoint" => "/api/{version}/assignment/search",
+  "endpoint" => "/assignment/search",
   "notes" => "Search for assignments by the given parameters.",
   "parameters" => [
     {
@@ -265,12 +241,6 @@ MyApp.add_route('GET', '/api/{version}/assignment/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -279,12 +249,12 @@ MyApp.add_route('GET', '/api/{version}/assignment/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/assignment/status/create', {
+MyApp.add_route('POST', '/api/3.18/assignment/status/create', {
   "resourcePath" => "/Assignment",
   "summary" => "Create Assignment Status",
   "nickname" => "assignment_status_create",
   "responseClass" => "AssignmentStatusResponse",
-  "endpoint" => "/api/{version}/assignment/status/create",
+  "endpoint" => "/assignment/status/create",
   "notes" => "Create an assignment status.",
   "parameters" => [
     {
@@ -364,12 +334,6 @@ MyApp.add_route('POST', '/api/{version}/assignment/status/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -378,12 +342,12 @@ MyApp.add_route('POST', '/api/{version}/assignment/status/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/assignment/status/delete', {
+MyApp.add_route('POST', '/api/3.18/assignment/status/delete', {
   "resourcePath" => "/Assignment",
   "summary" => "Deletes Assignment Status",
   "nickname" => "assignment_status_delete",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/assignment/status/delete",
+  "endpoint" => "/assignment/status/delete",
   "notes" => "Deletes an assignment status.",
   "parameters" => [
     {
@@ -400,12 +364,6 @@ MyApp.add_route('POST', '/api/{version}/assignment/status/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -414,12 +372,12 @@ MyApp.add_route('POST', '/api/{version}/assignment/status/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/assignment/status/get', {
+MyApp.add_route('GET', '/api/3.18/assignment/status/get', {
   "resourcePath" => "/Assignment",
   "summary" => "Get Assignment Status",
   "nickname" => "assignment_status_get",
   "responseClass" => "AssignmentStatusResponse",
-  "endpoint" => "/api/{version}/assignment/status/get",
+  "endpoint" => "/assignment/status/get",
   "notes" => "Get an assignment status.",
   "parameters" => [
     {
@@ -436,12 +394,6 @@ MyApp.add_route('GET', '/api/{version}/assignment/status/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -450,12 +402,12 @@ MyApp.add_route('GET', '/api/{version}/assignment/status/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/assignment/status/search', {
+MyApp.add_route('GET', '/api/3.18/assignment/status/search', {
   "resourcePath" => "/Assignment",
   "summary" => "Search Assignment Statuses",
   "nickname" => "assignment_status_search",
   "responseClass" => "Array<AssignmentStatusResponse>",
-  "endpoint" => "/api/{version}/assignment/status/search",
+  "endpoint" => "/assignment/status/search",
   "notes" => "Search on assignment statuses.",
   "parameters" => [
     {
@@ -542,12 +494,6 @@ MyApp.add_route('GET', '/api/{version}/assignment/status/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -556,12 +502,12 @@ MyApp.add_route('GET', '/api/{version}/assignment/status/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/assignment/status/update', {
+MyApp.add_route('POST', '/api/3.18/assignment/status/update', {
   "resourcePath" => "/Assignment",
   "summary" => "Update Assignment Status",
   "nickname" => "assignment_status_update",
   "responseClass" => "AssignmentStatusResponse",
-  "endpoint" => "/api/{version}/assignment/status/update",
+  "endpoint" => "/assignment/status/update",
   "notes" => "Updates an assignment status.",
   "parameters" => [
     {
@@ -641,12 +587,6 @@ MyApp.add_route('POST', '/api/{version}/assignment/status/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -655,12 +595,12 @@ MyApp.add_route('POST', '/api/{version}/assignment/status/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/assignment/update', {
+MyApp.add_route('POST', '/api/3.18/assignment/update', {
   "resourcePath" => "/Assignment",
   "summary" => "Update Assignment",
   "nickname" => "assignment_update",
   "responseClass" => "AssignmentResponse",
-  "endpoint" => "/api/{version}/assignment/update",
+  "endpoint" => "/assignment/update",
   "notes" => "Updates an assignment.",
   "parameters" => [
     {
@@ -718,12 +658,6 @@ MyApp.add_route('POST', '/api/{version}/assignment/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

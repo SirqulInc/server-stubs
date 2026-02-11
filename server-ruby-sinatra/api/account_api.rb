@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/account/search', {
+MyApp.add_route('GET', '/api/3.18/account/search', {
   "resourcePath" => "/Account",
   "summary" => "Search Accounts by Location",
   "nickname" => "account_location_search",
   "responseClass" => "UserLocationSearchResponse",
-  "endpoint" => "/api/{version}/account/search",
+  "endpoint" => "/account/search",
   "notes" => "Search accounts by their location. This only searches on users that have location data. Use ConnectionApi to perform a regular search on accounts.",
   "parameters" => [
     {
@@ -255,12 +255,6 @@ MyApp.add_route('GET', '/api/{version}/account/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -269,12 +263,12 @@ MyApp.add_route('GET', '/api/{version}/account/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/block', {
+MyApp.add_route('POST', '/api/3.18/account/block', {
   "resourcePath" => "/Account",
   "summary" => "Block Account",
   "nickname" => "block_account",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/block",
+  "endpoint" => "/account/block",
   "notes" => "Moves or removes an account into the user's blocked group.",
   "parameters" => [
     {
@@ -328,12 +322,6 @@ MyApp.add_route('POST', '/api/{version}/account/block', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -342,12 +330,12 @@ MyApp.add_route('POST', '/api/{version}/account/block', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/create', {
+MyApp.add_route('POST', '/api/3.18/account/create', {
   "resourcePath" => "/Account",
   "summary" => "Create Account",
   "nickname" => "create_account",
   "responseClass" => "AccountLoginResponse",
-  "endpoint" => "/api/{version}/account/create",
+  "endpoint" => "/account/create",
   "notes" => "Create a new account by role.",
   "parameters" => [
     {
@@ -854,12 +842,6 @@ MyApp.add_route('POST', '/api/{version}/account/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -868,12 +850,12 @@ MyApp.add_route('POST', '/api/{version}/account/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/profile/update', {
+MyApp.add_route('POST', '/api/3.18/account/profile/update', {
   "resourcePath" => "/Account",
   "summary" => "Update Account",
   "nickname" => "edit_account",
   "responseClass" => "ProfileInfoResponse",
-  "endpoint" => "/api/{version}/account/profile/update",
+  "endpoint" => "/account/profile/update",
   "notes" => "Edit the user's profile information",
   "parameters" => [
     {
@@ -1451,12 +1433,6 @@ MyApp.add_route('POST', '/api/{version}/account/profile/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1465,12 +1441,12 @@ MyApp.add_route('POST', '/api/{version}/account/profile/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/username/update', {
+MyApp.add_route('POST', '/api/3.18/account/username/update', {
   "resourcePath" => "/Account",
   "summary" => "Update Username and Email",
   "nickname" => "edit_username",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/username/update",
+  "endpoint" => "/account/username/update",
   "notes" => "Update account's own username and/or emailAddress",
   "parameters" => [
     {
@@ -1501,12 +1477,6 @@ MyApp.add_route('POST', '/api/{version}/account/username/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1515,12 +1485,12 @@ MyApp.add_route('POST', '/api/{version}/account/username/update', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/account/profile/get', {
+MyApp.add_route('GET', '/api/3.18/account/profile/get', {
   "resourcePath" => "/Account",
   "summary" => "Get Account",
   "nickname" => "get_account",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/account/profile/get",
+  "endpoint" => "/account/profile/get",
   "notes" => "Gets a user's account profile. Application settings and account settings will also be returned for the owner of the account.",
   "parameters" => [
     {
@@ -1612,12 +1582,6 @@ MyApp.add_route('GET', '/api/{version}/account/profile/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1626,12 +1590,12 @@ MyApp.add_route('GET', '/api/{version}/account/profile/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/account/profile/assets', {
+MyApp.add_route('GET', '/api/3.18/account/profile/assets', {
   "resourcePath" => "/Account",
   "summary" => "Get Profile Assets",
   "nickname" => "get_profile_assets",
   "responseClass" => "AssetListResponse",
-  "endpoint" => "/api/{version}/account/profile/assets",
+  "endpoint" => "/account/profile/assets",
   "notes" => "Get a list of assets a person has ever uploaded. Filters the list based on parameters.",
   "parameters" => [
     {
@@ -1737,12 +1701,6 @@ MyApp.add_route('GET', '/api/{version}/account/profile/assets', {
       "defaultValue" => "0",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1751,12 +1709,12 @@ MyApp.add_route('GET', '/api/{version}/account/profile/assets', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/account/referral/list', {
+MyApp.add_route('GET', '/api/3.18/account/referral/list', {
   "resourcePath" => "/Account",
   "summary" => "Search Accounts",
   "nickname" => "get_referral_list",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/account/referral/list",
+  "endpoint" => "/account/referral/list",
   "notes" => "Gets a user's account profile and their referral List.",
   "parameters" => [
     {
@@ -1837,12 +1795,6 @@ MyApp.add_route('GET', '/api/{version}/account/referral/list', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1851,12 +1803,12 @@ MyApp.add_route('GET', '/api/{version}/account/referral/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/account/settings/get', {
+MyApp.add_route('GET', '/api/3.18/account/settings/get', {
   "resourcePath" => "/Account",
   "summary" => "Get Account Settings",
   "nickname" => "get_settings",
   "responseClass" => "UserSettingsResponse",
-  "endpoint" => "/api/{version}/account/settings/get",
+  "endpoint" => "/account/settings/get",
   "notes" => "Get the account settings for a user",
   "parameters" => [
     {
@@ -1887,12 +1839,6 @@ MyApp.add_route('GET', '/api/{version}/account/settings/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1901,12 +1847,12 @@ MyApp.add_route('GET', '/api/{version}/account/settings/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/login/delegate', {
+MyApp.add_route('POST', '/api/3.18/account/login/delegate', {
   "resourcePath" => "/Account",
   "summary" => "Login as Account",
   "nickname" => "login_delegate",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/account/login/delegate",
+  "endpoint" => "/account/login/delegate",
   "notes" => "A login service that supports logging in as someone else (accounts that the user manages). Intended for internal use for now.",
   "parameters" => [
     {
@@ -1989,12 +1935,6 @@ MyApp.add_route('POST', '/api/{version}/account/login/delegate', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2003,12 +1943,12 @@ MyApp.add_route('POST', '/api/{version}/account/login/delegate', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/login', {
+MyApp.add_route('POST', '/api/3.18/account/login', {
   "resourcePath" => "/Account",
   "summary" => "Login Account",
   "nickname" => "login_general",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/account/login",
+  "endpoint" => "/account/login",
   "notes" => "General login service that supports various authentication methods. Currently supports Facebook, Twitter, Sirqul Username, and Sirqul Phone by default. Can also support custom networks created using the {@link ThirdPartyApi}",
   "parameters" => [
     {
@@ -2108,12 +2048,6 @@ MyApp.add_route('POST', '/api/{version}/account/login', {
       "defaultValue" => "0",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2122,12 +2056,12 @@ MyApp.add_route('POST', '/api/{version}/account/login', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/get', {
+MyApp.add_route('POST', '/api/3.18/account/get', {
   "resourcePath" => "/Account",
   "summary" => "Login Account (Username)",
   "nickname" => "login_username",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/account/get",
+  "endpoint" => "/account/get",
   "notes" => "Login to system with an account",
   "parameters" => [
     {
@@ -2200,12 +2134,6 @@ MyApp.add_route('POST', '/api/{version}/account/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2214,12 +2142,12 @@ MyApp.add_route('POST', '/api/{version}/account/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/logout', {
+MyApp.add_route('POST', '/api/3.18/account/logout', {
   "resourcePath" => "/Account",
   "summary" => "Logout Account",
   "nickname" => "logout",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/logout",
+  "endpoint" => "/account/logout",
   "notes" => "Cleans up the users data for logging out.",
   "parameters" => [
     {
@@ -2257,12 +2185,6 @@ MyApp.add_route('POST', '/api/{version}/account/logout', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2271,12 +2193,12 @@ MyApp.add_route('POST', '/api/{version}/account/logout', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/merge', {
+MyApp.add_route('POST', '/api/3.18/account/merge', {
   "resourcePath" => "/Account",
   "summary" => "Merge Account",
   "nickname" => "merge_account",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/merge",
+  "endpoint" => "/account/merge",
   "notes" => "Merges the analytics, achievements, leaderboards of two accounts.",
   "parameters" => [
     {
@@ -2307,12 +2229,6 @@ MyApp.add_route('POST', '/api/{version}/account/merge', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2321,12 +2237,12 @@ MyApp.add_route('POST', '/api/{version}/account/merge', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/passwordchange', {
+MyApp.add_route('POST', '/api/3.18/account/passwordchange', {
   "resourcePath" => "/Account",
   "summary" => "Update Password",
   "nickname" => "password_change",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/passwordchange",
+  "endpoint" => "/account/passwordchange",
   "notes" => "Update the account password.",
   "parameters" => [
     {
@@ -2357,12 +2273,6 @@ MyApp.add_route('POST', '/api/{version}/account/passwordchange', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2371,12 +2281,12 @@ MyApp.add_route('POST', '/api/{version}/account/passwordchange', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/passwordreset', {
+MyApp.add_route('POST', '/api/3.18/account/passwordreset', {
   "resourcePath" => "/Account",
   "summary" => "Reset Password",
   "nickname" => "password_reset",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/passwordreset",
+  "endpoint" => "/account/passwordreset",
   "notes" => "Reset the account password. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token.",
   "parameters" => [
     {
@@ -2400,12 +2310,6 @@ MyApp.add_route('POST', '/api/{version}/account/passwordreset', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2414,12 +2318,12 @@ MyApp.add_route('POST', '/api/{version}/account/passwordreset', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/requestpasswordreset', {
+MyApp.add_route('POST', '/api/3.18/account/requestpasswordreset', {
   "resourcePath" => "/Account",
   "summary" => "Request Password Reset",
   "nickname" => "request_password_reset",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/requestpasswordreset",
+  "endpoint" => "/account/requestpasswordreset",
   "notes" => "Request that an account password be reset. The account is looked up by email address and then a link is sent via email to that account with a reset token. The token is valid for 24 hours.",
   "parameters" => [
     {
@@ -2459,12 +2363,6 @@ MyApp.add_route('POST', '/api/{version}/account/requestpasswordreset', {
       "defaultValue" => "'http://dev.sirqul.com/resetpassword'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2473,12 +2371,12 @@ MyApp.add_route('POST', '/api/{version}/account/requestpasswordreset', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/requestValidateAccount', {
+MyApp.add_route('POST', '/api/3.18/account/requestValidateAccount', {
   "resourcePath" => "/Account",
   "summary" => "Send Validation Request",
   "nickname" => "request_validate_account",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/requestValidateAccount",
+  "endpoint" => "/account/requestValidateAccount",
   "notes" => "Send an email to validate a user's account.",
   "parameters" => [
     {
@@ -2488,12 +2386,6 @@ MyApp.add_route('POST', '/api/{version}/account/requestValidateAccount', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2502,12 +2394,12 @@ MyApp.add_route('POST', '/api/{version}/account/requestValidateAccount', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/account/profile/search', {
+MyApp.add_route('GET', '/api/3.18/account/profile/search', {
   "resourcePath" => "/Account",
   "summary" => "Search Accounts",
   "nickname" => "search_accounts",
   "responseClass" => "Array<ProfileResponse>",
-  "endpoint" => "/api/{version}/account/profile/search",
+  "endpoint" => "/account/profile/search",
   "notes" => "Search for account profiles.",
   "parameters" => [
     {
@@ -2645,12 +2537,6 @@ MyApp.add_route('GET', '/api/{version}/account/profile/search', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2659,12 +2545,12 @@ MyApp.add_route('GET', '/api/{version}/account/profile/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/login/validate', {
+MyApp.add_route('POST', '/api/3.18/account/login/validate', {
   "resourcePath" => "/Account",
   "summary" => "Login Account (Encrypted Username)",
   "nickname" => "secure_login",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/account/login/validate",
+  "endpoint" => "/account/login/validate",
   "notes" => "ogin with encrypted user-name and password.",
   "parameters" => [
     {
@@ -2733,12 +2619,6 @@ MyApp.add_route('POST', '/api/{version}/account/login/validate', {
       "defaultValue" => "'PROFILE'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2747,12 +2627,12 @@ MyApp.add_route('POST', '/api/{version}/account/login/validate', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/create/validate', {
+MyApp.add_route('POST', '/api/3.18/account/create/validate', {
   "resourcePath" => "/Account",
   "summary" => "Create Account (Encrypted Username)",
   "nickname" => "secure_signup",
   "responseClass" => "ProfileInfoResponse",
-  "endpoint" => "/api/{version}/account/create/validate",
+  "endpoint" => "/account/create/validate",
   "notes" => "Create a new account by role (with encrypted user-name and password)",
   "parameters" => [
     {
@@ -3185,12 +3065,6 @@ MyApp.add_route('POST', '/api/{version}/account/create/validate', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -3199,12 +3073,12 @@ MyApp.add_route('POST', '/api/{version}/account/create/validate', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/profile/matchToken', {
+MyApp.add_route('POST', '/api/3.18/consumer/profile/matchToken', {
   "resourcePath" => "/Account",
   "summary" => "Save Match Token",
   "nickname" => "set_match_token",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/profile/matchToken",
+  "endpoint" => "/consumer/profile/matchToken",
   "notes" => "Save user's match token to be used for profile match making",
   "parameters" => [
     {
@@ -3257,12 +3131,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/profile/matchToken', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -3271,12 +3139,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/profile/matchToken', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/active/update', {
+MyApp.add_route('POST', '/api/3.18/account/active/update', {
   "resourcePath" => "/Account",
   "summary" => "Update Account Active Status",
   "nickname" => "update_actve_status",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/active/update",
+  "endpoint" => "/account/active/update",
   "notes" => "Activate or deactivate an account (requires appropriate permissions).",
   "parameters" => [
     {
@@ -3314,12 +3182,6 @@ MyApp.add_route('POST', '/api/{version}/account/active/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -3328,12 +3190,12 @@ MyApp.add_route('POST', '/api/{version}/account/active/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/location/update', {
+MyApp.add_route('POST', '/api/3.18/account/location/update', {
   "resourcePath" => "/Account",
   "summary" => "Update Location",
   "nickname" => "update_location",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/location/update",
+  "endpoint" => "/account/location/update",
   "notes" => "Update the account location",
   "parameters" => [
     {
@@ -3371,12 +3233,6 @@ MyApp.add_route('POST', '/api/{version}/account/location/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -3385,12 +3241,12 @@ MyApp.add_route('POST', '/api/{version}/account/location/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/settings/update', {
+MyApp.add_route('POST', '/api/3.18/account/settings/update', {
   "resourcePath" => "/Account",
   "summary" => "Update Account Settings",
   "nickname" => "update_settings",
   "responseClass" => "UserSettingsResponse",
-  "endpoint" => "/api/{version}/account/settings/update",
+  "endpoint" => "/account/settings/update",
   "notes" => "Update the account settings for a user",
   "parameters" => [
     {
@@ -3477,12 +3333,6 @@ MyApp.add_route('POST', '/api/{version}/account/settings/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -3491,12 +3341,12 @@ MyApp.add_route('POST', '/api/{version}/account/settings/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/validateAccountSignup', {
+MyApp.add_route('POST', '/api/3.18/account/validateAccountSignup', {
   "resourcePath" => "/Account",
   "summary" => "Save Validation Status",
   "nickname" => "validate_account_signup",
   "responseClass" => "AccountLoginResponse",
-  "endpoint" => "/api/{version}/account/validateAccountSignup",
+  "endpoint" => "/account/validateAccountSignup",
   "notes" => "Validate the account's email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.",
   "parameters" => [
     {
@@ -3506,12 +3356,6 @@ MyApp.add_route('POST', '/api/{version}/account/validateAccountSignup', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -3520,12 +3364,12 @@ MyApp.add_route('POST', '/api/{version}/account/validateAccountSignup', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/account/validatepasswordreset', {
+MyApp.add_route('POST', '/api/3.18/account/validatepasswordreset', {
   "resourcePath" => "/Account",
   "summary" => "Validate Password Reset Token",
   "nickname" => "validate_password_reset",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/account/validatepasswordreset",
+  "endpoint" => "/account/validatepasswordreset",
   "notes" => "Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.",
   "parameters" => [
     {
@@ -3534,12 +3378,6 @@ MyApp.add_route('POST', '/api/{version}/account/validatepasswordreset', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/persona/create', {
+MyApp.add_route('POST', '/api/3.18/persona/create', {
   "resourcePath" => "/PreviewPersona",
   "summary" => "Create Persona",
   "nickname" => "create_persona",
   "responseClass" => "PreviewPersonaResponse",
-  "endpoint" => "/api/{version}/persona/create",
+  "endpoint" => "/persona/create",
   "notes" => "Creates a new persona. If the given params are null those attributes will be override by null.",
   "parameters" => [
     {
@@ -72,12 +72,6 @@ MyApp.add_route('POST', '/api/{version}/persona/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -86,12 +80,12 @@ MyApp.add_route('POST', '/api/{version}/persona/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/persona/delete', {
+MyApp.add_route('POST', '/api/3.18/persona/delete', {
   "resourcePath" => "/PreviewPersona",
   "summary" => "Delete Persona",
   "nickname" => "delete_persona",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/persona/delete",
+  "endpoint" => "/persona/delete",
   "notes" => "Mark the persona for deletion.",
   "parameters" => [
     {
@@ -108,12 +102,6 @@ MyApp.add_route('POST', '/api/{version}/persona/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +110,12 @@ MyApp.add_route('POST', '/api/{version}/persona/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/persona/get', {
+MyApp.add_route('GET', '/api/3.18/persona/get', {
   "resourcePath" => "/PreviewPersona",
   "summary" => "Get Persona",
   "nickname" => "get_persona_list",
   "responseClass" => "PreviewPersonaResponse",
-  "endpoint" => "/api/{version}/persona/get",
+  "endpoint" => "/persona/get",
   "notes" => "Get the persona by the given persona ID. If the persona cannot be found, a invalid response is returned.",
   "parameters" => [
     {
@@ -144,12 +132,6 @@ MyApp.add_route('GET', '/api/{version}/persona/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -158,12 +140,12 @@ MyApp.add_route('GET', '/api/{version}/persona/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/persona/search', {
+MyApp.add_route('GET', '/api/3.18/persona/search', {
   "resourcePath" => "/PreviewPersona",
   "summary" => "Search Personas",
   "nickname" => "search_persona",
   "responseClass" => "PreviewPersonaResponse",
-  "endpoint" => "/api/{version}/persona/search",
+  "endpoint" => "/persona/search",
   "notes" => "Search for persona that the account owns by the given account ID.",
   "parameters" => [
     {
@@ -187,12 +169,6 @@ MyApp.add_route('GET', '/api/{version}/persona/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -201,12 +177,12 @@ MyApp.add_route('GET', '/api/{version}/persona/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/persona/update', {
+MyApp.add_route('POST', '/api/3.18/persona/update', {
   "resourcePath" => "/PreviewPersona",
   "summary" => "Update Persona",
   "nickname" => "update_persona",
   "responseClass" => "PreviewPersonaResponse",
-  "endpoint" => "/api/{version}/persona/update",
+  "endpoint" => "/persona/update",
   "notes" => "Update the persona by the given personaId. If the given params are null those attributes will be override by null. If active is assigned, all other params will be ignored.",
   "parameters" => [
     {
@@ -285,12 +261,6 @@ MyApp.add_route('POST', '/api/{version}/persona/update', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

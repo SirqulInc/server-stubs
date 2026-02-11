@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/tournament/create', {
+MyApp.add_route('POST', '/api/3.18/tournament/create', {
   "resourcePath" => "/Tournament",
   "summary" => "Create Tournament",
   "nickname" => "create_tournament",
   "responseClass" => "TournamentResponse",
-  "endpoint" => "/api/{version}/tournament/create",
+  "endpoint" => "/tournament/create",
   "notes" => "Create a tournament.",
   "parameters" => [
     {
@@ -269,12 +269,6 @@ MyApp.add_route('POST', '/api/{version}/tournament/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -283,12 +277,12 @@ MyApp.add_route('POST', '/api/{version}/tournament/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tournament/delete', {
+MyApp.add_route('POST', '/api/3.18/tournament/delete', {
   "resourcePath" => "/Tournament",
   "summary" => "Delete Tournament",
   "nickname" => "delete_tournament",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tournament/delete",
+  "endpoint" => "/tournament/delete",
   "notes" => "Delete a tournament.",
   "parameters" => [
     {
@@ -305,12 +299,6 @@ MyApp.add_route('POST', '/api/{version}/tournament/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -319,12 +307,12 @@ MyApp.add_route('POST', '/api/{version}/tournament/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tournament/get', {
+MyApp.add_route('GET', '/api/3.18/tournament/get', {
   "resourcePath" => "/Tournament",
   "summary" => "Get Tournament",
   "nickname" => "get_tournament",
   "responseClass" => "TournamentResponse",
-  "endpoint" => "/api/{version}/tournament/get",
+  "endpoint" => "/tournament/get",
   "notes" => "Get a tournament.",
   "parameters" => [
     {
@@ -363,12 +351,6 @@ MyApp.add_route('GET', '/api/{version}/tournament/get', {
       "defaultValue" => "50",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -377,12 +359,12 @@ MyApp.add_route('GET', '/api/{version}/tournament/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tournament/object/search', {
+MyApp.add_route('GET', '/api/3.18/tournament/object/search', {
   "resourcePath" => "/Tournament",
   "summary" => "Search Tournament Objects",
   "nickname" => "search_objects",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tournament/object/search",
+  "endpoint" => "/tournament/object/search",
   "notes" => "Search on game objects of tournaments",
   "parameters" => [
     {
@@ -431,12 +413,6 @@ MyApp.add_route('GET', '/api/{version}/tournament/object/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -445,12 +421,12 @@ MyApp.add_route('GET', '/api/{version}/tournament/object/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tournament/round/search', {
+MyApp.add_route('GET', '/api/3.18/tournament/round/search', {
   "resourcePath" => "/Tournament",
   "summary" => "Search Tournament Rounds",
   "nickname" => "search_rounds",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tournament/round/search",
+  "endpoint" => "/tournament/round/search",
   "notes" => "Search for the user's tournament games.",
   "parameters" => [
     {
@@ -514,12 +490,6 @@ MyApp.add_route('GET', '/api/{version}/tournament/round/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -528,12 +498,12 @@ MyApp.add_route('GET', '/api/{version}/tournament/round/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tournament/search', {
+MyApp.add_route('GET', '/api/3.18/tournament/search', {
   "resourcePath" => "/Tournament",
   "summary" => "Search Tournaments",
   "nickname" => "search_tournaments",
   "responseClass" => "MissionShortResponse",
-  "endpoint" => "/api/{version}/tournament/search",
+  "endpoint" => "/tournament/search",
   "notes" => "Search for tournaments",
   "parameters" => [
     {
@@ -627,12 +597,6 @@ MyApp.add_route('GET', '/api/{version}/tournament/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -641,12 +605,12 @@ MyApp.add_route('GET', '/api/{version}/tournament/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tournament/score', {
+MyApp.add_route('POST', '/api/3.18/tournament/score', {
   "resourcePath" => "/Tournament",
   "summary" => "Submit Tournament Score",
   "nickname" => "submit_tournament_score",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tournament/score",
+  "endpoint" => "/tournament/score",
   "notes" => "Submit an array of scores for a tournament match. ",
   "parameters" => [
     {
@@ -698,12 +662,6 @@ MyApp.add_route('POST', '/api/{version}/tournament/score', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -712,12 +670,12 @@ MyApp.add_route('POST', '/api/{version}/tournament/score', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tournament/vote', {
+MyApp.add_route('POST', '/api/3.18/tournament/vote', {
   "resourcePath" => "/Tournament",
   "summary" => "Submit a vote for a multi-stage album tournament.",
   "nickname" => "submit_tournament_vote",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tournament/vote",
+  "endpoint" => "/tournament/vote",
   "notes" => "Submit a vote for a multi-stage album tournament.",
   "parameters" => [
     {
@@ -763,12 +721,6 @@ MyApp.add_route('POST', '/api/{version}/tournament/vote', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -777,12 +729,12 @@ MyApp.add_route('POST', '/api/{version}/tournament/vote', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tournament/substitute', {
+MyApp.add_route('POST', '/api/3.18/tournament/substitute', {
   "resourcePath" => "/Tournament",
   "summary" => "Substitute Tournament Player",
   "nickname" => "substitute_tournament_player",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tournament/substitute",
+  "endpoint" => "/tournament/substitute",
   "notes" => "Service to replace the user's opponent in the current level - pack - mission with an AI account.",
   "parameters" => [
     {
@@ -813,12 +765,6 @@ MyApp.add_route('POST', '/api/{version}/tournament/substitute', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -827,12 +773,12 @@ MyApp.add_route('POST', '/api/{version}/tournament/substitute', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tournament/update', {
+MyApp.add_route('POST', '/api/3.18/tournament/update', {
   "resourcePath" => "/Tournament",
   "summary" => "Update Tournament",
   "nickname" => "update_tournament",
   "responseClass" => "TournamentResponse",
-  "endpoint" => "/api/{version}/tournament/update",
+  "endpoint" => "/tournament/update",
   "notes" => "Update a tournament.",
   "parameters" => [
     {
@@ -1072,12 +1018,6 @@ MyApp.add_route('POST', '/api/{version}/tournament/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

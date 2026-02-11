@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/credential/create', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/credential/create', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Create Credential",
   "nickname" => "create_credential",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/thirdparty/credential/create",
+  "endpoint" => "/thirdparty/credential/create",
   "notes" => "This endpoint creates a third-party login for a Sirqul account. A third party login is a way for external systems (Third Party Networks) to link their own user accounts with a Sirqul account.   The thirdPartyId parameter is used to determine if the user already exists in Sirqul or not. This parameter needs to be unique for each user in the Third Party Network (identified by the networkUID parameter). Note that subsequent calls will update the user's third-party login credentials for the user with the same thirdPartyId and networkUID combination.    The thirdPartyToken parameter acts as a shared secret and used by client applications to log users into Sirqul without providing a Sirqul username and password. ",
   "parameters" => [
     {
@@ -129,12 +129,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -143,12 +137,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/network/create', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/network/create', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Create Network",
   "nickname" => "create_network",
   "responseClass" => "ThirdPartyNetworkResponse",
-  "endpoint" => "/api/{version}/thirdparty/network/create",
+  "endpoint" => "/thirdparty/network/create",
   "notes" => "Creates a custom third party network.",
   "parameters" => [
     {
@@ -264,12 +258,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/network/create', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "body",
       "description" => "",
       "dataType" => "String",
@@ -283,12 +271,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/network/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/credential/delete', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/credential/delete', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Delete Credential",
   "nickname" => "delete_credential",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/thirdparty/credential/delete",
+  "endpoint" => "/thirdparty/credential/delete",
   "notes" => "Delete a third party network on a Sirqul account.",
   "parameters" => [
     {
@@ -319,12 +307,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -333,12 +315,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/network/delete', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/network/delete', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Delete Network",
   "nickname" => "delete_network",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/thirdparty/network/delete",
+  "endpoint" => "/thirdparty/network/delete",
   "notes" => "Marks a custom third party network as deleted. Only the network owners and managers have access to this.",
   "parameters" => [
     {
@@ -355,12 +337,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/network/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -369,12 +345,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/network/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/credential/get', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/credential/get', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Get Credential",
   "nickname" => "get_credential",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/thirdparty/credential/get",
+  "endpoint" => "/thirdparty/credential/get",
   "notes" => "Gets the account information given a third party token.",
   "parameters" => [
     {
@@ -483,12 +459,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -497,12 +467,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/thirdparty/network/get', {
+MyApp.add_route('GET', '/api/3.18/thirdparty/network/get', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Get Network",
   "nickname" => "get_network",
   "responseClass" => "ThirdPartyNetworkResponse",
-  "endpoint" => "/api/{version}/thirdparty/network/get",
+  "endpoint" => "/thirdparty/network/get",
   "notes" => "Get the details of a third party network. Only the network owners and managers have access to this.",
   "parameters" => [
     {
@@ -519,12 +489,6 @@ MyApp.add_route('GET', '/api/{version}/thirdparty/network/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -533,12 +497,12 @@ MyApp.add_route('GET', '/api/{version}/thirdparty/network/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/thirdparty/credential/search', {
+MyApp.add_route('GET', '/api/3.18/thirdparty/credential/search', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Search Credentials",
   "nickname" => "search_credentials",
   "responseClass" => "Array<ThirdPartyCredentialResponse>",
-  "endpoint" => "/api/{version}/thirdparty/credential/search",
+  "endpoint" => "/thirdparty/credential/search",
   "notes" => "Search on a user's linked third party networks.",
   "parameters" => [
     {
@@ -585,12 +549,6 @@ MyApp.add_route('GET', '/api/{version}/thirdparty/credential/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -599,12 +557,12 @@ MyApp.add_route('GET', '/api/{version}/thirdparty/credential/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/thirdparty/network/search', {
+MyApp.add_route('GET', '/api/3.18/thirdparty/network/search', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Search Networks",
   "nickname" => "search_networks",
   "responseClass" => "Array<ThirdPartyNetworkShortResponse>",
-  "endpoint" => "/api/{version}/thirdparty/network/search",
+  "endpoint" => "/thirdparty/network/search",
   "notes" => "Search on supported third party networks and custom networks from external users.",
   "parameters" => [
     {
@@ -663,12 +621,6 @@ MyApp.add_route('GET', '/api/{version}/thirdparty/network/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -677,12 +629,12 @@ MyApp.add_route('GET', '/api/{version}/thirdparty/network/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/credential/mfa/send', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/credential/mfa/send', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Send MFA Challenge",
   "nickname" => "send_mfa_challenge",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/thirdparty/credential/mfa/send",
+  "endpoint" => "/thirdparty/credential/mfa/send",
   "notes" => "Sends an MFA challenge (SMS or Email) for networks with MFA enabled.",
   "parameters" => [
     {
@@ -720,12 +672,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/mfa/send', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -734,12 +680,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/mfa/send', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/credential/update', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/credential/update', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Update Credential",
   "nickname" => "update_credential",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/thirdparty/credential/update",
+  "endpoint" => "/thirdparty/credential/update",
   "notes" => "Updates a third-party login for an account.",
   "parameters" => [
     {
@@ -805,12 +751,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -819,12 +759,12 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/credential/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/thirdparty/network/update', {
+MyApp.add_route('POST', '/api/3.18/thirdparty/network/update', {
   "resourcePath" => "/ThirdPartyCredentials",
   "summary" => "Update Network",
   "nickname" => "update_network",
   "responseClass" => "ThirdPartyNetworkResponse",
-  "endpoint" => "/api/{version}/thirdparty/network/update",
+  "endpoint" => "/thirdparty/network/update",
   "notes" => "Updates a custom third party network. Only the network owners and managers have access to this.",
   "parameters" => [
     {
@@ -945,12 +885,6 @@ MyApp.add_route('POST', '/api/{version}/thirdparty/network/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "body",

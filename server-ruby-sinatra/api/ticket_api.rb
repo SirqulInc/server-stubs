@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/ticket/count', {
+MyApp.add_route('GET', '/api/3.18/ticket/count', {
   "resourcePath" => "/Ticket",
   "summary" => "Get Ticket Count",
   "nickname" => "get_ticket_count",
   "responseClass" => "CountResponse",
-  "endpoint" => "/api/{version}/ticket/count",
+  "endpoint" => "/ticket/count",
   "notes" => "Gets the ticket count.",
   "parameters" => [
     {
@@ -44,12 +44,6 @@ MyApp.add_route('GET', '/api/{version}/ticket/count', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -58,12 +52,12 @@ MyApp.add_route('GET', '/api/{version}/ticket/count', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/ticket/getList', {
+MyApp.add_route('GET', '/api/3.18/ticket/getList', {
   "resourcePath" => "/Ticket",
   "summary" => "Get Ticket List",
   "nickname" => "get_ticket_list",
   "responseClass" => "TicketListResponse",
-  "endpoint" => "/api/{version}/ticket/getList",
+  "endpoint" => "/ticket/getList",
   "notes" => "Gets the list of tickets.",
   "parameters" => [
     {
@@ -129,12 +123,6 @@ MyApp.add_route('GET', '/api/{version}/ticket/getList', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -143,12 +131,12 @@ MyApp.add_route('GET', '/api/{version}/ticket/getList', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/purchase/gift', {
+MyApp.add_route('POST', '/api/3.18/purchase/gift', {
   "resourcePath" => "/Ticket",
   "summary" => "Gift Tickets",
   "nickname" => "gift_purchase",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/purchase/gift",
+  "endpoint" => "/purchase/gift",
   "notes" => "Gift tickets to another user.",
   "parameters" => [
     {
@@ -207,12 +195,6 @@ MyApp.add_route('POST', '/api/{version}/purchase/gift', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -221,12 +203,12 @@ MyApp.add_route('POST', '/api/{version}/purchase/gift', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/ticket/save', {
+MyApp.add_route('POST', '/api/3.18/ticket/save', {
   "resourcePath" => "/Ticket",
   "summary" => "Save Ticket",
   "nickname" => "save_ticket",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/ticket/save",
+  "endpoint" => "/ticket/save",
   "notes" => "Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system.",
   "parameters" => [
     {
@@ -355,12 +337,6 @@ MyApp.add_route('POST', '/api/{version}/ticket/save', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -369,12 +345,12 @@ MyApp.add_route('POST', '/api/{version}/ticket/save', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/ticket/save/fileUpload', {
+MyApp.add_route('POST', '/api/3.18/ticket/save/fileUpload', {
   "resourcePath" => "/Ticket",
   "summary" => "Save Ticket with Reciept",
   "nickname" => "save_ticket_via_file_upload",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/ticket/save/fileUpload",
+  "endpoint" => "/ticket/save/fileUpload",
   "notes" => "Similar to the Save Ticket endpoint but allows the receiptData to be in binary format. This must be a multi-part post",
   "parameters" => [
     {
@@ -503,12 +479,6 @@ MyApp.add_route('POST', '/api/{version}/ticket/save/fileUpload', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -517,20 +487,14 @@ MyApp.add_route('POST', '/api/{version}/ticket/save/fileUpload', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/ticket/ticketoffers', {
+MyApp.add_route('GET', '/api/3.18/ticket/ticketoffers', {
   "resourcePath" => "/Ticket",
   "summary" => "Get Ticket Offers",
   "nickname" => "ticket_offers",
   "responseClass" => "TicketOfferResponse",
-  "endpoint" => "/api/{version}/ticket/ticketoffers",
+  "endpoint" => "/ticket/ticketoffers",
   "notes" => "Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here

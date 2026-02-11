@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/game/word/create', {
+MyApp.add_route('POST', '/api/3.18/game/word/create', {
   "resourcePath" => "/Word",
   "summary" => "Create Word",
   "nickname" => "create_word",
   "responseClass" => "WordzWordResponse",
-  "endpoint" => "/api/{version}/game/word/create",
+  "endpoint" => "/game/word/create",
   "notes" => "Create a word by the given params.",
   "parameters" => [
     {
@@ -75,12 +75,6 @@ MyApp.add_route('POST', '/api/{version}/game/word/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -89,12 +83,12 @@ MyApp.add_route('POST', '/api/{version}/game/word/create', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/game/word/delete', {
+MyApp.add_route('DELETE', '/api/3.18/game/word/delete', {
   "resourcePath" => "/Word",
   "summary" => "Delete Word",
   "nickname" => "delete_word",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/game/word/delete",
+  "endpoint" => "/game/word/delete",
   "notes" => "Delete a word by the given id. The accountId given needs to be the owner or executive to delete.",
   "parameters" => [
     {
@@ -111,12 +105,6 @@ MyApp.add_route('DELETE', '/api/{version}/game/word/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -125,12 +113,12 @@ MyApp.add_route('DELETE', '/api/{version}/game/word/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/game/word/get', {
+MyApp.add_route('GET', '/api/3.18/game/word/get', {
   "resourcePath" => "/Word",
   "summary" => "Get Word",
   "nickname" => "get_word",
   "responseClass" => "WordzWordResponse",
-  "endpoint" => "/api/{version}/game/word/get",
+  "endpoint" => "/game/word/get",
   "notes" => "Get a word by the given id.",
   "parameters" => [
     {
@@ -147,12 +135,6 @@ MyApp.add_route('GET', '/api/{version}/game/word/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -161,12 +143,12 @@ MyApp.add_route('GET', '/api/{version}/game/word/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/game/word/search', {
+MyApp.add_route('GET', '/api/3.18/game/word/search', {
   "resourcePath" => "/Word",
   "summary" => "Search Words",
   "nickname" => "get_words",
   "responseClass" => "Array<WordzWordResponse>",
-  "endpoint" => "/api/{version}/game/word/search",
+  "endpoint" => "/game/word/search",
   "notes" => "Search for words by the given params.",
   "parameters" => [
     {
@@ -223,12 +205,6 @@ MyApp.add_route('GET', '/api/{version}/game/word/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -237,12 +213,12 @@ MyApp.add_route('GET', '/api/{version}/game/word/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/game/word/update', {
+MyApp.add_route('POST', '/api/3.18/game/word/update', {
   "resourcePath" => "/Word",
   "summary" => "Update Word",
   "nickname" => "update_word",
   "responseClass" => "WordzWordResponse",
-  "endpoint" => "/api/{version}/game/word/update",
+  "endpoint" => "/game/word/update",
   "notes" => "Update a word by the given params.",
   "parameters" => [
     {
@@ -315,12 +291,6 @@ MyApp.add_route('POST', '/api/{version}/game/word/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

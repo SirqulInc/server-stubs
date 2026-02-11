@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/appconfig/create', {
+MyApp.add_route('POST', '/api/3.18/appconfig/create', {
   "resourcePath" => "/ApplicationConfig",
   "summary" => "Create AppConfig",
   "nickname" => "create_application_config",
   "responseClass" => "ApplicationConfigResponse",
-  "endpoint" => "/api/{version}/appconfig/create",
+  "endpoint" => "/appconfig/create",
   "notes" => "Creates a new application configuration. If the configVersion provided already exists for the given app, an invalid response is returned and the application configuration won't be created.",
   "parameters" => [
     {
@@ -58,12 +58,6 @@ MyApp.add_route('POST', '/api/{version}/appconfig/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -72,12 +66,12 @@ MyApp.add_route('POST', '/api/{version}/appconfig/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/appconfig/delete', {
+MyApp.add_route('POST', '/api/3.18/appconfig/delete', {
   "resourcePath" => "/ApplicationConfig",
   "summary" => "Delete AppConfig",
   "nickname" => "delete_application_config",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/appconfig/delete",
+  "endpoint" => "/appconfig/delete",
   "notes" => "Mark the application configuration for deletion.",
   "parameters" => [
     {
@@ -94,12 +88,6 @@ MyApp.add_route('POST', '/api/{version}/appconfig/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -108,12 +96,12 @@ MyApp.add_route('POST', '/api/{version}/appconfig/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/appconfig/get', {
+MyApp.add_route('GET', '/api/3.18/appconfig/get', {
   "resourcePath" => "/ApplicationConfig",
   "summary" => "Get AppConfig",
   "nickname" => "get_application_config",
   "responseClass" => "ApplicationConfigResponse",
-  "endpoint" => "/api/{version}/appconfig/get",
+  "endpoint" => "/appconfig/get",
   "notes" => "Gets the appConfig data by the given configId. If appConfig cannot be found, it returns an invalid response.",
   "parameters" => [
     {
@@ -130,12 +118,6 @@ MyApp.add_route('GET', '/api/{version}/appconfig/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -144,12 +126,12 @@ MyApp.add_route('GET', '/api/{version}/appconfig/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/appconfig/getbyversion', {
+MyApp.add_route('GET', '/api/3.18/appconfig/getbyversion', {
   "resourcePath" => "/ApplicationConfig",
   "summary" => "Get AppConfig by Version",
   "nickname" => "get_application_config_by_config_version",
   "responseClass" => "ApplicationConfigResponse",
-  "endpoint" => "/api/{version}/appconfig/getbyversion",
+  "endpoint" => "/appconfig/getbyversion",
   "notes" => "Gets the appConfig data by the given appKey and app configVersion number.If the appKey is is invalid or appConfig is not found, it returns an invalid response. ",
   "parameters" => [
     {
@@ -195,12 +177,6 @@ MyApp.add_route('GET', '/api/{version}/appconfig/getbyversion', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -209,12 +185,12 @@ MyApp.add_route('GET', '/api/{version}/appconfig/getbyversion', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/appconfig/search', {
+MyApp.add_route('GET', '/api/3.18/appconfig/search', {
   "resourcePath" => "/ApplicationConfig",
   "summary" => "Search AppConfigs",
   "nickname" => "search_application_config",
   "responseClass" => "Array<ApplicationConfigResponse>",
-  "endpoint" => "/api/{version}/appconfig/search",
+  "endpoint" => "/appconfig/search",
   "notes" => "Gets all versions of application configurations in a particular app by the given appKey.",
   "parameters" => [
     {
@@ -291,12 +267,6 @@ MyApp.add_route('GET', '/api/{version}/appconfig/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -305,12 +275,12 @@ MyApp.add_route('GET', '/api/{version}/appconfig/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/appconfig/update', {
+MyApp.add_route('POST', '/api/3.18/appconfig/update', {
   "resourcePath" => "/ApplicationConfig",
   "summary" => "Update AppConfig",
   "nickname" => "update_application_config",
   "responseClass" => "ApplicationConfigResponse",
-  "endpoint" => "/api/{version}/appconfig/update",
+  "endpoint" => "/appconfig/update",
   "notes" => "pdates an existing application configuration. If the configVersion provided already exists for the given app the application configuration won't be updated.",
   "parameters" => [
     {
@@ -368,12 +338,6 @@ MyApp.add_route('POST', '/api/{version}/appconfig/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

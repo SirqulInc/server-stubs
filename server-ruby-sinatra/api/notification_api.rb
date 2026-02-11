@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/notification/template/create', {
+MyApp.add_route('POST', '/api/3.18/notification/template/create', {
   "resourcePath" => "/Notification",
   "summary" => "Create Notification Template",
   "nickname" => "create_notification_template",
   "responseClass" => "NotificationTemplateResponse",
-  "endpoint" => "/api/{version}/notification/template/create",
+  "endpoint" => "/notification/template/create",
   "notes" => "Create a notification template. Developers will only be able to create notification templates for their own applications.",
   "parameters" => [
     {
@@ -58,12 +58,6 @@ MyApp.add_route('POST', '/api/{version}/notification/template/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -72,12 +66,12 @@ MyApp.add_route('POST', '/api/{version}/notification/template/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/blocked/batch', {
+MyApp.add_route('POST', '/api/3.18/notification/blocked/batch', {
   "resourcePath" => "/Notification",
   "summary" => "Create or update blocked notification settings",
   "nickname" => "create_or_update_blocked_notifications",
   "responseClass" => "BlockedNotificationResponse",
-  "endpoint" => "/api/{version}/notification/blocked/batch",
+  "endpoint" => "/notification/blocked/batch",
   "notes" => "Create or update blocked notification settings",
   "parameters" => [
     {
@@ -101,12 +95,6 @@ MyApp.add_route('POST', '/api/{version}/notification/blocked/batch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -115,12 +103,12 @@ MyApp.add_route('POST', '/api/{version}/notification/blocked/batch', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/template/delete', {
+MyApp.add_route('POST', '/api/3.18/notification/template/delete', {
   "resourcePath" => "/Notification",
   "summary" => "Delete Notification Template",
   "nickname" => "delete_notification_template",
   "responseClass" => "NotificationTemplateResponse",
-  "endpoint" => "/api/{version}/notification/template/delete",
+  "endpoint" => "/notification/template/delete",
   "notes" => "Deletes a notification template. Developers will only be able to delete notification templates for their own applications.",
   "parameters" => [
     {
@@ -137,12 +125,6 @@ MyApp.add_route('POST', '/api/{version}/notification/template/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -151,12 +133,12 @@ MyApp.add_route('POST', '/api/{version}/notification/template/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/template/get', {
+MyApp.add_route('GET', '/api/3.18/notification/template/get', {
   "resourcePath" => "/Notification",
   "summary" => "Get Notification Template",
   "nickname" => "get_notification_template",
   "responseClass" => "NotificationTemplateResponse",
-  "endpoint" => "/api/{version}/notification/template/get",
+  "endpoint" => "/notification/template/get",
   "notes" => "Get the details of a notification template. Developers will only be able to see notification templates for their own applications.",
   "parameters" => [
     {
@@ -173,12 +155,6 @@ MyApp.add_route('GET', '/api/{version}/notification/template/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -187,12 +163,12 @@ MyApp.add_route('GET', '/api/{version}/notification/template/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/search', {
+MyApp.add_route('GET', '/api/3.18/notification/search', {
   "resourcePath" => "/Notification",
   "summary" => "Get Notifications",
   "nickname" => "get_notifications",
   "responseClass" => "NotificationMessageListResponse",
-  "endpoint" => "/api/{version}/notification/search",
+  "endpoint" => "/notification/search",
   "notes" => "Get a list of notifications for a user. If the \"markAsRead\" parameter is set to true, the returned notifications will be marked as \"read\" after the response has been sent. By default, read messages will not be returned, so to see read messages, set \"returnReadMessages\" to true.",
   "parameters" => [
     {
@@ -342,12 +318,6 @@ MyApp.add_route('GET', '/api/{version}/notification/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -356,12 +326,12 @@ MyApp.add_route('GET', '/api/{version}/notification/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/token', {
+MyApp.add_route('POST', '/api/3.18/notification/token', {
   "resourcePath" => "/Notification",
   "summary" => "Register Notification Token",
   "nickname" => "register_notification_token",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/notification/token",
+  "endpoint" => "/notification/token",
   "notes" => "Register a token to send application dependent notifications like Google Cloud Messaging, or Apple Push Notifications.",
   "parameters" => [
     {
@@ -434,12 +404,6 @@ MyApp.add_route('POST', '/api/{version}/notification/token', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -448,12 +412,12 @@ MyApp.add_route('POST', '/api/{version}/notification/token', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/blocked/search', {
+MyApp.add_route('GET', '/api/3.18/notification/blocked/search', {
   "resourcePath" => "/Notification",
   "summary" => "Search on the user's blocked notification settings",
   "nickname" => "search_blocked_notifications",
   "responseClass" => "BlockedNotificationResponse",
-  "endpoint" => "/api/{version}/notification/blocked/search",
+  "endpoint" => "/notification/blocked/search",
   "notes" => "Search on the user's blocked notification settings",
   "parameters" => [
     {
@@ -540,12 +504,6 @@ MyApp.add_route('GET', '/api/{version}/notification/blocked/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -554,12 +512,12 @@ MyApp.add_route('GET', '/api/{version}/notification/blocked/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/template/search', {
+MyApp.add_route('GET', '/api/3.18/notification/template/search', {
   "resourcePath" => "/Notification",
   "summary" => "Search Notification Templates",
   "nickname" => "search_notification_template",
   "responseClass" => "NotificationTemplateResponse",
-  "endpoint" => "/api/{version}/notification/template/search",
+  "endpoint" => "/notification/template/search",
   "notes" => "Search for notification templates on owned applications.",
   "parameters" => [
     {
@@ -639,12 +597,6 @@ MyApp.add_route('GET', '/api/{version}/notification/template/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -653,12 +605,12 @@ MyApp.add_route('GET', '/api/{version}/notification/template/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/recipient/search', {
+MyApp.add_route('GET', '/api/3.18/notification/recipient/search', {
   "resourcePath" => "/Notification",
   "summary" => "Search for Recipients",
   "nickname" => "search_recipients",
   "responseClass" => "Array<NotificationRecipientResponse>",
-  "endpoint" => "/api/{version}/notification/recipient/search",
+  "endpoint" => "/notification/recipient/search",
   "notes" => "Search for application users to send notifications.",
   "parameters" => [
     {
@@ -752,12 +704,6 @@ MyApp.add_route('GET', '/api/{version}/notification/recipient/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -766,12 +712,12 @@ MyApp.add_route('GET', '/api/{version}/notification/recipient/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/recipient/search/count', {
+MyApp.add_route('GET', '/api/3.18/notification/recipient/search/count', {
   "resourcePath" => "/Notification",
   "summary" => "Search for Recipients (Counts/Grouped)",
   "nickname" => "search_recipients_count",
   "responseClass" => "NotificationRecipientResponseListResponse",
-  "endpoint" => "/api/{version}/notification/recipient/search/count",
+  "endpoint" => "/notification/recipient/search/count",
   "notes" => "Search for application users to send notifications (count/grouped variant).",
   "parameters" => [
     {
@@ -858,12 +804,6 @@ MyApp.add_route('GET', '/api/{version}/notification/recipient/search/count', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -872,12 +812,12 @@ MyApp.add_route('GET', '/api/{version}/notification/recipient/search/count', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/batch', {
+MyApp.add_route('POST', '/api/3.18/notification/batch', {
   "resourcePath" => "/Notification",
   "summary" => "Send Batch Notifications",
   "nickname" => "send_batch_notifications",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/notification/batch",
+  "endpoint" => "/notification/batch",
   "notes" => "Send notifications to all users of an application. Only someone with permissions to the application can do this.",
   "parameters" => [
     {
@@ -943,12 +883,6 @@ MyApp.add_route('POST', '/api/{version}/notification/batch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -957,12 +891,12 @@ MyApp.add_route('POST', '/api/{version}/notification/batch', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/custom', {
+MyApp.add_route('POST', '/api/3.18/notification/custom', {
   "resourcePath" => "/Notification",
   "summary" => "Send Custom Notifications",
   "nickname" => "send_custom_notifications",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/notification/custom",
+  "endpoint" => "/notification/custom",
   "notes" => "Send your own custom notification to a user. NOTE: the EventType of these notifications will be CUSTOM. Notifications sent to yourself will currently be ignored.",
   "parameters" => [
     {
@@ -1091,12 +1025,6 @@ MyApp.add_route('POST', '/api/{version}/notification/custom', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1105,12 +1033,12 @@ MyApp.add_route('POST', '/api/{version}/notification/custom', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/template/update', {
+MyApp.add_route('POST', '/api/3.18/notification/template/update', {
   "resourcePath" => "/Notification",
   "summary" => "Update Notification Template",
   "nickname" => "update_notification_template",
   "responseClass" => "NotificationTemplateResponse",
-  "endpoint" => "/api/{version}/notification/template/update",
+  "endpoint" => "/notification/template/update",
   "notes" => "Update a notification template. Developers will only be able to update notification templates for their own applications.",
   "parameters" => [
     {
@@ -1147,12 +1075,6 @@ MyApp.add_route('POST', '/api/{version}/notification/template/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

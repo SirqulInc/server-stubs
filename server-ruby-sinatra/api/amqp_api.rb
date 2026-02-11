@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/queue/consumer/create', {
+MyApp.add_route('POST', '/api/3.18/queue/consumer/create', {
   "resourcePath" => "/AMQP",
   "summary" => "Create Consumer",
   "nickname" => "consumer_create",
   "responseClass" => "QueueResponse",
-  "endpoint" => "/api/{version}/queue/consumer/create",
+  "endpoint" => "/queue/consumer/create",
   "notes" => "Create a connection to an existing amqp queue and register as a consumer.",
   "parameters" => [
     {
@@ -109,12 +109,6 @@ MyApp.add_route('POST', '/api/{version}/queue/consumer/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -123,12 +117,12 @@ MyApp.add_route('POST', '/api/{version}/queue/consumer/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/queue/consumer/update', {
+MyApp.add_route('POST', '/api/3.18/queue/consumer/update', {
   "resourcePath" => "/AMQP",
   "summary" => "Update Consumer",
   "nickname" => "consumer_update",
   "responseClass" => "QueueResponse",
-  "endpoint" => "/api/{version}/queue/consumer/update",
+  "endpoint" => "/queue/consumer/update",
   "notes" => "Update an existing amqp queue's data mapping.",
   "parameters" => [
     {
@@ -173,12 +167,6 @@ MyApp.add_route('POST', '/api/{version}/queue/consumer/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -187,12 +175,12 @@ MyApp.add_route('POST', '/api/{version}/queue/consumer/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/queue/create', {
+MyApp.add_route('POST', '/api/3.18/queue/create', {
   "resourcePath" => "/AMQP",
   "summary" => "Create Queue",
   "nickname" => "queue_create",
   "responseClass" => "QueueResponse",
-  "endpoint" => "/api/{version}/queue/create",
+  "endpoint" => "/queue/create",
   "notes" => "Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application.",
   "parameters" => [
     {
@@ -280,12 +268,6 @@ MyApp.add_route('POST', '/api/{version}/queue/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -294,12 +276,12 @@ MyApp.add_route('POST', '/api/{version}/queue/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/queue/delete', {
+MyApp.add_route('POST', '/api/3.18/queue/delete', {
   "resourcePath" => "/AMQP",
   "summary" => "Delete Queue",
   "nickname" => "queue_delete",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/queue/delete",
+  "endpoint" => "/queue/delete",
   "notes" => "Delete the stored queue record and close any active connections to the AMQP servers.",
   "parameters" => [
     {
@@ -323,12 +305,6 @@ MyApp.add_route('POST', '/api/{version}/queue/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -337,12 +313,12 @@ MyApp.add_route('POST', '/api/{version}/queue/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/queue/get', {
+MyApp.add_route('GET', '/api/3.18/queue/get', {
   "resourcePath" => "/AMQP",
   "summary" => "Get Queue",
   "nickname" => "queue_get",
   "responseClass" => "QueueResponse",
-  "endpoint" => "/api/{version}/queue/get",
+  "endpoint" => "/queue/get",
   "notes" => "Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.",
   "parameters" => [
     {
@@ -394,12 +370,6 @@ MyApp.add_route('GET', '/api/{version}/queue/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -408,12 +378,12 @@ MyApp.add_route('GET', '/api/{version}/queue/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/queue/publish', {
+MyApp.add_route('POST', '/api/3.18/queue/publish', {
   "resourcePath" => "/AMQP",
   "summary" => "Publish Queue",
   "nickname" => "queue_publish",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/queue/publish",
+  "endpoint" => "/queue/publish",
   "notes" => "Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.",
   "parameters" => [
     {
@@ -458,12 +428,6 @@ MyApp.add_route('POST', '/api/{version}/queue/publish', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -472,12 +436,12 @@ MyApp.add_route('POST', '/api/{version}/queue/publish', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/queue/search', {
+MyApp.add_route('GET', '/api/3.18/queue/search', {
   "resourcePath" => "/AMQP",
   "summary" => "Search Queue",
   "nickname" => "queue_search",
   "responseClass" => "QueueResponse",
-  "endpoint" => "/api/{version}/queue/search",
+  "endpoint" => "/queue/search",
   "notes" => "Get the queues setup for the BillableEntity's applications.",
   "parameters" => [
     {
@@ -524,12 +488,6 @@ MyApp.add_route('GET', '/api/{version}/queue/search', {
       "defaultValue" => "10",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -538,12 +496,12 @@ MyApp.add_route('GET', '/api/{version}/queue/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/queue/update', {
+MyApp.add_route('POST', '/api/3.18/queue/update', {
   "resourcePath" => "/AMQP",
   "summary" => "Update Queue",
   "nickname" => "queue_update",
   "responseClass" => "QueueResponse",
-  "endpoint" => "/api/{version}/queue/update",
+  "endpoint" => "/queue/update",
   "notes" => "Update the basic AMQP queue.",
   "parameters" => [
     {
@@ -629,12 +587,6 @@ MyApp.add_route('POST', '/api/{version}/queue/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/hub', {
+MyApp.add_route('POST', '/api/3.18/hub', {
   "resourcePath" => "/ServiceHub",
   "summary" => "Create Service Hub",
   "nickname" => "create_service_hub",
   "responseClass" => "ServiceHub",
-  "endpoint" => "/api/{version}/hub",
+  "endpoint" => "/hub",
   "notes" => "Create new service hub",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/hub', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/hub/{id}', {
+MyApp.add_route('DELETE', '/api/3.18/hub/{id}', {
   "resourcePath" => "/ServiceHub",
   "summary" => "Delete Service Hub",
   "nickname" => "delete_service_hub",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/hub/{id}",
+  "endpoint" => "/hub/{id}",
   "notes" => "Delete an existing service hub",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the service hub to delete",
@@ -57,20 +45,14 @@ MyApp.add_route('DELETE', '/api/{version}/hub/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/hub/{id}', {
+MyApp.add_route('GET', '/api/3.18/hub/{id}', {
   "resourcePath" => "/ServiceHub",
   "summary" => "Get Service Hub",
   "nickname" => "get_service_hub",
   "responseClass" => "Object",
-  "endpoint" => "/api/{version}/hub/{id}",
+  "endpoint" => "/hub/{id}",
   "notes" => "Get an existing service hub",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the service hub to get",
@@ -85,20 +67,14 @@ MyApp.add_route('GET', '/api/{version}/hub/{id}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/hub/{id}', {
+MyApp.add_route('POST', '/api/3.18/hub/{id}', {
   "resourcePath" => "/ServiceHub",
   "summary" => "Update Service Hub",
   "nickname" => "post_service_hub",
   "responseClass" => "ServiceHub",
-  "endpoint" => "/api/{version}/hub/{id}",
+  "endpoint" => "/hub/{id}",
   "notes" => "Update an existing service hub",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the service hub",
@@ -119,20 +95,14 @@ MyApp.add_route('POST', '/api/{version}/hub/{id}', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/hub/{id}', {
+MyApp.add_route('PUT', '/api/3.18/hub/{id}', {
   "resourcePath" => "/ServiceHub",
   "summary" => "Update Service Hub",
   "nickname" => "put_service_hub",
   "responseClass" => "ServiceHub",
-  "endpoint" => "/api/{version}/hub/{id}",
+  "endpoint" => "/hub/{id}",
   "notes" => "Update an existing service hub",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the service hub",
@@ -153,12 +123,12 @@ MyApp.add_route('PUT', '/api/{version}/hub/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/hub', {
+MyApp.add_route('GET', '/api/3.18/hub', {
   "resourcePath" => "/ServiceHub",
   "summary" => "Search Service Hubs",
   "nickname" => "search_service_hubs",
   "responseClass" => "Array<ServiceHub>",
-  "endpoint" => "/api/{version}/hub",
+  "endpoint" => "/hub",
   "notes" => "Search for service hubs.",
   "parameters" => [
     {
@@ -209,12 +179,6 @@ MyApp.add_route('GET', '/api/{version}/hub', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

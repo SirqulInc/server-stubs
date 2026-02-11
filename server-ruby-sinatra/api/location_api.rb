@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/location/trilaterate/cache', {
+MyApp.add_route('POST', '/api/3.18/location/trilaterate/cache', {
   "resourcePath" => "/Location",
   "summary" => "Create Trilateration Data with File",
   "nickname" => "cache_trilateration_data",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/location/trilaterate/cache",
+  "endpoint" => "/location/trilaterate/cache",
   "notes" => "Creates trilateration samples for a source device (i.e. a router).",
   "parameters" => [
     {
@@ -44,12 +44,6 @@ MyApp.add_route('POST', '/api/{version}/location/trilaterate/cache', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -58,20 +52,14 @@ MyApp.add_route('POST', '/api/{version}/location/trilaterate/cache', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/location/trilaterate/cache/submit', {
+MyApp.add_route('POST', '/api/3.18/location/trilaterate/cache/submit', {
   "resourcePath" => "/Location",
   "summary" => "Create Trilateration Data with Rest",
   "nickname" => "cache_trilateration_data_gzip",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/location/trilaterate/cache/submit",
+  "endpoint" => "/location/trilaterate/cache/submit",
   "notes" => "Creates trilateration samples for a source device (i.e. a router).",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -86,12 +74,12 @@ MyApp.add_route('POST', '/api/{version}/location/trilaterate/cache/submit', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/location/ip', {
+MyApp.add_route('GET', '/api/3.18/location/ip', {
   "resourcePath" => "/Location",
   "summary" => "Get Location by IP",
   "nickname" => "get_location_by_ip",
   "responseClass" => "CoordsResponse",
-  "endpoint" => "/api/{version}/location/ip",
+  "endpoint" => "/location/ip",
   "notes" => "Get location information based on an IP address.",
   "parameters" => [
     {
@@ -101,12 +89,6 @@ MyApp.add_route('GET', '/api/{version}/location/ip', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -115,12 +97,12 @@ MyApp.add_route('GET', '/api/{version}/location/ip', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/account/location/trilaterate', {
+MyApp.add_route('GET', '/api/3.18/account/location/trilaterate', {
   "resourcePath" => "/Location",
   "summary" => "Get Location by Trilateration",
   "nickname" => "get_location_by_trilateration",
   "responseClass" => "GeoPointResponse",
-  "endpoint" => "/api/{version}/account/location/trilaterate",
+  "endpoint" => "/account/location/trilaterate",
   "notes" => "Send in device data and calculate a position based on signal strengths.",
   "parameters" => [
     {
@@ -158,12 +140,6 @@ MyApp.add_route('GET', '/api/{version}/account/location/trilaterate', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -172,12 +148,12 @@ MyApp.add_route('GET', '/api/{version}/account/location/trilaterate', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/location/search', {
+MyApp.add_route('GET', '/api/3.18/location/search', {
   "resourcePath" => "/Location",
   "summary" => "Search Regions or Postal Codes",
   "nickname" => "get_locations",
   "responseClass" => "LocationSearchResponse",
-  "endpoint" => "/api/{version}/location/search",
+  "endpoint" => "/location/search",
   "notes" => "Searches geographic locations by proximity via address or keyword.",
   "parameters" => [
     {
@@ -316,12 +292,6 @@ MyApp.add_route('GET', '/api/{version}/location/search', {
       "allowableValues" => "",
       "defaultValue" => "20",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

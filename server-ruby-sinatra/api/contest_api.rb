@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/album/contest', {
+MyApp.add_route('POST', '/api/3.18/consumer/album/contest', {
   "resourcePath" => "/Contest",
   "summary" => "Create or Update Contest",
   "nickname" => "add_or_update_album_contest",
   "responseClass" => "AlbumContestResponse",
-  "endpoint" => "/api/{version}/consumer/album/contest",
+  "endpoint" => "/consumer/album/contest",
   "notes" => "Creates or updates a contest.",
   "parameters" => [
     {
@@ -184,12 +184,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -198,12 +192,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/album/contest/approve', {
+MyApp.add_route('POST', '/api/3.18/consumer/album/contest/approve', {
   "resourcePath" => "/Contest",
   "summary" => "Approve Contest",
   "nickname" => "approve_album_contest",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/album/contest/approve",
+  "endpoint" => "/consumer/album/contest/approve",
   "notes" => "Sets the approval status of a contest.",
   "parameters" => [
     {
@@ -234,12 +228,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest/approve', {
       "allowableValues" => "[PENDING, REJECTED, APPROVED, FEATURED]",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -248,12 +236,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest/approve', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/album/contest/remove', {
+MyApp.add_route('POST', '/api/3.18/consumer/album/contest/remove', {
   "resourcePath" => "/Contest",
   "summary" => "Delete Contest",
   "nickname" => "delete_contest",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/album/contest/remove",
+  "endpoint" => "/consumer/album/contest/remove",
   "notes" => "Deletes a contest.",
   "parameters" => [
     {
@@ -291,12 +279,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest/remove', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -305,12 +287,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest/remove', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/album/contest/get', {
+MyApp.add_route('GET', '/api/3.18/consumer/album/contest/get', {
   "resourcePath" => "/Contest",
   "summary" => "Get Contest",
   "nickname" => "get_album_contest",
   "responseClass" => "AlbumContestResponse",
-  "endpoint" => "/api/{version}/consumer/album/contest/get",
+  "endpoint" => "/consumer/album/contest/get",
   "notes" => "Gets the contest object including the likes and notes",
   "parameters" => [
     {
@@ -348,12 +330,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/album/contest/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -362,12 +338,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/album/contest/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/album/contest/search', {
+MyApp.add_route('GET', '/api/3.18/consumer/album/contest/search', {
   "resourcePath" => "/Contest",
   "summary" => "Search Contests",
   "nickname" => "get_album_contests",
   "responseClass" => "AlbumContestListResponse",
-  "endpoint" => "/api/{version}/consumer/album/contest/search",
+  "endpoint" => "/consumer/album/contest/search",
   "notes" => "Searches on contests.",
   "parameters" => [
     {
@@ -503,12 +479,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/album/contest/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -517,12 +487,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/album/contest/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/album/contest/vote', {
+MyApp.add_route('POST', '/api/3.18/consumer/album/contest/vote', {
   "resourcePath" => "/Contest",
   "summary" => "Vote on Contest",
   "nickname" => "vote_on_album_contest",
   "responseClass" => "AlbumContestResponse",
-  "endpoint" => "/api/{version}/consumer/album/contest/vote",
+  "endpoint" => "/consumer/album/contest/vote",
   "notes" => "Vote on a collection in a contest.",
   "parameters" => [
     {
@@ -573,12 +543,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/album/contest/vote', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

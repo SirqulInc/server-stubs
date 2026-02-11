@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/reservation/create', {
+MyApp.add_route('POST', '/api/3.18/reservation/create', {
   "resourcePath" => "/Reservation",
   "summary" => "Create Reservation",
   "nickname" => "create_reservation",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/reservation/create",
+  "endpoint" => "/reservation/create",
   "notes" => "Creates a reservation on an offer object",
   "parameters" => [
     {
@@ -65,12 +65,6 @@ MyApp.add_route('POST', '/api/{version}/reservation/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -79,12 +73,12 @@ MyApp.add_route('POST', '/api/{version}/reservation/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/reservation/delete', {
+MyApp.add_route('POST', '/api/3.18/reservation/delete', {
   "resourcePath" => "/Reservation",
   "summary" => "Delete Reservation",
   "nickname" => "delete_reservation",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/reservation/delete",
+  "endpoint" => "/reservation/delete",
   "notes" => "Deleted a reservation on a reservation object",
   "parameters" => [
     {
@@ -108,12 +102,6 @@ MyApp.add_route('POST', '/api/{version}/reservation/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +110,12 @@ MyApp.add_route('POST', '/api/{version}/reservation/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/reservable/availability/update', {
+MyApp.add_route('POST', '/api/3.18/reservable/availability/update', {
   "resourcePath" => "/Reservation",
   "summary" => "Update Availability",
   "nickname" => "reservable_availability",
   "responseClass" => "Array<AvailabilityResponse>",
-  "endpoint" => "/api/{version}/reservable/availability/update",
+  "endpoint" => "/reservable/availability/update",
   "notes" => "",
   "parameters" => [
     {
@@ -172,12 +160,6 @@ MyApp.add_route('POST', '/api/{version}/reservable/availability/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -186,12 +168,12 @@ MyApp.add_route('POST', '/api/{version}/reservable/availability/update', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/reservable/availability/search', {
+MyApp.add_route('GET', '/api/3.18/reservable/availability/search', {
   "resourcePath" => "/Reservation",
   "summary" => "Search Availability",
   "nickname" => "search_availability",
   "responseClass" => "Array<AvailabilityResponse>",
-  "endpoint" => "/api/{version}/reservable/availability/search",
+  "endpoint" => "/reservable/availability/search",
   "notes" => "",
   "parameters" => [
     {
@@ -252,12 +234,6 @@ MyApp.add_route('GET', '/api/{version}/reservable/availability/search', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -266,12 +242,12 @@ MyApp.add_route('GET', '/api/{version}/reservable/availability/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/reservation/search', {
+MyApp.add_route('GET', '/api/3.18/reservation/search', {
   "resourcePath" => "/Reservation",
   "summary" => "Search Reservations",
   "nickname" => "search_reservations",
   "responseClass" => "Array<ReservationResponse>",
-  "endpoint" => "/api/{version}/reservation/search",
+  "endpoint" => "/reservation/search",
   "notes" => "",
   "parameters" => [
     {
@@ -353,12 +329,6 @@ MyApp.add_route('GET', '/api/{version}/reservation/search', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -367,12 +337,12 @@ MyApp.add_route('GET', '/api/{version}/reservation/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/reservable/schedule/search', {
+MyApp.add_route('GET', '/api/3.18/reservable/schedule/search', {
   "resourcePath" => "/Reservation",
   "summary" => "Search Schedule",
   "nickname" => "search_schedule",
   "responseClass" => "Array<TimeSlotResponse>",
-  "endpoint" => "/api/{version}/reservable/schedule/search",
+  "endpoint" => "/reservable/schedule/search",
   "notes" => "",
   "parameters" => [
     {
@@ -424,12 +394,6 @@ MyApp.add_route('GET', '/api/{version}/reservable/schedule/search', {
       "allowableValues" => "",
       "defaultValue" => "30",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/asset/download/{filename}', {
+MyApp.add_route('GET', '/api/3.18/asset/download/{filename}', {
   "resourcePath" => "/Asset",
   "summary" => "Download Asset",
   "nickname" => "asset_download",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/asset/download/{filename}",
+  "endpoint" => "/asset/download/{filename}",
   "notes" => "Downloads an asset from the server for assets that have been uploaded to the server.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "filename",
       "description" => "the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}",
@@ -29,12 +23,12 @@ MyApp.add_route('GET', '/api/{version}/asset/download/{filename}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/asset/morph', {
+MyApp.add_route('POST', '/api/3.18/asset/morph', {
   "resourcePath" => "/Asset",
   "summary" => "Convert Offer to Creative",
   "nickname" => "asset_morph",
   "responseClass" => "AssetShortResponse",
-  "endpoint" => "/api/{version}/asset/morph",
+  "endpoint" => "/asset/morph",
   "notes" => "Converts an offer image + text into a creative image.",
   "parameters" => [
     {
@@ -86,12 +80,6 @@ MyApp.add_route('POST', '/api/{version}/asset/morph', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -100,12 +88,12 @@ MyApp.add_route('POST', '/api/{version}/asset/morph', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/asset/create', {
+MyApp.add_route('POST', '/api/3.18/asset/create', {
   "resourcePath" => "/Asset",
   "summary" => "Create Asset",
   "nickname" => "create_asset",
   "responseClass" => "AssetResponse",
-  "endpoint" => "/api/{version}/asset/create",
+  "endpoint" => "/asset/create",
   "notes" => "Uploads an asset to server and returns an asset id which can be used to assign to various objects.",
   "parameters" => [
     {
@@ -346,12 +334,6 @@ MyApp.add_route('POST', '/api/{version}/asset/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -360,12 +342,12 @@ MyApp.add_route('POST', '/api/{version}/asset/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/asset/delete', {
+MyApp.add_route('POST', '/api/3.18/asset/delete', {
   "resourcePath" => "/Asset",
   "summary" => "Delete Asset",
   "nickname" => "delete_asset",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/asset/delete",
+  "endpoint" => "/asset/delete",
   "notes" => "Delete an asset.",
   "parameters" => [
     {
@@ -403,12 +385,6 @@ MyApp.add_route('POST', '/api/{version}/asset/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -417,12 +393,12 @@ MyApp.add_route('POST', '/api/{version}/asset/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/asset/get', {
+MyApp.add_route('GET', '/api/3.18/asset/get', {
   "resourcePath" => "/Asset",
   "summary" => "Get Asset",
   "nickname" => "get_asset",
   "responseClass" => "AssetFullResponse",
-  "endpoint" => "/api/{version}/asset/get",
+  "endpoint" => "/asset/get",
   "notes" => "Gets the full asset response including attached likes and notes.",
   "parameters" => [
     {
@@ -454,12 +430,6 @@ MyApp.add_route('GET', '/api/{version}/asset/get', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -468,12 +438,12 @@ MyApp.add_route('GET', '/api/{version}/asset/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/asset/remove', {
+MyApp.add_route('POST', '/api/3.18/asset/remove', {
   "resourcePath" => "/Asset",
   "summary" => "Remove Asset from Collection",
   "nickname" => "remove_asset",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/asset/remove",
+  "endpoint" => "/asset/remove",
   "notes" => "Remove assets from collections",
   "parameters" => [
     {
@@ -532,12 +502,6 @@ MyApp.add_route('POST', '/api/{version}/asset/remove', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -546,12 +510,12 @@ MyApp.add_route('POST', '/api/{version}/asset/remove', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/asset/search', {
+MyApp.add_route('GET', '/api/3.18/asset/search', {
   "resourcePath" => "/Asset",
   "summary" => "Search Assets",
   "nickname" => "search_assets",
   "responseClass" => "Array<AssetResponse>",
-  "endpoint" => "/api/{version}/asset/search",
+  "endpoint" => "/asset/search",
   "notes" => "Searches for assets",
   "parameters" => [
     {
@@ -722,12 +686,6 @@ MyApp.add_route('GET', '/api/{version}/asset/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -736,12 +694,12 @@ MyApp.add_route('GET', '/api/{version}/asset/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/asset/update', {
+MyApp.add_route('POST', '/api/3.18/asset/update', {
   "resourcePath" => "/Asset",
   "summary" => "Update Asset",
   "nickname" => "update_asset",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/asset/update",
+  "endpoint" => "/asset/update",
   "notes" => "Updates an asset's meta data. If an album reference is passed in, the participants with write permissions are allowed to edit the asset. Otherwise, only the asset up-loader has permission to edit the data.",
   "parameters" => [
     {
@@ -960,12 +918,6 @@ MyApp.add_route('POST', '/api/{version}/asset/update', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

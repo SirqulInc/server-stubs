@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/addMovie', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/addMovie', {
   "resourcePath" => "/Orson",
   "summary" => "Add Movie",
   "nickname" => "add_movie",
   "responseClass" => "OrsonAiAddMovieResponse",
-  "endpoint" => "/api/{version}/orson/ai/addMovie",
+  "endpoint" => "/orson/ai/addMovie",
   "notes" => "Add a movie to be indexed for Topics. Indexing a movie analyses the content and incorporates it into the topics model for future /topics calls. This does not store the movie file long-term.",
   "parameters" => [
     {
@@ -58,12 +58,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/addMovie', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -72,12 +66,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/addMovie', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/docs', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/docs', {
   "resourcePath" => "/Orson",
   "summary" => "Search Docs",
   "nickname" => "ai_docs",
   "responseClass" => "OrsonAiProtoResponse",
-  "endpoint" => "/api/{version}/orson/ai/docs",
+  "endpoint" => "/orson/ai/docs",
   "notes" => "Takes in a text string representing one or more sentences and it returns a list of documents which are related to the provided document.",
   "parameters" => [
     {
@@ -115,12 +109,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/docs', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -129,12 +117,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/docs', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/img', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/img', {
   "resourcePath" => "/Orson",
   "summary" => "Find images",
   "nickname" => "ai_find_images",
   "responseClass" => "OrsonAiProtoResponse",
-  "endpoint" => "/api/{version}/orson/ai/img",
+  "endpoint" => "/orson/ai/img",
   "notes" => "Returns a list of URIs of images that match the text.",
   "parameters" => [
     {
@@ -172,12 +160,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/img', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -186,12 +168,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/img', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/tags', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/tags', {
   "resourcePath" => "/Orson",
   "summary" => "Search Tags",
   "nickname" => "ai_tags",
   "responseClass" => "OrsonAiProtoResponse",
-  "endpoint" => "/api/{version}/orson/ai/tags",
+  "endpoint" => "/orson/ai/tags",
   "notes" => "Search the tags column of user provided tags using this endpoint.",
   "parameters" => [
     {
@@ -229,12 +211,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/tags', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -243,12 +219,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/tags', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/text', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/text', {
   "resourcePath" => "/Orson",
   "summary" => "Search Text",
   "nickname" => "ai_text",
   "responseClass" => "OrsonAiProtoResponse",
-  "endpoint" => "/api/{version}/orson/ai/text",
+  "endpoint" => "/orson/ai/text",
   "notes" => "Search the movie text column of movie text using this endpoint.",
   "parameters" => [
     {
@@ -286,12 +262,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/text', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -300,12 +270,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/text', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/batch', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/batch', {
   "resourcePath" => "/Orson",
   "summary" => "Batch Analysis",
   "nickname" => "batch",
   "responseClass" => "OrsonAiBatchResponse",
-  "endpoint" => "/api/{version}/orson/ai/batch",
+  "endpoint" => "/orson/ai/batch",
   "notes" => "Run several types of analysis on an audio or video file in a single API call, instead of calling several operations for the same file..",
   "parameters" => [
     {
@@ -357,12 +327,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/batch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -371,12 +335,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/batch', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/stories/episodes/instant', {
+MyApp.add_route('POST', '/api/3.18/orson/stories/episodes/instant', {
   "resourcePath" => "/Orson",
   "summary" => "Creates an instant episode",
   "nickname" => "create_instant_episode",
   "responseClass" => "OrsonEpisodeResponse",
-  "endpoint" => "/api/{version}/orson/stories/episodes/instant",
+  "endpoint" => "/orson/stories/episodes/instant",
   "notes" => "Creates an instant episode for a given StoryStrip by providing all necessary inputs, interview recordings, and pictures, kicking off a render immediately.",
   "parameters" => [
     {
@@ -393,12 +357,6 @@ MyApp.add_route('POST', '/api/{version}/orson/stories/episodes/instant', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -407,12 +365,12 @@ MyApp.add_route('POST', '/api/{version}/orson/stories/episodes/instant', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/voiceCanvas', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/voiceCanvas', {
   "resourcePath" => "/Orson",
   "summary" => "Create VoiceCanvas images",
   "nickname" => "create_voice_canvas",
   "responseClass" => "OrsonAiVoiceCanvasResponse",
-  "endpoint" => "/api/{version}/orson/ai/voiceCanvas",
+  "endpoint" => "/orson/ai/voiceCanvas",
   "notes" => "Create VoiceCanvas images for provided text, file upload, or file URL",
   "parameters" => [
     {
@@ -478,12 +436,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/voiceCanvas', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -492,12 +444,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/voiceCanvas', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/emotion', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/emotion', {
   "resourcePath" => "/Orson",
   "summary" => "Detect emotions",
   "nickname" => "emotion",
   "responseClass" => "OrsonAiEmotionsResponse",
-  "endpoint" => "/api/{version}/orson/ai/emotion",
+  "endpoint" => "/orson/ai/emotion",
   "notes" => "Detects emotions in an audio or video recording.",
   "parameters" => [
     {
@@ -535,12 +487,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/emotion', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -549,12 +495,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/emotion', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/addMovie/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/addMovie/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get Add Movie Result",
   "nickname" => "get_add_movie_result",
   "responseClass" => "OrsonAiAddMovieResponse",
-  "endpoint" => "/api/{version}/orson/ai/addMovie/{requestId}",
+  "endpoint" => "/orson/ai/addMovie/{requestId}",
   "notes" => "Get the result of an in progress Add Movie request from an earlier POST.",
   "parameters" => [
     {
@@ -565,12 +511,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/addMovie/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -584,12 +524,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/addMovie/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/batch/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/batch/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get Batch Analysis Results",
   "nickname" => "get_batch",
   "responseClass" => "OrsonAiBatchResponse",
-  "endpoint" => "/api/{version}/orson/ai/batch/{requestId}",
+  "endpoint" => "/orson/ai/batch/{requestId}",
   "notes" => "Gets the completed Video Batch results, if done, or an error or status update if not.",
   "parameters" => [
     {
@@ -600,12 +540,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/batch/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -619,12 +553,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/batch/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/emotion/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/emotion/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get Emotion Results",
   "nickname" => "get_emotion",
   "responseClass" => "OrsonAiEmotionsResponse",
-  "endpoint" => "/api/{version}/orson/ai/emotion/{requestId}",
+  "endpoint" => "/orson/ai/emotion/{requestId}",
   "notes" => "Checks the Emotion analysis and returns in progress, results, or error.",
   "parameters" => [
     {
@@ -635,12 +569,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/emotion/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -654,12 +582,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/emotion/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/stories/episodes/{episodeId}/status', {
+MyApp.add_route('GET', '/api/3.18/orson/stories/episodes/{episodeId}/status', {
   "resourcePath" => "/Orson",
   "summary" => "Check episode status",
   "nickname" => "get_episode_status",
   "responseClass" => "OrsonEpisodeResponse",
-  "endpoint" => "/api/{version}/orson/stories/episodes/{episodeId}/status",
+  "endpoint" => "/orson/stories/episodes/{episodeId}/status",
   "notes" => "Gets a summary of the episode's status, including any renders.",
   "parameters" => [
     {
@@ -668,12 +596,6 @@ MyApp.add_route('GET', '/api/{version}/orson/stories/episodes/{episodeId}/status
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "episode_id",
@@ -689,12 +611,12 @@ MyApp.add_route('GET', '/api/{version}/orson/stories/episodes/{episodeId}/status
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/stories/renders/{renderId}/status', {
+MyApp.add_route('GET', '/api/3.18/orson/stories/renders/{renderId}/status', {
   "resourcePath" => "/Orson",
   "summary" => "Check episode status",
   "nickname" => "get_render_status",
   "responseClass" => "OrsonRenderResponse",
-  "endpoint" => "/api/{version}/orson/stories/renders/{renderId}/status",
+  "endpoint" => "/orson/stories/renders/{renderId}/status",
   "notes" => "Gets a summary of the episode's status, including any renders.",
   "parameters" => [
     {
@@ -703,12 +625,6 @@ MyApp.add_route('GET', '/api/{version}/orson/stories/renders/{renderId}/status',
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "render_id",
@@ -724,12 +640,12 @@ MyApp.add_route('GET', '/api/{version}/orson/stories/renders/{renderId}/status',
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/stt/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/stt/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get Speach to Text Result",
   "nickname" => "get_stt",
   "responseClass" => "OrsonAiSTTResponse",
-  "endpoint" => "/api/{version}/orson/ai/stt/{requestId}",
+  "endpoint" => "/orson/ai/stt/{requestId}",
   "notes" => "The results of the video transcription and optional translation.",
   "parameters" => [
     {
@@ -740,12 +656,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/stt/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -759,12 +669,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/stt/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/techTune/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/techTune/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get TechTune Results",
   "nickname" => "get_tech_tune",
   "responseClass" => "OrsonAiTechTuneResponse",
-  "endpoint" => "/api/{version}/orson/ai/techTune/{requestId}",
+  "endpoint" => "/orson/ai/techTune/{requestId}",
   "notes" => "Get a result or continue waiting for a pending request for TechTune analysis.",
   "parameters" => [
     {
@@ -775,12 +685,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/techTune/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -794,12 +698,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/techTune/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/topics/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/topics/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get Topics",
   "nickname" => "get_topics",
   "responseClass" => "OrsonAiTopicsResponse",
-  "endpoint" => "/api/{version}/orson/ai/topics/{requestId}",
+  "endpoint" => "/orson/ai/topics/{requestId}",
   "notes" => "Get the result of an in progress Topics Analysis from an earlier POST.",
   "parameters" => [
     {
@@ -810,12 +714,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/topics/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -829,12 +727,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/topics/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/tts/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/tts/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get Text to Speach Result",
   "nickname" => "get_tts",
   "responseClass" => "OrsonAiTTSResponse",
-  "endpoint" => "/api/{version}/orson/ai/tts/{requestId}",
+  "endpoint" => "/orson/ai/tts/{requestId}",
   "notes" => "Check the status of an in progress Text-to-Speech call or download the result.",
   "parameters" => [
     {
@@ -845,12 +743,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/tts/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -864,12 +756,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/tts/{requestId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/orson/ai/voiceCanvas/{requestId}', {
+MyApp.add_route('GET', '/api/3.18/orson/ai/voiceCanvas/{requestId}', {
   "resourcePath" => "/Orson",
   "summary" => "Get VoiceCanvas images",
   "nickname" => "get_voice_canvas",
   "responseClass" => "OrsonAiVoiceCanvasResponse",
-  "endpoint" => "/api/{version}/orson/ai/voiceCanvas/{requestId}",
+  "endpoint" => "/orson/ai/voiceCanvas/{requestId}",
   "notes" => "Get a result or continue waiting for a pending request for VoiceCanvas Images.",
   "parameters" => [
     {
@@ -880,12 +772,6 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/voiceCanvas/{requestId}', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "request_id",
       "description" => "Orson Request Id",
       "dataType" => "String",
@@ -899,12 +785,12 @@ MyApp.add_route('GET', '/api/{version}/orson/ai/voiceCanvas/{requestId}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/stories/renders', {
+MyApp.add_route('POST', '/api/3.18/orson/stories/renders', {
   "resourcePath" => "/Orson",
   "summary" => "Starts a StoryStitch video render",
   "nickname" => "start_video_render",
   "responseClass" => "OrsonRenderResponse",
-  "endpoint" => "/api/{version}/orson/stories/renders",
+  "endpoint" => "/orson/stories/renders",
   "notes" => "Starts a StoryStitch video render to produce your final video, returning the status details.",
   "parameters" => [
     {
@@ -921,12 +807,6 @@ MyApp.add_route('POST', '/api/{version}/orson/stories/renders', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -935,12 +815,12 @@ MyApp.add_route('POST', '/api/{version}/orson/stories/renders', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/stt', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/stt', {
   "resourcePath" => "/Orson",
   "summary" => "Speach to Text",
   "nickname" => "stt",
   "responseClass" => "OrsonAiSTTResponse",
-  "endpoint" => "/api/{version}/orson/ai/stt",
+  "endpoint" => "/orson/ai/stt",
   "notes" => "Accepts a movie URL or uploaded file and transcribes it. You also have the option to translate it into one of our additional supported languages.",
   "parameters" => [
     {
@@ -992,12 +872,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/stt', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1006,12 +880,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/stt', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/topics', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/topics', {
   "resourcePath" => "/Orson",
   "summary" => "Summarize Topics",
   "nickname" => "summarize_topics",
   "responseClass" => "OrsonAiTopicsResponse",
-  "endpoint" => "/api/{version}/orson/ai/topics",
+  "endpoint" => "/orson/ai/topics",
   "notes" => "Takes in a string of text sentences (also known as a document) and returns a list of associated topics and their proximity score.",
   "parameters" => [
     {
@@ -1070,12 +944,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/topics', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1084,12 +952,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/topics', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/techTune', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/techTune', {
   "resourcePath" => "/Orson",
   "summary" => "Detect Technical Issues",
   "nickname" => "tech_tune",
   "responseClass" => "OrsonAiTechTuneResponse",
-  "endpoint" => "/api/{version}/orson/ai/techTune",
+  "endpoint" => "/orson/ai/techTune",
   "notes" => "Analyses a movie file to detect technical issues, such as too few people in frame.",
   "parameters" => [
     {
@@ -1134,12 +1002,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/techTune', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1148,12 +1010,12 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/techTune', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/orson/ai/tts', {
+MyApp.add_route('POST', '/api/3.18/orson/ai/tts', {
   "resourcePath" => "/Orson",
   "summary" => "Text to Speach",
   "nickname" => "tts",
   "responseClass" => "OrsonAiTTSResponse",
-  "endpoint" => "/api/{version}/orson/ai/tts",
+  "endpoint" => "/orson/ai/tts",
   "notes" => "Creates an audio file for the given text, with the option of language and voice selection.",
   "parameters" => [
     {
@@ -1197,12 +1059,6 @@ MyApp.add_route('POST', '/api/{version}/orson/ai/tts', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

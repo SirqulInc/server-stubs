@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/album/create', {
+MyApp.add_route('POST', '/api/3.18/album/create', {
   "resourcePath" => "/Album",
   "summary" => "Create Album",
   "nickname" => "add_album_collection",
   "responseClass" => "SearchResponse",
-  "endpoint" => "/api/{version}/album/create",
+  "endpoint" => "/album/create",
   "notes" => "Create an Album.",
   "parameters" => [
     {
@@ -331,12 +331,6 @@ MyApp.add_route('POST', '/api/{version}/album/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -345,12 +339,12 @@ MyApp.add_route('POST', '/api/{version}/album/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/album/user/add', {
+MyApp.add_route('POST', '/api/3.18/album/user/add', {
   "resourcePath" => "/Album",
   "summary" => "Add Album Users",
   "nickname" => "add_album_users",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/album/user/add",
+  "endpoint" => "/album/user/add",
   "notes" => "Add users to an album as participants.",
   "parameters" => [
     {
@@ -423,12 +417,6 @@ MyApp.add_route('POST', '/api/{version}/album/user/add', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -437,12 +425,12 @@ MyApp.add_route('POST', '/api/{version}/album/user/add', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/album/approve', {
+MyApp.add_route('POST', '/api/3.18/album/approve', {
   "resourcePath" => "/Album",
   "summary" => "Approve Album",
   "nickname" => "approve_album",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/album/approve",
+  "endpoint" => "/album/approve",
   "notes" => "Sets the approval status of an Album.",
   "parameters" => [
     {
@@ -480,12 +468,6 @@ MyApp.add_route('POST', '/api/{version}/album/approve', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -494,12 +476,12 @@ MyApp.add_route('POST', '/api/{version}/album/approve', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/album/get', {
+MyApp.add_route('GET', '/api/3.18/album/get', {
   "resourcePath" => "/Album",
   "summary" => " Get Album",
   "nickname" => "get_album_collection",
   "responseClass" => "AlbumFullResponse",
-  "endpoint" => "/api/{version}/album/get",
+  "endpoint" => "/album/get",
   "notes" => "Get an Album.",
   "parameters" => [
     {
@@ -565,12 +547,6 @@ MyApp.add_route('GET', '/api/{version}/album/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -579,12 +555,12 @@ MyApp.add_route('GET', '/api/{version}/album/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/album/user/leave', {
+MyApp.add_route('POST', '/api/3.18/album/user/leave', {
   "resourcePath" => "/Album",
   "summary" => "Leave Album",
   "nickname" => "leave_album",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/album/user/leave",
+  "endpoint" => "/album/user/leave",
   "notes" => " Allows a user to leave an album (they are no longer considered a participant). The album creator cannot leave their own albums.",
   "parameters" => [
     {
@@ -608,12 +584,6 @@ MyApp.add_route('POST', '/api/{version}/album/user/leave', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -622,12 +592,12 @@ MyApp.add_route('POST', '/api/{version}/album/user/leave', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/album/delete', {
+MyApp.add_route('POST', '/api/3.18/album/delete', {
   "resourcePath" => "/Album",
   "summary" => "Delete Album",
   "nickname" => "remove_album",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/album/delete",
+  "endpoint" => "/album/delete",
   "notes" => "Deletes an Album",
   "parameters" => [
     {
@@ -651,12 +621,6 @@ MyApp.add_route('POST', '/api/{version}/album/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -665,12 +629,12 @@ MyApp.add_route('POST', '/api/{version}/album/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/album/user/delete', {
+MyApp.add_route('POST', '/api/3.18/album/user/delete', {
   "resourcePath" => "/Album",
   "summary" => "Remove Album Users",
   "nickname" => "remove_album_users",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/album/user/delete",
+  "endpoint" => "/album/user/delete",
   "notes" => "Remove participants of an album.",
   "parameters" => [
     {
@@ -715,12 +679,6 @@ MyApp.add_route('POST', '/api/{version}/album/user/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -729,12 +687,12 @@ MyApp.add_route('POST', '/api/{version}/album/user/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/album/search', {
+MyApp.add_route('GET', '/api/3.18/album/search', {
   "resourcePath" => "/Album",
   "summary" => "Search Albums",
   "nickname" => "search_albums",
   "responseClass" => "Array<AlbumFullResponse>",
-  "endpoint" => "/api/{version}/album/search",
+  "endpoint" => "/album/search",
   "notes" => "Searches on Albums.",
   "parameters" => [
     {
@@ -1158,12 +1116,6 @@ MyApp.add_route('GET', '/api/{version}/album/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1172,12 +1124,12 @@ MyApp.add_route('GET', '/api/{version}/album/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/album/update', {
+MyApp.add_route('POST', '/api/3.18/album/update', {
   "resourcePath" => "/Album",
   "summary" => "Update Album",
   "nickname" => "update_album_collection",
   "responseClass" => "AlbumResponse",
-  "endpoint" => "/api/{version}/album/update",
+  "endpoint" => "/album/update",
   "notes" => "Update an Album.",
   "parameters" => [
     {
@@ -1494,12 +1446,6 @@ MyApp.add_route('POST', '/api/{version}/album/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

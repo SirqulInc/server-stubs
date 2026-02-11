@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/bid/create', {
+MyApp.add_route('POST', '/api/3.18/bid/create', {
   "resourcePath" => "/Bid",
   "summary" => "Create Bid",
   "nickname" => "create_bid",
   "responseClass" => "BidResponse",
-  "endpoint" => "/api/{version}/bid/create",
+  "endpoint" => "/bid/create",
   "notes" => "Creates a bid on a biddable object",
   "parameters" => [
     {
@@ -65,12 +65,6 @@ MyApp.add_route('POST', '/api/{version}/bid/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -79,12 +73,12 @@ MyApp.add_route('POST', '/api/{version}/bid/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/bid/delete', {
+MyApp.add_route('POST', '/api/3.18/bid/delete', {
   "resourcePath" => "/Bid",
   "summary" => "Delete Bid",
   "nickname" => "delete_bid",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/bid/delete",
+  "endpoint" => "/bid/delete",
   "notes" => "Deleted a bid on a biddable object",
   "parameters" => [
     {
@@ -108,12 +102,6 @@ MyApp.add_route('POST', '/api/{version}/bid/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +110,12 @@ MyApp.add_route('POST', '/api/{version}/bid/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/bid/get', {
+MyApp.add_route('GET', '/api/3.18/bid/get', {
   "resourcePath" => "/Bid",
   "summary" => "Get Bid",
   "nickname" => "get_bid",
   "responseClass" => "BidResponse",
-  "endpoint" => "/api/{version}/bid/get",
+  "endpoint" => "/bid/get",
   "notes" => "Get the bid details of a biddable object",
   "parameters" => [
     {
@@ -151,12 +139,6 @@ MyApp.add_route('GET', '/api/{version}/bid/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -165,12 +147,12 @@ MyApp.add_route('GET', '/api/{version}/bid/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/bid/update', {
+MyApp.add_route('POST', '/api/3.18/bid/update', {
   "resourcePath" => "/Bid",
   "summary" => "Update Bid",
   "nickname" => "update_bid",
   "responseClass" => "BidResponse",
-  "endpoint" => "/api/{version}/bid/update",
+  "endpoint" => "/bid/update",
   "notes" => "Updates a bid on a biddable object",
   "parameters" => [
     {
@@ -221,12 +203,6 @@ MyApp.add_route('POST', '/api/{version}/bid/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

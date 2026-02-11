@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/media/create', {
+MyApp.add_route('POST', '/api/3.18/media/create', {
   "resourcePath" => "/Media",
   "summary" => "Create Media",
   "nickname" => "create_media",
   "responseClass" => "MediaOfferResponse",
-  "endpoint" => "/api/{version}/media/create",
+  "endpoint" => "/media/create",
   "notes" => "Create a media offering.",
   "parameters" => [
     {
@@ -408,12 +408,6 @@ MyApp.add_route('POST', '/api/{version}/media/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -422,12 +416,12 @@ MyApp.add_route('POST', '/api/{version}/media/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/media/delete', {
+MyApp.add_route('POST', '/api/3.18/media/delete', {
   "resourcePath" => "/Media",
   "summary" => "Delete Media",
   "nickname" => "delete_media",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/media/delete",
+  "endpoint" => "/media/delete",
   "notes" => "Delete a media offering that the user has permissions to.",
   "parameters" => [
     {
@@ -444,12 +438,6 @@ MyApp.add_route('POST', '/api/{version}/media/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -458,12 +446,12 @@ MyApp.add_route('POST', '/api/{version}/media/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/media/get', {
+MyApp.add_route('GET', '/api/3.18/media/get', {
   "resourcePath" => "/Media",
   "summary" => "Media Get",
   "nickname" => "get_media",
   "responseClass" => "MediaOfferResponse",
-  "endpoint" => "/api/{version}/media/get",
+  "endpoint" => "/media/get",
   "notes" => "Get a media offering.",
   "parameters" => [
     {
@@ -480,12 +468,6 @@ MyApp.add_route('GET', '/api/{version}/media/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -494,12 +476,12 @@ MyApp.add_route('GET', '/api/{version}/media/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/media/search', {
+MyApp.add_route('GET', '/api/3.18/media/search', {
   "resourcePath" => "/Media",
   "summary" => "Search Media",
   "nickname" => "search_media",
   "responseClass" => "Array<MediaOfferResponse>",
-  "endpoint" => "/api/{version}/media/search",
+  "endpoint" => "/media/search",
   "notes" => "Searches on events that the account has access to.",
   "parameters" => [
     {
@@ -565,12 +547,6 @@ MyApp.add_route('GET', '/api/{version}/media/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -579,12 +555,12 @@ MyApp.add_route('GET', '/api/{version}/media/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/media/update', {
+MyApp.add_route('POST', '/api/3.18/media/update', {
   "resourcePath" => "/Media",
   "summary" => "Update Media",
   "nickname" => "update_media",
   "responseClass" => "MediaOfferResponse",
-  "endpoint" => "/api/{version}/media/update",
+  "endpoint" => "/media/update",
   "notes" => "Update a media offering.",
   "parameters" => [
     {
@@ -999,12 +975,6 @@ MyApp.add_route('POST', '/api/{version}/media/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

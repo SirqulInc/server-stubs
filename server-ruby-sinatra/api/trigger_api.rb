@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/trigger/create', {
+MyApp.add_route('POST', '/api/3.18/trigger/create', {
   "resourcePath" => "/Trigger",
   "summary" => "Create Trigger",
   "nickname" => "create_trigger",
   "responseClass" => "TriggerResponse",
-  "endpoint" => "/api/{version}/trigger/create",
+  "endpoint" => "/trigger/create",
   "notes" => "Create a trigger",
   "parameters" => [
     {
@@ -101,12 +101,6 @@ MyApp.add_route('POST', '/api/{version}/trigger/create', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -115,12 +109,12 @@ MyApp.add_route('POST', '/api/{version}/trigger/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trigger/delete', {
+MyApp.add_route('POST', '/api/3.18/trigger/delete', {
   "resourcePath" => "/Trigger",
   "summary" => "Delete Trigger",
   "nickname" => "delete_trigger",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/trigger/delete",
+  "endpoint" => "/trigger/delete",
   "notes" => "Mark a trigger as deleted.",
   "parameters" => [
     {
@@ -137,12 +131,6 @@ MyApp.add_route('POST', '/api/{version}/trigger/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -151,12 +139,12 @@ MyApp.add_route('POST', '/api/{version}/trigger/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/trigger/get', {
+MyApp.add_route('GET', '/api/3.18/trigger/get', {
   "resourcePath" => "/Trigger",
   "summary" => "Get Trigger",
   "nickname" => "get_trigger",
   "responseClass" => "TriggerResponse",
-  "endpoint" => "/api/{version}/trigger/get",
+  "endpoint" => "/trigger/get",
   "notes" => "Get a trigger",
   "parameters" => [
     {
@@ -173,12 +161,6 @@ MyApp.add_route('GET', '/api/{version}/trigger/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -187,12 +169,12 @@ MyApp.add_route('GET', '/api/{version}/trigger/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/trigger/search', {
+MyApp.add_route('GET', '/api/3.18/trigger/search', {
   "resourcePath" => "/Trigger",
   "summary" => "Search Triggers",
   "nickname" => "search_triggers",
   "responseClass" => "Array<TriggerResponse>",
-  "endpoint" => "/api/{version}/trigger/search",
+  "endpoint" => "/trigger/search",
   "notes" => "Search for triggers",
   "parameters" => [
     {
@@ -286,12 +268,6 @@ MyApp.add_route('GET', '/api/{version}/trigger/search', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -300,12 +276,12 @@ MyApp.add_route('GET', '/api/{version}/trigger/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trigger/update', {
+MyApp.add_route('POST', '/api/3.18/trigger/update', {
   "resourcePath" => "/Trigger",
   "summary" => "Update Trigger",
   "nickname" => "update_trigger",
   "responseClass" => "TriggerResponse",
-  "endpoint" => "/api/{version}/trigger/update",
+  "endpoint" => "/trigger/update",
   "notes" => "Update a trigger",
   "parameters" => [
     {
@@ -405,12 +381,6 @@ MyApp.add_route('POST', '/api/{version}/trigger/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

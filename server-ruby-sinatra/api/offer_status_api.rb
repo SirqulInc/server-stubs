@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/offer/status/create', {
+MyApp.add_route('POST', '/api/3.18/offer/status/create', {
   "resourcePath" => "/OfferStatus",
   "summary" => "Create Offer Status",
   "nickname" => "create_offer_transaction_status",
   "responseClass" => "OfferTransactionStatusResponse",
-  "endpoint" => "/api/{version}/offer/status/create",
+  "endpoint" => "/offer/status/create",
   "notes" => "Create an offer status record",
   "parameters" => [
     {
@@ -81,12 +81,6 @@ MyApp.add_route('POST', '/api/{version}/offer/status/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -95,12 +89,12 @@ MyApp.add_route('POST', '/api/{version}/offer/status/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/offer/status/delete', {
+MyApp.add_route('POST', '/api/3.18/offer/status/delete', {
   "resourcePath" => "/OfferStatus",
   "summary" => "Delete Offer Status",
   "nickname" => "delete_offer_transaction_status",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/offer/status/delete",
+  "endpoint" => "/offer/status/delete",
   "notes" => "Mark an offer status record as deleted",
   "parameters" => [
     {
@@ -138,12 +132,6 @@ MyApp.add_route('POST', '/api/{version}/offer/status/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -152,12 +140,12 @@ MyApp.add_route('POST', '/api/{version}/offer/status/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/status/get', {
+MyApp.add_route('GET', '/api/3.18/offer/status/get', {
   "resourcePath" => "/OfferStatus",
   "summary" => "Get Offer Status",
   "nickname" => "get_offer_transaction_status",
   "responseClass" => "OfferTransactionStatusResponse",
-  "endpoint" => "/api/{version}/offer/status/get",
+  "endpoint" => "/offer/status/get",
   "notes" => "Get an offer status record",
   "parameters" => [
     {
@@ -195,12 +183,6 @@ MyApp.add_route('GET', '/api/{version}/offer/status/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -209,12 +191,12 @@ MyApp.add_route('GET', '/api/{version}/offer/status/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/status/search', {
+MyApp.add_route('GET', '/api/3.18/offer/status/search', {
   "resourcePath" => "/OfferStatus",
   "summary" => "Search Offer Status",
   "nickname" => "search_offer_transaction_statuses",
   "responseClass" => "Array<OfferTransactionStatusResponse>",
-  "endpoint" => "/api/{version}/offer/status/search",
+  "endpoint" => "/offer/status/search",
   "notes" => "Search for the available offer statuses",
   "parameters" => [
     {
@@ -306,12 +288,6 @@ MyApp.add_route('GET', '/api/{version}/offer/status/search', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -320,12 +296,12 @@ MyApp.add_route('GET', '/api/{version}/offer/status/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/offer/status/update', {
+MyApp.add_route('POST', '/api/3.18/offer/status/update', {
   "resourcePath" => "/OfferStatus",
   "summary" => "Update Offer Status",
   "nickname" => "update_offer_transaction_status",
   "responseClass" => "OfferTransactionStatusResponse",
-  "endpoint" => "/api/{version}/offer/status/update",
+  "endpoint" => "/offer/status/update",
   "notes" => "Update an offer status record",
   "parameters" => [
     {
@@ -404,12 +380,6 @@ MyApp.add_route('POST', '/api/{version}/offer/status/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

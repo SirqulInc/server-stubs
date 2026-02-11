@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/like', {
+MyApp.add_route('POST', '/api/3.18/like', {
   "resourcePath" => "/Like",
   "summary" => "Create Like",
   "nickname" => "register_like",
   "responseClass" => "LikableResponse",
-  "endpoint" => "/api/{version}/like",
+  "endpoint" => "/like",
   "notes" => "Allows a user to like or dislike accounts, albums, album contests, assets, game levels, notes, and theme descriptors. Multiple likes\\dislikes on the same object will replace the previous one.",
   "parameters" => [
     {
@@ -93,12 +93,6 @@ MyApp.add_route('POST', '/api/{version}/like', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -107,12 +101,12 @@ MyApp.add_route('POST', '/api/{version}/like', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/like/delete', {
+MyApp.add_route('POST', '/api/3.18/like/delete', {
   "resourcePath" => "/Like",
   "summary" => "Delete Like",
   "nickname" => "remove_like",
   "responseClass" => "LikableResponse",
-  "endpoint" => "/api/{version}/like/delete",
+  "endpoint" => "/like/delete",
   "notes" => "Removes a like. This will make the user \"neutral\".",
   "parameters" => [
     {
@@ -157,12 +151,6 @@ MyApp.add_route('POST', '/api/{version}/like/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -171,12 +159,12 @@ MyApp.add_route('POST', '/api/{version}/like/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/like/search', {
+MyApp.add_route('GET', '/api/3.18/like/search', {
   "resourcePath" => "/Like",
   "summary" => "Search Likes",
   "nickname" => "search_likes",
   "responseClass" => "SearchResponse",
-  "endpoint" => "/api/{version}/like/search",
+  "endpoint" => "/like/search",
   "notes" => "Search for likes on a likable object.",
   "parameters" => [
     {
@@ -259,12 +247,6 @@ MyApp.add_route('GET', '/api/{version}/like/search', {
       "allowableValues" => "",
       "defaultValue" => "20",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

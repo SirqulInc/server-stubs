@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/event/attend', {
+MyApp.add_route('POST', '/api/3.18/event/attend', {
   "resourcePath" => "/Event",
   "summary" => "Attend Event",
   "nickname" => "attend_event",
   "responseClass" => "OfferResponse",
-  "endpoint" => "/api/{version}/event/attend",
+  "endpoint" => "/event/attend",
   "notes" => " Specify whether the user is attending an event at a particular location. This can also be used as a \"check-in\" action.",
   "parameters" => [
     {
@@ -79,12 +79,6 @@ MyApp.add_route('POST', '/api/{version}/event/attend', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -93,12 +87,12 @@ MyApp.add_route('POST', '/api/{version}/event/attend', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/event/create', {
+MyApp.add_route('POST', '/api/3.18/event/create', {
   "resourcePath" => "/Event",
   "summary" => "Create Event",
   "nickname" => "create_event",
   "responseClass" => "OfferResponse",
-  "endpoint" => "/api/{version}/event/create",
+  "endpoint" => "/event/create",
   "notes" => "Create a private event to share with associates.",
   "parameters" => [
     {
@@ -185,12 +179,6 @@ MyApp.add_route('POST', '/api/{version}/event/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -199,12 +187,12 @@ MyApp.add_route('POST', '/api/{version}/event/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/event/delete', {
+MyApp.add_route('POST', '/api/3.18/event/delete', {
   "resourcePath" => "/Event",
   "summary" => "Delete Event",
   "nickname" => "delete_event",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/event/delete",
+  "endpoint" => "/event/delete",
   "notes" => "Delete an event that the user has permissions to.",
   "parameters" => [
     {
@@ -221,12 +209,6 @@ MyApp.add_route('POST', '/api/{version}/event/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -235,12 +217,12 @@ MyApp.add_route('POST', '/api/{version}/event/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/event/get', {
+MyApp.add_route('GET', '/api/3.18/event/get', {
   "resourcePath" => "/Event",
   "summary" => "Get Event",
   "nickname" => "get_event",
   "responseClass" => "OfferResponse",
-  "endpoint" => "/api/{version}/event/get",
+  "endpoint" => "/event/get",
   "notes" => "Get an event.",
   "parameters" => [
     {
@@ -257,12 +239,6 @@ MyApp.add_route('GET', '/api/{version}/event/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -271,12 +247,12 @@ MyApp.add_route('GET', '/api/{version}/event/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/event/attendance/search', {
+MyApp.add_route('GET', '/api/3.18/event/attendance/search', {
   "resourcePath" => "/Event",
   "summary" => "Search Event Attendance",
   "nickname" => "search_event_transactions",
   "responseClass" => "Array<EventAttendanceResponse>",
-  "endpoint" => "/api/{version}/event/attendance/search",
+  "endpoint" => "/event/attendance/search",
   "notes" => "Searches on event type transactions. This can be used to see who is attending an event.",
   "parameters" => [
     {
@@ -412,12 +388,6 @@ MyApp.add_route('GET', '/api/{version}/event/attendance/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -426,12 +396,12 @@ MyApp.add_route('GET', '/api/{version}/event/attendance/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/event/search', {
+MyApp.add_route('GET', '/api/3.18/event/search', {
   "resourcePath" => "/Event",
   "summary" => "Search Events",
   "nickname" => "search_events",
   "responseClass" => "Array<OfferShortResponse>",
-  "endpoint" => "/api/{version}/event/search",
+  "endpoint" => "/event/search",
   "notes" => "Searches on events that the account has access to.",
   "parameters" => [
     {
@@ -525,12 +495,6 @@ MyApp.add_route('GET', '/api/{version}/event/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -539,12 +503,12 @@ MyApp.add_route('GET', '/api/{version}/event/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/event/update', {
+MyApp.add_route('POST', '/api/3.18/event/update', {
   "resourcePath" => "/Event",
   "summary" => "Update Event",
   "nickname" => "update_event",
   "responseClass" => "OfferResponse",
-  "endpoint" => "/api/{version}/event/update",
+  "endpoint" => "/event/update",
   "notes" => "Update a private event to share with associates.",
   "parameters" => [
     {
@@ -630,12 +594,6 @@ MyApp.add_route('POST', '/api/{version}/event/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

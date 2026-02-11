@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/app/get', {
+MyApp.add_route('GET', '/api/3.18/app/get', {
   "resourcePath" => "/AppData",
   "summary" => "Get App Data",
   "nickname" => "get_app_data",
   "responseClass" => "AppResponse",
-  "endpoint" => "/api/{version}/app/get",
+  "endpoint" => "/app/get",
   "notes" => "Get the application data structure.  The basic structure is a   node tree, with the root node being a AppResponse.  The response contains   the user's profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.     Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user's   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application.",
   "parameters" => [
     {
@@ -184,12 +184,6 @@ MyApp.add_route('GET', '/api/{version}/app/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -198,12 +192,12 @@ MyApp.add_route('GET', '/api/{version}/app/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/app/post', {
+MyApp.add_route('POST', '/api/3.18/app/post', {
   "resourcePath" => "/AppData",
   "summary" => "Create App Data",
   "nickname" => "post_app_data",
   "responseClass" => "AppResponse",
-  "endpoint" => "/api/{version}/app/post",
+  "endpoint" => "/app/post",
   "notes" => "Publish the application data structure.  Can be used to save levels   and scores.  It then returns the application data structure.  The basic   structure is a node tree, with the root node being a AppResponse.  The response   contains the user's profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.      Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user's   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application",
   "parameters" => [
     {
@@ -388,12 +382,6 @@ MyApp.add_route('POST', '/api/{version}/app/post', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -402,12 +390,12 @@ MyApp.add_route('POST', '/api/{version}/app/post', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/app/regen', {
+MyApp.add_route('POST', '/api/3.18/app/regen', {
   "resourcePath" => "/AppData",
   "summary" => "Regenerate App Data",
   "nickname" => "regen_app_data",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/app/regen",
+  "endpoint" => "/app/regen",
   "notes" => "Regenerate the app data cache for apps",
   "parameters" => [
     {
@@ -437,12 +425,6 @@ MyApp.add_route('POST', '/api/{version}/app/regen', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

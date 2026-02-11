@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/application/create', {
+MyApp.add_route('POST', '/api/3.18/application/create', {
   "resourcePath" => "/Application",
   "summary" => "Create Application",
   "nickname" => "create_application",
   "responseClass" => "ApplicationResponse",
-  "endpoint" => "/api/{version}/application/create",
+  "endpoint" => "/application/create",
   "notes" => "Create an application record and one placement record for that application. You can create more placements for this application by using {@link createApplicationPlacement}.",
   "parameters" => [
     {
@@ -579,12 +579,6 @@ MyApp.add_route('POST', '/api/{version}/application/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -593,12 +587,12 @@ MyApp.add_route('POST', '/api/{version}/application/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/placement/create', {
+MyApp.add_route('POST', '/api/3.18/application/placement/create', {
   "resourcePath" => "/Application",
   "summary" => "Create Ad Placement",
   "nickname" => "create_application_placement",
   "responseClass" => "PlacementResponse",
-  "endpoint" => "/api/{version}/application/placement/create",
+  "endpoint" => "/application/placement/create",
   "notes" => "Creates a new ad placement for an application.",
   "parameters" => [
     {
@@ -678,12 +672,6 @@ MyApp.add_route('POST', '/api/{version}/application/placement/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -692,12 +680,12 @@ MyApp.add_route('POST', '/api/{version}/application/placement/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/delete', {
+MyApp.add_route('POST', '/api/3.18/application/delete', {
   "resourcePath" => "/Application",
   "summary" => "Delete Application",
   "nickname" => "delete_application",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/application/delete",
+  "endpoint" => "/application/delete",
   "notes" => "Set the deleted timestamp to current time. This effectively deletes the application since all queries should ignore any records with a deleted timestamp",
   "parameters" => [
     {
@@ -714,12 +702,6 @@ MyApp.add_route('POST', '/api/{version}/application/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -728,12 +710,12 @@ MyApp.add_route('POST', '/api/{version}/application/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/placement/delete', {
+MyApp.add_route('POST', '/api/3.18/application/placement/delete', {
   "resourcePath" => "/Application",
   "summary" => "Delete Ad Placement",
   "nickname" => "delete_application_placement",
   "responseClass" => "PlacementResponse",
-  "endpoint" => "/api/{version}/application/placement/delete",
+  "endpoint" => "/application/placement/delete",
   "notes" => "Deletes an ad placement for an application.",
   "parameters" => [
     {
@@ -757,12 +739,6 @@ MyApp.add_route('POST', '/api/{version}/application/placement/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -771,12 +747,12 @@ MyApp.add_route('POST', '/api/{version}/application/placement/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/get', {
+MyApp.add_route('GET', '/api/3.18/application/get', {
   "resourcePath" => "/Application",
   "summary" => "Get Application",
   "nickname" => "get_application",
   "responseClass" => "ApplicationResponse",
-  "endpoint" => "/api/{version}/application/get",
+  "endpoint" => "/application/get",
   "notes" => "Get a specific application by appKey",
   "parameters" => [
     {
@@ -793,12 +769,6 @@ MyApp.add_route('GET', '/api/{version}/application/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -807,12 +777,12 @@ MyApp.add_route('GET', '/api/{version}/application/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/placement/get', {
+MyApp.add_route('GET', '/api/3.18/application/placement/get', {
   "resourcePath" => "/Application",
   "summary" => "Get Ad Placement",
   "nickname" => "get_application_placement",
   "responseClass" => "PlacementResponse",
-  "endpoint" => "/api/{version}/application/placement/get",
+  "endpoint" => "/application/placement/get",
   "notes" => "Get details of an ad placement",
   "parameters" => [
     {
@@ -836,12 +806,6 @@ MyApp.add_route('GET', '/api/{version}/application/placement/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -850,20 +814,14 @@ MyApp.add_route('GET', '/api/{version}/application/placement/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/versions', {
+MyApp.add_route('GET', '/api/3.18/application/versions', {
   "resourcePath" => "/Application",
   "summary" => "Get API versions",
   "nickname" => "get_application_versions",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/application/versions",
+  "endpoint" => "/application/versions",
   "notes" => "Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -872,12 +830,12 @@ MyApp.add_route('GET', '/api/{version}/application/versions', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/users', {
+MyApp.add_route('GET', '/api/3.18/application/users', {
   "resourcePath" => "/Application",
   "summary" => "Search Application Users",
   "nickname" => "get_unique_users_by_app",
   "responseClass" => "AccountListResponse",
-  "endpoint" => "/api/{version}/application/users",
+  "endpoint" => "/application/users",
   "notes" => "Get a list of users per application",
   "parameters" => [
     {
@@ -938,12 +896,6 @@ MyApp.add_route('GET', '/api/{version}/application/users', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -952,12 +904,12 @@ MyApp.add_route('GET', '/api/{version}/application/users', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/list', {
+MyApp.add_route('GET', '/api/3.18/application/list', {
   "resourcePath" => "/Application",
   "summary" => "List Applications",
   "nickname" => "list_applications",
   "responseClass" => "Array<ApplicationShortResponse>",
-  "endpoint" => "/api/{version}/application/list",
+  "endpoint" => "/application/list",
   "notes" => "List active applications matching the criteria (as a consumer)",
   "parameters" => [
     {
@@ -1106,12 +1058,6 @@ MyApp.add_route('GET', '/api/{version}/application/list', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1120,12 +1066,12 @@ MyApp.add_route('GET', '/api/{version}/application/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/placement/search', {
+MyApp.add_route('GET', '/api/3.18/application/placement/search', {
   "resourcePath" => "/Application",
   "summary" => "Search for Ad Placements",
   "nickname" => "search_application_placement",
   "responseClass" => "Array<PlacementResponse>",
-  "endpoint" => "/api/{version}/application/placement/search",
+  "endpoint" => "/application/placement/search",
   "notes" => "Searches placements for an application.",
   "parameters" => [
     {
@@ -1165,12 +1111,6 @@ MyApp.add_route('GET', '/api/{version}/application/placement/search', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1179,12 +1119,12 @@ MyApp.add_route('GET', '/api/{version}/application/placement/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/settings/search', {
+MyApp.add_route('GET', '/api/3.18/application/settings/search', {
   "resourcePath" => "/Application",
   "summary" => "Search for Application Settings",
   "nickname" => "search_application_settings",
   "responseClass" => "ApplicationSettingsResponse",
-  "endpoint" => "/api/{version}/application/settings/search",
+  "endpoint" => "/application/settings/search",
   "notes" => "Returns a list of applications that the user has logged into before, and returns specific settings for that application and user",
   "parameters" => [
     {
@@ -1247,12 +1187,6 @@ MyApp.add_route('GET', '/api/{version}/application/settings/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1261,12 +1195,12 @@ MyApp.add_route('GET', '/api/{version}/application/settings/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/application/search', {
+MyApp.add_route('GET', '/api/3.18/application/search', {
   "resourcePath" => "/Application",
   "summary" => "Search Applications",
   "nickname" => "search_applications",
   "responseClass" => "Array<ApplicationResponse>",
-  "endpoint" => "/api/{version}/application/search",
+  "endpoint" => "/application/search",
   "notes" => "Search for applications matching the criteria that the logged in user has access to",
   "parameters" => [
     {
@@ -1387,12 +1321,6 @@ MyApp.add_route('GET', '/api/{version}/application/search', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1401,12 +1329,12 @@ MyApp.add_route('GET', '/api/{version}/application/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/update', {
+MyApp.add_route('POST', '/api/3.18/application/update', {
   "resourcePath" => "/Application",
   "summary" => "Update Application",
   "nickname" => "update_application",
   "responseClass" => "ApplicationResponse",
-  "endpoint" => "/api/{version}/application/update",
+  "endpoint" => "/application/update",
   "notes" => "Update an application record",
   "parameters" => [
     {
@@ -1986,12 +1914,6 @@ MyApp.add_route('POST', '/api/{version}/application/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2000,12 +1922,12 @@ MyApp.add_route('POST', '/api/{version}/application/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/active', {
+MyApp.add_route('POST', '/api/3.18/application/active', {
   "resourcePath" => "/Application",
   "summary" => "Change Appliation Status",
   "nickname" => "update_application_active",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/application/active",
+  "endpoint" => "/application/active",
   "notes" => "Set the application's active flag to true/false. This effectively activates or deactivates the application.",
   "parameters" => [
     {
@@ -2029,12 +1951,6 @@ MyApp.add_route('POST', '/api/{version}/application/active', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2043,12 +1959,12 @@ MyApp.add_route('POST', '/api/{version}/application/active', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/placement/update', {
+MyApp.add_route('POST', '/api/3.18/application/placement/update', {
   "resourcePath" => "/Application",
   "summary" => "Update Ad Placement",
   "nickname" => "update_application_placement",
   "responseClass" => "PlacementResponse",
-  "endpoint" => "/api/{version}/application/placement/update",
+  "endpoint" => "/application/placement/update",
   "notes" => "Updates an ad placement for an application.",
   "parameters" => [
     {
@@ -2128,12 +2044,6 @@ MyApp.add_route('POST', '/api/{version}/application/placement/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2142,12 +2052,12 @@ MyApp.add_route('POST', '/api/{version}/application/placement/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/application/certificate/create', {
+MyApp.add_route('POST', '/api/3.18/application/certificate/create', {
   "resourcePath" => "/Application",
   "summary" => "Create Application Certificate",
   "nickname" => "upload_application_certificate",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/application/certificate/create",
+  "endpoint" => "/application/certificate/create",
   "notes" => "Uploads a certificate for an application that the user has access to.",
   "parameters" => [
     {
@@ -2177,12 +2087,6 @@ MyApp.add_route('POST', '/api/{version}/application/certificate/create', {
       "dataType" => "File",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

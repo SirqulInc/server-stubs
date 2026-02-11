@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/leaderboard/create', {
+MyApp.add_route('POST', '/api/3.18/leaderboard/create', {
   "resourcePath" => "/Leaderboard",
   "summary" => "Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation",
   "nickname" => "create_leaderboard",
   "responseClass" => "LeaderboardResponse",
-  "endpoint" => "/api/{version}/leaderboard/create",
+  "endpoint" => "/leaderboard/create",
   "notes" => "Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation",
   "parameters" => [
     {
@@ -100,12 +100,6 @@ MyApp.add_route('POST', '/api/{version}/leaderboard/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -114,12 +108,12 @@ MyApp.add_route('POST', '/api/{version}/leaderboard/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/leaderboard/delete', {
+MyApp.add_route('POST', '/api/3.18/leaderboard/delete', {
   "resourcePath" => "/Leaderboard",
   "summary" => "Delete the Leader Board",
   "nickname" => "delete_leaderboard",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/leaderboard/delete",
+  "endpoint" => "/leaderboard/delete",
   "notes" => "Removes a leader board id.",
   "parameters" => [
     {
@@ -136,12 +130,6 @@ MyApp.add_route('POST', '/api/{version}/leaderboard/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -150,12 +138,12 @@ MyApp.add_route('POST', '/api/{version}/leaderboard/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/leaderboard/get', {
+MyApp.add_route('GET', '/api/3.18/leaderboard/get', {
   "resourcePath" => "/Leaderboard",
   "summary" => "Read a leaderboard by id and retrieve the matching ranking list",
   "nickname" => "get_leaderboard",
   "responseClass" => "LeaderboardResponse",
-  "endpoint" => "/api/{version}/leaderboard/get",
+  "endpoint" => "/leaderboard/get",
   "notes" => "Read a leaderboard by id and retrieve the matching ranking list",
   "parameters" => [
     {
@@ -179,12 +167,6 @@ MyApp.add_route('GET', '/api/{version}/leaderboard/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -193,12 +175,12 @@ MyApp.add_route('GET', '/api/{version}/leaderboard/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/leaderboard/search', {
+MyApp.add_route('GET', '/api/3.18/leaderboard/search', {
   "resourcePath" => "/Leaderboard",
   "summary" => "Search leaderboard and retrieve the matching ranking list",
   "nickname" => "search_leaderboards",
   "responseClass" => "LeaderboardResponse",
-  "endpoint" => "/api/{version}/leaderboard/search",
+  "endpoint" => "/leaderboard/search",
   "notes" => "Search leaderboard and retrieve the matching ranking list",
   "parameters" => [
     {
@@ -285,12 +267,6 @@ MyApp.add_route('GET', '/api/{version}/leaderboard/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -299,12 +275,12 @@ MyApp.add_route('GET', '/api/{version}/leaderboard/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/leaderboard/update', {
+MyApp.add_route('POST', '/api/3.18/leaderboard/update', {
   "resourcePath" => "/Leaderboard",
   "summary" => "Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation",
   "nickname" => "update_leaderboard",
   "responseClass" => "LeaderboardResponse",
-  "endpoint" => "/api/{version}/leaderboard/update",
+  "endpoint" => "/leaderboard/update",
   "notes" => "Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation",
   "parameters" => [
     {
@@ -411,12 +387,6 @@ MyApp.add_route('POST', '/api/{version}/leaderboard/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

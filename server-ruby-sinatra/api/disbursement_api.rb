@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/disbursement/check', {
+MyApp.add_route('GET', '/api/3.18/disbursement/check', {
   "resourcePath" => "/Disbursement",
   "summary" => "Check Disbursements",
   "nickname" => "check_disbursements",
   "responseClass" => "DisbursementResponse",
-  "endpoint" => "/api/{version}/disbursement/check",
+  "endpoint" => "/disbursement/check",
   "notes" => "Checks the status of a captured disbrusement to see if it has been settled.",
   "parameters" => [
     {
@@ -16,12 +16,6 @@ MyApp.add_route('GET', '/api/{version}/disbursement/check', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -30,12 +24,12 @@ MyApp.add_route('GET', '/api/{version}/disbursement/check', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/disbursement/create', {
+MyApp.add_route('POST', '/api/3.18/disbursement/create', {
   "resourcePath" => "/Disbursement",
   "summary" => "Create Disbursement",
   "nickname" => "create_disbursement",
   "responseClass" => "DisbursementResponse",
-  "endpoint" => "/api/{version}/disbursement/create",
+  "endpoint" => "/disbursement/create",
   "notes" => "Creates a Disbursement for sending money to a retailer",
   "parameters" => [
     {
@@ -108,12 +102,6 @@ MyApp.add_route('POST', '/api/{version}/disbursement/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +110,12 @@ MyApp.add_route('POST', '/api/{version}/disbursement/create', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/disbursement/get', {
+MyApp.add_route('GET', '/api/3.18/disbursement/get', {
   "resourcePath" => "/Disbursement",
   "summary" => "Get Disbursement",
   "nickname" => "get_disbursement",
   "responseClass" => "DisbursementResponse",
-  "endpoint" => "/api/{version}/disbursement/get",
+  "endpoint" => "/disbursement/get",
   "notes" => "Get Disbursement details",
   "parameters" => [
     {
@@ -144,12 +132,6 @@ MyApp.add_route('GET', '/api/{version}/disbursement/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -158,12 +140,12 @@ MyApp.add_route('GET', '/api/{version}/disbursement/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/disbursement/search', {
+MyApp.add_route('GET', '/api/3.18/disbursement/search', {
   "resourcePath" => "/Disbursement",
   "summary" => "Search Disbursements",
   "nickname" => "search_disbursements",
   "responseClass" => "Array<DisbursementResponse>",
-  "endpoint" => "/api/{version}/disbursement/search",
+  "endpoint" => "/disbursement/search",
   "notes" => "Search Disbursements",
   "parameters" => [
     {
@@ -239,12 +221,6 @@ MyApp.add_route('GET', '/api/{version}/disbursement/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -253,12 +229,12 @@ MyApp.add_route('GET', '/api/{version}/disbursement/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/disbursement/update', {
+MyApp.add_route('POST', '/api/3.18/disbursement/update', {
   "resourcePath" => "/Disbursement",
   "summary" => "Update Disbursement",
   "nickname" => "update_disbursement",
   "responseClass" => "DisbursementResponse",
-  "endpoint" => "/api/{version}/disbursement/update",
+  "endpoint" => "/disbursement/update",
   "notes" => "Update Disbursement",
   "parameters" => [
     {
@@ -330,12 +306,6 @@ MyApp.add_route('POST', '/api/{version}/disbursement/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

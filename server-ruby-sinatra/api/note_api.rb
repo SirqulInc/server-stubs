@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/note/batch', {
+MyApp.add_route('POST', '/api/3.18/note/batch', {
   "resourcePath" => "/Note",
   "summary" => "Batch Note Operation",
   "nickname" => "batch_operation",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/note/batch",
+  "endpoint" => "/note/batch",
   "notes" => "Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE). ",
   "parameters" => [
     {
@@ -44,12 +44,6 @@ MyApp.add_route('POST', '/api/{version}/note/batch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -58,12 +52,12 @@ MyApp.add_route('POST', '/api/{version}/note/batch', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/note/create', {
+MyApp.add_route('POST', '/api/3.18/note/create', {
   "resourcePath" => "/Note",
   "summary" => "Create Note",
   "nickname" => "create_note",
   "responseClass" => "NoteResponse",
-  "endpoint" => "/api/{version}/note/create",
+  "endpoint" => "/note/create",
   "notes" => "This is used to leave a comment (note) on a notable object (i.e. albums, album contests, assets, game levels, offers, offer locations, retailers, retailer locations, and theme descriptors). Leaving a comment on a notable object will be visiable to everyone who has access to view the object.",
   "parameters" => [
     {
@@ -360,12 +354,6 @@ MyApp.add_route('POST', '/api/{version}/note/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -374,12 +362,12 @@ MyApp.add_route('POST', '/api/{version}/note/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/note/delete', {
+MyApp.add_route('POST', '/api/3.18/note/delete', {
   "resourcePath" => "/Note",
   "summary" => "Delete Note",
   "nickname" => "delete_note",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/note/delete",
+  "endpoint" => "/note/delete",
   "notes" => "Sets a comment (note) as deleted.",
   "parameters" => [
     {
@@ -424,12 +412,6 @@ MyApp.add_route('POST', '/api/{version}/note/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -438,12 +420,12 @@ MyApp.add_route('POST', '/api/{version}/note/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/note/get', {
+MyApp.add_route('POST', '/api/3.18/note/get', {
   "resourcePath" => "/Note",
   "summary" => "Get Note",
   "nickname" => "get_note",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/note/get",
+  "endpoint" => "/note/get",
   "notes" => "Get for a note based on its Id.",
   "parameters" => [
     {
@@ -474,12 +456,6 @@ MyApp.add_route('POST', '/api/{version}/note/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -488,12 +464,12 @@ MyApp.add_route('POST', '/api/{version}/note/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/note/search', {
+MyApp.add_route('POST', '/api/3.18/note/search', {
   "resourcePath" => "/Note",
   "summary" => "Search Notes",
   "nickname" => "search_notes",
   "responseClass" => "Array<NoteResponse>",
-  "endpoint" => "/api/{version}/note/search",
+  "endpoint" => "/note/search",
   "notes" => "Search for notes on a notable object.",
   "parameters" => [
     {
@@ -615,12 +591,6 @@ MyApp.add_route('POST', '/api/{version}/note/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -629,12 +599,12 @@ MyApp.add_route('POST', '/api/{version}/note/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/note/update', {
+MyApp.add_route('POST', '/api/3.18/note/update', {
   "resourcePath" => "/Note",
   "summary" => "Update Note",
   "nickname" => "update_note",
   "responseClass" => "NoteResponse",
-  "endpoint" => "/api/{version}/note/update",
+  "endpoint" => "/note/update",
   "notes" => "Update an existing comment (note). Only the creator of the note have permission to update.",
   "parameters" => [
     {
@@ -923,12 +893,6 @@ MyApp.add_route('POST', '/api/{version}/note/update', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

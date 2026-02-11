@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/trip', {
+MyApp.add_route('POST', '/api/3.18/trip', {
   "resourcePath" => "/Trip",
   "summary" => "Create Trip",
   "nickname" => "create_trip",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip",
+  "endpoint" => "/trip",
   "notes" => "Create a new trip",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/trip', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/trip/{id}', {
+MyApp.add_route('DELETE', '/api/3.18/trip/{id}', {
   "resourcePath" => "/Trip",
   "summary" => "Delete Trip",
   "nickname" => "delete",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/trip/{id}",
+  "endpoint" => "/trip/{id}",
   "notes" => "Delete an existing trip",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip to delete",
@@ -57,12 +45,12 @@ MyApp.add_route('DELETE', '/api/{version}/trip/{id}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/drive', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/drive', {
   "resourcePath" => "/Trip",
   "summary" => "Set Trip Preference Driver",
   "nickname" => "drive_trip",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}/drive",
+  "endpoint" => "/trip/{id}/drive",
   "notes" => "Update trip preference to drive, also create a route and assign the trip to the route",
   "parameters" => [
     {
@@ -73,12 +61,6 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/drive', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "id",
       "description" => "the id of the trip",
       "dataType" => "Integer",
@@ -92,12 +74,12 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/drive', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/flexible', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/flexible', {
   "resourcePath" => "/Trip",
   "summary" => "Set Trip Preference Flexible",
   "nickname" => "flexible_trip",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}/flexible",
+  "endpoint" => "/trip/{id}/flexible",
   "notes" => "Update trip preference to flexible.",
   "parameters" => [
     {
@@ -108,12 +90,6 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/flexible', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "id",
       "description" => "the id of the trip",
       "dataType" => "Integer",
@@ -127,20 +103,14 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/flexible', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/trip/{id}', {
+MyApp.add_route('GET', '/api/3.18/trip/{id}', {
   "resourcePath" => "/Trip",
   "summary" => "Get Trip",
   "nickname" => "get_trip",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}",
+  "endpoint" => "/trip/{id}",
   "notes" => "Get an existing trip",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip to get",
@@ -155,12 +125,12 @@ MyApp.add_route('GET', '/api/{version}/trip/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/trip/{id}/match', {
+MyApp.add_route('GET', '/api/3.18/trip/{id}/match', {
   "resourcePath" => "/Trip",
   "summary" => "Get Trip Matches",
   "nickname" => "get_trip_matches",
   "responseClass" => "Array<Trip>",
-  "endpoint" => "/api/{version}/trip/{id}/match",
+  "endpoint" => "/trip/{id}/match",
   "notes" => "Get matching trips of specific trip",
   "parameters" => [
     {
@@ -213,12 +183,6 @@ MyApp.add_route('GET', '/api/{version}/trip/{id}/match', {
       "paramType" => "query",
     },
     {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
-    {
       "name" => "id",
       "description" => "The id The id of the trip to search for matches for",
       "dataType" => "Integer",
@@ -232,12 +196,12 @@ MyApp.add_route('GET', '/api/{version}/trip/{id}/match', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/match/process', {
+MyApp.add_route('POST', '/api/3.18/trip/match/process', {
   "resourcePath" => "/Trip",
   "summary" => "Process Trip Matches",
   "nickname" => "process_trip_matches",
   "responseClass" => "Array<Trip>",
-  "endpoint" => "/api/{version}/trip/match/process",
+  "endpoint" => "/trip/match/process",
   "notes" => "Process trip matching, assign trips with no route to matched trips with route.",
   "parameters" => [
     {
@@ -261,12 +225,6 @@ MyApp.add_route('POST', '/api/{version}/trip/match/process', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -275,12 +233,12 @@ MyApp.add_route('POST', '/api/{version}/trip/match/process', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/ride', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/ride', {
   "resourcePath" => "/Trip",
   "summary" => "Set Trip Preference Rider",
   "nickname" => "ride",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}/ride",
+  "endpoint" => "/trip/{id}/ride",
   "notes" => "Update trip preference to ride.",
   "parameters" => [
     {
@@ -289,12 +247,6 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/ride', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     {
       "name" => "id",
@@ -310,12 +262,12 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/ride', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/trip', {
+MyApp.add_route('GET', '/api/3.18/trip', {
   "resourcePath" => "/Trip",
   "summary" => "Search Trips",
   "nickname" => "search",
   "responseClass" => "Array<Trip>",
-  "endpoint" => "/api/{version}/trip",
+  "endpoint" => "/trip",
   "notes" => "Search for trips",
   "parameters" => [
     {
@@ -381,12 +333,6 @@ MyApp.add_route('GET', '/api/{version}/trip', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -395,12 +341,12 @@ MyApp.add_route('GET', '/api/{version}/trip', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/trip/match', {
+MyApp.add_route('GET', '/api/3.18/trip/match', {
   "resourcePath" => "/Trip",
   "summary" => "Search Trips",
   "nickname" => "search_trips",
   "responseClass" => "Array<Trip>",
-  "endpoint" => "/api/{version}/trip/match",
+  "endpoint" => "/trip/match",
   "notes" => "Search for trips with matching information.",
   "parameters" => [
     {
@@ -473,12 +419,6 @@ MyApp.add_route('GET', '/api/{version}/trip/match', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -487,20 +427,14 @@ MyApp.add_route('GET', '/api/{version}/trip/match', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/locations', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/locations', {
   "resourcePath" => "/Trip",
   "summary" => "Update Trip Locations",
   "nickname" => "update_locations",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}/locations",
+  "endpoint" => "/trip/{id}/locations",
   "notes" => "",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip to update locations for",
@@ -521,20 +455,14 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/locations', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/locations/recurrence', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/locations/recurrence', {
   "resourcePath" => "/Trip",
   "summary" => "Update Recurrence Locations",
   "nickname" => "update_recurrence_locations",
   "responseClass" => "Array<Trip>",
-  "endpoint" => "/api/{version}/trip/{id}/locations/recurrence",
+  "endpoint" => "/trip/{id}/locations/recurrence",
   "notes" => "",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip",
@@ -555,20 +483,14 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/locations/recurrence', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/shipments/recurrence', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/shipments/recurrence', {
   "resourcePath" => "/Trip",
   "summary" => "Update Recurrence Shipments",
   "nickname" => "update_recurrence_shipments",
   "responseClass" => "Array<Trip>",
-  "endpoint" => "/api/{version}/trip/{id}/shipments/recurrence",
+  "endpoint" => "/trip/{id}/shipments/recurrence",
   "notes" => "",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip",
@@ -589,20 +511,14 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/shipments/recurrence', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/{id}/shipments', {
+MyApp.add_route('POST', '/api/3.18/trip/{id}/shipments', {
   "resourcePath" => "/Trip",
   "summary" => "Update Trip Shipments",
   "nickname" => "update_shipments",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}/shipments",
+  "endpoint" => "/trip/{id}/shipments",
   "notes" => "",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip shipments to update",
@@ -623,20 +539,14 @@ MyApp.add_route('POST', '/api/{version}/trip/{id}/shipments', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/trip/{id}', {
+MyApp.add_route('PUT', '/api/3.18/trip/{id}', {
   "resourcePath" => "/Trip",
   "summary" => "Update Trip",
   "nickname" => "update_trip",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/{id}",
+  "endpoint" => "/trip/{id}",
   "notes" => "Update an existing trip. Does not support recurring trip update.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the trip to update",
@@ -657,12 +567,12 @@ MyApp.add_route('PUT', '/api/{version}/trip/{id}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/trip/notifications', {
+MyApp.add_route('POST', '/api/3.18/trip/notifications', {
   "resourcePath" => "/Trip",
   "summary" => "Trip Notifications",
   "nickname" => "update_trip_notifications",
   "responseClass" => "Trip",
-  "endpoint" => "/api/{version}/trip/notifications",
+  "endpoint" => "/trip/notifications",
   "notes" => "Update the trip notifications",
   "parameters" => [
     {
@@ -678,12 +588,6 @@ MyApp.add_route('POST', '/api/{version}/trip/notifications', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

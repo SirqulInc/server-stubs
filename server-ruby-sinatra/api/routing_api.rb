@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/routing/compute', {
+MyApp.add_route('POST', '/api/3.18/routing/compute', {
   "resourcePath" => "/Routing",
   "summary" => "Compute Route",
   "nickname" => "compute_routing",
   "responseClass" => "RoutingListResponse",
-  "endpoint" => "/api/{version}/routing/compute",
+  "endpoint" => "/routing/compute",
   "notes" => "This service finds the most optimal routes for delivering items between locations (reducing transit time/resources). It can take in a list of vehicles and a list of items (to be transported).All load items have pick-up and drop-off locations with time windows for when the item is expected to be picked-up and dropped-off. ",
   "parameters" => [
     {
@@ -15,12 +15,6 @@ MyApp.add_route('POST', '/api/{version}/routing/compute', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

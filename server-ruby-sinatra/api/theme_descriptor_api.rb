@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/theme', {
+MyApp.add_route('POST', '/api/3.18/consumer/theme', {
   "resourcePath" => "/ThemeDescriptor",
   "summary" => "Create/Update Theme",
   "nickname" => "add_or_update_theme_descriptor",
   "responseClass" => "ThemeDescriptorResponse",
-  "endpoint" => "/api/{version}/consumer/theme",
+  "endpoint" => "/consumer/theme",
   "notes" => "Creates or updates a theme descriptor that can be used to give applications a customized look and feel. The theme can be created by consumers and shared to other users, allowing them to use and/or collaborate on making the theme.",
   "parameters" => [
     {
@@ -198,12 +198,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/theme', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -212,12 +206,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/theme', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/theme/get', {
+MyApp.add_route('GET', '/api/3.18/consumer/theme/get', {
   "resourcePath" => "/ThemeDescriptor",
   "summary" => "Get Theme",
   "nickname" => "get_theme_descriptor",
   "responseClass" => "PurchaseItemListResponse",
-  "endpoint" => "/api/{version}/consumer/theme/get",
+  "endpoint" => "/consumer/theme/get",
   "notes" => "Gets a theme.",
   "parameters" => [
     {
@@ -262,12 +256,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/theme/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -276,12 +264,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/theme/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/theme/search', {
+MyApp.add_route('GET', '/api/3.18/consumer/theme/search', {
   "resourcePath" => "/ThemeDescriptor",
   "summary" => "Search Themes",
   "nickname" => "get_theme_descriptors",
   "responseClass" => "PurchaseItemListResponse",
-  "endpoint" => "/api/{version}/consumer/theme/search",
+  "endpoint" => "/consumer/theme/search",
   "notes" => "Searches for themes.",
   "parameters" => [
     {
@@ -410,12 +398,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/theme/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -424,12 +406,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/theme/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/theme/remove', {
+MyApp.add_route('POST', '/api/3.18/consumer/theme/remove', {
   "resourcePath" => "/ThemeDescriptor",
   "summary" => "Delete Theme",
   "nickname" => "remove_theme_descriptor",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/theme/remove",
+  "endpoint" => "/consumer/theme/remove",
   "notes" => "Removes a theme.",
   "parameters" => [
     {
@@ -473,12 +455,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/theme/remove', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/employee/assign', {
+MyApp.add_route('POST', '/api/3.18/employee/assign', {
   "resourcePath" => "/Employee",
   "summary" => "Assign Employee",
   "nickname" => "assign_employee",
   "responseClass" => "EmployeeResponse",
-  "endpoint" => "/api/{version}/employee/assign",
+  "endpoint" => "/employee/assign",
   "notes" => "Assign An existing account to be an employee",
   "parameters" => [
     {
@@ -37,12 +37,6 @@ MyApp.add_route('POST', '/api/{version}/employee/assign', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -51,12 +45,12 @@ MyApp.add_route('POST', '/api/{version}/employee/assign', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/assignToLocation', {
+MyApp.add_route('POST', '/api/3.18/employee/assignToLocation', {
   "resourcePath" => "/Employee",
   "summary" => "Assign Employee to Location",
   "nickname" => "assign_to_location_employee",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/employee/assignToLocation",
+  "endpoint" => "/employee/assignToLocation",
   "notes" => "Assign or unassign the account to a retailer location.",
   "parameters" => [
     {
@@ -88,12 +82,6 @@ MyApp.add_route('POST', '/api/{version}/employee/assignToLocation', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -102,12 +90,12 @@ MyApp.add_route('POST', '/api/{version}/employee/assignToLocation', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/create', {
+MyApp.add_route('POST', '/api/3.18/employee/create', {
   "resourcePath" => "/Employee",
   "summary" => "Create Employee",
   "nickname" => "create_employee",
   "responseClass" => "EmployeeResponse",
-  "endpoint" => "/api/{version}/employee/create",
+  "endpoint" => "/employee/create",
   "notes" => "Create a new account record with the provided information.",
   "parameters" => [
     {
@@ -320,12 +308,6 @@ MyApp.add_route('POST', '/api/{version}/employee/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -334,12 +316,12 @@ MyApp.add_route('POST', '/api/{version}/employee/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/delete', {
+MyApp.add_route('POST', '/api/3.18/employee/delete', {
   "resourcePath" => "/Employee",
   "summary" => "Delete Employee",
   "nickname" => "delete_employee",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/employee/delete",
+  "endpoint" => "/employee/delete",
   "notes" => "Set the deleted date field which marks the record as deleted.",
   "parameters" => [
     {
@@ -356,12 +338,6 @@ MyApp.add_route('POST', '/api/{version}/employee/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -370,12 +346,12 @@ MyApp.add_route('POST', '/api/{version}/employee/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/get', {
+MyApp.add_route('POST', '/api/3.18/employee/get', {
   "resourcePath" => "/Employee",
   "summary" => "Get Employee",
   "nickname" => "get_employee",
   "responseClass" => "EmployeeResponse",
-  "endpoint" => "/api/{version}/employee/get",
+  "endpoint" => "/employee/get",
   "notes" => "Get the account record for the account id provided.",
   "parameters" => [
     {
@@ -399,12 +375,6 @@ MyApp.add_route('POST', '/api/{version}/employee/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -413,12 +383,12 @@ MyApp.add_route('POST', '/api/{version}/employee/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/search', {
+MyApp.add_route('POST', '/api/3.18/employee/search', {
   "resourcePath" => "/Employee",
   "summary" => "Search Employees",
   "nickname" => "search_employees",
   "responseClass" => "Array<EmployeeResponse>",
-  "endpoint" => "/api/{version}/employee/search",
+  "endpoint" => "/employee/search",
   "notes" => "Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees.",
   "parameters" => [
     {
@@ -544,12 +514,6 @@ MyApp.add_route('POST', '/api/{version}/employee/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -558,12 +522,12 @@ MyApp.add_route('POST', '/api/{version}/employee/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/unassign', {
+MyApp.add_route('POST', '/api/3.18/employee/unassign', {
   "resourcePath" => "/Employee",
   "summary" => "Unassign Employee",
   "nickname" => "unassign_employee",
   "responseClass" => "EmployeeResponse",
-  "endpoint" => "/api/{version}/employee/unassign",
+  "endpoint" => "/employee/unassign",
   "notes" => "Unassign An existing account to be an employee",
   "parameters" => [
     {
@@ -580,12 +544,6 @@ MyApp.add_route('POST', '/api/{version}/employee/unassign', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -594,12 +552,12 @@ MyApp.add_route('POST', '/api/{version}/employee/unassign', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/employee/update', {
+MyApp.add_route('POST', '/api/3.18/employee/update', {
   "resourcePath" => "/Employee",
   "summary" => "Update Employee",
   "nickname" => "update_employee",
   "responseClass" => "EmployeeResponse",
-  "endpoint" => "/api/{version}/employee/update",
+  "endpoint" => "/employee/update",
   "notes" => "Update the account record with the provided information.",
   "parameters" => [
     {
@@ -811,12 +769,6 @@ MyApp.add_route('POST', '/api/{version}/employee/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

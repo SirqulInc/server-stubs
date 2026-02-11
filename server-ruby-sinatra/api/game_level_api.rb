@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/level/create', {
+MyApp.add_route('POST', '/api/3.18/level/create', {
   "resourcePath" => "/GameLevel",
   "summary" => "Create Game Level",
   "nickname" => "create_game_level",
   "responseClass" => "GameLevelResponse",
-  "endpoint" => "/api/{version}/level/create",
+  "endpoint" => "/level/create",
   "notes" => "Create a game level. Currently does NOT support game objects.",
   "parameters" => [
     {
@@ -191,12 +191,6 @@ MyApp.add_route('POST', '/api/{version}/level/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -205,12 +199,12 @@ MyApp.add_route('POST', '/api/{version}/level/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/level/delete', {
+MyApp.add_route('POST', '/api/3.18/level/delete', {
   "resourcePath" => "/GameLevel",
   "summary" => "Delete Game Level",
   "nickname" => "delete_game_level",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/level/delete",
+  "endpoint" => "/level/delete",
   "notes" => "Delete a game level. The level and account must be valid and have the appropirate permissions to view the content.",
   "parameters" => [
     {
@@ -227,12 +221,6 @@ MyApp.add_route('POST', '/api/{version}/level/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -241,12 +229,12 @@ MyApp.add_route('POST', '/api/{version}/level/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/level/get', {
+MyApp.add_route('GET', '/api/3.18/level/get', {
   "resourcePath" => "/GameLevel",
   "summary" => "Get Game Level",
   "nickname" => "get_game_level",
   "responseClass" => "GameLevelResponse",
-  "endpoint" => "/api/{version}/level/get",
+  "endpoint" => "/level/get",
   "notes" => "Get a game level. The level and account must be valid and have the appropirate permissions to view the content.",
   "parameters" => [
     {
@@ -270,12 +258,6 @@ MyApp.add_route('GET', '/api/{version}/level/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -284,12 +266,12 @@ MyApp.add_route('GET', '/api/{version}/level/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/level/search', {
+MyApp.add_route('GET', '/api/3.18/level/search', {
   "resourcePath" => "/GameLevel",
   "summary" => "Search Game Levels",
   "nickname" => "get_game_levels_by_application",
   "responseClass" => "GameLevelListResponse",
-  "endpoint" => "/api/{version}/level/search",
+  "endpoint" => "/level/search",
   "notes" => "Get a list of levels for an application, just those the account has permissions to view.",
   "parameters" => [
     {
@@ -362,12 +344,6 @@ MyApp.add_route('GET', '/api/{version}/level/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -376,12 +352,12 @@ MyApp.add_route('GET', '/api/{version}/level/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/level/searchByBillableEntity', {
+MyApp.add_route('GET', '/api/3.18/level/searchByBillableEntity', {
   "resourcePath" => "/GameLevel",
   "summary" => "Search Game Level by Billable Entity",
   "nickname" => "get_game_levels_by_billable_entity",
   "responseClass" => "GameLevelResponse",
-  "endpoint" => "/api/{version}/level/searchByBillableEntity",
+  "endpoint" => "/level/searchByBillableEntity",
   "notes" => "Searches on game levels that the logged in user has access to. A user would have access if the creator of the game level is managed under the same BillableEntity.",
   "parameters" => [
     {
@@ -440,12 +416,6 @@ MyApp.add_route('GET', '/api/{version}/level/searchByBillableEntity', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -454,12 +424,12 @@ MyApp.add_route('GET', '/api/{version}/level/searchByBillableEntity', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/level/questions/get', {
+MyApp.add_route('GET', '/api/3.18/level/questions/get', {
   "resourcePath" => "/GameLevel",
   "summary" => "Get Level Questions",
   "nickname" => "get_questions_in_level",
   "responseClass" => "QuestionResponse",
-  "endpoint" => "/api/{version}/level/questions/get",
+  "endpoint" => "/level/questions/get",
   "notes" => "Get questions within a level.",
   "parameters" => [
     {
@@ -476,12 +446,6 @@ MyApp.add_route('GET', '/api/{version}/level/questions/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -490,12 +454,12 @@ MyApp.add_route('GET', '/api/{version}/level/questions/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/level/words/get', {
+MyApp.add_route('GET', '/api/3.18/level/words/get', {
   "resourcePath" => "/GameLevel",
   "summary" => "Get Level Words",
   "nickname" => "get_words_in_level",
   "responseClass" => "WordzWordResponse",
-  "endpoint" => "/api/{version}/level/words/get",
+  "endpoint" => "/level/words/get",
   "notes" => "Get words within a level.",
   "parameters" => [
     {
@@ -512,12 +476,6 @@ MyApp.add_route('GET', '/api/{version}/level/words/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -526,12 +484,12 @@ MyApp.add_route('GET', '/api/{version}/level/words/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/level/update', {
+MyApp.add_route('POST', '/api/3.18/level/update', {
   "resourcePath" => "/GameLevel",
   "summary" => "Update Game Level",
   "nickname" => "update_game_level",
   "responseClass" => "GameLevelResponse",
-  "endpoint" => "/api/{version}/level/update",
+  "endpoint" => "/level/update",
   "notes" => "Update a game level. Currently does NOT support game objects.",
   "parameters" => [
     {
@@ -723,12 +681,6 @@ MyApp.add_route('POST', '/api/{version}/level/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -737,12 +689,12 @@ MyApp.add_route('POST', '/api/{version}/level/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/level/questions/update', {
+MyApp.add_route('POST', '/api/3.18/level/questions/update', {
   "resourcePath" => "/GameLevel",
   "summary" => "Update Level Questions",
   "nickname" => "update_questions_in_level",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/level/questions/update",
+  "endpoint" => "/level/questions/update",
   "notes" => "Updates a level with question game objects.",
   "parameters" => [
     {
@@ -766,12 +718,6 @@ MyApp.add_route('POST', '/api/{version}/level/questions/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -780,12 +726,12 @@ MyApp.add_route('POST', '/api/{version}/level/questions/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/level/words/update', {
+MyApp.add_route('POST', '/api/3.18/level/words/update', {
   "resourcePath" => "/GameLevel",
   "summary" => "Update Level Words",
   "nickname" => "update_words_in_level",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/level/words/update",
+  "endpoint" => "/level/words/update",
   "notes" => "Updates a level with word game objects.",
   "parameters" => [
     {
@@ -808,12 +754,6 @@ MyApp.add_route('POST', '/api/{version}/level/words/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

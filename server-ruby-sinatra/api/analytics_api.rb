@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/analytics/useractivity', {
+MyApp.add_route('GET', '/api/3.18/analytics/useractivity', {
   "resourcePath" => "/Analytics",
   "summary" => "Get User Activity",
   "nickname" => "activities",
   "responseClass" => "Array<UserActivityResponse>",
-  "endpoint" => "/api/{version}/analytics/useractivity",
+  "endpoint" => "/analytics/useractivity",
   "notes" => "Get an activity feed by user.",
   "parameters" => [
     {
@@ -30,12 +30,6 @@ MyApp.add_route('GET', '/api/{version}/analytics/useractivity', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -44,12 +38,12 @@ MyApp.add_route('GET', '/api/{version}/analytics/useractivity', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/analytics/aggregatedFilteredUsage', {
+MyApp.add_route('GET', '/api/3.18/analytics/aggregatedFilteredUsage', {
   "resourcePath" => "/Analytics",
   "summary" => "Get Aggregated Filtered Usage",
   "nickname" => "aggregated_filtered_usage",
   "responseClass" => "ChartData",
-  "endpoint" => "/api/{version}/analytics/aggregatedFilteredUsage",
+  "endpoint" => "/analytics/aggregatedFilteredUsage",
   "notes" => "Query analytics to get data used for nested graphs and charts",
   "parameters" => [
     {
@@ -269,12 +263,6 @@ MyApp.add_route('GET', '/api/{version}/analytics/aggregatedFilteredUsage', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -283,12 +271,12 @@ MyApp.add_route('GET', '/api/{version}/analytics/aggregatedFilteredUsage', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/analytics/filteredUsage', {
+MyApp.add_route('GET', '/api/3.18/analytics/filteredUsage', {
   "resourcePath" => "/Analytics",
   "summary" => "Get Filtered Usage",
   "nickname" => "filtered_usage",
   "responseClass" => "ChartData",
-  "endpoint" => "/api/{version}/analytics/filteredUsage",
+  "endpoint" => "/analytics/filteredUsage",
   "notes" => "Query analytics to get data used for graphs and charts",
   "parameters" => [
     {
@@ -564,12 +552,6 @@ MyApp.add_route('GET', '/api/{version}/analytics/filteredUsage', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -578,12 +560,12 @@ MyApp.add_route('GET', '/api/{version}/analytics/filteredUsage', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/analytics/usage', {
+MyApp.add_route('POST', '/api/3.18/analytics/usage', {
   "resourcePath" => "/Analytics",
   "summary" => "Create Usage Record",
   "nickname" => "usage",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/analytics/usage",
+  "endpoint" => "/analytics/usage",
   "notes" => "Record an analytic record for a known state within the application.",
   "parameters" => [
     {
@@ -803,12 +785,6 @@ MyApp.add_route('POST', '/api/{version}/analytics/usage', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -817,12 +793,12 @@ MyApp.add_route('POST', '/api/{version}/analytics/usage', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/analytics/usage/batch', {
+MyApp.add_route('POST', '/api/3.18/analytics/usage/batch', {
   "resourcePath" => "/Analytics",
   "summary" => "Create Multiple Usage Records",
   "nickname" => "usage_batch",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/analytics/usage/batch",
+  "endpoint" => "/analytics/usage/batch",
   "notes" => "Sends multiple analytics. Can be used to send in the user's stored usage when they did not have internet access. Should not include more than 100 items per batch.",
   "parameters" => [
     {
@@ -901,12 +877,6 @@ MyApp.add_route('POST', '/api/{version}/analytics/usage/batch', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

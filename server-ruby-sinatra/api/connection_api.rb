@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/group/addConnection', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/group/addConnection', {
   "resourcePath" => "/Connection",
   "summary" => "Add Connection",
   "nickname" => "add_connection_to_group",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group/addConnection",
+  "endpoint" => "/consumer/connection/group/addConnection",
   "notes" => "Adds a connection to a group.",
   "parameters" => [
     {
@@ -72,12 +72,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/addConnection'
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -86,12 +80,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/addConnection'
 end
 
 
-MyApp.add_route('POST', '/api/{version}/connection/group/addConnections', {
+MyApp.add_route('POST', '/api/3.18/connection/group/addConnections', {
   "resourcePath" => "/Connection",
   "summary" => "Add Connections",
   "nickname" => "add_connections_to_group",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/connection/group/addConnections",
+  "endpoint" => "/connection/group/addConnections",
   "notes" => "Adds a list of connections to a group.",
   "parameters" => [
     {
@@ -143,12 +137,6 @@ MyApp.add_route('POST', '/api/{version}/connection/group/addConnections', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -157,12 +145,12 @@ MyApp.add_route('POST', '/api/{version}/connection/group/addConnections', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/group/addSubGroup', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/group/addSubGroup', {
   "resourcePath" => "/Connection",
   "summary" => "Add Connection Groups",
   "nickname" => "add_sub_groups",
   "responseClass" => "ConnectionGroupResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group/addSubGroup",
+  "endpoint" => "/consumer/connection/group/addSubGroup",
   "notes" => "Add sub groups to a group.",
   "parameters" => [
     {
@@ -214,12 +202,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/addSubGroup', 
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -228,12 +210,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/addSubGroup', 
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/add', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/add', {
   "resourcePath" => "/Connection",
   "summary" => "Create or Update Connection",
   "nickname" => "create_or_update_connection",
   "responseClass" => "ConnectionResponse",
-  "endpoint" => "/api/{version}/consumer/connection/add",
+  "endpoint" => "/consumer/connection/add",
   "notes" => "Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group.",
   "parameters" => [
     {
@@ -334,12 +316,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/add', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -348,12 +324,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/add', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/group', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/group', {
   "resourcePath" => "/Connection",
   "summary" => "Create or Update Connection Group",
   "nickname" => "create_or_update_group",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group",
+  "endpoint" => "/consumer/connection/group",
   "notes" => "Creates a new private group.",
   "parameters" => [
     {
@@ -454,12 +430,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -468,12 +438,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/follow/accept', {
+MyApp.add_route('POST', '/api/3.18/consumer/follow/accept', {
   "resourcePath" => "/Connection",
   "summary" => "Accept Follow Request",
   "nickname" => "follow_accept",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/follow/accept",
+  "endpoint" => "/consumer/follow/accept",
   "notes" => "Accept someone's follow request.",
   "parameters" => [
     {
@@ -497,12 +467,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/accept', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -511,12 +475,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/accept', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/follow/reject', {
+MyApp.add_route('POST', '/api/3.18/consumer/follow/reject', {
   "resourcePath" => "/Connection",
   "summary" => "Reject Follow Request",
   "nickname" => "follow_reject",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/follow/reject",
+  "endpoint" => "/consumer/follow/reject",
   "notes" => "Reject someone's follow request or remove them as a follower.",
   "parameters" => [
     {
@@ -540,12 +504,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/reject', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -554,12 +512,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/reject', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/follow/remove', {
+MyApp.add_route('POST', '/api/3.18/consumer/follow/remove', {
   "resourcePath" => "/Connection",
   "summary" => "Remove Follower / Unfollow",
   "nickname" => "follow_remove",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/follow/remove",
+  "endpoint" => "/consumer/follow/remove",
   "notes" => "Unfollow someone you are following or remove them as a follower.",
   "parameters" => [
     {
@@ -583,12 +541,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/remove', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -597,12 +549,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/remove', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/follow/request', {
+MyApp.add_route('POST', '/api/3.18/consumer/follow/request', {
   "resourcePath" => "/Connection",
   "summary" => "Send Follow Request",
   "nickname" => "follow_request",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/follow/request",
+  "endpoint" => "/consumer/follow/request",
   "notes" => "Send a request to follow someone.",
   "parameters" => [
     {
@@ -634,12 +586,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/request', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -648,12 +594,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/follow/request', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/friend/accept', {
+MyApp.add_route('POST', '/api/3.18/consumer/friend/accept', {
   "resourcePath" => "/Connection",
   "summary" => "Accept Friend",
   "nickname" => "friend_accept",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/friend/accept",
+  "endpoint" => "/consumer/friend/accept",
   "notes" => "Accept a friend request and optionally sends a notification.",
   "parameters" => [
     {
@@ -705,12 +651,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/accept', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -719,12 +659,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/accept', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/friend/reject', {
+MyApp.add_route('POST', '/api/3.18/consumer/friend/reject', {
   "resourcePath" => "/Connection",
   "summary" => "Decline Friend",
   "nickname" => "friend_reject",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/friend/reject",
+  "endpoint" => "/consumer/friend/reject",
   "notes" => "Request a friend request and optionally sends a notification.",
   "parameters" => [
     {
@@ -776,12 +716,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/reject', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -790,12 +724,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/reject', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/friend/remove', {
+MyApp.add_route('POST', '/api/3.18/consumer/friend/remove', {
   "resourcePath" => "/Connection",
   "summary" => "Delete Friend",
   "nickname" => "friend_remove",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/friend/remove",
+  "endpoint" => "/consumer/friend/remove",
   "notes" => "Removes a friend from the user's friends list.",
   "parameters" => [
     {
@@ -833,12 +767,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/remove', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -847,12 +775,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/remove', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/friend/request', {
+MyApp.add_route('POST', '/api/3.18/consumer/friend/request', {
   "resourcePath" => "/Connection",
   "summary" => "Request Friend",
   "nickname" => "friend_request",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/friend/request",
+  "endpoint" => "/consumer/friend/request",
   "notes" => "Sends a friend request notification to another user.",
   "parameters" => [
     {
@@ -897,12 +825,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/request', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -911,12 +833,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/friend/request', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/connection/getRequested', {
+MyApp.add_route('GET', '/api/3.18/consumer/connection/getRequested', {
   "resourcePath" => "/Connection",
   "summary" => "Get Sent Friend Requests",
   "nickname" => "get_connection_sent_friend_requests",
   "responseClass" => "ConnectionListResponse",
-  "endpoint" => "/api/{version}/consumer/connection/getRequested",
+  "endpoint" => "/consumer/connection/getRequested",
   "notes" => "Gets the connection sent friend requests.",
   "parameters" => [
     {
@@ -933,12 +855,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/connection/getRequested', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -947,12 +863,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/connection/getRequested', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/connection/get', {
+MyApp.add_route('GET', '/api/3.18/consumer/connection/get', {
   "resourcePath" => "/Connection",
   "summary" => "Search Connections",
   "nickname" => "get_connections",
   "responseClass" => "ConnectionListResponse",
-  "endpoint" => "/api/{version}/consumer/connection/get",
+  "endpoint" => "/consumer/connection/get",
   "notes" => "Gets the connections.",
   "parameters" => [
     {
@@ -1060,12 +976,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/connection/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1074,12 +984,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/connection/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/consumer/connection/group/details/get', {
+MyApp.add_route('GET', '/api/3.18/consumer/connection/group/details/get', {
   "resourcePath" => "/Connection",
   "summary" => "Get Connection Group",
   "nickname" => "get_group_details",
   "responseClass" => "ConnectionGroupResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group/details/get",
+  "endpoint" => "/consumer/connection/group/details/get",
   "notes" => "",
   "parameters" => [
     {
@@ -1124,12 +1034,6 @@ MyApp.add_route('GET', '/api/{version}/consumer/connection/group/details/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1138,12 +1042,12 @@ MyApp.add_route('GET', '/api/{version}/consumer/connection/group/details/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/connection/group/search', {
+MyApp.add_route('GET', '/api/3.18/connection/group/search', {
   "resourcePath" => "/Connection",
   "summary" => "Search Connection Groups",
   "nickname" => "group_search",
   "responseClass" => "Array<ConnectionInfoResponse>",
-  "endpoint" => "/api/{version}/connection/group/search",
+  "endpoint" => "/connection/group/search",
   "notes" => "Gets a user's private groups and default groups.",
   "parameters" => [
     {
@@ -1216,12 +1120,6 @@ MyApp.add_route('GET', '/api/{version}/connection/group/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1230,12 +1128,12 @@ MyApp.add_route('GET', '/api/{version}/connection/group/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/group/removeConnection', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/group/removeConnection', {
   "resourcePath" => "/Connection",
   "summary" => "Delete Connection",
   "nickname" => "remove_connection_from_group",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group/removeConnection",
+  "endpoint" => "/consumer/connection/group/removeConnection",
   "notes" => "Removes the connection from group.",
   "parameters" => [
     {
@@ -1301,12 +1199,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/removeConnecti
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1315,12 +1207,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/removeConnecti
 end
 
 
-MyApp.add_route('POST', '/api/{version}/connection/group/removeConnections', {
+MyApp.add_route('POST', '/api/3.18/connection/group/removeConnections', {
   "resourcePath" => "/Connection",
   "summary" => "Remove Connections",
   "nickname" => "remove_connections_from_group",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/connection/group/removeConnections",
+  "endpoint" => "/connection/group/removeConnections",
   "notes" => "Remove a list of connections from a group.",
   "parameters" => [
     {
@@ -1372,12 +1264,6 @@ MyApp.add_route('POST', '/api/{version}/connection/group/removeConnections', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1386,12 +1272,12 @@ MyApp.add_route('POST', '/api/{version}/connection/group/removeConnections', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/group/remove', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/group/remove', {
   "resourcePath" => "/Connection",
   "summary" => "Delete Connection Group",
   "nickname" => "remove_group",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group/remove",
+  "endpoint" => "/consumer/connection/group/remove",
   "notes" => "Remove a user's group.",
   "parameters" => [
     {
@@ -1436,12 +1322,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/remove', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1450,12 +1330,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/remove', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/connection/group/removeSubGroup', {
+MyApp.add_route('POST', '/api/3.18/consumer/connection/group/removeSubGroup', {
   "resourcePath" => "/Connection",
   "summary" => "Remove Connection Groups",
   "nickname" => "remove_sub_groups",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/connection/group/removeSubGroup",
+  "endpoint" => "/consumer/connection/group/removeSubGroup",
   "notes" => "Remove sub groups from a group",
   "parameters" => [
     {
@@ -1507,12 +1387,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/removeSubGroup
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1521,12 +1395,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/connection/group/removeSubGroup
 end
 
 
-MyApp.add_route('GET', '/api/{version}/connection/search', {
+MyApp.add_route('GET', '/api/3.18/connection/search', {
   "resourcePath" => "/Connection",
   "summary" => "Search Possible Connections",
   "nickname" => "search_connections",
   "responseClass" => "ConnectionListResponse",
-  "endpoint" => "/api/{version}/connection/search",
+  "endpoint" => "/connection/search",
   "notes" => "Search for accounts that the user may not have a connection with.",
   "parameters" => [
     {
@@ -1633,12 +1507,6 @@ MyApp.add_route('GET', '/api/{version}/connection/search', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

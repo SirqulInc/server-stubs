@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/csvimport/batch/status/details', {
+MyApp.add_route('GET', '/api/3.18/csvimport/batch/status/details', {
   "resourcePath" => "/CSVImport",
   "summary" => "Detail Status",
   "nickname" => "get_status_csv",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/csvimport/batch/status/details",
+  "endpoint" => "/csvimport/batch/status/details",
   "notes" => "",
   "parameters" => [
     {
@@ -44,12 +44,6 @@ MyApp.add_route('GET', '/api/{version}/csvimport/batch/status/details', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -58,12 +52,12 @@ MyApp.add_route('GET', '/api/{version}/csvimport/batch/status/details', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/csvimport/batch/list', {
+MyApp.add_route('GET', '/api/3.18/csvimport/batch/list', {
   "resourcePath" => "/CSVImport",
   "summary" => "Search Status",
   "nickname" => "list_status_csv",
   "responseClass" => "CsvImportResponse",
-  "endpoint" => "/api/{version}/csvimport/batch/list",
+  "endpoint" => "/csvimport/batch/list",
   "notes" => "Retrieves batches for a user.",
   "parameters" => [
     {
@@ -87,12 +81,6 @@ MyApp.add_route('GET', '/api/{version}/csvimport/batch/list', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -101,12 +89,12 @@ MyApp.add_route('GET', '/api/{version}/csvimport/batch/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/csvimport/batch/status', {
+MyApp.add_route('GET', '/api/3.18/csvimport/batch/status', {
   "resourcePath" => "/CSVImport",
   "summary" => "Batch Status",
   "nickname" => "status_csv",
   "responseClass" => "CsvImportResponse",
-  "endpoint" => "/api/{version}/csvimport/batch/status",
+  "endpoint" => "/csvimport/batch/status",
   "notes" => "Checks status of batch upload.",
   "parameters" => [
     {
@@ -123,12 +111,6 @@ MyApp.add_route('GET', '/api/{version}/csvimport/batch/status', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -137,12 +119,12 @@ MyApp.add_route('GET', '/api/{version}/csvimport/batch/status', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/csvimport/upload', {
+MyApp.add_route('POST', '/api/3.18/csvimport/upload', {
   "resourcePath" => "/CSVImport",
   "summary" => "Upload CSV",
   "nickname" => "upload_csv",
   "responseClass" => "CsvImportResponse",
-  "endpoint" => "/api/{version}/csvimport/upload",
+  "endpoint" => "/csvimport/upload",
   "notes" => "Uploads a CSV import file.",
   "parameters" => [
     {
@@ -179,12 +161,6 @@ MyApp.add_route('POST', '/api/{version}/csvimport/upload', {
       "dataType" => "String",
       "allowableValues" => "[EXCEL, MYSQL, RFC4180, TDF]",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

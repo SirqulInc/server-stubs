@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/location/create', {
+MyApp.add_route('POST', '/api/3.18/location/create', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Create Retailer Location (Consumer)",
   "nickname" => "create_retailer_location_consumer",
   "responseClass" => "RetailerLocationResponse",
-  "endpoint" => "/api/{version}/location/create",
+  "endpoint" => "/location/create",
   "notes" => "Creates a location record for an application that can support crowd sourced locations.",
   "parameters" => [
     {
@@ -212,12 +212,6 @@ MyApp.add_route('POST', '/api/{version}/location/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -226,12 +220,12 @@ MyApp.add_route('POST', '/api/{version}/location/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/location/create', {
+MyApp.add_route('POST', '/api/3.18/retailer/location/create', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Create Retailer Location",
   "nickname" => "create_retailer_locations",
   "responseClass" => "RetailerLocationResponse",
-  "endpoint" => "/api/{version}/retailer/location/create",
+  "endpoint" => "/retailer/location/create",
   "notes" => "Creates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.",
   "parameters" => [
     {
@@ -507,12 +501,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/location/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -521,12 +509,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/location/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/location/delete', {
+MyApp.add_route('POST', '/api/3.18/retailer/location/delete', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Delete Retailer Location",
   "nickname" => "delete_retailer_location",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/location/delete",
+  "endpoint" => "/retailer/location/delete",
   "notes" => "Set the deleted timestamp to current time. This effectively deletes the retailer location since all queries should ignore any records with a deleted time stamp.",
   "parameters" => [
     {
@@ -550,12 +538,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/location/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -564,12 +546,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/location/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/location/get', {
+MyApp.add_route('GET', '/api/3.18/retailer/location/get', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Get Retailer Location",
   "nickname" => "get_retailer_location",
   "responseClass" => "RetailerLocationResponse",
-  "endpoint" => "/api/{version}/retailer/location/get",
+  "endpoint" => "/retailer/location/get",
   "notes" => "Gets a retailer location. Only the owner and the employees of the retailer have access to view its information.",
   "parameters" => [
     {
@@ -600,12 +582,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -614,12 +590,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/location/get', {
+MyApp.add_route('GET', '/api/3.18/location/get', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Get Retailer Location (Consumer)",
   "nickname" => "get_retailer_location_consumer",
   "responseClass" => "RetailerLocationResponse",
-  "endpoint" => "/api/{version}/location/get",
+  "endpoint" => "/location/get",
   "notes" => "Gets the details of a retailer location as a consumer.",
   "parameters" => [
     {
@@ -643,12 +619,6 @@ MyApp.add_route('GET', '/api/{version}/location/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -657,12 +627,12 @@ MyApp.add_route('GET', '/api/{version}/location/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/location/idistancesearch', {
+MyApp.add_route('GET', '/api/3.18/retailer/location/idistancesearch', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Distance Search Retailer Locations (Indexed)",
   "nickname" => "indexed_retailer_location_distance_search",
   "responseClass" => "Array<RetailerLocationResponse>",
-  "endpoint" => "/api/{version}/retailer/location/idistancesearch",
+  "endpoint" => "/retailer/location/idistancesearch",
   "notes" => "Retailer location indexed search by distance. This searches on any retailer location with location data and returns the results sorted by distance.",
   "parameters" => [
     {
@@ -903,12 +873,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/idistancesearch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -917,12 +881,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/idistancesearch', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/location/isearch', {
+MyApp.add_route('GET', '/api/3.18/retailer/location/isearch', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Keyword Search Retailer Locations (Indexed)",
   "nickname" => "indexed_retailer_location_search",
   "responseClass" => "Array<RetailerLocationResponse>",
-  "endpoint" => "/api/{version}/retailer/location/isearch",
+  "endpoint" => "/retailer/location/isearch",
   "notes" => "Retailer location (faster) indexed search. This searches all retailer locations.",
   "parameters" => [
     {
@@ -1121,12 +1085,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/isearch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1135,12 +1093,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/isearch', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/location/search', {
+MyApp.add_route('GET', '/api/3.18/retailer/location/search', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Search Retailer Locations (Owned)",
   "nickname" => "search_retailer_locations",
   "responseClass" => "Array<RetailerLocationResponse>",
-  "endpoint" => "/api/{version}/retailer/location/search",
+  "endpoint" => "/retailer/location/search",
   "notes" => "Searches on retailer locations that the account has access to.",
   "parameters" => [
     {
@@ -1318,12 +1276,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1332,12 +1284,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/location/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/location/update', {
+MyApp.add_route('POST', '/api/3.18/retailer/location/update', {
   "resourcePath" => "/RetailerLocation",
   "summary" => "Update Retailer Location",
   "nickname" => "update_retailer_locations",
   "responseClass" => "RetailerLocationResponse",
-  "endpoint" => "/api/{version}/retailer/location/update",
+  "endpoint" => "/retailer/location/update",
   "notes" => "Updates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.",
   "parameters" => [
     {
@@ -1626,12 +1578,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/location/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

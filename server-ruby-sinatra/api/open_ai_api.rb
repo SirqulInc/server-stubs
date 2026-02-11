@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/openai/v1/images/generations', {
+MyApp.add_route('POST', '/api/3.18/openai/v1/images/generations', {
   "resourcePath" => "/OpenAI",
   "summary" => "Generate images with OpenAI",
   "nickname" => "image_generation",
   "responseClass" => "WrappedProxyItemResponse",
-  "endpoint" => "/api/{version}/openai/v1/images/generations",
+  "endpoint" => "/openai/v1/images/generations",
   "notes" => "Generate images with OpenAI.",
   "parameters" => [
     {
@@ -29,12 +29,6 @@ MyApp.add_route('POST', '/api/{version}/openai/v1/images/generations', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

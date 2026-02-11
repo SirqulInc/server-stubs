@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/filter/create', {
+MyApp.add_route('POST', '/api/3.18/filter/create', {
   "resourcePath" => "/Filter",
   "summary" => "Create Filter",
   "nickname" => "create_filter",
   "responseClass" => "FilterTreeResponse",
-  "endpoint" => "/api/{version}/filter/create",
+  "endpoint" => "/filter/create",
   "notes" => "Create a filter",
   "parameters" => [
     {
@@ -72,12 +72,6 @@ MyApp.add_route('POST', '/api/{version}/filter/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -86,12 +80,12 @@ MyApp.add_route('POST', '/api/{version}/filter/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/filter/delete', {
+MyApp.add_route('POST', '/api/3.18/filter/delete', {
   "resourcePath" => "/Filter",
   "summary" => "Delete Filter",
   "nickname" => "delete_filter",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/filter/delete",
+  "endpoint" => "/filter/delete",
   "notes" => "Delete a filter.",
   "parameters" => [
     {
@@ -108,12 +102,6 @@ MyApp.add_route('POST', '/api/{version}/filter/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +110,12 @@ MyApp.add_route('POST', '/api/{version}/filter/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/filter/get', {
+MyApp.add_route('GET', '/api/3.18/filter/get', {
   "resourcePath" => "/Filter",
   "summary" => "Get Filter",
   "nickname" => "get_filter",
   "responseClass" => "FilterTreeResponse",
-  "endpoint" => "/api/{version}/filter/get",
+  "endpoint" => "/filter/get",
   "notes" => "Get the details of a specific filter. Recursively include all child filters and their children.",
   "parameters" => [
     {
@@ -137,12 +125,6 @@ MyApp.add_route('GET', '/api/{version}/filter/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -151,12 +133,12 @@ MyApp.add_route('GET', '/api/{version}/filter/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/filter/search', {
+MyApp.add_route('GET', '/api/3.18/filter/search', {
   "resourcePath" => "/Filter",
   "summary" => "Search Filters",
   "nickname" => "search_filters",
   "responseClass" => "Array<FilterResponse>",
-  "endpoint" => "/api/{version}/filter/search",
+  "endpoint" => "/filter/search",
   "notes" => "Search for filters.",
   "parameters" => [
     {
@@ -234,12 +216,6 @@ MyApp.add_route('GET', '/api/{version}/filter/search', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -248,12 +224,12 @@ MyApp.add_route('GET', '/api/{version}/filter/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/filter/update', {
+MyApp.add_route('POST', '/api/3.18/filter/update', {
   "resourcePath" => "/Filter",
   "summary" => "Update Filter",
   "nickname" => "update_filter",
   "responseClass" => "FilterTreeResponse",
-  "endpoint" => "/api/{version}/filter/update",
+  "endpoint" => "/filter/update",
   "notes" => "Update a filter.",
   "parameters" => [
     {
@@ -318,12 +294,6 @@ MyApp.add_route('POST', '/api/{version}/filter/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

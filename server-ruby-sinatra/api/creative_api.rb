@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/creative/addpreview', {
+MyApp.add_route('POST', '/api/3.18/creative/addpreview', {
   "resourcePath" => "/Creative",
   "summary" => "Add Preview",
   "nickname" => "add_preview",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/creative/addpreview",
+  "endpoint" => "/creative/addpreview",
   "notes" => "Enable this ad for preview for this account.",
   "parameters" => [
     {
@@ -23,12 +23,6 @@ MyApp.add_route('POST', '/api/{version}/creative/addpreview', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -37,12 +31,12 @@ MyApp.add_route('POST', '/api/{version}/creative/addpreview', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/ads/find', {
+MyApp.add_route('GET', '/api/3.18/ads/find', {
   "resourcePath" => "/Creative",
   "summary" => "Find Missions",
   "nickname" => "ads_find",
   "responseClass" => "Array<MissionResponse>",
-  "endpoint" => "/api/{version}/ads/find",
+  "endpoint" => "/ads/find",
   "notes" => "Get a set of ad filtered by the parameters provided.",
   "parameters" => [
     {
@@ -157,12 +151,6 @@ MyApp.add_route('GET', '/api/{version}/ads/find', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -171,12 +159,12 @@ MyApp.add_route('GET', '/api/{version}/ads/find', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/creative/create', {
+MyApp.add_route('POST', '/api/3.18/creative/create', {
   "resourcePath" => "/Creative",
   "summary" => "Create Creative",
   "nickname" => "create_creative",
   "responseClass" => "CreativeResponse",
-  "endpoint" => "/api/{version}/creative/create",
+  "endpoint" => "/creative/create",
   "notes" => "Create a creative",
   "parameters" => [
     {
@@ -284,12 +272,6 @@ MyApp.add_route('POST', '/api/{version}/creative/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -298,12 +280,12 @@ MyApp.add_route('POST', '/api/{version}/creative/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/creative/delete', {
+MyApp.add_route('POST', '/api/3.18/creative/delete', {
   "resourcePath" => "/Creative",
   "summary" => "Delete Creative",
   "nickname" => "delete_creative",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/creative/delete",
+  "endpoint" => "/creative/delete",
   "notes" => "Delete a creative",
   "parameters" => [
     {
@@ -320,12 +302,6 @@ MyApp.add_route('POST', '/api/{version}/creative/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -334,12 +310,12 @@ MyApp.add_route('POST', '/api/{version}/creative/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/creative/get', {
+MyApp.add_route('GET', '/api/3.18/creative/get', {
   "resourcePath" => "/Creative",
   "summary" => "Get Creative",
   "nickname" => "get_creative",
   "responseClass" => "CreativeResponse",
-  "endpoint" => "/api/{version}/creative/get",
+  "endpoint" => "/creative/get",
   "notes" => "Get a creative",
   "parameters" => [
     {
@@ -356,12 +332,6 @@ MyApp.add_route('GET', '/api/{version}/creative/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -370,12 +340,12 @@ MyApp.add_route('GET', '/api/{version}/creative/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/creative/search', {
+MyApp.add_route('GET', '/api/3.18/creative/search', {
   "resourcePath" => "/Creative",
   "summary" => "Search Creatives",
   "nickname" => "get_creatives_by_application",
   "responseClass" => "Array<CreativeResponse>",
-  "endpoint" => "/api/{version}/creative/search",
+  "endpoint" => "/creative/search",
   "notes" => "Get a list of levels for an application, just those the account has permissions to view.",
   "parameters" => [
     {
@@ -420,12 +390,6 @@ MyApp.add_route('GET', '/api/{version}/creative/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -434,12 +398,12 @@ MyApp.add_route('GET', '/api/{version}/creative/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/creative/removepreview', {
+MyApp.add_route('POST', '/api/3.18/creative/removepreview', {
   "resourcePath" => "/Creative",
   "summary" => "Remove Preview",
   "nickname" => "remove_preview",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/creative/removepreview",
+  "endpoint" => "/creative/removepreview",
   "notes" => "Remove this ad for preview for this account.",
   "parameters" => [
     {
@@ -456,12 +420,6 @@ MyApp.add_route('POST', '/api/{version}/creative/removepreview', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -470,12 +428,12 @@ MyApp.add_route('POST', '/api/{version}/creative/removepreview', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/creative/update', {
+MyApp.add_route('POST', '/api/3.18/creative/update', {
   "resourcePath" => "/Creative",
   "summary" => "Update Creative",
   "nickname" => "update_creative",
   "responseClass" => "CreativeResponse",
-  "endpoint" => "/api/{version}/creative/update",
+  "endpoint" => "/creative/update",
   "notes" => "Update a creative",
   "parameters" => [
     {
@@ -575,12 +533,6 @@ MyApp.add_route('POST', '/api/{version}/creative/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

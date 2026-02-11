@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/notification/schedule/create', {
+MyApp.add_route('POST', '/api/3.18/notification/schedule/create', {
   "resourcePath" => "/ScheduledNotification",
   "summary" => "Create Scheduled Notification",
   "nickname" => "create_scheduled_notification",
   "responseClass" => "ScheduledNotificationFullResponse",
-  "endpoint" => "/api/{version}/notification/schedule/create",
+  "endpoint" => "/notification/schedule/create",
   "notes" => "This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods",
   "parameters" => [
     {
@@ -248,12 +248,6 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -262,12 +256,12 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/schedule/delete', {
+MyApp.add_route('POST', '/api/3.18/notification/schedule/delete', {
   "resourcePath" => "/ScheduledNotification",
   "summary" => "Delete Scheduled Notification",
   "nickname" => "delete_scheduled_notification",
   "responseClass" => "ScheduledNotificationFullResponse",
-  "endpoint" => "/api/{version}/notification/schedule/delete",
+  "endpoint" => "/notification/schedule/delete",
   "notes" => "This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi.",
   "parameters" => [
     {
@@ -291,12 +285,6 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -305,12 +293,12 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/schedule/get', {
+MyApp.add_route('GET', '/api/3.18/notification/schedule/get', {
   "resourcePath" => "/ScheduledNotification",
   "summary" => "Get Scheduled Notification",
   "nickname" => "get_scheduled_notification",
   "responseClass" => "ScheduledNotificationFullResponse",
-  "endpoint" => "/api/{version}/notification/schedule/get",
+  "endpoint" => "/notification/schedule/get",
   "notes" => "Get a ScheduledNotification",
   "parameters" => [
     {
@@ -327,12 +315,6 @@ MyApp.add_route('GET', '/api/{version}/notification/schedule/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -341,12 +323,12 @@ MyApp.add_route('GET', '/api/{version}/notification/schedule/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/schedule/generate', {
+MyApp.add_route('POST', '/api/3.18/notification/schedule/generate', {
   "resourcePath" => "/ScheduledNotification",
   "summary" => "Generate Schedule Notifications",
   "nickname" => "schedule_notification_listings",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/notification/schedule/generate",
+  "endpoint" => "/notification/schedule/generate",
   "notes" => "Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users.",
   "parameters" => [
     {
@@ -405,12 +387,6 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/generate', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -419,12 +395,12 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/generate', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/notification/schedule/search', {
+MyApp.add_route('GET', '/api/3.18/notification/schedule/search', {
   "resourcePath" => "/ScheduledNotification",
   "summary" => "Search Scheduled Notifications",
   "nickname" => "search_scheduled_notifications",
   "responseClass" => "ScheduledNotificationFullResponse",
-  "endpoint" => "/api/{version}/notification/schedule/search",
+  "endpoint" => "/notification/schedule/search",
   "notes" => "This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.  In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators.",
   "parameters" => [
     {
@@ -567,12 +543,6 @@ MyApp.add_route('GET', '/api/{version}/notification/schedule/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -581,12 +551,12 @@ MyApp.add_route('GET', '/api/{version}/notification/schedule/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/notification/schedule/update', {
+MyApp.add_route('POST', '/api/3.18/notification/schedule/update', {
   "resourcePath" => "/ScheduledNotification",
   "summary" => "Update Scheduled Notification",
   "nickname" => "update_scheduled_notification",
   "responseClass" => "ScheduledNotificationFullResponse",
-  "endpoint" => "/api/{version}/notification/schedule/update",
+  "endpoint" => "/notification/schedule/update",
   "notes" => "This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.  Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi.",
   "parameters" => [
     {
@@ -855,12 +825,6 @@ MyApp.add_route('POST', '/api/{version}/notification/schedule/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

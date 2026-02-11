@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/pathing/compute', {
+MyApp.add_route('GET', '/api/3.18/pathing/compute', {
   "resourcePath" => "/Pathing",
   "summary" => "Calculate Path",
   "nickname" => "compute_path",
   "responseClass" => "PathingResponse",
-  "endpoint" => "/api/{version}/pathing/compute",
+  "endpoint" => "/pathing/compute",
   "notes" => "Calculates the shortest path from point to point on a grid",
   "parameters" => [
     {
@@ -36,12 +36,6 @@ MyApp.add_route('GET', '/api/{version}/pathing/compute', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

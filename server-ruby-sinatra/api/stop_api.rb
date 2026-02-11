@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/stop/{id}', {
+MyApp.add_route('GET', '/api/3.18/stop/{id}', {
   "resourcePath" => "/Stop",
   "summary" => "Get Stop",
   "nickname" => "get_stop",
   "responseClass" => "Stop",
-  "endpoint" => "/api/{version}/stop/{id}",
+  "endpoint" => "/stop/{id}",
   "notes" => "Get an existing stop",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the stop to get",
@@ -29,20 +23,14 @@ MyApp.add_route('GET', '/api/{version}/stop/{id}', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/stop/{id}', {
+MyApp.add_route('PUT', '/api/3.18/stop/{id}', {
   "resourcePath" => "/Stop",
   "summary" => "Update Stop",
   "nickname" => "update_stop",
   "responseClass" => "Stop",
-  "endpoint" => "/api/{version}/stop/{id}",
+  "endpoint" => "/stop/{id}",
   "notes" => "Update an existing stop",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the stop to update",

@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/cargo/type', {
+MyApp.add_route('POST', '/api/3.18/cargo/type', {
   "resourcePath" => "/CargoType",
   "summary" => "Create Cargo Type",
   "nickname" => "create_cargo_type",
   "responseClass" => "CargoType",
-  "endpoint" => "/api/{version}/cargo/type",
+  "endpoint" => "/cargo/type",
   "notes" => "Create new cargo type",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/cargo/type', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/cargo/type/{cargoTypeId}', {
+MyApp.add_route('DELETE', '/api/3.18/cargo/type/{cargoTypeId}', {
   "resourcePath" => "/CargoType",
   "summary" => "Delete Cargo Type",
   "nickname" => "delete_cargo_type",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/cargo/type/{cargoTypeId}",
+  "endpoint" => "/cargo/type/{cargoTypeId}",
   "notes" => "Delete a type of cargo",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "cargo_type_id",
       "description" => "the ID of the cargo type",
@@ -57,20 +45,14 @@ MyApp.add_route('DELETE', '/api/{version}/cargo/type/{cargoTypeId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/cargo/type/{cargoTypeId}', {
+MyApp.add_route('GET', '/api/3.18/cargo/type/{cargoTypeId}', {
   "resourcePath" => "/CargoType",
   "summary" => "Get Cargo Type",
   "nickname" => "get_cargo_type",
   "responseClass" => "CargoType",
-  "endpoint" => "/api/{version}/cargo/type/{cargoTypeId}",
+  "endpoint" => "/cargo/type/{cargoTypeId}",
   "notes" => "Get an existing cargo type",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "cargo_type_id",
       "description" => "the cargo type ID",
@@ -85,12 +67,12 @@ MyApp.add_route('GET', '/api/{version}/cargo/type/{cargoTypeId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/cargo/type', {
+MyApp.add_route('GET', '/api/3.18/cargo/type', {
   "resourcePath" => "/CargoType",
   "summary" => "Search Cargo Type",
   "nickname" => "search_cargo_types",
   "responseClass" => "Array<CargoType>",
-  "endpoint" => "/api/{version}/cargo/type",
+  "endpoint" => "/cargo/type",
   "notes" => "Search for types of cargo",
   "parameters" => [
     {
@@ -142,12 +124,6 @@ MyApp.add_route('GET', '/api/{version}/cargo/type', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -156,20 +132,14 @@ MyApp.add_route('GET', '/api/{version}/cargo/type', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/cargo/type/{cargoTypeId}', {
+MyApp.add_route('PUT', '/api/3.18/cargo/type/{cargoTypeId}', {
   "resourcePath" => "/CargoType",
   "summary" => "Update Cargo Type",
   "nickname" => "update_cargo_type",
   "responseClass" => "CargoType",
-  "endpoint" => "/api/{version}/cargo/type/{cargoTypeId}",
+  "endpoint" => "/cargo/type/{cargoTypeId}",
   "notes" => "Update an existing cargo type",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "cargo_type_id",
       "description" => "the ID of the cargo type",

@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/program', {
+MyApp.add_route('POST', '/api/3.18/program', {
   "resourcePath" => "/Program",
   "summary" => "Create Program",
   "nickname" => "create_program",
   "responseClass" => "Program",
-  "endpoint" => "/api/{version}/program",
+  "endpoint" => "/program",
   "notes" => "Create a new program",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/program', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/program/{id}', {
+MyApp.add_route('DELETE', '/api/3.18/program/{id}', {
   "resourcePath" => "/Program",
   "summary" => "Delete Program",
   "nickname" => "delete_program",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/program/{id}",
+  "endpoint" => "/program/{id}",
   "notes" => "Delete an existing program",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the program",
@@ -57,20 +45,14 @@ MyApp.add_route('DELETE', '/api/{version}/program/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/program/{id}', {
+MyApp.add_route('GET', '/api/3.18/program/{id}', {
   "resourcePath" => "/Program",
   "summary" => "Get Program",
   "nickname" => "get_program",
   "responseClass" => "Program",
-  "endpoint" => "/api/{version}/program/{id}",
+  "endpoint" => "/program/{id}",
   "notes" => "Get an existing program",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the program",
@@ -85,20 +67,14 @@ MyApp.add_route('GET', '/api/{version}/program/{id}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/program/{id}', {
+MyApp.add_route('POST', '/api/3.18/program/{id}', {
   "resourcePath" => "/Program",
   "summary" => "Update Program",
   "nickname" => "post_program",
   "responseClass" => "Program",
-  "endpoint" => "/api/{version}/program/{id}",
+  "endpoint" => "/program/{id}",
   "notes" => "Update an existing program",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the program",
@@ -119,20 +95,14 @@ MyApp.add_route('POST', '/api/{version}/program/{id}', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/program/{id}', {
+MyApp.add_route('PUT', '/api/3.18/program/{id}', {
   "resourcePath" => "/Program",
   "summary" => "Update Program",
   "nickname" => "put_program",
   "responseClass" => "Program",
-  "endpoint" => "/api/{version}/program/{id}",
+  "endpoint" => "/program/{id}",
   "notes" => "Update an existing program",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the program",
@@ -153,12 +123,12 @@ MyApp.add_route('PUT', '/api/{version}/program/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/program', {
+MyApp.add_route('GET', '/api/3.18/program', {
   "resourcePath" => "/Program",
   "summary" => "Search Programs",
   "nickname" => "search_programs",
   "responseClass" => "Array<Program>",
-  "endpoint" => "/api/{version}/program",
+  "endpoint" => "/program",
   "notes" => "Search for programs",
   "parameters" => [
     {
@@ -202,12 +172,6 @@ MyApp.add_route('GET', '/api/{version}/program', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

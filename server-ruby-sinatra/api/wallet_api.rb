@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/wallet/create', {
+MyApp.add_route('POST', '/api/3.18/wallet/create', {
   "resourcePath" => "/Wallet",
   "summary" => "Create Wallet Offers",
   "nickname" => "create_offer_transaction",
   "responseClass" => "Array<OfferTransactionResponse>",
-  "endpoint" => "/api/{version}/wallet/create",
+  "endpoint" => "/wallet/create",
   "notes" => "Adds offers to the wallet",
   "parameters" => [
     {
@@ -87,12 +87,6 @@ MyApp.add_route('POST', '/api/{version}/wallet/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -101,12 +95,12 @@ MyApp.add_route('POST', '/api/{version}/wallet/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/wallet/delete', {
+MyApp.add_route('POST', '/api/3.18/wallet/delete', {
   "resourcePath" => "/Wallet",
   "summary" => "Delete Wallet Offer",
   "nickname" => "delete_offer_transaction",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/wallet/delete",
+  "endpoint" => "/wallet/delete",
   "notes" => "Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.",
   "parameters" => [
     {
@@ -130,12 +124,6 @@ MyApp.add_route('POST', '/api/{version}/wallet/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -144,12 +132,12 @@ MyApp.add_route('POST', '/api/{version}/wallet/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/wallet/get', {
+MyApp.add_route('GET', '/api/3.18/wallet/get', {
   "resourcePath" => "/Wallet",
   "summary" => "Get Wallet Offer",
   "nickname" => "get_offer_transaction",
   "responseClass" => "OfferTransactionResponse",
-  "endpoint" => "/api/{version}/wallet/get",
+  "endpoint" => "/wallet/get",
   "notes" => "",
   "parameters" => [
     {
@@ -203,12 +191,6 @@ MyApp.add_route('GET', '/api/{version}/wallet/get', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -217,12 +199,12 @@ MyApp.add_route('GET', '/api/{version}/wallet/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/wallet/preview', {
+MyApp.add_route('POST', '/api/3.18/wallet/preview', {
   "resourcePath" => "/Wallet",
   "summary" => "Preview Wallet Offers",
   "nickname" => "preview_offer_transaction",
   "responseClass" => "Array<OfferTransactionResponse>",
-  "endpoint" => "/api/{version}/wallet/preview",
+  "endpoint" => "/wallet/preview",
   "notes" => "Preview the final cost of a transaction without charging the user",
   "parameters" => [
     {
@@ -296,12 +278,6 @@ MyApp.add_route('POST', '/api/{version}/wallet/preview', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -310,12 +286,12 @@ MyApp.add_route('POST', '/api/{version}/wallet/preview', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/wallet/search', {
+MyApp.add_route('GET', '/api/3.18/wallet/search', {
   "resourcePath" => "/Wallet",
   "summary" => "Search Wallet Offers",
   "nickname" => "search_offer_transactions",
   "responseClass" => "Array<OfferTransactionResponse>",
-  "endpoint" => "/api/{version}/wallet/search",
+  "endpoint" => "/wallet/search",
   "notes" => "Search on active offers currently in the user's wallet, or past offers the user has already redeemed.",
   "parameters" => [
     {
@@ -614,12 +590,6 @@ MyApp.add_route('GET', '/api/{version}/wallet/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -628,12 +598,12 @@ MyApp.add_route('GET', '/api/{version}/wallet/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/wallet/update', {
+MyApp.add_route('POST', '/api/3.18/wallet/update', {
   "resourcePath" => "/Wallet",
   "summary" => "Update Wallet Offer",
   "nickname" => "update_offer_transaction",
   "responseClass" => "OfferTransactionResponse",
-  "endpoint" => "/api/{version}/wallet/update",
+  "endpoint" => "/wallet/update",
   "notes" => "Update offer status. The status values are: 0 - not redeemable, 1 - redeemable.  Not redeemable means the customer has received the offer but has not decided to use (or print) it yet.  Until they choose to do this the merchant cannot redeem the offer (has not been given permission yet).   Redeemable means the customer has chosen to use the offer and wishes to redeem it.  Redeemed means the merchant has accepted the offer and the given the customer its value, then marked it a used in the system.  This status change is handled by a merchant end point.",
   "parameters" => [
     {
@@ -728,12 +698,6 @@ MyApp.add_route('POST', '/api/{version}/wallet/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

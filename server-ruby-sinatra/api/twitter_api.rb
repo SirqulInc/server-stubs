@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/twitter/authorize', {
+MyApp.add_route('POST', '/api/3.18/twitter/authorize', {
   "resourcePath" => "/Twitter",
   "summary" => "Authorize Twitter",
   "nickname" => "authorize_twitter",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/twitter/authorize",
+  "endpoint" => "/twitter/authorize",
   "notes" => "Makes an authorization call to twitter for a user to login and allow any app permissions.",
   "parameters" => [
     {
@@ -16,12 +16,6 @@ MyApp.add_route('POST', '/api/{version}/twitter/authorize', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -30,12 +24,12 @@ MyApp.add_route('POST', '/api/{version}/twitter/authorize', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/twitter/login', {
+MyApp.add_route('POST', '/api/3.18/twitter/login', {
   "resourcePath" => "/Twitter",
   "summary" => "Login Twitter",
   "nickname" => "login_twitter",
   "responseClass" => "ProfileResponse",
-  "endpoint" => "/api/{version}/twitter/login",
+  "endpoint" => "/twitter/login",
   "notes" => "Returns the user profile information given an access token and the secret access token. This call verifies the tokens with twitter and creates a Sirqul account for the user if its their first time logging in.",
   "parameters" => [
     {
@@ -86,12 +80,6 @@ MyApp.add_route('POST', '/api/{version}/twitter/login', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

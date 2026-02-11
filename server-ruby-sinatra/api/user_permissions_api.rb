@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/permissions/add', {
+MyApp.add_route('POST', '/api/3.18/consumer/permissions/add', {
   "resourcePath" => "/UserPermissions",
   "summary" => "Add User",
   "nickname" => "add_users_to_permissionable",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/permissions/add",
+  "endpoint" => "/consumer/permissions/add",
   "notes" => "Adds a user to a permissionable object.",
   "parameters" => [
     {
@@ -134,12 +134,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/permissions/add', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -148,12 +142,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/permissions/add', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/permissionable/approve', {
+MyApp.add_route('POST', '/api/3.18/permissionable/approve', {
   "resourcePath" => "/UserPermissions",
   "summary" => "Approve Permissionable",
   "nickname" => "approve_permissionable",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/permissionable/approve",
+  "endpoint" => "/permissionable/approve",
   "notes" => "Sets the approval status of a permissionable object.",
   "parameters" => [
     {
@@ -192,12 +186,6 @@ MyApp.add_route('POST', '/api/{version}/permissionable/approve', {
       "defaultValue" => "'APPROVED'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -206,12 +194,12 @@ MyApp.add_route('POST', '/api/{version}/permissionable/approve', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/permissions/leave', {
+MyApp.add_route('POST', '/api/3.18/consumer/permissions/leave', {
   "resourcePath" => "/UserPermissions",
   "summary" => "Leave",
   "nickname" => "leave_from_permissionable",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/permissions/leave",
+  "endpoint" => "/consumer/permissions/leave",
   "notes" => "Used when the user wants to leave from someone else's permissionable object",
   "parameters" => [
     {
@@ -256,12 +244,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/permissions/leave', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -270,12 +252,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/permissions/leave', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/consumer/permissions/remove', {
+MyApp.add_route('POST', '/api/3.18/consumer/permissions/remove', {
   "resourcePath" => "/UserPermissions",
   "summary" => "Remove User",
   "nickname" => "remove_users_from_permissionable",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/consumer/permissions/remove",
+  "endpoint" => "/consumer/permissions/remove",
   "notes" => "Used to remove someone (assuming they have permission) from a permissionable object",
   "parameters" => [
     {
@@ -356,12 +338,6 @@ MyApp.add_route('POST', '/api/{version}/consumer/permissions/remove', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -370,12 +346,12 @@ MyApp.add_route('POST', '/api/{version}/consumer/permissions/remove', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/permissions/search', {
+MyApp.add_route('GET', '/api/3.18/permissions/search', {
   "resourcePath" => "/UserPermissions",
   "summary" => "Search Permissionables",
   "nickname" => "search_permissionables",
   "responseClass" => "Array<UserPermissionsResponse>",
-  "endpoint" => "/api/{version}/permissions/search",
+  "endpoint" => "/permissions/search",
   "notes" => "Search on UserPermissions",
   "parameters" => [
     {
@@ -471,12 +447,6 @@ MyApp.add_route('GET', '/api/{version}/permissions/search', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -485,12 +455,12 @@ MyApp.add_route('GET', '/api/{version}/permissions/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/permissions/distancesearch', {
+MyApp.add_route('GET', '/api/3.18/permissions/distancesearch', {
   "resourcePath" => "/UserPermissions",
   "summary" => "Search Permissionables by Distnace",
   "nickname" => "search_permissionables_following_distance",
   "responseClass" => "Array<UserPermissionsResponse>",
-  "endpoint" => "/api/{version}/permissions/distancesearch",
+  "endpoint" => "/permissions/distancesearch",
   "notes" => "Search on UserPermissions by distance",
   "parameters" => [
     {
@@ -593,12 +563,6 @@ MyApp.add_route('GET', '/api/{version}/permissions/distancesearch', {
       "allowableValues" => "",
       "defaultValue" => "20",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

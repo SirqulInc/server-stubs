@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/mission/create', {
+MyApp.add_route('POST', '/api/3.18/mission/create', {
   "resourcePath" => "/Mission",
   "summary" => "Create Mission",
   "nickname" => "create_mission",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/create",
+  "endpoint" => "/mission/create",
   "notes" => "Create a user defined mission.",
   "parameters" => [
     {
@@ -191,12 +191,6 @@ MyApp.add_route('POST', '/api/{version}/mission/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -205,12 +199,12 @@ MyApp.add_route('POST', '/api/{version}/mission/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/mission/delete', {
+MyApp.add_route('POST', '/api/3.18/mission/delete', {
   "resourcePath" => "/Mission",
   "summary" => "Delete Mission",
   "nickname" => "delete_mission",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/mission/delete",
+  "endpoint" => "/mission/delete",
   "notes" => "Delete a mission.",
   "parameters" => [
     {
@@ -227,12 +221,6 @@ MyApp.add_route('POST', '/api/{version}/mission/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -241,12 +229,12 @@ MyApp.add_route('POST', '/api/{version}/mission/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/find', {
+MyApp.add_route('GET', '/api/3.18/mission/find', {
   "resourcePath" => "/Mission",
   "summary" => "Find Missions",
   "nickname" => "find_missions",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/find",
+  "endpoint" => "/mission/find",
   "notes" => "Get a set of ad filtered by the parameters provided.",
   "parameters" => [
     {
@@ -382,12 +370,6 @@ MyApp.add_route('GET', '/api/{version}/mission/find', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -396,12 +378,12 @@ MyApp.add_route('GET', '/api/{version}/mission/find', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/get', {
+MyApp.add_route('GET', '/api/3.18/mission/get', {
   "resourcePath" => "/Mission",
   "summary" => "Get Mission",
   "nickname" => "get_mission",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/get",
+  "endpoint" => "/mission/get",
   "notes" => "Get a mission.",
   "parameters" => [
     {
@@ -425,12 +407,6 @@ MyApp.add_route('GET', '/api/{version}/mission/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -439,12 +415,12 @@ MyApp.add_route('GET', '/api/{version}/mission/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/mission/import', {
+MyApp.add_route('POST', '/api/3.18/mission/import', {
   "resourcePath" => "/Mission",
   "summary" => "Import Mission",
   "nickname" => "import_mission",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/mission/import",
+  "endpoint" => "/mission/import",
   "notes" => "Create a mission using a source item such as an offer location.",
   "parameters" => [
     {
@@ -503,12 +479,6 @@ MyApp.add_route('POST', '/api/{version}/mission/import', {
       "allowableValues" => "[CONFIG, BANNER, LEADERBOARD, SKYSCRAPER, VIDEO, ZIP, INTERSTITIAL, CUSTOM1, CUSTOM2, CUSTOM3, CUSTOM4, CUSTOM5, CUSTOM6, CUSTOM7, CUSTOM8, CUSTOM9, CUSTOM10]",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -517,12 +487,12 @@ MyApp.add_route('POST', '/api/{version}/mission/import', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/format/search', {
+MyApp.add_route('GET', '/api/3.18/mission/format/search', {
   "resourcePath" => "/Mission",
   "summary" => "Search Mission Formats",
   "nickname" => "search_mission_formats",
   "responseClass" => "Array<MissionFormatResponse>",
-  "endpoint" => "/api/{version}/mission/format/search",
+  "endpoint" => "/mission/format/search",
   "notes" => "Searches on pre-defined mission formats",
   "parameters" => [
     {
@@ -546,12 +516,6 @@ MyApp.add_route('GET', '/api/{version}/mission/format/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -560,12 +524,12 @@ MyApp.add_route('GET', '/api/{version}/mission/format/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/search', {
+MyApp.add_route('GET', '/api/3.18/mission/search', {
   "resourcePath" => "/Mission",
   "summary" => "Search Missions",
   "nickname" => "search_missions",
   "responseClass" => "Array<MissionResponse>",
-  "endpoint" => "/api/{version}/mission/search",
+  "endpoint" => "/mission/search",
   "notes" => "Get the list missions available to the account.  ",
   "parameters" => [
     {
@@ -645,12 +609,6 @@ MyApp.add_route('GET', '/api/{version}/mission/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -659,12 +617,12 @@ MyApp.add_route('GET', '/api/{version}/mission/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/searchByBillableEntity', {
+MyApp.add_route('GET', '/api/3.18/mission/searchByBillableEntity', {
   "resourcePath" => "/Mission",
   "summary" => "Search Missions by Billable Entity",
   "nickname" => "search_missions_by_billable_entity",
   "responseClass" => "Array<MissionResponse>",
-  "endpoint" => "/api/{version}/mission/searchByBillableEntity",
+  "endpoint" => "/mission/searchByBillableEntity",
   "notes" => "Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers.",
   "parameters" => [
     {
@@ -737,12 +695,6 @@ MyApp.add_route('GET', '/api/{version}/mission/searchByBillableEntity', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -751,12 +703,12 @@ MyApp.add_route('GET', '/api/{version}/mission/searchByBillableEntity', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/mission/update', {
+MyApp.add_route('POST', '/api/3.18/mission/update', {
   "resourcePath" => "/Mission",
   "summary" => "Update Mission",
   "nickname" => "update_mission",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/update",
+  "endpoint" => "/mission/update",
   "notes" => "Update a mission.",
   "parameters" => [
     {
@@ -933,12 +885,6 @@ MyApp.add_route('POST', '/api/{version}/mission/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

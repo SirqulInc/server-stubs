@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/audience/create', {
+MyApp.add_route('POST', '/api/3.18/audience/create', {
   "resourcePath" => "/Audience",
   "summary" => "Create Audience",
   "nickname" => "create_audience",
   "responseClass" => "AudienceResponse",
-  "endpoint" => "/api/{version}/audience/create",
+  "endpoint" => "/audience/create",
   "notes" => "Create a user defined audience.",
   "parameters" => [
     {
@@ -213,12 +213,6 @@ MyApp.add_route('POST', '/api/{version}/audience/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -227,12 +221,12 @@ MyApp.add_route('POST', '/api/{version}/audience/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/audience/delete', {
+MyApp.add_route('POST', '/api/3.18/audience/delete', {
   "resourcePath" => "/Audience",
   "summary" => "Delete Audience",
   "nickname" => "delete_audience",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/audience/delete",
+  "endpoint" => "/audience/delete",
   "notes" => "Delete an audience. The audience and account must be valid and have the appropirate permissions to view the content.",
   "parameters" => [
     {
@@ -249,12 +243,6 @@ MyApp.add_route('POST', '/api/{version}/audience/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -263,20 +251,14 @@ MyApp.add_route('POST', '/api/{version}/audience/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/ageGroups', {
+MyApp.add_route('GET', '/api/3.18/audience/ageGroups', {
   "resourcePath" => "/Audience",
   "summary" => "Get Age Groups",
   "nickname" => "get_age_groups",
   "responseClass" => "Array<AgeGroupResponse>",
-  "endpoint" => "/api/{version}/audience/ageGroups",
+  "endpoint" => "/audience/ageGroups",
   "notes" => "Gets the list of available age groups that can be selected by consumers and retailers targeting offers.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -285,12 +267,12 @@ MyApp.add_route('GET', '/api/{version}/audience/ageGroups', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/get', {
+MyApp.add_route('GET', '/api/3.18/audience/get', {
   "resourcePath" => "/Audience",
   "summary" => "Get Audience",
   "nickname" => "get_audience",
   "responseClass" => "AudienceResponse",
-  "endpoint" => "/api/{version}/audience/get",
+  "endpoint" => "/audience/get",
   "notes" => "Get an audience. The audience and account must be valid and have the appropriate permissions to view the content.",
   "parameters" => [
     {
@@ -337,12 +319,6 @@ MyApp.add_route('GET', '/api/{version}/audience/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -351,12 +327,12 @@ MyApp.add_route('GET', '/api/{version}/audience/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/search', {
+MyApp.add_route('GET', '/api/3.18/audience/search', {
   "resourcePath" => "/Audience",
   "summary" => "Search Audiences",
   "nickname" => "get_audience_list",
   "responseClass" => "Array<SearchResponse>",
-  "endpoint" => "/api/{version}/audience/search",
+  "endpoint" => "/audience/search",
   "notes" => "Get the list audiences owned by the account",
   "parameters" => [
     {
@@ -499,12 +475,6 @@ MyApp.add_route('GET', '/api/{version}/audience/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -513,12 +483,12 @@ MyApp.add_route('GET', '/api/{version}/audience/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/devices', {
+MyApp.add_route('GET', '/api/3.18/audience/devices', {
   "resourcePath" => "/Audience",
   "summary" => "Get Devices",
   "nickname" => "get_devices",
   "responseClass" => "Array<AudienceDeviceResponse>",
-  "endpoint" => "/api/{version}/audience/devices",
+  "endpoint" => "/audience/devices",
   "notes" => "Gets the list of available devices that can be selected by consumers and retailers.",
   "parameters" => [
     {
@@ -528,12 +498,6 @@ MyApp.add_route('GET', '/api/{version}/audience/devices', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -542,20 +506,14 @@ MyApp.add_route('GET', '/api/{version}/audience/devices', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/experiences', {
+MyApp.add_route('GET', '/api/3.18/audience/experiences', {
   "resourcePath" => "/Audience",
   "summary" => "Get Experiences",
   "nickname" => "get_experiences",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/audience/experiences",
+  "endpoint" => "/audience/experiences",
   "notes" => "Gets the list of available experiences that can be selected by consumers and retailers.",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -564,12 +522,12 @@ MyApp.add_route('GET', '/api/{version}/audience/experiences', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/grouped/get', {
+MyApp.add_route('GET', '/api/3.18/audience/grouped/get', {
   "resourcePath" => "/Audience",
   "summary" => "Get GroupedAudiences",
   "nickname" => "get_grouped_audiences",
   "responseClass" => "AudienceResponse",
-  "endpoint" => "/api/{version}/audience/grouped/get",
+  "endpoint" => "/audience/grouped/get",
   "notes" => "Get a group of audiences. The audience and account must be valid and have the appropriate permissions to view the content.",
   "parameters" => [
     {
@@ -586,12 +544,6 @@ MyApp.add_route('GET', '/api/{version}/audience/grouped/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -600,12 +552,12 @@ MyApp.add_route('GET', '/api/{version}/audience/grouped/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/audience/suggestion/list', {
+MyApp.add_route('POST', '/api/3.18/audience/suggestion/list', {
   "resourcePath" => "/Audience",
   "summary" => "List Suggestions by Audience",
   "nickname" => "list_by_account",
   "responseClass" => "OfferListResponse",
-  "endpoint" => "/api/{version}/audience/suggestion/list",
+  "endpoint" => "/audience/suggestion/list",
   "notes" => "List either Missions or Offers that the user matches the assigned audience.",
   "parameters" => [
     {
@@ -629,12 +581,6 @@ MyApp.add_route('POST', '/api/{version}/audience/suggestion/list', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -643,12 +589,12 @@ MyApp.add_route('POST', '/api/{version}/audience/suggestion/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/suggestion/offersByAudience', {
+MyApp.add_route('GET', '/api/3.18/audience/suggestion/offersByAudience', {
   "resourcePath" => "/Audience",
   "summary" => "List Offers by Audience",
   "nickname" => "list_by_audience",
   "responseClass" => "OfferListResponse",
-  "endpoint" => "/api/{version}/audience/suggestion/offersByAudience",
+  "endpoint" => "/audience/suggestion/offersByAudience",
   "notes" => "Get a list of offer locations based on audience information provided.",
   "parameters" => [
     {
@@ -693,12 +639,6 @@ MyApp.add_route('GET', '/api/{version}/audience/suggestion/offersByAudience', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -707,12 +647,12 @@ MyApp.add_route('GET', '/api/{version}/audience/suggestion/offersByAudience', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/audience/suggestion/latest', {
+MyApp.add_route('GET', '/api/3.18/audience/suggestion/latest', {
   "resourcePath" => "/Audience",
   "summary" => "List Sent Suggestions ",
   "nickname" => "list_lastest_by_account",
   "responseClass" => "OfferListResponse",
-  "endpoint" => "/api/{version}/audience/suggestion/latest",
+  "endpoint" => "/audience/suggestion/latest",
   "notes" => "Return list of recent trigger suggestions that have been sent to the user.",
   "parameters" => [
     {
@@ -736,12 +676,6 @@ MyApp.add_route('GET', '/api/{version}/audience/suggestion/latest', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -750,12 +684,12 @@ MyApp.add_route('GET', '/api/{version}/audience/suggestion/latest', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/audience/suggestion/send', {
+MyApp.add_route('POST', '/api/3.18/audience/suggestion/send', {
   "resourcePath" => "/Audience",
   "summary" => "Send Suggestions",
   "nickname" => "send_by_account",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/audience/suggestion/send",
+  "endpoint" => "/audience/suggestion/send",
   "notes" => "Use the accountId to determine the associated BillableEntity. From there get a list of all triggers associated with the BillableEntity.",
   "parameters" => [
     {
@@ -779,12 +713,6 @@ MyApp.add_route('POST', '/api/{version}/audience/suggestion/send', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -793,12 +721,12 @@ MyApp.add_route('POST', '/api/{version}/audience/suggestion/send', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/audience/update', {
+MyApp.add_route('POST', '/api/3.18/audience/update', {
   "resourcePath" => "/Audience",
   "summary" => "Update Audience",
   "nickname" => "update_audience",
   "responseClass" => "AudienceResponse",
-  "endpoint" => "/api/{version}/audience/update",
+  "endpoint" => "/audience/update",
   "notes" => "Update a user defined audience.",
   "parameters" => [
     {
@@ -1017,12 +945,6 @@ MyApp.add_route('POST', '/api/{version}/audience/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/retailer', {
+MyApp.add_route('GET', '/api/3.18/retailer', {
   "resourcePath" => "/RetailerV2",
   "summary" => "Get Retailer",
   "nickname" => "get_retaokiler",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer",
+  "endpoint" => "/retailer",
   "notes" => "Gets a retailer. Only the owner and the employees of a retailer have access to view its information.",
   "parameters" => [
     {
@@ -54,12 +54,6 @@ MyApp.add_route('GET', '/api/{version}/retailer', {
       "allowableValues" => "",
       "defaultValue" => "true",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

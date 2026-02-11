@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/simulation/routing', {
+MyApp.add_route('POST', '/api/3.18/simulation/routing', {
   "resourcePath" => "/Simulation",
   "summary" => "Routing Simulation",
   "nickname" => "simulation",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/simulation/routing",
+  "endpoint" => "/simulation/routing",
   "notes" => "Simulates routing requests.",
   "parameters" => [
     {
@@ -22,12 +22,6 @@ MyApp.add_route('POST', '/api/{version}/simulation/routing', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

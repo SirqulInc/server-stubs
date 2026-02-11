@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/ranking/historical/search', {
+MyApp.add_route('GET', '/api/3.18/ranking/historical/search', {
   "resourcePath" => "/Ranking",
   "summary" => "Search Historical Rankings",
   "nickname" => "get_historical_rankings",
   "responseClass" => "RankFullResponse",
-  "endpoint" => "/api/{version}/ranking/historical/search",
+  "endpoint" => "/ranking/historical/search",
   "notes" => "Get historical leaderboard rankings by time-frame.",
   "parameters" => [
     {
@@ -83,12 +83,6 @@ MyApp.add_route('GET', '/api/{version}/ranking/historical/search', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -97,12 +91,12 @@ MyApp.add_route('GET', '/api/{version}/ranking/historical/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/ranking/search', {
+MyApp.add_route('GET', '/api/3.18/ranking/search', {
   "resourcePath" => "/Ranking",
   "summary" => "Search Rankings",
   "nickname" => "get_rankings",
   "responseClass" => "RankFullResponse",
-  "endpoint" => "/api/{version}/ranking/search",
+  "endpoint" => "/ranking/search",
   "notes" => "Get leader board rankings. This is an all in one endpoint that can return multiple ranking types and also the current user rank.",
   "parameters" => [
     {
@@ -238,12 +232,6 @@ MyApp.add_route('GET', '/api/{version}/ranking/search', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -252,12 +240,12 @@ MyApp.add_route('GET', '/api/{version}/ranking/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/ranking/personal/ranks', {
+MyApp.add_route('POST', '/api/3.18/ranking/personal/ranks', {
   "resourcePath" => "/Ranking",
   "summary" => "Get Personal Rankings",
   "nickname" => "get_user_rank",
   "responseClass" => "Object",
-  "endpoint" => "/api/{version}/ranking/personal/ranks",
+  "endpoint" => "/ranking/personal/ranks",
   "notes" => "Returns the user's ranks for one or more rank types and modes.",
   "parameters" => [
     {
@@ -343,12 +331,6 @@ MyApp.add_route('POST', '/api/{version}/ranking/personal/ranks', {
       "defaultValue" => "100",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -357,12 +339,12 @@ MyApp.add_route('POST', '/api/{version}/ranking/personal/ranks', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/ranking/override', {
+MyApp.add_route('POST', '/api/3.18/ranking/override', {
   "resourcePath" => "/Ranking",
   "summary" => "Override User Rank",
   "nickname" => "override_user_rank",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/ranking/override",
+  "endpoint" => "/ranking/override",
   "notes" => "Allows an admin of an application to override a user's scores for a leaderboard.",
   "parameters" => [
     {
@@ -519,12 +501,6 @@ MyApp.add_route('POST', '/api/{version}/ranking/override', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -533,12 +509,12 @@ MyApp.add_route('POST', '/api/{version}/ranking/override', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/ranking/update', {
+MyApp.add_route('POST', '/api/3.18/ranking/update', {
   "resourcePath" => "/Ranking",
   "summary" => "Update Ranking",
   "nickname" => "update_rankings",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/ranking/update",
+  "endpoint" => "/ranking/update",
   "notes" => "Update the rank value ",
   "parameters" => [
     {
@@ -612,12 +588,6 @@ MyApp.add_route('POST', '/api/{version}/ranking/update', {
       "allowableValues" => "",
       "defaultValue" => "false",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

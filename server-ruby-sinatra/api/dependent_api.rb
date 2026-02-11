@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('PUT', '/api/{version}/cargo/dependent/{accountId}', {
+MyApp.add_route('PUT', '/api/3.18/cargo/dependent/{accountId}', {
   "resourcePath" => "/Dependent",
   "summary" => "Create Dependent",
   "nickname" => "create",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/cargo/dependent/{accountId}",
+  "endpoint" => "/cargo/dependent/{accountId}",
   "notes" => "Create dependent of the account",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "account_id",
       "description" => "the id of the parent account to create a dependent for",
@@ -35,20 +29,14 @@ MyApp.add_route('PUT', '/api/{version}/cargo/dependent/{accountId}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/cargo/dependent/{accountId}', {
+MyApp.add_route('GET', '/api/3.18/cargo/dependent/{accountId}', {
   "resourcePath" => "/Dependent",
   "summary" => "Get dependent list of an account",
   "nickname" => "get_dependents",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/cargo/dependent/{accountId}",
+  "endpoint" => "/cargo/dependent/{accountId}",
   "notes" => "Get the dependent list of an account",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "account_id",
       "description" => "the id of the parent account to get a list of dependents",
@@ -63,20 +51,14 @@ MyApp.add_route('GET', '/api/{version}/cargo/dependent/{accountId}', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/cargo/dependent/{accountId}', {
+MyApp.add_route('DELETE', '/api/3.18/cargo/dependent/{accountId}', {
   "resourcePath" => "/Dependent",
   "summary" => "Delete Dependent",
   "nickname" => "remove_dependent",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/cargo/dependent/{accountId}",
+  "endpoint" => "/cargo/dependent/{accountId}",
   "notes" => "Delete the Dependent",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "account_id",
       "description" => "the id of the parent account tied to the dependent",

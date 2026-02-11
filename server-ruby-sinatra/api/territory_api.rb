@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/territory/create', {
+MyApp.add_route('POST', '/api/3.18/territory/create', {
   "resourcePath" => "/Territory",
   "summary" => "Create Territory",
   "nickname" => "create_territory",
   "responseClass" => "TerritoryResponse",
-  "endpoint" => "/api/{version}/territory/create",
+  "endpoint" => "/territory/create",
   "notes" => "Creates a territory.",
   "parameters" => [
     {
@@ -30,12 +30,6 @@ MyApp.add_route('POST', '/api/{version}/territory/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -44,12 +38,12 @@ MyApp.add_route('POST', '/api/{version}/territory/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/territory/delete', {
+MyApp.add_route('POST', '/api/3.18/territory/delete', {
   "resourcePath" => "/Territory",
   "summary" => "Delete Territory",
   "nickname" => "delete_territory",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/territory/delete",
+  "endpoint" => "/territory/delete",
   "notes" => "Deletes a territory.",
   "parameters" => [
     {
@@ -66,12 +60,6 @@ MyApp.add_route('POST', '/api/{version}/territory/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -80,12 +68,12 @@ MyApp.add_route('POST', '/api/{version}/territory/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/territory/get', {
+MyApp.add_route('GET', '/api/3.18/territory/get', {
   "resourcePath" => "/Territory",
   "summary" => "Get Territory",
   "nickname" => "get_territory",
   "responseClass" => "TerritoryResponse",
-  "endpoint" => "/api/{version}/territory/get",
+  "endpoint" => "/territory/get",
   "notes" => "Get a territory.",
   "parameters" => [
     {
@@ -95,12 +83,6 @@ MyApp.add_route('GET', '/api/{version}/territory/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -109,12 +91,12 @@ MyApp.add_route('GET', '/api/{version}/territory/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/territory/search', {
+MyApp.add_route('GET', '/api/3.18/territory/search', {
   "resourcePath" => "/Territory",
   "summary" => "Search Territories",
   "nickname" => "search_territories",
   "responseClass" => "Array<TerritoryResponse>",
-  "endpoint" => "/api/{version}/territory/search",
+  "endpoint" => "/territory/search",
   "notes" => "Searches on territories.",
   "parameters" => [
     {
@@ -152,12 +134,6 @@ MyApp.add_route('GET', '/api/{version}/territory/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -166,12 +142,12 @@ MyApp.add_route('GET', '/api/{version}/territory/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/territory/update', {
+MyApp.add_route('POST', '/api/3.18/territory/update', {
   "resourcePath" => "/Territory",
   "summary" => "Update Territory",
   "nickname" => "update_territory",
   "responseClass" => "TerritoryResponse",
-  "endpoint" => "/api/{version}/territory/update",
+  "endpoint" => "/territory/update",
   "notes" => "Updates a territory.",
   "parameters" => [
     {
@@ -201,12 +177,6 @@ MyApp.add_route('POST', '/api/{version}/territory/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

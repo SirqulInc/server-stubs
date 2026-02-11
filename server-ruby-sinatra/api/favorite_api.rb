@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/favorite/create', {
+MyApp.add_route('POST', '/api/3.18/favorite/create', {
   "resourcePath" => "/Favorite",
   "summary" => "Create Favorite",
   "nickname" => "add_favorite",
   "responseClass" => "WrappedResponse",
-  "endpoint" => "/api/{version}/favorite/create",
+  "endpoint" => "/favorite/create",
   "notes" => "Adds an offer, offer location, retailer location, or category to your favorites.",
   "parameters" => [
     {
@@ -51,12 +51,6 @@ MyApp.add_route('POST', '/api/{version}/favorite/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -65,12 +59,12 @@ MyApp.add_route('POST', '/api/{version}/favorite/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/favorite/delete', {
+MyApp.add_route('POST', '/api/3.18/favorite/delete', {
   "resourcePath" => "/Favorite",
   "summary" => "Delete Favorite",
   "nickname" => "delete_favorite",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/favorite/delete",
+  "endpoint" => "/favorite/delete",
   "notes" => "Removes a favorited item from the user's favorites list.",
   "parameters" => [
     {
@@ -108,12 +102,6 @@ MyApp.add_route('POST', '/api/{version}/favorite/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +110,12 @@ MyApp.add_route('POST', '/api/{version}/favorite/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/favorite/get', {
+MyApp.add_route('GET', '/api/3.18/favorite/get', {
   "resourcePath" => "/Favorite",
   "summary" => "Get Favorite",
   "nickname" => "get_favorite",
   "responseClass" => "WrappedResponse",
-  "endpoint" => "/api/{version}/favorite/get",
+  "endpoint" => "/favorite/get",
   "notes" => "Retrieves a single favorited item.",
   "parameters" => [
     {
@@ -165,12 +153,6 @@ MyApp.add_route('GET', '/api/{version}/favorite/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -179,12 +161,12 @@ MyApp.add_route('GET', '/api/{version}/favorite/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/favorite/search', {
+MyApp.add_route('GET', '/api/3.18/favorite/search', {
   "resourcePath" => "/Favorite",
   "summary" => "Search Favorites",
   "nickname" => "search_favorites",
   "responseClass" => "SearchResponse",
-  "endpoint" => "/api/{version}/favorite/search",
+  "endpoint" => "/favorite/search",
   "notes" => "Searches on the user's favorites.",
   "parameters" => [
     {
@@ -285,12 +267,6 @@ MyApp.add_route('GET', '/api/{version}/favorite/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -299,12 +275,12 @@ MyApp.add_route('GET', '/api/{version}/favorite/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/favorite/whois', {
+MyApp.add_route('GET', '/api/3.18/favorite/whois', {
   "resourcePath" => "/Favorite",
   "summary" => "Who has Favorited",
   "nickname" => "who_has_favorited",
   "responseClass" => "Array<AccountResponse>",
-  "endpoint" => "/api/{version}/favorite/whois",
+  "endpoint" => "/favorite/whois",
   "notes" => "Searches for everyone that has favorited an item",
   "parameters" => [
     {
@@ -369,12 +345,6 @@ MyApp.add_route('GET', '/api/{version}/favorite/whois', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

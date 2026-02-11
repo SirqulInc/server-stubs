@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/workflow/run', {
+MyApp.add_route('POST', '/api/3.18/workflow/run', {
   "resourcePath" => "/Workflow",
   "summary" => "Run Workflow",
   "nickname" => "run_workflow",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/workflow/run",
+  "endpoint" => "/workflow/run",
   "notes" => "Runs a published executable workflow",
   "parameters" => [
     {
@@ -43,12 +43,6 @@ MyApp.add_route('POST', '/api/{version}/workflow/run', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

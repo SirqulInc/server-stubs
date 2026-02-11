@@ -1,20 +1,14 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/shipment/{id}/cancel', {
+MyApp.add_route('POST', '/api/3.18/shipment/{id}/cancel', {
   "resourcePath" => "/Shipment",
   "summary" => "Cancel Shipment",
   "nickname" => "cancel_shipment",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/shipment/{id}/cancel",
+  "endpoint" => "/shipment/{id}/cancel",
   "notes" => "Remove shipment from route",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the shipment to cancel",
@@ -29,20 +23,14 @@ MyApp.add_route('POST', '/api/{version}/shipment/{id}/cancel', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/shipment', {
+MyApp.add_route('POST', '/api/3.18/shipment', {
   "resourcePath" => "/Shipment",
   "summary" => "Create Shipment",
   "nickname" => "create_shipment",
   "responseClass" => "Shipment",
-  "endpoint" => "/api/{version}/shipment",
+  "endpoint" => "/shipment",
   "notes" => "Create new shipment",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "body",
       "description" => "",
@@ -57,20 +45,14 @@ MyApp.add_route('POST', '/api/{version}/shipment', {
 end
 
 
-MyApp.add_route('DELETE', '/api/{version}/shipment/{id}', {
+MyApp.add_route('DELETE', '/api/3.18/shipment/{id}', {
   "resourcePath" => "/Shipment",
   "summary" => "Delete Shipment",
   "nickname" => "delete_shipment",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/shipment/{id}",
+  "endpoint" => "/shipment/{id}",
   "notes" => "Delete an existing shipment",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the shipment to delete",
@@ -85,20 +67,14 @@ MyApp.add_route('DELETE', '/api/{version}/shipment/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/shipment/{id}', {
+MyApp.add_route('GET', '/api/3.18/shipment/{id}', {
   "resourcePath" => "/Shipment",
   "summary" => "Get Shipment",
   "nickname" => "get_shipment",
   "responseClass" => "Shipment",
-  "endpoint" => "/api/{version}/shipment/{id}",
+  "endpoint" => "/shipment/{id}",
   "notes" => "Get an existing shipment",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the shipment to get",
@@ -113,12 +89,12 @@ MyApp.add_route('GET', '/api/{version}/shipment/{id}', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/shipment', {
+MyApp.add_route('GET', '/api/3.18/shipment', {
   "resourcePath" => "/Shipment",
   "summary" => "Search Shipments",
   "nickname" => "search_shipments",
   "responseClass" => "Array<Shipment>",
-  "endpoint" => "/api/{version}/shipment",
+  "endpoint" => "/shipment",
   "notes" => "Search for shipments",
   "parameters" => [
     {
@@ -177,12 +153,6 @@ MyApp.add_route('GET', '/api/{version}/shipment', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -191,20 +161,14 @@ MyApp.add_route('GET', '/api/{version}/shipment', {
 end
 
 
-MyApp.add_route('PUT', '/api/{version}/shipment/{id}', {
+MyApp.add_route('PUT', '/api/3.18/shipment/{id}', {
   "resourcePath" => "/Shipment",
   "summary" => "Update Shipment",
   "nickname" => "update_shipment",
   "responseClass" => "Shipment",
-  "endpoint" => "/api/{version}/shipment/{id}",
+  "endpoint" => "/shipment/{id}",
   "notes" => "Update an existing shipment",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the shipment to update",
@@ -225,20 +189,14 @@ MyApp.add_route('PUT', '/api/{version}/shipment/{id}', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/shipment/{id}/status', {
+MyApp.add_route('POST', '/api/3.18/shipment/{id}/status', {
   "resourcePath" => "/Shipment",
   "summary" => "Uupdate Shipment Status",
   "nickname" => "update_shipment_status",
   "responseClass" => "void",
-  "endpoint" => "/api/{version}/shipment/{id}/status",
+  "endpoint" => "/shipment/{id}/status",
   "notes" => "Update status of an existing shipment",
   "parameters" => [
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     {
       "name" => "id",
       "description" => "the id of the shipment to update status",

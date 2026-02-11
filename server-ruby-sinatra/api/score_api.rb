@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/score/create', {
+MyApp.add_route('POST', '/api/3.18/score/create', {
   "resourcePath" => "/Score",
   "summary" => "Create Score",
   "nickname" => "create_score",
   "responseClass" => "ScoreResponse",
-  "endpoint" => "/api/{version}/score/create",
+  "endpoint" => "/score/create",
   "notes" => "Create a score.  The response object will contain a series of   coded messages detailing what items were completed, the score registered,   and any tickets allocated.  Scoring a  level could complete the pack it   is in, completing that pack could complete the game, which  in turn could   complete the mission.  This completion chain is indicated to the client   via  a list of {@link MessageResponse}.",
   "parameters" => [
     {
@@ -79,12 +79,6 @@ MyApp.add_route('POST', '/api/{version}/score/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -93,12 +87,12 @@ MyApp.add_route('POST', '/api/{version}/score/create', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/score/get', {
+MyApp.add_route('GET', '/api/3.18/score/get', {
   "resourcePath" => "/Score",
   "summary" => "Get Score",
   "nickname" => "get_score",
   "responseClass" => "ScoreResponse",
-  "endpoint" => "/api/{version}/score/get",
+  "endpoint" => "/score/get",
   "notes" => "Get the high score for an item.  Pass in the full path IDs for the score.",
   "parameters" => [
     {
@@ -164,12 +158,6 @@ MyApp.add_route('GET', '/api/{version}/score/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -178,12 +166,12 @@ MyApp.add_route('GET', '/api/{version}/score/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/score/search', {
+MyApp.add_route('GET', '/api/3.18/score/search', {
   "resourcePath" => "/Score",
   "summary" => "Search Score",
   "nickname" => "search_scores",
   "responseClass" => "Array<ScoreResponse>",
-  "endpoint" => "/api/{version}/score/search",
+  "endpoint" => "/score/search",
   "notes" => "Search the scores for an item.  Pass in the full path IDs for the scores.",
   "parameters" => [
     {
@@ -234,12 +222,6 @@ MyApp.add_route('GET', '/api/{version}/score/search', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/order/create', {
+MyApp.add_route('POST', '/api/3.18/order/create', {
   "resourcePath" => "/PurchaseOrder",
   "summary" => "Create Order",
   "nickname" => "create_order",
   "responseClass" => "OrderResponse",
-  "endpoint" => "/api/{version}/order/create",
+  "endpoint" => "/order/create",
   "notes" => "Creates a new purchase with some number of items associated with it. The purchase is added to the order that was created",
   "parameters" => [
     {
@@ -94,12 +94,6 @@ MyApp.add_route('POST', '/api/{version}/order/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -108,12 +102,12 @@ MyApp.add_route('POST', '/api/{version}/order/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/order/delete', {
+MyApp.add_route('POST', '/api/3.18/order/delete', {
   "resourcePath" => "/PurchaseOrder",
   "summary" => "Delete Order",
   "nickname" => "delete_order",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/order/delete",
+  "endpoint" => "/order/delete",
   "notes" => "Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.",
   "parameters" => [
     {
@@ -137,12 +131,6 @@ MyApp.add_route('POST', '/api/{version}/order/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -151,12 +139,12 @@ MyApp.add_route('POST', '/api/{version}/order/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/order/get', {
+MyApp.add_route('GET', '/api/3.18/order/get', {
   "resourcePath" => "/PurchaseOrder",
   "summary" => "Get Order",
   "nickname" => "get_order",
   "responseClass" => "OrderResponse",
-  "endpoint" => "/api/{version}/order/get",
+  "endpoint" => "/order/get",
   "notes" => "Get an order record",
   "parameters" => [
     {
@@ -187,12 +175,6 @@ MyApp.add_route('GET', '/api/{version}/order/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -201,12 +183,12 @@ MyApp.add_route('GET', '/api/{version}/order/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/order/preview', {
+MyApp.add_route('POST', '/api/3.18/order/preview', {
   "resourcePath" => "/PurchaseOrder",
   "summary" => "Preview Order",
   "nickname" => "preview_order",
   "responseClass" => "OrderResponse",
-  "endpoint" => "/api/{version}/order/preview",
+  "endpoint" => "/order/preview",
   "notes" => "Previews a purchase to see the total cost before making it.",
   "parameters" => [
     {
@@ -294,12 +276,6 @@ MyApp.add_route('POST', '/api/{version}/order/preview', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -308,12 +284,12 @@ MyApp.add_route('POST', '/api/{version}/order/preview', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/order/search', {
+MyApp.add_route('GET', '/api/3.18/order/search', {
   "resourcePath" => "/PurchaseOrder",
   "summary" => "Search Orders",
   "nickname" => "search_orders",
   "responseClass" => "Array<OrderResponse>",
-  "endpoint" => "/api/{version}/order/search",
+  "endpoint" => "/order/search",
   "notes" => "Search on active orders by customer",
   "parameters" => [
     {
@@ -539,12 +515,6 @@ MyApp.add_route('GET', '/api/{version}/order/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -553,12 +523,12 @@ MyApp.add_route('GET', '/api/{version}/order/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/order/update', {
+MyApp.add_route('POST', '/api/3.18/order/update', {
   "resourcePath" => "/PurchaseOrder",
   "summary" => "Update Order",
   "nickname" => "update_order",
   "responseClass" => "OrderResponse",
-  "endpoint" => "/api/{version}/order/update",
+  "endpoint" => "/order/update",
   "notes" => "Updates new purchase with some number of items associated with it. The orderId provided is used to retrieve the record and the payment is added to it.",
   "parameters" => [
     {
@@ -638,12 +608,6 @@ MyApp.add_route('POST', '/api/{version}/order/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

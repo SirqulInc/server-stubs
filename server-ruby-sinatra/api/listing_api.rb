@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/listing/create', {
+MyApp.add_route('POST', '/api/3.18/listing/create', {
   "resourcePath" => "/Listing",
   "summary" => "Create Listing",
   "nickname" => "create_listing",
   "responseClass" => "ListingFullResponse",
-  "endpoint" => "/api/{version}/listing/create",
+  "endpoint" => "/listing/create",
   "notes" => "Creates a listing.",
   "parameters" => [
     {
@@ -108,12 +108,6 @@ MyApp.add_route('POST', '/api/{version}/listing/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -122,12 +116,12 @@ MyApp.add_route('POST', '/api/{version}/listing/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/listing/delete', {
+MyApp.add_route('POST', '/api/3.18/listing/delete', {
   "resourcePath" => "/Listing",
   "summary" => "Delete Listing",
   "nickname" => "delete_listing",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/listing/delete",
+  "endpoint" => "/listing/delete",
   "notes" => "Delete a listing.",
   "parameters" => [
     {
@@ -144,12 +138,6 @@ MyApp.add_route('POST', '/api/{version}/listing/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -158,12 +146,12 @@ MyApp.add_route('POST', '/api/{version}/listing/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/listing/get', {
+MyApp.add_route('GET', '/api/3.18/listing/get', {
   "resourcePath" => "/Listing",
   "summary" => "Get Listing",
   "nickname" => "get_listing",
   "responseClass" => "ListingFullResponse",
-  "endpoint" => "/api/{version}/listing/get",
+  "endpoint" => "/listing/get",
   "notes" => "Get a listing by id.",
   "parameters" => [
     {
@@ -173,12 +161,6 @@ MyApp.add_route('GET', '/api/{version}/listing/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -187,12 +169,12 @@ MyApp.add_route('GET', '/api/{version}/listing/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/listing/search', {
+MyApp.add_route('GET', '/api/3.18/listing/search', {
   "resourcePath" => "/Listing",
   "summary" => "Search Listings",
   "nickname" => "search_listing",
   "responseClass" => "Array<ListingResponse>",
-  "endpoint" => "/api/{version}/listing/search",
+  "endpoint" => "/listing/search",
   "notes" => "Search for event listings from the start time to end time",
   "parameters" => [
     {
@@ -304,12 +286,6 @@ MyApp.add_route('GET', '/api/{version}/listing/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -318,12 +294,12 @@ MyApp.add_route('GET', '/api/{version}/listing/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/listing/summary', {
+MyApp.add_route('GET', '/api/3.18/listing/summary', {
   "resourcePath" => "/Listing",
   "summary" => "Summary Listing",
   "nickname" => "summary_listing",
   "responseClass" => "Array<ListingGroupResponse>",
-  "endpoint" => "/api/{version}/listing/summary",
+  "endpoint" => "/listing/summary",
   "notes" => "Search for a list of summary listings from the start time up to 8 days out.",
   "parameters" => [
     {
@@ -363,12 +339,6 @@ MyApp.add_route('GET', '/api/{version}/listing/summary', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -377,12 +347,12 @@ MyApp.add_route('GET', '/api/{version}/listing/summary', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/listing/update', {
+MyApp.add_route('POST', '/api/3.18/listing/update', {
   "resourcePath" => "/Listing",
   "summary" => "Update Listing",
   "nickname" => "update_listing",
   "responseClass" => "ListingFullResponse",
-  "endpoint" => "/api/{version}/listing/update",
+  "endpoint" => "/listing/update",
   "notes" => "Updates a listing.",
   "parameters" => [
     {
@@ -489,12 +459,6 @@ MyApp.add_route('POST', '/api/{version}/listing/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

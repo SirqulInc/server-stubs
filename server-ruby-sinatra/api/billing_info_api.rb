@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/billing/update', {
+MyApp.add_route('POST', '/api/3.18/billing/update', {
   "resourcePath" => "/BillingInfo",
   "summary" => "Update Payment Method",
   "nickname" => "add_payment_method",
   "responseClass" => "PaymentTypesResponse",
-  "endpoint" => "/api/{version}/billing/update",
+  "endpoint" => "/billing/update",
   "notes" => "Update a method of payment. If the paymentMethodId is not passed in then will update their default payment method.",
   "parameters" => [
     {
@@ -170,12 +170,6 @@ MyApp.add_route('POST', '/api/{version}/billing/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -184,12 +178,12 @@ MyApp.add_route('POST', '/api/{version}/billing/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/billing/create', {
+MyApp.add_route('POST', '/api/3.18/billing/create', {
   "resourcePath" => "/BillingInfo",
   "summary" => "Create Payment Method",
   "nickname" => "create_payment_method",
   "responseClass" => "PaymentTypesResponse",
-  "endpoint" => "/api/{version}/billing/create",
+  "endpoint" => "/billing/create",
   "notes" => "Add a new method of payment.",
   "parameters" => [
     {
@@ -369,12 +363,6 @@ MyApp.add_route('POST', '/api/{version}/billing/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -383,12 +371,12 @@ MyApp.add_route('POST', '/api/{version}/billing/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/billing/crypto/transfer', {
+MyApp.add_route('POST', '/api/3.18/billing/crypto/transfer', {
   "resourcePath" => "/BillingInfo",
   "summary" => "Create Smart Contract",
   "nickname" => "create_smart_contract",
   "responseClass" => "PaymentTypesResponse",
-  "endpoint" => "/api/{version}/billing/crypto/transfer",
+  "endpoint" => "/billing/crypto/transfer",
   "notes" => "Adds a smart contract.",
   "parameters" => [
     {
@@ -419,12 +407,6 @@ MyApp.add_route('POST', '/api/{version}/billing/crypto/transfer', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -433,12 +415,12 @@ MyApp.add_route('POST', '/api/{version}/billing/crypto/transfer', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/billing/crypto/get', {
+MyApp.add_route('GET', '/api/3.18/billing/crypto/get', {
   "resourcePath" => "/BillingInfo",
   "summary" => "Get Crypto Balances",
   "nickname" => "get_crypto_balance",
   "responseClass" => "PaymentTypesResponse",
-  "endpoint" => "/api/{version}/billing/crypto/get",
+  "endpoint" => "/billing/crypto/get",
   "notes" => "Get the cypto balance details for a user",
   "parameters" => [
     {
@@ -462,12 +444,6 @@ MyApp.add_route('GET', '/api/{version}/billing/crypto/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -476,12 +452,12 @@ MyApp.add_route('GET', '/api/{version}/billing/crypto/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/billing/get', {
+MyApp.add_route('GET', '/api/3.18/billing/get', {
   "resourcePath" => "/BillingInfo",
   "summary" => "Get Payment Method",
   "nickname" => "get_payment_method",
   "responseClass" => "PaymentTypesResponse",
-  "endpoint" => "/api/{version}/billing/get",
+  "endpoint" => "/billing/get",
   "notes" => "Get the details of the user's payment method or their current default method of payment",
   "parameters" => [
     {
@@ -505,12 +481,6 @@ MyApp.add_route('GET', '/api/{version}/billing/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -519,12 +489,12 @@ MyApp.add_route('GET', '/api/{version}/billing/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/billing/search', {
+MyApp.add_route('GET', '/api/3.18/billing/search', {
   "resourcePath" => "/BillingInfo",
   "summary" => "Search Payment Methods",
   "nickname" => "search_payment_method",
   "responseClass" => "PaymentTypesResponse",
-  "endpoint" => "/api/{version}/billing/search",
+  "endpoint" => "/billing/search",
   "notes" => "Search the payment methods of an account",
   "parameters" => [
     {
@@ -587,12 +557,6 @@ MyApp.add_route('GET', '/api/{version}/billing/search', {
       "allowableValues" => "",
       "defaultValue" => "5",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

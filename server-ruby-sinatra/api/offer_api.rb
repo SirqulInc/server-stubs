@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/location/batchUpdate', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/location/batchUpdate', {
   "resourcePath" => "/Offer",
   "summary" => "Update Offer Locations",
   "nickname" => "batch_update_offer_locations",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/offer/location/batchUpdate",
+  "endpoint" => "/retailer/offer/location/batchUpdate",
   "notes" => "Batch update offer locations.",
   "parameters" => [
     {
@@ -30,12 +30,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/location/batchUpdate', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -44,12 +38,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/location/batchUpdate', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/create', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/create', {
   "resourcePath" => "/Offer",
   "summary" => "Create Offer",
   "nickname" => "create_offer",
   "responseClass" => "RetailerOfferResponse",
-  "endpoint" => "/api/{version}/retailer/offer/create",
+  "endpoint" => "/retailer/offer/create",
   "notes" => "Create an offer and assign it to the provided retailer locations.",
   "parameters" => [
     {
@@ -654,12 +648,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -668,12 +656,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/delete', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/delete', {
   "resourcePath" => "/Offer",
   "summary" => "Delete Offer",
   "nickname" => "delete_offer",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/offer/delete",
+  "endpoint" => "/retailer/offer/delete",
   "notes" => "Set the deleted timestamp to current time. This effectively deletes the offer since all queries should ignore any records with a deleted time stamp.",
   "parameters" => [
     {
@@ -697,12 +685,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -711,12 +693,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/location/delete', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/location/delete', {
   "resourcePath" => "/Offer",
   "summary" => "Delete Offer Location",
   "nickname" => "delete_offer_location",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/offer/location/delete",
+  "endpoint" => "/retailer/offer/location/delete",
   "notes" => "Set the deleted timestamp to current time. This effectively deletes the offer location since all queries should ignore any records with a deleted time stamp.",
   "parameters" => [
     {
@@ -740,12 +722,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/location/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -754,12 +730,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/location/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/offer/get', {
+MyApp.add_route('GET', '/api/3.18/retailer/offer/get', {
   "resourcePath" => "/Offer",
   "summary" => "Get Offer",
   "nickname" => "get_offer",
   "responseClass" => "RetailerOfferResponse",
-  "endpoint" => "/api/{version}/retailer/offer/get",
+  "endpoint" => "/retailer/offer/get",
   "notes" => "Gets the details of an offer that the user has access to.",
   "parameters" => [
     {
@@ -790,12 +766,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -804,12 +774,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/get', {
+MyApp.add_route('GET', '/api/3.18/offer/get', {
   "resourcePath" => "/Offer",
   "summary" => "Get Offer",
   "nickname" => "get_offer_details",
   "responseClass" => "OfferResponse",
-  "endpoint" => "/api/{version}/offer/get",
+  "endpoint" => "/offer/get",
   "notes" => "Gets offer or offer location details as a consumer.  Will check if it is a favorite if the deviceId/accountId is provided.  If the offerId is provided it will look up the main offer and ignore the the offerLocationId. If no offerId is provided then an offerLocationId must be specified.",
   "parameters" => [
     {
@@ -885,12 +855,6 @@ MyApp.add_route('GET', '/api/{version}/offer/get', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -899,12 +863,12 @@ MyApp.add_route('GET', '/api/{version}/offer/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/lists/count', {
+MyApp.add_route('GET', '/api/3.18/offer/lists/count', {
   "resourcePath" => "/Offer",
   "summary" => "Get Offers (Counts)",
   "nickname" => "get_offer_list_counts",
   "responseClass" => "ListCountResponse",
-  "endpoint" => "/api/{version}/offer/lists/count",
+  "endpoint" => "/offer/lists/count",
   "notes" => "Gets the offer list counts.",
   "parameters" => [
     {
@@ -937,12 +901,6 @@ MyApp.add_route('GET', '/api/{version}/offer/lists/count', {
       "defaultValue" => "'MILES'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -951,12 +909,12 @@ MyApp.add_route('GET', '/api/{version}/offer/lists/count', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/location/get', {
+MyApp.add_route('GET', '/api/3.18/offer/location/get', {
   "resourcePath" => "/Offer",
   "summary" => "Get Offer Location",
   "nickname" => "get_offer_location",
   "responseClass" => "OfferShortResponse",
-  "endpoint" => "/api/{version}/offer/location/get",
+  "endpoint" => "/offer/location/get",
   "notes" => "Gets the offer location by offer location id or udid (of a device)",
   "parameters" => [
     {
@@ -973,12 +931,6 @@ MyApp.add_route('GET', '/api/{version}/offer/location/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -987,12 +939,12 @@ MyApp.add_route('GET', '/api/{version}/offer/location/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/offer/location/search', {
+MyApp.add_route('GET', '/api/3.18/retailer/offer/location/search', {
   "resourcePath" => "/Offer",
   "summary" => "Search Offer Locations",
   "nickname" => "get_offer_locations_for_retailers",
   "responseClass" => "Array<OfferShortResponse>",
-  "endpoint" => "/api/{version}/retailer/offer/location/search",
+  "endpoint" => "/retailer/offer/location/search",
   "notes" => "Searches on offer locations, which are records that represent an offer that has been assigned to a retailer location. If an offer does not have any locations assigned, then it will NOT be returned.",
   "parameters" => [
     {
@@ -1135,12 +1087,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/location/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1149,12 +1095,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/location/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/offer/search', {
+MyApp.add_route('GET', '/api/3.18/retailer/offer/search', {
   "resourcePath" => "/Offer",
   "summary" => "Search Offers",
   "nickname" => "get_offers_for_retailers",
   "responseClass" => "Array<OfferResponse>",
-  "endpoint" => "/api/{version}/retailer/offer/search",
+  "endpoint" => "/retailer/offer/search",
   "notes" => "Searches on offers that the account has access to.",
   "parameters" => [
     {
@@ -1374,12 +1320,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1388,12 +1328,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/transaction/update', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/transaction/update', {
   "resourcePath" => "/Offer",
   "summary" => "Update Offer Transaction",
   "nickname" => "redeem_offer_transaction",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/offer/transaction/update",
+  "endpoint" => "/retailer/offer/transaction/update",
   "notes" => "Redeems an offer.",
   "parameters" => [
     {
@@ -1431,12 +1371,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/transaction/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1445,12 +1379,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/transaction/update', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/retailer/offer/transaction/search', {
+MyApp.add_route('GET', '/api/3.18/retailer/offer/transaction/search', {
   "resourcePath" => "/Offer",
   "summary" => "Search Offer Transactions",
   "nickname" => "search_offer_transactions_for_retailers",
   "responseClass" => "Array<OfferTransactionResponse>",
-  "endpoint" => "/api/{version}/retailer/offer/transaction/search",
+  "endpoint" => "/retailer/offer/transaction/search",
   "notes" => "Searches on offer transactions for offers that the account has access to.",
   "parameters" => [
     {
@@ -1621,12 +1555,6 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/transaction/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1635,12 +1563,12 @@ MyApp.add_route('GET', '/api/{version}/retailer/offer/transaction/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/lists', {
+MyApp.add_route('GET', '/api/3.18/offer/lists', {
   "resourcePath" => "/Offer",
   "summary" => "Search Offers",
   "nickname" => "search_offers_for_consumer",
   "responseClass" => "OfferListResponse",
-  "endpoint" => "/api/{version}/offer/lists",
+  "endpoint" => "/offer/lists",
   "notes" => "Searches for offers as a consumer.",
   "parameters" => [
     {
@@ -1862,12 +1790,6 @@ MyApp.add_route('GET', '/api/{version}/offer/lists', {
       "allowableValues" => "[ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, OFFER_ID, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, RETAILER_ID, RETAILER_LOCATION_ID, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY]",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1876,12 +1798,12 @@ MyApp.add_route('GET', '/api/{version}/offer/lists', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/offer/top', {
+MyApp.add_route('GET', '/api/3.18/offer/top', {
   "resourcePath" => "/Offer",
   "summary" => "Get Offers (Top)",
   "nickname" => "top_offer_transactions",
   "responseClass" => "OfferListResponse",
-  "endpoint" => "/api/{version}/offer/top",
+  "endpoint" => "/offer/top",
   "notes" => "Gets the top active offers.",
   "parameters" => [
     {
@@ -1900,12 +1822,6 @@ MyApp.add_route('GET', '/api/{version}/offer/top', {
       "defaultValue" => "20",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -1914,12 +1830,12 @@ MyApp.add_route('GET', '/api/{version}/offer/top', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/update', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/update', {
   "resourcePath" => "/Offer",
   "summary" => "Update Offer",
   "nickname" => "update_offer",
   "responseClass" => "RetailerOfferResponse",
-  "endpoint" => "/api/{version}/retailer/offer/update",
+  "endpoint" => "/retailer/offer/update",
   "notes" => "Update an offer, must provide a current list of retailer locations or the current offer locations will be marked as deleted.",
   "parameters" => [
     {
@@ -2531,12 +2447,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/update', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -2545,12 +2455,12 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/update', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/retailer/offer/status', {
+MyApp.add_route('POST', '/api/3.18/retailer/offer/status', {
   "resourcePath" => "/Offer",
   "summary" => "Activate Offer",
   "nickname" => "update_offer_status",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/retailer/offer/status",
+  "endpoint" => "/retailer/offer/status",
   "notes" => "Sets the activated date on offers. This will make offers visible for consumers.",
   "parameters" => [
     {
@@ -2580,12 +2490,6 @@ MyApp.add_route('POST', '/api/{version}/retailer/offer/status', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

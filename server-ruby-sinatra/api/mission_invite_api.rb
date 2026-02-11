@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/mission/invite/create', {
+MyApp.add_route('POST', '/api/3.18/mission/invite/create', {
   "resourcePath" => "/MissionInvite",
   "summary" => "Create Mission Invite",
   "nickname" => "create_mission_invite",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/invite/create",
+  "endpoint" => "/mission/invite/create",
   "notes" => "Create the mission invite. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.",
   "parameters" => [
     {
@@ -44,12 +44,6 @@ MyApp.add_route('POST', '/api/{version}/mission/invite/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -58,12 +52,12 @@ MyApp.add_route('POST', '/api/{version}/mission/invite/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/mission/invite/delete', {
+MyApp.add_route('POST', '/api/3.18/mission/invite/delete', {
   "resourcePath" => "/MissionInvite",
   "summary" => "Delete Mission Invite",
   "nickname" => "delete_mission_invite",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/mission/invite/delete",
+  "endpoint" => "/mission/invite/delete",
   "notes" => "Update the mission invite status to quit.",
   "parameters" => [
     {
@@ -101,12 +95,6 @@ MyApp.add_route('POST', '/api/{version}/mission/invite/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -115,12 +103,12 @@ MyApp.add_route('POST', '/api/{version}/mission/invite/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/invite/get', {
+MyApp.add_route('GET', '/api/3.18/mission/invite/get', {
   "resourcePath" => "/MissionInvite",
   "summary" => "Get Mission Invite",
   "nickname" => "get_mission_invite",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/invite/get",
+  "endpoint" => "/mission/invite/get",
   "notes" => "Get the mission invite. An account can only be invited to a mission one time.",
   "parameters" => [
     {
@@ -165,12 +153,6 @@ MyApp.add_route('GET', '/api/{version}/mission/invite/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -179,12 +161,12 @@ MyApp.add_route('GET', '/api/{version}/mission/invite/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/mission/invite/search', {
+MyApp.add_route('GET', '/api/3.18/mission/invite/search', {
   "resourcePath" => "/MissionInvite",
   "summary" => "Search Mission Invites",
   "nickname" => "search_mission_invites",
   "responseClass" => "Array<MissionResponse>",
-  "endpoint" => "/api/{version}/mission/invite/search",
+  "endpoint" => "/mission/invite/search",
   "notes" => "Get a list of mission invites that the account has.",
   "parameters" => [
     {
@@ -278,12 +260,6 @@ MyApp.add_route('GET', '/api/{version}/mission/invite/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -292,12 +268,12 @@ MyApp.add_route('GET', '/api/{version}/mission/invite/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/mission/invite/update', {
+MyApp.add_route('POST', '/api/3.18/mission/invite/update', {
   "resourcePath" => "/MissionInvite",
   "summary" => "Update Mission Invite",
   "nickname" => "update_mission_invite",
   "responseClass" => "MissionResponse",
-  "endpoint" => "/api/{version}/mission/invite/update",
+  "endpoint" => "/mission/invite/update",
   "notes" => "Update the mission invite status. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.",
   "parameters" => [
     {
@@ -376,12 +352,6 @@ MyApp.add_route('POST', '/api/{version}/mission/invite/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

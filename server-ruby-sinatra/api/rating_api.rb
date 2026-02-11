@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/rating/create', {
+MyApp.add_route('POST', '/api/3.18/rating/create', {
   "resourcePath" => "/Rating",
   "summary" => "Create Rating",
   "nickname" => "create_rating",
   "responseClass" => "RatingResponse",
-  "endpoint" => "/api/{version}/rating/create",
+  "endpoint" => "/rating/create",
   "notes" => "This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object.",
   "parameters" => [
     {
@@ -86,12 +86,6 @@ MyApp.add_route('POST', '/api/{version}/rating/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -100,12 +94,12 @@ MyApp.add_route('POST', '/api/{version}/rating/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/rating/delete', {
+MyApp.add_route('POST', '/api/3.18/rating/delete', {
   "resourcePath" => "/Rating",
   "summary" => "Delete Rating",
   "nickname" => "delete_rating",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/rating/delete",
+  "endpoint" => "/rating/delete",
   "notes" => "Sets a rating as deleted.",
   "parameters" => [
     {
@@ -129,12 +123,6 @@ MyApp.add_route('POST', '/api/{version}/rating/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -143,12 +131,12 @@ MyApp.add_route('POST', '/api/{version}/rating/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/location/rating/index/search', {
+MyApp.add_route('GET', '/api/3.18/location/rating/index/search', {
   "resourcePath" => "/Rating",
   "summary" => "Search Location Rating Indexes",
   "nickname" => "search_location_rating_indexes",
   "responseClass" => "Array<RatingIndexResponse>",
-  "endpoint" => "/api/{version}/location/rating/index/search",
+  "endpoint" => "/location/rating/index/search",
   "notes" => "Search for retailer locations by averages near you.",
   "parameters" => [
     {
@@ -270,12 +258,6 @@ MyApp.add_route('GET', '/api/{version}/location/rating/index/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -284,12 +266,12 @@ MyApp.add_route('GET', '/api/{version}/location/rating/index/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/rating/index/search', {
+MyApp.add_route('GET', '/api/3.18/rating/index/search', {
   "resourcePath" => "/Rating",
   "summary" => "Search Rating Indexes",
   "nickname" => "search_rating_indexes",
   "responseClass" => "Array<RatingIndexResponse>",
-  "endpoint" => "/api/{version}/rating/index/search",
+  "endpoint" => "/rating/index/search",
   "notes" => "Search for ratable items by averages.",
   "parameters" => [
     {
@@ -383,12 +365,6 @@ MyApp.add_route('GET', '/api/{version}/rating/index/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -397,12 +373,12 @@ MyApp.add_route('GET', '/api/{version}/rating/index/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/rating/search', {
+MyApp.add_route('GET', '/api/3.18/rating/search', {
   "resourcePath" => "/Rating",
   "summary" => "Search Ratings",
   "nickname" => "search_ratings",
   "responseClass" => "Array<RatingResponse>",
-  "endpoint" => "/api/{version}/rating/search",
+  "endpoint" => "/rating/search",
   "notes" => "Search for ratings on a ratable object.",
   "parameters" => [
     {
@@ -482,12 +458,6 @@ MyApp.add_route('GET', '/api/{version}/rating/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -496,12 +466,12 @@ MyApp.add_route('GET', '/api/{version}/rating/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/rating/update', {
+MyApp.add_route('POST', '/api/3.18/rating/update', {
   "resourcePath" => "/Rating",
   "summary" => "Update Rating",
   "nickname" => "update_rating",
   "responseClass" => "RatingResponse",
-  "endpoint" => "/api/{version}/rating/update",
+  "endpoint" => "/rating/update",
   "notes" => "Update an existing rating. Only the creator of the rating have permission to update.",
   "parameters" => [
     {
@@ -573,12 +543,6 @@ MyApp.add_route('POST', '/api/{version}/rating/update', {
       "dataType" => "Float",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

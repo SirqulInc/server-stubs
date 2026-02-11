@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/invite/accept', {
+MyApp.add_route('POST', '/api/3.18/invite/accept', {
   "resourcePath" => "/Invite",
   "summary" => "Accept Invite",
   "nickname" => "accept_invite",
   "responseClass" => "ConsumerInviteResponse",
-  "endpoint" => "/api/{version}/invite/accept",
+  "endpoint" => "/invite/accept",
   "notes" => "Allows a user to accept an invite. The user could also become the inviter's friend.",
   "parameters" => [
     {
@@ -112,12 +112,6 @@ MyApp.add_route('POST', '/api/{version}/invite/accept', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -126,12 +120,12 @@ MyApp.add_route('POST', '/api/{version}/invite/accept', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/albumContest', {
+MyApp.add_route('POST', '/api/3.18/invite/albumContest', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Contest",
   "nickname" => "album_contest_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/albumContest",
+  "endpoint" => "/invite/albumContest",
   "notes" => "Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user's friend when the invitation is accepted.",
   "parameters" => [
     {
@@ -183,12 +177,6 @@ MyApp.add_route('POST', '/api/{version}/invite/albumContest', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -197,12 +185,12 @@ MyApp.add_route('POST', '/api/{version}/invite/albumContest', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/album', {
+MyApp.add_route('POST', '/api/3.18/invite/album', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Collection",
   "nickname" => "album_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/album",
+  "endpoint" => "/invite/album",
   "notes" => "Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user's friend when the invitation is accepted.",
   "parameters" => [
     {
@@ -254,12 +242,6 @@ MyApp.add_route('POST', '/api/{version}/invite/album', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -268,12 +250,12 @@ MyApp.add_route('POST', '/api/{version}/invite/album', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/event', {
+MyApp.add_route('POST', '/api/3.18/invite/event', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Event",
   "nickname" => "event_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/event",
+  "endpoint" => "/invite/event",
   "notes" => "Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet.",
   "parameters" => [
     {
@@ -311,12 +293,6 @@ MyApp.add_route('POST', '/api/{version}/invite/event', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -325,12 +301,12 @@ MyApp.add_route('POST', '/api/{version}/invite/event', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/gameLevel', {
+MyApp.add_route('POST', '/api/3.18/invite/gameLevel', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Game Level",
   "nickname" => "game_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/gameLevel",
+  "endpoint" => "/invite/gameLevel",
   "notes" => "Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user's friend when the invitation is accepted.",
   "parameters" => [
     {
@@ -382,12 +358,6 @@ MyApp.add_route('POST', '/api/{version}/invite/gameLevel', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -396,12 +366,12 @@ MyApp.add_route('POST', '/api/{version}/invite/gameLevel', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/invite/get', {
+MyApp.add_route('GET', '/api/3.18/invite/get', {
   "resourcePath" => "/Invite",
   "summary" => "Get Invite",
   "nickname" => "get_invite",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/invite/get",
+  "endpoint" => "/invite/get",
   "notes" => "This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to.",
   "parameters" => [
     {
@@ -467,12 +437,6 @@ MyApp.add_route('GET', '/api/{version}/invite/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -481,12 +445,12 @@ MyApp.add_route('GET', '/api/{version}/invite/get', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/mission', {
+MyApp.add_route('POST', '/api/3.18/invite/mission', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Mission",
   "nickname" => "mission_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/mission",
+  "endpoint" => "/invite/mission",
   "notes" => "Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user's friend when the invitation is accepted.",
   "parameters" => [
     {
@@ -538,12 +502,6 @@ MyApp.add_route('POST', '/api/{version}/invite/mission', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -552,12 +510,12 @@ MyApp.add_route('POST', '/api/{version}/invite/mission', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/offer', {
+MyApp.add_route('POST', '/api/3.18/invite/offer', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Offer",
   "nickname" => "offer_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/offer",
+  "endpoint" => "/invite/offer",
   "notes" => "Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite's list.",
   "parameters" => [
     {
@@ -581,12 +539,6 @@ MyApp.add_route('POST', '/api/{version}/invite/offer', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -595,12 +547,12 @@ MyApp.add_route('POST', '/api/{version}/invite/offer', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/offerLocation', {
+MyApp.add_route('POST', '/api/3.18/invite/offerLocation', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Offer Location",
   "nickname" => "offer_location_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/offerLocation",
+  "endpoint" => "/invite/offerLocation",
   "notes" => "Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite's list.",
   "parameters" => [
     {
@@ -624,12 +576,6 @@ MyApp.add_route('POST', '/api/{version}/invite/offerLocation', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -638,12 +584,12 @@ MyApp.add_route('POST', '/api/{version}/invite/offerLocation', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/invite/retailerLocation', {
+MyApp.add_route('POST', '/api/3.18/invite/retailerLocation', {
   "resourcePath" => "/Invite",
   "summary" => "Invite to Retailer Location",
   "nickname" => "retailer_location_invite",
   "responseClass" => "InviteResponse",
-  "endpoint" => "/api/{version}/invite/retailerLocation",
+  "endpoint" => "/invite/retailerLocation",
   "notes" => "Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite's list.",
   "parameters" => [
     {
@@ -673,12 +619,6 @@ MyApp.add_route('POST', '/api/{version}/invite/retailerLocation', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

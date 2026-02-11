@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('GET', '/api/{version}/category/distancesearch', {
+MyApp.add_route('GET', '/api/3.18/category/distancesearch', {
   "resourcePath" => "/Category",
   "summary" => "Search Categories by Distance",
   "nickname" => "category_distance_search",
   "responseClass" => "Array<CategoryResponse>",
-  "endpoint" => "/api/{version}/category/distancesearch",
+  "endpoint" => "/category/distancesearch",
   "notes" => "Search for categories by distance.",
   "parameters" => [
     {
@@ -154,12 +154,6 @@ MyApp.add_route('GET', '/api/{version}/category/distancesearch', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -168,12 +162,12 @@ MyApp.add_route('GET', '/api/{version}/category/distancesearch', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/category/create', {
+MyApp.add_route('POST', '/api/3.18/category/create', {
   "resourcePath" => "/Category",
   "summary" => "Create Category",
   "nickname" => "create_category",
   "responseClass" => "CategoryTreeResponse",
-  "endpoint" => "/api/{version}/category/create",
+  "endpoint" => "/category/create",
   "notes" => "Create a new category.",
   "parameters" => [
     {
@@ -274,12 +268,6 @@ MyApp.add_route('POST', '/api/{version}/category/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -288,12 +276,12 @@ MyApp.add_route('POST', '/api/{version}/category/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/category/delete', {
+MyApp.add_route('POST', '/api/3.18/category/delete', {
   "resourcePath" => "/Category",
   "summary" => "Delete Category",
   "nickname" => "delete_category",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/category/delete",
+  "endpoint" => "/category/delete",
   "notes" => "Delete a category.",
   "parameters" => [
     {
@@ -310,12 +298,6 @@ MyApp.add_route('POST', '/api/{version}/category/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -324,12 +306,12 @@ MyApp.add_route('POST', '/api/{version}/category/delete', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/category/duplicate', {
+MyApp.add_route('POST', '/api/3.18/category/duplicate', {
   "resourcePath" => "/Category",
   "summary" => "Duplicate Category",
   "nickname" => "duplicate_category",
   "responseClass" => "CategoryTreeResponse",
-  "endpoint" => "/api/{version}/category/duplicate",
+  "endpoint" => "/category/duplicate",
   "notes" => "Duplicate a category, including all its children.",
   "parameters" => [
     {
@@ -360,12 +342,6 @@ MyApp.add_route('POST', '/api/{version}/category/duplicate', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -374,12 +350,12 @@ MyApp.add_route('POST', '/api/{version}/category/duplicate', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/category/get', {
+MyApp.add_route('GET', '/api/3.18/category/get', {
   "resourcePath" => "/Category",
   "summary" => "Get Category",
   "nickname" => "get_category",
   "responseClass" => "CategoryTreeResponse",
-  "endpoint" => "/api/{version}/category/get",
+  "endpoint" => "/category/get",
   "notes" => "Get the details of a specific category. Recursively include all child categories and their children.",
   "parameters" => [
     {
@@ -397,12 +373,6 @@ MyApp.add_route('GET', '/api/{version}/category/get', {
       "defaultValue" => "true",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -411,12 +381,12 @@ MyApp.add_route('GET', '/api/{version}/category/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/category/search', {
+MyApp.add_route('GET', '/api/3.18/category/search', {
   "resourcePath" => "/Category",
   "summary" => "Search Categories",
   "nickname" => "search_categories",
   "responseClass" => "Array<CategoryResponse>",
-  "endpoint" => "/api/{version}/category/search",
+  "endpoint" => "/category/search",
   "notes" => "Search for categories.",
   "parameters" => [
     {
@@ -574,12 +544,6 @@ MyApp.add_route('GET', '/api/{version}/category/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -588,12 +552,12 @@ MyApp.add_route('GET', '/api/{version}/category/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/category/update', {
+MyApp.add_route('POST', '/api/3.18/category/update', {
   "resourcePath" => "/Category",
   "summary" => "Update Category",
   "nickname" => "update_category",
   "responseClass" => "CategoryTreeResponse",
-  "endpoint" => "/api/{version}/category/update",
+  "endpoint" => "/category/update",
   "notes" => "Update a category.",
   "parameters" => [
     {
@@ -693,12 +657,6 @@ MyApp.add_route('POST', '/api/{version}/category/update', {
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

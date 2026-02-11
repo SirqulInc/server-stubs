@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/tracking/batch/create', {
+MyApp.add_route('POST', '/api/3.18/tracking/batch/create', {
   "resourcePath" => "/Tracking",
   "summary" => "Create Batch Tracking",
   "nickname" => "batch_save_tracking",
   "responseClass" => "Array<Leg>",
-  "endpoint" => "/api/{version}/tracking/batch/create",
+  "endpoint" => "/tracking/batch/create",
   "notes" => "Batch create tracking legs",
   "parameters" => [
     {
@@ -59,12 +59,6 @@ MyApp.add_route('POST', '/api/{version}/tracking/batch/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -73,12 +67,12 @@ MyApp.add_route('POST', '/api/{version}/tracking/batch/create', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tracking/predicted/get', {
+MyApp.add_route('GET', '/api/3.18/tracking/predicted/get', {
   "resourcePath" => "/Tracking",
   "summary" => "Get Predicted Locations",
   "nickname" => "get_predicted_locations",
   "responseClass" => "PredictedLocationResponse",
-  "endpoint" => "/api/{version}/tracking/predicted/get",
+  "endpoint" => "/tracking/predicted/get",
   "notes" => "Get the predicted location for a customer based on previous behavior.  If a customer resides in a place for a period of time this is marked as a preferred location.  We look back over the previous few days and the previous days of the week from the day specified.  If for instance the day was a Wednesday then this would check the days before, including: Tuesday, Monday, Sunday, etc. It will also check some number of previous Wednesdays in the past few weeks.",
   "parameters" => [
     {
@@ -148,12 +142,6 @@ MyApp.add_route('GET', '/api/{version}/tracking/predicted/get', {
       "defaultValue" => "'MATCHES'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -162,12 +150,12 @@ MyApp.add_route('GET', '/api/{version}/tracking/predicted/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tracking/path/get', {
+MyApp.add_route('GET', '/api/3.18/tracking/path/get', {
   "resourcePath" => "/Tracking",
   "summary" => "Get Tracking Path",
   "nickname" => "get_predicted_path",
   "responseClass" => "Array<StepResponse>",
-  "endpoint" => "/api/{version}/tracking/path/get",
+  "endpoint" => "/tracking/path/get",
   "notes" => "Get the path (lat/long coordinates) between 2 steps previously logged for a customer.",
   "parameters" => [
     {
@@ -191,12 +179,6 @@ MyApp.add_route('GET', '/api/{version}/tracking/path/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -205,12 +187,12 @@ MyApp.add_route('GET', '/api/{version}/tracking/path/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tracking/preferred/search', {
+MyApp.add_route('GET', '/api/3.18/tracking/preferred/search', {
   "resourcePath" => "/Tracking",
   "summary" => "Search Preferred Locations",
   "nickname" => "get_preferred_locations",
   "responseClass" => "Array<PreferredLocationResponse>",
-  "endpoint" => "/api/{version}/tracking/preferred/search",
+  "endpoint" => "/tracking/preferred/search",
   "notes" => "Search on preferred locations for a user, which is created when a customer resides in a place for a period of time.",
   "parameters" => [
     {
@@ -296,12 +278,6 @@ MyApp.add_route('GET', '/api/{version}/tracking/preferred/search', {
       "defaultValue" => "'MILES'",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -310,12 +286,12 @@ MyApp.add_route('GET', '/api/{version}/tracking/preferred/search', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tracking/search', {
+MyApp.add_route('GET', '/api/3.18/tracking/search', {
   "resourcePath" => "/Tracking",
   "summary" => "Search Tracking",
   "nickname" => "get_tracking_legs",
   "responseClass" => "Array<LegResponse>",
-  "endpoint" => "/api/{version}/tracking/search",
+  "endpoint" => "/tracking/search",
   "notes" => "Retrieve tracking data to be able to show where a user has been.",
   "parameters" => [
     {
@@ -375,12 +351,6 @@ MyApp.add_route('GET', '/api/{version}/tracking/search', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -389,12 +359,12 @@ MyApp.add_route('GET', '/api/{version}/tracking/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tracking/leg/create', {
+MyApp.add_route('POST', '/api/3.18/tracking/leg/create', {
   "resourcePath" => "/Tracking",
   "summary" => "Create Tracking Leg",
   "nickname" => "save_tracking_leg",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tracking/leg/create",
+  "endpoint" => "/tracking/leg/create",
   "notes" => "Send tracking points to be able to generate pathing data",
   "parameters" => [
     {
@@ -481,12 +451,6 @@ MyApp.add_route('POST', '/api/{version}/tracking/leg/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -495,12 +459,12 @@ MyApp.add_route('POST', '/api/{version}/tracking/leg/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/tracking/step/create', {
+MyApp.add_route('POST', '/api/3.18/tracking/step/create', {
   "resourcePath" => "/Tracking",
   "summary" => "Create Tracking Step",
   "nickname" => "save_tracking_step",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/tracking/step/create",
+  "endpoint" => "/tracking/step/create",
   "notes" => "Send tracking points to be able to generate pathing data",
   "parameters" => [
     {
@@ -580,12 +544,6 @@ MyApp.add_route('POST', '/api/{version}/tracking/step/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -594,12 +552,12 @@ MyApp.add_route('POST', '/api/{version}/tracking/step/create', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tracking/list', {
+MyApp.add_route('GET', '/api/3.18/tracking/list', {
   "resourcePath" => "/Tracking",
   "summary" => "List Tracking",
   "nickname" => "search_accounts_with_tracking_legs",
   "responseClass" => "Array<AccountMiniResponse>",
-  "endpoint" => "/api/{version}/tracking/list",
+  "endpoint" => "/tracking/list",
   "notes" => "Search for all accounts that have tracking legs data by the given constraints.",
   "parameters" => [
     {
@@ -706,12 +664,6 @@ MyApp.add_route('GET', '/api/{version}/tracking/list', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -720,12 +672,12 @@ MyApp.add_route('GET', '/api/{version}/tracking/list', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/tracking/searchByBillable', {
+MyApp.add_route('GET', '/api/3.18/tracking/searchByBillable', {
   "resourcePath" => "/Tracking",
   "summary" => "Search Tracking (Billable)",
   "nickname" => "search_tracking_legs",
   "responseClass" => "Array<LegResponse>",
-  "endpoint" => "/api/{version}/tracking/searchByBillable",
+  "endpoint" => "/tracking/searchByBillable",
   "notes" => "Retrieve tracking data for billable/account scoped queries.",
   "parameters" => [
     {
@@ -785,12 +737,6 @@ MyApp.add_route('GET', '/api/{version}/tracking/searchByBillable', {
       "allowableValues" => "",
       "defaultValue" => "100",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

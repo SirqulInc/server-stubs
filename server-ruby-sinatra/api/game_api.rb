@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/game/create', {
+MyApp.add_route('POST', '/api/3.18/game/create', {
   "resourcePath" => "/Game",
   "summary" => "Create a Game",
   "nickname" => "create_game",
   "responseClass" => "GameResponse",
-  "endpoint" => "/api/{version}/game/create",
+  "endpoint" => "/game/create",
   "notes" => "Create a Game.",
   "parameters" => [
     {
@@ -58,12 +58,6 @@ MyApp.add_route('POST', '/api/{version}/game/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -72,12 +66,12 @@ MyApp.add_route('POST', '/api/{version}/game/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/game/delete', {
+MyApp.add_route('POST', '/api/3.18/game/delete', {
   "resourcePath" => "/Game",
   "summary" => "Delete a Game",
   "nickname" => "delete_game",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/game/delete",
+  "endpoint" => "/game/delete",
   "notes" => "Delete a game.",
   "parameters" => [
     {
@@ -94,12 +88,6 @@ MyApp.add_route('POST', '/api/{version}/game/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -108,12 +96,12 @@ MyApp.add_route('POST', '/api/{version}/game/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/game/get', {
+MyApp.add_route('GET', '/api/3.18/game/get', {
   "resourcePath" => "/Game",
   "summary" => "Get a Game by id",
   "nickname" => "get_game",
   "responseClass" => "GameResponse",
-  "endpoint" => "/api/{version}/game/get",
+  "endpoint" => "/game/get",
   "notes" => "Get a Game by id.",
   "parameters" => [
     {
@@ -137,12 +125,6 @@ MyApp.add_route('GET', '/api/{version}/game/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -151,12 +133,12 @@ MyApp.add_route('GET', '/api/{version}/game/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/game/search', {
+MyApp.add_route('GET', '/api/3.18/game/search', {
   "resourcePath" => "/Game",
   "summary" => "Search a Game",
   "nickname" => "search_games",
   "responseClass" => "GameResponse",
-  "endpoint" => "/api/{version}/game/search",
+  "endpoint" => "/game/search",
   "notes" => "Get a list of games for an application, just those the account has permissions to view.",
   "parameters" => [
     {
@@ -215,12 +197,6 @@ MyApp.add_route('GET', '/api/{version}/game/search', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -229,12 +205,12 @@ MyApp.add_route('GET', '/api/{version}/game/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/game/update', {
+MyApp.add_route('POST', '/api/3.18/game/update', {
   "resourcePath" => "/Game",
   "summary" => "Update a Game",
   "nickname" => "update_game",
   "responseClass" => "GameResponse",
-  "endpoint" => "/api/{version}/game/update",
+  "endpoint" => "/game/update",
   "notes" => "Update a Game",
   "parameters" => [
     {
@@ -292,12 +268,6 @@ MyApp.add_route('POST', '/api/{version}/game/update', {
       "dataType" => "Boolean",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin

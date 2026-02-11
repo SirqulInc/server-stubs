@@ -1,12 +1,12 @@
 require 'json'
 
 
-MyApp.add_route('POST', '/api/{version}/purchase/create', {
+MyApp.add_route('POST', '/api/3.18/purchase/create', {
   "resourcePath" => "/PurchaseItem",
   "summary" => "Create Purchase",
   "nickname" => "create_purchase_item",
   "responseClass" => "PurchaseItemFullResponse",
-  "endpoint" => "/api/{version}/purchase/create",
+  "endpoint" => "/purchase/create",
   "notes" => "Creates a purchase item for in app purchases",
   "parameters" => [
     {
@@ -151,12 +151,6 @@ MyApp.add_route('POST', '/api/{version}/purchase/create', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -165,12 +159,12 @@ MyApp.add_route('POST', '/api/{version}/purchase/create', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/purchase/delete', {
+MyApp.add_route('POST', '/api/3.18/purchase/delete', {
   "resourcePath" => "/PurchaseItem",
   "summary" => "Delete Purchase",
   "nickname" => "delete_purchase_item",
   "responseClass" => "SirqulResponse",
-  "endpoint" => "/api/{version}/purchase/delete",
+  "endpoint" => "/purchase/delete",
   "notes" => "Marks the purchase item as deleted",
   "parameters" => [
     {
@@ -194,12 +188,6 @@ MyApp.add_route('POST', '/api/{version}/purchase/delete', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -208,12 +196,12 @@ MyApp.add_route('POST', '/api/{version}/purchase/delete', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/purchase/get', {
+MyApp.add_route('GET', '/api/3.18/purchase/get', {
   "resourcePath" => "/PurchaseItem",
   "summary" => "Get Purchase",
   "nickname" => "get_purchase_item",
   "responseClass" => "PurchaseItemFullResponse",
-  "endpoint" => "/api/{version}/purchase/get",
+  "endpoint" => "/purchase/get",
   "notes" => "Get detailed information about a purchase item",
   "parameters" => [
     {
@@ -237,12 +225,6 @@ MyApp.add_route('GET', '/api/{version}/purchase/get', {
       "allowableValues" => "",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -251,12 +233,12 @@ MyApp.add_route('GET', '/api/{version}/purchase/get', {
 end
 
 
-MyApp.add_route('GET', '/api/{version}/purchase/search', {
+MyApp.add_route('GET', '/api/3.18/purchase/search', {
   "resourcePath" => "/PurchaseItem",
   "summary" => "Search Purchases",
   "nickname" => "search_purchase_items",
   "responseClass" => "Array<PurchaseItemResponse>",
-  "endpoint" => "/api/{version}/purchase/search",
+  "endpoint" => "/purchase/search",
   "notes" => "Search for purchasable items from the system",
   "parameters" => [
     {
@@ -349,12 +331,6 @@ MyApp.add_route('GET', '/api/{version}/purchase/search', {
       "defaultValue" => "false",
       "paramType" => "query",
     },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
-    },
     ]}) do
   cross_origin
   # the guts live here
@@ -363,12 +339,12 @@ MyApp.add_route('GET', '/api/{version}/purchase/search', {
 end
 
 
-MyApp.add_route('POST', '/api/{version}/purchase/update', {
+MyApp.add_route('POST', '/api/3.18/purchase/update', {
   "resourcePath" => "/PurchaseItem",
   "summary" => "Update Purchase",
   "nickname" => "update_purchase_item",
   "responseClass" => "PurchaseItemFullResponse",
-  "endpoint" => "/api/{version}/purchase/update",
+  "endpoint" => "/purchase/update",
   "notes" => "Updates a purchase item for in app purchases",
   "parameters" => [
     {
@@ -518,12 +494,6 @@ MyApp.add_route('POST', '/api/{version}/purchase/update', {
       "dataType" => "Integer",
       "allowableValues" => "",
       "paramType" => "query",
-    },
-    {
-      "name" => "version",
-      "description" => "",
-      "dataType" => "Float",
-      "paramType" => "path",
     },
     ]}) do
   cross_origin
