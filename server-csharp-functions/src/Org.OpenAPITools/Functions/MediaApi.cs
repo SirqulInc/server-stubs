@@ -18,47 +18,47 @@ namespace Org.OpenAPITools.Functions
     public partial class MediaApi
     { 
         [FunctionName("MediaApi_CreateMedia")]
-        public async Task<ActionResult<MediaOfferResponse>> _CreateMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/media/create")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<MediaOfferResponse>> _CreateMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18media/create")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateMedia");
             return method != null
-                ? (await ((Task<MediaOfferResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<MediaOfferResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("MediaApi_DeleteMedia")]
-        public async Task<ActionResult<SirqulResponse>> _DeleteMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/media/delete")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _DeleteMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18media/delete")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("DeleteMedia");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("MediaApi_GetMedia")]
-        public async Task<ActionResult<MediaOfferResponse>> _GetMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/media/get")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<MediaOfferResponse>> _GetMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18media/get")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("GetMedia");
             return method != null
-                ? (await ((Task<MediaOfferResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<MediaOfferResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("MediaApi_SearchMedia")]
-        public async Task<ActionResult<List<MediaOfferResponse>>> _SearchMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/media/search")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<List<MediaOfferResponse>>> _SearchMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18media/search")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("SearchMedia");
             return method != null
-                ? (await ((Task<List<MediaOfferResponse>>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<List<MediaOfferResponse>>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("MediaApi_UpdateMedia")]
-        public async Task<ActionResult<MediaOfferResponse>> _UpdateMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/media/update")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<MediaOfferResponse>> _UpdateMedia([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18media/update")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("UpdateMedia");
             return method != null
-                ? (await ((Task<MediaOfferResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<MediaOfferResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

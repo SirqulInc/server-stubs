@@ -18,20 +18,20 @@ namespace Org.OpenAPITools.Functions
     public partial class OptimizeApi
     { 
         [FunctionName("OptimizeApi_GetOptimizationResult")]
-        public async Task<ActionResult<Dictionary<string, ShipmentOrder>>> _GetOptimizationResult([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/optimize/result/{batchID}")]HttpRequest req, ExecutionContext context, decimal version, string batchID)
+        public async Task<ActionResult<Dictionary<string, ShipmentOrder>>> _GetOptimizationResult([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18optimize/result/{batchID}")]HttpRequest req, ExecutionContext context, string batchID)
         {
             var method = this.GetType().GetMethod("GetOptimizationResult");
             return method != null
-                ? (await ((Task<Dictionary<string, ShipmentOrder>>)method.Invoke(this, new object[] { req, context, version, batchID })).ConfigureAwait(false))
+                ? (await ((Task<Dictionary<string, ShipmentOrder>>)method.Invoke(this, new object[] { req, context, batchID })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("OptimizeApi_RequestOptimization")]
-        public async Task<ActionResult<ImportStatuses>> _RequestOptimization([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/optimize/request")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<ImportStatuses>> _RequestOptimization([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18optimize/request")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("RequestOptimization");
             return method != null
-                ? (await ((Task<ImportStatuses>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<ImportStatuses>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

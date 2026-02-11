@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class RoutingApi
     { 
         [FunctionName("RoutingApi_ComputeRouting")]
-        public async Task<ActionResult<RoutingListResponse>> _ComputeRouting([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/routing/compute")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<RoutingListResponse>> _ComputeRouting([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18routing/compute")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("ComputeRouting");
             return method != null
-                ? (await ((Task<RoutingListResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<RoutingListResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

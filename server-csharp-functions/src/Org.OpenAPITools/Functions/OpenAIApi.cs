@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class OpenAIApi
     { 
         [FunctionName("OpenAIApi_ImageGeneration")]
-        public async Task<ActionResult<WrappedProxyItemResponse>> _ImageGeneration([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/openai/v1/images/generations")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<WrappedProxyItemResponse>> _ImageGeneration([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18openai/v1/images/generations")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("ImageGeneration");
             return method != null
-                ? (await ((Task<WrappedProxyItemResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<WrappedProxyItemResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

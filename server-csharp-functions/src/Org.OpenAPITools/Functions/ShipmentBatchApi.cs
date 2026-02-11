@@ -18,47 +18,47 @@ namespace Org.OpenAPITools.Functions
     public partial class ShipmentBatchApi
     { 
         [FunctionName("ShipmentBatchApi_CreateShipmentBatch")]
-        public async Task<ActionResult<ShipmentBatch>> _CreateShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/shipment/batch")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<ShipmentBatch>> _CreateShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18shipment/batch")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateShipmentBatch");
             return method != null
-                ? (await ((Task<ShipmentBatch>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<ShipmentBatch>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("ShipmentBatchApi_DeleteShipmentBatch")]
-        public async Task<ActionResult<>> _DeleteShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Delete", Route = "api/{version}/shipment/batch/{batchId}")]HttpRequest req, ExecutionContext context, decimal version, long batchId)
+        public async Task<ActionResult<>> _DeleteShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Delete", Route = "api/3.18shipment/batch/{batchId}")]HttpRequest req, ExecutionContext context, long batchId)
         {
             var method = this.GetType().GetMethod("DeleteShipmentBatch");
             return method != null
-                ? (await ((Task<>)method.Invoke(this, new object[] { req, context, version, batchId })).ConfigureAwait(false))
+                ? (await ((Task<>)method.Invoke(this, new object[] { req, context, batchId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("ShipmentBatchApi_GetShipmentBatch")]
-        public async Task<ActionResult<ShipmentBatch>> _GetShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/shipment/batch/{batchId}")]HttpRequest req, ExecutionContext context, decimal version, long batchId)
+        public async Task<ActionResult<ShipmentBatch>> _GetShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18shipment/batch/{batchId}")]HttpRequest req, ExecutionContext context, long batchId)
         {
             var method = this.GetType().GetMethod("GetShipmentBatch");
             return method != null
-                ? (await ((Task<ShipmentBatch>)method.Invoke(this, new object[] { req, context, version, batchId })).ConfigureAwait(false))
+                ? (await ((Task<ShipmentBatch>)method.Invoke(this, new object[] { req, context, batchId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("ShipmentBatchApi_GetShipmentBatchStatus")]
-        public async Task<ActionResult<List<ShipmentImportStatus>>> _GetShipmentBatchStatus([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/shipment/batch/{batchId}/status")]HttpRequest req, ExecutionContext context, decimal version, long batchId)
+        public async Task<ActionResult<List<ShipmentImportStatus>>> _GetShipmentBatchStatus([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18shipment/batch/{batchId}/status")]HttpRequest req, ExecutionContext context, long batchId)
         {
             var method = this.GetType().GetMethod("GetShipmentBatchStatus");
             return method != null
-                ? (await ((Task<List<ShipmentImportStatus>>)method.Invoke(this, new object[] { req, context, version, batchId })).ConfigureAwait(false))
+                ? (await ((Task<List<ShipmentImportStatus>>)method.Invoke(this, new object[] { req, context, batchId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("ShipmentBatchApi_SearchShipmentBatch")]
-        public async Task<ActionResult<List<ShipmentBatch>>> _SearchShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/shipment/batch")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<List<ShipmentBatch>>> _SearchShipmentBatch([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18shipment/batch")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("SearchShipmentBatch");
             return method != null
-                ? (await ((Task<List<ShipmentBatch>>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<List<ShipmentBatch>>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

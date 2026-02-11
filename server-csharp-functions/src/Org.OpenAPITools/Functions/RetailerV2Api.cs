@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class RetailerV2Api
     { 
         [FunctionName("RetailerV2Api_GetRetaokiler")]
-        public async Task<ActionResult<SirqulResponse>> _GetRetaokiler([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/retailer")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _GetRetaokiler([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18retailer")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("GetRetaokiler");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

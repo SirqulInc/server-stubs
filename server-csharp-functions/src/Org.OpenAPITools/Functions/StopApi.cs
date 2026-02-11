@@ -18,20 +18,20 @@ namespace Org.OpenAPITools.Functions
     public partial class StopApi
     { 
         [FunctionName("StopApi_GetStop")]
-        public async Task<ActionResult<Stop>> _GetStop([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/stop/{id}")]HttpRequest req, ExecutionContext context, decimal version, long id)
+        public async Task<ActionResult<Stop>> _GetStop([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18stop/{id}")]HttpRequest req, ExecutionContext context, long id)
         {
             var method = this.GetType().GetMethod("GetStop");
             return method != null
-                ? (await ((Task<Stop>)method.Invoke(this, new object[] { req, context, version, id })).ConfigureAwait(false))
+                ? (await ((Task<Stop>)method.Invoke(this, new object[] { req, context, id })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("StopApi_UpdateStop")]
-        public async Task<ActionResult<Stop>> _UpdateStop([HttpTrigger(AuthorizationLevel.Anonymous, "Put", Route = "api/{version}/stop/{id}")]HttpRequest req, ExecutionContext context, decimal version, long id)
+        public async Task<ActionResult<Stop>> _UpdateStop([HttpTrigger(AuthorizationLevel.Anonymous, "Put", Route = "api/3.18stop/{id}")]HttpRequest req, ExecutionContext context, long id)
         {
             var method = this.GetType().GetMethod("UpdateStop");
             return method != null
-                ? (await ((Task<Stop>)method.Invoke(this, new object[] { req, context, version, id })).ConfigureAwait(false))
+                ? (await ((Task<Stop>)method.Invoke(this, new object[] { req, context, id })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

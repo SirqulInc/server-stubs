@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class PathingApi
     { 
         [FunctionName("PathingApi_ComputePath")]
-        public async Task<ActionResult<PathingResponse>> _ComputePath([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/pathing/compute")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<PathingResponse>> _ComputePath([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18pathing/compute")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("ComputePath");
             return method != null
-                ? (await ((Task<PathingResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<PathingResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class WorkflowApi
     { 
         [FunctionName("WorkflowApi_RunWorkflow")]
-        public async Task<ActionResult<SirqulResponse>> _RunWorkflow([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/workflow/run")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _RunWorkflow([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18workflow/run")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("RunWorkflow");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class StripeApi
     { 
         [FunctionName("StripeApi_CreateStripeCheckoutSession")]
-        public async Task<ActionResult<SirqulResponse>> _CreateStripeCheckoutSession([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/stripe/checkout/session/create")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _CreateStripeCheckoutSession([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18stripe/checkout/session/create")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateStripeCheckoutSession");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

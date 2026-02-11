@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class SimulationApi
     { 
         [FunctionName("SimulationApi_Simulation")]
-        public async Task<ActionResult<SirqulResponse>> _Simulation([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/simulation/routing")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _Simulation([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18simulation/routing")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("Simulation");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

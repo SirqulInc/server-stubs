@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class ActivityApi
     { 
         [FunctionName("ActivityApi_CreateEntityReference")]
-        public async Task<ActionResult<ActivityResponse>> _CreateEntityReference([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/entity/reference")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<ActivityResponse>> _CreateEntityReference([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18entity/reference")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateEntityReference");
             return method != null
-                ? (await ((Task<ActivityResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<ActivityResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

@@ -18,38 +18,38 @@ namespace Org.OpenAPITools.Functions
     public partial class BidApi
     { 
         [FunctionName("BidApi_CreateBid")]
-        public async Task<ActionResult<BidResponse>> _CreateBid([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/bid/create")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<BidResponse>> _CreateBid([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18bid/create")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateBid");
             return method != null
-                ? (await ((Task<BidResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<BidResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("BidApi_DeleteBid")]
-        public async Task<ActionResult<SirqulResponse>> _DeleteBid([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/bid/delete")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _DeleteBid([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18bid/delete")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("DeleteBid");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("BidApi_GetBid")]
-        public async Task<ActionResult<BidResponse>> _GetBid([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/bid/get")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<BidResponse>> _GetBid([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18bid/get")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("GetBid");
             return method != null
-                ? (await ((Task<BidResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<BidResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("BidApi_UpdateBid")]
-        public async Task<ActionResult<BidResponse>> _UpdateBid([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/bid/update")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<BidResponse>> _UpdateBid([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18bid/update")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("UpdateBid");
             return method != null
-                ? (await ((Task<BidResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<BidResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

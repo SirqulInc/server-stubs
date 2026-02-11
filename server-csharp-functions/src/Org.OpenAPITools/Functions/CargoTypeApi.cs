@@ -18,47 +18,47 @@ namespace Org.OpenAPITools.Functions
     public partial class CargoTypeApi
     { 
         [FunctionName("CargoTypeApi_CreateCargoType")]
-        public async Task<ActionResult<CargoType>> _CreateCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/cargo/type")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<CargoType>> _CreateCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18cargo/type")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateCargoType");
             return method != null
-                ? (await ((Task<CargoType>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<CargoType>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("CargoTypeApi_DeleteCargoType")]
-        public async Task<ActionResult<>> _DeleteCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Delete", Route = "api/{version}/cargo/type/{cargoTypeId}")]HttpRequest req, ExecutionContext context, decimal version, long cargoTypeId)
+        public async Task<ActionResult<>> _DeleteCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Delete", Route = "api/3.18cargo/type/{cargoTypeId}")]HttpRequest req, ExecutionContext context, long cargoTypeId)
         {
             var method = this.GetType().GetMethod("DeleteCargoType");
             return method != null
-                ? (await ((Task<>)method.Invoke(this, new object[] { req, context, version, cargoTypeId })).ConfigureAwait(false))
+                ? (await ((Task<>)method.Invoke(this, new object[] { req, context, cargoTypeId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("CargoTypeApi_GetCargoType")]
-        public async Task<ActionResult<CargoType>> _GetCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/cargo/type/{cargoTypeId}")]HttpRequest req, ExecutionContext context, decimal version, long cargoTypeId)
+        public async Task<ActionResult<CargoType>> _GetCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18cargo/type/{cargoTypeId}")]HttpRequest req, ExecutionContext context, long cargoTypeId)
         {
             var method = this.GetType().GetMethod("GetCargoType");
             return method != null
-                ? (await ((Task<CargoType>)method.Invoke(this, new object[] { req, context, version, cargoTypeId })).ConfigureAwait(false))
+                ? (await ((Task<CargoType>)method.Invoke(this, new object[] { req, context, cargoTypeId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("CargoTypeApi_SearchCargoTypes")]
-        public async Task<ActionResult<List<CargoType>>> _SearchCargoTypes([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/cargo/type")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<List<CargoType>>> _SearchCargoTypes([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18cargo/type")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("SearchCargoTypes");
             return method != null
-                ? (await ((Task<List<CargoType>>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<List<CargoType>>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("CargoTypeApi_UpdateCargoType")]
-        public async Task<ActionResult<CargoType>> _UpdateCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Put", Route = "api/{version}/cargo/type/{cargoTypeId}")]HttpRequest req, ExecutionContext context, decimal version, long cargoTypeId)
+        public async Task<ActionResult<CargoType>> _UpdateCargoType([HttpTrigger(AuthorizationLevel.Anonymous, "Put", Route = "api/3.18cargo/type/{cargoTypeId}")]HttpRequest req, ExecutionContext context, long cargoTypeId)
         {
             var method = this.GetType().GetMethod("UpdateCargoType");
             return method != null
-                ? (await ((Task<CargoType>)method.Invoke(this, new object[] { req, context, version, cargoTypeId })).ConfigureAwait(false))
+                ? (await ((Task<CargoType>)method.Invoke(this, new object[] { req, context, cargoTypeId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

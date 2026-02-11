@@ -18,20 +18,20 @@ namespace Org.OpenAPITools.Functions
     public partial class ParticipantsApi
     { 
         [FunctionName("ParticipantsApi_ProcessAllParticipants")]
-        public async Task<ActionResult<SirqulResponse>> _ProcessAllParticipants([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/participant/process/all")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _ProcessAllParticipants([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18participant/process/all")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("ProcessAllParticipants");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("ParticipantsApi_ProcessParticipants")]
-        public async Task<ActionResult<SirqulResponse>> _ProcessParticipants([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/participant/process")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SirqulResponse>> _ProcessParticipants([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18participant/process")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("ProcessParticipants");
             return method != null
-                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SirqulResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

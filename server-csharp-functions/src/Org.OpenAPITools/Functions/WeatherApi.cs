@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class WeatherApi
     { 
         [FunctionName("WeatherApi_SearchWeather")]
-        public async Task<ActionResult<WeatherResponse>> _SearchWeather([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/weather/search")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<WeatherResponse>> _SearchWeather([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18weather/search")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("SearchWeather");
             return method != null
-                ? (await ((Task<WeatherResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<WeatherResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

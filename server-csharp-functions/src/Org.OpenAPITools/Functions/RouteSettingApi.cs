@@ -18,47 +18,47 @@ namespace Org.OpenAPITools.Functions
     public partial class RouteSettingApi
     { 
         [FunctionName("RouteSettingApi_CreateRouteSettings")]
-        public async Task<ActionResult<RouteSettings>> _CreateRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/route/setting")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<RouteSettings>> _CreateRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18route/setting")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("CreateRouteSettings");
             return method != null
-                ? (await ((Task<RouteSettings>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<RouteSettings>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("RouteSettingApi_DeleteRouteSettings")]
-        public async Task<ActionResult<Object>> _DeleteRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Delete", Route = "api/{version}/route/setting/{routeSettingsId}")]HttpRequest req, ExecutionContext context, decimal version, long routeSettingsId)
+        public async Task<ActionResult<Object>> _DeleteRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Delete", Route = "api/3.18route/setting/{routeSettingsId}")]HttpRequest req, ExecutionContext context, long routeSettingsId)
         {
             var method = this.GetType().GetMethod("DeleteRouteSettings");
             return method != null
-                ? (await ((Task<Object>)method.Invoke(this, new object[] { req, context, version, routeSettingsId })).ConfigureAwait(false))
+                ? (await ((Task<Object>)method.Invoke(this, new object[] { req, context, routeSettingsId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("RouteSettingApi_GetRouteSettings")]
-        public async Task<ActionResult<RouteSettings>> _GetRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/route/setting/{routeSettingsId}")]HttpRequest req, ExecutionContext context, decimal version, long routeSettingsId)
+        public async Task<ActionResult<RouteSettings>> _GetRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18route/setting/{routeSettingsId}")]HttpRequest req, ExecutionContext context, long routeSettingsId)
         {
             var method = this.GetType().GetMethod("GetRouteSettings");
             return method != null
-                ? (await ((Task<RouteSettings>)method.Invoke(this, new object[] { req, context, version, routeSettingsId })).ConfigureAwait(false))
+                ? (await ((Task<RouteSettings>)method.Invoke(this, new object[] { req, context, routeSettingsId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("RouteSettingApi_SearchRouteSettings")]
-        public async Task<ActionResult<List<RouteSettings>>> _SearchRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/route/setting")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<List<RouteSettings>>> _SearchRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18route/setting")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("SearchRouteSettings");
             return method != null
-                ? (await ((Task<List<RouteSettings>>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<List<RouteSettings>>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("RouteSettingApi_UpdateRouteSettings")]
-        public async Task<ActionResult<RouteSettings>> _UpdateRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Put", Route = "api/{version}/route/setting/{routeSettingsId}")]HttpRequest req, ExecutionContext context, decimal version, long routeSettingsId)
+        public async Task<ActionResult<RouteSettings>> _UpdateRouteSettings([HttpTrigger(AuthorizationLevel.Anonymous, "Put", Route = "api/3.18route/setting/{routeSettingsId}")]HttpRequest req, ExecutionContext context, long routeSettingsId)
         {
             var method = this.GetType().GetMethod("UpdateRouteSettings");
             return method != null
-                ? (await ((Task<RouteSettings>)method.Invoke(this, new object[] { req, context, version, routeSettingsId })).ConfigureAwait(false))
+                ? (await ((Task<RouteSettings>)method.Invoke(this, new object[] { req, context, routeSettingsId })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

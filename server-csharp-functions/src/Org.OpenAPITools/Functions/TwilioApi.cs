@@ -18,11 +18,11 @@ namespace Org.OpenAPITools.Functions
     public partial class TwilioApi
     { 
         [FunctionName("TwilioApi_SmsBuyOffer")]
-        public async Task<ActionResult<TwiMLResponse>> _SmsBuyOffer([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/sms/buyoffer/{appKey}")]HttpRequest req, ExecutionContext context, decimal version, string appKey)
+        public async Task<ActionResult<TwiMLResponse>> _SmsBuyOffer([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18sms/buyoffer/{appKey}")]HttpRequest req, ExecutionContext context, string appKey)
         {
             var method = this.GetType().GetMethod("SmsBuyOffer");
             return method != null
-                ? (await ((Task<TwiMLResponse>)method.Invoke(this, new object[] { req, context, version, appKey })).ConfigureAwait(false))
+                ? (await ((Task<TwiMLResponse>)method.Invoke(this, new object[] { req, context, appKey })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }

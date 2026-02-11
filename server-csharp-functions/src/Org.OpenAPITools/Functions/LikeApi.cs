@@ -18,29 +18,29 @@ namespace Org.OpenAPITools.Functions
     public partial class LikeApi
     { 
         [FunctionName("LikeApi_RegisterLike")]
-        public async Task<ActionResult<LikableResponse>> _RegisterLike([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/like")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<LikableResponse>> _RegisterLike([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18like")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("RegisterLike");
             return method != null
-                ? (await ((Task<LikableResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<LikableResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("LikeApi_RemoveLike")]
-        public async Task<ActionResult<LikableResponse>> _RemoveLike([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/{version}/like/delete")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<LikableResponse>> _RemoveLike([HttpTrigger(AuthorizationLevel.Anonymous, "Post", Route = "api/3.18like/delete")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("RemoveLike");
             return method != null
-                ? (await ((Task<LikableResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<LikableResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
 
         [FunctionName("LikeApi_SearchLikes")]
-        public async Task<ActionResult<SearchResponse>> _SearchLikes([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/{version}/like/search")]HttpRequest req, ExecutionContext context, decimal version)
+        public async Task<ActionResult<SearchResponse>> _SearchLikes([HttpTrigger(AuthorizationLevel.Anonymous, "Get", Route = "api/3.18like/search")]HttpRequest req, ExecutionContext context)
         {
             var method = this.GetType().GetMethod("SearchLikes");
             return method != null
-                ? (await ((Task<SearchResponse>)method.Invoke(this, new object[] { req, context, version })).ConfigureAwait(false))
+                ? (await ((Task<SearchResponse>)method.Invoke(this, new object[] { req, context })).ConfigureAwait(false))
                 : new StatusCodeResult((int)HttpStatusCode.NotImplemented);
         }
     }
