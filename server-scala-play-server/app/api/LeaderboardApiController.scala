@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.LeaderboardResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class LeaderboardApiController @Inject()(cc: ControllerComponents, api: LeaderboardApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/leaderboard/create?accountId=[value]&appKey=[value]&rankType=[value]&leaderboardMode=[value]&iconMedia=[value]&iconAssetId=[value]&bannerMedia=[value]&bannerAssetId=[value]&limitation=[value]&sortField=[value]&title=[value]&description=[value]&metaData=[value]
+    * POST /api/3.18/leaderboard/create?accountId=[value]&appKey=[value]&rankType=[value]&leaderboardMode=[value]&iconMedia=[value]&iconAssetId=[value]&bannerMedia=[value]&bannerAssetId=[value]&limitation=[value]&sortField=[value]&title=[value]&description=[value]&metaData=[value]
     */
-  def createLeaderboard(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createLeaderboard(): Action[AnyContent] = Action { request =>
     def executeApi(): LeaderboardResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -47,7 +46,7 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
         
       val metaData = request.getQueryString("metaData")
         
-      api.createLeaderboard(version, accountId, appKey, rankType, leaderboardMode, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, sortField, title, description, metaData)
+      api.createLeaderboard(accountId, appKey, rankType, leaderboardMode, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, sortField, title, description, metaData)
     }
 
     val result = executeApi()
@@ -56,9 +55,9 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
   }
 
   /**
-    * POST /api/:version/leaderboard/delete?accountId=[value]&leaderboardId=[value]
+    * POST /api/3.18/leaderboard/delete?accountId=[value]&leaderboardId=[value]
     */
-  def deleteLeaderboard(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteLeaderboard(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -69,7 +68,7 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
           throw new OpenApiExceptions.MissingRequiredParameterException("leaderboardId", "query string")
         }
         
-      api.deleteLeaderboard(version, leaderboardId, accountId)
+      api.deleteLeaderboard(leaderboardId, accountId)
     }
 
     val result = executeApi()
@@ -78,9 +77,9 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
   }
 
   /**
-    * GET /api/:version/leaderboard/get?accountId=[value]&leaderboardId=[value]&includeFullRankingList=[value]
+    * GET /api/3.18/leaderboard/get?accountId=[value]&leaderboardId=[value]&includeFullRankingList=[value]
     */
-  def getLeaderboard(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getLeaderboard(): Action[AnyContent] = Action { request =>
     def executeApi(): LeaderboardResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -94,7 +93,7 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
       val includeFullRankingList = request.getQueryString("includeFullRankingList")
         .map(value => value.toBoolean)
         
-      api.getLeaderboard(version, leaderboardId, accountId, includeFullRankingList)
+      api.getLeaderboard(leaderboardId, accountId, includeFullRankingList)
     }
 
     val result = executeApi()
@@ -103,9 +102,9 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
   }
 
   /**
-    * GET /api/:version/leaderboard/search?accountId=[value]&appKey=[value]&globalOnly=[value]&keyword=[value]&leaderboardIds=[value]&rankTypes=[value]&sortField=[value]&descending=[value]&includeInactive=[value]&includeAppResponse=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/leaderboard/search?accountId=[value]&appKey=[value]&globalOnly=[value]&keyword=[value]&leaderboardIds=[value]&rankTypes=[value]&sortField=[value]&descending=[value]&includeInactive=[value]&includeAppResponse=[value]&start=[value]&limit=[value]
     */
-  def searchLeaderboards(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchLeaderboards(): Action[AnyContent] = Action { request =>
     def executeApi(): LeaderboardResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -138,7 +137,7 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchLeaderboards(version, accountId, appKey, globalOnly, keyword, leaderboardIds, rankTypes, sortField, descending, includeInactive, includeAppResponse, start, limit)
+      api.searchLeaderboards(accountId, appKey, globalOnly, keyword, leaderboardIds, rankTypes, sortField, descending, includeInactive, includeAppResponse, start, limit)
     }
 
     val result = executeApi()
@@ -147,9 +146,9 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
   }
 
   /**
-    * POST /api/:version/leaderboard/update?accountId=[value]&appKey=[value]&leaderboardId=[value]&rankType=[value]&leaderboardMode=[value]&sortField=[value]&iconMedia=[value]&iconAssetId=[value]&bannerMedia=[value]&bannerAssetId=[value]&limitation=[value]&active=[value]&title=[value]&description=[value]&metaData=[value]
+    * POST /api/3.18/leaderboard/update?accountId=[value]&appKey=[value]&leaderboardId=[value]&rankType=[value]&leaderboardMode=[value]&sortField=[value]&iconMedia=[value]&iconAssetId=[value]&bannerMedia=[value]&bannerAssetId=[value]&limitation=[value]&active=[value]&title=[value]&description=[value]&metaData=[value]
     */
-  def updateLeaderboard(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateLeaderboard(): Action[AnyContent] = Action { request =>
     def executeApi(): LeaderboardResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -190,7 +189,7 @@ class LeaderboardApiController @Inject()(cc: ControllerComponents, api: Leaderbo
         
       val metaData = request.getQueryString("metaData")
         
-      api.updateLeaderboard(version, leaderboardId, accountId, appKey, rankType, leaderboardMode, sortField, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, active, title, description, metaData)
+      api.updateLeaderboard(leaderboardId, accountId, appKey, rankType, leaderboardMode, sortField, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, active, title, description, metaData)
     }
 
     val result = executeApi()

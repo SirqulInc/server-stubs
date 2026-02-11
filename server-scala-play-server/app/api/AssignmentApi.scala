@@ -4,10 +4,9 @@ import play.api.libs.json._
 import model.AccountMiniResponse
 import model.AssignmentResponse
 import model.AssignmentStatusResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait AssignmentApi {
   /**
     * Search Assignment Assignees
@@ -15,7 +14,7 @@ trait AssignmentApi {
     * @param accountId The account id sending the request
     * @param keyword The keyword to filter the returned results
     */
-  def assigmentAssigneeAccountSearch(version: BigDecimal, accountId: Long, keyword: Option[String]): List[AccountMiniResponse]
+  def assigmentAssigneeAccountSearch(accountId: Long, keyword: Option[String]): List[AccountMiniResponse]
 
   /**
     * Create Assignment
@@ -28,7 +27,7 @@ trait AssignmentApi {
     * @param tags the tags
     * @param active determines whether the assignment is active or inactive
     */
-  def assignmentCreate(version: BigDecimal, accountId: Long, name: String, assigneeAccountId: Long, description: Option[String], retailerLocationId: Option[Long], tags: Option[String], active: Option[Boolean]): AssignmentResponse
+  def assignmentCreate(accountId: Long, name: String, assigneeAccountId: Long, description: Option[String], retailerLocationId: Option[Long], tags: Option[String], active: Option[Boolean]): AssignmentResponse
 
   /**
     * Delete Assignment
@@ -36,7 +35,7 @@ trait AssignmentApi {
     * @param accountId the user account id
     * @param assignmentId the assignment id
     */
-  def assignmentDelete(version: BigDecimal, accountId: Long, assignmentId: Long): SirqulResponse
+  def assignmentDelete(accountId: Long, assignmentId: Long): SirqulResponse
 
   /**
     * Get Assignment
@@ -44,7 +43,7 @@ trait AssignmentApi {
     * @param accountId the user account id
     * @param assignmentId the assignment id
     */
-  def assignmentGet(version: BigDecimal, accountId: Long, assignmentId: Long): AssignmentResponse
+  def assignmentGet(accountId: Long, assignmentId: Long): AssignmentResponse
 
   /**
     * Search Assignments
@@ -61,7 +60,7 @@ trait AssignmentApi {
     * @param currentStatusType filter results by assignment status
     * @param keyword filter results by keyword search that matches the assignee, creator, or retailer location name
     */
-  def assignmentSearch(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, creatorAccountId: Option[Long], assigneeAccountIds: Option[String], retailerLocationIds: Option[String], currentStatusType: Option[String], keyword: Option[String]): List[AssignmentResponse]
+  def assignmentSearch(accountId: Long, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, creatorAccountId: Option[Long], assigneeAccountIds: Option[String], retailerLocationIds: Option[String], currentStatusType: Option[String], keyword: Option[String]): List[AssignmentResponse]
 
   /**
     * Create Assignment Status
@@ -78,7 +77,7 @@ trait AssignmentApi {
     * @param followUp the date to follow up by
     * @param active determines whether the assignment status is active or inactive
     */
-  def assignmentStatusCreate(version: BigDecimal, accountId: Long, assignmentId: Long, scheduledNotificationId: Option[Long], toDo: Option[String], connection: Option[String], method: Option[String], status: Option[String], closure: Option[String], message: Option[String], followUp: Option[Long], active: Option[Boolean]): AssignmentStatusResponse
+  def assignmentStatusCreate(accountId: Long, assignmentId: Long, scheduledNotificationId: Option[Long], toDo: Option[String], connection: Option[String], method: Option[String], status: Option[String], closure: Option[String], message: Option[String], followUp: Option[Long], active: Option[Boolean]): AssignmentStatusResponse
 
   /**
     * Deletes Assignment Status
@@ -86,7 +85,7 @@ trait AssignmentApi {
     * @param accountId the user account id
     * @param assignmentStatusId the assignment status id
     */
-  def assignmentStatusDelete(version: BigDecimal, accountId: Long, assignmentStatusId: Long): SirqulResponse
+  def assignmentStatusDelete(accountId: Long, assignmentStatusId: Long): SirqulResponse
 
   /**
     * Get Assignment Status
@@ -94,7 +93,7 @@ trait AssignmentApi {
     * @param accountId the user account id
     * @param assignmentStatusId the assignment status id
     */
-  def assignmentStatusGet(version: BigDecimal, accountId: Long, assignmentStatusId: Long): AssignmentStatusResponse
+  def assignmentStatusGet(accountId: Long, assignmentStatusId: Long): AssignmentStatusResponse
 
   /**
     * Search Assignment Statuses
@@ -112,7 +111,7 @@ trait AssignmentApi {
     * @param statusType filter results by the status type
     * @param keyword filter results by keyword search
     */
-  def assignmentStatusSearch(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, assignmentId: Option[Long], creatorAccountId: Option[Long], assigneeAccountId: Option[Long], retailerLocationId: Option[Long], statusType: Option[String], keyword: Option[String]): List[AssignmentStatusResponse]
+  def assignmentStatusSearch(accountId: Long, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, assignmentId: Option[Long], creatorAccountId: Option[Long], assigneeAccountId: Option[Long], retailerLocationId: Option[Long], statusType: Option[String], keyword: Option[String]): List[AssignmentStatusResponse]
 
   /**
     * Update Assignment Status
@@ -129,7 +128,7 @@ trait AssignmentApi {
     * @param followUp the date to follow up by
     * @param active determines whether the assignment status is active or inactive
     */
-  def assignmentStatusUpdate(version: BigDecimal, accountId: Long, assignmentStatusId: Long, scheduledNotificationId: Option[Long], toDo: Option[String], connection: Option[String], method: Option[String], status: Option[String], closure: Option[String], message: Option[String], followUp: Option[Long], active: Option[Boolean]): AssignmentStatusResponse
+  def assignmentStatusUpdate(accountId: Long, assignmentStatusId: Long, scheduledNotificationId: Option[Long], toDo: Option[String], connection: Option[String], method: Option[String], status: Option[String], closure: Option[String], message: Option[String], followUp: Option[Long], active: Option[Boolean]): AssignmentStatusResponse
 
   /**
     * Update Assignment
@@ -143,5 +142,5 @@ trait AssignmentApi {
     * @param tags the tags
     * @param active determines whether the assignment is active or inactive
     */
-  def assignmentUpdate(version: BigDecimal, accountId: Long, assignmentId: Long, name: Option[String], description: Option[String], assigneeAccountId: Option[Long], retailerLocationId: Option[Long], tags: Option[String], active: Option[Boolean]): AssignmentResponse
+  def assignmentUpdate(accountId: Long, assignmentId: Long, name: Option[String], description: Option[String], assigneeAccountId: Option[Long], retailerLocationId: Option[Long], tags: Option[String], active: Option[Boolean]): AssignmentResponse
 }

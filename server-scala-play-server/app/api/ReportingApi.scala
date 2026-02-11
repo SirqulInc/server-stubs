@@ -1,14 +1,13 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.RegionLegSummary
 import model.ReportBatchResponse
 import model.ReportRegionLegSummaryBatchResponse
 import model.ReportResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ReportingApi {
   /**
     * Create Offline Report
@@ -25,13 +24,13 @@ trait ReportingApi {
     * @param description the description of the batch report
     * @param pageUrl 
     */
-  def createBatch(version: BigDecimal, accountId: Long, status: String, previewLimit: Int, appKey: Option[String], endpoint: Option[String], parameters: Option[String], name: Option[String], startDate: Option[Long], endDate: Option[Long], description: Option[String], pageUrl: Option[String]): ReportBatchResponse
+  def createBatch(accountId: Long, status: String, previewLimit: Int, appKey: Option[String], endpoint: Option[String], parameters: Option[String], name: Option[String], startDate: Option[Long], endDate: Option[Long], description: Option[String], pageUrl: Option[String]): ReportBatchResponse
 
   /**
     * Create Offline Report
     * Create an entry for the batch for offline report
     */
-  def createRegionLegSummaryBatch(version: BigDecimal, body: Option[List[RegionLegSummary]]): ReportRegionLegSummaryBatchResponse
+  def createRegionLegSummaryBatch(body: Option[List[RegionLegSummary]]): ReportRegionLegSummaryBatchResponse
 
   /**
     * Delete Offline Report
@@ -39,7 +38,7 @@ trait ReportingApi {
     * @param accountId the id of the account
     * @param batchId the id of the batch to delete
     */
-  def deleteBatch(version: BigDecimal, accountId: Long, batchId: Long): SirqulResponse
+  def deleteBatch(accountId: Long, batchId: Long): SirqulResponse
 
   /**
     * Get Offline Report
@@ -48,7 +47,7 @@ trait ReportingApi {
     * @param batchId returned by /report/batch/create
     * @param allResults whether to return all batch results or not
     */
-  def getReportBatch(version: BigDecimal, accountId: Long, batchId: Long, allResults: Boolean): ReportBatchResponse
+  def getReportBatch(accountId: Long, batchId: Long, allResults: Boolean): ReportBatchResponse
 
   /**
     * Run Report
@@ -62,7 +61,7 @@ trait ReportingApi {
     * @param limit The limit of the pagination
     * @param responseFormat Determines what response format to return. Options are: JSON or CSV
     */
-  def runReport(version: BigDecimal, desc: Boolean, accountId: Option[Long], query: Option[String], parameters: Option[String], order: Option[String], start: Option[Long], limit: Option[Long], responseFormat: Option[String]): ReportResponse
+  def runReport(desc: Boolean, accountId: Option[Long], query: Option[String], parameters: Option[String], order: Option[String], start: Option[Long], limit: Option[Long], responseFormat: Option[String]): ReportResponse
 
   /**
     * Search Offline Reports
@@ -77,5 +76,5 @@ trait ReportingApi {
     * @param startDate the start date of the report batch to search on
     * @param endDate the end date of the report batch to search on
     */
-  def searchBatch(version: BigDecimal, accountId: Long, start: Int, limit: Int, names: Option[String], appKey: Option[String], status: Option[String], globalAppSearch: Option[Boolean], startDate: Option[Long], endDate: Option[Long]): List[ReportBatchResponse]
+  def searchBatch(accountId: Long, start: Int, limit: Int, names: Option[String], appKey: Option[String], status: Option[String], globalAppSearch: Option[Boolean], startDate: Option[Long], endDate: Option[Long]): List[ReportBatchResponse]
 }

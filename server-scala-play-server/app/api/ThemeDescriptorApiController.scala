@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PurchaseItemListResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 import model.ThemeDescriptorResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: ThemeDescriptorApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/consumer/theme?deviceId=[value]&accountId=[value]&gameType=[value]&themeDescriptorId=[value]&title=[value]&description=[value]&publicRead=[value]&publicWrite=[value]&publicDelete=[value]&publicAdd=[value]&visibility=[value]&connectionIdsToAdd=[value]&connectionGroupIdsToAdd=[value]&includeFriendGroup=[value]&appVersion=[value]&colorValueJson=[value]&stringReplacerJson=[value]&customJsonObjects=[value]&iconImage=[value]&sceneAtlasImage=[value]&bgImage=[value]&bgSound=[value]&musicSelection=[value]&completeWithDefaultValues=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/theme?deviceId=[value]&accountId=[value]&gameType=[value]&themeDescriptorId=[value]&title=[value]&description=[value]&publicRead=[value]&publicWrite=[value]&publicDelete=[value]&publicAdd=[value]&visibility=[value]&connectionIdsToAdd=[value]&connectionGroupIdsToAdd=[value]&includeFriendGroup=[value]&appVersion=[value]&colorValueJson=[value]&stringReplacerJson=[value]&customJsonObjects=[value]&iconImage=[value]&sceneAtlasImage=[value]&bgImage=[value]&bgSound=[value]&musicSelection=[value]&completeWithDefaultValues=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]
     */
-  def addOrUpdateThemeDescriptor(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addOrUpdateThemeDescriptor(): Action[AnyContent] = Action { request =>
     def executeApi(): ThemeDescriptorResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -103,7 +102,7 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.addOrUpdateThemeDescriptor(version, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, completeWithDefaultValues, deviceId, accountId, gameType, themeDescriptorId, title, description, connectionIdsToAdd, connectionGroupIdsToAdd, appVersion, colorValueJson, stringReplacerJson, customJsonObjects, iconImage, sceneAtlasImage, bgImage, bgSound, musicSelection, locationDescription, latitude, longitude)
+      api.addOrUpdateThemeDescriptor(publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, completeWithDefaultValues, deviceId, accountId, gameType, themeDescriptorId, title, description, connectionIdsToAdd, connectionGroupIdsToAdd, appVersion, colorValueJson, stringReplacerJson, customJsonObjects, iconImage, sceneAtlasImage, bgImage, bgSound, musicSelection, locationDescription, latitude, longitude)
     }
 
     val result = executeApi()
@@ -112,9 +111,9 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
   }
 
   /**
-    * GET /api/:version/consumer/theme/get?deviceId=[value]&accountId=[value]&gameType=[value]&themeDescriptorId=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/consumer/theme/get?deviceId=[value]&accountId=[value]&gameType=[value]&themeDescriptorId=[value]&latitude=[value]&longitude=[value]
     */
-  def getThemeDescriptor(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getThemeDescriptor(): Action[AnyContent] = Action { request =>
     def executeApi(): PurchaseItemListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -135,7 +134,7 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getThemeDescriptor(version, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude)
+      api.getThemeDescriptor(themeDescriptorId, deviceId, accountId, gameType, latitude, longitude)
     }
 
     val result = executeApi()
@@ -144,9 +143,9 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
   }
 
   /**
-    * GET /api/:version/consumer/theme/search?deviceId=[value]&accountId=[value]&gameType=[value]&contestType=[value]&ownerId=[value]&q=[value]&keyword=[value]&filter=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&dateCreated=[value]&appVersion=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/consumer/theme/search?deviceId=[value]&accountId=[value]&gameType=[value]&contestType=[value]&ownerId=[value]&q=[value]&keyword=[value]&filter=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&dateCreated=[value]&appVersion=[value]&latitude=[value]&longitude=[value]
     */
-  def getThemeDescriptors(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getThemeDescriptors(): Action[AnyContent] = Action { request =>
     def executeApi(): PurchaseItemListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -209,7 +208,7 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getThemeDescriptors(version, filter, sortField, descending, start, limit, deviceId, accountId, gameType, contestType, ownerId, q, keyword, i, l, dateCreated, appVersion, latitude, longitude)
+      api.getThemeDescriptors(filter, sortField, descending, start, limit, deviceId, accountId, gameType, contestType, ownerId, q, keyword, i, l, dateCreated, appVersion, latitude, longitude)
     }
 
     val result = executeApi()
@@ -218,9 +217,9 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
   }
 
   /**
-    * POST /api/:version/consumer/theme/remove?deviceId=[value]&accountId=[value]&gameType=[value]&themeDescriptorId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/theme/remove?deviceId=[value]&accountId=[value]&gameType=[value]&themeDescriptorId=[value]&latitude=[value]&longitude=[value]
     */
-  def removeThemeDescriptor(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeThemeDescriptor(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -241,7 +240,7 @@ class ThemeDescriptorApiController @Inject()(cc: ControllerComponents, api: Them
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeThemeDescriptor(version, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude)
+      api.removeThemeDescriptor(themeDescriptorId, deviceId, accountId, gameType, latitude, longitude)
     }
 
     val result = executeApi()

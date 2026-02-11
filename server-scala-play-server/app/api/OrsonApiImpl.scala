@@ -1,6 +1,5 @@
 package api
 
-import model.BigDecimal
 import model.OrsonAiAddMovieResponse
 import model.OrsonAiBatchResponse
 import model.OrsonAiEmotionsResponse
@@ -17,12 +16,12 @@ import play.api.libs.Files.TemporaryFile
 /**
   * Provides a default implementation for [[OrsonApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def addMovie(version: BigDecimal, accountId: Long, movieName: String, thirdPartyAccountId: Option[String], tags: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiAddMovieResponse = {
+  override def addMovie(accountId: Long, movieName: String, thirdPartyAccountId: Option[String], tags: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiAddMovieResponse = {
     // TODO: Implement better logic
 
     OrsonAiAddMovieResponse(None, None, None, None, None)
@@ -31,7 +30,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def aiDocs(version: BigDecimal, accountId: Long, doc: String, returnTopics: Option[Boolean], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse = {
+  override def aiDocs(accountId: Long, doc: String, returnTopics: Option[Boolean], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse = {
     // TODO: Implement better logic
 
     OrsonAiProtoResponse(None, None)
@@ -40,7 +39,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def aiFindImages(version: BigDecimal, accountId: Long, text: String, parseFlag: Option[String], fetchFlag: Option[String], size: Option[String]): OrsonAiProtoResponse = {
+  override def aiFindImages(accountId: Long, text: String, parseFlag: Option[String], fetchFlag: Option[String], size: Option[String]): OrsonAiProtoResponse = {
     // TODO: Implement better logic
 
     OrsonAiProtoResponse(None, None)
@@ -49,7 +48,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def aiTags(version: BigDecimal, accountId: Long, tags: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse = {
+  override def aiTags(accountId: Long, tags: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse = {
     // TODO: Implement better logic
 
     OrsonAiProtoResponse(None, None)
@@ -58,7 +57,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def aiText(version: BigDecimal, accountId: Long, terms: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse = {
+  override def aiText(accountId: Long, terms: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse = {
     // TODO: Implement better logic
 
     OrsonAiProtoResponse(None, None)
@@ -67,7 +66,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def batch(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], limit: Option[Int], operations: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiBatchResponse = {
+  override def batch(accountId: Long, thirdPartyAccountId: Option[String], limit: Option[Int], operations: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiBatchResponse = {
     // TODO: Implement better logic
 
     OrsonAiBatchResponse(None, None, None, None, None, None)
@@ -76,7 +75,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def createInstantEpisode(version: BigDecimal, accountId: Long, data: String): OrsonEpisodeResponse = {
+  override def createInstantEpisode(accountId: Long, data: String): OrsonEpisodeResponse = {
     // TODO: Implement better logic
 
     OrsonEpisodeResponse(None, None, None, None, None, None)
@@ -85,7 +84,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def createVoiceCanvas(version: BigDecimal, accountId: Long, dimensions: String, thirdPartyAccountId: Option[String], text: Option[String], file: Option[TemporaryFile], url: Option[String], parseFlag: Option[Boolean], fetchFlag: Option[Boolean], callback: Option[String]): OrsonAiVoiceCanvasResponse = {
+  override def createVoiceCanvas(accountId: Long, dimensions: String, thirdPartyAccountId: Option[String], text: Option[String], file: Option[TemporaryFile], url: Option[String], parseFlag: Option[Boolean], fetchFlag: Option[Boolean], callback: Option[String]): OrsonAiVoiceCanvasResponse = {
     // TODO: Implement better logic
 
     OrsonAiVoiceCanvasResponse(None, None, None, None)
@@ -94,7 +93,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def emotion(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiEmotionsResponse = {
+  override def emotion(accountId: Long, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiEmotionsResponse = {
     // TODO: Implement better logic
 
     OrsonAiEmotionsResponse(None, None, None, None, None, None, None)
@@ -103,7 +102,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getAddMovieResult(version: BigDecimal, requestId: String, accountId: Long): OrsonAiAddMovieResponse = {
+  override def getAddMovieResult(requestId: String, accountId: Long): OrsonAiAddMovieResponse = {
     // TODO: Implement better logic
 
     OrsonAiAddMovieResponse(None, None, None, None, None)
@@ -112,7 +111,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getBatch(version: BigDecimal, requestId: String, accountId: Long): OrsonAiBatchResponse = {
+  override def getBatch(requestId: String, accountId: Long): OrsonAiBatchResponse = {
     // TODO: Implement better logic
 
     OrsonAiBatchResponse(None, None, None, None, None, None)
@@ -121,7 +120,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getEmotion(version: BigDecimal, requestId: String, accountId: Long): OrsonAiEmotionsResponse = {
+  override def getEmotion(requestId: String, accountId: Long): OrsonAiEmotionsResponse = {
     // TODO: Implement better logic
 
     OrsonAiEmotionsResponse(None, None, None, None, None, None, None)
@@ -130,7 +129,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getEpisodeStatus(version: BigDecimal, episodeId: Long, accountId: Long): OrsonEpisodeResponse = {
+  override def getEpisodeStatus(episodeId: Long, accountId: Long): OrsonEpisodeResponse = {
     // TODO: Implement better logic
 
     OrsonEpisodeResponse(None, None, None, None, None, None)
@@ -139,7 +138,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getRenderStatus(version: BigDecimal, renderId: String, accountId: Long): OrsonRenderResponse = {
+  override def getRenderStatus(renderId: String, accountId: Long): OrsonRenderResponse = {
     // TODO: Implement better logic
 
     OrsonRenderResponse(None, None, None, None, None, None, None, None)
@@ -148,7 +147,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getSTT(version: BigDecimal, requestId: String, accountId: Long): OrsonAiSTTResponse = {
+  override def getSTT(requestId: String, accountId: Long): OrsonAiSTTResponse = {
     // TODO: Implement better logic
 
     OrsonAiSTTResponse(None, None, None, None)
@@ -157,7 +156,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getTTS(version: BigDecimal, requestId: String, accountId: Long): OrsonAiTTSResponse = {
+  override def getTTS(requestId: String, accountId: Long): OrsonAiTTSResponse = {
     // TODO: Implement better logic
 
     OrsonAiTTSResponse(None, None, None, None)
@@ -166,7 +165,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getTechTune(version: BigDecimal, requestId: String, accountId: Long): OrsonAiTechTuneResponse = {
+  override def getTechTune(requestId: String, accountId: Long): OrsonAiTechTuneResponse = {
     // TODO: Implement better logic
 
     OrsonAiTechTuneResponse(None, None, None, None, None, None, None, None, None, None, None, None)
@@ -175,7 +174,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getTopics(version: BigDecimal, requestId: String, accountId: Long): OrsonAiTopicsResponse = {
+  override def getTopics(requestId: String, accountId: Long): OrsonAiTopicsResponse = {
     // TODO: Implement better logic
 
     OrsonAiTopicsResponse(None, None, None, None)
@@ -184,7 +183,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def getVoiceCanvas(version: BigDecimal, requestId: String, accountId: Long): OrsonAiVoiceCanvasResponse = {
+  override def getVoiceCanvas(requestId: String, accountId: Long): OrsonAiVoiceCanvasResponse = {
     // TODO: Implement better logic
 
     OrsonAiVoiceCanvasResponse(None, None, None, None)
@@ -193,7 +192,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def startVideoRender(version: BigDecimal, accountId: Long, data: String): OrsonRenderResponse = {
+  override def startVideoRender(accountId: Long, data: String): OrsonRenderResponse = {
     // TODO: Implement better logic
 
     OrsonRenderResponse(None, None, None, None, None, None, None, None)
@@ -202,7 +201,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def stt(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], sourceLanguage: Option[String], targetLanguage: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiSTTResponse = {
+  override def stt(accountId: Long, thirdPartyAccountId: Option[String], sourceLanguage: Option[String], targetLanguage: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiSTTResponse = {
     // TODO: Implement better logic
 
     OrsonAiSTTResponse(None, None, None, None)
@@ -211,7 +210,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def summarizeTopics(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], doc: Option[String], file: Option[TemporaryFile], url: Option[String], limit: Option[Int], offset: Option[Int], callback: Option[String]): OrsonAiTopicsResponse = {
+  override def summarizeTopics(accountId: Long, thirdPartyAccountId: Option[String], doc: Option[String], file: Option[TemporaryFile], url: Option[String], limit: Option[Int], offset: Option[Int], callback: Option[String]): OrsonAiTopicsResponse = {
     // TODO: Implement better logic
 
     OrsonAiTopicsResponse(None, None, None, None)
@@ -220,7 +219,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def techTune(version: BigDecimal, accountId: Long, numFacesExpected: Int, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiTechTuneResponse = {
+  override def techTune(accountId: Long, numFacesExpected: Int, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiTechTuneResponse = {
     // TODO: Implement better logic
 
     OrsonAiTechTuneResponse(None, None, None, None, None, None, None, None, None, None, None, None)
@@ -229,7 +228,7 @@ class OrsonApiImpl extends OrsonApi {
   /**
     * @inheritdoc
     */
-  override def tts(version: BigDecimal, accountId: Long, text: String, thirdPartyAccountId: Option[String], language: Option[String], voice: Option[String], callback: Option[String]): OrsonAiTTSResponse = {
+  override def tts(accountId: Long, text: String, thirdPartyAccountId: Option[String], language: Option[String], voice: Option[String], callback: Option[String]): OrsonAiTTSResponse = {
     // TODO: Implement better logic
 
     OrsonAiTTSResponse(None, None, None, None)

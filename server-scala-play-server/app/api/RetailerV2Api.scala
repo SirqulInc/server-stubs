@@ -1,10 +1,9 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait RetailerV2Api {
   /**
     * Get Retailer
@@ -16,5 +15,5 @@ trait RetailerV2Api {
     * @param start the start of the index and/or pagination
     * @param limit the limit of the index and/or pagination
     */
-  def getRetaokiler(version: BigDecimal, retailerId: Long, activeOnly: Boolean, keyword: Option[String], sortField: Option[String], start: Option[Long], limit: Option[Long]): SirqulResponse
+  def getRetaokiler(retailerId: Long, activeOnly: Boolean, keyword: Option[String], sortField: Option[String], start: Option[Long], limit: Option[Long]): SirqulResponse
 }

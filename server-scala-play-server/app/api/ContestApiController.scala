@@ -6,16 +6,15 @@ import play.api.libs.json._
 import play.api.mvc._
 import model.AlbumContestListResponse
 import model.AlbumContestResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/consumer/album/contest?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&contestType=[value]&albumContestId=[value]&title=[value]&description=[value]&albumId1=[value]&removeAlbum1=[value]&albumId2=[value]&removeAlbum2=[value]&startDate=[value]&endDate=[value]&publicRead=[value]&publicWrite=[value]&publicDelete=[value]&publicAdd=[value]&locationDescription=[value]&visibility=[value]&connectionIdsToAdd=[value]&connectionGroupIdsToAdd=[value]&includeFriendGroup=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/album/contest?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&contestType=[value]&albumContestId=[value]&title=[value]&description=[value]&albumId1=[value]&removeAlbum1=[value]&albumId2=[value]&removeAlbum2=[value]&startDate=[value]&endDate=[value]&publicRead=[value]&publicWrite=[value]&publicDelete=[value]&publicAdd=[value]&locationDescription=[value]&visibility=[value]&connectionIdsToAdd=[value]&connectionGroupIdsToAdd=[value]&includeFriendGroup=[value]&latitude=[value]&longitude=[value]
     */
-  def addOrUpdateAlbumContest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addOrUpdateAlbumContest(): Action[AnyContent] = Action { request =>
     def executeApi(): AlbumContestResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -100,7 +99,7 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.addOrUpdateAlbumContest(version, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, deviceId, accountId, gameType, appKey, contestType, albumContestId, title, description, albumId1, removeAlbum1, albumId2, removeAlbum2, startDate, endDate, locationDescription, connectionIdsToAdd, connectionGroupIdsToAdd, latitude, longitude)
+      api.addOrUpdateAlbumContest(publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, deviceId, accountId, gameType, appKey, contestType, albumContestId, title, description, albumId1, removeAlbum1, albumId2, removeAlbum2, startDate, endDate, locationDescription, connectionIdsToAdd, connectionGroupIdsToAdd, latitude, longitude)
     }
 
     val result = executeApi()
@@ -109,9 +108,9 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
   }
 
   /**
-    * POST /api/:version/consumer/album/contest/approve?deviceId=[value]&accountId=[value]&albumContestId=[value]&approvalStatus=[value]
+    * POST /api/3.18/consumer/album/contest/approve?deviceId=[value]&accountId=[value]&albumContestId=[value]&approvalStatus=[value]
     */
-  def approveAlbumContest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def approveAlbumContest(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -129,7 +128,7 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("approvalStatus", "query string")
         }
         
-      api.approveAlbumContest(version, albumContestId, approvalStatus, deviceId, accountId)
+      api.approveAlbumContest(albumContestId, approvalStatus, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -138,9 +137,9 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
   }
 
   /**
-    * POST /api/:version/consumer/album/contest/remove?deviceId=[value]&accountId=[value]&albumContestId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/album/contest/remove?deviceId=[value]&accountId=[value]&albumContestId=[value]&latitude=[value]&longitude=[value]
     */
-  def deleteContest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteContest(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -159,7 +158,7 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.deleteContest(version, albumContestId, deviceId, accountId, latitude, longitude)
+      api.deleteContest(albumContestId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -168,9 +167,9 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
   }
 
   /**
-    * GET /api/:version/consumer/album/contest/get?deviceId=[value]&accountId=[value]&albumContestId=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/consumer/album/contest/get?deviceId=[value]&accountId=[value]&albumContestId=[value]&latitude=[value]&longitude=[value]
     */
-  def getAlbumContest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAlbumContest(): Action[AnyContent] = Action { request =>
     def executeApi(): AlbumContestResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -189,7 +188,7 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getAlbumContest(version, albumContestId, deviceId, accountId, latitude, longitude)
+      api.getAlbumContest(albumContestId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -198,9 +197,9 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
   }
 
   /**
-    * GET /api/:version/consumer/album/contest/search?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&appType=[value]&contestType=[value]&ownerId=[value]&q=[value]&keyword=[value]&filter=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&dateCreated=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/consumer/album/contest/search?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&appType=[value]&contestType=[value]&ownerId=[value]&q=[value]&keyword=[value]&filter=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&dateCreated=[value]&latitude=[value]&longitude=[value]
     */
-  def getAlbumContests(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAlbumContests(): Action[AnyContent] = Action { request =>
     def executeApi(): AlbumContestListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -265,7 +264,7 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getAlbumContests(version, filter, sortField, descending, start, limit, deviceId, accountId, gameType, appKey, appType, contestType, ownerId, q, keyword, i, l, dateCreated, latitude, longitude)
+      api.getAlbumContests(filter, sortField, descending, start, limit, deviceId, accountId, gameType, appKey, appType, contestType, ownerId, q, keyword, i, l, dateCreated, latitude, longitude)
     }
 
     val result = executeApi()
@@ -274,9 +273,9 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
   }
 
   /**
-    * POST /api/:version/consumer/album/contest/vote?deviceId=[value]&accountId=[value]&albumContestId=[value]&albumId=[value]&contestType=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/album/contest/vote?deviceId=[value]&accountId=[value]&albumContestId=[value]&albumId=[value]&contestType=[value]&latitude=[value]&longitude=[value]
     */
-  def voteOnAlbumContest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def voteOnAlbumContest(): Action[AnyContent] = Action { request =>
     def executeApi(): AlbumContestResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -303,7 +302,7 @@ class ContestApiController @Inject()(cc: ControllerComponents, api: ContestApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.voteOnAlbumContest(version, albumContestId, albumId, deviceId, accountId, contestType, latitude, longitude)
+      api.voteOnAlbumContest(albumContestId, albumId, deviceId, accountId, contestType, latitude, longitude)
     }
 
     val result = executeApi()

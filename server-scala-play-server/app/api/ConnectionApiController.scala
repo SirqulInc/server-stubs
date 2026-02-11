@@ -4,20 +4,19 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ConnectionGroupResponse
 import model.ConnectionInfoResponse
 import model.ConnectionListResponse
 import model.ConnectionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ConnectionApiController @Inject()(cc: ControllerComponents, api: ConnectionApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/consumer/connection/group/addConnection?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionId=[value]&connectionAccountId=[value]&pendingId=[value]&groupId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/connection/group/addConnection?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionId=[value]&connectionAccountId=[value]&pendingId=[value]&groupId=[value]&latitude=[value]&longitude=[value]
     */
-  def addConnectionToGroup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addConnectionToGroup(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -51,7 +50,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.addConnectionToGroup(version, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude)
+      api.addConnectionToGroup(returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -60,9 +59,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/connection/group/addConnections?deviceId=[value]&accountId=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/connection/group/addConnections?deviceId=[value]&accountId=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupId=[value]&latitude=[value]&longitude=[value]
     */
-  def addConnectionsToGroup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addConnectionsToGroup(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -85,7 +84,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.addConnectionsToGroup(version, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude)
+      api.addConnectionsToGroup(connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude)
     }
 
     val result = executeApi()
@@ -94,9 +93,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/connection/group/addSubGroup?returnNulls=[value]&deviceId=[value]&accountId=[value]&groupId=[value]&subGroupIds=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/connection/group/addSubGroup?returnNulls=[value]&deviceId=[value]&accountId=[value]&groupId=[value]&subGroupIds=[value]&latitude=[value]&longitude=[value]
     */
-  def addSubGroups(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addSubGroups(): Action[AnyContent] = Action { request =>
     def executeApi(): ConnectionGroupResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -126,7 +125,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.addSubGroups(version, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude)
+      api.addSubGroups(returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -135,9 +134,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/connection/add?deviceId=[value]&accountId=[value]&connectionId=[value]&connectionAccountId=[value]&pendingId=[value]&groupId=[value]&gameType=[value]&appKey=[value]&isTrusted=[value]&ignoreFriendRequest=[value]&isContact=[value]&isBlocked=[value]&isFollowing=[value]&connectionResponse=[value]
+    * POST /api/3.18/consumer/connection/add?deviceId=[value]&accountId=[value]&connectionId=[value]&connectionAccountId=[value]&pendingId=[value]&groupId=[value]&gameType=[value]&appKey=[value]&isTrusted=[value]&ignoreFriendRequest=[value]&isContact=[value]&isBlocked=[value]&isFollowing=[value]&connectionResponse=[value]
     */
-  def createOrUpdateConnection(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOrUpdateConnection(): Action[AnyContent] = Action { request =>
     def executeApi(): ConnectionResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -178,7 +177,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val connectionResponse = request.getQueryString("connectionResponse")
         .map(value => value.toBoolean)
         
-      api.createOrUpdateConnection(version, deviceId, accountId, connectionId, connectionAccountId, pendingId, groupId, gameType, appKey, isTrusted, ignoreFriendRequest, isContact, isBlocked, isFollowing, connectionResponse)
+      api.createOrUpdateConnection(deviceId, accountId, connectionId, connectionAccountId, pendingId, groupId, gameType, appKey, isTrusted, ignoreFriendRequest, isContact, isBlocked, isFollowing, connectionResponse)
     }
 
     val result = executeApi()
@@ -187,9 +186,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/connection/group?returnNulls=[value]&deviceId=[value]&accountId=[value]&name=[value]&groupId=[value]&assetId=[value]&connections=[value]&description=[value]&canViewProfileInfo=[value]&canViewGameInfo=[value]&canViewFriendInfo=[value]&active=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/connection/group?returnNulls=[value]&deviceId=[value]&accountId=[value]&name=[value]&groupId=[value]&assetId=[value]&connections=[value]&description=[value]&canViewProfileInfo=[value]&canViewGameInfo=[value]&canViewFriendInfo=[value]&active=[value]&latitude=[value]&longitude=[value]
     */
-  def createOrUpdateGroup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOrUpdateGroup(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -232,7 +231,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.createOrUpdateGroup(version, returnNulls, deviceId, accountId, name, groupId, assetId, connections, description, canViewProfileInfo, canViewGameInfo, canViewFriendInfo, active, latitude, longitude)
+      api.createOrUpdateGroup(returnNulls, deviceId, accountId, name, groupId, assetId, connections, description, canViewProfileInfo, canViewGameInfo, canViewFriendInfo, active, latitude, longitude)
     }
 
     val result = executeApi()
@@ -241,9 +240,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/follow/accept?accountId=[value]&connectionAccountId=[value]&appKey=[value]
+    * POST /api/3.18/consumer/follow/accept?accountId=[value]&connectionAccountId=[value]&appKey=[value]
     */
-  def followAccept(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def followAccept(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -262,7 +261,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.followAccept(version, accountId, connectionAccountId, appKey)
+      api.followAccept(accountId, connectionAccountId, appKey)
     }
 
     val result = executeApi()
@@ -271,9 +270,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/follow/reject?accountId=[value]&connectionAccountId=[value]&appKey=[value]
+    * POST /api/3.18/consumer/follow/reject?accountId=[value]&connectionAccountId=[value]&appKey=[value]
     */
-  def followReject(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def followReject(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -292,7 +291,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.followReject(version, accountId, connectionAccountId, appKey)
+      api.followReject(accountId, connectionAccountId, appKey)
     }
 
     val result = executeApi()
@@ -301,9 +300,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/follow/remove?accountId=[value]&connectionAccountId=[value]&appKey=[value]
+    * POST /api/3.18/consumer/follow/remove?accountId=[value]&connectionAccountId=[value]&appKey=[value]
     */
-  def followRemove(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def followRemove(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -322,7 +321,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.followRemove(version, accountId, connectionAccountId, appKey)
+      api.followRemove(accountId, connectionAccountId, appKey)
     }
 
     val result = executeApi()
@@ -331,9 +330,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/follow/request?accountId=[value]&connectionAccountId=[value]&appKey=[value]&approvalNeeded=[value]
+    * POST /api/3.18/consumer/follow/request?accountId=[value]&connectionAccountId=[value]&appKey=[value]&approvalNeeded=[value]
     */
-  def followRequest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def followRequest(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -355,7 +354,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val approvalNeeded = request.getQueryString("approvalNeeded")
         .map(value => value.toBoolean)
         
-      api.followRequest(version, accountId, connectionAccountId, appKey, approvalNeeded)
+      api.followRequest(accountId, connectionAccountId, appKey, approvalNeeded)
     }
 
     val result = executeApi()
@@ -364,9 +363,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/friend/accept?deviceId=[value]&accountId=[value]&friendAccountId=[value]&gameType=[value]&appKey=[value]&notifyFriend=[value]&notificationMessage=[value]
+    * POST /api/3.18/consumer/friend/accept?deviceId=[value]&accountId=[value]&friendAccountId=[value]&gameType=[value]&appKey=[value]&notifyFriend=[value]&notificationMessage=[value]
     */
-  def friendAccept(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def friendAccept(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -391,7 +390,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
         
       val notificationMessage = request.getQueryString("notificationMessage")
         
-      api.friendAccept(version, friendAccountId, notifyFriend, deviceId, accountId, gameType, appKey, notificationMessage)
+      api.friendAccept(friendAccountId, notifyFriend, deviceId, accountId, gameType, appKey, notificationMessage)
     }
 
     val result = executeApi()
@@ -400,9 +399,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/friend/reject?deviceId=[value]&accountId=[value]&friendAccountId=[value]&gameType=[value]&appKey=[value]&notifyFriend=[value]&notificationMessage=[value]
+    * POST /api/3.18/consumer/friend/reject?deviceId=[value]&accountId=[value]&friendAccountId=[value]&gameType=[value]&appKey=[value]&notifyFriend=[value]&notificationMessage=[value]
     */
-  def friendReject(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def friendReject(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -424,7 +423,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
         
       val notificationMessage = request.getQueryString("notificationMessage")
         
-      api.friendReject(version, friendAccountId, deviceId, accountId, gameType, appKey, notifyFriend, notificationMessage)
+      api.friendReject(friendAccountId, deviceId, accountId, gameType, appKey, notifyFriend, notificationMessage)
     }
 
     val result = executeApi()
@@ -433,9 +432,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/friend/remove?deviceId=[value]&accountId=[value]&friendAccountId=[value]&notifyFriend=[value]&removeFromGroups=[value]
+    * POST /api/3.18/consumer/friend/remove?deviceId=[value]&accountId=[value]&friendAccountId=[value]&notifyFriend=[value]&removeFromGroups=[value]
     */
-  def friendRemove(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def friendRemove(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -454,7 +453,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val removeFromGroups = request.getQueryString("removeFromGroups")
         .map(value => value.toBoolean)
         
-      api.friendRemove(version, friendAccountId, deviceId, accountId, notifyFriend, removeFromGroups)
+      api.friendRemove(friendAccountId, deviceId, accountId, notifyFriend, removeFromGroups)
     }
 
     val result = executeApi()
@@ -463,9 +462,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/friend/request?deviceId=[value]&accountId=[value]&friendAccountId=[value]&gameType=[value]&appKey=[value]&notificationMessage=[value]
+    * POST /api/3.18/consumer/friend/request?deviceId=[value]&accountId=[value]&friendAccountId=[value]&gameType=[value]&appKey=[value]&notificationMessage=[value]
     */
-  def friendRequest(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def friendRequest(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -484,7 +483,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
         
       val notificationMessage = request.getQueryString("notificationMessage")
         
-      api.friendRequest(version, friendAccountId, deviceId, accountId, gameType, appKey, notificationMessage)
+      api.friendRequest(friendAccountId, deviceId, accountId, gameType, appKey, notificationMessage)
     }
 
     val result = executeApi()
@@ -493,16 +492,16 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * GET /api/:version/consumer/connection/getRequested?deviceId=[value]&accountId=[value]
+    * GET /api/3.18/consumer/connection/getRequested?deviceId=[value]&accountId=[value]
     */
-  def getConnectionSentFriendRequests(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getConnectionSentFriendRequests(): Action[AnyContent] = Action { request =>
     def executeApi(): ConnectionListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
-      api.getConnectionSentFriendRequests(version, deviceId, accountId)
+      api.getConnectionSentFriendRequests(deviceId, accountId)
     }
 
     val result = executeApi()
@@ -511,9 +510,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * GET /api/:version/consumer/connection/get?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionAccountId=[value]&filter=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/consumer/connection/get?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionAccountId=[value]&filter=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&latitude=[value]&longitude=[value]
     */
-  def getConnections(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getConnections(): Action[AnyContent] = Action { request =>
     def executeApi(): ConnectionListResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -573,7 +572,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getConnections(version, returnNulls, filter, sortField, descending, start, limit, deviceId, accountId, connectionAccountId, q, keyword, i, l, latitude, longitude)
+      api.getConnections(returnNulls, filter, sortField, descending, start, limit, deviceId, accountId, connectionAccountId, q, keyword, i, l, latitude, longitude)
     }
 
     val result = executeApi()
@@ -582,9 +581,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * GET /api/:version/consumer/connection/group/details/get?deviceId=[value]&accountId=[value]&groupId=[value]&combineConnections=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/consumer/connection/group/details/get?deviceId=[value]&accountId=[value]&groupId=[value]&combineConnections=[value]&latitude=[value]&longitude=[value]
     */
-  def getGroupDetails(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getGroupDetails(): Action[AnyContent] = Action { request =>
     def executeApi(): ConnectionGroupResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -606,7 +605,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getGroupDetails(version, combineConnections, deviceId, accountId, groupId, latitude, longitude)
+      api.getGroupDetails(combineConnections, deviceId, accountId, groupId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -615,9 +614,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * GET /api/:version/connection/group/search?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/connection/group/search?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
     */
-  def groupSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def groupSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ConnectionInfoResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -661,7 +660,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.groupSearch(version, sortField, descending, activeOnly, start, limit, deviceId, accountId, latitude, longitude, keyword)
+      api.groupSearch(sortField, descending, activeOnly, start, limit, deviceId, accountId, latitude, longitude, keyword)
     }
 
     val result = executeApi()
@@ -670,9 +669,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/connection/group/removeConnection?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionId=[value]&connectionAccountId=[value]&pendingId=[value]&groupId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/connection/group/removeConnection?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionId=[value]&connectionAccountId=[value]&pendingId=[value]&groupId=[value]&latitude=[value]&longitude=[value]
     */
-  def removeConnectionFromGroup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeConnectionFromGroup(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -706,7 +705,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeConnectionFromGroup(version, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude)
+      api.removeConnectionFromGroup(returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -715,9 +714,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/connection/group/removeConnections?deviceId=[value]&accountId=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/connection/group/removeConnections?deviceId=[value]&accountId=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupId=[value]&latitude=[value]&longitude=[value]
     */
-  def removeConnectionsFromGroup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeConnectionsFromGroup(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -740,7 +739,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeConnectionsFromGroup(version, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude)
+      api.removeConnectionsFromGroup(connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude)
     }
 
     val result = executeApi()
@@ -749,9 +748,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/connection/group/remove?returnNulls=[value]&deviceId=[value]&accountId=[value]&groupId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/connection/group/remove?returnNulls=[value]&deviceId=[value]&accountId=[value]&groupId=[value]&latitude=[value]&longitude=[value]
     */
-  def removeGroup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeGroup(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -776,7 +775,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeGroup(version, returnNulls, groupId, deviceId, accountId, latitude, longitude)
+      api.removeGroup(returnNulls, groupId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -785,9 +784,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * POST /api/:version/consumer/connection/group/removeSubGroup?returnNulls=[value]&deviceId=[value]&accountId=[value]&groupId=[value]&subGroupIds=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/connection/group/removeSubGroup?returnNulls=[value]&deviceId=[value]&accountId=[value]&groupId=[value]&subGroupIds=[value]&latitude=[value]&longitude=[value]
     */
-  def removeSubGroups(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeSubGroups(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -817,7 +816,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeSubGroups(version, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude)
+      api.removeSubGroups(returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -826,9 +825,9 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
   }
 
   /**
-    * GET /api/:version/connection/search?returnNulls=[value]&deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&latitude=[value]&longitude=[value]&gameType=[value]&appKey=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&sortField=[value]&hasLocation=[value]
+    * GET /api/3.18/connection/search?returnNulls=[value]&deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&latitude=[value]&longitude=[value]&gameType=[value]&appKey=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&sortField=[value]&hasLocation=[value]
     */
-  def searchConnections(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchConnections(): Action[AnyContent] = Action { request =>
     def executeApi(): ConnectionListResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -878,7 +877,7 @@ class ConnectionApiController @Inject()(cc: ControllerComponents, api: Connectio
       val hasLocation = request.getQueryString("hasLocation")
         .map(value => value.toBoolean)
         
-      api.searchConnections(version, returnNulls, start, limit, deviceId, accountId, q, keyword, latitude, longitude, gameType, appKey, i, l, sortField, hasLocation)
+      api.searchConnections(returnNulls, start, limit, deviceId, accountId, q, keyword, latitude, longitude, gameType, appKey, i, l, sortField, hasLocation)
     }
 
     val result = executeApi()

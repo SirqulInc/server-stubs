@@ -1,23 +1,22 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.Trip
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait TripApi {
   /**
     * Create Trip
     * Create a new trip
     */
-  def createTrip(version: BigDecimal, body: Option[Trip]): Trip
+  def createTrip(body: Option[Trip]): Trip
 
   /**
     * Delete Trip
     * Delete an existing trip
     * @param id the id of the trip to delete
     */
-  def delete(version: BigDecimal, id: Long): Unit
+  def delete(id: Long): Unit
 
   /**
     * Set Trip Preference Driver
@@ -25,7 +24,7 @@ trait TripApi {
     * @param id the id of the trip
     * @param recurrence the frequency of the trip (e.g. weekly, until 2018-08-09)
     */
-  def driveTrip(version: BigDecimal, id: Long, recurrence: Boolean): Trip
+  def driveTrip(id: Long, recurrence: Boolean): Trip
 
   /**
     * Set Trip Preference Flexible
@@ -33,14 +32,14 @@ trait TripApi {
     * @param id the id of the trip
     * @param recurrence the frequency of the trip (e.g. weekly, until 2018-08-09)
     */
-  def flexibleTrip(version: BigDecimal, id: Long, recurrence: Boolean): Trip
+  def flexibleTrip(id: Long, recurrence: Boolean): Trip
 
   /**
     * Get Trip
     * Get an existing trip
     * @param id the id of the trip to get
     */
-  def getTrip(version: BigDecimal, id: Long): Trip
+  def getTrip(id: Long): Trip
 
   /**
     * Get Trip Matches
@@ -54,7 +53,7 @@ trait TripApi {
     * @param matchedHasRoute Only return matchings that already have route assigned
     * @param matchedHasDriver Only return matchings that already have driver assigned
     */
-  def getTripMatches(version: BigDecimal, id: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip]
+  def getTripMatches(id: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip]
 
   /**
     * Process Trip Matches
@@ -63,7 +62,7 @@ trait TripApi {
     * @param endDate The upper bound date to process matchings
     * @param tripId the id of the trip to process
     */
-  def processTripMatches(version: BigDecimal, startDate: Option[Long], endDate: Option[Long], tripId: Option[Long]): List[Trip]
+  def processTripMatches(startDate: Option[Long], endDate: Option[Long], tripId: Option[Long]): List[Trip]
 
   /**
     * Set Trip Preference Rider
@@ -71,7 +70,7 @@ trait TripApi {
     * @param id the id of the trip
     * @param recurrence the frequency of the trip (e.g. weekly, until 2018-08-09)
     */
-  def ride(version: BigDecimal, id: Long, recurrence: Boolean): Trip
+  def ride(id: Long, recurrence: Boolean): Trip
 
   /**
     * Search Trips
@@ -86,7 +85,7 @@ trait TripApi {
     * @param endDate The upper bound limit of time
     * @param hasNotifications whether to search on trips that have notifications or not
     */
-  def search(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], hasNotifications: Option[Boolean]): List[Trip]
+  def search(accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], hasNotifications: Option[Boolean]): List[Trip]
 
   /**
     * Search Trips
@@ -102,38 +101,38 @@ trait TripApi {
     * @param matchedHasRoute Only return matchings that already have route assigned
     * @param matchedHasDriver Only return matchings that already have driver assigned
     */
-  def searchTrips(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip]
+  def searchTrips(accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip]
 
   /**
     * Update Trip Locations
     * @param id the id of the trip to update locations for
     */
-  def updateLocations(version: BigDecimal, id: Long, body: Option[Trip]): Trip
+  def updateLocations(id: Long, body: Option[Trip]): Trip
 
   /**
     * Update Recurrence Locations
     * @param id the id of the trip
     */
-  def updateRecurrenceLocations(version: BigDecimal, id: Long, body: Option[Trip]): List[Trip]
+  def updateRecurrenceLocations(id: Long, body: Option[Trip]): List[Trip]
 
   /**
     * Update Recurrence Shipments
     * @param id the id of the trip
     */
-  def updateRecurrenceShipments(version: BigDecimal, id: Long, body: Option[Trip]): List[Trip]
+  def updateRecurrenceShipments(id: Long, body: Option[Trip]): List[Trip]
 
   /**
     * Update Trip Shipments
     * @param id the id of the trip shipments to update
     */
-  def updateShipments(version: BigDecimal, id: Long, body: Option[Trip]): Trip
+  def updateShipments(id: Long, body: Option[Trip]): Trip
 
   /**
     * Update Trip
     * Update an existing trip. Does not support recurring trip update.
     * @param id the id of the trip to update
     */
-  def updateTrip(version: BigDecimal, id: Long, body: Option[Trip]): Trip
+  def updateTrip(id: Long, body: Option[Trip]): Trip
 
   /**
     * Trip Notifications
@@ -141,5 +140,5 @@ trait TripApi {
     * @param id the id of the trip
     * @param notifications the notifications to update on the trip
     */
-  def updateTripNotifications(version: BigDecimal, id: Long, notifications: Option[String]): Trip
+  def updateTripNotifications(id: Long, notifications: Option[String]): Trip
 }

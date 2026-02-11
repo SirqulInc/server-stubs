@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ScheduledNotificationFullResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ScheduledNotificationApi {
   /**
     * Create Scheduled Notification
@@ -45,7 +44,7 @@ trait ScheduledNotificationApi {
     * @param deepLinkURI The payload deep link URI that can be used by the client app to direct users to a screen in the app
     * @param sendToAll Determines whether to send to all users of the app if set to true for push notifications (appKey is required)
     */
-  def createScheduledNotification(version: BigDecimal, accountId: Long, name: String, `type`: String, message: String, contentId: Option[Long], contentName: Option[String], contentType: Option[String], parentId: Option[Long], parentType: Option[String], appKey: Option[String], groupingId: Option[String], connectionGroupIds: Option[String], connectionAccountIds: Option[String], audienceId: Option[Long], audienceIds: Option[String], albumIds: Option[String], reportId: Option[Long], reportParams: Option[String], endpointURL: Option[String], payload: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], cronType: Option[String], metaData: Option[String], conditionalInput: Option[String], templateType: Option[String], visibility: Option[String], active: Option[Boolean], sendNow: Option[Boolean], eventType: Option[String], deepLinkURI: Option[String], sendToAll: Option[Boolean]): ScheduledNotificationFullResponse
+  def createScheduledNotification(accountId: Long, name: String, `type`: String, message: String, contentId: Option[Long], contentName: Option[String], contentType: Option[String], parentId: Option[Long], parentType: Option[String], appKey: Option[String], groupingId: Option[String], connectionGroupIds: Option[String], connectionAccountIds: Option[String], audienceId: Option[Long], audienceIds: Option[String], albumIds: Option[String], reportId: Option[Long], reportParams: Option[String], endpointURL: Option[String], payload: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], cronType: Option[String], metaData: Option[String], conditionalInput: Option[String], templateType: Option[String], visibility: Option[String], active: Option[Boolean], sendNow: Option[Boolean], eventType: Option[String], deepLinkURI: Option[String], sendToAll: Option[Boolean]): ScheduledNotificationFullResponse
 
   /**
     * Delete Scheduled Notification
@@ -54,7 +53,7 @@ trait ScheduledNotificationApi {
     * @param scheduledNotificationId the id of the scheduled notification to delete
     * @param deleteByGroupingId If set to true, also deletes Scheduled Notifications under the same account with the same groupingId.
     */
-  def deleteScheduledNotification(version: BigDecimal, accountId: Long, scheduledNotificationId: Long, deleteByGroupingId: Option[Boolean]): ScheduledNotificationFullResponse
+  def deleteScheduledNotification(accountId: Long, scheduledNotificationId: Long, deleteByGroupingId: Option[Boolean]): ScheduledNotificationFullResponse
 
   /**
     * Get Scheduled Notification
@@ -62,7 +61,7 @@ trait ScheduledNotificationApi {
     * @param accountId the id of the account logged in
     * @param scheduledNotificationId the id of the scheduled notification to get
     */
-  def getScheduledNotification(version: BigDecimal, accountId: Long, scheduledNotificationId: Long): ScheduledNotificationFullResponse
+  def getScheduledNotification(accountId: Long, scheduledNotificationId: Long): ScheduledNotificationFullResponse
 
   /**
     * Generate Schedule Notifications
@@ -76,7 +75,7 @@ trait ScheduledNotificationApi {
     * @param reportParams The parameters of the report used to identify events in a json structure, example: &#x60;&#x60;&#x60;json {   \&quot;string\&quot;: \&quot;value\&quot;,   \&quot;number\&quot;: 3.345,   \&quot;date\&quot;: \&quot;2014-05-01 00:00:00\&quot; } &#x60;&#x60;&#x60; 
     * @param `type` The type of scheduled notification; supported values are: MOBILE_NOTIFICATION
     */
-  def scheduleNotificationListings(version: BigDecimal, accountId: Long, appKey: String, reportName: String, message: String, offset: Int, recipientReportId: Long, reportParams: Option[String], `type`: Option[String]): SirqulResponse
+  def scheduleNotificationListings(accountId: Long, appKey: String, reportName: String, message: String, offset: Int, recipientReportId: Long, reportParams: Option[String], `type`: Option[String]): SirqulResponse
 
   /**
     * Search Scheduled Notifications
@@ -102,7 +101,7 @@ trait ScheduledNotificationApi {
     * @param groupByGroupingId Determines whether to group results with the same groupingId together.
     * @param returnAudienceAccountCount If true, include audience account counts in the response
     */
-  def searchScheduledNotifications(version: BigDecimal, accountId: Long, groupingId: Option[String], audienceId: Option[Long], filter: Option[String], types: Option[String], contentIds: Option[String], contentTypes: Option[String], parentIds: Option[String], parentTypes: Option[String], statuses: Option[String], templateTypes: Option[String], appKey: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], groupByGroupingId: Option[Boolean], returnAudienceAccountCount: Option[Boolean]): ScheduledNotificationFullResponse
+  def searchScheduledNotifications(accountId: Long, groupingId: Option[String], audienceId: Option[Long], filter: Option[String], types: Option[String], contentIds: Option[String], contentTypes: Option[String], parentIds: Option[String], parentTypes: Option[String], statuses: Option[String], templateTypes: Option[String], appKey: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], groupByGroupingId: Option[Boolean], returnAudienceAccountCount: Option[Boolean]): ScheduledNotificationFullResponse
 
   /**
     * Update Scheduled Notification
@@ -146,5 +145,5 @@ trait ScheduledNotificationApi {
     * @param deepLinkURI The payload deep link URI that can be used by the client app to direct users to a screen in the app
     * @param sendToAll Determines whether to send to all users of the app if set to true for push notifications (appKey is required)
     */
-  def updateScheduledNotification(version: BigDecimal, scheduledNotificationId: Long, accountId: Long, name: Option[String], `type`: Option[String], message: Option[String], payload: Option[String], contentId: Option[Long], contentName: Option[String], contentType: Option[String], parentId: Option[Long], parentType: Option[String], appKey: Option[String], groupingId: Option[String], connectionGroupIds: Option[String], connectionAccountIds: Option[String], audienceId: Option[Long], audienceIds: Option[String], albumIds: Option[String], reportId: Option[Long], reportParams: Option[String], endpointURL: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], cronType: Option[String], metaData: Option[String], conditionalInput: Option[String], templateType: Option[String], visibility: Option[String], active: Option[Boolean], errorMessage: Option[String], status: Option[String], updateByGroupingId: Option[Boolean], sendNow: Option[Boolean], eventType: Option[String], deepLinkURI: Option[String], sendToAll: Option[Boolean]): ScheduledNotificationFullResponse
+  def updateScheduledNotification(scheduledNotificationId: Long, accountId: Long, name: Option[String], `type`: Option[String], message: Option[String], payload: Option[String], contentId: Option[Long], contentName: Option[String], contentType: Option[String], parentId: Option[Long], parentType: Option[String], appKey: Option[String], groupingId: Option[String], connectionGroupIds: Option[String], connectionAccountIds: Option[String], audienceId: Option[Long], audienceIds: Option[String], albumIds: Option[String], reportId: Option[Long], reportParams: Option[String], endpointURL: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], cronType: Option[String], metaData: Option[String], conditionalInput: Option[String], templateType: Option[String], visibility: Option[String], active: Option[Boolean], errorMessage: Option[String], status: Option[String], updateByGroupingId: Option[Boolean], sendNow: Option[Boolean], eventType: Option[String], deepLinkURI: Option[String], sendToAll: Option[Boolean]): ScheduledNotificationFullResponse
 }

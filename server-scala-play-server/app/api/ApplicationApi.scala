@@ -5,12 +5,11 @@ import model.AccountListResponse
 import model.ApplicationResponse
 import model.ApplicationSettingsResponse
 import model.ApplicationShortResponse
-import model.BigDecimal
 import model.PlacementResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ApplicationApi {
   /**
     * Create Application
@@ -95,7 +94,7 @@ trait ApplicationApi {
     * @param twilioSenderPhoneNumber Twilio Sender Phone Number
     * @param openAISecretKey OpenAI Secret API Key
     */
-  def createApplication(version: BigDecimal, appName: String, deviceId: Option[String], accountId: Option[Long], about: Option[String], bundleId: Option[String], appIconAssetId: Option[Long], appLogoAssetId: Option[Long], facebookAppId: Option[String], facebookAppSecret: Option[String], googleApiKey: Option[String], updateEULADate: Option[Boolean], eulaVersion: Option[String], landingPageUrl: Option[String], showInActivities: Option[Boolean], activityDescription: Option[String], inviteWelcomeText: Option[String], invitePageUrl: Option[String], urlScheme: Option[String], platforms: Option[String], downloadUrls: Option[String], categoryIds: Option[String], scoringType: Option[String], hintCost: Option[Int], maxScore: Option[Int], ticketsPerPoint: Option[Float], hasGameData: Option[Boolean], publicNotifications: Option[Boolean], useMatchingAlgorithm: Option[Boolean], globalTickets: Option[Boolean], buildVersion: Option[Float], apiVersion: Option[Float], placementName: Option[String], placementDescription: Option[String], placementSize: Option[String], placementHeight: Option[Int], placementWidth: Option[Int], placementRefreshInterval: Option[Int], createObjectStore: Option[Boolean], publicContentApproval: Option[Boolean], productionMode: Option[Boolean], minimumSessionLength: Option[Int], sessionGapLength: Option[Int], localAdsEnabled: Option[Boolean], sqootApiKey: Option[String], trilatProcessingType: Option[String], maxSampleSize: Option[Int], minRSSI: Option[Double], modules: Option[String], authorizedCount: Option[Int], authorizedServers: Option[String], defaultTimezone: Option[String], smtpPass: Option[String], metaData: Option[String], placementMetaData: Option[String], ipsFloor: Option[Boolean], enableAPNSBadge: Option[Boolean], includeInReport: Option[Boolean], defaultAppFilterId: Option[Long], enableWelcomeEmail: Option[Boolean], appleAppId: Option[String], appleTeamId: Option[String], appleAuthKeyId: Option[String], appleAuthKey: Option[TemporaryFile], appleIssuerId: Option[String], appStoreKeyId: Option[String], appStoreKey: Option[TemporaryFile], googlePrivateKeyFile: Option[TemporaryFile], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String], emailSender: Option[String], smtpUser: Option[String], smtpHost: Option[String], vatomBusinessId: Option[String], vatomRestClientId: Option[String], vatomRestSecretKey: Option[String], twilioAccountSID: Option[String], twilioAuthToken: Option[String], twilioSenderPhoneNumber: Option[String], openAISecretKey: Option[String]): ApplicationResponse
+  def createApplication(appName: String, deviceId: Option[String], accountId: Option[Long], about: Option[String], bundleId: Option[String], appIconAssetId: Option[Long], appLogoAssetId: Option[Long], facebookAppId: Option[String], facebookAppSecret: Option[String], googleApiKey: Option[String], updateEULADate: Option[Boolean], eulaVersion: Option[String], landingPageUrl: Option[String], showInActivities: Option[Boolean], activityDescription: Option[String], inviteWelcomeText: Option[String], invitePageUrl: Option[String], urlScheme: Option[String], platforms: Option[String], downloadUrls: Option[String], categoryIds: Option[String], scoringType: Option[String], hintCost: Option[Int], maxScore: Option[Int], ticketsPerPoint: Option[Float], hasGameData: Option[Boolean], publicNotifications: Option[Boolean], useMatchingAlgorithm: Option[Boolean], globalTickets: Option[Boolean], buildVersion: Option[Float], apiVersion: Option[Float], placementName: Option[String], placementDescription: Option[String], placementSize: Option[String], placementHeight: Option[Int], placementWidth: Option[Int], placementRefreshInterval: Option[Int], createObjectStore: Option[Boolean], publicContentApproval: Option[Boolean], productionMode: Option[Boolean], minimumSessionLength: Option[Int], sessionGapLength: Option[Int], localAdsEnabled: Option[Boolean], sqootApiKey: Option[String], trilatProcessingType: Option[String], maxSampleSize: Option[Int], minRSSI: Option[Double], modules: Option[String], authorizedCount: Option[Int], authorizedServers: Option[String], defaultTimezone: Option[String], smtpPass: Option[String], metaData: Option[String], placementMetaData: Option[String], ipsFloor: Option[Boolean], enableAPNSBadge: Option[Boolean], includeInReport: Option[Boolean], defaultAppFilterId: Option[Long], enableWelcomeEmail: Option[Boolean], appleAppId: Option[String], appleTeamId: Option[String], appleAuthKeyId: Option[String], appleAuthKey: Option[TemporaryFile], appleIssuerId: Option[String], appStoreKeyId: Option[String], appStoreKey: Option[TemporaryFile], googlePrivateKeyFile: Option[TemporaryFile], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String], emailSender: Option[String], smtpUser: Option[String], smtpHost: Option[String], vatomBusinessId: Option[String], vatomRestClientId: Option[String], vatomRestSecretKey: Option[String], twilioAccountSID: Option[String], twilioAuthToken: Option[String], twilioSenderPhoneNumber: Option[String], openAISecretKey: Option[String]): ApplicationResponse
 
   /**
     * Create Ad Placement
@@ -112,7 +111,7 @@ trait ApplicationApi {
     * @param defaultImageId Default Image Id
     * @param active Active
     */
-  def createApplicationPlacement(version: BigDecimal, appKey: String, size: String, deviceId: Option[String], accountId: Option[Long], name: Option[String], description: Option[String], height: Option[Int], width: Option[Int], refreshInterval: Option[Int], defaultImageId: Option[Long], active: Option[Boolean]): PlacementResponse
+  def createApplicationPlacement(appKey: String, size: String, deviceId: Option[String], accountId: Option[Long], name: Option[String], description: Option[String], height: Option[Int], width: Option[Int], refreshInterval: Option[Int], defaultImageId: Option[Long], active: Option[Boolean]): PlacementResponse
 
   /**
     * Delete Application
@@ -120,7 +119,7 @@ trait ApplicationApi {
     * @param accountId The account used to perform the delete, must have rights to edit the application.
     * @param appKey The key of the application to be deleted
     */
-  def deleteApplication(version: BigDecimal, accountId: Option[Long], appKey: Option[String]): SirqulResponse
+  def deleteApplication(accountId: Option[Long], appKey: Option[String]): SirqulResponse
 
   /**
     * Delete Ad Placement
@@ -129,7 +128,7 @@ trait ApplicationApi {
     * @param deviceId The unique id of the device making the request (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def deleteApplicationPlacement(version: BigDecimal, placementId: Long, deviceId: Option[String], accountId: Option[Long]): PlacementResponse
+  def deleteApplicationPlacement(placementId: Long, deviceId: Option[String], accountId: Option[Long]): PlacementResponse
 
   /**
     * Get Application
@@ -137,7 +136,7 @@ trait ApplicationApi {
     * @param appKey The key of the application
     * @param applicationId Application Id
     */
-  def getApplication(version: BigDecimal, appKey: Option[String], applicationId: Option[Long]): ApplicationResponse
+  def getApplication(appKey: Option[String], applicationId: Option[Long]): ApplicationResponse
 
   /**
     * Get Ad Placement
@@ -146,13 +145,13 @@ trait ApplicationApi {
     * @param deviceId The unique id of the device making the request (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def getApplicationPlacement(version: BigDecimal, placementId: Long, deviceId: Option[String], accountId: Option[Long]): PlacementResponse
+  def getApplicationPlacement(placementId: Long, deviceId: Option[String], accountId: Option[Long]): PlacementResponse
 
   /**
     * Get API versions
     * Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8
     */
-  def getApplicationVersions(version: BigDecimal): SirqulResponse
+  def getApplicationVersions(): SirqulResponse
 
   /**
     * Search Application Users
@@ -166,7 +165,7 @@ trait ApplicationApi {
     * @param l the limit of the index
     * @param limit The limit of the pagination
     */
-  def getUniqueUsersByApp(version: BigDecimal, appKey: String, q: Option[String], keyword: Option[String], since: Option[Long], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int]): AccountListResponse
+  def getUniqueUsersByApp(appKey: String, q: Option[String], keyword: Option[String], since: Option[Long], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int]): AccountListResponse
 
   /**
     * List Applications
@@ -192,7 +191,7 @@ trait ApplicationApi {
     * @param hasObjectStore Only include applications with a object store (default is false)
     * @param activeOnly Return only active results
     */
-  def listApplications(version: BigDecimal, accountId: Option[Long], q: Option[String], keyword: Option[String], platforms: Option[String], deviceIds: Option[String], deviceVersions: Option[String], categoryIds: Option[String], sortField: Option[String], hasAds: Option[Boolean], publicNotifications: Option[Boolean], filterBillable: Option[Boolean], filterContentAdmin: Option[Boolean], descending: Option[Boolean], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int], applicationIds: Option[String], hasObjectStore: Option[Boolean], activeOnly: Option[Boolean]): List[ApplicationShortResponse]
+  def listApplications(accountId: Option[Long], q: Option[String], keyword: Option[String], platforms: Option[String], deviceIds: Option[String], deviceVersions: Option[String], categoryIds: Option[String], sortField: Option[String], hasAds: Option[Boolean], publicNotifications: Option[Boolean], filterBillable: Option[Boolean], filterContentAdmin: Option[Boolean], descending: Option[Boolean], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int], applicationIds: Option[String], hasObjectStore: Option[Boolean], activeOnly: Option[Boolean]): List[ApplicationShortResponse]
 
   /**
     * Search for Ad Placements
@@ -203,7 +202,7 @@ trait ApplicationApi {
     * @param start The start of the pagination
     * @param limit The limit of the pagination
     */
-  def searchApplicationPlacement(version: BigDecimal, appKey: String, deviceId: Option[String], accountId: Option[Long], start: Option[Int], limit: Option[Int]): List[PlacementResponse]
+  def searchApplicationPlacement(appKey: String, deviceId: Option[String], accountId: Option[Long], start: Option[Int], limit: Option[Int]): List[PlacementResponse]
 
   /**
     * Search for Application Settings
@@ -217,7 +216,7 @@ trait ApplicationApi {
     * @param start The start index for pagination
     * @param limit The limit per result set for pagination
     */
-  def searchApplicationSettings(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): ApplicationSettingsResponse
+  def searchApplicationSettings(deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): ApplicationSettingsResponse
 
   /**
     * Search Applications
@@ -239,7 +238,7 @@ trait ApplicationApi {
     * @param publicNotifications Filter results on whether the application is available for public trigger notifications
     * @param activeOnly Return only active results
     */
-  def searchApplications(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], q: Option[String], keyword: Option[String], qSearchFields: Option[String], sortField: Option[String], descending: Option[Boolean], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int], hasAds: Option[Boolean], publicNotifications: Option[Boolean], activeOnly: Option[Boolean]): List[ApplicationResponse]
+  def searchApplications(deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], q: Option[String], keyword: Option[String], qSearchFields: Option[String], sortField: Option[String], descending: Option[Boolean], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int], hasAds: Option[Boolean], publicNotifications: Option[Boolean], activeOnly: Option[Boolean]): List[ApplicationResponse]
 
   /**
     * Update Application
@@ -325,7 +324,7 @@ trait ApplicationApi {
     * @param twilioSenderPhoneNumber Twilio Sender Phone Number
     * @param openAISecretKey OpenAI Secret API Key
     */
-  def updateApplication(version: BigDecimal, appKey: String, appName: String, deviceId: Option[String], accountId: Option[Long], about: Option[String], bundleId: Option[String], appIconAssetId: Option[Long], appLogoAssetId: Option[Long], facebookAppId: Option[String], facebookAppSecret: Option[String], googleApiKey: Option[String], updateEULADate: Option[Boolean], eulaVersion: Option[String], landingPageUrl: Option[String], showInActivities: Option[Boolean], activityDescription: Option[String], inviteWelcomeText: Option[String], invitePageUrl: Option[String], urlScheme: Option[String], platforms: Option[String], downloadUrls: Option[String], categoryIds: Option[String], scoringType: Option[String], hintCost: Option[Int], maxScore: Option[Int], ticketsPerPoint: Option[Float], hasGameData: Option[Boolean], publicNotifications: Option[Boolean], useMatchingAlgorithm: Option[Boolean], globalTickets: Option[Boolean], buildVersion: Option[Float], apiVersion: Option[Float], placementName: Option[String], placementDescription: Option[String], placementSize: Option[String], placementHeight: Option[Int], placementWidth: Option[Int], placementRefreshInterval: Option[Int], createObjectStore: Option[Boolean], publicContentApproval: Option[Boolean], productionMode: Option[Boolean], minimumSessionLength: Option[Int], sessionGapLength: Option[Int], localAdsEnabled: Option[Boolean], sqootApiKey: Option[String], trilatProcessingType: Option[String], maxSampleSize: Option[Int], minRSSI: Option[Double], modules: Option[String], authorizedCount: Option[Int], authorizedServers: Option[String], defaultTimezone: Option[String], smtpPass: Option[String], metaData: Option[String], placementMetaData: Option[String], ipsFloor: Option[Boolean], enableAPNSBadge: Option[Boolean], includeInReport: Option[Boolean], defaultAppFilterId: Option[Long], enableWelcomeEmail: Option[Boolean], appleAppId: Option[String], appleTeamId: Option[String], appleAuthKeyId: Option[String], appleAuthKey: Option[TemporaryFile], appleIssuerId: Option[String], appStoreKeyId: Option[String], appStoreKey: Option[TemporaryFile], googlePrivateKeyFile: Option[TemporaryFile], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String], emailSender: Option[String], smtpUser: Option[String], smtpHost: Option[String], vatomBusinessId: Option[String], vatomRestClientId: Option[String], vatomRestSecretKey: Option[String], twilioAccountSID: Option[String], twilioAuthToken: Option[String], twilioSenderPhoneNumber: Option[String], openAISecretKey: Option[String]): ApplicationResponse
+  def updateApplication(appKey: String, appName: String, deviceId: Option[String], accountId: Option[Long], about: Option[String], bundleId: Option[String], appIconAssetId: Option[Long], appLogoAssetId: Option[Long], facebookAppId: Option[String], facebookAppSecret: Option[String], googleApiKey: Option[String], updateEULADate: Option[Boolean], eulaVersion: Option[String], landingPageUrl: Option[String], showInActivities: Option[Boolean], activityDescription: Option[String], inviteWelcomeText: Option[String], invitePageUrl: Option[String], urlScheme: Option[String], platforms: Option[String], downloadUrls: Option[String], categoryIds: Option[String], scoringType: Option[String], hintCost: Option[Int], maxScore: Option[Int], ticketsPerPoint: Option[Float], hasGameData: Option[Boolean], publicNotifications: Option[Boolean], useMatchingAlgorithm: Option[Boolean], globalTickets: Option[Boolean], buildVersion: Option[Float], apiVersion: Option[Float], placementName: Option[String], placementDescription: Option[String], placementSize: Option[String], placementHeight: Option[Int], placementWidth: Option[Int], placementRefreshInterval: Option[Int], createObjectStore: Option[Boolean], publicContentApproval: Option[Boolean], productionMode: Option[Boolean], minimumSessionLength: Option[Int], sessionGapLength: Option[Int], localAdsEnabled: Option[Boolean], sqootApiKey: Option[String], trilatProcessingType: Option[String], maxSampleSize: Option[Int], minRSSI: Option[Double], modules: Option[String], authorizedCount: Option[Int], authorizedServers: Option[String], defaultTimezone: Option[String], smtpPass: Option[String], metaData: Option[String], placementMetaData: Option[String], ipsFloor: Option[Boolean], enableAPNSBadge: Option[Boolean], includeInReport: Option[Boolean], defaultAppFilterId: Option[Long], enableWelcomeEmail: Option[Boolean], appleAppId: Option[String], appleTeamId: Option[String], appleAuthKeyId: Option[String], appleAuthKey: Option[TemporaryFile], appleIssuerId: Option[String], appStoreKeyId: Option[String], appStoreKey: Option[TemporaryFile], googlePrivateKeyFile: Option[TemporaryFile], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String], emailSender: Option[String], smtpUser: Option[String], smtpHost: Option[String], vatomBusinessId: Option[String], vatomRestClientId: Option[String], vatomRestSecretKey: Option[String], twilioAccountSID: Option[String], twilioAuthToken: Option[String], twilioSenderPhoneNumber: Option[String], openAISecretKey: Option[String]): ApplicationResponse
 
   /**
     * Change Appliation Status
@@ -334,7 +333,7 @@ trait ApplicationApi {
     * @param appKey The key of the application to be deleted
     * @param active If true then set to active, false otherwise
     */
-  def updateApplicationActive(version: BigDecimal, accountId: Long, appKey: String, active: Boolean): SirqulResponse
+  def updateApplicationActive(accountId: Long, appKey: String, active: Boolean): SirqulResponse
 
   /**
     * Update Ad Placement
@@ -351,7 +350,7 @@ trait ApplicationApi {
     * @param defaultImageId Default Image Id
     * @param active Active
     */
-  def updateApplicationPlacement(version: BigDecimal, placementId: Long, deviceId: Option[String], accountId: Option[Long], name: Option[String], description: Option[String], size: Option[String], height: Option[Int], width: Option[Int], refreshInterval: Option[Int], defaultImageId: Option[Long], active: Option[Boolean]): PlacementResponse
+  def updateApplicationPlacement(placementId: Long, deviceId: Option[String], accountId: Option[Long], name: Option[String], description: Option[String], size: Option[String], height: Option[Int], width: Option[Int], refreshInterval: Option[Int], defaultImageId: Option[Long], active: Option[Boolean]): PlacementResponse
 
   /**
     * Create Application Certificate
@@ -361,5 +360,5 @@ trait ApplicationApi {
     * @param accountId The account used to perform the delete, must have rights to edit the application.
     * @param certificate Certificate
     */
-  def uploadApplicationCertificate(version: BigDecimal, appKey: String, deviceId: Option[String], accountId: Option[Long], certificate: Option[TemporaryFile]): SirqulResponse
+  def uploadApplicationCertificate(appKey: String, deviceId: Option[String], accountId: Option[Long], certificate: Option[TemporaryFile]): SirqulResponse
 }

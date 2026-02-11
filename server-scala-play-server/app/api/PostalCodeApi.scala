@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.PostalCodeResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait PostalCodeApi {
   /**
     * Create Postal Code
@@ -18,7 +17,7 @@ trait PostalCodeApi {
     * @param city the city that the postal code is located
     * @param active whether the postal code created should be active or inactive
     */
-  def createPostalCode(version: BigDecimal, accountId: Long, code: String, latitude: Double, longitude: Double, stateCode: Option[String], city: Option[String], active: Option[Boolean]): PostalCodeResponse
+  def createPostalCode(accountId: Long, code: String, latitude: Double, longitude: Double, stateCode: Option[String], city: Option[String], active: Option[Boolean]): PostalCodeResponse
 
   /**
     * Delete Postal Code
@@ -26,14 +25,14 @@ trait PostalCodeApi {
     * @param accountId the id of the logged in user
     * @param postalCodeId the id of the postal code to delete
     */
-  def deletePostalCode(version: BigDecimal, accountId: Long, postalCodeId: Long): SirqulResponse
+  def deletePostalCode(accountId: Long, postalCodeId: Long): SirqulResponse
 
   /**
     * Get Postal Code
     * Get a Postal Code
     * @param postalCodeId the id of the postal code to get
     */
-  def getPostalCode(version: BigDecimal, postalCodeId: Long): PostalCodeResponse
+  def getPostalCode(postalCodeId: Long): PostalCodeResponse
 
   /**
     * Search Postal Codes
@@ -47,7 +46,7 @@ trait PostalCodeApi {
     * @param start the start of the index and/or pagination
     * @param limit the limit of the index and/or pagination
     */
-  def getPostalCodes(version: BigDecimal, sortField: String, descending: Boolean, latitude: Option[Double], longitude: Option[Double], keyword: Option[String], miles: Option[Double], start: Option[Int], limit: Option[Int]): List[PostalCodeResponse]
+  def getPostalCodes(sortField: String, descending: Boolean, latitude: Option[Double], longitude: Option[Double], keyword: Option[String], miles: Option[Double], start: Option[Int], limit: Option[Int]): List[PostalCodeResponse]
 
   /**
     * Update Postal Code
@@ -61,5 +60,5 @@ trait PostalCodeApi {
     * @param city the city where the postal code is located
     * @param active whether the postal code is active or inactive
     */
-  def updatePostalCode(version: BigDecimal, accountId: Long, postalCodeId: Long, code: Option[String], latitude: Option[Double], longitude: Option[Double], stateCode: Option[String], city: Option[String], active: Option[Boolean]): PostalCodeResponse
+  def updatePostalCode(accountId: Long, postalCodeId: Long, code: Option[String], latitude: Option[Double], longitude: Option[Double], stateCode: Option[String], city: Option[String], active: Option[Boolean]): PostalCodeResponse
 }

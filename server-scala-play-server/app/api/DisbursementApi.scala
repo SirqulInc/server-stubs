@@ -4,14 +4,14 @@ import play.api.libs.json._
 import model.BigDecimal
 import model.DisbursementResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait DisbursementApi {
   /**
     * Check Disbursements
     * Checks the status of a captured disbrusement to see if it has been settled.
     * @param disbursementId the ID of the disbursement being checked on
     */
-  def checkDisbursements(version: BigDecimal, disbursementId: Long): DisbursementResponse
+  def checkDisbursements(disbursementId: Long): DisbursementResponse
 
   /**
     * Create Disbursement
@@ -27,7 +27,7 @@ trait DisbursementApi {
     * @param externalId external ID, which can be used as a way to reference the disbursement
     * @param introspectionParams This is for specifying parameters to make an http callback request for validating that the disbursement is valid
     */
-  def createDisbursement(version: BigDecimal, accountId: Long, receiverAccountId: Long, originalSenderAccountId: Long, amount: BigDecimal, provider: String, scheduledDate: Option[Long], title: Option[String], comment: Option[String], externalId: Option[String], introspectionParams: Option[String]): DisbursementResponse
+  def createDisbursement(accountId: Long, receiverAccountId: Long, originalSenderAccountId: Long, amount: BigDecimal, provider: String, scheduledDate: Option[Long], title: Option[String], comment: Option[String], externalId: Option[String], introspectionParams: Option[String]): DisbursementResponse
 
   /**
     * Get Disbursement
@@ -35,7 +35,7 @@ trait DisbursementApi {
     * @param accountId The logged in user.
     * @param disbursementId the id of the disbursement
     */
-  def getDisbursement(version: BigDecimal, accountId: Long, disbursementId: Long): DisbursementResponse
+  def getDisbursement(accountId: Long, disbursementId: Long): DisbursementResponse
 
   /**
     * Search Disbursements
@@ -51,7 +51,7 @@ trait DisbursementApi {
     * @param activeOnly search on disbursements that are active only
     * @param externalId search results by this external ID (that can be used to reference the disbursement)
     */
-  def searchDisbursements(version: BigDecimal, accountId: Long, receiverAccountId: Option[Long], statuses: Option[String], providers: Option[String], beforeDate: Option[Long], afterDate: Option[Long], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], externalId: Option[String]): List[DisbursementResponse]
+  def searchDisbursements(accountId: Long, receiverAccountId: Option[Long], statuses: Option[String], providers: Option[String], beforeDate: Option[Long], afterDate: Option[Long], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], externalId: Option[String]): List[DisbursementResponse]
 
   /**
     * Update Disbursement
@@ -67,5 +67,5 @@ trait DisbursementApi {
     * @param retry determines whether to try sending the disbursement again in the case of a previous failure
     * @param introspectionParams for specifying parameters to make an http callback request for validating that the disbursement is valid
     */
-  def updateDisbursement(version: BigDecimal, accountId: Long, disbursementId: Long, amount: Option[BigDecimal], provider: Option[String], scheduledDate: Option[Long], title: Option[String], comment: Option[String], externalId: Option[String], retry: Option[Boolean], introspectionParams: Option[String]): DisbursementResponse
+  def updateDisbursement(accountId: Long, disbursementId: Long, amount: Option[BigDecimal], provider: Option[String], scheduledDate: Option[Long], title: Option[String], comment: Option[String], externalId: Option[String], retry: Option[Boolean], introspectionParams: Option[String]): DisbursementResponse
 }

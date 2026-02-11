@@ -1,30 +1,29 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.CargoType
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait CargoTypeApi {
   /**
     * Create Cargo Type
     * Create new cargo type
     */
-  def createCargoType(version: BigDecimal, body: Option[CargoType]): CargoType
+  def createCargoType(body: Option[CargoType]): CargoType
 
   /**
     * Delete Cargo Type
     * Delete a type of cargo
     * @param cargoTypeId the ID of the cargo type
     */
-  def deleteCargoType(version: BigDecimal, cargoTypeId: Long): Unit
+  def deleteCargoType(cargoTypeId: Long): Unit
 
   /**
     * Get Cargo Type
     * Get an existing cargo type
     * @param cargoTypeId the cargo type ID
     */
-  def getCargoType(version: BigDecimal, cargoTypeId: Long): CargoType
+  def getCargoType(cargoTypeId: Long): CargoType
 
   /**
     * Search Cargo Type
@@ -37,12 +36,12 @@ trait CargoTypeApi {
     * @param retailerId the id of the retailer location
     * @param hubId the ID of the hub
     */
-  def searchCargoTypes(version: BigDecimal, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, retailerId: Option[Long], hubId: Option[Long]): List[CargoType]
+  def searchCargoTypes(sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, retailerId: Option[Long], hubId: Option[Long]): List[CargoType]
 
   /**
     * Update Cargo Type
     * Update an existing cargo type
     * @param cargoTypeId the ID of the cargo type
     */
-  def updateCargoType(version: BigDecimal, cargoTypeId: Long, body: Option[CargoType]): CargoType
+  def updateCargoType(cargoTypeId: Long, body: Option[CargoType]): CargoType
 }

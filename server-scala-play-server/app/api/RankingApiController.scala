@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.JsObject
 import model.RankFullResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/ranking/historical/search?deviceId=[value]&accountId=[value]&appKey=[value]&rankType=[value]&startDate=[value]&endDate=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/ranking/historical/search?deviceId=[value]&accountId=[value]&appKey=[value]&rankType=[value]&startDate=[value]&endDate=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def getHistoricalRankings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getHistoricalRankings(): Action[AnyContent] = Action { request =>
     def executeApi(): RankFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -55,7 +54,7 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getHistoricalRankings(version, appKey, rankType, startDate, endDate, deviceId, accountId, sortField, descending, start, limit)
+      api.getHistoricalRankings(appKey, rankType, startDate, endDate, deviceId, accountId, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -64,9 +63,9 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
   }
 
   /**
-    * GET /api/:version/ranking/search?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&q=[value]&keyword=[value]&rankType=[value]&leaderboardMode=[value]&withinAccountIds=[value]&returnUserRank=[value]&albumId=[value]&audienceId=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
+    * GET /api/3.18/ranking/search?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&q=[value]&keyword=[value]&rankType=[value]&leaderboardMode=[value]&withinAccountIds=[value]&returnUserRank=[value]&albumId=[value]&audienceId=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
     */
-  def getRankings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getRankings(): Action[AnyContent] = Action { request =>
     def executeApi(): RankFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -113,7 +112,7 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getRankings(version, deviceId, accountId, gameType, appKey, q, keyword, rankType, leaderboardMode, withinAccountIds, returnUserRank, albumId, audienceId, sortField, descending, i, start, l, limit)
+      api.getRankings(deviceId, accountId, gameType, appKey, q, keyword, rankType, leaderboardMode, withinAccountIds, returnUserRank, albumId, audienceId, sortField, descending, i, start, l, limit)
     }
 
     val result = executeApi()
@@ -122,9 +121,9 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
   }
 
   /**
-    * POST /api/:version/ranking/personal/ranks?deviceId=[value]&accountId=[value]&appKey=[value]&rankType=[value]&returnUserRank=[value]&leaderboardMode=[value]&sortField=[value]&keyword=[value]&descending=[value]&start=[value]&limit=[value]
+    * POST /api/3.18/ranking/personal/ranks?deviceId=[value]&accountId=[value]&appKey=[value]&rankType=[value]&returnUserRank=[value]&leaderboardMode=[value]&sortField=[value]&keyword=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def getUserRank(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserRank(): Action[AnyContent] = Action { request =>
     def executeApi(): JsObject = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -153,7 +152,7 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getUserRank(version, deviceId, accountId, appKey, rankType, returnUserRank, leaderboardMode, sortField, keyword, descending, start, limit)
+      api.getUserRank(deviceId, accountId, appKey, rankType, returnUserRank, leaderboardMode, sortField, keyword, descending, start, limit)
     }
 
     val result = executeApi()
@@ -162,9 +161,9 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
   }
 
   /**
-    * POST /api/:version/ranking/override?accountId=[value]&ownerAccountId=[value]&appKey=[value]&rankType=[value]&totalScore=[value]&totalCount=[value]&totalTime=[value]&dailyScore=[value]&dailyCount=[value]&dailyTime=[value]&weeklyScore=[value]&weeklyCount=[value]&weeklyTime=[value]&monthlyScore=[value]&monthlyCount=[value]&monthlyTime=[value]&topScore=[value]&lowestScore=[value]&streakCount=[value]&streakBestCount=[value]&startDate=[value]&endDate=[value]
+    * POST /api/3.18/ranking/override?accountId=[value]&ownerAccountId=[value]&appKey=[value]&rankType=[value]&totalScore=[value]&totalCount=[value]&totalTime=[value]&dailyScore=[value]&dailyCount=[value]&dailyTime=[value]&weeklyScore=[value]&weeklyCount=[value]&weeklyTime=[value]&monthlyScore=[value]&monthlyCount=[value]&monthlyTime=[value]&topScore=[value]&lowestScore=[value]&streakCount=[value]&streakBestCount=[value]&startDate=[value]&endDate=[value]
     */
-  def overrideUserRank(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def overrideUserRank(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -242,7 +241,7 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
       val endDate = request.getQueryString("endDate")
         .map(value => value.toLong)
         
-      api.overrideUserRank(version, accountId, ownerAccountId, appKey, rankType, totalScore, totalCount, totalTime, dailyScore, dailyCount, dailyTime, weeklyScore, weeklyCount, weeklyTime, monthlyScore, monthlyCount, monthlyTime, topScore, lowestScore, streakCount, streakBestCount, startDate, endDate)
+      api.overrideUserRank(accountId, ownerAccountId, appKey, rankType, totalScore, totalCount, totalTime, dailyScore, dailyCount, dailyTime, weeklyScore, weeklyCount, weeklyTime, monthlyScore, monthlyCount, monthlyTime, topScore, lowestScore, streakCount, streakBestCount, startDate, endDate)
     }
 
     val result = executeApi()
@@ -251,9 +250,9 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
   }
 
   /**
-    * POST /api/:version/ranking/update?accountId=[value]&appKey=[value]&rankType=[value]&increment=[value]&timeIncrement=[value]&tag=[value]&startDate=[value]&endDate=[value]&updateGlobal=[value]&createLeaderboard=[value]
+    * POST /api/3.18/ranking/update?accountId=[value]&appKey=[value]&rankType=[value]&increment=[value]&timeIncrement=[value]&tag=[value]&startDate=[value]&endDate=[value]&updateGlobal=[value]&createLeaderboard=[value]
     */
-  def updateRankings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateRankings(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -291,7 +290,7 @@ class RankingApiController @Inject()(cc: ControllerComponents, api: RankingApi) 
       val createLeaderboard = request.getQueryString("createLeaderboard")
         .map(value => value.toBoolean)
         
-      api.updateRankings(version, accountId, appKey, rankType, increment, timeIncrement, tag, startDate, endDate, updateGlobal, createLeaderboard)
+      api.updateRankings(accountId, appKey, rankType, increment, timeIncrement, tag, startDate, endDate, updateGlobal, createLeaderboard)
     }
 
     val result = executeApi()

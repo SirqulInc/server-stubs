@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.QueueResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait AMQPApi {
   /**
     * Create Consumer
@@ -25,7 +24,7 @@ trait AMQPApi {
     * @param workers The number of workers to generate 
     * @param useSSL Use SSL
     */
-  def consumerCreate(version: BigDecimal, appKey: String, name: String, hostname: String, username: String, password: String, dataMapping: String, deviceId: Option[String], accountId: Option[Long], port: Option[Int], virtualHost: Option[String], exchanger: Option[String], exchangerType: Option[String], workers: Option[Int], useSSL: Option[Boolean]): QueueResponse
+  def consumerCreate(appKey: String, name: String, hostname: String, username: String, password: String, dataMapping: String, deviceId: Option[String], accountId: Option[Long], port: Option[Int], virtualHost: Option[String], exchanger: Option[String], exchangerType: Option[String], workers: Option[Int], useSSL: Option[Boolean]): QueueResponse
 
   /**
     * Update Consumer
@@ -37,7 +36,7 @@ trait AMQPApi {
     * @param accountId The logged in user ID
     * @param useSSL Use SSL
     */
-  def consumerUpdate(version: BigDecimal, appKey: String, queueId: Long, dataMapping: String, deviceId: Option[String], accountId: Option[Long], useSSL: Option[Boolean]): QueueResponse
+  def consumerUpdate(appKey: String, queueId: Long, dataMapping: String, deviceId: Option[String], accountId: Option[Long], useSSL: Option[Boolean]): QueueResponse
 
   /**
     * Create Queue
@@ -55,7 +54,7 @@ trait AMQPApi {
     * @param virtualHost The virtual host defined on the server to queue
     * @param useSSL Use SSL
     */
-  def queueCreate(version: BigDecimal, appKey: String, name: String, deviceId: Option[String], accountId: Option[Long], workers: Option[Int], analyticTags: Option[String], hostname: Option[String], port: Option[Int], username: Option[String], password: Option[String], virtualHost: Option[String], useSSL: Option[Boolean]): QueueResponse
+  def queueCreate(appKey: String, name: String, deviceId: Option[String], accountId: Option[Long], workers: Option[Int], analyticTags: Option[String], hostname: Option[String], port: Option[Int], username: Option[String], password: Option[String], virtualHost: Option[String], useSSL: Option[Boolean]): QueueResponse
 
   /**
     * Delete Queue
@@ -64,7 +63,7 @@ trait AMQPApi {
     * @param deviceId The client device ID
     * @param accountId The logged in user ID
     */
-  def queueDelete(version: BigDecimal, queueId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def queueDelete(queueId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Queue
@@ -77,7 +76,7 @@ trait AMQPApi {
     * @param hostname The hostname of the queue to find
     * @param virtualHost The virtual host of the queue to find
     */
-  def queueGet(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], queueId: Option[Long], appKey: Option[String], name: Option[String], hostname: Option[String], virtualHost: Option[String]): QueueResponse
+  def queueGet(deviceId: Option[String], accountId: Option[Long], queueId: Option[Long], appKey: Option[String], name: Option[String], hostname: Option[String], virtualHost: Option[String]): QueueResponse
 
   /**
     * Publish Queue
@@ -89,7 +88,7 @@ trait AMQPApi {
     * @param hostname The hostname of the server the queue is hosted on
     * @param virtualHost The virtual host defined on the server to queue
     */
-  def queuePublish(version: BigDecimal, message: String, queueId: Option[Long], appKey: Option[String], name: Option[String], hostname: Option[String], virtualHost: Option[String]): SirqulResponse
+  def queuePublish(message: String, queueId: Option[Long], appKey: Option[String], name: Option[String], hostname: Option[String], virtualHost: Option[String]): SirqulResponse
 
   /**
     * Search Queue
@@ -101,7 +100,7 @@ trait AMQPApi {
     * @param start Start of the index
     * @param limit Limit of the index
     */
-  def queueSearch(version: BigDecimal, queueId: Option[Long], deviceId: Option[String], accountId: Option[Long], name: Option[String], start: Option[Int], limit: Option[Int]): QueueResponse
+  def queueSearch(queueId: Option[Long], deviceId: Option[String], accountId: Option[Long], name: Option[String], start: Option[Int], limit: Option[Int]): QueueResponse
 
   /**
     * Update Queue
@@ -119,5 +118,5 @@ trait AMQPApi {
     * @param virtualHost The virtual host defined on the server to queue
     * @param useSSL the SSL to use
     */
-  def queueUpdate(version: BigDecimal, queueId: Long, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], workers: Option[Int], analyticTags: Option[String], hostname: Option[String], port: Option[Int], username: Option[String], password: Option[String], virtualHost: Option[String], useSSL: Option[Boolean]): QueueResponse
+  def queueUpdate(queueId: Long, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], workers: Option[Int], analyticTags: Option[String], hostname: Option[String], port: Option[Int], username: Option[String], password: Option[String], virtualHost: Option[String], useSSL: Option[Boolean]): QueueResponse
 }

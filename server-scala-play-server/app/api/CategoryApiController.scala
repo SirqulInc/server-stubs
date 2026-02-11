@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.CategoryResponse
 import model.CategoryTreeResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/category/distancesearch?accountId=[value]&keyword=[value]&appKey=[value]&categoryIds=[value]&parentCategoryIds=[value]&rootOnly=[value]&sortField=[value]&responseGroup=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&returnExternal=[value]&exactMatch=[value]&`type`=[value]&externalType=[value]&minOfferCount=[value]&latitude=[value]&longitude=[value]&range=[value]
+    * GET /api/3.18/category/distancesearch?accountId=[value]&keyword=[value]&appKey=[value]&categoryIds=[value]&parentCategoryIds=[value]&rootOnly=[value]&sortField=[value]&responseGroup=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&returnExternal=[value]&exactMatch=[value]&`type`=[value]&externalType=[value]&minOfferCount=[value]&latitude=[value]&longitude=[value]&range=[value]
     */
-  def categoryDistanceSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def categoryDistanceSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): List[CategoryResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -69,7 +68,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
       val range = request.getQueryString("range")
         .map(value => value.toDouble)
         
-      api.categoryDistanceSearch(version, accountId, keyword, appKey, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, `type`, externalType, minOfferCount, latitude, longitude, range)
+      api.categoryDistanceSearch(accountId, keyword, appKey, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, `type`, externalType, minOfferCount, latitude, longitude, range)
     }
 
     val result = executeApi()
@@ -78,9 +77,9 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
   }
 
   /**
-    * POST /api/:version/category/create?appKey=[value]&accountId=[value]&parentCategoryId=[value]&name=[value]&description=[value]&`type`=[value]&assetId=[value]&externalId=[value]&externalType=[value]&externalCategorySlug=[value]&sqootSlug=[value]&active=[value]&metaData=[value]&searchTags=[value]
+    * POST /api/3.18/category/create?appKey=[value]&accountId=[value]&parentCategoryId=[value]&name=[value]&description=[value]&`type`=[value]&assetId=[value]&externalId=[value]&externalType=[value]&externalCategorySlug=[value]&sqootSlug=[value]&active=[value]&metaData=[value]&searchTags=[value]
     */
-  def createCategory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createCategory(): Action[AnyContent] = Action { request =>
     def executeApi(): CategoryTreeResponse = {
       val appKey = request.getQueryString("appKey")
         
@@ -120,7 +119,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
         
       val searchTags = request.getQueryString("searchTags")
         
-      api.createCategory(version, accountId, name, appKey, parentCategoryId, description, `type`, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags)
+      api.createCategory(accountId, name, appKey, parentCategoryId, description, `type`, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags)
     }
 
     val result = executeApi()
@@ -129,9 +128,9 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
   }
 
   /**
-    * POST /api/:version/category/delete?accountId=[value]&categoryId=[value]
+    * POST /api/3.18/category/delete?accountId=[value]&categoryId=[value]
     */
-  def deleteCategory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteCategory(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -145,7 +144,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
           throw new OpenApiExceptions.MissingRequiredParameterException("categoryId", "query string")
         }
         
-      api.deleteCategory(version, accountId, categoryId)
+      api.deleteCategory(accountId, categoryId)
     }
 
     val result = executeApi()
@@ -154,9 +153,9 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
   }
 
   /**
-    * POST /api/:version/category/duplicate?appKey=[value]&accountId=[value]&categoryId=[value]&parentCategoryId=[value]
+    * POST /api/3.18/category/duplicate?appKey=[value]&accountId=[value]&categoryId=[value]&parentCategoryId=[value]
     */
-  def duplicateCategory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def duplicateCategory(): Action[AnyContent] = Action { request =>
     def executeApi(): CategoryTreeResponse = {
       val appKey = request.getQueryString("appKey")
         
@@ -175,7 +174,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
       val parentCategoryId = request.getQueryString("parentCategoryId")
         .map(value => value.toLong)
         
-      api.duplicateCategory(version, accountId, categoryId, appKey, parentCategoryId)
+      api.duplicateCategory(accountId, categoryId, appKey, parentCategoryId)
     }
 
     val result = executeApi()
@@ -184,9 +183,9 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
   }
 
   /**
-    * GET /api/:version/category/get?categoryId=[value]&returnExternal=[value]
+    * GET /api/3.18/category/get?categoryId=[value]&returnExternal=[value]
     */
-  def getCategory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCategory(): Action[AnyContent] = Action { request =>
     def executeApi(): CategoryTreeResponse = {
       val categoryId = request.getQueryString("categoryId")
         .map(value => value.toLong)
@@ -197,7 +196,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
       val returnExternal = request.getQueryString("returnExternal")
         .map(value => value.toBoolean)
         
-      api.getCategory(version, categoryId, returnExternal)
+      api.getCategory(categoryId, returnExternal)
     }
 
     val result = executeApi()
@@ -206,9 +205,9 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
   }
 
   /**
-    * GET /api/:version/category/search?accountId=[value]&keyword=[value]&appKey=[value]&categoryId=[value]&categoryIds=[value]&parentCategoryIds=[value]&rootOnly=[value]&sortField=[value]&responseGroup=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&returnExternal=[value]&exactMatch=[value]&`type`=[value]&externalType=[value]&excludeExternalType=[value]&minOfferCount=[value]&searchDepth=[value]&searchMode=[value]
+    * GET /api/3.18/category/search?accountId=[value]&keyword=[value]&appKey=[value]&categoryId=[value]&categoryIds=[value]&parentCategoryIds=[value]&rootOnly=[value]&sortField=[value]&responseGroup=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&returnExternal=[value]&exactMatch=[value]&`type`=[value]&externalType=[value]&excludeExternalType=[value]&minOfferCount=[value]&searchDepth=[value]&searchMode=[value]
     */
-  def searchCategories(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchCategories(): Action[AnyContent] = Action { request =>
     def executeApi(): List[CategoryResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -263,7 +262,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
         
       val searchMode = request.getQueryString("searchMode")
         
-      api.searchCategories(version, accountId, keyword, appKey, categoryId, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, `type`, externalType, excludeExternalType, minOfferCount, searchDepth, searchMode)
+      api.searchCategories(accountId, keyword, appKey, categoryId, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, `type`, externalType, excludeExternalType, minOfferCount, searchDepth, searchMode)
     }
 
     val result = executeApi()
@@ -272,9 +271,9 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
   }
 
   /**
-    * POST /api/:version/category/update?accountId=[value]&categoryId=[value]&parentCategoryId=[value]&name=[value]&description=[value]&`type`=[value]&assetId=[value]&externalId=[value]&externalType=[value]&externalCategorySlug=[value]&sqootSlug=[value]&active=[value]&metaData=[value]&searchTags=[value]
+    * POST /api/3.18/category/update?accountId=[value]&categoryId=[value]&parentCategoryId=[value]&name=[value]&description=[value]&`type`=[value]&assetId=[value]&externalId=[value]&externalType=[value]&externalCategorySlug=[value]&sqootSlug=[value]&active=[value]&metaData=[value]&searchTags=[value]
     */
-  def updateCategory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateCategory(): Action[AnyContent] = Action { request =>
     def executeApi(): CategoryTreeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -315,7 +314,7 @@ class CategoryApiController @Inject()(cc: ControllerComponents, api: CategoryApi
         
       val searchTags = request.getQueryString("searchTags")
         
-      api.updateCategory(version, accountId, categoryId, parentCategoryId, name, description, `type`, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags)
+      api.updateCategory(accountId, categoryId, parentCategoryId, name, description, `type`, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags)
     }
 
     val result = executeApi()

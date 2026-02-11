@@ -1,13 +1,12 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ListingFullResponse
 import model.ListingGroupResponse
 import model.ListingResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ListingApi {
   /**
     * Create Listing
@@ -27,7 +26,7 @@ trait ListingApi {
     * @param active Sets the active flag
     * @param metaData external custom client defined data
     */
-  def createListing(version: BigDecimal, accountId: Long, name: String, filterIds: Option[String], description: Option[String], start: Option[Long], end: Option[Long], locationName: Option[String], locationDescription: Option[String], isPrivate: Option[Boolean], externalId: Option[String], externalId2: Option[String], externalGroupId: Option[String], active: Option[Boolean], metaData: Option[String]): ListingFullResponse
+  def createListing(accountId: Long, name: String, filterIds: Option[String], description: Option[String], start: Option[Long], end: Option[Long], locationName: Option[String], locationDescription: Option[String], isPrivate: Option[Boolean], externalId: Option[String], externalId2: Option[String], externalGroupId: Option[String], active: Option[Boolean], metaData: Option[String]): ListingFullResponse
 
   /**
     * Delete Listing
@@ -35,14 +34,14 @@ trait ListingApi {
     * @param accountId the id of the logged in user
     * @param listingId the id of the listing to delete
     */
-  def deleteListing(version: BigDecimal, accountId: Long, listingId: Long): SirqulResponse
+  def deleteListing(accountId: Long, listingId: Long): SirqulResponse
 
   /**
     * Get Listing
     * Get a listing by id.
     * @param listingId the id of the listing to get
     */
-  def getListing(version: BigDecimal, listingId: Long): ListingFullResponse
+  def getListing(listingId: Long): ListingFullResponse
 
   /**
     * Search Listings
@@ -63,7 +62,7 @@ trait ListingApi {
     * @param externalId2 secondary external identifier used by a third party
     * @param externalGroupId external group identifier used by a third party
     */
-  def searchListing(version: BigDecimal, accountId: Option[Long], keyword: Option[String], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], latitude: Option[Double], longitude: Option[Double], startDate: Option[Long], endDate: Option[Long], categoryIds: Option[String], filterIds: Option[String], useListingOrderIds: Option[Boolean], externalId: Option[String], externalId2: Option[String], externalGroupId: Option[String]): List[ListingResponse]
+  def searchListing(accountId: Option[Long], keyword: Option[String], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], latitude: Option[Double], longitude: Option[Double], startDate: Option[Long], endDate: Option[Long], categoryIds: Option[String], filterIds: Option[String], useListingOrderIds: Option[Boolean], externalId: Option[String], externalId2: Option[String], externalGroupId: Option[String]): List[ListingResponse]
 
   /**
     * Summary Listing
@@ -74,7 +73,7 @@ trait ListingApi {
     * @param daysToInclude how far out to search, in days
     * @param useListingOrderIds determines whether to use configured listing order ids
     */
-  def summaryListing(version: BigDecimal, accountId: Option[Long], startDate: Option[Long], categoryIds: Option[String], daysToInclude: Option[Int], useListingOrderIds: Option[Boolean]): List[ListingGroupResponse]
+  def summaryListing(accountId: Option[Long], startDate: Option[Long], categoryIds: Option[String], daysToInclude: Option[Int], useListingOrderIds: Option[Boolean]): List[ListingGroupResponse]
 
   /**
     * Update Listing
@@ -95,5 +94,5 @@ trait ListingApi {
     * @param active Sets the active flag
     * @param metaData external custom client defined data
     */
-  def updateListing(version: BigDecimal, accountId: Long, listingId: Long, filterIds: Option[String], name: Option[String], description: Option[String], start: Option[Long], end: Option[Long], locationName: Option[String], locationDescription: Option[String], isPrivate: Option[Boolean], externalId: Option[String], externalId2: Option[String], externalGroupId: Option[String], active: Option[Boolean], metaData: Option[String]): ListingFullResponse
+  def updateListing(accountId: Long, listingId: Long, filterIds: Option[String], name: Option[String], description: Option[String], start: Option[Long], end: Option[Long], locationName: Option[String], locationDescription: Option[String], isPrivate: Option[Boolean], externalId: Option[String], externalId2: Option[String], externalGroupId: Option[String], active: Option[Boolean], metaData: Option[String]): ListingFullResponse
 }

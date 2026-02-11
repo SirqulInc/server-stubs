@@ -8,18 +8,17 @@ import model.AccountListResponse
 import model.ApplicationResponse
 import model.ApplicationSettingsResponse
 import model.ApplicationShortResponse
-import model.BigDecimal
 import model.PlacementResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ApplicationApiController @Inject()(cc: ControllerComponents, api: ApplicationApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/application/create?deviceId=[value]&accountId=[value]&appName=[value]&about=[value]&bundleId=[value]&appIconAssetId=[value]&appLogoAssetId=[value]&facebookAppId=[value]&facebookAppSecret=[value]&googleApiKey=[value]&updateEULADate=[value]&eulaVersion=[value]&landingPageUrl=[value]&showInActivities=[value]&activityDescription=[value]&inviteWelcomeText=[value]&invitePageUrl=[value]&urlScheme=[value]&platforms=[value]&downloadUrls=[value]&categoryIds=[value]&scoringType=[value]&hintCost=[value]&maxScore=[value]&ticketsPerPoint=[value]&hasGameData=[value]&publicNotifications=[value]&useMatchingAlgorithm=[value]&globalTickets=[value]&buildVersion=[value]&apiVersion=[value]&placementName=[value]&placementDescription=[value]&placementSize=[value]&placementHeight=[value]&placementWidth=[value]&placementRefreshInterval=[value]&createObjectStore=[value]&publicContentApproval=[value]&productionMode=[value]&minimumSessionLength=[value]&sessionGapLength=[value]&localAdsEnabled=[value]&sqootApiKey=[value]&trilatProcessingType=[value]&maxSampleSize=[value]&minRSSI=[value]&modules=[value]&authorizedCount=[value]&authorizedServers=[value]&defaultTimezone=[value]&smtpPass=[value]&metaData=[value]&placementMetaData=[value]&ipsFloor=[value]&enableAPNSBadge=[value]&includeInReport=[value]&defaultAppFilterId=[value]&enableWelcomeEmail=[value]&appleAppId=[value]&appleTeamId=[value]&appleAuthKeyId=[value]&appleAuthKey=[value]&appleIssuerId=[value]&appStoreKeyId=[value]&appStoreKey=[value]&googlePrivateKeyFile=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]&emailSender=[value]&smtpUser=[value]&smtpHost=[value]&vatomBusinessId=[value]&vatomRestClientId=[value]&vatomRestSecretKey=[value]&twilioAccountSID=[value]&twilioAuthToken=[value]&twilioSenderPhoneNumber=[value]&openAISecretKey=[value]
+    * POST /api/3.18/application/create?deviceId=[value]&accountId=[value]&appName=[value]&about=[value]&bundleId=[value]&appIconAssetId=[value]&appLogoAssetId=[value]&facebookAppId=[value]&facebookAppSecret=[value]&googleApiKey=[value]&updateEULADate=[value]&eulaVersion=[value]&landingPageUrl=[value]&showInActivities=[value]&activityDescription=[value]&inviteWelcomeText=[value]&invitePageUrl=[value]&urlScheme=[value]&platforms=[value]&downloadUrls=[value]&categoryIds=[value]&scoringType=[value]&hintCost=[value]&maxScore=[value]&ticketsPerPoint=[value]&hasGameData=[value]&publicNotifications=[value]&useMatchingAlgorithm=[value]&globalTickets=[value]&buildVersion=[value]&apiVersion=[value]&placementName=[value]&placementDescription=[value]&placementSize=[value]&placementHeight=[value]&placementWidth=[value]&placementRefreshInterval=[value]&createObjectStore=[value]&publicContentApproval=[value]&productionMode=[value]&minimumSessionLength=[value]&sessionGapLength=[value]&localAdsEnabled=[value]&sqootApiKey=[value]&trilatProcessingType=[value]&maxSampleSize=[value]&minRSSI=[value]&modules=[value]&authorizedCount=[value]&authorizedServers=[value]&defaultTimezone=[value]&smtpPass=[value]&metaData=[value]&placementMetaData=[value]&ipsFloor=[value]&enableAPNSBadge=[value]&includeInReport=[value]&defaultAppFilterId=[value]&enableWelcomeEmail=[value]&appleAppId=[value]&appleTeamId=[value]&appleAuthKeyId=[value]&appleAuthKey=[value]&appleIssuerId=[value]&appStoreKeyId=[value]&appStoreKey=[value]&googlePrivateKeyFile=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]&emailSender=[value]&smtpUser=[value]&smtpHost=[value]&vatomBusinessId=[value]&vatomRestClientId=[value]&vatomRestSecretKey=[value]&twilioAccountSID=[value]&twilioAuthToken=[value]&twilioSenderPhoneNumber=[value]&openAISecretKey=[value]
     */
-  def createApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -213,7 +212,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
         
       val openAISecretKey = request.getQueryString("openAISecretKey")
         
-      api.createApplication(version, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey)
+      api.createApplication(appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey)
     }
 
     val result = executeApi()
@@ -222,9 +221,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/placement/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&description=[value]&size=[value]&height=[value]&width=[value]&refreshInterval=[value]&defaultImageId=[value]&active=[value]
+    * POST /api/3.18/application/placement/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&description=[value]&size=[value]&height=[value]&width=[value]&refreshInterval=[value]&defaultImageId=[value]&active=[value]
     */
-  def createApplicationPlacement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createApplicationPlacement(): Action[AnyContent] = Action { request =>
     def executeApi(): PlacementResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -260,7 +259,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.createApplicationPlacement(version, appKey, size, deviceId, accountId, name, description, height, width, refreshInterval, defaultImageId, active)
+      api.createApplicationPlacement(appKey, size, deviceId, accountId, name, description, height, width, refreshInterval, defaultImageId, active)
     }
 
     val result = executeApi()
@@ -269,16 +268,16 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/delete?accountId=[value]&appKey=[value]
+    * POST /api/3.18/application/delete?accountId=[value]&appKey=[value]
     */
-  def deleteApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
       val appKey = request.getQueryString("appKey")
         
-      api.deleteApplication(version, accountId, appKey)
+      api.deleteApplication(accountId, appKey)
     }
 
     val result = executeApi()
@@ -287,9 +286,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/placement/delete?deviceId=[value]&accountId=[value]&placementId=[value]
+    * POST /api/3.18/application/placement/delete?deviceId=[value]&accountId=[value]&placementId=[value]
     */
-  def deleteApplicationPlacement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteApplicationPlacement(): Action[AnyContent] = Action { request =>
     def executeApi(): PlacementResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -302,7 +301,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
           throw new OpenApiExceptions.MissingRequiredParameterException("placementId", "query string")
         }
         
-      api.deleteApplicationPlacement(version, placementId, deviceId, accountId)
+      api.deleteApplicationPlacement(placementId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -311,16 +310,16 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/get?appKey=[value]&applicationId=[value]
+    * GET /api/3.18/application/get?appKey=[value]&applicationId=[value]
     */
-  def getApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationResponse = {
       val appKey = request.getQueryString("appKey")
         
       val applicationId = request.getQueryString("applicationId")
         .map(value => value.toLong)
         
-      api.getApplication(version, appKey, applicationId)
+      api.getApplication(appKey, applicationId)
     }
 
     val result = executeApi()
@@ -329,9 +328,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/placement/get?deviceId=[value]&accountId=[value]&placementId=[value]
+    * GET /api/3.18/application/placement/get?deviceId=[value]&accountId=[value]&placementId=[value]
     */
-  def getApplicationPlacement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getApplicationPlacement(): Action[AnyContent] = Action { request =>
     def executeApi(): PlacementResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -344,7 +343,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
           throw new OpenApiExceptions.MissingRequiredParameterException("placementId", "query string")
         }
         
-      api.getApplicationPlacement(version, placementId, deviceId, accountId)
+      api.getApplicationPlacement(placementId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -353,11 +352,11 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/versions
+    * GET /api/3.18/application/versions
     */
-  def getApplicationVersions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getApplicationVersions(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
-      api.getApplicationVersions(version)
+      api.getApplicationVersions()
     }
 
     val result = executeApi()
@@ -366,9 +365,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/users?appKey=[value]&q=[value]&keyword=[value]&since=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
+    * GET /api/3.18/application/users?appKey=[value]&q=[value]&keyword=[value]&since=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
     */
-  def getUniqueUsersByApp(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUniqueUsersByApp(): Action[AnyContent] = Action { request =>
     def executeApi(): AccountListResponse = {
       val appKey = request.getQueryString("appKey")
         .getOrElse {
@@ -394,7 +393,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getUniqueUsersByApp(version, appKey, q, keyword, since, i, start, l, limit)
+      api.getUniqueUsersByApp(appKey, q, keyword, since, i, start, l, limit)
     }
 
     val result = executeApi()
@@ -403,9 +402,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/list?accountId=[value]&q=[value]&keyword=[value]&platforms=[value]&deviceIds=[value]&deviceVersions=[value]&categoryIds=[value]&sortField=[value]&hasAds=[value]&publicNotifications=[value]&filterBillable=[value]&filterContentAdmin=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&applicationIds=[value]&hasObjectStore=[value]&activeOnly=[value]
+    * GET /api/3.18/application/list?accountId=[value]&q=[value]&keyword=[value]&platforms=[value]&deviceIds=[value]&deviceVersions=[value]&categoryIds=[value]&sortField=[value]&hasAds=[value]&publicNotifications=[value]&filterBillable=[value]&filterContentAdmin=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&applicationIds=[value]&hasObjectStore=[value]&activeOnly=[value]
     */
-  def listApplications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listApplications(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ApplicationShortResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -459,7 +458,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.listApplications(version, accountId, q, keyword, platforms, deviceIds, deviceVersions, categoryIds, sortField, hasAds, publicNotifications, filterBillable, filterContentAdmin, descending, i, start, l, limit, applicationIds, hasObjectStore, activeOnly)
+      api.listApplications(accountId, q, keyword, platforms, deviceIds, deviceVersions, categoryIds, sortField, hasAds, publicNotifications, filterBillable, filterContentAdmin, descending, i, start, l, limit, applicationIds, hasObjectStore, activeOnly)
     }
 
     val result = executeApi()
@@ -468,9 +467,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/placement/search?deviceId=[value]&accountId=[value]&appKey=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/application/placement/search?deviceId=[value]&accountId=[value]&appKey=[value]&start=[value]&limit=[value]
     */
-  def searchApplicationPlacement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchApplicationPlacement(): Action[AnyContent] = Action { request =>
     def executeApi(): List[PlacementResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -488,7 +487,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchApplicationPlacement(version, appKey, deviceId, accountId, start, limit)
+      api.searchApplicationPlacement(appKey, deviceId, accountId, start, limit)
     }
 
     val result = executeApi()
@@ -497,9 +496,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/settings/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/application/settings/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchApplicationSettings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchApplicationSettings(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationSettingsResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -522,7 +521,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchApplicationSettings(version, deviceId, accountId, connectionAccountId, keyword, sortField, descending, start, limit)
+      api.searchApplicationSettings(deviceId, accountId, connectionAccountId, keyword, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -531,9 +530,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * GET /api/:version/application/search?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&q=[value]&keyword=[value]&qSearchFields=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&hasAds=[value]&publicNotifications=[value]&activeOnly=[value]
+    * GET /api/3.18/application/search?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&q=[value]&keyword=[value]&qSearchFields=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&hasAds=[value]&publicNotifications=[value]&activeOnly=[value]
     */
-  def searchApplications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchApplications(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ApplicationResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -578,7 +577,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.searchApplications(version, deviceId, accountId, latitude, longitude, q, keyword, qSearchFields, sortField, descending, i, start, l, limit, hasAds, publicNotifications, activeOnly)
+      api.searchApplications(deviceId, accountId, latitude, longitude, q, keyword, qSearchFields, sortField, descending, i, start, l, limit, hasAds, publicNotifications, activeOnly)
     }
 
     val result = executeApi()
@@ -587,9 +586,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/update?deviceId=[value]&accountId=[value]&appKey=[value]&appName=[value]&about=[value]&bundleId=[value]&appIconAssetId=[value]&appLogoAssetId=[value]&facebookAppId=[value]&facebookAppSecret=[value]&googleApiKey=[value]&updateEULADate=[value]&eulaVersion=[value]&landingPageUrl=[value]&showInActivities=[value]&activityDescription=[value]&inviteWelcomeText=[value]&invitePageUrl=[value]&urlScheme=[value]&platforms=[value]&downloadUrls=[value]&categoryIds=[value]&scoringType=[value]&hintCost=[value]&maxScore=[value]&ticketsPerPoint=[value]&hasGameData=[value]&publicNotifications=[value]&useMatchingAlgorithm=[value]&globalTickets=[value]&buildVersion=[value]&apiVersion=[value]&placementName=[value]&placementDescription=[value]&placementSize=[value]&placementHeight=[value]&placementWidth=[value]&placementRefreshInterval=[value]&createObjectStore=[value]&publicContentApproval=[value]&productionMode=[value]&minimumSessionLength=[value]&sessionGapLength=[value]&localAdsEnabled=[value]&sqootApiKey=[value]&trilatProcessingType=[value]&maxSampleSize=[value]&minRSSI=[value]&modules=[value]&authorizedCount=[value]&authorizedServers=[value]&defaultTimezone=[value]&smtpPass=[value]&metaData=[value]&placementMetaData=[value]&ipsFloor=[value]&enableAPNSBadge=[value]&includeInReport=[value]&defaultAppFilterId=[value]&enableWelcomeEmail=[value]&appleAppId=[value]&appleTeamId=[value]&appleAuthKeyId=[value]&appleAuthKey=[value]&appleIssuerId=[value]&appStoreKeyId=[value]&appStoreKey=[value]&googlePrivateKeyFile=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]&emailSender=[value]&smtpUser=[value]&smtpHost=[value]&vatomBusinessId=[value]&vatomRestClientId=[value]&vatomRestSecretKey=[value]&twilioAccountSID=[value]&twilioAuthToken=[value]&twilioSenderPhoneNumber=[value]&openAISecretKey=[value]
+    * POST /api/3.18/application/update?deviceId=[value]&accountId=[value]&appKey=[value]&appName=[value]&about=[value]&bundleId=[value]&appIconAssetId=[value]&appLogoAssetId=[value]&facebookAppId=[value]&facebookAppSecret=[value]&googleApiKey=[value]&updateEULADate=[value]&eulaVersion=[value]&landingPageUrl=[value]&showInActivities=[value]&activityDescription=[value]&inviteWelcomeText=[value]&invitePageUrl=[value]&urlScheme=[value]&platforms=[value]&downloadUrls=[value]&categoryIds=[value]&scoringType=[value]&hintCost=[value]&maxScore=[value]&ticketsPerPoint=[value]&hasGameData=[value]&publicNotifications=[value]&useMatchingAlgorithm=[value]&globalTickets=[value]&buildVersion=[value]&apiVersion=[value]&placementName=[value]&placementDescription=[value]&placementSize=[value]&placementHeight=[value]&placementWidth=[value]&placementRefreshInterval=[value]&createObjectStore=[value]&publicContentApproval=[value]&productionMode=[value]&minimumSessionLength=[value]&sessionGapLength=[value]&localAdsEnabled=[value]&sqootApiKey=[value]&trilatProcessingType=[value]&maxSampleSize=[value]&minRSSI=[value]&modules=[value]&authorizedCount=[value]&authorizedServers=[value]&defaultTimezone=[value]&smtpPass=[value]&metaData=[value]&placementMetaData=[value]&ipsFloor=[value]&enableAPNSBadge=[value]&includeInReport=[value]&defaultAppFilterId=[value]&enableWelcomeEmail=[value]&appleAppId=[value]&appleTeamId=[value]&appleAuthKeyId=[value]&appleAuthKey=[value]&appleIssuerId=[value]&appStoreKeyId=[value]&appStoreKey=[value]&googlePrivateKeyFile=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]&emailSender=[value]&smtpUser=[value]&smtpHost=[value]&vatomBusinessId=[value]&vatomRestClientId=[value]&vatomRestSecretKey=[value]&twilioAccountSID=[value]&twilioAuthToken=[value]&twilioSenderPhoneNumber=[value]&openAISecretKey=[value]
     */
-  def updateApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -788,7 +787,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
         
       val openAISecretKey = request.getQueryString("openAISecretKey")
         
-      api.updateApplication(version, appKey, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey)
+      api.updateApplication(appKey, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey)
     }
 
     val result = executeApi()
@@ -797,9 +796,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/active?accountId=[value]&appKey=[value]&active=[value]
+    * POST /api/3.18/application/active?accountId=[value]&appKey=[value]&active=[value]
     */
-  def updateApplicationActive(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateApplicationActive(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -818,7 +817,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
           throw new OpenApiExceptions.MissingRequiredParameterException("active", "query string")
         }
         
-      api.updateApplicationActive(version, accountId, appKey, active)
+      api.updateApplicationActive(accountId, appKey, active)
     }
 
     val result = executeApi()
@@ -827,9 +826,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/placement/update?deviceId=[value]&accountId=[value]&placementId=[value]&name=[value]&description=[value]&size=[value]&height=[value]&width=[value]&refreshInterval=[value]&defaultImageId=[value]&active=[value]
+    * POST /api/3.18/application/placement/update?deviceId=[value]&accountId=[value]&placementId=[value]&name=[value]&description=[value]&size=[value]&height=[value]&width=[value]&refreshInterval=[value]&defaultImageId=[value]&active=[value]
     */
-  def updateApplicationPlacement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateApplicationPlacement(): Action[AnyContent] = Action { request =>
     def executeApi(): PlacementResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -863,7 +862,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.updateApplicationPlacement(version, placementId, deviceId, accountId, name, description, size, height, width, refreshInterval, defaultImageId, active)
+      api.updateApplicationPlacement(placementId, deviceId, accountId, name, description, size, height, width, refreshInterval, defaultImageId, active)
     }
 
     val result = executeApi()
@@ -872,9 +871,9 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
   }
 
   /**
-    * POST /api/:version/application/certificate/create?deviceId=[value]&accountId=[value]&appKey=[value]&certificate=[value]
+    * POST /api/3.18/application/certificate/create?deviceId=[value]&accountId=[value]&appKey=[value]&certificate=[value]
     */
-  def uploadApplicationCertificate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def uploadApplicationCertificate(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -888,7 +887,7 @@ class ApplicationApiController @Inject()(cc: ControllerComponents, api: Applicat
         
       val certificate = request.getQueryString("certificate")
         
-      api.uploadApplicationCertificate(version, appKey, deviceId, accountId, certificate)
+      api.uploadApplicationCertificate(appKey, deviceId, accountId, certificate)
     }
 
     val result = executeApi()

@@ -4,20 +4,19 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.GameLevelListResponse
 import model.GameLevelResponse
 import model.QuestionResponse
 import model.SirqulResponse
 import model.WordzWordResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/level/create?accountId=[value]&appKey=[value]&name=[value]&description=[value]&difficulty=[value]&appVersion=[value]&assetImageId=[value]&assetIconId=[value]&gameData=[value]&gameDataSuffix=[value]&visibility=[value]&friendGroup=[value]&connectionIds=[value]&connectionGroupIds=[value]&balance=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&tutorialTitle=[value]&tutorialMessage=[value]&tutorialAlignment=[value]&tutorialImageAssetId=[value]&offerId=[value]&metaData=[value]
+    * POST /api/3.18/level/create?accountId=[value]&appKey=[value]&name=[value]&description=[value]&difficulty=[value]&appVersion=[value]&assetImageId=[value]&assetIconId=[value]&gameData=[value]&gameDataSuffix=[value]&visibility=[value]&friendGroup=[value]&connectionIds=[value]&connectionGroupIds=[value]&balance=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&tutorialTitle=[value]&tutorialMessage=[value]&tutorialAlignment=[value]&tutorialImageAssetId=[value]&offerId=[value]&metaData=[value]
     */
-  def createGameLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createGameLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): GameLevelResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -94,7 +93,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
         
       val metaData = request.getQueryString("metaData")
         
-      api.createGameLevel(version, accountId, name, gameData, gameDataSuffix, appKey, description, difficulty, appVersion, assetImageId, assetIconId, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData)
+      api.createGameLevel(accountId, name, gameData, gameDataSuffix, appKey, description, difficulty, appVersion, assetImageId, assetIconId, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData)
     }
 
     val result = executeApi()
@@ -103,9 +102,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * POST /api/:version/level/delete?accountId=[value]&levelId=[value]
+    * POST /api/3.18/level/delete?accountId=[value]&levelId=[value]
     */
-  def deleteGameLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteGameLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -119,7 +118,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
           throw new OpenApiExceptions.MissingRequiredParameterException("levelId", "query string")
         }
         
-      api.deleteGameLevel(version, accountId, levelId)
+      api.deleteGameLevel(accountId, levelId)
     }
 
     val result = executeApi()
@@ -128,9 +127,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * GET /api/:version/level/get?accountId=[value]&levelId=[value]&includeGameData=[value]
+    * GET /api/3.18/level/get?accountId=[value]&levelId=[value]&includeGameData=[value]
     */
-  def getGameLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getGameLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): GameLevelResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -147,7 +146,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.getGameLevel(version, accountId, levelId, includeGameData)
+      api.getGameLevel(accountId, levelId, includeGameData)
     }
 
     val result = executeApi()
@@ -156,9 +155,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * GET /api/:version/level/search?accountId=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&appVersion=[value]&includeGameData=[value]&filters=[value]
+    * GET /api/3.18/level/search?accountId=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&appVersion=[value]&includeGameData=[value]&filters=[value]
     */
-  def getGameLevelsByApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getGameLevelsByApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): GameLevelListResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -191,7 +190,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
         
       val filters = request.getQueryString("filters")
         
-      api.getGameLevelsByApplication(version, accountId, appKey, keyword, sortField, descending, start, limit, appVersion, includeGameData, filters)
+      api.getGameLevelsByApplication(accountId, appKey, keyword, sortField, descending, start, limit, appVersion, includeGameData, filters)
     }
 
     val result = executeApi()
@@ -200,9 +199,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * GET /api/:version/level/searchByBillableEntity?accountId=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/level/searchByBillableEntity?accountId=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
     */
-  def getGameLevelsByBillableEntity(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getGameLevelsByBillableEntity(): Action[AnyContent] = Action { request =>
     def executeApi(): GameLevelResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -228,7 +227,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
       val limit = request.getQueryString("limit")
         .map(value => value.toLong)
         
-      api.getGameLevelsByBillableEntity(version, accountId, appKey, keyword, sortField, descending, activeOnly, start, limit)
+      api.getGameLevelsByBillableEntity(accountId, appKey, keyword, sortField, descending, activeOnly, start, limit)
     }
 
     val result = executeApi()
@@ -237,9 +236,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * GET /api/:version/level/questions/get?levelId=[value]&accountId=[value]
+    * GET /api/3.18/level/questions/get?levelId=[value]&accountId=[value]
     */
-  def getQuestionsInLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getQuestionsInLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): QuestionResponse = {
       val levelId = request.getQueryString("levelId")
         .map(value => value.toLong)
@@ -253,7 +252,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.getQuestionsInLevel(version, levelId, accountId)
+      api.getQuestionsInLevel(levelId, accountId)
     }
 
     val result = executeApi()
@@ -262,9 +261,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * GET /api/:version/level/words/get?levelId=[value]&accountId=[value]
+    * GET /api/3.18/level/words/get?levelId=[value]&accountId=[value]
     */
-  def getWordsInLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getWordsInLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): WordzWordResponse = {
       val levelId = request.getQueryString("levelId")
         .map(value => value.toLong)
@@ -278,7 +277,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.getWordsInLevel(version, levelId, accountId)
+      api.getWordsInLevel(levelId, accountId)
     }
 
     val result = executeApi()
@@ -287,9 +286,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * POST /api/:version/level/update?accountId=[value]&appKey=[value]&levelId=[value]&name=[value]&description=[value]&difficulty=[value]&appVersion=[value]&assetImageId=[value]&assetIconId=[value]&gameData=[value]&gameDataSuffix=[value]&visibility=[value]&friendGroup=[value]&connectionIds=[value]&connectionGroupIds=[value]&balance=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&tutorialTitle=[value]&tutorialMessage=[value]&tutorialAlignment=[value]&tutorialImageAssetId=[value]&offerId=[value]&metaData=[value]
+    * POST /api/3.18/level/update?accountId=[value]&appKey=[value]&levelId=[value]&name=[value]&description=[value]&difficulty=[value]&appVersion=[value]&assetImageId=[value]&assetIconId=[value]&gameData=[value]&gameDataSuffix=[value]&visibility=[value]&friendGroup=[value]&connectionIds=[value]&connectionGroupIds=[value]&balance=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&tutorialTitle=[value]&tutorialMessage=[value]&tutorialAlignment=[value]&tutorialImageAssetId=[value]&offerId=[value]&metaData=[value]
     */
-  def updateGameLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateGameLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): GameLevelResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -363,7 +362,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
         
       val metaData = request.getQueryString("metaData")
         
-      api.updateGameLevel(version, accountId, levelId, appKey, name, description, difficulty, appVersion, assetImageId, assetIconId, gameData, gameDataSuffix, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData)
+      api.updateGameLevel(accountId, levelId, appKey, name, description, difficulty, appVersion, assetImageId, assetIconId, gameData, gameDataSuffix, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData)
     }
 
     val result = executeApi()
@@ -372,9 +371,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * POST /api/:version/level/questions/update?levelId=[value]&accountId=[value]&questionIds=[value]
+    * POST /api/3.18/level/questions/update?levelId=[value]&accountId=[value]&questionIds=[value]
     */
-  def updateQuestionsInLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateQuestionsInLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val levelId = request.getQueryString("levelId")
         .map(value => value.toLong)
@@ -393,7 +392,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
           throw new OpenApiExceptions.MissingRequiredParameterException("questionIds", "query string")
         }
         
-      api.updateQuestionsInLevel(version, levelId, accountId, questionIds)
+      api.updateQuestionsInLevel(levelId, accountId, questionIds)
     }
 
     val result = executeApi()
@@ -402,9 +401,9 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
   }
 
   /**
-    * POST /api/:version/level/words/update?levelId=[value]&accountId=[value]&wordIds=[value]
+    * POST /api/3.18/level/words/update?levelId=[value]&accountId=[value]&wordIds=[value]
     */
-  def updateWordsInLevel(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateWordsInLevel(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val levelId = request.getQueryString("levelId")
         .map(value => value.toLong)
@@ -423,7 +422,7 @@ class GameLevelApiController @Inject()(cc: ControllerComponents, api: GameLevelA
           throw new OpenApiExceptions.MissingRequiredParameterException("wordIds", "query string")
         }
         
-      api.updateWordsInLevel(version, levelId, accountId, wordIds)
+      api.updateWordsInLevel(levelId, accountId, wordIds)
     }
 
     val result = executeApi()

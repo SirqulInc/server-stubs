@@ -13,13 +13,13 @@ import model.OfferTransactionResponse
 import model.RetailerOfferResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/retailer/offer/location/batchUpdate?deviceId=[value]&accountId=[value]&data=[value]
+    * POST /api/3.18/retailer/offer/location/batchUpdate?deviceId=[value]&accountId=[value]&data=[value]
     */
-  def batchUpdateOfferLocations(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def batchUpdateOfferLocations(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -31,7 +31,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("data", "query string")
         }
         
-      api.batchUpdateOfferLocations(version, data, deviceId, accountId)
+      api.batchUpdateOfferLocations(data, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -40,9 +40,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * POST /api/:version/retailer/offer/create?deviceId=[value]&accountId=[value]&tags=[value]&parentOfferId=[value]&includeOfferLocations=[value]&retailerLocationIds=[value]&offerLocations=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&externalId=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&offerType=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&brand=[value]&productType=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&department=[value]&features=[value]&minimumPrice=[value]&width=[value]&height=[value]&depth=[value]&weight=[value]&unit=[value]&studio=[value]&parentalRating=[value]&publishDate=[value]&availabilityDate=[value]&sizeId=[value]&listingId=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&rebootTimeHour=[value]&rebootTimeMinute=[value]&idleTimeoutInSecond=[value]&serialNumber=[value]&udid=[value]&deviceType=[value]&devicePower=[value]&deviceInterference=[value]&availability=[value]&availabilitySummary=[value]
+    * POST /api/3.18/retailer/offer/create?deviceId=[value]&accountId=[value]&tags=[value]&parentOfferId=[value]&includeOfferLocations=[value]&retailerLocationIds=[value]&offerLocations=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&externalId=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&offerType=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&brand=[value]&productType=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&department=[value]&features=[value]&minimumPrice=[value]&width=[value]&height=[value]&depth=[value]&weight=[value]&unit=[value]&studio=[value]&parentalRating=[value]&publishDate=[value]&availabilityDate=[value]&sizeId=[value]&listingId=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&rebootTimeHour=[value]&rebootTimeMinute=[value]&idleTimeoutInSecond=[value]&serialNumber=[value]&udid=[value]&deviceType=[value]&devicePower=[value]&deviceInterference=[value]&availability=[value]&availabilitySummary=[value]
     */
-  def createOffer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOffer(): Action[AnyContent] = Action { request =>
     def executeApi(): RetailerOfferResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -309,7 +309,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
         
       val availabilitySummary = request.getQueryString("availabilitySummary")
         
-      api.createOffer(version, includeOfferLocations, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, offerType, specialOfferType, offerVisibility, active, deviceId, accountId, tags, parentOfferId, retailerLocationIds, offerLocations, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary)
+      api.createOffer(includeOfferLocations, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, offerType, specialOfferType, offerVisibility, active, deviceId, accountId, tags, parentOfferId, retailerLocationIds, offerLocations, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary)
     }
 
     val result = executeApi()
@@ -318,9 +318,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * POST /api/:version/retailer/offer/delete?deviceId=[value]&accountId=[value]&offerId=[value]
+    * POST /api/3.18/retailer/offer/delete?deviceId=[value]&accountId=[value]&offerId=[value]
     */
-  def deleteOffer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteOffer(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -333,7 +333,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("offerId", "query string")
         }
         
-      api.deleteOffer(version, offerId, deviceId, accountId)
+      api.deleteOffer(offerId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -342,9 +342,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * POST /api/:version/retailer/offer/location/delete?deviceId=[value]&accountId=[value]&offerLocationId=[value]
+    * POST /api/3.18/retailer/offer/location/delete?deviceId=[value]&accountId=[value]&offerLocationId=[value]
     */
-  def deleteOfferLocation(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteOfferLocation(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -357,7 +357,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("offerLocationId", "query string")
         }
         
-      api.deleteOfferLocation(version, offerLocationId, deviceId, accountId)
+      api.deleteOfferLocation(offerLocationId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -366,9 +366,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/retailer/offer/get?deviceId=[value]&accountId=[value]&offerId=[value]&includeOfferLocations=[value]
+    * GET /api/3.18/retailer/offer/get?deviceId=[value]&accountId=[value]&offerId=[value]&includeOfferLocations=[value]
     */
-  def getOffer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOffer(): Action[AnyContent] = Action { request =>
     def executeApi(): RetailerOfferResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -387,7 +387,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("includeOfferLocations", "query string")
         }
         
-      api.getOffer(version, offerId, includeOfferLocations, deviceId, accountId)
+      api.getOffer(offerId, includeOfferLocations, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -396,9 +396,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/offer/get?deviceId=[value]&accountId=[value]&offerId=[value]&offerLocationId=[value]&distance=[value]&latitude=[value]&longitude=[value]&includeOfferLocations=[value]&includeRetailerLocations=[value]&includeChildOffers=[value]
+    * GET /api/3.18/offer/get?deviceId=[value]&accountId=[value]&offerId=[value]&offerLocationId=[value]&distance=[value]&latitude=[value]&longitude=[value]&includeOfferLocations=[value]&includeRetailerLocations=[value]&includeChildOffers=[value]
     */
-  def getOfferDetails(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOfferDetails(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -429,7 +429,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
       val includeChildOffers = request.getQueryString("includeChildOffers")
         .map(value => value.toBoolean)
         
-      api.getOfferDetails(version, deviceId, accountId, offerId, offerLocationId, distance, latitude, longitude, includeOfferLocations, includeRetailerLocations, includeChildOffers)
+      api.getOfferDetails(deviceId, accountId, offerId, offerLocationId, distance, latitude, longitude, includeOfferLocations, includeRetailerLocations, includeChildOffers)
     }
 
     val result = executeApi()
@@ -438,9 +438,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/offer/lists/count?latitude=[value]&longitude=[value]&searchRange=[value]&distanceUnit=[value]
+    * GET /api/3.18/offer/lists/count?latitude=[value]&longitude=[value]&searchRange=[value]&distanceUnit=[value]
     */
-  def getOfferListCounts(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOfferListCounts(): Action[AnyContent] = Action { request =>
     def executeApi(): ListCountResponse = {
       val latitude = request.getQueryString("latitude")
         .map(value => value.toDouble)
@@ -459,7 +459,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
         
       val distanceUnit = request.getQueryString("distanceUnit")
         
-      api.getOfferListCounts(version, latitude, longitude, searchRange, distanceUnit)
+      api.getOfferListCounts(latitude, longitude, searchRange, distanceUnit)
     }
 
     val result = executeApi()
@@ -468,16 +468,16 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/offer/location/get?offerLocationId=[value]&udid=[value]
+    * GET /api/3.18/offer/location/get?offerLocationId=[value]&udid=[value]
     */
-  def getOfferLocation(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOfferLocation(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferShortResponse = {
       val offerLocationId = request.getQueryString("offerLocationId")
         .map(value => value.toLong)
         
       val udid = request.getQueryString("udid")
         
-      api.getOfferLocation(version, offerLocationId, udid)
+      api.getOfferLocation(offerLocationId, udid)
     }
 
     val result = executeApi()
@@ -486,9 +486,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/retailer/offer/location/search?deviceId=[value]&accountId=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&offerType=[value]&specialOfferType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&includeRetailerLocation=[value]&barcodeType=[value]&barcodeEntry=[value]&isbn=[value]&asin=[value]&deviceStatus=[value]&needsNotificationSent=[value]&lastNotificationSent=[value]
+    * GET /api/3.18/retailer/offer/location/search?deviceId=[value]&accountId=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&offerType=[value]&specialOfferType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&includeRetailerLocation=[value]&barcodeType=[value]&barcodeEntry=[value]&isbn=[value]&asin=[value]&deviceStatus=[value]&needsNotificationSent=[value]&lastNotificationSent=[value]
     */
-  def getOfferLocationsForRetailers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOfferLocationsForRetailers(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferShortResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -558,7 +558,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
       val lastNotificationSent = request.getQueryString("lastNotificationSent")
         .map(value => value.toLong)
         
-      api.getOfferLocationsForRetailers(version, sortField, descending, start, limit, activeOnly, includeRetailerLocation, deviceId, accountId, keyword, retailerId, retailerLocationId, offerType, specialOfferType, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent)
+      api.getOfferLocationsForRetailers(sortField, descending, start, limit, activeOnly, includeRetailerLocation, deviceId, accountId, keyword, retailerId, retailerLocationId, offerType, specialOfferType, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent)
     }
 
     val result = executeApi()
@@ -567,9 +567,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/retailer/offer/search?deviceId=[value]&accountId=[value]&categoryIds=[value]&filterIds=[value]&q=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&couponType=[value]&offerType=[value]&offerTypes=[value]&specialOfferType=[value]&offerVisibility=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&availableOnly=[value]&activeOnly=[value]&includeCategories=[value]&includeFilters=[value]&includeOfferLocations=[value]&barcodeType=[value]&barcodeEntry=[value]&isbn=[value]&asin=[value]&deviceStatus=[value]&needsNotificationSent=[value]&lastNotificationSent=[value]
+    * GET /api/3.18/retailer/offer/search?deviceId=[value]&accountId=[value]&categoryIds=[value]&filterIds=[value]&q=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&couponType=[value]&offerType=[value]&offerTypes=[value]&specialOfferType=[value]&offerVisibility=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&availableOnly=[value]&activeOnly=[value]&includeCategories=[value]&includeFilters=[value]&includeOfferLocations=[value]&barcodeType=[value]&barcodeEntry=[value]&isbn=[value]&asin=[value]&deviceStatus=[value]&needsNotificationSent=[value]&lastNotificationSent=[value]
     */
-  def getOffersForRetailers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOffersForRetailers(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -678,7 +678,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
       val lastNotificationSent = request.getQueryString("lastNotificationSent")
         .map(value => value.toLong)
         
-      api.getOffersForRetailers(version, offerVisibility, sortField, descending, start, limit, availableOnly, activeOnly, includeCategories, includeFilters, includeOfferLocations, deviceId, accountId, categoryIds, filterIds, q, keyword, retailerId, retailerLocationId, couponType, offerType, offerTypes, specialOfferType, i, l, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent)
+      api.getOffersForRetailers(offerVisibility, sortField, descending, start, limit, availableOnly, activeOnly, includeCategories, includeFilters, includeOfferLocations, deviceId, accountId, categoryIds, filterIds, q, keyword, retailerId, retailerLocationId, couponType, offerType, offerTypes, specialOfferType, i, l, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent)
     }
 
     val result = executeApi()
@@ -687,9 +687,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * POST /api/:version/retailer/offer/transaction/update?deviceId=[value]&accountId=[value]&offerTransactionId=[value]&offerLocationId=[value]&status=[value]
+    * POST /api/3.18/retailer/offer/transaction/update?deviceId=[value]&accountId=[value]&offerTransactionId=[value]&offerLocationId=[value]&status=[value]
     */
-  def redeemOfferTransaction(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def redeemOfferTransaction(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -711,7 +711,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("status", "query string")
         }
         
-      api.redeemOfferTransaction(version, offerTransactionId, status, deviceId, accountId, offerLocationId)
+      api.redeemOfferTransaction(offerTransactionId, status, deviceId, accountId, offerLocationId)
     }
 
     val result = executeApi()
@@ -720,9 +720,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/retailer/offer/transaction/search?deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&offerId=[value]&offerLocationId=[value]&redeemed=[value]&reservationsOnly=[value]&couponType=[value]&offerType=[value]&specialOfferType=[value]&customerAccountIds=[value]&categoryIds=[value]&redeemableStartDate=[value]&redeemableEndDate=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/retailer/offer/transaction/search?deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&offerId=[value]&offerLocationId=[value]&redeemed=[value]&reservationsOnly=[value]&couponType=[value]&offerType=[value]&specialOfferType=[value]&customerAccountIds=[value]&categoryIds=[value]&redeemableStartDate=[value]&redeemableEndDate=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchOfferTransactionsForRetailers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchOfferTransactionsForRetailers(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferTransactionResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -802,7 +802,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchOfferTransactionsForRetailers(version, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, retailerId, retailerLocationId, offerId, offerLocationId, redeemed, reservationsOnly, couponType, offerType, specialOfferType, customerAccountIds, categoryIds, redeemableStartDate, redeemableEndDate, i, l)
+      api.searchOfferTransactionsForRetailers(sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, retailerId, retailerLocationId, offerId, offerLocationId, redeemed, reservationsOnly, couponType, offerType, specialOfferType, customerAccountIds, categoryIds, redeemableStartDate, redeemableEndDate, i, l)
     }
 
     val result = executeApi()
@@ -811,9 +811,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/offer/lists?appKey=[value]&deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&searchRange=[value]&tags=[value]&supportedPostalCodes=[value]&keyword=[value]&categories=[value]&filters=[value]&offerTypes=[value]&`type`=[value]&sortField=[value]&recommendOfferIds=[value]&recommendationType=[value]&locationId=[value]&retailerLocationIds=[value]&offerId=[value]&includeMission=[value]&includeCategories=[value]&includeFilters=[value]&includeExpired=[value]&includeFavorite=[value]&start=[value]&limit=[value]&maxRecommendations=[value]&distanceUnit=[value]&closestOfferOnly=[value]&searchExpression=[value]&groupBy=[value]
+    * GET /api/3.18/offer/lists?appKey=[value]&deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&searchRange=[value]&tags=[value]&supportedPostalCodes=[value]&keyword=[value]&categories=[value]&filters=[value]&offerTypes=[value]&`type`=[value]&sortField=[value]&recommendOfferIds=[value]&recommendationType=[value]&locationId=[value]&retailerLocationIds=[value]&offerId=[value]&includeMission=[value]&includeCategories=[value]&includeFilters=[value]&includeExpired=[value]&includeFavorite=[value]&start=[value]&limit=[value]&maxRecommendations=[value]&distanceUnit=[value]&closestOfferOnly=[value]&searchExpression=[value]&groupBy=[value]
     */
-  def searchOffersForConsumer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchOffersForConsumer(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferListResponse = {
       val appKey = request.getQueryString("appKey")
         
@@ -916,7 +916,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
         
       val groupBy = request.getQueryString("groupBy")
         
-      api.searchOffersForConsumer(version, latitude, longitude, recommendationType, locationId, start, limit, maxRecommendations, distanceUnit, appKey, deviceId, accountId, searchRange, tags, supportedPostalCodes, keyword, categories, filters, offerTypes, `type`, sortField, recommendOfferIds, retailerLocationIds, offerId, includeMission, includeCategories, includeFilters, includeExpired, includeFavorite, closestOfferOnly, searchExpression, groupBy)
+      api.searchOffersForConsumer(latitude, longitude, recommendationType, locationId, start, limit, maxRecommendations, distanceUnit, appKey, deviceId, accountId, searchRange, tags, supportedPostalCodes, keyword, categories, filters, offerTypes, `type`, sortField, recommendOfferIds, retailerLocationIds, offerId, includeMission, includeCategories, includeFilters, includeExpired, includeFavorite, closestOfferOnly, searchExpression, groupBy)
     }
 
     val result = executeApi()
@@ -925,9 +925,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * GET /api/:version/offer/top?start=[value]&limit=[value]
+    * GET /api/3.18/offer/top?start=[value]&limit=[value]
     */
-  def topOfferTransactions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def topOfferTransactions(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferListResponse = {
       val start = request.getQueryString("start")
         .map(value => value.toInt)
@@ -935,7 +935,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.topOfferTransactions(version, start, limit)
+      api.topOfferTransactions(start, limit)
     }
 
     val result = executeApi()
@@ -944,9 +944,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * POST /api/:version/retailer/offer/update?deviceId=[value]&accountId=[value]&offerId=[value]&parentOfferId=[value]&includeOfferLocations=[value]&retailerLocationIds=[value]&offerLocations=[value]&tags=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&externalId=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&offerType=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&brand=[value]&productType=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&department=[value]&features=[value]&minimumPrice=[value]&width=[value]&height=[value]&depth=[value]&weight=[value]&unit=[value]&studio=[value]&parentalRating=[value]&publishDate=[value]&availabilityDate=[value]&sizeId=[value]&listingId=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&rebootTimeHour=[value]&rebootTimeMinute=[value]&idleTimeoutInSecond=[value]&serialNumber=[value]&udid=[value]&deviceType=[value]&devicePower=[value]&deviceInterference=[value]&availability=[value]&availabilitySummary=[value]
+    * POST /api/3.18/retailer/offer/update?deviceId=[value]&accountId=[value]&offerId=[value]&parentOfferId=[value]&includeOfferLocations=[value]&retailerLocationIds=[value]&offerLocations=[value]&tags=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&externalId=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&offerType=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&brand=[value]&productType=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&department=[value]&features=[value]&minimumPrice=[value]&width=[value]&height=[value]&depth=[value]&weight=[value]&unit=[value]&studio=[value]&parentalRating=[value]&publishDate=[value]&availabilityDate=[value]&sizeId=[value]&listingId=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&rebootTimeHour=[value]&rebootTimeMinute=[value]&idleTimeoutInSecond=[value]&serialNumber=[value]&udid=[value]&deviceType=[value]&devicePower=[value]&deviceInterference=[value]&availability=[value]&availabilitySummary=[value]
     */
-  def updateOffer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateOffer(): Action[AnyContent] = Action { request =>
     def executeApi(): RetailerOfferResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1174,7 +1174,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
         
       val availabilitySummary = request.getQueryString("availabilitySummary")
         
-      api.updateOffer(version, offerId, includeOfferLocations, deviceId, accountId, parentOfferId, retailerLocationIds, offerLocations, tags, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, offerType, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary)
+      api.updateOffer(offerId, includeOfferLocations, deviceId, accountId, parentOfferId, retailerLocationIds, offerLocations, tags, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, offerType, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary)
     }
 
     val result = executeApi()
@@ -1183,9 +1183,9 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
   }
 
   /**
-    * POST /api/:version/retailer/offer/status?deviceId=[value]&accountId=[value]&offerIds=[value]&active=[value]
+    * POST /api/3.18/retailer/offer/status?deviceId=[value]&accountId=[value]&offerIds=[value]&active=[value]
     */
-  def updateOfferStatus(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateOfferStatus(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1203,7 +1203,7 @@ class OfferApiController @Inject()(cc: ControllerComponents, api: OfferApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("active", "query string")
         }
         
-      api.updateOfferStatus(version, offerIds, active, deviceId, accountId)
+      api.updateOfferStatus(offerIds, active, deviceId, accountId)
     }
 
     val result = executeApi()

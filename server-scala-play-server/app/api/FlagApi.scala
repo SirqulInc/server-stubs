@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.CountResponse
 import model.FlagResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait FlagApi {
   /**
     * Create Flag
@@ -19,7 +18,7 @@ trait FlagApi {
     * @param latitude The current location of the user
     * @param longitude The current location of the user
     */
-  def createFlag(version: BigDecimal, flagableType: String, flagableId: Long, deviceId: Option[String], accountId: Option[Long], flagDescription: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def createFlag(flagableType: String, flagableId: Long, deviceId: Option[String], accountId: Option[Long], flagDescription: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Delete Flag
@@ -31,7 +30,7 @@ trait FlagApi {
     * @param flagableType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
     * @param flagableId The flagable object id
     */
-  def deleteFlag(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], itemBeingFlaggedType: Option[String], itemBeingFlaggedId: Option[Long], flagableType: Option[String], flagableId: Option[Long]): SirqulResponse
+  def deleteFlag(deviceId: Option[String], accountId: Option[Long], itemBeingFlaggedType: Option[String], itemBeingFlaggedId: Option[Long], flagableType: Option[String], flagableId: Option[Long]): SirqulResponse
 
   /**
     * Get Flag
@@ -43,7 +42,7 @@ trait FlagApi {
     * @param latitude The current location of the user
     * @param longitude The current location of the user
     */
-  def getFlag(version: BigDecimal, flagableType: String, flagableId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): FlagResponse
+  def getFlag(flagableType: String, flagableId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): FlagResponse
 
   /**
     * Get Flag Threshold
@@ -51,7 +50,7 @@ trait FlagApi {
     * @param itemBeingFlaggedType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
     * @param appKey The application key
     */
-  def getFlagThreshold(version: BigDecimal, itemBeingFlaggedType: String, appKey: String): CountResponse
+  def getFlagThreshold(itemBeingFlaggedType: String, appKey: String): CountResponse
 
   /**
     * Update Flag Threshold
@@ -62,5 +61,5 @@ trait FlagApi {
     * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
     * @param accountId The unique accountId that made the request (either deviceId or accountId must be used)
     */
-  def updateFlagThreshold(version: BigDecimal, itemBeingFlaggedType: String, threshold: Long, appKey: String, deviceId: Option[String], accountId: Option[Long]): CountResponse
+  def updateFlagThreshold(itemBeingFlaggedType: String, threshold: Long, appKey: String, deviceId: Option[String], accountId: Option[Long]): CountResponse
 }

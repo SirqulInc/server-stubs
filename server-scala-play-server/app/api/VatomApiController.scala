@@ -4,15 +4,14 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/vatom/me/rels/following/create?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/me/rels/following/create?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def createFollowing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createFollowing(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -28,7 +27,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.createFollowing(version, accountId, vatomParameters, returnRawResponse)
+      api.createFollowing(accountId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -36,40 +35,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/spaces/create?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/spaces/create?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def createSpace(version: BigDecimal): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
-      val accountId = request.getQueryString("accountId")
-        .map(value => value.toLong)
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
-        }
-        
-      val appKey = request.getQueryString("appKey")
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
-        }
-        
-      val vatomParameters = request.getQueryString("vatomParameters")
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("vatomParameters", "query string")
-        }
-        
-      val returnRawResponse = request.getQueryString("returnRawResponse")
-        .map(value => value.toBoolean)
-        
-      api.createSpace(version, accountId, appKey, vatomParameters, returnRawResponse)
-    }
-
-    executeApi()
-    Ok
-  }
-
-  /**
-    * POST /api/:version/vatom/b/events/create?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
-    */
-  def createVatomEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createSpace(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -90,7 +58,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.createVatomEvent(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.createSpace(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -98,9 +66,40 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/me/rels/following/delete?accountId=[value]&vatomRelsKey=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/events/create?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def deleteFollowing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createVatomEvent(): Action[AnyContent] = Action { request =>
+    def executeApi(): Unit = {
+      val accountId = request.getQueryString("accountId")
+        .map(value => value.toLong)
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
+        }
+        
+      val appKey = request.getQueryString("appKey")
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
+        }
+        
+      val vatomParameters = request.getQueryString("vatomParameters")
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("vatomParameters", "query string")
+        }
+        
+      val returnRawResponse = request.getQueryString("returnRawResponse")
+        .map(value => value.toBoolean)
+        
+      api.createVatomEvent(accountId, appKey, vatomParameters, returnRawResponse)
+    }
+
+    executeApi()
+    Ok
+  }
+
+  /**
+    * POST /api/3.18/vatom/me/rels/following/delete?accountId=[value]&vatomRelsKey=[value]&returnRawResponse=[value]
+    */
+  def deleteFollowing(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -116,7 +115,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.deleteFollowing(version, accountId, vatomRelsKey, returnRawResponse)
+      api.deleteFollowing(accountId, vatomRelsKey, returnRawResponse)
     }
 
     executeApi()
@@ -124,9 +123,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/campaign/points/delete?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/campaign/points/delete?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def deletePointsBalance(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deletePointsBalance(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -147,7 +146,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.deletePointsBalance(version, accountId, appKey, vatomCampaignId, returnRawResponse)
+      api.deletePointsBalance(accountId, appKey, vatomCampaignId, returnRawResponse)
     }
 
     executeApi()
@@ -155,9 +154,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/spaces/delete?accountId=[value]&appKey=[value]&vatomSpaceId=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/spaces/delete?accountId=[value]&appKey=[value]&vatomSpaceId=[value]&returnRawResponse=[value]
     */
-  def deleteSpace(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteSpace(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -178,7 +177,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.deleteSpace(version, accountId, appKey, vatomSpaceId, returnRawResponse)
+      api.deleteSpace(accountId, appKey, vatomSpaceId, returnRawResponse)
     }
 
     executeApi()
@@ -186,9 +185,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/events/delete?accountId=[value]&appKey=[value]&vatomEventId=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/events/delete?accountId=[value]&appKey=[value]&vatomEventId=[value]&returnRawResponse=[value]
     */
-  def deleteVatomEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteVatomEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -209,7 +208,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.deleteVatomEvent(version, accountId, appKey, vatomEventId, returnRawResponse)
+      api.deleteVatomEvent(accountId, appKey, vatomEventId, returnRawResponse)
     }
 
     executeApi()
@@ -217,9 +216,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/vatoms/delete?accountId=[value]&vatomId=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/vatoms/delete?accountId=[value]&vatomId=[value]&returnRawResponse=[value]
     */
-  def deleteVatomNFT(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteVatomNFT(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -235,7 +234,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.deleteVatomNFT(version, accountId, vatomId, returnRawResponse)
+      api.deleteVatomNFT(accountId, vatomId, returnRawResponse)
     }
 
     executeApi()
@@ -243,9 +242,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/vatoms/execute-action?accountId=[value]&vatomId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/vatoms/execute-action?accountId=[value]&vatomId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def executeActionOnNFT(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def executeActionOnNFT(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -266,7 +265,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.executeActionOnNFT(version, accountId, vatomId, vatomParameters, returnRawResponse)
+      api.executeActionOnNFT(accountId, vatomId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -274,9 +273,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/vatoms/geo-map/search?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/vatoms/geo-map/search?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def geomapSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def geomapSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -292,7 +291,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.geomapSearch(version, accountId, vatomParameters, returnRawResponse)
+      api.geomapSearch(accountId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -300,9 +299,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/behaviors?accountId=[value]&appKey=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/behaviors?accountId=[value]&appKey=[value]&returnRawResponse=[value]
     */
-  def getBusinessBehaviors(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBusinessBehaviors(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -318,7 +317,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getBusinessBehaviors(version, accountId, appKey, returnRawResponse)
+      api.getBusinessBehaviors(accountId, appKey, returnRawResponse)
     }
 
     executeApi()
@@ -326,9 +325,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/coins/get?accountId=[value]&appKey=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/coins/get?accountId=[value]&appKey=[value]&returnRawResponse=[value]
     */
-  def getBusinessCoinsBalance(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBusinessCoinsBalance(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -344,7 +343,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getBusinessCoinsBalance(version, accountId, appKey, returnRawResponse)
+      api.getBusinessCoinsBalance(accountId, appKey, returnRawResponse)
     }
 
     executeApi()
@@ -352,9 +351,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/me/businesses?accountId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/me/businesses?accountId=[value]&returnRawResponse=[value]
     */
-  def getBusinessIds(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBusinessIds(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -365,7 +364,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getBusinessIds(version, accountId, returnRawResponse)
+      api.getBusinessIds(accountId, returnRawResponse)
     }
 
     executeApi()
@@ -373,9 +372,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/get?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/get?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def getBusinessInfo(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBusinessInfo(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -393,7 +392,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getBusinessInfo(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.getBusinessInfo(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -401,9 +400,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/users?accountId=[value]&appKey=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/users?accountId=[value]&appKey=[value]&returnRawResponse=[value]
     */
-  def getBusinessUsers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBusinessUsers(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -419,7 +418,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getBusinessUsers(version, accountId, appKey, returnRawResponse)
+      api.getBusinessUsers(accountId, appKey, returnRawResponse)
     }
 
     executeApi()
@@ -427,40 +426,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/campaign-groups/entities?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/campaign-groups/entities?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def getCampaignGroupEntities(version: BigDecimal): Action[AnyContent] = Action { request =>
-    def executeApi(): Unit = {
-      val accountId = request.getQueryString("accountId")
-        .map(value => value.toLong)
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
-        }
-        
-      val appKey = request.getQueryString("appKey")
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
-        }
-        
-      val vatomCampaignId = request.getQueryString("vatomCampaignId")
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("vatomCampaignId", "query string")
-        }
-        
-      val returnRawResponse = request.getQueryString("returnRawResponse")
-        .map(value => value.toBoolean)
-        
-      api.getCampaignGroupEntities(version, accountId, appKey, vatomCampaignId, returnRawResponse)
-    }
-
-    executeApi()
-    Ok
-  }
-
-  /**
-    * GET /api/:version/vatom/b/campaign-groups/rules?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
-    */
-  def getCampaignGroupRules(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCampaignGroupEntities(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -481,7 +449,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getCampaignGroupRules(version, accountId, appKey, vatomCampaignId, returnRawResponse)
+      api.getCampaignGroupEntities(accountId, appKey, vatomCampaignId, returnRawResponse)
     }
 
     executeApi()
@@ -489,9 +457,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/campaign-groups/stats?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/campaign-groups/rules?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def getCampaignGroupStats(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCampaignGroupRules(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -512,7 +480,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getCampaignGroupStats(version, accountId, appKey, vatomCampaignId, returnRawResponse)
+      api.getCampaignGroupRules(accountId, appKey, vatomCampaignId, returnRawResponse)
     }
 
     executeApi()
@@ -520,9 +488,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/campaign-groups/get?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/campaign-groups/stats?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def getCampaignInfo(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCampaignGroupStats(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -543,7 +511,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getCampaignInfo(version, accountId, appKey, vatomCampaignId, returnRawResponse)
+      api.getCampaignGroupStats(accountId, appKey, vatomCampaignId, returnRawResponse)
     }
 
     executeApi()
@@ -551,9 +519,40 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/events/guests/get?accountId=[value]&appKey=[value]&vatomEventId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/campaign-groups/get?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def getEventGuestList(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCampaignInfo(): Action[AnyContent] = Action { request =>
+    def executeApi(): Unit = {
+      val accountId = request.getQueryString("accountId")
+        .map(value => value.toLong)
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
+        }
+        
+      val appKey = request.getQueryString("appKey")
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
+        }
+        
+      val vatomCampaignId = request.getQueryString("vatomCampaignId")
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("vatomCampaignId", "query string")
+        }
+        
+      val returnRawResponse = request.getQueryString("returnRawResponse")
+        .map(value => value.toBoolean)
+        
+      api.getCampaignInfo(accountId, appKey, vatomCampaignId, returnRawResponse)
+    }
+
+    executeApi()
+    Ok
+  }
+
+  /**
+    * GET /api/3.18/vatom/b/events/guests/get?accountId=[value]&appKey=[value]&vatomEventId=[value]&returnRawResponse=[value]
+    */
+  def getEventGuestList(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -574,7 +573,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getEventGuestList(version, accountId, appKey, vatomEventId, returnRawResponse)
+      api.getEventGuestList(accountId, appKey, vatomEventId, returnRawResponse)
     }
 
     executeApi()
@@ -582,9 +581,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/me/inventory?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/me/inventory?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def getInventory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getInventory(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -600,7 +599,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getInventory(version, accountId, vatomParameters, returnRawResponse)
+      api.getInventory(accountId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -608,9 +607,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/me/rels/following?accountId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/me/rels/following?accountId=[value]&returnRawResponse=[value]
     */
-  def getMyFollowing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getMyFollowing(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -621,7 +620,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getMyFollowing(version, accountId, returnRawResponse)
+      api.getMyFollowing(accountId, returnRawResponse)
     }
 
     executeApi()
@@ -629,9 +628,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/u/campaign/points/get?accountId=[value]&vatomUserId=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/u/campaign/points/get?accountId=[value]&vatomUserId=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def getPointsBalance(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPointsBalance(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -652,7 +651,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getPointsBalance(version, accountId, vatomUserId, vatomCampaignId, returnRawResponse)
+      api.getPointsBalance(accountId, vatomUserId, vatomCampaignId, returnRawResponse)
     }
 
     executeApi()
@@ -660,9 +659,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/campaign/u/points/get?accountId=[value]&appKey=[value]&vatomUserId=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/campaign/u/points/get?accountId=[value]&appKey=[value]&vatomUserId=[value]&vatomCampaignId=[value]&returnRawResponse=[value]
     */
-  def getPointsBalanceAsBusiness(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPointsBalanceAsBusiness(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -688,7 +687,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getPointsBalanceAsBusiness(version, accountId, appKey, vatomUserId, vatomCampaignId, returnRawResponse)
+      api.getPointsBalanceAsBusiness(accountId, appKey, vatomUserId, vatomCampaignId, returnRawResponse)
     }
 
     executeApi()
@@ -696,9 +695,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/spaces/get?accountId=[value]&appKey=[value]&vatomSpaceId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/spaces/get?accountId=[value]&appKey=[value]&vatomSpaceId=[value]&returnRawResponse=[value]
     */
-  def getSpace(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getSpace(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -719,7 +718,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getSpace(version, accountId, appKey, vatomSpaceId, returnRawResponse)
+      api.getSpace(accountId, appKey, vatomSpaceId, returnRawResponse)
     }
 
     executeApi()
@@ -727,9 +726,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/users/coins/get?accountId=[value]&vatomUserId=[value]&appKey=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/users/coins/get?accountId=[value]&vatomUserId=[value]&appKey=[value]&returnRawResponse=[value]
     */
-  def getUserCoinsAsBusiness(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserCoinsAsBusiness(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -750,7 +749,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getUserCoinsAsBusiness(version, accountId, vatomUserId, appKey, returnRawResponse)
+      api.getUserCoinsAsBusiness(accountId, vatomUserId, appKey, returnRawResponse)
     }
 
     executeApi()
@@ -758,9 +757,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/u/coins/get?accountId=[value]&vatomUserId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/u/coins/get?accountId=[value]&vatomUserId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def getUserCoinsBalance(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserCoinsBalance(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -778,7 +777,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getUserCoinsBalance(version, accountId, vatomUserId, vatomParameters, returnRawResponse)
+      api.getUserCoinsBalance(accountId, vatomUserId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -786,9 +785,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/users/rels/followers?accountId=[value]&vatomUserId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/users/rels/followers?accountId=[value]&vatomUserId=[value]&returnRawResponse=[value]
     */
-  def getUserFollowers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserFollowers(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -804,7 +803,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getUserFollowers(version, accountId, vatomUserId, returnRawResponse)
+      api.getUserFollowers(accountId, vatomUserId, returnRawResponse)
     }
 
     executeApi()
@@ -812,9 +811,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/users/rels/following?accountId=[value]&vatomUserId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/users/rels/following?accountId=[value]&vatomUserId=[value]&returnRawResponse=[value]
     */
-  def getUserFollowing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserFollowing(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -830,7 +829,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getUserFollowing(version, accountId, vatomUserId, returnRawResponse)
+      api.getUserFollowing(accountId, vatomUserId, returnRawResponse)
     }
 
     executeApi()
@@ -838,9 +837,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/user/get?accountId=[value]&vatomUserId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/user/get?accountId=[value]&vatomUserId=[value]&returnRawResponse=[value]
     */
-  def getUserInfo(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserInfo(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -856,7 +855,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getUserInfo(version, accountId, vatomUserId, returnRawResponse)
+      api.getUserInfo(accountId, vatomUserId, returnRawResponse)
     }
 
     executeApi()
@@ -864,9 +863,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/me/get?accountId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/me/get?accountId=[value]&returnRawResponse=[value]
     */
-  def getUserProfile(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getUserProfile(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -877,7 +876,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getUserProfile(version, accountId, returnRawResponse)
+      api.getUserProfile(accountId, returnRawResponse)
     }
 
     executeApi()
@@ -885,9 +884,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/events/get?accountId=[value]&appKey=[value]&vatomEventId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/events/get?accountId=[value]&appKey=[value]&vatomEventId=[value]&returnRawResponse=[value]
     */
-  def getVatomEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getVatomEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -908,7 +907,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getVatomEvent(version, accountId, appKey, vatomEventId, returnRawResponse)
+      api.getVatomEvent(accountId, appKey, vatomEventId, returnRawResponse)
     }
 
     executeApi()
@@ -916,9 +915,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/vatoms/get?accountId=[value]&vatomId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/vatoms/get?accountId=[value]&vatomId=[value]&returnRawResponse=[value]
     */
-  def getVatomNFT(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getVatomNFT(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -934,7 +933,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.getVatomNFT(version, accountId, vatomId, returnRawResponse)
+      api.getVatomNFT(accountId, vatomId, returnRawResponse)
     }
 
     executeApi()
@@ -942,9 +941,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/communities/search?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/communities/search?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def listCommunities(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listCommunities(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -962,7 +961,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.listCommunities(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.listCommunities(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -970,9 +969,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/events/search?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/events/search?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def listEvents(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listEvents(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -990,7 +989,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.listEvents(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.listEvents(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -998,9 +997,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/spaces/search?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/spaces/search?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def listSpaces(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listSpaces(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1018,7 +1017,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.listSpaces(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.listSpaces(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1026,9 +1025,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/u/coins/txns/search?accountId=[value]&vatomUserId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/u/coins/txns/search?accountId=[value]&vatomUserId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def listUserCoinTransactions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listUserCoinTransactions(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1046,7 +1045,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.listUserCoinTransactions(version, accountId, vatomUserId, vatomParameters, returnRawResponse)
+      api.listUserCoinTransactions(accountId, vatomUserId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1054,9 +1053,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/users/coins/txns/search?accountId=[value]&vatomUserId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/users/coins/txns/search?accountId=[value]&vatomUserId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def listUserCoinTransactionsAsBusiness(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listUserCoinTransactionsAsBusiness(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1079,7 +1078,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.listUserCoinTransactionsAsBusiness(version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse)
+      api.listUserCoinTransactionsAsBusiness(accountId, vatomUserId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1087,9 +1086,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/me/vatoms/actions?accountId=[value]&vatomId=[value]&vatomAction=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/me/vatoms/actions?accountId=[value]&vatomId=[value]&vatomAction=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def performActionOnNFT(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def performActionOnNFT(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1115,7 +1114,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.performActionOnNFT(version, accountId, vatomId, vatomAction, vatomParameters, returnRawResponse)
+      api.performActionOnNFT(accountId, vatomId, vatomAction, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1123,9 +1122,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/redemptions?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/redemptions?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def redeemNFT(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def redeemNFT(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1146,7 +1145,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.redeemNFT(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.redeemNFT(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1154,9 +1153,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/users/coins/redeem?accountId=[value]&vatomUserId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/users/coins/redeem?accountId=[value]&vatomUserId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def redeemUserCoinsAsBusiness(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def redeemUserCoinsAsBusiness(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1182,7 +1181,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.redeemUserCoinsAsBusiness(version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse)
+      api.redeemUserCoinsAsBusiness(accountId, vatomUserId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1190,9 +1189,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/search?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/search?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def searchBusinesses(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchBusinesses(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1205,7 +1204,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.searchBusinesses(version, accountId, vatomParameters, returnRawResponse)
+      api.searchBusinesses(accountId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1213,9 +1212,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/b/campaign-groups/search?accountId=[value]&appKey=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/b/campaign-groups/search?accountId=[value]&appKey=[value]&returnRawResponse=[value]
     */
-  def searchCampaignGroups(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchCampaignGroups(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1231,7 +1230,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.searchCampaignGroups(version, accountId, appKey, returnRawResponse)
+      api.searchCampaignGroups(accountId, appKey, returnRawResponse)
     }
 
     executeApi()
@@ -1239,9 +1238,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/me/identities/search?accountId=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/me/identities/search?accountId=[value]&returnRawResponse=[value]
     */
-  def searchIdentities(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchIdentities(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1252,7 +1251,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.searchIdentities(version, accountId, returnRawResponse)
+      api.searchIdentities(accountId, returnRawResponse)
     }
 
     executeApi()
@@ -1260,9 +1259,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * GET /api/:version/vatom/user-inventory/search?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * GET /api/3.18/vatom/user-inventory/search?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def searchInventory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchInventory(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1275,7 +1274,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.searchInventory(version, accountId, vatomParameters, returnRawResponse)
+      api.searchInventory(accountId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1283,9 +1282,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/campaigns/send?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/campaigns/send?accountId=[value]&appKey=[value]&vatomCampaignId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def sendNFT(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def sendNFT(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1311,7 +1310,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.sendNFT(version, accountId, appKey, vatomCampaignId, vatomParameters, returnRawResponse)
+      api.sendNFT(accountId, appKey, vatomCampaignId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1319,9 +1318,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/campaign/u/points/update?accountId=[value]&appKey=[value]&vatomUserId=[value]&vatomCampaignId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/campaign/u/points/update?accountId=[value]&appKey=[value]&vatomUserId=[value]&vatomCampaignId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def setPointsBalanceAsBusiness(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def setPointsBalanceAsBusiness(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1352,7 +1351,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.setPointsBalanceAsBusiness(version, accountId, appKey, vatomUserId, vatomCampaignId, vatomParameters, returnRawResponse)
+      api.setPointsBalanceAsBusiness(accountId, appKey, vatomUserId, vatomCampaignId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1360,9 +1359,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/u/coins/transfer?accountId=[value]&vatomUserId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/u/coins/transfer?accountId=[value]&vatomUserId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def transferUserCoins(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def transferUserCoins(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1383,7 +1382,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.transferUserCoins(version, accountId, vatomUserId, vatomParameters, returnRawResponse)
+      api.transferUserCoins(accountId, vatomUserId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1391,9 +1390,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/coins/update?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/coins/update?accountId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def updateBusinessCoins(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateBusinessCoins(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1414,7 +1413,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.updateBusinessCoins(version, accountId, appKey, vatomParameters, returnRawResponse)
+      api.updateBusinessCoins(accountId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1422,9 +1421,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/events/guests/update?accountId=[value]&appKey=[value]&vatomEventId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/events/guests/update?accountId=[value]&appKey=[value]&vatomEventId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def updateEventGuestList(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateEventGuestList(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1450,7 +1449,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.updateEventGuestList(version, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse)
+      api.updateEventGuestList(accountId, appKey, vatomEventId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1458,9 +1457,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/spaces/update?accountId=[value]&appKey=[value]&vatomSpaceId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/spaces/update?accountId=[value]&appKey=[value]&vatomSpaceId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def updateSpace(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateSpace(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1486,7 +1485,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.updateSpace(version, accountId, appKey, vatomSpaceId, vatomParameters, returnRawResponse)
+      api.updateSpace(accountId, appKey, vatomSpaceId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1494,9 +1493,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/users/coins/update?accountId=[value]&vatomUserId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/users/coins/update?accountId=[value]&vatomUserId=[value]&appKey=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def updateUserCoinsAsBusiness(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateUserCoinsAsBusiness(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1522,7 +1521,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.updateUserCoinsAsBusiness(version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse)
+      api.updateUserCoinsAsBusiness(accountId, vatomUserId, appKey, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1530,9 +1529,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/me/update?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/me/update?accountId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def updateUserProfile(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateUserProfile(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1548,7 +1547,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.updateUserProfile(version, accountId, vatomParameters, returnRawResponse)
+      api.updateUserProfile(accountId, vatomParameters, returnRawResponse)
     }
 
     executeApi()
@@ -1556,9 +1555,9 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
   }
 
   /**
-    * POST /api/:version/vatom/b/events/update?accountId=[value]&appKey=[value]&vatomEventId=[value]&vatomParameters=[value]&returnRawResponse=[value]
+    * POST /api/3.18/vatom/b/events/update?accountId=[value]&appKey=[value]&vatomEventId=[value]&vatomParameters=[value]&returnRawResponse=[value]
     */
-  def updateVatomEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateVatomEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1584,7 +1583,7 @@ class VatomApiController @Inject()(cc: ControllerComponents, api: VatomApi) exte
       val returnRawResponse = request.getQueryString("returnRawResponse")
         .map(value => value.toBoolean)
         
-      api.updateVatomEvent(version, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse)
+      api.updateVatomEvent(accountId, appKey, vatomEventId, vatomParameters, returnRawResponse)
     }
 
     executeApi()

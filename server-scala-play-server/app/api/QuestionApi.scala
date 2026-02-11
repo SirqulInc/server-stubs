@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.QuestionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait QuestionApi {
   /**
     * Create Question
@@ -22,7 +21,7 @@ trait QuestionApi {
     * @param ticketType The type of ticket to reward, null means default type
     * @param points The number of points to award for completing a mission
     */
-  def createQuestion(version: BigDecimal, accountId: Long, question: String, answers: String, active: Boolean, allocateTickets: Boolean, ticketCount: Long, tags: Option[String], videoURL: Option[String], assetId: Option[Long], ticketType: Option[String], points: Option[Long]): QuestionResponse
+  def createQuestion(accountId: Long, question: String, answers: String, active: Boolean, allocateTickets: Boolean, ticketCount: Long, tags: Option[String], videoURL: Option[String], assetId: Option[Long], ticketType: Option[String], points: Option[Long]): QuestionResponse
 
   /**
     * Delete Question
@@ -30,7 +29,7 @@ trait QuestionApi {
     * @param questionId the id of the question to delete
     * @param accountId the id of the account that can execute this request
     */
-  def deleteQuestion(version: BigDecimal, questionId: Long, accountId: Long): SirqulResponse
+  def deleteQuestion(questionId: Long, accountId: Long): SirqulResponse
 
   /**
     * Get Question
@@ -38,7 +37,7 @@ trait QuestionApi {
     * @param questionId the id of the question to get
     * @param accountId the id of the account that can make this request
     */
-  def getQuestion(version: BigDecimal, questionId: Long, accountId: Long): QuestionResponse
+  def getQuestion(questionId: Long, accountId: Long): QuestionResponse
 
   /**
     * Search Questions
@@ -51,7 +50,7 @@ trait QuestionApi {
     * @param limit The number of records to return.
     * @param keyword The keyword for searching questions with matching tags or question text.
     */
-  def searchQuestions(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, keyword: Option[String]): List[QuestionResponse]
+  def searchQuestions(accountId: Long, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, keyword: Option[String]): List[QuestionResponse]
 
   /**
     * Update Question
@@ -69,5 +68,5 @@ trait QuestionApi {
     * @param ticketType The type of ticket to reward, null means default type
     * @param points The number of points to award for completing a mission
     */
-  def updateQuestion(version: BigDecimal, questionId: Long, accountId: Long, ticketCount: Long, question: Option[String], answers: Option[String], tags: Option[String], videoURL: Option[String], assetId: Option[Long], active: Option[Boolean], allocateTickets: Option[Boolean], ticketType: Option[String], points: Option[Long]): QuestionResponse
+  def updateQuestion(questionId: Long, accountId: Long, ticketCount: Long, question: Option[String], answers: Option[String], tags: Option[String], videoURL: Option[String], assetId: Option[Long], active: Option[Boolean], allocateTickets: Option[Boolean], ticketType: Option[String], points: Option[Long]): QuestionResponse
 }

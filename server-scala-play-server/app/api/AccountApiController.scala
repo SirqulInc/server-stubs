@@ -13,13 +13,13 @@ import model.SirqulResponse
 import model.UserLocationSearchResponse
 import model.UserSettingsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/account/search?deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&postalCode=[value]&latitude=[value]&longitude=[value]&appKey=[value]&range=[value]&locationLastUpdated=[value]&gender=[value]&minAge=[value]&maxAge=[value]&companionshipIndex=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&searchMode=[value]&sortField=[value]&descending=[value]&roles=[value]&tags=[value]&experience=[value]&categoryIds=[value]&audienceIds=[value]&audienceOperator=[value]&updateCurrentLocation=[value]&updatePreferredSettings=[value]&showExactLocations=[value]&showConnectionToSearcher=[value]&flagCountMinimum=[value]&verifiedUserOnly=[value]&contentAdminOnly=[value]
+    * GET /api/3.18/account/search?deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&postalCode=[value]&latitude=[value]&longitude=[value]&appKey=[value]&range=[value]&locationLastUpdated=[value]&gender=[value]&minAge=[value]&maxAge=[value]&companionshipIndex=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&searchMode=[value]&sortField=[value]&descending=[value]&roles=[value]&tags=[value]&experience=[value]&categoryIds=[value]&audienceIds=[value]&audienceOperator=[value]&updateCurrentLocation=[value]&updatePreferredSettings=[value]&showExactLocations=[value]&showConnectionToSearcher=[value]&flagCountMinimum=[value]&verifiedUserOnly=[value]&contentAdminOnly=[value]
     */
-  def accountLocationSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def accountLocationSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): UserLocationSearchResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -109,7 +109,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val contentAdminOnly = request.getQueryString("contentAdminOnly")
         .map(value => value.toBoolean)
         
-      api.accountLocationSearch(version, deviceId, accountId, q, keyword, postalCode, latitude, longitude, appKey, range, locationLastUpdated, gender, minAge, maxAge, companionshipIndex, i, start, l, limit, searchMode, sortField, descending, roles, tags, experience, categoryIds, audienceIds, audienceOperator, updateCurrentLocation, updatePreferredSettings, showExactLocations, showConnectionToSearcher, flagCountMinimum, verifiedUserOnly, contentAdminOnly)
+      api.accountLocationSearch(deviceId, accountId, q, keyword, postalCode, latitude, longitude, appKey, range, locationLastUpdated, gender, minAge, maxAge, companionshipIndex, i, start, l, limit, searchMode, sortField, descending, roles, tags, experience, categoryIds, audienceIds, audienceOperator, updateCurrentLocation, updatePreferredSettings, showExactLocations, showConnectionToSearcher, flagCountMinimum, verifiedUserOnly, contentAdminOnly)
     }
 
     val result = executeApi()
@@ -118,9 +118,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/block?deviceId=[value]&accountId=[value]&accountIdBeingBlocked=[value]&blockFlagValue=[value]&removeFromGroupsIfBlocked=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/account/block?deviceId=[value]&accountId=[value]&accountIdBeingBlocked=[value]&blockFlagValue=[value]&removeFromGroupsIfBlocked=[value]&latitude=[value]&longitude=[value]
     */
-  def blockAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def blockAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -145,7 +145,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.blockAccount(version, accountIdBeingBlocked, deviceId, accountId, blockFlagValue, removeFromGroupsIfBlocked, latitude, longitude)
+      api.blockAccount(accountIdBeingBlocked, deviceId, accountId, blockFlagValue, removeFromGroupsIfBlocked, latitude, longitude)
     }
 
     val result = executeApi()
@@ -154,9 +154,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/create?name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&deviceId=[value]&deviceIdType=[value]&username=[value]&password=[value]&emailAddress=[value]&assetId=[value]&streetAddress=[value]&zipcode=[value]&gender=[value]&birthday=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&role=[value]&platforms=[value]&tags=[value]&aboutUs=[value]&gameExperience=[value]&categoryIds=[value]&hometown=[value]&height=[value]&heightIndex=[value]&ethnicity=[value]&bodyType=[value]&maritalStatus=[value]&children=[value]&religion=[value]&education=[value]&educationIndex=[value]&smoke=[value]&drink=[value]&companionship=[value]&companionshipIndex=[value]&preferredMinAge=[value]&preferredMaxAge=[value]&preferredMinHeight=[value]&preferredMaxHeight=[value]&preferredGender=[value]&preferredEducation=[value]&preferredEducationIndex=[value]&preferredBodyType=[value]&preferredEthnicity=[value]&preferredLocation=[value]&preferredLocationRange=[value]&latitude=[value]&longitude=[value]&acceptedTerms=[value]&inviteToken=[value]&referralAccountId=[value]&sendValidation=[value]&gameType=[value]&appKey=[value]&appVersion=[value]&responseType=[value]&audienceIdsToAdd=[value]&appBlob=[value]&appEnablePush=[value]&appEnableSMS=[value]&appEnableEmail=[value]&locationVisibility=[value]&homeLatitude=[value]&homeLongitude=[value]&appNickname=[value]&personalAudienceId=[value]
+    * POST /api/3.18/account/create?name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&deviceId=[value]&deviceIdType=[value]&username=[value]&password=[value]&emailAddress=[value]&assetId=[value]&streetAddress=[value]&zipcode=[value]&gender=[value]&birthday=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&role=[value]&platforms=[value]&tags=[value]&aboutUs=[value]&gameExperience=[value]&categoryIds=[value]&hometown=[value]&height=[value]&heightIndex=[value]&ethnicity=[value]&bodyType=[value]&maritalStatus=[value]&children=[value]&religion=[value]&education=[value]&educationIndex=[value]&smoke=[value]&drink=[value]&companionship=[value]&companionshipIndex=[value]&preferredMinAge=[value]&preferredMaxAge=[value]&preferredMinHeight=[value]&preferredMaxHeight=[value]&preferredGender=[value]&preferredEducation=[value]&preferredEducationIndex=[value]&preferredBodyType=[value]&preferredEthnicity=[value]&preferredLocation=[value]&preferredLocationRange=[value]&latitude=[value]&longitude=[value]&acceptedTerms=[value]&inviteToken=[value]&referralAccountId=[value]&sendValidation=[value]&gameType=[value]&appKey=[value]&appVersion=[value]&responseType=[value]&audienceIdsToAdd=[value]&appBlob=[value]&appEnablePush=[value]&appEnableSMS=[value]&appEnableEmail=[value]&locationVisibility=[value]&homeLatitude=[value]&homeLongitude=[value]&appNickname=[value]&personalAudienceId=[value]
     */
-  def createAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): AccountLoginResponse = {
       val name = request.getQueryString("name")
         
@@ -330,7 +330,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val personalAudienceId = request.getQueryString("personalAudienceId")
         .map(value => value.toLong)
         
-      api.createAccount(version, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, deviceId, deviceIdType, emailAddress, assetId, streetAddress, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, inviteToken, referralAccountId, sendValidation, gameType, appKey, appVersion, responseType, audienceIdsToAdd, appBlob, appEnablePush, appEnableSMS, appEnableEmail, locationVisibility, homeLatitude, homeLongitude, appNickname, personalAudienceId)
+      api.createAccount(username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, deviceId, deviceIdType, emailAddress, assetId, streetAddress, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, inviteToken, referralAccountId, sendValidation, gameType, appKey, appVersion, responseType, audienceIdsToAdd, appBlob, appEnablePush, appEnableSMS, appEnableEmail, locationVisibility, homeLatitude, homeLongitude, appNickname, personalAudienceId)
     }
 
     val result = executeApi()
@@ -339,9 +339,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/profile/update?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&role=[value]&assetId=[value]&name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&gender=[value]&age=[value]&birthday=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&emailAddress=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&zipcode=[value]&country=[value]&makeProfileInfoPublic=[value]&makeGameInfoPublic=[value]&makeFriendsInfoPublic=[value]&hometown=[value]&height=[value]&heightIndex=[value]&ethnicity=[value]&bodyType=[value]&maritalStatus=[value]&children=[value]&religion=[value]&education=[value]&educationIndex=[value]&smoke=[value]&drink=[value]&companionship=[value]&companionshipIndex=[value]&preferredMinAge=[value]&preferredMaxAge=[value]&preferredMinHeight=[value]&preferredMaxHeight=[value]&preferredGender=[value]&preferredEducation=[value]&preferredEducationIndex=[value]&preferredBodyType=[value]&preferredEthnicity=[value]&preferredLocation=[value]&preferredLocationRange=[value]&platforms=[value]&tags=[value]&aboutUs=[value]&matchToken=[value]&gameExperience=[value]&categories=[value]&categoryIds=[value]&responseFilters=[value]&showAsZipcode=[value]&showExactLocation=[value]&showOthersExactLocation=[value]&acceptedTerms=[value]&locationVisibility=[value]&appBlob=[value]&appEnablePush=[value]&appEnableSMS=[value]&appEnableEmail=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]&returnProfile=[value]&audienceIdsToAdd=[value]&audienceIdsToRemove=[value]&referralAccountId=[value]&appNickname=[value]&personalAudienceId=[value]&nonGuestUsername=[value]
+    * POST /api/3.18/account/profile/update?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&role=[value]&assetId=[value]&name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&gender=[value]&age=[value]&birthday=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&emailAddress=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&zipcode=[value]&country=[value]&makeProfileInfoPublic=[value]&makeGameInfoPublic=[value]&makeFriendsInfoPublic=[value]&hometown=[value]&height=[value]&heightIndex=[value]&ethnicity=[value]&bodyType=[value]&maritalStatus=[value]&children=[value]&religion=[value]&education=[value]&educationIndex=[value]&smoke=[value]&drink=[value]&companionship=[value]&companionshipIndex=[value]&preferredMinAge=[value]&preferredMaxAge=[value]&preferredMinHeight=[value]&preferredMaxHeight=[value]&preferredGender=[value]&preferredEducation=[value]&preferredEducationIndex=[value]&preferredBodyType=[value]&preferredEthnicity=[value]&preferredLocation=[value]&preferredLocationRange=[value]&platforms=[value]&tags=[value]&aboutUs=[value]&matchToken=[value]&gameExperience=[value]&categories=[value]&categoryIds=[value]&responseFilters=[value]&showAsZipcode=[value]&showExactLocation=[value]&showOthersExactLocation=[value]&acceptedTerms=[value]&locationVisibility=[value]&appBlob=[value]&appEnablePush=[value]&appEnableSMS=[value]&appEnableEmail=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]&returnProfile=[value]&audienceIdsToAdd=[value]&audienceIdsToRemove=[value]&referralAccountId=[value]&appNickname=[value]&personalAudienceId=[value]&nonGuestUsername=[value]
     */
-  def editAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def editAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileInfoResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -536,7 +536,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
         
       val nonGuestUsername = request.getQueryString("nonGuestUsername")
         
-      api.editAccount(version, deviceId, accountId, connectionAccountId, role, assetId, name, prefixName, firstName, middleName, lastName, suffixName, title, gender, age, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, makeProfileInfoPublic, makeGameInfoPublic, makeFriendsInfoPublic, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, platforms, tags, aboutUs, matchToken, gameExperience, categories, categoryIds, responseFilters, showAsZipcode, showExactLocation, showOthersExactLocation, acceptedTerms, locationVisibility, appBlob, appEnablePush, appEnableSMS, appEnableEmail, gameType, appKey, latitude, longitude, returnProfile, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, appNickname, personalAudienceId, nonGuestUsername)
+      api.editAccount(deviceId, accountId, connectionAccountId, role, assetId, name, prefixName, firstName, middleName, lastName, suffixName, title, gender, age, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, makeProfileInfoPublic, makeGameInfoPublic, makeFriendsInfoPublic, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, platforms, tags, aboutUs, matchToken, gameExperience, categories, categoryIds, responseFilters, showAsZipcode, showExactLocation, showOthersExactLocation, acceptedTerms, locationVisibility, appBlob, appEnablePush, appEnableSMS, appEnableEmail, gameType, appKey, latitude, longitude, returnProfile, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, appNickname, personalAudienceId, nonGuestUsername)
     }
 
     val result = executeApi()
@@ -545,9 +545,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/username/update?deviceId=[value]&accountId=[value]&emailAddress=[value]&username=[value]
+    * POST /api/3.18/account/username/update?deviceId=[value]&accountId=[value]&emailAddress=[value]&username=[value]
     */
-  def editUsername(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def editUsername(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -558,7 +558,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
         
       val username = request.getQueryString("username")
         
-      api.editUsername(version, deviceId, accountId, emailAddress, username)
+      api.editUsername(deviceId, accountId, emailAddress, username)
     }
 
     val result = executeApi()
@@ -567,9 +567,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * GET /api/:version/account/profile/get?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionAccountEmail=[value]&connectionAccountId=[value]&responseFilters=[value]&gameType=[value]&appKey=[value]&purchaseType=[value]&updateViewedDate=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/account/profile/get?returnNulls=[value]&deviceId=[value]&accountId=[value]&connectionAccountEmail=[value]&connectionAccountId=[value]&responseFilters=[value]&gameType=[value]&appKey=[value]&purchaseType=[value]&updateViewedDate=[value]&latitude=[value]&longitude=[value]
     */
-  def getAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -601,7 +601,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getAccount(version, returnNulls, deviceId, accountId, connectionAccountEmail, connectionAccountId, responseFilters, gameType, appKey, purchaseType, updateViewedDate, latitude, longitude)
+      api.getAccount(returnNulls, deviceId, accountId, connectionAccountEmail, connectionAccountId, responseFilters, gameType, appKey, purchaseType, updateViewedDate, latitude, longitude)
     }
 
     val result = executeApi()
@@ -610,9 +610,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * GET /api/:version/account/profile/assets?returnNulls=[value]&deviceId=[value]&accountId=[value]&ownerId=[value]&mediaTypes=[value]&mimeTypes=[value]&sortField=[value]&descending=[value]&latitude=[value]&longitude=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
+    * GET /api/3.18/account/profile/assets?returnNulls=[value]&deviceId=[value]&accountId=[value]&ownerId=[value]&mediaTypes=[value]&mimeTypes=[value]&sortField=[value]&descending=[value]&latitude=[value]&longitude=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
     */
-  def getProfileAssets(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getProfileAssets(): Action[AnyContent] = Action { request =>
     def executeApi(): AssetListResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -652,7 +652,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getProfileAssets(version, returnNulls, deviceId, accountId, ownerId, mediaTypes, mimeTypes, sortField, descending, latitude, longitude, i, start, l, limit)
+      api.getProfileAssets(returnNulls, deviceId, accountId, ownerId, mediaTypes, mimeTypes, sortField, descending, latitude, longitude, i, start, l, limit)
     }
 
     val result = executeApi()
@@ -661,9 +661,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * GET /api/:version/account/referral/list?accountId=[value]&appKey=[value]&retrieveType=[value]&levelLimit=[value]&ancestorLevelLimit=[value]&childrenLevelLimit=[value]&ancestorListStart=[value]&ancestorListLimit=[value]&childrenListStart=[value]&childrenListLimit=[value]&childrenChildren=[value]
+    * GET /api/3.18/account/referral/list?accountId=[value]&appKey=[value]&retrieveType=[value]&levelLimit=[value]&ancestorLevelLimit=[value]&childrenLevelLimit=[value]&ancestorListStart=[value]&ancestorListLimit=[value]&childrenListStart=[value]&childrenListLimit=[value]&childrenChildren=[value]
     */
-  def getReferralList(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getReferralList(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -696,7 +696,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val childrenChildren = request.getQueryString("childrenChildren")
         .map(value => value.toBoolean)
         
-      api.getReferralList(version, accountId, appKey, retrieveType, levelLimit, ancestorLevelLimit, childrenLevelLimit, ancestorListStart, ancestorListLimit, childrenListStart, childrenListLimit, childrenChildren)
+      api.getReferralList(accountId, appKey, retrieveType, levelLimit, ancestorLevelLimit, childrenLevelLimit, ancestorListStart, ancestorListLimit, childrenListStart, childrenListLimit, childrenChildren)
     }
 
     executeApi()
@@ -704,9 +704,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * GET /api/:version/account/settings/get?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/account/settings/get?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]
     */
-  def getSettings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getSettings(): Action[AnyContent] = Action { request =>
     def executeApi(): UserSettingsResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -719,7 +719,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getSettings(version, deviceId, accountId, latitude, longitude)
+      api.getSettings(deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -728,9 +728,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/login/delegate?deviceId=[value]&accessToken=[value]&accessTokenSecret=[value]&delegatedAccountId=[value]&delegatedUsername=[value]&networkUID=[value]&appKey=[value]&ageRestriction=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/account/login/delegate?deviceId=[value]&accessToken=[value]&accessTokenSecret=[value]&delegatedAccountId=[value]&delegatedUsername=[value]&networkUID=[value]&appKey=[value]&ageRestriction=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]
     */
-  def loginDelegate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def loginDelegate(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -764,7 +764,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.loginDelegate(version, accessToken, appKey, deviceId, accessTokenSecret, delegatedAccountId, delegatedUsername, networkUID, ageRestriction, responseFilters, latitude, longitude)
+      api.loginDelegate(accessToken, appKey, deviceId, accessTokenSecret, delegatedAccountId, delegatedUsername, networkUID, ageRestriction, responseFilters, latitude, longitude)
     }
 
     val result = executeApi()
@@ -773,9 +773,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/login?deviceId=[value]&deviceIdType=[value]&accessToken=[value]&accessTokenSecret=[value]&networkUID=[value]&appKey=[value]&ageRestriction=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]&emailMatch=[value]&chosenAccountId=[value]&thirdPartyCredentialId=[value]
+    * POST /api/3.18/account/login?deviceId=[value]&deviceIdType=[value]&accessToken=[value]&accessTokenSecret=[value]&networkUID=[value]&appKey=[value]&ageRestriction=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]&emailMatch=[value]&chosenAccountId=[value]&thirdPartyCredentialId=[value]
     */
-  def loginGeneral(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def loginGeneral(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -818,7 +818,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val thirdPartyCredentialId = request.getQueryString("thirdPartyCredentialId")
         .map(value => value.toLong)
         
-      api.loginGeneral(version, accessToken, networkUID, appKey, deviceId, deviceIdType, accessTokenSecret, ageRestriction, responseFilters, latitude, longitude, emailMatch, chosenAccountId, thirdPartyCredentialId)
+      api.loginGeneral(accessToken, networkUID, appKey, deviceId, deviceIdType, accessTokenSecret, ageRestriction, responseFilters, latitude, longitude, emailMatch, chosenAccountId, thirdPartyCredentialId)
     }
 
     val result = executeApi()
@@ -827,9 +827,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/get?deviceId=[value]&username=[value]&password=[value]&latitude=[value]&longitude=[value]&app=[value]&gameType=[value]&appKey=[value]&returnProfile=[value]&responseFilters=[value]
+    * POST /api/3.18/account/get?deviceId=[value]&username=[value]&password=[value]&latitude=[value]&longitude=[value]&app=[value]&gameType=[value]&appKey=[value]&returnProfile=[value]&responseFilters=[value]
     */
-  def loginUsername(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def loginUsername(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -860,7 +860,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
         
       val responseFilters = request.getQueryString("responseFilters")
         
-      api.loginUsername(version, username, password, deviceId, latitude, longitude, app, gameType, appKey, returnProfile, responseFilters)
+      api.loginUsername(username, password, deviceId, latitude, longitude, app, gameType, appKey, returnProfile, responseFilters)
     }
 
     val result = executeApi()
@@ -869,9 +869,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/logout?deviceId=[value]&deviceIdType=[value]&accountId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/account/logout?deviceId=[value]&deviceIdType=[value]&accountId=[value]&latitude=[value]&longitude=[value]
     */
-  def logout(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def logout(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -886,7 +886,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.logout(version, deviceId, deviceIdType, accountId, latitude, longitude)
+      api.logout(deviceId, deviceIdType, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -895,9 +895,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/merge?deviceId=[value]&accountId=[value]&mergeAccountId=[value]&appKey=[value]
+    * POST /api/3.18/account/merge?deviceId=[value]&accountId=[value]&mergeAccountId=[value]&appKey=[value]
     */
-  def mergeAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def mergeAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -915,7 +915,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.mergeAccount(version, mergeAccountId, appKey, deviceId, accountId)
+      api.mergeAccount(mergeAccountId, appKey, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -924,9 +924,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/passwordchange?accountId=[value]&oldPassword=[value]&newPassword=[value]&confirmPassword=[value]
+    * POST /api/3.18/account/passwordchange?accountId=[value]&oldPassword=[value]&newPassword=[value]&confirmPassword=[value]
     */
-  def passwordChange(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def passwordChange(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -949,7 +949,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("confirmPassword", "query string")
         }
         
-      api.passwordChange(version, accountId, oldPassword, newPassword, confirmPassword)
+      api.passwordChange(accountId, oldPassword, newPassword, confirmPassword)
     }
 
     val result = executeApi()
@@ -958,9 +958,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/passwordreset?token=[value]&password=[value]&confirm=[value]
+    * POST /api/3.18/account/passwordreset?token=[value]&password=[value]&confirm=[value]
     */
-  def passwordReset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def passwordReset(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val token = request.getQueryString("token")
         .getOrElse {
@@ -977,7 +977,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("confirm", "query string")
         }
         
-      api.passwordReset(version, token, password, confirm)
+      api.passwordReset(token, password, confirm)
     }
 
     val result = executeApi()
@@ -986,9 +986,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/requestpasswordreset?email=[value]&from=[value]&domain=[value]&subUrl=[value]&referer=[value]
+    * POST /api/3.18/account/requestpasswordreset?email=[value]&from=[value]&domain=[value]&subUrl=[value]&referer=[value]
     */
-  def requestPasswordReset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def requestPasswordReset(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val email = request.getQueryString("email")
         .getOrElse {
@@ -1003,7 +1003,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
         
       val referer = request.getQueryString("referer")
         
-      api.requestPasswordReset(version, email, from, domain, subUrl, referer)
+      api.requestPasswordReset(email, from, domain, subUrl, referer)
     }
 
     val result = executeApi()
@@ -1012,9 +1012,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/requestValidateAccount?accountId=[value]
+    * POST /api/3.18/account/requestValidateAccount?accountId=[value]
     */
-  def requestValidateAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def requestValidateAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1022,7 +1022,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.requestValidateAccount(version, accountId)
+      api.requestValidateAccount(accountId)
     }
 
     val result = executeApi()
@@ -1031,9 +1031,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * GET /api/:version/account/profile/search?accountId=[value]&appKey=[value]&keyword=[value]&latitude=[value]&longitude=[value]&radius=[value]&gender=[value]&gameExperience=[value]&age=[value]&categoryIds=[value]&returnNulls=[value]&responseFilters=[value]&purchaseType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/account/profile/search?accountId=[value]&appKey=[value]&keyword=[value]&latitude=[value]&longitude=[value]&radius=[value]&gender=[value]&gameExperience=[value]&age=[value]&categoryIds=[value]&returnNulls=[value]&responseFilters=[value]&purchaseType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchAccounts(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchAccounts(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ProfileResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -1087,7 +1087,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.searchAccounts(version, accountId, appKey, keyword, latitude, longitude, radius, gender, gameExperience, age, categoryIds, returnNulls, responseFilters, purchaseType, sortField, descending, start, limit, activeOnly)
+      api.searchAccounts(accountId, appKey, keyword, latitude, longitude, radius, gender, gameExperience, age, categoryIds, returnNulls, responseFilters, purchaseType, sortField, descending, start, limit, activeOnly)
     }
 
     val result = executeApi()
@@ -1096,9 +1096,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/login/validate?deviceId=[value]&username=[value]&password=[value]&gameType=[value]&charsetName=[value]&latitude=[value]&longitude=[value]&returnProfile=[value]&responseFilters=[value]
+    * POST /api/3.18/account/login/validate?deviceId=[value]&username=[value]&password=[value]&gameType=[value]&charsetName=[value]&latitude=[value]&longitude=[value]&returnProfile=[value]&responseFilters=[value]
     */
-  def secureLogin(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def secureLogin(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1130,7 +1130,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
         
       val responseFilters = request.getQueryString("responseFilters")
         
-      api.secureLogin(version, username, password, gameType, deviceId, charsetName, latitude, longitude, returnProfile, responseFilters)
+      api.secureLogin(username, password, gameType, deviceId, charsetName, latitude, longitude, returnProfile, responseFilters)
     }
 
     val result = executeApi()
@@ -1139,9 +1139,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/create/validate?name=[value]&inviteToken=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&deviceId=[value]&deviceIdType=[value]&username=[value]&password=[value]&emailAddress=[value]&assetId=[value]&address=[value]&zipcode=[value]&gender=[value]&birthday=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&role=[value]&platforms=[value]&tags=[value]&aboutUs=[value]&gameExperience=[value]&categoryIds=[value]&hometown=[value]&height=[value]&heightIndex=[value]&ethnicity=[value]&bodyType=[value]&maritalStatus=[value]&children=[value]&religion=[value]&education=[value]&educationIndex=[value]&smoke=[value]&drink=[value]&companionship=[value]&companionshipIndex=[value]&preferredMinAge=[value]&preferredMaxAge=[value]&preferredMinHeight=[value]&preferredMaxHeight=[value]&preferredGender=[value]&preferredEducation=[value]&preferredEducationIndex=[value]&preferredBodyType=[value]&preferredEthnicity=[value]&preferredLocation=[value]&preferredLocationRange=[value]&latitude=[value]&longitude=[value]&acceptedTerms=[value]&charsetName=[value]&gameType=[value]&appKey=[value]&appVersion=[value]&responseType=[value]
+    * POST /api/3.18/account/create/validate?name=[value]&inviteToken=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&deviceId=[value]&deviceIdType=[value]&username=[value]&password=[value]&emailAddress=[value]&assetId=[value]&address=[value]&zipcode=[value]&gender=[value]&birthday=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&role=[value]&platforms=[value]&tags=[value]&aboutUs=[value]&gameExperience=[value]&categoryIds=[value]&hometown=[value]&height=[value]&heightIndex=[value]&ethnicity=[value]&bodyType=[value]&maritalStatus=[value]&children=[value]&religion=[value]&education=[value]&educationIndex=[value]&smoke=[value]&drink=[value]&companionship=[value]&companionshipIndex=[value]&preferredMinAge=[value]&preferredMaxAge=[value]&preferredMinHeight=[value]&preferredMaxHeight=[value]&preferredGender=[value]&preferredEducation=[value]&preferredEducationIndex=[value]&preferredBodyType=[value]&preferredEthnicity=[value]&preferredLocation=[value]&preferredLocationRange=[value]&latitude=[value]&longitude=[value]&acceptedTerms=[value]&charsetName=[value]&gameType=[value]&appKey=[value]&appVersion=[value]&responseType=[value]
     */
-  def secureSignup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def secureSignup(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileInfoResponse = {
       val name = request.getQueryString("name")
         
@@ -1288,7 +1288,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
         
       val responseType = request.getQueryString("responseType")
         
-      api.secureSignup(version, deviceId, username, password, name, inviteToken, prefixName, firstName, middleName, lastName, suffixName, title, deviceIdType, emailAddress, assetId, address, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, charsetName, gameType, appKey, appVersion, responseType)
+      api.secureSignup(deviceId, username, password, name, inviteToken, prefixName, firstName, middleName, lastName, suffixName, title, deviceIdType, emailAddress, assetId, address, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, charsetName, gameType, appKey, appVersion, responseType)
     }
 
     val result = executeApi()
@@ -1297,9 +1297,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/consumer/profile/matchToken?deviceId=[value]&accountId=[value]&matchToken=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/profile/matchToken?deviceId=[value]&accountId=[value]&matchToken=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]
     */
-  def setMatchToken(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def setMatchToken(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1318,7 +1318,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.setMatchToken(version, deviceId, accountId, matchToken, gameType, appKey, latitude, longitude)
+      api.setMatchToken(deviceId, accountId, matchToken, gameType, appKey, latitude, longitude)
     }
 
     val result = executeApi()
@@ -1327,9 +1327,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/active/update?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&appKey=[value]&active=[value]
+    * POST /api/3.18/account/active/update?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&appKey=[value]&active=[value]
     */
-  def updateActveStatus(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateActveStatus(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1353,7 +1353,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("active", "query string")
         }
         
-      api.updateActveStatus(version, accountId, connectionAccountId, active, deviceId, appKey)
+      api.updateActveStatus(accountId, connectionAccountId, active, deviceId, appKey)
     }
 
     val result = executeApi()
@@ -1362,9 +1362,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/location/update?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&clientTime=[value]
+    * POST /api/3.18/account/location/update?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&clientTime=[value]
     */
-  def updateLocation(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateLocation(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1380,7 +1380,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val clientTime = request.getQueryString("clientTime")
         .map(value => value.toLong)
         
-      api.updateLocation(version, deviceId, accountId, latitude, longitude, clientTime)
+      api.updateLocation(deviceId, accountId, latitude, longitude, clientTime)
     }
 
     val result = executeApi()
@@ -1389,9 +1389,9 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/settings/update?deviceId=[value]&accountId=[value]&blockedNotifications=[value]&suggestionMethod=[value]&suggestionCount=[value]&suggestionTimeFrame=[value]&showOthersExactLocation=[value]&showAsZipcode=[value]&showExactLocation=[value]&favoriteVisibility=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/account/settings/update?deviceId=[value]&accountId=[value]&blockedNotifications=[value]&suggestionMethod=[value]&suggestionCount=[value]&suggestionTimeFrame=[value]&showOthersExactLocation=[value]&showAsZipcode=[value]&showExactLocation=[value]&favoriteVisibility=[value]&latitude=[value]&longitude=[value]
     */
-  def updateSettings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateSettings(): Action[AnyContent] = Action { request =>
     def executeApi(): UserSettingsResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -1425,7 +1425,7 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.updateSettings(version, deviceId, accountId, blockedNotifications, suggestionMethod, suggestionCount, suggestionTimeFrame, showOthersExactLocation, showAsZipcode, showExactLocation, favoriteVisibility, latitude, longitude)
+      api.updateSettings(deviceId, accountId, blockedNotifications, suggestionMethod, suggestionCount, suggestionTimeFrame, showOthersExactLocation, showAsZipcode, showExactLocation, favoriteVisibility, latitude, longitude)
     }
 
     val result = executeApi()
@@ -1434,16 +1434,16 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/validateAccountSignup?token=[value]
+    * POST /api/3.18/account/validateAccountSignup?token=[value]
     */
-  def validateAccountSignup(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def validateAccountSignup(): Action[AnyContent] = Action { request =>
     def executeApi(): AccountLoginResponse = {
       val token = request.getQueryString("token")
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("token", "query string")
         }
         
-      api.validateAccountSignup(version, token)
+      api.validateAccountSignup(token)
     }
 
     val result = executeApi()
@@ -1452,16 +1452,16 @@ class AccountApiController @Inject()(cc: ControllerComponents, api: AccountApi) 
   }
 
   /**
-    * POST /api/:version/account/validatepasswordreset?token=[value]
+    * POST /api/3.18/account/validatepasswordreset?token=[value]
     */
-  def validatePasswordReset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def validatePasswordReset(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val token = request.getQueryString("token")
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("token", "query string")
         }
         
-      api.validatePasswordReset(version, token)
+      api.validatePasswordReset(token)
     }
 
     val result = executeApi()

@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ImportStatuses
 import model.Orders
 import model.ShipmentOrder
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class OptimizeApiController @Inject()(cc: ControllerComponents, api: OptimizeApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/optimize/result/:batchID?start=[value]&limit=[value]
+    * GET /api/3.18/optimize/result/:batchID?start=[value]&limit=[value]
     * @param batchID The batchID for getting the import status of.
     */
-  def getOptimizationResult(version: BigDecimal, batchID: String): Action[AnyContent] = Action { request =>
+  def getOptimizationResult(batchID: String): Action[AnyContent] = Action { request =>
     def executeApi(): Map[String, ShipmentOrder] = {
       val start = request.getQueryString("start")
         .map(value => value.toInt)
@@ -30,7 +29,7 @@ class OptimizeApiController @Inject()(cc: ControllerComponents, api: OptimizeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.getOptimizationResult(version, batchID, start, limit)
+      api.getOptimizationResult(batchID, start, limit)
     }
 
     val result = executeApi()
@@ -39,12 +38,12 @@ class OptimizeApiController @Inject()(cc: ControllerComponents, api: OptimizeApi
   }
 
   /**
-    * POST /api/:version/optimize/request
+    * POST /api/3.18/optimize/request
     */
-  def requestOptimization(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def requestOptimization(): Action[AnyContent] = Action { request =>
     def executeApi(): ImportStatuses = {
       val body = request.body.asJson.map(_.as[Orders])
-      api.requestOptimization(version, body)
+      api.requestOptimization(body)
     }
 
     val result = executeApi()

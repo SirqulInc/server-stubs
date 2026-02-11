@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.RegionResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/region/create?accountId=[value]&regionClass=[value]&shortName=[value]&fullName=[value]&parentIds=[value]&childrenIds=[value]&postalCodeIds=[value]&locations=[value]&retailerLocationId=[value]&visibility=[value]&categoryIds=[value]&filterIds=[value]&start=[value]&end=[value]&polygon=[value]&metaData=[value]&latitude=[value]&longitude=[value]&versionCode=[value]&root=[value]&active=[value]
+    * POST /api/3.18/region/create?accountId=[value]&regionClass=[value]&shortName=[value]&fullName=[value]&parentIds=[value]&childrenIds=[value]&postalCodeIds=[value]&locations=[value]&retailerLocationId=[value]&visibility=[value]&categoryIds=[value]&filterIds=[value]&start=[value]&end=[value]&polygon=[value]&metaData=[value]&latitude=[value]&longitude=[value]&versionCode=[value]&root=[value]&active=[value]
     */
-  def createRegion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createRegion(): Action[AnyContent] = Action { request =>
     def executeApi(): RegionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -75,7 +74,7 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.createRegion(version, accountId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active)
+      api.createRegion(accountId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active)
     }
 
     val result = executeApi()
@@ -84,9 +83,9 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
   }
 
   /**
-    * POST /api/:version/region/delete?accountId=[value]&regionId=[value]
+    * POST /api/3.18/region/delete?accountId=[value]&regionId=[value]
     */
-  def deleteRegion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteRegion(): Action[AnyContent] = Action { request =>
     def executeApi(): RegionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -100,7 +99,7 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
           throw new OpenApiExceptions.MissingRequiredParameterException("regionId", "query string")
         }
         
-      api.deleteRegion(version, accountId, regionId)
+      api.deleteRegion(accountId, regionId)
     }
 
     val result = executeApi()
@@ -109,9 +108,9 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
   }
 
   /**
-    * GET /api/:version/region/get?accountId=[value]&regionId=[value]
+    * GET /api/3.18/region/get?accountId=[value]&regionId=[value]
     */
-  def getRegion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getRegion(): Action[AnyContent] = Action { request =>
     def executeApi(): RegionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -122,7 +121,7 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
           throw new OpenApiExceptions.MissingRequiredParameterException("regionId", "query string")
         }
         
-      api.getRegion(version, regionId, accountId)
+      api.getRegion(regionId, accountId)
     }
 
     val result = executeApi()
@@ -131,9 +130,9 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
   }
 
   /**
-    * GET /api/:version/region/search?accountId=[value]&query=[value]&keyword=[value]&latitude=[value]&longitude=[value]&range=[value]&regionClass=[value]&visibility=[value]&searchMode=[value]&sortField=[value]&descending=[value]&includeParent=[value]&includeChildren=[value]&includePostalCodes=[value]&categoryIds=[value]&filterIds=[value]&versionCode=[value]&activeOnly=[value]&showDeleted=[value]&lastUpdatedSince=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/region/search?accountId=[value]&query=[value]&keyword=[value]&latitude=[value]&longitude=[value]&range=[value]&regionClass=[value]&visibility=[value]&searchMode=[value]&sortField=[value]&descending=[value]&includeParent=[value]&includeChildren=[value]&includePostalCodes=[value]&categoryIds=[value]&filterIds=[value]&versionCode=[value]&activeOnly=[value]&showDeleted=[value]&lastUpdatedSince=[value]&start=[value]&limit=[value]
     */
-  def searchRegions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRegions(): Action[AnyContent] = Action { request =>
     def executeApi(): List[RegionResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -193,7 +192,7 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchRegions(version, accountId, query, keyword, latitude, longitude, range, regionClass, visibility, searchMode, sortField, descending, includeParent, includeChildren, includePostalCodes, categoryIds, filterIds, versionCode, activeOnly, showDeleted, lastUpdatedSince, start, limit)
+      api.searchRegions(accountId, query, keyword, latitude, longitude, range, regionClass, visibility, searchMode, sortField, descending, includeParent, includeChildren, includePostalCodes, categoryIds, filterIds, versionCode, activeOnly, showDeleted, lastUpdatedSince, start, limit)
     }
 
     val result = executeApi()
@@ -202,9 +201,9 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
   }
 
   /**
-    * POST /api/:version/region/update?accountId=[value]&regionId=[value]&regionClass=[value]&shortName=[value]&fullName=[value]&parentIds=[value]&childrenIds=[value]&postalCodeIds=[value]&locations=[value]&retailerLocationId=[value]&visibility=[value]&categoryIds=[value]&filterIds=[value]&start=[value]&end=[value]&polygon=[value]&metaData=[value]&latitude=[value]&longitude=[value]&versionCode=[value]&root=[value]&active=[value]&clearLists=[value]
+    * POST /api/3.18/region/update?accountId=[value]&regionId=[value]&regionClass=[value]&shortName=[value]&fullName=[value]&parentIds=[value]&childrenIds=[value]&postalCodeIds=[value]&locations=[value]&retailerLocationId=[value]&visibility=[value]&categoryIds=[value]&filterIds=[value]&start=[value]&end=[value]&polygon=[value]&metaData=[value]&latitude=[value]&longitude=[value]&versionCode=[value]&root=[value]&active=[value]&clearLists=[value]
     */
-  def updateRegion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateRegion(): Action[AnyContent] = Action { request =>
     def executeApi(): RegionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -269,7 +268,7 @@ class RegionApiController @Inject()(cc: ControllerComponents, api: RegionApi) ex
       val clearLists = request.getQueryString("clearLists")
         .map(value => value.toBoolean)
         
-      api.updateRegion(version, accountId, regionId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, clearLists)
+      api.updateRegion(accountId, regionId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, clearLists)
     }
 
     val result = executeApi()

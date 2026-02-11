@@ -1,7 +1,6 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.CountResponse
 import model.ProfileResponse
 import model.SirqulResponse
@@ -9,7 +8,7 @@ import play.api.libs.Files.TemporaryFile
 import model.TicketListResponse
 import model.TicketOfferResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait TicketApi {
   /**
     * Get Ticket Count
@@ -20,7 +19,7 @@ trait TicketApi {
     * @param appKey the applicationkey
     * @param ticketType the type of ticket
     */
-  def getTicketCount(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], ticketType: Option[String]): CountResponse
+  def getTicketCount(deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], ticketType: Option[String]): CountResponse
 
   /**
     * Get Ticket List
@@ -35,7 +34,7 @@ trait TicketApi {
     * @param gameType 
     * @param appKey the application key
     */
-  def getTicketList(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], ticketObjectType: Option[String], actionType: Option[String], ticketIds: Option[String], objectIds: Option[String], receiptTokens: Option[String], gameType: Option[String], appKey: Option[String]): TicketListResponse
+  def getTicketList(deviceId: Option[String], accountId: Option[Long], ticketObjectType: Option[String], actionType: Option[String], ticketIds: Option[String], objectIds: Option[String], receiptTokens: Option[String], gameType: Option[String], appKey: Option[String]): TicketListResponse
 
   /**
     * Gift Tickets
@@ -49,7 +48,7 @@ trait TicketApi {
     * @param gameType the type of game associated with the tickets
     * @param appKey the application key
     */
-  def giftPurchase(version: BigDecimal, receiverAccountId: Long, ticketId: Long, deviceId: Option[String], accountId: Option[Long], assetId: Option[Long], customMessage: Option[String], gameType: Option[String], appKey: Option[String]): SirqulResponse
+  def giftPurchase(receiverAccountId: Long, ticketId: Long, deviceId: Option[String], accountId: Option[Long], assetId: Option[Long], customMessage: Option[String], gameType: Option[String], appKey: Option[String]): SirqulResponse
 
   /**
     * Save Ticket
@@ -73,7 +72,7 @@ trait TicketApi {
     * @param includeProfileResponse if returnProfileResponse is false, will return an AppResponse with profile data if true
     * @param appVersion the application version
     */
-  def saveTicket(version: BigDecimal, actionType: String, ticketObjectType: String, returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], objectId: Option[Long], purchaseCode: Option[String], receiptToken: Option[String], receiptData: Option[String], count: Option[Long], ticketType: Option[String], purchaseProvider: Option[String], purchaseType: Option[String], returnProfileResponse: Option[Boolean], includeProfileResponse: Option[Boolean], appVersion: Option[String]): ProfileResponse
+  def saveTicket(actionType: String, ticketObjectType: String, returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], objectId: Option[Long], purchaseCode: Option[String], receiptToken: Option[String], receiptData: Option[String], count: Option[Long], ticketType: Option[String], purchaseProvider: Option[String], purchaseType: Option[String], returnProfileResponse: Option[Boolean], includeProfileResponse: Option[Boolean], appVersion: Option[String]): ProfileResponse
 
   /**
     * Save Ticket with Reciept
@@ -97,11 +96,11 @@ trait TicketApi {
     * @param includeProfileResponse if returnProfileResponse is false, will return an AppResponse with profile data if true
     * @param appVersion the application version
     */
-  def saveTicketViaFileUpload(version: BigDecimal, actionType: String, ticketObjectType: String, receiptData: TemporaryFile, returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], objectId: Option[Long], purchaseCode: Option[String], receiptToken: Option[String], count: Option[Long], ticketType: Option[String], purchaseProvider: Option[String], purchaseType: Option[String], returnProfileResponse: Option[Boolean], includeProfileResponse: Option[Boolean], appVersion: Option[String]): ProfileResponse
+  def saveTicketViaFileUpload(actionType: String, ticketObjectType: String, receiptData: TemporaryFile, returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], objectId: Option[Long], purchaseCode: Option[String], receiptToken: Option[String], count: Option[Long], ticketType: Option[String], purchaseProvider: Option[String], purchaseType: Option[String], returnProfileResponse: Option[Boolean], includeProfileResponse: Option[Boolean], appVersion: Option[String]): ProfileResponse
 
   /**
     * Get Ticket Offers
     * Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.
     */
-  def ticketOffers(version: BigDecimal): TicketOfferResponse
+  def ticketOffers(): TicketOfferResponse
 }

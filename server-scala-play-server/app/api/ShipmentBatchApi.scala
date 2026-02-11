@@ -1,31 +1,30 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ShipmentBatch
 import model.ShipmentImportStatus
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ShipmentBatchApi {
   /**
     * Create Shipment Batch
     * Create a new shipment batch
     */
-  def createShipmentBatch(version: BigDecimal, body: Option[ShipmentBatch]): ShipmentBatch
+  def createShipmentBatch(body: Option[ShipmentBatch]): ShipmentBatch
 
   /**
     * Delete Shipment Batch
     * Search for shipment batches
     * @param batchId the id of the shipment batch to delete
     */
-  def deleteShipmentBatch(version: BigDecimal, batchId: Long): Unit
+  def deleteShipmentBatch(batchId: Long): Unit
 
   /**
     * Get Shipment Batch
     * Get an existing shipment batch
     * @param batchId the id of the shipment batch to get
     */
-  def getShipmentBatch(version: BigDecimal, batchId: Long): ShipmentBatch
+  def getShipmentBatch(batchId: Long): ShipmentBatch
 
   /**
     * Get Shipment Batch Status
@@ -43,7 +42,7 @@ trait ShipmentBatchApi {
     * @param hasRoute Has route associate to the status
     * @param keyword The keyword to search for
     */
-  def getShipmentBatchStatus(version: BigDecimal, batchId: Long, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, valid: Option[Boolean], started: Option[Boolean], completed: Option[Boolean], hasShipment: Option[Boolean], hasRoute: Option[Boolean], keyword: Option[String]): List[ShipmentImportStatus]
+  def getShipmentBatchStatus(batchId: Long, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, valid: Option[Boolean], started: Option[Boolean], completed: Option[Boolean], hasShipment: Option[Boolean], hasRoute: Option[Boolean], keyword: Option[String]): List[ShipmentImportStatus]
 
   /**
     * Search Shipment Batch
@@ -54,5 +53,5 @@ trait ShipmentBatchApi {
     * @param start The start index for pagination
     * @param limit The limit for pagination
     */
-  def searchShipmentBatch(version: BigDecimal, hubId: Long, sortField: String, descending: Boolean, start: Int, limit: Int): List[ShipmentBatch]
+  def searchShipmentBatch(hubId: Long, sortField: String, descending: Boolean, start: Int, limit: Int): List[ShipmentBatch]
 }

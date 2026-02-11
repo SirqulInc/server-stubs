@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.Shipment
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/shipment/:id/cancel
+    * POST /api/3.18/shipment/:id/cancel
     * @param id the id of the shipment to cancel
     */
-  def cancelShipment(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def cancelShipment(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.cancelShipment(version, id)
+      api.cancelShipment(id)
     }
 
     executeApi()
@@ -24,12 +23,12 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
   }
 
   /**
-    * POST /api/:version/shipment
+    * POST /api/3.18/shipment
     */
-  def createShipment(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createShipment(): Action[AnyContent] = Action { request =>
     def executeApi(): Shipment = {
       val body = request.body.asJson.map(_.as[Shipment])
-      api.createShipment(version, body)
+      api.createShipment(body)
     }
 
     val result = executeApi()
@@ -38,12 +37,12 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
   }
 
   /**
-    * DELETE /api/:version/shipment/:id
+    * DELETE /api/3.18/shipment/:id
     * @param id the id of the shipment to delete
     */
-  def deleteShipment(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def deleteShipment(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.deleteShipment(version, id)
+      api.deleteShipment(id)
     }
 
     executeApi()
@@ -51,12 +50,12 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
   }
 
   /**
-    * GET /api/:version/shipment/:id
+    * GET /api/3.18/shipment/:id
     * @param id the id of the shipment to get
     */
-  def getShipment(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def getShipment(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Shipment = {
-      api.getShipment(version, id)
+      api.getShipment(id)
     }
 
     val result = executeApi()
@@ -65,9 +64,9 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
   }
 
   /**
-    * GET /api/:version/shipment?ownerId=[value]&riderId=[value]&routeId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/shipment?ownerId=[value]&riderId=[value]&routeId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchShipments(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchShipments(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Shipment] = {
       val ownerId = request.getQueryString("ownerId")
         .map(value => value.toLong)
@@ -107,7 +106,7 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchShipments(version, sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId)
+      api.searchShipments(sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId)
     }
 
     val result = executeApi()
@@ -116,13 +115,13 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
   }
 
   /**
-    * PUT /api/:version/shipment/:id
+    * PUT /api/3.18/shipment/:id
     * @param id the id of the shipment to update
     */
-  def updateShipment(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateShipment(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Shipment = {
       val body = request.body.asJson.map(_.as[Shipment])
-      api.updateShipment(version, id, body)
+      api.updateShipment(id, body)
     }
 
     val result = executeApi()
@@ -131,13 +130,13 @@ class ShipmentApiController @Inject()(cc: ControllerComponents, api: ShipmentApi
   }
 
   /**
-    * POST /api/:version/shipment/:id/status
+    * POST /api/3.18/shipment/:id/status
     * @param id the id of the shipment to update status
     */
-  def updateShipmentStatus(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateShipmentStatus(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val body = request.body.asJson.map(_.as[Map[String, Boolean]])
-      api.updateShipmentStatus(version, id, body)
+      api.updateShipmentStatus(id, body)
     }
 
     executeApi()

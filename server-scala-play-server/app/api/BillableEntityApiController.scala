@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.BillableEntityResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class BillableEntityApiController @Inject()(cc: ControllerComponents, api: BillableEntityApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/billable/create?deviceId=[value]&accountId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&businessPhone=[value]&businessPhoneExt=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]
+    * POST /api/3.18/billable/create?deviceId=[value]&accountId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&businessPhone=[value]&businessPhoneExt=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]
     */
-  def createBillableEntity(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createBillableEntity(): Action[AnyContent] = Action { request =>
     def executeApi(): BillableEntityResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -41,7 +40,7 @@ class BillableEntityApiController @Inject()(cc: ControllerComponents, api: Billa
         
       val authorizeNetTransactionKey = request.getQueryString("authorizeNetTransactionKey")
         
-      api.createBillableEntity(version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey)
+      api.createBillableEntity(deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey)
     }
 
     val result = executeApi()
@@ -50,16 +49,16 @@ class BillableEntityApiController @Inject()(cc: ControllerComponents, api: Billa
   }
 
   /**
-    * POST /api/:version/billable/delete?deviceId=[value]&accountId=[value]
+    * POST /api/3.18/billable/delete?deviceId=[value]&accountId=[value]
     */
-  def deleteBillableEntity(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteBillableEntity(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
-      api.deleteBillableEntity(version, deviceId, accountId)
+      api.deleteBillableEntity(deviceId, accountId)
     }
 
     val result = executeApi()
@@ -68,9 +67,9 @@ class BillableEntityApiController @Inject()(cc: ControllerComponents, api: Billa
   }
 
   /**
-    * GET /api/:version/billable/get?deviceId=[value]&accountId=[value]&includeCounts=[value]&includePayments=[value]
+    * GET /api/3.18/billable/get?deviceId=[value]&accountId=[value]&includeCounts=[value]&includePayments=[value]
     */
-  def getBillableEntity(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBillableEntity(): Action[AnyContent] = Action { request =>
     def executeApi(): BillableEntityResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -83,7 +82,7 @@ class BillableEntityApiController @Inject()(cc: ControllerComponents, api: Billa
       val includePayments = request.getQueryString("includePayments")
         .map(value => value.toBoolean)
         
-      api.getBillableEntity(version, deviceId, accountId, includeCounts, includePayments)
+      api.getBillableEntity(deviceId, accountId, includeCounts, includePayments)
     }
 
     val result = executeApi()
@@ -92,9 +91,9 @@ class BillableEntityApiController @Inject()(cc: ControllerComponents, api: Billa
   }
 
   /**
-    * POST /api/:version/billable/update?deviceId=[value]&accountId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&businessPhone=[value]&businessPhoneExt=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]
+    * POST /api/3.18/billable/update?deviceId=[value]&accountId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&businessPhone=[value]&businessPhoneExt=[value]&authorizeNetApiKey=[value]&authorizeNetTransactionKey=[value]
     */
-  def updateBillableEntity(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateBillableEntity(): Action[AnyContent] = Action { request =>
     def executeApi(): BillableEntityResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -121,7 +120,7 @@ class BillableEntityApiController @Inject()(cc: ControllerComponents, api: Billa
         
       val authorizeNetTransactionKey = request.getQueryString("authorizeNetTransactionKey")
         
-      api.updateBillableEntity(version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey)
+      api.updateBillableEntity(deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey)
     }
 
     val result = executeApi()

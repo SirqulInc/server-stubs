@@ -7,13 +7,13 @@ import play.api.mvc._
 import model.BigDecimal
 import model.DisbursementResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class DisbursementApiController @Inject()(cc: ControllerComponents, api: DisbursementApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/disbursement/check?disbursementId=[value]
+    * GET /api/3.18/disbursement/check?disbursementId=[value]
     */
-  def checkDisbursements(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def checkDisbursements(): Action[AnyContent] = Action { request =>
     def executeApi(): DisbursementResponse = {
       val disbursementId = request.getQueryString("disbursementId")
         .map(value => value.toLong)
@@ -21,7 +21,7 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
           throw new OpenApiExceptions.MissingRequiredParameterException("disbursementId", "query string")
         }
         
-      api.checkDisbursements(version, disbursementId)
+      api.checkDisbursements(disbursementId)
     }
 
     val result = executeApi()
@@ -30,9 +30,9 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
   }
 
   /**
-    * POST /api/:version/disbursement/create?accountId=[value]&receiverAccountId=[value]&originalSenderAccountId=[value]&amount=[value]&provider=[value]&scheduledDate=[value]&title=[value]&comment=[value]&externalId=[value]&introspectionParams=[value]
+    * POST /api/3.18/disbursement/create?accountId=[value]&receiverAccountId=[value]&originalSenderAccountId=[value]&amount=[value]&provider=[value]&scheduledDate=[value]&title=[value]&comment=[value]&externalId=[value]&introspectionParams=[value]
     */
-  def createDisbursement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createDisbursement(): Action[AnyContent] = Action { request =>
     def executeApi(): DisbursementResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -74,7 +74,7 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
         
       val introspectionParams = request.getQueryString("introspectionParams")
         
-      api.createDisbursement(version, accountId, receiverAccountId, originalSenderAccountId, amount, provider, scheduledDate, title, comment, externalId, introspectionParams)
+      api.createDisbursement(accountId, receiverAccountId, originalSenderAccountId, amount, provider, scheduledDate, title, comment, externalId, introspectionParams)
     }
 
     val result = executeApi()
@@ -83,9 +83,9 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
   }
 
   /**
-    * GET /api/:version/disbursement/get?accountId=[value]&disbursementId=[value]
+    * GET /api/3.18/disbursement/get?accountId=[value]&disbursementId=[value]
     */
-  def getDisbursement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getDisbursement(): Action[AnyContent] = Action { request =>
     def executeApi(): DisbursementResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -99,7 +99,7 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
           throw new OpenApiExceptions.MissingRequiredParameterException("disbursementId", "query string")
         }
         
-      api.getDisbursement(version, accountId, disbursementId)
+      api.getDisbursement(accountId, disbursementId)
     }
 
     val result = executeApi()
@@ -108,9 +108,9 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
   }
 
   /**
-    * GET /api/:version/disbursement/search?accountId=[value]&receiverAccountId=[value]&statuses=[value]&providers=[value]&beforeDate=[value]&afterDate=[value]&start=[value]&limit=[value]&activeOnly=[value]&externalId=[value]
+    * GET /api/3.18/disbursement/search?accountId=[value]&receiverAccountId=[value]&statuses=[value]&providers=[value]&beforeDate=[value]&afterDate=[value]&start=[value]&limit=[value]&activeOnly=[value]&externalId=[value]
     */
-  def searchDisbursements(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchDisbursements(): Action[AnyContent] = Action { request =>
     def executeApi(): List[DisbursementResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -142,7 +142,7 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
         
       val externalId = request.getQueryString("externalId")
         
-      api.searchDisbursements(version, accountId, receiverAccountId, statuses, providers, beforeDate, afterDate, start, limit, activeOnly, externalId)
+      api.searchDisbursements(accountId, receiverAccountId, statuses, providers, beforeDate, afterDate, start, limit, activeOnly, externalId)
     }
 
     val result = executeApi()
@@ -151,9 +151,9 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
   }
 
   /**
-    * POST /api/:version/disbursement/update?accountId=[value]&disbursementId=[value]&amount=[value]&provider=[value]&scheduledDate=[value]&title=[value]&comment=[value]&externalId=[value]&retry=[value]&introspectionParams=[value]
+    * POST /api/3.18/disbursement/update?accountId=[value]&disbursementId=[value]&amount=[value]&provider=[value]&scheduledDate=[value]&title=[value]&comment=[value]&externalId=[value]&retry=[value]&introspectionParams=[value]
     */
-  def updateDisbursement(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateDisbursement(): Action[AnyContent] = Action { request =>
     def executeApi(): DisbursementResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -186,7 +186,7 @@ class DisbursementApiController @Inject()(cc: ControllerComponents, api: Disburs
         
       val introspectionParams = request.getQueryString("introspectionParams")
         
-      api.updateDisbursement(version, accountId, disbursementId, amount, provider, scheduledDate, title, comment, externalId, retry, introspectionParams)
+      api.updateDisbursement(accountId, disbursementId, amount, provider, scheduledDate, title, comment, externalId, retry, introspectionParams)
     }
 
     val result = executeApi()

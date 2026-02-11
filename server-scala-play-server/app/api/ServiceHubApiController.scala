@@ -4,20 +4,19 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.JsObject
 import model.ServiceHub
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHubApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/hub
+    * POST /api/3.18/hub
     */
-  def createServiceHub(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createServiceHub(): Action[AnyContent] = Action { request =>
     def executeApi(): ServiceHub = {
       val body = request.body.asJson.map(_.as[ServiceHub])
-      api.createServiceHub(version, body)
+      api.createServiceHub(body)
     }
 
     val result = executeApi()
@@ -26,12 +25,12 @@ class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHu
   }
 
   /**
-    * DELETE /api/:version/hub/:id
+    * DELETE /api/3.18/hub/:id
     * @param id the id of the service hub to delete
     */
-  def deleteServiceHub(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def deleteServiceHub(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.deleteServiceHub(version, id)
+      api.deleteServiceHub(id)
     }
 
     executeApi()
@@ -39,12 +38,12 @@ class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHu
   }
 
   /**
-    * GET /api/:version/hub/:id
+    * GET /api/3.18/hub/:id
     * @param id the id of the service hub to get
     */
-  def getServiceHub(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def getServiceHub(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): JsObject = {
-      api.getServiceHub(version, id)
+      api.getServiceHub(id)
     }
 
     val result = executeApi()
@@ -53,13 +52,13 @@ class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHu
   }
 
   /**
-    * POST /api/:version/hub/:id
+    * POST /api/3.18/hub/:id
     * @param id the id of the service hub
     */
-  def postServiceHub(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def postServiceHub(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): ServiceHub = {
       val body = request.body.asJson.map(_.as[ServiceHub])
-      api.postServiceHub(version, id, body)
+      api.postServiceHub(id, body)
     }
 
     val result = executeApi()
@@ -68,13 +67,13 @@ class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHu
   }
 
   /**
-    * PUT /api/:version/hub/:id
+    * PUT /api/3.18/hub/:id
     * @param id the id of the service hub
     */
-  def putServiceHub(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def putServiceHub(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): ServiceHub = {
       val body = request.body.asJson.map(_.as[ServiceHub])
-      api.putServiceHub(version, id, body)
+      api.putServiceHub(id, body)
     }
 
     val result = executeApi()
@@ -83,9 +82,9 @@ class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHu
   }
 
   /**
-    * GET /api/:version/hub?keyword=[value]&retailerId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/hub?keyword=[value]&retailerId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchServiceHubs(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchServiceHubs(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ServiceHub] = {
       val keyword = request.getQueryString("keyword")
         
@@ -121,7 +120,7 @@ class ServiceHubApiController @Inject()(cc: ControllerComponents, api: ServiceHu
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchServiceHubs(version, sortField, descending, start, limit, activeOnly, keyword, retailerId)
+      api.searchServiceHubs(sortField, descending, start, limit, activeOnly, keyword, retailerId)
     }
 
     val result = executeApi()

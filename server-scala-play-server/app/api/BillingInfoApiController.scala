@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PaymentTypesResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingInfoApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/billing/update?accountId=[value]&paymentMethodId=[value]&accountName=[value]&firstName=[value]&lastName=[value]&address=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&phone=[value]&creditCardNumber=[value]&expirationDate=[value]&ccv=[value]&accountNumber=[value]&bankName=[value]&routingNumber=[value]&defaultPaymentMethod=[value]&paymentMethodNickname=[value]&taxId=[value]&providerCustomerProfileId=[value]&providerPaymentProfileId=[value]&metaData=[value]
+    * POST /api/3.18/billing/update?accountId=[value]&paymentMethodId=[value]&accountName=[value]&firstName=[value]&lastName=[value]&address=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&phone=[value]&creditCardNumber=[value]&expirationDate=[value]&ccv=[value]&accountNumber=[value]&bankName=[value]&routingNumber=[value]&defaultPaymentMethod=[value]&paymentMethodNickname=[value]&taxId=[value]&providerCustomerProfileId=[value]&providerPaymentProfileId=[value]&metaData=[value]
     */
-  def addPaymentMethod(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addPaymentMethod(): Action[AnyContent] = Action { request =>
     def executeApi(): PaymentTypesResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -67,7 +66,7 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
         
       val metaData = request.getQueryString("metaData")
         
-      api.addPaymentMethod(version, accountId, paymentMethodId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, defaultPaymentMethod, paymentMethodNickname, taxId, providerCustomerProfileId, providerPaymentProfileId, metaData)
+      api.addPaymentMethod(accountId, paymentMethodId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, defaultPaymentMethod, paymentMethodNickname, taxId, providerCustomerProfileId, providerPaymentProfileId, metaData)
     }
 
     val result = executeApi()
@@ -76,9 +75,9 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
   }
 
   /**
-    * POST /api/:version/billing/create?accountId=[value]&accountName=[value]&firstName=[value]&lastName=[value]&address=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&phone=[value]&creditCardNumber=[value]&expirationDate=[value]&ccv=[value]&accountNumber=[value]&bankName=[value]&routingNumber=[value]&paymentMethodNickname=[value]&taxId=[value]&defaultPaymentMethod=[value]&authToken=[value]&provider=[value]&providerCustomerProfileId=[value]&providerPaymentProfileId=[value]&metaData=[value]&appKey=[value]
+    * POST /api/3.18/billing/create?accountId=[value]&accountName=[value]&firstName=[value]&lastName=[value]&address=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&phone=[value]&creditCardNumber=[value]&expirationDate=[value]&ccv=[value]&accountNumber=[value]&bankName=[value]&routingNumber=[value]&paymentMethodNickname=[value]&taxId=[value]&defaultPaymentMethod=[value]&authToken=[value]&provider=[value]&providerCustomerProfileId=[value]&providerPaymentProfileId=[value]&metaData=[value]&appKey=[value]
     */
-  def createPaymentMethod(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createPaymentMethod(): Action[AnyContent] = Action { request =>
     def executeApi(): PaymentTypesResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -135,7 +134,7 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
         
       val appKey = request.getQueryString("appKey")
         
-      api.createPaymentMethod(version, accountId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, paymentMethodNickname, taxId, defaultPaymentMethod, authToken, provider, providerCustomerProfileId, providerPaymentProfileId, metaData, appKey)
+      api.createPaymentMethod(accountId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, paymentMethodNickname, taxId, defaultPaymentMethod, authToken, provider, providerCustomerProfileId, providerPaymentProfileId, metaData, appKey)
     }
 
     val result = executeApi()
@@ -144,9 +143,9 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
   }
 
   /**
-    * POST /api/:version/billing/crypto/transfer?accountId=[value]&paymentMethodId=[value]&tokenName=[value]&tokenSymbol=[value]
+    * POST /api/3.18/billing/crypto/transfer?accountId=[value]&paymentMethodId=[value]&tokenName=[value]&tokenSymbol=[value]
     */
-  def createSmartContract(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createSmartContract(): Action[AnyContent] = Action { request =>
     def executeApi(): PaymentTypesResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -167,7 +166,7 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
           throw new OpenApiExceptions.MissingRequiredParameterException("tokenSymbol", "query string")
         }
         
-      api.createSmartContract(version, accountId, tokenName, tokenSymbol, paymentMethodId)
+      api.createSmartContract(accountId, tokenName, tokenSymbol, paymentMethodId)
     }
 
     val result = executeApi()
@@ -176,9 +175,9 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
   }
 
   /**
-    * GET /api/:version/billing/crypto/get?accountId=[value]&ownerAccountId=[value]&paymentMethodId=[value]
+    * GET /api/3.18/billing/crypto/get?accountId=[value]&ownerAccountId=[value]&paymentMethodId=[value]
     */
-  def getCryptoBalance(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCryptoBalance(): Action[AnyContent] = Action { request =>
     def executeApi(): PaymentTypesResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -192,7 +191,7 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
       val paymentMethodId = request.getQueryString("paymentMethodId")
         .map(value => value.toLong)
         
-      api.getCryptoBalance(version, accountId, ownerAccountId, paymentMethodId)
+      api.getCryptoBalance(accountId, ownerAccountId, paymentMethodId)
     }
 
     val result = executeApi()
@@ -201,9 +200,9 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
   }
 
   /**
-    * GET /api/:version/billing/get?accountId=[value]&paymentMethodId=[value]&getCurrentBalance=[value]
+    * GET /api/3.18/billing/get?accountId=[value]&paymentMethodId=[value]&getCurrentBalance=[value]
     */
-  def getPaymentMethod(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPaymentMethod(): Action[AnyContent] = Action { request =>
     def executeApi(): PaymentTypesResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -217,7 +216,7 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
       val getCurrentBalance = request.getQueryString("getCurrentBalance")
         .map(value => value.toBoolean)
         
-      api.getPaymentMethod(version, accountId, paymentMethodId, getCurrentBalance)
+      api.getPaymentMethod(accountId, paymentMethodId, getCurrentBalance)
     }
 
     val result = executeApi()
@@ -226,9 +225,9 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
   }
 
   /**
-    * GET /api/:version/billing/search?accountId=[value]&provider=[value]&`type`=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/billing/search?accountId=[value]&provider=[value]&`type`=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchPaymentMethod(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchPaymentMethod(): Action[AnyContent] = Action { request =>
     def executeApi(): PaymentTypesResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -253,7 +252,7 @@ class BillingInfoApiController @Inject()(cc: ControllerComponents, api: BillingI
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchPaymentMethod(version, accountId, provider, `type`, keyword, sortField, descending, start, limit)
+      api.searchPaymentMethod(accountId, provider, `type`, keyword, sortField, descending, start, limit)
     }
 
     val result = executeApi()

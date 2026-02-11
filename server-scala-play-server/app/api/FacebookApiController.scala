@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 import model.TokenResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class FacebookApiController @Inject()(cc: ControllerComponents, api: FacebookApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/facebook/getfbtoken?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/facebook/getfbtoken?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]
     */
-  def getToken(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getToken(): Action[AnyContent] = Action { request =>
     def executeApi(): TokenResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -27,7 +26,7 @@ class FacebookApiController @Inject()(cc: ControllerComponents, api: FacebookApi
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getToken(version, deviceId, accountId, latitude, longitude)
+      api.getToken(deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -36,9 +35,9 @@ class FacebookApiController @Inject()(cc: ControllerComponents, api: FacebookApi
   }
 
   /**
-    * POST /api/:version/facebook/graph?deviceId=[value]&accountId=[value]&event=[value]&permissionableType=[value]&permissionableId=[value]&assetId=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/facebook/graph?deviceId=[value]&accountId=[value]&event=[value]&permissionableType=[value]&permissionableId=[value]&assetId=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]
     */
-  def graphInterface(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def graphInterface(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -68,7 +67,7 @@ class FacebookApiController @Inject()(cc: ControllerComponents, api: FacebookApi
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.graphInterface(version, event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude)
+      api.graphInterface(event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude)
     }
 
     val result = executeApi()

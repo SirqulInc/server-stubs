@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PaymentRequest
 import model.ProfileResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/secure/application/create?accountId=[value]&appKey=[value]&active=[value]&keyCert=[value]&trustStore=[value]&username=[value]&password=[value]&biometricType=[value]&biometricPosition=[value]&biometricPosition2=[value]
+    * POST /api/3.18/secure/application/create?accountId=[value]&appKey=[value]&active=[value]&keyCert=[value]&trustStore=[value]&username=[value]&password=[value]&biometricType=[value]&biometricPosition=[value]&biometricPosition2=[value]
     */
-  def createSecureApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createSecureApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -58,7 +57,7 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
         
       val biometricPosition2 = request.getQueryString("biometricPosition2")
         
-      api.createSecureApplication(version, accountId, appKey, keyCert, trustStore, username, password, active, biometricType, biometricPosition, biometricPosition2)
+      api.createSecureApplication(accountId, appKey, keyCert, trustStore, username, password, active, biometricType, biometricPosition, biometricPosition2)
     }
 
     val result = executeApi()
@@ -67,9 +66,9 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
   }
 
   /**
-    * POST /api/:version/secure/application/delete?accountId=[value]&appKey=[value]
+    * POST /api/3.18/secure/application/delete?accountId=[value]&appKey=[value]
     */
-  def deleteSecureApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteSecureApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -82,7 +81,7 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.deleteSecureApplication(version, accountId, appKey)
+      api.deleteSecureApplication(accountId, appKey)
     }
 
     val result = executeApi()
@@ -91,9 +90,9 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
   }
 
   /**
-    * POST /api/:version/secure/login?deviceId=[value]&appKey=[value]&biometricFile=[value]&biometricFile2=[value]&ageRestriction=[value]&returnProfile=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/secure/login?deviceId=[value]&appKey=[value]&biometricFile=[value]&biometricFile2=[value]&ageRestriction=[value]&returnProfile=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]
     */
-  def loginSecure(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def loginSecure(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -123,7 +122,7 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.loginSecure(version, appKey, biometricFile, deviceId, biometricFile2, ageRestriction, returnProfile, responseFilters, latitude, longitude)
+      api.loginSecure(appKey, biometricFile, deviceId, biometricFile2, ageRestriction, returnProfile, responseFilters, latitude, longitude)
     }
 
     val result = executeApi()
@@ -132,14 +131,14 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
   }
 
   /**
-    * POST /api/:version/secure/purchase
+    * POST /api/3.18/secure/purchase
     */
-  def purchaseSecure(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def purchaseSecure(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val body = request.body.asJson.map(_.as[PaymentRequest]).getOrElse {
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "body")
       }
-      api.purchaseSecure(version, body)
+      api.purchaseSecure(body)
     }
 
     val result = executeApi()
@@ -148,9 +147,9 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
   }
 
   /**
-    * POST /api/:version/secure/application/reset?accountId=[value]&appKey=[value]
+    * POST /api/3.18/secure/application/reset?accountId=[value]&appKey=[value]
     */
-  def resetSecure(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def resetSecure(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -163,7 +162,7 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.resetSecure(version, accountId, appKey)
+      api.resetSecure(accountId, appKey)
     }
 
     val result = executeApi()
@@ -172,9 +171,9 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
   }
 
   /**
-    * POST /api/:version/secure/application/update?accountId=[value]&appKey=[value]&active=[value]&keyCert=[value]&trustStore=[value]&username=[value]&password=[value]&biometricType=[value]&biometricPosition=[value]&biometricPosition2=[value]
+    * POST /api/3.18/secure/application/update?accountId=[value]&appKey=[value]&active=[value]&keyCert=[value]&trustStore=[value]&username=[value]&password=[value]&biometricType=[value]&biometricPosition=[value]&biometricPosition2=[value]
     */
-  def updateSecureApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateSecureApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -204,7 +203,7 @@ class SecureAppApiController @Inject()(cc: ControllerComponents, api: SecureAppA
         
       val biometricPosition2 = request.getQueryString("biometricPosition2")
         
-      api.updateSecureApplication(version, accountId, appKey, active, keyCert, trustStore, username, password, biometricType, biometricPosition, biometricPosition2)
+      api.updateSecureApplication(accountId, appKey, active, keyCert, trustStore, username, password, biometricType, biometricPosition, biometricPosition2)
     }
 
     val result = executeApi()

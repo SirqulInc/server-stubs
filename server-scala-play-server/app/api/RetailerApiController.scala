@@ -5,19 +5,18 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.AccountLoginResponse
-import model.BigDecimal
 import model.RetailerFullResponse
 import model.RetailerResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/retailer/create?deviceId=[value]&accountId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&businessPhone=[value]&businessPhoneExt=[value]&website=[value]&email=[value]&facebookUrl=[value]&twitterUrl=[value]&logo=[value]&logoAssetId=[value]&picture1=[value]&picture1AssetId=[value]&picture2=[value]&picture2AssetId=[value]&categoryIds=[value]&categoryIdsToAdd=[value]&categoryIdsToRemove=[value]&filterIds=[value]&latitude=[value]&longitude=[value]&metaData=[value]&searchTags=[value]&retailerType=[value]&visibility=[value]&createDefaultLocation=[value]&responseFormat=[value]
+    * POST /api/3.18/retailer/create?deviceId=[value]&accountId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&businessPhone=[value]&businessPhoneExt=[value]&website=[value]&email=[value]&facebookUrl=[value]&twitterUrl=[value]&logo=[value]&logoAssetId=[value]&picture1=[value]&picture1AssetId=[value]&picture2=[value]&picture2AssetId=[value]&categoryIds=[value]&categoryIdsToAdd=[value]&categoryIdsToRemove=[value]&filterIds=[value]&latitude=[value]&longitude=[value]&metaData=[value]&searchTags=[value]&retailerType=[value]&visibility=[value]&createDefaultLocation=[value]&responseFormat=[value]
     */
-  def createRetailer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createRetailer(): Action[AnyContent] = Action { request =>
     def executeApi(): RetailerFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -95,7 +94,7 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
         
       val responseFormat = request.getQueryString("responseFormat")
         
-      api.createRetailer(version, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, categoryIdsToAdd, categoryIdsToRemove, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, createDefaultLocation, responseFormat)
+      api.createRetailer(name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, categoryIdsToAdd, categoryIdsToRemove, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, createDefaultLocation, responseFormat)
     }
 
     val result = executeApi()
@@ -104,9 +103,9 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
   }
 
   /**
-    * POST /api/:version/retailer/delete?deviceId=[value]&accountId=[value]&retailerId=[value]
+    * POST /api/3.18/retailer/delete?deviceId=[value]&accountId=[value]&retailerId=[value]
     */
-  def deleteRetailer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteRetailer(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -116,7 +115,7 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
       val retailerId = request.getQueryString("retailerId")
         .map(value => value.toLong)
         
-      api.deleteRetailer(version, deviceId, accountId, retailerId)
+      api.deleteRetailer(deviceId, accountId, retailerId)
     }
 
     val result = executeApi()
@@ -125,9 +124,9 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
   }
 
   /**
-    * GET /api/:version/retailer/get?deviceId=[value]&accountId=[value]&retailerId=[value]&includeCounts=[value]
+    * GET /api/3.18/retailer/get?deviceId=[value]&accountId=[value]&retailerId=[value]&includeCounts=[value]
     */
-  def getRetailer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getRetailer(): Action[AnyContent] = Action { request =>
     def executeApi(): RetailerFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -143,7 +142,7 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
       val includeCounts = request.getQueryString("includeCounts")
         .map(value => value.toBoolean)
         
-      api.getRetailer(version, retailerId, deviceId, accountId, includeCounts)
+      api.getRetailer(retailerId, deviceId, accountId, includeCounts)
     }
 
     val result = executeApi()
@@ -152,9 +151,9 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
   }
 
   /**
-    * GET /api/:version/retailer/search?deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&categoryIds=[value]&filterIds=[value]&visibility=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/retailer/search?deviceId=[value]&accountId=[value]&q=[value]&keyword=[value]&categoryIds=[value]&filterIds=[value]&visibility=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&activeOnly=[value]
     */
-  def getRetailers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getRetailers(): Action[AnyContent] = Action { request =>
     def executeApi(): List[RetailerResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -209,7 +208,7 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.getRetailers(version, visibility, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, categoryIds, filterIds, i, l)
+      api.getRetailers(visibility, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, categoryIds, filterIds, i, l)
     }
 
     val result = executeApi()
@@ -218,9 +217,9 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
   }
 
   /**
-    * POST /api/:version/retailer/login?username=[value]&password=[value]&deviceId=[value]&latitude=[value]&longitude=[value]&appKey=[value]
+    * POST /api/3.18/retailer/login?username=[value]&password=[value]&deviceId=[value]&latitude=[value]&longitude=[value]&appKey=[value]
     */
-  def retailerLoginCheck(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def retailerLoginCheck(): Action[AnyContent] = Action { request =>
     def executeApi(): AccountLoginResponse = {
       val username = request.getQueryString("username")
         .getOrElse {
@@ -242,7 +241,7 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
         
       val appKey = request.getQueryString("appKey")
         
-      api.retailerLoginCheck(version, username, password, deviceId, latitude, longitude, appKey)
+      api.retailerLoginCheck(username, password, deviceId, latitude, longitude, appKey)
     }
 
     val result = executeApi()
@@ -251,9 +250,9 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
   }
 
   /**
-    * POST /api/:version/retailer/update?deviceId=[value]&accountId=[value]&retailerId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&businessPhone=[value]&businessPhoneExt=[value]&website=[value]&email=[value]&facebookUrl=[value]&twitterUrl=[value]&logo=[value]&logoAssetId=[value]&picture1=[value]&picture1AssetId=[value]&picture2=[value]&picture2AssetId=[value]&categoryIds=[value]&filterIds=[value]&latitude=[value]&longitude=[value]&metaData=[value]&searchTags=[value]&retailerType=[value]&visibility=[value]&active=[value]&responseFormat=[value]
+    * POST /api/3.18/retailer/update?deviceId=[value]&accountId=[value]&retailerId=[value]&name=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&postalCode=[value]&country=[value]&businessPhone=[value]&businessPhoneExt=[value]&website=[value]&email=[value]&facebookUrl=[value]&twitterUrl=[value]&logo=[value]&logoAssetId=[value]&picture1=[value]&picture1AssetId=[value]&picture2=[value]&picture2AssetId=[value]&categoryIds=[value]&filterIds=[value]&latitude=[value]&longitude=[value]&metaData=[value]&searchTags=[value]&retailerType=[value]&visibility=[value]&active=[value]&responseFormat=[value]
     */
-  def updateRetailer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateRetailer(): Action[AnyContent] = Action { request =>
     def executeApi(): RetailerFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -330,7 +329,7 @@ class RetailerApiController @Inject()(cc: ControllerComponents, api: RetailerApi
         
       val responseFormat = request.getQueryString("responseFormat")
         
-      api.updateRetailer(version, retailerId, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, active, responseFormat)
+      api.updateRetailer(retailerId, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, active, responseFormat)
     }
 
     val result = executeApi()

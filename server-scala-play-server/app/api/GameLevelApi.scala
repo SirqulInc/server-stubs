@@ -1,14 +1,13 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.GameLevelListResponse
 import model.GameLevelResponse
 import model.QuestionResponse
 import model.SirqulResponse
 import model.WordzWordResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait GameLevelApi {
   /**
     * Create Game Level
@@ -40,7 +39,7 @@ trait GameLevelApi {
     * @param offerId id of the offer
     * @param metaData external custom client defined data
     */
-  def createGameLevel(version: BigDecimal, accountId: Long, name: String, gameData: String, gameDataSuffix: String, appKey: Option[String], description: Option[String], difficulty: Option[String], appVersion: Option[String], assetImageId: Option[Long], assetIconId: Option[Long], visibility: Option[String], friendGroup: Option[Boolean], connectionIds: Option[String], connectionGroupIds: Option[String], balance: Option[Double], active: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], tutorialTitle: Option[String], tutorialMessage: Option[String], tutorialAlignment: Option[String], tutorialImageAssetId: Option[Long], offerId: Option[Long], metaData: Option[String]): GameLevelResponse
+  def createGameLevel(accountId: Long, name: String, gameData: String, gameDataSuffix: String, appKey: Option[String], description: Option[String], difficulty: Option[String], appVersion: Option[String], assetImageId: Option[Long], assetIconId: Option[Long], visibility: Option[String], friendGroup: Option[Boolean], connectionIds: Option[String], connectionGroupIds: Option[String], balance: Option[Double], active: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], tutorialTitle: Option[String], tutorialMessage: Option[String], tutorialAlignment: Option[String], tutorialImageAssetId: Option[Long], offerId: Option[Long], metaData: Option[String]): GameLevelResponse
 
   /**
     * Delete Game Level
@@ -48,7 +47,7 @@ trait GameLevelApi {
     * @param accountId The logged in user.
     * @param levelId The id of the level to return.
     */
-  def deleteGameLevel(version: BigDecimal, accountId: Long, levelId: Long): SirqulResponse
+  def deleteGameLevel(accountId: Long, levelId: Long): SirqulResponse
 
   /**
     * Get Game Level
@@ -57,7 +56,7 @@ trait GameLevelApi {
     * @param levelId The id of the level to return.
     * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false.
     */
-  def getGameLevel(version: BigDecimal, accountId: Long, levelId: Long, includeGameData: Option[Boolean]): GameLevelResponse
+  def getGameLevel(accountId: Long, levelId: Long, includeGameData: Option[Boolean]): GameLevelResponse
 
   /**
     * Search Game Levels
@@ -73,7 +72,7 @@ trait GameLevelApi {
     * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false.
     * @param filters 
     */
-  def getGameLevelsByApplication(version: BigDecimal, accountId: Long, appKey: String, keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], appVersion: Option[String], includeGameData: Option[Boolean], filters: Option[String]): GameLevelListResponse
+  def getGameLevelsByApplication(accountId: Long, appKey: String, keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], appVersion: Option[String], includeGameData: Option[Boolean], filters: Option[String]): GameLevelListResponse
 
   /**
     * Search Game Level by Billable Entity
@@ -87,7 +86,7 @@ trait GameLevelApi {
     * @param start The record to begin the return set on
     * @param limit The number of records to return
     */
-  def getGameLevelsByBillableEntity(version: BigDecimal, accountId: Long, appKey: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], activeOnly: Option[Boolean], start: Option[Long], limit: Option[Long]): GameLevelResponse
+  def getGameLevelsByBillableEntity(accountId: Long, appKey: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], activeOnly: Option[Boolean], start: Option[Long], limit: Option[Long]): GameLevelResponse
 
   /**
     * Get Level Questions
@@ -95,7 +94,7 @@ trait GameLevelApi {
     * @param levelId the id of the level to get questions from
     * @param accountId the id of the logged in user
     */
-  def getQuestionsInLevel(version: BigDecimal, levelId: Long, accountId: Long): QuestionResponse
+  def getQuestionsInLevel(levelId: Long, accountId: Long): QuestionResponse
 
   /**
     * Get Level Words
@@ -103,7 +102,7 @@ trait GameLevelApi {
     * @param levelId the id of the level to get words for
     * @param accountId the id of the logged in user
     */
-  def getWordsInLevel(version: BigDecimal, levelId: Long, accountId: Long): WordzWordResponse
+  def getWordsInLevel(levelId: Long, accountId: Long): WordzWordResponse
 
   /**
     * Update Game Level
@@ -136,7 +135,7 @@ trait GameLevelApi {
     * @param offerId 
     * @param metaData external custom client defined data
     */
-  def updateGameLevel(version: BigDecimal, accountId: Long, levelId: Long, appKey: Option[String], name: Option[String], description: Option[String], difficulty: Option[String], appVersion: Option[String], assetImageId: Option[Long], assetIconId: Option[Long], gameData: Option[String], gameDataSuffix: Option[String], visibility: Option[String], friendGroup: Option[Boolean], connectionIds: Option[String], connectionGroupIds: Option[String], balance: Option[Double], active: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], tutorialTitle: Option[String], tutorialMessage: Option[String], tutorialAlignment: Option[String], tutorialImageAssetId: Option[Long], offerId: Option[Long], metaData: Option[String]): GameLevelResponse
+  def updateGameLevel(accountId: Long, levelId: Long, appKey: Option[String], name: Option[String], description: Option[String], difficulty: Option[String], appVersion: Option[String], assetImageId: Option[Long], assetIconId: Option[Long], gameData: Option[String], gameDataSuffix: Option[String], visibility: Option[String], friendGroup: Option[Boolean], connectionIds: Option[String], connectionGroupIds: Option[String], balance: Option[Double], active: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], tutorialTitle: Option[String], tutorialMessage: Option[String], tutorialAlignment: Option[String], tutorialImageAssetId: Option[Long], offerId: Option[Long], metaData: Option[String]): GameLevelResponse
 
   /**
     * Update Level Questions
@@ -145,7 +144,7 @@ trait GameLevelApi {
     * @param accountId the id of the logged in user
     * @param questionIds the IDs of the questions to update
     */
-  def updateQuestionsInLevel(version: BigDecimal, levelId: Long, accountId: Long, questionIds: String): SirqulResponse
+  def updateQuestionsInLevel(levelId: Long, accountId: Long, questionIds: String): SirqulResponse
 
   /**
     * Update Level Words
@@ -154,5 +153,5 @@ trait GameLevelApi {
     * @param accountId the id of the logged in user
     * @param wordIds the ids of the words to update for the level
     */
-  def updateWordsInLevel(version: BigDecimal, levelId: Long, accountId: Long, wordIds: String): SirqulResponse
+  def updateWordsInLevel(levelId: Long, accountId: Long, wordIds: String): SirqulResponse
 }

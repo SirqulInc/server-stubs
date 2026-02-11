@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.MissionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait MissionInviteApi {
   /**
     * Create Mission Invite
@@ -16,7 +15,7 @@ trait MissionInviteApi {
     * @param joinCode code to be entered for user to join the mission
     * @param includeGameData Include the game level data with the mission.
     */
-  def createMissionInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], missionId: Option[Long], joinCode: Option[String], includeGameData: Option[Boolean]): MissionResponse
+  def createMissionInvite(deviceId: Option[String], accountId: Option[Long], missionId: Option[Long], joinCode: Option[String], includeGameData: Option[Boolean]): MissionResponse
 
   /**
     * Delete Mission Invite
@@ -27,7 +26,7 @@ trait MissionInviteApi {
     * @param missionInviteId The mission invite id. This checks on the user&#39;s billable for permission (missionId or missionInviteId requried).
     * @param includeGameData Include the game level data with the mission.
     */
-  def deleteMissionInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], missionId: Option[Long], missionInviteId: Option[Long], includeGameData: Option[Boolean]): SirqulResponse
+  def deleteMissionInvite(deviceId: Option[String], accountId: Option[Long], missionId: Option[Long], missionInviteId: Option[Long], includeGameData: Option[Boolean]): SirqulResponse
 
   /**
     * Get Mission Invite
@@ -39,7 +38,7 @@ trait MissionInviteApi {
     * @param includeGameData Include the game level data with the mission.
     * @param includeScores include the scores with the mission
     */
-  def getMissionInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], missionId: Option[Long], missionInviteId: Option[Long], includeGameData: Option[Boolean], includeScores: Option[String]): MissionResponse
+  def getMissionInvite(deviceId: Option[String], accountId: Option[Long], missionId: Option[Long], missionInviteId: Option[Long], includeGameData: Option[Boolean], includeScores: Option[String]): MissionResponse
 
   /**
     * Search Mission Invites
@@ -58,7 +57,7 @@ trait MissionInviteApi {
     * @param filterByBillable filter results by the account&#39;s billable
     * @param includeGameData Include the game level data with the mission.
     */
-  def searchMissionInvites(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], appVersion: Option[String], missionId: Option[Long], status: Option[String], lastUpdated: Option[Long], start: Option[Int], limit: Option[Int], keyword: Option[String], missionTypes: Option[String], filterByBillable: Option[Boolean], includeGameData: Option[Boolean]): List[MissionResponse]
+  def searchMissionInvites(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], appVersion: Option[String], missionId: Option[Long], status: Option[String], lastUpdated: Option[Long], start: Option[Int], limit: Option[Int], keyword: Option[String], missionTypes: Option[String], filterByBillable: Option[Boolean], includeGameData: Option[Boolean]): List[MissionResponse]
 
   /**
     * Update Mission Invite
@@ -75,5 +74,5 @@ trait MissionInviteApi {
     * @param permissionableId The id of the content being submitted.
     * @param includeGameData Include the game level data with the mission.
     */
-  def updateMissionInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], missionId: Option[Long], missionInviteId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], status: Option[String], permissionableType: Option[String], permissionableId: Option[Long], includeGameData: Option[Boolean]): MissionResponse
+  def updateMissionInvite(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], missionId: Option[Long], missionInviteId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], status: Option[String], permissionableType: Option[String], permissionableId: Option[Long], includeGameData: Option[Boolean]): MissionResponse
 }

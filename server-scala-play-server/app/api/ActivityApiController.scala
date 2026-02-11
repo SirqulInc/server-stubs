@@ -5,21 +5,20 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.ActivityResponse
-import model.BigDecimal
 import model.EntityReference
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ActivityApiController @Inject()(cc: ControllerComponents, api: ActivityApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/entity/reference
+    * POST /api/3.18/entity/reference
     */
-  def createEntityReference(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createEntityReference(): Action[AnyContent] = Action { request =>
     def executeApi(): ActivityResponse = {
       val body = request.body.asJson.map(_.as[EntityReference]).getOrElse {
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "body")
       }
-      api.createEntityReference(version, body)
+      api.createEntityReference(body)
     }
 
     val result = executeApi()

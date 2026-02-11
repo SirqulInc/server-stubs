@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 import model.TriggerResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/trigger/create?accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&conditionalInput=[value]&visibility=[value]&active=[value]
+    * POST /api/3.18/trigger/create?accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&conditionalInput=[value]&visibility=[value]&active=[value]
     */
-  def createTrigger(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createTrigger(): Action[AnyContent] = Action { request =>
     def executeApi(): TriggerResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -53,7 +52,7 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.createTrigger(version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active)
+      api.createTrigger(accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active)
     }
 
     val result = executeApi()
@@ -62,9 +61,9 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
   }
 
   /**
-    * POST /api/:version/trigger/delete?accountId=[value]&triggerId=[value]
+    * POST /api/3.18/trigger/delete?accountId=[value]&triggerId=[value]
     */
-  def deleteTrigger(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteTrigger(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -78,7 +77,7 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("triggerId", "query string")
         }
         
-      api.deleteTrigger(version, accountId, triggerId)
+      api.deleteTrigger(accountId, triggerId)
     }
 
     val result = executeApi()
@@ -87,9 +86,9 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
   }
 
   /**
-    * GET /api/:version/trigger/get?accountId=[value]&triggerId=[value]
+    * GET /api/3.18/trigger/get?accountId=[value]&triggerId=[value]
     */
-  def getTrigger(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTrigger(): Action[AnyContent] = Action { request =>
     def executeApi(): TriggerResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -103,7 +102,7 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("triggerId", "query string")
         }
         
-      api.getTrigger(version, accountId, triggerId)
+      api.getTrigger(accountId, triggerId)
     }
 
     val result = executeApi()
@@ -112,9 +111,9 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
   }
 
   /**
-    * GET /api/:version/trigger/search?accountId=[value]&groupingId=[value]&filter=[value]&statuses=[value]&templateTypes=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/trigger/search?accountId=[value]&groupingId=[value]&filter=[value]&statuses=[value]&templateTypes=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchTriggers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchTriggers(): Action[AnyContent] = Action { request =>
     def executeApi(): List[TriggerResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -148,7 +147,7 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.searchTriggers(version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly)
+      api.searchTriggers(accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly)
     }
 
     val result = executeApi()
@@ -157,9 +156,9 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
   }
 
   /**
-    * POST /api/:version/trigger/update?triggerId=[value]&accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&conditionalInput=[value]&visibility=[value]&active=[value]
+    * POST /api/3.18/trigger/update?triggerId=[value]&accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&conditionalInput=[value]&visibility=[value]&active=[value]
     */
-  def updateTrigger(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateTrigger(): Action[AnyContent] = Action { request =>
     def executeApi(): TriggerResponse = {
       val triggerId = request.getQueryString("triggerId")
         .map(value => value.toLong)
@@ -201,7 +200,7 @@ class TriggerApiController @Inject()(cc: ControllerComponents, api: TriggerApi) 
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.updateTrigger(version, triggerId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active)
+      api.updateTrigger(triggerId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active)
     }
 
     val result = executeApi()

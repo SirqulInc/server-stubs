@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.SirqulResponse
 import model.TriggerResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait TriggerApi {
   /**
     * Create Trigger
@@ -24,7 +23,7 @@ trait TriggerApi {
     * @param visibility The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited)
     * @param active Sets whether the Trigger is active or not (inactive Triggers are not processed)
     */
-  def createTrigger(version: BigDecimal, accountId: Long, name: String, appKey: Option[String], groupingId: Option[String], endpointURL: Option[String], payload: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], conditionalInput: Option[String], visibility: Option[String], active: Option[Boolean]): TriggerResponse
+  def createTrigger(accountId: Long, name: String, appKey: Option[String], groupingId: Option[String], endpointURL: Option[String], payload: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], conditionalInput: Option[String], visibility: Option[String], active: Option[Boolean]): TriggerResponse
 
   /**
     * Delete Trigger
@@ -32,7 +31,7 @@ trait TriggerApi {
     * @param accountId The logged in user.
     * @param triggerId The id of the trigger to delete.
     */
-  def deleteTrigger(version: BigDecimal, accountId: Long, triggerId: Long): SirqulResponse
+  def deleteTrigger(accountId: Long, triggerId: Long): SirqulResponse
 
   /**
     * Get Trigger
@@ -40,7 +39,7 @@ trait TriggerApi {
     * @param accountId The logged in user.
     * @param triggerId The id of the Trigger to return.
     */
-  def getTrigger(version: BigDecimal, accountId: Long, triggerId: Long): TriggerResponse
+  def getTrigger(accountId: Long, triggerId: Long): TriggerResponse
 
   /**
     * Search Triggers
@@ -58,7 +57,7 @@ trait TriggerApi {
     * @param limit Limit the result to some number.
     * @param activeOnly Determines whether to return only active results
     */
-  def searchTriggers(version: BigDecimal, accountId: Long, groupingId: Option[String], filter: Option[String], statuses: Option[String], templateTypes: Option[String], appKey: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[TriggerResponse]
+  def searchTriggers(accountId: Long, groupingId: Option[String], filter: Option[String], statuses: Option[String], templateTypes: Option[String], appKey: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[TriggerResponse]
 
   /**
     * Update Trigger
@@ -78,5 +77,5 @@ trait TriggerApi {
     * @param visibility The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited)
     * @param active Sets whether the Trigger is active or not (inactive Triggers are not processed)
     */
-  def updateTrigger(version: BigDecimal, triggerId: Long, accountId: Long, name: Option[String], appKey: Option[String], groupingId: Option[String], endpointURL: Option[String], payload: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], conditionalInput: Option[String], visibility: Option[String], active: Option[Boolean]): TriggerResponse
+  def updateTrigger(triggerId: Long, accountId: Long, name: Option[String], appKey: Option[String], groupingId: Option[String], endpointURL: Option[String], payload: Option[String], scheduledDate: Option[Long], startDate: Option[Long], endDate: Option[Long], cronExpression: Option[String], conditionalInput: Option[String], visibility: Option[String], active: Option[Boolean]): TriggerResponse
 }

@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.OfferTransactionStatusResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferStatusApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/offer/status/create?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&name=[value]&description=[value]&code=[value]&role=[value]&active=[value]&applicationIds=[value]
+    * POST /api/3.18/offer/status/create?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&name=[value]&description=[value]&code=[value]&role=[value]&active=[value]&applicationIds=[value]
     */
-  def createOfferTransactionStatus(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOfferTransactionStatus(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferTransactionStatusResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -47,7 +46,7 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
         
       val applicationIds = request.getQueryString("applicationIds")
         
-      api.createOfferTransactionStatus(version, name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds)
+      api.createOfferTransactionStatus(name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds)
     }
 
     val result = executeApi()
@@ -56,9 +55,9 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
   }
 
   /**
-    * POST /api/:version/offer/status/delete?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&statusId=[value]
+    * POST /api/3.18/offer/status/delete?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&statusId=[value]
     */
-  def deleteOfferTransactionStatus(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteOfferTransactionStatus(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -77,7 +76,7 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
           throw new OpenApiExceptions.MissingRequiredParameterException("statusId", "query string")
         }
         
-      api.deleteOfferTransactionStatus(version, statusId, deviceId, accountId, latitude, longitude)
+      api.deleteOfferTransactionStatus(statusId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -86,9 +85,9 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
   }
 
   /**
-    * GET /api/:version/offer/status/get?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&statusId=[value]
+    * GET /api/3.18/offer/status/get?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&statusId=[value]
     */
-  def getOfferTransactionStatus(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOfferTransactionStatus(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferTransactionStatusResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -107,7 +106,7 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
           throw new OpenApiExceptions.MissingRequiredParameterException("statusId", "query string")
         }
         
-      api.getOfferTransactionStatus(version, statusId, deviceId, accountId, latitude, longitude)
+      api.getOfferTransactionStatus(statusId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -116,9 +115,9 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
   }
 
   /**
-    * GET /api/:version/offer/status/search?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&keyword=[value]&role=[value]&appKey=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&includeInactive=[value]
+    * GET /api/3.18/offer/status/search?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&keyword=[value]&role=[value]&appKey=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&includeInactive=[value]
     */
-  def searchOfferTransactionStatuses(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchOfferTransactionStatuses(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferTransactionStatusResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -151,7 +150,7 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
       val includeInactive = request.getQueryString("includeInactive")
         .map(value => value.toBoolean)
         
-      api.searchOfferTransactionStatuses(version, deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive)
+      api.searchOfferTransactionStatuses(deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive)
     }
 
     val result = executeApi()
@@ -160,9 +159,9 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
   }
 
   /**
-    * POST /api/:version/offer/status/update?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&statusId=[value]&name=[value]&description=[value]&code=[value]&role=[value]&active=[value]&applicationIds=[value]
+    * POST /api/3.18/offer/status/update?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&statusId=[value]&name=[value]&description=[value]&code=[value]&role=[value]&active=[value]&applicationIds=[value]
     */
-  def updateOfferTransactionStatus(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateOfferTransactionStatus(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferTransactionStatusResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -192,7 +191,7 @@ class OfferStatusApiController @Inject()(cc: ControllerComponents, api: OfferSta
         
       val applicationIds = request.getQueryString("applicationIds")
         
-      api.updateOfferTransactionStatus(version, deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds)
+      api.updateOfferTransactionStatus(deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds)
     }
 
     val result = executeApi()

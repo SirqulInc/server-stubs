@@ -4,12 +4,11 @@ import play.api.libs.json._
 import model.AgeGroupResponse
 import model.AudienceDeviceResponse
 import model.AudienceResponse
-import model.BigDecimal
 import model.OfferListResponse
 import model.SearchResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait AudienceApi {
   /**
     * Create Audience
@@ -44,7 +43,7 @@ trait AudienceApi {
     * @param trilaterationTypes Trilateration types
     * @param uniqueName If true, makes sure the audience name is unique
     */
-  def createAudience(version: BigDecimal, accountId: Long, name: String, description: Option[String], searchTags: Option[String], gender: Option[String], ageGroups: Option[String], categoryIds: Option[String], applicationIds: Option[String], gameExperienceLevel: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String], startTimeOffset: Option[Int], endTimeOffset: Option[Int], sendSuggestion: Option[Boolean], associateDescription: Option[String], associateType: Option[String], associateId: Option[Long], groupingId: Option[String], metaData: Option[String], visibility: Option[String], audienceType: Option[String], useOrder: Option[Boolean], cohortRegionsData: Option[String], appKey: Option[String], trilaterationTypes: Option[String], uniqueName: Option[Boolean]): AudienceResponse
+  def createAudience(accountId: Long, name: String, description: Option[String], searchTags: Option[String], gender: Option[String], ageGroups: Option[String], categoryIds: Option[String], applicationIds: Option[String], gameExperienceLevel: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String], startTimeOffset: Option[Int], endTimeOffset: Option[Int], sendSuggestion: Option[Boolean], associateDescription: Option[String], associateType: Option[String], associateId: Option[Long], groupingId: Option[String], metaData: Option[String], visibility: Option[String], audienceType: Option[String], useOrder: Option[Boolean], cohortRegionsData: Option[String], appKey: Option[String], trilaterationTypes: Option[String], uniqueName: Option[Boolean]): AudienceResponse
 
   /**
     * Delete Audience
@@ -52,13 +51,13 @@ trait AudienceApi {
     * @param accountId The logged in user.
     * @param audienceId The id of the audience to delete.
     */
-  def deleteAudience(version: BigDecimal, accountId: Long, audienceId: Long): SirqulResponse
+  def deleteAudience(accountId: Long, audienceId: Long): SirqulResponse
 
   /**
     * Get Age Groups
     * Gets the list of available age groups that can be selected by consumers and retailers targeting offers.
     */
-  def getAgeGroups(version: BigDecimal): List[AgeGroupResponse]
+  def getAgeGroups(): List[AgeGroupResponse]
 
   /**
     * Get Audience
@@ -70,7 +69,7 @@ trait AudienceApi {
     * @param returnAlbumCount (boolean) set to true to include the albumCount associated with current audience of the current app
     * @param albumTypesForCount (String) comma separated list, return an array with each item is the count of each album type. If not provided, \&quot;all_types\&quot; count is returned.
     */
-  def getAudience(version: BigDecimal, accountId: Long, audienceId: Long, appKey: Option[String], returnAccountCount: Option[Boolean], returnAlbumCount: Option[Boolean], albumTypesForCount: Option[String]): AudienceResponse
+  def getAudience(accountId: Long, audienceId: Long, appKey: Option[String], returnAccountCount: Option[Boolean], returnAlbumCount: Option[Boolean], albumTypesForCount: Option[String]): AudienceResponse
 
   /**
     * Search Audiences
@@ -95,20 +94,20 @@ trait AudienceApi {
     * @param returnAlbumCount (boolean) set to true to include the albumCount associated with current audience of the current app
     * @param albumTypesForCount (String) comma separated list, return an array with each item is the count of each album type. If not provided, \&quot;all_types\&quot; count is returned.
     */
-  def getAudienceList(version: BigDecimal, accountId: Option[Long], albumIds: Option[String], keyword: Option[String], keywordFields: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], sendSuggestion: Option[Boolean], activeOnly: Option[Boolean], groupByGroupingId: Option[Boolean], appKey: Option[String], returnGlobal: Option[Boolean], exactKeyword: Option[Boolean], audienceType: Option[String], audienceTypes: Option[String], returnAccountCount: Option[Boolean], returnAlbumCount: Option[Boolean], albumTypesForCount: Option[String]): List[SearchResponse]
+  def getAudienceList(accountId: Option[Long], albumIds: Option[String], keyword: Option[String], keywordFields: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], sendSuggestion: Option[Boolean], activeOnly: Option[Boolean], groupByGroupingId: Option[Boolean], appKey: Option[String], returnGlobal: Option[Boolean], exactKeyword: Option[Boolean], audienceType: Option[String], audienceTypes: Option[String], returnAccountCount: Option[Boolean], returnAlbumCount: Option[Boolean], albumTypesForCount: Option[String]): List[SearchResponse]
 
   /**
     * Get Devices
     * Gets the list of available devices that can be selected by consumers and retailers.
     * @param includeInactive If true return inactive record as well. default is false.
     */
-  def getDevices(version: BigDecimal, includeInactive: Boolean): List[AudienceDeviceResponse]
+  def getDevices(includeInactive: Boolean): List[AudienceDeviceResponse]
 
   /**
     * Get Experiences
     * Gets the list of available experiences that can be selected by consumers and retailers.
     */
-  def getExperiences(version: BigDecimal): SirqulResponse
+  def getExperiences(): SirqulResponse
 
   /**
     * Get GroupedAudiences
@@ -116,7 +115,7 @@ trait AudienceApi {
     * @param accountId The logged in user.
     * @param audienceGroupingId The audience grouping id to return.
     */
-  def getGroupedAudiences(version: BigDecimal, accountId: Long, audienceGroupingId: String): AudienceResponse
+  def getGroupedAudiences(accountId: Long, audienceGroupingId: String): AudienceResponse
 
   /**
     * List Suggestions by Audience
@@ -125,7 +124,7 @@ trait AudienceApi {
     * @param limit the limit of the index
     * @param suggestionType the type of suggestion
     */
-  def listByAccount(version: BigDecimal, accountId: Long, limit: Int, suggestionType: String): OfferListResponse
+  def listByAccount(accountId: Long, limit: Int, suggestionType: String): OfferListResponse
 
   /**
     * List Offers by Audience
@@ -137,7 +136,7 @@ trait AudienceApi {
     * @param latitude this is the latitude to list offers by
     * @param longitude this is the longitude to list offers by
     */
-  def listByAudience(version: BigDecimal, limit: Int, gender: Option[String], age: Option[Int], categoryIds: Option[String], latitude: Option[Double], longitude: Option[Double]): OfferListResponse
+  def listByAudience(limit: Int, gender: Option[String], age: Option[Int], categoryIds: Option[String], latitude: Option[Double], longitude: Option[Double]): OfferListResponse
 
   /**
     * List Sent Suggestions 
@@ -146,7 +145,7 @@ trait AudienceApi {
     * @param timeframe The timeframe in seconds of the latest suggestions
     * @param suggestionType The type of trigger suggestions to return
     */
-  def listLastestByAccount(version: BigDecimal, accountId: Long, timeframe: Int, suggestionType: String): OfferListResponse
+  def listLastestByAccount(accountId: Long, timeframe: Int, suggestionType: String): OfferListResponse
 
   /**
     * Send Suggestions
@@ -155,7 +154,7 @@ trait AudienceApi {
     * @param latitude the latitude
     * @param longitude the longitude
     */
-  def sendByAccount(version: BigDecimal, accountId: Long, latitude: Double, longitude: Double): SirqulResponse
+  def sendByAccount(accountId: Long, latitude: Double, longitude: Double): SirqulResponse
 
   /**
     * Update Audience
@@ -192,5 +191,5 @@ trait AudienceApi {
     * @param trilaterationTypes Trilateration types
     * @param uniqueName If true, makes sure the audience name is unique
     */
-  def updateAudience(version: BigDecimal, accountId: Long, audienceId: Long, name: Option[String], description: Option[String], searchTags: Option[String], gender: Option[String], ageGroups: Option[String], categoryIds: Option[String], applicationIds: Option[String], gameExperienceLevel: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String], active: Option[Boolean], sendSuggestion: Option[Boolean], startTimeOffset: Option[Int], endTimeOffset: Option[Int], associateDescription: Option[String], associateType: Option[String], associateId: Option[Long], groupingId: Option[String], metaData: Option[String], visibility: Option[String], audienceType: Option[String], useOrder: Option[Boolean], cohortRegionsData: Option[String], appKey: Option[String], trilaterationTypes: Option[String], uniqueName: Option[Boolean]): AudienceResponse
+  def updateAudience(accountId: Long, audienceId: Long, name: Option[String], description: Option[String], searchTags: Option[String], gender: Option[String], ageGroups: Option[String], categoryIds: Option[String], applicationIds: Option[String], gameExperienceLevel: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String], active: Option[Boolean], sendSuggestion: Option[Boolean], startTimeOffset: Option[Int], endTimeOffset: Option[Int], associateDescription: Option[String], associateType: Option[String], associateId: Option[Long], groupingId: Option[String], metaData: Option[String], visibility: Option[String], audienceType: Option[String], useOrder: Option[Boolean], cohortRegionsData: Option[String], appKey: Option[String], trilaterationTypes: Option[String], uniqueName: Option[Boolean]): AudienceResponse
 }

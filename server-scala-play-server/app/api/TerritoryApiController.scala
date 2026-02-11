@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 import model.TerritoryResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/territory/create?accountId=[value]&name=[value]&active=[value]
+    * POST /api/3.18/territory/create?accountId=[value]&name=[value]&active=[value]
     */
-  def createTerritory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createTerritory(): Action[AnyContent] = Action { request =>
     def executeApi(): TerritoryResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -30,7 +29,7 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.createTerritory(version, accountId, name, active)
+      api.createTerritory(accountId, name, active)
     }
 
     val result = executeApi()
@@ -39,9 +38,9 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
   }
 
   /**
-    * POST /api/:version/territory/delete?accountId=[value]&territoryId=[value]
+    * POST /api/3.18/territory/delete?accountId=[value]&territoryId=[value]
     */
-  def deleteTerritory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteTerritory(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -55,7 +54,7 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
           throw new OpenApiExceptions.MissingRequiredParameterException("territoryId", "query string")
         }
         
-      api.deleteTerritory(version, accountId, territoryId)
+      api.deleteTerritory(accountId, territoryId)
     }
 
     val result = executeApi()
@@ -64,9 +63,9 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
   }
 
   /**
-    * GET /api/:version/territory/get?territoryId=[value]
+    * GET /api/3.18/territory/get?territoryId=[value]
     */
-  def getTerritory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTerritory(): Action[AnyContent] = Action { request =>
     def executeApi(): TerritoryResponse = {
       val territoryId = request.getQueryString("territoryId")
         .map(value => value.toLong)
@@ -74,7 +73,7 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
           throw new OpenApiExceptions.MissingRequiredParameterException("territoryId", "query string")
         }
         
-      api.getTerritory(version, territoryId)
+      api.getTerritory(territoryId)
     }
 
     val result = executeApi()
@@ -83,9 +82,9 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
   }
 
   /**
-    * GET /api/:version/territory/search?keyword=[value]&start=[value]&limit=[value]&sortField=[value]&descending=[value]
+    * GET /api/3.18/territory/search?keyword=[value]&start=[value]&limit=[value]&sortField=[value]&descending=[value]
     */
-  def searchTerritories(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchTerritories(): Action[AnyContent] = Action { request =>
     def executeApi(): List[TerritoryResponse] = {
       val keyword = request.getQueryString("keyword")
         
@@ -106,7 +105,7 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
           throw new OpenApiExceptions.MissingRequiredParameterException("descending", "query string")
         }
         
-      api.searchTerritories(version, sortField, descending, keyword, start, limit)
+      api.searchTerritories(sortField, descending, keyword, start, limit)
     }
 
     val result = executeApi()
@@ -115,9 +114,9 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
   }
 
   /**
-    * POST /api/:version/territory/update?accountId=[value]&territoryId=[value]&name=[value]&active=[value]
+    * POST /api/3.18/territory/update?accountId=[value]&territoryId=[value]&name=[value]&active=[value]
     */
-  def updateTerritory(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateTerritory(): Action[AnyContent] = Action { request =>
     def executeApi(): TerritoryResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -136,7 +135,7 @@ class TerritoryApiController @Inject()(cc: ControllerComponents, api: TerritoryA
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.updateTerritory(version, accountId, territoryId, name, active)
+      api.updateTerritory(accountId, territoryId, name, active)
     }
 
     val result = executeApi()

@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ConsumerInviteResponse
 import model.InviteResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait InviteApi {
   /**
     * Accept Invite
@@ -26,7 +25,7 @@ trait InviteApi {
     * @param autoFavoriteOfferLocation whether to mark the offer location as favorited automatically after invite is accepted
     * @param autoFavoriteRetailerLocation whether to mark the retailer location as favorited automatically after invite is accepted
     */
-  def acceptInvite(version: BigDecimal, token: String, accountId: Long, albumId: Option[Long], missionId: Option[Long], albumContestId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], retailerLocationId: Option[Long], appKey: Option[String], autoFriend: Option[Boolean], autoAttendEvent: Option[Boolean], autoFavoriteOffer: Option[Boolean], autoFavoriteOfferLocation: Option[Boolean], autoFavoriteRetailerLocation: Option[Boolean]): ConsumerInviteResponse
+  def acceptInvite(token: String, accountId: Long, albumId: Option[Long], missionId: Option[Long], albumContestId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], retailerLocationId: Option[Long], appKey: Option[String], autoFriend: Option[Boolean], autoAttendEvent: Option[Boolean], autoFavoriteOffer: Option[Boolean], autoFavoriteOfferLocation: Option[Boolean], autoFavoriteRetailerLocation: Option[Boolean]): ConsumerInviteResponse
 
   /**
     * Invite to Contest
@@ -39,7 +38,7 @@ trait InviteApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def albumContestInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], albumContestId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
+  def albumContestInvite(deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], albumContestId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
 
   /**
     * Invite to Collection
@@ -52,7 +51,7 @@ trait InviteApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def albumInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], albumId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
+  def albumInvite(deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], albumId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
 
   /**
     * Invite to Event
@@ -63,7 +62,7 @@ trait InviteApi {
     * @param receiverAccountIds the account ID of a Sirqul user they would like to share an event with
     * @param retailerLocationId The retailer location id of where the event will take place
     */
-  def eventInvite(version: BigDecimal, accountId: Long, appKey: String, listingId: Long, receiverAccountIds: Option[String], retailerLocationId: Option[Long]): InviteResponse
+  def eventInvite(accountId: Long, appKey: String, listingId: Long, receiverAccountIds: Option[String], retailerLocationId: Option[Long]): InviteResponse
 
   /**
     * Invite to Game Level
@@ -76,7 +75,7 @@ trait InviteApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def gameInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], gameLevelId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
+  def gameInvite(deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], gameLevelId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
 
   /**
     * Get Invite
@@ -91,7 +90,7 @@ trait InviteApi {
     * @param retailerLocationId retailer location id to match the invite against (if applicable)
     * @param appKey the application key
     */
-  def getInvite(version: BigDecimal, accountId: Option[Long], token: Option[String], albumId: Option[Long], missionId: Option[Long], albumContestId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], retailerLocationId: Option[Long], appKey: Option[String]): SirqulResponse
+  def getInvite(accountId: Option[Long], token: Option[String], albumId: Option[Long], missionId: Option[Long], albumContestId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], retailerLocationId: Option[Long], appKey: Option[String]): SirqulResponse
 
   /**
     * Invite to Mission
@@ -104,7 +103,7 @@ trait InviteApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def missionInvite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], missionId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
+  def missionInvite(deviceId: Option[String], accountId: Option[Long], appId: Option[Long], appKey: Option[String], missionId: Option[Long], latitude: Option[Double], longitude: Option[Double]): InviteResponse
 
   /**
     * Invite to Offer
@@ -113,7 +112,7 @@ trait InviteApi {
     * @param appKey the application key
     * @param offerId the ID of the offer used to invite to favorite
     */
-  def offerInvite(version: BigDecimal, accountId: Long, appKey: String, offerId: Long): InviteResponse
+  def offerInvite(accountId: Long, appKey: String, offerId: Long): InviteResponse
 
   /**
     * Invite to Offer Location
@@ -122,7 +121,7 @@ trait InviteApi {
     * @param appKey the application key
     * @param offerLocationId the id of the offer location to share
     */
-  def offerLocationInvite(version: BigDecimal, accountId: Long, appKey: String, offerLocationId: Long): InviteResponse
+  def offerLocationInvite(accountId: Long, appKey: String, offerLocationId: Long): InviteResponse
 
   /**
     * Invite to Retailer Location
@@ -132,5 +131,5 @@ trait InviteApi {
     * @param retailerLocationId The retailer location id of where the event will take place
     * @param albumId Optional album id to link with the invite
     */
-  def retailerLocationInvite(version: BigDecimal, accountId: Long, appKey: String, retailerLocationId: Long, albumId: Option[Long]): InviteResponse
+  def retailerLocationInvite(accountId: Long, appKey: String, retailerLocationId: Long, albumId: Option[Long]): InviteResponse
 }

@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PurchaseItemFullResponse
 import model.PurchaseItemResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: PurchaseItemApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/purchase/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&description=[value]&tickets=[value]&price=[value]&purchaseType=[value]&purchaseCode=[value]&secretKey=[value]&purchaseLimit=[value]&serviceAction=[value]&coverAssetId=[value]&promoAssetId=[value]&giftable=[value]&assetable=[value]&allocateTickets=[value]&ticketType=[value]&points=[value]&offerLocationId=[value]
+    * POST /api/3.18/purchase/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&description=[value]&tickets=[value]&price=[value]&purchaseType=[value]&purchaseCode=[value]&secretKey=[value]&purchaseLimit=[value]&serviceAction=[value]&coverAssetId=[value]&promoAssetId=[value]&giftable=[value]&assetable=[value]&allocateTickets=[value]&ticketType=[value]&points=[value]&offerLocationId=[value]
     */
-  def createPurchaseItem(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createPurchaseItem(): Action[AnyContent] = Action { request =>
     def executeApi(): PurchaseItemFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -77,7 +76,7 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
       val offerLocationId = request.getQueryString("offerLocationId")
         .map(value => value.toLong)
         
-      api.createPurchaseItem(version, appKey, name, purchaseType, deviceId, accountId, description, tickets, price, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, allocateTickets, ticketType, points, offerLocationId)
+      api.createPurchaseItem(appKey, name, purchaseType, deviceId, accountId, description, tickets, price, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, allocateTickets, ticketType, points, offerLocationId)
     }
 
     val result = executeApi()
@@ -86,9 +85,9 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
   }
 
   /**
-    * POST /api/:version/purchase/delete?deviceId=[value]&accountId=[value]&purchaseItemId=[value]
+    * POST /api/3.18/purchase/delete?deviceId=[value]&accountId=[value]&purchaseItemId=[value]
     */
-  def deletePurchaseItem(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deletePurchaseItem(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -101,7 +100,7 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
           throw new OpenApiExceptions.MissingRequiredParameterException("purchaseItemId", "query string")
         }
         
-      api.deletePurchaseItem(version, purchaseItemId, deviceId, accountId)
+      api.deletePurchaseItem(purchaseItemId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -110,9 +109,9 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
   }
 
   /**
-    * GET /api/:version/purchase/get?deviceId=[value]&accountId=[value]&purchaseItemId=[value]
+    * GET /api/3.18/purchase/get?deviceId=[value]&accountId=[value]&purchaseItemId=[value]
     */
-  def getPurchaseItem(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPurchaseItem(): Action[AnyContent] = Action { request =>
     def executeApi(): PurchaseItemFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -125,7 +124,7 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
           throw new OpenApiExceptions.MissingRequiredParameterException("purchaseItemId", "query string")
         }
         
-      api.getPurchaseItem(version, purchaseItemId, deviceId, accountId)
+      api.getPurchaseItem(purchaseItemId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -134,9 +133,9 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
   }
 
   /**
-    * GET /api/:version/purchase/search?deviceId=[value]&accountId=[value]&appKey=[value]&filterByBillable=[value]&purchaseType=[value]&serviceAction=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/purchase/search?deviceId=[value]&accountId=[value]&appKey=[value]&filterByBillable=[value]&purchaseType=[value]&serviceAction=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchPurchaseItems(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchPurchaseItems(): Action[AnyContent] = Action { request =>
     def executeApi(): List[PurchaseItemResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -168,7 +167,7 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.searchPurchaseItems(version, deviceId, accountId, appKey, filterByBillable, purchaseType, serviceAction, keyword, sortField, descending, start, limit, activeOnly)
+      api.searchPurchaseItems(deviceId, accountId, appKey, filterByBillable, purchaseType, serviceAction, keyword, sortField, descending, start, limit, activeOnly)
     }
 
     val result = executeApi()
@@ -177,9 +176,9 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
   }
 
   /**
-    * POST /api/:version/purchase/update?deviceId=[value]&accountId=[value]&purchaseItemId=[value]&name=[value]&description=[value]&tickets=[value]&price=[value]&purchaseType=[value]&purchaseCode=[value]&secretKey=[value]&purchaseLimit=[value]&serviceAction=[value]&coverAssetId=[value]&promoAssetId=[value]&giftable=[value]&assetable=[value]&active=[value]&allocateTickets=[value]&ticketType=[value]&points=[value]&offerLocationId=[value]
+    * POST /api/3.18/purchase/update?deviceId=[value]&accountId=[value]&purchaseItemId=[value]&name=[value]&description=[value]&tickets=[value]&price=[value]&purchaseType=[value]&purchaseCode=[value]&secretKey=[value]&purchaseLimit=[value]&serviceAction=[value]&coverAssetId=[value]&promoAssetId=[value]&giftable=[value]&assetable=[value]&active=[value]&allocateTickets=[value]&ticketType=[value]&points=[value]&offerLocationId=[value]
     */
-  def updatePurchaseItem(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updatePurchaseItem(): Action[AnyContent] = Action { request =>
     def executeApi(): PurchaseItemFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -239,7 +238,7 @@ class PurchaseItemApiController @Inject()(cc: ControllerComponents, api: Purchas
       val offerLocationId = request.getQueryString("offerLocationId")
         .map(value => value.toLong)
         
-      api.updatePurchaseItem(version, purchaseItemId, deviceId, accountId, name, description, tickets, price, purchaseType, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, active, allocateTickets, ticketType, points, offerLocationId)
+      api.updatePurchaseItem(purchaseItemId, deviceId, accountId, name, description, tickets, price, purchaseType, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, active, allocateTickets, ticketType, points, offerLocationId)
     }
 
     val result = executeApi()

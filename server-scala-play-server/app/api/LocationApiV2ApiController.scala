@@ -4,20 +4,19 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.Location
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class LocationApiV2ApiController @Inject()(cc: ControllerComponents, api: LocationApiV2Api) extends AbstractController(cc) {
   /**
-    * POST /api/:version/location
+    * POST /api/3.18/location
     */
-  def createLocationV2(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createLocationV2(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val body = request.body.asJson.map(_.as[Location])
-      api.createLocationV2(version, body)
+      api.createLocationV2(body)
     }
 
     val result = executeApi()
@@ -26,13 +25,13 @@ class LocationApiV2ApiController @Inject()(cc: ControllerComponents, api: Locati
   }
 
   /**
-    * POST /api/:version/location/:id
+    * POST /api/3.18/location/:id
     * @param id the id of the location to update
     */
-  def updateLocationV2(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateLocationV2(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val body = request.body.asJson.map(_.as[Location])
-      api.updateLocationV2(version, id, body)
+      api.updateLocationV2(id, body)
     }
 
     val result = executeApi()

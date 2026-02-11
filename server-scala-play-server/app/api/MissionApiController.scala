@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.MissionFormatResponse
 import model.MissionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/mission/create?accountId=[value]&title=[value]&description=[value]&subType=[value]&startDate=[value]&endDate=[value]&active=[value]&gameLevelIds=[value]&creativeIds=[value]&audienceIds=[value]&missionTask=[value]&formatType=[value]&offerId=[value]&balance=[value]&advancedReporting=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&metaData=[value]&applicationIds=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]
+    * POST /api/3.18/mission/create?accountId=[value]&title=[value]&description=[value]&subType=[value]&startDate=[value]&endDate=[value]&active=[value]&gameLevelIds=[value]&creativeIds=[value]&audienceIds=[value]&missionTask=[value]&formatType=[value]&offerId=[value]&balance=[value]&advancedReporting=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&metaData=[value]&applicationIds=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]
     */
-  def createMission(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createMission(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -85,7 +84,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
         
       val radius = request.getQueryString("radius")
         
-      api.createMission(version, accountId, title, description, subType, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, missionTask, formatType, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, metaData, applicationIds, devices, deviceIds, deviceVersions, locations, radius)
+      api.createMission(accountId, title, description, subType, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, missionTask, formatType, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, metaData, applicationIds, devices, deviceIds, deviceVersions, locations, radius)
     }
 
     val result = executeApi()
@@ -94,9 +93,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * POST /api/:version/mission/delete?accountId=[value]&missionId=[value]
+    * POST /api/3.18/mission/delete?accountId=[value]&missionId=[value]
     */
-  def deleteMission(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteMission(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -110,7 +109,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("missionId", "query string")
         }
         
-      api.deleteMission(version, accountId, missionId)
+      api.deleteMission(accountId, missionId)
     }
 
     val result = executeApi()
@@ -119,9 +118,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * GET /api/:version/mission/find?appKey=[value]&suffix=[value]&`type`=[value]&accountId=[value]&appVersion=[value]&latitude=[value]&longitude=[value]&device=[value]&deviceIdentifier=[value]&deviceVersion=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeAudiences=[value]&allocatesTickets=[value]&randomize=[value]&targetedAdsOnly=[value]&missionIds=[value]&audienceOperator=[value]
+    * GET /api/3.18/mission/find?appKey=[value]&suffix=[value]&`type`=[value]&accountId=[value]&appVersion=[value]&latitude=[value]&longitude=[value]&device=[value]&deviceIdentifier=[value]&deviceVersion=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeAudiences=[value]&allocatesTickets=[value]&randomize=[value]&targetedAdsOnly=[value]&missionIds=[value]&audienceOperator=[value]
     */
-  def findMissions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def findMissions(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val appKey = request.getQueryString("appKey")
         .getOrElse {
@@ -175,7 +174,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
         
       val audienceOperator = request.getQueryString("audienceOperator")
         
-      api.findMissions(version, appKey, suffix, `type`, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeGameData, includeAudiences, allocatesTickets, randomize, targetedAdsOnly, missionIds, audienceOperator)
+      api.findMissions(appKey, suffix, `type`, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeGameData, includeAudiences, allocatesTickets, randomize, targetedAdsOnly, missionIds, audienceOperator)
     }
 
     val result = executeApi()
@@ -184,9 +183,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * GET /api/:version/mission/get?accountId=[value]&missionId=[value]&returnCreative=[value]
+    * GET /api/3.18/mission/get?accountId=[value]&missionId=[value]&returnCreative=[value]
     */
-  def getMission(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getMission(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -203,7 +202,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
       val returnCreative = request.getQueryString("returnCreative")
         .map(value => value.toBoolean)
         
-      api.getMission(version, accountId, missionId, returnCreative)
+      api.getMission(accountId, missionId, returnCreative)
     }
 
     val result = executeApi()
@@ -212,9 +211,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * POST /api/:version/mission/import?accountId=[value]&latitude=[value]&longitude=[value]&keyword=[value]&start=[value]&limit=[value]&appKey=[value]&adSize=[value]
+    * POST /api/3.18/mission/import?accountId=[value]&latitude=[value]&longitude=[value]&keyword=[value]&start=[value]&limit=[value]&appKey=[value]&adSize=[value]
     */
-  def importMission(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def importMission(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -249,7 +248,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
         
       val adSize = request.getQueryString("adSize")
         
-      api.importMission(version, accountId, latitude, longitude, appKey, keyword, start, limit, adSize)
+      api.importMission(accountId, latitude, longitude, appKey, keyword, start, limit, adSize)
     }
 
     val result = executeApi()
@@ -258,9 +257,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * GET /api/:version/mission/format/search?start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/mission/format/search?start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchMissionFormats(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchMissionFormats(): Action[AnyContent] = Action { request =>
     def executeApi(): List[MissionFormatResponse] = {
       val start = request.getQueryString("start")
         .map(value => value.toInt)
@@ -280,7 +279,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchMissionFormats(version, start, limit, activeOnly)
+      api.searchMissionFormats(start, limit, activeOnly)
     }
 
     val result = executeApi()
@@ -289,9 +288,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * GET /api/:version/mission/search?accountId=[value]&keyword=[value]&subType=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeAudiences=[value]&includeInactive=[value]&suffix=[value]&sortField=[value]&descending=[value]
+    * GET /api/3.18/mission/search?accountId=[value]&keyword=[value]&subType=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeAudiences=[value]&includeInactive=[value]&suffix=[value]&sortField=[value]&descending=[value]
     */
-  def searchMissions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchMissions(): Action[AnyContent] = Action { request =>
     def executeApi(): List[MissionResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -325,7 +324,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
       val descending = request.getQueryString("descending")
         .map(value => value.toBoolean)
         
-      api.searchMissions(version, accountId, keyword, subType, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending)
+      api.searchMissions(accountId, keyword, subType, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending)
     }
 
     val result = executeApi()
@@ -334,9 +333,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * GET /api/:version/mission/searchByBillableEntity?accountId=[value]&keyword=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeAudiences=[value]&includeInactive=[value]&suffix=[value]&sortField=[value]&descending=[value]
+    * GET /api/3.18/mission/searchByBillableEntity?accountId=[value]&keyword=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeAudiences=[value]&includeInactive=[value]&suffix=[value]&sortField=[value]&descending=[value]
     */
-  def searchMissionsByBillableEntity(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchMissionsByBillableEntity(): Action[AnyContent] = Action { request =>
     def executeApi(): List[MissionResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -368,7 +367,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
       val descending = request.getQueryString("descending")
         .map(value => value.toBoolean)
         
-      api.searchMissionsByBillableEntity(version, accountId, keyword, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending)
+      api.searchMissionsByBillableEntity(accountId, keyword, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending)
     }
 
     val result = executeApi()
@@ -377,9 +376,9 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
   }
 
   /**
-    * POST /api/:version/mission/update?accountId=[value]&missionId=[value]&title=[value]&description=[value]&subType=[value]&metaData=[value]&startDate=[value]&endDate=[value]&active=[value]&gameLevelIds=[value]&creativeIds=[value]&audienceIds=[value]&offerId=[value]&balance=[value]&advancedReporting=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&applicationIds=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]
+    * POST /api/3.18/mission/update?accountId=[value]&missionId=[value]&title=[value]&description=[value]&subType=[value]&metaData=[value]&startDate=[value]&endDate=[value]&active=[value]&gameLevelIds=[value]&creativeIds=[value]&audienceIds=[value]&offerId=[value]&balance=[value]&advancedReporting=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]&applicationIds=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]
     */
-  def updateMission(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateMission(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -448,7 +447,7 @@ class MissionApiController @Inject()(cc: ControllerComponents, api: MissionApi) 
         
       val radius = request.getQueryString("radius")
         
-      api.updateMission(version, accountId, missionId, title, description, subType, metaData, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, applicationIds, devices, deviceIds, deviceVersions, locations, radius)
+      api.updateMission(accountId, missionId, title, description, subType, metaData, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, applicationIds, devices, deviceIds, deviceVersions, locations, radius)
     }
 
     val result = executeApi()

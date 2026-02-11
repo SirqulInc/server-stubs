@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.VehicleType
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleTypeApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/vehicle/type?vehicleType=[value]
+    * POST /api/3.18/vehicle/type?vehicleType=[value]
     */
-  def createVehicleType(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createVehicleType(): Action[AnyContent] = Action { request =>
     def executeApi(): VehicleType = {
       val body = request.body.asJson.map(_.as[VehicleType])
       val vehicleType = request.getQueryString("vehicleType")
@@ -21,7 +20,7 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
           throw new OpenApiExceptions.MissingRequiredParameterException("vehicleType", "query string")
         }
         
-      api.createVehicleType(version, vehicleType, body)
+      api.createVehicleType(vehicleType, body)
     }
 
     val result = executeApi()
@@ -30,12 +29,12 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
   }
 
   /**
-    * DELETE /api/:version/vehicle/type/:vehicleTypeId
+    * DELETE /api/3.18/vehicle/type/:vehicleTypeId
     * @param vehicleTypeId The id of the requested vehicle type
     */
-  def deleteVehicleType(version: BigDecimal, vehicleTypeId: Long): Action[AnyContent] = Action { request =>
+  def deleteVehicleType(vehicleTypeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.deleteVehicleType(version, vehicleTypeId)
+      api.deleteVehicleType(vehicleTypeId)
     }
 
     executeApi()
@@ -43,12 +42,12 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
   }
 
   /**
-    * GET /api/:version/vehicle/type/:vehicleTypeId
+    * GET /api/3.18/vehicle/type/:vehicleTypeId
     * @param vehicleTypeId The id of the requested vehicle type
     */
-  def getVehicleType(version: BigDecimal, vehicleTypeId: Long): Action[AnyContent] = Action { request =>
+  def getVehicleType(vehicleTypeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): VehicleType = {
-      api.getVehicleType(version, vehicleTypeId)
+      api.getVehicleType(vehicleTypeId)
     }
 
     val result = executeApi()
@@ -57,9 +56,9 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
   }
 
   /**
-    * GET /api/:version/vehicle/type?retailerId=[value]&hubId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/vehicle/type?retailerId=[value]&hubId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchVehicleTypes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchVehicleTypes(): Action[AnyContent] = Action { request =>
     def executeApi(): List[VehicleType] = {
       val retailerId = request.getQueryString("retailerId")
         .map(value => value.toLong)
@@ -96,7 +95,7 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchVehicleTypes(version, sortField, descending, start, limit, activeOnly, retailerId, hubId)
+      api.searchVehicleTypes(sortField, descending, start, limit, activeOnly, retailerId, hubId)
     }
 
     val result = executeApi()
@@ -105,10 +104,10 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
   }
 
   /**
-    * PUT /api/:version/vehicle/type/:vehicleTypeId?vehicleType=[value]
+    * PUT /api/3.18/vehicle/type/:vehicleTypeId?vehicleType=[value]
     * @param vehicleTypeId The id of the vehicle type to update
     */
-  def updateVehicleType(version: BigDecimal, vehicleTypeId: Long): Action[AnyContent] = Action { request =>
+  def updateVehicleType(vehicleTypeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): VehicleType = {
       val body = request.body.asJson.map(_.as[VehicleType])
       val vehicleType = request.getQueryString("vehicleType")
@@ -116,7 +115,7 @@ class VehicleTypeApiController @Inject()(cc: ControllerComponents, api: VehicleT
           throw new OpenApiExceptions.MissingRequiredParameterException("vehicleType", "query string")
         }
         
-      api.updateVehicleType(version, vehicleTypeId, vehicleType, body)
+      api.updateVehicleType(vehicleTypeId, vehicleType, body)
     }
 
     val result = executeApi()

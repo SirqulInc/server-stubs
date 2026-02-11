@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.SirqulResponse
 import model.UserPermissionsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait UserPermissionsApi {
   /**
     * Add User
@@ -28,7 +27,7 @@ trait UserPermissionsApi {
     * @param longitude the current longitude of the user
     * @param audienceIds comma separated list of audience ids. This is a feature only available to the permissionable&#39;s application owner (and its employees). This will add all users from these audiences to the permissionable object. Notifications will not be sent to users if this feature is used.
     */
-  def addUsersToPermissionable(version: BigDecimal, permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], read: Option[Boolean], write: Option[Boolean], delete: Option[Boolean], add: Option[Boolean], connectionIds: Option[String], connectionAccountIds: Option[String], connectionGroupIds: Option[String], pending: Option[Boolean], admin: Option[Boolean], includeFriendGroup: Option[Boolean], latitude: Option[Double], longitude: Option[Double], audienceIds: Option[String]): SirqulResponse
+  def addUsersToPermissionable(permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], read: Option[Boolean], write: Option[Boolean], delete: Option[Boolean], add: Option[Boolean], connectionIds: Option[String], connectionAccountIds: Option[String], connectionGroupIds: Option[String], pending: Option[Boolean], admin: Option[Boolean], includeFriendGroup: Option[Boolean], latitude: Option[Double], longitude: Option[Double], audienceIds: Option[String]): SirqulResponse
 
   /**
     * Approve Permissionable
@@ -39,7 +38,7 @@ trait UserPermissionsApi {
     * @param accountId The account ID of the user (deviceId or accountId required)
     * @param approvalStatus The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}
     */
-  def approvePermissionable(version: BigDecimal, permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], approvalStatus: Option[String]): SirqulResponse
+  def approvePermissionable(permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], approvalStatus: Option[String]): SirqulResponse
 
   /**
     * Leave
@@ -51,7 +50,7 @@ trait UserPermissionsApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def leaveFromPermissionable(version: BigDecimal, permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def leaveFromPermissionable(permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Remove User
@@ -68,7 +67,7 @@ trait UserPermissionsApi {
     * @param longitude the current longitude of the user
     * @param audienceIds comma separated list of audience ids. This will remove all users from these audiences from the permissionable object. Notifications will not be sent to users if this feature is used.
     */
-  def removeUsersFromPermissionable(version: BigDecimal, permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], connectionIds: Option[String], connectionAccountIds: Option[String], connectionGroupIds: Option[String], removeFriendGroup: Option[Boolean], latitude: Option[Double], longitude: Option[Double], audienceIds: Option[String]): SirqulResponse
+  def removeUsersFromPermissionable(permissionableType: String, permissionableId: Long, deviceId: Option[String], accountId: Option[Long], connectionIds: Option[String], connectionAccountIds: Option[String], connectionGroupIds: Option[String], removeFriendGroup: Option[Boolean], latitude: Option[Double], longitude: Option[Double], audienceIds: Option[String]): SirqulResponse
 
   /**
     * Search Permissionables
@@ -87,7 +86,7 @@ trait UserPermissionsApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def searchPermissionables(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], connectionAccountIds: Option[String], permissionableType: Option[String], permissionableId: Option[Long], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], pending: Option[Boolean], admin: Option[Boolean], start: Option[Int], limit: Option[Int]): List[UserPermissionsResponse]
+  def searchPermissionables(deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], connectionAccountIds: Option[String], permissionableType: Option[String], permissionableId: Option[Long], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], pending: Option[Boolean], admin: Option[Boolean], start: Option[Int], limit: Option[Int]): List[UserPermissionsResponse]
 
   /**
     * Search Permissionables by Distnace
@@ -107,5 +106,5 @@ trait UserPermissionsApi {
     * @param start The start index for pagination
     * @param limit The limit for pagination
     */
-  def searchPermissionablesFollowingDistance(version: BigDecimal, latitude: Double, longitude: Double, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], connectionAccountIds: Option[String], permissionableType: Option[String], permissionableId: Option[Long], searchRange: Option[Double], keyword: Option[String], pending: Option[Boolean], admin: Option[Boolean], start: Option[Int], limit: Option[Int]): List[UserPermissionsResponse]
+  def searchPermissionablesFollowingDistance(latitude: Double, longitude: Double, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], connectionAccountIds: Option[String], permissionableType: Option[String], permissionableId: Option[Long], searchRange: Option[Double], keyword: Option[String], pending: Option[Boolean], admin: Option[Boolean], start: Option[Int], limit: Option[Int]): List[UserPermissionsResponse]
 }

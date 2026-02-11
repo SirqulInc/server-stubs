@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 import model.UserPermissionsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: UserPermissionsApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/consumer/permissions/add?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&read=[value]&write=[value]&delete=[value]&add=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupIds=[value]&pending=[value]&admin=[value]&includeFriendGroup=[value]&latitude=[value]&longitude=[value]&audienceIds=[value]
+    * POST /api/3.18/consumer/permissions/add?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&read=[value]&write=[value]&delete=[value]&add=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupIds=[value]&pending=[value]&admin=[value]&includeFriendGroup=[value]&latitude=[value]&longitude=[value]&audienceIds=[value]
     */
-  def addUsersToPermissionable(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addUsersToPermissionable(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -67,7 +66,7 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
         
       val audienceIds = request.getQueryString("audienceIds")
         
-      api.addUsersToPermissionable(version, permissionableType, permissionableId, deviceId, accountId, read, write, delete, add, connectionIds, connectionAccountIds, connectionGroupIds, pending, admin, includeFriendGroup, latitude, longitude, audienceIds)
+      api.addUsersToPermissionable(permissionableType, permissionableId, deviceId, accountId, read, write, delete, add, connectionIds, connectionAccountIds, connectionGroupIds, pending, admin, includeFriendGroup, latitude, longitude, audienceIds)
     }
 
     val result = executeApi()
@@ -76,9 +75,9 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
   }
 
   /**
-    * POST /api/:version/permissionable/approve?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&approvalStatus=[value]
+    * POST /api/3.18/permissionable/approve?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&approvalStatus=[value]
     */
-  def approvePermissionable(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def approvePermissionable(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -98,7 +97,7 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
         
       val approvalStatus = request.getQueryString("approvalStatus")
         
-      api.approvePermissionable(version, permissionableType, permissionableId, deviceId, accountId, approvalStatus)
+      api.approvePermissionable(permissionableType, permissionableId, deviceId, accountId, approvalStatus)
     }
 
     val result = executeApi()
@@ -107,9 +106,9 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
   }
 
   /**
-    * POST /api/:version/consumer/permissions/leave?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/consumer/permissions/leave?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&latitude=[value]&longitude=[value]
     */
-  def leaveFromPermissionable(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def leaveFromPermissionable(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -133,7 +132,7 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.leaveFromPermissionable(version, permissionableType, permissionableId, deviceId, accountId, latitude, longitude)
+      api.leaveFromPermissionable(permissionableType, permissionableId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -142,9 +141,9 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
   }
 
   /**
-    * POST /api/:version/consumer/permissions/remove?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupIds=[value]&removeFriendGroup=[value]&latitude=[value]&longitude=[value]&audienceIds=[value]
+    * POST /api/3.18/consumer/permissions/remove?deviceId=[value]&accountId=[value]&permissionableType=[value]&permissionableId=[value]&connectionIds=[value]&connectionAccountIds=[value]&connectionGroupIds=[value]&removeFriendGroup=[value]&latitude=[value]&longitude=[value]&audienceIds=[value]
     */
-  def removeUsersFromPermissionable(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeUsersFromPermissionable(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -179,7 +178,7 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
         
       val audienceIds = request.getQueryString("audienceIds")
         
-      api.removeUsersFromPermissionable(version, permissionableType, permissionableId, deviceId, accountId, connectionIds, connectionAccountIds, connectionGroupIds, removeFriendGroup, latitude, longitude, audienceIds)
+      api.removeUsersFromPermissionable(permissionableType, permissionableId, deviceId, accountId, connectionIds, connectionAccountIds, connectionGroupIds, removeFriendGroup, latitude, longitude, audienceIds)
     }
 
     val result = executeApi()
@@ -188,9 +187,9 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
   }
 
   /**
-    * GET /api/:version/permissions/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&connectionAccountIds=[value]&permissionableType=[value]&permissionableId=[value]&keyword=[value]&sortField=[value]&descending=[value]&pending=[value]&admin=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/permissions/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&connectionAccountIds=[value]&permissionableType=[value]&permissionableId=[value]&keyword=[value]&sortField=[value]&descending=[value]&pending=[value]&admin=[value]&start=[value]&limit=[value]
     */
-  def searchPermissionables(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchPermissionables(): Action[AnyContent] = Action { request =>
     def executeApi(): List[UserPermissionsResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -226,7 +225,7 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchPermissionables(version, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, keyword, sortField, descending, pending, admin, start, limit)
+      api.searchPermissionables(deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, keyword, sortField, descending, pending, admin, start, limit)
     }
 
     val result = executeApi()
@@ -235,9 +234,9 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
   }
 
   /**
-    * GET /api/:version/permissions/distancesearch?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&connectionAccountIds=[value]&permissionableType=[value]&permissionableId=[value]&latitude=[value]&longitude=[value]&searchRange=[value]&keyword=[value]&pending=[value]&admin=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/permissions/distancesearch?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&connectionAccountIds=[value]&permissionableType=[value]&permissionableId=[value]&latitude=[value]&longitude=[value]&searchRange=[value]&keyword=[value]&pending=[value]&admin=[value]&start=[value]&limit=[value]
     */
-  def searchPermissionablesFollowingDistance(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchPermissionablesFollowingDistance(): Action[AnyContent] = Action { request =>
     def executeApi(): List[UserPermissionsResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -283,7 +282,7 @@ class UserPermissionsApiController @Inject()(cc: ControllerComponents, api: User
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchPermissionablesFollowingDistance(version, latitude, longitude, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, searchRange, keyword, pending, admin, start, limit)
+      api.searchPermissionablesFollowingDistance(latitude, longitude, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, searchRange, keyword, pending, admin, start, limit)
     }
 
     val result = executeApi()

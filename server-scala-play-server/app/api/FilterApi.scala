@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.FilterResponse
 import model.FilterTreeResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait FilterApi {
   /**
     * Create Filter
@@ -21,7 +20,7 @@ trait FilterApi {
     * @param active Sets whether the filter is active or inactive (hidden from consumers)
     * @param metaData external custom client defined data
     */
-  def createFilter(version: BigDecimal, accountId: Long, name: String, appKey: Option[String], parentFilterId: Option[Long], description: Option[String], externalId: Option[String], externalType: Option[String], active: Option[Boolean], metaData: Option[String]): FilterTreeResponse
+  def createFilter(accountId: Long, name: String, appKey: Option[String], parentFilterId: Option[Long], description: Option[String], externalId: Option[String], externalType: Option[String], active: Option[Boolean], metaData: Option[String]): FilterTreeResponse
 
   /**
     * Delete Filter
@@ -29,14 +28,14 @@ trait FilterApi {
     * @param accountId The account id of the user (must have permissions to the filter&#39;s assigned application)
     * @param filterId The ID of the filter to delete
     */
-  def deleteFilter(version: BigDecimal, accountId: Long, filterId: Long): SirqulResponse
+  def deleteFilter(accountId: Long, filterId: Long): SirqulResponse
 
   /**
     * Get Filter
     * Get the details of a specific filter. Recursively include all child filters and their children.
     * @param filterId the id of the filter to get
     */
-  def getFilter(version: BigDecimal, filterId: Long): FilterTreeResponse
+  def getFilter(filterId: Long): FilterTreeResponse
 
   /**
     * Search Filters
@@ -52,7 +51,7 @@ trait FilterApi {
     * @param limit The number of records to return
     * @param activeOnly Determines whether to return only active categories
     */
-  def searchFilters(version: BigDecimal, accountId: Option[Long], keyword: Option[String], appKey: Option[String], responseGroup: Option[String], rootOnly: Option[Boolean], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[FilterResponse]
+  def searchFilters(accountId: Option[Long], keyword: Option[String], appKey: Option[String], responseGroup: Option[String], rootOnly: Option[Boolean], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[FilterResponse]
 
   /**
     * Update Filter
@@ -67,5 +66,5 @@ trait FilterApi {
     * @param active Sets whether the filter is active or inactive (hidden from consumers)
     * @param metaData external custom client defined data
     */
-  def updateFilter(version: BigDecimal, accountId: Long, filterId: Long, parentFilterId: Option[Long], name: Option[String], description: Option[String], externalId: Option[String], externalType: Option[String], active: Option[Boolean], metaData: Option[String]): FilterTreeResponse
+  def updateFilter(accountId: Long, filterId: Long, parentFilterId: Option[Long], name: Option[String], description: Option[String], externalId: Option[String], externalType: Option[String], active: Option[Boolean], metaData: Option[String]): FilterTreeResponse
 }

@@ -1,7 +1,6 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ProfileResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
@@ -9,7 +8,7 @@ import model.ThirdPartyCredentialResponse
 import model.ThirdPartyNetworkResponse
 import model.ThirdPartyNetworkShortResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ThirdPartyCredentialsApi {
   /**
     * Create Credential
@@ -32,7 +31,7 @@ trait ThirdPartyCredentialsApi {
     * @param audienceIdsToAdd audience ids to add to the account
     * @param audienceIdsToRemove audience ids to remove from the account
     */
-  def createCredential(version: BigDecimal, thirdPartyId: String, thirdPartyToken: String, networkUID: String, appKey: String, accountId: Option[Long], deviceId: Option[String], sessionId: Option[String], thirdPartyName: Option[String], emailAddress: Option[String], signinOnlyMode: Option[Boolean], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], thirdPartyRefreshToken: Option[String], audienceIdsToAdd: Option[String], audienceIdsToRemove: Option[String]): ProfileResponse
+  def createCredential(thirdPartyId: String, thirdPartyToken: String, networkUID: String, appKey: String, accountId: Option[Long], deviceId: Option[String], sessionId: Option[String], thirdPartyName: Option[String], emailAddress: Option[String], signinOnlyMode: Option[Boolean], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], thirdPartyRefreshToken: Option[String], audienceIdsToAdd: Option[String], audienceIdsToRemove: Option[String]): ProfileResponse
 
   /**
     * Create Network
@@ -54,7 +53,7 @@ trait ThirdPartyCredentialsApi {
     * @param oauthClientId OAuth client id
     * @param oauthSecretKey OAuth secret key
     */
-  def createNetwork(version: BigDecimal, accountId: Long, name: String, enableIntrospection: Boolean, description: Option[String], introspectionMethod: Option[String], introspectionURL: Option[String], introspectionParams: Option[String], requiredRootField: Option[String], enableMFA: Option[Boolean], sizeMFA: Option[Int], shelfLifeMFA: Option[Int], oauthTokenURL: Option[String], oauthPrivateKey: Option[TemporaryFile], oauthPublicKey: Option[TemporaryFile], oauthClientId: Option[String], oauthSecretKey: Option[String], body: Option[String]): ThirdPartyNetworkResponse
+  def createNetwork(accountId: Long, name: String, enableIntrospection: Boolean, description: Option[String], introspectionMethod: Option[String], introspectionURL: Option[String], introspectionParams: Option[String], requiredRootField: Option[String], enableMFA: Option[Boolean], sizeMFA: Option[Int], shelfLifeMFA: Option[Int], oauthTokenURL: Option[String], oauthPrivateKey: Option[TemporaryFile], oauthPublicKey: Option[TemporaryFile], oauthClientId: Option[String], oauthSecretKey: Option[String], body: Option[String]): ThirdPartyNetworkResponse
 
   /**
     * Delete Credential
@@ -64,7 +63,7 @@ trait ThirdPartyCredentialsApi {
     * @param thirdPartyId The third party user id
     * @param appKey the application key
     */
-  def deleteCredential(version: BigDecimal, accountId: Long, networkUID: String, thirdPartyId: String, appKey: String): SirqulResponse
+  def deleteCredential(accountId: Long, networkUID: String, thirdPartyId: String, appKey: String): SirqulResponse
 
   /**
     * Delete Network
@@ -72,7 +71,7 @@ trait ThirdPartyCredentialsApi {
     * @param accountId the id of the logged in user
     * @param networkUID The unique identifier for the third party network defined by Sirqul
     */
-  def deleteNetwork(version: BigDecimal, accountId: Long, networkUID: String): SirqulResponse
+  def deleteNetwork(accountId: Long, networkUID: String): SirqulResponse
 
   /**
     * Get Credential
@@ -93,7 +92,7 @@ trait ThirdPartyCredentialsApi {
     * @param audienceIdsToRemove audience ids to remove from the account
     * @param referralAccountId account id of the referrer (inviter-invitee relationship)
     */
-  def getCredential(version: BigDecimal, networkUID: String, appKey: String, accountId: Option[Long], deviceId: Option[String], sessionId: Option[String], thirdPartyCredentialId: Option[Long], thirdPartyToken: Option[String], thirdPartySecret: Option[String], createNewAccount: Option[Boolean], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double], audienceIdsToAdd: Option[String], audienceIdsToRemove: Option[String], referralAccountId: Option[Long]): ProfileResponse
+  def getCredential(networkUID: String, appKey: String, accountId: Option[Long], deviceId: Option[String], sessionId: Option[String], thirdPartyCredentialId: Option[Long], thirdPartyToken: Option[String], thirdPartySecret: Option[String], createNewAccount: Option[Boolean], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double], audienceIdsToAdd: Option[String], audienceIdsToRemove: Option[String], referralAccountId: Option[Long]): ProfileResponse
 
   /**
     * Get Network
@@ -101,7 +100,7 @@ trait ThirdPartyCredentialsApi {
     * @param accountId The account id making the request
     * @param networkUID The unique identifier for the third party network defined by Sirqul
     */
-  def getNetwork(version: BigDecimal, accountId: Long, networkUID: String): ThirdPartyNetworkResponse
+  def getNetwork(accountId: Long, networkUID: String): ThirdPartyNetworkResponse
 
   /**
     * Search Credentials
@@ -113,7 +112,7 @@ trait ThirdPartyCredentialsApi {
     * @param start The start of the pagination
     * @param limit The limit of the pagination
     */
-  def searchCredentials(version: BigDecimal, accountId: Long, keyword: Option[String], networkUID: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): List[ThirdPartyCredentialResponse]
+  def searchCredentials(accountId: Long, keyword: Option[String], networkUID: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): List[ThirdPartyCredentialResponse]
 
   /**
     * Search Networks
@@ -127,7 +126,7 @@ trait ThirdPartyCredentialsApi {
     * @param keyword The keyword used to search on the network name and description fields
     * @param filterBillable Determines whether to only return applications that the user has access to
     */
-  def searchNetworks(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, keyword: Option[String], filterBillable: Option[Boolean]): List[ThirdPartyNetworkShortResponse]
+  def searchNetworks(accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, keyword: Option[String], filterBillable: Option[Boolean]): List[ThirdPartyNetworkShortResponse]
 
   /**
     * Send MFA Challenge
@@ -138,7 +137,7 @@ trait ThirdPartyCredentialsApi {
     * @param thirdPartyCredentialId optional id of the existing third party credential
     * @param deviceId the unique id of the device making the request
     */
-  def sendMFAChallenge(version: BigDecimal, networkUID: String, appKey: String, thirdPartyToken: Option[String], thirdPartyCredentialId: Option[Long], deviceId: Option[String]): SirqulResponse
+  def sendMFAChallenge(networkUID: String, appKey: String, thirdPartyToken: Option[String], thirdPartyCredentialId: Option[Long], deviceId: Option[String]): SirqulResponse
 
   /**
     * Update Credential
@@ -153,7 +152,7 @@ trait ThirdPartyCredentialsApi {
     * @param metaData External custom client defined data
     * @param thirdPartyRefreshToken optional refresh token for the third party
     */
-  def updateCredential(version: BigDecimal, networkUID: String, thirdPartyId: String, appKey: String, deviceId: Option[String], thirdPartyName: Option[String], thirdPartyToken: Option[String], responseFilters: Option[String], metaData: Option[String], thirdPartyRefreshToken: Option[String]): ProfileResponse
+  def updateCredential(networkUID: String, thirdPartyId: String, appKey: String, deviceId: Option[String], thirdPartyName: Option[String], thirdPartyToken: Option[String], responseFilters: Option[String], metaData: Option[String], thirdPartyRefreshToken: Option[String]): ProfileResponse
 
   /**
     * Update Network
@@ -176,5 +175,5 @@ trait ThirdPartyCredentialsApi {
     * @param oauthClientId OAuth client id
     * @param oauthSecretKey OAuth secret key
     */
-  def updateNetwork(version: BigDecimal, accountId: Long, networkUID: String, name: Option[String], description: Option[String], enableIntrospection: Option[Boolean], introspectionMethod: Option[String], introspectionURL: Option[String], introspectionParams: Option[String], requiredRootField: Option[String], enableMFA: Option[Boolean], sizeMFA: Option[Int], shelfLifeMFA: Option[Int], oauthTokenURL: Option[String], oauthPrivateKey: Option[TemporaryFile], oauthPublicKey: Option[TemporaryFile], oauthClientId: Option[String], oauthSecretKey: Option[String], body: Option[String]): ThirdPartyNetworkResponse
+  def updateNetwork(accountId: Long, networkUID: String, name: Option[String], description: Option[String], enableIntrospection: Option[Boolean], introspectionMethod: Option[String], introspectionURL: Option[String], introspectionParams: Option[String], requiredRootField: Option[String], enableMFA: Option[Boolean], sizeMFA: Option[Int], shelfLifeMFA: Option[Int], oauthTokenURL: Option[String], oauthPrivateKey: Option[TemporaryFile], oauthPublicKey: Option[TemporaryFile], oauthClientId: Option[String], oauthSecretKey: Option[String], body: Option[String]): ThirdPartyNetworkResponse
 }

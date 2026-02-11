@@ -7,16 +7,15 @@ import play.api.mvc._
 import model.AccountMiniResponse
 import model.AssignmentResponse
 import model.AssignmentStatusResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AssignmentApiController @Inject()(cc: ControllerComponents, api: AssignmentApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/assignment/assignee/search?accountId=[value]&keyword=[value]
+    * GET /api/3.18/assignment/assignee/search?accountId=[value]&keyword=[value]
     */
-  def assigmentAssigneeAccountSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assigmentAssigneeAccountSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AccountMiniResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -26,7 +25,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
         
       val keyword = request.getQueryString("keyword")
         
-      api.assigmentAssigneeAccountSearch(version, accountId, keyword)
+      api.assigmentAssigneeAccountSearch(accountId, keyword)
     }
 
     val result = executeApi()
@@ -35,9 +34,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * POST /api/:version/assignment/create?accountId=[value]&name=[value]&description=[value]&assigneeAccountId=[value]&retailerLocationId=[value]&tags=[value]&active=[value]
+    * POST /api/3.18/assignment/create?accountId=[value]&name=[value]&description=[value]&assigneeAccountId=[value]&retailerLocationId=[value]&tags=[value]&active=[value]
     */
-  def assignmentCreate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): AssignmentResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -66,7 +65,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.assignmentCreate(version, accountId, name, assigneeAccountId, description, retailerLocationId, tags, active)
+      api.assignmentCreate(accountId, name, assigneeAccountId, description, retailerLocationId, tags, active)
     }
 
     val result = executeApi()
@@ -75,9 +74,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * POST /api/:version/assignment/delete?accountId=[value]&assignmentId=[value]
+    * POST /api/3.18/assignment/delete?accountId=[value]&assignmentId=[value]
     */
-  def assignmentDelete(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentDelete(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -91,7 +90,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
           throw new OpenApiExceptions.MissingRequiredParameterException("assignmentId", "query string")
         }
         
-      api.assignmentDelete(version, accountId, assignmentId)
+      api.assignmentDelete(accountId, assignmentId)
     }
 
     val result = executeApi()
@@ -100,9 +99,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * GET /api/:version/assignment/get?accountId=[value]&assignmentId=[value]
+    * GET /api/3.18/assignment/get?accountId=[value]&assignmentId=[value]
     */
-  def assignmentGet(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentGet(): Action[AnyContent] = Action { request =>
     def executeApi(): AssignmentResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -116,7 +115,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
           throw new OpenApiExceptions.MissingRequiredParameterException("assignmentId", "query string")
         }
         
-      api.assignmentGet(version, accountId, assignmentId)
+      api.assignmentGet(accountId, assignmentId)
     }
 
     val result = executeApi()
@@ -125,9 +124,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * GET /api/:version/assignment/search?accountId=[value]&creatorAccountId=[value]&assigneeAccountIds=[value]&retailerLocationIds=[value]&currentStatusType=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/assignment/search?accountId=[value]&creatorAccountId=[value]&assigneeAccountIds=[value]&retailerLocationIds=[value]&currentStatusType=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
     */
-  def assignmentSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AssignmentResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -175,7 +174,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.assignmentSearch(version, accountId, sortField, descending, activeOnly, start, limit, creatorAccountId, assigneeAccountIds, retailerLocationIds, currentStatusType, keyword)
+      api.assignmentSearch(accountId, sortField, descending, activeOnly, start, limit, creatorAccountId, assigneeAccountIds, retailerLocationIds, currentStatusType, keyword)
     }
 
     val result = executeApi()
@@ -184,9 +183,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * POST /api/:version/assignment/status/create?accountId=[value]&assignmentId=[value]&scheduledNotificationId=[value]&toDo=[value]&connection=[value]&method=[value]&status=[value]&closure=[value]&message=[value]&followUp=[value]&active=[value]
+    * POST /api/3.18/assignment/status/create?accountId=[value]&assignmentId=[value]&scheduledNotificationId=[value]&toDo=[value]&connection=[value]&method=[value]&status=[value]&closure=[value]&message=[value]&followUp=[value]&active=[value]
     */
-  def assignmentStatusCreate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentStatusCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): AssignmentStatusResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -221,7 +220,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.assignmentStatusCreate(version, accountId, assignmentId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active)
+      api.assignmentStatusCreate(accountId, assignmentId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active)
     }
 
     val result = executeApi()
@@ -230,9 +229,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * POST /api/:version/assignment/status/delete?accountId=[value]&assignmentStatusId=[value]
+    * POST /api/3.18/assignment/status/delete?accountId=[value]&assignmentStatusId=[value]
     */
-  def assignmentStatusDelete(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentStatusDelete(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -246,7 +245,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
           throw new OpenApiExceptions.MissingRequiredParameterException("assignmentStatusId", "query string")
         }
         
-      api.assignmentStatusDelete(version, accountId, assignmentStatusId)
+      api.assignmentStatusDelete(accountId, assignmentStatusId)
     }
 
     val result = executeApi()
@@ -255,9 +254,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * GET /api/:version/assignment/status/get?accountId=[value]&assignmentStatusId=[value]
+    * GET /api/3.18/assignment/status/get?accountId=[value]&assignmentStatusId=[value]
     */
-  def assignmentStatusGet(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentStatusGet(): Action[AnyContent] = Action { request =>
     def executeApi(): AssignmentStatusResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -271,7 +270,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
           throw new OpenApiExceptions.MissingRequiredParameterException("assignmentStatusId", "query string")
         }
         
-      api.assignmentStatusGet(version, accountId, assignmentStatusId)
+      api.assignmentStatusGet(accountId, assignmentStatusId)
     }
 
     val result = executeApi()
@@ -280,9 +279,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * GET /api/:version/assignment/status/search?accountId=[value]&assignmentId=[value]&creatorAccountId=[value]&assigneeAccountId=[value]&retailerLocationId=[value]&statusType=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/assignment/status/search?accountId=[value]&assignmentId=[value]&creatorAccountId=[value]&assigneeAccountId=[value]&retailerLocationId=[value]&statusType=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
     */
-  def assignmentStatusSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentStatusSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AssignmentStatusResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -335,7 +334,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.assignmentStatusSearch(version, accountId, sortField, descending, activeOnly, start, limit, assignmentId, creatorAccountId, assigneeAccountId, retailerLocationId, statusType, keyword)
+      api.assignmentStatusSearch(accountId, sortField, descending, activeOnly, start, limit, assignmentId, creatorAccountId, assigneeAccountId, retailerLocationId, statusType, keyword)
     }
 
     val result = executeApi()
@@ -344,9 +343,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * POST /api/:version/assignment/status/update?accountId=[value]&assignmentStatusId=[value]&scheduledNotificationId=[value]&toDo=[value]&connection=[value]&method=[value]&status=[value]&closure=[value]&message=[value]&followUp=[value]&active=[value]
+    * POST /api/3.18/assignment/status/update?accountId=[value]&assignmentStatusId=[value]&scheduledNotificationId=[value]&toDo=[value]&connection=[value]&method=[value]&status=[value]&closure=[value]&message=[value]&followUp=[value]&active=[value]
     */
-  def assignmentStatusUpdate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentStatusUpdate(): Action[AnyContent] = Action { request =>
     def executeApi(): AssignmentStatusResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -381,7 +380,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.assignmentStatusUpdate(version, accountId, assignmentStatusId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active)
+      api.assignmentStatusUpdate(accountId, assignmentStatusId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active)
     }
 
     val result = executeApi()
@@ -390,9 +389,9 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
   }
 
   /**
-    * POST /api/:version/assignment/update?accountId=[value]&assignmentId=[value]&name=[value]&description=[value]&assigneeAccountId=[value]&retailerLocationId=[value]&tags=[value]&active=[value]
+    * POST /api/3.18/assignment/update?accountId=[value]&assignmentId=[value]&name=[value]&description=[value]&assigneeAccountId=[value]&retailerLocationId=[value]&tags=[value]&active=[value]
     */
-  def assignmentUpdate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignmentUpdate(): Action[AnyContent] = Action { request =>
     def executeApi(): AssignmentResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -421,7 +420,7 @@ class AssignmentApiController @Inject()(cc: ControllerComponents, api: Assignmen
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.assignmentUpdate(version, accountId, assignmentId, name, description, assigneeAccountId, retailerLocationId, tags, active)
+      api.assignmentUpdate(accountId, assignmentId, name, description, assigneeAccountId, retailerLocationId, tags, active)
     }
 
     val result = executeApi()

@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.LikableResponse
 import model.SearchResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait LikeApi {
   /**
     * Create Like
@@ -23,7 +22,7 @@ trait LikeApi {
     * @param latitude The current location of the user
     * @param longitude The current location of the user
     */
-  def registerLike(version: BigDecimal, likableType: String, likableId: Long, deviceId: Option[String], accountId: Option[Long], permissionableType: Option[String], permissionableId: Option[Long], like: Option[Boolean], app: Option[String], gameType: Option[String], appKey: Option[String], latitude: Option[Double], longitude: Option[Double]): LikableResponse
+  def registerLike(likableType: String, likableId: Long, deviceId: Option[String], accountId: Option[Long], permissionableType: Option[String], permissionableId: Option[Long], like: Option[Boolean], app: Option[String], gameType: Option[String], appKey: Option[String], latitude: Option[Double], longitude: Option[Double]): LikableResponse
 
   /**
     * Delete Like
@@ -35,7 +34,7 @@ trait LikeApi {
     * @param latitude The current location of the user
     * @param longitude The current location of the user
     */
-  def removeLike(version: BigDecimal, likableType: String, likableId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): LikableResponse
+  def removeLike(likableType: String, likableId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): LikableResponse
 
   /**
     * Search Likes
@@ -52,5 +51,5 @@ trait LikeApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def searchLikes(version: BigDecimal, likableType: String, likableId: Long, deviceId: Option[String], accountId: Option[Long], connectionAccountIds: Option[String], sortField: Option[String], descending: Option[Boolean], updatedSince: Option[Long], updatedBefore: Option[Long], start: Option[Int], limit: Option[Int]): SearchResponse
+  def searchLikes(likableType: String, likableId: Long, deviceId: Option[String], accountId: Option[Long], connectionAccountIds: Option[String], sortField: Option[String], descending: Option[Boolean], updatedSince: Option[Long], updatedBefore: Option[Long], start: Option[Int], limit: Option[Int]): SearchResponse
 }

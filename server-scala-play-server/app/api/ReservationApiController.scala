@@ -5,17 +5,16 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.AvailabilityResponse
-import model.BigDecimal
 import model.ReservationResponse
 import model.TimeSlotResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ReservationApiController @Inject()(cc: ControllerComponents, api: ReservationApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/reservation/create?deviceId=[value]&accountId=[value]&startDate=[value]&endDate=[value]&offerId=[value]&offerLocationId=[value]&appKey=[value]&metaData=[value]
+    * POST /api/3.18/reservation/create?deviceId=[value]&accountId=[value]&startDate=[value]&endDate=[value]&offerId=[value]&offerLocationId=[value]&appKey=[value]&metaData=[value]
     */
-  def createReservation(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createReservation(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -38,7 +37,7 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
         
       val metaData = request.getQueryString("metaData")
         
-      api.createReservation(version, deviceId, accountId, startDate, endDate, offerId, offerLocationId, appKey, metaData)
+      api.createReservation(deviceId, accountId, startDate, endDate, offerId, offerLocationId, appKey, metaData)
     }
 
     executeApi()
@@ -46,9 +45,9 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
   }
 
   /**
-    * POST /api/:version/reservation/delete?deviceId=[value]&accountId=[value]&reservationId=[value]
+    * POST /api/3.18/reservation/delete?deviceId=[value]&accountId=[value]&reservationId=[value]
     */
-  def deleteReservation(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteReservation(): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -61,7 +60,7 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
           throw new OpenApiExceptions.MissingRequiredParameterException("reservationId", "query string")
         }
         
-      api.deleteReservation(version, reservationId, deviceId, accountId)
+      api.deleteReservation(reservationId, deviceId, accountId)
     }
 
     executeApi()
@@ -69,9 +68,9 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
   }
 
   /**
-    * POST /api/:version/reservable/availability/update?deviceId=[value]&accountId=[value]&reservableId=[value]&reservableType=[value]&availability=[value]&availabilitySummary=[value]
+    * POST /api/3.18/reservable/availability/update?deviceId=[value]&accountId=[value]&reservableId=[value]&reservableType=[value]&availability=[value]&availabilitySummary=[value]
     */
-  def reservableAvailability(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def reservableAvailability(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AvailabilityResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -93,7 +92,7 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
         
       val availabilitySummary = request.getQueryString("availabilitySummary")
         
-      api.reservableAvailability(version, reservableId, reservableType, deviceId, accountId, availability, availabilitySummary)
+      api.reservableAvailability(reservableId, reservableType, deviceId, accountId, availability, availabilitySummary)
     }
 
     val result = executeApi()
@@ -102,9 +101,9 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
   }
 
   /**
-    * GET /api/:version/reservable/availability/search?deviceId=[value]&accountId=[value]&reservableId=[value]&reservableType=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/reservable/availability/search?deviceId=[value]&accountId=[value]&reservableId=[value]&reservableType=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
     */
-  def searchAvailability(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchAvailability(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AvailabilityResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -134,7 +133,7 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchAvailability(version, reservableId, reservableType, deviceId, accountId, startDate, endDate, start, limit)
+      api.searchAvailability(reservableId, reservableType, deviceId, accountId, startDate, endDate, start, limit)
     }
 
     val result = executeApi()
@@ -143,9 +142,9 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
   }
 
   /**
-    * GET /api/:version/reservation/search?deviceId=[value]&appKey=[value]&accountId=[value]&filterAccountId=[value]&reservableId=[value]&reservableType=[value]&keyword=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/reservation/search?deviceId=[value]&appKey=[value]&accountId=[value]&filterAccountId=[value]&reservableId=[value]&reservableType=[value]&keyword=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
     */
-  def searchReservations(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchReservations(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ReservationResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -176,7 +175,7 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchReservations(version, deviceId, appKey, accountId, filterAccountId, reservableId, reservableType, keyword, startDate, endDate, start, limit)
+      api.searchReservations(deviceId, appKey, accountId, filterAccountId, reservableId, reservableType, keyword, startDate, endDate, start, limit)
     }
 
     val result = executeApi()
@@ -185,9 +184,9 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
   }
 
   /**
-    * GET /api/:version/reservable/schedule/search?deviceId=[value]&accountId=[value]&reservableId=[value]&reservableType=[value]&startDate=[value]&endDate=[value]&timeBucketMins=[value]
+    * GET /api/3.18/reservable/schedule/search?deviceId=[value]&accountId=[value]&reservableId=[value]&reservableType=[value]&startDate=[value]&endDate=[value]&timeBucketMins=[value]
     */
-  def searchSchedule(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchSchedule(): Action[AnyContent] = Action { request =>
     def executeApi(): List[TimeSlotResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -220,7 +219,7 @@ class ReservationApiController @Inject()(cc: ControllerComponents, api: Reservat
       val timeBucketMins = request.getQueryString("timeBucketMins")
         .map(value => value.toInt)
         
-      api.searchSchedule(version, reservableId, reservableType, startDate, endDate, deviceId, accountId, timeBucketMins)
+      api.searchSchedule(reservableId, reservableType, startDate, endDate, deviceId, accountId, timeBucketMins)
     }
 
     val result = executeApi()

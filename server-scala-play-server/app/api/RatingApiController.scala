@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.RatingIndexResponse
 import model.RatingResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/rating/create?deviceId=[value]&accountId=[value]&ratableType=[value]&ratableId=[value]&ratingValue=[value]&categoryId=[value]&display=[value]&description=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/rating/create?deviceId=[value]&accountId=[value]&ratableType=[value]&ratableId=[value]&ratingValue=[value]&categoryId=[value]&display=[value]&description=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]
     */
-  def createRating(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createRating(): Action[AnyContent] = Action { request =>
     def executeApi(): RatingResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -54,7 +53,7 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.createRating(version, ratableType, ratableId, ratingValue, deviceId, accountId, categoryId, display, description, locationDescription, latitude, longitude)
+      api.createRating(ratableType, ratableId, ratingValue, deviceId, accountId, categoryId, display, description, locationDescription, latitude, longitude)
     }
 
     val result = executeApi()
@@ -63,9 +62,9 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
   }
 
   /**
-    * POST /api/:version/rating/delete?deviceId=[value]&accountId=[value]&ratingId=[value]
+    * POST /api/3.18/rating/delete?deviceId=[value]&accountId=[value]&ratingId=[value]
     */
-  def deleteRating(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteRating(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -78,7 +77,7 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
           throw new OpenApiExceptions.MissingRequiredParameterException("ratingId", "query string")
         }
         
-      api.deleteRating(version, ratingId, deviceId, accountId)
+      api.deleteRating(ratingId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -87,9 +86,9 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
   }
 
   /**
-    * GET /api/:version/location/rating/index/search?categoryIds=[value]&keyword=[value]&locationType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&searchRange=[value]&latitude=[value]&longitude=[value]&returnOverallRating=[value]&distanceUnit=[value]&returnRetailer=[value]&returnAssets=[value]&returnOffers=[value]&returnCategories=[value]&returnFilters=[value]
+    * GET /api/3.18/location/rating/index/search?categoryIds=[value]&keyword=[value]&locationType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&searchRange=[value]&latitude=[value]&longitude=[value]&returnOverallRating=[value]&distanceUnit=[value]&returnRetailer=[value]&returnAssets=[value]&returnOffers=[value]&returnCategories=[value]&returnFilters=[value]
     */
-  def searchLocationRatingIndexes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchLocationRatingIndexes(): Action[AnyContent] = Action { request =>
     def executeApi(): List[RatingIndexResponse] = {
       val categoryIds = request.getQueryString("categoryIds")
         
@@ -137,7 +136,7 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
       val returnFilters = request.getQueryString("returnFilters")
         .map(value => value.toBoolean)
         
-      api.searchLocationRatingIndexes(version, categoryIds, keyword, locationType, sortField, descending, start, limit, searchRange, latitude, longitude, returnOverallRating, distanceUnit, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters)
+      api.searchLocationRatingIndexes(categoryIds, keyword, locationType, sortField, descending, start, limit, searchRange, latitude, longitude, returnOverallRating, distanceUnit, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters)
     }
 
     val result = executeApi()
@@ -146,9 +145,9 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
   }
 
   /**
-    * GET /api/:version/rating/index/search?ratableType=[value]&ratableIds=[value]&categoryIds=[value]&secondaryType=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&latitude=[value]&longitude=[value]&returnRatable=[value]&returnOverallRating=[value]
+    * GET /api/3.18/rating/index/search?ratableType=[value]&ratableIds=[value]&categoryIds=[value]&secondaryType=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&latitude=[value]&longitude=[value]&returnRatable=[value]&returnOverallRating=[value]
     */
-  def searchRatingIndexes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRatingIndexes(): Action[AnyContent] = Action { request =>
     def executeApi(): List[RatingIndexResponse] = {
       val ratableType = request.getQueryString("ratableType")
         .getOrElse {
@@ -186,7 +185,7 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
       val returnOverallRating = request.getQueryString("returnOverallRating")
         .map(value => value.toBoolean)
         
-      api.searchRatingIndexes(version, ratableType, ratableIds, categoryIds, secondaryType, keyword, sortField, descending, start, limit, latitude, longitude, returnRatable, returnOverallRating)
+      api.searchRatingIndexes(ratableType, ratableIds, categoryIds, secondaryType, keyword, sortField, descending, start, limit, latitude, longitude, returnRatable, returnOverallRating)
     }
 
     val result = executeApi()
@@ -195,9 +194,9 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
   }
 
   /**
-    * GET /api/:version/rating/search?deviceId=[value]&accountId=[value]&filterAccountId=[value]&ratableType=[value]&ratableId=[value]&categoryIds=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/rating/search?deviceId=[value]&accountId=[value]&filterAccountId=[value]&ratableType=[value]&ratableId=[value]&categoryIds=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchRatings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRatings(): Action[AnyContent] = Action { request =>
     def executeApi(): List[RatingResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -227,7 +226,7 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchRatings(version, deviceId, accountId, filterAccountId, ratableType, ratableId, categoryIds, keyword, sortField, descending, start, limit)
+      api.searchRatings(deviceId, accountId, filterAccountId, ratableType, ratableId, categoryIds, keyword, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -236,9 +235,9 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
   }
 
   /**
-    * POST /api/:version/rating/update?deviceId=[value]&accountId=[value]&ratingId=[value]&ratingValue=[value]&categoryId=[value]&display=[value]&description=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/rating/update?deviceId=[value]&accountId=[value]&ratingId=[value]&ratingValue=[value]&categoryId=[value]&display=[value]&description=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]
     */
-  def updateRating(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateRating(): Action[AnyContent] = Action { request =>
     def executeApi(): RatingResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -269,7 +268,7 @@ class RatingApiController @Inject()(cc: ControllerComponents, api: RatingApi) ex
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.updateRating(version, ratingId, deviceId, accountId, ratingValue, categoryId, display, description, locationDescription, latitude, longitude)
+      api.updateRating(ratingId, deviceId, accountId, ratingValue, categoryId, display, description, locationDescription, latitude, longitude)
     }
 
     val result = executeApi()

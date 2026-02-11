@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.CargoType
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class CargoTypeApiController @Inject()(cc: ControllerComponents, api: CargoTypeApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/cargo/type
+    * POST /api/3.18/cargo/type
     */
-  def createCargoType(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createCargoType(): Action[AnyContent] = Action { request =>
     def executeApi(): CargoType = {
       val body = request.body.asJson.map(_.as[CargoType])
-      api.createCargoType(version, body)
+      api.createCargoType(body)
     }
 
     val result = executeApi()
@@ -25,12 +24,12 @@ class CargoTypeApiController @Inject()(cc: ControllerComponents, api: CargoTypeA
   }
 
   /**
-    * DELETE /api/:version/cargo/type/:cargoTypeId
+    * DELETE /api/3.18/cargo/type/:cargoTypeId
     * @param cargoTypeId the ID of the cargo type
     */
-  def deleteCargoType(version: BigDecimal, cargoTypeId: Long): Action[AnyContent] = Action { request =>
+  def deleteCargoType(cargoTypeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.deleteCargoType(version, cargoTypeId)
+      api.deleteCargoType(cargoTypeId)
     }
 
     executeApi()
@@ -38,12 +37,12 @@ class CargoTypeApiController @Inject()(cc: ControllerComponents, api: CargoTypeA
   }
 
   /**
-    * GET /api/:version/cargo/type/:cargoTypeId
+    * GET /api/3.18/cargo/type/:cargoTypeId
     * @param cargoTypeId the cargo type ID
     */
-  def getCargoType(version: BigDecimal, cargoTypeId: Long): Action[AnyContent] = Action { request =>
+  def getCargoType(cargoTypeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): CargoType = {
-      api.getCargoType(version, cargoTypeId)
+      api.getCargoType(cargoTypeId)
     }
 
     val result = executeApi()
@@ -52,9 +51,9 @@ class CargoTypeApiController @Inject()(cc: ControllerComponents, api: CargoTypeA
   }
 
   /**
-    * GET /api/:version/cargo/type?retailerId=[value]&hubId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/cargo/type?retailerId=[value]&hubId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchCargoTypes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchCargoTypes(): Action[AnyContent] = Action { request =>
     def executeApi(): List[CargoType] = {
       val retailerId = request.getQueryString("retailerId")
         .map(value => value.toLong)
@@ -91,7 +90,7 @@ class CargoTypeApiController @Inject()(cc: ControllerComponents, api: CargoTypeA
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchCargoTypes(version, sortField, descending, start, limit, activeOnly, retailerId, hubId)
+      api.searchCargoTypes(sortField, descending, start, limit, activeOnly, retailerId, hubId)
     }
 
     val result = executeApi()
@@ -100,13 +99,13 @@ class CargoTypeApiController @Inject()(cc: ControllerComponents, api: CargoTypeA
   }
 
   /**
-    * PUT /api/:version/cargo/type/:cargoTypeId
+    * PUT /api/3.18/cargo/type/:cargoTypeId
     * @param cargoTypeId the ID of the cargo type
     */
-  def updateCargoType(version: BigDecimal, cargoTypeId: Long): Action[AnyContent] = Action { request =>
+  def updateCargoType(cargoTypeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): CargoType = {
       val body = request.body.asJson.map(_.as[CargoType])
-      api.updateCargoType(version, cargoTypeId, body)
+      api.updateCargoType(cargoTypeId, body)
     }
 
     val result = executeApi()

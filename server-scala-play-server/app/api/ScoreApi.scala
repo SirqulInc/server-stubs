@@ -1,10 +1,9 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ScoreResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ScoreApi {
   /**
     * Create Score
@@ -20,7 +19,7 @@ trait ScoreApi {
     * @param timeTaken The time taken to complete task
     * @param highest 
     */
-  def createScore(version: BigDecimal, accountId: Long, appKey: String, points: Int, missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long], timeTaken: Option[Int], highest: Option[Boolean]): ScoreResponse
+  def createScore(accountId: Long, appKey: String, points: Int, missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long], timeTaken: Option[Int], highest: Option[Boolean]): ScoreResponse
 
   /**
     * Get Score
@@ -35,7 +34,7 @@ trait ScoreApi {
     * @param scoreObjectType The object type to filter scores by (TicketObjectType)
     * @param scoreStatus The status of the score to filter (ScoreStatus)
     */
-  def getScore(version: BigDecimal, accountId: Long, appKey: String, missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long], scoreObjectType: Option[String], scoreStatus: Option[String]): ScoreResponse
+  def getScore(accountId: Long, appKey: String, missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long], scoreObjectType: Option[String], scoreStatus: Option[String]): ScoreResponse
 
   /**
     * Search Score
@@ -48,5 +47,5 @@ trait ScoreApi {
     * @param gameLevelId The gameLevelId to score for.
     * @param gameObjectId The gameObjectId to score for, null if level based scoring.
     */
-  def searchScores(version: BigDecimal, accountId: Long, appKey: String, missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long]): List[ScoreResponse]
+  def searchScores(accountId: Long, appKey: String, missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long]): List[ScoreResponse]
 }

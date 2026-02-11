@@ -2,10 +2,9 @@ package api
 
 import play.api.libs.json._
 import model.ApplicationConfigResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ApplicationConfigApi {
   /**
     * Create AppConfig
@@ -18,7 +17,7 @@ trait ApplicationConfigApi {
     * @param retailerLocationId The retailer location id for retailer location specific configurations
     * @param udid The device udid for device specific configurations
     */
-  def createApplicationConfig(version: BigDecimal, accountId: Long, appKey: String, configVersion: String, assetId: Long, retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String]): ApplicationConfigResponse
+  def createApplicationConfig(accountId: Long, appKey: String, configVersion: String, assetId: Long, retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String]): ApplicationConfigResponse
 
   /**
     * Delete AppConfig
@@ -26,7 +25,7 @@ trait ApplicationConfigApi {
     * @param accountId The account ID of the user
     * @param configId The config ID of the application configuration to delete
     */
-  def deleteApplicationConfig(version: BigDecimal, accountId: Long, configId: Long): SirqulResponse
+  def deleteApplicationConfig(accountId: Long, configId: Long): SirqulResponse
 
   /**
     * Get AppConfig
@@ -34,7 +33,7 @@ trait ApplicationConfigApi {
     * @param accountId The account ID of the user
     * @param configId The config ID of the application configuration
     */
-  def getApplicationConfig(version: BigDecimal, accountId: Long, configId: Long): ApplicationConfigResponse
+  def getApplicationConfig(accountId: Long, configId: Long): ApplicationConfigResponse
 
   /**
     * Get AppConfig by Version
@@ -46,7 +45,7 @@ trait ApplicationConfigApi {
     * @param udid Only returns only returns the config that matches the given device udid
     * @param allowOlderVersions Determines whether to return older config versions if the exact version is not found. If this happens, will try to return the latest version.
     */
-  def getApplicationConfigByConfigVersion(version: BigDecimal, appKey: String, configVersion: String, retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String], allowOlderVersions: Option[Boolean]): ApplicationConfigResponse
+  def getApplicationConfigByConfigVersion(appKey: String, configVersion: String, retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String], allowOlderVersions: Option[Boolean]): ApplicationConfigResponse
 
   /**
     * Search AppConfigs
@@ -62,7 +61,7 @@ trait ApplicationConfigApi {
     * @param start The start index for pagination
     * @param limit The limit for pagination (There is a hard limit of 100)
     */
-  def searchApplicationConfig(version: BigDecimal, accountId: Long, appKey: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String], configVersion: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): List[ApplicationConfigResponse]
+  def searchApplicationConfig(accountId: Long, appKey: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String], configVersion: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): List[ApplicationConfigResponse]
 
   /**
     * Update AppConfig
@@ -76,5 +75,5 @@ trait ApplicationConfigApi {
     * @param retailerLocationId The retailer location id for retailer location specific configurations
     * @param udid The device udid for device specific configurations
     */
-  def updateApplicationConfig(version: BigDecimal, accountId: Long, configId: Long, appKey: Option[String], configVersion: Option[String], assetId: Option[Long], retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String]): ApplicationConfigResponse
+  def updateApplicationConfig(accountId: Long, configId: Long, appKey: Option[String], configVersion: Option[String], assetId: Option[Long], retailerId: Option[Long], retailerLocationId: Option[Long], udid: Option[String]): ApplicationConfigResponse
 }

@@ -4,22 +4,21 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.Direction
 import model.Route
 import model.Shipment
 import model.Stop
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/route/:routeId/approve
+    * POST /api/3.18/route/:routeId/approve
     * @param routeId the id of the route to approve
     */
-  def approveRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def approveRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
-      api.approveRoute(version, routeId)
+      api.approveRoute(routeId)
     }
 
     val result = executeApi()
@@ -28,13 +27,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * POST /api/:version/route/:routeId/copy
+    * POST /api/3.18/route/:routeId/copy
     * @param routeId the id of the route to duplicate
     */
-  def copyRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def copyRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
       val body = request.body.asJson.map(_.as[Route])
-      api.copyRoute(version, routeId, body)
+      api.copyRoute(routeId, body)
     }
 
     val result = executeApi()
@@ -43,12 +42,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * POST /api/:version/route
+    * POST /api/3.18/route
     */
-  def createRoute(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createRoute(): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
       val body = request.body.asJson.map(_.as[Route])
-      api.createRoute(version, body)
+      api.createRoute(body)
     }
 
     val result = executeApi()
@@ -57,12 +56,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * PUT /api/:version/route/:routeId/directions
+    * PUT /api/3.18/route/:routeId/directions
     * @param routeId the id of the route to update directions for
     */
-  def createRouteDirections(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def createRouteDirections(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Direction] = {
-      api.createRouteDirections(version, routeId)
+      api.createRouteDirections(routeId)
     }
 
     val result = executeApi()
@@ -71,12 +70,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * PUT /api/:version/route/:routeId/polyline
+    * PUT /api/3.18/route/:routeId/polyline
     * @param routeId the id of the route to create a polyline for
     */
-  def createRoutePolyline(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def createRoutePolyline(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
-      api.createRoutePolyline(version, routeId)
+      api.createRoutePolyline(routeId)
     }
 
     val result = executeApi()
@@ -85,12 +84,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * DELETE /api/:version/route/:routeId
+    * DELETE /api/3.18/route/:routeId
     * @param routeId the id of the route
     */
-  def deleteRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def deleteRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.deleteRoute(version, routeId)
+      api.deleteRoute(routeId)
     }
 
     executeApi()
@@ -98,12 +97,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * POST /api/:version/route/:routeId/disapprove
+    * POST /api/3.18/route/:routeId/disapprove
     * @param routeId the id of the route to reject
     */
-  def disapproveRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def disapproveRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
-      api.disapproveRoute(version, routeId)
+      api.disapproveRoute(routeId)
     }
 
     val result = executeApi()
@@ -112,10 +111,10 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route/:routeId?showInheritedProperties=[value]
+    * GET /api/3.18/route/:routeId?showInheritedProperties=[value]
     * @param routeId the id of the route to get
     */
-  def getRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def getRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
       val showInheritedProperties = request.getQueryString("showInheritedProperties")
         .map(value => value.toBoolean)
@@ -123,7 +122,7 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("showInheritedProperties", "query string")
         }
         
-      api.getRoute(version, routeId, showInheritedProperties)
+      api.getRoute(routeId, showInheritedProperties)
     }
 
     val result = executeApi()
@@ -132,12 +131,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route/:routeId/directions
+    * GET /api/3.18/route/:routeId/directions
     * @param routeId the id of the route to get directions for
     */
-  def getRouteDirections(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def getRouteDirections(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Direction] = {
-      api.getRouteDirections(version, routeId)
+      api.getRouteDirections(routeId)
     }
 
     val result = executeApi()
@@ -146,12 +145,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route/:routeId/shipments
+    * GET /api/3.18/route/:routeId/shipments
     * @param routeId the id of the route to get shipments for
     */
-  def getRouteShipments(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def getRouteShipments(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Shipment] = {
-      api.getRouteShipments(version, routeId)
+      api.getRouteShipments(routeId)
     }
 
     val result = executeApi()
@@ -160,13 +159,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route/:routeId/stop/:stopId
+    * GET /api/3.18/route/:routeId/stop/:stopId
     * @param routeId the id of the route to get stops for
     * @param stopId the id of the specific stop on the route
     */
-  def getRouteStop(version: BigDecimal, routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
+  def getRouteStop(routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Stop = {
-      api.getRouteStop(version, routeId, stopId)
+      api.getRouteStop(routeId, stopId)
     }
 
     val result = executeApi()
@@ -175,10 +174,10 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route/:routeId/stops?confirmedOnly=[value]
+    * GET /api/3.18/route/:routeId/stops?confirmedOnly=[value]
     * @param routeId the id of the route
     */
-  def getRouteStops(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def getRouteStops(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Stop] = {
       val confirmedOnly = request.getQueryString("confirmedOnly")
         .map(value => value.toBoolean)
@@ -186,7 +185,7 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("confirmedOnly", "query string")
         }
         
-      api.getRouteStops(version, routeId, confirmedOnly)
+      api.getRouteStops(routeId, confirmedOnly)
     }
 
     val result = executeApi()
@@ -195,13 +194,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route/:routeId/stop/:stopId/shipments
+    * GET /api/3.18/route/:routeId/stop/:stopId/shipments
     * @param routeId the id of the route
     * @param stopId the id of the stop to get shipments on
     */
-  def getShipmentsAtStop(version: BigDecimal, routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
+  def getShipmentsAtStop(routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Shipment] = {
-      api.getShipmentsAtStop(version, routeId, stopId)
+      api.getShipmentsAtStop(routeId, stopId)
     }
 
     val result = executeApi()
@@ -210,12 +209,12 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * POST /api/:version/route/:routeId/optimize
+    * POST /api/3.18/route/:routeId/optimize
     * @param routeId the id of the route to optimize
     */
-  def optimizeRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def optimizeRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.optimizeRoute(version, routeId)
+      api.optimizeRoute(routeId)
     }
 
     executeApi()
@@ -223,13 +222,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * DELETE /api/:version/route/:routeId/stop/:stopId
+    * DELETE /api/3.18/route/:routeId/stop/:stopId
     * @param routeId the id of the route
     * @param stopId the id of the specific stop to delete on the route
     */
-  def removeStop(version: BigDecimal, routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
+  def removeStop(routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.removeStop(version, routeId, stopId)
+      api.removeStop(routeId, stopId)
     }
 
     executeApi()
@@ -237,13 +236,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * PATCH /api/:version/route/:routeId/stops/reorder
+    * PATCH /api/3.18/route/:routeId/stops/reorder
     * @param routeId the id of the route
     */
-  def reorderRouteStopsPatch(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def reorderRouteStopsPatch(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Stop] = {
       val body = request.body.asJson.map(_.as[List[Stop]])
-      api.reorderRouteStopsPatch(version, routeId, body)
+      api.reorderRouteStopsPatch(routeId, body)
     }
 
     val result = executeApi()
@@ -252,13 +251,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * POST /api/:version/route/:routeId/stops/reorder
+    * POST /api/3.18/route/:routeId/stops/reorder
     * @param routeId the id of the route
     */
-  def reorderRouteStopsPost(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def reorderRouteStopsPost(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Stop] = {
       val body = request.body.asJson.map(_.as[List[Stop]])
-      api.reorderRouteStopsPost(version, routeId, body)
+      api.reorderRouteStopsPost(routeId, body)
     }
 
     val result = executeApi()
@@ -267,9 +266,9 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * GET /api/:version/route?hubId=[value]&programId=[value]&scheduledStart=[value]&scheduledEnd=[value]&updatedStart=[value]&updatedEnd=[value]&featured=[value]&seatCount=[value]&approved=[value]&started=[value]&completed=[value]&valid=[value]&parentId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&includesEmpty=[value]&rootOnly=[value]&showInheritedProperties=[value]
+    * GET /api/3.18/route?hubId=[value]&programId=[value]&scheduledStart=[value]&scheduledEnd=[value]&updatedStart=[value]&updatedEnd=[value]&featured=[value]&seatCount=[value]&approved=[value]&started=[value]&completed=[value]&valid=[value]&parentId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&includesEmpty=[value]&rootOnly=[value]&showInheritedProperties=[value]
     */
-  def searchRoutes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRoutes(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Route] = {
       val hubId = request.getQueryString("hubId")
         .map(value => value.toLong)
@@ -357,7 +356,7 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("showInheritedProperties", "query string")
         }
         
-      api.searchRoutes(version, sortField, descending, start, limit, activeOnly, includesEmpty, rootOnly, showInheritedProperties, hubId, programId, scheduledStart, scheduledEnd, updatedStart, updatedEnd, featured, seatCount, approved, started, completed, valid, parentId)
+      api.searchRoutes(sortField, descending, start, limit, activeOnly, includesEmpty, rootOnly, showInheritedProperties, hubId, programId, scheduledStart, scheduledEnd, updatedStart, updatedEnd, featured, seatCount, approved, started, completed, valid, parentId)
     }
 
     val result = executeApi()
@@ -366,13 +365,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * POST /api/:version/route/:id/driver/:driverId
+    * POST /api/3.18/route/:id/driver/:driverId
     * @param id the id of the route
     * @param driverId the id of the driver
     */
-  def setDriver(version: BigDecimal, id: Long, driverId: Long): Action[AnyContent] = Action { request =>
+  def setDriver(id: Long, driverId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.setDriver(version, id, driverId)
+      api.setDriver(id, driverId)
     }
 
     executeApi()
@@ -380,13 +379,13 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * PUT /api/:version/route/:routeId
+    * PUT /api/3.18/route/:routeId
     * @param routeId the id of the route
     */
-  def updateRoute(version: BigDecimal, routeId: Long): Action[AnyContent] = Action { request =>
+  def updateRoute(routeId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Route = {
       val body = request.body.asJson.map(_.as[Route])
-      api.updateRoute(version, routeId, body)
+      api.updateRoute(routeId, body)
     }
 
     val result = executeApi()
@@ -395,14 +394,14 @@ class RouteApiController @Inject()(cc: ControllerComponents, api: RouteApi) exte
   }
 
   /**
-    * PUT /api/:version/route/:routeId/stop/:stopId
+    * PUT /api/3.18/route/:routeId/stop/:stopId
     * @param routeId the id of the route to update stops for
     * @param stopId the id of the specific stop to update on the route
     */
-  def updateRouteStop(version: BigDecimal, routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
+  def updateRouteStop(routeId: Long, stopId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
       val body = request.body.asJson.map(_.as[Stop])
-      api.updateRouteStop(version, routeId, stopId, body)
+      api.updateRouteStop(routeId, stopId, body)
     }
 
     executeApi()

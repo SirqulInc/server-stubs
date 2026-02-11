@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 import model.TaskResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/task/create?accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&visibility=[value]&active=[value]
+    * POST /api/3.18/task/create?accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&visibility=[value]&active=[value]
     */
-  def createTask(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createTask(): Action[AnyContent] = Action { request =>
     def executeApi(): TaskResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -51,7 +50,7 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.createTask(version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active)
+      api.createTask(accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active)
     }
 
     val result = executeApi()
@@ -60,9 +59,9 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
   }
 
   /**
-    * POST /api/:version/task/delete?accountId=[value]&taskId=[value]
+    * POST /api/3.18/task/delete?accountId=[value]&taskId=[value]
     */
-  def deleteTask(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteTask(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -76,7 +75,7 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("taskId", "query string")
         }
         
-      api.deleteTask(version, accountId, taskId)
+      api.deleteTask(accountId, taskId)
     }
 
     val result = executeApi()
@@ -85,9 +84,9 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
   }
 
   /**
-    * GET /api/:version/task/get?accountId=[value]&taskId=[value]
+    * GET /api/3.18/task/get?accountId=[value]&taskId=[value]
     */
-  def getTask(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTask(): Action[AnyContent] = Action { request =>
     def executeApi(): TaskResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -101,7 +100,7 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("taskId", "query string")
         }
         
-      api.getTask(version, accountId, taskId)
+      api.getTask(accountId, taskId)
     }
 
     val result = executeApi()
@@ -110,9 +109,9 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
   }
 
   /**
-    * GET /api/:version/task/search?accountId=[value]&groupingId=[value]&filter=[value]&statuses=[value]&templateTypes=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/task/search?accountId=[value]&groupingId=[value]&filter=[value]&statuses=[value]&templateTypes=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchTasks(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchTasks(): Action[AnyContent] = Action { request =>
     def executeApi(): List[TaskResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -146,7 +145,7 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.searchTasks(version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly)
+      api.searchTasks(accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly)
     }
 
     val result = executeApi()
@@ -155,9 +154,9 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
   }
 
   /**
-    * POST /api/:version/task/update?taskId=[value]&accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&visibility=[value]&active=[value]
+    * POST /api/3.18/task/update?taskId=[value]&accountId=[value]&name=[value]&appKey=[value]&groupingId=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&visibility=[value]&active=[value]
     */
-  def updateTask(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateTask(): Action[AnyContent] = Action { request =>
     def executeApi(): TaskResponse = {
       val taskId = request.getQueryString("taskId")
         .map(value => value.toLong)
@@ -197,7 +196,7 @@ class TaskApiController @Inject()(cc: ControllerComponents, api: TaskApi) extend
       val active = request.getQueryString("active")
         .map(value => value.toBoolean)
         
-      api.updateTask(version, taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active)
+      api.updateTask(taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active)
     }
 
     val result = executeApi()

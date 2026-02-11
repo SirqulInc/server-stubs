@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.PreviewPersonaResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait PreviewPersonaApi {
   /**
     * Create Persona
@@ -20,7 +19,7 @@ trait PreviewPersonaApi {
     * @param latitude the specified latitude of the persona
     * @param longitude the specified longitude of the persona
     */
-  def createPersona(version: BigDecimal, accountId: Long, title: String, previewAccounts: Option[String], date: Option[Long], age: Option[Int], gender: Option[String], gameExperienceLevel: Option[String], latitude: Option[Double], longitude: Option[Double]): PreviewPersonaResponse
+  def createPersona(accountId: Long, title: String, previewAccounts: Option[String], date: Option[Long], age: Option[Int], gender: Option[String], gameExperienceLevel: Option[String], latitude: Option[Double], longitude: Option[Double]): PreviewPersonaResponse
 
   /**
     * Delete Persona
@@ -28,7 +27,7 @@ trait PreviewPersonaApi {
     * @param accountId the account id of the user
     * @param personaId the id of the persona to delete
     */
-  def deletePersona(version: BigDecimal, accountId: Long, personaId: Long): SirqulResponse
+  def deletePersona(accountId: Long, personaId: Long): SirqulResponse
 
   /**
     * Get Persona
@@ -36,7 +35,7 @@ trait PreviewPersonaApi {
     * @param accountId the account ID of the user
     * @param personaId the persona ID of the persona
     */
-  def getPersonaList(version: BigDecimal, accountId: Long, personaId: Long): PreviewPersonaResponse
+  def getPersonaList(accountId: Long, personaId: Long): PreviewPersonaResponse
 
   /**
     * Search Personas
@@ -45,7 +44,7 @@ trait PreviewPersonaApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination (There is a hard limit of 100)
     */
-  def searchPersona(version: BigDecimal, accountId: Long, start: Int, limit: Int): PreviewPersonaResponse
+  def searchPersona(accountId: Long, start: Int, limit: Int): PreviewPersonaResponse
 
   /**
     * Update Persona
@@ -62,5 +61,5 @@ trait PreviewPersonaApi {
     * @param latitude the specified latitude of the persona
     * @param longitude the specified longitude of the persona
     */
-  def updatePersona(version: BigDecimal, accountId: Long, personaId: Long, title: Option[String], previewAccounts: Option[String], active: Option[Boolean], date: Option[Long], age: Option[Int], gender: Option[String], gameExperienceLevel: Option[String], latitude: Option[Double], longitude: Option[Double]): PreviewPersonaResponse
+  def updatePersona(accountId: Long, personaId: Long, title: Option[String], previewAccounts: Option[String], active: Option[Boolean], date: Option[Long], age: Option[Int], gender: Option[String], gameExperienceLevel: Option[String], latitude: Option[Double], longitude: Option[Double]): PreviewPersonaResponse
 }

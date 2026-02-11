@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ScheduledNotificationFullResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api: ScheduledNotificationApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/notification/schedule/create?accountId=[value]&name=[value]&`type`=[value]&message=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]&appKey=[value]&groupingId=[value]&connectionGroupIds=[value]&connectionAccountIds=[value]&audienceId=[value]&audienceIds=[value]&albumIds=[value]&reportId=[value]&reportParams=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&cronType=[value]&metaData=[value]&conditionalInput=[value]&templateType=[value]&visibility=[value]&active=[value]&sendNow=[value]&eventType=[value]&deepLinkURI=[value]&sendToAll=[value]
+    * POST /api/3.18/notification/schedule/create?accountId=[value]&name=[value]&`type`=[value]&message=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]&appKey=[value]&groupingId=[value]&connectionGroupIds=[value]&connectionAccountIds=[value]&audienceId=[value]&audienceIds=[value]&albumIds=[value]&reportId=[value]&reportParams=[value]&endpointURL=[value]&payload=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&cronType=[value]&metaData=[value]&conditionalInput=[value]&templateType=[value]&visibility=[value]&active=[value]&sendNow=[value]&eventType=[value]&deepLinkURI=[value]&sendToAll=[value]
     */
-  def createScheduledNotification(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createScheduledNotification(): Action[AnyContent] = Action { request =>
     def executeApi(): ScheduledNotificationFullResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -107,7 +106,7 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
       val sendToAll = request.getQueryString("sendToAll")
         .map(value => value.toBoolean)
         
-      api.createScheduledNotification(version, accountId, name, `type`, message, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, sendNow, eventType, deepLinkURI, sendToAll)
+      api.createScheduledNotification(accountId, name, `type`, message, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, sendNow, eventType, deepLinkURI, sendToAll)
     }
 
     val result = executeApi()
@@ -116,9 +115,9 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/notification/schedule/delete?accountId=[value]&scheduledNotificationId=[value]&deleteByGroupingId=[value]
+    * POST /api/3.18/notification/schedule/delete?accountId=[value]&scheduledNotificationId=[value]&deleteByGroupingId=[value]
     */
-  def deleteScheduledNotification(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteScheduledNotification(): Action[AnyContent] = Action { request =>
     def executeApi(): ScheduledNotificationFullResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -135,7 +134,7 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
       val deleteByGroupingId = request.getQueryString("deleteByGroupingId")
         .map(value => value.toBoolean)
         
-      api.deleteScheduledNotification(version, accountId, scheduledNotificationId, deleteByGroupingId)
+      api.deleteScheduledNotification(accountId, scheduledNotificationId, deleteByGroupingId)
     }
 
     val result = executeApi()
@@ -144,9 +143,9 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * GET /api/:version/notification/schedule/get?accountId=[value]&scheduledNotificationId=[value]
+    * GET /api/3.18/notification/schedule/get?accountId=[value]&scheduledNotificationId=[value]
     */
-  def getScheduledNotification(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getScheduledNotification(): Action[AnyContent] = Action { request =>
     def executeApi(): ScheduledNotificationFullResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -160,7 +159,7 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
           throw new OpenApiExceptions.MissingRequiredParameterException("scheduledNotificationId", "query string")
         }
         
-      api.getScheduledNotification(version, accountId, scheduledNotificationId)
+      api.getScheduledNotification(accountId, scheduledNotificationId)
     }
 
     val result = executeApi()
@@ -169,9 +168,9 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/notification/schedule/generate?accountId=[value]&appKey=[value]&reportName=[value]&reportParams=[value]&message=[value]&offset=[value]&`type`=[value]&recipientReportId=[value]
+    * POST /api/3.18/notification/schedule/generate?accountId=[value]&appKey=[value]&reportName=[value]&reportParams=[value]&message=[value]&offset=[value]&`type`=[value]&recipientReportId=[value]
     */
-  def scheduleNotificationListings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def scheduleNotificationListings(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -210,7 +209,7 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
           throw new OpenApiExceptions.MissingRequiredParameterException("recipientReportId", "query string")
         }
         
-      api.scheduleNotificationListings(version, accountId, appKey, reportName, message, offset, recipientReportId, reportParams, `type`)
+      api.scheduleNotificationListings(accountId, appKey, reportName, message, offset, recipientReportId, reportParams, `type`)
     }
 
     val result = executeApi()
@@ -219,9 +218,9 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * GET /api/:version/notification/schedule/search?accountId=[value]&groupingId=[value]&audienceId=[value]&filter=[value]&types=[value]&contentIds=[value]&contentTypes=[value]&parentIds=[value]&parentTypes=[value]&statuses=[value]&templateTypes=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&groupByGroupingId=[value]&returnAudienceAccountCount=[value]
+    * GET /api/3.18/notification/schedule/search?accountId=[value]&groupingId=[value]&audienceId=[value]&filter=[value]&types=[value]&contentIds=[value]&contentTypes=[value]&parentIds=[value]&parentTypes=[value]&statuses=[value]&templateTypes=[value]&appKey=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&groupByGroupingId=[value]&returnAudienceAccountCount=[value]
     */
-  def searchScheduledNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchScheduledNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): ScheduledNotificationFullResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -274,7 +273,7 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
       val returnAudienceAccountCount = request.getQueryString("returnAudienceAccountCount")
         .map(value => value.toBoolean)
         
-      api.searchScheduledNotifications(version, accountId, groupingId, audienceId, filter, types, contentIds, contentTypes, parentIds, parentTypes, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, groupByGroupingId, returnAudienceAccountCount)
+      api.searchScheduledNotifications(accountId, groupingId, audienceId, filter, types, contentIds, contentTypes, parentIds, parentTypes, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, groupByGroupingId, returnAudienceAccountCount)
     }
 
     val result = executeApi()
@@ -283,9 +282,9 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/notification/schedule/update?scheduledNotificationId=[value]&accountId=[value]&name=[value]&`type`=[value]&message=[value]&payload=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]&appKey=[value]&groupingId=[value]&connectionGroupIds=[value]&connectionAccountIds=[value]&audienceId=[value]&audienceIds=[value]&albumIds=[value]&reportId=[value]&reportParams=[value]&endpointURL=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&cronType=[value]&metaData=[value]&conditionalInput=[value]&templateType=[value]&visibility=[value]&active=[value]&errorMessage=[value]&status=[value]&updateByGroupingId=[value]&sendNow=[value]&eventType=[value]&deepLinkURI=[value]&sendToAll=[value]
+    * POST /api/3.18/notification/schedule/update?scheduledNotificationId=[value]&accountId=[value]&name=[value]&`type`=[value]&message=[value]&payload=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]&appKey=[value]&groupingId=[value]&connectionGroupIds=[value]&connectionAccountIds=[value]&audienceId=[value]&audienceIds=[value]&albumIds=[value]&reportId=[value]&reportParams=[value]&endpointURL=[value]&scheduledDate=[value]&startDate=[value]&endDate=[value]&cronExpression=[value]&cronType=[value]&metaData=[value]&conditionalInput=[value]&templateType=[value]&visibility=[value]&active=[value]&errorMessage=[value]&status=[value]&updateByGroupingId=[value]&sendNow=[value]&eventType=[value]&deepLinkURI=[value]&sendToAll=[value]
     */
-  def updateScheduledNotification(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateScheduledNotification(): Action[AnyContent] = Action { request =>
     def executeApi(): ScheduledNotificationFullResponse = {
       val scheduledNotificationId = request.getQueryString("scheduledNotificationId")
         .map(value => value.toLong)
@@ -382,7 +381,7 @@ class ScheduledNotificationApiController @Inject()(cc: ControllerComponents, api
       val sendToAll = request.getQueryString("sendToAll")
         .map(value => value.toBoolean)
         
-      api.updateScheduledNotification(version, scheduledNotificationId, accountId, name, `type`, message, payload, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, errorMessage, status, updateByGroupingId, sendNow, eventType, deepLinkURI, sendToAll)
+      api.updateScheduledNotification(scheduledNotificationId, accountId, name, `type`, message, payload, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, errorMessage, status, updateByGroupingId, sendNow, eventType, deepLinkURI, sendToAll)
     }
 
     val result = executeApi()

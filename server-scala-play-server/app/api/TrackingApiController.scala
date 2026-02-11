@@ -5,7 +5,6 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.AccountMiniResponse
-import model.BigDecimal
 import model.Leg
 import model.LegResponse
 import model.PredictedLocationResponse
@@ -13,13 +12,13 @@ import model.PreferredLocationResponse
 import model.SirqulResponse
 import model.StepResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/tracking/batch/create?deviceId=[value]&accountId=[value]&data=[value]&generateAccounts=[value]&updateAccountLocations=[value]&defaultTag=[value]&slaveUID=[value]
+    * POST /api/3.18/tracking/batch/create?deviceId=[value]&accountId=[value]&data=[value]&generateAccounts=[value]&updateAccountLocations=[value]&defaultTag=[value]&slaveUID=[value]
     */
-  def batchSaveTracking(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def batchSaveTracking(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Leg] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -41,7 +40,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
         
       val slaveUID = request.getQueryString("slaveUID")
         
-      api.batchSaveTracking(version, data, deviceId, accountId, generateAccounts, updateAccountLocations, defaultTag, slaveUID)
+      api.batchSaveTracking(data, deviceId, accountId, generateAccounts, updateAccountLocations, defaultTag, slaveUID)
     }
 
     val result = executeApi()
@@ -50,9 +49,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * GET /api/:version/tracking/predicted/get?accountId=[value]&latitude=[value]&longitude=[value]&dateCheck=[value]&hourCheck=[value]&threshold=[value]&distanceUnit=[value]&searchRange=[value]&sortOrder=[value]
+    * GET /api/3.18/tracking/predicted/get?accountId=[value]&latitude=[value]&longitude=[value]&dateCheck=[value]&hourCheck=[value]&threshold=[value]&distanceUnit=[value]&searchRange=[value]&sortOrder=[value]
     */
-  def getPredictedLocations(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPredictedLocations(): Action[AnyContent] = Action { request =>
     def executeApi(): PredictedLocationResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -81,7 +80,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
         
       val sortOrder = request.getQueryString("sortOrder")
         
-      api.getPredictedLocations(version, accountId, latitude, longitude, dateCheck, hourCheck, threshold, distanceUnit, searchRange, sortOrder)
+      api.getPredictedLocations(accountId, latitude, longitude, dateCheck, hourCheck, threshold, distanceUnit, searchRange, sortOrder)
     }
 
     val result = executeApi()
@@ -90,9 +89,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * GET /api/:version/tracking/path/get?accountId=[value]&startStepId=[value]&endStepId=[value]
+    * GET /api/3.18/tracking/path/get?accountId=[value]&startStepId=[value]&endStepId=[value]
     */
-  def getPredictedPath(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPredictedPath(): Action[AnyContent] = Action { request =>
     def executeApi(): List[StepResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -112,7 +111,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
           throw new OpenApiExceptions.MissingRequiredParameterException("endStepId", "query string")
         }
         
-      api.getPredictedPath(version, accountId, startStepId, endStepId)
+      api.getPredictedPath(accountId, startStepId, endStepId)
     }
 
     val result = executeApi()
@@ -121,9 +120,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * GET /api/:version/tracking/preferred/search?accountId=[value]&latitude=[value]&longitude=[value]&dateCheck=[value]&hourCheck=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&searchRange=[value]&distanceUnit=[value]
+    * GET /api/3.18/tracking/preferred/search?accountId=[value]&latitude=[value]&longitude=[value]&dateCheck=[value]&hourCheck=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&searchRange=[value]&distanceUnit=[value]
     */
-  def getPreferredLocations(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPreferredLocations(): Action[AnyContent] = Action { request =>
     def executeApi(): List[PreferredLocationResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -158,7 +157,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
         
       val distanceUnit = request.getQueryString("distanceUnit")
         
-      api.getPreferredLocations(version, accountId, latitude, longitude, dateCheck, hourCheck, sortField, descending, start, limit, searchRange, distanceUnit)
+      api.getPreferredLocations(accountId, latitude, longitude, dateCheck, hourCheck, sortField, descending, start, limit, searchRange, distanceUnit)
     }
 
     val result = executeApi()
@@ -167,9 +166,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * GET /api/:version/tracking/search?deviceId=[value]&accountId=[value]&ownerId=[value]&trackingDeviceId=[value]&startDate=[value]&endDate=[value]&tags=[value]&getLastPoint=[value]
+    * GET /api/3.18/tracking/search?deviceId=[value]&accountId=[value]&ownerId=[value]&trackingDeviceId=[value]&startDate=[value]&endDate=[value]&tags=[value]&getLastPoint=[value]
     */
-  def getTrackingLegs(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTrackingLegs(): Action[AnyContent] = Action { request =>
     def executeApi(): List[LegResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -192,7 +191,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
       val getLastPoint = request.getQueryString("getLastPoint")
         .map(value => value.toBoolean)
         
-      api.getTrackingLegs(version, deviceId, accountId, ownerId, trackingDeviceId, startDate, endDate, tags, getLastPoint)
+      api.getTrackingLegs(deviceId, accountId, ownerId, trackingDeviceId, startDate, endDate, tags, getLastPoint)
     }
 
     val result = executeApi()
@@ -201,9 +200,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * POST /api/:version/tracking/leg/create?deviceId=[value]&accountId=[value]&distance=[value]&duration=[value]&startLat=[value]&startLng=[value]&startDate=[value]&endLat=[value]&endLng=[value]&endDate=[value]&steps=[value]&tags=[value]
+    * POST /api/3.18/tracking/leg/create?deviceId=[value]&accountId=[value]&distance=[value]&duration=[value]&startLat=[value]&startLng=[value]&startDate=[value]&endLat=[value]&endLng=[value]&endDate=[value]&steps=[value]&tags=[value]
     */
-  def saveTrackingLeg(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def saveTrackingLeg(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -256,7 +255,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
         
       val tags = request.getQueryString("tags")
         
-      api.saveTrackingLeg(version, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, steps, tags)
+      api.saveTrackingLeg(startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, steps, tags)
     }
 
     val result = executeApi()
@@ -265,9 +264,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * POST /api/:version/tracking/step/create?deviceId=[value]&accountId=[value]&legId=[value]&distance=[value]&duration=[value]&startLat=[value]&startLng=[value]&startDate=[value]&endLat=[value]&endLng=[value]&endDate=[value]
+    * POST /api/3.18/tracking/step/create?deviceId=[value]&accountId=[value]&legId=[value]&distance=[value]&duration=[value]&startLat=[value]&startLng=[value]&startDate=[value]&endLat=[value]&endLng=[value]&endDate=[value]
     */
-  def saveTrackingStep(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def saveTrackingStep(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -322,7 +321,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
           throw new OpenApiExceptions.MissingRequiredParameterException("endDate", "query string")
         }
         
-      api.saveTrackingStep(version, legId, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration)
+      api.saveTrackingStep(legId, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration)
     }
 
     val result = executeApi()
@@ -331,9 +330,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * GET /api/:version/tracking/list?accountId=[value]&keyword=[value]&startDate=[value]&endDate=[value]&tags=[value]&audienceIds=[value]&latitude=[value]&longitude=[value]&range=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/tracking/list?accountId=[value]&keyword=[value]&startDate=[value]&endDate=[value]&tags=[value]&audienceIds=[value]&latitude=[value]&longitude=[value]&range=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchAccountsWithTrackingLegs(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchAccountsWithTrackingLegs(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AccountMiniResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -376,7 +375,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
       val activeOnly = request.getQueryString("activeOnly")
         .map(value => value.toBoolean)
         
-      api.searchAccountsWithTrackingLegs(version, accountId, keyword, startDate, endDate, tags, audienceIds, latitude, longitude, range, sortField, descending, start, limit, activeOnly)
+      api.searchAccountsWithTrackingLegs(accountId, keyword, startDate, endDate, tags, audienceIds, latitude, longitude, range, sortField, descending, start, limit, activeOnly)
     }
 
     val result = executeApi()
@@ -385,9 +384,9 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
   }
 
   /**
-    * GET /api/:version/tracking/searchByBillable?accountId=[value]&appKey=[value]&trackingDeviceId=[value]&startDate=[value]&endDate=[value]&tags=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/tracking/searchByBillable?accountId=[value]&appKey=[value]&trackingDeviceId=[value]&startDate=[value]&endDate=[value]&tags=[value]&start=[value]&limit=[value]
     */
-  def searchTrackingLegs(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchTrackingLegs(): Action[AnyContent] = Action { request =>
     def executeApi(): List[LegResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -416,7 +415,7 @@ class TrackingApiController @Inject()(cc: ControllerComponents, api: TrackingApi
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchTrackingLegs(version, accountId, appKey, trackingDeviceId, startDate, endDate, tags, start, limit)
+      api.searchTrackingLegs(accountId, appKey, trackingDeviceId, startDate, endDate, tags, start, limit)
     }
 
     val result = executeApi()

@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.OfferTransactionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait WalletApi {
   /**
     * Create Wallet Offers
@@ -22,7 +21,7 @@ trait WalletApi {
     * @param appKey The application requesting the purchase, required when currencyType is TICKETS
     * @param status Custom status value to change to (0 or 1 for redeem, 5 or 6 for membership)
     */
-  def createOfferTransaction(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], offerCart: Option[String], promoCode: Option[String], currencyType: Option[String], usePoints: Option[Boolean], metaData: Option[String], appKey: Option[String], status: Option[Int]): List[OfferTransactionResponse]
+  def createOfferTransaction(deviceId: Option[String], accountId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], offerCart: Option[String], promoCode: Option[String], currencyType: Option[String], usePoints: Option[Boolean], metaData: Option[String], appKey: Option[String], status: Option[Int]): List[OfferTransactionResponse]
 
   /**
     * Delete Wallet Offer
@@ -31,7 +30,7 @@ trait WalletApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def deleteOfferTransaction(version: BigDecimal, transactionId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def deleteOfferTransaction(transactionId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Wallet Offer
@@ -43,7 +42,7 @@ trait WalletApi {
     * @param longitude The latitude location of the user
     * @param returnFullResponse Determines whether to return a detailed version of the response
     */
-  def getOfferTransaction(version: BigDecimal, transactionId: Long, deviceId: Option[String], accountId: Option[Long], includeMission: Option[Boolean], latitude: Option[Double], longitude: Option[Double], returnFullResponse: Option[Boolean]): OfferTransactionResponse
+  def getOfferTransaction(transactionId: Long, deviceId: Option[String], accountId: Option[Long], includeMission: Option[Boolean], latitude: Option[Double], longitude: Option[Double], returnFullResponse: Option[Boolean]): OfferTransactionResponse
 
   /**
     * Preview Wallet Offers
@@ -59,7 +58,7 @@ trait WalletApi {
     * @param metaData External custom client defined data
     * @param appKey The application requesting the purchase, required when currencyType is TICKETS
     */
-  def previewOfferTransaction(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], offerCart: Option[String], promoCode: Option[String], currencyType: Option[String], usePoints: Option[Boolean], metaData: Option[String], appKey: Option[String]): List[OfferTransactionResponse]
+  def previewOfferTransaction(deviceId: Option[String], accountId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], offerCart: Option[String], promoCode: Option[String], currencyType: Option[String], usePoints: Option[Boolean], metaData: Option[String], appKey: Option[String]): List[OfferTransactionResponse]
 
   /**
     * Search Wallet Offers
@@ -106,7 +105,7 @@ trait WalletApi {
     * @param recurringExpirationSince Filter results by the recurring billing expiration date
     * @param recurringExpirationBefore Filter results by the recurring billing expiration date
     */
-  def searchOfferTransactions(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], keyword: Option[String], retailerId: Option[Long], retailerIds: Option[String], retailerLocationId: Option[Long], retailerLocationIds: Option[String], excludeRetailerLocationIds: Option[String], offerId: Option[Long], offerIds: Option[String], offerLocationId: Option[Long], offerLocationIds: Option[String], offerType: Option[String], offerTypes: Option[String], specialOfferType: Option[String], specialOfferTypes: Option[String], categoryIds: Option[String], filterIds: Option[String], offerAudienceIds: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], latitude: Option[Double], longitude: Option[Double], redeemableStartDate: Option[Long], redeemableEndDate: Option[Long], filterByParentOffer: Option[Boolean], startedSince: Option[Long], startedBefore: Option[Long], endedSince: Option[Long], endedBefore: Option[Long], redeemed: Option[Boolean], statuses: Option[String], reservationsOnly: Option[Boolean], activeOnly: Option[Boolean], returnFullResponse: Option[Boolean], recurringStartedSince: Option[Long], recurringStartedBefore: Option[Long], recurringExpirationSince: Option[Long], recurringExpirationBefore: Option[Long]): List[OfferTransactionResponse]
+  def searchOfferTransactions(deviceId: Option[String], accountId: Option[Long], keyword: Option[String], retailerId: Option[Long], retailerIds: Option[String], retailerLocationId: Option[Long], retailerLocationIds: Option[String], excludeRetailerLocationIds: Option[String], offerId: Option[Long], offerIds: Option[String], offerLocationId: Option[Long], offerLocationIds: Option[String], offerType: Option[String], offerTypes: Option[String], specialOfferType: Option[String], specialOfferTypes: Option[String], categoryIds: Option[String], filterIds: Option[String], offerAudienceIds: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], latitude: Option[Double], longitude: Option[Double], redeemableStartDate: Option[Long], redeemableEndDate: Option[Long], filterByParentOffer: Option[Boolean], startedSince: Option[Long], startedBefore: Option[Long], endedSince: Option[Long], endedBefore: Option[Long], redeemed: Option[Boolean], statuses: Option[String], reservationsOnly: Option[Boolean], activeOnly: Option[Boolean], returnFullResponse: Option[Boolean], recurringStartedSince: Option[Long], recurringStartedBefore: Option[Long], recurringExpirationSince: Option[Long], recurringExpirationBefore: Option[Long]): List[OfferTransactionResponse]
 
   /**
     * Update Wallet Offer
@@ -125,5 +124,5 @@ trait WalletApi {
     * @param returnFullResponse Determines whether to return a detailed version of the response
     * @param exceptionMembershipOfferIds Exception Offers, transaction audiences of these offers won&#39;t be removed out of the account when up
     */
-  def updateOfferTransaction(version: BigDecimal, transactionId: Long, status: Int, deviceId: Option[String], accountId: Option[Long], offerLocationId: Option[Long], currencyType: Option[String], usePoints: Option[Boolean], appKey: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], returnFullResponse: Option[Boolean], exceptionMembershipOfferIds: Option[String]): OfferTransactionResponse
+  def updateOfferTransaction(transactionId: Long, status: Int, deviceId: Option[String], accountId: Option[Long], offerLocationId: Option[Long], currencyType: Option[String], usePoints: Option[Boolean], appKey: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], returnFullResponse: Option[Boolean], exceptionMembershipOfferIds: Option[String]): OfferTransactionResponse
 }

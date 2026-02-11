@@ -5,16 +5,15 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.AppResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AppDataApiController @Inject()(cc: ControllerComponents, api: AppDataApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/app/get?deviceId=[value]&accountId=[value]&gameType=[value]&includeGameData=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&gameObjectCount=[value]&filter=[value]&dateCreated=[value]&ownerId=[value]&missionIds=[value]&gameIds=[value]&packIds=[value]&gameLevelIds=[value]&appVersion=[value]&includeHigherVersionPacks=[value]&includeHigherVersionLevels=[value]&responseGroups=[value]&purchaseType=[value]
+    * GET /api/3.18/app/get?deviceId=[value]&accountId=[value]&gameType=[value]&includeGameData=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&gameObjectCount=[value]&filter=[value]&dateCreated=[value]&ownerId=[value]&missionIds=[value]&gameIds=[value]&packIds=[value]&gameLevelIds=[value]&appVersion=[value]&includeHigherVersionPacks=[value]&includeHigherVersionLevels=[value]&responseGroups=[value]&purchaseType=[value]
     */
-  def getAppData(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAppData(): Action[AnyContent] = Action { request =>
     def executeApi(): AppResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -84,7 +83,7 @@ class AppDataApiController @Inject()(cc: ControllerComponents, api: AppDataApi) 
         
       val purchaseType = request.getQueryString("purchaseType")
         
-      api.getAppData(version, start, limit, deviceId, accountId, gameType, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType)
+      api.getAppData(start, limit, deviceId, accountId, gameType, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType)
     }
 
     val result = executeApi()
@@ -93,9 +92,9 @@ class AppDataApiController @Inject()(cc: ControllerComponents, api: AppDataApi) 
   }
 
   /**
-    * POST /api/:version/app/post?deviceId=[value]&accountId=[value]&gameType=[value]&includeGameData=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&gameObjectCount=[value]&filter=[value]&dateCreated=[value]&ownerId=[value]&missionIds=[value]&gameIds=[value]&packIds=[value]&gameLevelIds=[value]&appVersion=[value]&includeHigherVersionPacks=[value]&includeHigherVersionLevels=[value]&responseGroups=[value]&purchaseType=[value]&data=[value]
+    * POST /api/3.18/app/post?deviceId=[value]&accountId=[value]&gameType=[value]&includeGameData=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&gameObjectCount=[value]&filter=[value]&dateCreated=[value]&ownerId=[value]&missionIds=[value]&gameIds=[value]&packIds=[value]&gameLevelIds=[value]&appVersion=[value]&includeHigherVersionPacks=[value]&includeHigherVersionLevels=[value]&responseGroups=[value]&purchaseType=[value]&data=[value]
     */
-  def postAppData(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def postAppData(): Action[AnyContent] = Action { request =>
     def executeApi(): AppResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -173,7 +172,7 @@ class AppDataApiController @Inject()(cc: ControllerComponents, api: AppDataApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("data", "query string")
         }
         
-      api.postAppData(version, gameType, start, limit, data, deviceId, accountId, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType)
+      api.postAppData(gameType, start, limit, data, deviceId, accountId, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType)
     }
 
     val result = executeApi()
@@ -182,9 +181,9 @@ class AppDataApiController @Inject()(cc: ControllerComponents, api: AppDataApi) 
   }
 
   /**
-    * POST /api/:version/app/regen?accountId=[value]&appKey=[value]&buildVersion=[value]&apiVersion=[value]
+    * POST /api/3.18/app/regen?accountId=[value]&appKey=[value]&buildVersion=[value]&apiVersion=[value]
     */
-  def regenAppData(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def regenAppData(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -195,7 +194,7 @@ class AppDataApiController @Inject()(cc: ControllerComponents, api: AppDataApi) 
         
       val apiVersion = request.getQueryString("apiVersion")
         
-      api.regenAppData(version, accountId, appKey, buildVersion, apiVersion)
+      api.regenAppData(accountId, appKey, buildVersion, apiVersion)
     }
 
     val result = executeApi()

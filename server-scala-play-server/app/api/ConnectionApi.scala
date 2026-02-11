@@ -1,14 +1,13 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ConnectionGroupResponse
 import model.ConnectionInfoResponse
 import model.ConnectionListResponse
 import model.ConnectionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ConnectionApi {
   /**
     * Add Connection
@@ -23,7 +22,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def addConnectionToGroup(version: BigDecimal, returnNulls: Boolean, groupId: Long, deviceId: Option[String], accountId: Option[Long], connectionId: Option[Long], connectionAccountId: Option[Long], pendingId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def addConnectionToGroup(returnNulls: Boolean, groupId: Long, deviceId: Option[String], accountId: Option[Long], connectionId: Option[Long], connectionAccountId: Option[Long], pendingId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Add Connections
@@ -36,7 +35,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def addConnectionsToGroup(version: BigDecimal, connectionGroupId: Long, deviceId: Option[String], accountId: Option[Long], connectionIds: Option[String], connectionAccountIds: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def addConnectionsToGroup(connectionGroupId: Long, deviceId: Option[String], accountId: Option[Long], connectionIds: Option[String], connectionAccountIds: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Add Connection Groups
@@ -49,7 +48,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def addSubGroups(version: BigDecimal, returnNulls: Boolean, groupId: Long, subGroupIds: String, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): ConnectionGroupResponse
+  def addSubGroups(returnNulls: Boolean, groupId: Long, subGroupIds: String, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): ConnectionGroupResponse
 
   /**
     * Create or Update Connection
@@ -69,7 +68,7 @@ trait ConnectionApi {
     * @param isFollowing determines whether the user is following this account
     * @param connectionResponse whether to return the connection response or not
     */
-  def createOrUpdateConnection(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], connectionId: Option[Long], connectionAccountId: Option[Long], pendingId: Option[Long], groupId: Option[Long], gameType: Option[String], appKey: Option[String], isTrusted: Option[Boolean], ignoreFriendRequest: Option[Boolean], isContact: Option[Boolean], isBlocked: Option[Boolean], isFollowing: Option[Boolean], connectionResponse: Option[Boolean]): ConnectionResponse
+  def createOrUpdateConnection(deviceId: Option[String], accountId: Option[Long], connectionId: Option[Long], connectionAccountId: Option[Long], pendingId: Option[Long], groupId: Option[Long], gameType: Option[String], appKey: Option[String], isTrusted: Option[Boolean], ignoreFriendRequest: Option[Boolean], isContact: Option[Boolean], isBlocked: Option[Boolean], isFollowing: Option[Boolean], connectionResponse: Option[Boolean]): ConnectionResponse
 
   /**
     * Create or Update Connection Group
@@ -89,7 +88,7 @@ trait ConnectionApi {
     * @param latitude the latitude of the group
     * @param longitude the longitude of the group
     */
-  def createOrUpdateGroup(version: BigDecimal, returnNulls: Boolean, deviceId: Option[String], accountId: Option[Long], name: Option[String], groupId: Option[Long], assetId: Option[Long], connections: Option[String], description: Option[String], canViewProfileInfo: Option[Boolean], canViewGameInfo: Option[Boolean], canViewFriendInfo: Option[Boolean], active: Option[Boolean], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def createOrUpdateGroup(returnNulls: Boolean, deviceId: Option[String], accountId: Option[Long], name: Option[String], groupId: Option[Long], assetId: Option[Long], connections: Option[String], description: Option[String], canViewProfileInfo: Option[Boolean], canViewGameInfo: Option[Boolean], canViewFriendInfo: Option[Boolean], active: Option[Boolean], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Accept Follow Request
@@ -98,7 +97,7 @@ trait ConnectionApi {
     * @param connectionAccountId the account ID of the user who initiated the follow
     * @param appKey the application key for sending notifications
     */
-  def followAccept(version: BigDecimal, accountId: Long, connectionAccountId: Long, appKey: String): SirqulResponse
+  def followAccept(accountId: Long, connectionAccountId: Long, appKey: String): SirqulResponse
 
   /**
     * Reject Follow Request
@@ -107,7 +106,7 @@ trait ConnectionApi {
     * @param connectionAccountId the account ID of the user who initiated the follow
     * @param appKey the application key for sending notifications
     */
-  def followReject(version: BigDecimal, accountId: Long, connectionAccountId: Long, appKey: String): SirqulResponse
+  def followReject(accountId: Long, connectionAccountId: Long, appKey: String): SirqulResponse
 
   /**
     * Remove Follower / Unfollow
@@ -116,7 +115,7 @@ trait ConnectionApi {
     * @param connectionAccountId the account ID of the user who you want to unfollow
     * @param appKey the application key for sending notifications
     */
-  def followRemove(version: BigDecimal, accountId: Long, connectionAccountId: Long, appKey: String): SirqulResponse
+  def followRemove(accountId: Long, connectionAccountId: Long, appKey: String): SirqulResponse
 
   /**
     * Send Follow Request
@@ -126,7 +125,7 @@ trait ConnectionApi {
     * @param appKey the application key for sending notifications
     * @param approvalNeeded determines if the other user needs to confirm the follow request
     */
-  def followRequest(version: BigDecimal, accountId: Long, connectionAccountId: Long, appKey: String, approvalNeeded: Option[Boolean]): SirqulResponse
+  def followRequest(accountId: Long, connectionAccountId: Long, appKey: String, approvalNeeded: Option[Boolean]): SirqulResponse
 
   /**
     * Accept Friend
@@ -139,7 +138,7 @@ trait ConnectionApi {
     * @param appKey the application key
     * @param notificationMessage optional message to send in a notification
     */
-  def friendAccept(version: BigDecimal, friendAccountId: Long, notifyFriend: Boolean, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], notificationMessage: Option[String]): SirqulResponse
+  def friendAccept(friendAccountId: Long, notifyFriend: Boolean, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], notificationMessage: Option[String]): SirqulResponse
 
   /**
     * Decline Friend
@@ -152,7 +151,7 @@ trait ConnectionApi {
     * @param notifyFriend determines whether to send a notification to the afflicting party
     * @param notificationMessage optional message to send in a notification
     */
-  def friendReject(version: BigDecimal, friendAccountId: Long, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], notifyFriend: Option[Boolean], notificationMessage: Option[String]): SirqulResponse
+  def friendReject(friendAccountId: Long, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], notifyFriend: Option[Boolean], notificationMessage: Option[String]): SirqulResponse
 
   /**
     * Delete Friend
@@ -163,7 +162,7 @@ trait ConnectionApi {
     * @param notifyFriend optionally notifies the connection that they have been removed as a friend
     * @param removeFromGroups optionally removes the connection from the user&#39;s groups
     */
-  def friendRemove(version: BigDecimal, friendAccountId: Long, deviceId: Option[String], accountId: Option[Long], notifyFriend: Option[Boolean], removeFromGroups: Option[Boolean]): SirqulResponse
+  def friendRemove(friendAccountId: Long, deviceId: Option[String], accountId: Option[Long], notifyFriend: Option[Boolean], removeFromGroups: Option[Boolean]): SirqulResponse
 
   /**
     * Request Friend
@@ -175,7 +174,7 @@ trait ConnectionApi {
     * @param appKey the application key
     * @param notificationMessage optional message to send in a notification
     */
-  def friendRequest(version: BigDecimal, friendAccountId: Long, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], notificationMessage: Option[String]): SirqulResponse
+  def friendRequest(friendAccountId: Long, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], notificationMessage: Option[String]): SirqulResponse
 
   /**
     * Get Sent Friend Requests
@@ -183,7 +182,7 @@ trait ConnectionApi {
     * @param deviceId the ID of the device
     * @param accountId the id of the account
     */
-  def getConnectionSentFriendRequests(version: BigDecimal, deviceId: Option[String], accountId: Option[Long]): ConnectionListResponse
+  def getConnectionSentFriendRequests(deviceId: Option[String], accountId: Option[Long]): ConnectionListResponse
 
   /**
     * Search Connections
@@ -204,7 +203,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def getConnections(version: BigDecimal, returnNulls: Boolean, filter: String, sortField: String, descending: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], q: Option[String], keyword: Option[String], i: Option[Int], l: Option[Int], latitude: Option[Double], longitude: Option[Double]): ConnectionListResponse
+  def getConnections(returnNulls: Boolean, filter: String, sortField: String, descending: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], q: Option[String], keyword: Option[String], i: Option[Int], l: Option[Int], latitude: Option[Double], longitude: Option[Double]): ConnectionListResponse
 
   /**
     * Get Connection Group
@@ -215,7 +214,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def getGroupDetails(version: BigDecimal, combineConnections: Boolean, deviceId: Option[String], accountId: Option[Long], groupId: Option[Long], latitude: Option[Double], longitude: Option[Double]): ConnectionGroupResponse
+  def getGroupDetails(combineConnections: Boolean, deviceId: Option[String], accountId: Option[Long], groupId: Option[Long], latitude: Option[Double], longitude: Option[Double]): ConnectionGroupResponse
 
   /**
     * Search Connection Groups
@@ -231,7 +230,7 @@ trait ConnectionApi {
     * @param longitude the current longitude of the user
     * @param keyword keyword search string
     */
-  def groupSearch(version: BigDecimal, sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], keyword: Option[String]): List[ConnectionInfoResponse]
+  def groupSearch(sortField: String, descending: Boolean, activeOnly: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], keyword: Option[String]): List[ConnectionInfoResponse]
 
   /**
     * Delete Connection
@@ -246,7 +245,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def removeConnectionFromGroup(version: BigDecimal, returnNulls: Boolean, groupId: Long, deviceId: Option[String], accountId: Option[Long], connectionId: Option[Long], connectionAccountId: Option[Long], pendingId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def removeConnectionFromGroup(returnNulls: Boolean, groupId: Long, deviceId: Option[String], accountId: Option[Long], connectionId: Option[Long], connectionAccountId: Option[Long], pendingId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Remove Connections
@@ -259,7 +258,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def removeConnectionsFromGroup(version: BigDecimal, connectionGroupId: Long, deviceId: Option[String], accountId: Option[Long], connectionIds: Option[String], connectionAccountIds: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def removeConnectionsFromGroup(connectionGroupId: Long, deviceId: Option[String], accountId: Option[Long], connectionIds: Option[String], connectionAccountIds: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Delete Connection Group
@@ -271,7 +270,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def removeGroup(version: BigDecimal, returnNulls: Boolean, groupId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def removeGroup(returnNulls: Boolean, groupId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Remove Connection Groups
@@ -284,7 +283,7 @@ trait ConnectionApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def removeSubGroups(version: BigDecimal, returnNulls: Boolean, groupId: Long, subGroupIds: String, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def removeSubGroups(returnNulls: Boolean, groupId: Long, subGroupIds: String, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Search Possible Connections
@@ -305,5 +304,5 @@ trait ConnectionApi {
     * @param sortField the field to sort on
     * @param hasLocation whether the search has location or not
     */
-  def searchConnections(version: BigDecimal, returnNulls: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], q: Option[String], keyword: Option[String], latitude: Option[Double], longitude: Option[Double], gameType: Option[String], appKey: Option[String], i: Option[Int], l: Option[Int], sortField: Option[String], hasLocation: Option[Boolean]): ConnectionListResponse
+  def searchConnections(returnNulls: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], q: Option[String], keyword: Option[String], latitude: Option[Double], longitude: Option[Double], gameType: Option[String], appKey: Option[String], i: Option[Int], l: Option[Int], sortField: Option[String], hasLocation: Option[Boolean]): ConnectionListResponse
 }

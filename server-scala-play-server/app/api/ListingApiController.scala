@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ListingFullResponse
 import model.ListingGroupResponse
 import model.ListingResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/listing/create?accountId=[value]&name=[value]&filterIds=[value]&description=[value]&start=[value]&end=[value]&locationName=[value]&locationDescription=[value]&isPrivate=[value]&externalId=[value]&externalId2=[value]&externalGroupId=[value]&active=[value]&metaData=[value]
+    * POST /api/3.18/listing/create?accountId=[value]&name=[value]&filterIds=[value]&description=[value]&start=[value]&end=[value]&locationName=[value]&locationDescription=[value]&isPrivate=[value]&externalId=[value]&externalId2=[value]&externalGroupId=[value]&active=[value]&metaData=[value]
     */
-  def createListing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createListing(): Action[AnyContent] = Action { request =>
     def executeApi(): ListingFullResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -57,7 +56,7 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
         
       val metaData = request.getQueryString("metaData")
         
-      api.createListing(version, accountId, name, filterIds, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData)
+      api.createListing(accountId, name, filterIds, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData)
     }
 
     val result = executeApi()
@@ -66,9 +65,9 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
   }
 
   /**
-    * POST /api/:version/listing/delete?accountId=[value]&listingId=[value]
+    * POST /api/3.18/listing/delete?accountId=[value]&listingId=[value]
     */
-  def deleteListing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteListing(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -82,7 +81,7 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("listingId", "query string")
         }
         
-      api.deleteListing(version, accountId, listingId)
+      api.deleteListing(accountId, listingId)
     }
 
     val result = executeApi()
@@ -91,9 +90,9 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
   }
 
   /**
-    * GET /api/:version/listing/get?listingId=[value]
+    * GET /api/3.18/listing/get?listingId=[value]
     */
-  def getListing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getListing(): Action[AnyContent] = Action { request =>
     def executeApi(): ListingFullResponse = {
       val listingId = request.getQueryString("listingId")
         .map(value => value.toLong)
@@ -101,7 +100,7 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("listingId", "query string")
         }
         
-      api.getListing(version, listingId)
+      api.getListing(listingId)
     }
 
     val result = executeApi()
@@ -110,9 +109,9 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
   }
 
   /**
-    * GET /api/:version/listing/search?accountId=[value]&keyword=[value]&start=[value]&limit=[value]&activeOnly=[value]&latitude=[value]&longitude=[value]&startDate=[value]&endDate=[value]&categoryIds=[value]&filterIds=[value]&useListingOrderIds=[value]&externalId=[value]&externalId2=[value]&externalGroupId=[value]
+    * GET /api/3.18/listing/search?accountId=[value]&keyword=[value]&start=[value]&limit=[value]&activeOnly=[value]&latitude=[value]&longitude=[value]&startDate=[value]&endDate=[value]&categoryIds=[value]&filterIds=[value]&useListingOrderIds=[value]&externalId=[value]&externalId2=[value]&externalGroupId=[value]
     */
-  def searchListing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchListing(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ListingResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -153,7 +152,7 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
         
       val externalGroupId = request.getQueryString("externalGroupId")
         
-      api.searchListing(version, accountId, keyword, start, limit, activeOnly, latitude, longitude, startDate, endDate, categoryIds, filterIds, useListingOrderIds, externalId, externalId2, externalGroupId)
+      api.searchListing(accountId, keyword, start, limit, activeOnly, latitude, longitude, startDate, endDate, categoryIds, filterIds, useListingOrderIds, externalId, externalId2, externalGroupId)
     }
 
     val result = executeApi()
@@ -162,9 +161,9 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
   }
 
   /**
-    * GET /api/:version/listing/summary?accountId=[value]&startDate=[value]&categoryIds=[value]&daysToInclude=[value]&useListingOrderIds=[value]
+    * GET /api/3.18/listing/summary?accountId=[value]&startDate=[value]&categoryIds=[value]&daysToInclude=[value]&useListingOrderIds=[value]
     */
-  def summaryListing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def summaryListing(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ListingGroupResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -180,7 +179,7 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
       val useListingOrderIds = request.getQueryString("useListingOrderIds")
         .map(value => value.toBoolean)
         
-      api.summaryListing(version, accountId, startDate, categoryIds, daysToInclude, useListingOrderIds)
+      api.summaryListing(accountId, startDate, categoryIds, daysToInclude, useListingOrderIds)
     }
 
     val result = executeApi()
@@ -189,9 +188,9 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
   }
 
   /**
-    * POST /api/:version/listing/update?accountId=[value]&listingId=[value]&filterIds=[value]&name=[value]&description=[value]&start=[value]&end=[value]&locationName=[value]&locationDescription=[value]&isPrivate=[value]&externalId=[value]&externalId2=[value]&externalGroupId=[value]&active=[value]&metaData=[value]
+    * POST /api/3.18/listing/update?accountId=[value]&listingId=[value]&filterIds=[value]&name=[value]&description=[value]&start=[value]&end=[value]&locationName=[value]&locationDescription=[value]&isPrivate=[value]&externalId=[value]&externalId2=[value]&externalGroupId=[value]&active=[value]&metaData=[value]
     */
-  def updateListing(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateListing(): Action[AnyContent] = Action { request =>
     def executeApi(): ListingFullResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -235,7 +234,7 @@ class ListingApiController @Inject()(cc: ControllerComponents, api: ListingApi) 
         
       val metaData = request.getQueryString("metaData")
         
-      api.updateListing(version, accountId, listingId, filterIds, name, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData)
+      api.updateListing(accountId, listingId, filterIds, name, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData)
     }
 
     val result = executeApi()

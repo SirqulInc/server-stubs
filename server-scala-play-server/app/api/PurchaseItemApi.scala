@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.PurchaseItemFullResponse
 import model.PurchaseItemResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait PurchaseItemApi {
   /**
     * Create Purchase
@@ -32,7 +31,7 @@ trait PurchaseItemApi {
     * @param points The number of points to award for completing a mission
     * @param offerLocationId The offer location that will get added to the user&#39;s wallet after purchase.
     */
-  def createPurchaseItem(version: BigDecimal, appKey: String, name: String, purchaseType: String, deviceId: Option[String], accountId: Option[Long], description: Option[String], tickets: Option[Int], price: Option[Float], purchaseCode: Option[String], secretKey: Option[String], purchaseLimit: Option[Int], serviceAction: Option[String], coverAssetId: Option[Long], promoAssetId: Option[Long], giftable: Option[Boolean], assetable: Option[Boolean], allocateTickets: Option[Boolean], ticketType: Option[String], points: Option[Long], offerLocationId: Option[Long]): PurchaseItemFullResponse
+  def createPurchaseItem(appKey: String, name: String, purchaseType: String, deviceId: Option[String], accountId: Option[Long], description: Option[String], tickets: Option[Int], price: Option[Float], purchaseCode: Option[String], secretKey: Option[String], purchaseLimit: Option[Int], serviceAction: Option[String], coverAssetId: Option[Long], promoAssetId: Option[Long], giftable: Option[Boolean], assetable: Option[Boolean], allocateTickets: Option[Boolean], ticketType: Option[String], points: Option[Long], offerLocationId: Option[Long]): PurchaseItemFullResponse
 
   /**
     * Delete Purchase
@@ -41,7 +40,7 @@ trait PurchaseItemApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def deletePurchaseItem(version: BigDecimal, purchaseItemId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def deletePurchaseItem(purchaseItemId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Purchase
@@ -50,7 +49,7 @@ trait PurchaseItemApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def getPurchaseItem(version: BigDecimal, purchaseItemId: Long, deviceId: Option[String], accountId: Option[Long]): PurchaseItemFullResponse
+  def getPurchaseItem(purchaseItemId: Long, deviceId: Option[String], accountId: Option[Long]): PurchaseItemFullResponse
 
   /**
     * Search Purchases
@@ -68,7 +67,7 @@ trait PurchaseItemApi {
     * @param limit The number of records to return
     * @param activeOnly Return only active results
     */
-  def searchPurchaseItems(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], filterByBillable: Option[Boolean], purchaseType: Option[String], serviceAction: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[PurchaseItemResponse]
+  def searchPurchaseItems(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], filterByBillable: Option[Boolean], purchaseType: Option[String], serviceAction: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[PurchaseItemResponse]
 
   /**
     * Update Purchase
@@ -95,5 +94,5 @@ trait PurchaseItemApi {
     * @param points The number of points to award for completing a mission
     * @param offerLocationId The offer location that will get added to the user&#39;s wallet after purchase.
     */
-  def updatePurchaseItem(version: BigDecimal, purchaseItemId: Long, deviceId: Option[String], accountId: Option[Long], name: Option[String], description: Option[String], tickets: Option[Int], price: Option[Float], purchaseType: Option[String], purchaseCode: Option[String], secretKey: Option[String], purchaseLimit: Option[Int], serviceAction: Option[String], coverAssetId: Option[Long], promoAssetId: Option[Long], giftable: Option[Boolean], assetable: Option[Boolean], active: Option[Boolean], allocateTickets: Option[Boolean], ticketType: Option[String], points: Option[Long], offerLocationId: Option[Long]): PurchaseItemFullResponse
+  def updatePurchaseItem(purchaseItemId: Long, deviceId: Option[String], accountId: Option[Long], name: Option[String], description: Option[String], tickets: Option[Int], price: Option[Float], purchaseType: Option[String], purchaseCode: Option[String], secretKey: Option[String], purchaseLimit: Option[Int], serviceAction: Option[String], coverAssetId: Option[Long], promoAssetId: Option[Long], giftable: Option[Boolean], assetable: Option[Boolean], active: Option[Boolean], allocateTickets: Option[Boolean], ticketType: Option[String], points: Option[Long], offerLocationId: Option[Long]): PurchaseItemFullResponse
 }

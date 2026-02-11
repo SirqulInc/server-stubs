@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.MediaOfferResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/media/create?accountId=[value]&retailerLocationIds=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&parentalRating=[value]&availabilityDate=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&availability=[value]&availabilitySummary=[value]
+    * POST /api/3.18/media/create?accountId=[value]&retailerLocationIds=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&parentalRating=[value]&availabilityDate=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&availability=[value]&availabilitySummary=[value]
     */
-  def createMedia(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createMedia(): Action[AnyContent] = Action { request =>
     def executeApi(): MediaOfferResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -205,7 +204,7 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
         
       val availabilitySummary = request.getQueryString("availabilitySummary")
         
-      api.createMedia(version, accountId, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, specialOfferType, offerVisibility, active, retailerLocationIds, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, parentalRating, availabilityDate, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary)
+      api.createMedia(accountId, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, specialOfferType, offerVisibility, active, retailerLocationIds, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, parentalRating, availabilityDate, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary)
     }
 
     val result = executeApi()
@@ -214,9 +213,9 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
   }
 
   /**
-    * POST /api/:version/media/delete?accountId=[value]&mediaId=[value]
+    * POST /api/3.18/media/delete?accountId=[value]&mediaId=[value]
     */
-  def deleteMedia(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteMedia(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -230,7 +229,7 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("mediaId", "query string")
         }
         
-      api.deleteMedia(version, accountId, mediaId)
+      api.deleteMedia(accountId, mediaId)
     }
 
     val result = executeApi()
@@ -239,9 +238,9 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
   }
 
   /**
-    * GET /api/:version/media/get?accountId=[value]&mediaId=[value]
+    * GET /api/3.18/media/get?accountId=[value]&mediaId=[value]
     */
-  def getMedia(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getMedia(): Action[AnyContent] = Action { request =>
     def executeApi(): MediaOfferResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -255,7 +254,7 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("mediaId", "query string")
         }
         
-      api.getMedia(version, accountId, mediaId)
+      api.getMedia(accountId, mediaId)
     }
 
     val result = executeApi()
@@ -264,9 +263,9 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
   }
 
   /**
-    * GET /api/:version/media/search?accountId=[value]&keyword=[value]&activeOnly=[value]&categoryIds=[value]&filterIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/media/search?accountId=[value]&keyword=[value]&activeOnly=[value]&categoryIds=[value]&filterIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchMedia(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchMedia(): Action[AnyContent] = Action { request =>
     def executeApi(): List[MediaOfferResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -303,7 +302,7 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchMedia(version, accountId, activeOnly, sortField, descending, keyword, categoryIds, filterIds, start, limit)
+      api.searchMedia(accountId, activeOnly, sortField, descending, keyword, categoryIds, filterIds, start, limit)
     }
 
     val result = executeApi()
@@ -312,9 +311,9 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
   }
 
   /**
-    * POST /api/:version/media/update?accountId=[value]&mediaId=[value]&retailerLocationIds=[value]&offerLocations=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&availabilityDate=[value]&parentalRating=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&availability=[value]&availabilitySummary=[value]
+    * POST /api/3.18/media/update?accountId=[value]&mediaId=[value]&retailerLocationIds=[value]&offerLocations=[value]&title=[value]&subTitle=[value]&details=[value]&subDetails=[value]&finePrint=[value]&barcodeType=[value]&barcodeEntry=[value]&externalRedeemOptions=[value]&externalUrl=[value]&ticketsRewardType=[value]&ticketsReward=[value]&activated=[value]&expires=[value]&noExpiration=[value]&availableLimit=[value]&availableLimitPerUser=[value]&addedLimit=[value]&viewLimit=[value]&maxPrints=[value]&ticketPriceType=[value]&ticketPrice=[value]&fullPrice=[value]&discountPrice=[value]&showRemaining=[value]&showRedeemed=[value]&replaced=[value]&featured=[value]&specialOfferType=[value]&offerVisibility=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&barcodeAssetId=[value]&imageAssetId=[value]&imageAssetId1=[value]&imageAssetId2=[value]&imageAssetId3=[value]&imageAssetId4=[value]&imageAssetId5=[value]&publisher=[value]&redeemableStart=[value]&redeemableEnd=[value]&conditionType=[value]&isbn=[value]&asin=[value]&catalogNumbers=[value]&availabilityDate=[value]&parentalRating=[value]&mediaType=[value]&duration=[value]&author=[value]&releaseDate=[value]&collectionIds=[value]&availability=[value]&availabilitySummary=[value]
     */
-  def updateMedia(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateMedia(): Action[AnyContent] = Action { request =>
     def executeApi(): MediaOfferResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -471,7 +470,7 @@ class MediaApiController @Inject()(cc: ControllerComponents, api: MediaApi) exte
         
       val availabilitySummary = request.getQueryString("availabilitySummary")
         
-      api.updateMedia(version, accountId, mediaId, retailerLocationIds, offerLocations, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, availabilityDate, parentalRating, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary)
+      api.updateMedia(accountId, mediaId, retailerLocationIds, offerLocations, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, availabilityDate, parentalRating, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary)
     }
 
     val result = executeApi()

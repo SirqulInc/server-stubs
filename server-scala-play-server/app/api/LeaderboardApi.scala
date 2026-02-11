@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.LeaderboardResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait LeaderboardApi {
   /**
     * Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
@@ -25,7 +24,7 @@ trait LeaderboardApi {
     * @param description leaderboard&#39;s description
     * @param metaData custom meta data for the leaderboard
     */
-  def createLeaderboard(version: BigDecimal, accountId: Option[Long], appKey: Option[String], rankType: Option[String], leaderboardMode: Option[String], iconMedia: Option[TemporaryFile], iconAssetId: Option[Long], bannerMedia: Option[TemporaryFile], bannerAssetId: Option[Long], limitation: Option[Int], sortField: Option[String], title: Option[String], description: Option[String], metaData: Option[String]): LeaderboardResponse
+  def createLeaderboard(accountId: Option[Long], appKey: Option[String], rankType: Option[String], leaderboardMode: Option[String], iconMedia: Option[TemporaryFile], iconAssetId: Option[Long], bannerMedia: Option[TemporaryFile], bannerAssetId: Option[Long], limitation: Option[Int], sortField: Option[String], title: Option[String], description: Option[String], metaData: Option[String]): LeaderboardResponse
 
   /**
     * Delete the Leader Board
@@ -33,7 +32,7 @@ trait LeaderboardApi {
     * @param leaderboardId The leaderboard id to delete.
     * @param accountId The account id of the user making the request.
     */
-  def deleteLeaderboard(version: BigDecimal, leaderboardId: Long, accountId: Option[Long]): SirqulResponse
+  def deleteLeaderboard(leaderboardId: Long, accountId: Option[Long]): SirqulResponse
 
   /**
     * Read a leaderboard by id and retrieve the matching ranking list
@@ -42,7 +41,7 @@ trait LeaderboardApi {
     * @param accountId A valid account.
     * @param includeFullRankingList set to true if need to return the leaderboard&#39;s full ranking list
     */
-  def getLeaderboard(version: BigDecimal, leaderboardId: Long, accountId: Option[Long], includeFullRankingList: Option[Boolean]): LeaderboardResponse
+  def getLeaderboard(leaderboardId: Long, accountId: Option[Long], includeFullRankingList: Option[Boolean]): LeaderboardResponse
 
   /**
     * Search leaderboard and retrieve the matching ranking list
@@ -60,7 +59,7 @@ trait LeaderboardApi {
     * @param start Start the result set at some index.
     * @param limit Limit the result to some number.
     */
-  def searchLeaderboards(version: BigDecimal, accountId: Option[Long], appKey: Option[String], globalOnly: Option[Boolean], keyword: Option[String], leaderboardIds: Option[String], rankTypes: Option[String], sortField: Option[String], descending: Option[Boolean], includeInactive: Option[Boolean], includeAppResponse: Option[Boolean], start: Option[Int], limit: Option[Int]): LeaderboardResponse
+  def searchLeaderboards(accountId: Option[Long], appKey: Option[String], globalOnly: Option[Boolean], keyword: Option[String], leaderboardIds: Option[String], rankTypes: Option[String], sortField: Option[String], descending: Option[Boolean], includeInactive: Option[Boolean], includeAppResponse: Option[Boolean], start: Option[Int], limit: Option[Int]): LeaderboardResponse
 
   /**
     * Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
@@ -81,5 +80,5 @@ trait LeaderboardApi {
     * @param description leaderboard&#39;s description
     * @param metaData custom meta data for the leaderboard
     */
-  def updateLeaderboard(version: BigDecimal, leaderboardId: Long, accountId: Option[Long], appKey: Option[String], rankType: Option[String], leaderboardMode: Option[String], sortField: Option[String], iconMedia: Option[TemporaryFile], iconAssetId: Option[Long], bannerMedia: Option[TemporaryFile], bannerAssetId: Option[Long], limitation: Option[Int], active: Option[Boolean], title: Option[String], description: Option[String], metaData: Option[String]): LeaderboardResponse
+  def updateLeaderboard(leaderboardId: Long, accountId: Option[Long], appKey: Option[String], rankType: Option[String], leaderboardMode: Option[String], sortField: Option[String], iconMedia: Option[TemporaryFile], iconAssetId: Option[Long], bannerMedia: Option[TemporaryFile], bannerAssetId: Option[Long], limitation: Option[Int], active: Option[Boolean], title: Option[String], description: Option[String], metaData: Option[String]): LeaderboardResponse
 }

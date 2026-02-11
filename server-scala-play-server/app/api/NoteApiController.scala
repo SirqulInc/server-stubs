@@ -9,13 +9,13 @@ import model.NoteResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/note/batch?deviceId=[value]&accountId=[value]&notableId=[value]&notableType=[value]&batchOperation=[value]
+    * POST /api/3.18/note/batch?deviceId=[value]&accountId=[value]&notableId=[value]&notableType=[value]&batchOperation=[value]
     */
-  def batchOperation(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def batchOperation(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -35,7 +35,7 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
         
       val batchOperation = request.getQueryString("batchOperation")
         
-      api.batchOperation(version, notableId, notableType, deviceId, accountId, batchOperation)
+      api.batchOperation(notableId, notableType, deviceId, accountId, batchOperation)
     }
 
     val result = executeApi()
@@ -44,9 +44,9 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
   }
 
   /**
-    * POST /api/:version/note/create?deviceId=[value]&accountId=[value]&notableType=[value]&notableId=[value]&comment=[value]&noteType=[value]&assetIds=[value]&tags=[value]&permissionableType=[value]&permissionableId=[value]&appKey=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]&metaData=[value]&receiverAccountIds=[value]&returnFullResponse=[value]&initializeAsset=[value]&assetReturnNulls=[value]&assetAlbumId=[value]&assetCollectionId=[value]&assetAddToDefaultAlbum=[value]&assetAddToMediaLibrary=[value]&assetVersionCode=[value]&assetVersionName=[value]&assetMetaData=[value]&assetCaption=[value]&assetMedia=[value]&assetMediaUrl=[value]&assetMediaString=[value]&assetMediaStringFileName=[value]&assetMediaStringContentType=[value]&assetAttachedMedia=[value]&assetAttachedMediaUrl=[value]&assetAttachedMediaString=[value]&assetAttachedMediaStringFileName=[value]&assetAttachedMediaStringContentType=[value]&assetLocationDescription=[value]&assetApp=[value]&assetSearchTags=[value]&assetLatitude=[value]&assetLongitude=[value]
+    * POST /api/3.18/note/create?deviceId=[value]&accountId=[value]&notableType=[value]&notableId=[value]&comment=[value]&noteType=[value]&assetIds=[value]&tags=[value]&permissionableType=[value]&permissionableId=[value]&appKey=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]&metaData=[value]&receiverAccountIds=[value]&returnFullResponse=[value]&initializeAsset=[value]&assetReturnNulls=[value]&assetAlbumId=[value]&assetCollectionId=[value]&assetAddToDefaultAlbum=[value]&assetAddToMediaLibrary=[value]&assetVersionCode=[value]&assetVersionName=[value]&assetMetaData=[value]&assetCaption=[value]&assetMedia=[value]&assetMediaUrl=[value]&assetMediaString=[value]&assetMediaStringFileName=[value]&assetMediaStringContentType=[value]&assetAttachedMedia=[value]&assetAttachedMediaUrl=[value]&assetAttachedMediaString=[value]&assetAttachedMediaStringFileName=[value]&assetAttachedMediaStringContentType=[value]&assetLocationDescription=[value]&assetApp=[value]&assetSearchTags=[value]&assetLatitude=[value]&assetLongitude=[value]
     */
-  def createNote(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createNote(): Action[AnyContent] = Action { request =>
     def executeApi(): NoteResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -149,7 +149,7 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
       val assetLongitude = request.getQueryString("assetLongitude")
         .map(value => BigDecimal(value))
         
-      api.createNote(version, comment, deviceId, accountId, notableType, notableId, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, receiverAccountIds, returnFullResponse, initializeAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude)
+      api.createNote(comment, deviceId, accountId, notableType, notableId, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, receiverAccountIds, returnFullResponse, initializeAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude)
     }
 
     val result = executeApi()
@@ -158,9 +158,9 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
   }
 
   /**
-    * POST /api/:version/note/delete?deviceId=[value]&accountId=[value]&noteId=[value]&latitude=[value]&longitude=[value]&appKey=[value]
+    * POST /api/3.18/note/delete?deviceId=[value]&accountId=[value]&noteId=[value]&latitude=[value]&longitude=[value]&appKey=[value]
     */
-  def deleteNote(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteNote(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -181,7 +181,7 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
         
       val appKey = request.getQueryString("appKey")
         
-      api.deleteNote(version, noteId, deviceId, accountId, latitude, longitude, appKey)
+      api.deleteNote(noteId, deviceId, accountId, latitude, longitude, appKey)
     }
 
     val result = executeApi()
@@ -190,9 +190,9 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
   }
 
   /**
-    * POST /api/:version/note/get?deviceId=[value]&accountId=[value]&returnFullResponse=[value]&noteId=[value]
+    * POST /api/3.18/note/get?deviceId=[value]&accountId=[value]&returnFullResponse=[value]&noteId=[value]
     */
-  def getNote(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getNote(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -208,7 +208,7 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("noteId", "query string")
         }
         
-      api.getNote(version, noteId, deviceId, accountId, returnFullResponse)
+      api.getNote(noteId, deviceId, accountId, returnFullResponse)
     }
 
     val result = executeApi()
@@ -217,9 +217,9 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
   }
 
   /**
-    * POST /api/:version/note/search?deviceId=[value]&accountId=[value]&notableType=[value]&notableId=[value]&noteTypes=[value]&appKey=[value]&keyword=[value]&flagCountMinimum=[value]&flagsExceedThreshold=[value]&includeInactive=[value]&sortField=[value]&descending=[value]&returnFullResponse=[value]&updatedSince=[value]&updatedBefore=[value]&start=[value]&limit=[value]
+    * POST /api/3.18/note/search?deviceId=[value]&accountId=[value]&notableType=[value]&notableId=[value]&noteTypes=[value]&appKey=[value]&keyword=[value]&flagCountMinimum=[value]&flagsExceedThreshold=[value]&includeInactive=[value]&sortField=[value]&descending=[value]&returnFullResponse=[value]&updatedSince=[value]&updatedBefore=[value]&start=[value]&limit=[value]
     */
-  def searchNotes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchNotes(): Action[AnyContent] = Action { request =>
     def executeApi(): List[NoteResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -266,7 +266,7 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchNotes(version, deviceId, accountId, notableType, notableId, noteTypes, appKey, keyword, flagCountMinimum, flagsExceedThreshold, includeInactive, sortField, descending, returnFullResponse, updatedSince, updatedBefore, start, limit)
+      api.searchNotes(deviceId, accountId, notableType, notableId, noteTypes, appKey, keyword, flagCountMinimum, flagsExceedThreshold, includeInactive, sortField, descending, returnFullResponse, updatedSince, updatedBefore, start, limit)
     }
 
     val result = executeApi()
@@ -275,9 +275,9 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
   }
 
   /**
-    * POST /api/:version/note/update?deviceId=[value]&accountId=[value]&noteId=[value]&comment=[value]&noteType=[value]&assetIds=[value]&tags=[value]&permissionableType=[value]&permissionableId=[value]&appKey=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]&metaData=[value]&returnFullResponse=[value]&active=[value]&updateAsset=[value]&assetReturnNulls=[value]&assetAlbumId=[value]&assetCollectionId=[value]&assetAddToDefaultAlbum=[value]&assetAddToMediaLibrary=[value]&assetVersionCode=[value]&assetVersionName=[value]&assetMetaData=[value]&assetCaption=[value]&assetMedia=[value]&assetMediaUrl=[value]&assetMediaString=[value]&assetMediaStringFileName=[value]&assetMediaStringContentType=[value]&assetAttachedMedia=[value]&assetAttachedMediaUrl=[value]&assetAttachedMediaString=[value]&assetAttachedMediaStringFileName=[value]&assetAttachedMediaStringContentType=[value]&assetLocationDescription=[value]&assetApp=[value]&assetSearchTags=[value]&assetLatitude=[value]&assetLongitude=[value]
+    * POST /api/3.18/note/update?deviceId=[value]&accountId=[value]&noteId=[value]&comment=[value]&noteType=[value]&assetIds=[value]&tags=[value]&permissionableType=[value]&permissionableId=[value]&appKey=[value]&locationDescription=[value]&latitude=[value]&longitude=[value]&metaData=[value]&returnFullResponse=[value]&active=[value]&updateAsset=[value]&assetReturnNulls=[value]&assetAlbumId=[value]&assetCollectionId=[value]&assetAddToDefaultAlbum=[value]&assetAddToMediaLibrary=[value]&assetVersionCode=[value]&assetVersionName=[value]&assetMetaData=[value]&assetCaption=[value]&assetMedia=[value]&assetMediaUrl=[value]&assetMediaString=[value]&assetMediaStringFileName=[value]&assetMediaStringContentType=[value]&assetAttachedMedia=[value]&assetAttachedMediaUrl=[value]&assetAttachedMediaString=[value]&assetAttachedMediaStringFileName=[value]&assetAttachedMediaStringContentType=[value]&assetLocationDescription=[value]&assetApp=[value]&assetSearchTags=[value]&assetLatitude=[value]&assetLongitude=[value]
     */
-  def updateNote(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateNote(): Action[AnyContent] = Action { request =>
     def executeApi(): NoteResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -379,7 +379,7 @@ class NoteApiController @Inject()(cc: ControllerComponents, api: NoteApi) extend
       val assetLongitude = request.getQueryString("assetLongitude")
         .map(value => value.toDouble)
         
-      api.updateNote(version, noteId, deviceId, accountId, comment, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, returnFullResponse, active, updateAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude)
+      api.updateNote(noteId, deviceId, accountId, comment, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, returnFullResponse, active, updateAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude)
     }
 
     val result = executeApi()

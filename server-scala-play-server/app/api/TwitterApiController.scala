@@ -4,24 +4,23 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ProfileResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TwitterApiController @Inject()(cc: ControllerComponents, api: TwitterApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/twitter/authorize?appKey=[value]
+    * POST /api/3.18/twitter/authorize?appKey=[value]
     */
-  def authorizeTwitter(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def authorizeTwitter(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val appKey = request.getQueryString("appKey")
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.authorizeTwitter(version, appKey)
+      api.authorizeTwitter(appKey)
     }
 
     val result = executeApi()
@@ -30,9 +29,9 @@ class TwitterApiController @Inject()(cc: ControllerComponents, api: TwitterApi) 
   }
 
   /**
-    * POST /api/:version/twitter/login?deviceId=[value]&accessToken=[value]&accessTokenSecret=[value]&appKey=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/twitter/login?deviceId=[value]&accessToken=[value]&accessTokenSecret=[value]&appKey=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]
     */
-  def loginTwitter(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def loginTwitter(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -62,7 +61,7 @@ class TwitterApiController @Inject()(cc: ControllerComponents, api: TwitterApi) 
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.loginTwitter(version, accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude)
+      api.loginTwitter(accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude)
     }
 
     val result = executeApi()

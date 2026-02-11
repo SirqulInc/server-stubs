@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.CreativeResponse
 import model.MissionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/creative/addpreview?accountId=[value]&creativeId=[value]
+    * POST /api/3.18/creative/addpreview?accountId=[value]&creativeId=[value]
     */
-  def addPreview(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addPreview(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -29,7 +28,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("creativeId", "query string")
         }
         
-      api.addPreview(version, accountId, creativeId)
+      api.addPreview(accountId, creativeId)
     }
 
     val result = executeApi()
@@ -38,9 +37,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * GET /api/:version/ads/find?appKey=[value]&`type`=[value]&accountId=[value]&appVersion=[value]&latitude=[value]&longitude=[value]&device=[value]&deviceIdentifier=[value]&deviceVersion=[value]&start=[value]&limit=[value]&includeAudiences=[value]&allocatesTickets=[value]&randomize=[value]&targetedAdsOnly=[value]&missionIds=[value]
+    * GET /api/3.18/ads/find?appKey=[value]&`type`=[value]&accountId=[value]&appVersion=[value]&latitude=[value]&longitude=[value]&device=[value]&deviceIdentifier=[value]&deviceVersion=[value]&start=[value]&limit=[value]&includeAudiences=[value]&allocatesTickets=[value]&randomize=[value]&targetedAdsOnly=[value]&missionIds=[value]
     */
-  def adsFind(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def adsFind(): Action[AnyContent] = Action { request =>
     def executeApi(): List[MissionResponse] = {
       val appKey = request.getQueryString("appKey")
         .getOrElse {
@@ -93,7 +92,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
         
       val missionIds = request.getQueryString("missionIds")
         
-      api.adsFind(version, appKey, randomize, targetedAdsOnly, `type`, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeAudiences, allocatesTickets, missionIds)
+      api.adsFind(appKey, randomize, targetedAdsOnly, `type`, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeAudiences, allocatesTickets, missionIds)
     }
 
     val result = executeApi()
@@ -102,9 +101,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * POST /api/:version/creative/create?accountId=[value]&name=[value]&description=[value]&assetImageId=[value]&action=[value]&data=[value]&suffix=[value]&`type`=[value]&balance=[value]&active=[value]&referenceId=[value]&appVersion=[value]&missionId=[value]&offerId=[value]&waitForAsset=[value]
+    * POST /api/3.18/creative/create?accountId=[value]&name=[value]&description=[value]&assetImageId=[value]&action=[value]&data=[value]&suffix=[value]&`type`=[value]&balance=[value]&active=[value]&referenceId=[value]&appVersion=[value]&missionId=[value]&offerId=[value]&waitForAsset=[value]
     */
-  def createCreative(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createCreative(): Action[AnyContent] = Action { request =>
     def executeApi(): CreativeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -156,7 +155,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("waitForAsset", "query string")
         }
         
-      api.createCreative(version, accountId, name, active, waitForAsset, description, assetImageId, action, data, suffix, `type`, balance, referenceId, appVersion, missionId, offerId)
+      api.createCreative(accountId, name, active, waitForAsset, description, assetImageId, action, data, suffix, `type`, balance, referenceId, appVersion, missionId, offerId)
     }
 
     val result = executeApi()
@@ -165,9 +164,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * POST /api/:version/creative/delete?accountId=[value]&creativeId=[value]
+    * POST /api/3.18/creative/delete?accountId=[value]&creativeId=[value]
     */
-  def deleteCreative(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteCreative(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -181,7 +180,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("creativeId", "query string")
         }
         
-      api.deleteCreative(version, accountId, creativeId)
+      api.deleteCreative(accountId, creativeId)
     }
 
     val result = executeApi()
@@ -190,9 +189,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * GET /api/:version/creative/get?accountId=[value]&creativeId=[value]
+    * GET /api/3.18/creative/get?accountId=[value]&creativeId=[value]
     */
-  def getCreative(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCreative(): Action[AnyContent] = Action { request =>
     def executeApi(): CreativeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -206,7 +205,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("creativeId", "query string")
         }
         
-      api.getCreative(version, accountId, creativeId)
+      api.getCreative(accountId, creativeId)
     }
 
     val result = executeApi()
@@ -215,9 +214,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * GET /api/:version/creative/search?accountId=[value]&appKey=[value]&missionId=[value]&keyword=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/creative/search?accountId=[value]&appKey=[value]&missionId=[value]&keyword=[value]&start=[value]&limit=[value]
     */
-  def getCreativesByApplication(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCreativesByApplication(): Action[AnyContent] = Action { request =>
     def executeApi(): List[CreativeResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -247,7 +246,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.getCreativesByApplication(version, accountId, appKey, start, limit, missionId, keyword)
+      api.getCreativesByApplication(accountId, appKey, start, limit, missionId, keyword)
     }
 
     val result = executeApi()
@@ -256,9 +255,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * POST /api/:version/creative/removepreview?accountId=[value]&creativeId=[value]
+    * POST /api/3.18/creative/removepreview?accountId=[value]&creativeId=[value]
     */
-  def removePreview(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removePreview(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -272,7 +271,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("creativeId", "query string")
         }
         
-      api.removePreview(version, accountId, creativeId)
+      api.removePreview(accountId, creativeId)
     }
 
     val result = executeApi()
@@ -281,9 +280,9 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
   }
 
   /**
-    * POST /api/:version/creative/update?accountId=[value]&creativeId=[value]&name=[value]&description=[value]&assetImageId=[value]&action=[value]&data=[value]&suffix=[value]&`type`=[value]&balance=[value]&active=[value]&referenceId=[value]&appVersion=[value]&missionId=[value]
+    * POST /api/3.18/creative/update?accountId=[value]&creativeId=[value]&name=[value]&description=[value]&assetImageId=[value]&action=[value]&data=[value]&suffix=[value]&`type`=[value]&balance=[value]&active=[value]&referenceId=[value]&appVersion=[value]&missionId=[value]
     */
-  def updateCreative(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateCreative(): Action[AnyContent] = Action { request =>
     def executeApi(): CreativeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -326,7 +325,7 @@ class CreativeApiController @Inject()(cc: ControllerComponents, api: CreativeApi
       val missionId = request.getQueryString("missionId")
         .map(value => value.toLong)
         
-      api.updateCreative(version, accountId, creativeId, name, description, assetImageId, action, data, suffix, `type`, balance, active, referenceId, appVersion, missionId)
+      api.updateCreative(accountId, creativeId, name, description, assetImageId, action, data, suffix, `type`, balance, active, referenceId, appVersion, missionId)
     }
 
     val result = executeApi()

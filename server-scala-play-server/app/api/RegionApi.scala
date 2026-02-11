@@ -1,10 +1,9 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.RegionResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait RegionApi {
   /**
     * Create Region
@@ -31,7 +30,7 @@ trait RegionApi {
     * @param root If this is a root region or not. If true means this region has no parent regions
     * @param active Active or inactive status of the region
     */
-  def createRegion(version: BigDecimal, accountId: Long, regionClass: String, shortName: String, fullName: Option[String], parentIds: Option[String], childrenIds: Option[String], postalCodeIds: Option[String], locations: Option[String], retailerLocationId: Option[Long], visibility: Option[String], categoryIds: Option[String], filterIds: Option[String], start: Option[Long], end: Option[Long], polygon: Option[String], metaData: Option[String], latitude: Option[Double], longitude: Option[Double], versionCode: Option[Int], root: Option[Boolean], active: Option[Boolean]): RegionResponse
+  def createRegion(accountId: Long, regionClass: String, shortName: String, fullName: Option[String], parentIds: Option[String], childrenIds: Option[String], postalCodeIds: Option[String], locations: Option[String], retailerLocationId: Option[Long], visibility: Option[String], categoryIds: Option[String], filterIds: Option[String], start: Option[Long], end: Option[Long], polygon: Option[String], metaData: Option[String], latitude: Option[Double], longitude: Option[Double], versionCode: Option[Int], root: Option[Boolean], active: Option[Boolean]): RegionResponse
 
   /**
     * Delete Region
@@ -39,7 +38,7 @@ trait RegionApi {
     * @param accountId the id of the account logged in
     * @param regionId the id of the region
     */
-  def deleteRegion(version: BigDecimal, accountId: Long, regionId: Long): RegionResponse
+  def deleteRegion(accountId: Long, regionId: Long): RegionResponse
 
   /**
     * Get Region
@@ -47,7 +46,7 @@ trait RegionApi {
     * @param regionId the id of the region to get
     * @param accountId the id of the logged in user
     */
-  def getRegion(version: BigDecimal, regionId: Long, accountId: Option[Long]): RegionResponse
+  def getRegion(regionId: Long, accountId: Option[Long]): RegionResponse
 
   /**
     * Search Regions
@@ -75,7 +74,7 @@ trait RegionApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def searchRegions(version: BigDecimal, accountId: Option[Long], query: Option[String], keyword: Option[String], latitude: Option[Double], longitude: Option[Double], range: Option[Double], regionClass: Option[String], visibility: Option[String], searchMode: Option[String], sortField: Option[String], descending: Option[Boolean], includeParent: Option[Boolean], includeChildren: Option[Boolean], includePostalCodes: Option[Boolean], categoryIds: Option[String], filterIds: Option[String], versionCode: Option[Int], activeOnly: Option[Boolean], showDeleted: Option[Boolean], lastUpdatedSince: Option[Long], start: Option[Int], limit: Option[Int]): List[RegionResponse]
+  def searchRegions(accountId: Option[Long], query: Option[String], keyword: Option[String], latitude: Option[Double], longitude: Option[Double], range: Option[Double], regionClass: Option[String], visibility: Option[String], searchMode: Option[String], sortField: Option[String], descending: Option[Boolean], includeParent: Option[Boolean], includeChildren: Option[Boolean], includePostalCodes: Option[Boolean], categoryIds: Option[String], filterIds: Option[String], versionCode: Option[Int], activeOnly: Option[Boolean], showDeleted: Option[Boolean], lastUpdatedSince: Option[Long], start: Option[Int], limit: Option[Int]): List[RegionResponse]
 
   /**
     * Update Region
@@ -104,5 +103,5 @@ trait RegionApi {
     * @param active Active or inactive status of the region
     * @param clearLists If true clear the children and postal code lists before add new ones, otherwise just append.
     */
-  def updateRegion(version: BigDecimal, accountId: Long, regionId: Long, regionClass: Option[String], shortName: Option[String], fullName: Option[String], parentIds: Option[String], childrenIds: Option[String], postalCodeIds: Option[String], locations: Option[String], retailerLocationId: Option[Long], visibility: Option[String], categoryIds: Option[String], filterIds: Option[String], start: Option[Long], end: Option[Long], polygon: Option[String], metaData: Option[String], latitude: Option[Double], longitude: Option[Double], versionCode: Option[Int], root: Option[Boolean], active: Option[Boolean], clearLists: Option[Boolean]): RegionResponse
+  def updateRegion(accountId: Long, regionId: Long, regionClass: Option[String], shortName: Option[String], fullName: Option[String], parentIds: Option[String], childrenIds: Option[String], postalCodeIds: Option[String], locations: Option[String], retailerLocationId: Option[Long], visibility: Option[String], categoryIds: Option[String], filterIds: Option[String], start: Option[Long], end: Option[Long], polygon: Option[String], metaData: Option[String], latitude: Option[Double], longitude: Option[Double], versionCode: Option[Int], root: Option[Boolean], active: Option[Boolean], clearLists: Option[Boolean]): RegionResponse
 }

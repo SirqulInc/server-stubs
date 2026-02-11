@@ -2,10 +2,9 @@ package api
 
 import play.api.libs.json._
 import model.AppResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait AppDataApi {
   /**
     * Get App Data
@@ -36,7 +35,7 @@ trait AppDataApi {
     * @param responseGroups use response groups to include large parts of the structure. possible values are: * MISSION_DEFAULT (default) - include the default mission (built-in packs), excludes all other mission groups * MISSION_DEFAULT_LEVELS_SAVED - include saved levels, excludes all other mission groups * MISSION_DEFAULT_LEVELS_COMMUNITY - include community levels, excludes all other mission groups * MISSION_INVITED (default) - include challenges sent to user * PROFILE (default) - include entire profile * PROFILE_DATA - only include profile date (exclude friends) * PROFILE_FRIENDS - include friends list 
     * @param purchaseType the will return the correct in app purchases for the device, possible values are: * SIRQUL (default) - purchasing from the sirqul store using tickets * IOS - purchasing from the itunes store for iPhone, iPod, iPod Touch * GOOGLE - purchasing from the google android store * AMAZON - purchasing from the amazon android store * MAC - purchasing from the itunes store for OSX * FREE - the item is free to purchase 
     */
-  def getAppData(version: BigDecimal, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], includeGameData: Option[Boolean], q: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], i: Option[Int], l: Option[Int], gameObjectCount: Option[Boolean], filter: Option[String], dateCreated: Option[Long], ownerId: Option[Long], missionIds: Option[String], gameIds: Option[String], packIds: Option[String], gameLevelIds: Option[String], appVersion: Option[String], includeHigherVersionPacks: Option[Boolean], includeHigherVersionLevels: Option[Boolean], responseGroups: Option[String], purchaseType: Option[String]): AppResponse
+  def getAppData(start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], includeGameData: Option[Boolean], q: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], i: Option[Int], l: Option[Int], gameObjectCount: Option[Boolean], filter: Option[String], dateCreated: Option[Long], ownerId: Option[Long], missionIds: Option[String], gameIds: Option[String], packIds: Option[String], gameLevelIds: Option[String], appVersion: Option[String], includeHigherVersionPacks: Option[Boolean], includeHigherVersionLevels: Option[Boolean], responseGroups: Option[String], purchaseType: Option[String]): AppResponse
 
   /**
     * Create App Data
@@ -68,7 +67,7 @@ trait AppDataApi {
     * @param responseGroups use response groups to include large parts of the structure. possible values are: * MISSION_DEFAULT (default) - include the default mission (built-in packs), excludes all other mission groups * MISSION_DEFAULT_LEVELS_SAVED - include saved levels, excludes all other mission groups * MISSION_DEFAULT_LEVELS_COMMUNITY - include community levels, excludes all other mission groups * MISSION_INVITED (default) - include challenges sent to user * PROFILE (default) - include entire profile * PROFILE_DATA - only include profile date (exclude friends) * PROFILE_FRIENDS - include friends list 
     * @param purchaseType the will return the correct in app purchases for the device, possible values are: * SIRQUL (default) - purchasing from the sirqul store using tickets * IOS - purchasing from the itunes store for iPhone, iPod, iPod Touch * GOOGLE - purchasing from the google android store * AMAZON - purchasing from the amazon android store * MAC - purchasing from the itunes store for OSX * FREE - the item is free to purchase 
     */
-  def postAppData(version: BigDecimal, gameType: String, start: Int, limit: Int, data: String, deviceId: Option[String], accountId: Option[Long], includeGameData: Option[Boolean], q: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], i: Option[Int], l: Option[Int], gameObjectCount: Option[Boolean], filter: Option[String], dateCreated: Option[Long], ownerId: Option[Long], missionIds: Option[String], gameIds: Option[String], packIds: Option[String], gameLevelIds: Option[String], appVersion: Option[String], includeHigherVersionPacks: Option[Boolean], includeHigherVersionLevels: Option[Boolean], responseGroups: Option[String], purchaseType: Option[String]): AppResponse
+  def postAppData(gameType: String, start: Int, limit: Int, data: String, deviceId: Option[String], accountId: Option[Long], includeGameData: Option[Boolean], q: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], i: Option[Int], l: Option[Int], gameObjectCount: Option[Boolean], filter: Option[String], dateCreated: Option[Long], ownerId: Option[Long], missionIds: Option[String], gameIds: Option[String], packIds: Option[String], gameLevelIds: Option[String], appVersion: Option[String], includeHigherVersionPacks: Option[Boolean], includeHigherVersionLevels: Option[Boolean], responseGroups: Option[String], purchaseType: Option[String]): AppResponse
 
   /**
     * Regenerate App Data
@@ -78,5 +77,5 @@ trait AppDataApi {
     * @param buildVersion create a specific version, if null use current version. Be careful if processing all
     * @param apiVersion create a specific version, if null use current version. Be careful if processing all
     */
-  def regenAppData(version: BigDecimal, accountId: Option[Long], appKey: Option[String], buildVersion: Option[String], apiVersion: Option[String]): SirqulResponse
+  def regenAppData(accountId: Option[Long], appKey: Option[String], buildVersion: Option[String], apiVersion: Option[String]): SirqulResponse
 }

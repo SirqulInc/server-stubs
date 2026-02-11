@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.MissionShortResponse
 import model.SirqulResponse
 import model.TournamentResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait TournamentApi {
   /**
     * Create Tournament
@@ -47,7 +46,7 @@ trait TournamentApi {
     * @param winnerTag This sets what analytic tag is used when a winner is determined
     * @param tieTag This sets what analytic tag is used when a tie has occurred
     */
-  def createTournament(version: BigDecimal, accountId: Long, appKey: String, title: String, costToPlay: Int, startDate: Long, subType: Option[String], imageAssetId: Option[Long], secondsBetweenLevels: Option[Int], secondsForTieBreaker: Option[Int], secondsBetweenPacks: Option[Int], maximumLevelLength: Option[Int], costToPlayType: Option[String], minimumToPlay: Option[Int], startingLimit: Option[Int], availableLimit: Option[Int], description: Option[String], metaData: Option[String], audienceIds: Option[String], active: Option[Boolean], enableBuyBack: Option[Boolean], offerIds: Option[String], offerAssetId: Option[Long], fixedReward: Option[Boolean], splitReward: Option[String], allocateTickets: Option[Boolean], tournamentData: Option[String], missionType: Option[String], visibility: Option[String], preliminaryGroups: Option[Int], preliminaryGroupAdvancements: Option[String], enableMultipleEntries: Option[Boolean], enableMultipleVotes: Option[Boolean], featured: Option[Boolean], winnerTag: Option[String], tieTag: Option[String]): TournamentResponse
+  def createTournament(accountId: Long, appKey: String, title: String, costToPlay: Int, startDate: Long, subType: Option[String], imageAssetId: Option[Long], secondsBetweenLevels: Option[Int], secondsForTieBreaker: Option[Int], secondsBetweenPacks: Option[Int], maximumLevelLength: Option[Int], costToPlayType: Option[String], minimumToPlay: Option[Int], startingLimit: Option[Int], availableLimit: Option[Int], description: Option[String], metaData: Option[String], audienceIds: Option[String], active: Option[Boolean], enableBuyBack: Option[Boolean], offerIds: Option[String], offerAssetId: Option[Long], fixedReward: Option[Boolean], splitReward: Option[String], allocateTickets: Option[Boolean], tournamentData: Option[String], missionType: Option[String], visibility: Option[String], preliminaryGroups: Option[Int], preliminaryGroupAdvancements: Option[String], enableMultipleEntries: Option[Boolean], enableMultipleVotes: Option[Boolean], featured: Option[Boolean], winnerTag: Option[String], tieTag: Option[String]): TournamentResponse
 
   /**
     * Delete Tournament
@@ -55,7 +54,7 @@ trait TournamentApi {
     * @param accountId the id of the logged in user
     * @param missionId the id of the mission to delete
     */
-  def deleteTournament(version: BigDecimal, accountId: Long, missionId: Long): SirqulResponse
+  def deleteTournament(accountId: Long, missionId: Long): SirqulResponse
 
   /**
     * Get Tournament
@@ -66,7 +65,7 @@ trait TournamentApi {
     * @param includeScores Determines which type of scores are returned. Possible values include: ALL, MINE
     * @param objectPreviewSize Determines the max number of game objects that will get returned for each game level response
     */
-  def getTournament(version: BigDecimal, accountId: Long, missionId: Option[Long], joinCode: Option[String], includeScores: Option[String], objectPreviewSize: Option[Int]): TournamentResponse
+  def getTournament(accountId: Long, missionId: Option[Long], joinCode: Option[String], includeScores: Option[String], objectPreviewSize: Option[Int]): TournamentResponse
 
   /**
     * Search Tournament Objects
@@ -78,7 +77,7 @@ trait TournamentApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def searchObjects(version: BigDecimal, accountId: Long, gameLevelId: Long, sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): SirqulResponse
+  def searchObjects(accountId: Long, gameLevelId: Long, sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): SirqulResponse
 
   /**
     * Search Tournament Rounds
@@ -92,7 +91,7 @@ trait TournamentApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def searchRounds(version: BigDecimal, accountId: Long, appKey: String, status: Option[String], missionType: Option[String], currentOnly: Option[Boolean], visibilities: Option[String], start: Option[Int], limit: Option[Int]): SirqulResponse
+  def searchRounds(accountId: Long, appKey: String, status: Option[String], missionType: Option[String], currentOnly: Option[Boolean], visibilities: Option[String], start: Option[Int], limit: Option[Int]): SirqulResponse
 
   /**
     * Search Tournaments
@@ -110,7 +109,7 @@ trait TournamentApi {
     * @param start Start the result set at some index.
     * @param limit Limit the result to some number
     */
-  def searchTournaments(version: BigDecimal, accountId: Long, appKey: String, keyword: Option[String], subType: Option[String], includeInactive: Option[Boolean], missionTypes: Option[String], filter: Option[String], sortField: Option[String], descending: Option[Boolean], visibility: Option[String], start: Option[Int], limit: Option[Int]): MissionShortResponse
+  def searchTournaments(accountId: Long, appKey: String, keyword: Option[String], subType: Option[String], includeInactive: Option[Boolean], missionTypes: Option[String], filter: Option[String], sortField: Option[String], descending: Option[Boolean], visibility: Option[String], start: Option[Int], limit: Option[Int]): MissionShortResponse
 
   /**
     * Submit Tournament Score
@@ -123,7 +122,7 @@ trait TournamentApi {
     * @param scores a JSON Array of scores to submit for a tournament match &#x60;&#x60;&#x60;json [   {     \&quot;accountId\&quot;: 2,     \&quot;points\&quot;: 3   },   {     \&quot;accountId\&quot;: 1777662,     \&quot;points\&quot;: 7   } ] &#x60;&#x60;&#x60; 
     * @param gameLevelId The gameLevelId to score for
     */
-  def submitTournamentScore(version: BigDecimal, accountId: Long, appKey: String, missionId: Long, gameId: Long, packId: Long, scores: String, gameLevelId: Option[Long]): SirqulResponse
+  def submitTournamentScore(accountId: Long, appKey: String, missionId: Long, gameId: Long, packId: Long, scores: String, gameLevelId: Option[Long]): SirqulResponse
 
   /**
     * Submit a vote for a multi-stage album tournament.
@@ -135,7 +134,7 @@ trait TournamentApi {
     * @param deviceId The unique id of the device making the request (optional)
     * @param checkIfDeviceAlreadyVoted When true, check if the device already voted to prevent duplicate votes from the same device
     */
-  def submitTournamentVote(version: BigDecimal, accountId: Long, appKey: String, missionId: Long, gameObjectId: Long, deviceId: Option[String], checkIfDeviceAlreadyVoted: Option[Boolean]): SirqulResponse
+  def submitTournamentVote(accountId: Long, appKey: String, missionId: Long, gameObjectId: Long, deviceId: Option[String], checkIfDeviceAlreadyVoted: Option[Boolean]): SirqulResponse
 
   /**
     * Substitute Tournament Player
@@ -145,7 +144,7 @@ trait TournamentApi {
     * @param packId the id of the pack
     * @param gameLevelId the id of the game level
     */
-  def substituteTournamentPlayer(version: BigDecimal, accountId: Long, missionId: Long, packId: Long, gameLevelId: Long): SirqulResponse
+  def substituteTournamentPlayer(accountId: Long, missionId: Long, packId: Long, gameLevelId: Long): SirqulResponse
 
   /**
     * Update Tournament
@@ -185,5 +184,5 @@ trait TournamentApi {
     * @param winnerTag This sets what analytic tag is used when a winner is determined
     * @param tieTag This sets what analytic tag is used when a winner is determined
     */
-  def updateTournament(version: BigDecimal, accountId: Long, missionId: Long, title: Option[String], subType: Option[String], imageAssetId: Option[Long], secondsBetweenLevels: Option[Int], secondsForTieBreaker: Option[Int], secondsBetweenPacks: Option[Int], maximumLevelLength: Option[Int], costToPlay: Option[Int], costToPlayType: Option[String], minimumToPlay: Option[Int], startingLimit: Option[Int], availableLimit: Option[Int], description: Option[String], metaData: Option[String], startDate: Option[Long], audienceIds: Option[String], active: Option[Boolean], enableBuyBack: Option[Boolean], offerIds: Option[String], offerAssetId: Option[Long], fixedReward: Option[Boolean], splitReward: Option[String], allocateTickets: Option[Boolean], tournamentData: Option[String], visibility: Option[String], preliminaryGroups: Option[Int], preliminaryGroupAdvancements: Option[String], enableMultipleEntries: Option[Boolean], enableMultipleVotes: Option[Boolean], featured: Option[Boolean], winnerTag: Option[String], tieTag: Option[String]): TournamentResponse
+  def updateTournament(accountId: Long, missionId: Long, title: Option[String], subType: Option[String], imageAssetId: Option[Long], secondsBetweenLevels: Option[Int], secondsForTieBreaker: Option[Int], secondsBetweenPacks: Option[Int], maximumLevelLength: Option[Int], costToPlay: Option[Int], costToPlayType: Option[String], minimumToPlay: Option[Int], startingLimit: Option[Int], availableLimit: Option[Int], description: Option[String], metaData: Option[String], startDate: Option[Long], audienceIds: Option[String], active: Option[Boolean], enableBuyBack: Option[Boolean], offerIds: Option[String], offerAssetId: Option[Long], fixedReward: Option[Boolean], splitReward: Option[String], allocateTickets: Option[Boolean], tournamentData: Option[String], visibility: Option[String], preliminaryGroups: Option[Int], preliminaryGroupAdvancements: Option[String], enableMultipleEntries: Option[Boolean], enableMultipleVotes: Option[Boolean], featured: Option[Boolean], winnerTag: Option[String], tieTag: Option[String]): TournamentResponse
 }

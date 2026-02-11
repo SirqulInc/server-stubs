@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.Program
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ProgramApiController @Inject()(cc: ControllerComponents, api: ProgramApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/program
+    * POST /api/3.18/program
     */
-  def createProgram(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createProgram(): Action[AnyContent] = Action { request =>
     def executeApi(): Program = {
       val body = request.body.asJson.map(_.as[Program])
-      api.createProgram(version, body)
+      api.createProgram(body)
     }
 
     val result = executeApi()
@@ -25,12 +24,12 @@ class ProgramApiController @Inject()(cc: ControllerComponents, api: ProgramApi) 
   }
 
   /**
-    * DELETE /api/:version/program/:id
+    * DELETE /api/3.18/program/:id
     * @param id the id of the program
     */
-  def deleteProgram(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def deleteProgram(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.deleteProgram(version, id)
+      api.deleteProgram(id)
     }
 
     executeApi()
@@ -38,12 +37,12 @@ class ProgramApiController @Inject()(cc: ControllerComponents, api: ProgramApi) 
   }
 
   /**
-    * GET /api/:version/program/:id
+    * GET /api/3.18/program/:id
     * @param id the id of the program
     */
-  def getProgram(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def getProgram(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Program = {
-      api.getProgram(version, id)
+      api.getProgram(id)
     }
 
     val result = executeApi()
@@ -52,28 +51,13 @@ class ProgramApiController @Inject()(cc: ControllerComponents, api: ProgramApi) 
   }
 
   /**
-    * POST /api/:version/program/:id
+    * POST /api/3.18/program/:id
     * @param id the id of the program
     */
-  def postProgram(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
-    def executeApi(): Program = {
-      val body = request.body.asJson.map(_.as[Program])
-      api.postProgram(version, id, body)
-    }
-
-    val result = executeApi()
-    val json = Json.toJson(result)
-    Ok(json)
-  }
-
-  /**
-    * PUT /api/:version/program/:id
-    * @param id the id of the program
-    */
-  def putProgram(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def postProgram(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Program = {
       val body = request.body.asJson.map(_.as[Program])
-      api.putProgram(version, id, body)
+      api.postProgram(id, body)
     }
 
     val result = executeApi()
@@ -82,9 +66,24 @@ class ProgramApiController @Inject()(cc: ControllerComponents, api: ProgramApi) 
   }
 
   /**
-    * GET /api/:version/program?keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * PUT /api/3.18/program/:id
+    * @param id the id of the program
     */
-  def searchPrograms(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def putProgram(id: Long): Action[AnyContent] = Action { request =>
+    def executeApi(): Program = {
+      val body = request.body.asJson.map(_.as[Program])
+      api.putProgram(id, body)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * GET /api/3.18/program?keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    */
+  def searchPrograms(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Program] = {
       val keyword = request.getQueryString("keyword")
         
@@ -117,7 +116,7 @@ class ProgramApiController @Inject()(cc: ControllerComponents, api: ProgramApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchPrograms(version, sortField, descending, start, limit, activeOnly, keyword)
+      api.searchPrograms(sortField, descending, start, limit, activeOnly, keyword)
     }
 
     val result = executeApi()

@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.OfferTransactionStatusResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait OfferStatusApi {
   /**
     * Create Offer Status
@@ -21,7 +20,7 @@ trait OfferStatusApi {
     * @param active The active status
     * @param applicationIds The applications to associate the status with, if null then for all.
     */
-  def createOfferTransactionStatus(version: BigDecimal, name: String, code: Int, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], description: Option[String], role: Option[String], active: Option[Boolean], applicationIds: Option[String]): OfferTransactionStatusResponse
+  def createOfferTransactionStatus(name: String, code: Int, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], description: Option[String], role: Option[String], active: Option[Boolean], applicationIds: Option[String]): OfferTransactionStatusResponse
 
   /**
     * Delete Offer Status
@@ -32,7 +31,7 @@ trait OfferStatusApi {
     * @param latitude Used to update the user&#39;s current location
     * @param longitude Used to update the user&#39;s current location
     */
-  def deleteOfferTransactionStatus(version: BigDecimal, statusId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def deleteOfferTransactionStatus(statusId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Get Offer Status
@@ -43,7 +42,7 @@ trait OfferStatusApi {
     * @param latitude Used to update the user&#39;s current location
     * @param longitude Used to update the user&#39;s current location
     */
-  def getOfferTransactionStatus(version: BigDecimal, statusId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): OfferTransactionStatusResponse
+  def getOfferTransactionStatus(statusId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): OfferTransactionStatusResponse
 
   /**
     * Search Offer Status
@@ -61,7 +60,7 @@ trait OfferStatusApi {
     * @param limit The limit for pagination
     * @param includeInactive If true include inactive items
     */
-  def searchOfferTransactionStatuses(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], keyword: Option[String], role: Option[String], appKey: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], includeInactive: Option[Boolean]): List[OfferTransactionStatusResponse]
+  def searchOfferTransactionStatuses(deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], keyword: Option[String], role: Option[String], appKey: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], includeInactive: Option[Boolean]): List[OfferTransactionStatusResponse]
 
   /**
     * Update Offer Status
@@ -78,5 +77,5 @@ trait OfferStatusApi {
     * @param active The active status
     * @param applicationIds The applications to associate the status with, if null then for all.
     */
-  def updateOfferTransactionStatus(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], statusId: Option[Long], name: Option[String], description: Option[String], code: Option[Int], role: Option[String], active: Option[Boolean], applicationIds: Option[String]): OfferTransactionStatusResponse
+  def updateOfferTransactionStatus(deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], statusId: Option[Long], name: Option[String], description: Option[String], code: Option[Int], role: Option[String], active: Option[Boolean], applicationIds: Option[String]): OfferTransactionStatusResponse
 }

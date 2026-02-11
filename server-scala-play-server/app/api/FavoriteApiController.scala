@@ -5,18 +5,17 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.AccountResponse
-import model.BigDecimal
 import model.SearchResponse
 import model.SirqulResponse
 import model.WrappedResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/favorite/create?deviceId=[value]&accountId=[value]&favoritableId=[value]&favoritableType=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/favorite/create?deviceId=[value]&accountId=[value]&favoritableId=[value]&favoritableType=[value]&latitude=[value]&longitude=[value]
     */
-  def addFavorite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addFavorite(): Action[AnyContent] = Action { request =>
     def executeApi(): WrappedResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -40,7 +39,7 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.addFavorite(version, favoritableId, favoritableType, deviceId, accountId, latitude, longitude)
+      api.addFavorite(favoritableId, favoritableType, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -49,9 +48,9 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
   }
 
   /**
-    * POST /api/:version/favorite/delete?deviceId=[value]&accountId=[value]&favoriteId=[value]&favoritableId=[value]&favoritableType=[value]
+    * POST /api/3.18/favorite/delete?deviceId=[value]&accountId=[value]&favoriteId=[value]&favoritableId=[value]&favoritableType=[value]
     */
-  def deleteFavorite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteFavorite(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -66,7 +65,7 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
         
       val favoritableType = request.getQueryString("favoritableType")
         
-      api.deleteFavorite(version, deviceId, accountId, favoriteId, favoritableId, favoritableType)
+      api.deleteFavorite(deviceId, accountId, favoriteId, favoritableId, favoritableType)
     }
 
     val result = executeApi()
@@ -75,9 +74,9 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
   }
 
   /**
-    * GET /api/:version/favorite/get?deviceId=[value]&accountId=[value]&favoriteId=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/favorite/get?deviceId=[value]&accountId=[value]&favoriteId=[value]&latitude=[value]&longitude=[value]
     */
-  def getFavorite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getFavorite(): Action[AnyContent] = Action { request =>
     def executeApi(): WrappedResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -96,7 +95,7 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getFavorite(version, favoriteId, deviceId, accountId, latitude, longitude)
+      api.getFavorite(favoriteId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -105,9 +104,9 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
   }
 
   /**
-    * GET /api/:version/favorite/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&favoritableType=[value]&secondaryType=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&returnFullResponse=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/favorite/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&favoritableType=[value]&secondaryType=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&returnFullResponse=[value]&latitude=[value]&longitude=[value]
     */
-  def searchFavorites(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchFavorites(): Action[AnyContent] = Action { request =>
     def executeApi(): SearchResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -167,7 +166,7 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.searchFavorites(version, favoritableType, sortField, descending, start, limit, activeOnly, returnFullResponse, deviceId, accountId, connectionAccountId, secondaryType, keyword, latitude, longitude)
+      api.searchFavorites(favoritableType, sortField, descending, start, limit, activeOnly, returnFullResponse, deviceId, accountId, connectionAccountId, secondaryType, keyword, latitude, longitude)
     }
 
     val result = executeApi()
@@ -176,9 +175,9 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
   }
 
   /**
-    * GET /api/:version/favorite/whois?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&favoritableId=[value]&favoritableType=[value]&keyword=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/favorite/whois?deviceId=[value]&accountId=[value]&latitude=[value]&longitude=[value]&favoritableId=[value]&favoritableType=[value]&keyword=[value]&start=[value]&limit=[value]
     */
-  def whoHasFavorited(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def whoHasFavorited(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AccountResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -216,7 +215,7 @@ class FavoriteApiController @Inject()(cc: ControllerComponents, api: FavoriteApi
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.whoHasFavorited(version, favoritableId, favoritableType, start, limit, deviceId, accountId, latitude, longitude, keyword)
+      api.whoHasFavorited(favoritableId, favoritableType, start, limit, deviceId, accountId, latitude, longitude, keyword)
     }
 
     val result = executeApi()

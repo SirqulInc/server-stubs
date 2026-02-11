@@ -5,16 +5,15 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.ApplicationConfigResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: ApplicationConfigApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/appconfig/create?accountId=[value]&appKey=[value]&configVersion=[value]&assetId=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]
+    * POST /api/3.18/appconfig/create?accountId=[value]&appKey=[value]&configVersion=[value]&assetId=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]
     */
-  def createApplicationConfig(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createApplicationConfig(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationConfigResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -46,7 +45,7 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
         
       val udid = request.getQueryString("udid")
         
-      api.createApplicationConfig(version, accountId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid)
+      api.createApplicationConfig(accountId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid)
     }
 
     val result = executeApi()
@@ -55,9 +54,9 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
   }
 
   /**
-    * POST /api/:version/appconfig/delete?accountId=[value]&configId=[value]
+    * POST /api/3.18/appconfig/delete?accountId=[value]&configId=[value]
     */
-  def deleteApplicationConfig(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteApplicationConfig(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -71,7 +70,7 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
           throw new OpenApiExceptions.MissingRequiredParameterException("configId", "query string")
         }
         
-      api.deleteApplicationConfig(version, accountId, configId)
+      api.deleteApplicationConfig(accountId, configId)
     }
 
     val result = executeApi()
@@ -80,9 +79,9 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
   }
 
   /**
-    * GET /api/:version/appconfig/get?accountId=[value]&configId=[value]
+    * GET /api/3.18/appconfig/get?accountId=[value]&configId=[value]
     */
-  def getApplicationConfig(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getApplicationConfig(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationConfigResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -96,7 +95,7 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
           throw new OpenApiExceptions.MissingRequiredParameterException("configId", "query string")
         }
         
-      api.getApplicationConfig(version, accountId, configId)
+      api.getApplicationConfig(accountId, configId)
     }
 
     val result = executeApi()
@@ -105,9 +104,9 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
   }
 
   /**
-    * GET /api/:version/appconfig/getbyversion?appKey=[value]&configVersion=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]&allowOlderVersions=[value]
+    * GET /api/3.18/appconfig/getbyversion?appKey=[value]&configVersion=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]&allowOlderVersions=[value]
     */
-  def getApplicationConfigByConfigVersion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getApplicationConfigByConfigVersion(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationConfigResponse = {
       val appKey = request.getQueryString("appKey")
         .getOrElse {
@@ -130,7 +129,7 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
       val allowOlderVersions = request.getQueryString("allowOlderVersions")
         .map(value => value.toBoolean)
         
-      api.getApplicationConfigByConfigVersion(version, appKey, configVersion, retailerId, retailerLocationId, udid, allowOlderVersions)
+      api.getApplicationConfigByConfigVersion(appKey, configVersion, retailerId, retailerLocationId, udid, allowOlderVersions)
     }
 
     val result = executeApi()
@@ -139,9 +138,9 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
   }
 
   /**
-    * GET /api/:version/appconfig/search?accountId=[value]&appKey=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]&configVersion=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/appconfig/search?accountId=[value]&appKey=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]&configVersion=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchApplicationConfig(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchApplicationConfig(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ApplicationConfigResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -172,7 +171,7 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchApplicationConfig(version, accountId, appKey, retailerId, retailerLocationId, udid, configVersion, sortField, descending, start, limit)
+      api.searchApplicationConfig(accountId, appKey, retailerId, retailerLocationId, udid, configVersion, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -181,9 +180,9 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
   }
 
   /**
-    * POST /api/:version/appconfig/update?accountId=[value]&configId=[value]&appKey=[value]&configVersion=[value]&assetId=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]
+    * POST /api/3.18/appconfig/update?accountId=[value]&configId=[value]&appKey=[value]&configVersion=[value]&assetId=[value]&retailerId=[value]&retailerLocationId=[value]&udid=[value]
     */
-  def updateApplicationConfig(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateApplicationConfig(): Action[AnyContent] = Action { request =>
     def executeApi(): ApplicationConfigResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -212,7 +211,7 @@ class ApplicationConfigApiController @Inject()(cc: ControllerComponents, api: Ap
         
       val udid = request.getQueryString("udid")
         
-      api.updateApplicationConfig(version, accountId, configId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid)
+      api.updateApplicationConfig(accountId, configId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid)
     }
 
     val result = executeApi()

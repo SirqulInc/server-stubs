@@ -6,7 +6,7 @@ import model.NoteResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait NoteApi {
   /**
     * Batch Note Operation
@@ -17,7 +17,7 @@ trait NoteApi {
     * @param accountId The account id of the user (deviceId or accountId required)
     * @param batchOperation The batch operation to perform (e.g., DELETE_ALL_NOTES_IN_NOTABLE). Optional.
     */
-  def batchOperation(version: BigDecimal, notableId: Long, notableType: String, deviceId: Option[String], accountId: Option[Long], batchOperation: Option[String]): SirqulResponse
+  def batchOperation(notableId: Long, notableType: String, deviceId: Option[String], accountId: Option[Long], batchOperation: Option[String]): SirqulResponse
 
   /**
     * Create Note
@@ -65,7 +65,7 @@ trait NoteApi {
     * @param assetLatitude the latitude of the asset
     * @param assetLongitude the longitude of the asset
     */
-  def createNote(version: BigDecimal, comment: String, deviceId: Option[String], accountId: Option[Long], notableType: Option[String], notableId: Option[Long], noteType: Option[String], assetIds: Option[String], tags: Option[String], permissionableType: Option[String], permissionableId: Option[Long], appKey: Option[String], locationDescription: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], receiverAccountIds: Option[String], returnFullResponse: Option[Boolean], initializeAsset: Option[Boolean], assetReturnNulls: Option[Boolean], assetAlbumId: Option[Long], assetCollectionId: Option[Long], assetAddToDefaultAlbum: Option[String], assetAddToMediaLibrary: Option[Boolean], assetVersionCode: Option[Int], assetVersionName: Option[String], assetMetaData: Option[String], assetCaption: Option[String], assetMedia: Option[TemporaryFile], assetMediaUrl: Option[String], assetMediaString: Option[String], assetMediaStringFileName: Option[String], assetMediaStringContentType: Option[String], assetAttachedMedia: Option[TemporaryFile], assetAttachedMediaUrl: Option[String], assetAttachedMediaString: Option[String], assetAttachedMediaStringFileName: Option[String], assetAttachedMediaStringContentType: Option[String], assetLocationDescription: Option[String], assetApp: Option[String], assetSearchTags: Option[String], assetLatitude: Option[Double], assetLongitude: Option[BigDecimal]): NoteResponse
+  def createNote(comment: String, deviceId: Option[String], accountId: Option[Long], notableType: Option[String], notableId: Option[Long], noteType: Option[String], assetIds: Option[String], tags: Option[String], permissionableType: Option[String], permissionableId: Option[Long], appKey: Option[String], locationDescription: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], receiverAccountIds: Option[String], returnFullResponse: Option[Boolean], initializeAsset: Option[Boolean], assetReturnNulls: Option[Boolean], assetAlbumId: Option[Long], assetCollectionId: Option[Long], assetAddToDefaultAlbum: Option[String], assetAddToMediaLibrary: Option[Boolean], assetVersionCode: Option[Int], assetVersionName: Option[String], assetMetaData: Option[String], assetCaption: Option[String], assetMedia: Option[TemporaryFile], assetMediaUrl: Option[String], assetMediaString: Option[String], assetMediaStringFileName: Option[String], assetMediaStringContentType: Option[String], assetAttachedMedia: Option[TemporaryFile], assetAttachedMediaUrl: Option[String], assetAttachedMediaString: Option[String], assetAttachedMediaStringFileName: Option[String], assetAttachedMediaStringContentType: Option[String], assetLocationDescription: Option[String], assetApp: Option[String], assetSearchTags: Option[String], assetLatitude: Option[Double], assetLongitude: Option[BigDecimal]): NoteResponse
 
   /**
     * Delete Note
@@ -77,7 +77,7 @@ trait NoteApi {
     * @param longitude The current location of the user
     * @param appKey The application key used to identify the application
     */
-  def deleteNote(version: BigDecimal, noteId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], appKey: Option[String]): SirqulResponse
+  def deleteNote(noteId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], appKey: Option[String]): SirqulResponse
 
   /**
     * Get Note
@@ -87,7 +87,7 @@ trait NoteApi {
     * @param accountId The unique accountId that made the request (either deviceId or accountId must be used)
     * @param returnFullResponse Determines whether to return the NoteFullResponse for the item
     */
-  def getNote(version: BigDecimal, noteId: Long, deviceId: Option[String], accountId: Option[Long], returnFullResponse: Option[Boolean]): SirqulResponse
+  def getNote(noteId: Long, deviceId: Option[String], accountId: Option[Long], returnFullResponse: Option[Boolean]): SirqulResponse
 
   /**
     * Search Notes
@@ -110,7 +110,7 @@ trait NoteApi {
     * @param start The record to begin the return set on
     * @param limit The number of records to return
     */
-  def searchNotes(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], notableType: Option[String], notableId: Option[Long], noteTypes: Option[String], appKey: Option[String], keyword: Option[String], flagCountMinimum: Option[Long], flagsExceedThreshold: Option[Boolean], includeInactive: Option[Boolean], sortField: Option[String], descending: Option[Boolean], returnFullResponse: Option[Boolean], updatedSince: Option[Long], updatedBefore: Option[Long], start: Option[Int], limit: Option[Int]): List[NoteResponse]
+  def searchNotes(deviceId: Option[String], accountId: Option[Long], notableType: Option[String], notableId: Option[Long], noteTypes: Option[String], appKey: Option[String], keyword: Option[String], flagCountMinimum: Option[Long], flagsExceedThreshold: Option[Boolean], includeInactive: Option[Boolean], sortField: Option[String], descending: Option[Boolean], returnFullResponse: Option[Boolean], updatedSince: Option[Long], updatedBefore: Option[Long], start: Option[Int], limit: Option[Int]): List[NoteResponse]
 
   /**
     * Update Note
@@ -157,5 +157,5 @@ trait NoteApi {
     * @param assetLatitude the latitude of the asset
     * @param assetLongitude the longitude of the asset
     */
-  def updateNote(version: BigDecimal, noteId: Long, deviceId: Option[String], accountId: Option[Long], comment: Option[String], noteType: Option[String], assetIds: Option[String], tags: Option[String], permissionableType: Option[String], permissionableId: Option[Long], appKey: Option[String], locationDescription: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], returnFullResponse: Option[Boolean], active: Option[Boolean], updateAsset: Option[Boolean], assetReturnNulls: Option[Boolean], assetAlbumId: Option[Long], assetCollectionId: Option[Long], assetAddToDefaultAlbum: Option[String], assetAddToMediaLibrary: Option[Boolean], assetVersionCode: Option[Int], assetVersionName: Option[String], assetMetaData: Option[String], assetCaption: Option[String], assetMedia: Option[TemporaryFile], assetMediaUrl: Option[String], assetMediaString: Option[String], assetMediaStringFileName: Option[String], assetMediaStringContentType: Option[String], assetAttachedMedia: Option[TemporaryFile], assetAttachedMediaUrl: Option[String], assetAttachedMediaString: Option[String], assetAttachedMediaStringFileName: Option[String], assetAttachedMediaStringContentType: Option[String], assetLocationDescription: Option[String], assetApp: Option[String], assetSearchTags: Option[String], assetLatitude: Option[Double], assetLongitude: Option[Double]): NoteResponse
+  def updateNote(noteId: Long, deviceId: Option[String], accountId: Option[Long], comment: Option[String], noteType: Option[String], assetIds: Option[String], tags: Option[String], permissionableType: Option[String], permissionableId: Option[Long], appKey: Option[String], locationDescription: Option[String], latitude: Option[Double], longitude: Option[Double], metaData: Option[String], returnFullResponse: Option[Boolean], active: Option[Boolean], updateAsset: Option[Boolean], assetReturnNulls: Option[Boolean], assetAlbumId: Option[Long], assetCollectionId: Option[Long], assetAddToDefaultAlbum: Option[String], assetAddToMediaLibrary: Option[Boolean], assetVersionCode: Option[Int], assetVersionName: Option[String], assetMetaData: Option[String], assetCaption: Option[String], assetMedia: Option[TemporaryFile], assetMediaUrl: Option[String], assetMediaString: Option[String], assetMediaStringFileName: Option[String], assetMediaStringContentType: Option[String], assetAttachedMedia: Option[TemporaryFile], assetAttachedMediaUrl: Option[String], assetAttachedMediaString: Option[String], assetAttachedMediaStringFileName: Option[String], assetAttachedMediaStringContentType: Option[String], assetLocationDescription: Option[String], assetApp: Option[String], assetSearchTags: Option[String], assetLatitude: Option[Double], assetLongitude: Option[Double]): NoteResponse
 }

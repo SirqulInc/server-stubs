@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PreviewPersonaResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: PreviewPersonaApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/persona/create?accountId=[value]&title=[value]&previewAccounts=[value]&date=[value]&age=[value]&gender=[value]&gameExperienceLevel=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/persona/create?accountId=[value]&title=[value]&previewAccounts=[value]&date=[value]&age=[value]&gender=[value]&gameExperienceLevel=[value]&latitude=[value]&longitude=[value]
     */
-  def createPersona(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createPersona(): Action[AnyContent] = Action { request =>
     def executeApi(): PreviewPersonaResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -45,7 +44,7 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.createPersona(version, accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude)
+      api.createPersona(accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude)
     }
 
     val result = executeApi()
@@ -54,9 +53,9 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
   }
 
   /**
-    * POST /api/:version/persona/delete?accountId=[value]&personaId=[value]
+    * POST /api/3.18/persona/delete?accountId=[value]&personaId=[value]
     */
-  def deletePersona(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deletePersona(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -70,7 +69,7 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
           throw new OpenApiExceptions.MissingRequiredParameterException("personaId", "query string")
         }
         
-      api.deletePersona(version, accountId, personaId)
+      api.deletePersona(accountId, personaId)
     }
 
     val result = executeApi()
@@ -79,9 +78,9 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
   }
 
   /**
-    * GET /api/:version/persona/get?accountId=[value]&personaId=[value]
+    * GET /api/3.18/persona/get?accountId=[value]&personaId=[value]
     */
-  def getPersonaList(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPersonaList(): Action[AnyContent] = Action { request =>
     def executeApi(): PreviewPersonaResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -95,7 +94,7 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
           throw new OpenApiExceptions.MissingRequiredParameterException("personaId", "query string")
         }
         
-      api.getPersonaList(version, accountId, personaId)
+      api.getPersonaList(accountId, personaId)
     }
 
     val result = executeApi()
@@ -104,9 +103,9 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
   }
 
   /**
-    * GET /api/:version/persona/search?accountId=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/persona/search?accountId=[value]&start=[value]&limit=[value]
     */
-  def searchPersona(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchPersona(): Action[AnyContent] = Action { request =>
     def executeApi(): PreviewPersonaResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -126,7 +125,7 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.searchPersona(version, accountId, start, limit)
+      api.searchPersona(accountId, start, limit)
     }
 
     val result = executeApi()
@@ -135,9 +134,9 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
   }
 
   /**
-    * POST /api/:version/persona/update?accountId=[value]&personaId=[value]&title=[value]&previewAccounts=[value]&active=[value]&date=[value]&age=[value]&gender=[value]&gameExperienceLevel=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/persona/update?accountId=[value]&personaId=[value]&title=[value]&previewAccounts=[value]&active=[value]&date=[value]&age=[value]&gender=[value]&gameExperienceLevel=[value]&latitude=[value]&longitude=[value]
     */
-  def updatePersona(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updatePersona(): Action[AnyContent] = Action { request =>
     def executeApi(): PreviewPersonaResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -174,7 +173,7 @@ class PreviewPersonaApiController @Inject()(cc: ControllerComponents, api: Previ
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.updatePersona(version, accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude)
+      api.updatePersona(accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude)
     }
 
     val result = executeApi()

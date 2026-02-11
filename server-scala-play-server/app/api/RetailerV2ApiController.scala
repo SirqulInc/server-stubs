@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RetailerV2ApiController @Inject()(cc: ControllerComponents, api: RetailerV2Api) extends AbstractController(cc) {
   /**
-    * GET /api/:version/retailer?keyword=[value]&sortField=[value]&start=[value]&limit=[value]&retailerId=[value]&activeOnly=[value]
+    * GET /api/3.18/retailer?keyword=[value]&sortField=[value]&start=[value]&limit=[value]&retailerId=[value]&activeOnly=[value]
     */
-  def getRetaokiler(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getRetaokiler(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val keyword = request.getQueryString("keyword")
         
@@ -37,7 +36,7 @@ class RetailerV2ApiController @Inject()(cc: ControllerComponents, api: RetailerV
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.getRetaokiler(version, retailerId, activeOnly, keyword, sortField, start, limit)
+      api.getRetaokiler(retailerId, activeOnly, keyword, sortField, start, limit)
     }
 
     val result = executeApi()

@@ -4,20 +4,19 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.RegionLegSummary
 import model.ReportBatchResponse
 import model.ReportRegionLegSummaryBatchResponse
 import model.ReportResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/report/batch/create?accountId=[value]&appKey=[value]&status=[value]&endpoint=[value]&parameters=[value]&name=[value]&startDate=[value]&endDate=[value]&description=[value]&previewLimit=[value]&pageUrl=[value]
+    * POST /api/3.18/report/batch/create?accountId=[value]&appKey=[value]&status=[value]&endpoint=[value]&parameters=[value]&name=[value]&startDate=[value]&endDate=[value]&description=[value]&previewLimit=[value]&pageUrl=[value]
     */
-  def createBatch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createBatch(): Action[AnyContent] = Action { request =>
     def executeApi(): ReportBatchResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -54,7 +53,7 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
         
       val pageUrl = request.getQueryString("pageUrl")
         
-      api.createBatch(version, accountId, status, previewLimit, appKey, endpoint, parameters, name, startDate, endDate, description, pageUrl)
+      api.createBatch(accountId, status, previewLimit, appKey, endpoint, parameters, name, startDate, endDate, description, pageUrl)
     }
 
     val result = executeApi()
@@ -63,12 +62,12 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
   }
 
   /**
-    * POST /api/:version/report/region/summary/batch
+    * POST /api/3.18/report/region/summary/batch
     */
-  def createRegionLegSummaryBatch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createRegionLegSummaryBatch(): Action[AnyContent] = Action { request =>
     def executeApi(): ReportRegionLegSummaryBatchResponse = {
       val body = request.body.asJson.map(_.as[List[RegionLegSummary]])
-      api.createRegionLegSummaryBatch(version, body)
+      api.createRegionLegSummaryBatch(body)
     }
 
     val result = executeApi()
@@ -77,9 +76,9 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
   }
 
   /**
-    * POST /api/:version/report/batch/delete?accountId=[value]&batchId=[value]
+    * POST /api/3.18/report/batch/delete?accountId=[value]&batchId=[value]
     */
-  def deleteBatch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteBatch(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -93,7 +92,7 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
           throw new OpenApiExceptions.MissingRequiredParameterException("batchId", "query string")
         }
         
-      api.deleteBatch(version, accountId, batchId)
+      api.deleteBatch(accountId, batchId)
     }
 
     val result = executeApi()
@@ -102,9 +101,9 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
   }
 
   /**
-    * GET /api/:version/report/batch/get?accountId=[value]&batchId=[value]&allResults=[value]
+    * GET /api/3.18/report/batch/get?accountId=[value]&batchId=[value]&allResults=[value]
     */
-  def getReportBatch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getReportBatch(): Action[AnyContent] = Action { request =>
     def executeApi(): ReportBatchResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -124,7 +123,7 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
           throw new OpenApiExceptions.MissingRequiredParameterException("allResults", "query string")
         }
         
-      api.getReportBatch(version, accountId, batchId, allResults)
+      api.getReportBatch(accountId, batchId, allResults)
     }
 
     val result = executeApi()
@@ -133,9 +132,9 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
   }
 
   /**
-    * POST /api/:version/report/run?accountId=[value]&query=[value]&parameters=[value]&order=[value]&desc=[value]&start=[value]&limit=[value]&responseFormat=[value]
+    * POST /api/3.18/report/run?accountId=[value]&query=[value]&parameters=[value]&order=[value]&desc=[value]&start=[value]&limit=[value]&responseFormat=[value]
     */
-  def runReport(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def runReport(): Action[AnyContent] = Action { request =>
     def executeApi(): ReportResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -160,7 +159,7 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
         
       val responseFormat = request.getQueryString("responseFormat")
         
-      api.runReport(version, desc, accountId, query, parameters, order, start, limit, responseFormat)
+      api.runReport(desc, accountId, query, parameters, order, start, limit, responseFormat)
     }
 
     val result = executeApi()
@@ -169,9 +168,9 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
   }
 
   /**
-    * GET /api/:version/report/batch/search?accountId=[value]&names=[value]&appKey=[value]&status=[value]&globalAppSearch=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/report/batch/search?accountId=[value]&names=[value]&appKey=[value]&status=[value]&globalAppSearch=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
     */
-  def searchBatch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchBatch(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ReportBatchResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -206,7 +205,7 @@ class ReportingApiController @Inject()(cc: ControllerComponents, api: ReportingA
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.searchBatch(version, accountId, start, limit, names, appKey, status, globalAppSearch, startDate, endDate)
+      api.searchBatch(accountId, start, limit, names, appKey, status, globalAppSearch, startDate, endDate)
     }
 
     val result = executeApi()

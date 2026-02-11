@@ -1,16 +1,15 @@
 package api
 
-import model.BigDecimal
 
 /**
   * Provides a default implementation for [[VatomApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def createFollowing(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def createFollowing(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -19,7 +18,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def createSpace(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def createSpace(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -28,7 +27,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def createVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def createVatomEvent(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -37,7 +36,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def deleteFollowing(version: BigDecimal, accountId: Long, vatomRelsKey: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def deleteFollowing(accountId: Long, vatomRelsKey: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -46,7 +45,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def deletePointsBalance(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def deletePointsBalance(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -55,7 +54,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def deleteSpace(version: BigDecimal, accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def deleteSpace(accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -64,7 +63,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def deleteVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def deleteVatomEvent(accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -73,7 +72,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def deleteVatomNFT(version: BigDecimal, accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def deleteVatomNFT(accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -82,7 +81,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def executeActionOnNFT(version: BigDecimal, accountId: Long, vatomId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def executeActionOnNFT(accountId: Long, vatomId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -91,7 +90,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def geomapSearch(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def geomapSearch(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -100,7 +99,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getBusinessBehaviors(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getBusinessBehaviors(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -109,7 +108,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getBusinessCoinsBalance(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getBusinessCoinsBalance(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -118,7 +117,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getBusinessIds(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
+  override def getBusinessIds(accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -127,7 +126,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getBusinessInfo(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def getBusinessInfo(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -136,7 +135,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getBusinessUsers(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getBusinessUsers(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -145,7 +144,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getCampaignGroupEntities(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getCampaignGroupEntities(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -154,7 +153,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getCampaignGroupRules(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getCampaignGroupRules(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -163,7 +162,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getCampaignGroupStats(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getCampaignGroupStats(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -172,7 +171,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getCampaignInfo(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getCampaignInfo(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -181,7 +180,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getEventGuestList(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getEventGuestList(accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -190,7 +189,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getInventory(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getInventory(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -199,7 +198,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getMyFollowing(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
+  override def getMyFollowing(accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -208,7 +207,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getPointsBalance(version: BigDecimal, accountId: Long, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getPointsBalance(accountId: Long, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -217,7 +216,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getPointsBalanceAsBusiness(version: BigDecimal, accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getPointsBalanceAsBusiness(accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -226,7 +225,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getSpace(version: BigDecimal, accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getSpace(accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -235,7 +234,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getUserCoinsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getUserCoinsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -244,7 +243,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getUserCoinsBalance(version: BigDecimal, accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def getUserCoinsBalance(accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -253,7 +252,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getUserFollowers(version: BigDecimal, accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getUserFollowers(accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -262,7 +261,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getUserFollowing(version: BigDecimal, accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getUserFollowing(accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -271,7 +270,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getUserInfo(version: BigDecimal, accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getUserInfo(accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -280,7 +279,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getUserProfile(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
+  override def getUserProfile(accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -289,7 +288,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getVatomEvent(accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -298,7 +297,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def getVatomNFT(version: BigDecimal, accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def getVatomNFT(accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -307,7 +306,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def listCommunities(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def listCommunities(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -316,7 +315,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def listEvents(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def listEvents(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -325,7 +324,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def listSpaces(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def listSpaces(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -334,7 +333,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def listUserCoinTransactions(version: BigDecimal, accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def listUserCoinTransactions(accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -343,7 +342,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def listUserCoinTransactionsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def listUserCoinTransactionsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -352,7 +351,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def performActionOnNFT(version: BigDecimal, accountId: Long, vatomId: String, vatomAction: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def performActionOnNFT(accountId: Long, vatomId: String, vatomAction: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -361,7 +360,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def redeemNFT(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def redeemNFT(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -370,7 +369,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def redeemUserCoinsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def redeemUserCoinsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -379,7 +378,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def searchBusinesses(version: BigDecimal, accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def searchBusinesses(accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -388,7 +387,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def searchCampaignGroups(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def searchCampaignGroups(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -397,7 +396,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def searchIdentities(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
+  override def searchIdentities(accountId: Long, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -406,7 +405,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def searchInventory(version: BigDecimal, accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
+  override def searchInventory(accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -415,7 +414,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def sendNFT(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def sendNFT(accountId: Long, appKey: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -424,7 +423,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def setPointsBalanceAsBusiness(version: BigDecimal, accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def setPointsBalanceAsBusiness(accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -433,7 +432,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def transferUserCoins(version: BigDecimal, accountId: Long, vatomUserId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def transferUserCoins(accountId: Long, vatomUserId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -442,7 +441,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def updateBusinessCoins(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def updateBusinessCoins(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -451,7 +450,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def updateEventGuestList(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def updateEventGuestList(accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -460,7 +459,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def updateSpace(version: BigDecimal, accountId: Long, appKey: String, vatomSpaceId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def updateSpace(accountId: Long, appKey: String, vatomSpaceId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -469,7 +468,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def updateUserCoinsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def updateUserCoinsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -478,7 +477,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def updateUserProfile(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def updateUserProfile(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     
@@ -487,7 +486,7 @@ class VatomApiImpl extends VatomApi {
   /**
     * @inheritdoc
     */
-  override def updateVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
+  override def updateVatomEvent(accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit = {
     // TODO: Implement better logic
 
     

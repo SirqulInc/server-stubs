@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.OfferTransactionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/wallet/create?deviceId=[value]&accountId=[value]&offerId=[value]&offerLocationId=[value]&offerCart=[value]&promoCode=[value]&currencyType=[value]&usePoints=[value]&metaData=[value]&appKey=[value]&status=[value]
+    * POST /api/3.18/wallet/create?deviceId=[value]&accountId=[value]&offerId=[value]&offerLocationId=[value]&offerCart=[value]&promoCode=[value]&currencyType=[value]&usePoints=[value]&metaData=[value]&appKey=[value]&status=[value]
     */
-  def createOfferTransaction(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOfferTransaction(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferTransactionResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -43,7 +42,7 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
       val status = request.getQueryString("status")
         .map(value => value.toInt)
         
-      api.createOfferTransaction(version, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, status)
+      api.createOfferTransaction(deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, status)
     }
 
     val result = executeApi()
@@ -52,9 +51,9 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
   }
 
   /**
-    * POST /api/:version/wallet/delete?deviceId=[value]&accountId=[value]&transactionId=[value]
+    * POST /api/3.18/wallet/delete?deviceId=[value]&accountId=[value]&transactionId=[value]
     */
-  def deleteOfferTransaction(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteOfferTransaction(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -67,7 +66,7 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
           throw new OpenApiExceptions.MissingRequiredParameterException("transactionId", "query string")
         }
         
-      api.deleteOfferTransaction(version, transactionId, deviceId, accountId)
+      api.deleteOfferTransaction(transactionId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -76,9 +75,9 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
   }
 
   /**
-    * GET /api/:version/wallet/get?deviceId=[value]&accountId=[value]&transactionId=[value]&includeMission=[value]&latitude=[value]&longitude=[value]&returnFullResponse=[value]
+    * GET /api/3.18/wallet/get?deviceId=[value]&accountId=[value]&transactionId=[value]&includeMission=[value]&latitude=[value]&longitude=[value]&returnFullResponse=[value]
     */
-  def getOfferTransaction(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOfferTransaction(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferTransactionResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -103,7 +102,7 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
       val returnFullResponse = request.getQueryString("returnFullResponse")
         .map(value => value.toBoolean)
         
-      api.getOfferTransaction(version, transactionId, deviceId, accountId, includeMission, latitude, longitude, returnFullResponse)
+      api.getOfferTransaction(transactionId, deviceId, accountId, includeMission, latitude, longitude, returnFullResponse)
     }
 
     val result = executeApi()
@@ -112,9 +111,9 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
   }
 
   /**
-    * POST /api/:version/wallet/preview?deviceId=[value]&accountId=[value]&offerId=[value]&offerLocationId=[value]&offerCart=[value]&promoCode=[value]&currencyType=[value]&usePoints=[value]&metaData=[value]&appKey=[value]
+    * POST /api/3.18/wallet/preview?deviceId=[value]&accountId=[value]&offerId=[value]&offerLocationId=[value]&offerCart=[value]&promoCode=[value]&currencyType=[value]&usePoints=[value]&metaData=[value]&appKey=[value]
     */
-  def previewOfferTransaction(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def previewOfferTransaction(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferTransactionResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -140,7 +139,7 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
         
       val appKey = request.getQueryString("appKey")
         
-      api.previewOfferTransaction(version, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey)
+      api.previewOfferTransaction(deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey)
     }
 
     val result = executeApi()
@@ -149,9 +148,9 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
   }
 
   /**
-    * GET /api/:version/wallet/search?deviceId=[value]&accountId=[value]&keyword=[value]&retailerId=[value]&retailerIds=[value]&retailerLocationId=[value]&retailerLocationIds=[value]&excludeRetailerLocationIds=[value]&offerId=[value]&offerIds=[value]&offerLocationId=[value]&offerLocationIds=[value]&offerType=[value]&offerTypes=[value]&specialOfferType=[value]&specialOfferTypes=[value]&categoryIds=[value]&filterIds=[value]&offerAudienceIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&latitude=[value]&longitude=[value]&redeemableStartDate=[value]&redeemableEndDate=[value]&filterByParentOffer=[value]&startedSince=[value]&startedBefore=[value]&endedSince=[value]&endedBefore=[value]&redeemed=[value]&statuses=[value]&reservationsOnly=[value]&activeOnly=[value]&returnFullResponse=[value]&recurringStartedSince=[value]&recurringStartedBefore=[value]&recurringExpirationSince=[value]&recurringExpirationBefore=[value]
+    * GET /api/3.18/wallet/search?deviceId=[value]&accountId=[value]&keyword=[value]&retailerId=[value]&retailerIds=[value]&retailerLocationId=[value]&retailerLocationIds=[value]&excludeRetailerLocationIds=[value]&offerId=[value]&offerIds=[value]&offerLocationId=[value]&offerLocationIds=[value]&offerType=[value]&offerTypes=[value]&specialOfferType=[value]&specialOfferTypes=[value]&categoryIds=[value]&filterIds=[value]&offerAudienceIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&latitude=[value]&longitude=[value]&redeemableStartDate=[value]&redeemableEndDate=[value]&filterByParentOffer=[value]&startedSince=[value]&startedBefore=[value]&endedSince=[value]&endedBefore=[value]&redeemed=[value]&statuses=[value]&reservationsOnly=[value]&activeOnly=[value]&returnFullResponse=[value]&recurringStartedSince=[value]&recurringStartedBefore=[value]&recurringExpirationSince=[value]&recurringExpirationBefore=[value]
     */
-  def searchOfferTransactions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchOfferTransactions(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferTransactionResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -260,7 +259,7 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
       val recurringExpirationBefore = request.getQueryString("recurringExpirationBefore")
         .map(value => value.toLong)
         
-      api.searchOfferTransactions(version, deviceId, accountId, keyword, retailerId, retailerIds, retailerLocationId, retailerLocationIds, excludeRetailerLocationIds, offerId, offerIds, offerLocationId, offerLocationIds, offerType, offerTypes, specialOfferType, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, sortField, descending, start, limit, latitude, longitude, redeemableStartDate, redeemableEndDate, filterByParentOffer, startedSince, startedBefore, endedSince, endedBefore, redeemed, statuses, reservationsOnly, activeOnly, returnFullResponse, recurringStartedSince, recurringStartedBefore, recurringExpirationSince, recurringExpirationBefore)
+      api.searchOfferTransactions(deviceId, accountId, keyword, retailerId, retailerIds, retailerLocationId, retailerLocationIds, excludeRetailerLocationIds, offerId, offerIds, offerLocationId, offerLocationIds, offerType, offerTypes, specialOfferType, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, sortField, descending, start, limit, latitude, longitude, redeemableStartDate, redeemableEndDate, filterByParentOffer, startedSince, startedBefore, endedSince, endedBefore, redeemed, statuses, reservationsOnly, activeOnly, returnFullResponse, recurringStartedSince, recurringStartedBefore, recurringExpirationSince, recurringExpirationBefore)
     }
 
     val result = executeApi()
@@ -269,9 +268,9 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
   }
 
   /**
-    * POST /api/:version/wallet/update?deviceId=[value]&accountId=[value]&transactionId=[value]&offerLocationId=[value]&currencyType=[value]&usePoints=[value]&appKey=[value]&status=[value]&latitude=[value]&longitude=[value]&metaData=[value]&returnFullResponse=[value]&exceptionMembershipOfferIds=[value]
+    * POST /api/3.18/wallet/update?deviceId=[value]&accountId=[value]&transactionId=[value]&offerLocationId=[value]&currencyType=[value]&usePoints=[value]&appKey=[value]&status=[value]&latitude=[value]&longitude=[value]&metaData=[value]&returnFullResponse=[value]&exceptionMembershipOfferIds=[value]
     */
-  def updateOfferTransaction(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateOfferTransaction(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferTransactionResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -313,7 +312,7 @@ class WalletApiController @Inject()(cc: ControllerComponents, api: WalletApi) ex
         
       val exceptionMembershipOfferIds = request.getQueryString("exceptionMembershipOfferIds")
         
-      api.updateOfferTransaction(version, transactionId, status, deviceId, accountId, offerLocationId, currencyType, usePoints, appKey, latitude, longitude, metaData, returnFullResponse, exceptionMembershipOfferIds)
+      api.updateOfferTransaction(transactionId, status, deviceId, accountId, offerLocationId, currencyType, usePoints, appKey, latitude, longitude, metaData, returnFullResponse, exceptionMembershipOfferIds)
     }
 
     val result = executeApi()

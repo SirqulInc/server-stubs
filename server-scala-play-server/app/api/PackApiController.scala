@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PackResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/pack/create?accountId=[value]&title=[value]&description=[value]&searchTags=[value]&active=[value]&gameType=[value]&appKey=[value]&packType=[value]&packOrder=[value]&sequenceType=[value]&backgroundId=[value]&imageId=[value]&startDate=[value]&endDate=[value]&authorOverride=[value]&price=[value]&priceType=[value]&gameLevelIds=[value]&inGame=[value]&highest=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
+    * POST /api/3.18/pack/create?accountId=[value]&title=[value]&description=[value]&searchTags=[value]&active=[value]&gameType=[value]&appKey=[value]&packType=[value]&packOrder=[value]&sequenceType=[value]&backgroundId=[value]&imageId=[value]&startDate=[value]&endDate=[value]&authorOverride=[value]&price=[value]&priceType=[value]&gameLevelIds=[value]&inGame=[value]&highest=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
     */
-  def createPack(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createPack(): Action[AnyContent] = Action { request =>
     def executeApi(): PackResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -98,7 +97,7 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
       val points = request.getQueryString("points")
         .map(value => value.toLong)
         
-      api.createPack(version, accountId, title, packOrder, price, highest, allocateTickets, ticketCount, description, searchTags, active, gameType, appKey, packType, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, priceType, gameLevelIds, inGame, ticketType, points)
+      api.createPack(accountId, title, packOrder, price, highest, allocateTickets, ticketCount, description, searchTags, active, gameType, appKey, packType, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, priceType, gameLevelIds, inGame, ticketType, points)
     }
 
     val result = executeApi()
@@ -107,9 +106,9 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
   }
 
   /**
-    * POST /api/:version/pack/delete?accountId=[value]&packId=[value]
+    * POST /api/3.18/pack/delete?accountId=[value]&packId=[value]
     */
-  def deletePack(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deletePack(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -123,7 +122,7 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("packId", "query string")
         }
         
-      api.deletePack(version, accountId, packId)
+      api.deletePack(accountId, packId)
     }
 
     val result = executeApi()
@@ -132,9 +131,9 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
   }
 
   /**
-    * GET /api/:version/pack/get?accountId=[value]&packId=[value]&includeGameData=[value]
+    * GET /api/3.18/pack/get?accountId=[value]&packId=[value]&includeGameData=[value]
     */
-  def getPack(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getPack(): Action[AnyContent] = Action { request =>
     def executeApi(): PackResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -154,7 +153,7 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("includeGameData", "query string")
         }
         
-      api.getPack(version, accountId, packId, includeGameData)
+      api.getPack(accountId, packId, includeGameData)
     }
 
     val result = executeApi()
@@ -163,9 +162,9 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
   }
 
   /**
-    * GET /api/:version/pack/search?accountId=[value]&keyword=[value]&packType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeInactive=[value]&appKey=[value]
+    * GET /api/3.18/pack/search?accountId=[value]&keyword=[value]&packType=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&includeGameData=[value]&includeInactive=[value]&appKey=[value]
     */
-  def searchPacks(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchPacks(): Action[AnyContent] = Action { request =>
     def executeApi(): List[PackResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -202,7 +201,7 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
         
       val appKey = request.getQueryString("appKey")
         
-      api.searchPacks(version, accountId, sortField, descending, keyword, packType, start, limit, includeGameData, includeInactive, appKey)
+      api.searchPacks(accountId, sortField, descending, keyword, packType, start, limit, includeGameData, includeInactive, appKey)
     }
 
     val result = executeApi()
@@ -211,9 +210,9 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
   }
 
   /**
-    * POST /api/:version/pack/update?accountId=[value]&packId=[value]&title=[value]&description=[value]&searchTags=[value]&active=[value]&gameType=[value]&appKey=[value]&packType=[value]&packOrder=[value]&sequenceType=[value]&backgroundId=[value]&imageId=[value]&startDate=[value]&endDate=[value]&authorOverride=[value]&price=[value]&priceType=[value]&gameLevelIds=[value]&inGame=[value]&highest=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
+    * POST /api/3.18/pack/update?accountId=[value]&packId=[value]&title=[value]&description=[value]&searchTags=[value]&active=[value]&gameType=[value]&appKey=[value]&packType=[value]&packOrder=[value]&sequenceType=[value]&backgroundId=[value]&imageId=[value]&startDate=[value]&endDate=[value]&authorOverride=[value]&price=[value]&priceType=[value]&gameLevelIds=[value]&inGame=[value]&highest=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
     */
-  def updatePack(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updatePack(): Action[AnyContent] = Action { request =>
     def executeApi(): PackResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -291,7 +290,7 @@ class PackApiController @Inject()(cc: ControllerComponents, api: PackApi) extend
       val points = request.getQueryString("points")
         .map(value => value.toLong)
         
-      api.updatePack(version, accountId, packId, allocateTickets, ticketCount, title, description, searchTags, active, gameType, appKey, packType, packOrder, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, price, priceType, gameLevelIds, inGame, highest, ticketType, points)
+      api.updatePack(accountId, packId, allocateTickets, ticketCount, title, description, searchTags, active, gameType, appKey, packType, packOrder, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, price, priceType, gameLevelIds, inGame, highest, ticketType, points)
     }
 
     val result = executeApi()

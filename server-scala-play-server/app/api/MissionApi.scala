@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.MissionFormatResponse
 import model.MissionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait MissionApi {
   /**
     * Create Mission
@@ -38,7 +37,7 @@ trait MissionApi {
     * @param locations List of lat/long pairs for mission locations
     * @param radius Comma separated list of radii for locations
     */
-  def createMission(version: BigDecimal, accountId: Long, title: String, description: Option[String], subType: Option[String], startDate: Option[Long], endDate: Option[Long], active: Option[Boolean], gameLevelIds: Option[String], creativeIds: Option[String], audienceIds: Option[String], missionTask: Option[String], formatType: Option[String], offerId: Option[Long], balance: Option[Double], advancedReporting: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], metaData: Option[String], applicationIds: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String]): MissionResponse
+  def createMission(accountId: Long, title: String, description: Option[String], subType: Option[String], startDate: Option[Long], endDate: Option[Long], active: Option[Boolean], gameLevelIds: Option[String], creativeIds: Option[String], audienceIds: Option[String], missionTask: Option[String], formatType: Option[String], offerId: Option[Long], balance: Option[Double], advancedReporting: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], metaData: Option[String], applicationIds: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String]): MissionResponse
 
   /**
     * Delete Mission
@@ -46,7 +45,7 @@ trait MissionApi {
     * @param accountId the id of the logged in user
     * @param missionId the id of the mission to delete
     */
-  def deleteMission(version: BigDecimal, accountId: Long, missionId: Long): SirqulResponse
+  def deleteMission(accountId: Long, missionId: Long): SirqulResponse
 
   /**
     * Find Missions
@@ -71,7 +70,7 @@ trait MissionApi {
     * @param missionIds return only ads from the specified campaigns.
     * @param audienceOperator will return the items that have at least 1 or all of their audiences exist in the logged in user’s audiences, depending if the value is OR or AND
     */
-  def findMissions(version: BigDecimal, appKey: String, suffix: Option[String], `type`: Option[String], accountId: Option[Long], appVersion: Option[String], latitude: Option[Double], longitude: Option[Double], device: Option[String], deviceIdentifier: Option[Long], deviceVersion: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeAudiences: Option[Boolean], allocatesTickets: Option[Boolean], randomize: Option[Boolean], targetedAdsOnly: Option[Boolean], missionIds: Option[String], audienceOperator: Option[String]): MissionResponse
+  def findMissions(appKey: String, suffix: Option[String], `type`: Option[String], accountId: Option[Long], appVersion: Option[String], latitude: Option[Double], longitude: Option[Double], device: Option[String], deviceIdentifier: Option[Long], deviceVersion: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeAudiences: Option[Boolean], allocatesTickets: Option[Boolean], randomize: Option[Boolean], targetedAdsOnly: Option[Boolean], missionIds: Option[String], audienceOperator: Option[String]): MissionResponse
 
   /**
     * Get Mission
@@ -80,7 +79,7 @@ trait MissionApi {
     * @param missionId The id of the mission to return.
     * @param returnCreative Return creatives associated with the mission when true
     */
-  def getMission(version: BigDecimal, accountId: Long, missionId: Long, returnCreative: Option[Boolean]): MissionResponse
+  def getMission(accountId: Long, missionId: Long, returnCreative: Option[Boolean]): MissionResponse
 
   /**
     * Import Mission
@@ -94,7 +93,7 @@ trait MissionApi {
     * @param limit The total number of records to return. Default is 20.
     * @param adSize the size of the ad
     */
-  def importMission(version: BigDecimal, accountId: Long, latitude: Double, longitude: Double, appKey: String, keyword: Option[String], start: Option[Int], limit: Option[Int], adSize: Option[String]): SirqulResponse
+  def importMission(accountId: Long, latitude: Double, longitude: Double, appKey: String, keyword: Option[String], start: Option[Int], limit: Option[Int], adSize: Option[String]): SirqulResponse
 
   /**
     * Search Mission Formats
@@ -103,7 +102,7 @@ trait MissionApi {
     * @param limit The total number of records to return. Default is 20.
     * @param activeOnly Determines whether to return only active results. Default is false.
     */
-  def searchMissionFormats(version: BigDecimal, start: Int, limit: Int, activeOnly: Boolean): List[MissionFormatResponse]
+  def searchMissionFormats(start: Int, limit: Int, activeOnly: Boolean): List[MissionFormatResponse]
 
   /**
     * Search Missions
@@ -120,7 +119,7 @@ trait MissionApi {
     * @param sortField The field to sort the search on (for example TITLE)
     * @param descending Whether to sort in descending order (default true)
     */
-  def searchMissions(version: BigDecimal, accountId: Long, keyword: Option[String], subType: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeAudiences: Option[Boolean], includeInactive: Option[Boolean], suffix: Option[String], sortField: Option[String], descending: Option[Boolean]): List[MissionResponse]
+  def searchMissions(accountId: Long, keyword: Option[String], subType: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeAudiences: Option[Boolean], includeInactive: Option[Boolean], suffix: Option[String], sortField: Option[String], descending: Option[Boolean]): List[MissionResponse]
 
   /**
     * Search Missions by Billable Entity
@@ -136,7 +135,7 @@ trait MissionApi {
     * @param sortField The field to sort the search on (for example TITLE)
     * @param descending Whether to sort in descending order (default true)
     */
-  def searchMissionsByBillableEntity(version: BigDecimal, accountId: Long, keyword: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeAudiences: Option[Boolean], includeInactive: Option[Boolean], suffix: Option[String], sortField: Option[String], descending: Option[Boolean]): List[MissionResponse]
+  def searchMissionsByBillableEntity(accountId: Long, keyword: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeAudiences: Option[Boolean], includeInactive: Option[Boolean], suffix: Option[String], sortField: Option[String], descending: Option[Boolean]): List[MissionResponse]
 
   /**
     * Update Mission
@@ -167,5 +166,5 @@ trait MissionApi {
     * @param locations List of lat/long pairs for mission locations
     * @param radius Comma separated list of radii for locations
     */
-  def updateMission(version: BigDecimal, accountId: Long, missionId: Long, title: Option[String], description: Option[String], subType: Option[String], metaData: Option[String], startDate: Option[Long], endDate: Option[Long], active: Option[Boolean], gameLevelIds: Option[String], creativeIds: Option[String], audienceIds: Option[String], offerId: Option[Long], balance: Option[Double], advancedReporting: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], applicationIds: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String]): MissionResponse
+  def updateMission(accountId: Long, missionId: Long, title: Option[String], description: Option[String], subType: Option[String], metaData: Option[String], startDate: Option[Long], endDate: Option[Long], active: Option[Boolean], gameLevelIds: Option[String], creativeIds: Option[String], audienceIds: Option[String], offerId: Option[Long], balance: Option[Double], advancedReporting: Option[Boolean], allocateTickets: Option[Boolean], ticketCount: Option[Long], ticketType: Option[String], points: Option[Long], applicationIds: Option[String], devices: Option[String], deviceIds: Option[String], deviceVersions: Option[String], locations: Option[String], radius: Option[String]): MissionResponse
 }

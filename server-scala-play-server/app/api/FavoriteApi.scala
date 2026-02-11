@@ -2,12 +2,11 @@ package api
 
 import play.api.libs.json._
 import model.AccountResponse
-import model.BigDecimal
 import model.SearchResponse
 import model.SirqulResponse
 import model.WrappedResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait FavoriteApi {
   /**
     * Create Favorite
@@ -19,7 +18,7 @@ trait FavoriteApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def addFavorite(version: BigDecimal, favoritableId: Long, favoritableType: String, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): WrappedResponse
+  def addFavorite(favoritableId: Long, favoritableType: String, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): WrappedResponse
 
   /**
     * Delete Favorite
@@ -30,7 +29,7 @@ trait FavoriteApi {
     * @param favoritableId The ID of the object to un-favorite {offerId, offerLocationId, retailerLocationId, categoryId} (this is required if favoriteId is NOT passed in)
     * @param favoritableType The type of the object to un-favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY} (this is required if favoriteId is NOT passed in)
     */
-  def deleteFavorite(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], favoriteId: Option[Long], favoritableId: Option[Long], favoritableType: Option[String]): SirqulResponse
+  def deleteFavorite(deviceId: Option[String], accountId: Option[Long], favoriteId: Option[Long], favoritableId: Option[Long], favoritableType: Option[String]): SirqulResponse
 
   /**
     * Get Favorite
@@ -41,7 +40,7 @@ trait FavoriteApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def getFavorite(version: BigDecimal, favoriteId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): WrappedResponse
+  def getFavorite(favoriteId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): WrappedResponse
 
   /**
     * Search Favorites
@@ -61,7 +60,7 @@ trait FavoriteApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def searchFavorites(version: BigDecimal, favoritableType: String, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, returnFullResponse: Boolean, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], secondaryType: Option[String], keyword: Option[String], latitude: Option[Double], longitude: Option[Double]): SearchResponse
+  def searchFavorites(favoritableType: String, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, returnFullResponse: Boolean, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], secondaryType: Option[String], keyword: Option[String], latitude: Option[Double], longitude: Option[Double]): SearchResponse
 
   /**
     * Who has Favorited
@@ -76,5 +75,5 @@ trait FavoriteApi {
     * @param longitude The current longitude of the user
     * @param keyword The keyword to limit that account list
     */
-  def whoHasFavorited(version: BigDecimal, favoritableId: Long, favoritableType: String, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], keyword: Option[String]): List[AccountResponse]
+  def whoHasFavorited(favoritableId: Long, favoritableType: String, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], keyword: Option[String]): List[AccountResponse]
 }

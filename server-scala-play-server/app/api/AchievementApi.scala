@@ -5,11 +5,10 @@ import model.AchievementProgressResponse
 import model.AchievementResponse
 import model.AchievementShortResponse
 import model.AchievementTierResponse
-import model.BigDecimal
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait AchievementApi {
   /**
     * Searches an Achievement Tier
@@ -26,7 +25,7 @@ trait AchievementApi {
     * @param start The start of the index for pagination
     * @param limit the limit for pagination (has a hard limit of 1000)
     */
-  def apiVersionAchievementTierSearchPost(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], keyword: Option[String], achievementType: Option[Long], rankType: Option[String], sortField: Option[String], descending: Option[Boolean], descendingGoal: Option[Boolean], start: Option[Long], limit: Option[Long]): AchievementTierResponse
+  def achievementTierSearchPost(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], keyword: Option[String], achievementType: Option[Long], rankType: Option[String], sortField: Option[String], descending: Option[Boolean], descendingGoal: Option[Boolean], start: Option[Long], limit: Option[Long]): AchievementTierResponse
 
   /**
     * Create Achievement
@@ -45,7 +44,7 @@ trait AchievementApi {
     * @param active achievement is active or inactive
     * @param triggerDefinition if provided will define what triggers to run after a tier is completed
     */
-  def createAchievement(version: BigDecimal, appKey: String, title: String, deviceId: Option[String], accountId: Option[Long], analyticsTag: Option[String], description: Option[String], rankType: Option[String], rankIncrement: Option[Int], minIncrement: Option[Int], maxIncrement: Option[Int], validate: Option[Boolean], active: Option[Boolean], triggerDefinition: Option[String]): AchievementResponse
+  def createAchievement(appKey: String, title: String, deviceId: Option[String], accountId: Option[Long], analyticsTag: Option[String], description: Option[String], rankType: Option[String], rankIncrement: Option[Int], minIncrement: Option[Int], maxIncrement: Option[Int], validate: Option[Boolean], active: Option[Boolean], triggerDefinition: Option[String]): AchievementResponse
 
   /**
     * Create Achievement Tier
@@ -65,7 +64,7 @@ trait AchievementApi {
     * @param gameLevelId The ID of the game level to associate with the achievement
     * @param gameObjectId The ID of the game object to associate with the achievement
     */
-  def createAchievementTier(version: BigDecimal, achievementId: Long, scoreAllInstances: Boolean, deviceId: Option[String], accountId: Option[Long], icon: Option[TemporaryFile], iconAssetId: Option[Long], title: Option[String], description: Option[String], goalCount: Option[Long], missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Int]): AchievementTierResponse
+  def createAchievementTier(achievementId: Long, scoreAllInstances: Boolean, deviceId: Option[String], accountId: Option[Long], icon: Option[TemporaryFile], iconAssetId: Option[Long], title: Option[String], description: Option[String], goalCount: Option[Long], missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Int]): AchievementTierResponse
 
   /**
     * Delete Achievement
@@ -73,7 +72,7 @@ trait AchievementApi {
     * @param achievementId The ID of the achievement
     * @param accountId the account id of the user (deviceId or accountId required)
     */
-  def deleteAchievement(version: BigDecimal, achievementId: Long, accountId: Option[Long]): SirqulResponse
+  def deleteAchievement(achievementId: Long, accountId: Option[Long]): SirqulResponse
 
   /**
     * Delete Achievement Tier
@@ -81,7 +80,7 @@ trait AchievementApi {
     * @param achievementTierId the achievement id for deletion
     * @param accountId the account id of the user (deviceId or accountId required).
     */
-  def deleteAchievementTier(version: BigDecimal, achievementTierId: Long, accountId: Option[Long]): SirqulResponse
+  def deleteAchievementTier(achievementTierId: Long, accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Achievement
@@ -91,7 +90,7 @@ trait AchievementApi {
     * @param accountId the account id of the user (deviceId or accountId required)
     * @param achievementType achievementType
     */
-  def getAchievement(version: BigDecimal, achievementId: Long, deviceId: Option[String], accountId: Option[Long], achievementType: Option[String]): AchievementTierResponse
+  def getAchievement(achievementId: Long, deviceId: Option[String], accountId: Option[Long], achievementType: Option[String]): AchievementTierResponse
 
   /**
     * Gets an achievement tier
@@ -99,7 +98,7 @@ trait AchievementApi {
     * @param accountId the account id of the user (deviceId or accountId required)
     * @param achievementTierId the achievement tier id that is being retrieved
     */
-  def getAchievementTier(version: BigDecimal, accountId: Long, achievementTierId: Long): AchievementTierResponse
+  def getAchievementTier(accountId: Long, achievementTierId: Long): AchievementTierResponse
 
   /**
     * Get Achievement Progress
@@ -116,14 +115,14 @@ trait AchievementApi {
     * @param latitude the current latitude of the user
     * @param longitude the current longitude of the user
     */
-  def getUserAchievements(version: BigDecimal, returnNulls: Boolean, appKey: String, includeUndiscovered: Boolean, deviceId: Option[String], accountId: Option[Long], connectionAccountEmail: Option[String], connectionAccountId: Option[Long], rankType: Option[String], achievementType: Option[String], latitude: Option[Double], longitude: Option[Double]): List[AchievementProgressResponse]
+  def getUserAchievements(returnNulls: Boolean, appKey: String, includeUndiscovered: Boolean, deviceId: Option[String], accountId: Option[Long], connectionAccountEmail: Option[String], connectionAccountId: Option[Long], rankType: Option[String], achievementType: Option[String], latitude: Option[Double], longitude: Option[Double]): List[AchievementProgressResponse]
 
   /**
     * List Achievement Tags
     * List achievement tags by application
     * @param appKey filter results by application key
     */
-  def listAchievementTags(version: BigDecimal, appKey: Option[String]): SirqulResponse
+  def listAchievementTags(appKey: Option[String]): SirqulResponse
 
   /**
     * List Achievements
@@ -140,7 +139,7 @@ trait AchievementApi {
     * @param achievementType filter results by the achievementType (these are exact case sensitive matches)
     * @param rankType filter results by the rankType (these are exact case sensitive matches)
     */
-  def listAchievements(version: BigDecimal, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], keyword: Option[String], achievementType: Option[String], rankType: Option[String]): List[AchievementShortResponse]
+  def listAchievements(sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], keyword: Option[String], achievementType: Option[String], rankType: Option[String]): List[AchievementShortResponse]
 
   /**
     * Search Achievements
@@ -158,7 +157,7 @@ trait AchievementApi {
     * @param achievementType filter results by the achievementType (these are exact case sensitive matches)
     * @param rankType filter results by the rankType (these are exact case sensitive matches)
     */
-  def searchAchievements(version: BigDecimal, appKey: String, sortField: String, descending: Boolean, includeTiers: Boolean, includeInactiveTiers: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], keyword: Option[String], achievementType: Option[String], rankType: Option[String]): List[AchievementShortResponse]
+  def searchAchievements(appKey: String, sortField: String, descending: Boolean, includeTiers: Boolean, includeInactiveTiers: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], keyword: Option[String], achievementType: Option[String], rankType: Option[String]): List[AchievementShortResponse]
 
   /**
     * Update Achievement
@@ -179,7 +178,7 @@ trait AchievementApi {
     * @param active if it&#39;s active or inactive
     * @param triggerDefinition if provided will define what triggers to run after a tier is completed
     */
-  def updateAchievement(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], achievementId: Option[Long], analyticsTag: Option[String], title: Option[String], description: Option[String], rankType: Option[String], rankIncrement: Option[Int], minIncrement: Option[Int], nullMinIncrement: Option[Boolean], maxIncrement: Option[Int], nullMaxIncrement: Option[Boolean], validate: Option[Boolean], active: Option[Boolean], triggerDefinition: Option[String]): AchievementResponse
+  def updateAchievement(deviceId: Option[String], accountId: Option[Long], achievementId: Option[Long], analyticsTag: Option[String], title: Option[String], description: Option[String], rankType: Option[String], rankIncrement: Option[Int], minIncrement: Option[Int], nullMinIncrement: Option[Boolean], maxIncrement: Option[Int], nullMaxIncrement: Option[Boolean], validate: Option[Boolean], active: Option[Boolean], triggerDefinition: Option[String]): AchievementResponse
 
   /**
     * Update Achievement Tier
@@ -199,7 +198,7 @@ trait AchievementApi {
     * @param gameObjectId The ID of the game object to associate with the achievement
     * @param scoreAllInstances score all instances
     */
-  def updateAchievementTier(version: BigDecimal, achievementTierId: Long, deviceId: Option[String], accountId: Option[Long], icon: Option[TemporaryFile], iconAssetId: Option[Long], title: Option[String], description: Option[String], goalCount: Option[Long], missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long], scoreAllInstances: Option[Boolean]): AchievementTierResponse
+  def updateAchievementTier(achievementTierId: Long, deviceId: Option[String], accountId: Option[Long], icon: Option[TemporaryFile], iconAssetId: Option[Long], title: Option[String], description: Option[String], goalCount: Option[Long], missionId: Option[Long], gameId: Option[Long], packId: Option[Long], gameLevelId: Option[Long], gameObjectId: Option[Long], scoreAllInstances: Option[Boolean]): AchievementTierResponse
 
   /**
     * Update Achievement Progress
@@ -213,5 +212,5 @@ trait AchievementApi {
     * @param endDate a custom end date that the client can set (not yet used in server logic)
     * @param returnProgress determines whether to return the achievement progress response
     */
-  def updateUserAchievement(version: BigDecimal, accountId: Long, achievementId: Option[Long], tag: Option[String], customId: Option[Long], increment: Option[Long], startDate: Option[Long], endDate: Option[Long], returnProgress: Option[Boolean]): SirqulResponse
+  def updateUserAchievement(accountId: Long, achievementId: Option[Long], tag: Option[String], customId: Option[Long], increment: Option[Long], startDate: Option[Long], endDate: Option[Long], returnProgress: Option[Boolean]): SirqulResponse
 }

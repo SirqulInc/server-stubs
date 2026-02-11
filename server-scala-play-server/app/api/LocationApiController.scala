@@ -4,7 +4,6 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.CoordsResponse
 import model.GeoPointResponse
 import model.LocationSearchResponse
@@ -12,13 +11,13 @@ import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 import model.TrilatCacheRequest
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/location/trilaterate/cache?udid=[value]&sourceTime=[value]&minimumSampleSize=[value]&data=[value]&dataFile=[value]
+    * POST /api/3.18/location/trilaterate/cache?udid=[value]&sourceTime=[value]&minimumSampleSize=[value]&data=[value]&dataFile=[value]
     */
-  def cacheTrilaterationData(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def cacheTrilaterationData(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val udid = request.getQueryString("udid")
         .getOrElse {
@@ -35,7 +34,7 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
         
       val dataFile = request.getQueryString("dataFile")
         
-      api.cacheTrilaterationData(version, udid, sourceTime, minimumSampleSize, data, dataFile)
+      api.cacheTrilaterationData(udid, sourceTime, minimumSampleSize, data, dataFile)
     }
 
     val result = executeApi()
@@ -44,12 +43,12 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
   }
 
   /**
-    * POST /api/:version/location/trilaterate/cache/submit
+    * POST /api/3.18/location/trilaterate/cache/submit
     */
-  def cacheTrilaterationDataGzip(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def cacheTrilaterationDataGzip(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val body = request.body.asJson.map(_.as[TrilatCacheRequest])
-      api.cacheTrilaterationDataGzip(version, body)
+      api.cacheTrilaterationDataGzip(body)
     }
 
     val result = executeApi()
@@ -58,13 +57,13 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
   }
 
   /**
-    * GET /api/:version/location/ip?ip=[value]
+    * GET /api/3.18/location/ip?ip=[value]
     */
-  def getLocationByIp(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getLocationByIp(): Action[AnyContent] = Action { request =>
     def executeApi(): CoordsResponse = {
       val ip = request.getQueryString("ip")
         
-      api.getLocationByIp(version, ip)
+      api.getLocationByIp(ip)
     }
 
     val result = executeApi()
@@ -73,9 +72,9 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
   }
 
   /**
-    * GET /api/:version/account/location/trilaterate?accountId=[value]&latitude=[value]&longitude=[value]&data=[value]&responseFilters=[value]
+    * GET /api/3.18/account/location/trilaterate?accountId=[value]&latitude=[value]&longitude=[value]&data=[value]&responseFilters=[value]
     */
-  def getLocationByTrilateration(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getLocationByTrilateration(): Action[AnyContent] = Action { request =>
     def executeApi(): GeoPointResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -90,7 +89,7 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
         
       val responseFilters = request.getQueryString("responseFilters")
         
-      api.getLocationByTrilateration(version, accountId, latitude, longitude, data, responseFilters)
+      api.getLocationByTrilateration(accountId, latitude, longitude, data, responseFilters)
     }
 
     val result = executeApi()
@@ -99,9 +98,9 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
   }
 
   /**
-    * GET /api/:version/location/search?deviceId=[value]&accountId=[value]&currentlatitude=[value]&currentlongitude=[value]&currentLatitude=[value]&currentLongitude=[value]&query=[value]&zipcode=[value]&zipCode=[value]&selectedMaplatitude=[value]&selectedMaplongitude=[value]&selectedMapLatitude=[value]&selectedMapLongitude=[value]&searchRange=[value]&useGeocode=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
+    * GET /api/3.18/location/search?deviceId=[value]&accountId=[value]&currentlatitude=[value]&currentlongitude=[value]&currentLatitude=[value]&currentLongitude=[value]&query=[value]&zipcode=[value]&zipCode=[value]&selectedMaplatitude=[value]&selectedMaplongitude=[value]&selectedMapLatitude=[value]&selectedMapLongitude=[value]&searchRange=[value]&useGeocode=[value]&i=[value]&start=[value]&l=[value]&limit=[value]
     */
-  def getLocations(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getLocations(): Action[AnyContent] = Action { request =>
     def executeApi(): LocationSearchResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -156,7 +155,7 @@ class LocationApiController @Inject()(cc: ControllerComponents, api: LocationApi
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getLocations(version, deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit)
+      api.getLocations(deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit)
     }
 
     val result = executeApi()

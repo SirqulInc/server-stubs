@@ -1,61 +1,60 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.Direction
 import model.Route
 import model.Shipment
 import model.Stop
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait RouteApi {
   /**
     * Approve Route
     * Approve a route
     * @param routeId the id of the route to approve
     */
-  def approveRoute(version: BigDecimal, routeId: Long): Route
+  def approveRoute(routeId: Long): Route
 
   /**
     * Copy Route
     * Make an copy of the given route with optional overriding properties
     * @param routeId the id of the route to duplicate
     */
-  def copyRoute(version: BigDecimal, routeId: Long, body: Option[Route]): Route
+  def copyRoute(routeId: Long, body: Option[Route]): Route
 
   /**
     * Create Route
     * Create new route
     */
-  def createRoute(version: BigDecimal, body: Option[Route]): Route
+  def createRoute(body: Option[Route]): Route
 
   /**
     * Update Route Directions
     * Regenerate the directions of a route
     * @param routeId the id of the route to update directions for
     */
-  def createRouteDirections(version: BigDecimal, routeId: Long): List[Direction]
+  def createRouteDirections(routeId: Long): List[Direction]
 
   /**
     * Create Route Polyline
     * Update the polyline of the requested route
     * @param routeId the id of the route to create a polyline for
     */
-  def createRoutePolyline(version: BigDecimal, routeId: Long): Route
+  def createRoutePolyline(routeId: Long): Route
 
   /**
     * Delete Route
     * Delete an existing route
     * @param routeId the id of the route
     */
-  def deleteRoute(version: BigDecimal, routeId: Long): Unit
+  def deleteRoute(routeId: Long): Unit
 
   /**
     * Disapprove Route
     * Disapprove a route
     * @param routeId the id of the route to reject
     */
-  def disapproveRoute(version: BigDecimal, routeId: Long): Route
+  def disapproveRoute(routeId: Long): Route
 
   /**
     * Get Route
@@ -63,21 +62,21 @@ trait RouteApi {
     * @param routeId the id of the route to get
     * @param showInheritedProperties return inherited properties from parent or not
     */
-  def getRoute(version: BigDecimal, routeId: Long, showInheritedProperties: Boolean): Route
+  def getRoute(routeId: Long, showInheritedProperties: Boolean): Route
 
   /**
     * Get Route Directions
     * Get the directions of a route
     * @param routeId the id of the route to get directions for
     */
-  def getRouteDirections(version: BigDecimal, routeId: Long): List[Direction]
+  def getRouteDirections(routeId: Long): List[Direction]
 
   /**
     * Get Route Shipments
     * Get the shipments on the requested route
     * @param routeId the id of the route to get shipments for
     */
-  def getRouteShipments(version: BigDecimal, routeId: Long): List[Shipment]
+  def getRouteShipments(routeId: Long): List[Shipment]
 
   /**
     * Get Route Stop
@@ -85,7 +84,7 @@ trait RouteApi {
     * @param routeId the id of the route to get stops for
     * @param stopId the id of the specific stop on the route
     */
-  def getRouteStop(version: BigDecimal, routeId: Long, stopId: Long): Stop
+  def getRouteStop(routeId: Long, stopId: Long): Stop
 
   /**
     * Get Route Stops
@@ -93,7 +92,7 @@ trait RouteApi {
     * @param routeId the id of the route
     * @param confirmedOnly only get stops that have been confirmed or not
     */
-  def getRouteStops(version: BigDecimal, routeId: Long, confirmedOnly: Boolean): List[Stop]
+  def getRouteStops(routeId: Long, confirmedOnly: Boolean): List[Stop]
 
   /**
     * Get Shipments At Stop
@@ -101,14 +100,14 @@ trait RouteApi {
     * @param routeId the id of the route
     * @param stopId the id of the stop to get shipments on
     */
-  def getShipmentsAtStop(version: BigDecimal, routeId: Long, stopId: Long): List[Shipment]
+  def getShipmentsAtStop(routeId: Long, stopId: Long): List[Shipment]
 
   /**
     * Optimize Route
     * Optimize a route. The optimization method based on how the server is configured.
     * @param routeId the id of the route to optimize
     */
-  def optimizeRoute(version: BigDecimal, routeId: Long): Unit
+  def optimizeRoute(routeId: Long): Unit
 
   /**
     * Delete Stop
@@ -116,21 +115,21 @@ trait RouteApi {
     * @param routeId the id of the route
     * @param stopId the id of the specific stop to delete on the route
     */
-  def removeStop(version: BigDecimal, routeId: Long, stopId: Long): Unit
+  def removeStop(routeId: Long, stopId: Long): Unit
 
   /**
     * Reorder Route Stops
     * Reordering the stops on the route with and update route distance, time, direction, and polyline
     * @param routeId the id of the route
     */
-  def reorderRouteStopsPatch(version: BigDecimal, routeId: Long, body: Option[List[Stop]]): List[Stop]
+  def reorderRouteStopsPatch(routeId: Long, body: Option[List[Stop]]): List[Stop]
 
   /**
     * Reorder Route Stops
     * Reordering the stops on the route with and update route distance, time, direction, and polyline
     * @param routeId the id of the route
     */
-  def reorderRouteStopsPost(version: BigDecimal, routeId: Long, body: Option[List[Stop]]): List[Stop]
+  def reorderRouteStopsPost(routeId: Long, body: Option[List[Stop]]): List[Stop]
 
   /**
     * Search Routes
@@ -157,7 +156,7 @@ trait RouteApi {
     * @param valid Is valid or not
     * @param parentId If it is a recurring route based on the parent route
     */
-  def searchRoutes(version: BigDecimal, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, includesEmpty: Boolean, rootOnly: Boolean, showInheritedProperties: Boolean, hubId: Option[Long], programId: Option[Long], scheduledStart: Option[Long], scheduledEnd: Option[Long], updatedStart: Option[Long], updatedEnd: Option[Long], featured: Option[Boolean], seatCount: Option[Int], approved: Option[Boolean], started: Option[Boolean], completed: Option[Boolean], valid: Option[Boolean], parentId: Option[Long]): List[Route]
+  def searchRoutes(sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, includesEmpty: Boolean, rootOnly: Boolean, showInheritedProperties: Boolean, hubId: Option[Long], programId: Option[Long], scheduledStart: Option[Long], scheduledEnd: Option[Long], updatedStart: Option[Long], updatedEnd: Option[Long], featured: Option[Boolean], seatCount: Option[Int], approved: Option[Boolean], started: Option[Boolean], completed: Option[Boolean], valid: Option[Boolean], parentId: Option[Long]): List[Route]
 
   /**
     * Set Driver
@@ -165,14 +164,14 @@ trait RouteApi {
     * @param id the id of the route
     * @param driverId the id of the driver
     */
-  def setDriver(version: BigDecimal, id: Long, driverId: Long): Unit
+  def setDriver(id: Long, driverId: Long): Unit
 
   /**
     * Update Route
     * Update an existing route
     * @param routeId the id of the route
     */
-  def updateRoute(version: BigDecimal, routeId: Long, body: Option[Route]): Route
+  def updateRoute(routeId: Long, body: Option[Route]): Route
 
   /**
     * Update Route Stop
@@ -180,5 +179,5 @@ trait RouteApi {
     * @param routeId the id of the route to update stops for
     * @param stopId the id of the specific stop to update on the route
     */
-  def updateRouteStop(version: BigDecimal, routeId: Long, stopId: Long, body: Option[Stop]): Unit
+  def updateRouteStop(routeId: Long, stopId: Long, body: Option[Stop]): Unit
 }

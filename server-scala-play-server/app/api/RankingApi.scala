@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.JsObject
 import model.RankFullResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait RankingApi {
   /**
     * Search Historical Rankings
@@ -22,7 +21,7 @@ trait RankingApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def getHistoricalRankings(version: BigDecimal, appKey: String, rankType: String, startDate: Long, endDate: Long, deviceId: Option[String], accountId: Option[Long], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): RankFullResponse
+  def getHistoricalRankings(appKey: String, rankType: String, startDate: Long, endDate: Long, deviceId: Option[String], accountId: Option[Long], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): RankFullResponse
 
   /**
     * Search Rankings
@@ -46,7 +45,7 @@ trait RankingApi {
     * @param l This parameter is deprecated.
     * @param limit the limit for pagination
     */
-  def getRankings(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], q: Option[String], keyword: Option[String], rankType: Option[String], leaderboardMode: Option[String], withinAccountIds: Option[String], returnUserRank: Option[Boolean], albumId: Option[Long], audienceId: Option[Long], sortField: Option[String], descending: Option[Boolean], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int]): RankFullResponse
+  def getRankings(deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], q: Option[String], keyword: Option[String], rankType: Option[String], leaderboardMode: Option[String], withinAccountIds: Option[String], returnUserRank: Option[Boolean], albumId: Option[Long], audienceId: Option[Long], sortField: Option[String], descending: Option[Boolean], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int]): RankFullResponse
 
   /**
     * Get Personal Rankings
@@ -63,7 +62,7 @@ trait RankingApi {
     * @param start the start index for pagination
     * @param limit the limit for pagination
     */
-  def getUserRank(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], rankType: Option[String], returnUserRank: Option[Boolean], leaderboardMode: Option[String], sortField: Option[String], keyword: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): JsObject
+  def getUserRank(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], rankType: Option[String], returnUserRank: Option[Boolean], leaderboardMode: Option[String], sortField: Option[String], keyword: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): JsObject
 
   /**
     * Override User Rank
@@ -91,7 +90,7 @@ trait RankingApi {
     * @param startDate the start date to update
     * @param endDate the end date to update
     */
-  def overrideUserRank(version: BigDecimal, accountId: Long, ownerAccountId: Long, appKey: String, rankType: String, totalScore: Option[Long], totalCount: Option[Long], totalTime: Option[Long], dailyScore: Option[Long], dailyCount: Option[Long], dailyTime: Option[Long], weeklyScore: Option[Long], weeklyCount: Option[Long], weeklyTime: Option[Long], monthlyScore: Option[Long], monthlyCount: Option[Long], monthlyTime: Option[Long], topScore: Option[Long], lowestScore: Option[Long], streakCount: Option[Long], streakBestCount: Option[Long], startDate: Option[Long], endDate: Option[Long]): SirqulResponse
+  def overrideUserRank(accountId: Long, ownerAccountId: Long, appKey: String, rankType: String, totalScore: Option[Long], totalCount: Option[Long], totalTime: Option[Long], dailyScore: Option[Long], dailyCount: Option[Long], dailyTime: Option[Long], weeklyScore: Option[Long], weeklyCount: Option[Long], weeklyTime: Option[Long], monthlyScore: Option[Long], monthlyCount: Option[Long], monthlyTime: Option[Long], topScore: Option[Long], lowestScore: Option[Long], streakCount: Option[Long], streakBestCount: Option[Long], startDate: Option[Long], endDate: Option[Long]): SirqulResponse
 
   /**
     * Update Ranking
@@ -107,5 +106,5 @@ trait RankingApi {
     * @param updateGlobal update the global rankings if true, default is false
     * @param createLeaderboard create the leaderboard if it does not exist (default false)
     */
-  def updateRankings(version: BigDecimal, accountId: Long, appKey: String, rankType: String, increment: Option[Long], timeIncrement: Option[Long], tag: Option[String], startDate: Option[Long], endDate: Option[Long], updateGlobal: Option[Boolean], createLeaderboard: Option[Boolean]): SirqulResponse
+  def updateRankings(accountId: Long, appKey: String, rankType: String, increment: Option[Long], timeIncrement: Option[Long], tag: Option[String], startDate: Option[Long], endDate: Option[Long], updateGlobal: Option[Boolean], createLeaderboard: Option[Boolean]): SirqulResponse
 }

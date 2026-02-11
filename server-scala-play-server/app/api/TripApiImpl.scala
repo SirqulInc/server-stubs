@@ -1,17 +1,16 @@
 package api
 
-import model.BigDecimal
 import model.Trip
 
 /**
   * Provides a default implementation for [[TripApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def createTrip(version: BigDecimal, body: Option[Trip]): Trip = {
+  override def createTrip(body: Option[Trip]): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -20,7 +19,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def delete(version: BigDecimal, id: Long): Unit = {
+  override def delete(id: Long): Unit = {
     // TODO: Implement better logic
 
     
@@ -29,7 +28,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def driveTrip(version: BigDecimal, id: Long, recurrence: Boolean): Trip = {
+  override def driveTrip(id: Long, recurrence: Boolean): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -38,7 +37,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def flexibleTrip(version: BigDecimal, id: Long, recurrence: Boolean): Trip = {
+  override def flexibleTrip(id: Long, recurrence: Boolean): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -47,7 +46,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def getTrip(version: BigDecimal, id: Long): Trip = {
+  override def getTrip(id: Long): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -56,7 +55,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def getTripMatches(version: BigDecimal, id: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip] = {
+  override def getTripMatches(id: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip] = {
     // TODO: Implement better logic
 
     List.empty[Trip]
@@ -65,7 +64,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def processTripMatches(version: BigDecimal, startDate: Option[Long], endDate: Option[Long], tripId: Option[Long]): List[Trip] = {
+  override def processTripMatches(startDate: Option[Long], endDate: Option[Long], tripId: Option[Long]): List[Trip] = {
     // TODO: Implement better logic
 
     List.empty[Trip]
@@ -74,7 +73,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def ride(version: BigDecimal, id: Long, recurrence: Boolean): Trip = {
+  override def ride(id: Long, recurrence: Boolean): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -83,7 +82,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def search(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], hasNotifications: Option[Boolean]): List[Trip] = {
+  override def search(accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], hasNotifications: Option[Boolean]): List[Trip] = {
     // TODO: Implement better logic
 
     List.empty[Trip]
@@ -92,7 +91,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def searchTrips(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip] = {
+  override def searchTrips(accountId: Long, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, startDate: Option[Long], endDate: Option[Long], matchedHasRoute: Option[Boolean], matchedHasDriver: Option[Boolean]): List[Trip] = {
     // TODO: Implement better logic
 
     List.empty[Trip]
@@ -101,7 +100,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def updateLocations(version: BigDecimal, id: Long, body: Option[Trip]): Trip = {
+  override def updateLocations(id: Long, body: Option[Trip]): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -110,7 +109,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def updateRecurrenceLocations(version: BigDecimal, id: Long, body: Option[Trip]): List[Trip] = {
+  override def updateRecurrenceLocations(id: Long, body: Option[Trip]): List[Trip] = {
     // TODO: Implement better logic
 
     List.empty[Trip]
@@ -119,7 +118,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def updateRecurrenceShipments(version: BigDecimal, id: Long, body: Option[Trip]): List[Trip] = {
+  override def updateRecurrenceShipments(id: Long, body: Option[Trip]): List[Trip] = {
     // TODO: Implement better logic
 
     List.empty[Trip]
@@ -128,7 +127,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def updateShipments(version: BigDecimal, id: Long, body: Option[Trip]): Trip = {
+  override def updateShipments(id: Long, body: Option[Trip]): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -137,7 +136,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def updateTrip(version: BigDecimal, id: Long, body: Option[Trip]): Trip = {
+  override def updateTrip(id: Long, body: Option[Trip]): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -146,7 +145,7 @@ class TripApiImpl extends TripApi {
   /**
     * @inheritdoc
     */
-  override def updateTripNotifications(version: BigDecimal, id: Long, notifications: Option[String]): Trip = {
+  override def updateTripNotifications(id: Long, notifications: Option[String]): Trip = {
     // TODO: Implement better logic
 
     Trip(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)

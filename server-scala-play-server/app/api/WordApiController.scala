@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.SirqulResponse
 import model.WordzWordResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/game/word/create?accountId=[value]&word=[value]&definition=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
+    * POST /api/3.18/game/word/create?accountId=[value]&word=[value]&definition=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
     */
-  def createWord(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createWord(): Action[AnyContent] = Action { request =>
     def executeApi(): WordzWordResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -58,7 +57,7 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
       val points = request.getQueryString("points")
         .map(value => value.toLong)
         
-      api.createWord(version, accountId, word, definition, active, allocateTickets, ticketCount, assetId, ticketType, points)
+      api.createWord(accountId, word, definition, active, allocateTickets, ticketCount, assetId, ticketType, points)
     }
 
     val result = executeApi()
@@ -67,9 +66,9 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
   }
 
   /**
-    * DELETE /api/:version/game/word/delete?wordId=[value]&accountId=[value]
+    * DELETE /api/3.18/game/word/delete?wordId=[value]&accountId=[value]
     */
-  def deleteWord(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteWord(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val wordId = request.getQueryString("wordId")
         .map(value => value.toLong)
@@ -83,7 +82,7 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.deleteWord(version, wordId, accountId)
+      api.deleteWord(wordId, accountId)
     }
 
     val result = executeApi()
@@ -92,9 +91,9 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
   }
 
   /**
-    * GET /api/:version/game/word/get?wordId=[value]&accountId=[value]
+    * GET /api/3.18/game/word/get?wordId=[value]&accountId=[value]
     */
-  def getWord(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getWord(): Action[AnyContent] = Action { request =>
     def executeApi(): WordzWordResponse = {
       val wordId = request.getQueryString("wordId")
         .map(value => value.toLong)
@@ -108,7 +107,7 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.getWord(version, wordId, accountId)
+      api.getWord(wordId, accountId)
     }
 
     val result = executeApi()
@@ -117,9 +116,9 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
   }
 
   /**
-    * GET /api/:version/game/word/search?accountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/game/word/search?accountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
     */
-  def getWords(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getWords(): Action[AnyContent] = Action { request =>
     def executeApi(): List[WordzWordResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -158,7 +157,7 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.getWords(version, accountId, sortField, descending, activeOnly, start, limit, keyword)
+      api.getWords(accountId, sortField, descending, activeOnly, start, limit, keyword)
     }
 
     val result = executeApi()
@@ -167,9 +166,9 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
   }
 
   /**
-    * POST /api/:version/game/word/update?wordId=[value]&accountId=[value]&wordText=[value]&definition=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
+    * POST /api/3.18/game/word/update?wordId=[value]&accountId=[value]&wordText=[value]&definition=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
     */
-  def updateWord(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateWord(): Action[AnyContent] = Action { request =>
     def executeApi(): WordzWordResponse = {
       val wordId = request.getQueryString("wordId")
         .map(value => value.toLong)
@@ -207,7 +206,7 @@ class WordApiController @Inject()(cc: ControllerComponents, api: WordApi) extend
       val points = request.getQueryString("points")
         .map(value => value.toLong)
         
-      api.updateWord(version, wordId, accountId, ticketCount, wordText, definition, assetId, active, allocateTickets, ticketType, points)
+      api.updateWord(wordId, accountId, ticketCount, wordText, definition, assetId, active, allocateTickets, ticketType, points)
     }
 
     val result = executeApi()

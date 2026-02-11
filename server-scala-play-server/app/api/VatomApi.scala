@@ -1,9 +1,8 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait VatomApi {
   /**
     * Create following
@@ -12,7 +11,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def createFollowing(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def createFollowing(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Create Vatom Space
@@ -22,7 +21,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def createSpace(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def createSpace(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Create Vatom Event
@@ -32,7 +31,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def createVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def createVatomEvent(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Delete following
@@ -41,7 +40,7 @@ trait VatomApi {
     * @param vatomRelsKey Vatom Rels Key
     * @param returnRawResponse Return raw response
     */
-  def deleteFollowing(version: BigDecimal, accountId: Long, vatomRelsKey: String, returnRawResponse: Option[Boolean]): Unit
+  def deleteFollowing(accountId: Long, vatomRelsKey: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Reset All Points Balance
@@ -51,7 +50,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def deletePointsBalance(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def deletePointsBalance(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Delete Vatom Space
@@ -61,7 +60,7 @@ trait VatomApi {
     * @param vatomSpaceId Vatom Space Id
     * @param returnRawResponse Return raw response
     */
-  def deleteSpace(version: BigDecimal, accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit
+  def deleteSpace(accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Delete Vatom Event
@@ -71,7 +70,7 @@ trait VatomApi {
     * @param vatomEventId Vatom Event Id
     * @param returnRawResponse Return raw response
     */
-  def deleteVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit
+  def deleteVatomEvent(accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Delete Vatom NFT
@@ -80,7 +79,7 @@ trait VatomApi {
     * @param vatomId Vatom NFT Id
     * @param returnRawResponse Return raw response
     */
-  def deleteVatomNFT(version: BigDecimal, accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit
+  def deleteVatomNFT(accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Execute Action on NFT
@@ -90,7 +89,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def executeActionOnNFT(version: BigDecimal, accountId: Long, vatomId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def executeActionOnNFT(accountId: Long, vatomId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Search Vatom Geo Map
@@ -99,7 +98,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def geomapSearch(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def geomapSearch(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom Business Behaviors
@@ -108,7 +107,7 @@ trait VatomApi {
     * @param appKey Sirqul Application Key
     * @param returnRawResponse Return raw response
     */
-  def getBusinessBehaviors(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
+  def getBusinessBehaviors(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get the coins for a Business
@@ -117,7 +116,7 @@ trait VatomApi {
     * @param appKey Sirqul Application Key
     * @param returnRawResponse Return raw response
     */
-  def getBusinessCoinsBalance(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
+  def getBusinessCoinsBalance(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get the user business ids
@@ -125,7 +124,7 @@ trait VatomApi {
     * @param accountId Sirqul Account Id
     * @param returnRawResponse Return raw response
     */
-  def getBusinessIds(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit
+  def getBusinessIds(accountId: Long, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom Business Info
@@ -135,7 +134,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def getBusinessInfo(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def getBusinessInfo(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom Business Users
@@ -144,7 +143,7 @@ trait VatomApi {
     * @param appKey Sirqul Application Key
     * @param returnRawResponse Return raw response
     */
-  def getBusinessUsers(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
+  def getBusinessUsers(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Campaign Group Entities
@@ -154,7 +153,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def getCampaignGroupEntities(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def getCampaignGroupEntities(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Campaign Group Rules
@@ -164,7 +163,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def getCampaignGroupRules(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def getCampaignGroupRules(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Campaign Group Stats
@@ -174,7 +173,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def getCampaignGroupStats(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def getCampaignGroupStats(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Campaign Info
@@ -184,7 +183,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def getCampaignInfo(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def getCampaignInfo(accountId: Long, appKey: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom Event Guest List
@@ -194,7 +193,7 @@ trait VatomApi {
     * @param vatomEventId Vatom Event Id
     * @param returnRawResponse Return raw response
     */
-  def getEventGuestList(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit
+  def getEventGuestList(accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom User&#39;s Inventory
@@ -203,7 +202,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def getInventory(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def getInventory(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get following
@@ -211,7 +210,7 @@ trait VatomApi {
     * @param accountId Sirqul Account Id
     * @param returnRawResponse Return raw response
     */
-  def getMyFollowing(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit
+  def getMyFollowing(accountId: Long, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Points Balance
@@ -221,7 +220,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def getPointsBalance(version: BigDecimal, accountId: Long, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def getPointsBalance(accountId: Long, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Points Balance as Business
@@ -232,7 +231,7 @@ trait VatomApi {
     * @param vatomCampaignId Vatom Campaign Id
     * @param returnRawResponse Return raw response
     */
-  def getPointsBalanceAsBusiness(version: BigDecimal, accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
+  def getPointsBalanceAsBusiness(accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom Space
@@ -242,7 +241,7 @@ trait VatomApi {
     * @param vatomSpaceId Vatom Space Id
     * @param returnRawResponse Return raw response
     */
-  def getSpace(version: BigDecimal, accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit
+  def getSpace(accountId: Long, appKey: String, vatomSpaceId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get the coins for a user (as a Business)
@@ -252,7 +251,7 @@ trait VatomApi {
     * @param appKey Sirqul Application Key
     * @param returnRawResponse Return raw response
     */
-  def getUserCoinsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, returnRawResponse: Option[Boolean]): Unit
+  def getUserCoinsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Gets the coins balance for a Vatom User
@@ -262,7 +261,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def getUserCoinsBalance(version: BigDecimal, accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def getUserCoinsBalance(accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get user followers
@@ -271,7 +270,7 @@ trait VatomApi {
     * @param vatomUserId Vatom User Id
     * @param returnRawResponse Return raw response
     */
-  def getUserFollowers(version: BigDecimal, accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit
+  def getUserFollowers(accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get user following
@@ -280,7 +279,7 @@ trait VatomApi {
     * @param vatomUserId Vatom User Id
     * @param returnRawResponse Return raw response
     */
-  def getUserFollowing(version: BigDecimal, accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit
+  def getUserFollowing(accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get User Info
@@ -289,7 +288,7 @@ trait VatomApi {
     * @param vatomUserId Vatom User Id
     * @param returnRawResponse Return raw response
     */
-  def getUserInfo(version: BigDecimal, accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit
+  def getUserInfo(accountId: Long, vatomUserId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom User Profile
@@ -297,7 +296,7 @@ trait VatomApi {
     * @param accountId Sirqul Account Id
     * @param returnRawResponse Return raw response
     */
-  def getUserProfile(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit
+  def getUserProfile(accountId: Long, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom Event
@@ -307,7 +306,7 @@ trait VatomApi {
     * @param vatomEventId Vatom Event Id
     * @param returnRawResponse Return raw response
     */
-  def getVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit
+  def getVatomEvent(accountId: Long, appKey: String, vatomEventId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Get Vatom NFT Details
@@ -316,7 +315,7 @@ trait VatomApi {
     * @param vatomId Vatom NFT Id
     * @param returnRawResponse Return raw response
     */
-  def getVatomNFT(version: BigDecimal, accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit
+  def getVatomNFT(accountId: Long, vatomId: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * List Vatom Communities
@@ -326,7 +325,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def listCommunities(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def listCommunities(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * List Vatom Events
@@ -336,7 +335,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def listEvents(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def listEvents(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * List Vatom Spaces
@@ -346,7 +345,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def listSpaces(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def listSpaces(accountId: Long, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * List Coin Transactions for a Vatom User
@@ -356,7 +355,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def listUserCoinTransactions(version: BigDecimal, accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def listUserCoinTransactions(accountId: Long, vatomUserId: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * List coin transactions for a user (as a Business)
@@ -367,7 +366,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def listUserCoinTransactionsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def listUserCoinTransactionsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Perform Action on NFT
@@ -378,7 +377,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def performActionOnNFT(version: BigDecimal, accountId: Long, vatomId: String, vatomAction: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def performActionOnNFT(accountId: Long, vatomId: String, vatomAction: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Redeem NFT
@@ -388,7 +387,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def redeemNFT(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def redeemNFT(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Redeem the coins for a user (as a Business)
@@ -399,7 +398,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def redeemUserCoinsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def redeemUserCoinsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Search for Vatom Businesses
@@ -408,7 +407,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def searchBusinesses(version: BigDecimal, accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def searchBusinesses(accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Search Campaign Groups
@@ -417,7 +416,7 @@ trait VatomApi {
     * @param appKey Sirqul Application Key
     * @param returnRawResponse Return raw response
     */
-  def searchCampaignGroups(version: BigDecimal, accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
+  def searchCampaignGroups(accountId: Long, appKey: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Search User Identities
@@ -425,7 +424,7 @@ trait VatomApi {
     * @param accountId Sirqul Account Id
     * @param returnRawResponse Return raw response
     */
-  def searchIdentities(version: BigDecimal, accountId: Long, returnRawResponse: Option[Boolean]): Unit
+  def searchIdentities(accountId: Long, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Search Vatom User&#39;s Inventory
@@ -434,7 +433,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def searchInventory(version: BigDecimal, accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
+  def searchInventory(accountId: Long, vatomParameters: Option[String], returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Send NFT
@@ -445,7 +444,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def sendNFT(version: BigDecimal, accountId: Long, appKey: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def sendNFT(accountId: Long, appKey: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Set Points Balance as Business
@@ -457,7 +456,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def setPointsBalanceAsBusiness(version: BigDecimal, accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def setPointsBalanceAsBusiness(accountId: Long, appKey: String, vatomUserId: String, vatomCampaignId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Transfer coins from Vatom Users
@@ -467,7 +466,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def transferUserCoins(version: BigDecimal, accountId: Long, vatomUserId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def transferUserCoins(accountId: Long, vatomUserId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Fund coins for a Business
@@ -477,7 +476,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def updateBusinessCoins(version: BigDecimal, accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def updateBusinessCoins(accountId: Long, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Update Vatom Event Guest List
@@ -488,7 +487,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def updateEventGuestList(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def updateEventGuestList(accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Update Vatom Space
@@ -499,7 +498,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def updateSpace(version: BigDecimal, accountId: Long, appKey: String, vatomSpaceId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def updateSpace(accountId: Long, appKey: String, vatomSpaceId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Update the coins for a user (as a Business)
@@ -510,7 +509,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def updateUserCoinsAsBusiness(version: BigDecimal, accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def updateUserCoinsAsBusiness(accountId: Long, vatomUserId: String, appKey: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Update Vatom User Profile
@@ -519,7 +518,7 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def updateUserProfile(version: BigDecimal, accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def updateUserProfile(accountId: Long, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 
   /**
     * Update Vatom Event
@@ -530,5 +529,5 @@ trait VatomApi {
     * @param vatomParameters Vatom Parameters
     * @param returnRawResponse Return raw response
     */
-  def updateVatomEvent(version: BigDecimal, accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
+  def updateVatomEvent(accountId: Long, appKey: String, vatomEventId: String, vatomParameters: String, returnRawResponse: Option[Boolean]): Unit
 }

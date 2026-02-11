@@ -4,20 +4,19 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.JsObject
 import model.RouteSettings
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class RouteSettingApiController @Inject()(cc: ControllerComponents, api: RouteSettingApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/route/setting
+    * POST /api/3.18/route/setting
     */
-  def createRouteSettings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createRouteSettings(): Action[AnyContent] = Action { request =>
     def executeApi(): RouteSettings = {
       val body = request.body.asJson.map(_.as[RouteSettings])
-      api.createRouteSettings(version, body)
+      api.createRouteSettings(body)
     }
 
     val result = executeApi()
@@ -26,12 +25,12 @@ class RouteSettingApiController @Inject()(cc: ControllerComponents, api: RouteSe
   }
 
   /**
-    * DELETE /api/:version/route/setting/:routeSettingsId
+    * DELETE /api/3.18/route/setting/:routeSettingsId
     * @param routeSettingsId the id of the route setting to delete
     */
-  def deleteRouteSettings(version: BigDecimal, routeSettingsId: Long): Action[AnyContent] = Action { request =>
+  def deleteRouteSettings(routeSettingsId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): JsObject = {
-      api.deleteRouteSettings(version, routeSettingsId)
+      api.deleteRouteSettings(routeSettingsId)
     }
 
     val result = executeApi()
@@ -40,12 +39,12 @@ class RouteSettingApiController @Inject()(cc: ControllerComponents, api: RouteSe
   }
 
   /**
-    * GET /api/:version/route/setting/:routeSettingsId
+    * GET /api/3.18/route/setting/:routeSettingsId
     * @param routeSettingsId the id of the route settings to get
     */
-  def getRouteSettings(version: BigDecimal, routeSettingsId: Long): Action[AnyContent] = Action { request =>
+  def getRouteSettings(routeSettingsId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): RouteSettings = {
-      api.getRouteSettings(version, routeSettingsId)
+      api.getRouteSettings(routeSettingsId)
     }
 
     val result = executeApi()
@@ -54,9 +53,9 @@ class RouteSettingApiController @Inject()(cc: ControllerComponents, api: RouteSe
   }
 
   /**
-    * GET /api/:version/route/setting?hubId=[value]&programId=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/route/setting?hubId=[value]&programId=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchRouteSettings(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRouteSettings(): Action[AnyContent] = Action { request =>
     def executeApi(): List[RouteSettings] = {
       val hubId = request.getQueryString("hubId")
         .map(value => value.toLong)
@@ -95,7 +94,7 @@ class RouteSettingApiController @Inject()(cc: ControllerComponents, api: RouteSe
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchRouteSettings(version, sortField, descending, start, limit, activeOnly, hubId, programId, keyword)
+      api.searchRouteSettings(sortField, descending, start, limit, activeOnly, hubId, programId, keyword)
     }
 
     val result = executeApi()
@@ -104,13 +103,13 @@ class RouteSettingApiController @Inject()(cc: ControllerComponents, api: RouteSe
   }
 
   /**
-    * PUT /api/:version/route/setting/:routeSettingsId
+    * PUT /api/3.18/route/setting/:routeSettingsId
     * @param routeSettingsId the id of the route settings to update
     */
-  def updateRouteSettings(version: BigDecimal, routeSettingsId: Long): Action[AnyContent] = Action { request =>
+  def updateRouteSettings(routeSettingsId: Long): Action[AnyContent] = Action { request =>
     def executeApi(): RouteSettings = {
       val body = request.body.asJson.map(_.as[RouteSettings])
-      api.updateRouteSettings(version, routeSettingsId, body)
+      api.updateRouteSettings(routeSettingsId, body)
     }
 
     val result = executeApi()

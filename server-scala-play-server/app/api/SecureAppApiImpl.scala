@@ -1,6 +1,5 @@
 package api
 
-import model.BigDecimal
 import model.PaymentRequest
 import model.ProfileResponse
 import model.SirqulResponse
@@ -9,12 +8,12 @@ import play.api.libs.Files.TemporaryFile
 /**
   * Provides a default implementation for [[SecureAppApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 class SecureAppApiImpl extends SecureAppApi {
   /**
     * @inheritdoc
     */
-  override def createSecureApplication(version: BigDecimal, accountId: Long, appKey: String, keyCert: TemporaryFile, trustStore: TemporaryFile, username: String, password: String, active: Option[Boolean], biometricType: Option[String], biometricPosition: Option[String], biometricPosition2: Option[String]): SirqulResponse = {
+  override def createSecureApplication(accountId: Long, appKey: String, keyCert: TemporaryFile, trustStore: TemporaryFile, username: String, password: String, active: Option[Boolean], biometricType: Option[String], biometricPosition: Option[String], biometricPosition2: Option[String]): SirqulResponse = {
     // TODO: Implement better logic
 
     SirqulResponse(None, None, None, None, None, None, None, None)
@@ -23,7 +22,7 @@ class SecureAppApiImpl extends SecureAppApi {
   /**
     * @inheritdoc
     */
-  override def deleteSecureApplication(version: BigDecimal, accountId: Long, appKey: String): SirqulResponse = {
+  override def deleteSecureApplication(accountId: Long, appKey: String): SirqulResponse = {
     // TODO: Implement better logic
 
     SirqulResponse(None, None, None, None, None, None, None, None)
@@ -32,7 +31,7 @@ class SecureAppApiImpl extends SecureAppApi {
   /**
     * @inheritdoc
     */
-  override def loginSecure(version: BigDecimal, appKey: String, biometricFile: TemporaryFile, deviceId: Option[String], biometricFile2: Option[TemporaryFile], ageRestriction: Option[Int], returnProfile: Option[Boolean], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double]): ProfileResponse = {
+  override def loginSecure(appKey: String, biometricFile: TemporaryFile, deviceId: Option[String], biometricFile2: Option[TemporaryFile], ageRestriction: Option[Int], returnProfile: Option[Boolean], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double]): ProfileResponse = {
     // TODO: Implement better logic
 
     ProfileResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -41,7 +40,7 @@ class SecureAppApiImpl extends SecureAppApi {
   /**
     * @inheritdoc
     */
-  override def purchaseSecure(version: BigDecimal, body: PaymentRequest): ProfileResponse = {
+  override def purchaseSecure(body: PaymentRequest): ProfileResponse = {
     // TODO: Implement better logic
 
     ProfileResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
@@ -50,7 +49,7 @@ class SecureAppApiImpl extends SecureAppApi {
   /**
     * @inheritdoc
     */
-  override def resetSecure(version: BigDecimal, accountId: Long, appKey: String): SirqulResponse = {
+  override def resetSecure(accountId: Long, appKey: String): SirqulResponse = {
     // TODO: Implement better logic
 
     SirqulResponse(None, None, None, None, None, None, None, None)
@@ -59,7 +58,7 @@ class SecureAppApiImpl extends SecureAppApi {
   /**
     * @inheritdoc
     */
-  override def updateSecureApplication(version: BigDecimal, accountId: Long, appKey: String, active: Option[Boolean], keyCert: Option[TemporaryFile], trustStore: Option[TemporaryFile], username: Option[String], password: Option[String], biometricType: Option[String], biometricPosition: Option[String], biometricPosition2: Option[String]): SirqulResponse = {
+  override def updateSecureApplication(accountId: Long, appKey: String, active: Option[Boolean], keyCert: Option[TemporaryFile], trustStore: Option[TemporaryFile], username: Option[String], password: Option[String], biometricType: Option[String], biometricPosition: Option[String], biometricPosition2: Option[String]): SirqulResponse = {
     // TODO: Implement better logic
 
     SirqulResponse(None, None, None, None, None, None, None, None)

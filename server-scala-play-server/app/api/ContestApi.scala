@@ -3,10 +3,9 @@ package api
 import play.api.libs.json._
 import model.AlbumContestListResponse
 import model.AlbumContestResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ContestApi {
   /**
     * Create or Update Contest
@@ -37,7 +36,7 @@ trait ContestApi {
     * @param latitude latitude used to update the user&#39;s current location
     * @param longitude longitude used to update the user&#39;s current location
     */
-  def addOrUpdateAlbumContest(version: BigDecimal, publicRead: Boolean, publicWrite: Boolean, publicDelete: Boolean, publicAdd: Boolean, visibility: String, includeFriendGroup: Boolean, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], contestType: Option[String], albumContestId: Option[Long], title: Option[String], description: Option[String], albumId1: Option[Long], removeAlbum1: Option[Boolean], albumId2: Option[Long], removeAlbum2: Option[Boolean], startDate: Option[Long], endDate: Option[Long], locationDescription: Option[String], connectionIdsToAdd: Option[String], connectionGroupIdsToAdd: Option[String], latitude: Option[Double], longitude: Option[Double]): AlbumContestResponse
+  def addOrUpdateAlbumContest(publicRead: Boolean, publicWrite: Boolean, publicDelete: Boolean, publicAdd: Boolean, visibility: String, includeFriendGroup: Boolean, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], contestType: Option[String], albumContestId: Option[Long], title: Option[String], description: Option[String], albumId1: Option[Long], removeAlbum1: Option[Boolean], albumId2: Option[Long], removeAlbum2: Option[Boolean], startDate: Option[Long], endDate: Option[Long], locationDescription: Option[String], connectionIdsToAdd: Option[String], connectionGroupIdsToAdd: Option[String], latitude: Option[Double], longitude: Option[Double]): AlbumContestResponse
 
   /**
     * Approve Contest
@@ -47,7 +46,7 @@ trait ContestApi {
     * @param deviceId A unique ID given by the device (deviceId or accountId required)
     * @param accountId The account ID of the user (deviceId or accountId required)
     */
-  def approveAlbumContest(version: BigDecimal, albumContestId: Long, approvalStatus: String, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def approveAlbumContest(albumContestId: Long, approvalStatus: String, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Delete Contest
@@ -58,7 +57,7 @@ trait ContestApi {
     * @param latitude latitude used to update the user&#39;s current location
     * @param longitude longitude used to update the user&#39;s current location
     */
-  def deleteContest(version: BigDecimal, albumContestId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def deleteContest(albumContestId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Get Contest
@@ -69,7 +68,7 @@ trait ContestApi {
     * @param latitude latitude used to update the user&#39;s current location
     * @param longitude longitude used to update the user&#39;s current location
     */
-  def getAlbumContest(version: BigDecimal, albumContestId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): AlbumContestResponse
+  def getAlbumContest(albumContestId: Long, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): AlbumContestResponse
 
   /**
     * Search Contests
@@ -94,7 +93,7 @@ trait ContestApi {
     * @param latitude latitude used to update the user&#39;s current location
     * @param longitude longitude used to update the user&#39;s current location
     */
-  def getAlbumContests(version: BigDecimal, filter: String, sortField: String, descending: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], appType: Option[String], contestType: Option[String], ownerId: Option[Long], q: Option[String], keyword: Option[String], i: Option[Int], l: Option[Int], dateCreated: Option[Long], latitude: Option[Double], longitude: Option[Double]): AlbumContestListResponse
+  def getAlbumContests(filter: String, sortField: String, descending: Boolean, start: Int, limit: Int, deviceId: Option[String], accountId: Option[Long], gameType: Option[String], appKey: Option[String], appType: Option[String], contestType: Option[String], ownerId: Option[Long], q: Option[String], keyword: Option[String], i: Option[Int], l: Option[Int], dateCreated: Option[Long], latitude: Option[Double], longitude: Option[Double]): AlbumContestListResponse
 
   /**
     * Vote on Contest
@@ -107,5 +106,5 @@ trait ContestApi {
     * @param latitude latitude used to update the user&#39;s current location
     * @param longitude longitude used to update the user&#39;s current location
     */
-  def voteOnAlbumContest(version: BigDecimal, albumContestId: Long, albumId: Long, deviceId: Option[String], accountId: Option[Long], contestType: Option[String], latitude: Option[Double], longitude: Option[Double]): AlbumContestResponse
+  def voteOnAlbumContest(albumContestId: Long, albumId: Long, deviceId: Option[String], accountId: Option[Long], contestType: Option[String], latitude: Option[Double], longitude: Option[Double]): AlbumContestResponse
 }

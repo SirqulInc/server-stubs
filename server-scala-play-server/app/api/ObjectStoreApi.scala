@@ -1,10 +1,9 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.ObjectStoreResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait ObjectStoreApi {
   /**
     * Create Field
@@ -15,7 +14,7 @@ trait ObjectStoreApi {
     * @param fieldName field name The name of the field to add.
     * @param fieldType field type The field type to create, supported types are: STRING, DATE, NUMBER, BOOLEAN, IDENTITY
     */
-  def addField(version: BigDecimal, accountId: Long, appKey: String, objectName: String, fieldName: String, fieldType: String): ObjectStoreResponse
+  def addField(accountId: Long, appKey: String, objectName: String, fieldName: String, fieldType: String): ObjectStoreResponse
 
   /**
     * Create Data
@@ -23,7 +22,7 @@ trait ObjectStoreApi {
     * @param objectName the name of the object to create data for
     * @param accountId the account id
     */
-  def createData(version: BigDecimal, objectName: String, accountId: Option[Long], body: Option[String]): ObjectStoreResponse
+  def createData(objectName: String, accountId: Option[Long], body: Option[String]): ObjectStoreResponse
 
   /**
     * Create Object
@@ -32,7 +31,7 @@ trait ObjectStoreApi {
     * @param appKey The application key for updating an existing application
     * @param objectName The name of the object to create
     */
-  def createObject(version: BigDecimal, accountId: Long, appKey: String, objectName: String): ObjectStoreResponse
+  def createObject(accountId: Long, appKey: String, objectName: String): ObjectStoreResponse
 
   /**
     * Delete Data
@@ -41,7 +40,7 @@ trait ObjectStoreApi {
     * @param objectId objectId The id of the record to return
     * @param accountId The account id of the logged in user
     */
-  def deleteData(version: BigDecimal, objectName: String, objectId: String, accountId: Option[Long]): ObjectStoreResponse
+  def deleteData(objectName: String, objectId: String, accountId: Option[Long]): ObjectStoreResponse
 
   /**
     * Delete Field
@@ -51,7 +50,7 @@ trait ObjectStoreApi {
     * @param objectName The name of the object to remove the field from
     * @param fieldName field name The name of the field to remove.
     */
-  def deleteField(version: BigDecimal, accountId: Long, appKey: String, objectName: String, fieldName: String): ObjectStoreResponse
+  def deleteField(accountId: Long, appKey: String, objectName: String, fieldName: String): ObjectStoreResponse
 
   /**
     * Delete Object
@@ -60,7 +59,7 @@ trait ObjectStoreApi {
     * @param appKey the application key
     * @param objectName the name of the object to delete
     */
-  def deleteObject(version: BigDecimal, accountId: Long, appKey: String, objectName: String): ObjectStoreResponse
+  def deleteObject(accountId: Long, appKey: String, objectName: String): ObjectStoreResponse
 
   /**
     * Get Data
@@ -70,7 +69,7 @@ trait ObjectStoreApi {
     * @param accountId The account id of the logged in user
     * @param include 
     */
-  def getData(version: BigDecimal, objectName: String, objectId: String, accountId: Option[Long], include: Option[String]): ObjectStoreResponse
+  def getData(objectName: String, objectId: String, accountId: Option[Long], include: Option[String]): ObjectStoreResponse
 
   /**
     * Get Object
@@ -79,7 +78,7 @@ trait ObjectStoreApi {
     * @param appKey The application key for updating an existing application
     * @param objectName The name of the object to get the definition for
     */
-  def getObject(version: BigDecimal, accountId: Long, appKey: String, objectName: String): ObjectStoreResponse
+  def getObject(accountId: Long, appKey: String, objectName: String): ObjectStoreResponse
 
   /**
     * Search Data
@@ -93,7 +92,7 @@ trait ObjectStoreApi {
     * @param order The order of results; comma seperated list of field names. Illegal field names will be ignored. Direction by defualt is ascending. Prepend a minus to the field name to make that field descending.
     * @param include 
     */
-  def searchData(version: BigDecimal, objectName: String, count: Boolean, start: Long, limit: Long, accountId: Option[Long], criteria: Option[String], order: Option[String], include: Option[String]): ObjectStoreResponse
+  def searchData(objectName: String, count: Boolean, start: Long, limit: Long, accountId: Option[Long], criteria: Option[String], order: Option[String], include: Option[String]): ObjectStoreResponse
 
   /**
     * Search Objects
@@ -104,7 +103,7 @@ trait ObjectStoreApi {
     * @param limit The limit of the pagination
     * @param keyword The name of the object(s) to search for, can be a partial match
     */
-  def searchObject(version: BigDecimal, accountId: Long, appKey: String, start: Long, limit: Long, keyword: Option[String]): ObjectStoreResponse
+  def searchObject(accountId: Long, appKey: String, start: Long, limit: Long, keyword: Option[String]): ObjectStoreResponse
 
   /**
     * Update Data
@@ -113,5 +112,5 @@ trait ObjectStoreApi {
     * @param objectId objectId The id of the record to return
     * @param accountId The account id of the logged in user
     */
-  def updateData(version: BigDecimal, objectName: String, objectId: String, accountId: Option[Long], body: Option[String]): ObjectStoreResponse
+  def updateData(objectName: String, objectId: String, accountId: Option[Long], body: Option[String]): ObjectStoreResponse
 }

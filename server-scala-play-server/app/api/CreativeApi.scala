@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.CreativeResponse
 import model.MissionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait CreativeApi {
   /**
     * Add Preview
@@ -14,7 +13,7 @@ trait CreativeApi {
     * @param accountId the id of the account
     * @param creativeId The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.
     */
-  def addPreview(version: BigDecimal, accountId: Long, creativeId: Long): SirqulResponse
+  def addPreview(accountId: Long, creativeId: Long): SirqulResponse
 
   /**
     * Find Missions
@@ -36,7 +35,7 @@ trait CreativeApi {
     * @param allocatesTickets If true/false only return missions whose game levels allocate (or don&#39;t allocate) tickets. Do not provide a value to return both.
     * @param missionIds return only ads from the specified campaigns.
     */
-  def adsFind(version: BigDecimal, appKey: String, randomize: Boolean, targetedAdsOnly: Boolean, `type`: Option[String], accountId: Option[Long], appVersion: Option[String], latitude: Option[Double], longitude: Option[Double], device: Option[String], deviceIdentifier: Option[Long], deviceVersion: Option[String], start: Option[Int], limit: Option[Int], includeAudiences: Option[Boolean], allocatesTickets: Option[Boolean], missionIds: Option[String]): List[MissionResponse]
+  def adsFind(appKey: String, randomize: Boolean, targetedAdsOnly: Boolean, `type`: Option[String], accountId: Option[Long], appVersion: Option[String], latitude: Option[Double], longitude: Option[Double], device: Option[String], deviceIdentifier: Option[Long], deviceVersion: Option[String], start: Option[Int], limit: Option[Int], includeAudiences: Option[Boolean], allocatesTickets: Option[Boolean], missionIds: Option[String]): List[MissionResponse]
 
   /**
     * Create Creative
@@ -57,7 +56,7 @@ trait CreativeApi {
     * @param missionId Assign the creative to a campaign for timing and audience matching.
     * @param offerId the id of the offer
     */
-  def createCreative(version: BigDecimal, accountId: Long, name: String, active: Boolean, waitForAsset: Boolean, description: Option[String], assetImageId: Option[Long], action: Option[String], data: Option[String], suffix: Option[String], `type`: Option[String], balance: Option[Double], referenceId: Option[Long], appVersion: Option[String], missionId: Option[Long], offerId: Option[Long]): CreativeResponse
+  def createCreative(accountId: Long, name: String, active: Boolean, waitForAsset: Boolean, description: Option[String], assetImageId: Option[Long], action: Option[String], data: Option[String], suffix: Option[String], `type`: Option[String], balance: Option[Double], referenceId: Option[Long], appVersion: Option[String], missionId: Option[Long], offerId: Option[Long]): CreativeResponse
 
   /**
     * Delete Creative
@@ -65,7 +64,7 @@ trait CreativeApi {
     * @param accountId the id of the logged in user
     * @param creativeId the id of the creative to delete
     */
-  def deleteCreative(version: BigDecimal, accountId: Long, creativeId: Long): SirqulResponse
+  def deleteCreative(accountId: Long, creativeId: Long): SirqulResponse
 
   /**
     * Get Creative
@@ -73,7 +72,7 @@ trait CreativeApi {
     * @param accountId the id of the logged in user
     * @param creativeId the ID of the creative to get
     */
-  def getCreative(version: BigDecimal, accountId: Long, creativeId: Long): CreativeResponse
+  def getCreative(accountId: Long, creativeId: Long): CreativeResponse
 
   /**
     * Search Creatives
@@ -85,7 +84,7 @@ trait CreativeApi {
     * @param missionId Creatives contained in the provided mission.
     * @param keyword Match the keyword to the owner name or level name.
     */
-  def getCreativesByApplication(version: BigDecimal, accountId: Long, appKey: String, start: Int, limit: Int, missionId: Option[Long], keyword: Option[String]): List[CreativeResponse]
+  def getCreativesByApplication(accountId: Long, appKey: String, start: Int, limit: Int, missionId: Option[Long], keyword: Option[String]): List[CreativeResponse]
 
   /**
     * Remove Preview
@@ -93,7 +92,7 @@ trait CreativeApi {
     * @param accountId the ID of the logged in user
     * @param creativeId the ID of the creative to remove preview
     */
-  def removePreview(version: BigDecimal, accountId: Long, creativeId: Long): SirqulResponse
+  def removePreview(accountId: Long, creativeId: Long): SirqulResponse
 
   /**
     * Update Creative
@@ -113,5 +112,5 @@ trait CreativeApi {
     * @param appVersion The version of the application, will not return creatives newer than the appVersion. Only used when requesting application configuration creatives.
     * @param missionId Assign the creative to a campaign for timing and audience matching.
     */
-  def updateCreative(version: BigDecimal, accountId: Long, creativeId: Long, name: Option[String], description: Option[String], assetImageId: Option[Long], action: Option[String], data: Option[String], suffix: Option[String], `type`: Option[String], balance: Option[Double], active: Option[Boolean], referenceId: Option[Long], appVersion: Option[String], missionId: Option[Long]): CreativeResponse
+  def updateCreative(accountId: Long, creativeId: Long, name: Option[String], description: Option[String], assetImageId: Option[Long], action: Option[String], data: Option[String], suffix: Option[String], `type`: Option[String], balance: Option[Double], active: Option[Boolean], referenceId: Option[Long], appVersion: Option[String], missionId: Option[Long]): CreativeResponse
 }

@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ScoreResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ScoreApiController @Inject()(cc: ControllerComponents, api: ScoreApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/score/create?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&gameObjectId=[value]&points=[value]&timeTaken=[value]&highest=[value]
+    * POST /api/3.18/score/create?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&gameObjectId=[value]&points=[value]&timeTaken=[value]&highest=[value]
     */
-  def createScore(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createScore(): Action[AnyContent] = Action { request =>
     def executeApi(): ScoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -53,7 +52,7 @@ class ScoreApiController @Inject()(cc: ControllerComponents, api: ScoreApi) exte
       val highest = request.getQueryString("highest")
         .map(value => value.toBoolean)
         
-      api.createScore(version, accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest)
+      api.createScore(accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest)
     }
 
     val result = executeApi()
@@ -62,9 +61,9 @@ class ScoreApiController @Inject()(cc: ControllerComponents, api: ScoreApi) exte
   }
 
   /**
-    * GET /api/:version/score/get?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&gameObjectId=[value]&scoreObjectType=[value]&scoreStatus=[value]
+    * GET /api/3.18/score/get?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&gameObjectId=[value]&scoreObjectType=[value]&scoreStatus=[value]
     */
-  def getScore(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getScore(): Action[AnyContent] = Action { request =>
     def executeApi(): ScoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -96,7 +95,7 @@ class ScoreApiController @Inject()(cc: ControllerComponents, api: ScoreApi) exte
         
       val scoreStatus = request.getQueryString("scoreStatus")
         
-      api.getScore(version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus)
+      api.getScore(accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus)
     }
 
     val result = executeApi()
@@ -105,9 +104,9 @@ class ScoreApiController @Inject()(cc: ControllerComponents, api: ScoreApi) exte
   }
 
   /**
-    * GET /api/:version/score/search?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&gameObjectId=[value]
+    * GET /api/3.18/score/search?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&gameObjectId=[value]
     */
-  def searchScores(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchScores(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ScoreResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -135,7 +134,7 @@ class ScoreApiController @Inject()(cc: ControllerComponents, api: ScoreApi) exte
       val gameObjectId = request.getQueryString("gameObjectId")
         .map(value => value.toLong)
         
-      api.searchScores(version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId)
+      api.searchScores(accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId)
     }
 
     val result = executeApi()

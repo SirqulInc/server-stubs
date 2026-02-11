@@ -1,13 +1,12 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.EventAttendanceResponse
 import model.OfferResponse
 import model.OfferShortResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait EventApi {
   /**
     * Attend Event
@@ -23,7 +22,7 @@ trait EventApi {
     * @param latitude The location of the status update
     * @param longitude The location of the status update
     */
-  def attendEvent(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], listingId: Option[Long], retailerLocationId: Option[Long], offerLocationId: Option[Long], transactionId: Option[Long], status: Option[Int], latitude: Option[Double], longitude: Option[Double]): OfferResponse
+  def attendEvent(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], listingId: Option[Long], retailerLocationId: Option[Long], offerLocationId: Option[Long], transactionId: Option[Long], status: Option[Int], latitude: Option[Double], longitude: Option[Double]): OfferResponse
 
   /**
     * Create Event
@@ -41,7 +40,7 @@ trait EventApi {
     * @param redeemableEnd The event end date/time
     * @param metaData external custom client defined data
     */
-  def createEvent(version: BigDecimal, accountId: Long, title: String, retailerLocationIds: Option[String], subTitle: Option[String], details: Option[String], categoryIds: Option[String], filterIds: Option[String], active: Option[Boolean], imageAssetId: Option[Long], redeemableStart: Option[Long], redeemableEnd: Option[Long], metaData: Option[String]): OfferResponse
+  def createEvent(accountId: Long, title: String, retailerLocationIds: Option[String], subTitle: Option[String], details: Option[String], categoryIds: Option[String], filterIds: Option[String], active: Option[Boolean], imageAssetId: Option[Long], redeemableStart: Option[Long], redeemableEnd: Option[Long], metaData: Option[String]): OfferResponse
 
   /**
     * Delete Event
@@ -49,7 +48,7 @@ trait EventApi {
     * @param accountId the id of the logged in user
     * @param eventId the id of the event to update
     */
-  def deleteEvent(version: BigDecimal, accountId: Long, eventId: Long): SirqulResponse
+  def deleteEvent(accountId: Long, eventId: Long): SirqulResponse
 
   /**
     * Get Event
@@ -57,7 +56,7 @@ trait EventApi {
     * @param accountId the id of the logged in user
     * @param eventId The id of the event to return
     */
-  def getEvent(version: BigDecimal, accountId: Long, eventId: Long): OfferResponse
+  def getEvent(accountId: Long, eventId: Long): OfferResponse
 
   /**
     * Search Event Attendance
@@ -82,7 +81,7 @@ trait EventApi {
     * @param start The start index for pagination
     * @param limit The limit for pagination
     */
-  def searchEventTransactions(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], appKey: Option[String], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], excludeRetailerLocationId: Option[Long], listingId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], customerAccountIds: Option[String], affiliatedCategoryIds: Option[String], startDate: Option[Long], endDate: Option[Long], statuses: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): List[EventAttendanceResponse]
+  def searchEventTransactions(deviceId: Option[String], accountId: Option[Long], appKey: Option[String], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], excludeRetailerLocationId: Option[Long], listingId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], customerAccountIds: Option[String], affiliatedCategoryIds: Option[String], startDate: Option[Long], endDate: Option[Long], statuses: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): List[EventAttendanceResponse]
 
   /**
     * Search Events
@@ -101,7 +100,7 @@ trait EventApi {
     * @param start The record to begin the return set on
     * @param limit The number of records to return
     */
-  def searchEvents(version: BigDecimal, accountId: Long, keyword: Option[String], activeOnly: Option[Boolean], categoryIds: Option[String], filterIds: Option[String], offerAudienceIds: Option[String], transactionAudienceIds: Option[String], sortField: Option[String], descending: Option[Boolean], startDate: Option[Long], endDate: Option[Long], start: Option[Int], limit: Option[Int]): List[OfferShortResponse]
+  def searchEvents(accountId: Long, keyword: Option[String], activeOnly: Option[Boolean], categoryIds: Option[String], filterIds: Option[String], offerAudienceIds: Option[String], transactionAudienceIds: Option[String], sortField: Option[String], descending: Option[Boolean], startDate: Option[Long], endDate: Option[Long], start: Option[Int], limit: Option[Int]): List[OfferShortResponse]
 
   /**
     * Update Event
@@ -119,5 +118,5 @@ trait EventApi {
     * @param redeemableStart The event start date/time
     * @param redeemableEnd The event end date/time
     */
-  def updateEvent(version: BigDecimal, accountId: Long, eventId: Long, retailerLocationIds: Option[String], title: Option[String], subTitle: Option[String], details: Option[String], categoryIds: Option[String], filterIds: Option[String], active: Option[Boolean], imageAssetId: Option[Long], redeemableStart: Option[Long], redeemableEnd: Option[Long]): OfferResponse
+  def updateEvent(accountId: Long, eventId: Long, retailerLocationIds: Option[String], title: Option[String], subTitle: Option[String], details: Option[String], categoryIds: Option[String], filterIds: Option[String], active: Option[Boolean], imageAssetId: Option[Long], redeemableStart: Option[Long], redeemableEnd: Option[Long]): OfferResponse
 }

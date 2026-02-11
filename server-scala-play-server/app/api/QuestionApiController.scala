@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.QuestionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/game/question/create?accountId=[value]&question=[value]&answers=[value]&tags=[value]&videoURL=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
+    * POST /api/3.18/game/question/create?accountId=[value]&question=[value]&answers=[value]&tags=[value]&videoURL=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
     */
-  def createQuestion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createQuestion(): Action[AnyContent] = Action { request =>
     def executeApi(): QuestionResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -62,7 +61,7 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
       val points = request.getQueryString("points")
         .map(value => value.toLong)
         
-      api.createQuestion(version, accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points)
+      api.createQuestion(accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points)
     }
 
     val result = executeApi()
@@ -71,9 +70,9 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
   }
 
   /**
-    * POST /api/:version/game/question/delete?questionId=[value]&accountId=[value]
+    * POST /api/3.18/game/question/delete?questionId=[value]&accountId=[value]
     */
-  def deleteQuestion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteQuestion(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val questionId = request.getQueryString("questionId")
         .map(value => value.toLong)
@@ -87,7 +86,7 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.deleteQuestion(version, questionId, accountId)
+      api.deleteQuestion(questionId, accountId)
     }
 
     val result = executeApi()
@@ -96,9 +95,9 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
   }
 
   /**
-    * GET /api/:version/game/question/get?questionId=[value]&accountId=[value]
+    * GET /api/3.18/game/question/get?questionId=[value]&accountId=[value]
     */
-  def getQuestion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getQuestion(): Action[AnyContent] = Action { request =>
     def executeApi(): QuestionResponse = {
       val questionId = request.getQueryString("questionId")
         .map(value => value.toLong)
@@ -112,7 +111,7 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.getQuestion(version, questionId, accountId)
+      api.getQuestion(questionId, accountId)
     }
 
     val result = executeApi()
@@ -121,9 +120,9 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
   }
 
   /**
-    * GET /api/:version/game/question/search?accountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/game/question/search?accountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&activeOnly=[value]&start=[value]&limit=[value]
     */
-  def searchQuestions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchQuestions(): Action[AnyContent] = Action { request =>
     def executeApi(): List[QuestionResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -162,7 +161,7 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.searchQuestions(version, accountId, sortField, descending, activeOnly, start, limit, keyword)
+      api.searchQuestions(accountId, sortField, descending, activeOnly, start, limit, keyword)
     }
 
     val result = executeApi()
@@ -171,9 +170,9 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
   }
 
   /**
-    * POST /api/:version/game/question/update?questionId=[value]&accountId=[value]&question=[value]&answers=[value]&tags=[value]&videoURL=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
+    * POST /api/3.18/game/question/update?questionId=[value]&accountId=[value]&question=[value]&answers=[value]&tags=[value]&videoURL=[value]&assetId=[value]&active=[value]&allocateTickets=[value]&ticketCount=[value]&ticketType=[value]&points=[value]
     */
-  def updateQuestion(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateQuestion(): Action[AnyContent] = Action { request =>
     def executeApi(): QuestionResponse = {
       val questionId = request.getQueryString("questionId")
         .map(value => value.toLong)
@@ -215,7 +214,7 @@ class QuestionApiController @Inject()(cc: ControllerComponents, api: QuestionApi
       val points = request.getQueryString("points")
         .map(value => value.toLong)
         
-      api.updateQuestion(version, questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points)
+      api.updateQuestion(questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points)
     }
 
     val result = executeApi()

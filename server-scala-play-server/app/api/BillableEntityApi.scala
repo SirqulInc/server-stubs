@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.BillableEntityResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait BillableEntityApi {
   /**
     * Create Billable
@@ -23,7 +22,7 @@ trait BillableEntityApi {
     * @param authorizeNetApiKey Authorize Net Api Key
     * @param authorizeNetTransactionKey Authorize Net Transaction Key
     */
-  def createBillableEntity(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], name: Option[String], streetAddress: Option[String], streetAddress2: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], businessPhone: Option[String], businessPhoneExt: Option[String], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String]): BillableEntityResponse
+  def createBillableEntity(deviceId: Option[String], accountId: Option[Long], name: Option[String], streetAddress: Option[String], streetAddress2: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], businessPhone: Option[String], businessPhoneExt: Option[String], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String]): BillableEntityResponse
 
   /**
     * Delete Billable
@@ -31,7 +30,7 @@ trait BillableEntityApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account used to perform the delete, must have rights to edit the billable entity.
     */
-  def deleteBillableEntity(version: BigDecimal, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def deleteBillableEntity(deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Billable
@@ -41,7 +40,7 @@ trait BillableEntityApi {
     * @param includeCounts Determines whether to include the retailer dash board counts into the response
     * @param includePayments Whether to enable payments or not
     */
-  def getBillableEntity(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], includeCounts: Option[Boolean], includePayments: Option[Boolean]): BillableEntityResponse
+  def getBillableEntity(deviceId: Option[String], accountId: Option[Long], includeCounts: Option[Boolean], includePayments: Option[Boolean]): BillableEntityResponse
 
   /**
     * Update Billable
@@ -59,5 +58,5 @@ trait BillableEntityApi {
     * @param authorizeNetApiKey Authorize Net Api Key of the billable entity
     * @param authorizeNetTransactionKey Authorize Net Transaction Key of the billable entity
     */
-  def updateBillableEntity(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], name: Option[String], streetAddress: Option[String], streetAddress2: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], businessPhone: Option[String], businessPhoneExt: Option[String], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String]): BillableEntityResponse
+  def updateBillableEntity(deviceId: Option[String], accountId: Option[Long], name: Option[String], streetAddress: Option[String], streetAddress2: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], businessPhone: Option[String], businessPhoneExt: Option[String], authorizeNetApiKey: Option[String], authorizeNetTransactionKey: Option[String]): BillableEntityResponse
 }

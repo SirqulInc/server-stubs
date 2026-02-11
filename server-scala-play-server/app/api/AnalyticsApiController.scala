@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ChartData
 import model.SirqulResponse
 import model.UserActivityResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/analytics/useractivity?start=[value]&limit=[value]&accountId=[value]
+    * GET /api/3.18/analytics/useractivity?start=[value]&limit=[value]&accountId=[value]
     */
-  def activities(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def activities(): Action[AnyContent] = Action { request =>
     def executeApi(): List[UserActivityResponse] = {
       val start = request.getQueryString("start")
         .map(value => value.toInt)
@@ -35,7 +34,7 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
           throw new OpenApiExceptions.MissingRequiredParameterException("accountId", "query string")
         }
         
-      api.activities(version, start, limit, accountId)
+      api.activities(start, limit, accountId)
     }
 
     val result = executeApi()
@@ -44,9 +43,9 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
   }
 
   /**
-    * GET /api/:version/analytics/aggregatedFilteredUsage?deviceId=[value]&accountId=[value]&applicationId=[value]&appKey=[value]&startDate=[value]&endDate=[value]&deviceType=[value]&device=[value]&deviceOS=[value]&gender=[value]&ageGroup=[value]&country=[value]&state=[value]&city=[value]&zip=[value]&model=[value]&tag=[value]&userAccountId=[value]&userAccountDisplay=[value]&userAccountUsername=[value]&groupByRoot=[value]&groupBy=[value]&distinctCount=[value]&sortField=[value]&descending=[value]&hideUnknown=[value]&responseFormat=[value]&l=[value]&limit=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/analytics/aggregatedFilteredUsage?deviceId=[value]&accountId=[value]&applicationId=[value]&appKey=[value]&startDate=[value]&endDate=[value]&deviceType=[value]&device=[value]&deviceOS=[value]&gender=[value]&ageGroup=[value]&country=[value]&state=[value]&city=[value]&zip=[value]&model=[value]&tag=[value]&userAccountId=[value]&userAccountDisplay=[value]&userAccountUsername=[value]&groupByRoot=[value]&groupBy=[value]&distinctCount=[value]&sortField=[value]&descending=[value]&hideUnknown=[value]&responseFormat=[value]&l=[value]&limit=[value]&latitude=[value]&longitude=[value]
     */
-  def aggregatedFilteredUsage(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def aggregatedFilteredUsage(): Action[AnyContent] = Action { request =>
     def executeApi(): ChartData = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -121,7 +120,7 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.aggregatedFilteredUsage(version, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, groupByRoot, groupBy, distinctCount, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude)
+      api.aggregatedFilteredUsage(deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, groupByRoot, groupBy, distinctCount, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude)
     }
 
     val result = executeApi()
@@ -130,9 +129,9 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
   }
 
   /**
-    * GET /api/:version/analytics/filteredUsage?deviceId=[value]&accountId=[value]&applicationId=[value]&appKey=[value]&startDate=[value]&endDate=[value]&deviceType=[value]&device=[value]&deviceOS=[value]&gender=[value]&ageGroup=[value]&country=[value]&state=[value]&city=[value]&zip=[value]&model=[value]&tag=[value]&userAccountId=[value]&userAccountDisplay=[value]&userAccountUsername=[value]&customId=[value]&customType=[value]&customValue=[value]&customValue2=[value]&customLong=[value]&customLong2=[value]&customMessage=[value]&customMessage2=[value]&groupBy=[value]&distinctCount=[value]&sumColumn=[value]&sortField=[value]&descending=[value]&hideUnknown=[value]&responseFormat=[value]&l=[value]&limit=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/analytics/filteredUsage?deviceId=[value]&accountId=[value]&applicationId=[value]&appKey=[value]&startDate=[value]&endDate=[value]&deviceType=[value]&device=[value]&deviceOS=[value]&gender=[value]&ageGroup=[value]&country=[value]&state=[value]&city=[value]&zip=[value]&model=[value]&tag=[value]&userAccountId=[value]&userAccountDisplay=[value]&userAccountUsername=[value]&customId=[value]&customType=[value]&customValue=[value]&customValue2=[value]&customLong=[value]&customLong2=[value]&customMessage=[value]&customMessage2=[value]&groupBy=[value]&distinctCount=[value]&sumColumn=[value]&sortField=[value]&descending=[value]&hideUnknown=[value]&responseFormat=[value]&l=[value]&limit=[value]&latitude=[value]&longitude=[value]
     */
-  def filteredUsage(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def filteredUsage(): Action[AnyContent] = Action { request =>
     def executeApi(): ChartData = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -228,7 +227,7 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.filteredUsage(version, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, customId, customType, customValue, customValue2, customLong, customLong2, customMessage, customMessage2, groupBy, distinctCount, sumColumn, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude)
+      api.filteredUsage(deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, customId, customType, customValue, customValue2, customLong, customLong2, customMessage, customMessage2, groupBy, distinctCount, sumColumn, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude)
     }
 
     val result = executeApi()
@@ -237,9 +236,9 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
   }
 
   /**
-    * POST /api/:version/analytics/usage?tag=[value]&deviceId=[value]&accountId=[value]&applicationId=[value]&appKey=[value]&appVersion=[value]&device=[value]&deviceType=[value]&deviceOS=[value]&model=[value]&latitude=[value]&longitude=[value]&customId=[value]&customType=[value]&achievementIncrement=[value]&city=[value]&state=[value]&country=[value]&zip=[value]&locationDescription=[value]&clientTime=[value]&errorMessage=[value]&ip=[value]&userAgent=[value]&backgroundEvent=[value]&customMessage=[value]&customMessage2=[value]&customValue=[value]&customValue2=[value]&customLong=[value]&customLong2=[value]
+    * POST /api/3.18/analytics/usage?tag=[value]&deviceId=[value]&accountId=[value]&applicationId=[value]&appKey=[value]&appVersion=[value]&device=[value]&deviceType=[value]&deviceOS=[value]&model=[value]&latitude=[value]&longitude=[value]&customId=[value]&customType=[value]&achievementIncrement=[value]&city=[value]&state=[value]&country=[value]&zip=[value]&locationDescription=[value]&clientTime=[value]&errorMessage=[value]&ip=[value]&userAgent=[value]&backgroundEvent=[value]&customMessage=[value]&customMessage2=[value]&customValue=[value]&customValue2=[value]&customLong=[value]&customLong2=[value]
     */
-  def usage(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def usage(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val tag = request.getQueryString("tag")
         .getOrElse {
@@ -318,7 +317,7 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
       val customLong2 = request.getQueryString("customLong2")
         .map(value => value.toLong)
         
-      api.usage(version, tag, deviceId, accountId, applicationId, appKey, appVersion, device, deviceType, deviceOS, model, latitude, longitude, customId, customType, achievementIncrement, city, state, country, zip, locationDescription, clientTime, errorMessage, ip, userAgent, backgroundEvent, customMessage, customMessage2, customValue, customValue2, customLong, customLong2)
+      api.usage(tag, deviceId, accountId, applicationId, appKey, appVersion, device, deviceType, deviceOS, model, latitude, longitude, customId, customType, achievementIncrement, city, state, country, zip, locationDescription, clientTime, errorMessage, ip, userAgent, backgroundEvent, customMessage, customMessage2, customValue, customValue2, customLong, customLong2)
     }
 
     val result = executeApi()
@@ -327,9 +326,9 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
   }
 
   /**
-    * POST /api/:version/analytics/usage/batch?deviceId=[value]&accountId=[value]&appKey=[value]&appVersion=[value]&device=[value]&deviceType=[value]&deviceOS=[value]&model=[value]&data=[value]&updateRanking=[value]&returnSummaryResponse=[value]
+    * POST /api/3.18/analytics/usage/batch?deviceId=[value]&accountId=[value]&appKey=[value]&appVersion=[value]&device=[value]&deviceType=[value]&deviceOS=[value]&model=[value]&data=[value]&updateRanking=[value]&returnSummaryResponse=[value]
     */
-  def usageBatch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def usageBatch(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -365,7 +364,7 @@ class AnalyticsApiController @Inject()(cc: ControllerComponents, api: AnalyticsA
       val returnSummaryResponse = request.getQueryString("returnSummaryResponse")
         .map(value => value.toBoolean)
         
-      api.usageBatch(version, appKey, device, data, deviceId, accountId, appVersion, deviceType, deviceOS, model, updateRanking, returnSummaryResponse)
+      api.usageBatch(appKey, device, data, deviceId, accountId, appVersion, deviceType, deviceOS, model, updateRanking, returnSummaryResponse)
     }
 
     val result = executeApi()

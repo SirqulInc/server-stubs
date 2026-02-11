@@ -1,11 +1,10 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.PackResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait PackApi {
   /**
     * Create Pack
@@ -35,7 +34,7 @@ trait PackApi {
     * @param ticketType The type of ticket to reward, null means default type
     * @param points The number of points to award for completing a pack
     */
-  def createPack(version: BigDecimal, accountId: Long, title: String, packOrder: Long, price: Int, highest: Boolean, allocateTickets: Boolean, ticketCount: Long, description: Option[String], searchTags: Option[String], active: Option[Boolean], gameType: Option[String], appKey: Option[String], packType: Option[String], sequenceType: Option[String], backgroundId: Option[Long], imageId: Option[Long], startDate: Option[Long], endDate: Option[Long], authorOverride: Option[String], priceType: Option[String], gameLevelIds: Option[String], inGame: Option[Boolean], ticketType: Option[String], points: Option[Long]): PackResponse
+  def createPack(accountId: Long, title: String, packOrder: Long, price: Int, highest: Boolean, allocateTickets: Boolean, ticketCount: Long, description: Option[String], searchTags: Option[String], active: Option[Boolean], gameType: Option[String], appKey: Option[String], packType: Option[String], sequenceType: Option[String], backgroundId: Option[Long], imageId: Option[Long], startDate: Option[Long], endDate: Option[Long], authorOverride: Option[String], priceType: Option[String], gameLevelIds: Option[String], inGame: Option[Boolean], ticketType: Option[String], points: Option[Long]): PackResponse
 
   /**
     * Delete Pack
@@ -43,7 +42,7 @@ trait PackApi {
     * @param accountId the id of the logged in user
     * @param packId the id of the pack to delete
     */
-  def deletePack(version: BigDecimal, accountId: Long, packId: Long): SirqulResponse
+  def deletePack(accountId: Long, packId: Long): SirqulResponse
 
   /**
     * Get Pack
@@ -52,7 +51,7 @@ trait PackApi {
     * @param packId The id of the pack to return.
     * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false.
     */
-  def getPack(version: BigDecimal, accountId: Long, packId: Long, includeGameData: Boolean): PackResponse
+  def getPack(accountId: Long, packId: Long, includeGameData: Boolean): PackResponse
 
   /**
     * Search Packs
@@ -68,7 +67,7 @@ trait PackApi {
     * @param includeInactive Determines whether to include inactive results
     * @param appKey The application to filter results on
     */
-  def searchPacks(version: BigDecimal, accountId: Long, sortField: String, descending: Boolean, keyword: Option[String], packType: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeInactive: Option[Boolean], appKey: Option[String]): List[PackResponse]
+  def searchPacks(accountId: Long, sortField: String, descending: Boolean, keyword: Option[String], packType: Option[String], start: Option[Int], limit: Option[Int], includeGameData: Option[Boolean], includeInactive: Option[Boolean], appKey: Option[String]): List[PackResponse]
 
   /**
     * Update Pack
@@ -99,5 +98,5 @@ trait PackApi {
     * @param ticketType The type of ticket to reward, null means default type
     * @param points The number of points to award for completing a pack
     */
-  def updatePack(version: BigDecimal, accountId: Long, packId: Long, allocateTickets: Boolean, ticketCount: Long, title: Option[String], description: Option[String], searchTags: Option[String], active: Option[Boolean], gameType: Option[String], appKey: Option[String], packType: Option[String], packOrder: Option[Long], sequenceType: Option[String], backgroundId: Option[Long], imageId: Option[Long], startDate: Option[Long], endDate: Option[Long], authorOverride: Option[String], price: Option[Int], priceType: Option[String], gameLevelIds: Option[String], inGame: Option[Boolean], highest: Option[Boolean], ticketType: Option[String], points: Option[Long]): PackResponse
+  def updatePack(accountId: Long, packId: Long, allocateTickets: Boolean, ticketCount: Long, title: Option[String], description: Option[String], searchTags: Option[String], active: Option[Boolean], gameType: Option[String], appKey: Option[String], packType: Option[String], packOrder: Option[Long], sequenceType: Option[String], backgroundId: Option[Long], imageId: Option[Long], startDate: Option[Long], endDate: Option[Long], authorOverride: Option[String], price: Option[Int], priceType: Option[String], gameLevelIds: Option[String], inGame: Option[Boolean], highest: Option[Boolean], ticketType: Option[String], points: Option[Long]): PackResponse
 }

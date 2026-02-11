@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.MissionShortResponse
 import model.SirqulResponse
 import model.TournamentResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TournamentApiController @Inject()(cc: ControllerComponents, api: TournamentApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/tournament/create?accountId=[value]&appKey=[value]&title=[value]&subType=[value]&imageAssetId=[value]&secondsBetweenLevels=[value]&secondsForTieBreaker=[value]&secondsBetweenPacks=[value]&maximumLevelLength=[value]&costToPlay=[value]&costToPlayType=[value]&minimumToPlay=[value]&startingLimit=[value]&availableLimit=[value]&description=[value]&metaData=[value]&startDate=[value]&audienceIds=[value]&active=[value]&enableBuyBack=[value]&offerIds=[value]&offerAssetId=[value]&fixedReward=[value]&splitReward=[value]&allocateTickets=[value]&tournamentData=[value]&missionType=[value]&visibility=[value]&preliminaryGroups=[value]&preliminaryGroupAdvancements=[value]&enableMultipleEntries=[value]&enableMultipleVotes=[value]&featured=[value]&winnerTag=[value]&tieTag=[value]
+    * POST /api/3.18/tournament/create?accountId=[value]&appKey=[value]&title=[value]&subType=[value]&imageAssetId=[value]&secondsBetweenLevels=[value]&secondsForTieBreaker=[value]&secondsBetweenPacks=[value]&maximumLevelLength=[value]&costToPlay=[value]&costToPlayType=[value]&minimumToPlay=[value]&startingLimit=[value]&availableLimit=[value]&description=[value]&metaData=[value]&startDate=[value]&audienceIds=[value]&active=[value]&enableBuyBack=[value]&offerIds=[value]&offerAssetId=[value]&fixedReward=[value]&splitReward=[value]&allocateTickets=[value]&tournamentData=[value]&missionType=[value]&visibility=[value]&preliminaryGroups=[value]&preliminaryGroupAdvancements=[value]&enableMultipleEntries=[value]&enableMultipleVotes=[value]&featured=[value]&winnerTag=[value]&tieTag=[value]
     */
-  def createTournament(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createTournament(): Action[AnyContent] = Action { request =>
     def executeApi(): TournamentResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -122,7 +121,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
         
       val tieTag = request.getQueryString("tieTag")
         
-      api.createTournament(version, accountId, appKey, title, costToPlay, startDate, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, missionType, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag)
+      api.createTournament(accountId, appKey, title, costToPlay, startDate, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, missionType, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag)
     }
 
     val result = executeApi()
@@ -131,9 +130,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * POST /api/:version/tournament/delete?accountId=[value]&missionId=[value]
+    * POST /api/3.18/tournament/delete?accountId=[value]&missionId=[value]
     */
-  def deleteTournament(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteTournament(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -147,7 +146,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
           throw new OpenApiExceptions.MissingRequiredParameterException("missionId", "query string")
         }
         
-      api.deleteTournament(version, accountId, missionId)
+      api.deleteTournament(accountId, missionId)
     }
 
     val result = executeApi()
@@ -156,9 +155,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * GET /api/:version/tournament/get?accountId=[value]&missionId=[value]&joinCode=[value]&includeScores=[value]&objectPreviewSize=[value]
+    * GET /api/3.18/tournament/get?accountId=[value]&missionId=[value]&joinCode=[value]&includeScores=[value]&objectPreviewSize=[value]
     */
-  def getTournament(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTournament(): Action[AnyContent] = Action { request =>
     def executeApi(): TournamentResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -176,7 +175,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
       val objectPreviewSize = request.getQueryString("objectPreviewSize")
         .map(value => value.toInt)
         
-      api.getTournament(version, accountId, missionId, joinCode, includeScores, objectPreviewSize)
+      api.getTournament(accountId, missionId, joinCode, includeScores, objectPreviewSize)
     }
 
     val result = executeApi()
@@ -185,9 +184,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * GET /api/:version/tournament/object/search?accountId=[value]&gameLevelId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/tournament/object/search?accountId=[value]&gameLevelId=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchObjects(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchObjects(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -212,7 +211,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchObjects(version, accountId, gameLevelId, sortField, descending, start, limit)
+      api.searchObjects(accountId, gameLevelId, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -221,9 +220,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * GET /api/:version/tournament/round/search?accountId=[value]&appKey=[value]&status=[value]&missionType=[value]&currentOnly=[value]&visibilities=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/tournament/round/search?accountId=[value]&appKey=[value]&status=[value]&missionType=[value]&currentOnly=[value]&visibilities=[value]&start=[value]&limit=[value]
     */
-  def searchRounds(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRounds(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -251,7 +250,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchRounds(version, accountId, appKey, status, missionType, currentOnly, visibilities, start, limit)
+      api.searchRounds(accountId, appKey, status, missionType, currentOnly, visibilities, start, limit)
     }
 
     val result = executeApi()
@@ -260,9 +259,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * GET /api/:version/tournament/search?accountId=[value]&appKey=[value]&keyword=[value]&subType=[value]&includeInactive=[value]&missionTypes=[value]&filter=[value]&sortField=[value]&descending=[value]&visibility=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/tournament/search?accountId=[value]&appKey=[value]&keyword=[value]&subType=[value]&includeInactive=[value]&missionTypes=[value]&filter=[value]&sortField=[value]&descending=[value]&visibility=[value]&start=[value]&limit=[value]
     */
-  def searchTournaments(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchTournaments(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionShortResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -299,7 +298,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchTournaments(version, accountId, appKey, keyword, subType, includeInactive, missionTypes, filter, sortField, descending, visibility, start, limit)
+      api.searchTournaments(accountId, appKey, keyword, subType, includeInactive, missionTypes, filter, sortField, descending, visibility, start, limit)
     }
 
     val result = executeApi()
@@ -308,9 +307,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * POST /api/:version/tournament/score?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&scores=[value]
+    * POST /api/3.18/tournament/score?accountId=[value]&appKey=[value]&missionId=[value]&gameId=[value]&packId=[value]&gameLevelId=[value]&scores=[value]
     */
-  def submitTournamentScore(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def submitTournamentScore(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -349,7 +348,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
           throw new OpenApiExceptions.MissingRequiredParameterException("scores", "query string")
         }
         
-      api.submitTournamentScore(version, accountId, appKey, missionId, gameId, packId, scores, gameLevelId)
+      api.submitTournamentScore(accountId, appKey, missionId, gameId, packId, scores, gameLevelId)
     }
 
     val result = executeApi()
@@ -358,9 +357,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * POST /api/:version/tournament/vote?deviceId=[value]&accountId=[value]&appKey=[value]&missionId=[value]&gameObjectId=[value]&checkIfDeviceAlreadyVoted=[value]
+    * POST /api/3.18/tournament/vote?deviceId=[value]&accountId=[value]&appKey=[value]&missionId=[value]&gameObjectId=[value]&checkIfDeviceAlreadyVoted=[value]
     */
-  def submitTournamentVote(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def submitTournamentVote(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -390,7 +389,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
       val checkIfDeviceAlreadyVoted = request.getQueryString("checkIfDeviceAlreadyVoted")
         .map(value => value.toBoolean)
         
-      api.submitTournamentVote(version, accountId, appKey, missionId, gameObjectId, deviceId, checkIfDeviceAlreadyVoted)
+      api.submitTournamentVote(accountId, appKey, missionId, gameObjectId, deviceId, checkIfDeviceAlreadyVoted)
     }
 
     val result = executeApi()
@@ -399,9 +398,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * POST /api/:version/tournament/substitute?accountId=[value]&missionId=[value]&packId=[value]&gameLevelId=[value]
+    * POST /api/3.18/tournament/substitute?accountId=[value]&missionId=[value]&packId=[value]&gameLevelId=[value]
     */
-  def substituteTournamentPlayer(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def substituteTournamentPlayer(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -427,7 +426,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
           throw new OpenApiExceptions.MissingRequiredParameterException("gameLevelId", "query string")
         }
         
-      api.substituteTournamentPlayer(version, accountId, missionId, packId, gameLevelId)
+      api.substituteTournamentPlayer(accountId, missionId, packId, gameLevelId)
     }
 
     val result = executeApi()
@@ -436,9 +435,9 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
   }
 
   /**
-    * POST /api/:version/tournament/update?accountId=[value]&missionId=[value]&title=[value]&subType=[value]&imageAssetId=[value]&secondsBetweenLevels=[value]&secondsForTieBreaker=[value]&secondsBetweenPacks=[value]&maximumLevelLength=[value]&costToPlay=[value]&costToPlayType=[value]&minimumToPlay=[value]&startingLimit=[value]&availableLimit=[value]&description=[value]&metaData=[value]&startDate=[value]&audienceIds=[value]&active=[value]&enableBuyBack=[value]&offerIds=[value]&offerAssetId=[value]&fixedReward=[value]&splitReward=[value]&allocateTickets=[value]&tournamentData=[value]&visibility=[value]&preliminaryGroups=[value]&preliminaryGroupAdvancements=[value]&enableMultipleEntries=[value]&enableMultipleVotes=[value]&featured=[value]&winnerTag=[value]&tieTag=[value]
+    * POST /api/3.18/tournament/update?accountId=[value]&missionId=[value]&title=[value]&subType=[value]&imageAssetId=[value]&secondsBetweenLevels=[value]&secondsForTieBreaker=[value]&secondsBetweenPacks=[value]&maximumLevelLength=[value]&costToPlay=[value]&costToPlayType=[value]&minimumToPlay=[value]&startingLimit=[value]&availableLimit=[value]&description=[value]&metaData=[value]&startDate=[value]&audienceIds=[value]&active=[value]&enableBuyBack=[value]&offerIds=[value]&offerAssetId=[value]&fixedReward=[value]&splitReward=[value]&allocateTickets=[value]&tournamentData=[value]&visibility=[value]&preliminaryGroups=[value]&preliminaryGroupAdvancements=[value]&enableMultipleEntries=[value]&enableMultipleVotes=[value]&featured=[value]&winnerTag=[value]&tieTag=[value]
     */
-  def updateTournament(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateTournament(): Action[AnyContent] = Action { request =>
     def executeApi(): TournamentResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -535,7 +534,7 @@ class TournamentApiController @Inject()(cc: ControllerComponents, api: Tournamen
         
       val tieTag = request.getQueryString("tieTag")
         
-      api.updateTournament(version, accountId, missionId, title, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlay, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, startDate, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag)
+      api.updateTournament(accountId, missionId, title, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlay, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, startDate, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag)
     }
 
     val result = executeApi()

@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.CountResponse
 import model.FlagResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/flag/create?deviceId=[value]&accountId=[value]&flagableType=[value]&flagableId=[value]&flagDescription=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/flag/create?deviceId=[value]&accountId=[value]&flagableType=[value]&flagableId=[value]&flagDescription=[value]&latitude=[value]&longitude=[value]
     */
-  def createFlag(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createFlag(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -41,7 +40,7 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.createFlag(version, flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude)
+      api.createFlag(flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude)
     }
 
     val result = executeApi()
@@ -50,9 +49,9 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
   }
 
   /**
-    * POST /api/:version/flag/delete?deviceId=[value]&accountId=[value]&itemBeingFlaggedType=[value]&itemBeingFlaggedId=[value]&flagableType=[value]&flagableId=[value]
+    * POST /api/3.18/flag/delete?deviceId=[value]&accountId=[value]&itemBeingFlaggedType=[value]&itemBeingFlaggedId=[value]&flagableType=[value]&flagableId=[value]
     */
-  def deleteFlag(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteFlag(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -69,7 +68,7 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
       val flagableId = request.getQueryString("flagableId")
         .map(value => value.toLong)
         
-      api.deleteFlag(version, deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId)
+      api.deleteFlag(deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId)
     }
 
     val result = executeApi()
@@ -78,9 +77,9 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
   }
 
   /**
-    * GET /api/:version/flag/get?deviceId=[value]&accountId=[value]&flagableType=[value]&flagableId=[value]&latitude=[value]&longitude=[value]
+    * GET /api/3.18/flag/get?deviceId=[value]&accountId=[value]&flagableType=[value]&flagableId=[value]&latitude=[value]&longitude=[value]
     */
-  def getFlag(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getFlag(): Action[AnyContent] = Action { request =>
     def executeApi(): FlagResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -104,7 +103,7 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.getFlag(version, flagableType, flagableId, deviceId, accountId, latitude, longitude)
+      api.getFlag(flagableType, flagableId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -113,9 +112,9 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
   }
 
   /**
-    * GET /api/:version/flag/threshold/get?itemBeingFlaggedType=[value]&appKey=[value]
+    * GET /api/3.18/flag/threshold/get?itemBeingFlaggedType=[value]&appKey=[value]
     */
-  def getFlagThreshold(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getFlagThreshold(): Action[AnyContent] = Action { request =>
     def executeApi(): CountResponse = {
       val itemBeingFlaggedType = request.getQueryString("itemBeingFlaggedType")
         .getOrElse {
@@ -127,7 +126,7 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.getFlagThreshold(version, itemBeingFlaggedType, appKey)
+      api.getFlagThreshold(itemBeingFlaggedType, appKey)
     }
 
     val result = executeApi()
@@ -136,9 +135,9 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
   }
 
   /**
-    * POST /api/:version/flag/threshold/update?deviceId=[value]&accountId=[value]&itemBeingFlaggedType=[value]&threshold=[value]&appKey=[value]
+    * POST /api/3.18/flag/threshold/update?deviceId=[value]&accountId=[value]&itemBeingFlaggedType=[value]&threshold=[value]&appKey=[value]
     */
-  def updateFlagThreshold(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateFlagThreshold(): Action[AnyContent] = Action { request =>
     def executeApi(): CountResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -161,7 +160,7 @@ class FlagApiController @Inject()(cc: ControllerComponents, api: FlagApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.updateFlagThreshold(version, itemBeingFlaggedType, threshold, appKey, deviceId, accountId)
+      api.updateFlagThreshold(itemBeingFlaggedType, threshold, appKey, deviceId, accountId)
     }
 
     val result = executeApi()

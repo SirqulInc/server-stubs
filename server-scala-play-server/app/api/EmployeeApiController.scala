@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.EmployeeResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/employee/assign?accountId=[value]&managerAccountId=[value]&employeeAccountId=[value]&role=[value]
+    * POST /api/3.18/employee/assign?accountId=[value]&managerAccountId=[value]&employeeAccountId=[value]&role=[value]
     */
-  def assignEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): EmployeeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -36,7 +35,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
         
       val role = request.getQueryString("role")
         
-      api.assignEmployee(version, accountId, managerAccountId, employeeAccountId, role)
+      api.assignEmployee(accountId, managerAccountId, employeeAccountId, role)
     }
 
     val result = executeApi()
@@ -45,9 +44,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/assignToLocation?accountId=[value]&employeeAccountId=[value]&retailerLocationId=[value]&assign=[value]
+    * POST /api/3.18/employee/assignToLocation?accountId=[value]&employeeAccountId=[value]&retailerLocationId=[value]&assign=[value]
     */
-  def assignToLocationEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assignToLocationEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -67,7 +66,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
       val assign = request.getQueryString("assign")
         .map(value => value.toBoolean)
         
-      api.assignToLocationEmployee(version, accountId, retailerLocationId, employeeAccountId, assign)
+      api.assignToLocationEmployee(accountId, retailerLocationId, employeeAccountId, assign)
     }
 
     val result = executeApi()
@@ -76,9 +75,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/create?accountId=[value]&managerAccountId=[value]&username=[value]&password=[value]&name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&aboutUs=[value]&assetId=[value]&gender=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&emailAddress=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&zipcode=[value]&country=[value]&role=[value]&retailerLocationIds=[value]&settingsAppKey=[value]&appBlob=[value]&assignedDeviceId=[value]
+    * POST /api/3.18/employee/create?accountId=[value]&managerAccountId=[value]&username=[value]&password=[value]&name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&aboutUs=[value]&assetId=[value]&gender=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&emailAddress=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&zipcode=[value]&country=[value]&role=[value]&retailerLocationIds=[value]&settingsAppKey=[value]&appBlob=[value]&assignedDeviceId=[value]
     */
-  def createEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): EmployeeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -155,7 +154,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
         
       val assignedDeviceId = request.getQueryString("assignedDeviceId")
         
-      api.createEmployee(version, accountId, managerAccountId, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, aboutUs, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId)
+      api.createEmployee(accountId, managerAccountId, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, aboutUs, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId)
     }
 
     val result = executeApi()
@@ -164,9 +163,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/delete?accountId=[value]&employeeAccountId=[value]
+    * POST /api/3.18/employee/delete?accountId=[value]&employeeAccountId=[value]
     */
-  def deleteEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -180,7 +179,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("employeeAccountId", "query string")
         }
         
-      api.deleteEmployee(version, accountId, employeeAccountId)
+      api.deleteEmployee(accountId, employeeAccountId)
     }
 
     val result = executeApi()
@@ -189,9 +188,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/get?accountId=[value]&employeeAccountId=[value]&settingsAppKey=[value]
+    * POST /api/3.18/employee/get?accountId=[value]&employeeAccountId=[value]&settingsAppKey=[value]
     */
-  def getEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): EmployeeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -207,7 +206,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
         
       val settingsAppKey = request.getQueryString("settingsAppKey")
         
-      api.getEmployee(version, accountId, employeeAccountId, settingsAppKey)
+      api.getEmployee(accountId, employeeAccountId, settingsAppKey)
     }
 
     val result = executeApi()
@@ -216,9 +215,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/search?accountId=[value]&role=[value]&retailerId=[value]&retailerLocationId=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&activeOnly=[value]&managedOnly=[value]&settingsAppKey=[value]&categoryIds=[value]&query=[value]
+    * POST /api/3.18/employee/search?accountId=[value]&role=[value]&retailerId=[value]&retailerLocationId=[value]&q=[value]&keyword=[value]&sortField=[value]&descending=[value]&i=[value]&start=[value]&l=[value]&limit=[value]&activeOnly=[value]&managedOnly=[value]&settingsAppKey=[value]&categoryIds=[value]&query=[value]
     */
-  def searchEmployees(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchEmployees(): Action[AnyContent] = Action { request =>
     def executeApi(): List[EmployeeResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -267,7 +266,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
         
       val query = request.getQueryString("query")
         
-      api.searchEmployees(version, accountId, role, retailerId, retailerLocationId, q, keyword, sortField, descending, i, start, l, limit, activeOnly, managedOnly, settingsAppKey, categoryIds, query)
+      api.searchEmployees(accountId, role, retailerId, retailerLocationId, q, keyword, sortField, descending, i, start, l, limit, activeOnly, managedOnly, settingsAppKey, categoryIds, query)
     }
 
     val result = executeApi()
@@ -276,9 +275,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/unassign?accountId=[value]&employeeAccountId=[value]
+    * POST /api/3.18/employee/unassign?accountId=[value]&employeeAccountId=[value]
     */
-  def unassignEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def unassignEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): EmployeeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -292,7 +291,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
           throw new OpenApiExceptions.MissingRequiredParameterException("employeeAccountId", "query string")
         }
         
-      api.unassignEmployee(version, accountId, employeeAccountId)
+      api.unassignEmployee(accountId, employeeAccountId)
     }
 
     val result = executeApi()
@@ -301,9 +300,9 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
   }
 
   /**
-    * POST /api/:version/employee/update?accountId=[value]&employeeAccountId=[value]&managerAccountId=[value]&name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&assetId=[value]&gender=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&emailAddress=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&zipcode=[value]&country=[value]&role=[value]&active=[value]&password=[value]&retailerLocationIds=[value]&settingsAppKey=[value]&appBlob=[value]&assignedDeviceId=[value]
+    * POST /api/3.18/employee/update?accountId=[value]&employeeAccountId=[value]&managerAccountId=[value]&name=[value]&prefixName=[value]&firstName=[value]&middleName=[value]&lastName=[value]&suffixName=[value]&title=[value]&assetId=[value]&gender=[value]&homePhone=[value]&cellPhone=[value]&cellPhoneCarrier=[value]&businessPhone=[value]&emailAddress=[value]&streetAddress=[value]&streetAddress2=[value]&city=[value]&state=[value]&zipcode=[value]&country=[value]&role=[value]&active=[value]&password=[value]&retailerLocationIds=[value]&settingsAppKey=[value]&appBlob=[value]&assignedDeviceId=[value]
     */
-  def updateEmployee(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateEmployee(): Action[AnyContent] = Action { request =>
     def executeApi(): EmployeeResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -376,7 +375,7 @@ class EmployeeApiController @Inject()(cc: ControllerComponents, api: EmployeeApi
         
       val assignedDeviceId = request.getQueryString("assignedDeviceId")
         
-      api.updateEmployee(version, accountId, employeeAccountId, managerAccountId, name, prefixName, firstName, middleName, lastName, suffixName, title, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, active, password, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId)
+      api.updateEmployee(accountId, employeeAccountId, managerAccountId, name, prefixName, firstName, middleName, lastName, suffixName, title, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, active, password, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId)
     }
 
     val result = executeApi()

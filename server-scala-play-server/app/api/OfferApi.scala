@@ -10,7 +10,7 @@ import model.OfferTransactionResponse
 import model.RetailerOfferResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait OfferApi {
   /**
     * Update Offer Locations
@@ -19,7 +19,7 @@ trait OfferApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def batchUpdateOfferLocations(version: BigDecimal, data: String, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def batchUpdateOfferLocations(data: String, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Create Offer
@@ -111,7 +111,7 @@ trait OfferApi {
     * @param availability 
     * @param availabilitySummary 
     */
-  def createOffer(version: BigDecimal, includeOfferLocations: Boolean, title: String, barcodeType: String, noExpiration: Boolean, availableLimit: Int, availableLimitPerUser: Int, addedLimit: Int, viewLimit: Int, maxPrints: Int, ticketPrice: Long, fullPrice: Double, discountPrice: Double, offerType: String, specialOfferType: String, offerVisibility: String, active: Boolean, deviceId: Option[String], accountId: Option[Long], tags: Option[String], parentOfferId: Option[Long], retailerLocationIds: Option[String], offerLocations: Option[String], subTitle: Option[String], details: Option[String], subDetails: Option[String], finePrint: Option[String], barcodeEntry: Option[String], externalRedeemOptions: Option[String], externalUrl: Option[String], externalId: Option[String], ticketsRewardType: Option[String], ticketsReward: Option[Long], activated: Option[Long], expires: Option[Long], ticketPriceType: Option[String], showRemaining: Option[Boolean], showRedeemed: Option[Boolean], replaced: Option[Boolean], featured: Option[Boolean], categoryIds: Option[String], filterIds: Option[String], barcodeAssetId: Option[Long], imageAssetId: Option[Long], imageAssetId1: Option[Long], imageAssetId2: Option[Long], imageAssetId3: Option[Long], imageAssetId4: Option[Long], imageAssetId5: Option[Long], publisher: Option[String], redeemableStart: Option[Long], redeemableEnd: Option[Long], brand: Option[String], productType: Option[String], conditionType: Option[String], isbn: Option[String], asin: Option[String], catalogNumbers: Option[String], department: Option[String], features: Option[String], minimumPrice: Option[Double], width: Option[Double], height: Option[Double], depth: Option[Double], weight: Option[Double], unit: Option[String], studio: Option[String], parentalRating: Option[String], publishDate: Option[Long], availabilityDate: Option[Long], sizeId: Option[Long], listingId: Option[Long], mediaType: Option[String], duration: Option[Int], author: Option[String], releaseDate: Option[Long], collectionIds: Option[String], rebootTimeHour: Option[Int], rebootTimeMinute: Option[Int], idleTimeoutInSecond: Option[Int], serialNumber: Option[String], udid: Option[String], deviceType: Option[String], devicePower: Option[Double], deviceInterference: Option[Double], availability: Option[String], availabilitySummary: Option[String]): RetailerOfferResponse
+  def createOffer(includeOfferLocations: Boolean, title: String, barcodeType: String, noExpiration: Boolean, availableLimit: Int, availableLimitPerUser: Int, addedLimit: Int, viewLimit: Int, maxPrints: Int, ticketPrice: Long, fullPrice: Double, discountPrice: Double, offerType: String, specialOfferType: String, offerVisibility: String, active: Boolean, deviceId: Option[String], accountId: Option[Long], tags: Option[String], parentOfferId: Option[Long], retailerLocationIds: Option[String], offerLocations: Option[String], subTitle: Option[String], details: Option[String], subDetails: Option[String], finePrint: Option[String], barcodeEntry: Option[String], externalRedeemOptions: Option[String], externalUrl: Option[String], externalId: Option[String], ticketsRewardType: Option[String], ticketsReward: Option[Long], activated: Option[Long], expires: Option[Long], ticketPriceType: Option[String], showRemaining: Option[Boolean], showRedeemed: Option[Boolean], replaced: Option[Boolean], featured: Option[Boolean], categoryIds: Option[String], filterIds: Option[String], barcodeAssetId: Option[Long], imageAssetId: Option[Long], imageAssetId1: Option[Long], imageAssetId2: Option[Long], imageAssetId3: Option[Long], imageAssetId4: Option[Long], imageAssetId5: Option[Long], publisher: Option[String], redeemableStart: Option[Long], redeemableEnd: Option[Long], brand: Option[String], productType: Option[String], conditionType: Option[String], isbn: Option[String], asin: Option[String], catalogNumbers: Option[String], department: Option[String], features: Option[String], minimumPrice: Option[Double], width: Option[Double], height: Option[Double], depth: Option[Double], weight: Option[Double], unit: Option[String], studio: Option[String], parentalRating: Option[String], publishDate: Option[Long], availabilityDate: Option[Long], sizeId: Option[Long], listingId: Option[Long], mediaType: Option[String], duration: Option[Int], author: Option[String], releaseDate: Option[Long], collectionIds: Option[String], rebootTimeHour: Option[Int], rebootTimeMinute: Option[Int], idleTimeoutInSecond: Option[Int], serialNumber: Option[String], udid: Option[String], deviceType: Option[String], devicePower: Option[Double], deviceInterference: Option[Double], availability: Option[String], availabilitySummary: Option[String]): RetailerOfferResponse
 
   /**
     * Delete Offer
@@ -120,7 +120,7 @@ trait OfferApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account used to perform the delete, must have rights to edit the offer.
     */
-  def deleteOffer(version: BigDecimal, offerId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def deleteOffer(offerId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Delete Offer Location
@@ -129,7 +129,7 @@ trait OfferApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account used to perform the delete, must have rights to edit the offer location.
     */
-  def deleteOfferLocation(version: BigDecimal, offerLocationId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def deleteOfferLocation(offerLocationId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Offer
@@ -139,7 +139,7 @@ trait OfferApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id (deviceId or accountId required)
     */
-  def getOffer(version: BigDecimal, offerId: Long, includeOfferLocations: Boolean, deviceId: Option[String], accountId: Option[Long]): RetailerOfferResponse
+  def getOffer(offerId: Long, includeOfferLocations: Boolean, deviceId: Option[String], accountId: Option[Long]): RetailerOfferResponse
 
   /**
     * Get Offer
@@ -155,7 +155,7 @@ trait OfferApi {
     * @param includeRetailerLocations Determines whether to return the retailer location info for each offer location response (includeOfferLocations must also be true for this to work)
     * @param includeChildOffers Determines whether to include child offers in the response
     */
-  def getOfferDetails(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], distance: Option[Double], latitude: Option[Double], longitude: Option[Double], includeOfferLocations: Option[Boolean], includeRetailerLocations: Option[Boolean], includeChildOffers: Option[Boolean]): OfferResponse
+  def getOfferDetails(deviceId: Option[String], accountId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], distance: Option[Double], latitude: Option[Double], longitude: Option[Double], includeOfferLocations: Option[Boolean], includeRetailerLocations: Option[Boolean], includeChildOffers: Option[Boolean]): OfferResponse
 
   /**
     * Get Offers (Counts)
@@ -165,7 +165,7 @@ trait OfferApi {
     * @param searchRange The range of the search
     * @param distanceUnit The units to use for distance calculations (e.g. MILES, KILOMETERS)
     */
-  def getOfferListCounts(version: BigDecimal, latitude: Double, longitude: Double, searchRange: Option[BigDecimal], distanceUnit: Option[String]): ListCountResponse
+  def getOfferListCounts(latitude: Double, longitude: Double, searchRange: Option[BigDecimal], distanceUnit: Option[String]): ListCountResponse
 
   /**
     * Get Offer Location
@@ -173,7 +173,7 @@ trait OfferApi {
     * @param offerLocationId the id of the offer location to get
     * @param udid the UDID of the device
     */
-  def getOfferLocation(version: BigDecimal, offerLocationId: Option[Long], udid: Option[String]): OfferShortResponse
+  def getOfferLocation(offerLocationId: Option[Long], udid: Option[String]): OfferShortResponse
 
   /**
     * Search Offer Locations
@@ -199,7 +199,7 @@ trait OfferApi {
     * @param needsNotificationSent 
     * @param lastNotificationSent 
     */
-  def getOfferLocationsForRetailers(version: BigDecimal, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, includeRetailerLocation: Boolean, deviceId: Option[String], accountId: Option[Long], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], offerType: Option[String], specialOfferType: Option[String], barcodeType: Option[String], barcodeEntry: Option[String], isbn: Option[String], asin: Option[String], deviceStatus: Option[String], needsNotificationSent: Option[Boolean], lastNotificationSent: Option[Long]): List[OfferShortResponse]
+  def getOfferLocationsForRetailers(sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, includeRetailerLocation: Boolean, deviceId: Option[String], accountId: Option[Long], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], offerType: Option[String], specialOfferType: Option[String], barcodeType: Option[String], barcodeEntry: Option[String], isbn: Option[String], asin: Option[String], deviceStatus: Option[String], needsNotificationSent: Option[Boolean], lastNotificationSent: Option[Long]): List[OfferShortResponse]
 
   /**
     * Search Offers
@@ -236,7 +236,7 @@ trait OfferApi {
     * @param needsNotificationSent 
     * @param lastNotificationSent 
     */
-  def getOffersForRetailers(version: BigDecimal, offerVisibility: String, sortField: String, descending: Boolean, start: Int, limit: Int, availableOnly: Boolean, activeOnly: Boolean, includeCategories: Boolean, includeFilters: Boolean, includeOfferLocations: Boolean, deviceId: Option[String], accountId: Option[Long], categoryIds: Option[String], filterIds: Option[String], q: Option[String], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], couponType: Option[String], offerType: Option[String], offerTypes: Option[String], specialOfferType: Option[String], i: Option[Int], l: Option[Int], barcodeType: Option[String], barcodeEntry: Option[String], isbn: Option[String], asin: Option[String], deviceStatus: Option[String], needsNotificationSent: Option[Boolean], lastNotificationSent: Option[Long]): List[OfferResponse]
+  def getOffersForRetailers(offerVisibility: String, sortField: String, descending: Boolean, start: Int, limit: Int, availableOnly: Boolean, activeOnly: Boolean, includeCategories: Boolean, includeFilters: Boolean, includeOfferLocations: Boolean, deviceId: Option[String], accountId: Option[Long], categoryIds: Option[String], filterIds: Option[String], q: Option[String], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], couponType: Option[String], offerType: Option[String], offerTypes: Option[String], specialOfferType: Option[String], i: Option[Int], l: Option[Int], barcodeType: Option[String], barcodeEntry: Option[String], isbn: Option[String], asin: Option[String], deviceStatus: Option[String], needsNotificationSent: Option[Boolean], lastNotificationSent: Option[Long]): List[OfferResponse]
 
   /**
     * Update Offer Transaction
@@ -247,7 +247,7 @@ trait OfferApi {
     * @param accountId the account id of the user (deviceId or accountId required)
     * @param offerLocationId the OfferLocation ID where the offer is being redeemed
     */
-  def redeemOfferTransaction(version: BigDecimal, offerTransactionId: Long, status: Int, deviceId: Option[String], accountId: Option[Long], offerLocationId: Option[Long]): SirqulResponse
+  def redeemOfferTransaction(offerTransactionId: Long, status: Int, deviceId: Option[String], accountId: Option[Long], offerLocationId: Option[Long]): SirqulResponse
 
   /**
     * Search Offer Transactions
@@ -277,7 +277,7 @@ trait OfferApi {
     * @param i This parameter is deprecated.
     * @param l This parameter is deprecated.
     */
-  def searchOfferTransactionsForRetailers(version: BigDecimal, sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, deviceId: Option[String], accountId: Option[Long], q: Option[String], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], redeemed: Option[Boolean], reservationsOnly: Option[Boolean], couponType: Option[String], offerType: Option[String], specialOfferType: Option[String], customerAccountIds: Option[String], categoryIds: Option[String], redeemableStartDate: Option[Long], redeemableEndDate: Option[Long], i: Option[Int], l: Option[Int]): List[OfferTransactionResponse]
+  def searchOfferTransactionsForRetailers(sortField: String, descending: Boolean, start: Int, limit: Int, activeOnly: Boolean, deviceId: Option[String], accountId: Option[Long], q: Option[String], keyword: Option[String], retailerId: Option[Long], retailerLocationId: Option[Long], offerId: Option[Long], offerLocationId: Option[Long], redeemed: Option[Boolean], reservationsOnly: Option[Boolean], couponType: Option[String], offerType: Option[String], specialOfferType: Option[String], customerAccountIds: Option[String], categoryIds: Option[String], redeemableStartDate: Option[Long], redeemableEndDate: Option[Long], i: Option[Int], l: Option[Int]): List[OfferTransactionResponse]
 
   /**
     * Search Offers
@@ -314,7 +314,7 @@ trait OfferApi {
     * @param searchExpression 
     * @param groupBy groups the results by a certain field. For example, if you want to return the closest offer location of an offer, then pass in groupBy&#x3D;OFFER_ID and sortField&#x3D;DISTANCE (to sort by distance).
     */
-  def searchOffersForConsumer(version: BigDecimal, latitude: Double, longitude: Double, recommendationType: String, locationId: Long, start: Int, limit: Int, maxRecommendations: Int, distanceUnit: String, appKey: Option[String], deviceId: Option[String], accountId: Option[Long], searchRange: Option[Double], tags: Option[String], supportedPostalCodes: Option[String], keyword: Option[String], categories: Option[String], filters: Option[String], offerTypes: Option[String], `type`: Option[String], sortField: Option[String], recommendOfferIds: Option[String], retailerLocationIds: Option[String], offerId: Option[Long], includeMission: Option[Boolean], includeCategories: Option[Boolean], includeFilters: Option[Boolean], includeExpired: Option[Boolean], includeFavorite: Option[Boolean], closestOfferOnly: Option[Boolean], searchExpression: Option[String], groupBy: Option[String]): OfferListResponse
+  def searchOffersForConsumer(latitude: Double, longitude: Double, recommendationType: String, locationId: Long, start: Int, limit: Int, maxRecommendations: Int, distanceUnit: String, appKey: Option[String], deviceId: Option[String], accountId: Option[Long], searchRange: Option[Double], tags: Option[String], supportedPostalCodes: Option[String], keyword: Option[String], categories: Option[String], filters: Option[String], offerTypes: Option[String], `type`: Option[String], sortField: Option[String], recommendOfferIds: Option[String], retailerLocationIds: Option[String], offerId: Option[Long], includeMission: Option[Boolean], includeCategories: Option[Boolean], includeFilters: Option[Boolean], includeExpired: Option[Boolean], includeFavorite: Option[Boolean], closestOfferOnly: Option[Boolean], searchExpression: Option[String], groupBy: Option[String]): OfferListResponse
 
   /**
     * Get Offers (Top)
@@ -322,7 +322,7 @@ trait OfferApi {
     * @param start The index into the record set to start with. Default is 0.
     * @param limit The total number of record to return. Default id 20.
     */
-  def topOfferTransactions(version: BigDecimal, start: Option[Int], limit: Option[Int]): OfferListResponse
+  def topOfferTransactions(start: Option[Int], limit: Option[Int]): OfferListResponse
 
   /**
     * Update Offer
@@ -415,7 +415,7 @@ trait OfferApi {
     * @param availability 
     * @param availabilitySummary 
     */
-  def updateOffer(version: BigDecimal, offerId: Long, includeOfferLocations: Boolean, deviceId: Option[String], accountId: Option[Long], parentOfferId: Option[Long], retailerLocationIds: Option[String], offerLocations: Option[String], tags: Option[String], title: Option[String], subTitle: Option[String], details: Option[String], subDetails: Option[String], finePrint: Option[String], barcodeType: Option[String], barcodeEntry: Option[String], externalRedeemOptions: Option[String], externalUrl: Option[String], externalId: Option[String], ticketsRewardType: Option[String], ticketsReward: Option[Long], activated: Option[Long], expires: Option[Long], noExpiration: Option[Boolean], availableLimit: Option[Int], availableLimitPerUser: Option[Int], addedLimit: Option[Int], viewLimit: Option[Int], maxPrints: Option[Int], ticketPriceType: Option[String], ticketPrice: Option[Long], fullPrice: Option[Double], discountPrice: Option[Double], showRemaining: Option[Boolean], showRedeemed: Option[Boolean], replaced: Option[Boolean], featured: Option[Boolean], offerType: Option[String], specialOfferType: Option[String], offerVisibility: Option[String], categoryIds: Option[String], filterIds: Option[String], active: Option[Boolean], barcodeAssetId: Option[Long], imageAssetId: Option[Long], imageAssetId1: Option[Long], imageAssetId2: Option[Long], imageAssetId3: Option[Long], imageAssetId4: Option[Long], imageAssetId5: Option[Long], publisher: Option[String], redeemableStart: Option[Long], redeemableEnd: Option[Long], brand: Option[String], productType: Option[String], conditionType: Option[String], isbn: Option[String], asin: Option[String], catalogNumbers: Option[String], department: Option[String], features: Option[String], minimumPrice: Option[Double], width: Option[Double], height: Option[Double], depth: Option[Double], weight: Option[Double], unit: Option[String], studio: Option[String], parentalRating: Option[String], publishDate: Option[Long], availabilityDate: Option[Long], sizeId: Option[Long], listingId: Option[Long], mediaType: Option[String], duration: Option[Int], author: Option[String], releaseDate: Option[Long], collectionIds: Option[String], rebootTimeHour: Option[Int], rebootTimeMinute: Option[Int], idleTimeoutInSecond: Option[Int], serialNumber: Option[String], udid: Option[String], deviceType: Option[String], devicePower: Option[Double], deviceInterference: Option[Double], availability: Option[String], availabilitySummary: Option[String]): RetailerOfferResponse
+  def updateOffer(offerId: Long, includeOfferLocations: Boolean, deviceId: Option[String], accountId: Option[Long], parentOfferId: Option[Long], retailerLocationIds: Option[String], offerLocations: Option[String], tags: Option[String], title: Option[String], subTitle: Option[String], details: Option[String], subDetails: Option[String], finePrint: Option[String], barcodeType: Option[String], barcodeEntry: Option[String], externalRedeemOptions: Option[String], externalUrl: Option[String], externalId: Option[String], ticketsRewardType: Option[String], ticketsReward: Option[Long], activated: Option[Long], expires: Option[Long], noExpiration: Option[Boolean], availableLimit: Option[Int], availableLimitPerUser: Option[Int], addedLimit: Option[Int], viewLimit: Option[Int], maxPrints: Option[Int], ticketPriceType: Option[String], ticketPrice: Option[Long], fullPrice: Option[Double], discountPrice: Option[Double], showRemaining: Option[Boolean], showRedeemed: Option[Boolean], replaced: Option[Boolean], featured: Option[Boolean], offerType: Option[String], specialOfferType: Option[String], offerVisibility: Option[String], categoryIds: Option[String], filterIds: Option[String], active: Option[Boolean], barcodeAssetId: Option[Long], imageAssetId: Option[Long], imageAssetId1: Option[Long], imageAssetId2: Option[Long], imageAssetId3: Option[Long], imageAssetId4: Option[Long], imageAssetId5: Option[Long], publisher: Option[String], redeemableStart: Option[Long], redeemableEnd: Option[Long], brand: Option[String], productType: Option[String], conditionType: Option[String], isbn: Option[String], asin: Option[String], catalogNumbers: Option[String], department: Option[String], features: Option[String], minimumPrice: Option[Double], width: Option[Double], height: Option[Double], depth: Option[Double], weight: Option[Double], unit: Option[String], studio: Option[String], parentalRating: Option[String], publishDate: Option[Long], availabilityDate: Option[Long], sizeId: Option[Long], listingId: Option[Long], mediaType: Option[String], duration: Option[Int], author: Option[String], releaseDate: Option[Long], collectionIds: Option[String], rebootTimeHour: Option[Int], rebootTimeMinute: Option[Int], idleTimeoutInSecond: Option[Int], serialNumber: Option[String], udid: Option[String], deviceType: Option[String], devicePower: Option[Double], deviceInterference: Option[Double], availability: Option[String], availabilitySummary: Option[String]): RetailerOfferResponse
 
   /**
     * Activate Offer
@@ -425,5 +425,5 @@ trait OfferApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account used to perform the activation, must have rights to edit the offer.
     */
-  def updateOfferStatus(version: BigDecimal, offerIds: String, active: Boolean, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def updateOfferStatus(offerIds: String, active: Boolean, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 }

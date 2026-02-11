@@ -5,16 +5,15 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.BidResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/bid/create?deviceId=[value]&accountId=[value]&biddableType=[value]&biddableId=[value]&amountPerView=[value]&amountPerAction=[value]&budgetAmount=[value]&budgetSchedule=[value]
+    * POST /api/3.18/bid/create?deviceId=[value]&accountId=[value]&biddableType=[value]&biddableId=[value]&amountPerView=[value]&amountPerAction=[value]&budgetAmount=[value]&budgetSchedule=[value]
     */
-  def createBid(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createBid(): Action[AnyContent] = Action { request =>
     def executeApi(): BidResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -55,7 +54,7 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
           throw new OpenApiExceptions.MissingRequiredParameterException("budgetSchedule", "query string")
         }
         
-      api.createBid(version, biddableType, biddableId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, deviceId, accountId)
+      api.createBid(biddableType, biddableId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -64,9 +63,9 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
   }
 
   /**
-    * POST /api/:version/bid/delete?deviceId=[value]&accountId=[value]&bidId=[value]
+    * POST /api/3.18/bid/delete?deviceId=[value]&accountId=[value]&bidId=[value]
     */
-  def deleteBid(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteBid(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -79,7 +78,7 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
           throw new OpenApiExceptions.MissingRequiredParameterException("bidId", "query string")
         }
         
-      api.deleteBid(version, bidId, deviceId, accountId)
+      api.deleteBid(bidId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -88,9 +87,9 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
   }
 
   /**
-    * GET /api/:version/bid/get?deviceId=[value]&accountId=[value]&bidId=[value]
+    * GET /api/3.18/bid/get?deviceId=[value]&accountId=[value]&bidId=[value]
     */
-  def getBid(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getBid(): Action[AnyContent] = Action { request =>
     def executeApi(): BidResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -103,7 +102,7 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
           throw new OpenApiExceptions.MissingRequiredParameterException("bidId", "query string")
         }
         
-      api.getBid(version, bidId, deviceId, accountId)
+      api.getBid(bidId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -112,9 +111,9 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
   }
 
   /**
-    * POST /api/:version/bid/update?deviceId=[value]&accountId=[value]&bidId=[value]&amountPerView=[value]&amountPerAction=[value]&budgetAmount=[value]&budgetSchedule=[value]
+    * POST /api/3.18/bid/update?deviceId=[value]&accountId=[value]&bidId=[value]&amountPerView=[value]&amountPerAction=[value]&budgetAmount=[value]&budgetSchedule=[value]
     */
-  def updateBid(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateBid(): Action[AnyContent] = Action { request =>
     def executeApi(): BidResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -138,7 +137,7 @@ class BidApiController @Inject()(cc: ControllerComponents, api: BidApi) extends 
         
       val budgetSchedule = request.getQueryString("budgetSchedule")
         
-      api.updateBid(version, bidId, deviceId, accountId, amountPerView, amountPerAction, budgetAmount, budgetSchedule)
+      api.updateBid(bidId, deviceId, accountId, amountPerView, amountPerAction, budgetAmount, budgetSchedule)
     }
 
     val result = executeApi()

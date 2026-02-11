@@ -7,20 +7,19 @@ import play.api.mvc._
 import model.AssetFullResponse
 import model.AssetResponse
 import model.AssetShortResponse
-import model.BigDecimal
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/asset/download/:filename
+    * GET /api/3.18/asset/download/:filename
     * @param filename the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}
     */
-  def assetDownload(version: BigDecimal, filename: String): Action[AnyContent] = Action { request =>
+  def assetDownload(filename: String): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
-      api.assetDownload(version, filename)
+      api.assetDownload(filename)
     }
 
     val result = executeApi()
@@ -29,9 +28,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * POST /api/:version/asset/morph?offerId=[value]&creativeId=[value]&adSize=[value]&width=[value]&height=[value]&backgroundSize=[value]&template=[value]
+    * POST /api/3.18/asset/morph?offerId=[value]&creativeId=[value]&adSize=[value]&width=[value]&height=[value]&backgroundSize=[value]&template=[value]
     */
-  def assetMorph(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def assetMorph(): Action[AnyContent] = Action { request =>
     def executeApi(): AssetShortResponse = {
       val offerId = request.getQueryString("offerId")
         .map(value => value.toLong)
@@ -57,7 +56,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
         
       val template = request.getQueryString("template")
         
-      api.assetMorph(version, offerId, adSize, creativeId, width, height, backgroundSize, template)
+      api.assetMorph(offerId, adSize, creativeId, width, height, backgroundSize, template)
     }
 
     val result = executeApi()
@@ -66,9 +65,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * POST /api/:version/asset/create?returnNulls=[value]&deviceId=[value]&accountId=[value]&albumId=[value]&collectionId=[value]&addToDefaultAlbum=[value]&addToMediaLibrary=[value]&versionCode=[value]&versionName=[value]&metaData=[value]&caption=[value]&assetType=[value]&approvalStatus=[value]&assignedAccountId=[value]&media=[value]&mediaUrl=[value]&mediaString=[value]&mediaStringFileName=[value]&mediaStringContentType=[value]&mediaHeight=[value]&mediaWidth=[value]&attachedMedia=[value]&attachedMediaUrl=[value]&attachedMediaString=[value]&attachedMediaStringFileName=[value]&attachedMediaStringContentType=[value]&attachedMediaHeight=[value]&attachedMediaWidth=[value]&locationDescription=[value]&app=[value]&appKey=[value]&searchTags=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/asset/create?returnNulls=[value]&deviceId=[value]&accountId=[value]&albumId=[value]&collectionId=[value]&addToDefaultAlbum=[value]&addToMediaLibrary=[value]&versionCode=[value]&versionName=[value]&metaData=[value]&caption=[value]&assetType=[value]&approvalStatus=[value]&assignedAccountId=[value]&media=[value]&mediaUrl=[value]&mediaString=[value]&mediaStringFileName=[value]&mediaStringContentType=[value]&mediaHeight=[value]&mediaWidth=[value]&attachedMedia=[value]&attachedMediaUrl=[value]&attachedMediaString=[value]&attachedMediaStringFileName=[value]&attachedMediaStringContentType=[value]&attachedMediaHeight=[value]&attachedMediaWidth=[value]&locationDescription=[value]&app=[value]&appKey=[value]&searchTags=[value]&latitude=[value]&longitude=[value]
     */
-  def createAsset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createAsset(): Action[AnyContent] = Action { request =>
     def executeApi(): AssetResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -151,7 +150,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.createAsset(version, returnNulls, deviceId, accountId, albumId, collectionId, addToDefaultAlbum, addToMediaLibrary, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, app, appKey, searchTags, latitude, longitude)
+      api.createAsset(returnNulls, deviceId, accountId, albumId, collectionId, addToDefaultAlbum, addToMediaLibrary, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, app, appKey, searchTags, latitude, longitude)
     }
 
     val result = executeApi()
@@ -160,9 +159,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * POST /api/:version/asset/delete?deviceId=[value]&accountId=[value]&assetId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/asset/delete?deviceId=[value]&accountId=[value]&assetId=[value]&latitude=[value]&longitude=[value]
     */
-  def deleteAsset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteAsset(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -180,7 +179,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.deleteAsset(version, assetId, deviceId, accountId, latitude, longitude)
+      api.deleteAsset(assetId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -189,9 +188,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * GET /api/:version/asset/get?deviceId=[value]&accountId=[value]&assetId=[value]&noteDescending=[value]
+    * GET /api/3.18/asset/get?deviceId=[value]&accountId=[value]&assetId=[value]&noteDescending=[value]
     */
-  def getAsset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAsset(): Action[AnyContent] = Action { request =>
     def executeApi(): AssetFullResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -207,7 +206,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
       val noteDescending = request.getQueryString("noteDescending")
         .map(value => value.toBoolean)
         
-      api.getAsset(version, assetId, deviceId, accountId, noteDescending)
+      api.getAsset(assetId, deviceId, accountId, noteDescending)
     }
 
     val result = executeApi()
@@ -216,9 +215,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * POST /api/:version/asset/remove?deviceId=[value]&accountId=[value]&albumId=[value]&collectionId=[value]&assetId=[value]&removeFromDefaultAlbums=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/asset/remove?deviceId=[value]&accountId=[value]&albumId=[value]&collectionId=[value]&assetId=[value]&removeFromDefaultAlbums=[value]&latitude=[value]&longitude=[value]
     */
-  def removeAsset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeAsset(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -245,7 +244,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeAsset(version, assetId, deviceId, accountId, albumId, collectionId, removeFromDefaultAlbums, latitude, longitude)
+      api.removeAsset(assetId, deviceId, accountId, albumId, collectionId, removeFromDefaultAlbums, latitude, longitude)
     }
 
     val result = executeApi()
@@ -254,9 +253,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * GET /api/:version/asset/search?deviceId=[value]&accountId=[value]&albumIds=[value]&assetIds=[value]&appKey=[value]&mediaType=[value]&mimeType=[value]&keyword=[value]&versionCode=[value]&versionName=[value]&updatedSince=[value]&updatedBefore=[value]&sortField=[value]&descending=[value]&searchMediaLibrary=[value]&filterByBillable=[value]&activeOnly=[value]&returnApp=[value]&start=[value]&limit=[value]&searchMode=[value]&assetType=[value]&approvalStatus=[value]&assignedAccountId=[value]
+    * GET /api/3.18/asset/search?deviceId=[value]&accountId=[value]&albumIds=[value]&assetIds=[value]&appKey=[value]&mediaType=[value]&mimeType=[value]&keyword=[value]&versionCode=[value]&versionName=[value]&updatedSince=[value]&updatedBefore=[value]&sortField=[value]&descending=[value]&searchMediaLibrary=[value]&filterByBillable=[value]&activeOnly=[value]&returnApp=[value]&start=[value]&limit=[value]&searchMode=[value]&assetType=[value]&approvalStatus=[value]&assignedAccountId=[value]
     */
-  def searchAssets(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchAssets(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AssetResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -318,7 +317,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
       val assignedAccountId = request.getQueryString("assignedAccountId")
         .map(value => value.toLong)
         
-      api.searchAssets(version, deviceId, accountId, albumIds, assetIds, appKey, mediaType, mimeType, keyword, versionCode, versionName, updatedSince, updatedBefore, sortField, descending, searchMediaLibrary, filterByBillable, activeOnly, returnApp, start, limit, searchMode, assetType, approvalStatus, assignedAccountId)
+      api.searchAssets(deviceId, accountId, albumIds, assetIds, appKey, mediaType, mimeType, keyword, versionCode, versionName, updatedSince, updatedBefore, sortField, descending, searchMediaLibrary, filterByBillable, activeOnly, returnApp, start, limit, searchMode, assetType, approvalStatus, assignedAccountId)
     }
 
     val result = executeApi()
@@ -327,9 +326,9 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
   }
 
   /**
-    * POST /api/:version/asset/update?deviceId=[value]&accountId=[value]&assetId=[value]&albumId=[value]&attachedAssetId=[value]&versionCode=[value]&versionName=[value]&metaData=[value]&caption=[value]&assetType=[value]&approvalStatus=[value]&assignedAccountId=[value]&media=[value]&mediaUrl=[value]&mediaString=[value]&mediaStringFileName=[value]&mediaStringContentType=[value]&mediaHeight=[value]&mediaWidth=[value]&attachedMedia=[value]&attachedMediaUrl=[value]&attachedMediaString=[value]&attachedMediaStringFileName=[value]&attachedMediaStringContentType=[value]&attachedMediaHeight=[value]&attachedMediaWidth=[value]&locationDescription=[value]&searchTags=[value]&appKey=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/asset/update?deviceId=[value]&accountId=[value]&assetId=[value]&albumId=[value]&attachedAssetId=[value]&versionCode=[value]&versionName=[value]&metaData=[value]&caption=[value]&assetType=[value]&approvalStatus=[value]&assignedAccountId=[value]&media=[value]&mediaUrl=[value]&mediaString=[value]&mediaStringFileName=[value]&mediaStringContentType=[value]&mediaHeight=[value]&mediaWidth=[value]&attachedMedia=[value]&attachedMediaUrl=[value]&attachedMediaString=[value]&attachedMediaStringFileName=[value]&attachedMediaStringContentType=[value]&attachedMediaHeight=[value]&attachedMediaWidth=[value]&locationDescription=[value]&searchTags=[value]&appKey=[value]&latitude=[value]&longitude=[value]
     */
-  def updateAsset(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateAsset(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -408,7 +407,7 @@ class AssetApiController @Inject()(cc: ControllerComponents, api: AssetApi) exte
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.updateAsset(version, assetId, deviceId, accountId, albumId, attachedAssetId, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, searchTags, appKey, latitude, longitude)
+      api.updateAsset(assetId, deviceId, accountId, albumId, attachedAssetId, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, searchTags, appKey, latitude, longitude)
     }
 
     val result = executeApi()

@@ -4,7 +4,6 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ProfileResponse
 import model.SirqulResponse
 import play.api.libs.Files.TemporaryFile
@@ -12,13 +11,13 @@ import model.ThirdPartyCredentialResponse
 import model.ThirdPartyNetworkResponse
 import model.ThirdPartyNetworkShortResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api: ThirdPartyCredentialsApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/thirdparty/credential/create?accountId=[value]&deviceId=[value]&sessionId=[value]&thirdPartyId=[value]&thirdPartyName=[value]&thirdPartyToken=[value]&networkUID=[value]&appKey=[value]&emailAddress=[value]&signinOnlyMode=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]&metaData=[value]&thirdPartyRefreshToken=[value]&audienceIdsToAdd=[value]&audienceIdsToRemove=[value]
+    * POST /api/3.18/thirdparty/credential/create?accountId=[value]&deviceId=[value]&sessionId=[value]&thirdPartyId=[value]&thirdPartyName=[value]&thirdPartyToken=[value]&networkUID=[value]&appKey=[value]&emailAddress=[value]&signinOnlyMode=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]&metaData=[value]&thirdPartyRefreshToken=[value]&audienceIdsToAdd=[value]&audienceIdsToRemove=[value]
     */
-  def createCredential(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createCredential(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -70,7 +69,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
         
       val audienceIdsToRemove = request.getQueryString("audienceIdsToRemove")
         
-      api.createCredential(version, thirdPartyId, thirdPartyToken, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyName, emailAddress, signinOnlyMode, responseFilters, latitude, longitude, metaData, thirdPartyRefreshToken, audienceIdsToAdd, audienceIdsToRemove)
+      api.createCredential(thirdPartyId, thirdPartyToken, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyName, emailAddress, signinOnlyMode, responseFilters, latitude, longitude, metaData, thirdPartyRefreshToken, audienceIdsToAdd, audienceIdsToRemove)
     }
 
     val result = executeApi()
@@ -79,9 +78,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/network/create?accountId=[value]&name=[value]&description=[value]&enableIntrospection=[value]&introspectionMethod=[value]&introspectionURL=[value]&introspectionParams=[value]&requiredRootField=[value]&enableMFA=[value]&sizeMFA=[value]&shelfLifeMFA=[value]&oauthTokenURL=[value]&oauthPrivateKey=[value]&oauthPublicKey=[value]&oauthClientId=[value]&oauthSecretKey=[value]
+    * POST /api/3.18/thirdparty/network/create?accountId=[value]&name=[value]&description=[value]&enableIntrospection=[value]&introspectionMethod=[value]&introspectionURL=[value]&introspectionParams=[value]&requiredRootField=[value]&enableMFA=[value]&sizeMFA=[value]&shelfLifeMFA=[value]&oauthTokenURL=[value]&oauthPrivateKey=[value]&oauthPublicKey=[value]&oauthClientId=[value]&oauthSecretKey=[value]
     */
-  def createNetwork(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createNetwork(): Action[AnyContent] = Action { request =>
     def executeApi(): ThirdPartyNetworkResponse = {
       val body = request.body.asJson.map(_.as[String])
       val accountId = request.getQueryString("accountId")
@@ -130,7 +129,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
         
       val oauthSecretKey = request.getQueryString("oauthSecretKey")
         
-      api.createNetwork(version, accountId, name, enableIntrospection, description, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body)
+      api.createNetwork(accountId, name, enableIntrospection, description, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body)
     }
 
     val result = executeApi()
@@ -139,9 +138,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/credential/delete?accountId=[value]&networkUID=[value]&thirdPartyId=[value]&appKey=[value]
+    * POST /api/3.18/thirdparty/credential/delete?accountId=[value]&networkUID=[value]&thirdPartyId=[value]&appKey=[value]
     */
-  def deleteCredential(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteCredential(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -164,7 +163,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
           throw new OpenApiExceptions.MissingRequiredParameterException("appKey", "query string")
         }
         
-      api.deleteCredential(version, accountId, networkUID, thirdPartyId, appKey)
+      api.deleteCredential(accountId, networkUID, thirdPartyId, appKey)
     }
 
     val result = executeApi()
@@ -173,9 +172,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/network/delete?accountId=[value]&networkUID=[value]
+    * POST /api/3.18/thirdparty/network/delete?accountId=[value]&networkUID=[value]
     */
-  def deleteNetwork(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteNetwork(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -188,7 +187,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
           throw new OpenApiExceptions.MissingRequiredParameterException("networkUID", "query string")
         }
         
-      api.deleteNetwork(version, accountId, networkUID)
+      api.deleteNetwork(accountId, networkUID)
     }
 
     val result = executeApi()
@@ -197,9 +196,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/credential/get?accountId=[value]&deviceId=[value]&sessionId=[value]&thirdPartyCredentialId=[value]&thirdPartyToken=[value]&thirdPartySecret=[value]&createNewAccount=[value]&networkUID=[value]&appKey=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]&audienceIdsToAdd=[value]&audienceIdsToRemove=[value]&referralAccountId=[value]
+    * POST /api/3.18/thirdparty/credential/get?accountId=[value]&deviceId=[value]&sessionId=[value]&thirdPartyCredentialId=[value]&thirdPartyToken=[value]&thirdPartySecret=[value]&createNewAccount=[value]&networkUID=[value]&appKey=[value]&responseFilters=[value]&latitude=[value]&longitude=[value]&audienceIdsToAdd=[value]&audienceIdsToRemove=[value]&referralAccountId=[value]
     */
-  def getCredential(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getCredential(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -243,7 +242,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
       val referralAccountId = request.getQueryString("referralAccountId")
         .map(value => value.toLong)
         
-      api.getCredential(version, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyCredentialId, thirdPartyToken, thirdPartySecret, createNewAccount, responseFilters, latitude, longitude, audienceIdsToAdd, audienceIdsToRemove, referralAccountId)
+      api.getCredential(networkUID, appKey, accountId, deviceId, sessionId, thirdPartyCredentialId, thirdPartyToken, thirdPartySecret, createNewAccount, responseFilters, latitude, longitude, audienceIdsToAdd, audienceIdsToRemove, referralAccountId)
     }
 
     val result = executeApi()
@@ -252,9 +251,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * GET /api/:version/thirdparty/network/get?accountId=[value]&networkUID=[value]
+    * GET /api/3.18/thirdparty/network/get?accountId=[value]&networkUID=[value]
     */
-  def getNetwork(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getNetwork(): Action[AnyContent] = Action { request =>
     def executeApi(): ThirdPartyNetworkResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -267,7 +266,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
           throw new OpenApiExceptions.MissingRequiredParameterException("networkUID", "query string")
         }
         
-      api.getNetwork(version, accountId, networkUID)
+      api.getNetwork(accountId, networkUID)
     }
 
     val result = executeApi()
@@ -276,9 +275,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * GET /api/:version/thirdparty/credential/search?accountId=[value]&keyword=[value]&networkUID=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/thirdparty/credential/search?accountId=[value]&keyword=[value]&networkUID=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchCredentials(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchCredentials(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ThirdPartyCredentialResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -299,7 +298,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchCredentials(version, accountId, keyword, networkUID, descending, start, limit)
+      api.searchCredentials(accountId, keyword, networkUID, descending, start, limit)
     }
 
     val result = executeApi()
@@ -308,9 +307,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * GET /api/:version/thirdparty/network/search?accountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&filterBillable=[value]
+    * GET /api/3.18/thirdparty/network/search?accountId=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]&filterBillable=[value]
     */
-  def searchNetworks(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchNetworks(): Action[AnyContent] = Action { request =>
     def executeApi(): List[ThirdPartyNetworkShortResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -352,7 +351,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
       val filterBillable = request.getQueryString("filterBillable")
         .map(value => value.toBoolean)
         
-      api.searchNetworks(version, accountId, sortField, descending, start, limit, activeOnly, keyword, filterBillable)
+      api.searchNetworks(accountId, sortField, descending, start, limit, activeOnly, keyword, filterBillable)
     }
 
     val result = executeApi()
@@ -361,9 +360,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/credential/mfa/send?thirdPartyToken=[value]&thirdPartyCredentialId=[value]&networkUID=[value]&appKey=[value]&deviceId=[value]
+    * POST /api/3.18/thirdparty/credential/mfa/send?thirdPartyToken=[value]&thirdPartyCredentialId=[value]&networkUID=[value]&appKey=[value]&deviceId=[value]
     */
-  def sendMFAChallenge(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def sendMFAChallenge(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val thirdPartyToken = request.getQueryString("thirdPartyToken")
         
@@ -382,7 +381,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
         
       val deviceId = request.getQueryString("deviceId")
         
-      api.sendMFAChallenge(version, networkUID, appKey, thirdPartyToken, thirdPartyCredentialId, deviceId)
+      api.sendMFAChallenge(networkUID, appKey, thirdPartyToken, thirdPartyCredentialId, deviceId)
     }
 
     val result = executeApi()
@@ -391,9 +390,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/credential/update?deviceId=[value]&networkUID=[value]&thirdPartyId=[value]&thirdPartyName=[value]&thirdPartyToken=[value]&appKey=[value]&responseFilters=[value]&metaData=[value]&thirdPartyRefreshToken=[value]
+    * POST /api/3.18/thirdparty/credential/update?deviceId=[value]&networkUID=[value]&thirdPartyId=[value]&thirdPartyName=[value]&thirdPartyToken=[value]&appKey=[value]&responseFilters=[value]&metaData=[value]&thirdPartyRefreshToken=[value]
     */
-  def updateCredential(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateCredential(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -422,7 +421,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
         
       val thirdPartyRefreshToken = request.getQueryString("thirdPartyRefreshToken")
         
-      api.updateCredential(version, networkUID, thirdPartyId, appKey, deviceId, thirdPartyName, thirdPartyToken, responseFilters, metaData, thirdPartyRefreshToken)
+      api.updateCredential(networkUID, thirdPartyId, appKey, deviceId, thirdPartyName, thirdPartyToken, responseFilters, metaData, thirdPartyRefreshToken)
     }
 
     val result = executeApi()
@@ -431,9 +430,9 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
   }
 
   /**
-    * POST /api/:version/thirdparty/network/update?accountId=[value]&networkUID=[value]&name=[value]&description=[value]&enableIntrospection=[value]&introspectionMethod=[value]&introspectionURL=[value]&introspectionParams=[value]&requiredRootField=[value]&enableMFA=[value]&sizeMFA=[value]&shelfLifeMFA=[value]&oauthTokenURL=[value]&oauthPrivateKey=[value]&oauthPublicKey=[value]&oauthClientId=[value]&oauthSecretKey=[value]
+    * POST /api/3.18/thirdparty/network/update?accountId=[value]&networkUID=[value]&name=[value]&description=[value]&enableIntrospection=[value]&introspectionMethod=[value]&introspectionURL=[value]&introspectionParams=[value]&requiredRootField=[value]&enableMFA=[value]&sizeMFA=[value]&shelfLifeMFA=[value]&oauthTokenURL=[value]&oauthPrivateKey=[value]&oauthPublicKey=[value]&oauthClientId=[value]&oauthSecretKey=[value]
     */
-  def updateNetwork(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateNetwork(): Action[AnyContent] = Action { request =>
     def executeApi(): ThirdPartyNetworkResponse = {
       val body = request.body.asJson.map(_.as[String])
       val accountId = request.getQueryString("accountId")
@@ -481,7 +480,7 @@ class ThirdPartyCredentialsApiController @Inject()(cc: ControllerComponents, api
         
       val oauthSecretKey = request.getQueryString("oauthSecretKey")
         
-      api.updateNetwork(version, accountId, networkUID, name, description, enableIntrospection, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body)
+      api.updateNetwork(accountId, networkUID, name, description, enableIntrospection, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body)
     }
 
     val result = executeApi()

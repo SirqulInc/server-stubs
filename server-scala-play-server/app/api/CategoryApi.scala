@@ -1,12 +1,11 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.CategoryResponse
 import model.CategoryTreeResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait CategoryApi {
   /**
     * Search Categories by Distance
@@ -32,7 +31,7 @@ trait CategoryApi {
     * @param longitude the longitude of where the search is centered on
     * @param range the maximum range the category can be from the center
     */
-  def categoryDistanceSearch(version: BigDecimal, accountId: Option[Long], keyword: Option[String], appKey: Option[String], categoryIds: Option[String], parentCategoryIds: Option[String], rootOnly: Option[Boolean], sortField: Option[String], responseGroup: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], returnExternal: Option[Boolean], exactMatch: Option[Boolean], `type`: Option[String], externalType: Option[String], minOfferCount: Option[Int], latitude: Option[Double], longitude: Option[Double], range: Option[Double]): List[CategoryResponse]
+  def categoryDistanceSearch(accountId: Option[Long], keyword: Option[String], appKey: Option[String], categoryIds: Option[String], parentCategoryIds: Option[String], rootOnly: Option[Boolean], sortField: Option[String], responseGroup: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], returnExternal: Option[Boolean], exactMatch: Option[Boolean], `type`: Option[String], externalType: Option[String], minOfferCount: Option[Int], latitude: Option[Double], longitude: Option[Double], range: Option[Double]): List[CategoryResponse]
 
   /**
     * Create Category
@@ -52,7 +51,7 @@ trait CategoryApi {
     * @param metaData external custom client defined data
     * @param searchTags user defined strings for searching
     */
-  def createCategory(version: BigDecimal, accountId: Long, name: String, appKey: Option[String], parentCategoryId: Option[Long], description: Option[String], `type`: Option[String], assetId: Option[Long], externalId: Option[String], externalType: Option[String], externalCategorySlug: Option[String], sqootSlug: Option[String], active: Option[Boolean], metaData: Option[String], searchTags: Option[String]): CategoryTreeResponse
+  def createCategory(accountId: Long, name: String, appKey: Option[String], parentCategoryId: Option[Long], description: Option[String], `type`: Option[String], assetId: Option[Long], externalId: Option[String], externalType: Option[String], externalCategorySlug: Option[String], sqootSlug: Option[String], active: Option[Boolean], metaData: Option[String], searchTags: Option[String]): CategoryTreeResponse
 
   /**
     * Delete Category
@@ -60,7 +59,7 @@ trait CategoryApi {
     * @param accountId the ID of the account
     * @param categoryId the ID of the category
     */
-  def deleteCategory(version: BigDecimal, accountId: Long, categoryId: Long): SirqulResponse
+  def deleteCategory(accountId: Long, categoryId: Long): SirqulResponse
 
   /**
     * Duplicate Category
@@ -70,7 +69,7 @@ trait CategoryApi {
     * @param appKey The application to assign the new category to, may be different then the application the source category is assigned to
     * @param parentCategoryId The parent category ID to add the target category to.
     */
-  def duplicateCategory(version: BigDecimal, accountId: Long, categoryId: Long, appKey: Option[String], parentCategoryId: Option[Long]): CategoryTreeResponse
+  def duplicateCategory(accountId: Long, categoryId: Long, appKey: Option[String], parentCategoryId: Option[Long]): CategoryTreeResponse
 
   /**
     * Get Category
@@ -78,7 +77,7 @@ trait CategoryApi {
     * @param categoryId the ID of the category
     * @param returnExternal Determines whether to return extra info about the category&#39;s \&quot;Participant\&quot; reference
     */
-  def getCategory(version: BigDecimal, categoryId: Long, returnExternal: Option[Boolean]): CategoryTreeResponse
+  def getCategory(categoryId: Long, returnExternal: Option[Boolean]): CategoryTreeResponse
 
   /**
     * Search Categories
@@ -105,7 +104,7 @@ trait CategoryApi {
     * @param searchDepth When searching by a specific parent category (to return sub children), this determines the number of child layers to search in. The minimum is 1, the maximum is 4.
     * @param searchMode The search index mode to use (e.g. OPENSEARCH or RDS)
     */
-  def searchCategories(version: BigDecimal, accountId: Option[Long], keyword: Option[String], appKey: Option[String], categoryId: Option[String], categoryIds: Option[String], parentCategoryIds: Option[String], rootOnly: Option[Boolean], sortField: Option[String], responseGroup: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], returnExternal: Option[Boolean], exactMatch: Option[Boolean], `type`: Option[String], externalType: Option[String], excludeExternalType: Option[Boolean], minOfferCount: Option[Int], searchDepth: Option[Int], searchMode: Option[String]): List[CategoryResponse]
+  def searchCategories(accountId: Option[Long], keyword: Option[String], appKey: Option[String], categoryId: Option[String], categoryIds: Option[String], parentCategoryIds: Option[String], rootOnly: Option[Boolean], sortField: Option[String], responseGroup: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean], returnExternal: Option[Boolean], exactMatch: Option[Boolean], `type`: Option[String], externalType: Option[String], excludeExternalType: Option[Boolean], minOfferCount: Option[Int], searchDepth: Option[Int], searchMode: Option[String]): List[CategoryResponse]
 
   /**
     * Update Category
@@ -125,5 +124,5 @@ trait CategoryApi {
     * @param metaData external custom client defined data
     * @param searchTags user defined strings for searching
     */
-  def updateCategory(version: BigDecimal, accountId: Long, categoryId: Long, parentCategoryId: Option[Long], name: Option[String], description: Option[String], `type`: Option[String], assetId: Option[Long], externalId: Option[String], externalType: Option[String], externalCategorySlug: Option[String], sqootSlug: Option[String], active: Option[Boolean], metaData: Option[String], searchTags: Option[String]): CategoryTreeResponse
+  def updateCategory(accountId: Long, categoryId: Long, parentCategoryId: Option[Long], name: Option[String], description: Option[String], `type`: Option[String], assetId: Option[Long], externalId: Option[String], externalType: Option[String], externalCategorySlug: Option[String], sqootSlug: Option[String], active: Option[Boolean], metaData: Option[String], searchTags: Option[String]): CategoryTreeResponse
 }

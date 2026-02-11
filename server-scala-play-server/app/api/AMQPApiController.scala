@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.QueueResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/queue/consumer/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&hostname=[value]&port=[value]&username=[value]&password=[value]&virtualHost=[value]&exchanger=[value]&exchangerType=[value]&workers=[value]&dataMapping=[value]&useSSL=[value]
+    * POST /api/3.18/queue/consumer/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&hostname=[value]&port=[value]&username=[value]&password=[value]&virtualHost=[value]&exchanger=[value]&exchangerType=[value]&workers=[value]&dataMapping=[value]&useSSL=[value]
     */
-  def consumerCreate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def consumerCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): QueueResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -66,7 +65,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
       val useSSL = request.getQueryString("useSSL")
         .map(value => value.toBoolean)
         
-      api.consumerCreate(version, appKey, name, hostname, username, password, dataMapping, deviceId, accountId, port, virtualHost, exchanger, exchangerType, workers, useSSL)
+      api.consumerCreate(appKey, name, hostname, username, password, dataMapping, deviceId, accountId, port, virtualHost, exchanger, exchangerType, workers, useSSL)
     }
 
     val result = executeApi()
@@ -75,9 +74,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * POST /api/:version/queue/consumer/update?deviceId=[value]&accountId=[value]&appKey=[value]&queueId=[value]&dataMapping=[value]&useSSL=[value]
+    * POST /api/3.18/queue/consumer/update?deviceId=[value]&accountId=[value]&appKey=[value]&queueId=[value]&dataMapping=[value]&useSSL=[value]
     */
-  def consumerUpdate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def consumerUpdate(): Action[AnyContent] = Action { request =>
     def executeApi(): QueueResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -103,7 +102,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
       val useSSL = request.getQueryString("useSSL")
         .map(value => value.toBoolean)
         
-      api.consumerUpdate(version, appKey, queueId, dataMapping, deviceId, accountId, useSSL)
+      api.consumerUpdate(appKey, queueId, dataMapping, deviceId, accountId, useSSL)
     }
 
     val result = executeApi()
@@ -112,9 +111,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * POST /api/:version/queue/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&workers=[value]&analyticTags=[value]&hostname=[value]&port=[value]&username=[value]&password=[value]&virtualHost=[value]&useSSL=[value]
+    * POST /api/3.18/queue/create?deviceId=[value]&accountId=[value]&appKey=[value]&name=[value]&workers=[value]&analyticTags=[value]&hostname=[value]&port=[value]&username=[value]&password=[value]&virtualHost=[value]&useSSL=[value]
     */
-  def queueCreate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def queueCreate(): Action[AnyContent] = Action { request =>
     def executeApi(): QueueResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -150,7 +149,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
       val useSSL = request.getQueryString("useSSL")
         .map(value => value.toBoolean)
         
-      api.queueCreate(version, appKey, name, deviceId, accountId, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL)
+      api.queueCreate(appKey, name, deviceId, accountId, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL)
     }
 
     val result = executeApi()
@@ -159,9 +158,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * POST /api/:version/queue/delete?deviceId=[value]&accountId=[value]&queueId=[value]
+    * POST /api/3.18/queue/delete?deviceId=[value]&accountId=[value]&queueId=[value]
     */
-  def queueDelete(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def queueDelete(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -174,7 +173,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("queueId", "query string")
         }
         
-      api.queueDelete(version, queueId, deviceId, accountId)
+      api.queueDelete(queueId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -183,9 +182,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * GET /api/:version/queue/get?deviceId=[value]&accountId=[value]&queueId=[value]&appKey=[value]&name=[value]&hostname=[value]&virtualHost=[value]
+    * GET /api/3.18/queue/get?deviceId=[value]&accountId=[value]&queueId=[value]&appKey=[value]&name=[value]&hostname=[value]&virtualHost=[value]
     */
-  def queueGet(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def queueGet(): Action[AnyContent] = Action { request =>
     def executeApi(): QueueResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -203,7 +202,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
         
       val virtualHost = request.getQueryString("virtualHost")
         
-      api.queueGet(version, deviceId, accountId, queueId, appKey, name, hostname, virtualHost)
+      api.queueGet(deviceId, accountId, queueId, appKey, name, hostname, virtualHost)
     }
 
     val result = executeApi()
@@ -212,9 +211,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * POST /api/:version/queue/publish?queueId=[value]&appKey=[value]&name=[value]&hostname=[value]&virtualHost=[value]&message=[value]
+    * POST /api/3.18/queue/publish?queueId=[value]&appKey=[value]&name=[value]&hostname=[value]&virtualHost=[value]&message=[value]
     */
-  def queuePublish(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def queuePublish(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val queueId = request.getQueryString("queueId")
         .map(value => value.toLong)
@@ -232,7 +231,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("message", "query string")
         }
         
-      api.queuePublish(version, message, queueId, appKey, name, hostname, virtualHost)
+      api.queuePublish(message, queueId, appKey, name, hostname, virtualHost)
     }
 
     val result = executeApi()
@@ -241,9 +240,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * GET /api/:version/queue/search?queueId=[value]&deviceId=[value]&accountId=[value]&name=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/queue/search?queueId=[value]&deviceId=[value]&accountId=[value]&name=[value]&start=[value]&limit=[value]
     */
-  def queueSearch(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def queueSearch(): Action[AnyContent] = Action { request =>
     def executeApi(): QueueResponse = {
       val queueId = request.getQueryString("queueId")
         .map(value => value.toLong)
@@ -261,7 +260,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.queueSearch(version, queueId, deviceId, accountId, name, start, limit)
+      api.queueSearch(queueId, deviceId, accountId, name, start, limit)
     }
 
     val result = executeApi()
@@ -270,9 +269,9 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
   }
 
   /**
-    * POST /api/:version/queue/update?deviceId=[value]&accountId=[value]&appKey=[value]&queueId=[value]&workers=[value]&analyticTags=[value]&hostname=[value]&port=[value]&username=[value]&password=[value]&virtualHost=[value]&useSSL=[value]
+    * POST /api/3.18/queue/update?deviceId=[value]&accountId=[value]&appKey=[value]&queueId=[value]&workers=[value]&analyticTags=[value]&hostname=[value]&port=[value]&username=[value]&password=[value]&virtualHost=[value]&useSSL=[value]
     */
-  def queueUpdate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def queueUpdate(): Action[AnyContent] = Action { request =>
     def executeApi(): QueueResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -306,7 +305,7 @@ class AMQPApiController @Inject()(cc: ControllerComponents, api: AMQPApi) extend
       val useSSL = request.getQueryString("useSSL")
         .map(value => value.toBoolean)
         
-      api.queueUpdate(version, queueId, deviceId, accountId, appKey, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL)
+      api.queueUpdate(queueId, deviceId, accountId, appKey, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL)
     }
 
     val result = executeApi()

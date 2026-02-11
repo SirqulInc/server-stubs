@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.Trip
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/trip
+    * POST /api/3.18/trip
     */
-  def createTrip(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createTrip(): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val body = request.body.asJson.map(_.as[Trip])
-      api.createTrip(version, body)
+      api.createTrip(body)
     }
 
     val result = executeApi()
@@ -25,12 +24,12 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * DELETE /api/:version/trip/:id
+    * DELETE /api/3.18/trip/:id
     * @param id the id of the trip to delete
     */
-  def delete(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def delete(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
-      api.delete(version, id)
+      api.delete(id)
     }
 
     executeApi()
@@ -38,10 +37,10 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/drive?recurrence=[value]
+    * POST /api/3.18/trip/:id/drive?recurrence=[value]
     * @param id the id of the trip
     */
-  def driveTrip(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def driveTrip(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val recurrence = request.getQueryString("recurrence")
         .map(value => value.toBoolean)
@@ -49,7 +48,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("recurrence", "query string")
         }
         
-      api.driveTrip(version, id, recurrence)
+      api.driveTrip(id, recurrence)
     }
 
     val result = executeApi()
@@ -58,10 +57,10 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/flexible?recurrence=[value]
+    * POST /api/3.18/trip/:id/flexible?recurrence=[value]
     * @param id the id of the trip
     */
-  def flexibleTrip(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def flexibleTrip(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val recurrence = request.getQueryString("recurrence")
         .map(value => value.toBoolean)
@@ -69,7 +68,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("recurrence", "query string")
         }
         
-      api.flexibleTrip(version, id, recurrence)
+      api.flexibleTrip(id, recurrence)
     }
 
     val result = executeApi()
@@ -78,12 +77,12 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * GET /api/:version/trip/:id
+    * GET /api/3.18/trip/:id
     * @param id the id of the trip to get
     */
-  def getTrip(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def getTrip(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
-      api.getTrip(version, id)
+      api.getTrip(id)
     }
 
     val result = executeApi()
@@ -92,10 +91,10 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * GET /api/:version/trip/:id/match?matchedHasRoute=[value]&matchedHasDriver=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/trip/:id/match?matchedHasRoute=[value]&matchedHasDriver=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     * @param id The id The id of the trip to search for matches for
     */
-  def getTripMatches(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def getTripMatches(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Trip] = {
       val matchedHasRoute = request.getQueryString("matchedHasRoute")
         .map(value => value.toBoolean)
@@ -132,7 +131,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.getTripMatches(version, id, sortField, descending, start, limit, activeOnly, matchedHasRoute, matchedHasDriver)
+      api.getTripMatches(id, sortField, descending, start, limit, activeOnly, matchedHasRoute, matchedHasDriver)
     }
 
     val result = executeApi()
@@ -141,9 +140,9 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/match/process?startDate=[value]&endDate=[value]&tripId=[value]
+    * POST /api/3.18/trip/match/process?startDate=[value]&endDate=[value]&tripId=[value]
     */
-  def processTripMatches(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def processTripMatches(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Trip] = {
       val startDate = request.getQueryString("startDate")
         .map(value => value.toLong)
@@ -154,7 +153,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
       val tripId = request.getQueryString("tripId")
         .map(value => value.toLong)
         
-      api.processTripMatches(version, startDate, endDate, tripId)
+      api.processTripMatches(startDate, endDate, tripId)
     }
 
     val result = executeApi()
@@ -163,10 +162,10 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/ride?recurrence=[value]
+    * POST /api/3.18/trip/:id/ride?recurrence=[value]
     * @param id the id of the trip
     */
-  def ride(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def ride(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val recurrence = request.getQueryString("recurrence")
         .map(value => value.toBoolean)
@@ -174,7 +173,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("recurrence", "query string")
         }
         
-      api.ride(version, id, recurrence)
+      api.ride(id, recurrence)
     }
 
     val result = executeApi()
@@ -183,9 +182,9 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * GET /api/:version/trip?accountId=[value]&startDate=[value]&endDate=[value]&hasNotifications=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/trip?accountId=[value]&startDate=[value]&endDate=[value]&hasNotifications=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def search(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def search(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Trip] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -231,7 +230,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.search(version, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, hasNotifications)
+      api.search(accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, hasNotifications)
     }
 
     val result = executeApi()
@@ -240,9 +239,9 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * GET /api/:version/trip/match?accountId=[value]&startDate=[value]&endDate=[value]&matchedHasRoute=[value]&matchedHasDriver=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
+    * GET /api/3.18/trip/match?accountId=[value]&startDate=[value]&endDate=[value]&matchedHasRoute=[value]&matchedHasDriver=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&activeOnly=[value]
     */
-  def searchTrips(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchTrips(): Action[AnyContent] = Action { request =>
     def executeApi(): List[Trip] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -291,7 +290,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("activeOnly", "query string")
         }
         
-      api.searchTrips(version, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, matchedHasRoute, matchedHasDriver)
+      api.searchTrips(accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, matchedHasRoute, matchedHasDriver)
     }
 
     val result = executeApi()
@@ -300,13 +299,13 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/locations
+    * POST /api/3.18/trip/:id/locations
     * @param id the id of the trip to update locations for
     */
-  def updateLocations(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateLocations(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val body = request.body.asJson.map(_.as[Trip])
-      api.updateLocations(version, id, body)
+      api.updateLocations(id, body)
     }
 
     val result = executeApi()
@@ -315,13 +314,13 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/locations/recurrence
+    * POST /api/3.18/trip/:id/locations/recurrence
     * @param id the id of the trip
     */
-  def updateRecurrenceLocations(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateRecurrenceLocations(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Trip] = {
       val body = request.body.asJson.map(_.as[Trip])
-      api.updateRecurrenceLocations(version, id, body)
+      api.updateRecurrenceLocations(id, body)
     }
 
     val result = executeApi()
@@ -330,13 +329,13 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/shipments/recurrence
+    * POST /api/3.18/trip/:id/shipments/recurrence
     * @param id the id of the trip
     */
-  def updateRecurrenceShipments(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateRecurrenceShipments(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): List[Trip] = {
       val body = request.body.asJson.map(_.as[Trip])
-      api.updateRecurrenceShipments(version, id, body)
+      api.updateRecurrenceShipments(id, body)
     }
 
     val result = executeApi()
@@ -345,13 +344,13 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/:id/shipments
+    * POST /api/3.18/trip/:id/shipments
     * @param id the id of the trip shipments to update
     */
-  def updateShipments(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateShipments(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val body = request.body.asJson.map(_.as[Trip])
-      api.updateShipments(version, id, body)
+      api.updateShipments(id, body)
     }
 
     val result = executeApi()
@@ -360,13 +359,13 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * PUT /api/:version/trip/:id
+    * PUT /api/3.18/trip/:id
     * @param id the id of the trip to update
     */
-  def updateTrip(version: BigDecimal, id: Long): Action[AnyContent] = Action { request =>
+  def updateTrip(id: Long): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val body = request.body.asJson.map(_.as[Trip])
-      api.updateTrip(version, id, body)
+      api.updateTrip(id, body)
     }
 
     val result = executeApi()
@@ -375,9 +374,9 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
   }
 
   /**
-    * POST /api/:version/trip/notifications?id=[value]&notifications=[value]
+    * POST /api/3.18/trip/notifications?id=[value]&notifications=[value]
     */
-  def updateTripNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateTripNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): Trip = {
       val id = request.getQueryString("id")
         .map(value => value.toLong)
@@ -387,7 +386,7 @@ class TripApiController @Inject()(cc: ControllerComponents, api: TripApi) extend
         
       val notifications = request.getQueryString("notifications")
         
-      api.updateTripNotifications(version, id, notifications)
+      api.updateTripNotifications(id, notifications)
     }
 
     val result = executeApi()

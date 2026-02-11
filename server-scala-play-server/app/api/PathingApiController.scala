@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.PathingResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class PathingApiController @Inject()(cc: ControllerComponents, api: PathingApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/pathing/compute?data=[value]&units=[value]&reducePath=[value]&directions=[value]
+    * GET /api/3.18/pathing/compute?data=[value]&units=[value]&reducePath=[value]&directions=[value]
     */
-  def computePath(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def computePath(): Action[AnyContent] = Action { request =>
     def executeApi(): PathingResponse = {
       val data = request.getQueryString("data")
         .getOrElse {
@@ -37,7 +36,7 @@ class PathingApiController @Inject()(cc: ControllerComponents, api: PathingApi) 
           throw new OpenApiExceptions.MissingRequiredParameterException("directions", "query string")
         }
         
-      api.computePath(version, data, units, reducePath, directions)
+      api.computePath(data, units, reducePath, directions)
     }
 
     val result = executeApi()

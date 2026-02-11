@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.GameResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/game/create?accountId=[value]&appKey=[value]&title=[value]&description=[value]&metaData=[value]&packIds=[value]&includeGameData=[value]
+    * POST /api/3.18/game/create?accountId=[value]&appKey=[value]&title=[value]&description=[value]&metaData=[value]&packIds=[value]&includeGameData=[value]
     */
-  def createGame(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createGame(): Action[AnyContent] = Action { request =>
     def executeApi(): GameResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -32,7 +31,7 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.createGame(version, accountId, appKey, title, description, metaData, packIds, includeGameData)
+      api.createGame(accountId, appKey, title, description, metaData, packIds, includeGameData)
     }
 
     val result = executeApi()
@@ -41,9 +40,9 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
   }
 
   /**
-    * POST /api/:version/game/delete?accountId=[value]&gameId=[value]
+    * POST /api/3.18/game/delete?accountId=[value]&gameId=[value]
     */
-  def deleteGame(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteGame(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -57,7 +56,7 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
           throw new OpenApiExceptions.MissingRequiredParameterException("gameId", "query string")
         }
         
-      api.deleteGame(version, accountId, gameId)
+      api.deleteGame(accountId, gameId)
     }
 
     val result = executeApi()
@@ -66,9 +65,9 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
   }
 
   /**
-    * GET /api/:version/game/get?accountId=[value]&gameId=[value]&includeGameData=[value]
+    * GET /api/3.18/game/get?accountId=[value]&gameId=[value]&includeGameData=[value]
     */
-  def getGame(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getGame(): Action[AnyContent] = Action { request =>
     def executeApi(): GameResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -85,7 +84,7 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.getGame(version, accountId, gameId, includeGameData)
+      api.getGame(accountId, gameId, includeGameData)
     }
 
     val result = executeApi()
@@ -94,9 +93,9 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
   }
 
   /**
-    * GET /api/:version/game/search?accountId=[value]&appKey=[value]&keyword=[value]&start=[value]&limit=[value]&appVersion=[value]&includeGameData=[value]&includeInactive=[value]
+    * GET /api/3.18/game/search?accountId=[value]&appKey=[value]&keyword=[value]&start=[value]&limit=[value]&appVersion=[value]&includeGameData=[value]&includeInactive=[value]
     */
-  def searchGames(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchGames(): Action[AnyContent] = Action { request =>
     def executeApi(): GameResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -131,7 +130,7 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
       val includeInactive = request.getQueryString("includeInactive")
         .map(value => value.toBoolean)
         
-      api.searchGames(version, accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive)
+      api.searchGames(accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive)
     }
 
     val result = executeApi()
@@ -140,9 +139,9 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
   }
 
   /**
-    * POST /api/:version/game/update?accountId=[value]&gameId=[value]&appKey=[value]&title=[value]&description=[value]&metaData=[value]&packIds=[value]&includeGameData=[value]
+    * POST /api/3.18/game/update?accountId=[value]&gameId=[value]&appKey=[value]&title=[value]&description=[value]&metaData=[value]&packIds=[value]&includeGameData=[value]
     */
-  def updateGame(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateGame(): Action[AnyContent] = Action { request =>
     def executeApi(): GameResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -163,7 +162,7 @@ class GameApiController @Inject()(cc: ControllerComponents, api: GameApi) extend
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.updateGame(version, accountId, gameId, appKey, title, description, metaData, packIds, includeGameData)
+      api.updateGame(accountId, gameId, appKey, title, description, metaData, packIds, includeGameData)
     }
 
     val result = executeApi()

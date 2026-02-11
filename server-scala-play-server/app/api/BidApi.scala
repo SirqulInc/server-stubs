@@ -2,10 +2,9 @@ package api
 
 import play.api.libs.json._
 import model.BidResponse
-import model.BigDecimal
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait BidApi {
   /**
     * Create Bid
@@ -19,7 +18,7 @@ trait BidApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def createBid(version: BigDecimal, biddableType: String, biddableId: Long, amountPerView: Double, amountPerAction: Double, budgetAmount: Double, budgetSchedule: String, deviceId: Option[String], accountId: Option[Long]): BidResponse
+  def createBid(biddableType: String, biddableId: Long, amountPerView: Double, amountPerAction: Double, budgetAmount: Double, budgetSchedule: String, deviceId: Option[String], accountId: Option[Long]): BidResponse
 
   /**
     * Delete Bid
@@ -28,7 +27,7 @@ trait BidApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def deleteBid(version: BigDecimal, bidId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def deleteBid(bidId: Long, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Get Bid
@@ -37,7 +36,7 @@ trait BidApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def getBid(version: BigDecimal, bidId: Long, deviceId: Option[String], accountId: Option[Long]): BidResponse
+  def getBid(bidId: Long, deviceId: Option[String], accountId: Option[Long]): BidResponse
 
   /**
     * Update Bid
@@ -50,5 +49,5 @@ trait BidApi {
     * @param budgetAmount The allocated budget amount that will be used
     * @param budgetSchedule The schedule for when the allocated budget amount is reset
     */
-  def updateBid(version: BigDecimal, bidId: Long, deviceId: Option[String], accountId: Option[Long], amountPerView: Option[Double], amountPerAction: Option[Double], budgetAmount: Option[Double], budgetSchedule: Option[String]): BidResponse
+  def updateBid(bidId: Long, deviceId: Option[String], accountId: Option[Long], amountPerView: Option[Double], amountPerAction: Option[Double], budgetAmount: Option[Double], budgetSchedule: Option[String]): BidResponse
 }

@@ -7,18 +7,17 @@ import play.api.mvc._
 import model.AgeGroupResponse
 import model.AudienceDeviceResponse
 import model.AudienceResponse
-import model.BigDecimal
 import model.OfferListResponse
 import model.SearchResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/audience/create?accountId=[value]&name=[value]&description=[value]&searchTags=[value]&gender=[value]&ageGroups=[value]&categoryIds=[value]&applicationIds=[value]&gameExperienceLevel=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]&startTimeOffset=[value]&endTimeOffset=[value]&sendSuggestion=[value]&associateDescription=[value]&associateType=[value]&associateId=[value]&groupingId=[value]&metaData=[value]&visibility=[value]&audienceType=[value]&useOrder=[value]&cohortRegionsData=[value]&appKey=[value]&trilaterationTypes=[value]&uniqueName=[value]
+    * POST /api/3.18/audience/create?accountId=[value]&name=[value]&description=[value]&searchTags=[value]&gender=[value]&ageGroups=[value]&categoryIds=[value]&applicationIds=[value]&gameExperienceLevel=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]&startTimeOffset=[value]&endTimeOffset=[value]&sendSuggestion=[value]&associateDescription=[value]&associateType=[value]&associateId=[value]&groupingId=[value]&metaData=[value]&visibility=[value]&audienceType=[value]&useOrder=[value]&cohortRegionsData=[value]&appKey=[value]&trilaterationTypes=[value]&uniqueName=[value]
     */
-  def createAudience(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createAudience(): Action[AnyContent] = Action { request =>
     def executeApi(): AudienceResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -91,7 +90,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
       val uniqueName = request.getQueryString("uniqueName")
         .map(value => value.toBoolean)
         
-      api.createAudience(version, accountId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, startTimeOffset, endTimeOffset, sendSuggestion, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName)
+      api.createAudience(accountId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, startTimeOffset, endTimeOffset, sendSuggestion, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName)
     }
 
     val result = executeApi()
@@ -100,9 +99,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * POST /api/:version/audience/delete?accountId=[value]&audienceId=[value]
+    * POST /api/3.18/audience/delete?accountId=[value]&audienceId=[value]
     */
-  def deleteAudience(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteAudience(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -116,7 +115,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("audienceId", "query string")
         }
         
-      api.deleteAudience(version, accountId, audienceId)
+      api.deleteAudience(accountId, audienceId)
     }
 
     val result = executeApi()
@@ -125,11 +124,11 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/ageGroups
+    * GET /api/3.18/audience/ageGroups
     */
-  def getAgeGroups(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAgeGroups(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AgeGroupResponse] = {
-      api.getAgeGroups(version)
+      api.getAgeGroups()
     }
 
     val result = executeApi()
@@ -138,9 +137,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/get?accountId=[value]&audienceId=[value]&appKey=[value]&returnAccountCount=[value]&returnAlbumCount=[value]&albumTypesForCount=[value]
+    * GET /api/3.18/audience/get?accountId=[value]&audienceId=[value]&appKey=[value]&returnAccountCount=[value]&returnAlbumCount=[value]&albumTypesForCount=[value]
     */
-  def getAudience(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAudience(): Action[AnyContent] = Action { request =>
     def executeApi(): AudienceResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -164,7 +163,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
         
       val albumTypesForCount = request.getQueryString("albumTypesForCount")
         
-      api.getAudience(version, accountId, audienceId, appKey, returnAccountCount, returnAlbumCount, albumTypesForCount)
+      api.getAudience(accountId, audienceId, appKey, returnAccountCount, returnAlbumCount, albumTypesForCount)
     }
 
     val result = executeApi()
@@ -173,9 +172,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/search?accountId=[value]&albumIds=[value]&keyword=[value]&keywordFields=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&sendSuggestion=[value]&activeOnly=[value]&groupByGroupingId=[value]&appKey=[value]&returnGlobal=[value]&exactKeyword=[value]&audienceType=[value]&audienceTypes=[value]&returnAccountCount=[value]&returnAlbumCount=[value]&albumTypesForCount=[value]
+    * GET /api/3.18/audience/search?accountId=[value]&albumIds=[value]&keyword=[value]&keywordFields=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]&sendSuggestion=[value]&activeOnly=[value]&groupByGroupingId=[value]&appKey=[value]&returnGlobal=[value]&exactKeyword=[value]&audienceType=[value]&audienceTypes=[value]&returnAccountCount=[value]&returnAlbumCount=[value]&albumTypesForCount=[value]
     */
-  def getAudienceList(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getAudienceList(): Action[AnyContent] = Action { request =>
     def executeApi(): List[SearchResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -226,7 +225,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
         
       val albumTypesForCount = request.getQueryString("albumTypesForCount")
         
-      api.getAudienceList(version, accountId, albumIds, keyword, keywordFields, sortField, descending, start, limit, sendSuggestion, activeOnly, groupByGroupingId, appKey, returnGlobal, exactKeyword, audienceType, audienceTypes, returnAccountCount, returnAlbumCount, albumTypesForCount)
+      api.getAudienceList(accountId, albumIds, keyword, keywordFields, sortField, descending, start, limit, sendSuggestion, activeOnly, groupByGroupingId, appKey, returnGlobal, exactKeyword, audienceType, audienceTypes, returnAccountCount, returnAlbumCount, albumTypesForCount)
     }
 
     val result = executeApi()
@@ -235,9 +234,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/devices?includeInactive=[value]
+    * GET /api/3.18/audience/devices?includeInactive=[value]
     */
-  def getDevices(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getDevices(): Action[AnyContent] = Action { request =>
     def executeApi(): List[AudienceDeviceResponse] = {
       val includeInactive = request.getQueryString("includeInactive")
         .map(value => value.toBoolean)
@@ -245,7 +244,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("includeInactive", "query string")
         }
         
-      api.getDevices(version, includeInactive)
+      api.getDevices(includeInactive)
     }
 
     val result = executeApi()
@@ -254,11 +253,11 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/experiences
+    * GET /api/3.18/audience/experiences
     */
-  def getExperiences(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getExperiences(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
-      api.getExperiences(version)
+      api.getExperiences()
     }
 
     val result = executeApi()
@@ -267,9 +266,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/grouped/get?accountId=[value]&audienceGroupingId=[value]
+    * GET /api/3.18/audience/grouped/get?accountId=[value]&audienceGroupingId=[value]
     */
-  def getGroupedAudiences(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getGroupedAudiences(): Action[AnyContent] = Action { request =>
     def executeApi(): AudienceResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -282,7 +281,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("audienceGroupingId", "query string")
         }
         
-      api.getGroupedAudiences(version, accountId, audienceGroupingId)
+      api.getGroupedAudiences(accountId, audienceGroupingId)
     }
 
     val result = executeApi()
@@ -291,9 +290,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * POST /api/:version/audience/suggestion/list?accountId=[value]&limit=[value]&suggestionType=[value]
+    * POST /api/3.18/audience/suggestion/list?accountId=[value]&limit=[value]&suggestionType=[value]
     */
-  def listByAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listByAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferListResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -312,7 +311,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("suggestionType", "query string")
         }
         
-      api.listByAccount(version, accountId, limit, suggestionType)
+      api.listByAccount(accountId, limit, suggestionType)
     }
 
     val result = executeApi()
@@ -321,9 +320,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/suggestion/offersByAudience?gender=[value]&age=[value]&categoryIds=[value]&latitude=[value]&longitude=[value]&limit=[value]
+    * GET /api/3.18/audience/suggestion/offersByAudience?gender=[value]&age=[value]&categoryIds=[value]&latitude=[value]&longitude=[value]&limit=[value]
     */
-  def listByAudience(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listByAudience(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferListResponse = {
       val gender = request.getQueryString("gender")
         
@@ -344,7 +343,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.listByAudience(version, limit, gender, age, categoryIds, latitude, longitude)
+      api.listByAudience(limit, gender, age, categoryIds, latitude, longitude)
     }
 
     val result = executeApi()
@@ -353,9 +352,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * GET /api/:version/audience/suggestion/latest?accountId=[value]&timeframe=[value]&suggestionType=[value]
+    * GET /api/3.18/audience/suggestion/latest?accountId=[value]&timeframe=[value]&suggestionType=[value]
     */
-  def listLastestByAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def listLastestByAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferListResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -374,7 +373,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("suggestionType", "query string")
         }
         
-      api.listLastestByAccount(version, accountId, timeframe, suggestionType)
+      api.listLastestByAccount(accountId, timeframe, suggestionType)
     }
 
     val result = executeApi()
@@ -383,9 +382,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * POST /api/:version/audience/suggestion/send?accountId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/audience/suggestion/send?accountId=[value]&latitude=[value]&longitude=[value]
     */
-  def sendByAccount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def sendByAccount(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -405,7 +404,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
           throw new OpenApiExceptions.MissingRequiredParameterException("longitude", "query string")
         }
         
-      api.sendByAccount(version, accountId, latitude, longitude)
+      api.sendByAccount(accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -414,9 +413,9 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
   }
 
   /**
-    * POST /api/:version/audience/update?accountId=[value]&audienceId=[value]&name=[value]&description=[value]&searchTags=[value]&gender=[value]&ageGroups=[value]&categoryIds=[value]&applicationIds=[value]&gameExperienceLevel=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]&active=[value]&sendSuggestion=[value]&startTimeOffset=[value]&endTimeOffset=[value]&associateDescription=[value]&associateType=[value]&associateId=[value]&groupingId=[value]&metaData=[value]&visibility=[value]&audienceType=[value]&useOrder=[value]&cohortRegionsData=[value]&appKey=[value]&trilaterationTypes=[value]&uniqueName=[value]
+    * POST /api/3.18/audience/update?accountId=[value]&audienceId=[value]&name=[value]&description=[value]&searchTags=[value]&gender=[value]&ageGroups=[value]&categoryIds=[value]&applicationIds=[value]&gameExperienceLevel=[value]&devices=[value]&deviceIds=[value]&deviceVersions=[value]&locations=[value]&radius=[value]&active=[value]&sendSuggestion=[value]&startTimeOffset=[value]&endTimeOffset=[value]&associateDescription=[value]&associateType=[value]&associateId=[value]&groupingId=[value]&metaData=[value]&visibility=[value]&audienceType=[value]&useOrder=[value]&cohortRegionsData=[value]&appKey=[value]&trilaterationTypes=[value]&uniqueName=[value]
     */
-  def updateAudience(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateAudience(): Action[AnyContent] = Action { request =>
     def executeApi(): AudienceResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -495,7 +494,7 @@ class AudienceApiController @Inject()(cc: ControllerComponents, api: AudienceApi
       val uniqueName = request.getQueryString("uniqueName")
         .map(value => value.toBoolean)
         
-      api.updateAudience(version, accountId, audienceId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, active, sendSuggestion, startTimeOffset, endTimeOffset, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName)
+      api.updateAudience(accountId, audienceId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, active, sendSuggestion, startTimeOffset, endTimeOffset, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName)
     }
 
     val result = executeApi()

@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.LikableResponse
 import model.SearchResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class LikeApiController @Inject()(cc: ControllerComponents, api: LikeApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/like?deviceId=[value]&accountId=[value]&likableType=[value]&likableId=[value]&permissionableType=[value]&permissionableId=[value]&like=[value]&app=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/like?deviceId=[value]&accountId=[value]&likableType=[value]&likableId=[value]&permissionableType=[value]&permissionableId=[value]&like=[value]&app=[value]&gameType=[value]&appKey=[value]&latitude=[value]&longitude=[value]
     */
-  def registerLike(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def registerLike(): Action[AnyContent] = Action { request =>
     def executeApi(): LikableResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -52,7 +51,7 @@ class LikeApiController @Inject()(cc: ControllerComponents, api: LikeApi) extend
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.registerLike(version, likableType, likableId, deviceId, accountId, permissionableType, permissionableId, like, app, gameType, appKey, latitude, longitude)
+      api.registerLike(likableType, likableId, deviceId, accountId, permissionableType, permissionableId, like, app, gameType, appKey, latitude, longitude)
     }
 
     val result = executeApi()
@@ -61,9 +60,9 @@ class LikeApiController @Inject()(cc: ControllerComponents, api: LikeApi) extend
   }
 
   /**
-    * POST /api/:version/like/delete?deviceId=[value]&accountId=[value]&likableType=[value]&likableId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/like/delete?deviceId=[value]&accountId=[value]&likableType=[value]&likableId=[value]&latitude=[value]&longitude=[value]
     */
-  def removeLike(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def removeLike(): Action[AnyContent] = Action { request =>
     def executeApi(): LikableResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -87,7 +86,7 @@ class LikeApiController @Inject()(cc: ControllerComponents, api: LikeApi) extend
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.removeLike(version, likableType, likableId, deviceId, accountId, latitude, longitude)
+      api.removeLike(likableType, likableId, deviceId, accountId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -96,9 +95,9 @@ class LikeApiController @Inject()(cc: ControllerComponents, api: LikeApi) extend
   }
 
   /**
-    * GET /api/:version/like/search?deviceId=[value]&accountId=[value]&connectionAccountIds=[value]&likableType=[value]&likableId=[value]&sortField=[value]&descending=[value]&updatedSince=[value]&updatedBefore=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/like/search?deviceId=[value]&accountId=[value]&connectionAccountIds=[value]&likableType=[value]&likableId=[value]&sortField=[value]&descending=[value]&updatedSince=[value]&updatedBefore=[value]&start=[value]&limit=[value]
     */
-  def searchLikes(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchLikes(): Action[AnyContent] = Action { request =>
     def executeApi(): SearchResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -135,7 +134,7 @@ class LikeApiController @Inject()(cc: ControllerComponents, api: LikeApi) extend
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchLikes(version, likableType, likableId, deviceId, accountId, connectionAccountIds, sortField, descending, updatedSince, updatedBefore, start, limit)
+      api.searchLikes(likableType, likableId, deviceId, accountId, connectionAccountIds, sortField, descending, updatedSince, updatedBefore, start, limit)
     }
 
     val result = executeApi()

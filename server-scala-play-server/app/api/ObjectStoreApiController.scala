@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ObjectStoreResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectStoreApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/object/field/add?accountId=[value]&appKey=[value]&objectName=[value]&fieldName=[value]&fieldType=[value]
+    * POST /api/3.18/object/field/add?accountId=[value]&appKey=[value]&objectName=[value]&fieldName=[value]&fieldType=[value]
     */
-  def addField(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def addField(): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -41,7 +40,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
           throw new OpenApiExceptions.MissingRequiredParameterException("fieldType", "query string")
         }
         
-      api.addField(version, accountId, appKey, objectName, fieldName, fieldType)
+      api.addField(accountId, appKey, objectName, fieldName, fieldType)
     }
 
     val result = executeApi()
@@ -50,16 +49,16 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * POST /api/:version/object/data/:objectName?accountId=[value]
+    * POST /api/3.18/object/data/:objectName?accountId=[value]
     * @param objectName the name of the object to create data for
     */
-  def createData(version: BigDecimal, objectName: String): Action[AnyContent] = Action { request =>
+  def createData(objectName: String): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val body = request.body.asJson.map(_.as[String])
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
-      api.createData(version, objectName, accountId, body)
+      api.createData(objectName, accountId, body)
     }
 
     val result = executeApi()
@@ -68,9 +67,9 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * POST /api/:version/object/create?accountId=[value]&appKey=[value]&objectName=[value]
+    * POST /api/3.18/object/create?accountId=[value]&appKey=[value]&objectName=[value]
     */
-  def createObject(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createObject(): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -88,7 +87,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
           throw new OpenApiExceptions.MissingRequiredParameterException("objectName", "query string")
         }
         
-      api.createObject(version, accountId, appKey, objectName)
+      api.createObject(accountId, appKey, objectName)
     }
 
     val result = executeApi()
@@ -97,16 +96,16 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * DELETE /api/:version/object/data/:objectName/:objectId?accountId=[value]
+    * DELETE /api/3.18/object/data/:objectName/:objectId?accountId=[value]
     * @param objectName The name of the object to search upon
     * @param objectId objectId The id of the record to return
     */
-  def deleteData(version: BigDecimal, objectName: String, objectId: String): Action[AnyContent] = Action { request =>
+  def deleteData(objectName: String, objectId: String): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
-      api.deleteData(version, objectName, objectId, accountId)
+      api.deleteData(objectName, objectId, accountId)
     }
 
     val result = executeApi()
@@ -115,9 +114,9 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * POST /api/:version/object/field/delete?accountId=[value]&appKey=[value]&objectName=[value]&fieldName=[value]
+    * POST /api/3.18/object/field/delete?accountId=[value]&appKey=[value]&objectName=[value]&fieldName=[value]
     */
-  def deleteField(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteField(): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -140,7 +139,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
           throw new OpenApiExceptions.MissingRequiredParameterException("fieldName", "query string")
         }
         
-      api.deleteField(version, accountId, appKey, objectName, fieldName)
+      api.deleteField(accountId, appKey, objectName, fieldName)
     }
 
     val result = executeApi()
@@ -149,9 +148,9 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * POST /api/:version/object/delete?accountId=[value]&appKey=[value]&objectName=[value]
+    * POST /api/3.18/object/delete?accountId=[value]&appKey=[value]&objectName=[value]
     */
-  def deleteObject(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteObject(): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -169,7 +168,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
           throw new OpenApiExceptions.MissingRequiredParameterException("objectName", "query string")
         }
         
-      api.deleteObject(version, accountId, appKey, objectName)
+      api.deleteObject(accountId, appKey, objectName)
     }
 
     val result = executeApi()
@@ -178,18 +177,18 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * GET /api/:version/object/data/:objectName/:objectId?accountId=[value]&include=[value]
+    * GET /api/3.18/object/data/:objectName/:objectId?accountId=[value]&include=[value]
     * @param objectName The name of the object to search upon
     * @param objectId objectId The id of the record to return
     */
-  def getData(version: BigDecimal, objectName: String, objectId: String): Action[AnyContent] = Action { request =>
+  def getData(objectName: String, objectId: String): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
       val include = request.getQueryString("include")
         
-      api.getData(version, objectName, objectId, accountId, include)
+      api.getData(objectName, objectId, accountId, include)
     }
 
     val result = executeApi()
@@ -198,9 +197,9 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * GET /api/:version/object/get?accountId=[value]&appKey=[value]&objectName=[value]
+    * GET /api/3.18/object/get?accountId=[value]&appKey=[value]&objectName=[value]
     */
-  def getObject(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getObject(): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -218,7 +217,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
           throw new OpenApiExceptions.MissingRequiredParameterException("objectName", "query string")
         }
         
-      api.getObject(version, accountId, appKey, objectName)
+      api.getObject(accountId, appKey, objectName)
     }
 
     val result = executeApi()
@@ -227,10 +226,10 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * GET /api/:version/object/data/:objectName?accountId=[value]&criteria=[value]&count=[value]&start=[value]&limit=[value]&order=[value]&include=[value]
+    * GET /api/3.18/object/data/:objectName?accountId=[value]&criteria=[value]&count=[value]&start=[value]&limit=[value]&order=[value]&include=[value]
     * @param objectName The name of the object to search upon
     */
-  def searchData(version: BigDecimal, objectName: String): Action[AnyContent] = Action { request =>
+  def searchData(objectName: String): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -259,7 +258,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
         
       val include = request.getQueryString("include")
         
-      api.searchData(version, objectName, count, start, limit, accountId, criteria, order, include)
+      api.searchData(objectName, count, start, limit, accountId, criteria, order, include)
     }
 
     val result = executeApi()
@@ -268,9 +267,9 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * GET /api/:version/object/search?accountId=[value]&appKey=[value]&keyword=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/object/search?accountId=[value]&appKey=[value]&keyword=[value]&start=[value]&limit=[value]
     */
-  def searchObject(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchObject(): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -297,7 +296,7 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.searchObject(version, accountId, appKey, start, limit, keyword)
+      api.searchObject(accountId, appKey, start, limit, keyword)
     }
 
     val result = executeApi()
@@ -306,17 +305,17 @@ class ObjectStoreApiController @Inject()(cc: ControllerComponents, api: ObjectSt
   }
 
   /**
-    * PUT /api/:version/object/data/:objectName/:objectId?accountId=[value]
+    * PUT /api/3.18/object/data/:objectName/:objectId?accountId=[value]
     * @param objectName The name of the object to search upon
     * @param objectId objectId The id of the record to return
     */
-  def updateData(version: BigDecimal, objectName: String, objectId: String): Action[AnyContent] = Action { request =>
+  def updateData(objectName: String, objectId: String): Action[AnyContent] = Action { request =>
     def executeApi(): ObjectStoreResponse = {
       val body = request.body.asJson.map(_.as[String])
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
         
-      api.updateData(version, objectName, objectId, accountId, body)
+      api.updateData(objectName, objectId, accountId, body)
     }
 
     val result = executeApi()

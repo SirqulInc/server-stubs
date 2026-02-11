@@ -10,7 +10,7 @@ import model.SirqulResponse
 import model.UserLocationSearchResponse
 import model.UserSettingsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait AccountApi {
   /**
     * Search Accounts by Location
@@ -50,7 +50,7 @@ trait AccountApi {
     * @param verifiedUserOnly Returns only verified users
     * @param contentAdminOnly Returns only content admin users
     */
-  def accountLocationSearch(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], q: Option[String], keyword: Option[String], postalCode: Option[String], latitude: Option[Double], longitude: Option[Double], appKey: Option[String], range: Option[Double], locationLastUpdated: Option[Long], gender: Option[String], minAge: Option[Int], maxAge: Option[Int], companionshipIndex: Option[Int], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int], searchMode: Option[String], sortField: Option[String], descending: Option[Boolean], roles: Option[String], tags: Option[String], experience: Option[String], categoryIds: Option[String], audienceIds: Option[String], audienceOperator: Option[String], updateCurrentLocation: Option[Boolean], updatePreferredSettings: Option[Boolean], showExactLocations: Option[Boolean], showConnectionToSearcher: Option[Boolean], flagCountMinimum: Option[Long], verifiedUserOnly: Option[Boolean], contentAdminOnly: Option[Boolean]): UserLocationSearchResponse
+  def accountLocationSearch(deviceId: Option[String], accountId: Option[Long], q: Option[String], keyword: Option[String], postalCode: Option[String], latitude: Option[Double], longitude: Option[Double], appKey: Option[String], range: Option[Double], locationLastUpdated: Option[Long], gender: Option[String], minAge: Option[Int], maxAge: Option[Int], companionshipIndex: Option[Int], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int], searchMode: Option[String], sortField: Option[String], descending: Option[Boolean], roles: Option[String], tags: Option[String], experience: Option[String], categoryIds: Option[String], audienceIds: Option[String], audienceOperator: Option[String], updateCurrentLocation: Option[Boolean], updatePreferredSettings: Option[Boolean], showExactLocations: Option[Boolean], showConnectionToSearcher: Option[Boolean], flagCountMinimum: Option[Long], verifiedUserOnly: Option[Boolean], contentAdminOnly: Option[Boolean]): UserLocationSearchResponse
 
   /**
     * Block Account
@@ -63,7 +63,7 @@ trait AccountApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def blockAccount(version: BigDecimal, accountIdBeingBlocked: Long, deviceId: Option[String], accountId: Option[Long], blockFlagValue: Option[Boolean], removeFromGroupsIfBlocked: Option[Boolean], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def blockAccount(accountIdBeingBlocked: Long, deviceId: Option[String], accountId: Option[Long], blockFlagValue: Option[Boolean], removeFromGroupsIfBlocked: Option[Boolean], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Create Account
@@ -141,7 +141,7 @@ trait AccountApi {
     * @param appNickname The nickname used in the application for this account
     * @param personalAudienceId Personal audience id to associate with this account
     */
-  def createAccount(version: BigDecimal, username: String, password: String, name: Option[String], prefixName: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], suffixName: Option[String], title: Option[String], deviceId: Option[String], deviceIdType: Option[String], emailAddress: Option[String], assetId: Option[Long], streetAddress: Option[String], zipcode: Option[String], gender: Option[String], birthday: Option[Long], homePhone: Option[String], cellPhone: Option[String], cellPhoneCarrier: Option[String], businessPhone: Option[String], role: Option[String], platforms: Option[String], tags: Option[String], aboutUs: Option[String], gameExperience: Option[String], categoryIds: Option[String], hometown: Option[String], height: Option[String], heightIndex: Option[Int], ethnicity: Option[String], bodyType: Option[String], maritalStatus: Option[String], children: Option[String], religion: Option[String], education: Option[String], educationIndex: Option[Int], smoke: Option[String], drink: Option[String], companionship: Option[String], companionshipIndex: Option[Int], preferredMinAge: Option[Int], preferredMaxAge: Option[Int], preferredMinHeight: Option[Int], preferredMaxHeight: Option[Int], preferredGender: Option[String], preferredEducation: Option[String], preferredEducationIndex: Option[Int], preferredBodyType: Option[String], preferredEthnicity: Option[String], preferredLocation: Option[String], preferredLocationRange: Option[Double], latitude: Option[Double], longitude: Option[Double], acceptedTerms: Option[Boolean], inviteToken: Option[String], referralAccountId: Option[Long], sendValidation: Option[Boolean], gameType: Option[String], appKey: Option[String], appVersion: Option[String], responseType: Option[String], audienceIdsToAdd: Option[String], appBlob: Option[String], appEnablePush: Option[Boolean], appEnableSMS: Option[Boolean], appEnableEmail: Option[Boolean], locationVisibility: Option[String], homeLatitude: Option[Double], homeLongitude: Option[Double], appNickname: Option[String], personalAudienceId: Option[Long]): AccountLoginResponse
+  def createAccount(username: String, password: String, name: Option[String], prefixName: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], suffixName: Option[String], title: Option[String], deviceId: Option[String], deviceIdType: Option[String], emailAddress: Option[String], assetId: Option[Long], streetAddress: Option[String], zipcode: Option[String], gender: Option[String], birthday: Option[Long], homePhone: Option[String], cellPhone: Option[String], cellPhoneCarrier: Option[String], businessPhone: Option[String], role: Option[String], platforms: Option[String], tags: Option[String], aboutUs: Option[String], gameExperience: Option[String], categoryIds: Option[String], hometown: Option[String], height: Option[String], heightIndex: Option[Int], ethnicity: Option[String], bodyType: Option[String], maritalStatus: Option[String], children: Option[String], religion: Option[String], education: Option[String], educationIndex: Option[Int], smoke: Option[String], drink: Option[String], companionship: Option[String], companionshipIndex: Option[Int], preferredMinAge: Option[Int], preferredMaxAge: Option[Int], preferredMinHeight: Option[Int], preferredMaxHeight: Option[Int], preferredGender: Option[String], preferredEducation: Option[String], preferredEducationIndex: Option[Int], preferredBodyType: Option[String], preferredEthnicity: Option[String], preferredLocation: Option[String], preferredLocationRange: Option[Double], latitude: Option[Double], longitude: Option[Double], acceptedTerms: Option[Boolean], inviteToken: Option[String], referralAccountId: Option[Long], sendValidation: Option[Boolean], gameType: Option[String], appKey: Option[String], appVersion: Option[String], responseType: Option[String], audienceIdsToAdd: Option[String], appBlob: Option[String], appEnablePush: Option[Boolean], appEnableSMS: Option[Boolean], appEnableEmail: Option[Boolean], locationVisibility: Option[String], homeLatitude: Option[Double], homeLongitude: Option[Double], appNickname: Option[String], personalAudienceId: Option[Long]): AccountLoginResponse
 
   /**
     * Update Account
@@ -229,7 +229,7 @@ trait AccountApi {
     * @param personalAudienceId Personal Audience
     * @param nonGuestUsername The user&#39;s username to update with if they currently have a guest username
     */
-  def editAccount(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], role: Option[String], assetId: Option[Long], name: Option[String], prefixName: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], suffixName: Option[String], title: Option[String], gender: Option[String], age: Option[Int], birthday: Option[Long], homePhone: Option[String], cellPhone: Option[String], cellPhoneCarrier: Option[String], businessPhone: Option[String], emailAddress: Option[String], streetAddress: Option[String], streetAddress2: Option[String], city: Option[String], state: Option[String], zipcode: Option[String], country: Option[String], makeProfileInfoPublic: Option[Boolean], makeGameInfoPublic: Option[Boolean], makeFriendsInfoPublic: Option[Boolean], hometown: Option[String], height: Option[String], heightIndex: Option[Int], ethnicity: Option[String], bodyType: Option[String], maritalStatus: Option[String], children: Option[String], religion: Option[String], education: Option[String], educationIndex: Option[Int], smoke: Option[String], drink: Option[String], companionship: Option[String], companionshipIndex: Option[Int], preferredMinAge: Option[Int], preferredMaxAge: Option[Int], preferredMinHeight: Option[Int], preferredMaxHeight: Option[Int], preferredGender: Option[String], preferredEducation: Option[String], preferredEducationIndex: Option[Int], preferredBodyType: Option[String], preferredEthnicity: Option[String], preferredLocation: Option[String], preferredLocationRange: Option[Double], platforms: Option[String], tags: Option[String], aboutUs: Option[String], matchToken: Option[String], gameExperience: Option[String], categories: Option[String], categoryIds: Option[String], responseFilters: Option[String], showAsZipcode: Option[Boolean], showExactLocation: Option[Boolean], showOthersExactLocation: Option[Boolean], acceptedTerms: Option[Boolean], locationVisibility: Option[String], appBlob: Option[String], appEnablePush: Option[Boolean], appEnableSMS: Option[Boolean], appEnableEmail: Option[Boolean], gameType: Option[String], appKey: Option[String], latitude: Option[Double], longitude: Option[Double], returnProfile: Option[Boolean], audienceIdsToAdd: Option[String], audienceIdsToRemove: Option[String], referralAccountId: Option[Long], appNickname: Option[String], personalAudienceId: Option[Long], nonGuestUsername: Option[String]): ProfileInfoResponse
+  def editAccount(deviceId: Option[String], accountId: Option[Long], connectionAccountId: Option[Long], role: Option[String], assetId: Option[Long], name: Option[String], prefixName: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], suffixName: Option[String], title: Option[String], gender: Option[String], age: Option[Int], birthday: Option[Long], homePhone: Option[String], cellPhone: Option[String], cellPhoneCarrier: Option[String], businessPhone: Option[String], emailAddress: Option[String], streetAddress: Option[String], streetAddress2: Option[String], city: Option[String], state: Option[String], zipcode: Option[String], country: Option[String], makeProfileInfoPublic: Option[Boolean], makeGameInfoPublic: Option[Boolean], makeFriendsInfoPublic: Option[Boolean], hometown: Option[String], height: Option[String], heightIndex: Option[Int], ethnicity: Option[String], bodyType: Option[String], maritalStatus: Option[String], children: Option[String], religion: Option[String], education: Option[String], educationIndex: Option[Int], smoke: Option[String], drink: Option[String], companionship: Option[String], companionshipIndex: Option[Int], preferredMinAge: Option[Int], preferredMaxAge: Option[Int], preferredMinHeight: Option[Int], preferredMaxHeight: Option[Int], preferredGender: Option[String], preferredEducation: Option[String], preferredEducationIndex: Option[Int], preferredBodyType: Option[String], preferredEthnicity: Option[String], preferredLocation: Option[String], preferredLocationRange: Option[Double], platforms: Option[String], tags: Option[String], aboutUs: Option[String], matchToken: Option[String], gameExperience: Option[String], categories: Option[String], categoryIds: Option[String], responseFilters: Option[String], showAsZipcode: Option[Boolean], showExactLocation: Option[Boolean], showOthersExactLocation: Option[Boolean], acceptedTerms: Option[Boolean], locationVisibility: Option[String], appBlob: Option[String], appEnablePush: Option[Boolean], appEnableSMS: Option[Boolean], appEnableEmail: Option[Boolean], gameType: Option[String], appKey: Option[String], latitude: Option[Double], longitude: Option[Double], returnProfile: Option[Boolean], audienceIdsToAdd: Option[String], audienceIdsToRemove: Option[String], referralAccountId: Option[Long], appNickname: Option[String], personalAudienceId: Option[Long], nonGuestUsername: Option[String]): ProfileInfoResponse
 
   /**
     * Update Username and Email
@@ -239,7 +239,7 @@ trait AccountApi {
     * @param emailAddress the user&#39;s contact email address (NOT the username) which is also used for email validation
     * @param username the user&#39;s username to update with if they currently have a guest username
     */
-  def editUsername(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], emailAddress: Option[String], username: Option[String]): SirqulResponse
+  def editUsername(deviceId: Option[String], accountId: Option[Long], emailAddress: Option[String], username: Option[String]): SirqulResponse
 
   /**
     * Get Account
@@ -257,7 +257,7 @@ trait AccountApi {
     * @param latitude Latitude used to update the user&#39;s current location
     * @param longitude Longitude used to update the user&#39;s current location
     */
-  def getAccount(version: BigDecimal, returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], connectionAccountEmail: Option[String], connectionAccountId: Option[Long], responseFilters: Option[String], gameType: Option[String], appKey: Option[String], purchaseType: Option[String], updateViewedDate: Option[Boolean], latitude: Option[Double], longitude: Option[Double]): ProfileResponse
+  def getAccount(returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], connectionAccountEmail: Option[String], connectionAccountId: Option[Long], responseFilters: Option[String], gameType: Option[String], appKey: Option[String], purchaseType: Option[String], updateViewedDate: Option[Boolean], latitude: Option[Double], longitude: Option[Double]): ProfileResponse
 
   /**
     * Get Profile Assets
@@ -277,7 +277,7 @@ trait AccountApi {
     * @param l _l
     * @param limit Limit of the pagination
     */
-  def getProfileAssets(version: BigDecimal, returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], ownerId: Option[Long], mediaTypes: Option[String], mimeTypes: Option[String], sortField: Option[String], descending: Option[Boolean], latitude: Option[Double], longitude: Option[Double], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int]): AssetListResponse
+  def getProfileAssets(returnNulls: Option[Boolean], deviceId: Option[String], accountId: Option[Long], ownerId: Option[Long], mediaTypes: Option[String], mimeTypes: Option[String], sortField: Option[String], descending: Option[Boolean], latitude: Option[Double], longitude: Option[Double], i: Option[Int], start: Option[Int], l: Option[Int], limit: Option[Int]): AssetListResponse
 
   /**
     * Search Accounts
@@ -294,7 +294,7 @@ trait AccountApi {
     * @param childrenListLimit pagination limit for children list
     * @param childrenChildren if true, on each item in ancestor and children list, return the childrenTotalNumber and ancestorTotalNumber for that item
     */
-  def getReferralList(version: BigDecimal, accountId: Option[Long], appKey: Option[String], retrieveType: Option[String], levelLimit: Option[BigDecimal], ancestorLevelLimit: Option[BigDecimal], childrenLevelLimit: Option[BigDecimal], ancestorListStart: Option[BigDecimal], ancestorListLimit: Option[BigDecimal], childrenListStart: Option[BigDecimal], childrenListLimit: Option[BigDecimal], childrenChildren: Option[Boolean]): Unit
+  def getReferralList(accountId: Option[Long], appKey: Option[String], retrieveType: Option[String], levelLimit: Option[BigDecimal], ancestorLevelLimit: Option[BigDecimal], childrenLevelLimit: Option[BigDecimal], ancestorListStart: Option[BigDecimal], ancestorListLimit: Option[BigDecimal], childrenListStart: Option[BigDecimal], childrenListLimit: Option[BigDecimal], childrenChildren: Option[Boolean]): Unit
 
   /**
     * Get Account Settings
@@ -304,7 +304,7 @@ trait AccountApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def getSettings(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): UserSettingsResponse
+  def getSettings(deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): UserSettingsResponse
 
   /**
     * Login as Account
@@ -313,7 +313,7 @@ trait AccountApi {
     * @param ageRestriction Checks user&#39;s birthday to see if they meet an age requirement. If the user is under age, an error message is returned.
     * @param responseFilters This determines how much of the profile should be returned, see ProfileFilters
     */
-  def loginDelegate(version: BigDecimal, accessToken: String, appKey: String, deviceId: Option[String], accessTokenSecret: Option[String], delegatedAccountId: Option[Long], delegatedUsername: Option[String], networkUID: Option[String], ageRestriction: Option[Int], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double]): ProfileResponse
+  def loginDelegate(accessToken: String, appKey: String, deviceId: Option[String], accessTokenSecret: Option[String], delegatedAccountId: Option[Long], delegatedUsername: Option[String], networkUID: Option[String], ageRestriction: Option[Int], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double]): ProfileResponse
 
   /**
     * Login Account
@@ -332,7 +332,7 @@ trait AccountApi {
     * @param chosenAccountId Chosen account Id sent from the app - pass in the 2nd request to choose an account from multiple accounts matching the email - use one of the account id from the previous request
     * @param thirdPartyCredentialId Third-party credential Id, pass in the 2nd request to choose an account from multiple accounts matching the email - use the id from the previous call ThirdPartyCredential object
     */
-  def loginGeneral(version: BigDecimal, accessToken: String, networkUID: String, appKey: String, deviceId: Option[String], deviceIdType: Option[String], accessTokenSecret: Option[String], ageRestriction: Option[Int], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double], emailMatch: Option[Boolean], chosenAccountId: Option[Long], thirdPartyCredentialId: Option[Long]): ProfileResponse
+  def loginGeneral(accessToken: String, networkUID: String, appKey: String, deviceId: Option[String], deviceIdType: Option[String], accessTokenSecret: Option[String], ageRestriction: Option[Int], responseFilters: Option[String], latitude: Option[Double], longitude: Option[Double], emailMatch: Option[Boolean], chosenAccountId: Option[Long], thirdPartyCredentialId: Option[Long]): ProfileResponse
 
   /**
     * Login Account (Username)
@@ -348,7 +348,7 @@ trait AccountApi {
     * @param returnProfile the profile to return
     * @param responseFilters a comma separated list of ProfileFilters for filtering the returned response data
     */
-  def loginUsername(version: BigDecimal, username: String, password: String, deviceId: Option[String], latitude: Option[Double], longitude: Option[Double], app: Option[String], gameType: Option[String], appKey: Option[String], returnProfile: Option[Boolean], responseFilters: Option[String]): ProfileResponse
+  def loginUsername(username: String, password: String, deviceId: Option[String], latitude: Option[Double], longitude: Option[Double], app: Option[String], gameType: Option[String], appKey: Option[String], returnProfile: Option[Boolean], responseFilters: Option[String]): ProfileResponse
 
   /**
     * Logout Account
@@ -359,7 +359,7 @@ trait AccountApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def logout(version: BigDecimal, deviceId: Option[String], deviceIdType: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def logout(deviceId: Option[String], deviceIdType: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Merge Account
@@ -369,7 +369,7 @@ trait AccountApi {
     * @param deviceId The device id (deviceId or accountId required)
     * @param accountId The account id of the user (deviceId or accountId required)
     */
-  def mergeAccount(version: BigDecimal, mergeAccountId: Long, appKey: String, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
+  def mergeAccount(mergeAccountId: Long, appKey: String, deviceId: Option[String], accountId: Option[Long]): SirqulResponse
 
   /**
     * Update Password
@@ -379,7 +379,7 @@ trait AccountApi {
     * @param newPassword The new password to set, cannot be empty
     * @param confirmPassword The new password to confirm, must match newPassword
     */
-  def passwordChange(version: BigDecimal, accountId: Long, oldPassword: String, newPassword: String, confirmPassword: String): SirqulResponse
+  def passwordChange(accountId: Long, oldPassword: String, newPassword: String, confirmPassword: String): SirqulResponse
 
   /**
     * Reset Password
@@ -388,7 +388,7 @@ trait AccountApi {
     * @param password The new password to set, cannot be empty
     * @param confirm The new password to confirm, must match newPassword
     */
-  def passwordReset(version: BigDecimal, token: String, password: String, confirm: String): SirqulResponse
+  def passwordReset(token: String, password: String, confirm: String): SirqulResponse
 
   /**
     * Request Password Reset
@@ -399,14 +399,14 @@ trait AccountApi {
     * @param subUrl this is the the subUrl (like resetpassword) used to generate a password reset link
     * @param referer this is used to generate a password reset link
     */
-  def requestPasswordReset(version: BigDecimal, email: String, from: Option[String], domain: Option[String], subUrl: Option[String], referer: Option[String]): SirqulResponse
+  def requestPasswordReset(email: String, from: Option[String], domain: Option[String], subUrl: Option[String], referer: Option[String]): SirqulResponse
 
   /**
     * Send Validation Request
     * Send an email to validate a user&#39;s account.
     * @param accountId The account id of the user
     */
-  def requestValidateAccount(version: BigDecimal, accountId: Long): SirqulResponse
+  def requestValidateAccount(accountId: Long): SirqulResponse
 
   /**
     * Search Accounts
@@ -430,7 +430,7 @@ trait AccountApi {
     * @param limit The total number of record to return.
     * @param activeOnly Determines whether to return only active results. Default is false.
     */
-  def searchAccounts(version: BigDecimal, accountId: Long, appKey: String, keyword: Option[String], latitude: Option[Double], longitude: Option[Double], radius: Option[Double], gender: Option[String], gameExperience: Option[String], age: Option[Int], categoryIds: Option[String], returnNulls: Option[Boolean], responseFilters: Option[String], purchaseType: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[ProfileResponse]
+  def searchAccounts(accountId: Long, appKey: String, keyword: Option[String], latitude: Option[Double], longitude: Option[Double], radius: Option[Double], gender: Option[String], gameExperience: Option[String], age: Option[Int], categoryIds: Option[String], returnNulls: Option[Boolean], responseFilters: Option[String], purchaseType: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[ProfileResponse]
 
   /**
     * Login Account (Encrypted Username)
@@ -445,7 +445,7 @@ trait AccountApi {
     * @param returnProfile Return Profile
     * @param responseFilters A comma separated list of ProfileFilters for filtering the returned response data
     */
-  def secureLogin(version: BigDecimal, username: String, password: String, gameType: String, deviceId: Option[String], charsetName: Option[String], latitude: Option[Double], longitude: Option[Double], returnProfile: Option[Boolean], responseFilters: Option[String]): ProfileResponse
+  def secureLogin(username: String, password: String, gameType: String, deviceId: Option[String], charsetName: Option[String], latitude: Option[Double], longitude: Option[Double], returnProfile: Option[Boolean], responseFilters: Option[String]): ProfileResponse
 
   /**
     * Create Account (Encrypted Username)
@@ -512,7 +512,7 @@ trait AccountApi {
     * @param appVersion App Version
     * @param responseType Response Type
     */
-  def secureSignup(version: BigDecimal, deviceId: String, username: String, password: String, name: Option[String], inviteToken: Option[String], prefixName: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], suffixName: Option[String], title: Option[String], deviceIdType: Option[String], emailAddress: Option[String], assetId: Option[Long], address: Option[String], zipcode: Option[String], gender: Option[String], birthday: Option[Long], homePhone: Option[String], cellPhone: Option[String], cellPhoneCarrier: Option[String], businessPhone: Option[String], role: Option[String], platforms: Option[String], tags: Option[String], aboutUs: Option[String], gameExperience: Option[String], categoryIds: Option[String], hometown: Option[String], height: Option[String], heightIndex: Option[Int], ethnicity: Option[String], bodyType: Option[String], maritalStatus: Option[String], children: Option[String], religion: Option[String], education: Option[String], educationIndex: Option[Int], smoke: Option[String], drink: Option[String], companionship: Option[String], companionshipIndex: Option[Int], preferredMinAge: Option[Int], preferredMaxAge: Option[Int], preferredMinHeight: Option[Int], preferredMaxHeight: Option[Int], preferredGender: Option[String], preferredEducation: Option[String], preferredEducationIndex: Option[Int], preferredBodyType: Option[String], preferredEthnicity: Option[String], preferredLocation: Option[String], preferredLocationRange: Option[Double], latitude: Option[Double], longitude: Option[Double], acceptedTerms: Option[Boolean], charsetName: Option[String], gameType: Option[String], appKey: Option[String], appVersion: Option[String], responseType: Option[String]): ProfileInfoResponse
+  def secureSignup(deviceId: String, username: String, password: String, name: Option[String], inviteToken: Option[String], prefixName: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], suffixName: Option[String], title: Option[String], deviceIdType: Option[String], emailAddress: Option[String], assetId: Option[Long], address: Option[String], zipcode: Option[String], gender: Option[String], birthday: Option[Long], homePhone: Option[String], cellPhone: Option[String], cellPhoneCarrier: Option[String], businessPhone: Option[String], role: Option[String], platforms: Option[String], tags: Option[String], aboutUs: Option[String], gameExperience: Option[String], categoryIds: Option[String], hometown: Option[String], height: Option[String], heightIndex: Option[Int], ethnicity: Option[String], bodyType: Option[String], maritalStatus: Option[String], children: Option[String], religion: Option[String], education: Option[String], educationIndex: Option[Int], smoke: Option[String], drink: Option[String], companionship: Option[String], companionshipIndex: Option[Int], preferredMinAge: Option[Int], preferredMaxAge: Option[Int], preferredMinHeight: Option[Int], preferredMaxHeight: Option[Int], preferredGender: Option[String], preferredEducation: Option[String], preferredEducationIndex: Option[Int], preferredBodyType: Option[String], preferredEthnicity: Option[String], preferredLocation: Option[String], preferredLocationRange: Option[Double], latitude: Option[Double], longitude: Option[Double], acceptedTerms: Option[Boolean], charsetName: Option[String], gameType: Option[String], appKey: Option[String], appVersion: Option[String], responseType: Option[String]): ProfileInfoResponse
 
   /**
     * Save Match Token
@@ -525,7 +525,7 @@ trait AccountApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def setMatchToken(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], matchToken: Option[String], gameType: Option[String], appKey: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
+  def setMatchToken(deviceId: Option[String], accountId: Option[Long], matchToken: Option[String], gameType: Option[String], appKey: Option[String], latitude: Option[Double], longitude: Option[Double]): SirqulResponse
 
   /**
     * Update Account Active Status
@@ -536,7 +536,7 @@ trait AccountApi {
     * @param deviceId the device id (deviceId or accountId required)
     * @param appKey the application key that the user belongs to
     */
-  def updateActveStatus(version: BigDecimal, accountId: Long, connectionAccountId: Long, active: Boolean, deviceId: Option[String], appKey: Option[String]): SirqulResponse
+  def updateActveStatus(accountId: Long, connectionAccountId: Long, active: Boolean, deviceId: Option[String], appKey: Option[String]): SirqulResponse
 
   /**
     * Update Location
@@ -547,7 +547,7 @@ trait AccountApi {
     * @param longitude The current longitude of the user
     * @param clientTime The time of the update
     */
-  def updateLocation(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], clientTime: Option[Long]): SirqulResponse
+  def updateLocation(deviceId: Option[String], accountId: Option[Long], latitude: Option[Double], longitude: Option[Double], clientTime: Option[Long]): SirqulResponse
 
   /**
     * Update Account Settings
@@ -565,19 +565,19 @@ trait AccountApi {
     * @param latitude The current latitude of the user
     * @param longitude The current longitude of the user
     */
-  def updateSettings(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], blockedNotifications: Option[String], suggestionMethod: Option[String], suggestionCount: Option[Int], suggestionTimeFrame: Option[Int], showOthersExactLocation: Option[Boolean], showAsZipcode: Option[Boolean], showExactLocation: Option[Boolean], favoriteVisibility: Option[String], latitude: Option[Double], longitude: Option[Double]): UserSettingsResponse
+  def updateSettings(deviceId: Option[String], accountId: Option[Long], blockedNotifications: Option[String], suggestionMethod: Option[String], suggestionCount: Option[Int], suggestionTimeFrame: Option[Int], showOthersExactLocation: Option[Boolean], showAsZipcode: Option[Boolean], showExactLocation: Option[Boolean], favoriteVisibility: Option[String], latitude: Option[Double], longitude: Option[Double]): UserSettingsResponse
 
   /**
     * Save Validation Status
     * Validate the account&#39;s email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.
     * @param token The token associated with the account to update, good for 24 hours
     */
-  def validateAccountSignup(version: BigDecimal, token: String): AccountLoginResponse
+  def validateAccountSignup(token: String): AccountLoginResponse
 
   /**
     * Validate Password Reset Token
     * Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.
     * @param token The token associated with the account to update, good for 24 hours
     */
-  def validatePasswordReset(version: BigDecimal, token: String): SirqulResponse
+  def validatePasswordReset(token: String): SirqulResponse
 }

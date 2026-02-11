@@ -4,16 +4,15 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.WeatherResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class WeatherApiController @Inject()(cc: ControllerComponents, api: WeatherApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/weather/search?regionId=[value]&latitude=[value]&longitude=[value]&timezoneOffset=[value]
+    * GET /api/3.18/weather/search?regionId=[value]&latitude=[value]&longitude=[value]&timezoneOffset=[value]
     */
-  def searchWeather(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchWeather(): Action[AnyContent] = Action { request =>
     def executeApi(): WeatherResponse = {
       val regionId = request.getQueryString("regionId")
         .map(value => value.toLong)
@@ -27,7 +26,7 @@ class WeatherApiController @Inject()(cc: ControllerComponents, api: WeatherApi) 
       val timezoneOffset = request.getQueryString("timezoneOffset")
         .map(value => value.toLong)
         
-      api.searchWeather(version, regionId, latitude, longitude, timezoneOffset)
+      api.searchWeather(regionId, latitude, longitude, timezoneOffset)
     }
 
     val result = executeApi()

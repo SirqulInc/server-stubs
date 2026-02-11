@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.MissionResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class MissionInviteApiController @Inject()(cc: ControllerComponents, api: MissionInviteApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/mission/invite/create?deviceId=[value]&accountId=[value]&missionId=[value]&joinCode=[value]&includeGameData=[value]
+    * POST /api/3.18/mission/invite/create?deviceId=[value]&accountId=[value]&missionId=[value]&joinCode=[value]&includeGameData=[value]
     */
-  def createMissionInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createMissionInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -29,7 +28,7 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.createMissionInvite(version, deviceId, accountId, missionId, joinCode, includeGameData)
+      api.createMissionInvite(deviceId, accountId, missionId, joinCode, includeGameData)
     }
 
     val result = executeApi()
@@ -38,9 +37,9 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
   }
 
   /**
-    * POST /api/:version/mission/invite/delete?deviceId=[value]&accountId=[value]&missionId=[value]&missionInviteId=[value]&includeGameData=[value]
+    * POST /api/3.18/mission/invite/delete?deviceId=[value]&accountId=[value]&missionId=[value]&missionInviteId=[value]&includeGameData=[value]
     */
-  def deleteMissionInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteMissionInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -56,7 +55,7 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.deleteMissionInvite(version, deviceId, accountId, missionId, missionInviteId, includeGameData)
+      api.deleteMissionInvite(deviceId, accountId, missionId, missionInviteId, includeGameData)
     }
 
     val result = executeApi()
@@ -65,9 +64,9 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
   }
 
   /**
-    * GET /api/:version/mission/invite/get?deviceId=[value]&accountId=[value]&missionId=[value]&missionInviteId=[value]&includeGameData=[value]&includeScores=[value]
+    * GET /api/3.18/mission/invite/get?deviceId=[value]&accountId=[value]&missionId=[value]&missionInviteId=[value]&includeGameData=[value]&includeScores=[value]
     */
-  def getMissionInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getMissionInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -85,7 +84,7 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
         
       val includeScores = request.getQueryString("includeScores")
         
-      api.getMissionInvite(version, deviceId, accountId, missionId, missionInviteId, includeGameData, includeScores)
+      api.getMissionInvite(deviceId, accountId, missionId, missionInviteId, includeGameData, includeScores)
     }
 
     val result = executeApi()
@@ -94,9 +93,9 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
   }
 
   /**
-    * GET /api/:version/mission/invite/search?deviceId=[value]&accountId=[value]&appKey=[value]&appVersion=[value]&missionId=[value]&status=[value]&lastUpdated=[value]&start=[value]&limit=[value]&keyword=[value]&missionTypes=[value]&filterByBillable=[value]&includeGameData=[value]
+    * GET /api/3.18/mission/invite/search?deviceId=[value]&accountId=[value]&appKey=[value]&appVersion=[value]&missionId=[value]&status=[value]&lastUpdated=[value]&start=[value]&limit=[value]&keyword=[value]&missionTypes=[value]&filterByBillable=[value]&includeGameData=[value]
     */
-  def searchMissionInvites(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchMissionInvites(): Action[AnyContent] = Action { request =>
     def executeApi(): List[MissionResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -131,7 +130,7 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.searchMissionInvites(version, deviceId, accountId, appKey, appVersion, missionId, status, lastUpdated, start, limit, keyword, missionTypes, filterByBillable, includeGameData)
+      api.searchMissionInvites(deviceId, accountId, appKey, appVersion, missionId, status, lastUpdated, start, limit, keyword, missionTypes, filterByBillable, includeGameData)
     }
 
     val result = executeApi()
@@ -140,9 +139,9 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
   }
 
   /**
-    * POST /api/:version/mission/invite/update?deviceId=[value]&accountId=[value]&appKey=[value]&missionId=[value]&missionInviteId=[value]&packId=[value]&gameLevelId=[value]&status=[value]&permissionableType=[value]&permissionableId=[value]&includeGameData=[value]
+    * POST /api/3.18/mission/invite/update?deviceId=[value]&accountId=[value]&appKey=[value]&missionId=[value]&missionInviteId=[value]&packId=[value]&gameLevelId=[value]&status=[value]&permissionableType=[value]&permissionableId=[value]&includeGameData=[value]
     */
-  def updateMissionInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateMissionInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): MissionResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -173,7 +172,7 @@ class MissionInviteApiController @Inject()(cc: ControllerComponents, api: Missio
       val includeGameData = request.getQueryString("includeGameData")
         .map(value => value.toBoolean)
         
-      api.updateMissionInvite(version, deviceId, accountId, appKey, missionId, missionInviteId, packId, gameLevelId, status, permissionableType, permissionableId, includeGameData)
+      api.updateMissionInvite(deviceId, accountId, appKey, missionId, missionInviteId, packId, gameLevelId, status, permissionableType, permissionableId, includeGameData)
     }
 
     val result = executeApi()

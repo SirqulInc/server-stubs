@@ -2,7 +2,6 @@ package api
 
 import play.api.libs.json._
 import model.AccountMiniResponse
-import model.BigDecimal
 import model.Leg
 import model.LegResponse
 import model.PredictedLocationResponse
@@ -10,7 +9,7 @@ import model.PreferredLocationResponse
 import model.SirqulResponse
 import model.StepResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait TrackingApi {
   /**
     * Create Batch Tracking
@@ -23,7 +22,7 @@ trait TrackingApi {
     * @param defaultTag The default tag to apply to incoming legs when no tag is provided
     * @param slaveUID 
     */
-  def batchSaveTracking(version: BigDecimal, data: String, deviceId: Option[String], accountId: Option[Long], generateAccounts: Option[Boolean], updateAccountLocations: Option[Boolean], defaultTag: Option[String], slaveUID: Option[String]): List[Leg]
+  def batchSaveTracking(data: String, deviceId: Option[String], accountId: Option[Long], generateAccounts: Option[Boolean], updateAccountLocations: Option[Boolean], defaultTag: Option[String], slaveUID: Option[String]): List[Leg]
 
   /**
     * Get Predicted Locations
@@ -38,7 +37,7 @@ trait TrackingApi {
     * @param searchRange Filter results so only locations within the specified radius will be returned. The distance can either be in miles or kilometers as specified in the distanceUnit parameter. A value of \&quot;0\&quot; (zero) will ignore the radius restriction.
     * @param sortOrder The ordering algorithm for sorting the returned results: {MATCHES, DISTANCE, WEIGHTED}
     */
-  def getPredictedLocations(version: BigDecimal, accountId: Long, latitude: Option[Double], longitude: Option[Double], dateCheck: Option[Long], hourCheck: Option[String], threshold: Option[Long], distanceUnit: Option[String], searchRange: Option[Double], sortOrder: Option[String]): PredictedLocationResponse
+  def getPredictedLocations(accountId: Long, latitude: Option[Double], longitude: Option[Double], dateCheck: Option[Long], hourCheck: Option[String], threshold: Option[Long], distanceUnit: Option[String], searchRange: Option[Double], sortOrder: Option[String]): PredictedLocationResponse
 
   /**
     * Get Tracking Path
@@ -47,7 +46,7 @@ trait TrackingApi {
     * @param startStepId The stepId to begin from
     * @param endStepId The stepId to end with
     */
-  def getPredictedPath(version: BigDecimal, accountId: Long, startStepId: Long, endStepId: Long): List[StepResponse]
+  def getPredictedPath(accountId: Long, startStepId: Long, endStepId: Long): List[StepResponse]
 
   /**
     * Search Preferred Locations
@@ -64,7 +63,7 @@ trait TrackingApi {
     * @param searchRange Filter results so only locations within the specified radius will be returned. The distance can either be in miles or kilometers as specified in the distanceUnit parameter. A value of \&quot;0\&quot; (zero) will ignore the radius restriction.
     * @param distanceUnit Determines which unit of measurement gets returned for distances: {MILES, KILOMETERS}
     */
-  def getPreferredLocations(version: BigDecimal, accountId: Long, latitude: Option[Double], longitude: Option[Double], dateCheck: Option[Long], hourCheck: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], searchRange: Option[Double], distanceUnit: Option[String]): List[PreferredLocationResponse]
+  def getPreferredLocations(accountId: Long, latitude: Option[Double], longitude: Option[Double], dateCheck: Option[Long], hourCheck: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], searchRange: Option[Double], distanceUnit: Option[String]): List[PreferredLocationResponse]
 
   /**
     * Search Tracking
@@ -78,7 +77,7 @@ trait TrackingApi {
     * @param tags filter results by tag
     * @param getLastPoint gets the last known location of the user
     */
-  def getTrackingLegs(version: BigDecimal, deviceId: Option[String], accountId: Option[Long], ownerId: Option[Long], trackingDeviceId: Option[String], startDate: Option[Long], endDate: Option[Long], tags: Option[String], getLastPoint: Option[Boolean]): List[LegResponse]
+  def getTrackingLegs(deviceId: Option[String], accountId: Option[Long], ownerId: Option[Long], trackingDeviceId: Option[String], startDate: Option[Long], endDate: Option[Long], tags: Option[String], getLastPoint: Option[Boolean]): List[LegResponse]
 
   /**
     * Create Tracking Leg
@@ -96,7 +95,7 @@ trait TrackingApi {
     * @param steps JSON array of tracking vectors used for smoother pathing data. If null then the leg data will be used to generate a single step, if an empty array then no steps will be generated. &#x60;&#x60;&#x60;json [{   \&quot;distance\&quot;: \&quot;0.03\&quot;,   \&quot;duration\&quot;: \&quot;5000\&quot;,   \&quot;startLat\&quot;: \&quot;47.614603\&quot;,   \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endLat\&quot;: \&quot;47.614941\&quot;,   \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,   \&quot;endDate\&quot;: \&quot;1361924015000\&quot; }] &#x60;&#x60;&#x60; 
     * @param tags name the leg for searching
     */
-  def saveTrackingLeg(version: BigDecimal, startLat: Double, startLng: Double, startDate: Long, endLat: Double, endLng: Double, endDate: Long, deviceId: Option[String], accountId: Option[Long], distance: Option[Double], duration: Option[Long], steps: Option[String], tags: Option[String]): SirqulResponse
+  def saveTrackingLeg(startLat: Double, startLng: Double, startDate: Long, endLat: Double, endLng: Double, endDate: Long, deviceId: Option[String], accountId: Option[Long], distance: Option[Double], duration: Option[Long], steps: Option[String], tags: Option[String]): SirqulResponse
 
   /**
     * Create Tracking Step
@@ -113,7 +112,7 @@ trait TrackingApi {
     * @param distance the total distance
     * @param duration the total duration
     */
-  def saveTrackingStep(version: BigDecimal, legId: Long, startLat: Double, startLng: Double, startDate: Long, endLat: Double, endLng: Double, endDate: Long, deviceId: Option[String], accountId: Option[Long], distance: Option[Double], duration: Option[Long]): SirqulResponse
+  def saveTrackingStep(legId: Long, startLat: Double, startLng: Double, startDate: Long, endLat: Double, endLng: Double, endDate: Long, deviceId: Option[String], accountId: Option[Long], distance: Option[Double], duration: Option[Long]): SirqulResponse
 
   /**
     * List Tracking
@@ -133,7 +132,7 @@ trait TrackingApi {
     * @param limit The total number of records to return. Default is 20.
     * @param activeOnly Determines whether to return only active results. Default is false.
     */
-  def searchAccountsWithTrackingLegs(version: BigDecimal, accountId: Long, keyword: Option[String], startDate: Option[Long], endDate: Option[Long], tags: Option[String], audienceIds: Option[String], latitude: Option[Double], longitude: Option[Double], range: Option[Double], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[AccountMiniResponse]
+  def searchAccountsWithTrackingLegs(accountId: Long, keyword: Option[String], startDate: Option[Long], endDate: Option[Long], tags: Option[String], audienceIds: Option[String], latitude: Option[Double], longitude: Option[Double], range: Option[Double], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int], activeOnly: Option[Boolean]): List[AccountMiniResponse]
 
   /**
     * Search Tracking (Billable)
@@ -147,5 +146,5 @@ trait TrackingApi {
     * @param start The start index for pagination
     * @param limit The limit for pagination
     */
-  def searchTrackingLegs(version: BigDecimal, accountId: Long, appKey: String, trackingDeviceId: Option[String], startDate: Option[Long], endDate: Option[Long], tags: Option[String], start: Option[Int], limit: Option[Int]): List[LegResponse]
+  def searchTrackingLegs(accountId: Long, appKey: String, trackingDeviceId: Option[String], startDate: Option[Long], endDate: Option[Long], tags: Option[String], start: Option[Int], limit: Option[Int]): List[LegResponse]
 }

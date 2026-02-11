@@ -4,7 +4,6 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.BlockedNotificationResponse
 import model.NotificationMessageListResponse
 import model.NotificationRecipientResponse
@@ -12,13 +11,13 @@ import model.NotificationRecipientResponseListResponse
 import model.NotificationTemplateResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class NotificationApiController @Inject()(cc: ControllerComponents, api: NotificationApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/notification/template/create?accountId=[value]&appKey=[value]&event=[value]&conduit=[value]&title=[value]&body=[value]&tags=[value]
+    * POST /api/3.18/notification/template/create?accountId=[value]&appKey=[value]&event=[value]&conduit=[value]&title=[value]&body=[value]&tags=[value]
     */
-  def createNotificationTemplate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createNotificationTemplate(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationTemplateResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -47,7 +46,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
         
       val tags = request.getQueryString("tags")
         
-      api.createNotificationTemplate(version, accountId, conduit, title, body, appKey, event, tags)
+      api.createNotificationTemplate(accountId, conduit, title, body, appKey, event, tags)
     }
 
     val result = executeApi()
@@ -56,9 +55,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * POST /api/:version/notification/blocked/batch?accountId=[value]&appKey=[value]&data=[value]
+    * POST /api/3.18/notification/blocked/batch?accountId=[value]&appKey=[value]&data=[value]
     */
-  def createOrUpdateBlockedNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOrUpdateBlockedNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): BlockedNotificationResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -73,7 +72,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
           throw new OpenApiExceptions.MissingRequiredParameterException("data", "query string")
         }
         
-      api.createOrUpdateBlockedNotifications(version, appKey, data, accountId)
+      api.createOrUpdateBlockedNotifications(appKey, data, accountId)
     }
 
     val result = executeApi()
@@ -82,9 +81,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * POST /api/:version/notification/template/delete?accountId=[value]&notificationTemplateId=[value]
+    * POST /api/3.18/notification/template/delete?accountId=[value]&notificationTemplateId=[value]
     */
-  def deleteNotificationTemplate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteNotificationTemplate(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationTemplateResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -98,7 +97,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
           throw new OpenApiExceptions.MissingRequiredParameterException("notificationTemplateId", "query string")
         }
         
-      api.deleteNotificationTemplate(version, accountId, notificationTemplateId)
+      api.deleteNotificationTemplate(accountId, notificationTemplateId)
     }
 
     val result = executeApi()
@@ -107,9 +106,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * GET /api/:version/notification/template/get?accountId=[value]&notificationTemplateId=[value]
+    * GET /api/3.18/notification/template/get?accountId=[value]&notificationTemplateId=[value]
     */
-  def getNotificationTemplate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getNotificationTemplate(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationTemplateResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -123,7 +122,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
           throw new OpenApiExceptions.MissingRequiredParameterException("notificationTemplateId", "query string")
         }
         
-      api.getNotificationTemplate(version, accountId, notificationTemplateId)
+      api.getNotificationTemplate(accountId, notificationTemplateId)
     }
 
     val result = executeApi()
@@ -132,9 +131,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * GET /api/:version/notification/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&appKey=[value]&eventType=[value]&contentIds=[value]&contentTypes=[value]&parentIds=[value]&parentTypes=[value]&actionCategory=[value]&conduits=[value]&keyword=[value]&returnReadMessages=[value]&markAsRead=[value]&fromDate=[value]&latitude=[value]&longitude=[value]&returnSent=[value]&ignoreFlagged=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/notification/search?deviceId=[value]&accountId=[value]&connectionAccountId=[value]&appKey=[value]&eventType=[value]&contentIds=[value]&contentTypes=[value]&parentIds=[value]&parentTypes=[value]&actionCategory=[value]&conduits=[value]&keyword=[value]&returnReadMessages=[value]&markAsRead=[value]&fromDate=[value]&latitude=[value]&longitude=[value]&returnSent=[value]&ignoreFlagged=[value]&start=[value]&limit=[value]
     */
-  def getNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationMessageListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -189,7 +188,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.getNotifications(version, deviceId, accountId, connectionAccountId, appKey, eventType, contentIds, contentTypes, parentIds, parentTypes, actionCategory, conduits, keyword, returnReadMessages, markAsRead, fromDate, latitude, longitude, returnSent, ignoreFlagged, start, limit)
+      api.getNotifications(deviceId, accountId, connectionAccountId, appKey, eventType, contentIds, contentTypes, parentIds, parentTypes, actionCategory, conduits, keyword, returnReadMessages, markAsRead, fromDate, latitude, longitude, returnSent, ignoreFlagged, start, limit)
     }
 
     val result = executeApi()
@@ -198,9 +197,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * POST /api/:version/notification/token?deviceId=[value]&accountId=[value]&token=[value]&pushType=[value]&environment=[value]&appKey=[value]&gameType=[value]&active=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/notification/token?deviceId=[value]&accountId=[value]&token=[value]&pushType=[value]&environment=[value]&appKey=[value]&gameType=[value]&active=[value]&latitude=[value]&longitude=[value]
     */
-  def registerNotificationToken(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def registerNotificationToken(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -232,7 +231,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.registerNotificationToken(version, token, pushType, deviceId, accountId, environment, appKey, gameType, active, latitude, longitude)
+      api.registerNotificationToken(token, pushType, deviceId, accountId, environment, appKey, gameType, active, latitude, longitude)
     }
 
     val result = executeApi()
@@ -241,9 +240,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * GET /api/:version/notification/blocked/search?accountId=[value]&appKey=[value]&searchTags=[value]&events=[value]&conduits=[value]&customTypes=[value]&contentTypes=[value]&contentIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/notification/blocked/search?accountId=[value]&appKey=[value]&searchTags=[value]&events=[value]&conduits=[value]&customTypes=[value]&contentTypes=[value]&contentIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchBlockedNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchBlockedNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): BlockedNotificationResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -276,7 +275,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchBlockedNotifications(version, appKey, accountId, searchTags, events, conduits, customTypes, contentTypes, contentIds, sortField, descending, start, limit)
+      api.searchBlockedNotifications(appKey, accountId, searchTags, events, conduits, customTypes, contentTypes, contentIds, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -285,9 +284,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * GET /api/:version/notification/template/search?accountId=[value]&appKey=[value]&event=[value]&conduit=[value]&globalOnly=[value]&reservedOnly=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/notification/template/search?accountId=[value]&appKey=[value]&event=[value]&conduit=[value]&globalOnly=[value]&reservedOnly=[value]&keyword=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchNotificationTemplate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchNotificationTemplate(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationTemplateResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -332,7 +331,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
           throw new OpenApiExceptions.MissingRequiredParameterException("limit", "query string")
         }
         
-      api.searchNotificationTemplate(version, accountId, sortField, descending, start, limit, appKey, event, conduit, globalOnly, reservedOnly, keyword)
+      api.searchNotificationTemplate(accountId, sortField, descending, start, limit, appKey, event, conduit, globalOnly, reservedOnly, keyword)
     }
 
     val result = executeApi()
@@ -341,9 +340,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * GET /api/:version/notification/recipient/search?deviceId=[value]&accountId=[value]&appKey=[value]&conduit=[value]&keyword=[value]&audienceId=[value]&audienceIds=[value]&connectionGroupIds=[value]&recipientAccountIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/notification/recipient/search?deviceId=[value]&accountId=[value]&appKey=[value]&conduit=[value]&keyword=[value]&audienceId=[value]&audienceIds=[value]&connectionGroupIds=[value]&recipientAccountIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchRecipients(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRecipients(): Action[AnyContent] = Action { request =>
     def executeApi(): List[NotificationRecipientResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -379,7 +378,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchRecipients(version, sortField, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, recipientAccountIds, descending, start, limit)
+      api.searchRecipients(sortField, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, recipientAccountIds, descending, start, limit)
     }
 
     val result = executeApi()
@@ -388,9 +387,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * GET /api/:version/notification/recipient/search/count?deviceId=[value]&accountId=[value]&appKey=[value]&conduit=[value]&keyword=[value]&audienceId=[value]&audienceIds=[value]&connectionGroupIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/notification/recipient/search/count?deviceId=[value]&accountId=[value]&appKey=[value]&conduit=[value]&keyword=[value]&audienceId=[value]&audienceIds=[value]&connectionGroupIds=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchRecipientsCount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchRecipientsCount(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationRecipientResponseListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -421,7 +420,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchRecipientsCount(version, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, sortField, descending, start, limit)
+      api.searchRecipientsCount(deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -430,9 +429,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * POST /api/:version/notification/batch?accountId=[value]&appKey=[value]&conduit=[value]&customMessage=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]
+    * POST /api/3.18/notification/batch?accountId=[value]&appKey=[value]&conduit=[value]&customMessage=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]
     */
-  def sendBatchNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def sendBatchNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -464,7 +463,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
         
       val parentType = request.getQueryString("parentType")
         
-      api.sendBatchNotifications(version, accountId, appKey, customMessage, conduit, contentId, contentName, contentType, parentId, parentType)
+      api.sendBatchNotifications(accountId, appKey, customMessage, conduit, contentId, contentName, contentType, parentId, parentType)
     }
 
     val result = executeApi()
@@ -473,9 +472,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * POST /api/:version/notification/custom?deviceId=[value]&accountId=[value]&receiverAccountIds=[value]&includeFriendGroup=[value]&appKey=[value]&gameType=[value]&conduit=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]&actionCategory=[value]&subject=[value]&customMessage=[value]&friendOnlyAPNS=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/notification/custom?deviceId=[value]&accountId=[value]&receiverAccountIds=[value]&includeFriendGroup=[value]&appKey=[value]&gameType=[value]&conduit=[value]&contentId=[value]&contentName=[value]&contentType=[value]&parentId=[value]&parentType=[value]&actionCategory=[value]&subject=[value]&customMessage=[value]&friendOnlyAPNS=[value]&latitude=[value]&longitude=[value]
     */
-  def sendCustomNotifications(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def sendCustomNotifications(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -520,7 +519,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.sendCustomNotifications(version, deviceId, accountId, receiverAccountIds, includeFriendGroup, appKey, gameType, conduit, contentId, contentName, contentType, parentId, parentType, actionCategory, subject, customMessage, friendOnlyAPNS, latitude, longitude)
+      api.sendCustomNotifications(deviceId, accountId, receiverAccountIds, includeFriendGroup, appKey, gameType, conduit, contentId, contentName, contentType, parentId, parentType, actionCategory, subject, customMessage, friendOnlyAPNS, latitude, longitude)
     }
 
     val result = executeApi()
@@ -529,9 +528,9 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
   }
 
   /**
-    * POST /api/:version/notification/template/update?accountId=[value]&notificationTemplateId=[value]&title=[value]&body=[value]&tags=[value]
+    * POST /api/3.18/notification/template/update?accountId=[value]&notificationTemplateId=[value]&title=[value]&body=[value]&tags=[value]
     */
-  def updateNotificationTemplate(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateNotificationTemplate(): Action[AnyContent] = Action { request =>
     def executeApi(): NotificationTemplateResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -551,7 +550,7 @@ class NotificationApiController @Inject()(cc: ControllerComponents, api: Notific
         
       val tags = request.getQueryString("tags")
         
-      api.updateNotificationTemplate(version, accountId, notificationTemplateId, title, body, tags)
+      api.updateNotificationTemplate(accountId, notificationTemplateId, title, body, tags)
     }
 
     val result = executeApi()

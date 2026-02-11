@@ -4,7 +4,6 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.CountResponse
 import model.ProfileResponse
 import model.SirqulResponse
@@ -12,13 +11,13 @@ import play.api.libs.Files.TemporaryFile
 import model.TicketListResponse
 import model.TicketOfferResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) extends AbstractController(cc) {
   /**
-    * GET /api/:version/ticket/count?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&ticketType=[value]
+    * GET /api/3.18/ticket/count?deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&ticketType=[value]
     */
-  def getTicketCount(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTicketCount(): Action[AnyContent] = Action { request =>
     def executeApi(): CountResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -31,7 +30,7 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
         
       val ticketType = request.getQueryString("ticketType")
         
-      api.getTicketCount(version, deviceId, accountId, gameType, appKey, ticketType)
+      api.getTicketCount(deviceId, accountId, gameType, appKey, ticketType)
     }
 
     val result = executeApi()
@@ -40,9 +39,9 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
   }
 
   /**
-    * GET /api/:version/ticket/getList?deviceId=[value]&accountId=[value]&ticketObjectType=[value]&actionType=[value]&ticketIds=[value]&objectIds=[value]&receiptTokens=[value]&gameType=[value]&appKey=[value]
+    * GET /api/3.18/ticket/getList?deviceId=[value]&accountId=[value]&ticketObjectType=[value]&actionType=[value]&ticketIds=[value]&objectIds=[value]&receiptTokens=[value]&gameType=[value]&appKey=[value]
     */
-  def getTicketList(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getTicketList(): Action[AnyContent] = Action { request =>
     def executeApi(): TicketListResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -63,7 +62,7 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
         
       val appKey = request.getQueryString("appKey")
         
-      api.getTicketList(version, deviceId, accountId, ticketObjectType, actionType, ticketIds, objectIds, receiptTokens, gameType, appKey)
+      api.getTicketList(deviceId, accountId, ticketObjectType, actionType, ticketIds, objectIds, receiptTokens, gameType, appKey)
     }
 
     val result = executeApi()
@@ -72,9 +71,9 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
   }
 
   /**
-    * POST /api/:version/purchase/gift?deviceId=[value]&accountId=[value]&receiverAccountId=[value]&ticketId=[value]&assetId=[value]&customMessage=[value]&gameType=[value]&appKey=[value]
+    * POST /api/3.18/purchase/gift?deviceId=[value]&accountId=[value]&receiverAccountId=[value]&ticketId=[value]&assetId=[value]&customMessage=[value]&gameType=[value]&appKey=[value]
     */
-  def giftPurchase(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def giftPurchase(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -102,7 +101,7 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
         
       val appKey = request.getQueryString("appKey")
         
-      api.giftPurchase(version, receiverAccountId, ticketId, deviceId, accountId, assetId, customMessage, gameType, appKey)
+      api.giftPurchase(receiverAccountId, ticketId, deviceId, accountId, assetId, customMessage, gameType, appKey)
     }
 
     val result = executeApi()
@@ -111,9 +110,9 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
   }
 
   /**
-    * POST /api/:version/ticket/save?returnNulls=[value]&deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&actionType=[value]&ticketObjectType=[value]&objectId=[value]&purchaseCode=[value]&receiptToken=[value]&receiptData=[value]&count=[value]&ticketType=[value]&purchaseProvider=[value]&purchaseType=[value]&returnProfileResponse=[value]&includeProfileResponse=[value]&appVersion=[value]
+    * POST /api/3.18/ticket/save?returnNulls=[value]&deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&actionType=[value]&ticketObjectType=[value]&objectId=[value]&purchaseCode=[value]&receiptToken=[value]&receiptData=[value]&count=[value]&ticketType=[value]&purchaseProvider=[value]&purchaseType=[value]&returnProfileResponse=[value]&includeProfileResponse=[value]&appVersion=[value]
     */
-  def saveTicket(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def saveTicket(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -163,7 +162,7 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
         
       val appVersion = request.getQueryString("appVersion")
         
-      api.saveTicket(version, actionType, ticketObjectType, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, receiptData, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion)
+      api.saveTicket(actionType, ticketObjectType, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, receiptData, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion)
     }
 
     val result = executeApi()
@@ -172,9 +171,9 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
   }
 
   /**
-    * POST /api/:version/ticket/save/fileUpload?returnNulls=[value]&deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&actionType=[value]&ticketObjectType=[value]&objectId=[value]&purchaseCode=[value]&receiptToken=[value]&receiptData=[value]&count=[value]&ticketType=[value]&purchaseProvider=[value]&purchaseType=[value]&returnProfileResponse=[value]&includeProfileResponse=[value]&appVersion=[value]
+    * POST /api/3.18/ticket/save/fileUpload?returnNulls=[value]&deviceId=[value]&accountId=[value]&gameType=[value]&appKey=[value]&actionType=[value]&ticketObjectType=[value]&objectId=[value]&purchaseCode=[value]&receiptToken=[value]&receiptData=[value]&count=[value]&ticketType=[value]&purchaseProvider=[value]&purchaseType=[value]&returnProfileResponse=[value]&includeProfileResponse=[value]&appVersion=[value]
     */
-  def saveTicketViaFileUpload(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def saveTicketViaFileUpload(): Action[AnyContent] = Action { request =>
     def executeApi(): ProfileResponse = {
       val returnNulls = request.getQueryString("returnNulls")
         .map(value => value.toBoolean)
@@ -227,7 +226,7 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
         
       val appVersion = request.getQueryString("appVersion")
         
-      api.saveTicketViaFileUpload(version, actionType, ticketObjectType, receiptData, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion)
+      api.saveTicketViaFileUpload(actionType, ticketObjectType, receiptData, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion)
     }
 
     val result = executeApi()
@@ -236,11 +235,11 @@ class TicketApiController @Inject()(cc: ControllerComponents, api: TicketApi) ex
   }
 
   /**
-    * GET /api/:version/ticket/ticketoffers
+    * GET /api/3.18/ticket/ticketoffers
     */
-  def ticketOffers(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def ticketOffers(): Action[AnyContent] = Action { request =>
     def executeApi(): TicketOfferResponse = {
-      api.ticketOffers(version)
+      api.ticketOffers()
     }
 
     val result = executeApi()

@@ -4,19 +4,18 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.EventAttendanceResponse
 import model.OfferResponse
 import model.OfferShortResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/event/attend?deviceId=[value]&accountId=[value]&appKey=[value]&listingId=[value]&retailerLocationId=[value]&offerLocationId=[value]&transactionId=[value]&status=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/event/attend?deviceId=[value]&accountId=[value]&appKey=[value]&listingId=[value]&retailerLocationId=[value]&offerLocationId=[value]&transactionId=[value]&status=[value]&latitude=[value]&longitude=[value]
     */
-  def attendEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def attendEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -46,7 +45,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.attendEvent(version, deviceId, accountId, appKey, listingId, retailerLocationId, offerLocationId, transactionId, status, latitude, longitude)
+      api.attendEvent(deviceId, accountId, appKey, listingId, retailerLocationId, offerLocationId, transactionId, status, latitude, longitude)
     }
 
     val result = executeApi()
@@ -55,9 +54,9 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
   }
 
   /**
-    * POST /api/:version/event/create?accountId=[value]&retailerLocationIds=[value]&title=[value]&subTitle=[value]&details=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&imageAssetId=[value]&redeemableStart=[value]&redeemableEnd=[value]&metaData=[value]
+    * POST /api/3.18/event/create?accountId=[value]&retailerLocationIds=[value]&title=[value]&subTitle=[value]&details=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&imageAssetId=[value]&redeemableStart=[value]&redeemableEnd=[value]&metaData=[value]
     */
-  def createEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -94,7 +93,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
         
       val metaData = request.getQueryString("metaData")
         
-      api.createEvent(version, accountId, title, retailerLocationIds, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, metaData)
+      api.createEvent(accountId, title, retailerLocationIds, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, metaData)
     }
 
     val result = executeApi()
@@ -103,9 +102,9 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
   }
 
   /**
-    * POST /api/:version/event/delete?accountId=[value]&eventId=[value]
+    * POST /api/3.18/event/delete?accountId=[value]&eventId=[value]
     */
-  def deleteEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -119,7 +118,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("eventId", "query string")
         }
         
-      api.deleteEvent(version, accountId, eventId)
+      api.deleteEvent(accountId, eventId)
     }
 
     val result = executeApi()
@@ -128,9 +127,9 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
   }
 
   /**
-    * GET /api/:version/event/get?accountId=[value]&eventId=[value]
+    * GET /api/3.18/event/get?accountId=[value]&eventId=[value]
     */
-  def getEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -144,7 +143,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
           throw new OpenApiExceptions.MissingRequiredParameterException("eventId", "query string")
         }
         
-      api.getEvent(version, accountId, eventId)
+      api.getEvent(accountId, eventId)
     }
 
     val result = executeApi()
@@ -153,9 +152,9 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
   }
 
   /**
-    * GET /api/:version/event/attendance/search?deviceId=[value]&accountId=[value]&appKey=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&excludeRetailerLocationId=[value]&listingId=[value]&offerId=[value]&offerLocationId=[value]&customerAccountIds=[value]&affiliatedCategoryIds=[value]&startDate=[value]&endDate=[value]&statuses=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/event/attendance/search?deviceId=[value]&accountId=[value]&appKey=[value]&keyword=[value]&retailerId=[value]&retailerLocationId=[value]&excludeRetailerLocationId=[value]&listingId=[value]&offerId=[value]&offerLocationId=[value]&customerAccountIds=[value]&affiliatedCategoryIds=[value]&startDate=[value]&endDate=[value]&statuses=[value]&sortField=[value]&descending=[value]&start=[value]&limit=[value]
     */
-  def searchEventTransactions(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchEventTransactions(): Action[AnyContent] = Action { request =>
     def executeApi(): List[EventAttendanceResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -207,7 +206,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchEventTransactions(version, deviceId, accountId, appKey, keyword, retailerId, retailerLocationId, excludeRetailerLocationId, listingId, offerId, offerLocationId, customerAccountIds, affiliatedCategoryIds, startDate, endDate, statuses, sortField, descending, start, limit)
+      api.searchEventTransactions(deviceId, accountId, appKey, keyword, retailerId, retailerLocationId, excludeRetailerLocationId, listingId, offerId, offerLocationId, customerAccountIds, affiliatedCategoryIds, startDate, endDate, statuses, sortField, descending, start, limit)
     }
 
     val result = executeApi()
@@ -216,9 +215,9 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
   }
 
   /**
-    * GET /api/:version/event/search?accountId=[value]&keyword=[value]&activeOnly=[value]&categoryIds=[value]&filterIds=[value]&offerAudienceIds=[value]&transactionAudienceIds=[value]&sortField=[value]&descending=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
+    * GET /api/3.18/event/search?accountId=[value]&keyword=[value]&activeOnly=[value]&categoryIds=[value]&filterIds=[value]&offerAudienceIds=[value]&transactionAudienceIds=[value]&sortField=[value]&descending=[value]&startDate=[value]&endDate=[value]&start=[value]&limit=[value]
     */
-  def searchEvents(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchEvents(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OfferShortResponse] = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -256,7 +255,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.searchEvents(version, accountId, keyword, activeOnly, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, sortField, descending, startDate, endDate, start, limit)
+      api.searchEvents(accountId, keyword, activeOnly, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, sortField, descending, startDate, endDate, start, limit)
     }
 
     val result = executeApi()
@@ -265,9 +264,9 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
   }
 
   /**
-    * POST /api/:version/event/update?accountId=[value]&eventId=[value]&retailerLocationIds=[value]&title=[value]&subTitle=[value]&details=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&imageAssetId=[value]&redeemableStart=[value]&redeemableEnd=[value]
+    * POST /api/3.18/event/update?accountId=[value]&eventId=[value]&retailerLocationIds=[value]&title=[value]&subTitle=[value]&details=[value]&categoryIds=[value]&filterIds=[value]&active=[value]&imageAssetId=[value]&redeemableStart=[value]&redeemableEnd=[value]
     */
-  def updateEvent(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateEvent(): Action[AnyContent] = Action { request =>
     def executeApi(): OfferResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -305,7 +304,7 @@ class EventApiController @Inject()(cc: ControllerComponents, api: EventApi) exte
       val redeemableEnd = request.getQueryString("redeemableEnd")
         .map(value => value.toLong)
         
-      api.updateEvent(version, accountId, eventId, retailerLocationIds, title, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd)
+      api.updateEvent(accountId, eventId, retailerLocationIds, title, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd)
     }
 
     val result = executeApi()

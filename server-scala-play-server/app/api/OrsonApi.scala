@@ -1,7 +1,6 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.OrsonAiAddMovieResponse
 import model.OrsonAiBatchResponse
 import model.OrsonAiEmotionsResponse
@@ -15,7 +14,7 @@ import model.OrsonEpisodeResponse
 import model.OrsonRenderResponse
 import play.api.libs.Files.TemporaryFile
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait OrsonApi {
   /**
     * Add Movie
@@ -28,7 +27,7 @@ trait OrsonApi {
     * @param url A recording file to download and analyze (Size limit: 1GB)
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def addMovie(version: BigDecimal, accountId: Long, movieName: String, thirdPartyAccountId: Option[String], tags: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiAddMovieResponse
+  def addMovie(accountId: Long, movieName: String, thirdPartyAccountId: Option[String], tags: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiAddMovieResponse
 
   /**
     * Search Docs
@@ -39,7 +38,7 @@ trait OrsonApi {
     * @param limit Limit
     * @param offset Offset
     */
-  def aiDocs(version: BigDecimal, accountId: Long, doc: String, returnTopics: Option[Boolean], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse
+  def aiDocs(accountId: Long, doc: String, returnTopics: Option[Boolean], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse
 
   /**
     * Find images
@@ -50,7 +49,7 @@ trait OrsonApi {
     * @param fetchFlag Fetch Flag
     * @param size Size
     */
-  def aiFindImages(version: BigDecimal, accountId: Long, text: String, parseFlag: Option[String], fetchFlag: Option[String], size: Option[String]): OrsonAiProtoResponse
+  def aiFindImages(accountId: Long, text: String, parseFlag: Option[String], fetchFlag: Option[String], size: Option[String]): OrsonAiProtoResponse
 
   /**
     * Search Tags
@@ -61,7 +60,7 @@ trait OrsonApi {
     * @param limit Limit
     * @param offset Offset
     */
-  def aiTags(version: BigDecimal, accountId: Long, tags: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse
+  def aiTags(accountId: Long, tags: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse
 
   /**
     * Search Text
@@ -72,7 +71,7 @@ trait OrsonApi {
     * @param limit Limit
     * @param offset Offset
     */
-  def aiText(version: BigDecimal, accountId: Long, terms: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse
+  def aiText(accountId: Long, terms: String, conditional: Option[String], limit: Option[Int], offset: Option[Int]): OrsonAiProtoResponse
 
   /**
     * Batch Analysis
@@ -85,7 +84,7 @@ trait OrsonApi {
     * @param url A recording file to download and analyze (Size limit: 1GB)
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def batch(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], limit: Option[Int], operations: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiBatchResponse
+  def batch(accountId: Long, thirdPartyAccountId: Option[String], limit: Option[Int], operations: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiBatchResponse
 
   /**
     * Creates an instant episode
@@ -93,7 +92,7 @@ trait OrsonApi {
     * @param accountId Sirqul Account Id
     * @param data Request Data String
     */
-  def createInstantEpisode(version: BigDecimal, accountId: Long, data: String): OrsonEpisodeResponse
+  def createInstantEpisode(accountId: Long, data: String): OrsonEpisodeResponse
 
   /**
     * Create VoiceCanvas images
@@ -108,7 +107,7 @@ trait OrsonApi {
     * @param fetchFlag When true, fetches images instead of generating them
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def createVoiceCanvas(version: BigDecimal, accountId: Long, dimensions: String, thirdPartyAccountId: Option[String], text: Option[String], file: Option[TemporaryFile], url: Option[String], parseFlag: Option[Boolean], fetchFlag: Option[Boolean], callback: Option[String]): OrsonAiVoiceCanvasResponse
+  def createVoiceCanvas(accountId: Long, dimensions: String, thirdPartyAccountId: Option[String], text: Option[String], file: Option[TemporaryFile], url: Option[String], parseFlag: Option[Boolean], fetchFlag: Option[Boolean], callback: Option[String]): OrsonAiVoiceCanvasResponse
 
   /**
     * Detect emotions
@@ -119,7 +118,7 @@ trait OrsonApi {
     * @param url A recording file to download and analyze (Size limit: 1GB)
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def emotion(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiEmotionsResponse
+  def emotion(accountId: Long, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiEmotionsResponse
 
   /**
     * Get Add Movie Result
@@ -127,7 +126,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getAddMovieResult(version: BigDecimal, requestId: String, accountId: Long): OrsonAiAddMovieResponse
+  def getAddMovieResult(requestId: String, accountId: Long): OrsonAiAddMovieResponse
 
   /**
     * Get Batch Analysis Results
@@ -135,7 +134,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getBatch(version: BigDecimal, requestId: String, accountId: Long): OrsonAiBatchResponse
+  def getBatch(requestId: String, accountId: Long): OrsonAiBatchResponse
 
   /**
     * Get Emotion Results
@@ -143,7 +142,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getEmotion(version: BigDecimal, requestId: String, accountId: Long): OrsonAiEmotionsResponse
+  def getEmotion(requestId: String, accountId: Long): OrsonAiEmotionsResponse
 
   /**
     * Check episode status
@@ -151,7 +150,7 @@ trait OrsonApi {
     * @param episodeId Episode ID
     * @param accountId Sirqul Account Id
     */
-  def getEpisodeStatus(version: BigDecimal, episodeId: Long, accountId: Long): OrsonEpisodeResponse
+  def getEpisodeStatus(episodeId: Long, accountId: Long): OrsonEpisodeResponse
 
   /**
     * Check episode status
@@ -159,7 +158,7 @@ trait OrsonApi {
     * @param renderId Render ID
     * @param accountId Sirqul Account Id
     */
-  def getRenderStatus(version: BigDecimal, renderId: String, accountId: Long): OrsonRenderResponse
+  def getRenderStatus(renderId: String, accountId: Long): OrsonRenderResponse
 
   /**
     * Get Speach to Text Result
@@ -167,7 +166,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getSTT(version: BigDecimal, requestId: String, accountId: Long): OrsonAiSTTResponse
+  def getSTT(requestId: String, accountId: Long): OrsonAiSTTResponse
 
   /**
     * Get Text to Speach Result
@@ -175,7 +174,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getTTS(version: BigDecimal, requestId: String, accountId: Long): OrsonAiTTSResponse
+  def getTTS(requestId: String, accountId: Long): OrsonAiTTSResponse
 
   /**
     * Get TechTune Results
@@ -183,7 +182,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getTechTune(version: BigDecimal, requestId: String, accountId: Long): OrsonAiTechTuneResponse
+  def getTechTune(requestId: String, accountId: Long): OrsonAiTechTuneResponse
 
   /**
     * Get Topics
@@ -191,7 +190,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getTopics(version: BigDecimal, requestId: String, accountId: Long): OrsonAiTopicsResponse
+  def getTopics(requestId: String, accountId: Long): OrsonAiTopicsResponse
 
   /**
     * Get VoiceCanvas images
@@ -199,7 +198,7 @@ trait OrsonApi {
     * @param requestId Orson Request Id
     * @param accountId Sirqul Account Id
     */
-  def getVoiceCanvas(version: BigDecimal, requestId: String, accountId: Long): OrsonAiVoiceCanvasResponse
+  def getVoiceCanvas(requestId: String, accountId: Long): OrsonAiVoiceCanvasResponse
 
   /**
     * Starts a StoryStitch video render
@@ -207,7 +206,7 @@ trait OrsonApi {
     * @param accountId Sirqul Account Id
     * @param data Request Data String
     */
-  def startVideoRender(version: BigDecimal, accountId: Long, data: String): OrsonRenderResponse
+  def startVideoRender(accountId: Long, data: String): OrsonRenderResponse
 
   /**
     * Speach to Text
@@ -220,7 +219,7 @@ trait OrsonApi {
     * @param url A recording file to download and analyze (Size limit: 1GB)
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def stt(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], sourceLanguage: Option[String], targetLanguage: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiSTTResponse
+  def stt(accountId: Long, thirdPartyAccountId: Option[String], sourceLanguage: Option[String], targetLanguage: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiSTTResponse
 
   /**
     * Summarize Topics
@@ -234,7 +233,7 @@ trait OrsonApi {
     * @param offset The starting offset into the total result set to start from
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def summarizeTopics(version: BigDecimal, accountId: Long, thirdPartyAccountId: Option[String], doc: Option[String], file: Option[TemporaryFile], url: Option[String], limit: Option[Int], offset: Option[Int], callback: Option[String]): OrsonAiTopicsResponse
+  def summarizeTopics(accountId: Long, thirdPartyAccountId: Option[String], doc: Option[String], file: Option[TemporaryFile], url: Option[String], limit: Option[Int], offset: Option[Int], callback: Option[String]): OrsonAiTopicsResponse
 
   /**
     * Detect Technical Issues
@@ -246,7 +245,7 @@ trait OrsonApi {
     * @param url A recording file to download and analyze (Size limit: 1GB)
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def techTune(version: BigDecimal, accountId: Long, numFacesExpected: Int, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiTechTuneResponse
+  def techTune(accountId: Long, numFacesExpected: Int, thirdPartyAccountId: Option[String], file: Option[TemporaryFile], url: Option[String], callback: Option[String]): OrsonAiTechTuneResponse
 
   /**
     * Text to Speach
@@ -258,5 +257,5 @@ trait OrsonApi {
     * @param voice A language-specific voice to use, or picks the language default if not provided
     * @param callback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open
     */
-  def tts(version: BigDecimal, accountId: Long, text: String, thirdPartyAccountId: Option[String], language: Option[String], voice: Option[String], callback: Option[String]): OrsonAiTTSResponse
+  def tts(accountId: Long, text: String, thirdPartyAccountId: Option[String], language: Option[String], voice: Option[String], callback: Option[String]): OrsonAiTTSResponse
 }

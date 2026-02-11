@@ -4,18 +4,17 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.ConsumerInviteResponse
 import model.InviteResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/invite/accept?token=[value]&accountId=[value]&albumId=[value]&missionId=[value]&albumContestId=[value]&offerId=[value]&offerLocationId=[value]&retailerLocationId=[value]&appKey=[value]&autoFriend=[value]&autoAttendEvent=[value]&autoFavoriteOffer=[value]&autoFavoriteOfferLocation=[value]&autoFavoriteRetailerLocation=[value]
+    * POST /api/3.18/invite/accept?token=[value]&accountId=[value]&albumId=[value]&missionId=[value]&albumContestId=[value]&offerId=[value]&offerLocationId=[value]&retailerLocationId=[value]&appKey=[value]&autoFriend=[value]&autoAttendEvent=[value]&autoFavoriteOffer=[value]&autoFavoriteOfferLocation=[value]&autoFavoriteRetailerLocation=[value]
     */
-  def acceptInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def acceptInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): ConsumerInviteResponse = {
       val token = request.getQueryString("token")
         .getOrElse {
@@ -63,7 +62,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val autoFavoriteRetailerLocation = request.getQueryString("autoFavoriteRetailerLocation")
         .map(value => value.toBoolean)
         
-      api.acceptInvite(version, token, accountId, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, autoFriend, autoAttendEvent, autoFavoriteOffer, autoFavoriteOfferLocation, autoFavoriteRetailerLocation)
+      api.acceptInvite(token, accountId, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, autoFriend, autoAttendEvent, autoFavoriteOffer, autoFavoriteOfferLocation, autoFavoriteRetailerLocation)
     }
 
     val result = executeApi()
@@ -72,9 +71,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/albumContest?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&albumContestId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/invite/albumContest?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&albumContestId=[value]&latitude=[value]&longitude=[value]
     */
-  def albumContestInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def albumContestInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -95,7 +94,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.albumContestInvite(version, deviceId, accountId, appId, appKey, albumContestId, latitude, longitude)
+      api.albumContestInvite(deviceId, accountId, appId, appKey, albumContestId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -104,9 +103,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/album?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&albumId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/invite/album?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&albumId=[value]&latitude=[value]&longitude=[value]
     */
-  def albumInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def albumInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -127,7 +126,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.albumInvite(version, deviceId, accountId, appId, appKey, albumId, latitude, longitude)
+      api.albumInvite(deviceId, accountId, appId, appKey, albumId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -136,9 +135,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/event?accountId=[value]&receiverAccountIds=[value]&appKey=[value]&listingId=[value]&retailerLocationId=[value]
+    * POST /api/3.18/invite/event?accountId=[value]&receiverAccountIds=[value]&appKey=[value]&listingId=[value]&retailerLocationId=[value]
     */
-  def eventInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def eventInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -162,7 +161,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val retailerLocationId = request.getQueryString("retailerLocationId")
         .map(value => value.toLong)
         
-      api.eventInvite(version, accountId, appKey, listingId, receiverAccountIds, retailerLocationId)
+      api.eventInvite(accountId, appKey, listingId, receiverAccountIds, retailerLocationId)
     }
 
     val result = executeApi()
@@ -171,9 +170,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/gameLevel?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&gameLevelId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/invite/gameLevel?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&gameLevelId=[value]&latitude=[value]&longitude=[value]
     */
-  def gameInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def gameInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -194,7 +193,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.gameInvite(version, deviceId, accountId, appId, appKey, gameLevelId, latitude, longitude)
+      api.gameInvite(deviceId, accountId, appId, appKey, gameLevelId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -203,9 +202,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * GET /api/:version/invite/get?accountId=[value]&token=[value]&albumId=[value]&missionId=[value]&albumContestId=[value]&offerId=[value]&offerLocationId=[value]&retailerLocationId=[value]&appKey=[value]
+    * GET /api/3.18/invite/get?accountId=[value]&token=[value]&albumId=[value]&missionId=[value]&albumContestId=[value]&offerId=[value]&offerLocationId=[value]&retailerLocationId=[value]&appKey=[value]
     */
-  def getInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -232,7 +231,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
         
       val appKey = request.getQueryString("appKey")
         
-      api.getInvite(version, accountId, token, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey)
+      api.getInvite(accountId, token, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey)
     }
 
     val result = executeApi()
@@ -241,9 +240,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/mission?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&missionId=[value]&latitude=[value]&longitude=[value]
+    * POST /api/3.18/invite/mission?deviceId=[value]&accountId=[value]&appId=[value]&appKey=[value]&missionId=[value]&latitude=[value]&longitude=[value]
     */
-  def missionInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def missionInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -264,7 +263,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val longitude = request.getQueryString("longitude")
         .map(value => value.toDouble)
         
-      api.missionInvite(version, deviceId, accountId, appId, appKey, missionId, latitude, longitude)
+      api.missionInvite(deviceId, accountId, appId, appKey, missionId, latitude, longitude)
     }
 
     val result = executeApi()
@@ -273,9 +272,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/offer?accountId=[value]&appKey=[value]&offerId=[value]
+    * POST /api/3.18/invite/offer?accountId=[value]&appKey=[value]&offerId=[value]
     */
-  def offerInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def offerInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -294,7 +293,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
           throw new OpenApiExceptions.MissingRequiredParameterException("offerId", "query string")
         }
         
-      api.offerInvite(version, accountId, appKey, offerId)
+      api.offerInvite(accountId, appKey, offerId)
     }
 
     val result = executeApi()
@@ -303,9 +302,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/offerLocation?accountId=[value]&appKey=[value]&offerLocationId=[value]
+    * POST /api/3.18/invite/offerLocation?accountId=[value]&appKey=[value]&offerLocationId=[value]
     */
-  def offerLocationInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def offerLocationInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -324,7 +323,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
           throw new OpenApiExceptions.MissingRequiredParameterException("offerLocationId", "query string")
         }
         
-      api.offerLocationInvite(version, accountId, appKey, offerLocationId)
+      api.offerLocationInvite(accountId, appKey, offerLocationId)
     }
 
     val result = executeApi()
@@ -333,9 +332,9 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
   }
 
   /**
-    * POST /api/:version/invite/retailerLocation?accountId=[value]&appKey=[value]&retailerLocationId=[value]&albumId=[value]
+    * POST /api/3.18/invite/retailerLocation?accountId=[value]&appKey=[value]&retailerLocationId=[value]&albumId=[value]
     */
-  def retailerLocationInvite(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def retailerLocationInvite(): Action[AnyContent] = Action { request =>
     def executeApi(): InviteResponse = {
       val accountId = request.getQueryString("accountId")
         .map(value => value.toLong)
@@ -357,7 +356,7 @@ class InviteApiController @Inject()(cc: ControllerComponents, api: InviteApi) ex
       val albumId = request.getQueryString("albumId")
         .map(value => value.toLong)
         
-      api.retailerLocationInvite(version, accountId, appKey, retailerLocationId, albumId)
+      api.retailerLocationInvite(accountId, appKey, retailerLocationId, albumId)
     }
 
     val result = executeApi()

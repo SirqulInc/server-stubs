@@ -1,10 +1,9 @@
 package api
 
 import play.api.libs.json._
-import model.BigDecimal
 import model.PaymentTypesResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 trait BillingInfoApi {
   /**
     * Update Payment Method
@@ -33,7 +32,7 @@ trait BillingInfoApi {
     * @param providerPaymentProfileId Provider customer payment profile Id
     * @param metaData Meta Data
     */
-  def addPaymentMethod(version: BigDecimal, accountId: Long, paymentMethodId: Option[Long], accountName: Option[String], firstName: Option[String], lastName: Option[String], address: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], country: Option[String], phone: Option[String], creditCardNumber: Option[String], expirationDate: Option[String], ccv: Option[String], accountNumber: Option[String], bankName: Option[String], routingNumber: Option[String], defaultPaymentMethod: Option[Boolean], paymentMethodNickname: Option[String], taxId: Option[String], providerCustomerProfileId: Option[String], providerPaymentProfileId: Option[String], metaData: Option[String]): PaymentTypesResponse
+  def addPaymentMethod(accountId: Long, paymentMethodId: Option[Long], accountName: Option[String], firstName: Option[String], lastName: Option[String], address: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], country: Option[String], phone: Option[String], creditCardNumber: Option[String], expirationDate: Option[String], ccv: Option[String], accountNumber: Option[String], bankName: Option[String], routingNumber: Option[String], defaultPaymentMethod: Option[Boolean], paymentMethodNickname: Option[String], taxId: Option[String], providerCustomerProfileId: Option[String], providerPaymentProfileId: Option[String], metaData: Option[String]): PaymentTypesResponse
 
   /**
     * Create Payment Method
@@ -64,7 +63,7 @@ trait BillingInfoApi {
     * @param metaData Meta Data
     * @param appKey Application Key
     */
-  def createPaymentMethod(version: BigDecimal, accountId: Long, accountName: Option[String], firstName: Option[String], lastName: Option[String], address: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], country: Option[String], phone: Option[String], creditCardNumber: Option[String], expirationDate: Option[String], ccv: Option[String], accountNumber: Option[String], bankName: Option[String], routingNumber: Option[String], paymentMethodNickname: Option[String], taxId: Option[String], defaultPaymentMethod: Option[Boolean], authToken: Option[String], provider: Option[String], providerCustomerProfileId: Option[String], providerPaymentProfileId: Option[String], metaData: Option[String], appKey: Option[String]): PaymentTypesResponse
+  def createPaymentMethod(accountId: Long, accountName: Option[String], firstName: Option[String], lastName: Option[String], address: Option[String], city: Option[String], state: Option[String], postalCode: Option[String], country: Option[String], phone: Option[String], creditCardNumber: Option[String], expirationDate: Option[String], ccv: Option[String], accountNumber: Option[String], bankName: Option[String], routingNumber: Option[String], paymentMethodNickname: Option[String], taxId: Option[String], defaultPaymentMethod: Option[Boolean], authToken: Option[String], provider: Option[String], providerCustomerProfileId: Option[String], providerPaymentProfileId: Option[String], metaData: Option[String], appKey: Option[String]): PaymentTypesResponse
 
   /**
     * Create Smart Contract
@@ -74,7 +73,7 @@ trait BillingInfoApi {
     * @param tokenSymbol The token symbol
     * @param paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.
     */
-  def createSmartContract(version: BigDecimal, accountId: Long, tokenName: String, tokenSymbol: String, paymentMethodId: Option[Long]): PaymentTypesResponse
+  def createSmartContract(accountId: Long, tokenName: String, tokenSymbol: String, paymentMethodId: Option[Long]): PaymentTypesResponse
 
   /**
     * Get Crypto Balances
@@ -83,7 +82,7 @@ trait BillingInfoApi {
     * @param ownerAccountId The account to retreive balances for
     * @param paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.
     */
-  def getCryptoBalance(version: BigDecimal, accountId: Long, ownerAccountId: Option[Long], paymentMethodId: Option[Long]): PaymentTypesResponse
+  def getCryptoBalance(accountId: Long, ownerAccountId: Option[Long], paymentMethodId: Option[Long]): PaymentTypesResponse
 
   /**
     * Get Payment Method
@@ -92,7 +91,7 @@ trait BillingInfoApi {
     * @param paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.
     * @param getCurrentBalance Determines whether to get the user&#39;s current balance for the requested payment method option (not all payment method options support this)
     */
-  def getPaymentMethod(version: BigDecimal, accountId: Long, paymentMethodId: Option[Long], getCurrentBalance: Option[Boolean]): PaymentTypesResponse
+  def getPaymentMethod(accountId: Long, paymentMethodId: Option[Long], getCurrentBalance: Option[Boolean]): PaymentTypesResponse
 
   /**
     * Search Payment Methods
@@ -106,5 +105,5 @@ trait BillingInfoApi {
     * @param start the start of the search
     * @param limit the limit of the search
     */
-  def searchPaymentMethod(version: BigDecimal, accountId: Long, provider: Option[String], `type`: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): PaymentTypesResponse
+  def searchPaymentMethod(accountId: Long, provider: Option[String], `type`: Option[String], keyword: Option[String], sortField: Option[String], descending: Option[Boolean], start: Option[Int], limit: Option[Int]): PaymentTypesResponse
 }

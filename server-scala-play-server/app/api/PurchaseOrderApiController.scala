@@ -4,17 +4,16 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.BigDecimal
 import model.OrderResponse
 import model.SirqulResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-09T20:57:39.376804970Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-02-11T19:31:43.310890579Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 @Singleton
 class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: PurchaseOrderApi) extends AbstractController(cc) {
   /**
-    * POST /api/:version/order/create?deviceId=[value]&accountId=[value]&appKey=[value]&description=[value]&currencyType=[value]&cart=[value]&paymentMethodId=[value]&externalOrderId=[value]&externalPaymentId=[value]&remoteRefType=[value]&externalDate=[value]&promoCode=[value]
+    * POST /api/3.18/order/create?deviceId=[value]&accountId=[value]&appKey=[value]&description=[value]&currencyType=[value]&cart=[value]&paymentMethodId=[value]&externalOrderId=[value]&externalPaymentId=[value]&remoteRefType=[value]&externalDate=[value]&promoCode=[value]
     */
-  def createOrder(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def createOrder(): Action[AnyContent] = Action { request =>
     def executeApi(): OrderResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -49,7 +48,7 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
         
       val promoCode = request.getQueryString("promoCode")
         
-      api.createOrder(version, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode)
+      api.createOrder(appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode)
     }
 
     val result = executeApi()
@@ -58,9 +57,9 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
   }
 
   /**
-    * POST /api/:version/order/delete?deviceId=[value]&accountId=[value]&orderId=[value]
+    * POST /api/3.18/order/delete?deviceId=[value]&accountId=[value]&orderId=[value]
     */
-  def deleteOrder(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def deleteOrder(): Action[AnyContent] = Action { request =>
     def executeApi(): SirqulResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -73,7 +72,7 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
           throw new OpenApiExceptions.MissingRequiredParameterException("orderId", "query string")
         }
         
-      api.deleteOrder(version, orderId, deviceId, accountId)
+      api.deleteOrder(orderId, deviceId, accountId)
     }
 
     val result = executeApi()
@@ -82,9 +81,9 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
   }
 
   /**
-    * GET /api/:version/order/get?deviceId=[value]&accountId=[value]&orderId=[value]&externalOrderId=[value]
+    * GET /api/3.18/order/get?deviceId=[value]&accountId=[value]&orderId=[value]&externalOrderId=[value]
     */
-  def getOrder(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def getOrder(): Action[AnyContent] = Action { request =>
     def executeApi(): OrderResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -96,7 +95,7 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
         
       val externalOrderId = request.getQueryString("externalOrderId")
         
-      api.getOrder(version, deviceId, accountId, orderId, externalOrderId)
+      api.getOrder(deviceId, accountId, orderId, externalOrderId)
     }
 
     val result = executeApi()
@@ -105,9 +104,9 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
   }
 
   /**
-    * POST /api/:version/order/preview?deviceId=[value]&accountId=[value]&appKey=[value]&description=[value]&currencyType=[value]&cart=[value]&paymentMethodId=[value]&externalOrderId=[value]&externalPaymentId=[value]&remoteRefType=[value]&externalDate=[value]&promoCode=[value]
+    * POST /api/3.18/order/preview?deviceId=[value]&accountId=[value]&appKey=[value]&description=[value]&currencyType=[value]&cart=[value]&paymentMethodId=[value]&externalOrderId=[value]&externalPaymentId=[value]&remoteRefType=[value]&externalDate=[value]&promoCode=[value]
     */
-  def previewOrder(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def previewOrder(): Action[AnyContent] = Action { request =>
     def executeApi(): OrderResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -142,7 +141,7 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
         
       val promoCode = request.getQueryString("promoCode")
         
-      api.previewOrder(version, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode)
+      api.previewOrder(appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode)
     }
 
     val result = executeApi()
@@ -151,9 +150,9 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
   }
 
   /**
-    * GET /api/:version/order/search?deviceId=[value]&accountId=[value]&appKey=[value]&start=[value]&limit=[value]&descending=[value]&activeOnly=[value]&ignoreCustomerFilter=[value]&orderItemTypes=[value]&orderItemIds=[value]&orderCustomTypes=[value]&orderCustomIds=[value]&sortField=[value]&offerTypes=[value]&specialOfferTypes=[value]&categoryIds=[value]&filterIds=[value]&offerAudienceIds=[value]&transactionAudienceIds=[value]&offerIds=[value]&offerLocationIds=[value]&retailerIds=[value]&retailerLocationIds=[value]&statuses=[value]&keyword=[value]&redeemableStartDate=[value]&redeemableEndDate=[value]&startedSince=[value]&startedBefore=[value]&endedSince=[value]&endedBefore=[value]
+    * GET /api/3.18/order/search?deviceId=[value]&accountId=[value]&appKey=[value]&start=[value]&limit=[value]&descending=[value]&activeOnly=[value]&ignoreCustomerFilter=[value]&orderItemTypes=[value]&orderItemIds=[value]&orderCustomTypes=[value]&orderCustomIds=[value]&sortField=[value]&offerTypes=[value]&specialOfferTypes=[value]&categoryIds=[value]&filterIds=[value]&offerAudienceIds=[value]&transactionAudienceIds=[value]&offerIds=[value]&offerLocationIds=[value]&retailerIds=[value]&retailerLocationIds=[value]&statuses=[value]&keyword=[value]&redeemableStartDate=[value]&redeemableEndDate=[value]&startedSince=[value]&startedBefore=[value]&endedSince=[value]&endedBefore=[value]
     */
-  def searchOrders(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def searchOrders(): Action[AnyContent] = Action { request =>
     def executeApi(): List[OrderResponse] = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -232,7 +231,7 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
       val endedBefore = request.getQueryString("endedBefore")
         .map(value => value.toLong)
         
-      api.searchOrders(version, appKey, deviceId, accountId, start, limit, descending, activeOnly, ignoreCustomerFilter, orderItemTypes, orderItemIds, orderCustomTypes, orderCustomIds, sortField, offerTypes, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, offerIds, offerLocationIds, retailerIds, retailerLocationIds, statuses, keyword, redeemableStartDate, redeemableEndDate, startedSince, startedBefore, endedSince, endedBefore)
+      api.searchOrders(appKey, deviceId, accountId, start, limit, descending, activeOnly, ignoreCustomerFilter, orderItemTypes, orderItemIds, orderCustomTypes, orderCustomIds, sortField, offerTypes, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, offerIds, offerLocationIds, retailerIds, retailerLocationIds, statuses, keyword, redeemableStartDate, redeemableEndDate, startedSince, startedBefore, endedSince, endedBefore)
     }
 
     val result = executeApi()
@@ -241,9 +240,9 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
   }
 
   /**
-    * POST /api/:version/order/update?deviceId=[value]&accountId=[value]&orderId=[value]&paymentTransactionId=[value]&appKey=[value]&description=[value]&currencyType=[value]&cart=[value]&paymentMethodId=[value]&externalPaymentId=[value]&externalDate=[value]
+    * POST /api/3.18/order/update?deviceId=[value]&accountId=[value]&orderId=[value]&paymentTransactionId=[value]&appKey=[value]&description=[value]&currencyType=[value]&cart=[value]&paymentMethodId=[value]&externalPaymentId=[value]&externalDate=[value]
     */
-  def updateOrder(version: BigDecimal): Action[AnyContent] = Action { request =>
+  def updateOrder(): Action[AnyContent] = Action { request =>
     def executeApi(): OrderResponse = {
       val deviceId = request.getQueryString("deviceId")
         
@@ -281,7 +280,7 @@ class PurchaseOrderApiController @Inject()(cc: ControllerComponents, api: Purcha
       val externalDate = request.getQueryString("externalDate")
         .map(value => value.toLong)
         
-      api.updateOrder(version, orderId, appKey, cart, deviceId, accountId, paymentTransactionId, description, currencyType, paymentMethodId, externalPaymentId, externalDate)
+      api.updateOrder(orderId, appKey, cart, deviceId, accountId, paymentTransactionId, description, currencyType, paymentMethodId, externalPaymentId, externalDate)
     }
 
     val result = executeApi()
