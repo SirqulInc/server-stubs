@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_offer_transaction_status(request: web.Request, version, name, code, device_id=None, account_id=None, latitude=None, longitude=None, description=None, role=None, active=None, application_ids=None) -> web.Response:
+async def create_offer_transaction_status(request: web.Request, name, code, device_id=None, account_id=None, latitude=None, longitude=None, description=None, role=None, active=None, application_ids=None) -> web.Response:
     """Create Offer Status
 
     Create an offer status record
 
-    :param version: 
-    :type version: 
     :param name: The name of the status
     :type name: str
     :param code: The status code, must be unique 
@@ -38,13 +36,11 @@ async def create_offer_transaction_status(request: web.Request, version, name, c
     return web.Response(status=200)
 
 
-async def delete_offer_transaction_status(request: web.Request, version, status_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def delete_offer_transaction_status(request: web.Request, status_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Delete Offer Status
 
     Mark an offer status record as deleted
 
-    :param version: 
-    :type version: 
     :param status_id: The id of the record to delete
     :type status_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -60,13 +56,11 @@ async def delete_offer_transaction_status(request: web.Request, version, status_
     return web.Response(status=200)
 
 
-async def get_offer_transaction_status(request: web.Request, version, status_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def get_offer_transaction_status(request: web.Request, status_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Get Offer Status
 
     Get an offer status record
 
-    :param version: 
-    :type version: 
     :param status_id: The id of the record to get 
     :type status_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -82,13 +76,11 @@ async def get_offer_transaction_status(request: web.Request, version, status_id,
     return web.Response(status=200)
 
 
-async def search_offer_transaction_statuses(request: web.Request, version, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None, role=None, app_key=None, sort_field=None, descending=None, start=None, limit=None, include_inactive=None) -> web.Response:
+async def search_offer_transaction_statuses(request: web.Request, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None, role=None, app_key=None, sort_field=None, descending=None, start=None, limit=None, include_inactive=None) -> web.Response:
     """Search Offer Status
 
     Search for the available offer statuses
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -118,13 +110,11 @@ async def search_offer_transaction_statuses(request: web.Request, version, devic
     return web.Response(status=200)
 
 
-async def update_offer_transaction_status(request: web.Request, version, device_id=None, account_id=None, latitude=None, longitude=None, status_id=None, name=None, description=None, code=None, role=None, active=None, application_ids=None) -> web.Response:
+async def update_offer_transaction_status(request: web.Request, device_id=None, account_id=None, latitude=None, longitude=None, status_id=None, name=None, description=None, code=None, role=None, active=None, application_ids=None) -> web.Response:
     """Update Offer Status
 
     Update an offer status record
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)

@@ -5,13 +5,11 @@ from openapi_server.models.program import Program
 from openapi_server import util
 
 
-async def create_program(request: web.Request, version, body=None) -> web.Response:
+async def create_program(request: web.Request, body=None) -> web.Response:
     """Create Program
 
     Create a new program
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -20,13 +18,11 @@ async def create_program(request: web.Request, version, body=None) -> web.Respon
     return web.Response(status=200)
 
 
-async def delete_program(request: web.Request, version, id) -> web.Response:
+async def delete_program(request: web.Request, id) -> web.Response:
     """Delete Program
 
     Delete an existing program
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
 
@@ -34,13 +30,11 @@ async def delete_program(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def get_program(request: web.Request, version, id) -> web.Response:
+async def get_program(request: web.Request, id) -> web.Response:
     """Get Program
 
     Get an existing program
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
 
@@ -48,13 +42,11 @@ async def get_program(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def post_program(request: web.Request, version, id, body=None) -> web.Response:
+async def post_program(request: web.Request, id, body=None) -> web.Response:
     """Update Program
 
     Update an existing program
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
     :param body: 
@@ -65,13 +57,11 @@ async def post_program(request: web.Request, version, id, body=None) -> web.Resp
     return web.Response(status=200)
 
 
-async def put_program(request: web.Request, version, id, body=None) -> web.Response:
+async def put_program(request: web.Request, id, body=None) -> web.Response:
     """Update Program
 
     Update an existing program
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
     :param body: 
@@ -82,13 +72,11 @@ async def put_program(request: web.Request, version, id, body=None) -> web.Respo
     return web.Response(status=200)
 
 
-async def search_programs(request: web.Request, version, sort_field, descending, start, limit, active_only, keyword=None) -> web.Response:
+async def search_programs(request: web.Request, sort_field, descending, start, limit, active_only, keyword=None) -> web.Response:
     """Search Programs
 
     Search for programs
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order

@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_pack(request: web.Request, version, account_id, title, pack_order, price, highest, allocate_tickets, ticket_count, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price_type=None, game_level_ids=None, in_game=None, ticket_type=None, points=None) -> web.Response:
+async def create_pack(request: web.Request, account_id, title, pack_order, price, highest, allocate_tickets, ticket_count, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price_type=None, game_level_ids=None, in_game=None, ticket_type=None, points=None) -> web.Response:
     """Create Pack
 
     Create a pack.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param title: The title of the pack
@@ -66,13 +64,11 @@ async def create_pack(request: web.Request, version, account_id, title, pack_ord
     return web.Response(status=200)
 
 
-async def delete_pack(request: web.Request, version, account_id, pack_id) -> web.Response:
+async def delete_pack(request: web.Request, account_id, pack_id) -> web.Response:
     """Delete Pack
 
     Delete a pack.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param pack_id: the id of the pack to delete
@@ -82,13 +78,11 @@ async def delete_pack(request: web.Request, version, account_id, pack_id) -> web
     return web.Response(status=200)
 
 
-async def get_pack(request: web.Request, version, account_id, pack_id, include_game_data) -> web.Response:
+async def get_pack(request: web.Request, account_id, pack_id, include_game_data) -> web.Response:
     """Get Pack
 
     Get a pack.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param pack_id: The id of the pack to return.
@@ -100,13 +94,11 @@ async def get_pack(request: web.Request, version, account_id, pack_id, include_g
     return web.Response(status=200)
 
 
-async def search_packs(request: web.Request, version, account_id, sort_field, descending, keyword=None, pack_type=None, start=None, limit=None, include_game_data=None, include_inactive=None, app_key=None) -> web.Response:
+async def search_packs(request: web.Request, account_id, sort_field, descending, keyword=None, pack_type=None, start=None, limit=None, include_game_data=None, include_inactive=None, app_key=None) -> web.Response:
     """Search Packs
 
     Search on packs.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param sort_field: The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED
@@ -132,13 +124,11 @@ async def search_packs(request: web.Request, version, account_id, sort_field, de
     return web.Response(status=200)
 
 
-async def update_pack(request: web.Request, version, account_id, pack_id, allocate_tickets, ticket_count, title=None, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, pack_order=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price=None, price_type=None, game_level_ids=None, in_game=None, highest=None, ticket_type=None, points=None) -> web.Response:
+async def update_pack(request: web.Request, account_id, pack_id, allocate_tickets, ticket_count, title=None, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, pack_order=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price=None, price_type=None, game_level_ids=None, in_game=None, highest=None, ticket_type=None, points=None) -> web.Response:
     """Update Pack
 
     Update a pack.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param pack_id: The id of the pack to update.

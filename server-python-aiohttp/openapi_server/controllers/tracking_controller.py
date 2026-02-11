@@ -11,13 +11,11 @@ from openapi_server.models.step_response import StepResponse
 from openapi_server import util
 
 
-async def batch_save_tracking(request: web.Request, version, data, device_id=None, account_id=None, generate_accounts=None, update_account_locations=None, default_tag=None, slave_uid=None) -> web.Response:
+async def batch_save_tracking(request: web.Request, data, device_id=None, account_id=None, generate_accounts=None, update_account_locations=None, default_tag=None, slave_uid=None) -> web.Response:
     """Create Batch Tracking
 
     Batch create tracking legs
 
-    :param version: 
-    :type version: 
     :param data: JSON array of tracking legs &#x60;&#x60;&#x60;json [   \&quot;distance\&quot;: \&quot;0.08\&quot;,   \&quot;duration\&quot;: \&quot;10000\&quot;,   \&quot;startLatitude\&quot;: \&quot;47.614603\&quot;,   \&quot;startLongitude\&quot;: \&quot;-122.350518\&quot;,   \&quot;endLatitude\&quot;: \&quot;47.614384\&quot;,   \&quot;endLongitude\&quot;: \&quot;-122.349161\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endDate\&quot;: \&quot;1361924020000\&quot;,   \&quot;steps\&quot;: [     {       \&quot;distance\&quot;: \&quot;0.03\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614603\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,       \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614941\&quot;,       \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;endDate\&quot;: \&quot;1361924015000\&quot;     },{       \&quot;distance\&quot;: \&quot;0.05\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614941\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;startDate\&quot;: \&quot;1361924015000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614384\&quot;,       \&quot;endLng\&quot;: \&quot;-122.349161\&quot;,       \&quot;endDate\&quot;: \&quot;1361924020000\&quot;     }   ] ] &#x60;&#x60;&#x60; 
     :type data: str
     :param device_id: the device id (deviceId or accountId required)
@@ -37,13 +35,11 @@ async def batch_save_tracking(request: web.Request, version, data, device_id=Non
     return web.Response(status=200)
 
 
-async def get_predicted_locations(request: web.Request, version, account_id, latitude=None, longitude=None, date_check=None, hour_check=None, threshold=None, distance_unit=None, search_range=None, sort_order=None) -> web.Response:
+async def get_predicted_locations(request: web.Request, account_id, latitude=None, longitude=None, date_check=None, hour_check=None, threshold=None, distance_unit=None, search_range=None, sort_order=None) -> web.Response:
     """Get Predicted Locations
 
     Get the predicted location for a customer based on previous behavior.  If a customer resides in a place for a period of time this is marked as a preferred location.  We look back over the previous few days and the previous days of the week from the day specified.  If for instance the day was a Wednesday then this would check the days before, including: Tuesday, Monday, Sunday, etc. It will also check some number of previous Wednesdays in the past few weeks.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the customer
     :type account_id: int
     :param latitude: latitude to return a more likely result set based on the user&#39;s current location
@@ -67,13 +63,11 @@ async def get_predicted_locations(request: web.Request, version, account_id, lat
     return web.Response(status=200)
 
 
-async def get_predicted_path(request: web.Request, version, account_id, start_step_id, end_step_id) -> web.Response:
+async def get_predicted_path(request: web.Request, account_id, start_step_id, end_step_id) -> web.Response:
     """Get Tracking Path
 
     Get the path (lat/long coordinates) between 2 steps previously logged for a customer.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the customer
     :type account_id: int
     :param start_step_id: The stepId to begin from
@@ -85,13 +79,11 @@ async def get_predicted_path(request: web.Request, version, account_id, start_st
     return web.Response(status=200)
 
 
-async def get_preferred_locations(request: web.Request, version, account_id, latitude=None, longitude=None, date_check=None, hour_check=None, sort_field=None, descending=None, start=None, limit=None, search_range=None, distance_unit=None) -> web.Response:
+async def get_preferred_locations(request: web.Request, account_id, latitude=None, longitude=None, date_check=None, hour_check=None, sort_field=None, descending=None, start=None, limit=None, search_range=None, distance_unit=None) -> web.Response:
     """Search Preferred Locations
 
     Search on preferred locations for a user, which is created when a customer resides in a place for a period of time.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the customer
     :type account_id: int
     :param latitude: latitude to return a more likely result set based on the user&#39;s current location
@@ -119,13 +111,11 @@ async def get_preferred_locations(request: web.Request, version, account_id, lat
     return web.Response(status=200)
 
 
-async def get_tracking_legs(request: web.Request, version, device_id=None, account_id=None, owner_id=None, tracking_device_id=None, start_date=None, end_date=None, tags=None, get_last_point=None) -> web.Response:
+async def get_tracking_legs(request: web.Request, device_id=None, account_id=None, owner_id=None, tracking_device_id=None, start_date=None, end_date=None, tags=None, get_last_point=None) -> web.Response:
     """Search Tracking
 
     Retrieve tracking data to be able to show where a user has been.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -147,13 +137,11 @@ async def get_tracking_legs(request: web.Request, version, device_id=None, accou
     return web.Response(status=200)
 
 
-async def save_tracking_leg(request: web.Request, version, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id=None, account_id=None, distance=None, duration=None, steps=None, tags=None) -> web.Response:
+async def save_tracking_leg(request: web.Request, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id=None, account_id=None, distance=None, duration=None, steps=None, tags=None) -> web.Response:
     """Create Tracking Leg
 
     Send tracking points to be able to generate pathing data
 
-    :param version: 
-    :type version: 
     :param start_lat: the latitude of the first point
     :type start_lat: float
     :param start_lng: the longitude of the first point
@@ -183,13 +171,11 @@ async def save_tracking_leg(request: web.Request, version, start_lat, start_lng,
     return web.Response(status=200)
 
 
-async def save_tracking_step(request: web.Request, version, leg_id, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id=None, account_id=None, distance=None, duration=None) -> web.Response:
+async def save_tracking_step(request: web.Request, leg_id, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id=None, account_id=None, distance=None, duration=None) -> web.Response:
     """Create Tracking Step
 
     Send tracking points to be able to generate pathing data
 
-    :param version: 
-    :type version: 
     :param leg_id: the leg to add the step to
     :type leg_id: int
     :param start_lat: the latitude of the first point
@@ -217,13 +203,11 @@ async def save_tracking_step(request: web.Request, version, leg_id, start_lat, s
     return web.Response(status=200)
 
 
-async def search_accounts_with_tracking_legs(request: web.Request, version, account_id, keyword=None, start_date=None, end_date=None, tags=None, audience_ids=None, latitude=None, longitude=None, range=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_accounts_with_tracking_legs(request: web.Request, account_id, keyword=None, start_date=None, end_date=None, tags=None, audience_ids=None, latitude=None, longitude=None, range=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """List Tracking
 
     Search for all accounts that have tracking legs data by the given constraints.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: Used for LIKE search of first or last name on the acocunt
@@ -257,13 +241,11 @@ async def search_accounts_with_tracking_legs(request: web.Request, version, acco
     return web.Response(status=200)
 
 
-async def search_tracking_legs(request: web.Request, version, account_id, app_key, tracking_device_id=None, start_date=None, end_date=None, tags=None, start=None, limit=None) -> web.Response:
+async def search_tracking_legs(request: web.Request, account_id, app_key, tracking_device_id=None, start_date=None, end_date=None, tags=None, start=None, limit=None) -> web.Response:
     """Search Tracking (Billable)
 
     Retrieve tracking data for billable/account scoped queries.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id to search tracking for
     :type account_id: int
     :param app_key: The application key

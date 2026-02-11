@@ -6,13 +6,11 @@ from openapi_server.models.search_response import SearchResponse
 from openapi_server import util
 
 
-async def register_like(request: web.Request, version, likable_type, likable_id, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, like=None, app=None, game_type=None, app_key=None, latitude=None, longitude=None) -> web.Response:
+async def register_like(request: web.Request, likable_type, likable_id, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, like=None, app=None, game_type=None, app_key=None, latitude=None, longitude=None) -> web.Response:
     """Create Like
 
     Allows a user to like or dislike accounts, albums, album contests, assets, game levels, notes, and theme descriptors. Multiple likes\\dislikes on the same object will replace the previous one.
 
-    :param version: 
-    :type version: 
     :param likable_type: The type of likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
     :type likable_type: str
     :param likable_id: The id of the likable object
@@ -42,13 +40,11 @@ async def register_like(request: web.Request, version, likable_type, likable_id,
     return web.Response(status=200)
 
 
-async def remove_like(request: web.Request, version, likable_type, likable_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def remove_like(request: web.Request, likable_type, likable_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Delete Like
 
     Removes a like. This will make the user \&quot;neutral\&quot;.
 
-    :param version: 
-    :type version: 
     :param likable_type: The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
     :type likable_type: str
     :param likable_id: The id of the likable object
@@ -66,13 +62,11 @@ async def remove_like(request: web.Request, version, likable_type, likable_id, d
     return web.Response(status=200)
 
 
-async def search_likes(request: web.Request, version, likable_type, likable_id, device_id=None, account_id=None, connection_account_ids=None, sort_field=None, descending=None, updated_since=None, updated_before=None, start=None, limit=None) -> web.Response:
+async def search_likes(request: web.Request, likable_type, likable_id, device_id=None, account_id=None, connection_account_ids=None, sort_field=None, descending=None, updated_since=None, updated_before=None, start=None, limit=None) -> web.Response:
     """Search Likes
 
     Search for likes on a likable object.
 
-    :param version: 
-    :type version: 
     :param likable_type: The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
     :type likable_type: str
     :param likable_id: The id of the likable object

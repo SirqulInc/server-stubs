@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_scheduled_notification(request: web.Request, version, account_id, name, type, message, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None) -> web.Response:
+async def create_scheduled_notification(request: web.Request, account_id, name, type, message, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None) -> web.Response:
     """Create Scheduled Notification
 
     This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the scheduled notification
@@ -86,13 +84,11 @@ async def create_scheduled_notification(request: web.Request, version, account_i
     return web.Response(status=200)
 
 
-async def delete_scheduled_notification(request: web.Request, version, account_id, scheduled_notification_id, delete_by_grouping_id=None) -> web.Response:
+async def delete_scheduled_notification(request: web.Request, account_id, scheduled_notification_id, delete_by_grouping_id=None) -> web.Response:
     """Delete Scheduled Notification
 
     This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param scheduled_notification_id: the id of the scheduled notification to delete
@@ -104,13 +100,11 @@ async def delete_scheduled_notification(request: web.Request, version, account_i
     return web.Response(status=200)
 
 
-async def get_scheduled_notification(request: web.Request, version, account_id, scheduled_notification_id) -> web.Response:
+async def get_scheduled_notification(request: web.Request, account_id, scheduled_notification_id) -> web.Response:
     """Get Scheduled Notification
 
     Get a ScheduledNotification
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account logged in
     :type account_id: int
     :param scheduled_notification_id: the id of the scheduled notification to get
@@ -120,13 +114,11 @@ async def get_scheduled_notification(request: web.Request, version, account_id, 
     return web.Response(status=200)
 
 
-async def schedule_notification_listings(request: web.Request, version, account_id, app_key, report_name, message, offset, recipient_report_id, report_params=None, type=None) -> web.Response:
+async def schedule_notification_listings(request: web.Request, account_id, app_key, report_name, message, offset, recipient_report_id, report_params=None, type=None) -> web.Response:
     """Generate Schedule Notifications
 
     Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The application to target
@@ -148,13 +140,11 @@ async def schedule_notification_listings(request: web.Request, version, account_
     return web.Response(status=200)
 
 
-async def search_scheduled_notifications(request: web.Request, version, account_id, grouping_id=None, audience_id=None, filter=None, types=None, content_ids=None, content_types=None, parent_ids=None, parent_types=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None, group_by_grouping_id=None, return_audience_account_count=None) -> web.Response:
+async def search_scheduled_notifications(request: web.Request, account_id, grouping_id=None, audience_id=None, filter=None, types=None, content_ids=None, content_types=None, parent_ids=None, parent_types=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None, group_by_grouping_id=None, return_audience_account_count=None) -> web.Response:
     """Search Scheduled Notifications
 
     This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.  In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param grouping_id: Filter results by a grouping identifier defined by the client
@@ -200,13 +190,11 @@ async def search_scheduled_notifications(request: web.Request, version, account_
     return web.Response(status=200)
 
 
-async def update_scheduled_notification(request: web.Request, version, scheduled_notification_id, account_id, name=None, type=None, message=None, payload=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, error_message=None, status=None, update_by_grouping_id=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None) -> web.Response:
+async def update_scheduled_notification(request: web.Request, scheduled_notification_id, account_id, name=None, type=None, message=None, payload=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, error_message=None, status=None, update_by_grouping_id=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None) -> web.Response:
     """Update Scheduled Notification
 
     This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.  Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi.
 
-    :param version: 
-    :type version: 
     :param scheduled_notification_id: The id of scheduled notification to update
     :type scheduled_notification_id: int
     :param account_id: The logged in user.

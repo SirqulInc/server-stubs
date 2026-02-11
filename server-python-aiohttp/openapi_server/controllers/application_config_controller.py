@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_application_config(request: web.Request, version, account_id, app_key, config_version, asset_id, retailer_id=None, retailer_location_id=None, udid=None) -> web.Response:
+async def create_application_config(request: web.Request, account_id, app_key, config_version, asset_id, retailer_id=None, retailer_location_id=None, udid=None) -> web.Response:
     """Create AppConfig
 
     Creates a new application configuration. If the configVersion provided already exists for the given app, an invalid response is returned and the application configuration won&#39;t be created.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param app_key: The application key that the newly created applicationConfig will be associated to
@@ -32,13 +30,11 @@ async def create_application_config(request: web.Request, version, account_id, a
     return web.Response(status=200)
 
 
-async def delete_application_config(request: web.Request, version, account_id, config_id) -> web.Response:
+async def delete_application_config(request: web.Request, account_id, config_id) -> web.Response:
     """Delete AppConfig
 
     Mark the application configuration for deletion.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param config_id: The config ID of the application configuration to delete
@@ -48,13 +44,11 @@ async def delete_application_config(request: web.Request, version, account_id, c
     return web.Response(status=200)
 
 
-async def get_application_config(request: web.Request, version, account_id, config_id) -> web.Response:
+async def get_application_config(request: web.Request, account_id, config_id) -> web.Response:
     """Get AppConfig
 
     Gets the appConfig data by the given configId. If appConfig cannot be found, it returns an invalid response.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param config_id: The config ID of the application configuration
@@ -64,13 +58,11 @@ async def get_application_config(request: web.Request, version, account_id, conf
     return web.Response(status=200)
 
 
-async def get_application_config_by_config_version(request: web.Request, version, app_key, config_version, retailer_id=None, retailer_location_id=None, udid=None, allow_older_versions=None) -> web.Response:
+async def get_application_config_by_config_version(request: web.Request, app_key, config_version, retailer_id=None, retailer_location_id=None, udid=None, allow_older_versions=None) -> web.Response:
     """Get AppConfig by Version
 
     Gets the appConfig data by the given appKey and app configVersion number.If the appKey is is invalid or appConfig is not found, it returns an invalid response. 
 
-    :param version: 
-    :type version: 
     :param app_key: The application key
     :type app_key: str
     :param config_version: The version of the application configuration
@@ -88,13 +80,11 @@ async def get_application_config_by_config_version(request: web.Request, version
     return web.Response(status=200)
 
 
-async def search_application_config(request: web.Request, version, account_id, app_key=None, retailer_id=None, retailer_location_id=None, udid=None, config_version=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_application_config(request: web.Request, account_id, app_key=None, retailer_id=None, retailer_location_id=None, udid=None, config_version=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search AppConfigs
 
     Gets all versions of application configurations in a particular app by the given appKey.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param app_key: The application key to filter results by application Leaving this empty will return all application configurations for all applications (executive user only)
@@ -120,13 +110,11 @@ async def search_application_config(request: web.Request, version, account_id, a
     return web.Response(status=200)
 
 
-async def update_application_config(request: web.Request, version, account_id, config_id, app_key=None, config_version=None, asset_id=None, retailer_id=None, retailer_location_id=None, udid=None) -> web.Response:
+async def update_application_config(request: web.Request, account_id, config_id, app_key=None, config_version=None, asset_id=None, retailer_id=None, retailer_location_id=None, udid=None) -> web.Response:
     """Update AppConfig
 
     pdates an existing application configuration. If the configVersion provided already exists for the given app the application configuration won&#39;t be updated.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param config_id: The config ID of the application configuration to update

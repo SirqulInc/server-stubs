@@ -6,13 +6,11 @@ from openapi_server.models.token_response import TokenResponse
 from openapi_server import util
 
 
-async def get_token(request: web.Request, version, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def get_token(request: web.Request, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Get Facebook Token
 
     Gets a user&#39;s Facebook token.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -26,13 +24,11 @@ async def get_token(request: web.Request, version, device_id=None, account_id=No
     return web.Response(status=200)
 
 
-async def graph_interface(request: web.Request, version, event, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, asset_id=None, game_type=None, app_key=None, latitude=None, longitude=None) -> web.Response:
+async def graph_interface(request: web.Request, event, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, asset_id=None, game_type=None, app_key=None, latitude=None, longitude=None) -> web.Response:
     """Post to Facebook
 
     Make Facebook posts on behalf of the user.
 
-    :param version: 
-    :type version: 
     :param event: the type of Sirqul event {DOWNLOADED_APP, CHALLENGE, LEVEL_COMPLETED, LEVEL_CREATED}
     :type event: str
     :param device_id: a unique id given by the device (deviceId or accountId required)

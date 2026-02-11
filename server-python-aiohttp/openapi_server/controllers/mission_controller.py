@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_mission(request: web.Request, version, account_id, title, description=None, sub_type=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, mission_task=None, format_type=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, meta_data=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None) -> web.Response:
+async def create_mission(request: web.Request, account_id, title, description=None, sub_type=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, mission_task=None, format_type=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, meta_data=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None) -> web.Response:
     """Create Mission
 
     Create a user defined mission.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param title: The title of the mission
@@ -71,13 +69,11 @@ async def create_mission(request: web.Request, version, account_id, title, descr
     return web.Response(status=200)
 
 
-async def delete_mission(request: web.Request, version, account_id, mission_id) -> web.Response:
+async def delete_mission(request: web.Request, account_id, mission_id) -> web.Response:
     """Delete Mission
 
     Delete a mission.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param mission_id: the id of the mission to delete
@@ -87,13 +83,11 @@ async def delete_mission(request: web.Request, version, account_id, mission_id) 
     return web.Response(status=200)
 
 
-async def find_missions(request: web.Request, version, app_key, suffix=None, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_game_data=None, include_audiences=None, allocates_tickets=None, randomize=None, targeted_ads_only=None, mission_ids=None, audience_operator=None) -> web.Response:
+async def find_missions(request: web.Request, app_key, suffix=None, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_game_data=None, include_audiences=None, allocates_tickets=None, randomize=None, targeted_ads_only=None, mission_ids=None, audience_operator=None) -> web.Response:
     """Find Missions
 
     Get a set of ad filtered by the parameters provided.
 
-    :param version: 
-    :type version: 
     :param app_key: The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
     :type app_key: str
     :param suffix: The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip
@@ -137,13 +131,11 @@ async def find_missions(request: web.Request, version, app_key, suffix=None, typ
     return web.Response(status=200)
 
 
-async def get_mission(request: web.Request, version, account_id, mission_id, return_creative=None) -> web.Response:
+async def get_mission(request: web.Request, account_id, mission_id, return_creative=None) -> web.Response:
     """Get Mission
 
     Get a mission.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param mission_id: The id of the mission to return.
@@ -155,13 +147,11 @@ async def get_mission(request: web.Request, version, account_id, mission_id, ret
     return web.Response(status=200)
 
 
-async def import_mission(request: web.Request, version, account_id, latitude, longitude, app_key, keyword=None, start=None, limit=None, ad_size=None) -> web.Response:
+async def import_mission(request: web.Request, account_id, latitude, longitude, app_key, keyword=None, start=None, limit=None, ad_size=None) -> web.Response:
     """Import Mission
 
     Create a mission using a source item such as an offer location.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param latitude: The current location of the requesting device
@@ -183,13 +173,11 @@ async def import_mission(request: web.Request, version, account_id, latitude, lo
     return web.Response(status=200)
 
 
-async def search_mission_formats(request: web.Request, version, start, limit, active_only) -> web.Response:
+async def search_mission_formats(request: web.Request, start, limit, active_only) -> web.Response:
     """Search Mission Formats
 
     Searches on pre-defined mission formats
 
-    :param version: 
-    :type version: 
     :param start: The starting index in the result set to return. Default is 0.
     :type start: int
     :param limit: The total number of records to return. Default is 20.
@@ -201,13 +189,11 @@ async def search_mission_formats(request: web.Request, version, start, limit, ac
     return web.Response(status=200)
 
 
-async def search_missions(request: web.Request, version, account_id, keyword=None, sub_type=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None) -> web.Response:
+async def search_missions(request: web.Request, account_id, keyword=None, sub_type=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None) -> web.Response:
     """Search Missions
 
     Get the list missions available to the account.  
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param keyword: Filter by keyword
@@ -235,13 +221,11 @@ async def search_missions(request: web.Request, version, account_id, keyword=Non
     return web.Response(status=200)
 
 
-async def search_missions_by_billable_entity(request: web.Request, version, account_id, keyword=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None) -> web.Response:
+async def search_missions_by_billable_entity(request: web.Request, account_id, keyword=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None) -> web.Response:
     """Search Missions by Billable Entity
 
     Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param keyword: Filter by keyword
@@ -267,13 +251,11 @@ async def search_missions_by_billable_entity(request: web.Request, version, acco
     return web.Response(status=200)
 
 
-async def update_mission(request: web.Request, version, account_id, mission_id, title=None, description=None, sub_type=None, meta_data=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None) -> web.Response:
+async def update_mission(request: web.Request, account_id, mission_id, title=None, description=None, sub_type=None, meta_data=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None) -> web.Response:
     """Update Mission
 
     Update a mission.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param mission_id: The id of the mission to update.

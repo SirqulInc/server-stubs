@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def get_status_csv(request: web.Request, version, account_id, batch_id, response_group, start, limit) -> web.Response:
+async def get_status_csv(request: web.Request, account_id, batch_id, response_group, start, limit) -> web.Response:
     """Detail Status
 
     
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param batch_id: the id of the batch
@@ -28,13 +26,11 @@ async def get_status_csv(request: web.Request, version, account_id, batch_id, re
     return web.Response(status=200)
 
 
-async def list_status_csv(request: web.Request, version, account_id, start, limit) -> web.Response:
+async def list_status_csv(request: web.Request, account_id, start, limit) -> web.Response:
     """Search Status
 
     Retrieves batches for a user.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param start: the start of the pagination
@@ -46,13 +42,11 @@ async def list_status_csv(request: web.Request, version, account_id, start, limi
     return web.Response(status=200)
 
 
-async def status_csv(request: web.Request, version, account_id, batch_id) -> web.Response:
+async def status_csv(request: web.Request, account_id, batch_id) -> web.Response:
     """Batch Status
 
     Checks status of batch upload.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param batch_id: the id of the batch to get its status
@@ -62,13 +56,11 @@ async def status_csv(request: web.Request, version, account_id, batch_id) -> web
     return web.Response(status=200)
 
 
-async def upload_csv(request: web.Request, version, account_id, upload_type, import_file, file_format, app_key=None) -> web.Response:
+async def upload_csv(request: web.Request, account_id, upload_type, import_file, file_format, app_key=None) -> web.Response:
     """Upload CSV
 
     Uploads a CSV import file.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param upload_type: the upload type: OFFERS, RETAILERS, RETAILERLOCATIONS, CATEGORIES, OR FILTERS

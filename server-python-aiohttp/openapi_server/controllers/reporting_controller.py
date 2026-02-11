@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_batch(request: web.Request, version, account_id, status, preview_limit, app_key=None, endpoint=None, parameters=None, name=None, start_date=None, end_date=None, description=None, page_url=None) -> web.Response:
+async def create_batch(request: web.Request, account_id, status, preview_limit, app_key=None, endpoint=None, parameters=None, name=None, start_date=None, end_date=None, description=None, page_url=None) -> web.Response:
     """Create Offline Report
 
     Create an entry for the batch for offline report
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user for passing account related params
     :type account_id: int
     :param status: the status of the report
@@ -43,13 +41,11 @@ async def create_batch(request: web.Request, version, account_id, status, previe
     return web.Response(status=200)
 
 
-async def create_region_leg_summary_batch(request: web.Request, version, body=None) -> web.Response:
+async def create_region_leg_summary_batch(request: web.Request, body=None) -> web.Response:
     """Create Offline Report
 
     Create an entry for the batch for offline report
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: list | bytes
 
@@ -58,13 +54,11 @@ async def create_region_leg_summary_batch(request: web.Request, version, body=No
     return web.Response(status=200)
 
 
-async def delete_batch(request: web.Request, version, account_id, batch_id) -> web.Response:
+async def delete_batch(request: web.Request, account_id, batch_id) -> web.Response:
     """Delete Offline Report
 
     Deletes a batch report.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param batch_id: the id of the batch to delete
@@ -74,13 +68,11 @@ async def delete_batch(request: web.Request, version, account_id, batch_id) -> w
     return web.Response(status=200)
 
 
-async def get_report_batch(request: web.Request, version, account_id, batch_id, all_results) -> web.Response:
+async def get_report_batch(request: web.Request, account_id, batch_id, all_results) -> web.Response:
     """Get Offline Report
 
     Checks status of batch report.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param batch_id: returned by /report/batch/create
@@ -92,13 +84,11 @@ async def get_report_batch(request: web.Request, version, account_id, batch_id, 
     return web.Response(status=200)
 
 
-async def run_report(request: web.Request, version, desc, account_id=None, query=None, parameters=None, order=None, start=None, limit=None, response_format=None) -> web.Response:
+async def run_report(request: web.Request, desc, account_id=None, query=None, parameters=None, order=None, start=None, limit=None, response_format=None) -> web.Response:
     """Run Report
 
      This endpoint allows you to run a set of predefined reports that can be used to understand your users&#39; behavior as well as trends within your application.
 
-    :param version: 
-    :type version: 
     :param desc: If true then descending order, false is ascending
     :type desc: bool
     :param account_id: The account id of the user for passing account related params
@@ -120,13 +110,11 @@ async def run_report(request: web.Request, version, desc, account_id=None, query
     return web.Response(status=200)
 
 
-async def search_batch(request: web.Request, version, account_id, start, limit, names=None, app_key=None, status=None, global_app_search=None, start_date=None, end_date=None) -> web.Response:
+async def search_batch(request: web.Request, account_id, start, limit, names=None, app_key=None, status=None, global_app_search=None, start_date=None, end_date=None) -> web.Response:
     """Search Offline Reports
 
     Retrieves batches for a user..
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account logged in
     :type account_id: int
     :param start: the start of the index and/or pagination

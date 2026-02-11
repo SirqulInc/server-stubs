@@ -8,13 +8,11 @@ from openapi_server.models.wrapped_response import WrappedResponse
 from openapi_server import util
 
 
-async def add_favorite(request: web.Request, version, favoritable_id, favoritable_type, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def add_favorite(request: web.Request, favoritable_id, favoritable_type, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Create Favorite
 
     Adds an offer, offer location, retailer location, or category to your favorites.
 
-    :param version: 
-    :type version: 
     :param favoritable_id: The ID of the object to favorite {offerId, offerLocationId, retailerLocationId, categoryId}
     :type favoritable_id: int
     :param favoritable_type: The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY, ALBUM}
@@ -32,13 +30,11 @@ async def add_favorite(request: web.Request, version, favoritable_id, favoritabl
     return web.Response(status=200)
 
 
-async def delete_favorite(request: web.Request, version, device_id=None, account_id=None, favorite_id=None, favoritable_id=None, favoritable_type=None) -> web.Response:
+async def delete_favorite(request: web.Request, device_id=None, account_id=None, favorite_id=None, favoritable_id=None, favoritable_type=None) -> web.Response:
     """Delete Favorite
 
     Removes a favorited item from the user&#39;s favorites list.
 
-    :param version: 
-    :type version: 
     :param device_id: The unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account ID of the user (deviceId or accountId required)
@@ -54,13 +50,11 @@ async def delete_favorite(request: web.Request, version, device_id=None, account
     return web.Response(status=200)
 
 
-async def get_favorite(request: web.Request, version, favorite_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def get_favorite(request: web.Request, favorite_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Get Favorite
 
     Retrieves a single favorited item.
 
-    :param version: 
-    :type version: 
     :param favorite_id: The ID of the favorite reference record
     :type favorite_id: int
     :param device_id: The unique ID given by the device (deviceId or accountId required)
@@ -76,13 +70,11 @@ async def get_favorite(request: web.Request, version, favorite_id, device_id=Non
     return web.Response(status=200)
 
 
-async def search_favorites(request: web.Request, version, favoritable_type, sort_field, descending, start, limit, active_only, return_full_response, device_id=None, account_id=None, connection_account_id=None, secondary_type=None, keyword=None, latitude=None, longitude=None) -> web.Response:
+async def search_favorites(request: web.Request, favoritable_type, sort_field, descending, start, limit, active_only, return_full_response, device_id=None, account_id=None, connection_account_id=None, secondary_type=None, keyword=None, latitude=None, longitude=None) -> web.Response:
     """Search Favorites
 
     Searches on the user&#39;s favorites.
 
-    :param version: 
-    :type version: 
     :param favoritable_type: The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}
     :type favoritable_type: str
     :param sort_field: Determines what to sort the results by {CREATED, UPDATED, DISPLAY}
@@ -116,13 +108,11 @@ async def search_favorites(request: web.Request, version, favoritable_type, sort
     return web.Response(status=200)
 
 
-async def who_has_favorited(request: web.Request, version, favoritable_id, favoritable_type, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None) -> web.Response:
+async def who_has_favorited(request: web.Request, favoritable_id, favoritable_type, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None) -> web.Response:
     """Who has Favorited
 
     Searches for everyone that has favorited an item
 
-    :param version: 
-    :type version: 
     :param favoritable_id: The ID of the favoritableType to search on
     :type favoritable_id: int
     :param favoritable_type: The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}

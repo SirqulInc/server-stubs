@@ -5,13 +5,11 @@ from openapi_server.models.service_hub import ServiceHub
 from openapi_server import util
 
 
-async def create_service_hub(request: web.Request, version, body=None) -> web.Response:
+async def create_service_hub(request: web.Request, body=None) -> web.Response:
     """Create Service Hub
 
     Create new service hub
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -20,13 +18,11 @@ async def create_service_hub(request: web.Request, version, body=None) -> web.Re
     return web.Response(status=200)
 
 
-async def delete_service_hub(request: web.Request, version, id) -> web.Response:
+async def delete_service_hub(request: web.Request, id) -> web.Response:
     """Delete Service Hub
 
     Delete an existing service hub
 
-    :param version: 
-    :type version: 
     :param id: the id of the service hub to delete
     :type id: int
 
@@ -34,13 +30,11 @@ async def delete_service_hub(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def get_service_hub(request: web.Request, version, id) -> web.Response:
+async def get_service_hub(request: web.Request, id) -> web.Response:
     """Get Service Hub
 
     Get an existing service hub
 
-    :param version: 
-    :type version: 
     :param id: the id of the service hub to get
     :type id: int
 
@@ -48,13 +42,11 @@ async def get_service_hub(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def post_service_hub(request: web.Request, version, id, body=None) -> web.Response:
+async def post_service_hub(request: web.Request, id, body=None) -> web.Response:
     """Update Service Hub
 
     Update an existing service hub
 
-    :param version: 
-    :type version: 
     :param id: the id of the service hub
     :type id: int
     :param body: 
@@ -65,13 +57,11 @@ async def post_service_hub(request: web.Request, version, id, body=None) -> web.
     return web.Response(status=200)
 
 
-async def put_service_hub(request: web.Request, version, id, body=None) -> web.Response:
+async def put_service_hub(request: web.Request, id, body=None) -> web.Response:
     """Update Service Hub
 
     Update an existing service hub
 
-    :param version: 
-    :type version: 
     :param id: the id of the service hub
     :type id: int
     :param body: 
@@ -82,13 +72,11 @@ async def put_service_hub(request: web.Request, version, id, body=None) -> web.R
     return web.Response(status=200)
 
 
-async def search_service_hubs(request: web.Request, version, sort_field, descending, start, limit, active_only, keyword=None, retailer_id=None) -> web.Response:
+async def search_service_hubs(request: web.Request, sort_field, descending, start, limit, active_only, keyword=None, retailer_id=None) -> web.Response:
     """Search Service Hubs
 
     Search for service hubs.
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order

@@ -6,13 +6,11 @@ from openapi_server.models.wordz_word_response import WordzWordResponse
 from openapi_server import util
 
 
-async def create_word(request: web.Request, version, account_id, word, definition, active, allocate_tickets, ticket_count, asset_id=None, ticket_type=None, points=None) -> web.Response:
+async def create_word(request: web.Request, account_id, word, definition, active, allocate_tickets, ticket_count, asset_id=None, ticket_type=None, points=None) -> web.Response:
     """Create Word
 
     Create a word by the given params.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param word: The text of the word.
@@ -36,13 +34,11 @@ async def create_word(request: web.Request, version, account_id, word, definitio
     return web.Response(status=200)
 
 
-async def delete_word(request: web.Request, version, word_id, account_id) -> web.Response:
+async def delete_word(request: web.Request, word_id, account_id) -> web.Response:
     """Delete Word
 
     Delete a word by the given id. The accountId given needs to be the owner or executive to delete.
 
-    :param version: 
-    :type version: 
     :param word_id: The id of the word to delete.
     :type word_id: int
     :param account_id: The account vor validating permission
@@ -52,13 +48,11 @@ async def delete_word(request: web.Request, version, word_id, account_id) -> web
     return web.Response(status=200)
 
 
-async def get_word(request: web.Request, version, word_id, account_id) -> web.Response:
+async def get_word(request: web.Request, word_id, account_id) -> web.Response:
     """Get Word
 
     Get a word by the given id.
 
-    :param version: 
-    :type version: 
     :param word_id: The id of the word to get.
     :type word_id: int
     :param account_id: The logged in user.
@@ -68,13 +62,11 @@ async def get_word(request: web.Request, version, word_id, account_id) -> web.Re
     return web.Response(status=200)
 
 
-async def get_words(request: web.Request, version, account_id, sort_field, descending, active_only, start, limit, keyword=None) -> web.Response:
+async def get_words(request: web.Request, account_id, sort_field, descending, active_only, start, limit, keyword=None) -> web.Response:
     """Search Words
 
     Search for words by the given params.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param sort_field: The column to sort the search on
@@ -94,13 +86,11 @@ async def get_words(request: web.Request, version, account_id, sort_field, desce
     return web.Response(status=200)
 
 
-async def update_word(request: web.Request, version, word_id, account_id, ticket_count, word_text=None, definition=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None) -> web.Response:
+async def update_word(request: web.Request, word_id, account_id, ticket_count, word_text=None, definition=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None) -> web.Response:
     """Update Word
 
     Update a word by the given params.
 
-    :param version: 
-    :type version: 
     :param word_id: The id of the word to update.
     :type word_id: int
     :param account_id: The logged in user.

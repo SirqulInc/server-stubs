@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def add_album_collection(request: web.Request, version, title, cover_asset_nullable, include_cover_in_asset_list, public_read, public_write, public_delete, public_add, anonymous, device_id=None, account_id=None, assets_to_add=None, media=None, media_url=None, asset_id=None, attached_media=None, attached_media_url=None, start_date=None, end_date=None, tags=None, description=None, album_type=None, album_type_id=None, sub_type=None, latitude=None, longitude=None, location_description=None, visibility=None, game_type=None, app_key=None, cell_phone=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, full_address=None, meta_data=None, category_ids=None, category_filter_ids=None, audience_ids=None, include_all_app_users_as_members=None, include_audiences_as_members=None, audience_operator=None, approval_status=None, linked_object_type=None, linked_object_id=None) -> web.Response:
+async def add_album_collection(request: web.Request, title, cover_asset_nullable, include_cover_in_asset_list, public_read, public_write, public_delete, public_add, anonymous, device_id=None, account_id=None, assets_to_add=None, media=None, media_url=None, asset_id=None, attached_media=None, attached_media_url=None, start_date=None, end_date=None, tags=None, description=None, album_type=None, album_type_id=None, sub_type=None, latitude=None, longitude=None, location_description=None, visibility=None, game_type=None, app_key=None, cell_phone=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, full_address=None, meta_data=None, category_ids=None, category_filter_ids=None, audience_ids=None, include_all_app_users_as_members=None, include_audiences_as_members=None, audience_operator=None, approval_status=None, linked_object_type=None, linked_object_id=None) -> web.Response:
     """Create Album
 
     Create an Album.
 
-    :param version: 
-    :type version: 
     :param title: the title of the album
     :type title: str
     :param cover_asset_nullable: determines whether the cover image of the album can be empty, else will use the user&#39;s profile picture as the cover image
@@ -112,13 +110,11 @@ async def add_album_collection(request: web.Request, version, title, cover_asset
     return web.Response(status=200)
 
 
-async def add_album_users(request: web.Request, version, album_id, include_friend_group, device_id=None, account_id=None, read=None, write=None, delete=None, add=None, connections=None, connection_groups=None) -> web.Response:
+async def add_album_users(request: web.Request, album_id, include_friend_group, device_id=None, account_id=None, read=None, write=None, delete=None, add=None, connections=None, connection_groups=None) -> web.Response:
     """Add Album Users
 
     Add users to an album as participants.
 
-    :param version: 
-    :type version: 
     :param album_id: the album ID
     :type album_id: int
     :param include_friend_group: determines whether to include all friends as participants
@@ -144,13 +140,11 @@ async def add_album_users(request: web.Request, version, album_id, include_frien
     return web.Response(status=200)
 
 
-async def approve_album(request: web.Request, version, album_id, device_id=None, account_id=None, approval_status=None, verified=None) -> web.Response:
+async def approve_album(request: web.Request, album_id, device_id=None, account_id=None, approval_status=None, verified=None) -> web.Response:
     """Approve Album
 
     Sets the approval status of an Album.
 
-    :param version: 
-    :type version: 
     :param album_id: The ID of the album
     :type album_id: int
     :param device_id: A unique ID given by the device (deviceId or accountId required)
@@ -166,13 +160,11 @@ async def approve_album(request: web.Request, version, album_id, device_id=None,
     return web.Response(status=200)
 
 
-async def get_album_collection(request: web.Request, version, return_nulls, album_id, device_id=None, account_id=None, like_preview_size=None, asset_preview_size=None, note_preview_size=None, connection_preview_size=None, audience_preview_size=None) -> web.Response:
+async def get_album_collection(request: web.Request, return_nulls, album_id, device_id=None, account_id=None, like_preview_size=None, asset_preview_size=None, note_preview_size=None, connection_preview_size=None, audience_preview_size=None) -> web.Response:
     """ Get Album
 
     Get an Album.
 
-    :param version: 
-    :type version: 
     :param return_nulls: This parameter is deprecated.
     :type return_nulls: bool
     :param album_id: the album to look up
@@ -196,13 +188,11 @@ async def get_album_collection(request: web.Request, version, return_nulls, albu
     return web.Response(status=200)
 
 
-async def leave_album(request: web.Request, version, album_id, device_id=None, account_id=None) -> web.Response:
+async def leave_album(request: web.Request, album_id, device_id=None, account_id=None) -> web.Response:
     """Leave Album
 
      Allows a user to leave an album (they are no longer considered a participant). The album creator cannot leave their own albums.
 
-    :param version: 
-    :type version: 
     :param album_id: the album ID
     :type album_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -214,13 +204,11 @@ async def leave_album(request: web.Request, version, album_id, device_id=None, a
     return web.Response(status=200)
 
 
-async def remove_album(request: web.Request, version, album_id, device_id=None, account_id=None) -> web.Response:
+async def remove_album(request: web.Request, album_id, device_id=None, account_id=None) -> web.Response:
     """Delete Album
 
     Deletes an Album
 
-    :param version: 
-    :type version: 
     :param album_id: the album ID to delete
     :type album_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -232,13 +220,11 @@ async def remove_album(request: web.Request, version, album_id, device_id=None, 
     return web.Response(status=200)
 
 
-async def remove_album_users(request: web.Request, version, album_id, remove_friend_group, device_id=None, account_id=None, connections=None, connection_groups=None) -> web.Response:
+async def remove_album_users(request: web.Request, album_id, remove_friend_group, device_id=None, account_id=None, connections=None, connection_groups=None) -> web.Response:
     """Remove Album Users
 
     Remove participants of an album.
 
-    :param version: 
-    :type version: 
     :param album_id: the album ID
     :type album_id: int
     :param remove_friend_group: remove friend group
@@ -256,13 +242,11 @@ async def remove_album_users(request: web.Request, version, album_id, remove_fri
     return web.Response(status=200)
 
 
-async def search_albums(request: web.Request, version, filter, album_type_id, sub_type, include_inactive, sort_field, descending, start, limit, range, include_liked, include_favorited, include_permissions, like_preview_size, asset_preview_size, note_preview_size, connection_preview_size, audience_preview_size, device_id=None, account_id=None, connection_account_id=None, owner_id=None, album_ids=None, exclude_album_ids=None, media_id=None, keyword=None, album_type=None, limit_per_album_type=None, date_created=None, updated_since=None, updated_before=None, created_since=None, created_before=None, started_since=None, started_before=None, ended_since=None, ended_before=None, latitude=None, longitude=None, app_key=None, category_ids=None, category_filter_ids=None, audience_ids=None, exclude_audience_ids=None, include_completable=None, include_rating=None, search_mode=None, stack_search=None, stack_window_size=None, min_stack_per_page=None, stack_pagination_identifier=None, stack_details=None, flag_count_minimum=None, remove_flagged_content=None, verified_filter=None, linked_object_type=None, linked_object_id=None, order_audience_id=None, ignore_default_app_filter=None, search_expression=None, generate_albums=None) -> web.Response:
+async def search_albums(request: web.Request, filter, album_type_id, sub_type, include_inactive, sort_field, descending, start, limit, range, include_liked, include_favorited, include_permissions, like_preview_size, asset_preview_size, note_preview_size, connection_preview_size, audience_preview_size, device_id=None, account_id=None, connection_account_id=None, owner_id=None, album_ids=None, exclude_album_ids=None, media_id=None, keyword=None, album_type=None, limit_per_album_type=None, date_created=None, updated_since=None, updated_before=None, created_since=None, created_before=None, started_since=None, started_before=None, ended_since=None, ended_before=None, latitude=None, longitude=None, app_key=None, category_ids=None, category_filter_ids=None, audience_ids=None, exclude_audience_ids=None, include_completable=None, include_rating=None, search_mode=None, stack_search=None, stack_window_size=None, min_stack_per_page=None, stack_pagination_identifier=None, stack_details=None, flag_count_minimum=None, remove_flagged_content=None, verified_filter=None, linked_object_type=None, linked_object_id=None, order_audience_id=None, ignore_default_app_filter=None, search_expression=None, generate_albums=None) -> web.Response:
     """Search Albums
 
     Searches on Albums.
 
-    :param version: 
-    :type version: 
     :param filter: a comma separated list of filters: * MINE - Return albums that the user has created. * SHARED - Return albums that have been shared to the user via addAlbumUsers, or addUsersToPermissionable . * FOLLOWER - Return albums that have been created by the user&#39;s followers (the content needs to have been APPROVED or FEATURED). * FOLLOWING - Return albums that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). * PUBLIC - Return all PUBLIC albums that have been APPROVED or FEATURED. * ALL_PUBLIC - Return all PUBLIC albums regardless of whether they are approved or not (ignores the approval status). * LIKED - Return all albums that the user has liked. * FEATURED - Return all albums that have been featured. * PENDING - Return all pending albums. 
     :type filter: str
     :param album_type_id: id of custom albumType
@@ -388,13 +372,11 @@ async def search_albums(request: web.Request, version, filter, album_type_id, su
     return web.Response(status=200)
 
 
-async def update_album_collection(request: web.Request, version, album_id, device_id=None, account_id=None, assets_to_add=None, assets_to_remove=None, asset_id=None, media=None, media_url=None, active=None, title=None, start_date=None, end_date=None, tags=None, description=None, album_type=None, album_type_id=None, sub_type=None, public_read=None, public_write=None, public_delete=None, public_add=None, latitude=None, longitude=None, location_description=None, visibility=None, cell_phone=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, full_address=None, anonymous=None, meta_data=None, category_ids=None, category_filter_ids=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, include_all_app_users_as_members=None, include_audiences_as_members=None, audience_operator=None, linked_object_type=None, linked_object_id=None, index_now=None) -> web.Response:
+async def update_album_collection(request: web.Request, album_id, device_id=None, account_id=None, assets_to_add=None, assets_to_remove=None, asset_id=None, media=None, media_url=None, active=None, title=None, start_date=None, end_date=None, tags=None, description=None, album_type=None, album_type_id=None, sub_type=None, public_read=None, public_write=None, public_delete=None, public_add=None, latitude=None, longitude=None, location_description=None, visibility=None, cell_phone=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, full_address=None, anonymous=None, meta_data=None, category_ids=None, category_filter_ids=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, include_all_app_users_as_members=None, include_audiences_as_members=None, audience_operator=None, linked_object_type=None, linked_object_id=None, index_now=None) -> web.Response:
     """Update Album
 
     Update an Album.
 
-    :param version: 
-    :type version: 
     :param album_id: the ID of the album to update
     :type album_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)

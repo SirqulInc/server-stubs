@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_retailer_location_consumer(request: web.Request, version, app_key, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, details_header=None, details_body=None, hours=None, tags=None, logo_asset_id=None, picture1_asset_id=None, picture2_asset_id=None, category_ids=None, filter_ids=None, meta_data=None, public_location=None, active=None, location_type=None, latitude=None, longitude=None) -> web.Response:
+async def create_retailer_location_consumer(request: web.Request, app_key, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, details_header=None, details_body=None, hours=None, tags=None, logo_asset_id=None, picture1_asset_id=None, picture2_asset_id=None, category_ids=None, filter_ids=None, meta_data=None, public_location=None, active=None, location_type=None, latitude=None, longitude=None) -> web.Response:
     """Create Retailer Location (Consumer)
 
     Creates a location record for an application that can support crowd sourced locations.
 
-    :param version: 
-    :type version: 
     :param app_key: the application key
     :type app_key: str
     :param name: The name of the retailer location
@@ -76,13 +74,11 @@ async def create_retailer_location_consumer(request: web.Request, version, app_k
     return web.Response(status=200)
 
 
-async def create_retailer_locations(request: web.Request, version, retailer_id, name, street_address, city, state, postal_code, device_id=None, account_id=None, street_address2=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, response_includes=None) -> web.Response:
+async def create_retailer_locations(request: web.Request, retailer_id, name, street_address, city, state, postal_code, device_id=None, account_id=None, street_address2=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, response_includes=None) -> web.Response:
     """Create Retailer Location
 
     Creates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.
 
-    :param version: 
-    :type version: 
     :param retailer_id: The ID of the retailer
     :type retailer_id: int
     :param name: The name of the retailer location
@@ -166,13 +162,11 @@ async def create_retailer_locations(request: web.Request, version, retailer_id, 
     return web.Response(status=200)
 
 
-async def delete_retailer_location(request: web.Request, version, device_id=None, account_id=None, retailer_location_id=None) -> web.Response:
+async def delete_retailer_location(request: web.Request, device_id=None, account_id=None, retailer_location_id=None) -> web.Response:
     """Delete Retailer Location
 
     Set the deleted timestamp to current time. This effectively deletes the retailer location since all queries should ignore any records with a deleted time stamp.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id
     :type device_id: str
     :param account_id: the id of the logged in user
@@ -184,13 +178,11 @@ async def delete_retailer_location(request: web.Request, version, device_id=None
     return web.Response(status=200)
 
 
-async def get_retailer_location(request: web.Request, version, retailer_location_id, device_id=None, account_id=None, retailer_location_token=None) -> web.Response:
+async def get_retailer_location(request: web.Request, retailer_location_id, device_id=None, account_id=None, retailer_location_token=None) -> web.Response:
     """Get Retailer Location
 
     Gets a retailer location. Only the owner and the employees of the retailer have access to view its information.
 
-    :param version: 
-    :type version: 
     :param retailer_location_id: The ID of the retailer location
     :type retailer_location_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -204,13 +196,11 @@ async def get_retailer_location(request: web.Request, version, retailer_location
     return web.Response(status=200)
 
 
-async def get_retailer_location_consumer(request: web.Request, version, retailer_location_id, device_id=None, account_id=None) -> web.Response:
+async def get_retailer_location_consumer(request: web.Request, retailer_location_id, device_id=None, account_id=None) -> web.Response:
     """Get Retailer Location (Consumer)
 
     Gets the details of a retailer location as a consumer.
 
-    :param version: 
-    :type version: 
     :param retailer_location_id: The retailer location id
     :type retailer_location_id: int
     :param device_id: The device id for returning account information (i.e. favorites)
@@ -222,13 +212,11 @@ async def get_retailer_location_consumer(request: web.Request, version, retailer
     return web.Response(status=200)
 
 
-async def indexed_retailer_location_distance_search(request: web.Request, version, latitude, longitude, search_range, start, limit, account_id=None, address=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, distance_unit=None, return_favorited=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None) -> web.Response:
+async def indexed_retailer_location_distance_search(request: web.Request, latitude, longitude, search_range, start, limit, account_id=None, address=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, distance_unit=None, return_favorited=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None) -> web.Response:
     """Distance Search Retailer Locations (Indexed)
 
     Retailer location indexed search by distance. This searches on any retailer location with location data and returns the results sorted by distance.
 
-    :param version: 
-    :type version: 
     :param latitude: The latitude to center the search on
     :type latitude: float
     :param longitude: The longitude to center the search on
@@ -302,13 +290,11 @@ async def indexed_retailer_location_distance_search(request: web.Request, versio
     return web.Response(status=200)
 
 
-async def indexed_retailer_location_search(request: web.Request, version, account_id=None, start=None, limit=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None) -> web.Response:
+async def indexed_retailer_location_search(request: web.Request, account_id=None, start=None, limit=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None) -> web.Response:
     """Keyword Search Retailer Locations (Indexed)
 
     Retailer location (faster) indexed search. This searches all retailer locations.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param start: The start index for pagination
@@ -370,13 +356,11 @@ async def indexed_retailer_location_search(request: web.Request, version, accoun
     return web.Response(status=200)
 
 
-async def search_retailer_locations(request: web.Request, version, device_id=None, account_id=None, q=None, keyword=None, retailer_ids=None, retailer_location_ids=None, location_type=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, show_public_locations=None, active_only=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, include_favorite=None, include_liked=None, include_rating=None) -> web.Response:
+async def search_retailer_locations(request: web.Request, device_id=None, account_id=None, q=None, keyword=None, retailer_ids=None, retailer_location_ids=None, location_type=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, show_public_locations=None, active_only=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, include_favorite=None, include_liked=None, include_rating=None) -> web.Response:
     """Search Retailer Locations (Owned)
 
     Searches on retailer locations that the account has access to.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -432,13 +416,11 @@ async def search_retailer_locations(request: web.Request, version, device_id=Non
     return web.Response(status=200)
 
 
-async def update_retailer_locations(request: web.Request, version, retailer_location_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, meta_data=None, payment_provider=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, tags=None) -> web.Response:
+async def update_retailer_locations(request: web.Request, retailer_location_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, meta_data=None, payment_provider=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, tags=None) -> web.Response:
     """Update Retailer Location
 
     Updates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.
 
-    :param version: 
-    :type version: 
     :param retailer_location_id: The ID of the retailer location
     :type retailer_location_id: int
     :param device_id: The device id (deviceId or accountId required)

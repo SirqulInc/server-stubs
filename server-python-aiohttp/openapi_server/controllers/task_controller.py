@@ -6,13 +6,11 @@ from openapi_server.models.task_response import TaskResponse
 from openapi_server import util
 
 
-async def create_task(request: web.Request, version, account_id, name, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, visibility=None, active=None) -> web.Response:
+async def create_task(request: web.Request, account_id, name, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, visibility=None, active=None) -> web.Response:
     """Create Task
 
     Create a Task
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the task
@@ -42,13 +40,11 @@ async def create_task(request: web.Request, version, account_id, name, app_key=N
     return web.Response(status=200)
 
 
-async def delete_task(request: web.Request, version, account_id, task_id) -> web.Response:
+async def delete_task(request: web.Request, account_id, task_id) -> web.Response:
     """Delete Task
 
     Delete a Task
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param task_id: The id of the Task to delete.
@@ -58,13 +54,11 @@ async def delete_task(request: web.Request, version, account_id, task_id) -> web
     return web.Response(status=200)
 
 
-async def get_task(request: web.Request, version, account_id, task_id) -> web.Response:
+async def get_task(request: web.Request, account_id, task_id) -> web.Response:
     """Get Task
 
     Get a Task
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param task_id: The id of the Task to return.
@@ -74,13 +68,11 @@ async def get_task(request: web.Request, version, account_id, task_id) -> web.Re
     return web.Response(status=200)
 
 
-async def search_tasks(request: web.Request, version, account_id, grouping_id=None, filter=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_tasks(request: web.Request, account_id, grouping_id=None, filter=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """Search Tasks
 
     Search on Tasks
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param grouping_id: Filter results by a grouping identifier defined by the client
@@ -110,13 +102,11 @@ async def search_tasks(request: web.Request, version, account_id, grouping_id=No
     return web.Response(status=200)
 
 
-async def update_task(request: web.Request, version, task_id, account_id, name=None, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, visibility=None, active=None) -> web.Response:
+async def update_task(request: web.Request, task_id, account_id, name=None, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, visibility=None, active=None) -> web.Response:
     """Update Task
 
     Update a Task
 
-    :param version: 
-    :type version: 
     :param task_id: Task Id
     :type task_id: int
     :param account_id: The logged in user.

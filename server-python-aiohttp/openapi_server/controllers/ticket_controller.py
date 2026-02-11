@@ -9,13 +9,11 @@ from openapi_server.models.ticket_offer_response import TicketOfferResponse
 from openapi_server import util
 
 
-async def get_ticket_count(request: web.Request, version, device_id=None, account_id=None, game_type=None, app_key=None, ticket_type=None) -> web.Response:
+async def get_ticket_count(request: web.Request, device_id=None, account_id=None, game_type=None, app_key=None, ticket_type=None) -> web.Response:
     """Get Ticket Count
 
     Gets the ticket count.
 
-    :param version: 
-    :type version: 
     :param device_id: the id of the device that owns the tickets
     :type device_id: str
     :param account_id: the id of the account that owns the tickets
@@ -31,13 +29,11 @@ async def get_ticket_count(request: web.Request, version, device_id=None, accoun
     return web.Response(status=200)
 
 
-async def get_ticket_list(request: web.Request, version, device_id=None, account_id=None, ticket_object_type=None, action_type=None, ticket_ids=None, object_ids=None, receipt_tokens=None, game_type=None, app_key=None) -> web.Response:
+async def get_ticket_list(request: web.Request, device_id=None, account_id=None, ticket_object_type=None, action_type=None, ticket_ids=None, object_ids=None, receipt_tokens=None, game_type=None, app_key=None) -> web.Response:
     """Get Ticket List
 
     Gets the list of tickets.
 
-    :param version: 
-    :type version: 
     :param device_id: the id of the device that owns the tickets
     :type device_id: str
     :param account_id: the id of the account that owns the tickets
@@ -61,13 +57,11 @@ async def get_ticket_list(request: web.Request, version, device_id=None, account
     return web.Response(status=200)
 
 
-async def gift_purchase(request: web.Request, version, receiver_account_id, ticket_id, device_id=None, account_id=None, asset_id=None, custom_message=None, game_type=None, app_key=None) -> web.Response:
+async def gift_purchase(request: web.Request, receiver_account_id, ticket_id, device_id=None, account_id=None, asset_id=None, custom_message=None, game_type=None, app_key=None) -> web.Response:
     """Gift Tickets
 
     Gift tickets to another user.
 
-    :param version: 
-    :type version: 
     :param receiver_account_id: the id of the account receiving the tickets
     :type receiver_account_id: int
     :param ticket_id: the id of the tickets
@@ -89,13 +83,11 @@ async def gift_purchase(request: web.Request, version, receiver_account_id, tick
     return web.Response(status=200)
 
 
-async def save_ticket(request: web.Request, version, action_type, ticket_object_type, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, receipt_data=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None) -> web.Response:
+async def save_ticket(request: web.Request, action_type, ticket_object_type, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, receipt_data=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None) -> web.Response:
     """Save Ticket
 
     Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system.
 
-    :param version: 
-    :type version: 
     :param action_type: the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER
     :type action_type: str
     :param ticket_object_type: the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM
@@ -137,13 +129,11 @@ async def save_ticket(request: web.Request, version, action_type, ticket_object_
     return web.Response(status=200)
 
 
-async def save_ticket_via_file_upload(request: web.Request, version, action_type, ticket_object_type, receipt_data, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None) -> web.Response:
+async def save_ticket_via_file_upload(request: web.Request, action_type, ticket_object_type, receipt_data, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None) -> web.Response:
     """Save Ticket with Reciept
 
     Similar to the Save Ticket endpoint but allows the receiptData to be in binary format. This must be a multi-part post
 
-    :param version: 
-    :type version: 
     :param action_type: the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER }
     :type action_type: str
     :param ticket_object_type: the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM}
@@ -185,13 +175,11 @@ async def save_ticket_via_file_upload(request: web.Request, version, action_type
     return web.Response(status=200)
 
 
-async def ticket_offers(request: web.Request, version) -> web.Response:
+async def ticket_offers(request: web.Request, ) -> web.Response:
     """Get Ticket Offers
 
     Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.
 
-    :param version: 
-    :type version: 
 
     """
     return web.Response(status=200)

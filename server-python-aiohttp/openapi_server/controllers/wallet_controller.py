@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_offer_transaction(request: web.Request, version, device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None, status=None) -> web.Response:
+async def create_offer_transaction(request: web.Request, device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None, status=None) -> web.Response:
     """Create Wallet Offers
 
     Adds offers to the wallet
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -40,13 +38,11 @@ async def create_offer_transaction(request: web.Request, version, device_id=None
     return web.Response(status=200)
 
 
-async def delete_offer_transaction(request: web.Request, version, transaction_id, device_id=None, account_id=None) -> web.Response:
+async def delete_offer_transaction(request: web.Request, transaction_id, device_id=None, account_id=None) -> web.Response:
     """Delete Wallet Offer
 
     Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
 
-    :param version: 
-    :type version: 
     :param transaction_id: The offer transaction id to remove
     :type transaction_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -58,13 +54,11 @@ async def delete_offer_transaction(request: web.Request, version, transaction_id
     return web.Response(status=200)
 
 
-async def get_offer_transaction(request: web.Request, version, transaction_id, device_id=None, account_id=None, include_mission=None, latitude=None, longitude=None, return_full_response=None) -> web.Response:
+async def get_offer_transaction(request: web.Request, transaction_id, device_id=None, account_id=None, include_mission=None, latitude=None, longitude=None, return_full_response=None) -> web.Response:
     """Get Wallet Offer
 
     
 
-    :param version: 
-    :type version: 
     :param transaction_id: The offer transaction id to get details of
     :type transaction_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -84,13 +78,11 @@ async def get_offer_transaction(request: web.Request, version, transaction_id, d
     return web.Response(status=200)
 
 
-async def preview_offer_transaction(request: web.Request, version, device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None) -> web.Response:
+async def preview_offer_transaction(request: web.Request, device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None) -> web.Response:
     """Preview Wallet Offers
 
     Preview the final cost of a transaction without charging the user
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -116,13 +108,11 @@ async def preview_offer_transaction(request: web.Request, version, device_id=Non
     return web.Response(status=200)
 
 
-async def search_offer_transactions(request: web.Request, version, device_id=None, account_id=None, keyword=None, retailer_id=None, retailer_ids=None, retailer_location_id=None, retailer_location_ids=None, exclude_retailer_location_ids=None, offer_id=None, offer_ids=None, offer_location_id=None, offer_location_ids=None, offer_type=None, offer_types=None, special_offer_type=None, special_offer_types=None, category_ids=None, filter_ids=None, offer_audience_ids=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, redeemable_start_date=None, redeemable_end_date=None, filter_by_parent_offer=None, started_since=None, started_before=None, ended_since=None, ended_before=None, redeemed=None, statuses=None, reservations_only=None, active_only=None, return_full_response=None, recurring_started_since=None, recurring_started_before=None, recurring_expiration_since=None, recurring_expiration_before=None) -> web.Response:
+async def search_offer_transactions(request: web.Request, device_id=None, account_id=None, keyword=None, retailer_id=None, retailer_ids=None, retailer_location_id=None, retailer_location_ids=None, exclude_retailer_location_ids=None, offer_id=None, offer_ids=None, offer_location_id=None, offer_location_ids=None, offer_type=None, offer_types=None, special_offer_type=None, special_offer_types=None, category_ids=None, filter_ids=None, offer_audience_ids=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, redeemable_start_date=None, redeemable_end_date=None, filter_by_parent_offer=None, started_since=None, started_before=None, ended_since=None, ended_before=None, redeemed=None, statuses=None, reservations_only=None, active_only=None, return_full_response=None, recurring_started_since=None, recurring_started_before=None, recurring_expiration_since=None, recurring_expiration_before=None) -> web.Response:
     """Search Wallet Offers
 
     Search on active offers currently in the user&#39;s wallet, or past offers the user has already redeemed.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -210,13 +200,11 @@ async def search_offer_transactions(request: web.Request, version, device_id=Non
     return web.Response(status=200)
 
 
-async def update_offer_transaction(request: web.Request, version, transaction_id, status, device_id=None, account_id=None, offer_location_id=None, currency_type=None, use_points=None, app_key=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, exception_membership_offer_ids=None) -> web.Response:
+async def update_offer_transaction(request: web.Request, transaction_id, status, device_id=None, account_id=None, offer_location_id=None, currency_type=None, use_points=None, app_key=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, exception_membership_offer_ids=None) -> web.Response:
     """Update Wallet Offer
 
     Update offer status. The status values are: 0 - not redeemable, 1 - redeemable.  Not redeemable means the customer has received the offer but has not decided to use (or print) it yet.  Until they choose to do this the merchant cannot redeem the offer (has not been given permission yet).   Redeemable means the customer has chosen to use the offer and wishes to redeem it.  Redeemed means the merchant has accepted the offer and the given the customer its value, then marked it a used in the system.  This status change is handled by a merchant end point.
 
-    :param version: 
-    :type version: 
     :param transaction_id: The offer transaction id to remove
     :type transaction_id: int
     :param status: The status value to change to (0 or 1)

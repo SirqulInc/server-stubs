@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def api_version_achievement_tier_search_post(request: web.Request, version, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None, sort_field=None, descending=None, descending_goal=None, start=None, limit=None) -> web.Response:
+async def achievement_tier_search_post(request: web.Request, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None, sort_field=None, descending=None, descending_goal=None, start=None, limit=None) -> web.Response:
     """Searches an Achievement Tier
 
     Searches a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -43,13 +41,11 @@ async def api_version_achievement_tier_search_post(request: web.Request, version
     return web.Response(status=200)
 
 
-async def create_achievement(request: web.Request, version, app_key, title, device_id=None, account_id=None, analytics_tag=None, description=None, rank_type=None, rank_increment=None, min_increment=None, max_increment=None, validate=None, active=None, trigger_definition=None) -> web.Response:
+async def create_achievement(request: web.Request, app_key, title, device_id=None, account_id=None, analytics_tag=None, description=None, rank_type=None, rank_increment=None, min_increment=None, max_increment=None, validate=None, active=None, trigger_definition=None) -> web.Response:
     """Create Achievement
 
     Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param app_key: the application key the achievement is for
     :type app_key: str
     :param title: the title of the achievement (255 character limit)
@@ -81,13 +77,11 @@ async def create_achievement(request: web.Request, version, app_key, title, devi
     return web.Response(status=200)
 
 
-async def create_achievement_tier(request: web.Request, version, achievement_id, score_all_instances, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None) -> web.Response:
+async def create_achievement_tier(request: web.Request, achievement_id, score_all_instances, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None) -> web.Response:
     """Create Achievement Tier
 
     Create a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param achievement_id: the achievement id for adding a new tier
     :type achievement_id: int
     :param score_all_instances: score all instances
@@ -121,13 +115,11 @@ async def create_achievement_tier(request: web.Request, version, achievement_id,
     return web.Response(status=200)
 
 
-async def delete_achievement(request: web.Request, version, achievement_id, account_id=None) -> web.Response:
+async def delete_achievement(request: web.Request, achievement_id, account_id=None) -> web.Response:
     """Delete Achievement
 
     Deletes an achievement (for developer/retailer use). User must have permissions to the application the achievement was created for.
 
-    :param version: 
-    :type version: 
     :param achievement_id: The ID of the achievement
     :type achievement_id: int
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -137,13 +129,11 @@ async def delete_achievement(request: web.Request, version, achievement_id, acco
     return web.Response(status=200)
 
 
-async def delete_achievement_tier(request: web.Request, version, achievement_tier_id, account_id=None) -> web.Response:
+async def delete_achievement_tier(request: web.Request, achievement_tier_id, account_id=None) -> web.Response:
     """Delete Achievement Tier
 
     Deletes an achievement tier (for developer/retailer use). User must have permissions to the application the achievement was created for.
 
-    :param version: 
-    :type version: 
     :param achievement_tier_id: the achievement id for deletion
     :type achievement_tier_id: int
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -153,13 +143,11 @@ async def delete_achievement_tier(request: web.Request, version, achievement_tie
     return web.Response(status=200)
 
 
-async def get_achievement(request: web.Request, version, achievement_id, device_id=None, account_id=None, achievement_type=None) -> web.Response:
+async def get_achievement(request: web.Request, achievement_id, device_id=None, account_id=None, achievement_type=None) -> web.Response:
     """Get Achievement
 
     Get an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param achievement_id: The ID of the achievement
     :type achievement_id: int
     :param device_id: a unique id given by the device (deviceId or accountId required)
@@ -173,13 +161,11 @@ async def get_achievement(request: web.Request, version, achievement_id, device_
     return web.Response(status=200)
 
 
-async def get_achievement_tier(request: web.Request, version, account_id, achievement_tier_id) -> web.Response:
+async def get_achievement_tier(request: web.Request, account_id, achievement_tier_id) -> web.Response:
     """Gets an achievement tier
 
     Gets an achievement tier (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user (deviceId or accountId required)
     :type account_id: int
     :param achievement_tier_id: the achievement tier id that is being retrieved
@@ -189,13 +175,11 @@ async def get_achievement_tier(request: web.Request, version, account_id, achiev
     return web.Response(status=200)
 
 
-async def get_user_achievements(request: web.Request, version, return_nulls, app_key, include_undiscovered, device_id=None, account_id=None, connection_account_email=None, connection_account_id=None, rank_type=None, achievement_type=None, latitude=None, longitude=None) -> web.Response:
+async def get_user_achievements(request: web.Request, return_nulls, app_key, include_undiscovered, device_id=None, account_id=None, connection_account_email=None, connection_account_id=None, rank_type=None, achievement_type=None, latitude=None, longitude=None) -> web.Response:
     """Get Achievement Progress
 
     Gets a list of user achievements.
 
-    :param version: 
-    :type version: 
     :param return_nulls: determines whether to return null fields in the response
     :type return_nulls: bool
     :param app_key: the application key for filtering results by application
@@ -223,13 +207,11 @@ async def get_user_achievements(request: web.Request, version, return_nulls, app
     return web.Response(status=200)
 
 
-async def list_achievement_tags(request: web.Request, version, app_key=None) -> web.Response:
+async def list_achievement_tags(request: web.Request, app_key=None) -> web.Response:
     """List Achievement Tags
 
     List achievement tags by application
 
-    :param version: 
-    :type version: 
     :param app_key: filter results by application key
     :type app_key: str
 
@@ -237,13 +219,11 @@ async def list_achievement_tags(request: web.Request, version, app_key=None) -> 
     return web.Response(status=200)
 
 
-async def list_achievements(request: web.Request, version, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None) -> web.Response:
+async def list_achievements(request: web.Request, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None) -> web.Response:
     """List Achievements
 
     List achievements by billable.
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort by. See AchievementApiMap
     :type sort_field: str
     :param descending: determines whether the sorted list is in descending or ascending order
@@ -271,13 +251,11 @@ async def list_achievements(request: web.Request, version, sort_field, descendin
     return web.Response(status=200)
 
 
-async def search_achievements(request: web.Request, version, app_key, sort_field, descending, include_tiers, include_inactive_tiers, start, limit, device_id=None, account_id=None, keyword=None, achievement_type=None, rank_type=None) -> web.Response:
+async def search_achievements(request: web.Request, app_key, sort_field, descending, include_tiers, include_inactive_tiers, start, limit, device_id=None, account_id=None, keyword=None, achievement_type=None, rank_type=None) -> web.Response:
     """Search Achievements
 
     Searches achievements by application for consumers.
 
-    :param version: 
-    :type version: 
     :param app_key: the application key
     :type app_key: str
     :param sort_field: the field to sort by. See AchievementApiMap
@@ -307,13 +285,11 @@ async def search_achievements(request: web.Request, version, app_key, sort_field
     return web.Response(status=200)
 
 
-async def update_achievement(request: web.Request, version, device_id=None, account_id=None, achievement_id=None, analytics_tag=None, title=None, description=None, rank_type=None, rank_increment=None, min_increment=None, null_min_increment=None, max_increment=None, null_max_increment=None, validate=None, active=None, trigger_definition=None) -> web.Response:
+async def update_achievement(request: web.Request, device_id=None, account_id=None, achievement_id=None, analytics_tag=None, title=None, description=None, rank_type=None, rank_increment=None, min_increment=None, null_min_increment=None, max_increment=None, null_max_increment=None, validate=None, active=None, trigger_definition=None) -> web.Response:
     """Update Achievement
 
     Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -349,13 +325,11 @@ async def update_achievement(request: web.Request, version, device_id=None, acco
     return web.Response(status=200)
 
 
-async def update_achievement_tier(request: web.Request, version, achievement_tier_id, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, score_all_instances=None) -> web.Response:
+async def update_achievement_tier(request: web.Request, achievement_tier_id, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, score_all_instances=None) -> web.Response:
     """Update Achievement Tier
 
     Updates a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-    :param version: 
-    :type version: 
     :param achievement_tier_id: the achievement tier id for updating
     :type achievement_tier_id: int
     :param device_id: a unique id given by the device (deviceId or accountId required)
@@ -389,13 +363,11 @@ async def update_achievement_tier(request: web.Request, version, achievement_tie
     return web.Response(status=200)
 
 
-async def update_user_achievement(request: web.Request, version, account_id, achievement_id=None, tag=None, custom_id=None, increment=None, start_date=None, end_date=None, return_progress=None) -> web.Response:
+async def update_user_achievement(request: web.Request, account_id, achievement_id=None, tag=None, custom_id=None, increment=None, start_date=None, end_date=None, return_progress=None) -> web.Response:
     """Update Achievement Progress
 
     Update user achievement progress.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param achievement_id: the achievement id (achievementId or tag required)

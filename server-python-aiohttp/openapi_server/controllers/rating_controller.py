@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_rating(request: web.Request, version, ratable_type, ratable_id, rating_value, device_id=None, account_id=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None) -> web.Response:
+async def create_rating(request: web.Request, ratable_type, ratable_id, rating_value, device_id=None, account_id=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None) -> web.Response:
     """Create Rating
 
     This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object.
 
-    :param version: 
-    :type version: 
     :param ratable_type: The ratable object type {RETAILER_LOCATION}
     :type ratable_type: str
     :param ratable_id: The id of the ratable object
@@ -41,13 +39,11 @@ async def create_rating(request: web.Request, version, ratable_type, ratable_id,
     return web.Response(status=200)
 
 
-async def delete_rating(request: web.Request, version, rating_id, device_id=None, account_id=None) -> web.Response:
+async def delete_rating(request: web.Request, rating_id, device_id=None, account_id=None) -> web.Response:
     """Delete Rating
 
     Sets a rating as deleted.
 
-    :param version: 
-    :type version: 
     :param rating_id: The ID of the rating to delete
     :type rating_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -59,13 +55,11 @@ async def delete_rating(request: web.Request, version, rating_id, device_id=None
     return web.Response(status=200)
 
 
-async def search_location_rating_indexes(request: web.Request, version, category_ids=None, keyword=None, location_type=None, sort_field=None, descending=None, start=None, limit=None, search_range=None, latitude=None, longitude=None, return_overall_rating=None, distance_unit=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None) -> web.Response:
+async def search_location_rating_indexes(request: web.Request, category_ids=None, keyword=None, location_type=None, sort_field=None, descending=None, start=None, limit=None, search_range=None, latitude=None, longitude=None, return_overall_rating=None, distance_unit=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None) -> web.Response:
     """Search Location Rating Indexes
 
     Search for retailer locations by averages near you.
 
-    :param version: 
-    :type version: 
     :param category_ids: Comma separated list of category ids to filter the results by
     :type category_ids: str
     :param keyword: The keyword used to search
@@ -105,13 +99,11 @@ async def search_location_rating_indexes(request: web.Request, version, category
     return web.Response(status=200)
 
 
-async def search_rating_indexes(request: web.Request, version, ratable_type, ratable_ids=None, category_ids=None, secondary_type=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, return_ratable=None, return_overall_rating=None) -> web.Response:
+async def search_rating_indexes(request: web.Request, ratable_type, ratable_ids=None, category_ids=None, secondary_type=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, return_ratable=None, return_overall_rating=None) -> web.Response:
     """Search Rating Indexes
 
     Search for ratable items by averages.
 
-    :param version: 
-    :type version: 
     :param ratable_type: Filter results by a ratable type {RETAILER_LOCATION}
     :type ratable_type: str
     :param ratable_ids: Comma separated list of ratable ids to filter the resuts by
@@ -143,13 +135,11 @@ async def search_rating_indexes(request: web.Request, version, ratable_type, rat
     return web.Response(status=200)
 
 
-async def search_ratings(request: web.Request, version, device_id=None, account_id=None, filter_account_id=None, ratable_type=None, ratable_id=None, category_ids=None, keyword=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_ratings(request: web.Request, device_id=None, account_id=None, filter_account_id=None, ratable_type=None, ratable_id=None, category_ids=None, keyword=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search Ratings
 
     Search for ratings on a ratable object.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -177,13 +167,11 @@ async def search_ratings(request: web.Request, version, device_id=None, account_
     return web.Response(status=200)
 
 
-async def update_rating(request: web.Request, version, rating_id, device_id=None, account_id=None, rating_value=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None) -> web.Response:
+async def update_rating(request: web.Request, rating_id, device_id=None, account_id=None, rating_value=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None) -> web.Response:
     """Update Rating
 
     Update an existing rating. Only the creator of the rating have permission to update.
 
-    :param version: 
-    :type version: 
     :param rating_id: The id of the rating (Note: this is not the ratable object id)
     :type rating_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)

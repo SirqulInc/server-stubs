@@ -6,13 +6,11 @@ from openapi_server.models.user_permissions_response import UserPermissionsRespo
 from openapi_server import util
 
 
-async def add_users_to_permissionable(request: web.Request, version, permissionable_type, permissionable_id, device_id=None, account_id=None, read=None, write=None, delete=None, add=None, connection_ids=None, connection_account_ids=None, connection_group_ids=None, pending=None, admin=None, include_friend_group=None, latitude=None, longitude=None, audience_ids=None) -> web.Response:
+async def add_users_to_permissionable(request: web.Request, permissionable_type, permissionable_id, device_id=None, account_id=None, read=None, write=None, delete=None, add=None, connection_ids=None, connection_account_ids=None, connection_group_ids=None, pending=None, admin=None, include_friend_group=None, latitude=None, longitude=None, audience_ids=None) -> web.Response:
     """Add User
 
     Adds a user to a permissionable object.
 
-    :param version: 
-    :type version: 
     :param permissionable_type: the permissionable type of the object
     :type permissionable_type: str
     :param permissionable_id: the id of the permissionable object
@@ -52,13 +50,11 @@ async def add_users_to_permissionable(request: web.Request, version, permissiona
     return web.Response(status=200)
 
 
-async def approve_permissionable(request: web.Request, version, permissionable_type, permissionable_id, device_id=None, account_id=None, approval_status=None) -> web.Response:
+async def approve_permissionable(request: web.Request, permissionable_type, permissionable_id, device_id=None, account_id=None, approval_status=None) -> web.Response:
     """Approve Permissionable
 
     Sets the approval status of a permissionable object.
 
-    :param version: 
-    :type version: 
     :param permissionable_type: The permissionable type of the object
     :type permissionable_type: str
     :param permissionable_id: The id of the permissionable object
@@ -74,13 +70,11 @@ async def approve_permissionable(request: web.Request, version, permissionable_t
     return web.Response(status=200)
 
 
-async def leave_from_permissionable(request: web.Request, version, permissionable_type, permissionable_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def leave_from_permissionable(request: web.Request, permissionable_type, permissionable_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Leave
 
     Used when the user wants to leave from someone else&#39;s permissionable object
 
-    :param version: 
-    :type version: 
     :param permissionable_type: the permissionable type PermissionableType
     :type permissionable_type: str
     :param permissionable_id: the id of the permissionable object
@@ -98,13 +92,11 @@ async def leave_from_permissionable(request: web.Request, version, permissionabl
     return web.Response(status=200)
 
 
-async def remove_users_from_permissionable(request: web.Request, version, permissionable_type, permissionable_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, connection_group_ids=None, remove_friend_group=None, latitude=None, longitude=None, audience_ids=None) -> web.Response:
+async def remove_users_from_permissionable(request: web.Request, permissionable_type, permissionable_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, connection_group_ids=None, remove_friend_group=None, latitude=None, longitude=None, audience_ids=None) -> web.Response:
     """Remove User
 
     Used to remove someone (assuming they have permission) from a permissionable object
 
-    :param version: 
-    :type version: 
     :param permissionable_type: the permissionable type of the object
     :type permissionable_type: str
     :param permissionable_id: the id of the permissionable object
@@ -132,13 +124,11 @@ async def remove_users_from_permissionable(request: web.Request, version, permis
     return web.Response(status=200)
 
 
-async def search_permissionables(request: web.Request, version, device_id=None, account_id=None, connection_account_id=None, connection_account_ids=None, permissionable_type=None, permissionable_id=None, keyword=None, sort_field=None, descending=None, pending=None, admin=None, start=None, limit=None) -> web.Response:
+async def search_permissionables(request: web.Request, device_id=None, account_id=None, connection_account_id=None, connection_account_ids=None, permissionable_type=None, permissionable_id=None, keyword=None, sort_field=None, descending=None, pending=None, admin=None, start=None, limit=None) -> web.Response:
     """Search Permissionables
 
     Search on UserPermissions
 
-    :param version: 
-    :type version: 
     :param device_id: A unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account ID of the user (deviceId or accountId required)
@@ -170,13 +160,11 @@ async def search_permissionables(request: web.Request, version, device_id=None, 
     return web.Response(status=200)
 
 
-async def search_permissionables_following_distance(request: web.Request, version, latitude, longitude, device_id=None, account_id=None, connection_account_id=None, connection_account_ids=None, permissionable_type=None, permissionable_id=None, search_range=None, keyword=None, pending=None, admin=None, start=None, limit=None) -> web.Response:
+async def search_permissionables_following_distance(request: web.Request, latitude, longitude, device_id=None, account_id=None, connection_account_id=None, connection_account_ids=None, permissionable_type=None, permissionable_id=None, search_range=None, keyword=None, pending=None, admin=None, start=None, limit=None) -> web.Response:
     """Search Permissionables by Distnace
 
     Search on UserPermissions by distance
 
-    :param version: 
-    :type version: 
     :param latitude: The latitude of the current account
     :type latitude: float
     :param longitude: The longitude of the current account

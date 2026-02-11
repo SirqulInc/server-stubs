@@ -9,13 +9,11 @@ from openapi_server.models.trilat_cache_request import TrilatCacheRequest
 from openapi_server import util
 
 
-async def cache_trilateration_data(request: web.Request, version, udid, source_time=None, minimum_sample_size=None, data=None, data_file=None) -> web.Response:
+async def cache_trilateration_data(request: web.Request, udid, source_time=None, minimum_sample_size=None, data=None, data_file=None) -> web.Response:
     """Create Trilateration Data with File
 
     Creates trilateration samples for a source device (i.e. a router).
 
-    :param version: 
-    :type version: 
     :param udid: The unique identifier of the source device
     :type udid: str
     :param source_time: The current timestamp of the source device
@@ -31,13 +29,11 @@ async def cache_trilateration_data(request: web.Request, version, udid, source_t
     return web.Response(status=200)
 
 
-async def cache_trilateration_data_gzip(request: web.Request, version, body=None) -> web.Response:
+async def cache_trilateration_data_gzip(request: web.Request, body=None) -> web.Response:
     """Create Trilateration Data with Rest
 
     Creates trilateration samples for a source device (i.e. a router).
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -46,13 +42,11 @@ async def cache_trilateration_data_gzip(request: web.Request, version, body=None
     return web.Response(status=200)
 
 
-async def get_location_by_ip(request: web.Request, version, ip=None) -> web.Response:
+async def get_location_by_ip(request: web.Request, ip=None) -> web.Response:
     """Get Location by IP
 
     Get location information based on an IP address.
 
-    :param version: 
-    :type version: 
     :param ip: the ip address of the client device
     :type ip: str
 
@@ -60,13 +54,11 @@ async def get_location_by_ip(request: web.Request, version, ip=None) -> web.Resp
     return web.Response(status=200)
 
 
-async def get_location_by_trilateration(request: web.Request, version, account_id=None, latitude=None, longitude=None, data=None, response_filters=None) -> web.Response:
+async def get_location_by_trilateration(request: web.Request, account_id=None, latitude=None, longitude=None, data=None, response_filters=None) -> web.Response:
     """Get Location by Trilateration
 
     Send in device data and calculate a position based on signal strengths.
 
-    :param version: 
-    :type version: 
     :param account_id: The account making the request, if provided the last know location will be updated
     :type account_id: int
     :param latitude: The known GPS latitude to compare to the calculated version
@@ -82,13 +74,11 @@ async def get_location_by_trilateration(request: web.Request, version, account_i
     return web.Response(status=200)
 
 
-async def get_locations(request: web.Request, version, device_id=None, account_id=None, currentlatitude=None, currentlongitude=None, current_latitude=None, current_longitude=None, query=None, zipcode=None, zip_code=None, selected_maplatitude=None, selected_maplongitude=None, selected_map_latitude=None, selected_map_longitude=None, search_range=None, use_geocode=None, i=None, start=None, l=None, limit=None) -> web.Response:
+async def get_locations(request: web.Request, device_id=None, account_id=None, currentlatitude=None, currentlongitude=None, current_latitude=None, current_longitude=None, query=None, zipcode=None, zip_code=None, selected_maplatitude=None, selected_maplongitude=None, selected_map_latitude=None, selected_map_longitude=None, search_range=None, use_geocode=None, i=None, start=None, l=None, limit=None) -> web.Response:
     """Search Regions or Postal Codes
 
     Searches geographic locations by proximity via address or keyword.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id
     :type device_id: str
     :param account_id: the account id

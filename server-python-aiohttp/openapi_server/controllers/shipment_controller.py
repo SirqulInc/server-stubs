@@ -5,13 +5,11 @@ from openapi_server.models.shipment import Shipment
 from openapi_server import util
 
 
-async def cancel_shipment(request: web.Request, version, id) -> web.Response:
+async def cancel_shipment(request: web.Request, id) -> web.Response:
     """Cancel Shipment
 
     Remove shipment from route
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to cancel
     :type id: int
 
@@ -19,13 +17,11 @@ async def cancel_shipment(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def create_shipment(request: web.Request, version, body=None) -> web.Response:
+async def create_shipment(request: web.Request, body=None) -> web.Response:
     """Create Shipment
 
     Create new shipment
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -34,13 +30,11 @@ async def create_shipment(request: web.Request, version, body=None) -> web.Respo
     return web.Response(status=200)
 
 
-async def delete_shipment(request: web.Request, version, id) -> web.Response:
+async def delete_shipment(request: web.Request, id) -> web.Response:
     """Delete Shipment
 
     Delete an existing shipment
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to delete
     :type id: int
 
@@ -48,13 +42,11 @@ async def delete_shipment(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def get_shipment(request: web.Request, version, id) -> web.Response:
+async def get_shipment(request: web.Request, id) -> web.Response:
     """Get Shipment
 
     Get an existing shipment
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to get
     :type id: int
 
@@ -62,13 +54,11 @@ async def get_shipment(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def search_shipments(request: web.Request, version, sort_field, descending, start, limit, active_only, owner_id=None, rider_id=None, route_id=None) -> web.Response:
+async def search_shipments(request: web.Request, sort_field, descending, start, limit, active_only, owner_id=None, rider_id=None, route_id=None) -> web.Response:
     """Search Shipments
 
     Search for shipments
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order
@@ -90,13 +80,11 @@ async def search_shipments(request: web.Request, version, sort_field, descending
     return web.Response(status=200)
 
 
-async def update_shipment(request: web.Request, version, id, body=None) -> web.Response:
+async def update_shipment(request: web.Request, id, body=None) -> web.Response:
     """Update Shipment
 
     Update an existing shipment
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to update
     :type id: int
     :param body: 
@@ -107,13 +95,11 @@ async def update_shipment(request: web.Request, version, id, body=None) -> web.R
     return web.Response(status=200)
 
 
-async def update_shipment_status(request: web.Request, version, id, body=None) -> web.Response:
+async def update_shipment_status(request: web.Request, id, body=None) -> web.Response:
     """Uupdate Shipment Status
 
     Update status of an existing shipment
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to update status
     :type id: int
     :param body: 

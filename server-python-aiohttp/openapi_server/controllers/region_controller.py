@@ -5,13 +5,11 @@ from openapi_server.models.region_response import RegionResponse
 from openapi_server import util
 
 
-async def create_region(request: web.Request, version, account_id, region_class, short_name, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None) -> web.Response:
+async def create_region(request: web.Request, account_id, region_class, short_name, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None) -> web.Response:
     """Create Region
 
     Create a region.
 
-    :param version: 
-    :type version: 
     :param account_id: The id of the account sending the request
     :type account_id: int
     :param region_class: RegionClass of this region
@@ -59,13 +57,11 @@ async def create_region(request: web.Request, version, account_id, region_class,
     return web.Response(status=200)
 
 
-async def delete_region(request: web.Request, version, account_id, region_id) -> web.Response:
+async def delete_region(request: web.Request, account_id, region_id) -> web.Response:
     """Delete Region
 
     Delete a region.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account logged in
     :type account_id: int
     :param region_id: the id of the region
@@ -75,13 +71,11 @@ async def delete_region(request: web.Request, version, account_id, region_id) ->
     return web.Response(status=200)
 
 
-async def get_region(request: web.Request, version, region_id, account_id=None) -> web.Response:
+async def get_region(request: web.Request, region_id, account_id=None) -> web.Response:
     """Get Region
 
     Get a region.
 
-    :param version: 
-    :type version: 
     :param region_id: the id of the region to get
     :type region_id: int
     :param account_id: the id of the logged in user
@@ -91,13 +85,11 @@ async def get_region(request: web.Request, version, region_id, account_id=None) 
     return web.Response(status=200)
 
 
-async def search_regions(request: web.Request, version, account_id=None, query=None, keyword=None, latitude=None, longitude=None, range=None, region_class=None, visibility=None, search_mode=None, sort_field=None, descending=None, include_parent=None, include_children=None, include_postal_codes=None, category_ids=None, filter_ids=None, version_code=None, active_only=None, show_deleted=None, last_updated_since=None, start=None, limit=None) -> web.Response:
+async def search_regions(request: web.Request, account_id=None, query=None, keyword=None, latitude=None, longitude=None, range=None, region_class=None, visibility=None, search_mode=None, sort_field=None, descending=None, include_parent=None, include_children=None, include_postal_codes=None, category_ids=None, filter_ids=None, version_code=None, active_only=None, show_deleted=None, last_updated_since=None, start=None, limit=None) -> web.Response:
     """Search Regions
 
     Get the list of regions.
 
-    :param version: 
-    :type version: 
     :param account_id: the owner account id of the region to be created
     :type account_id: int
     :param query: This parameter is deprecated. deprecated - use \&quot;keyword\&quot;
@@ -147,13 +139,11 @@ async def search_regions(request: web.Request, version, account_id=None, query=N
     return web.Response(status=200)
 
 
-async def update_region(request: web.Request, version, account_id, region_id, region_class=None, short_name=None, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None, clear_lists=None) -> web.Response:
+async def update_region(request: web.Request, account_id, region_id, region_class=None, short_name=None, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None, clear_lists=None) -> web.Response:
     """Update Region
 
     Update a region.
 
-    :param version: 
-    :type version: 
     :param account_id: The id of the account sending the request
     :type account_id: int
     :param region_id: The id of the region to be updated

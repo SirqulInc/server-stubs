@@ -5,13 +5,11 @@ from openapi_server.models.twi_ml_response import TwiMLResponse
 from openapi_server import util
 
 
-async def sms_buy_offer(request: web.Request, version, app_key, body, _from, currency_type) -> web.Response:
+async def sms_buy_offer(request: web.Request, app_key, body, _from, currency_type) -> web.Response:
     """Buy Offer by SMS
 
     Recieve an SMS payload from Twillio to purchase an offer.
 
-    :param version: 
-    :type version: 
     :param app_key: the application key
     :type app_key: str
     :param body: the message of the text

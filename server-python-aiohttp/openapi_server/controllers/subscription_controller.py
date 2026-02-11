@@ -8,13 +8,11 @@ from openapi_server.models.subscription_response import SubscriptionResponse
 from openapi_server import util
 
 
-async def create_subscription(request: web.Request, version, account_id, plan_id=None, promo_code=None) -> web.Response:
+async def create_subscription(request: web.Request, account_id, plan_id=None, promo_code=None) -> web.Response:
     """Create Subscription
 
     Create a subscription for a billable entity.  Provide a planId, if not provided then the base plan will be assigned.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the create, must be the responsible manager
     :type account_id: int
     :param plan_id: The plan to subscribe to, if null use default plan
@@ -26,13 +24,11 @@ async def create_subscription(request: web.Request, version, account_id, plan_id
     return web.Response(status=200)
 
 
-async def delete_subscription(request: web.Request, version, account_id) -> web.Response:
+async def delete_subscription(request: web.Request, account_id) -> web.Response:
     """Delete Subscription
 
     Suspend the current subscription for the billable entity managed by the account.  The account must be the responsible manager to perform this action
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the delete, must be the responsible manager
     :type account_id: int
 
@@ -40,13 +36,11 @@ async def delete_subscription(request: web.Request, version, account_id) -> web.
     return web.Response(status=200)
 
 
-async def get_subscription(request: web.Request, version, account_id) -> web.Response:
+async def get_subscription(request: web.Request, account_id) -> web.Response:
     """Get Subscription
 
     Use the accountId to determine the associated BillableEntity.  Then get the subscription.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the lookup
     :type account_id: int
 
@@ -54,13 +48,11 @@ async def get_subscription(request: web.Request, version, account_id) -> web.Res
     return web.Response(status=200)
 
 
-async def get_subscription_plan(request: web.Request, version, plan_id) -> web.Response:
+async def get_subscription_plan(request: web.Request, plan_id) -> web.Response:
     """Get Subscription Plan
 
     Get the matched subscription plan
 
-    :param version: 
-    :type version: 
     :param plan_id: The ID of the plan to get
     :type plan_id: int
 
@@ -68,13 +60,11 @@ async def get_subscription_plan(request: web.Request, version, plan_id) -> web.R
     return web.Response(status=200)
 
 
-async def get_subscription_plans(request: web.Request, version, visible=None, role=None) -> web.Response:
+async def get_subscription_plans(request: web.Request, visible=None, role=None) -> web.Response:
     """List Subscription Plans
 
     Get the matched subscription plan
 
-    :param version: 
-    :type version: 
     :param visible: Include visible only (true), hidden only (false), or all (null)
     :type visible: bool
     :param role: The role the plan is targeted for, values are: DEVELOPER, RETAILER, ADVERTISER
@@ -84,13 +74,11 @@ async def get_subscription_plans(request: web.Request, version, visible=None, ro
     return web.Response(status=200)
 
 
-async def get_subscription_usage(request: web.Request, version, account_id, application_id=None, start=None, end=None) -> web.Response:
+async def get_subscription_usage(request: web.Request, account_id, application_id=None, start=None, end=None) -> web.Response:
     """Get Subscription Usage
 
     Use the accountId to determine the associated BillableEntity.  Then get the application usage.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the lookup
     :type account_id: int
     :param application_id: Get for just 1 application instead of the BillableEntity
@@ -104,13 +92,11 @@ async def get_subscription_usage(request: web.Request, version, account_id, appl
     return web.Response(status=200)
 
 
-async def update_subscription(request: web.Request, version, account_id, plan_id=None, promo_code=None, active=None) -> web.Response:
+async def update_subscription(request: web.Request, account_id, plan_id=None, promo_code=None, active=None) -> web.Response:
     """Update Subscription
 
     Updates the subscription for the billable entity for an account
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the update, must be the responsible manager
     :type account_id: int
     :param plan_id: The plan to subscribe to

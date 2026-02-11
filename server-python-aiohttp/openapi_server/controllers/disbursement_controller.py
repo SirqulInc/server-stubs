@@ -5,13 +5,11 @@ from openapi_server.models.disbursement_response import DisbursementResponse
 from openapi_server import util
 
 
-async def check_disbursements(request: web.Request, version, disbursement_id) -> web.Response:
+async def check_disbursements(request: web.Request, disbursement_id) -> web.Response:
     """Check Disbursements
 
     Checks the status of a captured disbrusement to see if it has been settled.
 
-    :param version: 
-    :type version: 
     :param disbursement_id: the ID of the disbursement being checked on
     :type disbursement_id: int
 
@@ -19,13 +17,11 @@ async def check_disbursements(request: web.Request, version, disbursement_id) ->
     return web.Response(status=200)
 
 
-async def create_disbursement(request: web.Request, version, account_id, receiver_account_id, original_sender_account_id, amount, provider, scheduled_date=None, title=None, comment=None, external_id=None, introspection_params=None) -> web.Response:
+async def create_disbursement(request: web.Request, account_id, receiver_account_id, original_sender_account_id, amount, provider, scheduled_date=None, title=None, comment=None, external_id=None, introspection_params=None) -> web.Response:
     """Create Disbursement
 
     Creates a Disbursement for sending money to a retailer
 
-    :param version: 
-    :type version: 
     :param account_id: the ID of the logging in user (must be an EXECUTIVE account)
     :type account_id: int
     :param receiver_account_id: the ID of the account receiving the disbursement
@@ -51,13 +47,11 @@ async def create_disbursement(request: web.Request, version, account_id, receive
     return web.Response(status=200)
 
 
-async def get_disbursement(request: web.Request, version, account_id, disbursement_id) -> web.Response:
+async def get_disbursement(request: web.Request, account_id, disbursement_id) -> web.Response:
     """Get Disbursement
 
     Get Disbursement details
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param disbursement_id: the id of the disbursement
@@ -67,13 +61,11 @@ async def get_disbursement(request: web.Request, version, account_id, disburseme
     return web.Response(status=200)
 
 
-async def search_disbursements(request: web.Request, version, account_id, receiver_account_id=None, statuses=None, providers=None, before_date=None, after_date=None, start=None, limit=None, active_only=None, external_id=None) -> web.Response:
+async def search_disbursements(request: web.Request, account_id, receiver_account_id=None, statuses=None, providers=None, before_date=None, after_date=None, start=None, limit=None, active_only=None, external_id=None) -> web.Response:
     """Search Disbursements
 
     Search Disbursements
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param receiver_account_id: filter results by the id of the account receiving the disbursement
@@ -99,13 +91,11 @@ async def search_disbursements(request: web.Request, version, account_id, receiv
     return web.Response(status=200)
 
 
-async def update_disbursement(request: web.Request, version, account_id, disbursement_id, amount=None, provider=None, scheduled_date=None, title=None, comment=None, external_id=None, retry=None, introspection_params=None) -> web.Response:
+async def update_disbursement(request: web.Request, account_id, disbursement_id, amount=None, provider=None, scheduled_date=None, title=None, comment=None, external_id=None, retry=None, introspection_params=None) -> web.Response:
     """Update Disbursement
 
     Update Disbursement
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param disbursement_id: the id of the disbursement being updated

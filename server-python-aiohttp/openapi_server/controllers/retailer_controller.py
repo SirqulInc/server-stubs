@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_retailer(request: web.Request, version, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, category_ids_to_add=None, category_ids_to_remove=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, create_default_location=None, response_format=None) -> web.Response:
+async def create_retailer(request: web.Request, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, category_ids_to_add=None, category_ids_to_remove=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, create_default_location=None, response_format=None) -> web.Response:
     """Create Retailer
 
     Create a retailer record. A billable entity must be created first before a retailer record can be made.
 
-    :param version: 
-    :type version: 
     :param name: The name of the retailer
     :type name: str
     :param device_id: The device id (deviceId or accountId required)
@@ -86,13 +84,11 @@ async def create_retailer(request: web.Request, version, name, device_id=None, a
     return web.Response(status=200)
 
 
-async def delete_retailer(request: web.Request, version, device_id=None, account_id=None, retailer_id=None) -> web.Response:
+async def delete_retailer(request: web.Request, device_id=None, account_id=None, retailer_id=None) -> web.Response:
     """Delete Retailer
 
     Set the deleted timestamp to current time.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account used to perform the delete, must have rights to edit the retailer.
@@ -104,13 +100,11 @@ async def delete_retailer(request: web.Request, version, device_id=None, account
     return web.Response(status=200)
 
 
-async def get_retailer(request: web.Request, version, retailer_id, device_id=None, account_id=None, include_counts=None) -> web.Response:
+async def get_retailer(request: web.Request, retailer_id, device_id=None, account_id=None, include_counts=None) -> web.Response:
     """Get Retailer
 
     Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
 
-    :param version: 
-    :type version: 
     :param retailer_id: the ID of the retailer
     :type retailer_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -124,13 +118,11 @@ async def get_retailer(request: web.Request, version, retailer_id, device_id=Non
     return web.Response(status=200)
 
 
-async def get_retailers(request: web.Request, version, visibility, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, q=None, keyword=None, category_ids=None, filter_ids=None, i=None, l=None) -> web.Response:
+async def get_retailers(request: web.Request, visibility, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, q=None, keyword=None, category_ids=None, filter_ids=None, i=None, l=None) -> web.Response:
     """Search Retailers
 
     earches on retailers that the account has access to.
 
-    :param version: 
-    :type version: 
     :param visibility: 
     :type visibility: str
     :param sort_field: The column to sort the search on
@@ -164,13 +156,11 @@ async def get_retailers(request: web.Request, version, visibility, sort_field, d
     return web.Response(status=200)
 
 
-async def retailer_login_check(request: web.Request, version, username, password, device_id=None, latitude=None, longitude=None, app_key=None) -> web.Response:
+async def retailer_login_check(request: web.Request, username, password, device_id=None, latitude=None, longitude=None, app_key=None) -> web.Response:
     """Login Retailer
 
     Retailer login check.
 
-    :param version: 
-    :type version: 
     :param username: the user&#39;s email address they used to sign-up
     :type username: str
     :param password: the password
@@ -188,13 +178,11 @@ async def retailer_login_check(request: web.Request, version, username, password
     return web.Response(status=200)
 
 
-async def update_retailer(request: web.Request, version, retailer_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, active=None, response_format=None) -> web.Response:
+async def update_retailer(request: web.Request, retailer_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, active=None, response_format=None) -> web.Response:
     """Update Retailer
 
     Update a retailer record. Only the owner and the employees of the retailer have access to update its information.
 
-    :param version: 
-    :type version: 
     :param retailer_id: The ID of the retailer to update
     :type retailer_id: int
     :param device_id: The device id (deviceId or accountId required)

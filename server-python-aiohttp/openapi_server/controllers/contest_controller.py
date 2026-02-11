@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def add_or_update_album_contest(request: web.Request, version, public_read, public_write, public_delete, public_add, visibility, include_friend_group, device_id=None, account_id=None, game_type=None, app_key=None, contest_type=None, album_contest_id=None, title=None, description=None, album_id1=None, remove_album1=None, album_id2=None, remove_album2=None, start_date=None, end_date=None, location_description=None, connection_ids_to_add=None, connection_group_ids_to_add=None, latitude=None, longitude=None) -> web.Response:
+async def add_or_update_album_contest(request: web.Request, public_read, public_write, public_delete, public_add, visibility, include_friend_group, device_id=None, account_id=None, game_type=None, app_key=None, contest_type=None, album_contest_id=None, title=None, description=None, album_id1=None, remove_album1=None, album_id2=None, remove_album2=None, start_date=None, end_date=None, location_description=None, connection_ids_to_add=None, connection_group_ids_to_add=None, latitude=None, longitude=None) -> web.Response:
     """Create or Update Contest
 
     Creates or updates a contest.
 
-    :param version: 
-    :type version: 
     :param public_read: determines whether the contest&#39;s participants has read permissions
     :type public_read: bool
     :param public_write: determines whether the contest&#39;s participants has write permissions
@@ -69,13 +67,11 @@ async def add_or_update_album_contest(request: web.Request, version, public_read
     return web.Response(status=200)
 
 
-async def approve_album_contest(request: web.Request, version, album_contest_id, approval_status, device_id=None, account_id=None) -> web.Response:
+async def approve_album_contest(request: web.Request, album_contest_id, approval_status, device_id=None, account_id=None) -> web.Response:
     """Approve Contest
 
     Sets the approval status of a contest.
 
-    :param version: 
-    :type version: 
     :param album_contest_id: The ID of the album contest
     :type album_contest_id: int
     :param approval_status: The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}
@@ -89,13 +85,11 @@ async def approve_album_contest(request: web.Request, version, album_contest_id,
     return web.Response(status=200)
 
 
-async def delete_contest(request: web.Request, version, album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def delete_contest(request: web.Request, album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Delete Contest
 
     Deletes a contest.
 
-    :param version: 
-    :type version: 
     :param album_contest_id: the album contest ID
     :type album_contest_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -111,13 +105,11 @@ async def delete_contest(request: web.Request, version, album_contest_id, device
     return web.Response(status=200)
 
 
-async def get_album_contest(request: web.Request, version, album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def get_album_contest(request: web.Request, album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Get Contest
 
     Gets the contest object including the likes and notes
 
-    :param version: 
-    :type version: 
     :param album_contest_id: the album contest ID
     :type album_contest_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -133,13 +125,11 @@ async def get_album_contest(request: web.Request, version, album_contest_id, dev
     return web.Response(status=200)
 
 
-async def get_album_contests(request: web.Request, version, filter, sort_field, descending, start, limit, device_id=None, account_id=None, game_type=None, app_key=None, app_type=None, contest_type=None, owner_id=None, q=None, keyword=None, i=None, l=None, date_created=None, latitude=None, longitude=None) -> web.Response:
+async def get_album_contests(request: web.Request, filter, sort_field, descending, start, limit, device_id=None, account_id=None, game_type=None, app_key=None, app_type=None, contest_type=None, owner_id=None, q=None, keyword=None, i=None, l=None, date_created=None, latitude=None, longitude=None) -> web.Response:
     """Search Contests
 
     Searches on contests.
 
-    :param version: 
-    :type version: 
     :param filter: a comma separated list of Ownership
     :type filter: str
     :param sort_field: the field to sort by. See AlbumContestApiMap
@@ -183,13 +173,11 @@ async def get_album_contests(request: web.Request, version, filter, sort_field, 
     return web.Response(status=200)
 
 
-async def vote_on_album_contest(request: web.Request, version, album_contest_id, album_id, device_id=None, account_id=None, contest_type=None, latitude=None, longitude=None) -> web.Response:
+async def vote_on_album_contest(request: web.Request, album_contest_id, album_id, device_id=None, account_id=None, contest_type=None, latitude=None, longitude=None) -> web.Response:
     """Vote on Contest
 
     Vote on a collection in a contest.
 
-    :param version: 
-    :type version: 
     :param album_contest_id: the album contest ID
     :type album_contest_id: int
     :param album_id: the ID of the album to vote on

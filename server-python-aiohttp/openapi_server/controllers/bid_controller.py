@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_bid(request: web.Request, version, biddable_type, biddable_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, device_id=None, account_id=None) -> web.Response:
+async def create_bid(request: web.Request, biddable_type, biddable_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, device_id=None, account_id=None) -> web.Response:
     """Create Bid
 
     Creates a bid on a biddable object
 
-    :param version: 
-    :type version: 
     :param biddable_type: A biddable object type. Possible values include: CREATIVE (ads).
     :type biddable_type: str
     :param biddable_id: The id of the biddable object
@@ -34,13 +32,11 @@ async def create_bid(request: web.Request, version, biddable_type, biddable_id, 
     return web.Response(status=200)
 
 
-async def delete_bid(request: web.Request, version, bid_id, device_id=None, account_id=None) -> web.Response:
+async def delete_bid(request: web.Request, bid_id, device_id=None, account_id=None) -> web.Response:
     """Delete Bid
 
     Deleted a bid on a biddable object
 
-    :param version: 
-    :type version: 
     :param bid_id: The bid id
     :type bid_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -52,13 +48,11 @@ async def delete_bid(request: web.Request, version, bid_id, device_id=None, acco
     return web.Response(status=200)
 
 
-async def get_bid(request: web.Request, version, bid_id, device_id=None, account_id=None) -> web.Response:
+async def get_bid(request: web.Request, bid_id, device_id=None, account_id=None) -> web.Response:
     """Get Bid
 
     Get the bid details of a biddable object
 
-    :param version: 
-    :type version: 
     :param bid_id: The bid id
     :type bid_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -70,13 +64,11 @@ async def get_bid(request: web.Request, version, bid_id, device_id=None, account
     return web.Response(status=200)
 
 
-async def update_bid(request: web.Request, version, bid_id, device_id=None, account_id=None, amount_per_view=None, amount_per_action=None, budget_amount=None, budget_schedule=None) -> web.Response:
+async def update_bid(request: web.Request, bid_id, device_id=None, account_id=None, amount_per_view=None, amount_per_action=None, budget_amount=None, budget_schedule=None) -> web.Response:
     """Update Bid
 
     Updates a bid on a biddable object
 
-    :param version: 
-    :type version: 
     :param bid_id: The bid id
     :type bid_id: int
     :param device_id: The device id (deviceId or accountId required)

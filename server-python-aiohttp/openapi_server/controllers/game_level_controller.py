@@ -9,13 +9,11 @@ from openapi_server.models.wordz_word_response import WordzWordResponse
 from openapi_server import util
 
 
-async def create_game_level(request: web.Request, version, account_id, name, game_data, game_data_suffix, app_key=None, description=None, difficulty=None, app_version=None, asset_image_id=None, asset_icon_id=None, visibility=None, friend_group=None, connection_ids=None, connection_group_ids=None, balance=None, active=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, tutorial_title=None, tutorial_message=None, tutorial_alignment=None, tutorial_image_asset_id=None, offer_id=None, meta_data=None) -> web.Response:
+async def create_game_level(request: web.Request, account_id, name, game_data, game_data_suffix, app_key=None, description=None, difficulty=None, app_version=None, asset_image_id=None, asset_icon_id=None, visibility=None, friend_group=None, connection_ids=None, connection_group_ids=None, balance=None, active=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, tutorial_title=None, tutorial_message=None, tutorial_alignment=None, tutorial_image_asset_id=None, offer_id=None, meta_data=None) -> web.Response:
     """Create Game Level
 
     Create a game level. Currently does NOT support game objects.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the level.
@@ -73,13 +71,11 @@ async def create_game_level(request: web.Request, version, account_id, name, gam
     return web.Response(status=200)
 
 
-async def delete_game_level(request: web.Request, version, account_id, level_id) -> web.Response:
+async def delete_game_level(request: web.Request, account_id, level_id) -> web.Response:
     """Delete Game Level
 
     Delete a game level. The level and account must be valid and have the appropirate permissions to view the content.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param level_id: The id of the level to return.
@@ -89,13 +85,11 @@ async def delete_game_level(request: web.Request, version, account_id, level_id)
     return web.Response(status=200)
 
 
-async def get_game_level(request: web.Request, version, account_id, level_id, include_game_data=None) -> web.Response:
+async def get_game_level(request: web.Request, account_id, level_id, include_game_data=None) -> web.Response:
     """Get Game Level
 
     Get a game level. The level and account must be valid and have the appropirate permissions to view the content.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param level_id: The id of the level to return.
@@ -107,13 +101,11 @@ async def get_game_level(request: web.Request, version, account_id, level_id, in
     return web.Response(status=200)
 
 
-async def get_game_levels_by_application(request: web.Request, version, account_id, app_key, keyword=None, sort_field=None, descending=None, start=None, limit=None, app_version=None, include_game_data=None, filters=None) -> web.Response:
+async def get_game_levels_by_application(request: web.Request, account_id, app_key, keyword=None, sort_field=None, descending=None, start=None, limit=None, app_version=None, include_game_data=None, filters=None) -> web.Response:
     """Search Game Levels
 
     Get a list of levels for an application, just those the account has permissions to view.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: the application key
@@ -139,13 +131,11 @@ async def get_game_levels_by_application(request: web.Request, version, account_
     return web.Response(status=200)
 
 
-async def get_game_levels_by_billable_entity(request: web.Request, version, account_id, app_key=None, keyword=None, sort_field=None, descending=None, active_only=None, start=None, limit=None) -> web.Response:
+async def get_game_levels_by_billable_entity(request: web.Request, account_id, app_key=None, keyword=None, sort_field=None, descending=None, active_only=None, start=None, limit=None) -> web.Response:
     """Search Game Level by Billable Entity
 
     Searches on game levels that the logged in user has access to. A user would have access if the creator of the game level is managed under the same BillableEntity.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param app_key: the application key
@@ -167,13 +157,11 @@ async def get_game_levels_by_billable_entity(request: web.Request, version, acco
     return web.Response(status=200)
 
 
-async def get_questions_in_level(request: web.Request, version, level_id, account_id) -> web.Response:
+async def get_questions_in_level(request: web.Request, level_id, account_id) -> web.Response:
     """Get Level Questions
 
     Get questions within a level.
 
-    :param version: 
-    :type version: 
     :param level_id: the id of the level to get questions from
     :type level_id: int
     :param account_id: the id of the logged in user
@@ -183,13 +171,11 @@ async def get_questions_in_level(request: web.Request, version, level_id, accoun
     return web.Response(status=200)
 
 
-async def get_words_in_level(request: web.Request, version, level_id, account_id) -> web.Response:
+async def get_words_in_level(request: web.Request, level_id, account_id) -> web.Response:
     """Get Level Words
 
     Get words within a level.
 
-    :param version: 
-    :type version: 
     :param level_id: the id of the level to get words for
     :type level_id: int
     :param account_id: the id of the logged in user
@@ -199,13 +185,11 @@ async def get_words_in_level(request: web.Request, version, level_id, account_id
     return web.Response(status=200)
 
 
-async def update_game_level(request: web.Request, version, account_id, level_id, app_key=None, name=None, description=None, difficulty=None, app_version=None, asset_image_id=None, asset_icon_id=None, game_data=None, game_data_suffix=None, visibility=None, friend_group=None, connection_ids=None, connection_group_ids=None, balance=None, active=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, tutorial_title=None, tutorial_message=None, tutorial_alignment=None, tutorial_image_asset_id=None, offer_id=None, meta_data=None) -> web.Response:
+async def update_game_level(request: web.Request, account_id, level_id, app_key=None, name=None, description=None, difficulty=None, app_version=None, asset_image_id=None, asset_icon_id=None, game_data=None, game_data_suffix=None, visibility=None, friend_group=None, connection_ids=None, connection_group_ids=None, balance=None, active=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, tutorial_title=None, tutorial_message=None, tutorial_alignment=None, tutorial_image_asset_id=None, offer_id=None, meta_data=None) -> web.Response:
     """Update Game Level
 
     Update a game level. Currently does NOT support game objects.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param level_id: If update then include the level Id.
@@ -265,13 +249,11 @@ async def update_game_level(request: web.Request, version, account_id, level_id,
     return web.Response(status=200)
 
 
-async def update_questions_in_level(request: web.Request, version, level_id, account_id, question_ids) -> web.Response:
+async def update_questions_in_level(request: web.Request, level_id, account_id, question_ids) -> web.Response:
     """Update Level Questions
 
     Updates a level with question game objects.
 
-    :param version: 
-    :type version: 
     :param level_id: the id of the level to update questions on
     :type level_id: int
     :param account_id: the id of the logged in user
@@ -283,13 +265,11 @@ async def update_questions_in_level(request: web.Request, version, level_id, acc
     return web.Response(status=200)
 
 
-async def update_words_in_level(request: web.Request, version, level_id, account_id, word_ids) -> web.Response:
+async def update_words_in_level(request: web.Request, level_id, account_id, word_ids) -> web.Response:
     """Update Level Words
 
     Updates a level with word game objects.
 
-    :param version: 
-    :type version: 
     :param level_id: the id of the level to update words for
     :type level_id: int
     :param account_id: the id of the logged in user

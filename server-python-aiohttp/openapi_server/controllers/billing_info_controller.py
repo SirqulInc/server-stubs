@@ -5,13 +5,11 @@ from openapi_server.models.payment_types_response import PaymentTypesResponse
 from openapi_server import util
 
 
-async def add_payment_method(request: web.Request, version, account_id, payment_method_id=None, account_name=None, first_name=None, last_name=None, address=None, city=None, state=None, postal_code=None, country=None, phone=None, credit_card_number=None, expiration_date=None, ccv=None, account_number=None, bank_name=None, routing_number=None, default_payment_method=None, payment_method_nickname=None, tax_id=None, provider_customer_profile_id=None, provider_payment_profile_id=None, meta_data=None) -> web.Response:
+async def add_payment_method(request: web.Request, account_id, payment_method_id=None, account_name=None, first_name=None, last_name=None, address=None, city=None, state=None, postal_code=None, country=None, phone=None, credit_card_number=None, expiration_date=None, ccv=None, account_number=None, bank_name=None, routing_number=None, default_payment_method=None, payment_method_nickname=None, tax_id=None, provider_customer_profile_id=None, provider_payment_profile_id=None, meta_data=None) -> web.Response:
     """Update Payment Method
 
     Update a method of payment. If the paymentMethodId is not passed in then will update their default payment method.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the the request
     :type account_id: int
     :param payment_method_id: Payment Method Id
@@ -63,13 +61,11 @@ async def add_payment_method(request: web.Request, version, account_id, payment_
     return web.Response(status=200)
 
 
-async def create_payment_method(request: web.Request, version, account_id, account_name=None, first_name=None, last_name=None, address=None, city=None, state=None, postal_code=None, country=None, phone=None, credit_card_number=None, expiration_date=None, ccv=None, account_number=None, bank_name=None, routing_number=None, payment_method_nickname=None, tax_id=None, default_payment_method=None, auth_token=None, provider=None, provider_customer_profile_id=None, provider_payment_profile_id=None, meta_data=None, app_key=None) -> web.Response:
+async def create_payment_method(request: web.Request, account_id, account_name=None, first_name=None, last_name=None, address=None, city=None, state=None, postal_code=None, country=None, phone=None, credit_card_number=None, expiration_date=None, ccv=None, account_number=None, bank_name=None, routing_number=None, payment_method_nickname=None, tax_id=None, default_payment_method=None, auth_token=None, provider=None, provider_customer_profile_id=None, provider_payment_profile_id=None, meta_data=None, app_key=None) -> web.Response:
     """Create Payment Method
 
     Add a new method of payment.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the the request
     :type account_id: int
     :param account_name: Account Name of the credit card user
@@ -125,13 +121,11 @@ async def create_payment_method(request: web.Request, version, account_id, accou
     return web.Response(status=200)
 
 
-async def create_smart_contract(request: web.Request, version, account_id, token_name, token_symbol, payment_method_id=None) -> web.Response:
+async def create_smart_contract(request: web.Request, account_id, token_name, token_symbol, payment_method_id=None) -> web.Response:
     """Create Smart Contract
 
     Adds a smart contract.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the the request
     :type account_id: int
     :param token_name: The token name
@@ -145,13 +139,11 @@ async def create_smart_contract(request: web.Request, version, account_id, token
     return web.Response(status=200)
 
 
-async def get_crypto_balance(request: web.Request, version, account_id, owner_account_id=None, payment_method_id=None) -> web.Response:
+async def get_crypto_balance(request: web.Request, account_id, owner_account_id=None, payment_method_id=None) -> web.Response:
     """Get Crypto Balances
 
     Get the cypto balance details for a user
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the the request
     :type account_id: int
     :param owner_account_id: The account to retreive balances for
@@ -163,13 +155,11 @@ async def get_crypto_balance(request: web.Request, version, account_id, owner_ac
     return web.Response(status=200)
 
 
-async def get_payment_method(request: web.Request, version, account_id, payment_method_id=None, get_current_balance=None) -> web.Response:
+async def get_payment_method(request: web.Request, account_id, payment_method_id=None, get_current_balance=None) -> web.Response:
     """Get Payment Method
 
     Get the details of the user&#39;s payment method or their current default method of payment
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the the request
     :type account_id: int
     :param payment_method_id: The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.
@@ -181,13 +171,11 @@ async def get_payment_method(request: web.Request, version, account_id, payment_
     return web.Response(status=200)
 
 
-async def search_payment_method(request: web.Request, version, account_id, provider=None, type=None, keyword=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_payment_method(request: web.Request, account_id, provider=None, type=None, keyword=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search Payment Methods
 
     Search the payment methods of an account
 
-    :param version: 
-    :type version: 
     :param account_id: Account Id to search on
     :type account_id: int
     :param provider: Provider to search on

@@ -7,13 +7,11 @@ from openapi_server.models.user_activity_response import UserActivityResponse
 from openapi_server import util
 
 
-async def activities(request: web.Request, version, start, limit, account_id) -> web.Response:
+async def activities(request: web.Request, start, limit, account_id) -> web.Response:
     """Get User Activity
 
     Get an activity feed by user.
 
-    :param version: 
-    :type version: 
     :param start: The start of the pagination
     :type start: int
     :param limit: The limit of the pagination
@@ -25,13 +23,11 @@ async def activities(request: web.Request, version, start, limit, account_id) ->
     return web.Response(status=200)
 
 
-async def aggregated_filtered_usage(request: web.Request, version, device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, group_by_root=None, group_by=None, distinct_count=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None) -> web.Response:
+async def aggregated_filtered_usage(request: web.Request, device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, group_by_root=None, group_by=None, distinct_count=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None) -> web.Response:
     """Get Aggregated Filtered Usage
 
     Query analytics to get data used for nested graphs and charts
 
-    :param version: 
-    :type version: 
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -99,13 +95,11 @@ async def aggregated_filtered_usage(request: web.Request, version, device_id=Non
     return web.Response(status=200)
 
 
-async def filtered_usage(request: web.Request, version, device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, custom_id=None, custom_type=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None, custom_message=None, custom_message2=None, group_by=None, distinct_count=None, sum_column=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None) -> web.Response:
+async def filtered_usage(request: web.Request, device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, custom_id=None, custom_type=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None, custom_message=None, custom_message2=None, group_by=None, distinct_count=None, sum_column=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None) -> web.Response:
     """Get Filtered Usage
 
     Query analytics to get data used for graphs and charts
 
-    :param version: 
-    :type version: 
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -189,13 +183,11 @@ async def filtered_usage(request: web.Request, version, device_id=None, account_
     return web.Response(status=200)
 
 
-async def usage(request: web.Request, version, tag, device_id=None, account_id=None, application_id=None, app_key=None, app_version=None, device=None, device_type=None, device_os=None, model=None, latitude=None, longitude=None, custom_id=None, custom_type=None, achievement_increment=None, city=None, state=None, country=None, zip=None, location_description=None, client_time=None, error_message=None, ip=None, user_agent=None, background_event=None, custom_message=None, custom_message2=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None) -> web.Response:
+async def usage(request: web.Request, tag, device_id=None, account_id=None, application_id=None, app_key=None, app_version=None, device=None, device_type=None, device_os=None, model=None, latitude=None, longitude=None, custom_id=None, custom_type=None, achievement_increment=None, city=None, state=None, country=None, zip=None, location_description=None, client_time=None, error_message=None, ip=None, user_agent=None, background_event=None, custom_message=None, custom_message2=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None) -> web.Response:
     """Create Usage Record
 
     Record an analytic record for a known state within the application.
 
-    :param version: 
-    :type version: 
     :param tag: The tag to apply: the name of the action or thing being logged.
     :type tag: str
     :param device_id: The client deviceID
@@ -263,13 +255,11 @@ async def usage(request: web.Request, version, tag, device_id=None, account_id=N
     return web.Response(status=200)
 
 
-async def usage_batch(request: web.Request, version, app_key, device, data, device_id=None, account_id=None, app_version=None, device_type=None, device_os=None, model=None, update_ranking=None, return_summary_response=None) -> web.Response:
+async def usage_batch(request: web.Request, app_key, device, data, device_id=None, account_id=None, app_version=None, device_type=None, device_os=None, model=None, update_ranking=None, return_summary_response=None) -> web.Response:
     """Create Multiple Usage Records
 
     Sends multiple analytics. Can be used to send in the user&#39;s stored usage when they did not have internet access. Should not include more than 100 items per batch.
 
-    :param version: 
-    :type version: 
     :param app_key: The application key unique to each application.
     :type app_key: str
     :param device: The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)

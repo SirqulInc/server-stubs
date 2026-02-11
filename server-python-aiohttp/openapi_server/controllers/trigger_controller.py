@@ -6,13 +6,11 @@ from openapi_server.models.trigger_response import TriggerResponse
 from openapi_server import util
 
 
-async def create_trigger(request: web.Request, version, account_id, name, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None) -> web.Response:
+async def create_trigger(request: web.Request, account_id, name, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None) -> web.Response:
     """Create Trigger
 
     Create a trigger
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user
     :type account_id: int
     :param name: The name of the trigger
@@ -44,13 +42,11 @@ async def create_trigger(request: web.Request, version, account_id, name, app_ke
     return web.Response(status=200)
 
 
-async def delete_trigger(request: web.Request, version, account_id, trigger_id) -> web.Response:
+async def delete_trigger(request: web.Request, account_id, trigger_id) -> web.Response:
     """Delete Trigger
 
     Mark a trigger as deleted.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param trigger_id: The id of the trigger to delete.
@@ -60,13 +56,11 @@ async def delete_trigger(request: web.Request, version, account_id, trigger_id) 
     return web.Response(status=200)
 
 
-async def get_trigger(request: web.Request, version, account_id, trigger_id) -> web.Response:
+async def get_trigger(request: web.Request, account_id, trigger_id) -> web.Response:
     """Get Trigger
 
     Get a trigger
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param trigger_id: The id of the Trigger to return.
@@ -76,13 +70,11 @@ async def get_trigger(request: web.Request, version, account_id, trigger_id) -> 
     return web.Response(status=200)
 
 
-async def search_triggers(request: web.Request, version, account_id, grouping_id=None, filter=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_triggers(request: web.Request, account_id, grouping_id=None, filter=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """Search Triggers
 
     Search for triggers
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param grouping_id: Filter results by a grouping identifier defined by the client
@@ -112,13 +104,11 @@ async def search_triggers(request: web.Request, version, account_id, grouping_id
     return web.Response(status=200)
 
 
-async def update_trigger(request: web.Request, version, trigger_id, account_id, name=None, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None) -> web.Response:
+async def update_trigger(request: web.Request, trigger_id, account_id, name=None, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None) -> web.Response:
     """Update Trigger
 
     Update a trigger
 
-    :param version: 
-    :type version: 
     :param trigger_id: The trigger to update
     :type trigger_id: int
     :param account_id: The logged in user

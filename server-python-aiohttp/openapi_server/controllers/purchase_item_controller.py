@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_purchase_item(request: web.Request, version, app_key, name, purchase_type, device_id=None, account_id=None, description=None, tickets=None, price=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None) -> web.Response:
+async def create_purchase_item(request: web.Request, app_key, name, purchase_type, device_id=None, account_id=None, description=None, tickets=None, price=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None) -> web.Response:
     """Create Purchase
 
     Creates a purchase item for in app purchases
 
-    :param version: 
-    :type version: 
     :param app_key: The application key that the purchase can be used in
     :type app_key: str
     :param name: The name of the purchase item
@@ -59,13 +57,11 @@ async def create_purchase_item(request: web.Request, version, app_key, name, pur
     return web.Response(status=200)
 
 
-async def delete_purchase_item(request: web.Request, version, purchase_item_id, device_id=None, account_id=None) -> web.Response:
+async def delete_purchase_item(request: web.Request, purchase_item_id, device_id=None, account_id=None) -> web.Response:
     """Delete Purchase
 
     Marks the purchase item as deleted
 
-    :param version: 
-    :type version: 
     :param purchase_item_id: The purchase item id
     :type purchase_item_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -77,13 +73,11 @@ async def delete_purchase_item(request: web.Request, version, purchase_item_id, 
     return web.Response(status=200)
 
 
-async def get_purchase_item(request: web.Request, version, purchase_item_id, device_id=None, account_id=None) -> web.Response:
+async def get_purchase_item(request: web.Request, purchase_item_id, device_id=None, account_id=None) -> web.Response:
     """Get Purchase
 
     Get detailed information about a purchase item
 
-    :param version: 
-    :type version: 
     :param purchase_item_id: The purchase item id
     :type purchase_item_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -95,13 +89,11 @@ async def get_purchase_item(request: web.Request, version, purchase_item_id, dev
     return web.Response(status=200)
 
 
-async def search_purchase_items(request: web.Request, version, device_id=None, account_id=None, app_key=None, filter_by_billable=None, purchase_type=None, service_action=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_purchase_items(request: web.Request, device_id=None, account_id=None, app_key=None, filter_by_billable=None, purchase_type=None, service_action=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """Search Purchases
 
     Search for purchasable items from the system
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -131,13 +123,11 @@ async def search_purchase_items(request: web.Request, version, device_id=None, a
     return web.Response(status=200)
 
 
-async def update_purchase_item(request: web.Request, version, purchase_item_id, device_id=None, account_id=None, name=None, description=None, tickets=None, price=None, purchase_type=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, active=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None) -> web.Response:
+async def update_purchase_item(request: web.Request, purchase_item_id, device_id=None, account_id=None, name=None, description=None, tickets=None, price=None, purchase_type=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, active=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None) -> web.Response:
     """Update Purchase
 
     Updates a purchase item for in app purchases
 
-    :param version: 
-    :type version: 
     :param purchase_item_id: The purchase item id
     :type purchase_item_id: int
     :param device_id: The device id (deviceId or accountId required)

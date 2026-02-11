@@ -8,13 +8,11 @@ from openapi_server.models.stop import Stop
 from openapi_server import util
 
 
-async def approve_route(request: web.Request, version, route_id) -> web.Response:
+async def approve_route(request: web.Request, route_id) -> web.Response:
     """Approve Route
 
     Approve a route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to approve
     :type route_id: int
 
@@ -22,13 +20,11 @@ async def approve_route(request: web.Request, version, route_id) -> web.Response
     return web.Response(status=200)
 
 
-async def copy_route(request: web.Request, version, route_id, body=None) -> web.Response:
+async def copy_route(request: web.Request, route_id, body=None) -> web.Response:
     """Copy Route
 
     Make an copy of the given route with optional overriding properties
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to duplicate
     :type route_id: int
     :param body: 
@@ -39,13 +35,11 @@ async def copy_route(request: web.Request, version, route_id, body=None) -> web.
     return web.Response(status=200)
 
 
-async def create_route(request: web.Request, version, body=None) -> web.Response:
+async def create_route(request: web.Request, body=None) -> web.Response:
     """Create Route
 
     Create new route
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -54,13 +48,11 @@ async def create_route(request: web.Request, version, body=None) -> web.Response
     return web.Response(status=200)
 
 
-async def create_route_directions(request: web.Request, version, route_id) -> web.Response:
+async def create_route_directions(request: web.Request, route_id) -> web.Response:
     """Update Route Directions
 
     Regenerate the directions of a route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to update directions for
     :type route_id: int
 
@@ -68,13 +60,11 @@ async def create_route_directions(request: web.Request, version, route_id) -> we
     return web.Response(status=200)
 
 
-async def create_route_polyline(request: web.Request, version, route_id) -> web.Response:
+async def create_route_polyline(request: web.Request, route_id) -> web.Response:
     """Create Route Polyline
 
     Update the polyline of the requested route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to create a polyline for
     :type route_id: int
 
@@ -82,13 +72,11 @@ async def create_route_polyline(request: web.Request, version, route_id) -> web.
     return web.Response(status=200)
 
 
-async def delete_route(request: web.Request, version, route_id) -> web.Response:
+async def delete_route(request: web.Request, route_id) -> web.Response:
     """Delete Route
 
     Delete an existing route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
 
@@ -96,13 +84,11 @@ async def delete_route(request: web.Request, version, route_id) -> web.Response:
     return web.Response(status=200)
 
 
-async def disapprove_route(request: web.Request, version, route_id) -> web.Response:
+async def disapprove_route(request: web.Request, route_id) -> web.Response:
     """Disapprove Route
 
     Disapprove a route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to reject
     :type route_id: int
 
@@ -110,13 +96,11 @@ async def disapprove_route(request: web.Request, version, route_id) -> web.Respo
     return web.Response(status=200)
 
 
-async def get_route(request: web.Request, version, route_id, show_inherited_properties) -> web.Response:
+async def get_route(request: web.Request, route_id, show_inherited_properties) -> web.Response:
     """Get Route
 
     Get an existing route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get
     :type route_id: int
     :param show_inherited_properties: return inherited properties from parent or not
@@ -126,13 +110,11 @@ async def get_route(request: web.Request, version, route_id, show_inherited_prop
     return web.Response(status=200)
 
 
-async def get_route_directions(request: web.Request, version, route_id) -> web.Response:
+async def get_route_directions(request: web.Request, route_id) -> web.Response:
     """Get Route Directions
 
     Get the directions of a route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get directions for
     :type route_id: int
 
@@ -140,13 +122,11 @@ async def get_route_directions(request: web.Request, version, route_id) -> web.R
     return web.Response(status=200)
 
 
-async def get_route_shipments(request: web.Request, version, route_id) -> web.Response:
+async def get_route_shipments(request: web.Request, route_id) -> web.Response:
     """Get Route Shipments
 
     Get the shipments on the requested route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get shipments for
     :type route_id: int
 
@@ -154,13 +134,11 @@ async def get_route_shipments(request: web.Request, version, route_id) -> web.Re
     return web.Response(status=200)
 
 
-async def get_route_stop(request: web.Request, version, route_id, stop_id) -> web.Response:
+async def get_route_stop(request: web.Request, route_id, stop_id) -> web.Response:
     """Get Route Stop
 
     Get the specific stop on a route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get stops for
     :type route_id: int
     :param stop_id: the id of the specific stop on the route
@@ -170,13 +148,11 @@ async def get_route_stop(request: web.Request, version, route_id, stop_id) -> we
     return web.Response(status=200)
 
 
-async def get_route_stops(request: web.Request, version, route_id, confirmed_only) -> web.Response:
+async def get_route_stops(request: web.Request, route_id, confirmed_only) -> web.Response:
     """Get Route Stops
 
     The stops of the route requested
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param confirmed_only: only get stops that have been confirmed or not
@@ -186,13 +162,11 @@ async def get_route_stops(request: web.Request, version, route_id, confirmed_onl
     return web.Response(status=200)
 
 
-async def get_shipments_at_stop(request: web.Request, version, route_id, stop_id) -> web.Response:
+async def get_shipments_at_stop(request: web.Request, route_id, stop_id) -> web.Response:
     """Get Shipments At Stop
 
     Get the list of shipments on the requested route at a stop
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param stop_id: the id of the stop to get shipments on
@@ -202,13 +176,11 @@ async def get_shipments_at_stop(request: web.Request, version, route_id, stop_id
     return web.Response(status=200)
 
 
-async def optimize_route(request: web.Request, version, route_id) -> web.Response:
+async def optimize_route(request: web.Request, route_id) -> web.Response:
     """Optimize Route
 
     Optimize a route. The optimization method based on how the server is configured.
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to optimize
     :type route_id: int
 
@@ -216,13 +188,11 @@ async def optimize_route(request: web.Request, version, route_id) -> web.Respons
     return web.Response(status=200)
 
 
-async def remove_stop(request: web.Request, version, route_id, stop_id) -> web.Response:
+async def remove_stop(request: web.Request, route_id, stop_id) -> web.Response:
     """Delete Stop
 
     Delete a stop on a route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param stop_id: the id of the specific stop to delete on the route
@@ -232,13 +202,11 @@ async def remove_stop(request: web.Request, version, route_id, stop_id) -> web.R
     return web.Response(status=200)
 
 
-async def reorder_route_stops_patch(request: web.Request, version, route_id, body=None) -> web.Response:
+async def reorder_route_stops_patch(request: web.Request, route_id, body=None) -> web.Response:
     """Reorder Route Stops
 
     Reordering the stops on the route with and update route distance, time, direction, and polyline
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param body: 
@@ -249,13 +217,11 @@ async def reorder_route_stops_patch(request: web.Request, version, route_id, bod
     return web.Response(status=200)
 
 
-async def reorder_route_stops_post(request: web.Request, version, route_id, body=None) -> web.Response:
+async def reorder_route_stops_post(request: web.Request, route_id, body=None) -> web.Response:
     """Reorder Route Stops
 
     Reordering the stops on the route with and update route distance, time, direction, and polyline
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param body: 
@@ -266,13 +232,11 @@ async def reorder_route_stops_post(request: web.Request, version, route_id, body
     return web.Response(status=200)
 
 
-async def search_routes(request: web.Request, version, sort_field, descending, start, limit, active_only, includes_empty, root_only, show_inherited_properties, hub_id=None, program_id=None, scheduled_start=None, scheduled_end=None, updated_start=None, updated_end=None, featured=None, seat_count=None, approved=None, started=None, completed=None, valid=None, parent_id=None) -> web.Response:
+async def search_routes(request: web.Request, sort_field, descending, start, limit, active_only, includes_empty, root_only, show_inherited_properties, hub_id=None, program_id=None, scheduled_start=None, scheduled_end=None, updated_start=None, updated_end=None, featured=None, seat_count=None, approved=None, started=None, completed=None, valid=None, parent_id=None) -> web.Response:
     """Search Routes
 
     Search for routes.
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order
@@ -320,13 +284,11 @@ async def search_routes(request: web.Request, version, sort_field, descending, s
     return web.Response(status=200)
 
 
-async def set_driver(request: web.Request, version, id, driver_id) -> web.Response:
+async def set_driver(request: web.Request, id, driver_id) -> web.Response:
     """Set Driver
 
     Update the driver of the route.
 
-    :param version: 
-    :type version: 
     :param id: the id of the route
     :type id: int
     :param driver_id: the id of the driver
@@ -336,13 +298,11 @@ async def set_driver(request: web.Request, version, id, driver_id) -> web.Respon
     return web.Response(status=200)
 
 
-async def update_route(request: web.Request, version, route_id, body=None) -> web.Response:
+async def update_route(request: web.Request, route_id, body=None) -> web.Response:
     """Update Route
 
     Update an existing route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param body: 
@@ -353,13 +313,11 @@ async def update_route(request: web.Request, version, route_id, body=None) -> we
     return web.Response(status=200)
 
 
-async def update_route_stop(request: web.Request, version, route_id, stop_id, body=None) -> web.Response:
+async def update_route_stop(request: web.Request, route_id, stop_id, body=None) -> web.Response:
     """Update Route Stop
 
     Update a stop on a specified route
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to update stops for
     :type route_id: int
     :param stop_id: the id of the specific stop to update on the route

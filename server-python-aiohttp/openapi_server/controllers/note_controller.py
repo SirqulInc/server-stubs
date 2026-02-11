@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def batch_operation(request: web.Request, version, notable_id, notable_type, device_id=None, account_id=None, batch_operation=None) -> web.Response:
+async def batch_operation(request: web.Request, notable_id, notable_type, device_id=None, account_id=None, batch_operation=None) -> web.Response:
     """Batch Note Operation
 
     Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE). 
 
-    :param version: 
-    :type version: 
     :param notable_id: The id of the notable object the batch operation will affect
     :type notable_id: int
     :param notable_type: The notable object type (for example ALBUM, ASSET, OFFER, etc.)
@@ -28,13 +26,11 @@ async def batch_operation(request: web.Request, version, notable_id, notable_typ
     return web.Response(status=200)
 
 
-async def create_note(request: web.Request, version, comment, device_id=None, account_id=None, notable_type=None, notable_id=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, receiver_account_ids=None, return_full_response=None, initialize_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None) -> web.Response:
+async def create_note(request: web.Request, comment, device_id=None, account_id=None, notable_type=None, notable_id=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, receiver_account_ids=None, return_full_response=None, initialize_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None) -> web.Response:
     """Create Note
 
     This is used to leave a comment (note) on a notable object (i.e. albums, album contests, assets, game levels, offers, offer locations, retailers, retailer locations, and theme descriptors). Leaving a comment on a notable object will be visiable to everyone who has access to view the object.
 
-    :param version: 
-    :type version: 
     :param comment: The message the user wishes to leave a comment on
     :type comment: str
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -124,13 +120,11 @@ async def create_note(request: web.Request, version, comment, device_id=None, ac
     return web.Response(status=200)
 
 
-async def delete_note(request: web.Request, version, note_id, device_id=None, account_id=None, latitude=None, longitude=None, app_key=None) -> web.Response:
+async def delete_note(request: web.Request, note_id, device_id=None, account_id=None, latitude=None, longitude=None, app_key=None) -> web.Response:
     """Delete Note
 
     Sets a comment (note) as deleted.
 
-    :param version: 
-    :type version: 
     :param note_id: The ID of the note to delete
     :type note_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -148,13 +142,11 @@ async def delete_note(request: web.Request, version, note_id, device_id=None, ac
     return web.Response(status=200)
 
 
-async def get_note(request: web.Request, version, note_id, device_id=None, account_id=None, return_full_response=None) -> web.Response:
+async def get_note(request: web.Request, note_id, device_id=None, account_id=None, return_full_response=None) -> web.Response:
     """Get Note
 
     Get for a note based on its Id.
 
-    :param version: 
-    :type version: 
     :param note_id: the id of the note to get
     :type note_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -168,13 +160,11 @@ async def get_note(request: web.Request, version, note_id, device_id=None, accou
     return web.Response(status=200)
 
 
-async def search_notes(request: web.Request, version, device_id=None, account_id=None, notable_type=None, notable_id=None, note_types=None, app_key=None, keyword=None, flag_count_minimum=None, flags_exceed_threshold=None, include_inactive=None, sort_field=None, descending=None, return_full_response=None, updated_since=None, updated_before=None, start=None, limit=None) -> web.Response:
+async def search_notes(request: web.Request, device_id=None, account_id=None, notable_type=None, notable_id=None, note_types=None, app_key=None, keyword=None, flag_count_minimum=None, flags_exceed_threshold=None, include_inactive=None, sort_field=None, descending=None, return_full_response=None, updated_since=None, updated_before=None, start=None, limit=None) -> web.Response:
     """Search Notes
 
     Search for notes on a notable object.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -214,13 +204,11 @@ async def search_notes(request: web.Request, version, device_id=None, account_id
     return web.Response(status=200)
 
 
-async def update_note(request: web.Request, version, note_id, device_id=None, account_id=None, comment=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, active=None, update_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None) -> web.Response:
+async def update_note(request: web.Request, note_id, device_id=None, account_id=None, comment=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, active=None, update_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None) -> web.Response:
     """Update Note
 
     Update an existing comment (note). Only the creator of the note have permission to update.
 
-    :param version: 
-    :type version: 
     :param note_id: The id of the note, used when editing a comment
     :type note_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)

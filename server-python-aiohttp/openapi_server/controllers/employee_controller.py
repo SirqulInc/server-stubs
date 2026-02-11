@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def assign_employee(request: web.Request, version, account_id, manager_account_id, employee_account_id, role=None) -> web.Response:
+async def assign_employee(request: web.Request, account_id, manager_account_id, employee_account_id, role=None) -> web.Response:
     """Assign Employee
 
     Assign An existing account to be an employee
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param manager_account_id: The account id of the manager to assign under
@@ -26,13 +24,11 @@ async def assign_employee(request: web.Request, version, account_id, manager_acc
     return web.Response(status=200)
 
 
-async def assign_to_location_employee(request: web.Request, version, account_id, retailer_location_id, employee_account_id=None, assign=None) -> web.Response:
+async def assign_to_location_employee(request: web.Request, account_id, retailer_location_id, employee_account_id=None, assign=None) -> web.Response:
     """Assign Employee to Location
 
     Assign or unassign the account to a retailer location.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param retailer_location_id: The retailer location to apply the change to
@@ -46,13 +42,11 @@ async def assign_to_location_employee(request: web.Request, version, account_id,
     return web.Response(status=200)
 
 
-async def create_employee(request: web.Request, version, account_id, manager_account_id, username, password, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, about_us=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None) -> web.Response:
+async def create_employee(request: web.Request, account_id, manager_account_id, username, password, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, about_us=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None) -> web.Response:
     """Create Employee
 
     Create a new account record with the provided information.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param manager_account_id: The account id of the manager to assign under
@@ -118,13 +112,11 @@ async def create_employee(request: web.Request, version, account_id, manager_acc
     return web.Response(status=200)
 
 
-async def delete_employee(request: web.Request, version, account_id, employee_account_id) -> web.Response:
+async def delete_employee(request: web.Request, account_id, employee_account_id) -> web.Response:
     """Delete Employee
 
     Set the deleted date field which marks the record as deleted.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param employee_account_id: the id of the employee to delete
@@ -134,13 +126,11 @@ async def delete_employee(request: web.Request, version, account_id, employee_ac
     return web.Response(status=200)
 
 
-async def get_employee(request: web.Request, version, account_id, employee_account_id, settings_app_key=None) -> web.Response:
+async def get_employee(request: web.Request, account_id, employee_account_id, settings_app_key=None) -> web.Response:
     """Get Employee
 
     Get the account record for the account id provided.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of logged in user
     :type account_id: int
     :param employee_account_id: the id of the employee account to get
@@ -152,13 +142,11 @@ async def get_employee(request: web.Request, version, account_id, employee_accou
     return web.Response(status=200)
 
 
-async def search_employees(request: web.Request, version, account_id, role=None, retailer_id=None, retailer_location_id=None, q=None, keyword=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, active_only=None, managed_only=None, settings_app_key=None, category_ids=None, query=None) -> web.Response:
+async def search_employees(request: web.Request, account_id, role=None, retailer_id=None, retailer_location_id=None, q=None, keyword=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, active_only=None, managed_only=None, settings_app_key=None, category_ids=None, query=None) -> web.Response:
     """Search Employees
 
     Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param role: The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles.
@@ -198,13 +186,11 @@ async def search_employees(request: web.Request, version, account_id, role=None,
     return web.Response(status=200)
 
 
-async def unassign_employee(request: web.Request, version, account_id, employee_account_id) -> web.Response:
+async def unassign_employee(request: web.Request, account_id, employee_account_id) -> web.Response:
     """Unassign Employee
 
     Unassign An existing account to be an employee
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param employee_account_id: The account id of the user to be unassigned
@@ -214,13 +200,11 @@ async def unassign_employee(request: web.Request, version, account_id, employee_
     return web.Response(status=200)
 
 
-async def update_employee(request: web.Request, version, account_id, employee_account_id, manager_account_id=None, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, active=None, password=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None) -> web.Response:
+async def update_employee(request: web.Request, account_id, employee_account_id, manager_account_id=None, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, active=None, password=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None) -> web.Response:
     """Update Employee
 
     Update the account record with the provided information.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param employee_account_id: the id of the employee account

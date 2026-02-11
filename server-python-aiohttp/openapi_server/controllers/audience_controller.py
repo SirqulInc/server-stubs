@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_audience(request: web.Request, version, account_id, name, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, start_time_offset=None, end_time_offset=None, send_suggestion=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None) -> web.Response:
+async def create_audience(request: web.Request, account_id, name, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, start_time_offset=None, end_time_offset=None, send_suggestion=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None) -> web.Response:
     """Create Audience
 
     Create a user defined audience.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the audience
@@ -80,13 +78,11 @@ async def create_audience(request: web.Request, version, account_id, name, descr
     return web.Response(status=200)
 
 
-async def delete_audience(request: web.Request, version, account_id, audience_id) -> web.Response:
+async def delete_audience(request: web.Request, account_id, audience_id) -> web.Response:
     """Delete Audience
 
     Delete an audience. The audience and account must be valid and have the appropirate permissions to view the content.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_id: The id of the audience to delete.
@@ -96,25 +92,21 @@ async def delete_audience(request: web.Request, version, account_id, audience_id
     return web.Response(status=200)
 
 
-async def get_age_groups(request: web.Request, version) -> web.Response:
+async def get_age_groups(request: web.Request, ) -> web.Response:
     """Get Age Groups
 
     Gets the list of available age groups that can be selected by consumers and retailers targeting offers.
 
-    :param version: 
-    :type version: 
 
     """
     return web.Response(status=200)
 
 
-async def get_audience(request: web.Request, version, account_id, audience_id, app_key=None, return_account_count=None, return_album_count=None, album_types_for_count=None) -> web.Response:
+async def get_audience(request: web.Request, account_id, audience_id, app_key=None, return_account_count=None, return_album_count=None, album_types_for_count=None) -> web.Response:
     """Get Audience
 
     Get an audience. The audience and account must be valid and have the appropriate permissions to view the content.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_id: The id of the audience to return.
@@ -132,13 +124,11 @@ async def get_audience(request: web.Request, version, account_id, audience_id, a
     return web.Response(status=200)
 
 
-async def get_audience_list(request: web.Request, version, account_id=None, album_ids=None, keyword=None, keyword_fields=None, sort_field=None, descending=None, start=None, limit=None, send_suggestion=None, active_only=None, group_by_grouping_id=None, app_key=None, return_global=None, exact_keyword=None, audience_type=None, audience_types=None, return_account_count=None, return_album_count=None, album_types_for_count=None) -> web.Response:
+async def get_audience_list(request: web.Request, account_id=None, album_ids=None, keyword=None, keyword_fields=None, sort_field=None, descending=None, start=None, limit=None, send_suggestion=None, active_only=None, group_by_grouping_id=None, app_key=None, return_global=None, exact_keyword=None, audience_type=None, audience_types=None, return_account_count=None, return_album_count=None, album_types_for_count=None) -> web.Response:
     """Search Audiences
 
     Get the list audiences owned by the account
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param album_ids: Comma separated list of album IDs to filter results with
@@ -182,13 +172,11 @@ async def get_audience_list(request: web.Request, version, account_id=None, albu
     return web.Response(status=200)
 
 
-async def get_devices(request: web.Request, version, include_inactive) -> web.Response:
+async def get_devices(request: web.Request, include_inactive) -> web.Response:
     """Get Devices
 
     Gets the list of available devices that can be selected by consumers and retailers.
 
-    :param version: 
-    :type version: 
     :param include_inactive: If true return inactive record as well. default is false.
     :type include_inactive: bool
 
@@ -196,25 +184,21 @@ async def get_devices(request: web.Request, version, include_inactive) -> web.Re
     return web.Response(status=200)
 
 
-async def get_experiences(request: web.Request, version) -> web.Response:
+async def get_experiences(request: web.Request, ) -> web.Response:
     """Get Experiences
 
     Gets the list of available experiences that can be selected by consumers and retailers.
 
-    :param version: 
-    :type version: 
 
     """
     return web.Response(status=200)
 
 
-async def get_grouped_audiences(request: web.Request, version, account_id, audience_grouping_id) -> web.Response:
+async def get_grouped_audiences(request: web.Request, account_id, audience_grouping_id) -> web.Response:
     """Get GroupedAudiences
 
     Get a group of audiences. The audience and account must be valid and have the appropriate permissions to view the content.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_grouping_id: The audience grouping id to return.
@@ -224,13 +208,11 @@ async def get_grouped_audiences(request: web.Request, version, account_id, audie
     return web.Response(status=200)
 
 
-async def list_by_account(request: web.Request, version, account_id, limit, suggestion_type) -> web.Response:
+async def list_by_account(request: web.Request, account_id, limit, suggestion_type) -> web.Response:
     """List Suggestions by Audience
 
     List either Missions or Offers that the user matches the assigned audience.
 
-    :param version: 
-    :type version: 
     :param account_id: The account to match offers for.
     :type account_id: int
     :param limit: the limit of the index
@@ -242,13 +224,11 @@ async def list_by_account(request: web.Request, version, account_id, limit, sugg
     return web.Response(status=200)
 
 
-async def list_by_audience(request: web.Request, version, limit, gender=None, age=None, category_ids=None, latitude=None, longitude=None) -> web.Response:
+async def list_by_audience(request: web.Request, limit, gender=None, age=None, category_ids=None, latitude=None, longitude=None) -> web.Response:
     """List Offers by Audience
 
     Get a list of offer locations based on audience information provided.
 
-    :param version: 
-    :type version: 
     :param limit: this is the limit of the index
     :type limit: int
     :param gender: this is the gender to list offers by
@@ -266,13 +246,11 @@ async def list_by_audience(request: web.Request, version, limit, gender=None, ag
     return web.Response(status=200)
 
 
-async def list_lastest_by_account(request: web.Request, version, account_id, timeframe, suggestion_type) -> web.Response:
+async def list_lastest_by_account(request: web.Request, account_id, timeframe, suggestion_type) -> web.Response:
     """List Sent Suggestions 
 
     Return list of recent trigger suggestions that have been sent to the user.
 
-    :param version: 
-    :type version: 
     :param account_id: The account to match offers for.
     :type account_id: int
     :param timeframe: The timeframe in seconds of the latest suggestions
@@ -284,13 +262,11 @@ async def list_lastest_by_account(request: web.Request, version, account_id, tim
     return web.Response(status=200)
 
 
-async def send_by_account(request: web.Request, version, account_id, latitude, longitude) -> web.Response:
+async def send_by_account(request: web.Request, account_id, latitude, longitude) -> web.Response:
     """Send Suggestions
 
     Use the accountId to determine the associated BillableEntity. From there get a list of all triggers associated with the BillableEntity.
 
-    :param version: 
-    :type version: 
     :param account_id: The account to match offers for.
     :type account_id: int
     :param latitude: the latitude
@@ -302,13 +278,11 @@ async def send_by_account(request: web.Request, version, account_id, latitude, l
     return web.Response(status=200)
 
 
-async def update_audience(request: web.Request, version, account_id, audience_id, name=None, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, active=None, send_suggestion=None, start_time_offset=None, end_time_offset=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None) -> web.Response:
+async def update_audience(request: web.Request, account_id, audience_id, name=None, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, active=None, send_suggestion=None, start_time_offset=None, end_time_offset=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None) -> web.Response:
     """Update Audience
 
     Update a user defined audience.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_id: The id of the audience to update.

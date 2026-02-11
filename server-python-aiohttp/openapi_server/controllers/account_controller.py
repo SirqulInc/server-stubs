@@ -11,13 +11,11 @@ from openapi_server.models.user_settings_response import UserSettingsResponse
 from openapi_server import util
 
 
-async def account_location_search(request: web.Request, version, device_id=None, account_id=None, q=None, keyword=None, postal_code=None, latitude=None, longitude=None, app_key=None, range=None, location_last_updated=None, gender=None, min_age=None, max_age=None, companionship_index=None, i=None, start=None, l=None, limit=None, search_mode=None, sort_field=None, descending=None, roles=None, tags=None, experience=None, category_ids=None, audience_ids=None, audience_operator=None, update_current_location=None, update_preferred_settings=None, show_exact_locations=None, show_connection_to_searcher=None, flag_count_minimum=None, verified_user_only=None, content_admin_only=None) -> web.Response:
+async def account_location_search(request: web.Request, device_id=None, account_id=None, q=None, keyword=None, postal_code=None, latitude=None, longitude=None, app_key=None, range=None, location_last_updated=None, gender=None, min_age=None, max_age=None, companionship_index=None, i=None, start=None, l=None, limit=None, search_mode=None, sort_field=None, descending=None, roles=None, tags=None, experience=None, category_ids=None, audience_ids=None, audience_operator=None, update_current_location=None, update_preferred_settings=None, show_exact_locations=None, show_connection_to_searcher=None, flag_count_minimum=None, verified_user_only=None, content_admin_only=None) -> web.Response:
     """Search Accounts by Location
 
     Search accounts by their location. This only searches on users that have location data. Use ConnectionApi to perform a regular search on accounts.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -91,13 +89,11 @@ async def account_location_search(request: web.Request, version, device_id=None,
     return web.Response(status=200)
 
 
-async def block_account(request: web.Request, version, account_id_being_blocked, device_id=None, account_id=None, block_flag_value=None, remove_from_groups_if_blocked=None, latitude=None, longitude=None) -> web.Response:
+async def block_account(request: web.Request, account_id_being_blocked, device_id=None, account_id=None, block_flag_value=None, remove_from_groups_if_blocked=None, latitude=None, longitude=None) -> web.Response:
     """Block Account
 
     Moves or removes an account into the user&#39;s blocked group.
 
-    :param version: 
-    :type version: 
     :param account_id_being_blocked: The id of the account to be blocked/unblocked
     :type account_id_being_blocked: int
     :param device_id: The device id (deviceId or accountId required)
@@ -117,13 +113,11 @@ async def block_account(request: web.Request, version, account_id_being_blocked,
     return web.Response(status=200)
 
 
-async def create_account(request: web.Request, version, username, password, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, device_id=None, device_id_type=None, email_address=None, asset_id=None, street_address=None, zipcode=None, gender=None, birthday=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, role=None, platforms=None, tags=None, about_us=None, game_experience=None, category_ids=None, hometown=None, height=None, height_index=None, ethnicity=None, body_type=None, marital_status=None, children=None, religion=None, education=None, education_index=None, smoke=None, drink=None, companionship=None, companionship_index=None, preferred_min_age=None, preferred_max_age=None, preferred_min_height=None, preferred_max_height=None, preferred_gender=None, preferred_education=None, preferred_education_index=None, preferred_body_type=None, preferred_ethnicity=None, preferred_location=None, preferred_location_range=None, latitude=None, longitude=None, accepted_terms=None, invite_token=None, referral_account_id=None, send_validation=None, game_type=None, app_key=None, app_version=None, response_type=None, audience_ids_to_add=None, app_blob=None, app_enable_push=None, app_enable_sms=None, app_enable_email=None, location_visibility=None, home_latitude=None, home_longitude=None, app_nickname=None, personal_audience_id=None) -> web.Response:
+async def create_account(request: web.Request, username, password, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, device_id=None, device_id_type=None, email_address=None, asset_id=None, street_address=None, zipcode=None, gender=None, birthday=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, role=None, platforms=None, tags=None, about_us=None, game_experience=None, category_ids=None, hometown=None, height=None, height_index=None, ethnicity=None, body_type=None, marital_status=None, children=None, religion=None, education=None, education_index=None, smoke=None, drink=None, companionship=None, companionship_index=None, preferred_min_age=None, preferred_max_age=None, preferred_min_height=None, preferred_max_height=None, preferred_gender=None, preferred_education=None, preferred_education_index=None, preferred_body_type=None, preferred_ethnicity=None, preferred_location=None, preferred_location_range=None, latitude=None, longitude=None, accepted_terms=None, invite_token=None, referral_account_id=None, send_validation=None, game_type=None, app_key=None, app_version=None, response_type=None, audience_ids_to_add=None, app_blob=None, app_enable_push=None, app_enable_sms=None, app_enable_email=None, location_visibility=None, home_latitude=None, home_longitude=None, app_nickname=None, personal_audience_id=None) -> web.Response:
     """Create Account
 
     Create a new account by role.
 
-    :param version: 
-    :type version: 
     :param username: The access token to authenticate with (ex: username)
     :type username: str
     :param password: The secret to authenticate with (ex: password)
@@ -273,13 +267,11 @@ async def create_account(request: web.Request, version, username, password, name
     return web.Response(status=200)
 
 
-async def edit_account(request: web.Request, version, device_id=None, account_id=None, connection_account_id=None, role=None, asset_id=None, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, gender=None, age=None, birthday=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, make_profile_info_public=None, make_game_info_public=None, make_friends_info_public=None, hometown=None, height=None, height_index=None, ethnicity=None, body_type=None, marital_status=None, children=None, religion=None, education=None, education_index=None, smoke=None, drink=None, companionship=None, companionship_index=None, preferred_min_age=None, preferred_max_age=None, preferred_min_height=None, preferred_max_height=None, preferred_gender=None, preferred_education=None, preferred_education_index=None, preferred_body_type=None, preferred_ethnicity=None, preferred_location=None, preferred_location_range=None, platforms=None, tags=None, about_us=None, match_token=None, game_experience=None, categories=None, category_ids=None, response_filters=None, show_as_zipcode=None, show_exact_location=None, show_others_exact_location=None, accepted_terms=None, location_visibility=None, app_blob=None, app_enable_push=None, app_enable_sms=None, app_enable_email=None, game_type=None, app_key=None, latitude=None, longitude=None, return_profile=None, audience_ids_to_add=None, audience_ids_to_remove=None, referral_account_id=None, app_nickname=None, personal_audience_id=None, non_guest_username=None) -> web.Response:
+async def edit_account(request: web.Request, device_id=None, account_id=None, connection_account_id=None, role=None, asset_id=None, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, gender=None, age=None, birthday=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, make_profile_info_public=None, make_game_info_public=None, make_friends_info_public=None, hometown=None, height=None, height_index=None, ethnicity=None, body_type=None, marital_status=None, children=None, religion=None, education=None, education_index=None, smoke=None, drink=None, companionship=None, companionship_index=None, preferred_min_age=None, preferred_max_age=None, preferred_min_height=None, preferred_max_height=None, preferred_gender=None, preferred_education=None, preferred_education_index=None, preferred_body_type=None, preferred_ethnicity=None, preferred_location=None, preferred_location_range=None, platforms=None, tags=None, about_us=None, match_token=None, game_experience=None, categories=None, category_ids=None, response_filters=None, show_as_zipcode=None, show_exact_location=None, show_others_exact_location=None, accepted_terms=None, location_visibility=None, app_blob=None, app_enable_push=None, app_enable_sms=None, app_enable_email=None, game_type=None, app_key=None, latitude=None, longitude=None, return_profile=None, audience_ids_to_add=None, audience_ids_to_remove=None, referral_account_id=None, app_nickname=None, personal_audience_id=None, non_guest_username=None) -> web.Response:
     """Update Account
 
     Edit the user&#39;s profile information
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -449,13 +441,11 @@ async def edit_account(request: web.Request, version, device_id=None, account_id
     return web.Response(status=200)
 
 
-async def edit_username(request: web.Request, version, device_id=None, account_id=None, email_address=None, username=None) -> web.Response:
+async def edit_username(request: web.Request, device_id=None, account_id=None, email_address=None, username=None) -> web.Response:
     """Update Username and Email
 
     Update account&#39;s own username and/or emailAddress
 
-    :param version: 
-    :type version: 
     :param device_id: The device id
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -469,13 +459,11 @@ async def edit_username(request: web.Request, version, device_id=None, account_i
     return web.Response(status=200)
 
 
-async def get_account(request: web.Request, version, return_nulls=None, device_id=None, account_id=None, connection_account_email=None, connection_account_id=None, response_filters=None, game_type=None, app_key=None, purchase_type=None, update_viewed_date=None, latitude=None, longitude=None) -> web.Response:
+async def get_account(request: web.Request, return_nulls=None, device_id=None, account_id=None, connection_account_email=None, connection_account_id=None, response_filters=None, game_type=None, app_key=None, purchase_type=None, update_viewed_date=None, latitude=None, longitude=None) -> web.Response:
     """Get Account
 
     Gets a user&#39;s account profile. Application settings and account settings will also be returned for the owner of the account.
 
-    :param version: 
-    :type version: 
     :param return_nulls: Return Nulls
     :type return_nulls: bool
     :param device_id: The device id (deviceId or accountId required)
@@ -505,13 +493,11 @@ async def get_account(request: web.Request, version, return_nulls=None, device_i
     return web.Response(status=200)
 
 
-async def get_profile_assets(request: web.Request, version, return_nulls=None, device_id=None, account_id=None, owner_id=None, media_types=None, mime_types=None, sort_field=None, descending=None, latitude=None, longitude=None, i=None, start=None, l=None, limit=None) -> web.Response:
+async def get_profile_assets(request: web.Request, return_nulls=None, device_id=None, account_id=None, owner_id=None, media_types=None, mime_types=None, sort_field=None, descending=None, latitude=None, longitude=None, i=None, start=None, l=None, limit=None) -> web.Response:
     """Get Profile Assets
 
     Get a list of assets a person has ever uploaded. Filters the list based on parameters.
 
-    :param version: 
-    :type version: 
     :param return_nulls: Determines whether to return null fields in the response
     :type return_nulls: bool
     :param device_id: The device id (deviceId or accountId required)
@@ -545,13 +531,11 @@ async def get_profile_assets(request: web.Request, version, return_nulls=None, d
     return web.Response(status=200)
 
 
-async def get_referral_list(request: web.Request, version, account_id=None, app_key=None, retrieve_type=None, level_limit=None, ancestor_level_limit=None, children_level_limit=None, ancestor_list_start=None, ancestor_list_limit=None, children_list_start=None, children_list_limit=None, children_children=None) -> web.Response:
+async def get_referral_list(request: web.Request, account_id=None, app_key=None, retrieve_type=None, level_limit=None, ancestor_level_limit=None, children_level_limit=None, ancestor_list_start=None, ancestor_list_limit=None, children_list_start=None, children_list_limit=None, children_children=None) -> web.Response:
     """Search Accounts
 
     Gets a user&#39;s account profile and their referral List.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (deviceId or accountId required)
     :type account_id: int
     :param app_key: The application key
@@ -579,13 +563,11 @@ async def get_referral_list(request: web.Request, version, account_id=None, app_
     return web.Response(status=200)
 
 
-async def get_settings(request: web.Request, version, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def get_settings(request: web.Request, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Get Account Settings
 
     Get the account settings for a user
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -599,13 +581,11 @@ async def get_settings(request: web.Request, version, device_id=None, account_id
     return web.Response(status=200)
 
 
-async def login_delegate(request: web.Request, version, access_token, app_key, device_id=None, access_token_secret=None, delegated_account_id=None, delegated_username=None, network_uid=None, age_restriction=None, response_filters=None, latitude=None, longitude=None) -> web.Response:
+async def login_delegate(request: web.Request, access_token, app_key, device_id=None, access_token_secret=None, delegated_account_id=None, delegated_username=None, network_uid=None, age_restriction=None, response_filters=None, latitude=None, longitude=None) -> web.Response:
     """Login as Account
 
     A login service that supports logging in as someone else (accounts that the user manages). Intended for internal use for now.
 
-    :param version: 
-    :type version: 
     :param access_token: 
     :type access_token: str
     :param app_key: 
@@ -633,13 +613,11 @@ async def login_delegate(request: web.Request, version, access_token, app_key, d
     return web.Response(status=200)
 
 
-async def login_general(request: web.Request, version, access_token, network_uid, app_key, device_id=None, device_id_type=None, access_token_secret=None, age_restriction=None, response_filters=None, latitude=None, longitude=None, email_match=None, chosen_account_id=None, third_party_credential_id=None) -> web.Response:
+async def login_general(request: web.Request, access_token, network_uid, app_key, device_id=None, device_id_type=None, access_token_secret=None, age_restriction=None, response_filters=None, latitude=None, longitude=None, email_match=None, chosen_account_id=None, third_party_credential_id=None) -> web.Response:
     """Login Account
 
     General login service that supports various authentication methods. Currently supports Facebook, Twitter, Sirqul Username, and Sirqul Phone by default. Can also support custom networks created using the {@link ThirdPartyApi}
 
-    :param version: 
-    :type version: 
     :param access_token: The access token to authenticate with (ex: username or fb token)
     :type access_token: str
     :param network_uid: The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE 
@@ -671,13 +649,11 @@ async def login_general(request: web.Request, version, access_token, network_uid
     return web.Response(status=200)
 
 
-async def login_username(request: web.Request, version, username, password, device_id=None, latitude=None, longitude=None, app=None, game_type=None, app_key=None, return_profile=None, response_filters=None) -> web.Response:
+async def login_username(request: web.Request, username, password, device_id=None, latitude=None, longitude=None, app=None, game_type=None, app_key=None, return_profile=None, response_filters=None) -> web.Response:
     """Login Account (Username)
 
     Login to system with an account
 
-    :param version: 
-    :type version: 
     :param username: the user&#39;s email address they used to sign-up
     :type username: str
     :param password: the password
@@ -703,13 +679,11 @@ async def login_username(request: web.Request, version, username, password, devi
     return web.Response(status=200)
 
 
-async def logout(request: web.Request, version, device_id=None, device_id_type=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def logout(request: web.Request, device_id=None, device_id_type=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Logout Account
 
     Cleans up the users data for logging out.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param device_id_type: Device Id Type
@@ -725,13 +699,11 @@ async def logout(request: web.Request, version, device_id=None, device_id_type=N
     return web.Response(status=200)
 
 
-async def merge_account(request: web.Request, version, merge_account_id, app_key, device_id=None, account_id=None) -> web.Response:
+async def merge_account(request: web.Request, merge_account_id, app_key, device_id=None, account_id=None) -> web.Response:
     """Merge Account
 
     Merges the analytics, achievements, leaderboards of two accounts.
 
-    :param version: 
-    :type version: 
     :param merge_account_id: The id of the account to being merged
     :type merge_account_id: int
     :param app_key: The application key
@@ -745,13 +717,11 @@ async def merge_account(request: web.Request, version, merge_account_id, app_key
     return web.Response(status=200)
 
 
-async def password_change(request: web.Request, version, account_id, old_password, new_password, confirm_password) -> web.Response:
+async def password_change(request: web.Request, account_id, old_password, new_password, confirm_password) -> web.Response:
     """Update Password
 
     Update the account password.
 
-    :param version: 
-    :type version: 
     :param account_id: The account to update
     :type account_id: int
     :param old_password: The current password, used to validate access
@@ -765,13 +735,11 @@ async def password_change(request: web.Request, version, account_id, old_passwor
     return web.Response(status=200)
 
 
-async def password_reset(request: web.Request, version, token, password, confirm) -> web.Response:
+async def password_reset(request: web.Request, token, password, confirm) -> web.Response:
     """Reset Password
 
     Reset the account password. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token.
 
-    :param version: 
-    :type version: 
     :param token: The token associated with the account to update, good for 24 hours
     :type token: str
     :param password: The new password to set, cannot be empty
@@ -783,13 +751,11 @@ async def password_reset(request: web.Request, version, token, password, confirm
     return web.Response(status=200)
 
 
-async def request_password_reset(request: web.Request, version, email, _from=None, domain=None, sub_url=None, referer=None) -> web.Response:
+async def request_password_reset(request: web.Request, email, _from=None, domain=None, sub_url=None, referer=None) -> web.Response:
     """Request Password Reset
 
     Request that an account password be reset. The account is looked up by email address and then a link is sent via email to that account with a reset token. The token is valid for 24 hours.
 
-    :param version: 
-    :type version: 
     :param email: The email/username of the account
     :type email: str
     :param _from: this is the sender email
@@ -805,13 +771,11 @@ async def request_password_reset(request: web.Request, version, email, _from=Non
     return web.Response(status=200)
 
 
-async def request_validate_account(request: web.Request, version, account_id) -> web.Response:
+async def request_validate_account(request: web.Request, account_id) -> web.Response:
     """Send Validation Request
 
     Send an email to validate a user&#39;s account.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
 
@@ -819,13 +783,11 @@ async def request_validate_account(request: web.Request, version, account_id) ->
     return web.Response(status=200)
 
 
-async def search_accounts(request: web.Request, version, account_id, app_key, keyword=None, latitude=None, longitude=None, radius=None, gender=None, game_experience=None, age=None, category_ids=None, return_nulls=None, response_filters=None, purchase_type=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_accounts(request: web.Request, account_id, app_key, keyword=None, latitude=None, longitude=None, radius=None, gender=None, game_experience=None, age=None, category_ids=None, return_nulls=None, response_filters=None, purchase_type=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """Search Accounts
 
     Search for account profiles.
 
-    :param version: 
-    :type version: 
     :param account_id: The id of the account requesting
     :type account_id: int
     :param app_key: The application key
@@ -867,13 +829,11 @@ async def search_accounts(request: web.Request, version, account_id, app_key, ke
     return web.Response(status=200)
 
 
-async def secure_login(request: web.Request, version, username, password, game_type, device_id=None, charset_name=None, latitude=None, longitude=None, return_profile=None, response_filters=None) -> web.Response:
+async def secure_login(request: web.Request, username, password, game_type, device_id=None, charset_name=None, latitude=None, longitude=None, return_profile=None, response_filters=None) -> web.Response:
     """Login Account (Encrypted Username)
 
     ogin with encrypted user-name and password.
 
-    :param version: 
-    :type version: 
     :param username: The user&#39;s encrypted email address they used to sign-up
     :type username: str
     :param password: The encrypted password
@@ -897,13 +857,11 @@ async def secure_login(request: web.Request, version, username, password, game_t
     return web.Response(status=200)
 
 
-async def secure_signup(request: web.Request, version, device_id, username, password, name=None, invite_token=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, device_id_type=None, email_address=None, asset_id=None, address=None, zipcode=None, gender=None, birthday=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, role=None, platforms=None, tags=None, about_us=None, game_experience=None, category_ids=None, hometown=None, height=None, height_index=None, ethnicity=None, body_type=None, marital_status=None, children=None, religion=None, education=None, education_index=None, smoke=None, drink=None, companionship=None, companionship_index=None, preferred_min_age=None, preferred_max_age=None, preferred_min_height=None, preferred_max_height=None, preferred_gender=None, preferred_education=None, preferred_education_index=None, preferred_body_type=None, preferred_ethnicity=None, preferred_location=None, preferred_location_range=None, latitude=None, longitude=None, accepted_terms=None, charset_name=None, game_type=None, app_key=None, app_version=None, response_type=None) -> web.Response:
+async def secure_signup(request: web.Request, device_id, username, password, name=None, invite_token=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, device_id_type=None, email_address=None, asset_id=None, address=None, zipcode=None, gender=None, birthday=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, role=None, platforms=None, tags=None, about_us=None, game_experience=None, category_ids=None, hometown=None, height=None, height_index=None, ethnicity=None, body_type=None, marital_status=None, children=None, religion=None, education=None, education_index=None, smoke=None, drink=None, companionship=None, companionship_index=None, preferred_min_age=None, preferred_max_age=None, preferred_min_height=None, preferred_max_height=None, preferred_gender=None, preferred_education=None, preferred_education_index=None, preferred_body_type=None, preferred_ethnicity=None, preferred_location=None, preferred_location_range=None, latitude=None, longitude=None, accepted_terms=None, charset_name=None, game_type=None, app_key=None, app_version=None, response_type=None) -> web.Response:
     """Create Account (Encrypted Username)
 
     Create a new account by role (with encrypted user-name and password)
 
-    :param version: 
-    :type version: 
     :param device_id: The device id
     :type device_id: str
     :param username: The encrypted email of the user, this is what will be used when they login
@@ -1031,13 +989,11 @@ async def secure_signup(request: web.Request, version, device_id, username, pass
     return web.Response(status=200)
 
 
-async def set_match_token(request: web.Request, version, device_id=None, account_id=None, match_token=None, game_type=None, app_key=None, latitude=None, longitude=None) -> web.Response:
+async def set_match_token(request: web.Request, device_id=None, account_id=None, match_token=None, game_type=None, app_key=None, latitude=None, longitude=None) -> web.Response:
     """Save Match Token
 
     Save user&#39;s match token to be used for profile match making
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -1057,13 +1013,11 @@ async def set_match_token(request: web.Request, version, device_id=None, account
     return web.Response(status=200)
 
 
-async def update_actve_status(request: web.Request, version, account_id, connection_account_id, active, device_id=None, app_key=None) -> web.Response:
+async def update_actve_status(request: web.Request, account_id, connection_account_id, active, device_id=None, app_key=None) -> web.Response:
     """Update Account Active Status
 
     Activate or deactivate an account (requires appropriate permissions).
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user (deviceId or accountId required)
     :type account_id: int
     :param connection_account_id: The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead)
@@ -1079,13 +1033,11 @@ async def update_actve_status(request: web.Request, version, account_id, connect
     return web.Response(status=200)
 
 
-async def update_location(request: web.Request, version, device_id=None, account_id=None, latitude=None, longitude=None, client_time=None) -> web.Response:
+async def update_location(request: web.Request, device_id=None, account_id=None, latitude=None, longitude=None, client_time=None) -> web.Response:
     """Update Location
 
     Update the account location
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -1101,13 +1053,11 @@ async def update_location(request: web.Request, version, device_id=None, account
     return web.Response(status=200)
 
 
-async def update_settings(request: web.Request, version, device_id=None, account_id=None, blocked_notifications=None, suggestion_method=None, suggestion_count=None, suggestion_time_frame=None, show_others_exact_location=None, show_as_zipcode=None, show_exact_location=None, favorite_visibility=None, latitude=None, longitude=None) -> web.Response:
+async def update_settings(request: web.Request, device_id=None, account_id=None, blocked_notifications=None, suggestion_method=None, suggestion_count=None, suggestion_time_frame=None, show_others_exact_location=None, show_as_zipcode=None, show_exact_location=None, favorite_visibility=None, latitude=None, longitude=None) -> web.Response:
     """Update Account Settings
 
     Update the account settings for a user
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -1137,13 +1087,11 @@ async def update_settings(request: web.Request, version, device_id=None, account
     return web.Response(status=200)
 
 
-async def validate_account_signup(request: web.Request, version, token) -> web.Response:
+async def validate_account_signup(request: web.Request, token) -> web.Response:
     """Save Validation Status
 
     Validate the account&#39;s email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.
 
-    :param version: 
-    :type version: 
     :param token: The token associated with the account to update, good for 24 hours
     :type token: str
 
@@ -1151,13 +1099,11 @@ async def validate_account_signup(request: web.Request, version, token) -> web.R
     return web.Response(status=200)
 
 
-async def validate_password_reset(request: web.Request, version, token) -> web.Response:
+async def validate_password_reset(request: web.Request, token) -> web.Response:
     """Validate Password Reset Token
 
     Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.
 
-    :param version: 
-    :type version: 
     :param token: The token associated with the account to update, good for 24 hours
     :type token: str
 

@@ -5,13 +5,11 @@ from openapi_server.models.wrapped_proxy_item_response import WrappedProxyItemRe
 from openapi_server import util
 
 
-async def image_generation(request: web.Request, version, account_id, post_body, return_raw_response=None) -> web.Response:
+async def image_generation(request: web.Request, account_id, post_body, return_raw_response=None) -> web.Response:
     """Generate images with OpenAI
 
     Generate images with OpenAI.
 
-    :param version: 
-    :type version: 
     :param account_id: Sirqul Account Id
     :type account_id: int
     :param post_body: Post Body Parameters

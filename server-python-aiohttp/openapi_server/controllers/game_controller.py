@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_game(request: web.Request, version, account_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None) -> web.Response:
+async def create_game(request: web.Request, account_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None) -> web.Response:
     """Create a Game
 
     Create a Game.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The game application key to save the level for.
@@ -32,13 +30,11 @@ async def create_game(request: web.Request, version, account_id=None, app_key=No
     return web.Response(status=200)
 
 
-async def delete_game(request: web.Request, version, account_id, game_id) -> web.Response:
+async def delete_game(request: web.Request, account_id, game_id) -> web.Response:
     """Delete a Game
 
     Delete a game.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param game_id: the updating game&#39;s id.
@@ -48,13 +44,11 @@ async def delete_game(request: web.Request, version, account_id, game_id) -> web
     return web.Response(status=200)
 
 
-async def get_game(request: web.Request, version, account_id, game_id, include_game_data=None) -> web.Response:
+async def get_game(request: web.Request, account_id, game_id, include_game_data=None) -> web.Response:
     """Get a Game by id
 
     Get a Game by id.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param game_id: the updating game&#39;s id.
@@ -66,13 +60,11 @@ async def get_game(request: web.Request, version, account_id, game_id, include_g
     return web.Response(status=200)
 
 
-async def search_games(request: web.Request, version, account_id, app_key, start, limit, keyword=None, app_version=None, include_game_data=None, include_inactive=None) -> web.Response:
+async def search_games(request: web.Request, account_id, app_key, start, limit, keyword=None, app_version=None, include_game_data=None, include_inactive=None) -> web.Response:
     """Search a Game
 
     Get a list of games for an application, just those the account has permissions to view.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: the application key
@@ -94,13 +86,11 @@ async def search_games(request: web.Request, version, account_id, app_key, start
     return web.Response(status=200)
 
 
-async def update_game(request: web.Request, version, account_id=None, game_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None) -> web.Response:
+async def update_game(request: web.Request, account_id=None, game_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None) -> web.Response:
     """Update a Game
 
     Update a Game
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param game_id: the updating game&#39;s id

@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_notification_template(request: web.Request, version, account_id, conduit, title, body, app_key=None, event=None, tags=None) -> web.Response:
+async def create_notification_template(request: web.Request, account_id, conduit, title, body, app_key=None, event=None, tags=None) -> web.Response:
     """Create Notification Template
 
     Create a notification template. Developers will only be able to create notification templates for their own applications.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user.
     :type account_id: int
     :param conduit: Filter results by notification type: EMAIL, SMS, PUSH, MOBILE_NOTIFICATION.
@@ -36,13 +34,11 @@ async def create_notification_template(request: web.Request, version, account_id
     return web.Response(status=200)
 
 
-async def create_or_update_blocked_notifications(request: web.Request, version, app_key, data, account_id=None) -> web.Response:
+async def create_or_update_blocked_notifications(request: web.Request, app_key, data, account_id=None) -> web.Response:
     """Create or update blocked notification settings
 
     Create or update blocked notification settings
 
-    :param version: 
-    :type version: 
     :param app_key: The application key
     :type app_key: str
     :param data: batch data payload (application specific)
@@ -54,13 +50,11 @@ async def create_or_update_blocked_notifications(request: web.Request, version, 
     return web.Response(status=200)
 
 
-async def delete_notification_template(request: web.Request, version, account_id, notification_template_id) -> web.Response:
+async def delete_notification_template(request: web.Request, account_id, notification_template_id) -> web.Response:
     """Delete Notification Template
 
     Deletes a notification template. Developers will only be able to delete notification templates for their own applications.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param notification_template_id: the id of the notification template to delete
@@ -70,13 +64,11 @@ async def delete_notification_template(request: web.Request, version, account_id
     return web.Response(status=200)
 
 
-async def get_notification_template(request: web.Request, version, account_id, notification_template_id) -> web.Response:
+async def get_notification_template(request: web.Request, account_id, notification_template_id) -> web.Response:
     """Get Notification Template
 
     Get the details of a notification template. Developers will only be able to see notification templates for their own applications.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param notification_template_id: the id of the notification template to get
@@ -86,13 +78,11 @@ async def get_notification_template(request: web.Request, version, account_id, n
     return web.Response(status=200)
 
 
-async def get_notifications(request: web.Request, version, device_id=None, account_id=None, connection_account_id=None, app_key=None, event_type=None, content_ids=None, content_types=None, parent_ids=None, parent_types=None, action_category=None, conduits=None, keyword=None, return_read_messages=None, mark_as_read=None, from_date=None, latitude=None, longitude=None, return_sent=None, ignore_flagged=None, start=None, limit=None) -> web.Response:
+async def get_notifications(request: web.Request, device_id=None, account_id=None, connection_account_id=None, app_key=None, event_type=None, content_ids=None, content_types=None, parent_ids=None, parent_types=None, action_category=None, conduits=None, keyword=None, return_read_messages=None, mark_as_read=None, from_date=None, latitude=None, longitude=None, return_sent=None, ignore_flagged=None, start=None, limit=None) -> web.Response:
     """Get Notifications
 
     Get a list of notifications for a user. If the \&quot;markAsRead\&quot; parameter is set to true, the returned notifications will be marked as \&quot;read\&quot; after the response has been sent. By default, read messages will not be returned, so to see read messages, set \&quot;returnReadMessages\&quot; to true.
 
-    :param version: 
-    :type version: 
     :param device_id: the unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -140,13 +130,11 @@ async def get_notifications(request: web.Request, version, device_id=None, accou
     return web.Response(status=200)
 
 
-async def register_notification_token(request: web.Request, version, token, push_type, device_id=None, account_id=None, environment=None, app_key=None, game_type=None, active=None, latitude=None, longitude=None) -> web.Response:
+async def register_notification_token(request: web.Request, token, push_type, device_id=None, account_id=None, environment=None, app_key=None, game_type=None, active=None, latitude=None, longitude=None) -> web.Response:
     """Register Notification Token
 
     Register a token to send application dependent notifications like Google Cloud Messaging, or Apple Push Notifications.
 
-    :param version: 
-    :type version: 
     :param token: A token that is generated by the device to sign requests for the notification service providers
     :type token: str
     :param push_type: The type of push notification. Possible values include: APNS, GCM
@@ -172,13 +160,11 @@ async def register_notification_token(request: web.Request, version, token, push
     return web.Response(status=200)
 
 
-async def search_blocked_notifications(request: web.Request, version, app_key, account_id=None, search_tags=None, events=None, conduits=None, custom_types=None, content_types=None, content_ids=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_blocked_notifications(request: web.Request, app_key, account_id=None, search_tags=None, events=None, conduits=None, custom_types=None, content_types=None, content_ids=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search on the user&#39;s blocked notification settings
 
     Search on the user&#39;s blocked notification settings
 
-    :param version: 
-    :type version: 
     :param app_key: The application key
     :type app_key: str
     :param account_id: the account id of the user
@@ -208,13 +194,11 @@ async def search_blocked_notifications(request: web.Request, version, app_key, a
     return web.Response(status=200)
 
 
-async def search_notification_template(request: web.Request, version, account_id, sort_field, descending, start, limit, app_key=None, event=None, conduit=None, global_only=None, reserved_only=None, keyword=None) -> web.Response:
+async def search_notification_template(request: web.Request, account_id, sort_field, descending, start, limit, app_key=None, event=None, conduit=None, global_only=None, reserved_only=None, keyword=None) -> web.Response:
     """Search Notification Templates
 
     Search for notification templates on owned applications.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user.
     :type account_id: int
     :param sort_field: Specifies how results are ordered.ID - order results by the notificationTemplateId CREATED - order results by the created date UPDATED - order results by the updated date TITLE - order results by title EVENT - order results by event CONDUIT - order results by conduit APP_NAME - order results by the application name (&#39;global&#39; templates will not have an application and will be returned last if &#39;descending&#39; is set to false.
@@ -242,13 +226,11 @@ async def search_notification_template(request: web.Request, version, account_id
     return web.Response(status=200)
 
 
-async def search_recipients(request: web.Request, version, sort_field, device_id=None, account_id=None, app_key=None, conduit=None, keyword=None, audience_id=None, audience_ids=None, connection_group_ids=None, recipient_account_ids=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_recipients(request: web.Request, sort_field, device_id=None, account_id=None, app_key=None, conduit=None, keyword=None, audience_id=None, audience_ids=None, connection_group_ids=None, recipient_account_ids=None, descending=None, start=None, limit=None) -> web.Response:
     """Search for Recipients
 
     Search for application users to send notifications.
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by. Possible values include: {ACCOUNT_DISPLAY, CREATED, UPDATED, ACTIVE, DELETED, LAST_LOGGED_IN, CONTACT_EMAIL, RETAILER_LOCATION_NAME, RETAILER_NAME, APPLICATION_NAME}
     :type sort_field: str
     :param device_id: the unique id of the device making the request (deviceId or accountId required)
@@ -280,13 +262,11 @@ async def search_recipients(request: web.Request, version, sort_field, device_id
     return web.Response(status=200)
 
 
-async def search_recipients_count(request: web.Request, version, device_id=None, account_id=None, app_key=None, conduit=None, keyword=None, audience_id=None, audience_ids=None, connection_group_ids=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_recipients_count(request: web.Request, device_id=None, account_id=None, app_key=None, conduit=None, keyword=None, audience_id=None, audience_ids=None, connection_group_ids=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search for Recipients (Counts/Grouped)
 
     Search for application users to send notifications (count/grouped variant).
 
-    :param version: 
-    :type version: 
     :param device_id: the unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -316,13 +296,11 @@ async def search_recipients_count(request: web.Request, version, device_id=None,
     return web.Response(status=200)
 
 
-async def send_batch_notifications(request: web.Request, version, account_id, app_key, custom_message, conduit=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None) -> web.Response:
+async def send_batch_notifications(request: web.Request, account_id, app_key, custom_message, conduit=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None) -> web.Response:
     """Send Batch Notifications
 
     Send notifications to all users of an application. Only someone with permissions to the application can do this.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the application owner/manager
     :type account_id: int
     :param app_key: The application key for updating an existing application
@@ -346,13 +324,11 @@ async def send_batch_notifications(request: web.Request, version, account_id, ap
     return web.Response(status=200)
 
 
-async def send_custom_notifications(request: web.Request, version, device_id=None, account_id=None, receiver_account_ids=None, include_friend_group=None, app_key=None, game_type=None, conduit=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, action_category=None, subject=None, custom_message=None, friend_only_apns=None, latitude=None, longitude=None) -> web.Response:
+async def send_custom_notifications(request: web.Request, device_id=None, account_id=None, receiver_account_ids=None, include_friend_group=None, app_key=None, game_type=None, conduit=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, action_category=None, subject=None, custom_message=None, friend_only_apns=None, latitude=None, longitude=None) -> web.Response:
     """Send Custom Notifications
 
     Send your own custom notification to a user. NOTE: the EventType of these notifications will be CUSTOM. Notifications sent to yourself will currently be ignored.
 
-    :param version: 
-    :type version: 
     :param device_id: the unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -394,13 +370,11 @@ async def send_custom_notifications(request: web.Request, version, device_id=Non
     return web.Response(status=200)
 
 
-async def update_notification_template(request: web.Request, version, account_id, notification_template_id, title=None, body=None, tags=None) -> web.Response:
+async def update_notification_template(request: web.Request, account_id, notification_template_id, title=None, body=None, tags=None) -> web.Response:
     """Update Notification Template
 
     Update a notification template. Developers will only be able to update notification templates for their own applications.
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user.
     :type account_id: int
     :param notification_template_id: The notification template ID to update.

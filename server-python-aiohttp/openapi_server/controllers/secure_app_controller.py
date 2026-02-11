@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_secure_application(request: web.Request, version, account_id, app_key, key_cert, trust_store, username, password, active=None, biometric_type=None, biometric_position=None, biometric_position2=None) -> web.Response:
+async def create_secure_application(request: web.Request, account_id, app_key, key_cert, trust_store, username, password, active=None, biometric_type=None, biometric_position=None, biometric_position2=None) -> web.Response:
     """Create Secure Application
 
     Create a secure application record.
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure
@@ -39,13 +37,11 @@ async def create_secure_application(request: web.Request, version, account_id, a
     return web.Response(status=200)
 
 
-async def delete_secure_application(request: web.Request, version, account_id, app_key) -> web.Response:
+async def delete_secure_application(request: web.Request, account_id, app_key) -> web.Response:
     """Delete Secure Application
 
     Delete a secure application record.
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure
@@ -55,13 +51,11 @@ async def delete_secure_application(request: web.Request, version, account_id, a
     return web.Response(status=200)
 
 
-async def login_secure(request: web.Request, version, app_key, biometric_file, device_id=None, biometric_file2=None, age_restriction=None, return_profile=None, response_filters=None, latitude=None, longitude=None) -> web.Response:
+async def login_secure(request: web.Request, app_key, biometric_file, device_id=None, biometric_file2=None, age_restriction=None, return_profile=None, response_filters=None, latitude=None, longitude=None) -> web.Response:
     """Login Clear
 
     Login via Clear.me. Creates a new account if logging in for the first time.
 
-    :param version: 
-    :type version: 
     :param app_key: The application making the request, defines what type and position is required to make a secure login the request.
     :type app_key: str
     :param biometric_file: The data file used to perform authentication
@@ -85,13 +79,11 @@ async def login_secure(request: web.Request, version, app_key, biometric_file, d
     return web.Response(status=200)
 
 
-async def purchase_secure(request: web.Request, version, body) -> web.Response:
+async def purchase_secure(request: web.Request, body) -> web.Response:
     """Purchase Clear
 
     Purchase via Clear.me. Creates a new account if purchasing for the first time.
 
-    :param version: 
-    :type version: 
     :param body: The payment request object
     :type body: dict | bytes
 
@@ -100,13 +92,11 @@ async def purchase_secure(request: web.Request, version, body) -> web.Response:
     return web.Response(status=200)
 
 
-async def reset_secure(request: web.Request, version, account_id, app_key) -> web.Response:
+async def reset_secure(request: web.Request, account_id, app_key) -> web.Response:
     """Rest Secure Application
 
     Reset a secure application client.
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure
@@ -116,13 +106,11 @@ async def reset_secure(request: web.Request, version, account_id, app_key) -> we
     return web.Response(status=200)
 
 
-async def update_secure_application(request: web.Request, version, account_id, app_key, active=None, key_cert=None, trust_store=None, username=None, password=None, biometric_type=None, biometric_position=None, biometric_position2=None) -> web.Response:
+async def update_secure_application(request: web.Request, account_id, app_key, active=None, key_cert=None, trust_store=None, username=None, password=None, biometric_type=None, biometric_position=None, biometric_position2=None) -> web.Response:
     """Update Secure Application
 
     Update a secure application record.
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure

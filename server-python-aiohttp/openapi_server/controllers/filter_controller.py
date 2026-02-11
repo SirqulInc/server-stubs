@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_filter(request: web.Request, version, account_id, name, app_key=None, parent_filter_id=None, description=None, external_id=None, external_type=None, active=None, meta_data=None) -> web.Response:
+async def create_filter(request: web.Request, account_id, name, app_key=None, parent_filter_id=None, description=None, external_id=None, external_type=None, active=None, meta_data=None) -> web.Response:
     """Create Filter
 
     Create a filter
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the target application)
     :type account_id: int
     :param name: The name of the filter
@@ -37,13 +35,11 @@ async def create_filter(request: web.Request, version, account_id, name, app_key
     return web.Response(status=200)
 
 
-async def delete_filter(request: web.Request, version, account_id, filter_id) -> web.Response:
+async def delete_filter(request: web.Request, account_id, filter_id) -> web.Response:
     """Delete Filter
 
     Delete a filter.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the filter&#39;s assigned application)
     :type account_id: int
     :param filter_id: The ID of the filter to delete
@@ -53,13 +49,11 @@ async def delete_filter(request: web.Request, version, account_id, filter_id) ->
     return web.Response(status=200)
 
 
-async def get_filter(request: web.Request, version, filter_id) -> web.Response:
+async def get_filter(request: web.Request, filter_id) -> web.Response:
     """Get Filter
 
     Get the details of a specific filter. Recursively include all child filters and their children.
 
-    :param version: 
-    :type version: 
     :param filter_id: the id of the filter to get
     :type filter_id: int
 
@@ -67,13 +61,11 @@ async def get_filter(request: web.Request, version, filter_id) -> web.Response:
     return web.Response(status=200)
 
 
-async def search_filters(request: web.Request, version, account_id=None, keyword=None, app_key=None, response_group=None, root_only=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_filters(request: web.Request, account_id=None, keyword=None, app_key=None, response_group=None, root_only=None, sort_field=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """Search Filters
 
     Search for filters.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The string to search on
@@ -99,13 +91,11 @@ async def search_filters(request: web.Request, version, account_id=None, keyword
     return web.Response(status=200)
 
 
-async def update_filter(request: web.Request, version, account_id, filter_id, parent_filter_id=None, name=None, description=None, external_id=None, external_type=None, active=None, meta_data=None) -> web.Response:
+async def update_filter(request: web.Request, account_id, filter_id, parent_filter_id=None, name=None, description=None, external_id=None, external_type=None, active=None, meta_data=None) -> web.Response:
     """Update Filter
 
     Update a filter.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param filter_id: The ID of the filter to edit

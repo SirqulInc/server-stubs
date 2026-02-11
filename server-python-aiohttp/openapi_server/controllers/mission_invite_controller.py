@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_mission_invite(request: web.Request, version, device_id=None, account_id=None, mission_id=None, join_code=None, include_game_data=None) -> web.Response:
+async def create_mission_invite(request: web.Request, device_id=None, account_id=None, mission_id=None, join_code=None, include_game_data=None) -> web.Response:
     """Create Mission Invite
 
     Create the mission invite. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -28,13 +26,11 @@ async def create_mission_invite(request: web.Request, version, device_id=None, a
     return web.Response(status=200)
 
 
-async def delete_mission_invite(request: web.Request, version, device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None) -> web.Response:
+async def delete_mission_invite(request: web.Request, device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None) -> web.Response:
     """Delete Mission Invite
 
     Update the mission invite status to quit.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -50,13 +46,11 @@ async def delete_mission_invite(request: web.Request, version, device_id=None, a
     return web.Response(status=200)
 
 
-async def get_mission_invite(request: web.Request, version, device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None, include_scores=None) -> web.Response:
+async def get_mission_invite(request: web.Request, device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None, include_scores=None) -> web.Response:
     """Get Mission Invite
 
     Get the mission invite. An account can only be invited to a mission one time.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -74,13 +68,11 @@ async def get_mission_invite(request: web.Request, version, device_id=None, acco
     return web.Response(status=200)
 
 
-async def search_mission_invites(request: web.Request, version, device_id=None, account_id=None, app_key=None, app_version=None, mission_id=None, status=None, last_updated=None, start=None, limit=None, keyword=None, mission_types=None, filter_by_billable=None, include_game_data=None) -> web.Response:
+async def search_mission_invites(request: web.Request, device_id=None, account_id=None, app_key=None, app_version=None, mission_id=None, status=None, last_updated=None, start=None, limit=None, keyword=None, mission_types=None, filter_by_billable=None, include_game_data=None) -> web.Response:
     """Search Mission Invites
 
     Get a list of mission invites that the account has.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -112,13 +104,11 @@ async def search_mission_invites(request: web.Request, version, device_id=None, 
     return web.Response(status=200)
 
 
-async def update_mission_invite(request: web.Request, version, device_id=None, account_id=None, app_key=None, mission_id=None, mission_invite_id=None, pack_id=None, game_level_id=None, status=None, permissionable_type=None, permissionable_id=None, include_game_data=None) -> web.Response:
+async def update_mission_invite(request: web.Request, device_id=None, account_id=None, app_key=None, mission_id=None, mission_invite_id=None, pack_id=None, game_level_id=None, status=None, permissionable_type=None, permissionable_id=None, include_game_data=None) -> web.Response:
     """Update Mission Invite
 
     Update the mission invite status. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).

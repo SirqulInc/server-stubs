@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def assigment_assignee_account_search(request: web.Request, version, account_id, keyword=None) -> web.Response:
+async def assigment_assignee_account_search(request: web.Request, account_id, keyword=None) -> web.Response:
     """Search Assignment Assignees
 
     Search for avaiable users for creating or updating assignment.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id sending the request
     :type account_id: int
     :param keyword: The keyword to filter the returned results
@@ -24,13 +22,11 @@ async def assigment_assignee_account_search(request: web.Request, version, accou
     return web.Response(status=200)
 
 
-async def assignment_create(request: web.Request, version, account_id, name, assignee_account_id, description=None, retailer_location_id=None, tags=None, active=None) -> web.Response:
+async def assignment_create(request: web.Request, account_id, name, assignee_account_id, description=None, retailer_location_id=None, tags=None, active=None) -> web.Response:
     """Create Assignment
 
     Create an assignment.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param name: the name for the assignment
@@ -50,13 +46,11 @@ async def assignment_create(request: web.Request, version, account_id, name, ass
     return web.Response(status=200)
 
 
-async def assignment_delete(request: web.Request, version, account_id, assignment_id) -> web.Response:
+async def assignment_delete(request: web.Request, account_id, assignment_id) -> web.Response:
     """Delete Assignment
 
     Delete an assignment.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id
@@ -66,13 +60,11 @@ async def assignment_delete(request: web.Request, version, account_id, assignmen
     return web.Response(status=200)
 
 
-async def assignment_get(request: web.Request, version, account_id, assignment_id) -> web.Response:
+async def assignment_get(request: web.Request, account_id, assignment_id) -> web.Response:
     """Get Assignment
 
     Get the details of an assignment.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id
@@ -82,13 +74,11 @@ async def assignment_get(request: web.Request, version, account_id, assignment_i
     return web.Response(status=200)
 
 
-async def assignment_search(request: web.Request, version, account_id, sort_field, descending, active_only, start, limit, creator_account_id=None, assignee_account_ids=None, retailer_location_ids=None, current_status_type=None, keyword=None) -> web.Response:
+async def assignment_search(request: web.Request, account_id, sort_field, descending, active_only, start, limit, creator_account_id=None, assignee_account_ids=None, retailer_location_ids=None, current_status_type=None, keyword=None) -> web.Response:
     """Search Assignments
 
     Search for assignments by the given parameters.
 
-    :param version: 
-    :type version: 
     :param account_id: the account sending the request
     :type account_id: int
     :param sort_field: sort by table field
@@ -116,13 +106,11 @@ async def assignment_search(request: web.Request, version, account_id, sort_fiel
     return web.Response(status=200)
 
 
-async def assignment_status_create(request: web.Request, version, account_id, assignment_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None) -> web.Response:
+async def assignment_status_create(request: web.Request, account_id, assignment_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None) -> web.Response:
     """Create Assignment Status
 
     Create an assignment status.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id
@@ -150,13 +138,11 @@ async def assignment_status_create(request: web.Request, version, account_id, as
     return web.Response(status=200)
 
 
-async def assignment_status_delete(request: web.Request, version, account_id, assignment_status_id) -> web.Response:
+async def assignment_status_delete(request: web.Request, account_id, assignment_status_id) -> web.Response:
     """Deletes Assignment Status
 
     Deletes an assignment status.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_status_id: the assignment status id
@@ -166,13 +152,11 @@ async def assignment_status_delete(request: web.Request, version, account_id, as
     return web.Response(status=200)
 
 
-async def assignment_status_get(request: web.Request, version, account_id, assignment_status_id) -> web.Response:
+async def assignment_status_get(request: web.Request, account_id, assignment_status_id) -> web.Response:
     """Get Assignment Status
 
     Get an assignment status.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_status_id: the assignment status id
@@ -182,13 +166,11 @@ async def assignment_status_get(request: web.Request, version, account_id, assig
     return web.Response(status=200)
 
 
-async def assignment_status_search(request: web.Request, version, account_id, sort_field, descending, active_only, start, limit, assignment_id=None, creator_account_id=None, assignee_account_id=None, retailer_location_id=None, status_type=None, keyword=None) -> web.Response:
+async def assignment_status_search(request: web.Request, account_id, sort_field, descending, active_only, start, limit, assignment_id=None, creator_account_id=None, assignee_account_id=None, retailer_location_id=None, status_type=None, keyword=None) -> web.Response:
     """Search Assignment Statuses
 
     Search on assignment statuses.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param sort_field: the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP
@@ -218,13 +200,11 @@ async def assignment_status_search(request: web.Request, version, account_id, so
     return web.Response(status=200)
 
 
-async def assignment_status_update(request: web.Request, version, account_id, assignment_status_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None) -> web.Response:
+async def assignment_status_update(request: web.Request, account_id, assignment_status_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None) -> web.Response:
     """Update Assignment Status
 
     Updates an assignment status.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_status_id: the assignment status id
@@ -252,13 +232,11 @@ async def assignment_status_update(request: web.Request, version, account_id, as
     return web.Response(status=200)
 
 
-async def assignment_update(request: web.Request, version, account_id, assignment_id, name=None, description=None, assignee_account_id=None, retailer_location_id=None, tags=None, active=None) -> web.Response:
+async def assignment_update(request: web.Request, account_id, assignment_id, name=None, description=None, assignee_account_id=None, retailer_location_id=None, tags=None, active=None) -> web.Response:
     """Update Assignment
 
     Updates an assignment.
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id

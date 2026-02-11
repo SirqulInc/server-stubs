@@ -5,13 +5,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def run_workflow(request: web.Request, version, account_id, workflow_id, sku_id=None, version_code=None, parameters=None) -> web.Response:
+async def run_workflow(request: web.Request, account_id, workflow_id, sku_id=None, version_code=None, parameters=None) -> web.Response:
     """Run Workflow
 
     Runs a published executable workflow
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param workflow_id: the workflow to run

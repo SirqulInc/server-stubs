@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def consumer_create(request: web.Request, version, app_key, name, hostname, username, password, data_mapping, device_id=None, account_id=None, port=None, virtual_host=None, exchanger=None, exchanger_type=None, workers=None, use_ssl=None) -> web.Response:
+async def consumer_create(request: web.Request, app_key, name, hostname, username, password, data_mapping, device_id=None, account_id=None, port=None, virtual_host=None, exchanger=None, exchanger_type=None, workers=None, use_ssl=None) -> web.Response:
     """Create Consumer
 
     Create a connection to an existing amqp queue and register as a consumer.
 
-    :param version: 
-    :type version: 
     :param app_key: The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
     :type app_key: str
     :param name: The name of the queue to connect to
@@ -46,13 +44,11 @@ async def consumer_create(request: web.Request, version, app_key, name, hostname
     return web.Response(status=200)
 
 
-async def consumer_update(request: web.Request, version, app_key, queue_id, data_mapping, device_id=None, account_id=None, use_ssl=None) -> web.Response:
+async def consumer_update(request: web.Request, app_key, queue_id, data_mapping, device_id=None, account_id=None, use_ssl=None) -> web.Response:
     """Update Consumer
 
     Update an existing amqp queue&#39;s data mapping.
 
-    :param version: 
-    :type version: 
     :param app_key: The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
     :type app_key: str
     :param queue_id: The queue to update
@@ -70,13 +66,11 @@ async def consumer_update(request: web.Request, version, app_key, queue_id, data
     return web.Response(status=200)
 
 
-async def queue_create(request: web.Request, version, app_key, name, device_id=None, account_id=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None) -> web.Response:
+async def queue_create(request: web.Request, app_key, name, device_id=None, account_id=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None) -> web.Response:
     """Create Queue
 
     Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application.
 
-    :param version: 
-    :type version: 
     :param app_key: The application key unique to each application.
     :type app_key: str
     :param name: The name of the queue to create
@@ -106,13 +100,11 @@ async def queue_create(request: web.Request, version, app_key, name, device_id=N
     return web.Response(status=200)
 
 
-async def queue_delete(request: web.Request, version, queue_id, device_id=None, account_id=None) -> web.Response:
+async def queue_delete(request: web.Request, queue_id, device_id=None, account_id=None) -> web.Response:
     """Delete Queue
 
     Delete the stored queue record and close any active connections to the AMQP servers.
 
-    :param version: 
-    :type version: 
     :param queue_id: The id of the queue to find
     :type queue_id: int
     :param device_id: The client device ID
@@ -124,13 +116,11 @@ async def queue_delete(request: web.Request, version, queue_id, device_id=None, 
     return web.Response(status=200)
 
 
-async def queue_get(request: web.Request, version, device_id=None, account_id=None, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None) -> web.Response:
+async def queue_get(request: web.Request, device_id=None, account_id=None, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None) -> web.Response:
     """Get Queue
 
     Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
 
-    :param version: 
-    :type version: 
     :param device_id: The client device ID
     :type device_id: str
     :param account_id: The logged in user ID
@@ -150,13 +140,11 @@ async def queue_get(request: web.Request, version, device_id=None, account_id=No
     return web.Response(status=200)
 
 
-async def queue_publish(request: web.Request, version, message, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None) -> web.Response:
+async def queue_publish(request: web.Request, message, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None) -> web.Response:
     """Publish Queue
 
     Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
 
-    :param version: 
-    :type version: 
     :param message: The payload to send to the queue
     :type message: str
     :param queue_id: The id of the queue to publish to
@@ -174,13 +162,11 @@ async def queue_publish(request: web.Request, version, message, queue_id=None, a
     return web.Response(status=200)
 
 
-async def queue_search(request: web.Request, version, queue_id=None, device_id=None, account_id=None, name=None, start=None, limit=None) -> web.Response:
+async def queue_search(request: web.Request, queue_id=None, device_id=None, account_id=None, name=None, start=None, limit=None) -> web.Response:
     """Search Queue
 
     Get the queues setup for the BillableEntity&#39;s applications.
 
-    :param version: 
-    :type version: 
     :param queue_id: The id of the queue to find
     :type queue_id: int
     :param device_id: The client device ID
@@ -198,13 +184,11 @@ async def queue_search(request: web.Request, version, queue_id=None, device_id=N
     return web.Response(status=200)
 
 
-async def queue_update(request: web.Request, version, queue_id, device_id=None, account_id=None, app_key=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None) -> web.Response:
+async def queue_update(request: web.Request, queue_id, device_id=None, account_id=None, app_key=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None) -> web.Response:
     """Update Queue
 
     Update the basic AMQP queue.
 
-    :param version: 
-    :type version: 
     :param queue_id: The id of the queue to update
     :type queue_id: int
     :param device_id: The client deviceID

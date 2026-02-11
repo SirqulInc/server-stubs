@@ -9,13 +9,11 @@ from openapi_server.models.third_party_network_short_response import ThirdPartyN
 from openapi_server import util
 
 
-async def create_credential(request: web.Request, version, third_party_id, third_party_token, network_uid, app_key, account_id=None, device_id=None, session_id=None, third_party_name=None, email_address=None, signin_only_mode=None, response_filters=None, latitude=None, longitude=None, meta_data=None, third_party_refresh_token=None, audience_ids_to_add=None, audience_ids_to_remove=None) -> web.Response:
+async def create_credential(request: web.Request, third_party_id, third_party_token, network_uid, app_key, account_id=None, device_id=None, session_id=None, third_party_name=None, email_address=None, signin_only_mode=None, response_filters=None, latitude=None, longitude=None, meta_data=None, third_party_refresh_token=None, audience_ids_to_add=None, audience_ids_to_remove=None) -> web.Response:
     """Create Credential
 
     This endpoint creates a third-party login for a Sirqul account. A third party login is a way for external systems (Third Party Networks) to link their own user accounts with a Sirqul account.   The thirdPartyId parameter is used to determine if the user already exists in Sirqul or not. This parameter needs to be unique for each user in the Third Party Network (identified by the networkUID parameter). Note that subsequent calls will update the user&#39;s third-party login credentials for the user with the same thirdPartyId and networkUID combination.    The thirdPartyToken parameter acts as a shared secret and used by client applications to log users into Sirqul without providing a Sirqul username and password. 
 
-    :param version: 
-    :type version: 
     :param third_party_id: the third party user account id
     :type third_party_id: str
     :param third_party_token: the access token to authenticate with (ex: username or fb token or phone number)
@@ -55,13 +53,11 @@ async def create_credential(request: web.Request, version, third_party_id, third
     return web.Response(status=200)
 
 
-async def create_network(request: web.Request, version, account_id, name, enable_introspection, description=None, introspection_method=None, introspection_url=None, introspection_params=None, required_root_field=None, enable_mfa=None, size_mfa=None, shelf_life_mfa=None, oauth_token_url=None, oauth_private_key=None, oauth_public_key=None, oauth_client_id=None, oauth_secret_key=None, body=None) -> web.Response:
+async def create_network(request: web.Request, account_id, name, enable_introspection, description=None, introspection_method=None, introspection_url=None, introspection_params=None, required_root_field=None, enable_mfa=None, size_mfa=None, shelf_life_mfa=None, oauth_token_url=None, oauth_private_key=None, oauth_public_key=None, oauth_client_id=None, oauth_secret_key=None, body=None) -> web.Response:
     """Create Network
 
     Creates a custom third party network.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id making the request
     :type account_id: int
     :param name: The name of the network
@@ -101,13 +97,11 @@ async def create_network(request: web.Request, version, account_id, name, enable
     return web.Response(status=200)
 
 
-async def delete_credential(request: web.Request, version, account_id, network_uid, third_party_id, app_key) -> web.Response:
+async def delete_credential(request: web.Request, account_id, network_uid, third_party_id, app_key) -> web.Response:
     """Delete Credential
 
     Delete a third party network on a Sirqul account.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param network_uid: The third party network identifier
@@ -121,13 +115,11 @@ async def delete_credential(request: web.Request, version, account_id, network_u
     return web.Response(status=200)
 
 
-async def delete_network(request: web.Request, version, account_id, network_uid) -> web.Response:
+async def delete_network(request: web.Request, account_id, network_uid) -> web.Response:
     """Delete Network
 
     Marks a custom third party network as deleted. Only the network owners and managers have access to this.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param network_uid: The unique identifier for the third party network defined by Sirqul
@@ -137,13 +129,11 @@ async def delete_network(request: web.Request, version, account_id, network_uid)
     return web.Response(status=200)
 
 
-async def get_credential(request: web.Request, version, network_uid, app_key, account_id=None, device_id=None, session_id=None, third_party_credential_id=None, third_party_token=None, third_party_secret=None, create_new_account=None, response_filters=None, latitude=None, longitude=None, audience_ids_to_add=None, audience_ids_to_remove=None, referral_account_id=None) -> web.Response:
+async def get_credential(request: web.Request, network_uid, app_key, account_id=None, device_id=None, session_id=None, third_party_credential_id=None, third_party_token=None, third_party_secret=None, create_new_account=None, response_filters=None, latitude=None, longitude=None, audience_ids_to_add=None, audience_ids_to_remove=None, referral_account_id=None) -> web.Response:
     """Get Credential
 
     Gets the account information given a third party token.
 
-    :param version: 
-    :type version: 
     :param network_uid: the access provider to authenticate against
     :type network_uid: str
     :param app_key: the application key
@@ -179,13 +169,11 @@ async def get_credential(request: web.Request, version, network_uid, app_key, ac
     return web.Response(status=200)
 
 
-async def get_network(request: web.Request, version, account_id, network_uid) -> web.Response:
+async def get_network(request: web.Request, account_id, network_uid) -> web.Response:
     """Get Network
 
     Get the details of a third party network. Only the network owners and managers have access to this.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id making the request
     :type account_id: int
     :param network_uid: The unique identifier for the third party network defined by Sirqul
@@ -195,13 +183,11 @@ async def get_network(request: web.Request, version, account_id, network_uid) ->
     return web.Response(status=200)
 
 
-async def search_credentials(request: web.Request, version, account_id, keyword=None, network_uid=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_credentials(request: web.Request, account_id, keyword=None, network_uid=None, descending=None, start=None, limit=None) -> web.Response:
     """Search Credentials
 
     Search on a user&#39;s linked third party networks.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The keyword used to search on the third party name and network string
@@ -219,13 +205,11 @@ async def search_credentials(request: web.Request, version, account_id, keyword=
     return web.Response(status=200)
 
 
-async def search_networks(request: web.Request, version, account_id, sort_field, descending, start, limit, active_only, keyword=None, filter_billable=None) -> web.Response:
+async def search_networks(request: web.Request, account_id, sort_field, descending, start, limit, active_only, keyword=None, filter_billable=None) -> web.Response:
     """Search Networks
 
     Search on supported third party networks and custom networks from external users.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id making the request
     :type account_id: int
     :param sort_field: The column to sort the search on, possible values include: UPDATED (default), CREATED, NAME
@@ -247,13 +231,11 @@ async def search_networks(request: web.Request, version, account_id, sort_field,
     return web.Response(status=200)
 
 
-async def send_mfa_challenge(request: web.Request, version, network_uid, app_key, third_party_token=None, third_party_credential_id=None, device_id=None) -> web.Response:
+async def send_mfa_challenge(request: web.Request, network_uid, app_key, third_party_token=None, third_party_credential_id=None, device_id=None) -> web.Response:
     """Send MFA Challenge
 
     Sends an MFA challenge (SMS or Email) for networks with MFA enabled.
 
-    :param version: 
-    :type version: 
     :param network_uid: the third party network provider that has MFA enabled
     :type network_uid: str
     :param app_key: the application key
@@ -269,13 +251,11 @@ async def send_mfa_challenge(request: web.Request, version, network_uid, app_key
     return web.Response(status=200)
 
 
-async def update_credential(request: web.Request, version, network_uid, third_party_id, app_key, device_id=None, third_party_name=None, third_party_token=None, response_filters=None, meta_data=None, third_party_refresh_token=None) -> web.Response:
+async def update_credential(request: web.Request, network_uid, third_party_id, app_key, device_id=None, third_party_name=None, third_party_token=None, response_filters=None, meta_data=None, third_party_refresh_token=None) -> web.Response:
     """Update Credential
 
     Updates a third-party login for an account.
 
-    :param version: 
-    :type version: 
     :param network_uid: the access provider to authenticate against
     :type network_uid: str
     :param third_party_id: the third party user account id
@@ -299,13 +279,11 @@ async def update_credential(request: web.Request, version, network_uid, third_pa
     return web.Response(status=200)
 
 
-async def update_network(request: web.Request, version, account_id, network_uid, name=None, description=None, enable_introspection=None, introspection_method=None, introspection_url=None, introspection_params=None, required_root_field=None, enable_mfa=None, size_mfa=None, shelf_life_mfa=None, oauth_token_url=None, oauth_private_key=None, oauth_public_key=None, oauth_client_id=None, oauth_secret_key=None, body=None) -> web.Response:
+async def update_network(request: web.Request, account_id, network_uid, name=None, description=None, enable_introspection=None, introspection_method=None, introspection_url=None, introspection_params=None, required_root_field=None, enable_mfa=None, size_mfa=None, shelf_life_mfa=None, oauth_token_url=None, oauth_private_key=None, oauth_public_key=None, oauth_client_id=None, oauth_secret_key=None, body=None) -> web.Response:
     """Update Network
 
     Updates a custom third party network. Only the network owners and managers have access to this.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id making the request
     :type account_id: int
     :param network_uid: The unique identifier for the third party network defined by Sirqul

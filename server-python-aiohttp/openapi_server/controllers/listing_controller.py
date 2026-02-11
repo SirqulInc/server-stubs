@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_listing(request: web.Request, version, account_id, name, filter_ids=None, description=None, start=None, end=None, location_name=None, location_description=None, is_private=None, external_id=None, external_id2=None, external_group_id=None, active=None, meta_data=None) -> web.Response:
+async def create_listing(request: web.Request, account_id, name, filter_ids=None, description=None, start=None, end=None, location_name=None, location_description=None, is_private=None, external_id=None, external_id2=None, external_group_id=None, active=None, meta_data=None) -> web.Response:
     """Create Listing
 
     Creates a listing.
 
-    :param version: 
-    :type version: 
     :param account_id: the user&#39;s account ID
     :type account_id: int
     :param name: the name of the listing
@@ -48,13 +46,11 @@ async def create_listing(request: web.Request, version, account_id, name, filter
     return web.Response(status=200)
 
 
-async def delete_listing(request: web.Request, version, account_id, listing_id) -> web.Response:
+async def delete_listing(request: web.Request, account_id, listing_id) -> web.Response:
     """Delete Listing
 
     Delete a listing.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param listing_id: the id of the listing to delete
@@ -64,13 +60,11 @@ async def delete_listing(request: web.Request, version, account_id, listing_id) 
     return web.Response(status=200)
 
 
-async def get_listing(request: web.Request, version, listing_id) -> web.Response:
+async def get_listing(request: web.Request, listing_id) -> web.Response:
     """Get Listing
 
     Get a listing by id.
 
-    :param version: 
-    :type version: 
     :param listing_id: the id of the listing to get
     :type listing_id: int
 
@@ -78,13 +72,11 @@ async def get_listing(request: web.Request, version, listing_id) -> web.Response
     return web.Response(status=200)
 
 
-async def search_listing(request: web.Request, version, account_id=None, keyword=None, start=None, limit=None, active_only=None, latitude=None, longitude=None, start_date=None, end_date=None, category_ids=None, filter_ids=None, use_listing_order_ids=None, external_id=None, external_id2=None, external_group_id=None) -> web.Response:
+async def search_listing(request: web.Request, account_id=None, keyword=None, start=None, limit=None, active_only=None, latitude=None, longitude=None, start_date=None, end_date=None, category_ids=None, filter_ids=None, use_listing_order_ids=None, external_id=None, external_id2=None, external_group_id=None) -> web.Response:
     """Search Listings
 
     Search for event listings from the start time to end time
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param keyword: search the event name and description for this keyword
@@ -120,13 +112,11 @@ async def search_listing(request: web.Request, version, account_id=None, keyword
     return web.Response(status=200)
 
 
-async def summary_listing(request: web.Request, version, account_id=None, start_date=None, category_ids=None, days_to_include=None, use_listing_order_ids=None) -> web.Response:
+async def summary_listing(request: web.Request, account_id=None, start_date=None, category_ids=None, days_to_include=None, use_listing_order_ids=None) -> web.Response:
     """Summary Listing
 
     Search for a list of summary listings from the start time up to 8 days out.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param start_date: the start date to search from
@@ -142,13 +132,11 @@ async def summary_listing(request: web.Request, version, account_id=None, start_
     return web.Response(status=200)
 
 
-async def update_listing(request: web.Request, version, account_id, listing_id, filter_ids=None, name=None, description=None, start=None, end=None, location_name=None, location_description=None, is_private=None, external_id=None, external_id2=None, external_group_id=None, active=None, meta_data=None) -> web.Response:
+async def update_listing(request: web.Request, account_id, listing_id, filter_ids=None, name=None, description=None, start=None, end=None, location_name=None, location_description=None, is_private=None, external_id=None, external_id2=None, external_group_id=None, active=None, meta_data=None) -> web.Response:
     """Update Listing
 
     Updates a listing.
 
-    :param version: 
-    :type version: 
     :param account_id: the user&#39;s account ID
     :type account_id: int
     :param listing_id: the listing to update

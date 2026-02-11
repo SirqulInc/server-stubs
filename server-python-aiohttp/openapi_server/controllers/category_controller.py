@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def category_distance_search(request: web.Request, version, account_id=None, keyword=None, app_key=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, min_offer_count=None, latitude=None, longitude=None, range=None) -> web.Response:
+async def category_distance_search(request: web.Request, account_id=None, keyword=None, app_key=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, min_offer_count=None, latitude=None, longitude=None, range=None) -> web.Response:
     """Search Categories by Distance
 
     Search for categories by distance.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The keyword string to search on
@@ -59,13 +57,11 @@ async def category_distance_search(request: web.Request, version, account_id=Non
     return web.Response(status=200)
 
 
-async def create_category(request: web.Request, version, account_id, name, app_key=None, parent_category_id=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None) -> web.Response:
+async def create_category(request: web.Request, account_id, name, app_key=None, parent_category_id=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None) -> web.Response:
     """Create Category
 
     Create a new category.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the target application)
     :type account_id: int
     :param name: The name of the category
@@ -99,13 +95,11 @@ async def create_category(request: web.Request, version, account_id, name, app_k
     return web.Response(status=200)
 
 
-async def delete_category(request: web.Request, version, account_id, category_id) -> web.Response:
+async def delete_category(request: web.Request, account_id, category_id) -> web.Response:
     """Delete Category
 
     Delete a category.
 
-    :param version: 
-    :type version: 
     :param account_id: the ID of the account
     :type account_id: int
     :param category_id: the ID of the category
@@ -115,13 +109,11 @@ async def delete_category(request: web.Request, version, account_id, category_id
     return web.Response(status=200)
 
 
-async def duplicate_category(request: web.Request, version, account_id, category_id, app_key=None, parent_category_id=None) -> web.Response:
+async def duplicate_category(request: web.Request, account_id, category_id, app_key=None, parent_category_id=None) -> web.Response:
     """Duplicate Category
 
     Duplicate a category, including all its children.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the target application)
     :type account_id: int
     :param category_id: The category ID to duplicate (includes all children)
@@ -135,13 +127,11 @@ async def duplicate_category(request: web.Request, version, account_id, category
     return web.Response(status=200)
 
 
-async def get_category(request: web.Request, version, category_id, return_external=None) -> web.Response:
+async def get_category(request: web.Request, category_id, return_external=None) -> web.Response:
     """Get Category
 
     Get the details of a specific category. Recursively include all child categories and their children.
 
-    :param version: 
-    :type version: 
     :param category_id: the ID of the category
     :type category_id: int
     :param return_external: Determines whether to return extra info about the category&#39;s \&quot;Participant\&quot; reference
@@ -151,13 +141,11 @@ async def get_category(request: web.Request, version, category_id, return_extern
     return web.Response(status=200)
 
 
-async def search_categories(request: web.Request, version, account_id=None, keyword=None, app_key=None, category_id=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, exclude_external_type=None, min_offer_count=None, search_depth=None, search_mode=None) -> web.Response:
+async def search_categories(request: web.Request, account_id=None, keyword=None, app_key=None, category_id=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, exclude_external_type=None, min_offer_count=None, search_depth=None, search_mode=None) -> web.Response:
     """Search Categories
 
     Search for categories.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The string to search on
@@ -205,13 +193,11 @@ async def search_categories(request: web.Request, version, account_id=None, keyw
     return web.Response(status=200)
 
 
-async def update_category(request: web.Request, version, account_id, category_id, parent_category_id=None, name=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None) -> web.Response:
+async def update_category(request: web.Request, account_id, category_id, parent_category_id=None, name=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None) -> web.Response:
     """Update Category
 
     Update a category.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param category_id: The ID of the category to edit

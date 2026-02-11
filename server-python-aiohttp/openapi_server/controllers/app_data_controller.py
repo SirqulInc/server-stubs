@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def get_app_data(request: web.Request, version, start, limit, device_id=None, account_id=None, game_type=None, include_game_data=None, q=None, keyword=None, sort_field=None, descending=None, i=None, l=None, game_object_count=None, filter=None, date_created=None, owner_id=None, mission_ids=None, game_ids=None, pack_ids=None, game_level_ids=None, app_version=None, include_higher_version_packs=None, include_higher_version_levels=None, response_groups=None, purchase_type=None) -> web.Response:
+async def get_app_data(request: web.Request, start, limit, device_id=None, account_id=None, game_type=None, include_game_data=None, q=None, keyword=None, sort_field=None, descending=None, i=None, l=None, game_object_count=None, filter=None, date_created=None, owner_id=None, mission_ids=None, game_ids=None, pack_ids=None, game_level_ids=None, app_version=None, include_higher_version_packs=None, include_higher_version_levels=None, response_groups=None, purchase_type=None) -> web.Response:
     """Get App Data
 
     Get the application data structure.  The basic structure is a   node tree, with the root node being a AppResponse.  The response contains   the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.     Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application.
 
-    :param version: 
-    :type version: 
     :param start: start the search results at a record.
     :type start: int
     :param limit: limit the search results to some number.
@@ -68,13 +66,11 @@ async def get_app_data(request: web.Request, version, start, limit, device_id=No
     return web.Response(status=200)
 
 
-async def post_app_data(request: web.Request, version, game_type, start, limit, data, device_id=None, account_id=None, include_game_data=None, q=None, keyword=None, sort_field=None, descending=None, i=None, l=None, game_object_count=None, filter=None, date_created=None, owner_id=None, mission_ids=None, game_ids=None, pack_ids=None, game_level_ids=None, app_version=None, include_higher_version_packs=None, include_higher_version_levels=None, response_groups=None, purchase_type=None) -> web.Response:
+async def post_app_data(request: web.Request, game_type, start, limit, data, device_id=None, account_id=None, include_game_data=None, q=None, keyword=None, sort_field=None, descending=None, i=None, l=None, game_object_count=None, filter=None, date_created=None, owner_id=None, mission_ids=None, game_ids=None, pack_ids=None, game_level_ids=None, app_version=None, include_higher_version_packs=None, include_higher_version_levels=None, response_groups=None, purchase_type=None) -> web.Response:
     """Create App Data
 
     Publish the application data structure.  Can be used to save levels   and scores.  It then returns the application data structure.  The basic   structure is a node tree, with the root node being a AppResponse.  The response   contains the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.      Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application
 
-    :param version: 
-    :type version: 
     :param game_type: the game to retrieve the data for, use your application key.
     :type game_type: str
     :param start: start the search results at a record.
@@ -132,13 +128,11 @@ async def post_app_data(request: web.Request, version, game_type, start, limit, 
     return web.Response(status=200)
 
 
-async def regen_app_data(request: web.Request, version, account_id=None, app_key=None, build_version=None, api_version=None) -> web.Response:
+async def regen_app_data(request: web.Request, account_id=None, app_key=None, build_version=None, api_version=None) -> web.Response:
     """Regenerate App Data
 
     Regenerate the app data cache for apps
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param app_key: process a specific application, if null process all apps with caches

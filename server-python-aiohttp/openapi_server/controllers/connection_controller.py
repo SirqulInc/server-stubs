@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def add_connection_to_group(request: web.Request, version, return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None) -> web.Response:
+async def add_connection_to_group(request: web.Request, return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None) -> web.Response:
     """Add Connection
 
     Adds a connection to a group.
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the group id
@@ -39,13 +37,11 @@ async def add_connection_to_group(request: web.Request, version, return_nulls, g
     return web.Response(status=200)
 
 
-async def add_connections_to_group(request: web.Request, version, connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None) -> web.Response:
+async def add_connections_to_group(request: web.Request, connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None) -> web.Response:
     """Add Connections
 
     Adds a list of connections to a group.
 
-    :param version: 
-    :type version: 
     :param connection_group_id: the connection group ID
     :type connection_group_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -65,13 +61,11 @@ async def add_connections_to_group(request: web.Request, version, connection_gro
     return web.Response(status=200)
 
 
-async def add_sub_groups(request: web.Request, version, return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def add_sub_groups(request: web.Request, return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Add Connection Groups
 
     Add sub groups to a group.
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the parent group id
@@ -91,13 +85,11 @@ async def add_sub_groups(request: web.Request, version, return_nulls, group_id, 
     return web.Response(status=200)
 
 
-async def create_or_update_connection(request: web.Request, version, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, group_id=None, game_type=None, app_key=None, is_trusted=None, ignore_friend_request=None, is_contact=None, is_blocked=None, is_following=None, connection_response=None) -> web.Response:
+async def create_or_update_connection(request: web.Request, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, group_id=None, game_type=None, app_key=None, is_trusted=None, ignore_friend_request=None, is_contact=None, is_blocked=None, is_following=None, connection_response=None) -> web.Response:
     """Create or Update Connection
 
     Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group.
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -131,13 +123,11 @@ async def create_or_update_connection(request: web.Request, version, device_id=N
     return web.Response(status=200)
 
 
-async def create_or_update_group(request: web.Request, version, return_nulls, device_id=None, account_id=None, name=None, group_id=None, asset_id=None, connections=None, description=None, can_view_profile_info=None, can_view_game_info=None, can_view_friend_info=None, active=None, latitude=None, longitude=None) -> web.Response:
+async def create_or_update_group(request: web.Request, return_nulls, device_id=None, account_id=None, name=None, group_id=None, asset_id=None, connections=None, description=None, can_view_profile_info=None, can_view_game_info=None, can_view_friend_info=None, active=None, latitude=None, longitude=None) -> web.Response:
     """Create or Update Connection Group
 
     Creates a new private group.
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param device_id: the device id (deviceId or accountId required)
@@ -171,13 +161,11 @@ async def create_or_update_group(request: web.Request, version, return_nulls, de
     return web.Response(status=200)
 
 
-async def follow_accept(request: web.Request, version, account_id, connection_account_id, app_key) -> web.Response:
+async def follow_accept(request: web.Request, account_id, connection_account_id, app_key) -> web.Response:
     """Accept Follow Request
 
     Accept someone&#39;s follow request.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who initiated the follow
@@ -189,13 +177,11 @@ async def follow_accept(request: web.Request, version, account_id, connection_ac
     return web.Response(status=200)
 
 
-async def follow_reject(request: web.Request, version, account_id, connection_account_id, app_key) -> web.Response:
+async def follow_reject(request: web.Request, account_id, connection_account_id, app_key) -> web.Response:
     """Reject Follow Request
 
     Reject someone&#39;s follow request or remove them as a follower.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who initiated the follow
@@ -207,13 +193,11 @@ async def follow_reject(request: web.Request, version, account_id, connection_ac
     return web.Response(status=200)
 
 
-async def follow_remove(request: web.Request, version, account_id, connection_account_id, app_key) -> web.Response:
+async def follow_remove(request: web.Request, account_id, connection_account_id, app_key) -> web.Response:
     """Remove Follower / Unfollow
 
     Unfollow someone you are following or remove them as a follower.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who you want to unfollow
@@ -225,13 +209,11 @@ async def follow_remove(request: web.Request, version, account_id, connection_ac
     return web.Response(status=200)
 
 
-async def follow_request(request: web.Request, version, account_id, connection_account_id, app_key, approval_needed=None) -> web.Response:
+async def follow_request(request: web.Request, account_id, connection_account_id, app_key, approval_needed=None) -> web.Response:
     """Send Follow Request
 
     Send a request to follow someone.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who you want to follow
@@ -245,13 +227,11 @@ async def follow_request(request: web.Request, version, account_id, connection_a
     return web.Response(status=200)
 
 
-async def friend_accept(request: web.Request, version, friend_account_id, notify_friend, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None) -> web.Response:
+async def friend_accept(request: web.Request, friend_account_id, notify_friend, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None) -> web.Response:
     """Accept Friend
 
     Accept a friend request and optionally sends a notification.
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the friend&#39;s account id
     :type friend_account_id: int
     :param notify_friend: determines whether to send a notification to the afflicting party
@@ -271,13 +251,11 @@ async def friend_accept(request: web.Request, version, friend_account_id, notify
     return web.Response(status=200)
 
 
-async def friend_reject(request: web.Request, version, friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notify_friend=None, notification_message=None) -> web.Response:
+async def friend_reject(request: web.Request, friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notify_friend=None, notification_message=None) -> web.Response:
     """Decline Friend
 
     Request a friend request and optionally sends a notification.
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the friend&#39;s account id
     :type friend_account_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -297,13 +275,11 @@ async def friend_reject(request: web.Request, version, friend_account_id, device
     return web.Response(status=200)
 
 
-async def friend_remove(request: web.Request, version, friend_account_id, device_id=None, account_id=None, notify_friend=None, remove_from_groups=None) -> web.Response:
+async def friend_remove(request: web.Request, friend_account_id, device_id=None, account_id=None, notify_friend=None, remove_from_groups=None) -> web.Response:
     """Delete Friend
 
     Removes a friend from the user&#39;s friends list.
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the account ID of the friend to remove
     :type friend_account_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -319,13 +295,11 @@ async def friend_remove(request: web.Request, version, friend_account_id, device
     return web.Response(status=200)
 
 
-async def friend_request(request: web.Request, version, friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None) -> web.Response:
+async def friend_request(request: web.Request, friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None) -> web.Response:
     """Request Friend
 
     Sends a friend request notification to another user.
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the friend&#39;s account id
     :type friend_account_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -343,13 +317,11 @@ async def friend_request(request: web.Request, version, friend_account_id, devic
     return web.Response(status=200)
 
 
-async def get_connection_sent_friend_requests(request: web.Request, version, device_id=None, account_id=None) -> web.Response:
+async def get_connection_sent_friend_requests(request: web.Request, device_id=None, account_id=None) -> web.Response:
     """Get Sent Friend Requests
 
     Gets the connection sent friend requests.
 
-    :param version: 
-    :type version: 
     :param device_id: the ID of the device
     :type device_id: str
     :param account_id: the id of the account
@@ -359,13 +331,11 @@ async def get_connection_sent_friend_requests(request: web.Request, version, dev
     return web.Response(status=200)
 
 
-async def get_connections(request: web.Request, version, return_nulls, filter, sort_field, descending, start, limit, device_id=None, account_id=None, connection_account_id=None, q=None, keyword=None, i=None, l=None, latitude=None, longitude=None) -> web.Response:
+async def get_connections(request: web.Request, return_nulls, filter, sort_field, descending, start, limit, device_id=None, account_id=None, connection_account_id=None, q=None, keyword=None, i=None, l=None, latitude=None, longitude=None) -> web.Response:
     """Search Connections
 
     Gets the connections.
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param filter: a comma separated list of ConnectionApiMap. (NOTE on FOLLOWER vs FOLLOWING: FOLLOWER will get me a list of followers, FOLLOWING will get me a list of people I am following)
@@ -401,13 +371,11 @@ async def get_connections(request: web.Request, version, return_nulls, filter, s
     return web.Response(status=200)
 
 
-async def get_group_details(request: web.Request, version, combine_connections, device_id=None, account_id=None, group_id=None, latitude=None, longitude=None) -> web.Response:
+async def get_group_details(request: web.Request, combine_connections, device_id=None, account_id=None, group_id=None, latitude=None, longitude=None) -> web.Response:
     """Get Connection Group
 
     
 
-    :param version: 
-    :type version: 
     :param combine_connections: whether to combine connections or not
     :type combine_connections: bool
     :param device_id: the device id (deviceId or accountId required)
@@ -425,13 +393,11 @@ async def get_group_details(request: web.Request, version, combine_connections, 
     return web.Response(status=200)
 
 
-async def group_search(request: web.Request, version, sort_field, descending, active_only, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None) -> web.Response:
+async def group_search(request: web.Request, sort_field, descending, active_only, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None) -> web.Response:
     """Search Connection Groups
 
     Gets a user&#39;s private groups and default groups.
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort by
     :type sort_field: str
     :param descending: whether to return results in descending or ascending order
@@ -457,13 +423,11 @@ async def group_search(request: web.Request, version, sort_field, descending, ac
     return web.Response(status=200)
 
 
-async def remove_connection_from_group(request: web.Request, version, return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None) -> web.Response:
+async def remove_connection_from_group(request: web.Request, return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None) -> web.Response:
     """Delete Connection
 
     Removes the connection from group.
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the group id
@@ -487,13 +451,11 @@ async def remove_connection_from_group(request: web.Request, version, return_nul
     return web.Response(status=200)
 
 
-async def remove_connections_from_group(request: web.Request, version, connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None) -> web.Response:
+async def remove_connections_from_group(request: web.Request, connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None) -> web.Response:
     """Remove Connections
 
     Remove a list of connections from a group.
 
-    :param version: 
-    :type version: 
     :param connection_group_id: connection group id
     :type connection_group_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -513,13 +475,11 @@ async def remove_connections_from_group(request: web.Request, version, connectio
     return web.Response(status=200)
 
 
-async def remove_group(request: web.Request, version, return_nulls, group_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def remove_group(request: web.Request, return_nulls, group_id, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Delete Connection Group
 
     Remove a user&#39;s group.
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the group id
@@ -537,13 +497,11 @@ async def remove_group(request: web.Request, version, return_nulls, group_id, de
     return web.Response(status=200)
 
 
-async def remove_sub_groups(request: web.Request, version, return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
+async def remove_sub_groups(request: web.Request, return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None) -> web.Response:
     """Remove Connection Groups
 
     Remove sub groups from a group
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the parent group id
@@ -563,13 +521,11 @@ async def remove_sub_groups(request: web.Request, version, return_nulls, group_i
     return web.Response(status=200)
 
 
-async def search_connections(request: web.Request, version, return_nulls, start, limit, device_id=None, account_id=None, q=None, keyword=None, latitude=None, longitude=None, game_type=None, app_key=None, i=None, l=None, sort_field=None, has_location=None) -> web.Response:
+async def search_connections(request: web.Request, return_nulls, start, limit, device_id=None, account_id=None, q=None, keyword=None, latitude=None, longitude=None, game_type=None, app_key=None, i=None, l=None, sort_field=None, has_location=None) -> web.Response:
     """Search Possible Connections
 
     Search for accounts that the user may not have a connection with.
 
-    :param version: 
-    :type version: 
     :param return_nulls: return all json attributes if true. defualt is true.
     :type return_nulls: bool
     :param start: start index of the pagination

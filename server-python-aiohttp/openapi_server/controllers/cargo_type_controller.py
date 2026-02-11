@@ -5,13 +5,11 @@ from openapi_server.models.cargo_type import CargoType
 from openapi_server import util
 
 
-async def create_cargo_type(request: web.Request, version, body=None) -> web.Response:
+async def create_cargo_type(request: web.Request, body=None) -> web.Response:
     """Create Cargo Type
 
     Create new cargo type
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -20,13 +18,11 @@ async def create_cargo_type(request: web.Request, version, body=None) -> web.Res
     return web.Response(status=200)
 
 
-async def delete_cargo_type(request: web.Request, version, cargo_type_id) -> web.Response:
+async def delete_cargo_type(request: web.Request, cargo_type_id) -> web.Response:
     """Delete Cargo Type
 
     Delete a type of cargo
 
-    :param version: 
-    :type version: 
     :param cargo_type_id: the ID of the cargo type
     :type cargo_type_id: int
 
@@ -34,13 +30,11 @@ async def delete_cargo_type(request: web.Request, version, cargo_type_id) -> web
     return web.Response(status=200)
 
 
-async def get_cargo_type(request: web.Request, version, cargo_type_id) -> web.Response:
+async def get_cargo_type(request: web.Request, cargo_type_id) -> web.Response:
     """Get Cargo Type
 
     Get an existing cargo type
 
-    :param version: 
-    :type version: 
     :param cargo_type_id: the cargo type ID
     :type cargo_type_id: int
 
@@ -48,13 +42,11 @@ async def get_cargo_type(request: web.Request, version, cargo_type_id) -> web.Re
     return web.Response(status=200)
 
 
-async def search_cargo_types(request: web.Request, version, sort_field, descending, start, limit, active_only, retailer_id=None, hub_id=None) -> web.Response:
+async def search_cargo_types(request: web.Request, sort_field, descending, start, limit, active_only, retailer_id=None, hub_id=None) -> web.Response:
     """Search Cargo Type
 
     Search for types of cargo
 
-    :param version: 
-    :type version: 
     :param sort_field: the sort field to use for the cargo type
     :type sort_field: str
     :param descending: if the cargo type should be should be in descending order
@@ -74,13 +66,11 @@ async def search_cargo_types(request: web.Request, version, sort_field, descendi
     return web.Response(status=200)
 
 
-async def update_cargo_type(request: web.Request, version, cargo_type_id, body=None) -> web.Response:
+async def update_cargo_type(request: web.Request, cargo_type_id, body=None) -> web.Response:
     """Update Cargo Type
 
     Update an existing cargo type
 
-    :param version: 
-    :type version: 
     :param cargo_type_id: the ID of the cargo type
     :type cargo_type_id: int
     :param body: 

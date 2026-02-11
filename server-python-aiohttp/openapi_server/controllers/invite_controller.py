@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def accept_invite(request: web.Request, version, token, account_id, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None, auto_friend=None, auto_attend_event=None, auto_favorite_offer=None, auto_favorite_offer_location=None, auto_favorite_retailer_location=None) -> web.Response:
+async def accept_invite(request: web.Request, token, account_id, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None, auto_friend=None, auto_attend_event=None, auto_favorite_offer=None, auto_favorite_offer_location=None, auto_favorite_retailer_location=None) -> web.Response:
     """Accept Invite
 
     Allows a user to accept an invite. The user could also become the inviter&#39;s friend.
 
-    :param version: 
-    :type version: 
     :param token: the invite token
     :type token: str
     :param account_id: the accountId of the user who is accepting the invite
@@ -47,13 +45,11 @@ async def accept_invite(request: web.Request, version, token, account_id, album_
     return web.Response(status=200)
 
 
-async def album_contest_invite(request: web.Request, version, device_id=None, account_id=None, app_id=None, app_key=None, album_contest_id=None, latitude=None, longitude=None) -> web.Response:
+async def album_contest_invite(request: web.Request, device_id=None, account_id=None, app_id=None, app_key=None, album_contest_id=None, latitude=None, longitude=None) -> web.Response:
     """Invite to Contest
 
     Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -73,13 +69,11 @@ async def album_contest_invite(request: web.Request, version, device_id=None, ac
     return web.Response(status=200)
 
 
-async def album_invite(request: web.Request, version, device_id=None, account_id=None, app_id=None, app_key=None, album_id=None, latitude=None, longitude=None) -> web.Response:
+async def album_invite(request: web.Request, device_id=None, account_id=None, app_id=None, app_key=None, album_id=None, latitude=None, longitude=None) -> web.Response:
     """Invite to Collection
 
     Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -99,13 +93,11 @@ async def album_invite(request: web.Request, version, device_id=None, account_id
     return web.Response(status=200)
 
 
-async def event_invite(request: web.Request, version, account_id, app_key, listing_id, receiver_account_ids=None, retailer_location_id=None) -> web.Response:
+async def event_invite(request: web.Request, account_id, app_key, listing_id, receiver_account_ids=None, retailer_location_id=None) -> web.Response:
     """Invite to Event
 
     Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key
@@ -121,13 +113,11 @@ async def event_invite(request: web.Request, version, account_id, app_key, listi
     return web.Response(status=200)
 
 
-async def game_invite(request: web.Request, version, device_id=None, account_id=None, app_id=None, app_key=None, game_level_id=None, latitude=None, longitude=None) -> web.Response:
+async def game_invite(request: web.Request, device_id=None, account_id=None, app_id=None, app_key=None, game_level_id=None, latitude=None, longitude=None) -> web.Response:
     """Invite to Game Level
 
     Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -147,13 +137,11 @@ async def game_invite(request: web.Request, version, device_id=None, account_id=
     return web.Response(status=200)
 
 
-async def get_invite(request: web.Request, version, account_id=None, token=None, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None) -> web.Response:
+async def get_invite(request: web.Request, account_id=None, token=None, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None) -> web.Response:
     """Get Invite
 
     This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to.
 
-    :param version: 
-    :type version: 
     :param account_id: Account ID of the user if they are logged in
     :type account_id: int
     :param token: the invite token
@@ -177,13 +165,11 @@ async def get_invite(request: web.Request, version, account_id=None, token=None,
     return web.Response(status=200)
 
 
-async def mission_invite(request: web.Request, version, device_id=None, account_id=None, app_id=None, app_key=None, mission_id=None, latitude=None, longitude=None) -> web.Response:
+async def mission_invite(request: web.Request, device_id=None, account_id=None, app_id=None, app_key=None, mission_id=None, latitude=None, longitude=None) -> web.Response:
     """Invite to Mission
 
     Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -203,13 +189,11 @@ async def mission_invite(request: web.Request, version, device_id=None, account_
     return web.Response(status=200)
 
 
-async def offer_invite(request: web.Request, version, account_id, app_key, offer_id) -> web.Response:
+async def offer_invite(request: web.Request, account_id, app_key, offer_id) -> web.Response:
     """Invite to Offer
 
     Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite&#39;s list.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key
@@ -221,13 +205,11 @@ async def offer_invite(request: web.Request, version, account_id, app_key, offer
     return web.Response(status=200)
 
 
-async def offer_location_invite(request: web.Request, version, account_id, app_key, offer_location_id) -> web.Response:
+async def offer_location_invite(request: web.Request, account_id, app_key, offer_location_id) -> web.Response:
     """Invite to Offer Location
 
     Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite&#39;s list.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key
@@ -239,13 +221,11 @@ async def offer_location_invite(request: web.Request, version, account_id, app_k
     return web.Response(status=200)
 
 
-async def retailer_location_invite(request: web.Request, version, account_id, app_key, retailer_location_id, album_id=None) -> web.Response:
+async def retailer_location_invite(request: web.Request, account_id, app_key, retailer_location_id, album_id=None) -> web.Response:
     """Invite to Retailer Location
 
     Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite&#39;s list.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key

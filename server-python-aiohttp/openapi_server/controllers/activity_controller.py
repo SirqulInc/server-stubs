@@ -6,13 +6,11 @@ from openapi_server.models.entity_reference import EntityReference
 from openapi_server import util
 
 
-async def create_entity_reference(request: web.Request, version, body) -> web.Response:
+async def create_entity_reference(request: web.Request, body) -> web.Response:
     """Create an entity reference.
 
     Creates a reference for an entity for syncing data between servers.
 
-    :param version: 
-    :type version: 
     :param body: The entity reference object
     :type body: dict | bytes
 

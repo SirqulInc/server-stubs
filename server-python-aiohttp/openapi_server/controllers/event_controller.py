@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def attend_event(request: web.Request, version, device_id=None, account_id=None, app_key=None, listing_id=None, retailer_location_id=None, offer_location_id=None, transaction_id=None, status=None, latitude=None, longitude=None) -> web.Response:
+async def attend_event(request: web.Request, device_id=None, account_id=None, app_key=None, listing_id=None, retailer_location_id=None, offer_location_id=None, transaction_id=None, status=None, latitude=None, longitude=None) -> web.Response:
     """Attend Event
 
      Specify whether the user is attending an event at a particular location. This can also be used as a \&quot;check-in\&quot; action.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id (deviceId or accountId required)
@@ -40,13 +38,11 @@ async def attend_event(request: web.Request, version, device_id=None, account_id
     return web.Response(status=200)
 
 
-async def create_event(request: web.Request, version, account_id, title, retailer_location_ids=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None, meta_data=None) -> web.Response:
+async def create_event(request: web.Request, account_id, title, retailer_location_ids=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None, meta_data=None) -> web.Response:
     """Create Event
 
     Create a private event to share with associates.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param title: The event title
@@ -76,13 +72,11 @@ async def create_event(request: web.Request, version, account_id, title, retaile
     return web.Response(status=200)
 
 
-async def delete_event(request: web.Request, version, account_id, event_id) -> web.Response:
+async def delete_event(request: web.Request, account_id, event_id) -> web.Response:
     """Delete Event
 
     Delete an event that the user has permissions to.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param event_id: the id of the event to update
@@ -92,13 +86,11 @@ async def delete_event(request: web.Request, version, account_id, event_id) -> w
     return web.Response(status=200)
 
 
-async def get_event(request: web.Request, version, account_id, event_id) -> web.Response:
+async def get_event(request: web.Request, account_id, event_id) -> web.Response:
     """Get Event
 
     Get an event.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param event_id: The id of the event to return
@@ -108,13 +100,11 @@ async def get_event(request: web.Request, version, account_id, event_id) -> web.
     return web.Response(status=200)
 
 
-async def search_event_transactions(request: web.Request, version, device_id=None, account_id=None, app_key=None, keyword=None, retailer_id=None, retailer_location_id=None, exclude_retailer_location_id=None, listing_id=None, offer_id=None, offer_location_id=None, customer_account_ids=None, affiliated_category_ids=None, start_date=None, end_date=None, statuses=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_event_transactions(request: web.Request, device_id=None, account_id=None, app_key=None, keyword=None, retailer_id=None, retailer_location_id=None, exclude_retailer_location_id=None, listing_id=None, offer_id=None, offer_location_id=None, customer_account_ids=None, affiliated_category_ids=None, start_date=None, end_date=None, statuses=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search Event Attendance
 
     Searches on event type transactions. This can be used to see who is attending an event.
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -158,13 +148,11 @@ async def search_event_transactions(request: web.Request, version, device_id=Non
     return web.Response(status=200)
 
 
-async def search_events(request: web.Request, version, account_id, keyword=None, active_only=None, category_ids=None, filter_ids=None, offer_audience_ids=None, transaction_audience_ids=None, sort_field=None, descending=None, start_date=None, end_date=None, start=None, limit=None) -> web.Response:
+async def search_events(request: web.Request, account_id, keyword=None, active_only=None, category_ids=None, filter_ids=None, offer_audience_ids=None, transaction_audience_ids=None, sort_field=None, descending=None, start_date=None, end_date=None, start=None, limit=None) -> web.Response:
     """Search Events
 
     Searches on events that the account has access to.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param keyword: The keyword used to search
@@ -196,13 +184,11 @@ async def search_events(request: web.Request, version, account_id, keyword=None,
     return web.Response(status=200)
 
 
-async def update_event(request: web.Request, version, account_id, event_id, retailer_location_ids=None, title=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None) -> web.Response:
+async def update_event(request: web.Request, account_id, event_id, retailer_location_ids=None, title=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None) -> web.Response:
     """Update Event
 
     Update a private event to share with associates.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param event_id: The id of the event to update

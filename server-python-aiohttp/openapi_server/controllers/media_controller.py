@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_media(request: web.Request, version, account_id, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, special_offer_type, offer_visibility, active, retailer_location_ids=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, ticket_price_type=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, category_ids=None, filter_ids=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, parental_rating=None, availability_date=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None) -> web.Response:
+async def create_media(request: web.Request, account_id, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, special_offer_type, offer_visibility, active, retailer_location_ids=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, ticket_price_type=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, category_ids=None, filter_ids=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, parental_rating=None, availability_date=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None) -> web.Response:
     """Create Media
 
     Create a media offering.
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param title: The title (255 char limit)
@@ -132,13 +130,11 @@ async def create_media(request: web.Request, version, account_id, title, barcode
     return web.Response(status=200)
 
 
-async def delete_media(request: web.Request, version, account_id, media_id) -> web.Response:
+async def delete_media(request: web.Request, account_id, media_id) -> web.Response:
     """Delete Media
 
     Delete a media offering that the user has permissions to.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param media_id: the ID of the media to delete
@@ -148,13 +144,11 @@ async def delete_media(request: web.Request, version, account_id, media_id) -> w
     return web.Response(status=200)
 
 
-async def get_media(request: web.Request, version, account_id, media_id) -> web.Response:
+async def get_media(request: web.Request, account_id, media_id) -> web.Response:
     """Media Get
 
     Get a media offering.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param media_id: the id of the media to get
@@ -164,13 +158,11 @@ async def get_media(request: web.Request, version, account_id, media_id) -> web.
     return web.Response(status=200)
 
 
-async def search_media(request: web.Request, version, account_id, active_only, sort_field, descending, keyword=None, category_ids=None, filter_ids=None, start=None, limit=None) -> web.Response:
+async def search_media(request: web.Request, account_id, active_only, sort_field, descending, keyword=None, category_ids=None, filter_ids=None, start=None, limit=None) -> web.Response:
     """Search Media
 
     Searches on events that the account has access to.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param active_only: Return only active results
@@ -194,13 +186,11 @@ async def search_media(request: web.Request, version, account_id, active_only, s
     return web.Response(status=200)
 
 
-async def update_media(request: web.Request, version, account_id, media_id, retailer_location_ids=None, offer_locations=None, title=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_type=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, no_expiration=None, available_limit=None, available_limit_per_user=None, added_limit=None, view_limit=None, max_prints=None, ticket_price_type=None, ticket_price=None, full_price=None, discount_price=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, special_offer_type=None, offer_visibility=None, category_ids=None, filter_ids=None, active=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, availability_date=None, parental_rating=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None) -> web.Response:
+async def update_media(request: web.Request, account_id, media_id, retailer_location_ids=None, offer_locations=None, title=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_type=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, no_expiration=None, available_limit=None, available_limit_per_user=None, added_limit=None, view_limit=None, max_prints=None, ticket_price_type=None, ticket_price=None, full_price=None, discount_price=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, special_offer_type=None, offer_visibility=None, category_ids=None, filter_ids=None, active=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, availability_date=None, parental_rating=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None) -> web.Response:
     """Update Media
 
     Update a media offering.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the update, must have rights to edit the offer (deviceId or accountId required)
     :type account_id: int
     :param media_id: 

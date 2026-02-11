@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_question(request: web.Request, version, account_id, question, answers, active, allocate_tickets, ticket_count, tags=None, video_url=None, asset_id=None, ticket_type=None, points=None) -> web.Response:
+async def create_question(request: web.Request, account_id, question, answers, active, allocate_tickets, ticket_count, tags=None, video_url=None, asset_id=None, ticket_type=None, points=None) -> web.Response:
     """Create Question
 
     Create a question and related answers by the given params.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param question: the text of the question
@@ -40,13 +38,11 @@ async def create_question(request: web.Request, version, account_id, question, a
     return web.Response(status=200)
 
 
-async def delete_question(request: web.Request, version, question_id, account_id) -> web.Response:
+async def delete_question(request: web.Request, question_id, account_id) -> web.Response:
     """Delete Question
 
     Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete.
 
-    :param version: 
-    :type version: 
     :param question_id: the id of the question to delete
     :type question_id: int
     :param account_id: the id of the account that can execute this request
@@ -56,13 +52,11 @@ async def delete_question(request: web.Request, version, question_id, account_id
     return web.Response(status=200)
 
 
-async def get_question(request: web.Request, version, question_id, account_id) -> web.Response:
+async def get_question(request: web.Request, question_id, account_id) -> web.Response:
     """Get Question
 
     Get a question by the given id.
 
-    :param version: 
-    :type version: 
     :param question_id: the id of the question to get
     :type question_id: int
     :param account_id: the id of the account that can make this request
@@ -72,13 +66,11 @@ async def get_question(request: web.Request, version, question_id, account_id) -
     return web.Response(status=200)
 
 
-async def search_questions(request: web.Request, version, account_id, sort_field, descending, active_only, start, limit, keyword=None) -> web.Response:
+async def search_questions(request: web.Request, account_id, sort_field, descending, active_only, start, limit, keyword=None) -> web.Response:
     """Search Questions
 
     Search for questions by the given params.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param sort_field: The column to sort the search on
@@ -98,13 +90,11 @@ async def search_questions(request: web.Request, version, account_id, sort_field
     return web.Response(status=200)
 
 
-async def update_question(request: web.Request, version, question_id, account_id, ticket_count, question=None, answers=None, tags=None, video_url=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None) -> web.Response:
+async def update_question(request: web.Request, question_id, account_id, ticket_count, question=None, answers=None, tags=None, video_url=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None) -> web.Response:
     """Update Question
 
     Update a question and related answers.
 
-    :param version: 
-    :type version: 
     :param question_id: The id of the question to update.
     :type question_id: int
     :param account_id: The logged in user.

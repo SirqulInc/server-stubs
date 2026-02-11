@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_leaderboard(request: web.Request, version, account_id=None, app_key=None, rank_type=None, leaderboard_mode=None, icon_media=None, icon_asset_id=None, banner_media=None, banner_asset_id=None, limitation=None, sort_field=None, title=None, description=None, meta_data=None) -> web.Response:
+async def create_leaderboard(request: web.Request, account_id=None, app_key=None, rank_type=None, leaderboard_mode=None, icon_media=None, icon_asset_id=None, banner_media=None, banner_asset_id=None, limitation=None, sort_field=None, title=None, description=None, meta_data=None) -> web.Response:
     """Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 
     Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user creating the leaderboard.
     :type account_id: int
     :param app_key: The application key
@@ -44,13 +42,11 @@ async def create_leaderboard(request: web.Request, version, account_id=None, app
     return web.Response(status=200)
 
 
-async def delete_leaderboard(request: web.Request, version, leaderboard_id, account_id=None) -> web.Response:
+async def delete_leaderboard(request: web.Request, leaderboard_id, account_id=None) -> web.Response:
     """Delete the Leader Board
 
     Removes a leader board id.
 
-    :param version: 
-    :type version: 
     :param leaderboard_id: The leaderboard id to delete.
     :type leaderboard_id: int
     :param account_id: The account id of the user making the request.
@@ -60,13 +56,11 @@ async def delete_leaderboard(request: web.Request, version, leaderboard_id, acco
     return web.Response(status=200)
 
 
-async def get_leaderboard(request: web.Request, version, leaderboard_id, account_id=None, include_full_ranking_list=None) -> web.Response:
+async def get_leaderboard(request: web.Request, leaderboard_id, account_id=None, include_full_ranking_list=None) -> web.Response:
     """Read a leaderboard by id and retrieve the matching ranking list
 
     Read a leaderboard by id and retrieve the matching ranking list
 
-    :param version: 
-    :type version: 
     :param leaderboard_id: The leaderboard id.
     :type leaderboard_id: int
     :param account_id: A valid account.
@@ -78,13 +72,11 @@ async def get_leaderboard(request: web.Request, version, leaderboard_id, account
     return web.Response(status=200)
 
 
-async def search_leaderboards(request: web.Request, version, account_id=None, app_key=None, global_only=None, keyword=None, leaderboard_ids=None, rank_types=None, sort_field=None, descending=None, include_inactive=None, include_app_response=None, start=None, limit=None) -> web.Response:
+async def search_leaderboards(request: web.Request, account_id=None, app_key=None, global_only=None, keyword=None, leaderboard_ids=None, rank_types=None, sort_field=None, descending=None, include_inactive=None, include_app_response=None, start=None, limit=None) -> web.Response:
     """Search leaderboard and retrieve the matching ranking list
 
     Search leaderboard and retrieve the matching ranking list
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user requesting the search.
     :type account_id: int
     :param app_key: The application key.
@@ -114,13 +106,11 @@ async def search_leaderboards(request: web.Request, version, account_id=None, ap
     return web.Response(status=200)
 
 
-async def update_leaderboard(request: web.Request, version, leaderboard_id, account_id=None, app_key=None, rank_type=None, leaderboard_mode=None, sort_field=None, icon_media=None, icon_asset_id=None, banner_media=None, banner_asset_id=None, limitation=None, active=None, title=None, description=None, meta_data=None) -> web.Response:
+async def update_leaderboard(request: web.Request, leaderboard_id, account_id=None, app_key=None, rank_type=None, leaderboard_mode=None, sort_field=None, icon_media=None, icon_asset_id=None, banner_media=None, banner_asset_id=None, limitation=None, active=None, title=None, description=None, meta_data=None) -> web.Response:
     """Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 
     Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 
-    :param version: 
-    :type version: 
     :param leaderboard_id: The leaderboard id to update.
     :type leaderboard_id: int
     :param account_id: The account id of the user updating the leaderboard.

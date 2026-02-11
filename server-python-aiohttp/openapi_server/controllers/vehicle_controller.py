@@ -5,13 +5,11 @@ from openapi_server.models.vehicle import Vehicle
 from openapi_server import util
 
 
-async def create_vehicle(request: web.Request, version, vehicle, body=None) -> web.Response:
+async def create_vehicle(request: web.Request, vehicle, body=None) -> web.Response:
     """Create Vehicle
 
     Create new vehicle
 
-    :param version: 
-    :type version: 
     :param vehicle: A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
     :type vehicle: str
     :param body: 
@@ -22,13 +20,11 @@ async def create_vehicle(request: web.Request, version, vehicle, body=None) -> w
     return web.Response(status=200)
 
 
-async def delete_vehicle(request: web.Request, version, id) -> web.Response:
+async def delete_vehicle(request: web.Request, id) -> web.Response:
     """Delete Vehicle
 
     Delete an existing vehicle
 
-    :param version: 
-    :type version: 
     :param id: The id of the vehicle to delete
     :type id: int
 
@@ -36,13 +32,11 @@ async def delete_vehicle(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def get_vehicle(request: web.Request, version, id) -> web.Response:
+async def get_vehicle(request: web.Request, id) -> web.Response:
     """Get Vehicle
 
     Get an existing vehicle
 
-    :param version: 
-    :type version: 
     :param id: The id of the vehicle requested
     :type id: int
 
@@ -50,13 +44,11 @@ async def get_vehicle(request: web.Request, version, id) -> web.Response:
     return web.Response(status=200)
 
 
-async def search_vehicle(request: web.Request, version, hub_id, sort_field, descending, start, limit, active_only, keyword=None) -> web.Response:
+async def search_vehicle(request: web.Request, hub_id, sort_field, descending, start, limit, active_only, keyword=None) -> web.Response:
     """Search Vehicle
 
     Search for vehicles
 
-    :param version: 
-    :type version: 
     :param hub_id: Filter by service hub
     :type hub_id: int
     :param sort_field: The field to sort by
@@ -76,13 +68,11 @@ async def search_vehicle(request: web.Request, version, hub_id, sort_field, desc
     return web.Response(status=200)
 
 
-async def update_vehicle(request: web.Request, version, id, vehicle, body=None) -> web.Response:
+async def update_vehicle(request: web.Request, id, vehicle, body=None) -> web.Response:
     """Update Vehicle
 
     Update an existing vehicle
 
-    :param version: 
-    :type version: 
     :param id: The id of the vehicle to update
     :type id: int
     :param vehicle: A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 

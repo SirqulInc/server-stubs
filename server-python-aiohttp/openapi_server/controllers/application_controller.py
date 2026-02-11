@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_application(request: web.Request, version, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None) -> web.Response:
+async def create_application(request: web.Request, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None) -> web.Response:
     """Create Application
 
     Create an application record and one placement record for that application. You can create more placements for this application by using {@link createApplicationPlacement}.
 
-    :param version: 
-    :type version: 
     :param app_name: The name of the application
     :type app_name: str
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -180,13 +178,11 @@ async def create_application(request: web.Request, version, app_name, device_id=
     return web.Response(status=200)
 
 
-async def create_application_placement(request: web.Request, version, app_key, size, device_id=None, account_id=None, name=None, description=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None) -> web.Response:
+async def create_application_placement(request: web.Request, app_key, size, device_id=None, account_id=None, name=None, description=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None) -> web.Response:
     """Create Ad Placement
 
     Creates a new ad placement for an application.
 
-    :param version: 
-    :type version: 
     :param app_key: The appKey of the application the ad placement is for
     :type app_key: str
     :param size: The ad placement size {BANNER, LEADERBOARD, SKYSCRAPER, INTERSTITIAL, CUSTOM
@@ -214,13 +210,11 @@ async def create_application_placement(request: web.Request, version, app_key, s
     return web.Response(status=200)
 
 
-async def delete_application(request: web.Request, version, account_id=None, app_key=None) -> web.Response:
+async def delete_application(request: web.Request, account_id=None, app_key=None) -> web.Response:
     """Delete Application
 
     Set the deleted timestamp to current time. This effectively deletes the application since all queries should ignore any records with a deleted timestamp
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the delete, must have rights to edit the application.
     :type account_id: int
     :param app_key: The key of the application to be deleted
@@ -230,13 +224,11 @@ async def delete_application(request: web.Request, version, account_id=None, app
     return web.Response(status=200)
 
 
-async def delete_application_placement(request: web.Request, version, placement_id, device_id=None, account_id=None) -> web.Response:
+async def delete_application_placement(request: web.Request, placement_id, device_id=None, account_id=None) -> web.Response:
     """Delete Ad Placement
 
     Deletes an ad placement for an application.
 
-    :param version: 
-    :type version: 
     :param placement_id: The id of the placement to delete, the user must have rights to the application the ad placement is for
     :type placement_id: int
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -248,13 +240,11 @@ async def delete_application_placement(request: web.Request, version, placement_
     return web.Response(status=200)
 
 
-async def get_application(request: web.Request, version, app_key=None, application_id=None) -> web.Response:
+async def get_application(request: web.Request, app_key=None, application_id=None) -> web.Response:
     """Get Application
 
     Get a specific application by appKey
 
-    :param version: 
-    :type version: 
     :param app_key: The key of the application
     :type app_key: str
     :param application_id: Application Id
@@ -264,13 +254,11 @@ async def get_application(request: web.Request, version, app_key=None, applicati
     return web.Response(status=200)
 
 
-async def get_application_placement(request: web.Request, version, placement_id, device_id=None, account_id=None) -> web.Response:
+async def get_application_placement(request: web.Request, placement_id, device_id=None, account_id=None) -> web.Response:
     """Get Ad Placement
 
     Get details of an ad placement
 
-    :param version: 
-    :type version: 
     :param placement_id: The id of the placement
     :type placement_id: int
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -282,25 +270,21 @@ async def get_application_placement(request: web.Request, version, placement_id,
     return web.Response(status=200)
 
 
-async def get_application_versions(request: web.Request, version) -> web.Response:
+async def get_application_versions(request: web.Request, ) -> web.Response:
     """Get API versions
 
     Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8
 
-    :param version: 
-    :type version: 
 
     """
     return web.Response(status=200)
 
 
-async def get_unique_users_by_app(request: web.Request, version, app_key, q=None, keyword=None, since=None, i=None, start=None, l=None, limit=None) -> web.Response:
+async def get_unique_users_by_app(request: web.Request, app_key, q=None, keyword=None, since=None, i=None, start=None, l=None, limit=None) -> web.Response:
     """Search Application Users
 
     Get a list of users per application
 
-    :param version: 
-    :type version: 
     :param app_key: The application key
     :type app_key: str
     :param q: Q
@@ -322,13 +306,11 @@ async def get_unique_users_by_app(request: web.Request, version, app_key, q=None
     return web.Response(status=200)
 
 
-async def list_applications(request: web.Request, version, account_id=None, q=None, keyword=None, platforms=None, device_ids=None, device_versions=None, category_ids=None, sort_field=None, has_ads=None, public_notifications=None, filter_billable=None, filter_content_admin=None, descending=None, i=None, start=None, l=None, limit=None, application_ids=None, has_object_store=None, active_only=None) -> web.Response:
+async def list_applications(request: web.Request, account_id=None, q=None, keyword=None, platforms=None, device_ids=None, device_versions=None, category_ids=None, sort_field=None, has_ads=None, public_notifications=None, filter_billable=None, filter_content_admin=None, descending=None, i=None, start=None, l=None, limit=None, application_ids=None, has_object_store=None, active_only=None) -> web.Response:
     """List Applications
 
     List active applications matching the criteria (as a consumer)
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the application owner/manager
     :type account_id: int
     :param q: Q
@@ -374,13 +356,11 @@ async def list_applications(request: web.Request, version, account_id=None, q=No
     return web.Response(status=200)
 
 
-async def search_application_placement(request: web.Request, version, app_key, device_id=None, account_id=None, start=None, limit=None) -> web.Response:
+async def search_application_placement(request: web.Request, app_key, device_id=None, account_id=None, start=None, limit=None) -> web.Response:
     """Search for Ad Placements
 
     Searches placements for an application.
 
-    :param version: 
-    :type version: 
     :param app_key: The key of the application
     :type app_key: str
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -396,13 +376,11 @@ async def search_application_placement(request: web.Request, version, app_key, d
     return web.Response(status=200)
 
 
-async def search_application_settings(request: web.Request, version, device_id=None, account_id=None, connection_account_id=None, keyword=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
+async def search_application_settings(request: web.Request, device_id=None, account_id=None, connection_account_id=None, keyword=None, sort_field=None, descending=None, start=None, limit=None) -> web.Response:
     """Search for Application Settings
 
     Returns a list of applications that the user has logged into before, and returns specific settings for that application and user
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -424,13 +402,11 @@ async def search_application_settings(request: web.Request, version, device_id=N
     return web.Response(status=200)
 
 
-async def search_applications(request: web.Request, version, device_id=None, account_id=None, latitude=None, longitude=None, q=None, keyword=None, q_search_fields=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, has_ads=None, public_notifications=None, active_only=None) -> web.Response:
+async def search_applications(request: web.Request, device_id=None, account_id=None, latitude=None, longitude=None, q=None, keyword=None, q_search_fields=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, has_ads=None, public_notifications=None, active_only=None) -> web.Response:
     """Search Applications
 
     Search for applications matching the criteria that the logged in user has access to
 
-    :param version: 
-    :type version: 
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -468,13 +444,11 @@ async def search_applications(request: web.Request, version, device_id=None, acc
     return web.Response(status=200)
 
 
-async def update_application(request: web.Request, version, app_key, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None) -> web.Response:
+async def update_application(request: web.Request, app_key, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None) -> web.Response:
     """Update Application
 
     Update an application record
 
-    :param version: 
-    :type version: 
     :param app_key: The application key for updating an existing application
     :type app_key: str
     :param app_name: The name of the application
@@ -640,13 +614,11 @@ async def update_application(request: web.Request, version, app_key, app_name, d
     return web.Response(status=200)
 
 
-async def update_application_active(request: web.Request, version, account_id, app_key, active) -> web.Response:
+async def update_application_active(request: web.Request, account_id, app_key, active) -> web.Response:
     """Change Appliation Status
 
     Set the application&#39;s active flag to true/false. This effectively activates or deactivates the application.
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the delete, must have rights to edit the application.
     :type account_id: int
     :param app_key: The key of the application to be deleted
@@ -658,13 +630,11 @@ async def update_application_active(request: web.Request, version, account_id, a
     return web.Response(status=200)
 
 
-async def update_application_placement(request: web.Request, version, placement_id, device_id=None, account_id=None, name=None, description=None, size=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None) -> web.Response:
+async def update_application_placement(request: web.Request, placement_id, device_id=None, account_id=None, name=None, description=None, size=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None) -> web.Response:
     """Update Ad Placement
 
     Updates an ad placement for an application.
 
-    :param version: 
-    :type version: 
     :param placement_id: The id of the placement to update, the user must have rights to the application the ad placement is for
     :type placement_id: int
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -692,13 +662,11 @@ async def update_application_placement(request: web.Request, version, placement_
     return web.Response(status=200)
 
 
-async def upload_application_certificate(request: web.Request, version, app_key, device_id=None, account_id=None, certificate=None) -> web.Response:
+async def upload_application_certificate(request: web.Request, app_key, device_id=None, account_id=None, certificate=None) -> web.Response:
     """Create Application Certificate
 
     Uploads a certificate for an application that the user has access to.
 
-    :param version: 
-    :type version: 
     :param app_key: The key of the application
     :type app_key: str
     :param device_id: Device Id

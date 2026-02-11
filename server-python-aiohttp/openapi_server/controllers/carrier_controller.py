@@ -5,13 +5,11 @@ from openapi_server.models.cell_carrier_response import CellCarrierResponse
 from openapi_server import util
 
 
-async def search_carriers(request: web.Request, version, keyword=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
+async def search_carriers(request: web.Request, keyword=None, descending=None, start=None, limit=None, active_only=None) -> web.Response:
     """Search Carriers
 
     Search on supported mobile telephone carriers that can be used to send SMS notifications via email.
 
-    :param version: 
-    :type version: 
     :param keyword: The keyword to search on
     :type keyword: str
     :param descending: Determines whether the sorted list is in descending or ascending order

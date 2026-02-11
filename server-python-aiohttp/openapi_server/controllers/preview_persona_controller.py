@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_persona(request: web.Request, version, account_id, title, preview_accounts=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None) -> web.Response:
+async def create_persona(request: web.Request, account_id, title, preview_accounts=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None) -> web.Response:
     """Create Persona
 
     Creates a new persona. If the given params are null those attributes will be override by null.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param title: the title of the persona
@@ -36,13 +34,11 @@ async def create_persona(request: web.Request, version, account_id, title, previ
     return web.Response(status=200)
 
 
-async def delete_persona(request: web.Request, version, account_id, persona_id) -> web.Response:
+async def delete_persona(request: web.Request, account_id, persona_id) -> web.Response:
     """Delete Persona
 
     Mark the persona for deletion.
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param persona_id: the id of the persona to delete
@@ -52,13 +48,11 @@ async def delete_persona(request: web.Request, version, account_id, persona_id) 
     return web.Response(status=200)
 
 
-async def get_persona_list(request: web.Request, version, account_id, persona_id) -> web.Response:
+async def get_persona_list(request: web.Request, account_id, persona_id) -> web.Response:
     """Get Persona
 
     Get the persona by the given persona ID. If the persona cannot be found, a invalid response is returned.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param persona_id: the persona ID of the persona
@@ -68,13 +62,11 @@ async def get_persona_list(request: web.Request, version, account_id, persona_id
     return web.Response(status=200)
 
 
-async def search_persona(request: web.Request, version, account_id, start, limit) -> web.Response:
+async def search_persona(request: web.Request, account_id, start, limit) -> web.Response:
     """Search Personas
 
     Search for persona that the account owns by the given account ID.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param start: the start index for pagination
@@ -86,13 +78,11 @@ async def search_persona(request: web.Request, version, account_id, start, limit
     return web.Response(status=200)
 
 
-async def update_persona(request: web.Request, version, account_id, persona_id, title=None, preview_accounts=None, active=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None) -> web.Response:
+async def update_persona(request: web.Request, account_id, persona_id, title=None, preview_accounts=None, active=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None) -> web.Response:
     """Update Persona
 
     Update the persona by the given personaId. If the given params are null those attributes will be override by null. If active is assigned, all other params will be ignored.
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param persona_id: the persona ID of the persona to update

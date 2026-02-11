@@ -6,13 +6,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def create_postal_code(request: web.Request, version, account_id, code, latitude, longitude, state_code=None, city=None, active=None) -> web.Response:
+async def create_postal_code(request: web.Request, account_id, code, latitude, longitude, state_code=None, city=None, active=None) -> web.Response:
     """Create Postal Code
 
     Create a Postal Code
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param code: the postal code
@@ -32,13 +30,11 @@ async def create_postal_code(request: web.Request, version, account_id, code, la
     return web.Response(status=200)
 
 
-async def delete_postal_code(request: web.Request, version, account_id, postal_code_id) -> web.Response:
+async def delete_postal_code(request: web.Request, account_id, postal_code_id) -> web.Response:
     """Delete Postal Code
 
     Delete a Postal Code
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param postal_code_id: the id of the postal code to delete
@@ -48,13 +44,11 @@ async def delete_postal_code(request: web.Request, version, account_id, postal_c
     return web.Response(status=200)
 
 
-async def get_postal_code(request: web.Request, version, postal_code_id) -> web.Response:
+async def get_postal_code(request: web.Request, postal_code_id) -> web.Response:
     """Get Postal Code
 
     Get a Postal Code
 
-    :param version: 
-    :type version: 
     :param postal_code_id: the id of the postal code to get
     :type postal_code_id: int
 
@@ -62,13 +56,11 @@ async def get_postal_code(request: web.Request, version, postal_code_id) -> web.
     return web.Response(status=200)
 
 
-async def get_postal_codes(request: web.Request, version, sort_field, descending, latitude=None, longitude=None, keyword=None, miles=None, start=None, limit=None) -> web.Response:
+async def get_postal_codes(request: web.Request, sort_field, descending, latitude=None, longitude=None, keyword=None, miles=None, start=None, limit=None) -> web.Response:
     """Search Postal Codes
 
     Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response.
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort the results on
     :type sort_field: str
     :param descending: whether to order results in ascending or descending order
@@ -90,13 +82,11 @@ async def get_postal_codes(request: web.Request, version, sort_field, descending
     return web.Response(status=200)
 
 
-async def update_postal_code(request: web.Request, version, account_id, postal_code_id, code=None, latitude=None, longitude=None, state_code=None, city=None, active=None) -> web.Response:
+async def update_postal_code(request: web.Request, account_id, postal_code_id, code=None, latitude=None, longitude=None, state_code=None, city=None, active=None) -> web.Response:
     """Update Postal Code
 
     Update a Postal Code
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param postal_code_id: the id of the postal code to update

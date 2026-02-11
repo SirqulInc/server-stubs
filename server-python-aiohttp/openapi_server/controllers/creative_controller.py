@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse
 from openapi_server import util
 
 
-async def add_preview(request: web.Request, version, account_id, creative_id) -> web.Response:
+async def add_preview(request: web.Request, account_id, creative_id) -> web.Response:
     """Add Preview
 
     Enable this ad for preview for this account.
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param creative_id: The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.
@@ -23,13 +21,11 @@ async def add_preview(request: web.Request, version, account_id, creative_id) ->
     return web.Response(status=200)
 
 
-async def ads_find(request: web.Request, version, app_key, randomize, targeted_ads_only, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_audiences=None, allocates_tickets=None, mission_ids=None) -> web.Response:
+async def ads_find(request: web.Request, app_key, randomize, targeted_ads_only, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_audiences=None, allocates_tickets=None, mission_ids=None) -> web.Response:
     """Find Missions
 
     Get a set of ad filtered by the parameters provided.
 
-    :param version: 
-    :type version: 
     :param app_key: The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
     :type app_key: str
     :param randomize: return a random set of results, default is true. If false returns in nature order.
@@ -67,13 +63,11 @@ async def ads_find(request: web.Request, version, app_key, randomize, targeted_a
     return web.Response(status=200)
 
 
-async def create_creative(request: web.Request, version, account_id, name, active, wait_for_asset, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, reference_id=None, app_version=None, mission_id=None, offer_id=None) -> web.Response:
+async def create_creative(request: web.Request, account_id, name, active, wait_for_asset, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, reference_id=None, app_version=None, mission_id=None, offer_id=None) -> web.Response:
     """Create Creative
 
     Create a creative
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the level.
@@ -109,13 +103,11 @@ async def create_creative(request: web.Request, version, account_id, name, activ
     return web.Response(status=200)
 
 
-async def delete_creative(request: web.Request, version, account_id, creative_id) -> web.Response:
+async def delete_creative(request: web.Request, account_id, creative_id) -> web.Response:
     """Delete Creative
 
     Delete a creative
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param creative_id: the id of the creative to delete
@@ -125,13 +117,11 @@ async def delete_creative(request: web.Request, version, account_id, creative_id
     return web.Response(status=200)
 
 
-async def get_creative(request: web.Request, version, account_id, creative_id) -> web.Response:
+async def get_creative(request: web.Request, account_id, creative_id) -> web.Response:
     """Get Creative
 
     Get a creative
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param creative_id: the ID of the creative to get
@@ -141,13 +131,11 @@ async def get_creative(request: web.Request, version, account_id, creative_id) -
     return web.Response(status=200)
 
 
-async def get_creatives_by_application(request: web.Request, version, account_id, app_key, start, limit, mission_id=None, keyword=None) -> web.Response:
+async def get_creatives_by_application(request: web.Request, account_id, app_key, start, limit, mission_id=None, keyword=None) -> web.Response:
     """Search Creatives
 
     Get a list of levels for an application, just those the account has permissions to view.
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: the application key
@@ -165,13 +153,11 @@ async def get_creatives_by_application(request: web.Request, version, account_id
     return web.Response(status=200)
 
 
-async def remove_preview(request: web.Request, version, account_id, creative_id) -> web.Response:
+async def remove_preview(request: web.Request, account_id, creative_id) -> web.Response:
     """Remove Preview
 
     Remove this ad for preview for this account.
 
-    :param version: 
-    :type version: 
     :param account_id: the ID of the logged in user
     :type account_id: int
     :param creative_id: the ID of the creative to remove preview
@@ -181,13 +167,11 @@ async def remove_preview(request: web.Request, version, account_id, creative_id)
     return web.Response(status=200)
 
 
-async def update_creative(request: web.Request, version, account_id, creative_id, name=None, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, active=None, reference_id=None, app_version=None, mission_id=None) -> web.Response:
+async def update_creative(request: web.Request, account_id, creative_id, name=None, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, active=None, reference_id=None, app_version=None, mission_id=None) -> web.Response:
     """Update Creative
 
     Update a creative
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param creative_id: the creative Id to upate.
