@@ -43,12 +43,10 @@ class FlagApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createFlagOperation = (apiOperation[SirqulResponse]("createFlag")
     summary "Create Flag"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("flagableType").description(""), queryParam[Long]("flagableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("flagDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("flagableType").description(""), queryParam[Long]("flagableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("flagDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/flag/create", operation(createFlagOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/flag/create", operation(createFlagOperation)) {
             val flagableType = params.getAs[String]("flagableType")
 
     //println("flagableType: " + flagableType)
@@ -76,12 +74,10 @@ class FlagApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteFlagOperation = (apiOperation[SirqulResponse]("deleteFlag")
     summary "Delete Flag"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("itemBeingFlaggedType").description("").optional, queryParam[Long]("itemBeingFlaggedId").description("").optional, queryParam[String]("flagableType").description("").optional, queryParam[Long]("flagableId").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("itemBeingFlaggedType").description("").optional, queryParam[Long]("itemBeingFlaggedId").description("").optional, queryParam[String]("flagableType").description("").optional, queryParam[Long]("flagableId").description("").optional)
   )
 
-  post("/api/:version/flag/delete", operation(deleteFlagOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/flag/delete", operation(deleteFlagOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -106,12 +102,10 @@ class FlagApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getFlagOperation = (apiOperation[FlagResponse]("getFlag")
     summary "Get Flag"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("flagableType").description(""), queryParam[Long]("flagableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("flagableType").description(""), queryParam[Long]("flagableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/flag/get", operation(getFlagOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/flag/get", operation(getFlagOperation)) {
             val flagableType = params.getAs[String]("flagableType")
 
     //println("flagableType: " + flagableType)
@@ -136,12 +130,10 @@ class FlagApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getFlagThresholdOperation = (apiOperation[CountResponse]("getFlagThreshold")
     summary "Get Flag Threshold"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("itemBeingFlaggedType").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[String]("itemBeingFlaggedType").description(""), queryParam[String]("appKey").description(""))
   )
 
-  get("/api/:version/flag/threshold/get", operation(getFlagThresholdOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/flag/threshold/get", operation(getFlagThresholdOperation)) {
             val itemBeingFlaggedType = params.getAs[String]("itemBeingFlaggedType")
 
     //println("itemBeingFlaggedType: " + itemBeingFlaggedType)
@@ -154,12 +146,10 @@ class FlagApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateFlagThresholdOperation = (apiOperation[CountResponse]("updateFlagThreshold")
     summary "Update Flag Threshold"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("itemBeingFlaggedType").description(""), queryParam[Long]("threshold").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("itemBeingFlaggedType").description(""), queryParam[Long]("threshold").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/flag/threshold/update", operation(updateFlagThresholdOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/flag/threshold/update", operation(updateFlagThresholdOperation)) {
             val itemBeingFlaggedType = params.getAs[String]("itemBeingFlaggedType")
 
     //println("itemBeingFlaggedType: " + itemBeingFlaggedType)

@@ -42,12 +42,10 @@ class AppDataApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAppDataOperation = (apiOperation[AppResponse]("getAppData")
     summary "Get App Data"
-    parameters(pathParam[Double]("version").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Boolean]("gameObjectCount").description("").optional, queryParam[String]("filter").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("missionIds").description("").optional, queryParam[String]("gameIds").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeHigherVersionPacks").description("").optional, queryParam[Boolean]("includeHigherVersionLevels").description("").optional, queryParam[String]("responseGroups").description("").optional, queryParam[String]("purchaseType").description("").optional)
+    parameters(queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Boolean]("gameObjectCount").description("").optional, queryParam[String]("filter").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("missionIds").description("").optional, queryParam[String]("gameIds").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeHigherVersionPacks").description("").optional, queryParam[Boolean]("includeHigherVersionLevels").description("").optional, queryParam[String]("responseGroups").description("").optional, queryParam[String]("purchaseType").description("").optional)
   )
 
-  get("/api/:version/app/get", operation(getAppDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/app/get", operation(getAppDataOperation)) {
             val start = params.getAs[Int]("start")
 
     //println("start: " + start)
@@ -129,12 +127,10 @@ class AppDataApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val postAppDataOperation = (apiOperation[AppResponse]("postAppData")
     summary "Create App Data"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("gameType").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("data").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Boolean]("gameObjectCount").description("").optional, queryParam[String]("filter").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("missionIds").description("").optional, queryParam[String]("gameIds").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeHigherVersionPacks").description("").optional, queryParam[Boolean]("includeHigherVersionLevels").description("").optional, queryParam[String]("responseGroups").description("").optional, queryParam[String]("purchaseType").description("").optional)
+    parameters(queryParam[String]("gameType").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("data").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Boolean]("gameObjectCount").description("").optional, queryParam[String]("filter").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("missionIds").description("").optional, queryParam[String]("gameIds").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeHigherVersionPacks").description("").optional, queryParam[Boolean]("includeHigherVersionLevels").description("").optional, queryParam[String]("responseGroups").description("").optional, queryParam[String]("purchaseType").description("").optional)
   )
 
-  post("/api/:version/app/post", operation(postAppDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/app/post", operation(postAppDataOperation)) {
             val gameType = params.getAs[String]("gameType")
 
     //println("gameType: " + gameType)
@@ -219,12 +215,10 @@ class AppDataApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val regenAppDataOperation = (apiOperation[SirqulResponse]("regenAppData")
     summary "Regenerate App Data"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("buildVersion").description("").optional, queryParam[String]("apiVersion").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("buildVersion").description("").optional, queryParam[String]("apiVersion").description("").optional)
   )
 
-  post("/api/:version/app/regen", operation(regenAppDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/app/regen", operation(regenAppDataOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

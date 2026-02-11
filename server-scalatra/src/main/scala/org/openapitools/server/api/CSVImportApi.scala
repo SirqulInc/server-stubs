@@ -43,12 +43,10 @@ class CSVImportApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getStatusCSVOperation = (apiOperation[SirqulResponse]("getStatusCSV")
     summary "Detail Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""), queryParam[String]("responseGroup").description(""), queryParam[Long]("start").description(""), queryParam[Long]("limit").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""), queryParam[String]("responseGroup").description(""), queryParam[Long]("start").description(""), queryParam[Long]("limit").description(""))
   )
 
-  get("/api/:version/csvimport/batch/status/details", operation(getStatusCSVOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/csvimport/batch/status/details", operation(getStatusCSVOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -70,12 +68,10 @@ class CSVImportApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listStatusCSVOperation = (apiOperation[CsvImportResponse]("listStatusCSV")
     summary "Search Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
   )
 
-  get("/api/:version/csvimport/batch/list", operation(listStatusCSVOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/csvimport/batch/list", operation(listStatusCSVOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -91,12 +87,10 @@ class CSVImportApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val statusCSVOperation = (apiOperation[CsvImportResponse]("statusCSV")
     summary "Batch Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""))
   )
 
-  get("/api/:version/csvimport/batch/status", operation(statusCSVOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/csvimport/batch/status", operation(statusCSVOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -109,12 +103,10 @@ class CSVImportApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val uploadCSVOperation = (apiOperation[CsvImportResponse]("uploadCSV")
     summary "Upload CSV"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("uploadType").description(""), queryParam[File]("importFile").description(""), queryParam[String]("fileFormat").description(""), queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("uploadType").description(""), queryParam[File]("importFile").description(""), queryParam[String]("fileFormat").description(""), queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/csvimport/upload", operation(uploadCSVOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/csvimport/upload", operation(uploadCSVOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

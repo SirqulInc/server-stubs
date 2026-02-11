@@ -43,12 +43,10 @@ class PurchaseItemApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createPurchaseItemOperation = (apiOperation[PurchaseItemFullResponse]("createPurchaseItem")
     summary "Create Purchase"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("name").description(""), queryParam[String]("purchaseType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("tickets").description("").optional, queryParam[Float]("price").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("secretKey").description("").optional, queryParam[Int]("purchaseLimit").description("").optional.defaultValue(0), queryParam[String]("serviceAction").description("").optional, queryParam[Long]("coverAssetId").description("").optional, queryParam[Long]("promoAssetId").description("").optional, queryParam[Boolean]("giftable").description("").optional, queryParam[Boolean]("assetable").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional.defaultValue(false), queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[Long]("offerLocationId").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("name").description(""), queryParam[String]("purchaseType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("tickets").description("").optional, queryParam[Float]("price").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("secretKey").description("").optional, queryParam[Int]("purchaseLimit").description("").optional.defaultValue(0), queryParam[String]("serviceAction").description("").optional, queryParam[Long]("coverAssetId").description("").optional, queryParam[Long]("promoAssetId").description("").optional, queryParam[Boolean]("giftable").description("").optional, queryParam[Boolean]("assetable").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional.defaultValue(false), queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[Long]("offerLocationId").description("").optional)
   )
 
-  post("/api/:version/purchase/create", operation(createPurchaseItemOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/purchase/create", operation(createPurchaseItemOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -115,12 +113,10 @@ class PurchaseItemApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deletePurchaseItemOperation = (apiOperation[SirqulResponse]("deletePurchaseItem")
     summary "Delete Purchase"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("purchaseItemId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("purchaseItemId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/purchase/delete", operation(deletePurchaseItemOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/purchase/delete", operation(deletePurchaseItemOperation)) {
             val purchaseItemId = params.getAs[Long]("purchaseItemId")
 
     //println("purchaseItemId: " + purchaseItemId)
@@ -136,12 +132,10 @@ class PurchaseItemApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPurchaseItemOperation = (apiOperation[PurchaseItemFullResponse]("getPurchaseItem")
     summary "Get Purchase"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("purchaseItemId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("purchaseItemId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  get("/api/:version/purchase/get", operation(getPurchaseItemOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/purchase/get", operation(getPurchaseItemOperation)) {
             val purchaseItemId = params.getAs[Long]("purchaseItemId")
 
     //println("purchaseItemId: " + purchaseItemId)
@@ -157,12 +151,10 @@ class PurchaseItemApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchPurchaseItemsOperation = (apiOperation[List[PurchaseItemResponse]]("searchPurchaseItems")
     summary "Search Purchases"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("filterByBillable").description("").optional.defaultValue(false), queryParam[String]("purchaseType").description("").optional, queryParam[String]("serviceAction").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(NAME), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("filterByBillable").description("").optional.defaultValue(false), queryParam[String]("purchaseType").description("").optional, queryParam[String]("serviceAction").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(NAME), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/purchase/search", operation(searchPurchaseItemsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/purchase/search", operation(searchPurchaseItemsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -205,12 +197,10 @@ class PurchaseItemApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updatePurchaseItemOperation = (apiOperation[PurchaseItemFullResponse]("updatePurchaseItem")
     summary "Update Purchase"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("purchaseItemId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("tickets").description("").optional, queryParam[Float]("price").description("").optional, queryParam[String]("purchaseType").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("secretKey").description("").optional, queryParam[Int]("purchaseLimit").description("").optional, queryParam[String]("serviceAction").description("").optional, queryParam[Long]("coverAssetId").description("").optional, queryParam[Long]("promoAssetId").description("").optional, queryParam[Boolean]("giftable").description("").optional, queryParam[Boolean]("assetable").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional.defaultValue(false), queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[Long]("offerLocationId").description("").optional)
+    parameters(queryParam[Long]("purchaseItemId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("tickets").description("").optional, queryParam[Float]("price").description("").optional, queryParam[String]("purchaseType").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("secretKey").description("").optional, queryParam[Int]("purchaseLimit").description("").optional, queryParam[String]("serviceAction").description("").optional, queryParam[Long]("coverAssetId").description("").optional, queryParam[Long]("promoAssetId").description("").optional, queryParam[Boolean]("giftable").description("").optional, queryParam[Boolean]("assetable").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional.defaultValue(false), queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[Long]("offerLocationId").description("").optional)
   )
 
-  post("/api/:version/purchase/update", operation(updatePurchaseItemOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/purchase/update", operation(updatePurchaseItemOperation)) {
             val purchaseItemId = params.getAs[Long]("purchaseItemId")
 
     //println("purchaseItemId: " + purchaseItemId)

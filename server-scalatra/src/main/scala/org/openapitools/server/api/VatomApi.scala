@@ -40,12 +40,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createFollowingOperation = (apiOperation[Unit]("createFollowing")
     summary "Create following"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/me/rels/following/create", operation(createFollowingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/me/rels/following/create", operation(createFollowingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -61,12 +59,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createSpaceOperation = (apiOperation[Unit]("createSpace")
     summary "Create Vatom Space"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/spaces/create", operation(createSpaceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/spaces/create", operation(createSpaceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -85,12 +81,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createVatomEventOperation = (apiOperation[Unit]("createVatomEvent")
     summary "Create Vatom Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/events/create", operation(createVatomEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/events/create", operation(createVatomEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -109,12 +103,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteFollowingOperation = (apiOperation[Unit]("deleteFollowing")
     summary "Delete following"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomRelsKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomRelsKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/me/rels/following/delete", operation(deleteFollowingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/me/rels/following/delete", operation(deleteFollowingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -130,12 +122,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deletePointsBalanceOperation = (apiOperation[Unit]("deletePointsBalance")
     summary "Reset All Points Balance"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/campaign/points/delete", operation(deletePointsBalanceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/campaign/points/delete", operation(deletePointsBalanceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -154,12 +144,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteSpaceOperation = (apiOperation[Unit]("deleteSpace")
     summary "Delete Vatom Space"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomSpaceId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomSpaceId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/spaces/delete", operation(deleteSpaceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/spaces/delete", operation(deleteSpaceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -178,12 +166,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteVatomEventOperation = (apiOperation[Unit]("deleteVatomEvent")
     summary "Delete Vatom Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/events/delete", operation(deleteVatomEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/events/delete", operation(deleteVatomEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -202,12 +188,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteVatomNFTOperation = (apiOperation[Unit]("deleteVatomNFT")
     summary "Delete Vatom NFT"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/vatoms/delete", operation(deleteVatomNFTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/vatoms/delete", operation(deleteVatomNFTOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -223,12 +207,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val executeActionOnNFTOperation = (apiOperation[Unit]("executeActionOnNFT")
     summary "Execute Action on NFT"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/vatoms/execute-action", operation(executeActionOnNFTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/vatoms/execute-action", operation(executeActionOnNFTOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -247,12 +229,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val geomapSearchOperation = (apiOperation[Unit]("geomapSearch")
     summary "Search Vatom Geo Map"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/vatoms/geo-map/search", operation(geomapSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/vatoms/geo-map/search", operation(geomapSearchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -268,12 +248,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBusinessBehaviorsOperation = (apiOperation[Unit]("getBusinessBehaviors")
     summary "Get Vatom Business Behaviors"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/behaviors", operation(getBusinessBehaviorsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/behaviors", operation(getBusinessBehaviorsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -289,12 +267,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBusinessCoinsBalanceOperation = (apiOperation[Unit]("getBusinessCoinsBalance")
     summary "Get the coins for a Business"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/coins/get", operation(getBusinessCoinsBalanceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/coins/get", operation(getBusinessCoinsBalanceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -310,12 +286,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBusinessIdsOperation = (apiOperation[Unit]("getBusinessIds")
     summary "Get the user business ids"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/me/businesses", operation(getBusinessIdsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/me/businesses", operation(getBusinessIdsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -328,12 +302,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBusinessInfoOperation = (apiOperation[Unit]("getBusinessInfo")
     summary "Get Vatom Business Info"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/get", operation(getBusinessInfoOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/get", operation(getBusinessInfoOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -352,12 +324,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBusinessUsersOperation = (apiOperation[Unit]("getBusinessUsers")
     summary "Get Vatom Business Users"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/users", operation(getBusinessUsersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/users", operation(getBusinessUsersOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -373,12 +343,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCampaignGroupEntitiesOperation = (apiOperation[Unit]("getCampaignGroupEntities")
     summary "Get Campaign Group Entities"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/campaign-groups/entities", operation(getCampaignGroupEntitiesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/campaign-groups/entities", operation(getCampaignGroupEntitiesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -397,12 +365,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCampaignGroupRulesOperation = (apiOperation[Unit]("getCampaignGroupRules")
     summary "Get Campaign Group Rules"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/campaign-groups/rules", operation(getCampaignGroupRulesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/campaign-groups/rules", operation(getCampaignGroupRulesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -421,12 +387,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCampaignGroupStatsOperation = (apiOperation[Unit]("getCampaignGroupStats")
     summary "Get Campaign Group Stats"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/campaign-groups/stats", operation(getCampaignGroupStatsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/campaign-groups/stats", operation(getCampaignGroupStatsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -445,12 +409,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCampaignInfoOperation = (apiOperation[Unit]("getCampaignInfo")
     summary "Get Campaign Info"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/campaign-groups/get", operation(getCampaignInfoOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/campaign-groups/get", operation(getCampaignInfoOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -469,12 +431,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getEventGuestListOperation = (apiOperation[Unit]("getEventGuestList")
     summary "Get Vatom Event Guest List"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/events/guests/get", operation(getEventGuestListOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/events/guests/get", operation(getEventGuestListOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -493,12 +453,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getInventoryOperation = (apiOperation[Unit]("getInventory")
     summary "Get Vatom User's Inventory"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/me/inventory", operation(getInventoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/me/inventory", operation(getInventoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -514,12 +472,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getMyFollowingOperation = (apiOperation[Unit]("getMyFollowing")
     summary "Get following"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/me/rels/following", operation(getMyFollowingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/me/rels/following", operation(getMyFollowingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -532,12 +488,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPointsBalanceOperation = (apiOperation[Unit]("getPointsBalance")
     summary "Get Points Balance"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/u/campaign/points/get", operation(getPointsBalanceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/u/campaign/points/get", operation(getPointsBalanceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -556,12 +510,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPointsBalanceAsBusinessOperation = (apiOperation[Unit]("getPointsBalanceAsBusiness")
     summary "Get Points Balance as Business"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/campaign/u/points/get", operation(getPointsBalanceAsBusinessOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/campaign/u/points/get", operation(getPointsBalanceAsBusinessOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -583,12 +535,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSpaceOperation = (apiOperation[Unit]("getSpace")
     summary "Get Vatom Space"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomSpaceId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomSpaceId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/spaces/get", operation(getSpaceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/spaces/get", operation(getSpaceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -607,12 +557,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserCoinsAsBusinessOperation = (apiOperation[Unit]("getUserCoinsAsBusiness")
     summary "Get the coins for a user (as a Business)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/users/coins/get", operation(getUserCoinsAsBusinessOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/users/coins/get", operation(getUserCoinsAsBusinessOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -631,12 +579,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserCoinsBalanceOperation = (apiOperation[Unit]("getUserCoinsBalance")
     summary "Gets the coins balance for a Vatom User"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/u/coins/get", operation(getUserCoinsBalanceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/u/coins/get", operation(getUserCoinsBalanceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -655,12 +601,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserFollowersOperation = (apiOperation[Unit]("getUserFollowers")
     summary "Get user followers"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/users/rels/followers", operation(getUserFollowersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/users/rels/followers", operation(getUserFollowersOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -676,12 +620,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserFollowingOperation = (apiOperation[Unit]("getUserFollowing")
     summary "Get user following"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/users/rels/following", operation(getUserFollowingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/users/rels/following", operation(getUserFollowingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -697,12 +639,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserInfoOperation = (apiOperation[Unit]("getUserInfo")
     summary "Get User Info"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/user/get", operation(getUserInfoOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/user/get", operation(getUserInfoOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -718,12 +658,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserProfileOperation = (apiOperation[Unit]("getUserProfile")
     summary "Get Vatom User Profile"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/me/get", operation(getUserProfileOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/me/get", operation(getUserProfileOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -736,12 +674,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getVatomEventOperation = (apiOperation[Unit]("getVatomEvent")
     summary "Get Vatom Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/events/get", operation(getVatomEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/events/get", operation(getVatomEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -760,12 +696,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getVatomNFTOperation = (apiOperation[Unit]("getVatomNFT")
     summary "Get Vatom NFT Details"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/vatoms/get", operation(getVatomNFTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/vatoms/get", operation(getVatomNFTOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -781,12 +715,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listCommunitiesOperation = (apiOperation[Unit]("listCommunities")
     summary "List Vatom Communities"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/communities/search", operation(listCommunitiesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/communities/search", operation(listCommunitiesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -805,12 +737,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listEventsOperation = (apiOperation[Unit]("listEvents")
     summary "List Vatom Events"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/events/search", operation(listEventsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/events/search", operation(listEventsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -829,12 +759,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listSpacesOperation = (apiOperation[Unit]("listSpaces")
     summary "List Vatom Spaces"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/spaces/search", operation(listSpacesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/spaces/search", operation(listSpacesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -853,12 +781,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listUserCoinTransactionsOperation = (apiOperation[Unit]("listUserCoinTransactions")
     summary "List Coin Transactions for a Vatom User"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/u/coins/txns/search", operation(listUserCoinTransactionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/u/coins/txns/search", operation(listUserCoinTransactionsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -877,12 +803,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listUserCoinTransactionsAsBusinessOperation = (apiOperation[Unit]("listUserCoinTransactionsAsBusiness")
     summary "List coin transactions for a user (as a Business)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/users/coins/txns/search", operation(listUserCoinTransactionsAsBusinessOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/users/coins/txns/search", operation(listUserCoinTransactionsAsBusinessOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -904,12 +828,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val performActionOnNFTOperation = (apiOperation[Unit]("performActionOnNFT")
     summary "Perform Action on NFT"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[String]("vatomAction").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomId").description(""), queryParam[String]("vatomAction").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/me/vatoms/actions", operation(performActionOnNFTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/me/vatoms/actions", operation(performActionOnNFTOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -931,12 +853,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val redeemNFTOperation = (apiOperation[Unit]("redeemNFT")
     summary "Redeem NFT"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/redemptions", operation(redeemNFTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/redemptions", operation(redeemNFTOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -955,12 +875,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val redeemUserCoinsAsBusinessOperation = (apiOperation[Unit]("redeemUserCoinsAsBusiness")
     summary "Redeem the coins for a user (as a Business)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/users/coins/redeem", operation(redeemUserCoinsAsBusinessOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/users/coins/redeem", operation(redeemUserCoinsAsBusinessOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -982,12 +900,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchBusinessesOperation = (apiOperation[Unit]("searchBusinesses")
     summary "Search for Vatom Businesses"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/search", operation(searchBusinessesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/search", operation(searchBusinessesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1003,12 +919,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchCampaignGroupsOperation = (apiOperation[Unit]("searchCampaignGroups")
     summary "Search Campaign Groups"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/b/campaign-groups/search", operation(searchCampaignGroupsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/b/campaign-groups/search", operation(searchCampaignGroupsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1024,12 +938,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchIdentitiesOperation = (apiOperation[Unit]("searchIdentities")
     summary "Search User Identities"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/me/identities/search", operation(searchIdentitiesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/me/identities/search", operation(searchIdentitiesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1042,12 +954,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchInventoryOperation = (apiOperation[Unit]("searchInventory")
     summary "Search Vatom User's Inventory"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description("").optional, queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  get("/api/:version/vatom/user-inventory/search", operation(searchInventoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vatom/user-inventory/search", operation(searchInventoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1063,12 +973,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val sendNFTOperation = (apiOperation[Unit]("sendNFT")
     summary "Send NFT"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/campaigns/send", operation(sendNFTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/campaigns/send", operation(sendNFTOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1090,12 +998,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val setPointsBalanceAsBusinessOperation = (apiOperation[Unit]("setPointsBalanceAsBusiness")
     summary "Set Points Balance as Business"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomCampaignId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/campaign/u/points/update", operation(setPointsBalanceAsBusinessOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/campaign/u/points/update", operation(setPointsBalanceAsBusinessOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1120,12 +1026,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val transferUserCoinsOperation = (apiOperation[Unit]("transferUserCoins")
     summary "Transfer coins from Vatom Users"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/u/coins/transfer", operation(transferUserCoinsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/u/coins/transfer", operation(transferUserCoinsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1144,12 +1048,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateBusinessCoinsOperation = (apiOperation[Unit]("updateBusinessCoins")
     summary "Fund coins for a Business"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/coins/update", operation(updateBusinessCoinsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/coins/update", operation(updateBusinessCoinsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1168,12 +1070,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateEventGuestListOperation = (apiOperation[Unit]("updateEventGuestList")
     summary "Update Vatom Event Guest List"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/events/guests/update", operation(updateEventGuestListOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/events/guests/update", operation(updateEventGuestListOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1195,12 +1095,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateSpaceOperation = (apiOperation[Unit]("updateSpace")
     summary "Update Vatom Space"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomSpaceId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomSpaceId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/spaces/update", operation(updateSpaceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/spaces/update", operation(updateSpaceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1222,12 +1120,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateUserCoinsAsBusinessOperation = (apiOperation[Unit]("updateUserCoinsAsBusiness")
     summary "Update the coins for a user (as a Business)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomUserId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/users/coins/update", operation(updateUserCoinsAsBusinessOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/users/coins/update", operation(updateUserCoinsAsBusinessOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1249,12 +1145,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateUserProfileOperation = (apiOperation[Unit]("updateUserProfile")
     summary "Update Vatom User Profile"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/me/update", operation(updateUserProfileOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/me/update", operation(updateUserProfileOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1270,12 +1164,10 @@ class VatomApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateVatomEventOperation = (apiOperation[Unit]("updateVatomEvent")
     summary "Update Vatom Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("vatomEventId").description(""), queryParam[String]("vatomParameters").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/vatom/b/events/update", operation(updateVatomEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vatom/b/events/update", operation(updateVatomEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

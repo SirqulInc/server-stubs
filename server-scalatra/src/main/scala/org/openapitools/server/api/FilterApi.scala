@@ -43,12 +43,10 @@ class FilterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createFilterOperation = (apiOperation[FilterTreeResponse]("createFilter")
     summary "Create Filter"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("parentFilterId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("parentFilterId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/filter/create", operation(createFilterOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/filter/create", operation(createFilterOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -82,12 +80,10 @@ class FilterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteFilterOperation = (apiOperation[SirqulResponse]("deleteFilter")
     summary "Delete Filter"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("filterId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("filterId").description(""))
   )
 
-  post("/api/:version/filter/delete", operation(deleteFilterOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/filter/delete", operation(deleteFilterOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -100,12 +96,10 @@ class FilterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getFilterOperation = (apiOperation[FilterTreeResponse]("getFilter")
     summary "Get Filter"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("filterId").description(""))
+    parameters(queryParam[Long]("filterId").description(""))
   )
 
-  get("/api/:version/filter/get", operation(getFilterOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/filter/get", operation(getFilterOperation)) {
             val filterId = params.getAs[Long]("filterId")
 
     //println("filterId: " + filterId)
@@ -115,12 +109,10 @@ class FilterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchFiltersOperation = (apiOperation[List[FilterResponse]]("searchFilters")
     summary "Search Filters"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("responseGroup").description("").optional, queryParam[Boolean]("rootOnly").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(DISPLAY), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("responseGroup").description("").optional, queryParam[Boolean]("rootOnly").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(DISPLAY), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/filter/search", operation(searchFiltersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/filter/search", operation(searchFiltersOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -157,12 +149,10 @@ class FilterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateFilterOperation = (apiOperation[FilterTreeResponse]("updateFilter")
     summary "Update Filter"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("filterId").description(""), queryParam[Long]("parentFilterId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("filterId").description(""), queryParam[Long]("parentFilterId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/filter/update", operation(updateFilterOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/filter/update", operation(updateFilterOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

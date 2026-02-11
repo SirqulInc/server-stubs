@@ -42,12 +42,10 @@ class GameApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createGameOperation = (apiOperation[GameResponse]("createGame")
     summary "Create a Game"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  post("/api/:version/game/create", operation(createGameOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/create", operation(createGameOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -75,12 +73,10 @@ class GameApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteGameOperation = (apiOperation[SirqulResponse]("deleteGame")
     summary "Delete a Game"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("gameId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("gameId").description(""))
   )
 
-  post("/api/:version/game/delete", operation(deleteGameOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/delete", operation(deleteGameOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -93,12 +89,10 @@ class GameApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getGameOperation = (apiOperation[GameResponse]("getGame")
     summary "Get a Game by id"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("gameId").description(""), queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("gameId").description(""), queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  get("/api/:version/game/get", operation(getGameOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/game/get", operation(getGameOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -114,12 +108,10 @@ class GameApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchGamesOperation = (apiOperation[GameResponse]("searchGames")
     summary "Search a Game"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeInactive").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeInactive").description("").optional)
   )
 
-  get("/api/:version/game/search", operation(searchGamesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/game/search", operation(searchGamesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -150,12 +142,10 @@ class GameApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateGameOperation = (apiOperation[GameResponse]("updateGame")
     summary "Update a Game"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("packIds").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  post("/api/:version/game/update", operation(updateGameOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/update", operation(updateGameOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

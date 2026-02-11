@@ -41,12 +41,10 @@ class DisbursementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val checkDisbursementsOperation = (apiOperation[DisbursementResponse]("checkDisbursements")
     summary "Check Disbursements"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("disbursementId").description(""))
+    parameters(queryParam[Long]("disbursementId").description(""))
   )
 
-  get("/api/:version/disbursement/check", operation(checkDisbursementsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/disbursement/check", operation(checkDisbursementsOperation)) {
             val disbursementId = params.getAs[Long]("disbursementId")
 
     //println("disbursementId: " + disbursementId)
@@ -56,12 +54,10 @@ class DisbursementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createDisbursementOperation = (apiOperation[DisbursementResponse]("createDisbursement")
     summary "Create Disbursement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("receiverAccountId").description(""), queryParam[Long]("originalSenderAccountId").description(""), queryParam[Double]("amount").description(""), queryParam[String]("provider").description(""), queryParam[Long]("scheduledDate").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("comment").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("introspectionParams").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("receiverAccountId").description(""), queryParam[Long]("originalSenderAccountId").description(""), queryParam[Double]("amount").description(""), queryParam[String]("provider").description(""), queryParam[Long]("scheduledDate").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("comment").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("introspectionParams").description("").optional)
   )
 
-  post("/api/:version/disbursement/create", operation(createDisbursementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/disbursement/create", operation(createDisbursementOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -98,12 +94,10 @@ class DisbursementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getDisbursementOperation = (apiOperation[DisbursementResponse]("getDisbursement")
     summary "Get Disbursement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("disbursementId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("disbursementId").description(""))
   )
 
-  get("/api/:version/disbursement/get", operation(getDisbursementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/disbursement/get", operation(getDisbursementOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -116,12 +110,10 @@ class DisbursementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchDisbursementsOperation = (apiOperation[List[DisbursementResponse]]("searchDisbursements")
     summary "Search Disbursements"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("receiverAccountId").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("providers").description("").optional, queryParam[Long]("beforeDate").description("").optional, queryParam[Long]("afterDate").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[String]("externalId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("receiverAccountId").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("providers").description("").optional, queryParam[Long]("beforeDate").description("").optional, queryParam[Long]("afterDate").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[String]("externalId").description("").optional)
   )
 
-  get("/api/:version/disbursement/search", operation(searchDisbursementsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/disbursement/search", operation(searchDisbursementsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -158,12 +150,10 @@ class DisbursementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateDisbursementOperation = (apiOperation[DisbursementResponse]("updateDisbursement")
     summary "Update Disbursement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("disbursementId").description(""), queryParam[Double]("amount").description("").optional, queryParam[String]("provider").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("comment").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[Boolean]("retry").description("").optional, queryParam[String]("introspectionParams").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("disbursementId").description(""), queryParam[Double]("amount").description("").optional, queryParam[String]("provider").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("comment").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[Boolean]("retry").description("").optional, queryParam[String]("introspectionParams").description("").optional)
   )
 
-  post("/api/:version/disbursement/update", operation(updateDisbursementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/disbursement/update", operation(updateDisbursementOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

@@ -41,12 +41,10 @@ class RetailerV2Api(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRetaokilerOperation = (apiOperation[SirqulResponse]("getRetaokiler")
     summary "Get Retailer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("retailerId").description(""), queryParam[Boolean]("activeOnly").description("").defaultValue(true), queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(id), queryParam[Long]("start").description("").optional.defaultValue(0), queryParam[Long]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Long]("retailerId").description(""), queryParam[Boolean]("activeOnly").description("").defaultValue(true), queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(id), queryParam[Long]("start").description("").optional.defaultValue(0), queryParam[Long]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/retailer", operation(getRetaokilerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer", operation(getRetaokilerOperation)) {
             val retailerId = params.getAs[Long]("retailerId")
 
     //println("retailerId: " + retailerId)

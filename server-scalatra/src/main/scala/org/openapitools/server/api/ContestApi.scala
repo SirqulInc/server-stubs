@@ -43,12 +43,10 @@ class ContestApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addOrUpdateAlbumContestOperation = (apiOperation[AlbumContestResponse]("addOrUpdateAlbumContest")
     summary "Create or Update Contest"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("publicRead").description(""), queryParam[Boolean]("publicWrite").description(""), queryParam[Boolean]("publicDelete").description(""), queryParam[Boolean]("publicAdd").description(""), queryParam[String]("visibility").description(""), queryParam[Boolean]("includeFriendGroup").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("albumId1").description("").optional, queryParam[Boolean]("removeAlbum1").description("").optional, queryParam[Long]("albumId2").description("").optional, queryParam[Boolean]("removeAlbum2").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[String]("connectionIdsToAdd").description("").optional, queryParam[String]("connectionGroupIdsToAdd").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("publicRead").description(""), queryParam[Boolean]("publicWrite").description(""), queryParam[Boolean]("publicDelete").description(""), queryParam[Boolean]("publicAdd").description(""), queryParam[String]("visibility").description(""), queryParam[Boolean]("includeFriendGroup").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("albumId1").description("").optional, queryParam[Boolean]("removeAlbum1").description("").optional, queryParam[Long]("albumId2").description("").optional, queryParam[Boolean]("removeAlbum2").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[String]("connectionIdsToAdd").description("").optional, queryParam[String]("connectionGroupIdsToAdd").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/album/contest", operation(addOrUpdateAlbumContestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/album/contest", operation(addOrUpdateAlbumContestOperation)) {
             val publicRead = params.getAs[Boolean]("publicRead")
 
     //println("publicRead: " + publicRead)
@@ -130,12 +128,10 @@ class ContestApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val approveAlbumContestOperation = (apiOperation[SirqulResponse]("approveAlbumContest")
     summary "Approve Contest"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("albumContestId").description(""), queryParam[String]("approvalStatus").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("albumContestId").description(""), queryParam[String]("approvalStatus").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/consumer/album/contest/approve", operation(approveAlbumContestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/album/contest/approve", operation(approveAlbumContestOperation)) {
             val albumContestId = params.getAs[Long]("albumContestId")
 
     //println("albumContestId: " + albumContestId)
@@ -154,12 +150,10 @@ class ContestApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteContestOperation = (apiOperation[SirqulResponse]("deleteContest")
     summary "Delete Contest"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("albumContestId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("albumContestId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/album/contest/remove", operation(deleteContestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/album/contest/remove", operation(deleteContestOperation)) {
             val albumContestId = params.getAs[Long]("albumContestId")
 
     //println("albumContestId: " + albumContestId)
@@ -181,12 +175,10 @@ class ContestApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAlbumContestOperation = (apiOperation[AlbumContestResponse]("getAlbumContest")
     summary "Get Contest"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("albumContestId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("albumContestId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/consumer/album/contest/get", operation(getAlbumContestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/album/contest/get", operation(getAlbumContestOperation)) {
             val albumContestId = params.getAs[Long]("albumContestId")
 
     //println("albumContestId: " + albumContestId)
@@ -208,12 +200,10 @@ class ContestApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAlbumContestsOperation = (apiOperation[AlbumContestListResponse]("getAlbumContests")
     summary "Search Contests"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("filter").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appType").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("filter").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appType").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/consumer/album/contest/search", operation(getAlbumContestsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/album/contest/search", operation(getAlbumContestsOperation)) {
             val filter = params.getAs[String]("filter")
 
     //println("filter: " + filter)
@@ -277,12 +267,10 @@ class ContestApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val voteOnAlbumContestOperation = (apiOperation[AlbumContestResponse]("voteOnAlbumContest")
     summary "Vote on Contest"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("albumContestId").description(""), queryParam[Long]("albumId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("albumContestId").description(""), queryParam[Long]("albumId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/album/contest/vote", operation(voteOnAlbumContestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/album/contest/vote", operation(voteOnAlbumContestOperation)) {
             val albumContestId = params.getAs[Long]("albumContestId")
 
     //println("albumContestId: " + albumContestId)

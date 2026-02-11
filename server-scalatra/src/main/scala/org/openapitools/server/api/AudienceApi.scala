@@ -46,12 +46,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createAudienceOperation = (apiOperation[AudienceResponse]("createAudience")
     summary "Create Audience"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("ageGroups").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional, queryParam[Int]("startTimeOffset").description("").optional, queryParam[Int]("endTimeOffset").description("").optional, queryParam[Boolean]("sendSuggestion").description("").optional.defaultValue(true), queryParam[String]("associateDescription").description("").optional, queryParam[String]("associateType").description("").optional, queryParam[Long]("associateId").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("audienceType").description("").optional, queryParam[Boolean]("useOrder").description("").optional, queryParam[String]("cohortRegionsData").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("trilaterationTypes").description("").optional, queryParam[Boolean]("uniqueName").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("ageGroups").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional, queryParam[Int]("startTimeOffset").description("").optional, queryParam[Int]("endTimeOffset").description("").optional, queryParam[Boolean]("sendSuggestion").description("").optional.defaultValue(true), queryParam[String]("associateDescription").description("").optional, queryParam[String]("associateType").description("").optional, queryParam[Long]("associateId").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("audienceType").description("").optional, queryParam[Boolean]("useOrder").description("").optional, queryParam[String]("cohortRegionsData").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("trilaterationTypes").description("").optional, queryParam[Boolean]("uniqueName").description("").optional)
   )
 
-  post("/api/:version/audience/create", operation(createAudienceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/audience/create", operation(createAudienceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -145,12 +143,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteAudienceOperation = (apiOperation[SirqulResponse]("deleteAudience")
     summary "Delete Audience"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("audienceId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("audienceId").description(""))
   )
 
-  post("/api/:version/audience/delete", operation(deleteAudienceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/audience/delete", operation(deleteAudienceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -163,24 +159,20 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAgeGroupsOperation = (apiOperation[List[AgeGroupResponse]]("getAgeGroups")
     summary "Get Age Groups"
-    parameters(pathParam[Double]("version").description(""))
+    parameters()
   )
 
-  get("/api/:version/audience/ageGroups", operation(getAgeGroupsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/ageGroups", operation(getAgeGroupsOperation)) {
   }
 
   
 
   val getAudienceOperation = (apiOperation[AudienceResponse]("getAudience")
     summary "Get Audience"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("audienceId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Boolean]("returnAccountCount").description("").optional.defaultValue(false), queryParam[Boolean]("returnAlbumCount").description("").optional.defaultValue(false), queryParam[String]("albumTypesForCount").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("audienceId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Boolean]("returnAccountCount").description("").optional.defaultValue(false), queryParam[Boolean]("returnAlbumCount").description("").optional.defaultValue(false), queryParam[String]("albumTypesForCount").description("").optional)
   )
 
-  get("/api/:version/audience/get", operation(getAudienceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/get", operation(getAudienceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -205,12 +197,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAudienceListOperation = (apiOperation[List[SearchResponse]]("getAudienceList")
     summary "Search Audiences"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("keywordFields").description("").optional.defaultValue(SEARCH_TAGS,NAME,DESCRIPTION), queryParam[String]("sortField").description("").optional.defaultValue(NAME), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("sendSuggestion").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("groupByGroupingId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("returnGlobal").description("").optional, queryParam[Boolean]("exactKeyword").description("").optional, queryParam[String]("audienceType").description("").optional, queryParam[String]("audienceTypes").description("").optional, queryParam[Boolean]("returnAccountCount").description("").optional.defaultValue(false), queryParam[Boolean]("returnAlbumCount").description("").optional.defaultValue(false), queryParam[String]("albumTypesForCount").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("keywordFields").description("").optional.defaultValue(SEARCH_TAGS,NAME,DESCRIPTION), queryParam[String]("sortField").description("").optional.defaultValue(NAME), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("sendSuggestion").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("groupByGroupingId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("returnGlobal").description("").optional, queryParam[Boolean]("exactKeyword").description("").optional, queryParam[String]("audienceType").description("").optional, queryParam[String]("audienceTypes").description("").optional, queryParam[Boolean]("returnAccountCount").description("").optional.defaultValue(false), queryParam[Boolean]("returnAlbumCount").description("").optional.defaultValue(false), queryParam[String]("albumTypesForCount").description("").optional)
   )
 
-  get("/api/:version/audience/search", operation(getAudienceListOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/search", operation(getAudienceListOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -274,12 +264,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getDevicesOperation = (apiOperation[List[AudienceDeviceResponse]]("getDevices")
     summary "Get Devices"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("includeInactive").description(""))
+    parameters(queryParam[Boolean]("includeInactive").description(""))
   )
 
-  get("/api/:version/audience/devices", operation(getDevicesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/devices", operation(getDevicesOperation)) {
             val includeInactive = params.getAs[Boolean]("includeInactive")
 
     //println("includeInactive: " + includeInactive)
@@ -289,24 +277,20 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getExperiencesOperation = (apiOperation[SirqulResponse]("getExperiences")
     summary "Get Experiences"
-    parameters(pathParam[Double]("version").description(""))
+    parameters()
   )
 
-  get("/api/:version/audience/experiences", operation(getExperiencesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/experiences", operation(getExperiencesOperation)) {
   }
 
   
 
   val getGroupedAudiencesOperation = (apiOperation[AudienceResponse]("getGroupedAudiences")
     summary "Get GroupedAudiences"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("audienceGroupingId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("audienceGroupingId").description(""))
   )
 
-  get("/api/:version/audience/grouped/get", operation(getGroupedAudiencesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/grouped/get", operation(getGroupedAudiencesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -319,12 +303,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listByAccountOperation = (apiOperation[OfferListResponse]("listByAccount")
     summary "List Suggestions by Audience"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Int]("limit").description(""), queryParam[String]("suggestionType").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Int]("limit").description(""), queryParam[String]("suggestionType").description(""))
   )
 
-  post("/api/:version/audience/suggestion/list", operation(listByAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/audience/suggestion/list", operation(listByAccountOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -340,12 +322,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listByAudienceOperation = (apiOperation[OfferListResponse]("listByAudience")
     summary "List Offers by Audience"
-    parameters(pathParam[Double]("version").description(""), queryParam[Int]("limit").description(""), queryParam[String]("gender").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Int]("limit").description(""), queryParam[String]("gender").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/audience/suggestion/offersByAudience", operation(listByAudienceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/suggestion/offersByAudience", operation(listByAudienceOperation)) {
             val limit = params.getAs[Int]("limit")
 
     //println("limit: " + limit)
@@ -370,12 +350,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listLastestByAccountOperation = (apiOperation[OfferListResponse]("listLastestByAccount")
     summary "List Sent Suggestions "
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Int]("timeframe").description(""), queryParam[String]("suggestionType").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Int]("timeframe").description(""), queryParam[String]("suggestionType").description(""))
   )
 
-  get("/api/:version/audience/suggestion/latest", operation(listLastestByAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/audience/suggestion/latest", operation(listLastestByAccountOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -391,12 +369,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val sendByAccountOperation = (apiOperation[SirqulResponse]("sendByAccount")
     summary "Send Suggestions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""))
   )
 
-  post("/api/:version/audience/suggestion/send", operation(sendByAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/audience/suggestion/send", operation(sendByAccountOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -412,12 +388,10 @@ class AudienceApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateAudienceOperation = (apiOperation[AudienceResponse]("updateAudience")
     summary "Update Audience"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("audienceId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("ageGroups").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("sendSuggestion").description("").optional, queryParam[Int]("startTimeOffset").description("").optional, queryParam[Int]("endTimeOffset").description("").optional, queryParam[String]("associateDescription").description("").optional, queryParam[String]("associateType").description("").optional, queryParam[Long]("associateId").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("audienceType").description("").optional, queryParam[Boolean]("useOrder").description("").optional, queryParam[String]("cohortRegionsData").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("trilaterationTypes").description("").optional, queryParam[Boolean]("uniqueName").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("audienceId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("ageGroups").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("sendSuggestion").description("").optional, queryParam[Int]("startTimeOffset").description("").optional, queryParam[Int]("endTimeOffset").description("").optional, queryParam[String]("associateDescription").description("").optional, queryParam[String]("associateType").description("").optional, queryParam[Long]("associateId").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("audienceType").description("").optional, queryParam[Boolean]("useOrder").description("").optional, queryParam[String]("cohortRegionsData").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("trilaterationTypes").description("").optional, queryParam[Boolean]("uniqueName").description("").optional)
   )
 
-  post("/api/:version/audience/update", operation(updateAudienceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/audience/update", operation(updateAudienceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

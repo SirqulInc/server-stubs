@@ -45,12 +45,10 @@ class ReportingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createBatchOperation = (apiOperation[ReportBatchResponse]("createBatch")
     summary "Create Offline Report"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("status").description(""), queryParam[Int]("previewLimit").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("endpoint").description("").optional, queryParam[String]("parameters").description("").optional, queryParam[String]("name").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("pageUrl").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("status").description(""), queryParam[Int]("previewLimit").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("endpoint").description("").optional, queryParam[String]("parameters").description("").optional, queryParam[String]("name").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("pageUrl").description("").optional)
   )
 
-  post("/api/:version/report/batch/create", operation(createBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/report/batch/create", operation(createBatchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -90,12 +88,10 @@ class ReportingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRegionLegSummaryBatchOperation = (apiOperation[ReportRegionLegSummaryBatchResponse]("createRegionLegSummaryBatch")
     summary "Create Offline Report"
-    parameters(pathParam[Double]("version").description(""), bodyParam[List[RegionLegSummary]]("body").description("").optional)
+    parameters(bodyParam[List[RegionLegSummary]]("body").description("").optional)
   )
 
-  post("/api/:version/report/region/summary/batch", operation(createRegionLegSummaryBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/report/region/summary/batch", operation(createRegionLegSummaryBatchOperation)) {
     //println("body: " + body)
   }
 
@@ -103,12 +99,10 @@ class ReportingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteBatchOperation = (apiOperation[SirqulResponse]("deleteBatch")
     summary "Delete Offline Report"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""))
   )
 
-  post("/api/:version/report/batch/delete", operation(deleteBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/report/batch/delete", operation(deleteBatchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -121,12 +115,10 @@ class ReportingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getReportBatchOperation = (apiOperation[ReportBatchResponse]("getReportBatch")
     summary "Get Offline Report"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""), queryParam[Boolean]("allResults").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("batchId").description(""), queryParam[Boolean]("allResults").description(""))
   )
 
-  get("/api/:version/report/batch/get", operation(getReportBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/report/batch/get", operation(getReportBatchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -142,12 +134,10 @@ class ReportingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val runReportOperation = (apiOperation[ReportResponse]("runReport")
     summary "Run Report"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("desc").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("query").description("").optional, queryParam[String]("parameters").description("").optional, queryParam[String]("order").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("limit").description("").optional, queryParam[String]("responseFormat").description("").optional)
+    parameters(queryParam[Boolean]("desc").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("query").description("").optional, queryParam[String]("parameters").description("").optional, queryParam[String]("order").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("limit").description("").optional, queryParam[String]("responseFormat").description("").optional)
   )
 
-  post("/api/:version/report/run", operation(runReportOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/report/run", operation(runReportOperation)) {
             val desc = params.getAs[Boolean]("desc")
 
     //println("desc: " + desc)
@@ -178,12 +168,10 @@ class ReportingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchBatchOperation = (apiOperation[List[ReportBatchResponse]]("searchBatch")
     summary "Search Offline Reports"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("names").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("status").description("").optional, queryParam[Boolean]("globalAppSearch").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("names").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("status").description("").optional, queryParam[Boolean]("globalAppSearch").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional)
   )
 
-  get("/api/:version/report/batch/search", operation(searchBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/report/batch/search", operation(searchBatchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

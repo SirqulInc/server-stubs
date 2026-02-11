@@ -43,12 +43,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createMissionOperation = (apiOperation[MissionResponse]("createMission")
     summary "Create Mission"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[String]("description").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("creativeIds").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("missionTask").description("").optional, queryParam[String]("formatType").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("advancedReporting").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[String]("description").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("creativeIds").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("missionTask").description("").optional, queryParam[String]("formatType").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("advancedReporting").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional)
   )
 
-  post("/api/:version/mission/create", operation(createMissionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/create", operation(createMissionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -133,12 +131,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteMissionOperation = (apiOperation[SirqulResponse]("deleteMission")
     summary "Delete Mission"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""))
   )
 
-  post("/api/:version/mission/delete", operation(deleteMissionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/delete", operation(deleteMissionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -151,12 +147,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val findMissionsOperation = (apiOperation[MissionResponse]("findMissions")
     summary "Find Missions"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("suffix").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("device").description("").optional, queryParam[Long]("deviceIdentifier").description("").optional, queryParam[String]("deviceVersion").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("allocatesTickets").description("").optional, queryParam[Boolean]("randomize").description("").optional, queryParam[Boolean]("targetedAdsOnly").description("").optional, queryParam[String]("missionIds").description("").optional, queryParam[String]("audienceOperator").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("suffix").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("device").description("").optional, queryParam[Long]("deviceIdentifier").description("").optional, queryParam[String]("deviceVersion").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("allocatesTickets").description("").optional, queryParam[Boolean]("randomize").description("").optional, queryParam[Boolean]("targetedAdsOnly").description("").optional, queryParam[String]("missionIds").description("").optional, queryParam[String]("audienceOperator").description("").optional)
   )
 
-  get("/api/:version/mission/find", operation(findMissionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/find", operation(findMissionsOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -220,12 +214,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getMissionOperation = (apiOperation[MissionResponse]("getMission")
     summary "Get Mission"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[Boolean]("returnCreative").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[Boolean]("returnCreative").description("").optional)
   )
 
-  get("/api/:version/mission/get", operation(getMissionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/get", operation(getMissionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -241,12 +233,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val importMissionOperation = (apiOperation[SirqulResponse]("importMission")
     summary "Import Mission"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("adSize").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("adSize").description("").optional)
   )
 
-  post("/api/:version/mission/import", operation(importMissionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/import", operation(importMissionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -277,12 +267,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchMissionFormatsOperation = (apiOperation[List[MissionFormatResponse]]("searchMissionFormats")
     summary "Search Mission Formats"
-    parameters(pathParam[Double]("version").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""))
+    parameters(queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""))
   )
 
-  get("/api/:version/mission/format/search", operation(searchMissionFormatsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/format/search", operation(searchMissionFormatsOperation)) {
             val start = params.getAs[Int]("start")
 
     //println("start: " + start)
@@ -298,12 +286,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchMissionsOperation = (apiOperation[List[MissionResponse]]("searchMissions")
     summary "Search Missions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional)
   )
 
-  get("/api/:version/mission/search", operation(searchMissionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/search", operation(searchMissionsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -343,12 +329,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchMissionsByBillableEntityOperation = (apiOperation[List[MissionResponse]]("searchMissionsByBillableEntity")
     summary "Search Missions by Billable Entity"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional)
   )
 
-  get("/api/:version/mission/searchByBillableEntity", operation(searchMissionsByBillableEntityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/searchByBillableEntity", operation(searchMissionsByBillableEntityOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -385,12 +369,10 @@ class MissionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateMissionOperation = (apiOperation[MissionResponse]("updateMission")
     summary "Update Mission"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("subType").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("creativeIds").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("advancedReporting").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("subType").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[String]("creativeIds").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("advancedReporting").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("applicationIds").description("").optional, queryParam[String]("devices").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("locations").description("").optional, queryParam[String]("radius").description("").optional)
   )
 
-  post("/api/:version/mission/update", operation(updateMissionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/update", operation(updateMissionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

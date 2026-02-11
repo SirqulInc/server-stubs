@@ -42,12 +42,10 @@ class LikeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val registerLikeOperation = (apiOperation[LikableResponse]("registerLike")
     summary "Create Like"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("likableType").description(""), queryParam[Long]("likableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Boolean]("like").description("").optional, queryParam[String]("app").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("likableType").description(""), queryParam[Long]("likableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Boolean]("like").description("").optional, queryParam[String]("app").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/like", operation(registerLikeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/like", operation(registerLikeOperation)) {
             val likableType = params.getAs[String]("likableType")
 
     //println("likableType: " + likableType)
@@ -90,12 +88,10 @@ class LikeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeLikeOperation = (apiOperation[LikableResponse]("removeLike")
     summary "Delete Like"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("likableType").description(""), queryParam[Long]("likableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("likableType").description(""), queryParam[Long]("likableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/like/delete", operation(removeLikeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/like/delete", operation(removeLikeOperation)) {
             val likableType = params.getAs[String]("likableType")
 
     //println("likableType: " + likableType)
@@ -120,12 +116,10 @@ class LikeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchLikesOperation = (apiOperation[SearchResponse]("searchLikes")
     summary "Search Likes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("likableType").description(""), queryParam[Long]("likableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(ID), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Long]("updatedSince").description("").optional, queryParam[Long]("updatedBefore").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[String]("likableType").description(""), queryParam[Long]("likableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(ID), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Long]("updatedSince").description("").optional, queryParam[Long]("updatedBefore").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/like/search", operation(searchLikesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/like/search", operation(searchLikesOperation)) {
             val likableType = params.getAs[String]("likableType")
 
     //println("likableType: " + likableType)

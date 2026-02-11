@@ -47,12 +47,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val accountLocationSearchOperation = (apiOperation[UserLocationSearchResponse]("accountLocationSearch")
     summary "Search Accounts by Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("range").description("").optional.defaultValue(10), queryParam[Long]("locationLastUpdated").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Int]("minAge").description("").optional, queryParam[Int]("maxAge").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(100), queryParam[String]("searchMode").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[String]("roles").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("experience").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("audienceOperator").description("").optional.defaultValue(AND), queryParam[Boolean]("updateCurrentLocation").description("").optional.defaultValue(false), queryParam[Boolean]("updatePreferredSettings").description("").optional.defaultValue(false), queryParam[Boolean]("showExactLocations").description("").optional.defaultValue(true), queryParam[Boolean]("showConnectionToSearcher").description("").optional.defaultValue(false), queryParam[Long]("flagCountMinimum").description("").optional, queryParam[Boolean]("verifiedUserOnly").description("").optional, queryParam[Boolean]("contentAdminOnly").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("range").description("").optional.defaultValue(10), queryParam[Long]("locationLastUpdated").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Int]("minAge").description("").optional, queryParam[Int]("maxAge").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(100), queryParam[String]("searchMode").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[String]("roles").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("experience").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("audienceOperator").description("").optional.defaultValue(AND), queryParam[Boolean]("updateCurrentLocation").description("").optional.defaultValue(false), queryParam[Boolean]("updatePreferredSettings").description("").optional.defaultValue(false), queryParam[Boolean]("showExactLocations").description("").optional.defaultValue(true), queryParam[Boolean]("showConnectionToSearcher").description("").optional.defaultValue(false), queryParam[Long]("flagCountMinimum").description("").optional, queryParam[Boolean]("verifiedUserOnly").description("").optional, queryParam[Boolean]("contentAdminOnly").description("").optional)
   )
 
-  get("/api/:version/account/search", operation(accountLocationSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/search", operation(accountLocationSearchOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -161,12 +159,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val blockAccountOperation = (apiOperation[SirqulResponse]("blockAccount")
     summary "Block Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountIdBeingBlocked").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("blockFlagValue").description("").optional.defaultValue(true), queryParam[Boolean]("removeFromGroupsIfBlocked").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("accountIdBeingBlocked").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("blockFlagValue").description("").optional.defaultValue(true), queryParam[Boolean]("removeFromGroupsIfBlocked").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/account/block", operation(blockAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/block", operation(blockAccountOperation)) {
             val accountIdBeingBlocked = params.getAs[Long]("accountIdBeingBlocked")
 
     //println("accountIdBeingBlocked: " + accountIdBeingBlocked)
@@ -194,12 +190,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createAccountOperation = (apiOperation[AccountLoginResponse]("createAccount")
     summary "Create Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Long]("birthday").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("role").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("hometown").description("").optional, queryParam[String]("height").description("").optional, queryParam[Int]("heightIndex").description("").optional, queryParam[String]("ethnicity").description("").optional, queryParam[String]("bodyType").description("").optional, queryParam[String]("maritalStatus").description("").optional, queryParam[String]("children").description("").optional, queryParam[String]("religion").description("").optional, queryParam[String]("education").description("").optional, queryParam[Int]("educationIndex").description("").optional, queryParam[String]("smoke").description("").optional, queryParam[String]("drink").description("").optional, queryParam[String]("companionship").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("preferredMinAge").description("").optional, queryParam[Int]("preferredMaxAge").description("").optional, queryParam[Int]("preferredMinHeight").description("").optional, queryParam[Int]("preferredMaxHeight").description("").optional, queryParam[String]("preferredGender").description("").optional, queryParam[String]("preferredEducation").description("").optional, queryParam[Int]("preferredEducationIndex").description("").optional, queryParam[String]("preferredBodyType").description("").optional, queryParam[String]("preferredEthnicity").description("").optional, queryParam[String]("preferredLocation").description("").optional, queryParam[Double]("preferredLocationRange").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("acceptedTerms").description("").optional, queryParam[String]("inviteToken").description("").optional, queryParam[Long]("referralAccountId").description("").optional, queryParam[Boolean]("sendValidation").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[String]("responseType").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[Boolean]("appEnablePush").description("").optional, queryParam[Boolean]("appEnableSMS").description("").optional, queryParam[Boolean]("appEnableEmail").description("").optional, queryParam[String]("locationVisibility").description("").optional, queryParam[Double]("homeLatitude").description("").optional, queryParam[Double]("homeLongitude").description("").optional, queryParam[String]("appNickname").description("").optional, queryParam[Long]("personalAudienceId").description("").optional)
+    parameters(queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Long]("birthday").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("role").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("hometown").description("").optional, queryParam[String]("height").description("").optional, queryParam[Int]("heightIndex").description("").optional, queryParam[String]("ethnicity").description("").optional, queryParam[String]("bodyType").description("").optional, queryParam[String]("maritalStatus").description("").optional, queryParam[String]("children").description("").optional, queryParam[String]("religion").description("").optional, queryParam[String]("education").description("").optional, queryParam[Int]("educationIndex").description("").optional, queryParam[String]("smoke").description("").optional, queryParam[String]("drink").description("").optional, queryParam[String]("companionship").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("preferredMinAge").description("").optional, queryParam[Int]("preferredMaxAge").description("").optional, queryParam[Int]("preferredMinHeight").description("").optional, queryParam[Int]("preferredMaxHeight").description("").optional, queryParam[String]("preferredGender").description("").optional, queryParam[String]("preferredEducation").description("").optional, queryParam[Int]("preferredEducationIndex").description("").optional, queryParam[String]("preferredBodyType").description("").optional, queryParam[String]("preferredEthnicity").description("").optional, queryParam[String]("preferredLocation").description("").optional, queryParam[Double]("preferredLocationRange").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("acceptedTerms").description("").optional, queryParam[String]("inviteToken").description("").optional, queryParam[Long]("referralAccountId").description("").optional, queryParam[Boolean]("sendValidation").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[String]("responseType").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[Boolean]("appEnablePush").description("").optional, queryParam[Boolean]("appEnableSMS").description("").optional, queryParam[Boolean]("appEnableEmail").description("").optional, queryParam[String]("locationVisibility").description("").optional, queryParam[Double]("homeLatitude").description("").optional, queryParam[Double]("homeLongitude").description("").optional, queryParam[String]("appNickname").description("").optional, queryParam[Long]("personalAudienceId").description("").optional)
   )
 
-  post("/api/:version/account/create", operation(createAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/create", operation(createAccountOperation)) {
             val username = params.getAs[String]("username")
 
     //println("username: " + username)
@@ -422,12 +416,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val editAccountOperation = (apiOperation[ProfileInfoResponse]("editAccount")
     summary "Update Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("role").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Int]("age").description("").optional, queryParam[Long]("birthday").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("country").description("").optional, queryParam[Boolean]("makeProfileInfoPublic").description("").optional, queryParam[Boolean]("makeGameInfoPublic").description("").optional, queryParam[Boolean]("makeFriendsInfoPublic").description("").optional, queryParam[String]("hometown").description("").optional, queryParam[String]("height").description("").optional, queryParam[Int]("heightIndex").description("").optional, queryParam[String]("ethnicity").description("").optional, queryParam[String]("bodyType").description("").optional, queryParam[String]("maritalStatus").description("").optional, queryParam[String]("children").description("").optional, queryParam[String]("religion").description("").optional, queryParam[String]("education").description("").optional, queryParam[Int]("educationIndex").description("").optional, queryParam[String]("smoke").description("").optional, queryParam[String]("drink").description("").optional, queryParam[String]("companionship").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("preferredMinAge").description("").optional, queryParam[Int]("preferredMaxAge").description("").optional, queryParam[Int]("preferredMinHeight").description("").optional, queryParam[Int]("preferredMaxHeight").description("").optional, queryParam[String]("preferredGender").description("").optional, queryParam[String]("preferredEducation").description("").optional, queryParam[Int]("preferredEducationIndex").description("").optional, queryParam[String]("preferredBodyType").description("").optional, queryParam[String]("preferredEthnicity").description("").optional, queryParam[String]("preferredLocation").description("").optional, queryParam[Double]("preferredLocationRange").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[String]("matchToken").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[String]("categories").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE,PROFILE_CONTACT), queryParam[Boolean]("showAsZipcode").description("").optional, queryParam[Boolean]("showExactLocation").description("").optional, queryParam[Boolean]("showOthersExactLocation").description("").optional, queryParam[Boolean]("acceptedTerms").description("").optional, queryParam[String]("locationVisibility").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[Boolean]("appEnablePush").description("").optional, queryParam[Boolean]("appEnableSMS").description("").optional, queryParam[Boolean]("appEnableEmail").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnProfile").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("audienceIdsToRemove").description("").optional, queryParam[Long]("referralAccountId").description("").optional, queryParam[String]("appNickname").description("").optional, queryParam[Long]("personalAudienceId").description("").optional, queryParam[String]("nonGuestUsername").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("role").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Int]("age").description("").optional, queryParam[Long]("birthday").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("country").description("").optional, queryParam[Boolean]("makeProfileInfoPublic").description("").optional, queryParam[Boolean]("makeGameInfoPublic").description("").optional, queryParam[Boolean]("makeFriendsInfoPublic").description("").optional, queryParam[String]("hometown").description("").optional, queryParam[String]("height").description("").optional, queryParam[Int]("heightIndex").description("").optional, queryParam[String]("ethnicity").description("").optional, queryParam[String]("bodyType").description("").optional, queryParam[String]("maritalStatus").description("").optional, queryParam[String]("children").description("").optional, queryParam[String]("religion").description("").optional, queryParam[String]("education").description("").optional, queryParam[Int]("educationIndex").description("").optional, queryParam[String]("smoke").description("").optional, queryParam[String]("drink").description("").optional, queryParam[String]("companionship").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("preferredMinAge").description("").optional, queryParam[Int]("preferredMaxAge").description("").optional, queryParam[Int]("preferredMinHeight").description("").optional, queryParam[Int]("preferredMaxHeight").description("").optional, queryParam[String]("preferredGender").description("").optional, queryParam[String]("preferredEducation").description("").optional, queryParam[Int]("preferredEducationIndex").description("").optional, queryParam[String]("preferredBodyType").description("").optional, queryParam[String]("preferredEthnicity").description("").optional, queryParam[String]("preferredLocation").description("").optional, queryParam[Double]("preferredLocationRange").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[String]("matchToken").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[String]("categories").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE,PROFILE_CONTACT), queryParam[Boolean]("showAsZipcode").description("").optional, queryParam[Boolean]("showExactLocation").description("").optional, queryParam[Boolean]("showOthersExactLocation").description("").optional, queryParam[Boolean]("acceptedTerms").description("").optional, queryParam[String]("locationVisibility").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[Boolean]("appEnablePush").description("").optional, queryParam[Boolean]("appEnableSMS").description("").optional, queryParam[Boolean]("appEnableEmail").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnProfile").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("audienceIdsToRemove").description("").optional, queryParam[Long]("referralAccountId").description("").optional, queryParam[String]("appNickname").description("").optional, queryParam[Long]("personalAudienceId").description("").optional, queryParam[String]("nonGuestUsername").description("").optional)
   )
 
-  post("/api/:version/account/profile/update", operation(editAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/profile/update", operation(editAccountOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -680,12 +672,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val editUsernameOperation = (apiOperation[SirqulResponse]("editUsername")
     summary "Update Username and Email"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("username").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("username").description("").optional)
   )
 
-  post("/api/:version/account/username/update", operation(editUsernameOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/username/update", operation(editUsernameOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -704,12 +694,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAccountOperation = (apiOperation[ProfileResponse]("getAccount")
     summary "Get Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description("").optional.defaultValue(false), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionAccountEmail").description("").optional, queryParam[Long]("connectionAccountId").description("").optional.defaultValue(0), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("purchaseType").description("").optional.defaultValue(SIRQUL), queryParam[Boolean]("updateViewedDate").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description("").optional.defaultValue(false), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionAccountEmail").description("").optional, queryParam[Long]("connectionAccountId").description("").optional.defaultValue(0), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("purchaseType").description("").optional.defaultValue(SIRQUL), queryParam[Boolean]("updateViewedDate").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/account/profile/get", operation(getAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/profile/get", operation(getAccountOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -752,12 +740,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getProfileAssetsOperation = (apiOperation[AssetListResponse]("getProfileAssets")
     summary "Get Profile Assets"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description("").optional.defaultValue(false), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("mediaTypes").description("").optional, queryParam[String]("mimeTypes").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(0))
+    parameters(queryParam[Boolean]("returnNulls").description("").optional.defaultValue(false), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("mediaTypes").description("").optional, queryParam[String]("mimeTypes").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(0))
   )
 
-  get("/api/:version/account/profile/assets", operation(getProfileAssetsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/profile/assets", operation(getProfileAssetsOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -806,12 +792,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getReferralListOperation = (apiOperation[Unit]("getReferralList")
     summary "Search Accounts"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("retrieveType").description("").optional, queryParam[Double]("levelLimit").description("").optional, queryParam[Double]("ancestorLevelLimit").description("").optional, queryParam[Double]("childrenLevelLimit").description("").optional, queryParam[Double]("ancestorListStart").description("").optional, queryParam[Double]("ancestorListLimit").description("").optional, queryParam[Double]("childrenListStart").description("").optional, queryParam[Double]("childrenListLimit").description("").optional, queryParam[Boolean]("childrenChildren").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("retrieveType").description("").optional, queryParam[Double]("levelLimit").description("").optional, queryParam[Double]("ancestorLevelLimit").description("").optional, queryParam[Double]("childrenLevelLimit").description("").optional, queryParam[Double]("ancestorListStart").description("").optional, queryParam[Double]("ancestorListLimit").description("").optional, queryParam[Double]("childrenListStart").description("").optional, queryParam[Double]("childrenListLimit").description("").optional, queryParam[Boolean]("childrenChildren").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/account/referral/list", operation(getReferralListOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/referral/list", operation(getReferralListOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -851,12 +835,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSettingsOperation = (apiOperation[UserSettingsResponse]("getSettings")
     summary "Get Account Settings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/account/settings/get", operation(getSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/settings/get", operation(getSettingsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -875,12 +857,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val loginDelegateOperation = (apiOperation[ProfileResponse]("loginDelegate")
     summary "Login as Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("accessToken").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("accessTokenSecret").description("").optional, queryParam[Long]("delegatedAccountId").description("").optional, queryParam[String]("delegatedUsername").description("").optional, queryParam[String]("networkUID").description("").optional.defaultValue(USERNAME), queryParam[Int]("ageRestriction").description("").optional.defaultValue(0), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("accessToken").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("accessTokenSecret").description("").optional, queryParam[Long]("delegatedAccountId").description("").optional, queryParam[String]("delegatedUsername").description("").optional, queryParam[String]("networkUID").description("").optional.defaultValue(USERNAME), queryParam[Int]("ageRestriction").description("").optional.defaultValue(0), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/account/login/delegate", operation(loginDelegateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/login/delegate", operation(loginDelegateOperation)) {
             val accessToken = params.getAs[String]("accessToken")
 
     //println("accessToken: " + accessToken)
@@ -920,12 +900,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val loginGeneralOperation = (apiOperation[ProfileResponse]("loginGeneral")
     summary "Login Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("accessToken").description(""), queryParam[String]("networkUID").description("").defaultValue(USERNAME), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[String]("accessTokenSecret").description("").optional, queryParam[Int]("ageRestriction").description("").optional.defaultValue(0), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("emailMatch").description("").optional.defaultValue(false), queryParam[Long]("chosenAccountId").description("").optional.defaultValue(0), queryParam[Long]("thirdPartyCredentialId").description("").optional.defaultValue(0))
+    parameters(queryParam[String]("accessToken").description(""), queryParam[String]("networkUID").description("").defaultValue(USERNAME), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[String]("accessTokenSecret").description("").optional, queryParam[Int]("ageRestriction").description("").optional.defaultValue(0), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("emailMatch").description("").optional.defaultValue(false), queryParam[Long]("chosenAccountId").description("").optional.defaultValue(0), queryParam[Long]("thirdPartyCredentialId").description("").optional.defaultValue(0))
   )
 
-  post("/api/:version/account/login", operation(loginGeneralOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/login", operation(loginGeneralOperation)) {
             val accessToken = params.getAs[String]("accessToken")
 
     //println("accessToken: " + accessToken)
@@ -971,12 +949,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val loginUsernameOperation = (apiOperation[ProfileResponse]("loginUsername")
     summary "Login Account (Username)"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("app").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("returnProfile").description("").optional, queryParam[String]("responseFilters").description("").optional)
+    parameters(queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("app").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("returnProfile").description("").optional, queryParam[String]("responseFilters").description("").optional)
   )
 
-  post("/api/:version/account/get", operation(loginUsernameOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/get", operation(loginUsernameOperation)) {
             val username = params.getAs[String]("username")
 
     //println("username: " + username)
@@ -1013,12 +989,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val logoutOperation = (apiOperation[SirqulResponse]("logout")
     summary "Logout Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/account/logout", operation(logoutOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/logout", operation(logoutOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -1040,12 +1014,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val mergeAccountOperation = (apiOperation[SirqulResponse]("mergeAccount")
     summary "Merge Account"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("mergeAccountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("mergeAccountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/account/merge", operation(mergeAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/merge", operation(mergeAccountOperation)) {
             val mergeAccountId = params.getAs[Long]("mergeAccountId")
 
     //println("mergeAccountId: " + mergeAccountId)
@@ -1064,12 +1036,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val passwordChangeOperation = (apiOperation[SirqulResponse]("passwordChange")
     summary "Update Password"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("oldPassword").description(""), queryParam[String]("newPassword").description(""), queryParam[String]("confirmPassword").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("oldPassword").description(""), queryParam[String]("newPassword").description(""), queryParam[String]("confirmPassword").description(""))
   )
 
-  post("/api/:version/account/passwordchange", operation(passwordChangeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/passwordchange", operation(passwordChangeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1088,12 +1058,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val passwordResetOperation = (apiOperation[SirqulResponse]("passwordReset")
     summary "Reset Password"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("token").description(""), queryParam[String]("password").description(""), queryParam[String]("confirm").description(""))
+    parameters(queryParam[String]("token").description(""), queryParam[String]("password").description(""), queryParam[String]("confirm").description(""))
   )
 
-  post("/api/:version/account/passwordreset", operation(passwordResetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/passwordreset", operation(passwordResetOperation)) {
             val token = params.getAs[String]("token")
 
     //println("token: " + token)
@@ -1109,12 +1077,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val requestPasswordResetOperation = (apiOperation[SirqulResponse]("requestPasswordReset")
     summary "Request Password Reset"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("email").description(""), queryParam[String]("from").description("").optional.defaultValue(Sirqul), queryParam[String]("domain").description("").optional, queryParam[String]("subUrl").description("").optional, queryParam[String]("referer").description("").optional.defaultValue(http://dev.sirqul.com/resetpassword))
+    parameters(queryParam[String]("email").description(""), queryParam[String]("from").description("").optional.defaultValue(Sirqul), queryParam[String]("domain").description("").optional, queryParam[String]("subUrl").description("").optional, queryParam[String]("referer").description("").optional.defaultValue(http://dev.sirqul.com/resetpassword))
   )
 
-  post("/api/:version/account/requestpasswordreset", operation(requestPasswordResetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/requestpasswordreset", operation(requestPasswordResetOperation)) {
             val email = params.getAs[String]("email")
 
     //println("email: " + email)
@@ -1136,12 +1102,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val requestValidateAccountOperation = (apiOperation[SirqulResponse]("requestValidateAccount")
     summary "Send Validation Request"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("accountId").description(""))
   )
 
-  post("/api/:version/account/requestValidateAccount", operation(requestValidateAccountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/requestValidateAccount", operation(requestValidateAccountOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1151,12 +1115,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchAccountsOperation = (apiOperation[List[ProfileResponse]]("searchAccounts")
     summary "Search Accounts"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("radius").description("").optional.defaultValue(5), queryParam[String]("gender").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Boolean]("returnNulls").description("").optional.defaultValue(true), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[String]("purchaseType").description("").optional.defaultValue(SIRQUL), queryParam[String]("sortField").description("").optional.defaultValue(id), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("radius").description("").optional.defaultValue(5), queryParam[String]("gender").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Boolean]("returnNulls").description("").optional.defaultValue(true), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[String]("purchaseType").description("").optional.defaultValue(SIRQUL), queryParam[String]("sortField").description("").optional.defaultValue(id), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/account/profile/search", operation(searchAccountsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/profile/search", operation(searchAccountsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1217,12 +1179,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val secureLoginOperation = (apiOperation[ProfileResponse]("secureLogin")
     summary "Login Account (Encrypted Username)"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("gameType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("charsetName").description("").optional.defaultValue(UTF-8), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnProfile").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE))
+    parameters(queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("gameType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("charsetName").description("").optional.defaultValue(UTF-8), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnProfile").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE))
   )
 
-  post("/api/:version/account/login/validate", operation(secureLoginOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/login/validate", operation(secureLoginOperation)) {
             val username = params.getAs[String]("username")
 
     //println("username: " + username)
@@ -1256,12 +1216,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val secureSignupOperation = (apiOperation[ProfileInfoResponse]("secureSignup")
     summary "Create Account (Encrypted Username)"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("name").description("").optional, queryParam[String]("inviteToken").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("address").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Long]("birthday").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("role").description("").optional.defaultValue(MEMBER), queryParam[String]("platforms").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("hometown").description("").optional, queryParam[String]("height").description("").optional, queryParam[Int]("heightIndex").description("").optional, queryParam[String]("ethnicity").description("").optional, queryParam[String]("bodyType").description("").optional, queryParam[String]("maritalStatus").description("").optional, queryParam[String]("children").description("").optional, queryParam[String]("religion").description("").optional, queryParam[String]("education").description("").optional, queryParam[Int]("educationIndex").description("").optional, queryParam[String]("smoke").description("").optional, queryParam[String]("drink").description("").optional, queryParam[String]("companionship").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("preferredMinAge").description("").optional, queryParam[Int]("preferredMaxAge").description("").optional, queryParam[Int]("preferredMinHeight").description("").optional, queryParam[Int]("preferredMaxHeight").description("").optional, queryParam[String]("preferredGender").description("").optional, queryParam[String]("preferredEducation").description("").optional, queryParam[Int]("preferredEducationIndex").description("").optional, queryParam[String]("preferredBodyType").description("").optional, queryParam[String]("preferredEthnicity").description("").optional, queryParam[String]("preferredLocation").description("").optional, queryParam[Double]("preferredLocationRange").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("acceptedTerms").description("").optional.defaultValue(true), queryParam[String]("charsetName").description("").optional.defaultValue(UTF-8), queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[String]("responseType").description("").optional)
+    parameters(queryParam[String]("deviceId").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("name").description("").optional, queryParam[String]("inviteToken").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("deviceIdType").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("address").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("gender").description("").optional, queryParam[Long]("birthday").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("role").description("").optional.defaultValue(MEMBER), queryParam[String]("platforms").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[String]("gameExperience").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("hometown").description("").optional, queryParam[String]("height").description("").optional, queryParam[Int]("heightIndex").description("").optional, queryParam[String]("ethnicity").description("").optional, queryParam[String]("bodyType").description("").optional, queryParam[String]("maritalStatus").description("").optional, queryParam[String]("children").description("").optional, queryParam[String]("religion").description("").optional, queryParam[String]("education").description("").optional, queryParam[Int]("educationIndex").description("").optional, queryParam[String]("smoke").description("").optional, queryParam[String]("drink").description("").optional, queryParam[String]("companionship").description("").optional, queryParam[Int]("companionshipIndex").description("").optional, queryParam[Int]("preferredMinAge").description("").optional, queryParam[Int]("preferredMaxAge").description("").optional, queryParam[Int]("preferredMinHeight").description("").optional, queryParam[Int]("preferredMaxHeight").description("").optional, queryParam[String]("preferredGender").description("").optional, queryParam[String]("preferredEducation").description("").optional, queryParam[Int]("preferredEducationIndex").description("").optional, queryParam[String]("preferredBodyType").description("").optional, queryParam[String]("preferredEthnicity").description("").optional, queryParam[String]("preferredLocation").description("").optional, queryParam[Double]("preferredLocationRange").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("acceptedTerms").description("").optional.defaultValue(true), queryParam[String]("charsetName").description("").optional.defaultValue(UTF-8), queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[String]("responseType").description("").optional)
   )
 
-  post("/api/:version/account/create/validate", operation(secureSignupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/create/validate", operation(secureSignupOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -1451,12 +1409,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val setMatchTokenOperation = (apiOperation[SirqulResponse]("setMatchToken")
     summary "Save Match Token"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("matchToken").description("").optional, queryParam[String]("gameType").description("").optional.defaultValue(BOOPY), queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("matchToken").description("").optional, queryParam[String]("gameType").description("").optional.defaultValue(BOOPY), queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/profile/matchToken", operation(setMatchTokenOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/profile/matchToken", operation(setMatchTokenOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -1484,12 +1440,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateActveStatusOperation = (apiOperation[SirqulResponse]("updateActveStatus")
     summary "Update Account Active Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[Boolean]("active").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[Boolean]("active").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/account/active/update", operation(updateActveStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/active/update", operation(updateActveStatusOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -1511,12 +1465,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateLocationOperation = (apiOperation[SirqulResponse]("updateLocation")
     summary "Update Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("clientTime").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("clientTime").description("").optional)
   )
 
-  post("/api/:version/account/location/update", operation(updateLocationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/location/update", operation(updateLocationOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -1538,12 +1490,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateSettingsOperation = (apiOperation[UserSettingsResponse]("updateSettings")
     summary "Update Account Settings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("blockedNotifications").description("").optional, queryParam[String]("suggestionMethod").description("").optional, queryParam[Int]("suggestionCount").description("").optional, queryParam[Int]("suggestionTimeFrame").description("").optional, queryParam[Boolean]("showOthersExactLocation").description("").optional, queryParam[Boolean]("showAsZipcode").description("").optional, queryParam[Boolean]("showExactLocation").description("").optional, queryParam[String]("favoriteVisibility").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("blockedNotifications").description("").optional, queryParam[String]("suggestionMethod").description("").optional, queryParam[Int]("suggestionCount").description("").optional, queryParam[Int]("suggestionTimeFrame").description("").optional, queryParam[Boolean]("showOthersExactLocation").description("").optional, queryParam[Boolean]("showAsZipcode").description("").optional, queryParam[Boolean]("showExactLocation").description("").optional, queryParam[String]("favoriteVisibility").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/account/settings/update", operation(updateSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/settings/update", operation(updateSettingsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -1586,12 +1536,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val validateAccountSignupOperation = (apiOperation[AccountLoginResponse]("validateAccountSignup")
     summary "Save Validation Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("token").description(""))
+    parameters(queryParam[String]("token").description(""))
   )
 
-  post("/api/:version/account/validateAccountSignup", operation(validateAccountSignupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/validateAccountSignup", operation(validateAccountSignupOperation)) {
             val token = params.getAs[String]("token")
 
     //println("token: " + token)
@@ -1601,12 +1549,10 @@ class AccountApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val validatePasswordResetOperation = (apiOperation[SirqulResponse]("validatePasswordReset")
     summary "Validate Password Reset Token"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("token").description(""))
+    parameters(queryParam[String]("token").description(""))
   )
 
-  post("/api/:version/account/validatepasswordreset", operation(validatePasswordResetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/account/validatepasswordreset", operation(validatePasswordResetOperation)) {
             val token = params.getAs[String]("token")
 
     //println("token: " + token)

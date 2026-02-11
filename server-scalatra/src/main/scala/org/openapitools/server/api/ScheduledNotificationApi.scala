@@ -42,12 +42,10 @@ class ScheduledNotificationApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val createScheduledNotificationOperation = (apiOperation[ScheduledNotificationFullResponse]("createScheduledNotification")
     summary "Create Scheduled Notification"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("`type`").description(""), queryParam[String]("message").description(""), queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[Long]("reportId").description("").optional, queryParam[String]("reportParams").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("cronType").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("templateType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("sendNow").description("").optional, queryParam[String]("eventType").description("").optional.defaultValue(CUSTOM), queryParam[String]("deepLinkURI").description("").optional, queryParam[Boolean]("sendToAll").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("`type`").description(""), queryParam[String]("message").description(""), queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[Long]("reportId").description("").optional, queryParam[String]("reportParams").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("cronType").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("templateType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("sendNow").description("").optional, queryParam[String]("eventType").description("").optional.defaultValue(CUSTOM), queryParam[String]("deepLinkURI").description("").optional, queryParam[Boolean]("sendToAll").description("").optional)
   )
 
-  post("/api/:version/notification/schedule/create", operation(createScheduledNotificationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/schedule/create", operation(createScheduledNotificationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -156,12 +154,10 @@ class ScheduledNotificationApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val deleteScheduledNotificationOperation = (apiOperation[ScheduledNotificationFullResponse]("deleteScheduledNotification")
     summary "Delete Scheduled Notification"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("scheduledNotificationId").description(""), queryParam[Boolean]("deleteByGroupingId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("scheduledNotificationId").description(""), queryParam[Boolean]("deleteByGroupingId").description("").optional)
   )
 
-  post("/api/:version/notification/schedule/delete", operation(deleteScheduledNotificationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/schedule/delete", operation(deleteScheduledNotificationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -177,12 +173,10 @@ class ScheduledNotificationApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val getScheduledNotificationOperation = (apiOperation[ScheduledNotificationFullResponse]("getScheduledNotification")
     summary "Get Scheduled Notification"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("scheduledNotificationId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("scheduledNotificationId").description(""))
   )
 
-  get("/api/:version/notification/schedule/get", operation(getScheduledNotificationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/schedule/get", operation(getScheduledNotificationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -195,12 +189,10 @@ class ScheduledNotificationApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val scheduleNotificationListingsOperation = (apiOperation[SirqulResponse]("scheduleNotificationListings")
     summary "Generate Schedule Notifications"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("reportName").description(""), queryParam[String]("message").description(""), queryParam[Int]("offset").description(""), queryParam[Long]("recipientReportId").description(""), queryParam[String]("reportParams").description("").optional, queryParam[String]("`type`").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("reportName").description(""), queryParam[String]("message").description(""), queryParam[Int]("offset").description(""), queryParam[Long]("recipientReportId").description(""), queryParam[String]("reportParams").description("").optional, queryParam[String]("`type`").description("").optional)
   )
 
-  post("/api/:version/notification/schedule/generate", operation(scheduleNotificationListingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/schedule/generate", operation(scheduleNotificationListingsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -231,12 +223,10 @@ class ScheduledNotificationApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val searchScheduledNotificationsOperation = (apiOperation[ScheduledNotificationFullResponse]("searchScheduledNotifications")
     summary "Search Scheduled Notifications"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("groupingId").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("filter").description("").optional, queryParam[String]("types").description("").optional, queryParam[String]("contentIds").description("").optional, queryParam[String]("contentTypes").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("parentTypes").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("templateTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("groupByGroupingId").description("").optional, queryParam[Boolean]("returnAudienceAccountCount").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("groupingId").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("filter").description("").optional, queryParam[String]("types").description("").optional, queryParam[String]("contentIds").description("").optional, queryParam[String]("contentTypes").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("parentTypes").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("templateTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("groupByGroupingId").description("").optional, queryParam[Boolean]("returnAudienceAccountCount").description("").optional)
   )
 
-  get("/api/:version/notification/schedule/search", operation(searchScheduledNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/schedule/search", operation(searchScheduledNotificationsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -303,12 +293,10 @@ class ScheduledNotificationApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val updateScheduledNotificationOperation = (apiOperation[ScheduledNotificationFullResponse]("updateScheduledNotification")
     summary "Update Scheduled Notification"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("scheduledNotificationId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[String]("message").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[Long]("reportId").description("").optional, queryParam[String]("reportParams").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("cronType").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("templateType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("errorMessage").description("").optional, queryParam[String]("status").description("").optional, queryParam[Boolean]("updateByGroupingId").description("").optional, queryParam[Boolean]("sendNow").description("").optional, queryParam[String]("eventType").description("").optional.defaultValue(CUSTOM), queryParam[String]("deepLinkURI").description("").optional, queryParam[Boolean]("sendToAll").description("").optional)
+    parameters(queryParam[Long]("scheduledNotificationId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[String]("message").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[Long]("reportId").description("").optional, queryParam[String]("reportParams").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("cronType").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("templateType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("errorMessage").description("").optional, queryParam[String]("status").description("").optional, queryParam[Boolean]("updateByGroupingId").description("").optional, queryParam[Boolean]("sendNow").description("").optional, queryParam[String]("eventType").description("").optional.defaultValue(CUSTOM), queryParam[String]("deepLinkURI").description("").optional, queryParam[Boolean]("sendToAll").description("").optional)
   )
 
-  post("/api/:version/notification/schedule/update", operation(updateScheduledNotificationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/schedule/update", operation(updateScheduledNotificationOperation)) {
             val scheduledNotificationId = params.getAs[Long]("scheduledNotificationId")
 
     //println("scheduledNotificationId: " + scheduledNotificationId)

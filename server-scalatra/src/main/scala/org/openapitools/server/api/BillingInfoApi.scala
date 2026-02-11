@@ -41,12 +41,10 @@ class BillingInfoApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addPaymentMethodOperation = (apiOperation[PaymentTypesResponse]("addPaymentMethod")
     summary "Update Payment Method"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("accountName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("address").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("phone").description("").optional, queryParam[String]("creditCardNumber").description("").optional, queryParam[String]("expirationDate").description("").optional, queryParam[String]("ccv").description("").optional, queryParam[String]("accountNumber").description("").optional, queryParam[String]("bankName").description("").optional, queryParam[String]("routingNumber").description("").optional, queryParam[Boolean]("defaultPaymentMethod").description("").optional, queryParam[String]("paymentMethodNickname").description("").optional, queryParam[String]("taxId").description("").optional, queryParam[String]("providerCustomerProfileId").description("").optional, queryParam[String]("providerPaymentProfileId").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("accountName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("address").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("phone").description("").optional, queryParam[String]("creditCardNumber").description("").optional, queryParam[String]("expirationDate").description("").optional, queryParam[String]("ccv").description("").optional, queryParam[String]("accountNumber").description("").optional, queryParam[String]("bankName").description("").optional, queryParam[String]("routingNumber").description("").optional, queryParam[Boolean]("defaultPaymentMethod").description("").optional, queryParam[String]("paymentMethodNickname").description("").optional, queryParam[String]("taxId").description("").optional, queryParam[String]("providerCustomerProfileId").description("").optional, queryParam[String]("providerPaymentProfileId").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/billing/update", operation(addPaymentMethodOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/billing/update", operation(addPaymentMethodOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -122,12 +120,10 @@ class BillingInfoApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createPaymentMethodOperation = (apiOperation[PaymentTypesResponse]("createPaymentMethod")
     summary "Create Payment Method"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("accountName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("address").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("phone").description("").optional, queryParam[String]("creditCardNumber").description("").optional, queryParam[String]("expirationDate").description("").optional, queryParam[String]("ccv").description("").optional, queryParam[String]("accountNumber").description("").optional, queryParam[String]("bankName").description("").optional, queryParam[String]("routingNumber").description("").optional, queryParam[String]("paymentMethodNickname").description("").optional, queryParam[String]("taxId").description("").optional, queryParam[Boolean]("defaultPaymentMethod").description("").optional.defaultValue(true), queryParam[String]("authToken").description("").optional, queryParam[String]("provider").description("").optional.defaultValue(AUTHORIZE_NET), queryParam[String]("providerCustomerProfileId").description("").optional, queryParam[String]("providerPaymentProfileId").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("accountName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("address").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("phone").description("").optional, queryParam[String]("creditCardNumber").description("").optional, queryParam[String]("expirationDate").description("").optional, queryParam[String]("ccv").description("").optional, queryParam[String]("accountNumber").description("").optional, queryParam[String]("bankName").description("").optional, queryParam[String]("routingNumber").description("").optional, queryParam[String]("paymentMethodNickname").description("").optional, queryParam[String]("taxId").description("").optional, queryParam[Boolean]("defaultPaymentMethod").description("").optional.defaultValue(true), queryParam[String]("authToken").description("").optional, queryParam[String]("provider").description("").optional.defaultValue(AUTHORIZE_NET), queryParam[String]("providerCustomerProfileId").description("").optional, queryParam[String]("providerPaymentProfileId").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/billing/create", operation(createPaymentMethodOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/billing/create", operation(createPaymentMethodOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -209,12 +205,10 @@ class BillingInfoApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createSmartContractOperation = (apiOperation[PaymentTypesResponse]("createSmartContract")
     summary "Create Smart Contract"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("tokenName").description(""), queryParam[String]("tokenSymbol").description(""), queryParam[Long]("paymentMethodId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("tokenName").description(""), queryParam[String]("tokenSymbol").description(""), queryParam[Long]("paymentMethodId").description("").optional)
   )
 
-  post("/api/:version/billing/crypto/transfer", operation(createSmartContractOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/billing/crypto/transfer", operation(createSmartContractOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -233,12 +227,10 @@ class BillingInfoApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCryptoBalanceOperation = (apiOperation[PaymentTypesResponse]("getCryptoBalance")
     summary "Get Crypto Balances"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("ownerAccountId").description("").optional, queryParam[Long]("paymentMethodId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("ownerAccountId").description("").optional, queryParam[Long]("paymentMethodId").description("").optional)
   )
 
-  get("/api/:version/billing/crypto/get", operation(getCryptoBalanceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/billing/crypto/get", operation(getCryptoBalanceOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -254,12 +246,10 @@ class BillingInfoApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPaymentMethodOperation = (apiOperation[PaymentTypesResponse]("getPaymentMethod")
     summary "Get Payment Method"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("paymentMethodId").description("").optional, queryParam[Boolean]("getCurrentBalance").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("paymentMethodId").description("").optional, queryParam[Boolean]("getCurrentBalance").description("").optional)
   )
 
-  get("/api/:version/billing/get", operation(getPaymentMethodOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/billing/get", operation(getPaymentMethodOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -275,12 +265,10 @@ class BillingInfoApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchPaymentMethodOperation = (apiOperation[PaymentTypesResponse]("searchPaymentMethod")
     summary "Search Payment Methods"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("provider").description("").optional.defaultValue(AUTHORIZE_NET), queryParam[String]("`type`").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(UPDATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(5))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("provider").description("").optional.defaultValue(AUTHORIZE_NET), queryParam[String]("`type`").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(UPDATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(5))
   )
 
-  get("/api/:version/billing/search", operation(searchPaymentMethodOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/billing/search", operation(searchPaymentMethodOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

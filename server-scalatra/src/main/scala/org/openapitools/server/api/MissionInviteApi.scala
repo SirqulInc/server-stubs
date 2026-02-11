@@ -42,12 +42,10 @@ class MissionInviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createMissionInviteOperation = (apiOperation[MissionResponse]("createMissionInvite")
     summary "Create Mission Invite"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[String]("joinCode").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[String]("joinCode").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  post("/api/:version/mission/invite/create", operation(createMissionInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/invite/create", operation(createMissionInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -69,12 +67,10 @@ class MissionInviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteMissionInviteOperation = (apiOperation[SirqulResponse]("deleteMissionInvite")
     summary "Delete Mission Invite"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("missionInviteId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("missionInviteId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  post("/api/:version/mission/invite/delete", operation(deleteMissionInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/invite/delete", operation(deleteMissionInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -96,12 +92,10 @@ class MissionInviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getMissionInviteOperation = (apiOperation[MissionResponse]("getMissionInvite")
     summary "Get Mission Invite"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("missionInviteId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("includeScores").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("missionInviteId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("includeScores").description("").optional)
   )
 
-  get("/api/:version/mission/invite/get", operation(getMissionInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/invite/get", operation(getMissionInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -126,12 +120,10 @@ class MissionInviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchMissionInvitesOperation = (apiOperation[List[MissionResponse]]("searchMissionInvites")
     summary "Search Mission Invites"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[String]("status").description("").optional, queryParam[Long]("lastUpdated").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("missionTypes").description("").optional, queryParam[Boolean]("filterByBillable").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[String]("status").description("").optional, queryParam[Long]("lastUpdated").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("missionTypes").description("").optional, queryParam[Boolean]("filterByBillable").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  get("/api/:version/mission/invite/search", operation(searchMissionInvitesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/mission/invite/search", operation(searchMissionInvitesOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -177,12 +169,10 @@ class MissionInviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateMissionInviteOperation = (apiOperation[MissionResponse]("updateMissionInvite")
     summary "Update Mission Invite"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("missionInviteId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[String]("status").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("missionInviteId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[String]("status").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  post("/api/:version/mission/invite/update", operation(updateMissionInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/mission/invite/update", operation(updateMissionInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)

@@ -42,12 +42,10 @@ class UserPermissionsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addUsersToPermissionableOperation = (apiOperation[SirqulResponse]("addUsersToPermissionable")
     summary "Add User"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("read").description("").optional.defaultValue(true), queryParam[Boolean]("write").description("").optional.defaultValue(false), queryParam[Boolean]("delete").description("").optional.defaultValue(false), queryParam[Boolean]("add").description("").optional.defaultValue(false), queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Boolean]("pending").description("").optional.defaultValue(false), queryParam[Boolean]("admin").description("").optional, queryParam[Boolean]("includeFriendGroup").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("audienceIds").description("").optional)
+    parameters(queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("read").description("").optional.defaultValue(true), queryParam[Boolean]("write").description("").optional.defaultValue(false), queryParam[Boolean]("delete").description("").optional.defaultValue(false), queryParam[Boolean]("add").description("").optional.defaultValue(false), queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Boolean]("pending").description("").optional.defaultValue(false), queryParam[Boolean]("admin").description("").optional, queryParam[Boolean]("includeFriendGroup").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("audienceIds").description("").optional)
   )
 
-  post("/api/:version/consumer/permissions/add", operation(addUsersToPermissionableOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/permissions/add", operation(addUsersToPermissionableOperation)) {
             val permissionableType = params.getAs[String]("permissionableType")
 
     //println("permissionableType: " + permissionableType)
@@ -105,12 +103,10 @@ class UserPermissionsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val approvePermissionableOperation = (apiOperation[SirqulResponse]("approvePermissionable")
     summary "Approve Permissionable"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("approvalStatus").description("").optional.defaultValue(APPROVED))
+    parameters(queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("approvalStatus").description("").optional.defaultValue(APPROVED))
   )
 
-  post("/api/:version/permissionable/approve", operation(approvePermissionableOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/permissionable/approve", operation(approvePermissionableOperation)) {
             val permissionableType = params.getAs[String]("permissionableType")
 
     //println("permissionableType: " + permissionableType)
@@ -132,12 +128,10 @@ class UserPermissionsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val leaveFromPermissionableOperation = (apiOperation[SirqulResponse]("leaveFromPermissionable")
     summary "Leave"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/permissions/leave", operation(leaveFromPermissionableOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/permissions/leave", operation(leaveFromPermissionableOperation)) {
             val permissionableType = params.getAs[String]("permissionableType")
 
     //println("permissionableType: " + permissionableType)
@@ -162,12 +156,10 @@ class UserPermissionsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeUsersFromPermissionableOperation = (apiOperation[SirqulResponse]("removeUsersFromPermissionable")
     summary "Remove User"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Boolean]("removeFriendGroup").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("audienceIds").description("").optional)
+    parameters(queryParam[String]("permissionableType").description(""), queryParam[Long]("permissionableId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Boolean]("removeFriendGroup").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("audienceIds").description("").optional)
   )
 
-  post("/api/:version/consumer/permissions/remove", operation(removeUsersFromPermissionableOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/permissions/remove", operation(removeUsersFromPermissionableOperation)) {
             val permissionableType = params.getAs[String]("permissionableType")
 
     //println("permissionableType: " + permissionableType)
@@ -207,12 +199,10 @@ class UserPermissionsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchPermissionablesOperation = (apiOperation[List[UserPermissionsResponse]]("searchPermissionables")
     summary "Search Permissionables"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("pending").description("").optional, queryParam[Boolean]("admin").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("pending").description("").optional, queryParam[Boolean]("admin").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/permissions/search", operation(searchPermissionablesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/permissions/search", operation(searchPermissionablesOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -258,12 +248,10 @@ class UserPermissionsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchPermissionablesFollowingDistanceOperation = (apiOperation[List[UserPermissionsResponse]]("searchPermissionablesFollowingDistance")
     summary "Search Permissionables by Distnace"
-    parameters(pathParam[Double]("version").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("pending").description("").optional, queryParam[Boolean]("admin").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("pending").description("").optional, queryParam[Boolean]("admin").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/permissions/distancesearch", operation(searchPermissionablesFollowingDistanceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/permissions/distancesearch", operation(searchPermissionablesFollowingDistanceOperation)) {
             val latitude = params.getAs[Double]("latitude")
 
     //println("latitude: " + latitude)

@@ -42,12 +42,10 @@ class ParticipantsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val processAllParticipantsOperation = (apiOperation[SirqulResponse]("processAllParticipants")
     summary "Process All Participant Feeds"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Boolean]("useShortNameAsID").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Boolean]("useShortNameAsID").description("").optional)
   )
 
-  post("/api/:version/participant/process/all", operation(processAllParticipantsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/participant/process/all", operation(processAllParticipantsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -63,12 +61,10 @@ class ParticipantsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val processParticipantsOperation = (apiOperation[SirqulResponse]("processParticipants")
     summary "Process Participants Feed"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("league").description(""), queryParam[String]("appKey").description("").optional, queryParam[Boolean]("useShortNameAsID").description("").optional, queryParam[File]("file").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("league").description(""), queryParam[String]("appKey").description("").optional, queryParam[Boolean]("useShortNameAsID").description("").optional, queryParam[File]("file").description("").optional)
   )
 
-  post("/api/:version/participant/process", operation(processParticipantsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/participant/process", operation(processParticipantsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

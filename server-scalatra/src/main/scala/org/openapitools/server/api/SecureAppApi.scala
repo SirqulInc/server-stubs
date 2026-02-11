@@ -44,12 +44,10 @@ class SecureAppApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createSecureApplicationOperation = (apiOperation[SirqulResponse]("createSecureApplication")
     summary "Create Secure Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[File]("keyCert").description(""), queryParam[File]("trustStore").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[Boolean]("active").description("").optional.defaultValue(true), queryParam[String]("biometricType").description("").optional.defaultValue(FACIAL), queryParam[String]("biometricPosition").description("").optional.defaultValue(UNKNOWN), queryParam[String]("biometricPosition2").description("").optional.defaultValue(UNKNOWN))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[File]("keyCert").description(""), queryParam[File]("trustStore").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[Boolean]("active").description("").optional.defaultValue(true), queryParam[String]("biometricType").description("").optional.defaultValue(FACIAL), queryParam[String]("biometricPosition").description("").optional.defaultValue(UNKNOWN), queryParam[String]("biometricPosition2").description("").optional.defaultValue(UNKNOWN))
   )
 
-  post("/api/:version/secure/application/create", operation(createSecureApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/secure/application/create", operation(createSecureApplicationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -84,12 +82,10 @@ class SecureAppApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteSecureApplicationOperation = (apiOperation[SirqulResponse]("deleteSecureApplication")
     summary "Delete Secure Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/secure/application/delete", operation(deleteSecureApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/secure/application/delete", operation(deleteSecureApplicationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -102,12 +98,10 @@ class SecureAppApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val loginSecureOperation = (apiOperation[ProfileResponse]("loginSecure")
     summary "Login Clear"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[File]("biometricFile").description(""), queryParam[String]("deviceId").description("").optional, queryParam[File]("biometricFile2").description("").optional, queryParam[Int]("ageRestriction").description("").optional.defaultValue(0), queryParam[Boolean]("returnProfile").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[File]("biometricFile").description(""), queryParam[String]("deviceId").description("").optional, queryParam[File]("biometricFile2").description("").optional, queryParam[Int]("ageRestriction").description("").optional.defaultValue(0), queryParam[Boolean]("returnProfile").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional.defaultValue(PROFILE), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/secure/login", operation(loginSecureOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/secure/login", operation(loginSecureOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -139,12 +133,10 @@ class SecureAppApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val purchaseSecureOperation = (apiOperation[ProfileResponse]("purchaseSecure")
     summary "Purchase Clear"
-    parameters(pathParam[Double]("version").description(""), bodyParam[PaymentRequest]("body").description(""))
+    parameters(bodyParam[PaymentRequest]("body").description(""))
   )
 
-  post("/api/:version/secure/purchase", operation(purchaseSecureOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/secure/purchase", operation(purchaseSecureOperation)) {
     //println("body: " + body)
   }
 
@@ -152,12 +144,10 @@ class SecureAppApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val resetSecureOperation = (apiOperation[SirqulResponse]("resetSecure")
     summary "Rest Secure Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/secure/application/reset", operation(resetSecureOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/secure/application/reset", operation(resetSecureOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -170,12 +160,10 @@ class SecureAppApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateSecureApplicationOperation = (apiOperation[SirqulResponse]("updateSecureApplication")
     summary "Update Secure Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("active").description("").optional, queryParam[File]("keyCert").description("").optional, queryParam[File]("trustStore").description("").optional, queryParam[String]("username").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("biometricType").description("").optional, queryParam[String]("biometricPosition").description("").optional, queryParam[String]("biometricPosition2").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("active").description("").optional, queryParam[File]("keyCert").description("").optional, queryParam[File]("trustStore").description("").optional, queryParam[String]("username").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("biometricType").description("").optional, queryParam[String]("biometricPosition").description("").optional, queryParam[String]("biometricPosition2").description("").optional)
   )
 
-  post("/api/:version/secure/application/update", operation(updateSecureApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/secure/application/update", operation(updateSecureApplicationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

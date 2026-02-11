@@ -42,12 +42,10 @@ class LocationApiV2Api(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createLocationV2Operation = (apiOperation[SirqulResponse]("createLocationV2")
     summary "Create new location"
-    parameters(pathParam[Double]("version").description(""), bodyParam[Location]("body").description("").optional)
+    parameters(bodyParam[Location]("body").description("").optional)
   )
 
-  post("/api/:version/location", operation(createLocationV2Operation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/location", operation(createLocationV2Operation)) {
     //println("body: " + body)
   }
 
@@ -55,12 +53,10 @@ class LocationApiV2Api(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateLocationV2Operation = (apiOperation[SirqulResponse]("updateLocationV2")
     summary "Update an existing location"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Location]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Location]("body").description("").optional)
   )
 
-  post("/api/:version/location/:id", operation(updateLocationV2Operation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/location/:id", operation(updateLocationV2Operation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)

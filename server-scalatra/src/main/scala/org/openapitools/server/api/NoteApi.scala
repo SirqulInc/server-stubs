@@ -43,12 +43,10 @@ class NoteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val batchOperationOperation = (apiOperation[SirqulResponse]("batchOperation")
     summary "Batch Note Operation"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("notableId").description(""), queryParam[String]("notableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("batchOperation").description("").optional)
+    parameters(queryParam[Long]("notableId").description(""), queryParam[String]("notableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("batchOperation").description("").optional)
   )
 
-  post("/api/:version/note/batch", operation(batchOperationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/note/batch", operation(batchOperationOperation)) {
             val notableId = params.getAs[Long]("notableId")
 
     //println("notableId: " + notableId)
@@ -70,12 +68,10 @@ class NoteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createNoteOperation = (apiOperation[NoteResponse]("createNote")
     summary "Create Note"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("comment").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("notableType").description("").optional, queryParam[Long]("notableId").description("").optional, queryParam[String]("noteType").description("").optional, queryParam[String]("assetIds").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("receiverAccountIds").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional, queryParam[Boolean]("initializeAsset").description("").optional, queryParam[Boolean]("assetReturnNulls").description("").optional, queryParam[Long]("assetAlbumId").description("").optional, queryParam[Long]("assetCollectionId").description("").optional, queryParam[String]("assetAddToDefaultAlbum").description("").optional, queryParam[Boolean]("assetAddToMediaLibrary").description("").optional, queryParam[Int]("assetVersionCode").description("").optional, queryParam[String]("assetVersionName").description("").optional, queryParam[String]("assetMetaData").description("").optional, queryParam[String]("assetCaption").description("").optional, queryParam[File]("assetMedia").description("").optional, queryParam[String]("assetMediaUrl").description("").optional, queryParam[String]("assetMediaString").description("").optional, queryParam[String]("assetMediaStringFileName").description("").optional, queryParam[String]("assetMediaStringContentType").description("").optional, queryParam[File]("assetAttachedMedia").description("").optional, queryParam[String]("assetAttachedMediaUrl").description("").optional, queryParam[String]("assetAttachedMediaString").description("").optional, queryParam[String]("assetAttachedMediaStringFileName").description("").optional, queryParam[String]("assetAttachedMediaStringContentType").description("").optional, queryParam[String]("assetLocationDescription").description("").optional, queryParam[String]("assetApp").description("").optional, queryParam[String]("assetSearchTags").description("").optional, queryParam[Double]("assetLatitude").description("").optional, queryParam[Double]("assetLongitude").description("").optional)
+    parameters(queryParam[String]("comment").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("notableType").description("").optional, queryParam[Long]("notableId").description("").optional, queryParam[String]("noteType").description("").optional, queryParam[String]("assetIds").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("receiverAccountIds").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional, queryParam[Boolean]("initializeAsset").description("").optional, queryParam[Boolean]("assetReturnNulls").description("").optional, queryParam[Long]("assetAlbumId").description("").optional, queryParam[Long]("assetCollectionId").description("").optional, queryParam[String]("assetAddToDefaultAlbum").description("").optional, queryParam[Boolean]("assetAddToMediaLibrary").description("").optional, queryParam[Int]("assetVersionCode").description("").optional, queryParam[String]("assetVersionName").description("").optional, queryParam[String]("assetMetaData").description("").optional, queryParam[String]("assetCaption").description("").optional, queryParam[File]("assetMedia").description("").optional, queryParam[String]("assetMediaUrl").description("").optional, queryParam[String]("assetMediaString").description("").optional, queryParam[String]("assetMediaStringFileName").description("").optional, queryParam[String]("assetMediaStringContentType").description("").optional, queryParam[File]("assetAttachedMedia").description("").optional, queryParam[String]("assetAttachedMediaUrl").description("").optional, queryParam[String]("assetAttachedMediaString").description("").optional, queryParam[String]("assetAttachedMediaStringFileName").description("").optional, queryParam[String]("assetAttachedMediaStringContentType").description("").optional, queryParam[String]("assetLocationDescription").description("").optional, queryParam[String]("assetApp").description("").optional, queryParam[String]("assetSearchTags").description("").optional, queryParam[Double]("assetLatitude").description("").optional, queryParam[Double]("assetLongitude").description("").optional)
   )
 
-  post("/api/:version/note/create", operation(createNoteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/note/create", operation(createNoteOperation)) {
             val comment = params.getAs[String]("comment")
 
     //println("comment: " + comment)
@@ -206,12 +202,10 @@ class NoteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteNoteOperation = (apiOperation[SirqulResponse]("deleteNote")
     summary "Delete Note"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("noteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("noteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/note/delete", operation(deleteNoteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/note/delete", operation(deleteNoteOperation)) {
             val noteId = params.getAs[Long]("noteId")
 
     //println("noteId: " + noteId)
@@ -236,12 +230,10 @@ class NoteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getNoteOperation = (apiOperation[SirqulResponse]("getNote")
     summary "Get Note"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("noteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional)
+    parameters(queryParam[Long]("noteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional)
   )
 
-  post("/api/:version/note/get", operation(getNoteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/note/get", operation(getNoteOperation)) {
             val noteId = params.getAs[Long]("noteId")
 
     //println("noteId: " + noteId)
@@ -260,12 +252,10 @@ class NoteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchNotesOperation = (apiOperation[List[NoteResponse]]("searchNotes")
     summary "Search Notes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("notableType").description("").optional, queryParam[Long]("notableId").description("").optional, queryParam[String]("noteTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("flagCountMinimum").description("").optional, queryParam[Boolean]("flagsExceedThreshold").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional, queryParam[Long]("updatedSince").description("").optional, queryParam[Long]("updatedBefore").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("notableType").description("").optional, queryParam[Long]("notableId").description("").optional, queryParam[String]("noteTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("flagCountMinimum").description("").optional, queryParam[Boolean]("flagsExceedThreshold").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional, queryParam[Long]("updatedSince").description("").optional, queryParam[Long]("updatedBefore").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  post("/api/:version/note/search", operation(searchNotesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/note/search", operation(searchNotesOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -323,12 +313,10 @@ class NoteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateNoteOperation = (apiOperation[NoteResponse]("updateNote")
     summary "Update Note"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("noteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("comment").description("").optional, queryParam[String]("noteType").description("").optional, queryParam[String]("assetIds").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("updateAsset").description("").optional, queryParam[Boolean]("assetReturnNulls").description("").optional, queryParam[Long]("assetAlbumId").description("").optional, queryParam[Long]("assetCollectionId").description("").optional, queryParam[String]("assetAddToDefaultAlbum").description("").optional, queryParam[Boolean]("assetAddToMediaLibrary").description("").optional, queryParam[Int]("assetVersionCode").description("").optional, queryParam[String]("assetVersionName").description("").optional, queryParam[String]("assetMetaData").description("").optional, queryParam[String]("assetCaption").description("").optional, queryParam[File]("assetMedia").description("").optional, queryParam[String]("assetMediaUrl").description("").optional, queryParam[String]("assetMediaString").description("").optional, queryParam[String]("assetMediaStringFileName").description("").optional, queryParam[String]("assetMediaStringContentType").description("").optional, queryParam[File]("assetAttachedMedia").description("").optional, queryParam[String]("assetAttachedMediaUrl").description("").optional, queryParam[String]("assetAttachedMediaString").description("").optional, queryParam[String]("assetAttachedMediaStringFileName").description("").optional, queryParam[String]("assetAttachedMediaStringContentType").description("").optional, queryParam[String]("assetLocationDescription").description("").optional, queryParam[String]("assetApp").description("").optional, queryParam[String]("assetSearchTags").description("").optional, queryParam[Double]("assetLatitude").description("").optional, queryParam[Double]("assetLongitude").description("").optional)
+    parameters(queryParam[Long]("noteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("comment").description("").optional, queryParam[String]("noteType").description("").optional, queryParam[String]("assetIds").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("updateAsset").description("").optional, queryParam[Boolean]("assetReturnNulls").description("").optional, queryParam[Long]("assetAlbumId").description("").optional, queryParam[Long]("assetCollectionId").description("").optional, queryParam[String]("assetAddToDefaultAlbum").description("").optional, queryParam[Boolean]("assetAddToMediaLibrary").description("").optional, queryParam[Int]("assetVersionCode").description("").optional, queryParam[String]("assetVersionName").description("").optional, queryParam[String]("assetMetaData").description("").optional, queryParam[String]("assetCaption").description("").optional, queryParam[File]("assetMedia").description("").optional, queryParam[String]("assetMediaUrl").description("").optional, queryParam[String]("assetMediaString").description("").optional, queryParam[String]("assetMediaStringFileName").description("").optional, queryParam[String]("assetMediaStringContentType").description("").optional, queryParam[File]("assetAttachedMedia").description("").optional, queryParam[String]("assetAttachedMediaUrl").description("").optional, queryParam[String]("assetAttachedMediaString").description("").optional, queryParam[String]("assetAttachedMediaStringFileName").description("").optional, queryParam[String]("assetAttachedMediaStringContentType").description("").optional, queryParam[String]("assetLocationDescription").description("").optional, queryParam[String]("assetApp").description("").optional, queryParam[String]("assetSearchTags").description("").optional, queryParam[Double]("assetLatitude").description("").optional, queryParam[Double]("assetLongitude").description("").optional)
   )
 
-  post("/api/:version/note/update", operation(updateNoteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/note/update", operation(updateNoteOperation)) {
             val noteId = params.getAs[Long]("noteId")
 
     //println("noteId: " + noteId)

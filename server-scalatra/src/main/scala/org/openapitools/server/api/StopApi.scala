@@ -41,12 +41,10 @@ class StopApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getStopOperation = (apiOperation[Stop]("getStop")
     summary "Get Stop"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  get("/api/:version/stop/:id", operation(getStopOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/stop/:id", operation(getStopOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -55,12 +53,10 @@ class StopApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateStopOperation = (apiOperation[Stop]("updateStop")
     summary "Update Stop"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Stop]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Stop]("body").description("").optional)
   )
 
-  put("/api/:version/stop/:id", operation(updateStopOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/stop/:id", operation(updateStopOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)

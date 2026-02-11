@@ -42,12 +42,10 @@ class WordApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createWordOperation = (apiOperation[WordzWordResponse]("createWord")
     summary "Create Word"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("word").description(""), queryParam[String]("definition").description(""), queryParam[Boolean]("active").description("").defaultValue(false), queryParam[Boolean]("allocateTickets").description("").defaultValue(false), queryParam[Long]("ticketCount").description("").defaultValue(0), queryParam[Long]("assetId").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("word").description(""), queryParam[String]("definition").description(""), queryParam[Boolean]("active").description("").defaultValue(false), queryParam[Boolean]("allocateTickets").description("").defaultValue(false), queryParam[Long]("ticketCount").description("").defaultValue(0), queryParam[Long]("assetId").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
   )
 
-  post("/api/:version/game/word/create", operation(createWordOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/word/create", operation(createWordOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -81,12 +79,10 @@ class WordApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteWordOperation = (apiOperation[SirqulResponse]("deleteWord")
     summary "Delete Word"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("wordId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("wordId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  delete("/api/:version/game/word/delete", operation(deleteWordOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/game/word/delete", operation(deleteWordOperation)) {
             val wordId = params.getAs[Long]("wordId")
 
     //println("wordId: " + wordId)
@@ -99,12 +95,10 @@ class WordApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getWordOperation = (apiOperation[WordzWordResponse]("getWord")
     summary "Get Word"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("wordId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("wordId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/game/word/get", operation(getWordOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/game/word/get", operation(getWordOperation)) {
             val wordId = params.getAs[Long]("wordId")
 
     //println("wordId: " + wordId)
@@ -117,12 +111,10 @@ class WordApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getWordsOperation = (apiOperation[List[WordzWordResponse]]("getWords")
     summary "Search Words"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description("").defaultValue(id), queryParam[Boolean]("descending").description("").defaultValue(false), queryParam[Boolean]("activeOnly").description("").defaultValue(false), queryParam[Int]("start").description("").defaultValue(0), queryParam[Int]("limit").description("").defaultValue(20), queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description("").defaultValue(id), queryParam[Boolean]("descending").description("").defaultValue(false), queryParam[Boolean]("activeOnly").description("").defaultValue(false), queryParam[Int]("start").description("").defaultValue(0), queryParam[Int]("limit").description("").defaultValue(20), queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/game/word/search", operation(getWordsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/game/word/search", operation(getWordsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -150,12 +142,10 @@ class WordApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateWordOperation = (apiOperation[WordzWordResponse]("updateWord")
     summary "Update Word"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("wordId").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("ticketCount").description("").defaultValue(0), queryParam[String]("wordText").description("").optional, queryParam[String]("definition").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
+    parameters(queryParam[Long]("wordId").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("ticketCount").description("").defaultValue(0), queryParam[String]("wordText").description("").optional, queryParam[String]("definition").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
   )
 
-  post("/api/:version/game/word/update", operation(updateWordOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/word/update", operation(updateWordOperation)) {
             val wordId = params.getAs[Long]("wordId")
 
     //println("wordId: " + wordId)

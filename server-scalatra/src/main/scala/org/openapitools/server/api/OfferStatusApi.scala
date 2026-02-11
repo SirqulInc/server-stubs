@@ -42,12 +42,10 @@ class OfferStatusApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOfferTransactionStatusOperation = (apiOperation[OfferTransactionStatusResponse]("createOfferTransactionStatus")
     summary "Create Offer Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("name").description(""), queryParam[Int]("code").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("role").description("").optional.defaultValue(ANY), queryParam[Boolean]("active").description("").optional.defaultValue(true), queryParam[String]("applicationIds").description("").optional)
+    parameters(queryParam[String]("name").description(""), queryParam[Int]("code").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("role").description("").optional.defaultValue(ANY), queryParam[Boolean]("active").description("").optional.defaultValue(true), queryParam[String]("applicationIds").description("").optional)
   )
 
-  post("/api/:version/offer/status/create", operation(createOfferTransactionStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/offer/status/create", operation(createOfferTransactionStatusOperation)) {
             val name = params.getAs[String]("name")
 
     //println("name: " + name)
@@ -84,12 +82,10 @@ class OfferStatusApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteOfferTransactionStatusOperation = (apiOperation[SirqulResponse]("deleteOfferTransactionStatus")
     summary "Delete Offer Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("statusId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("statusId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/offer/status/delete", operation(deleteOfferTransactionStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/offer/status/delete", operation(deleteOfferTransactionStatusOperation)) {
             val statusId = params.getAs[Long]("statusId")
 
     //println("statusId: " + statusId)
@@ -111,12 +107,10 @@ class OfferStatusApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferTransactionStatusOperation = (apiOperation[OfferTransactionStatusResponse]("getOfferTransactionStatus")
     summary "Get Offer Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("statusId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("statusId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/offer/status/get", operation(getOfferTransactionStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/status/get", operation(getOfferTransactionStatusOperation)) {
             val statusId = params.getAs[Long]("statusId")
 
     //println("statusId: " + statusId)
@@ -138,12 +132,10 @@ class OfferStatusApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchOfferTransactionStatusesOperation = (apiOperation[List[OfferTransactionStatusResponse]]("searchOfferTransactionStatuses")
     summary "Search Offer Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("role").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CODE), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("includeInactive").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("role").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CODE), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("includeInactive").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/offer/status/search", operation(searchOfferTransactionStatusesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/status/search", operation(searchOfferTransactionStatusesOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -186,12 +178,10 @@ class OfferStatusApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateOfferTransactionStatusOperation = (apiOperation[OfferTransactionStatusResponse]("updateOfferTransactionStatus")
     summary "Update Offer Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("statusId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("code").description("").optional, queryParam[String]("role").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("applicationIds").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("statusId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("code").description("").optional, queryParam[String]("role").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("applicationIds").description("").optional)
   )
 
-  post("/api/:version/offer/status/update", operation(updateOfferTransactionStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/offer/status/update", operation(updateOfferTransactionStatusOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)

@@ -41,12 +41,10 @@ class WorkflowApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val runWorkflowOperation = (apiOperation[SirqulResponse]("runWorkflow")
     summary "Run Workflow"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("workflowId").description(""), queryParam[Long]("skuId").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("parameters").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("workflowId").description(""), queryParam[Long]("skuId").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("parameters").description("").optional)
   )
 
-  post("/api/:version/workflow/run", operation(runWorkflowOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/workflow/run", operation(runWorkflowOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

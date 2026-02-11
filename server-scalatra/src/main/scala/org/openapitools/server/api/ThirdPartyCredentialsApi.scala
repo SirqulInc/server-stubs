@@ -46,12 +46,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val createCredentialOperation = (apiOperation[ProfileResponse]("createCredential")
     summary "Create Credential"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("thirdPartyId").description(""), queryParam[String]("thirdPartyToken").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[String]("sessionId").description("").optional, queryParam[String]("thirdPartyName").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[Boolean]("signinOnlyMode").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("thirdPartyRefreshToken").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("audienceIdsToRemove").description("").optional)
+    parameters(queryParam[String]("thirdPartyId").description(""), queryParam[String]("thirdPartyToken").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[String]("sessionId").description("").optional, queryParam[String]("thirdPartyName").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[Boolean]("signinOnlyMode").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("thirdPartyRefreshToken").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("audienceIdsToRemove").description("").optional)
   )
 
-  post("/api/:version/thirdparty/credential/create", operation(createCredentialOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/credential/create", operation(createCredentialOperation)) {
             val thirdPartyId = params.getAs[String]("thirdPartyId")
 
     //println("thirdPartyId: " + thirdPartyId)
@@ -109,12 +107,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val createNetworkOperation = (apiOperation[ThirdPartyNetworkResponse]("createNetwork")
     summary "Create Network"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Boolean]("enableIntrospection").description(""), queryParam[String]("description").description("").optional, queryParam[String]("introspectionMethod").description("").optional, queryParam[String]("introspectionURL").description("").optional, queryParam[String]("introspectionParams").description("").optional, queryParam[String]("requiredRootField").description("").optional, queryParam[Boolean]("enableMFA").description("").optional, queryParam[Int]("sizeMFA").description("").optional, queryParam[Int]("shelfLifeMFA").description("").optional, queryParam[String]("oauthTokenURL").description("").optional, queryParam[File]("oauthPrivateKey").description("").optional, queryParam[File]("oauthPublicKey").description("").optional, queryParam[String]("oauthClientId").description("").optional, queryParam[String]("oauthSecretKey").description("").optional, bodyParam[String]("body").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Boolean]("enableIntrospection").description(""), queryParam[String]("description").description("").optional, queryParam[String]("introspectionMethod").description("").optional, queryParam[String]("introspectionURL").description("").optional, queryParam[String]("introspectionParams").description("").optional, queryParam[String]("requiredRootField").description("").optional, queryParam[Boolean]("enableMFA").description("").optional, queryParam[Int]("sizeMFA").description("").optional, queryParam[Int]("shelfLifeMFA").description("").optional, queryParam[String]("oauthTokenURL").description("").optional, queryParam[File]("oauthPrivateKey").description("").optional, queryParam[File]("oauthPublicKey").description("").optional, queryParam[String]("oauthClientId").description("").optional, queryParam[String]("oauthSecretKey").description("").optional, bodyParam[String]("body").description("").optional)
   )
 
-  post("/api/:version/thirdparty/network/create", operation(createNetworkOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/network/create", operation(createNetworkOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -168,12 +164,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val deleteCredentialOperation = (apiOperation[SirqulResponse]("deleteCredential")
     summary "Delete Credential"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("thirdPartyId").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("thirdPartyId").description(""), queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/thirdparty/credential/delete", operation(deleteCredentialOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/credential/delete", operation(deleteCredentialOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -192,12 +186,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val deleteNetworkOperation = (apiOperation[SirqulResponse]("deleteNetwork")
     summary "Delete Network"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""))
   )
 
-  post("/api/:version/thirdparty/network/delete", operation(deleteNetworkOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/network/delete", operation(deleteNetworkOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -210,12 +202,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val getCredentialOperation = (apiOperation[ProfileResponse]("getCredential")
     summary "Get Credential"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[String]("sessionId").description("").optional, queryParam[Long]("thirdPartyCredentialId").description("").optional, queryParam[String]("thirdPartyToken").description("").optional, queryParam[String]("thirdPartySecret").description("").optional, queryParam[Boolean]("createNewAccount").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("audienceIdsToRemove").description("").optional, queryParam[Long]("referralAccountId").description("").optional)
+    parameters(queryParam[String]("networkUID").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[String]("sessionId").description("").optional, queryParam[Long]("thirdPartyCredentialId").description("").optional, queryParam[String]("thirdPartyToken").description("").optional, queryParam[String]("thirdPartySecret").description("").optional, queryParam[Boolean]("createNewAccount").description("").optional.defaultValue(false), queryParam[String]("responseFilters").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("audienceIdsToAdd").description("").optional, queryParam[String]("audienceIdsToRemove").description("").optional, queryParam[Long]("referralAccountId").description("").optional)
   )
 
-  post("/api/:version/thirdparty/credential/get", operation(getCredentialOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/credential/get", operation(getCredentialOperation)) {
             val networkUID = params.getAs[String]("networkUID")
 
     //println("networkUID: " + networkUID)
@@ -267,12 +257,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val getNetworkOperation = (apiOperation[ThirdPartyNetworkResponse]("getNetwork")
     summary "Get Network"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""))
   )
 
-  get("/api/:version/thirdparty/network/get", operation(getNetworkOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/thirdparty/network/get", operation(getNetworkOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -285,12 +273,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val searchCredentialsOperation = (apiOperation[List[ThirdPartyCredentialResponse]]("searchCredentials")
     summary "Search Credentials"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("networkUID").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("networkUID").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/thirdparty/credential/search", operation(searchCredentialsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/thirdparty/credential/search", operation(searchCredentialsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -315,12 +301,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val searchNetworksOperation = (apiOperation[List[ThirdPartyNetworkShortResponse]]("searchNetworks")
     summary "Search Networks"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("filterBillable").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("filterBillable").description("").optional)
   )
 
-  get("/api/:version/thirdparty/network/search", operation(searchNetworksOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/thirdparty/network/search", operation(searchNetworksOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -351,12 +335,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val sendMFAChallengeOperation = (apiOperation[SirqulResponse]("sendMFAChallenge")
     summary "Send MFA Challenge"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("appKey").description(""), queryParam[String]("thirdPartyToken").description("").optional, queryParam[Long]("thirdPartyCredentialId").description("").optional, queryParam[String]("deviceId").description("").optional)
+    parameters(queryParam[String]("networkUID").description(""), queryParam[String]("appKey").description(""), queryParam[String]("thirdPartyToken").description("").optional, queryParam[Long]("thirdPartyCredentialId").description("").optional, queryParam[String]("deviceId").description("").optional)
   )
 
-  post("/api/:version/thirdparty/credential/mfa/send", operation(sendMFAChallengeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/credential/mfa/send", operation(sendMFAChallengeOperation)) {
             val networkUID = params.getAs[String]("networkUID")
 
     //println("networkUID: " + networkUID)
@@ -378,12 +360,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val updateCredentialOperation = (apiOperation[ProfileResponse]("updateCredential")
     summary "Update Credential"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("thirdPartyId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("thirdPartyName").description("").optional, queryParam[String]("thirdPartyToken").description("").optional, queryParam[String]("responseFilters").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("thirdPartyRefreshToken").description("").optional)
+    parameters(queryParam[String]("networkUID").description(""), queryParam[String]("thirdPartyId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("thirdPartyName").description("").optional, queryParam[String]("thirdPartyToken").description("").optional, queryParam[String]("responseFilters").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("thirdPartyRefreshToken").description("").optional)
   )
 
-  post("/api/:version/thirdparty/credential/update", operation(updateCredentialOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/credential/update", operation(updateCredentialOperation)) {
             val networkUID = params.getAs[String]("networkUID")
 
     //println("networkUID: " + networkUID)
@@ -417,12 +397,10 @@ class ThirdPartyCredentialsApi(implicit val swagger: Swagger) extends ScalatraSe
 
   val updateNetworkOperation = (apiOperation[ThirdPartyNetworkResponse]("updateNetwork")
     summary "Update Network"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Boolean]("enableIntrospection").description("").optional, queryParam[String]("introspectionMethod").description("").optional, queryParam[String]("introspectionURL").description("").optional, queryParam[String]("introspectionParams").description("").optional, queryParam[String]("requiredRootField").description("").optional, queryParam[Boolean]("enableMFA").description("").optional, queryParam[Int]("sizeMFA").description("").optional, queryParam[Int]("shelfLifeMFA").description("").optional, queryParam[String]("oauthTokenURL").description("").optional, queryParam[File]("oauthPrivateKey").description("").optional, queryParam[File]("oauthPublicKey").description("").optional, queryParam[String]("oauthClientId").description("").optional, queryParam[String]("oauthSecretKey").description("").optional, bodyParam[String]("body").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("networkUID").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Boolean]("enableIntrospection").description("").optional, queryParam[String]("introspectionMethod").description("").optional, queryParam[String]("introspectionURL").description("").optional, queryParam[String]("introspectionParams").description("").optional, queryParam[String]("requiredRootField").description("").optional, queryParam[Boolean]("enableMFA").description("").optional, queryParam[Int]("sizeMFA").description("").optional, queryParam[Int]("shelfLifeMFA").description("").optional, queryParam[String]("oauthTokenURL").description("").optional, queryParam[File]("oauthPrivateKey").description("").optional, queryParam[File]("oauthPublicKey").description("").optional, queryParam[String]("oauthClientId").description("").optional, queryParam[String]("oauthSecretKey").description("").optional, bodyParam[String]("body").description("").optional)
   )
 
-  post("/api/:version/thirdparty/network/update", operation(updateNetworkOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/thirdparty/network/update", operation(updateNetworkOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

@@ -41,12 +41,10 @@ class PathingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val computePathOperation = (apiOperation[PathingResponse]("computePath")
     summary "Calculate Path"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("data").description(""), queryParam[String]("units").description(""), queryParam[Boolean]("reducePath").description(""), queryParam[Boolean]("directions").description(""))
+    parameters(queryParam[String]("data").description(""), queryParam[String]("units").description(""), queryParam[Boolean]("reducePath").description(""), queryParam[Boolean]("directions").description(""))
   )
 
-  get("/api/:version/pathing/compute", operation(computePathOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/pathing/compute", operation(computePathOperation)) {
             val data = params.getAs[String]("data")
 
     //println("data: " + data)

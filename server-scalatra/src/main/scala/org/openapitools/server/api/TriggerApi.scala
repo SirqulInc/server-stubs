@@ -42,12 +42,10 @@ class TriggerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createTriggerOperation = (apiOperation[TriggerResponse]("createTrigger")
     summary "Create Trigger"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional.defaultValue(true))
   )
 
-  post("/api/:version/trigger/create", operation(createTriggerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trigger/create", operation(createTriggerOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -93,12 +91,10 @@ class TriggerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteTriggerOperation = (apiOperation[SirqulResponse]("deleteTrigger")
     summary "Delete Trigger"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("triggerId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("triggerId").description(""))
   )
 
-  post("/api/:version/trigger/delete", operation(deleteTriggerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trigger/delete", operation(deleteTriggerOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -111,12 +107,10 @@ class TriggerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTriggerOperation = (apiOperation[TriggerResponse]("getTrigger")
     summary "Get Trigger"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("triggerId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("triggerId").description(""))
   )
 
-  get("/api/:version/trigger/get", operation(getTriggerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/trigger/get", operation(getTriggerOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -129,12 +123,10 @@ class TriggerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchTriggersOperation = (apiOperation[List[TriggerResponse]]("searchTriggers")
     summary "Search Triggers"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("groupingId").description("").optional, queryParam[String]("filter").description("").optional.defaultValue(MINE), queryParam[String]("statuses").description("").optional.defaultValue(NEW,ERROR,COMPLETE,PROCESSING), queryParam[String]("templateTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("groupingId").description("").optional, queryParam[String]("filter").description("").optional.defaultValue(MINE), queryParam[String]("statuses").description("").optional.defaultValue(NEW,ERROR,COMPLETE,PROCESSING), queryParam[String]("templateTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/trigger/search", operation(searchTriggersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/trigger/search", operation(searchTriggersOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -177,12 +169,10 @@ class TriggerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateTriggerOperation = (apiOperation[TriggerResponse]("updateTrigger")
     summary "Update Trigger"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("triggerId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("triggerId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("conditionalInput").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/trigger/update", operation(updateTriggerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trigger/update", operation(updateTriggerOperation)) {
             val triggerId = params.getAs[Long]("triggerId")
 
     //println("triggerId: " + triggerId)

@@ -41,12 +41,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createTripOperation = (apiOperation[Trip]("createTrip")
     summary "Create Trip"
-    parameters(pathParam[Double]("version").description(""), bodyParam[Trip]("body").description("").optional)
+    parameters(bodyParam[Trip]("body").description("").optional)
   )
 
-  post("/api/:version/trip", operation(createTripOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip", operation(createTripOperation)) {
     //println("body: " + body)
   }
 
@@ -54,12 +52,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteOperation = (apiOperation[Unit]("delete")
     summary "Delete Trip"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  delete("/api/:version/trip/:id", operation(deleteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/trip/:id", operation(deleteOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -68,12 +64,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val driveTripOperation = (apiOperation[Trip]("driveTrip")
     summary "Set Trip Preference Driver"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), queryParam[Boolean]("recurrence").description(""))
+    parameters(pathParam[Long]("id").description(""), queryParam[Boolean]("recurrence").description(""))
   )
 
-  post("/api/:version/trip/:id/drive", operation(driveTripOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/drive", operation(driveTripOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
             val recurrence = params.getAs[Boolean]("recurrence")
@@ -85,12 +79,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val flexibleTripOperation = (apiOperation[Trip]("flexibleTrip")
     summary "Set Trip Preference Flexible"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), queryParam[Boolean]("recurrence").description(""))
+    parameters(pathParam[Long]("id").description(""), queryParam[Boolean]("recurrence").description(""))
   )
 
-  post("/api/:version/trip/:id/flexible", operation(flexibleTripOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/flexible", operation(flexibleTripOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
             val recurrence = params.getAs[Boolean]("recurrence")
@@ -102,12 +94,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTripOperation = (apiOperation[Trip]("getTrip")
     summary "Get Trip"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  get("/api/:version/trip/:id", operation(getTripOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/trip/:id", operation(getTripOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -116,12 +106,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTripMatchesOperation = (apiOperation[List[Trip]]("getTripMatches")
     summary "Get Trip Matches"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("matchedHasRoute").description("").optional, queryParam[Boolean]("matchedHasDriver").description("").optional)
+    parameters(pathParam[Long]("id").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("matchedHasRoute").description("").optional, queryParam[Boolean]("matchedHasDriver").description("").optional)
   )
 
-  get("/api/:version/trip/:id/match", operation(getTripMatchesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/trip/:id/match", operation(getTripMatchesOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
             val sortField = params.getAs[String]("sortField")
@@ -151,12 +139,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val processTripMatchesOperation = (apiOperation[List[Trip]]("processTripMatches")
     summary "Process Trip Matches"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Long]("tripId").description("").optional)
+    parameters(queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Long]("tripId").description("").optional)
   )
 
-  post("/api/:version/trip/match/process", operation(processTripMatchesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/match/process", operation(processTripMatchesOperation)) {
             val startDate = params.getAs[Long]("startDate")
 
     //println("startDate: " + startDate)
@@ -172,12 +158,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val rideOperation = (apiOperation[Trip]("ride")
     summary "Set Trip Preference Rider"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), queryParam[Boolean]("recurrence").description(""))
+    parameters(pathParam[Long]("id").description(""), queryParam[Boolean]("recurrence").description(""))
   )
 
-  post("/api/:version/trip/:id/ride", operation(rideOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/ride", operation(rideOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
             val recurrence = params.getAs[Boolean]("recurrence")
@@ -189,12 +173,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchOperation = (apiOperation[List[Trip]]("search")
     summary "Search Trips"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("hasNotifications").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("hasNotifications").description("").optional)
   )
 
-  get("/api/:version/trip", operation(searchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/trip", operation(searchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -228,12 +210,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchTripsOperation = (apiOperation[List[Trip]]("searchTrips")
     summary "Search Trips"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("matchedHasRoute").description("").optional, queryParam[Boolean]("matchedHasDriver").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("matchedHasRoute").description("").optional, queryParam[Boolean]("matchedHasDriver").description("").optional)
   )
 
-  get("/api/:version/trip/match", operation(searchTripsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/trip/match", operation(searchTripsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -270,12 +250,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateLocationsOperation = (apiOperation[Trip]("updateLocations")
     summary "Update Trip Locations"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
   )
 
-  post("/api/:version/trip/:id/locations", operation(updateLocationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/locations", operation(updateLocationsOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -285,12 +263,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRecurrenceLocationsOperation = (apiOperation[List[Trip]]("updateRecurrenceLocations")
     summary "Update Recurrence Locations"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
   )
 
-  post("/api/:version/trip/:id/locations/recurrence", operation(updateRecurrenceLocationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/locations/recurrence", operation(updateRecurrenceLocationsOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -300,12 +276,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRecurrenceShipmentsOperation = (apiOperation[List[Trip]]("updateRecurrenceShipments")
     summary "Update Recurrence Shipments"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
   )
 
-  post("/api/:version/trip/:id/shipments/recurrence", operation(updateRecurrenceShipmentsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/shipments/recurrence", operation(updateRecurrenceShipmentsOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -315,12 +289,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateShipmentsOperation = (apiOperation[Trip]("updateShipments")
     summary "Update Trip Shipments"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
   )
 
-  post("/api/:version/trip/:id/shipments", operation(updateShipmentsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/:id/shipments", operation(updateShipmentsOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -330,12 +302,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateTripOperation = (apiOperation[Trip]("updateTrip")
     summary "Update Trip"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Trip]("body").description("").optional)
   )
 
-  put("/api/:version/trip/:id", operation(updateTripOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/trip/:id", operation(updateTripOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -345,12 +315,10 @@ class TripApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateTripNotificationsOperation = (apiOperation[Trip]("updateTripNotifications")
     summary "Trip Notifications"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("id").description(""), queryParam[String]("notifications").description("").optional)
+    parameters(queryParam[Long]("id").description(""), queryParam[String]("notifications").description("").optional)
   )
 
-  post("/api/:version/trip/notifications", operation(updateTripNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/trip/notifications", operation(updateTripNotificationsOperation)) {
             val id = params.getAs[Long]("id")
 
     //println("id: " + id)

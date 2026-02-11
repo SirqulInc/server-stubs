@@ -42,12 +42,10 @@ class PackApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createPackOperation = (apiOperation[PackResponse]("createPack")
     summary "Create Pack"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[Long]("packOrder").description(""), queryParam[Int]("price").description(""), queryParam[Boolean]("highest").description(""), queryParam[Boolean]("allocateTickets").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("packType").description("").optional, queryParam[String]("sequenceType").description("").optional, queryParam[Long]("backgroundId").description("").optional, queryParam[Long]("imageId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("authorOverride").description("").optional, queryParam[String]("priceType").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[Boolean]("inGame").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[Long]("packOrder").description(""), queryParam[Int]("price").description(""), queryParam[Boolean]("highest").description(""), queryParam[Boolean]("allocateTickets").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("packType").description("").optional, queryParam[String]("sequenceType").description("").optional, queryParam[Long]("backgroundId").description("").optional, queryParam[Long]("imageId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("authorOverride").description("").optional, queryParam[String]("priceType").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[Boolean]("inGame").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
   )
 
-  post("/api/:version/pack/create", operation(createPackOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/pack/create", operation(createPackOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -126,12 +124,10 @@ class PackApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deletePackOperation = (apiOperation[SirqulResponse]("deletePack")
     summary "Delete Pack"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("packId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("packId").description(""))
   )
 
-  post("/api/:version/pack/delete", operation(deletePackOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/pack/delete", operation(deletePackOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -144,12 +140,10 @@ class PackApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPackOperation = (apiOperation[PackResponse]("getPack")
     summary "Get Pack"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("packId").description(""), queryParam[Boolean]("includeGameData").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("packId").description(""), queryParam[Boolean]("includeGameData").description(""))
   )
 
-  get("/api/:version/pack/get", operation(getPackOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/pack/get", operation(getPackOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -165,12 +159,10 @@ class PackApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchPacksOperation = (apiOperation[List[PackResponse]]("searchPacks")
     summary "Search Packs"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("packType").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("packType").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  get("/api/:version/pack/search", operation(searchPacksOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/pack/search", operation(searchPacksOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -207,12 +199,10 @@ class PackApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updatePackOperation = (apiOperation[PackResponse]("updatePack")
     summary "Update Pack"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("packId").description(""), queryParam[Boolean]("allocateTickets").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("packType").description("").optional, queryParam[Long]("packOrder").description("").optional, queryParam[String]("sequenceType").description("").optional, queryParam[Long]("backgroundId").description("").optional, queryParam[Long]("imageId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("authorOverride").description("").optional, queryParam[Int]("price").description("").optional, queryParam[String]("priceType").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[Boolean]("inGame").description("").optional, queryParam[Boolean]("highest").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("packId").description(""), queryParam[Boolean]("allocateTickets").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("packType").description("").optional, queryParam[Long]("packOrder").description("").optional, queryParam[String]("sequenceType").description("").optional, queryParam[Long]("backgroundId").description("").optional, queryParam[Long]("imageId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("authorOverride").description("").optional, queryParam[Int]("price").description("").optional, queryParam[String]("priceType").description("").optional, queryParam[String]("gameLevelIds").description("").optional, queryParam[Boolean]("inGame").description("").optional, queryParam[Boolean]("highest").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
   )
 
-  post("/api/:version/pack/update", operation(updatePackOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/pack/update", operation(updatePackOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

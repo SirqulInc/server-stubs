@@ -42,12 +42,10 @@ class PostalCodeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createPostalCodeOperation = (apiOperation[PostalCodeResponse]("createPostalCode")
     summary "Create Postal Code"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("code").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("stateCode").description("").optional, queryParam[String]("city").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("code").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("stateCode").description("").optional, queryParam[String]("city").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/postalCode/create", operation(createPostalCodeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/postalCode/create", operation(createPostalCodeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -75,12 +73,10 @@ class PostalCodeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deletePostalCodeOperation = (apiOperation[SirqulResponse]("deletePostalCode")
     summary "Delete Postal Code"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("postalCodeId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("postalCodeId").description(""))
   )
 
-  post("/api/:version/postalCode/delete", operation(deletePostalCodeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/postalCode/delete", operation(deletePostalCodeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -93,12 +89,10 @@ class PostalCodeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPostalCodeOperation = (apiOperation[PostalCodeResponse]("getPostalCode")
     summary "Get Postal Code"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("postalCodeId").description(""))
+    parameters(queryParam[Long]("postalCodeId").description(""))
   )
 
-  get("/api/:version/postalCode/get", operation(getPostalCodeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/postalCode/get", operation(getPostalCodeOperation)) {
             val postalCodeId = params.getAs[Long]("postalCodeId")
 
     //println("postalCodeId: " + postalCodeId)
@@ -108,12 +102,10 @@ class PostalCodeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPostalCodesOperation = (apiOperation[List[PostalCodeResponse]]("getPostalCodes")
     summary "Search Postal Codes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("miles").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("miles").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/postalCode/search", operation(getPostalCodesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/postalCode/search", operation(getPostalCodesOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -144,12 +136,10 @@ class PostalCodeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updatePostalCodeOperation = (apiOperation[PostalCodeResponse]("updatePostalCode")
     summary "Update Postal Code"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("postalCodeId").description(""), queryParam[String]("code").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("stateCode").description("").optional, queryParam[String]("city").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("postalCodeId").description(""), queryParam[String]("code").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("stateCode").description("").optional, queryParam[String]("city").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/postalCode/update", operation(updatePostalCodeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/postalCode/update", operation(updatePostalCodeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

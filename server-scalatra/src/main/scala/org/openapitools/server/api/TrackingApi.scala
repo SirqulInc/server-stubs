@@ -47,12 +47,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val batchSaveTrackingOperation = (apiOperation[List[Leg]]("batchSaveTracking")
     summary "Create Batch Tracking"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("data").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("generateAccounts").description("").optional, queryParam[Boolean]("updateAccountLocations").description("").optional, queryParam[String]("defaultTag").description("").optional.defaultValue(PASSIVE), queryParam[String]("slaveUID").description("").optional)
+    parameters(queryParam[String]("data").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("generateAccounts").description("").optional, queryParam[Boolean]("updateAccountLocations").description("").optional, queryParam[String]("defaultTag").description("").optional.defaultValue(PASSIVE), queryParam[String]("slaveUID").description("").optional)
   )
 
-  post("/api/:version/tracking/batch/create", operation(batchSaveTrackingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tracking/batch/create", operation(batchSaveTrackingOperation)) {
             val data = params.getAs[String]("data")
 
     //println("data: " + data)
@@ -80,12 +78,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPredictedLocationsOperation = (apiOperation[PredictedLocationResponse]("getPredictedLocations")
     summary "Get Predicted Locations"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("dateCheck").description("").optional, queryParam[String]("hourCheck").description("").optional, queryParam[Long]("threshold").description("").optional.defaultValue(1), queryParam[String]("distanceUnit").description("").optional.defaultValue(MILES), queryParam[Double]("searchRange").description("").optional.defaultValue(0), queryParam[String]("sortOrder").description("").optional.defaultValue(MATCHES))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("dateCheck").description("").optional, queryParam[String]("hourCheck").description("").optional, queryParam[Long]("threshold").description("").optional.defaultValue(1), queryParam[String]("distanceUnit").description("").optional.defaultValue(MILES), queryParam[Double]("searchRange").description("").optional.defaultValue(0), queryParam[String]("sortOrder").description("").optional.defaultValue(MATCHES))
   )
 
-  get("/api/:version/tracking/predicted/get", operation(getPredictedLocationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tracking/predicted/get", operation(getPredictedLocationsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -119,12 +115,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPredictedPathOperation = (apiOperation[List[StepResponse]]("getPredictedPath")
     summary "Get Tracking Path"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("startStepId").description(""), queryParam[Long]("endStepId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("startStepId").description(""), queryParam[Long]("endStepId").description(""))
   )
 
-  get("/api/:version/tracking/path/get", operation(getPredictedPathOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tracking/path/get", operation(getPredictedPathOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -140,12 +134,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPreferredLocationsOperation = (apiOperation[List[PreferredLocationResponse]]("getPreferredLocations")
     summary "Search Preferred Locations"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("dateCheck").description("").optional, queryParam[String]("hourCheck").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(PREFERRED_DATE), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Double]("searchRange").description("").optional.defaultValue(0), queryParam[String]("distanceUnit").description("").optional.defaultValue(MILES))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("dateCheck").description("").optional, queryParam[String]("hourCheck").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(PREFERRED_DATE), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Double]("searchRange").description("").optional.defaultValue(0), queryParam[String]("distanceUnit").description("").optional.defaultValue(MILES))
   )
 
-  get("/api/:version/tracking/preferred/search", operation(getPreferredLocationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tracking/preferred/search", operation(getPreferredLocationsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -185,12 +177,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTrackingLegsOperation = (apiOperation[List[LegResponse]]("getTrackingLegs")
     summary "Search Tracking"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("trackingDeviceId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Boolean]("getLastPoint").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("trackingDeviceId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Boolean]("getLastPoint").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/tracking/search", operation(getTrackingLegsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tracking/search", operation(getTrackingLegsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -221,12 +211,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val saveTrackingLegOperation = (apiOperation[SirqulResponse]("saveTrackingLeg")
     summary "Create Tracking Leg"
-    parameters(pathParam[Double]("version").description(""), queryParam[Double]("startLat").description(""), queryParam[Double]("startLng").description(""), queryParam[Long]("startDate").description(""), queryParam[Double]("endLat").description(""), queryParam[Double]("endLng").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("distance").description("").optional, queryParam[Long]("duration").description("").optional, queryParam[String]("steps").description("").optional, queryParam[String]("tags").description("").optional)
+    parameters(queryParam[Double]("startLat").description(""), queryParam[Double]("startLng").description(""), queryParam[Long]("startDate").description(""), queryParam[Double]("endLat").description(""), queryParam[Double]("endLng").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("distance").description("").optional, queryParam[Long]("duration").description("").optional, queryParam[String]("steps").description("").optional, queryParam[String]("tags").description("").optional)
   )
 
-  post("/api/:version/tracking/leg/create", operation(saveTrackingLegOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tracking/leg/create", operation(saveTrackingLegOperation)) {
             val startLat = params.getAs[Double]("startLat")
 
     //println("startLat: " + startLat)
@@ -269,12 +257,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val saveTrackingStepOperation = (apiOperation[SirqulResponse]("saveTrackingStep")
     summary "Create Tracking Step"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("legId").description(""), queryParam[Double]("startLat").description(""), queryParam[Double]("startLng").description(""), queryParam[Long]("startDate").description(""), queryParam[Double]("endLat").description(""), queryParam[Double]("endLng").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("distance").description("").optional, queryParam[Long]("duration").description("").optional)
+    parameters(queryParam[Long]("legId").description(""), queryParam[Double]("startLat").description(""), queryParam[Double]("startLng").description(""), queryParam[Long]("startDate").description(""), queryParam[Double]("endLat").description(""), queryParam[Double]("endLng").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("distance").description("").optional, queryParam[Long]("duration").description("").optional)
   )
 
-  post("/api/:version/tracking/step/create", operation(saveTrackingStepOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tracking/step/create", operation(saveTrackingStepOperation)) {
             val legId = params.getAs[Long]("legId")
 
     //println("legId: " + legId)
@@ -314,12 +300,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchAccountsWithTrackingLegsOperation = (apiOperation[List[AccountMiniResponse]]("searchAccountsWithTrackingLegs")
     summary "List Tracking"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("range").description("").optional.defaultValue(5), queryParam[String]("sortField").description("").optional.defaultValue(LEG_START_DATE), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("range").description("").optional.defaultValue(5), queryParam[String]("sortField").description("").optional.defaultValue(LEG_START_DATE), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/tracking/list", operation(searchAccountsWithTrackingLegsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tracking/list", operation(searchAccountsWithTrackingLegsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -368,12 +352,10 @@ class TrackingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchTrackingLegsOperation = (apiOperation[List[LegResponse]]("searchTrackingLegs")
     summary "Search Tracking (Billable)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("trackingDeviceId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("trackingDeviceId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  get("/api/:version/tracking/searchByBillable", operation(searchTrackingLegsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tracking/searchByBillable", operation(searchTrackingLegsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

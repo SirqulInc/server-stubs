@@ -41,12 +41,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addFieldOperation = (apiOperation[ObjectStoreResponse]("addField")
     summary "Create Field"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""), queryParam[String]("fieldName").description(""), queryParam[String]("fieldType").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""), queryParam[String]("fieldName").description(""), queryParam[String]("fieldType").description(""))
   )
 
-  post("/api/:version/object/field/add", operation(addFieldOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/object/field/add", operation(addFieldOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -68,12 +66,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createDataOperation = (apiOperation[ObjectStoreResponse]("createData")
     summary "Create Data"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("objectName").description(""), queryParam[Long]("accountId").description("").optional, bodyParam[String]("body").description("").optional)
+    parameters(pathParam[String]("objectName").description(""), queryParam[Long]("accountId").description("").optional, bodyParam[String]("body").description("").optional)
   )
 
-  post("/api/:version/object/data/:objectName", operation(createDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/object/data/:objectName", operation(createDataOperation)) {
     val objectName = params.getOrElse("objectName", halt(400))
     //println("objectName: " + objectName)
             val accountId = params.getAs[Long]("accountId")
@@ -86,12 +82,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createObjectOperation = (apiOperation[ObjectStoreResponse]("createObject")
     summary "Create Object"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""))
   )
 
-  post("/api/:version/object/create", operation(createObjectOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/object/create", operation(createObjectOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -107,12 +101,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteDataOperation = (apiOperation[ObjectStoreResponse]("deleteData")
     summary "Delete Data"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("objectName").description(""), pathParam[String]("objectId").description(""), queryParam[Long]("accountId").description("").optional)
+    parameters(pathParam[String]("objectName").description(""), pathParam[String]("objectId").description(""), queryParam[Long]("accountId").description("").optional)
   )
 
-  delete("/api/:version/object/data/:objectName/:objectId", operation(deleteDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/object/data/:objectName/:objectId", operation(deleteDataOperation)) {
     val objectName = params.getOrElse("objectName", halt(400))
     //println("objectName: " + objectName)
     val objectId = params.getOrElse("objectId", halt(400))
@@ -126,12 +118,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteFieldOperation = (apiOperation[ObjectStoreResponse]("deleteField")
     summary "Delete Field"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""), queryParam[String]("fieldName").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""), queryParam[String]("fieldName").description(""))
   )
 
-  post("/api/:version/object/field/delete", operation(deleteFieldOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/object/field/delete", operation(deleteFieldOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -150,12 +140,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteObjectOperation = (apiOperation[ObjectStoreResponse]("deleteObject")
     summary "Delete Object"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""))
   )
 
-  post("/api/:version/object/delete", operation(deleteObjectOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/object/delete", operation(deleteObjectOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -171,12 +159,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getDataOperation = (apiOperation[ObjectStoreResponse]("getData")
     summary "Get Data"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("objectName").description(""), pathParam[String]("objectId").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("include").description("").optional)
+    parameters(pathParam[String]("objectName").description(""), pathParam[String]("objectId").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("include").description("").optional)
   )
 
-  get("/api/:version/object/data/:objectName/:objectId", operation(getDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/object/data/:objectName/:objectId", operation(getDataOperation)) {
     val objectName = params.getOrElse("objectName", halt(400))
     //println("objectName: " + objectName)
     val objectId = params.getOrElse("objectId", halt(400))
@@ -193,12 +179,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getObjectOperation = (apiOperation[ObjectStoreResponse]("getObject")
     summary "Get Object"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("objectName").description(""))
   )
 
-  get("/api/:version/object/get", operation(getObjectOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/object/get", operation(getObjectOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -214,12 +198,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchDataOperation = (apiOperation[ObjectStoreResponse]("searchData")
     summary "Search Data"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("objectName").description(""), queryParam[Boolean]("count").description(""), queryParam[Long]("start").description(""), queryParam[Long]("limit").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("criteria").description("").optional, queryParam[String]("order").description("").optional, queryParam[String]("include").description("").optional)
+    parameters(pathParam[String]("objectName").description(""), queryParam[Boolean]("count").description(""), queryParam[Long]("start").description(""), queryParam[Long]("limit").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("criteria").description("").optional, queryParam[String]("order").description("").optional, queryParam[String]("include").description("").optional)
   )
 
-  get("/api/:version/object/data/:objectName", operation(searchDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/object/data/:objectName", operation(searchDataOperation)) {
     val objectName = params.getOrElse("objectName", halt(400))
     //println("objectName: " + objectName)
             val count = params.getAs[Boolean]("count")
@@ -249,12 +231,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchObjectOperation = (apiOperation[ObjectStoreResponse]("searchObject")
     summary "Search Objects"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("start").description(""), queryParam[Long]("limit").description(""), queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("start").description(""), queryParam[Long]("limit").description(""), queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/object/search", operation(searchObjectOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/object/search", operation(searchObjectOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -276,12 +256,10 @@ class ObjectStoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateDataOperation = (apiOperation[ObjectStoreResponse]("updateData")
     summary "Update Data"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("objectName").description(""), pathParam[String]("objectId").description(""), queryParam[Long]("accountId").description("").optional, bodyParam[String]("body").description("").optional)
+    parameters(pathParam[String]("objectName").description(""), pathParam[String]("objectId").description(""), queryParam[Long]("accountId").description("").optional, bodyParam[String]("body").description("").optional)
   )
 
-  put("/api/:version/object/data/:objectName/:objectId", operation(updateDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/object/data/:objectName/:objectId", operation(updateDataOperation)) {
     val objectName = params.getOrElse("objectName", halt(400))
     //println("objectName: " + objectName)
     val objectId = params.getOrElse("objectId", halt(400))

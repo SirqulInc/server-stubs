@@ -44,12 +44,10 @@ class FavoriteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addFavoriteOperation = (apiOperation[WrappedResponse]("addFavorite")
     summary "Create Favorite"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("favoritableId").description(""), queryParam[String]("favoritableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("favoritableId").description(""), queryParam[String]("favoritableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/favorite/create", operation(addFavoriteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/favorite/create", operation(addFavoriteOperation)) {
             val favoritableId = params.getAs[Long]("favoritableId")
 
     //println("favoritableId: " + favoritableId)
@@ -74,12 +72,10 @@ class FavoriteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteFavoriteOperation = (apiOperation[SirqulResponse]("deleteFavorite")
     summary "Delete Favorite"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("favoriteId").description("").optional, queryParam[Long]("favoritableId").description("").optional, queryParam[String]("favoritableType").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("favoriteId").description("").optional, queryParam[Long]("favoritableId").description("").optional, queryParam[String]("favoritableType").description("").optional)
   )
 
-  post("/api/:version/favorite/delete", operation(deleteFavoriteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/favorite/delete", operation(deleteFavoriteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -101,12 +97,10 @@ class FavoriteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getFavoriteOperation = (apiOperation[WrappedResponse]("getFavorite")
     summary "Get Favorite"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("favoriteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("favoriteId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/favorite/get", operation(getFavoriteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/favorite/get", operation(getFavoriteOperation)) {
             val favoriteId = params.getAs[Long]("favoriteId")
 
     //println("favoriteId: " + favoriteId)
@@ -128,12 +122,10 @@ class FavoriteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchFavoritesOperation = (apiOperation[SearchResponse]("searchFavorites")
     summary "Search Favorites"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("favoritableType").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("returnFullResponse").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("secondaryType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("favoritableType").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("returnFullResponse").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("secondaryType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/favorite/search", operation(searchFavoritesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/favorite/search", operation(searchFavoritesOperation)) {
             val favoritableType = params.getAs[String]("favoritableType")
 
     //println("favoritableType: " + favoritableType)
@@ -182,12 +174,10 @@ class FavoriteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val whoHasFavoritedOperation = (apiOperation[List[AccountResponse]]("whoHasFavorited")
     summary "Who has Favorited"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("favoritableId").description(""), queryParam[String]("favoritableType").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("favoritableId").description(""), queryParam[String]("favoritableType").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/favorite/whois", operation(whoHasFavoritedOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/favorite/whois", operation(whoHasFavoritedOperation)) {
             val favoritableId = params.getAs[Long]("favoritableId")
 
     //println("favoritableId: " + favoritableId)

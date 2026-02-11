@@ -41,12 +41,10 @@ class RouteSettingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRouteSettingsOperation = (apiOperation[RouteSettings]("createRouteSettings")
     summary "Create Route Setting"
-    parameters(pathParam[Double]("version").description(""), bodyParam[RouteSettings]("body").description("").optional)
+    parameters(bodyParam[RouteSettings]("body").description("").optional)
   )
 
-  post("/api/:version/route/setting", operation(createRouteSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/setting", operation(createRouteSettingsOperation)) {
     //println("body: " + body)
   }
 
@@ -54,12 +52,10 @@ class RouteSettingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteRouteSettingsOperation = (apiOperation[Any]("deleteRouteSettings")
     summary "Delete Route Setting"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeSettingsId").description(""))
+    parameters(pathParam[Long]("routeSettingsId").description(""))
   )
 
-  delete("/api/:version/route/setting/:routeSettingsId", operation(deleteRouteSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/route/setting/:routeSettingsId", operation(deleteRouteSettingsOperation)) {
     val routeSettingsId = params.getOrElse("routeSettingsId", halt(400))
     //println("routeSettingsId: " + routeSettingsId)
   }
@@ -68,12 +64,10 @@ class RouteSettingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRouteSettingsOperation = (apiOperation[RouteSettings]("getRouteSettings")
     summary "Get Route Setting"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeSettingsId").description(""))
+    parameters(pathParam[Long]("routeSettingsId").description(""))
   )
 
-  get("/api/:version/route/setting/:routeSettingsId", operation(getRouteSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/setting/:routeSettingsId", operation(getRouteSettingsOperation)) {
     val routeSettingsId = params.getOrElse("routeSettingsId", halt(400))
     //println("routeSettingsId: " + routeSettingsId)
   }
@@ -82,12 +76,10 @@ class RouteSettingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRouteSettingsOperation = (apiOperation[List[RouteSettings]]("searchRouteSettings")
     summary "Search Route Settings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("hubId").description("").optional, queryParam[Long]("programId").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("hubId").description("").optional, queryParam[Long]("programId").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/route/setting", operation(searchRouteSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/setting", operation(searchRouteSettingsOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -118,12 +110,10 @@ class RouteSettingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRouteSettingsOperation = (apiOperation[RouteSettings]("updateRouteSettings")
     summary "Update Route Setting"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeSettingsId").description(""), bodyParam[RouteSettings]("body").description("").optional)
+    parameters(pathParam[Long]("routeSettingsId").description(""), bodyParam[RouteSettings]("body").description("").optional)
   )
 
-  put("/api/:version/route/setting/:routeSettingsId", operation(updateRouteSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/route/setting/:routeSettingsId", operation(updateRouteSettingsOperation)) {
     val routeSettingsId = params.getOrElse("routeSettingsId", halt(400))
     //println("routeSettingsId: " + routeSettingsId)
     //println("body: " + body)

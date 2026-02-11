@@ -41,12 +41,10 @@ class TwilioApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val smsBuyOfferOperation = (apiOperation[TwiMLResponse]("smsBuyOffer")
     summary "Buy Offer by SMS"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("appKey").description(""), queryParam[String]("body").description(""), queryParam[String]("from").description(""), queryParam[String]("currencyType").description(""))
+    parameters(pathParam[String]("appKey").description(""), queryParam[String]("body").description(""), queryParam[String]("from").description(""), queryParam[String]("currencyType").description(""))
   )
 
-  post("/api/:version/sms/buyoffer/:appKey", operation(smsBuyOfferOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/sms/buyoffer/:appKey", operation(smsBuyOfferOperation)) {
     val appKey = params.getOrElse("appKey", halt(400))
     //println("appKey: " + appKey)
             val body = params.getAs[String]("body")

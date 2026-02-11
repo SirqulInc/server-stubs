@@ -42,12 +42,10 @@ class ApplicationConfigApi(implicit val swagger: Swagger) extends ScalatraServle
 
   val createApplicationConfigOperation = (apiOperation[ApplicationConfigResponse]("createApplicationConfig")
     summary "Create AppConfig"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("configVersion").description(""), queryParam[Long]("assetId").description(""), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("configVersion").description(""), queryParam[Long]("assetId").description(""), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional)
   )
 
-  post("/api/:version/appconfig/create", operation(createApplicationConfigOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/appconfig/create", operation(createApplicationConfigOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -75,12 +73,10 @@ class ApplicationConfigApi(implicit val swagger: Swagger) extends ScalatraServle
 
   val deleteApplicationConfigOperation = (apiOperation[SirqulResponse]("deleteApplicationConfig")
     summary "Delete AppConfig"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("configId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("configId").description(""))
   )
 
-  post("/api/:version/appconfig/delete", operation(deleteApplicationConfigOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/appconfig/delete", operation(deleteApplicationConfigOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -93,12 +89,10 @@ class ApplicationConfigApi(implicit val swagger: Swagger) extends ScalatraServle
 
   val getApplicationConfigOperation = (apiOperation[ApplicationConfigResponse]("getApplicationConfig")
     summary "Get AppConfig"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("configId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("configId").description(""))
   )
 
-  get("/api/:version/appconfig/get", operation(getApplicationConfigOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/appconfig/get", operation(getApplicationConfigOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -111,12 +105,10 @@ class ApplicationConfigApi(implicit val swagger: Swagger) extends ScalatraServle
 
   val getApplicationConfigByConfigVersionOperation = (apiOperation[ApplicationConfigResponse]("getApplicationConfigByConfigVersion")
     summary "Get AppConfig by Version"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("configVersion").description(""), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional, queryParam[Boolean]("allowOlderVersions").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("configVersion").description(""), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional, queryParam[Boolean]("allowOlderVersions").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/appconfig/getbyversion", operation(getApplicationConfigByConfigVersionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/appconfig/getbyversion", operation(getApplicationConfigByConfigVersionOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -141,12 +133,10 @@ class ApplicationConfigApi(implicit val swagger: Swagger) extends ScalatraServle
 
   val searchApplicationConfigOperation = (apiOperation[List[ApplicationConfigResponse]]("searchApplicationConfig")
     summary "Search AppConfigs"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional, queryParam[String]("configVersion").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CONFIG_VERSION_INDEX), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional, queryParam[String]("configVersion").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CONFIG_VERSION_INDEX), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/appconfig/search", operation(searchApplicationConfigOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/appconfig/search", operation(searchApplicationConfigOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -183,12 +173,10 @@ class ApplicationConfigApi(implicit val swagger: Swagger) extends ScalatraServle
 
   val updateApplicationConfigOperation = (apiOperation[ApplicationConfigResponse]("updateApplicationConfig")
     summary "Update AppConfig"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("configId").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("configVersion").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("configId").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("configVersion").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("udid").description("").optional)
   )
 
-  post("/api/:version/appconfig/update", operation(updateApplicationConfigOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/appconfig/update", operation(updateApplicationConfigOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

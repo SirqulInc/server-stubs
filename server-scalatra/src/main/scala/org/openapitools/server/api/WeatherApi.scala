@@ -41,12 +41,10 @@ class WeatherApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchWeatherOperation = (apiOperation[WeatherResponse]("searchWeather")
     summary "Search Weather"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("regionId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("timezoneOffset").description("").optional.defaultValue(-6))
+    parameters(queryParam[Long]("regionId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("timezoneOffset").description("").optional.defaultValue(-6))
   )
 
-  get("/api/:version/weather/search", operation(searchWeatherOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/weather/search", operation(searchWeatherOperation)) {
             val regionId = params.getAs[Long]("regionId")
 
     //println("regionId: " + regionId)

@@ -41,12 +41,10 @@ class StripeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createStripeCheckoutSessionOperation = (apiOperation[SirqulResponse]("createStripeCheckoutSession")
     summary "Create Stripe Checkout Session"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("stripeParameters").description(""))
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("stripeParameters").description(""))
   )
 
-  post("/api/:version/stripe/checkout/session/create", operation(createStripeCheckoutSessionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/stripe/checkout/session/create", operation(createStripeCheckoutSessionOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)

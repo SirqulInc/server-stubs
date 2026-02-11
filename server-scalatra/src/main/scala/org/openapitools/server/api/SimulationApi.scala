@@ -41,12 +41,10 @@ class SimulationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val simulationOperation = (apiOperation[SirqulResponse]("simulation")
     summary "Routing Simulation"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("data").description(""), queryParam[Boolean]("realTime").description(""))
+    parameters(queryParam[String]("data").description(""), queryParam[Boolean]("realTime").description(""))
   )
 
-  post("/api/:version/simulation/routing", operation(simulationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/simulation/routing", operation(simulationOperation)) {
             val data = params.getAs[String]("data")
 
     //println("data: " + data)

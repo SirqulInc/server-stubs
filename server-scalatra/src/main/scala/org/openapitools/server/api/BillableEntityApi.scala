@@ -42,12 +42,10 @@ class BillableEntityApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createBillableEntityOperation = (apiOperation[BillableEntityResponse]("createBillableEntity")
     summary "Create Billable"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional)
   )
 
-  post("/api/:version/billable/create", operation(createBillableEntityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/billable/create", operation(createBillableEntityOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -90,12 +88,10 @@ class BillableEntityApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteBillableEntityOperation = (apiOperation[SirqulResponse]("deleteBillableEntity")
     summary "Delete Billable"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/billable/delete", operation(deleteBillableEntityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/billable/delete", operation(deleteBillableEntityOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -108,12 +104,10 @@ class BillableEntityApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBillableEntityOperation = (apiOperation[BillableEntityResponse]("getBillableEntity")
     summary "Get Billable"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeCounts").description("").optional.defaultValue(false), queryParam[Boolean]("includePayments").description("").optional.defaultValue(true))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeCounts").description("").optional.defaultValue(false), queryParam[Boolean]("includePayments").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/billable/get", operation(getBillableEntityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/billable/get", operation(getBillableEntityOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -132,12 +126,10 @@ class BillableEntityApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateBillableEntityOperation = (apiOperation[BillableEntityResponse]("updateBillableEntity")
     summary "Update Billable"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional)
   )
 
-  post("/api/:version/billable/update", operation(updateBillableEntityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/billable/update", operation(updateBillableEntityOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)

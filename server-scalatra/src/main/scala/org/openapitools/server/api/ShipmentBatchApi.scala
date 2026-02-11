@@ -42,12 +42,10 @@ class ShipmentBatchApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createShipmentBatchOperation = (apiOperation[ShipmentBatch]("createShipmentBatch")
     summary "Create Shipment Batch"
-    parameters(pathParam[Double]("version").description(""), bodyParam[ShipmentBatch]("body").description("").optional)
+    parameters(bodyParam[ShipmentBatch]("body").description("").optional)
   )
 
-  post("/api/:version/shipment/batch", operation(createShipmentBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/shipment/batch", operation(createShipmentBatchOperation)) {
     //println("body: " + body)
   }
 
@@ -55,12 +53,10 @@ class ShipmentBatchApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteShipmentBatchOperation = (apiOperation[Unit]("deleteShipmentBatch")
     summary "Delete Shipment Batch"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("batchId").description(""))
+    parameters(pathParam[Long]("batchId").description(""))
   )
 
-  delete("/api/:version/shipment/batch/:batchId", operation(deleteShipmentBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/shipment/batch/:batchId", operation(deleteShipmentBatchOperation)) {
     val batchId = params.getOrElse("batchId", halt(400))
     //println("batchId: " + batchId)
   }
@@ -69,12 +65,10 @@ class ShipmentBatchApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getShipmentBatchOperation = (apiOperation[ShipmentBatch]("getShipmentBatch")
     summary "Get Shipment Batch"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("batchId").description(""))
+    parameters(pathParam[Long]("batchId").description(""))
   )
 
-  get("/api/:version/shipment/batch/:batchId", operation(getShipmentBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/shipment/batch/:batchId", operation(getShipmentBatchOperation)) {
     val batchId = params.getOrElse("batchId", halt(400))
     //println("batchId: " + batchId)
   }
@@ -83,12 +77,10 @@ class ShipmentBatchApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getShipmentBatchStatusOperation = (apiOperation[List[ShipmentImportStatus]]("getShipmentBatchStatus")
     summary "Get Shipment Batch Status"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("batchId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("valid").description("").optional, queryParam[Boolean]("started").description("").optional, queryParam[Boolean]("completed").description("").optional, queryParam[Boolean]("hasShipment").description("").optional, queryParam[Boolean]("hasRoute").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(pathParam[Long]("batchId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("valid").description("").optional, queryParam[Boolean]("started").description("").optional, queryParam[Boolean]("completed").description("").optional, queryParam[Boolean]("hasShipment").description("").optional, queryParam[Boolean]("hasRoute").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/shipment/batch/:batchId/status", operation(getShipmentBatchStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/shipment/batch/:batchId/status", operation(getShipmentBatchStatusOperation)) {
     val batchId = params.getOrElse("batchId", halt(400))
     //println("batchId: " + batchId)
             val accountId = params.getAs[Long]("accountId")
@@ -130,12 +122,10 @@ class ShipmentBatchApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchShipmentBatchOperation = (apiOperation[List[ShipmentBatch]]("searchShipmentBatch")
     summary "Search Shipment Batch"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("hubId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
+    parameters(queryParam[Long]("hubId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
   )
 
-  get("/api/:version/shipment/batch", operation(searchShipmentBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/shipment/batch", operation(searchShipmentBatchOperation)) {
             val hubId = params.getAs[Long]("hubId")
 
     //println("hubId: " + hubId)

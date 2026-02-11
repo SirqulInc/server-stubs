@@ -43,12 +43,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val acceptInviteOperation = (apiOperation[ConsumerInviteResponse]("acceptInvite")
     summary "Accept Invite"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("token").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("albumId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("autoFriend").description("").optional.defaultValue(true), queryParam[Boolean]("autoAttendEvent").description("").optional.defaultValue(false), queryParam[Boolean]("autoFavoriteOffer").description("").optional.defaultValue(false), queryParam[Boolean]("autoFavoriteOfferLocation").description("").optional.defaultValue(false), queryParam[Boolean]("autoFavoriteRetailerLocation").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("token").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("albumId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("autoFriend").description("").optional.defaultValue(true), queryParam[Boolean]("autoAttendEvent").description("").optional.defaultValue(false), queryParam[Boolean]("autoFavoriteOffer").description("").optional.defaultValue(false), queryParam[Boolean]("autoFavoriteOfferLocation").description("").optional.defaultValue(false), queryParam[Boolean]("autoFavoriteRetailerLocation").description("").optional.defaultValue(false))
   )
 
-  post("/api/:version/invite/accept", operation(acceptInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/accept", operation(acceptInviteOperation)) {
             val token = params.getAs[String]("token")
 
     //println("token: " + token)
@@ -97,12 +95,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val albumContestInviteOperation = (apiOperation[InviteResponse]("albumContestInvite")
     summary "Invite to Contest"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/invite/albumContest", operation(albumContestInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/albumContest", operation(albumContestInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -130,12 +126,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val albumInviteOperation = (apiOperation[InviteResponse]("albumInvite")
     summary "Invite to Collection"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/invite/album", operation(albumInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/album", operation(albumInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -163,12 +157,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val eventInviteOperation = (apiOperation[InviteResponse]("eventInvite")
     summary "Invite to Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("listingId").description(""), queryParam[String]("receiverAccountIds").description("").optional, queryParam[Long]("retailerLocationId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("listingId").description(""), queryParam[String]("receiverAccountIds").description("").optional, queryParam[Long]("retailerLocationId").description("").optional)
   )
 
-  post("/api/:version/invite/event", operation(eventInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/event", operation(eventInviteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -190,12 +182,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val gameInviteOperation = (apiOperation[InviteResponse]("gameInvite")
     summary "Invite to Game Level"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/invite/gameLevel", operation(gameInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/gameLevel", operation(gameInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -223,12 +213,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getInviteOperation = (apiOperation[SirqulResponse]("getInvite")
     summary "Get Invite"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("token").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("token").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("albumContestId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  get("/api/:version/invite/get", operation(getInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/invite/get", operation(getInviteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -262,12 +250,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val missionInviteOperation = (apiOperation[InviteResponse]("missionInvite")
     summary "Invite to Mission"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("appId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/invite/mission", operation(missionInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/mission", operation(missionInviteOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -295,12 +281,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val offerInviteOperation = (apiOperation[InviteResponse]("offerInvite")
     summary "Invite to Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("offerId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("offerId").description(""))
   )
 
-  post("/api/:version/invite/offer", operation(offerInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/offer", operation(offerInviteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -316,12 +300,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val offerLocationInviteOperation = (apiOperation[InviteResponse]("offerLocationInvite")
     summary "Invite to Offer Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("offerLocationId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("offerLocationId").description(""))
   )
 
-  post("/api/:version/invite/offerLocation", operation(offerLocationInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/offerLocation", operation(offerLocationInviteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -337,12 +319,10 @@ class InviteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val retailerLocationInviteOperation = (apiOperation[InviteResponse]("retailerLocationInvite")
     summary "Invite to Retailer Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("retailerLocationId").description(""), queryParam[Long]("albumId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("retailerLocationId").description(""), queryParam[Long]("albumId").description("").optional)
   )
 
-  post("/api/:version/invite/retailerLocation", operation(retailerLocationInviteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/invite/retailerLocation", operation(retailerLocationInviteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

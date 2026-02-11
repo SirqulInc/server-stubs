@@ -44,14 +44,12 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
   }
   
 
-  val apiVersionAchievementTierSearchPostOperation = (apiOperation[AchievementTierResponse]("apiVersionAchievementTierSearchPost")
+  val achievementTierSearchPostOperation = (apiOperation[AchievementTierResponse]("achievementTierSearchPost")
     summary "Searches an Achievement Tier"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("achievementType").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("descendingGoal").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("limit").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("achievementType").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("descendingGoal").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("limit").description("").optional)
   )
 
-  post("/api/:version/achievement/tier/search", operation(apiVersionAchievementTierSearchPostOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/tier/search", operation(achievementTierSearchPostOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -91,12 +89,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createAchievementOperation = (apiOperation[AchievementResponse]("createAchievement")
     summary "Create Achievement"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("title").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("analyticsTag").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[Int]("rankIncrement").description("").optional, queryParam[Int]("minIncrement").description("").optional, queryParam[Int]("maxIncrement").description("").optional, queryParam[Boolean]("validate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("triggerDefinition").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("title").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("analyticsTag").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[Int]("rankIncrement").description("").optional, queryParam[Int]("minIncrement").description("").optional, queryParam[Int]("maxIncrement").description("").optional, queryParam[Boolean]("validate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("triggerDefinition").description("").optional)
   )
 
-  post("/api/:version/achievement/create", operation(createAchievementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/create", operation(createAchievementOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -142,12 +138,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createAchievementTierOperation = (apiOperation[AchievementTierResponse]("createAchievementTier")
     summary "Create Achievement Tier"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("achievementId").description(""), queryParam[Boolean]("scoreAllInstances").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[File]("icon").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("goalCount").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Int]("gameObjectId").description("").optional)
+    parameters(queryParam[Long]("achievementId").description(""), queryParam[Boolean]("scoreAllInstances").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[File]("icon").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("goalCount").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Int]("gameObjectId").description("").optional)
   )
 
-  post("/api/:version/achievement/tier/create", operation(createAchievementTierOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/tier/create", operation(createAchievementTierOperation)) {
             val achievementId = params.getAs[Long]("achievementId")
 
     //println("achievementId: " + achievementId)
@@ -195,12 +189,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteAchievementOperation = (apiOperation[SirqulResponse]("deleteAchievement")
     summary "Delete Achievement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("achievementId").description(""), queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("achievementId").description(""), queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/achievement/delete", operation(deleteAchievementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/delete", operation(deleteAchievementOperation)) {
             val achievementId = params.getAs[Long]("achievementId")
 
     //println("achievementId: " + achievementId)
@@ -213,12 +205,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteAchievementTierOperation = (apiOperation[SirqulResponse]("deleteAchievementTier")
     summary "Delete Achievement Tier"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("achievementTierId").description(""), queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("achievementTierId").description(""), queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/achievement/tier/delete", operation(deleteAchievementTierOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/tier/delete", operation(deleteAchievementTierOperation)) {
             val achievementTierId = params.getAs[Long]("achievementTierId")
 
     //println("achievementTierId: " + achievementTierId)
@@ -231,12 +221,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAchievementOperation = (apiOperation[AchievementTierResponse]("getAchievement")
     summary "Get Achievement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("achievementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("achievementType").description("").optional)
+    parameters(queryParam[Long]("achievementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("achievementType").description("").optional)
   )
 
-  get("/api/:version/achievement/get", operation(getAchievementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/achievement/get", operation(getAchievementOperation)) {
             val achievementId = params.getAs[Long]("achievementId")
 
     //println("achievementId: " + achievementId)
@@ -255,12 +243,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAchievementTierOperation = (apiOperation[AchievementTierResponse]("getAchievementTier")
     summary "Gets an achievement tier"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("achievementTierId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("achievementTierId").description(""))
   )
 
-  post("/api/:version/achievement/tier/get", operation(getAchievementTierOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/tier/get", operation(getAchievementTierOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -273,12 +259,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserAchievementsOperation = (apiOperation[List[AchievementProgressResponse]]("getUserAchievements")
     summary "Get Achievement Progress"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description("").defaultValue(true), queryParam[String]("appKey").description(""), queryParam[Boolean]("includeUndiscovered").description("").defaultValue(true), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionAccountEmail").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("achievementType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description("").defaultValue(true), queryParam[String]("appKey").description(""), queryParam[Boolean]("includeUndiscovered").description("").defaultValue(true), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionAccountEmail").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("achievementType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/achievement/progress/get", operation(getUserAchievementsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/achievement/progress/get", operation(getUserAchievementsOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -318,12 +302,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listAchievementTagsOperation = (apiOperation[SirqulResponse]("listAchievementTags")
     summary "List Achievement Tags"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[String]("appKey").description("").optional)
   )
 
-  get("/api/:version/achievement/tag/list", operation(listAchievementTagsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/achievement/tag/list", operation(listAchievementTagsOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -333,12 +315,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listAchievementsOperation = (apiOperation[List[AchievementShortResponse]]("listAchievements")
     summary "List Achievements"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("achievementType").description("").optional, queryParam[String]("rankType").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("achievementType").description("").optional, queryParam[String]("rankType").description("").optional)
   )
 
-  get("/api/:version/achievement/list", operation(listAchievementsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/achievement/list", operation(listAchievementsOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -378,12 +358,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchAchievementsOperation = (apiOperation[List[AchievementShortResponse]]("searchAchievements")
     summary "Search Achievements"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("sortField").description("").defaultValue(TITLE), queryParam[Boolean]("descending").description("").defaultValue(false), queryParam[Boolean]("includeTiers").description("").defaultValue(false), queryParam[Boolean]("includeInactiveTiers").description("").defaultValue(false), queryParam[Int]("start").description("").defaultValue(0), queryParam[Int]("limit").description("").defaultValue(100), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("achievementType").description("").optional, queryParam[String]("rankType").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("sortField").description("").defaultValue(TITLE), queryParam[Boolean]("descending").description("").defaultValue(false), queryParam[Boolean]("includeTiers").description("").defaultValue(false), queryParam[Boolean]("includeInactiveTiers").description("").defaultValue(false), queryParam[Int]("start").description("").defaultValue(0), queryParam[Int]("limit").description("").defaultValue(100), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("achievementType").description("").optional, queryParam[String]("rankType").description("").optional)
   )
 
-  get("/api/:version/achievement/search", operation(searchAchievementsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/achievement/search", operation(searchAchievementsOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -426,12 +404,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateAchievementOperation = (apiOperation[AchievementResponse]("updateAchievement")
     summary "Update Achievement"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("achievementId").description("").optional, queryParam[String]("analyticsTag").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[Int]("rankIncrement").description("").optional, queryParam[Int]("minIncrement").description("").optional, queryParam[Boolean]("nullMinIncrement").description("").optional, queryParam[Int]("maxIncrement").description("").optional, queryParam[Boolean]("nullMaxIncrement").description("").optional, queryParam[Boolean]("validate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("triggerDefinition").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("achievementId").description("").optional, queryParam[String]("analyticsTag").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[Int]("rankIncrement").description("").optional, queryParam[Int]("minIncrement").description("").optional, queryParam[Boolean]("nullMinIncrement").description("").optional, queryParam[Int]("maxIncrement").description("").optional, queryParam[Boolean]("nullMaxIncrement").description("").optional, queryParam[Boolean]("validate").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("triggerDefinition").description("").optional)
   )
 
-  post("/api/:version/achievement/update", operation(updateAchievementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/update", operation(updateAchievementOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -483,12 +459,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateAchievementTierOperation = (apiOperation[AchievementTierResponse]("updateAchievementTier")
     summary "Update Achievement Tier"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("achievementTierId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[File]("icon").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("goalCount").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional, queryParam[Boolean]("scoreAllInstances").description("").optional)
+    parameters(queryParam[Long]("achievementTierId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[File]("icon").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("goalCount").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional, queryParam[Boolean]("scoreAllInstances").description("").optional)
   )
 
-  post("/api/:version/achievement/tier/update", operation(updateAchievementTierOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/tier/update", operation(updateAchievementTierOperation)) {
             val achievementTierId = params.getAs[Long]("achievementTierId")
 
     //println("achievementTierId: " + achievementTierId)
@@ -536,12 +510,10 @@ class AchievementApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateUserAchievementOperation = (apiOperation[SirqulResponse]("updateUserAchievement")
     summary "Update Achievement Progress"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("achievementId").description("").optional, queryParam[String]("tag").description("").optional, queryParam[Long]("customId").description("").optional, queryParam[Long]("increment").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("returnProgress").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("achievementId").description("").optional, queryParam[String]("tag").description("").optional, queryParam[Long]("customId").description("").optional, queryParam[Long]("increment").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("returnProgress").description("").optional)
   )
 
-  post("/api/:version/achievement/progress/update", operation(updateUserAchievementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/achievement/progress/update", operation(updateUserAchievementOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

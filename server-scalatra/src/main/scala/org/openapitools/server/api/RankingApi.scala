@@ -42,12 +42,10 @@ class RankingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getHistoricalRankingsOperation = (apiOperation[RankFullResponse]("getHistoricalRankings")
     summary "Search Historical Rankings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("rankType").description(""), queryParam[Long]("startDate").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(TOTAL), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("rankType").description(""), queryParam[Long]("startDate").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(TOTAL), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  get("/api/:version/ranking/historical/search", operation(getHistoricalRankingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/ranking/historical/search", operation(getHistoricalRankingsOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -84,12 +82,10 @@ class RankingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRankingsOperation = (apiOperation[RankFullResponse]("getRankings")
     summary "Search Rankings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("rankType").description("").optional.defaultValue(POINTS,DOWNLOADS,INVITATIONS), queryParam[String]("leaderboardMode").description("").optional.defaultValue(GLOBAL), queryParam[String]("withinAccountIds").description("").optional, queryParam[Boolean]("returnUserRank").description("").optional.defaultValue(true), queryParam[Long]("albumId").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(TOTAL), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("rankType").description("").optional.defaultValue(POINTS,DOWNLOADS,INVITATIONS), queryParam[String]("leaderboardMode").description("").optional.defaultValue(GLOBAL), queryParam[String]("withinAccountIds").description("").optional, queryParam[Boolean]("returnUserRank").description("").optional.defaultValue(true), queryParam[Long]("albumId").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(TOTAL), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  get("/api/:version/ranking/search", operation(getRankingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/ranking/search", operation(getRankingsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -150,12 +146,10 @@ class RankingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getUserRankOperation = (apiOperation[Any]("getUserRank")
     summary "Get Personal Rankings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[Boolean]("returnUserRank").description("").optional.defaultValue(false), queryParam[String]("leaderboardMode").description("").optional.defaultValue(GLOBAL), queryParam[String]("sortField").description("").optional.defaultValue(TOTAL), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[Boolean]("returnUserRank").description("").optional.defaultValue(false), queryParam[String]("leaderboardMode").description("").optional.defaultValue(GLOBAL), queryParam[String]("sortField").description("").optional.defaultValue(TOTAL), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  post("/api/:version/ranking/personal/ranks", operation(getUserRankOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/ranking/personal/ranks", operation(getUserRankOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -195,12 +189,10 @@ class RankingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val overrideUserRankOperation = (apiOperation[SirqulResponse]("overrideUserRank")
     summary "Override User Rank"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("ownerAccountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("rankType").description(""), queryParam[Long]("totalScore").description("").optional, queryParam[Long]("totalCount").description("").optional, queryParam[Long]("totalTime").description("").optional, queryParam[Long]("dailyScore").description("").optional, queryParam[Long]("dailyCount").description("").optional, queryParam[Long]("dailyTime").description("").optional, queryParam[Long]("weeklyScore").description("").optional, queryParam[Long]("weeklyCount").description("").optional, queryParam[Long]("weeklyTime").description("").optional, queryParam[Long]("monthlyScore").description("").optional, queryParam[Long]("monthlyCount").description("").optional, queryParam[Long]("monthlyTime").description("").optional, queryParam[Long]("topScore").description("").optional, queryParam[Long]("lowestScore").description("").optional, queryParam[Long]("streakCount").description("").optional, queryParam[Long]("streakBestCount").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("ownerAccountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("rankType").description(""), queryParam[Long]("totalScore").description("").optional, queryParam[Long]("totalCount").description("").optional, queryParam[Long]("totalTime").description("").optional, queryParam[Long]("dailyScore").description("").optional, queryParam[Long]("dailyCount").description("").optional, queryParam[Long]("dailyTime").description("").optional, queryParam[Long]("weeklyScore").description("").optional, queryParam[Long]("weeklyCount").description("").optional, queryParam[Long]("weeklyTime").description("").optional, queryParam[Long]("monthlyScore").description("").optional, queryParam[Long]("monthlyCount").description("").optional, queryParam[Long]("monthlyTime").description("").optional, queryParam[Long]("topScore").description("").optional, queryParam[Long]("lowestScore").description("").optional, queryParam[Long]("streakCount").description("").optional, queryParam[Long]("streakBestCount").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional)
   )
 
-  post("/api/:version/ranking/override", operation(overrideUserRankOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/ranking/override", operation(overrideUserRankOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -273,12 +265,10 @@ class RankingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRankingsOperation = (apiOperation[SirqulResponse]("updateRankings")
     summary "Update Ranking"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("rankType").description(""), queryParam[Long]("increment").description("").optional.defaultValue(1), queryParam[Long]("timeIncrement").description("").optional, queryParam[String]("tag").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("updateGlobal").description("").optional, queryParam[Boolean]("createLeaderboard").description("").optional.defaultValue(false))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("rankType").description(""), queryParam[Long]("increment").description("").optional.defaultValue(1), queryParam[Long]("timeIncrement").description("").optional, queryParam[String]("tag").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Boolean]("updateGlobal").description("").optional, queryParam[Boolean]("createLeaderboard").description("").optional.defaultValue(false))
   )
 
-  post("/api/:version/ranking/update", operation(updateRankingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/ranking/update", operation(updateRankingsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

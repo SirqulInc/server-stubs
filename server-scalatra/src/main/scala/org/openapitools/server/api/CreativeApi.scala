@@ -43,12 +43,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addPreviewOperation = (apiOperation[SirqulResponse]("addPreview")
     summary "Add Preview"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
   )
 
-  post("/api/:version/creative/addpreview", operation(addPreviewOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/creative/addpreview", operation(addPreviewOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -61,12 +59,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val adsFindOperation = (apiOperation[List[MissionResponse]]("adsFind")
     summary "Find Missions"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("randomize").description(""), queryParam[Boolean]("targetedAdsOnly").description(""), queryParam[String]("`type`").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("device").description("").optional, queryParam[Long]("deviceIdentifier").description("").optional, queryParam[String]("deviceVersion").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("allocatesTickets").description("").optional, queryParam[String]("missionIds").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[Boolean]("randomize").description(""), queryParam[Boolean]("targetedAdsOnly").description(""), queryParam[String]("`type`").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("device").description("").optional, queryParam[Long]("deviceIdentifier").description("").optional, queryParam[String]("deviceVersion").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Boolean]("includeAudiences").description("").optional, queryParam[Boolean]("allocatesTickets").description("").optional, queryParam[String]("missionIds").description("").optional)
   )
 
-  get("/api/:version/ads/find", operation(adsFindOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/ads/find", operation(adsFindOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -121,12 +117,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createCreativeOperation = (apiOperation[CreativeResponse]("createCreative")
     summary "Create Creative"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Boolean]("active").description(""), queryParam[Boolean]("waitForAsset").description(""), queryParam[String]("description").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[String]("action").description("").optional, queryParam[String]("data").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Long]("referenceId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("offerId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Boolean]("active").description(""), queryParam[Boolean]("waitForAsset").description(""), queryParam[String]("description").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[String]("action").description("").optional, queryParam[String]("data").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Long]("referenceId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("missionId").description("").optional, queryParam[Long]("offerId").description("").optional)
   )
 
-  post("/api/:version/creative/create", operation(createCreativeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/creative/create", operation(createCreativeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -178,12 +172,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteCreativeOperation = (apiOperation[SirqulResponse]("deleteCreative")
     summary "Delete Creative"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
   )
 
-  post("/api/:version/creative/delete", operation(deleteCreativeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/creative/delete", operation(deleteCreativeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -196,12 +188,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCreativeOperation = (apiOperation[CreativeResponse]("getCreative")
     summary "Get Creative"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
   )
 
-  get("/api/:version/creative/get", operation(getCreativeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/creative/get", operation(getCreativeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -214,12 +204,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCreativesByApplicationOperation = (apiOperation[List[CreativeResponse]]("getCreativesByApplication")
     summary "Search Creatives"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Long]("missionId").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Long]("missionId").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/creative/search", operation(getCreativesByApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/creative/search", operation(getCreativesByApplicationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -244,12 +232,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removePreviewOperation = (apiOperation[SirqulResponse]("removePreview")
     summary "Remove Preview"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""))
   )
 
-  post("/api/:version/creative/removepreview", operation(removePreviewOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/creative/removepreview", operation(removePreviewOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -262,12 +248,10 @@ class CreativeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateCreativeOperation = (apiOperation[CreativeResponse]("updateCreative")
     summary "Update Creative"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[String]("action").description("").optional, queryParam[String]("data").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("referenceId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("missionId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("creativeId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[String]("action").description("").optional, queryParam[String]("data").description("").optional, queryParam[String]("suffix").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("referenceId").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("missionId").description("").optional)
   )
 
-  post("/api/:version/creative/update", operation(updateCreativeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/creative/update", operation(updateCreativeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

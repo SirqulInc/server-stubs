@@ -46,12 +46,10 @@ class TicketApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTicketCountOperation = (apiOperation[CountResponse]("getTicketCount")
     summary "Get Ticket Count"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("ticketType").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("ticketType").description("").optional)
   )
 
-  get("/api/:version/ticket/count", operation(getTicketCountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/ticket/count", operation(getTicketCountOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -73,12 +71,10 @@ class TicketApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTicketListOperation = (apiOperation[TicketListResponse]("getTicketList")
     summary "Get Ticket List"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("ticketObjectType").description("").optional, queryParam[String]("actionType").description("").optional, queryParam[String]("ticketIds").description("").optional, queryParam[String]("objectIds").description("").optional, queryParam[String]("receiptTokens").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("ticketObjectType").description("").optional, queryParam[String]("actionType").description("").optional, queryParam[String]("ticketIds").description("").optional, queryParam[String]("objectIds").description("").optional, queryParam[String]("receiptTokens").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  get("/api/:version/ticket/getList", operation(getTicketListOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/ticket/getList", operation(getTicketListOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -112,12 +108,10 @@ class TicketApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val giftPurchaseOperation = (apiOperation[SirqulResponse]("giftPurchase")
     summary "Gift Tickets"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("receiverAccountId").description(""), queryParam[Long]("ticketId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("customMessage").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("receiverAccountId").description(""), queryParam[Long]("ticketId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("customMessage").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/purchase/gift", operation(giftPurchaseOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/purchase/gift", operation(giftPurchaseOperation)) {
             val receiverAccountId = params.getAs[Long]("receiverAccountId")
 
     //println("receiverAccountId: " + receiverAccountId)
@@ -148,12 +142,10 @@ class TicketApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val saveTicketOperation = (apiOperation[ProfileResponse]("saveTicket")
     summary "Save Ticket"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("actionType").description(""), queryParam[String]("ticketObjectType").description(""), queryParam[Boolean]("returnNulls").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("objectId").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("receiptToken").description("").optional, queryParam[String]("receiptData").description("").optional, queryParam[Long]("count").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[String]("purchaseProvider").description("").optional, queryParam[String]("purchaseType").description("").optional, queryParam[Boolean]("returnProfileResponse").description("").optional, queryParam[Boolean]("includeProfileResponse").description("").optional, queryParam[String]("appVersion").description("").optional)
+    parameters(queryParam[String]("actionType").description(""), queryParam[String]("ticketObjectType").description(""), queryParam[Boolean]("returnNulls").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("objectId").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("receiptToken").description("").optional, queryParam[String]("receiptData").description("").optional, queryParam[Long]("count").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[String]("purchaseProvider").description("").optional, queryParam[String]("purchaseType").description("").optional, queryParam[Boolean]("returnProfileResponse").description("").optional, queryParam[Boolean]("includeProfileResponse").description("").optional, queryParam[String]("appVersion").description("").optional)
   )
 
-  post("/api/:version/ticket/save", operation(saveTicketOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/ticket/save", operation(saveTicketOperation)) {
             val actionType = params.getAs[String]("actionType")
 
     //println("actionType: " + actionType)
@@ -214,12 +206,10 @@ class TicketApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val saveTicketViaFileUploadOperation = (apiOperation[ProfileResponse]("saveTicketViaFileUpload")
     summary "Save Ticket with Reciept"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("actionType").description(""), queryParam[String]("ticketObjectType").description(""), queryParam[File]("receiptData").description(""), queryParam[Boolean]("returnNulls").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("objectId").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("receiptToken").description("").optional, queryParam[Long]("count").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[String]("purchaseProvider").description("").optional, queryParam[String]("purchaseType").description("").optional, queryParam[Boolean]("returnProfileResponse").description("").optional, queryParam[Boolean]("includeProfileResponse").description("").optional, queryParam[String]("appVersion").description("").optional)
+    parameters(queryParam[String]("actionType").description(""), queryParam[String]("ticketObjectType").description(""), queryParam[File]("receiptData").description(""), queryParam[Boolean]("returnNulls").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("objectId").description("").optional, queryParam[String]("purchaseCode").description("").optional, queryParam[String]("receiptToken").description("").optional, queryParam[Long]("count").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[String]("purchaseProvider").description("").optional, queryParam[String]("purchaseType").description("").optional, queryParam[Boolean]("returnProfileResponse").description("").optional, queryParam[Boolean]("includeProfileResponse").description("").optional, queryParam[String]("appVersion").description("").optional)
   )
 
-  post("/api/:version/ticket/save/fileUpload", operation(saveTicketViaFileUploadOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/ticket/save/fileUpload", operation(saveTicketViaFileUploadOperation)) {
             val actionType = params.getAs[String]("actionType")
 
     //println("actionType: " + actionType)
@@ -279,12 +269,10 @@ class TicketApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val ticketOffersOperation = (apiOperation[TicketOfferResponse]("ticketOffers")
     summary "Get Ticket Offers"
-    parameters(pathParam[Double]("version").description(""))
+    parameters()
   )
 
-  get("/api/:version/ticket/ticketoffers", operation(ticketOffersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/ticket/ticketoffers", operation(ticketOffersOperation)) {
   }
 
 }

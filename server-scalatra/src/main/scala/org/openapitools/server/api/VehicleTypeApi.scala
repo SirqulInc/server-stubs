@@ -41,12 +41,10 @@ class VehicleTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createVehicleTypeOperation = (apiOperation[VehicleType]("createVehicleType")
     summary "Create Vehicle Type"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("vehicleType").description(""), bodyParam[VehicleType]("body").description("").optional)
+    parameters(queryParam[String]("vehicleType").description(""), bodyParam[VehicleType]("body").description("").optional)
   )
 
-  post("/api/:version/vehicle/type", operation(createVehicleTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/vehicle/type", operation(createVehicleTypeOperation)) {
             val vehicleType = params.getAs[String]("vehicleType")
 
     //println("vehicleType: " + vehicleType)
@@ -57,12 +55,10 @@ class VehicleTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteVehicleTypeOperation = (apiOperation[Unit]("deleteVehicleType")
     summary "Delete Vehicle Type"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("vehicleTypeId").description(""))
+    parameters(pathParam[Long]("vehicleTypeId").description(""))
   )
 
-  delete("/api/:version/vehicle/type/:vehicleTypeId", operation(deleteVehicleTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/vehicle/type/:vehicleTypeId", operation(deleteVehicleTypeOperation)) {
     val vehicleTypeId = params.getOrElse("vehicleTypeId", halt(400))
     //println("vehicleTypeId: " + vehicleTypeId)
   }
@@ -71,12 +67,10 @@ class VehicleTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getVehicleTypeOperation = (apiOperation[VehicleType]("getVehicleType")
     summary "Get Vehicle Type"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("vehicleTypeId").description(""))
+    parameters(pathParam[Long]("vehicleTypeId").description(""))
   )
 
-  get("/api/:version/vehicle/type/:vehicleTypeId", operation(getVehicleTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vehicle/type/:vehicleTypeId", operation(getVehicleTypeOperation)) {
     val vehicleTypeId = params.getOrElse("vehicleTypeId", halt(400))
     //println("vehicleTypeId: " + vehicleTypeId)
   }
@@ -85,12 +79,10 @@ class VehicleTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchVehicleTypesOperation = (apiOperation[List[VehicleType]]("searchVehicleTypes")
     summary "Search Vehicle Type"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description("").defaultValue(id), queryParam[Boolean]("descending").description("").defaultValue(false), queryParam[Int]("start").description("").defaultValue(0), queryParam[Int]("limit").description("").defaultValue(20), queryParam[Boolean]("activeOnly").description("").defaultValue(true), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("hubId").description("").optional)
+    parameters(queryParam[String]("sortField").description("").defaultValue(id), queryParam[Boolean]("descending").description("").defaultValue(false), queryParam[Int]("start").description("").defaultValue(0), queryParam[Int]("limit").description("").defaultValue(20), queryParam[Boolean]("activeOnly").description("").defaultValue(true), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("hubId").description("").optional)
   )
 
-  get("/api/:version/vehicle/type", operation(searchVehicleTypesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/vehicle/type", operation(searchVehicleTypesOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -118,12 +110,10 @@ class VehicleTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateVehicleTypeOperation = (apiOperation[VehicleType]("updateVehicleType")
     summary "Update Vehicle Type"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("vehicleTypeId").description(""), queryParam[String]("vehicleType").description(""), bodyParam[VehicleType]("body").description("").optional)
+    parameters(pathParam[Long]("vehicleTypeId").description(""), queryParam[String]("vehicleType").description(""), bodyParam[VehicleType]("body").description("").optional)
   )
 
-  put("/api/:version/vehicle/type/:vehicleTypeId", operation(updateVehicleTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/vehicle/type/:vehicleTypeId", operation(updateVehicleTypeOperation)) {
     val vehicleTypeId = params.getOrElse("vehicleTypeId", halt(400))
     //println("vehicleTypeId: " + vehicleTypeId)
             val vehicleType = params.getAs[String]("vehicleType")

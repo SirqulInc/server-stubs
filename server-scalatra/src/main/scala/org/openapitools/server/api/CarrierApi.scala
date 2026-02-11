@@ -41,12 +41,10 @@ class CarrierApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchCarriersOperation = (apiOperation[List[CellCarrierResponse]]("searchCarriers")
     summary "Search Carriers"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
+    parameters(queryParam[String]("keyword").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/carrier/search", operation(searchCarriersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/carrier/search", operation(searchCarriersOperation)) {
             val keyword = params.getAs[String]("keyword")
 
     //println("keyword: " + keyword)

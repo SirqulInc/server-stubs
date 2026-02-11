@@ -46,12 +46,10 @@ class LocationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val cacheTrilaterationDataOperation = (apiOperation[SirqulResponse]("cacheTrilaterationData")
     summary "Create Trilateration Data with File"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("udid").description(""), queryParam[Long]("sourceTime").description("").optional, queryParam[Int]("minimumSampleSize").description("").optional, queryParam[String]("data").description("").optional, queryParam[File]("dataFile").description("").optional)
+    parameters(queryParam[String]("udid").description(""), queryParam[Long]("sourceTime").description("").optional, queryParam[Int]("minimumSampleSize").description("").optional, queryParam[String]("data").description("").optional, queryParam[File]("dataFile").description("").optional)
   )
 
-  post("/api/:version/location/trilaterate/cache", operation(cacheTrilaterationDataOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/location/trilaterate/cache", operation(cacheTrilaterationDataOperation)) {
             val udid = params.getAs[String]("udid")
 
     //println("udid: " + udid)
@@ -72,12 +70,10 @@ class LocationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val cacheTrilaterationDataGzipOperation = (apiOperation[SirqulResponse]("cacheTrilaterationDataGzip")
     summary "Create Trilateration Data with Rest"
-    parameters(pathParam[Double]("version").description(""), bodyParam[TrilatCacheRequest]("body").description("").optional)
+    parameters(bodyParam[TrilatCacheRequest]("body").description("").optional)
   )
 
-  post("/api/:version/location/trilaterate/cache/submit", operation(cacheTrilaterationDataGzipOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/location/trilaterate/cache/submit", operation(cacheTrilaterationDataGzipOperation)) {
     //println("body: " + body)
   }
 
@@ -85,12 +81,10 @@ class LocationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getLocationByIpOperation = (apiOperation[CoordsResponse]("getLocationByIp")
     summary "Get Location by IP"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("ip").description("").optional)
+    parameters(queryParam[String]("ip").description("").optional)
   )
 
-  get("/api/:version/location/ip", operation(getLocationByIpOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/location/ip", operation(getLocationByIpOperation)) {
             val ip = params.getAs[String]("ip")
 
     //println("ip: " + ip)
@@ -100,12 +94,10 @@ class LocationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getLocationByTrilaterationOperation = (apiOperation[GeoPointResponse]("getLocationByTrilateration")
     summary "Get Location by Trilateration"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("data").description("").optional, queryParam[String]("responseFilters").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("data").description("").optional, queryParam[String]("responseFilters").description("").optional)
   )
 
-  get("/api/:version/account/location/trilaterate", operation(getLocationByTrilaterationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/account/location/trilaterate", operation(getLocationByTrilaterationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -127,12 +119,10 @@ class LocationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getLocationsOperation = (apiOperation[LocationSearchResponse]("getLocations")
     summary "Search Regions or Postal Codes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("currentlatitude").description("").optional, queryParam[Double]("currentlongitude").description("").optional, queryParam[Double]("currentLatitude").description("").optional, queryParam[Double]("currentLongitude").description("").optional, queryParam[String]("query").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("zipCode").description("").optional, queryParam[Double]("selectedMaplatitude").description("").optional, queryParam[Double]("selectedMaplongitude").description("").optional, queryParam[Double]("selectedMapLatitude").description("").optional, queryParam[Double]("selectedMapLongitude").description("").optional, queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[Boolean]("useGeocode").description("").optional.defaultValue(false), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("currentlatitude").description("").optional, queryParam[Double]("currentlongitude").description("").optional, queryParam[Double]("currentLatitude").description("").optional, queryParam[Double]("currentLongitude").description("").optional, queryParam[String]("query").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("zipCode").description("").optional, queryParam[Double]("selectedMaplatitude").description("").optional, queryParam[Double]("selectedMaplongitude").description("").optional, queryParam[Double]("selectedMapLatitude").description("").optional, queryParam[Double]("selectedMapLongitude").description("").optional, queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[Boolean]("useGeocode").description("").optional.defaultValue(false), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/location/search", operation(getLocationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/location/search", operation(getLocationsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)

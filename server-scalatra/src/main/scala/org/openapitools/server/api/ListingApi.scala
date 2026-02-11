@@ -44,12 +44,10 @@ class ListingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createListingOperation = (apiOperation[ListingFullResponse]("createListing")
     summary "Create Listing"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("filterIds").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("locationName").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Boolean]("isPrivate").description("").optional.defaultValue(false), queryParam[String]("externalId").description("").optional, queryParam[String]("externalId2").description("").optional, queryParam[String]("externalGroupId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("filterIds").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("locationName").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Boolean]("isPrivate").description("").optional.defaultValue(false), queryParam[String]("externalId").description("").optional, queryParam[String]("externalId2").description("").optional, queryParam[String]("externalGroupId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/listing/create", operation(createListingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/listing/create", operation(createListingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -98,12 +96,10 @@ class ListingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteListingOperation = (apiOperation[SirqulResponse]("deleteListing")
     summary "Delete Listing"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("listingId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("listingId").description(""))
   )
 
-  post("/api/:version/listing/delete", operation(deleteListingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/listing/delete", operation(deleteListingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -116,12 +112,10 @@ class ListingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getListingOperation = (apiOperation[ListingFullResponse]("getListing")
     summary "Get Listing"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("listingId").description(""))
+    parameters(queryParam[Long]("listingId").description(""))
   )
 
-  get("/api/:version/listing/get", operation(getListingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/listing/get", operation(getListingOperation)) {
             val listingId = params.getAs[Long]("listingId")
 
     //println("listingId: " + listingId)
@@ -131,12 +125,10 @@ class ListingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchListingOperation = (apiOperation[List[ListingResponse]]("searchListing")
     summary "Search Listings"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("useListingOrderIds").description("").optional.defaultValue(true), queryParam[String]("externalId").description("").optional, queryParam[String]("externalId2").description("").optional, queryParam[String]("externalGroupId").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("useListingOrderIds").description("").optional.defaultValue(true), queryParam[String]("externalId").description("").optional, queryParam[String]("externalId2").description("").optional, queryParam[String]("externalGroupId").description("").optional)
   )
 
-  get("/api/:version/listing/search", operation(searchListingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/listing/search", operation(searchListingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -188,12 +180,10 @@ class ListingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val summaryListingOperation = (apiOperation[List[ListingGroupResponse]]("summaryListing")
     summary "Summary Listing"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Int]("daysToInclude").description("").optional.defaultValue(15), queryParam[Boolean]("useListingOrderIds").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Int]("daysToInclude").description("").optional.defaultValue(15), queryParam[Boolean]("useListingOrderIds").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/listing/summary", operation(summaryListingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/listing/summary", operation(summaryListingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -215,12 +205,10 @@ class ListingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateListingOperation = (apiOperation[ListingFullResponse]("updateListing")
     summary "Update Listing"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("listingId").description(""), queryParam[String]("filterIds").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("locationName").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Boolean]("isPrivate").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalId2").description("").optional, queryParam[String]("externalGroupId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("listingId").description(""), queryParam[String]("filterIds").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("locationName").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Boolean]("isPrivate").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalId2").description("").optional, queryParam[String]("externalGroupId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/listing/update", operation(updateListingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/listing/update", operation(updateListingOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

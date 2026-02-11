@@ -44,12 +44,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val approveRouteOperation = (apiOperation[Route]("approveRoute")
     summary "Approve Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  post("/api/:version/route/:routeId/approve", operation(approveRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/:routeId/approve", operation(approveRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -58,12 +56,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val copyRouteOperation = (apiOperation[Route]("copyRoute")
     summary "Copy Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), bodyParam[Route]("body").description("").optional)
+    parameters(pathParam[Long]("routeId").description(""), bodyParam[Route]("body").description("").optional)
   )
 
-  post("/api/:version/route/:routeId/copy", operation(copyRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/:routeId/copy", operation(copyRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     //println("body: " + body)
@@ -73,12 +69,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRouteOperation = (apiOperation[Route]("createRoute")
     summary "Create Route"
-    parameters(pathParam[Double]("version").description(""), bodyParam[Route]("body").description("").optional)
+    parameters(bodyParam[Route]("body").description("").optional)
   )
 
-  post("/api/:version/route", operation(createRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route", operation(createRouteOperation)) {
     //println("body: " + body)
   }
 
@@ -86,12 +80,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRouteDirectionsOperation = (apiOperation[List[Direction]]("createRouteDirections")
     summary "Update Route Directions"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  put("/api/:version/route/:routeId/directions", operation(createRouteDirectionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/route/:routeId/directions", operation(createRouteDirectionsOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -100,12 +92,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRoutePolylineOperation = (apiOperation[Route]("createRoutePolyline")
     summary "Create Route Polyline"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  put("/api/:version/route/:routeId/polyline", operation(createRoutePolylineOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/route/:routeId/polyline", operation(createRoutePolylineOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -114,12 +104,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteRouteOperation = (apiOperation[Unit]("deleteRoute")
     summary "Delete Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  delete("/api/:version/route/:routeId", operation(deleteRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/route/:routeId", operation(deleteRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -128,12 +116,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val disapproveRouteOperation = (apiOperation[Route]("disapproveRoute")
     summary "Disapprove Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  post("/api/:version/route/:routeId/disapprove", operation(disapproveRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/:routeId/disapprove", operation(disapproveRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -142,12 +128,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRouteOperation = (apiOperation[Route]("getRoute")
     summary "Get Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), queryParam[Boolean]("showInheritedProperties").description(""))
+    parameters(pathParam[Long]("routeId").description(""), queryParam[Boolean]("showInheritedProperties").description(""))
   )
 
-  get("/api/:version/route/:routeId", operation(getRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/:routeId", operation(getRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
             val showInheritedProperties = params.getAs[Boolean]("showInheritedProperties")
@@ -159,12 +143,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRouteDirectionsOperation = (apiOperation[List[Direction]]("getRouteDirections")
     summary "Get Route Directions"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  get("/api/:version/route/:routeId/directions", operation(getRouteDirectionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/:routeId/directions", operation(getRouteDirectionsOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -173,12 +155,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRouteShipmentsOperation = (apiOperation[List[Shipment]]("getRouteShipments")
     summary "Get Route Shipments"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  get("/api/:version/route/:routeId/shipments", operation(getRouteShipmentsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/:routeId/shipments", operation(getRouteShipmentsOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -187,12 +167,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRouteStopOperation = (apiOperation[Stop]("getRouteStop")
     summary "Get Route Stop"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""))
+    parameters(pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""))
   )
 
-  get("/api/:version/route/:routeId/stop/:stopId", operation(getRouteStopOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/:routeId/stop/:stopId", operation(getRouteStopOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     val stopId = params.getOrElse("stopId", halt(400))
@@ -203,12 +181,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRouteStopsOperation = (apiOperation[List[Stop]]("getRouteStops")
     summary "Get Route Stops"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), queryParam[Boolean]("confirmedOnly").description(""))
+    parameters(pathParam[Long]("routeId").description(""), queryParam[Boolean]("confirmedOnly").description(""))
   )
 
-  get("/api/:version/route/:routeId/stops", operation(getRouteStopsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/:routeId/stops", operation(getRouteStopsOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
             val confirmedOnly = params.getAs[Boolean]("confirmedOnly")
@@ -220,12 +196,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getShipmentsAtStopOperation = (apiOperation[List[Shipment]]("getShipmentsAtStop")
     summary "Get Shipments At Stop"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""))
+    parameters(pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""))
   )
 
-  get("/api/:version/route/:routeId/stop/:stopId/shipments", operation(getShipmentsAtStopOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route/:routeId/stop/:stopId/shipments", operation(getShipmentsAtStopOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     val stopId = params.getOrElse("stopId", halt(400))
@@ -236,12 +210,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val optimizeRouteOperation = (apiOperation[Unit]("optimizeRoute")
     summary "Optimize Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""))
+    parameters(pathParam[Long]("routeId").description(""))
   )
 
-  post("/api/:version/route/:routeId/optimize", operation(optimizeRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/:routeId/optimize", operation(optimizeRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
   }
@@ -250,12 +222,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeStopOperation = (apiOperation[Unit]("removeStop")
     summary "Delete Stop"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""))
+    parameters(pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""))
   )
 
-  delete("/api/:version/route/:routeId/stop/:stopId", operation(removeStopOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/route/:routeId/stop/:stopId", operation(removeStopOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     val stopId = params.getOrElse("stopId", halt(400))
@@ -266,12 +236,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val reorderRouteStopsPatchOperation = (apiOperation[List[Stop]]("reorderRouteStopsPatch")
     summary "Reorder Route Stops"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), bodyParam[List[Stop]]("body").description("").optional)
+    parameters(pathParam[Long]("routeId").description(""), bodyParam[List[Stop]]("body").description("").optional)
   )
 
-  patch("/api/:version/route/:routeId/stops/reorder", operation(reorderRouteStopsPatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  patch("/route/:routeId/stops/reorder", operation(reorderRouteStopsPatchOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     //println("body: " + body)
@@ -281,12 +249,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val reorderRouteStopsPostOperation = (apiOperation[List[Stop]]("reorderRouteStopsPost")
     summary "Reorder Route Stops"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), bodyParam[List[Stop]]("body").description("").optional)
+    parameters(pathParam[Long]("routeId").description(""), bodyParam[List[Stop]]("body").description("").optional)
   )
 
-  post("/api/:version/route/:routeId/stops/reorder", operation(reorderRouteStopsPostOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/:routeId/stops/reorder", operation(reorderRouteStopsPostOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     //println("body: " + body)
@@ -296,12 +262,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRoutesOperation = (apiOperation[List[Route]]("searchRoutes")
     summary "Search Routes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("includesEmpty").description(""), queryParam[Boolean]("rootOnly").description(""), queryParam[Boolean]("showInheritedProperties").description(""), queryParam[Long]("hubId").description("").optional, queryParam[Long]("programId").description("").optional, queryParam[Long]("scheduledStart").description("").optional, queryParam[Long]("scheduledEnd").description("").optional, queryParam[Long]("updatedStart").description("").optional, queryParam[Long]("updatedEnd").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[Int]("seatCount").description("").optional, queryParam[Boolean]("approved").description("").optional, queryParam[Boolean]("started").description("").optional, queryParam[Boolean]("completed").description("").optional, queryParam[Boolean]("valid").description("").optional, queryParam[Long]("parentId").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("includesEmpty").description(""), queryParam[Boolean]("rootOnly").description(""), queryParam[Boolean]("showInheritedProperties").description(""), queryParam[Long]("hubId").description("").optional, queryParam[Long]("programId").description("").optional, queryParam[Long]("scheduledStart").description("").optional, queryParam[Long]("scheduledEnd").description("").optional, queryParam[Long]("updatedStart").description("").optional, queryParam[Long]("updatedEnd").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[Int]("seatCount").description("").optional, queryParam[Boolean]("approved").description("").optional, queryParam[Boolean]("started").description("").optional, queryParam[Boolean]("completed").description("").optional, queryParam[Boolean]("valid").description("").optional, queryParam[Long]("parentId").description("").optional)
   )
 
-  get("/api/:version/route", operation(searchRoutesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/route", operation(searchRoutesOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -371,12 +335,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val setDriverOperation = (apiOperation[Unit]("setDriver")
     summary "Set Driver"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), pathParam[Long]("driverId").description(""))
+    parameters(pathParam[Long]("id").description(""), pathParam[Long]("driverId").description(""))
   )
 
-  post("/api/:version/route/:id/driver/:driverId", operation(setDriverOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/route/:id/driver/:driverId", operation(setDriverOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     val driverId = params.getOrElse("driverId", halt(400))
@@ -387,12 +349,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRouteOperation = (apiOperation[Route]("updateRoute")
     summary "Update Route"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), bodyParam[Route]("body").description("").optional)
+    parameters(pathParam[Long]("routeId").description(""), bodyParam[Route]("body").description("").optional)
   )
 
-  put("/api/:version/route/:routeId", operation(updateRouteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/route/:routeId", operation(updateRouteOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     //println("body: " + body)
@@ -402,12 +362,10 @@ class RouteApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRouteStopOperation = (apiOperation[Unit]("updateRouteStop")
     summary "Update Route Stop"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""), bodyParam[Stop]("body").description("").optional)
+    parameters(pathParam[Long]("routeId").description(""), pathParam[Long]("stopId").description(""), bodyParam[Stop]("body").description("").optional)
   )
 
-  put("/api/:version/route/:routeId/stop/:stopId", operation(updateRouteStopOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/route/:routeId/stop/:stopId", operation(updateRouteStopOperation)) {
     val routeId = params.getOrElse("routeId", halt(400))
     //println("routeId: " + routeId)
     val stopId = params.getOrElse("stopId", halt(400))

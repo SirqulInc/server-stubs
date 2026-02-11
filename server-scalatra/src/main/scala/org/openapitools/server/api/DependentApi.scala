@@ -42,12 +42,10 @@ class DependentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOperation = (apiOperation[SirqulResponse]("create")
     summary "Create Dependent"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("accountId").description(""), bodyParam[Account]("body").description("").optional)
+    parameters(pathParam[Long]("accountId").description(""), bodyParam[Account]("body").description("").optional)
   )
 
-  put("/api/:version/cargo/dependent/:accountId", operation(createOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/cargo/dependent/:accountId", operation(createOperation)) {
     val accountId = params.getOrElse("accountId", halt(400))
     //println("accountId: " + accountId)
     //println("body: " + body)
@@ -57,12 +55,10 @@ class DependentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getDependentsOperation = (apiOperation[SirqulResponse]("getDependents")
     summary "Get dependent list of an account"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("accountId").description(""))
+    parameters(pathParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/cargo/dependent/:accountId", operation(getDependentsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/cargo/dependent/:accountId", operation(getDependentsOperation)) {
     val accountId = params.getOrElse("accountId", halt(400))
     //println("accountId: " + accountId)
   }
@@ -71,12 +67,10 @@ class DependentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeDependentOperation = (apiOperation[Unit]("removeDependent")
     summary "Delete Dependent"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("accountId").description(""), pathParam[Long]("dependentId").description(""))
+    parameters(pathParam[Long]("accountId").description(""), pathParam[Long]("dependentId").description(""))
   )
 
-  delete("/api/:version/cargo/dependent/:accountId", operation(removeDependentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/cargo/dependent/:accountId", operation(removeDependentOperation)) {
     val accountId = params.getOrElse("accountId", halt(400))
     //println("accountId: " + accountId)
     val dependentId = params.getOrElse("dependentId", halt(400))

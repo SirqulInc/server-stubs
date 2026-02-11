@@ -45,12 +45,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addConnectionToGroupOperation = (apiOperation[SirqulResponse]("addConnectionToGroup")
     summary "Add Connection"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[Long]("pendingId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[Long]("pendingId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/group/addConnection", operation(addConnectionToGroupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/group/addConnection", operation(addConnectionToGroupOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -84,12 +82,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addConnectionsToGroupOperation = (apiOperation[SirqulResponse]("addConnectionsToGroup")
     summary "Add Connections"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("connectionGroupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("connectionGroupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/connection/group/addConnections", operation(addConnectionsToGroupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/connection/group/addConnections", operation(addConnectionsToGroupOperation)) {
             val connectionGroupId = params.getAs[Long]("connectionGroupId")
 
     //println("connectionGroupId: " + connectionGroupId)
@@ -117,12 +113,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addSubGroupsOperation = (apiOperation[ConnectionGroupResponse]("addSubGroups")
     summary "Add Connection Groups"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("subGroupIds").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("subGroupIds").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/group/addSubGroup", operation(addSubGroupsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/group/addSubGroup", operation(addSubGroupsOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -150,12 +144,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOrUpdateConnectionOperation = (apiOperation[ConnectionResponse]("createOrUpdateConnection")
     summary "Create or Update Connection"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[Long]("pendingId").description("").optional, queryParam[Long]("groupId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("isTrusted").description("").optional, queryParam[Boolean]("ignoreFriendRequest").description("").optional, queryParam[Boolean]("isContact").description("").optional, queryParam[Boolean]("isBlocked").description("").optional, queryParam[Boolean]("isFollowing").description("").optional, queryParam[Boolean]("connectionResponse").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[Long]("pendingId").description("").optional, queryParam[Long]("groupId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("isTrusted").description("").optional, queryParam[Boolean]("ignoreFriendRequest").description("").optional, queryParam[Boolean]("isContact").description("").optional, queryParam[Boolean]("isBlocked").description("").optional, queryParam[Boolean]("isFollowing").description("").optional, queryParam[Boolean]("connectionResponse").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/add", operation(createOrUpdateConnectionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/add", operation(createOrUpdateConnectionOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -204,12 +196,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOrUpdateGroupOperation = (apiOperation[SirqulResponse]("createOrUpdateGroup")
     summary "Create or Update Connection Group"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[Long]("groupId").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("connections").description("").optional, queryParam[String]("description").description("").optional, queryParam[Boolean]("canViewProfileInfo").description("").optional, queryParam[Boolean]("canViewGameInfo").description("").optional, queryParam[Boolean]("canViewFriendInfo").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[Long]("groupId").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("connections").description("").optional, queryParam[String]("description").description("").optional, queryParam[Boolean]("canViewProfileInfo").description("").optional, queryParam[Boolean]("canViewGameInfo").description("").optional, queryParam[Boolean]("canViewFriendInfo").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/group", operation(createOrUpdateGroupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/group", operation(createOrUpdateGroupOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -258,12 +248,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val followAcceptOperation = (apiOperation[SirqulResponse]("followAccept")
     summary "Accept Follow Request"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/consumer/follow/accept", operation(followAcceptOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/follow/accept", operation(followAcceptOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -279,12 +267,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val followRejectOperation = (apiOperation[SirqulResponse]("followReject")
     summary "Reject Follow Request"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/consumer/follow/reject", operation(followRejectOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/follow/reject", operation(followRejectOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -300,12 +286,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val followRemoveOperation = (apiOperation[SirqulResponse]("followRemove")
     summary "Remove Follower / Unfollow"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/consumer/follow/remove", operation(followRemoveOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/follow/remove", operation(followRemoveOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -321,12 +305,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val followRequestOperation = (apiOperation[SirqulResponse]("followRequest")
     summary "Send Follow Request"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("approvalNeeded").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("connectionAccountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("approvalNeeded").description("").optional.defaultValue(true))
   )
 
-  post("/api/:version/consumer/follow/request", operation(followRequestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/follow/request", operation(followRequestOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -345,12 +327,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val friendAcceptOperation = (apiOperation[SirqulResponse]("friendAccept")
     summary "Accept Friend"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("friendAccountId").description(""), queryParam[Boolean]("notifyFriend").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("notificationMessage").description("").optional)
+    parameters(queryParam[Long]("friendAccountId").description(""), queryParam[Boolean]("notifyFriend").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("notificationMessage").description("").optional)
   )
 
-  post("/api/:version/consumer/friend/accept", operation(friendAcceptOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/friend/accept", operation(friendAcceptOperation)) {
             val friendAccountId = params.getAs[Long]("friendAccountId")
 
     //println("friendAccountId: " + friendAccountId)
@@ -378,12 +358,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val friendRejectOperation = (apiOperation[SirqulResponse]("friendReject")
     summary "Decline Friend"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("friendAccountId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("notifyFriend").description("").optional, queryParam[String]("notificationMessage").description("").optional)
+    parameters(queryParam[Long]("friendAccountId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("notifyFriend").description("").optional, queryParam[String]("notificationMessage").description("").optional)
   )
 
-  post("/api/:version/consumer/friend/reject", operation(friendRejectOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/friend/reject", operation(friendRejectOperation)) {
             val friendAccountId = params.getAs[Long]("friendAccountId")
 
     //println("friendAccountId: " + friendAccountId)
@@ -411,12 +389,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val friendRemoveOperation = (apiOperation[SirqulResponse]("friendRemove")
     summary "Delete Friend"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("friendAccountId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("notifyFriend").description("").optional, queryParam[Boolean]("removeFromGroups").description("").optional)
+    parameters(queryParam[Long]("friendAccountId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("notifyFriend").description("").optional, queryParam[Boolean]("removeFromGroups").description("").optional)
   )
 
-  post("/api/:version/consumer/friend/remove", operation(friendRemoveOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/friend/remove", operation(friendRemoveOperation)) {
             val friendAccountId = params.getAs[Long]("friendAccountId")
 
     //println("friendAccountId: " + friendAccountId)
@@ -438,12 +414,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val friendRequestOperation = (apiOperation[SirqulResponse]("friendRequest")
     summary "Request Friend"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("friendAccountId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("notificationMessage").description("").optional)
+    parameters(queryParam[Long]("friendAccountId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("notificationMessage").description("").optional)
   )
 
-  post("/api/:version/consumer/friend/request", operation(friendRequestOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/friend/request", operation(friendRequestOperation)) {
             val friendAccountId = params.getAs[Long]("friendAccountId")
 
     //println("friendAccountId: " + friendAccountId)
@@ -468,12 +442,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getConnectionSentFriendRequestsOperation = (apiOperation[ConnectionListResponse]("getConnectionSentFriendRequests")
     summary "Get Sent Friend Requests"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  get("/api/:version/consumer/connection/getRequested", operation(getConnectionSentFriendRequestsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/connection/getRequested", operation(getConnectionSentFriendRequestsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -486,12 +458,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getConnectionsOperation = (apiOperation[ConnectionListResponse]("getConnections")
     summary "Search Connections"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[String]("filter").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[String]("filter").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/consumer/connection/get", operation(getConnectionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/connection/get", operation(getConnectionsOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -543,12 +513,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getGroupDetailsOperation = (apiOperation[ConnectionGroupResponse]("getGroupDetails")
     summary "Get Connection Group"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("combineConnections").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("groupId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("combineConnections").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("groupId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/consumer/connection/group/details/get", operation(getGroupDetailsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/connection/group/details/get", operation(getGroupDetailsOperation)) {
             val combineConnections = params.getAs[Boolean]("combineConnections")
 
     //println("combineConnections: " + combineConnections)
@@ -573,12 +541,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val groupSearchOperation = (apiOperation[List[ConnectionInfoResponse]]("groupSearch")
     summary "Search Connection Groups"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/connection/group/search", operation(groupSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/connection/group/search", operation(groupSearchOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -615,12 +581,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeConnectionFromGroupOperation = (apiOperation[SirqulResponse]("removeConnectionFromGroup")
     summary "Delete Connection"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[Long]("pendingId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[Long]("pendingId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/group/removeConnection", operation(removeConnectionFromGroupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/group/removeConnection", operation(removeConnectionFromGroupOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -654,12 +618,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeConnectionsFromGroupOperation = (apiOperation[SirqulResponse]("removeConnectionsFromGroup")
     summary "Remove Connections"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("connectionGroupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("connectionGroupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionAccountIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/connection/group/removeConnections", operation(removeConnectionsFromGroupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/connection/group/removeConnections", operation(removeConnectionsFromGroupOperation)) {
             val connectionGroupId = params.getAs[Long]("connectionGroupId")
 
     //println("connectionGroupId: " + connectionGroupId)
@@ -687,12 +649,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeGroupOperation = (apiOperation[SirqulResponse]("removeGroup")
     summary "Delete Connection Group"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/group/remove", operation(removeGroupOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/group/remove", operation(removeGroupOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -717,12 +677,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeSubGroupsOperation = (apiOperation[SirqulResponse]("removeSubGroups")
     summary "Remove Connection Groups"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("subGroupIds").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[Long]("groupId").description(""), queryParam[String]("subGroupIds").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/connection/group/removeSubGroup", operation(removeSubGroupsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/connection/group/removeSubGroup", operation(removeSubGroupsOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -750,12 +708,10 @@ class ConnectionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchConnectionsOperation = (apiOperation[ConnectionListResponse]("searchConnections")
     summary "Search Possible Connections"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("hasLocation").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("hasLocation").description("").optional)
   )
 
-  get("/api/:version/connection/search", operation(searchConnectionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/connection/search", operation(searchConnectionsOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)

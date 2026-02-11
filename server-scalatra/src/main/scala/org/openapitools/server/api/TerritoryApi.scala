@@ -42,12 +42,10 @@ class TerritoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createTerritoryOperation = (apiOperation[TerritoryResponse]("createTerritory")
     summary "Create Territory"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/territory/create", operation(createTerritoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/territory/create", operation(createTerritoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -63,12 +61,10 @@ class TerritoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteTerritoryOperation = (apiOperation[SirqulResponse]("deleteTerritory")
     summary "Delete Territory"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("territoryId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("territoryId").description(""))
   )
 
-  post("/api/:version/territory/delete", operation(deleteTerritoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/territory/delete", operation(deleteTerritoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -81,12 +77,10 @@ class TerritoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTerritoryOperation = (apiOperation[TerritoryResponse]("getTerritory")
     summary "Get Territory"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("territoryId").description(""))
+    parameters(queryParam[Long]("territoryId").description(""))
   )
 
-  get("/api/:version/territory/get", operation(getTerritoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/territory/get", operation(getTerritoryOperation)) {
             val territoryId = params.getAs[Long]("territoryId")
 
     //println("territoryId: " + territoryId)
@@ -96,12 +90,10 @@ class TerritoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchTerritoriesOperation = (apiOperation[List[TerritoryResponse]]("searchTerritories")
     summary "Search Territories"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[String]("keyword").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/territory/search", operation(searchTerritoriesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/territory/search", operation(searchTerritoriesOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -123,12 +115,10 @@ class TerritoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateTerritoryOperation = (apiOperation[TerritoryResponse]("updateTerritory")
     summary "Update Territory"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("territoryId").description(""), queryParam[String]("name").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("territoryId").description(""), queryParam[String]("name").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/territory/update", operation(updateTerritoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/territory/update", operation(updateTerritoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

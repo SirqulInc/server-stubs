@@ -45,12 +45,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createGameLevelOperation = (apiOperation[GameLevelResponse]("createGameLevel")
     summary "Create Game Level"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("gameData").description(""), queryParam[String]("gameDataSuffix").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("difficulty").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[Long]("assetIconId").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("friendGroup").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("tutorialTitle").description("").optional, queryParam[String]("tutorialMessage").description("").optional, queryParam[String]("tutorialAlignment").description("").optional, queryParam[Long]("tutorialImageAssetId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("gameData").description(""), queryParam[String]("gameDataSuffix").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("difficulty").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[Long]("assetIconId").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("friendGroup").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("tutorialTitle").description("").optional, queryParam[String]("tutorialMessage").description("").optional, queryParam[String]("tutorialAlignment").description("").optional, queryParam[Long]("tutorialImageAssetId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/level/create", operation(createGameLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/level/create", operation(createGameLevelOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -135,12 +133,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteGameLevelOperation = (apiOperation[SirqulResponse]("deleteGameLevel")
     summary "Delete Game Level"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("levelId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("levelId").description(""))
   )
 
-  post("/api/:version/level/delete", operation(deleteGameLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/level/delete", operation(deleteGameLevelOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -153,12 +149,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getGameLevelOperation = (apiOperation[GameLevelResponse]("getGameLevel")
     summary "Get Game Level"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("levelId").description(""), queryParam[Boolean]("includeGameData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("levelId").description(""), queryParam[Boolean]("includeGameData").description("").optional)
   )
 
-  get("/api/:version/level/get", operation(getGameLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/level/get", operation(getGameLevelOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -174,12 +168,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getGameLevelsByApplicationOperation = (apiOperation[GameLevelListResponse]("getGameLevelsByApplication")
     summary "Search Game Levels"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("filters").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Boolean]("includeGameData").description("").optional, queryParam[String]("filters").description("").optional)
   )
 
-  get("/api/:version/level/search", operation(getGameLevelsByApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/level/search", operation(getGameLevelsByApplicationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -216,12 +208,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getGameLevelsByBillableEntityOperation = (apiOperation[GameLevelResponse]("getGameLevelsByBillableEntity")
     summary "Search Game Level by Billable Entity"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("limit").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("limit").description("").optional)
   )
 
-  get("/api/:version/level/searchByBillableEntity", operation(getGameLevelsByBillableEntityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/level/searchByBillableEntity", operation(getGameLevelsByBillableEntityOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -252,12 +242,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getQuestionsInLevelOperation = (apiOperation[QuestionResponse]("getQuestionsInLevel")
     summary "Get Level Questions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/level/questions/get", operation(getQuestionsInLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/level/questions/get", operation(getQuestionsInLevelOperation)) {
             val levelId = params.getAs[Long]("levelId")
 
     //println("levelId: " + levelId)
@@ -270,12 +258,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getWordsInLevelOperation = (apiOperation[WordzWordResponse]("getWordsInLevel")
     summary "Get Level Words"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/level/words/get", operation(getWordsInLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/level/words/get", operation(getWordsInLevelOperation)) {
             val levelId = params.getAs[Long]("levelId")
 
     //println("levelId: " + levelId)
@@ -288,12 +274,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateGameLevelOperation = (apiOperation[GameLevelResponse]("updateGameLevel")
     summary "Update Game Level"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("levelId").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("difficulty").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[Long]("assetIconId").description("").optional, queryParam[String]("gameData").description("").optional, queryParam[String]("gameDataSuffix").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("friendGroup").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("tutorialTitle").description("").optional, queryParam[String]("tutorialMessage").description("").optional, queryParam[String]("tutorialAlignment").description("").optional, queryParam[Long]("tutorialImageAssetId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("levelId").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("difficulty").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Long]("assetImageId").description("").optional, queryParam[Long]("assetIconId").description("").optional, queryParam[String]("gameData").description("").optional, queryParam[String]("gameDataSuffix").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("friendGroup").description("").optional, queryParam[String]("connectionIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[Double]("balance").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[Long]("ticketCount").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional, queryParam[String]("tutorialTitle").description("").optional, queryParam[String]("tutorialMessage").description("").optional, queryParam[String]("tutorialAlignment").description("").optional, queryParam[Long]("tutorialImageAssetId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/level/update", operation(updateGameLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/level/update", operation(updateGameLevelOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -381,12 +365,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateQuestionsInLevelOperation = (apiOperation[SirqulResponse]("updateQuestionsInLevel")
     summary "Update Level Questions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("questionIds").description(""))
+    parameters(queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("questionIds").description(""))
   )
 
-  post("/api/:version/level/questions/update", operation(updateQuestionsInLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/level/questions/update", operation(updateQuestionsInLevelOperation)) {
             val levelId = params.getAs[Long]("levelId")
 
     //println("levelId: " + levelId)
@@ -402,12 +384,10 @@ class GameLevelApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateWordsInLevelOperation = (apiOperation[SirqulResponse]("updateWordsInLevel")
     summary "Update Level Words"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("wordIds").description(""))
+    parameters(queryParam[Long]("levelId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("wordIds").description(""))
   )
 
-  post("/api/:version/level/words/update", operation(updateWordsInLevelOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/level/words/update", operation(updateWordsInLevelOperation)) {
             val levelId = params.getAs[Long]("levelId")
 
     //println("levelId: " + levelId)

@@ -44,12 +44,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assigmentAssigneeAccountSearchOperation = (apiOperation[List[AccountMiniResponse]]("assigmentAssigneeAccountSearch")
     summary "Search Assignment Assignees"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/assignment/assignee/search", operation(assigmentAssigneeAccountSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/assignment/assignee/search", operation(assigmentAssigneeAccountSearchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -62,12 +60,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentCreateOperation = (apiOperation[AssignmentResponse]("assignmentCreate")
     summary "Create Assignment"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Long]("assigneeAccountId").description(""), queryParam[String]("description").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[Long]("assigneeAccountId").description(""), queryParam[String]("description").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/assignment/create", operation(assignmentCreateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/assignment/create", operation(assignmentCreateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -95,12 +91,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentDeleteOperation = (apiOperation[SirqulResponse]("assignmentDelete")
     summary "Delete Assignment"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""))
   )
 
-  post("/api/:version/assignment/delete", operation(assignmentDeleteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/assignment/delete", operation(assignmentDeleteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -113,12 +107,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentGetOperation = (apiOperation[AssignmentResponse]("assignmentGet")
     summary "Get Assignment"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""))
   )
 
-  get("/api/:version/assignment/get", operation(assignmentGetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/assignment/get", operation(assignmentGetOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -131,12 +123,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentSearchOperation = (apiOperation[List[AssignmentResponse]]("assignmentSearch")
     summary "Search Assignments"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Long]("creatorAccountId").description("").optional, queryParam[String]("assigneeAccountIds").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("currentStatusType").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Long]("creatorAccountId").description("").optional, queryParam[String]("assigneeAccountIds").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("currentStatusType").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/assignment/search", operation(assignmentSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/assignment/search", operation(assignmentSearchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -176,12 +166,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentStatusCreateOperation = (apiOperation[AssignmentStatusResponse]("assignmentStatusCreate")
     summary "Create Assignment Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""), queryParam[Long]("scheduledNotificationId").description("").optional, queryParam[String]("toDo").description("").optional, queryParam[String]("connection").description("").optional, queryParam[String]("method").description("").optional, queryParam[String]("status").description("").optional, queryParam[String]("closure").description("").optional, queryParam[String]("message").description("").optional, queryParam[Long]("followUp").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""), queryParam[Long]("scheduledNotificationId").description("").optional, queryParam[String]("toDo").description("").optional, queryParam[String]("connection").description("").optional, queryParam[String]("method").description("").optional, queryParam[String]("status").description("").optional, queryParam[String]("closure").description("").optional, queryParam[String]("message").description("").optional, queryParam[Long]("followUp").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/assignment/status/create", operation(assignmentStatusCreateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/assignment/status/create", operation(assignmentStatusCreateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -221,12 +209,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentStatusDeleteOperation = (apiOperation[SirqulResponse]("assignmentStatusDelete")
     summary "Deletes Assignment Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentStatusId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentStatusId").description(""))
   )
 
-  post("/api/:version/assignment/status/delete", operation(assignmentStatusDeleteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/assignment/status/delete", operation(assignmentStatusDeleteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -239,12 +225,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentStatusGetOperation = (apiOperation[AssignmentStatusResponse]("assignmentStatusGet")
     summary "Get Assignment Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentStatusId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentStatusId").description(""))
   )
 
-  get("/api/:version/assignment/status/get", operation(assignmentStatusGetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/assignment/status/get", operation(assignmentStatusGetOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -257,12 +241,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentStatusSearchOperation = (apiOperation[List[AssignmentStatusResponse]]("assignmentStatusSearch")
     summary "Search Assignment Statuses"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Long]("assignmentId").description("").optional, queryParam[Long]("creatorAccountId").description("").optional, queryParam[Long]("assigneeAccountId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("statusType").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Long]("assignmentId").description("").optional, queryParam[Long]("creatorAccountId").description("").optional, queryParam[Long]("assigneeAccountId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("statusType").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/assignment/status/search", operation(assignmentStatusSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/assignment/status/search", operation(assignmentStatusSearchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -305,12 +287,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentStatusUpdateOperation = (apiOperation[AssignmentStatusResponse]("assignmentStatusUpdate")
     summary "Update Assignment Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentStatusId").description(""), queryParam[Long]("scheduledNotificationId").description("").optional, queryParam[String]("toDo").description("").optional, queryParam[String]("connection").description("").optional, queryParam[String]("method").description("").optional, queryParam[String]("status").description("").optional, queryParam[String]("closure").description("").optional, queryParam[String]("message").description("").optional, queryParam[Long]("followUp").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentStatusId").description(""), queryParam[Long]("scheduledNotificationId").description("").optional, queryParam[String]("toDo").description("").optional, queryParam[String]("connection").description("").optional, queryParam[String]("method").description("").optional, queryParam[String]("status").description("").optional, queryParam[String]("closure").description("").optional, queryParam[String]("message").description("").optional, queryParam[Long]("followUp").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/assignment/status/update", operation(assignmentStatusUpdateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/assignment/status/update", operation(assignmentStatusUpdateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -350,12 +330,10 @@ class AssignmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignmentUpdateOperation = (apiOperation[AssignmentResponse]("assignmentUpdate")
     summary "Update Assignment"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("assigneeAccountId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("assignmentId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Long]("assigneeAccountId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/assignment/update", operation(assignmentUpdateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/assignment/update", operation(assignmentUpdateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

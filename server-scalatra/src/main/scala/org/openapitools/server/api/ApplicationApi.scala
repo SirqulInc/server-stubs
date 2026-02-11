@@ -47,12 +47,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createApplicationOperation = (apiOperation[ApplicationResponse]("createApplication")
     summary "Create Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appName").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("about").description("").optional, queryParam[String]("bundleId").description("").optional, queryParam[Long]("appIconAssetId").description("").optional, queryParam[Long]("appLogoAssetId").description("").optional, queryParam[String]("facebookAppId").description("").optional, queryParam[String]("facebookAppSecret").description("").optional, queryParam[String]("googleApiKey").description("").optional, queryParam[Boolean]("updateEULADate").description("").optional, queryParam[String]("eulaVersion").description("").optional, queryParam[String]("landingPageUrl").description("").optional, queryParam[Boolean]("showInActivities").description("").optional, queryParam[String]("activityDescription").description("").optional, queryParam[String]("inviteWelcomeText").description("").optional, queryParam[String]("invitePageUrl").description("").optional, queryParam[String]("urlScheme").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("downloadUrls").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("scoringType").description("").optional.defaultValue(GAME_LEVEL), queryParam[Int]("hintCost").description("").optional.defaultValue(11), queryParam[Int]("maxScore").description("").optional.defaultValue(125), queryParam[Float]("ticketsPerPoint").description("").optional.defaultValue(0.037), queryParam[Boolean]("hasGameData").description("").optional.defaultValue(true), queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("useMatchingAlgorithm").description("").optional, queryParam[Boolean]("globalTickets").description("").optional.defaultValue(false), queryParam[Float]("buildVersion").description("").optional.defaultValue(1), queryParam[Float]("apiVersion").description("").optional, queryParam[String]("placementName").description("").optional, queryParam[String]("placementDescription").description("").optional, queryParam[String]("placementSize").description("").optional, queryParam[Int]("placementHeight").description("").optional, queryParam[Int]("placementWidth").description("").optional, queryParam[Int]("placementRefreshInterval").description("").optional, queryParam[Boolean]("createObjectStore").description("").optional.defaultValue(true), queryParam[Boolean]("publicContentApproval").description("").optional.defaultValue(false), queryParam[Boolean]("productionMode").description("").optional.defaultValue(false), queryParam[Int]("minimumSessionLength").description("").optional, queryParam[Int]("sessionGapLength").description("").optional, queryParam[Boolean]("localAdsEnabled").description("").optional.defaultValue(false), queryParam[String]("sqootApiKey").description("").optional, queryParam[String]("trilatProcessingType").description("").optional.defaultValue(FINGERPRINT), queryParam[Int]("maxSampleSize").description("").optional, queryParam[Double]("minRSSI").description("").optional, queryParam[String]("modules").description("").optional.defaultValue(ALL), queryParam[Int]("authorizedCount").description("").optional.defaultValue(1), queryParam[String]("authorizedServers").description("").optional, queryParam[String]("defaultTimezone").description("").optional, queryParam[String]("smtpPass").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("placementMetaData").description("").optional, queryParam[Boolean]("ipsFloor").description("").optional.defaultValue(false), queryParam[Boolean]("enableAPNSBadge").description("").optional.defaultValue(true), queryParam[Boolean]("includeInReport").description("").optional.defaultValue(true), queryParam[Long]("defaultAppFilterId").description("").optional, queryParam[Boolean]("enableWelcomeEmail").description("").optional, queryParam[String]("appleAppId").description("").optional, queryParam[String]("appleTeamId").description("").optional, queryParam[String]("appleAuthKeyId").description("").optional, queryParam[File]("appleAuthKey").description("").optional, queryParam[String]("appleIssuerId").description("").optional, queryParam[String]("appStoreKeyId").description("").optional, queryParam[File]("appStoreKey").description("").optional, queryParam[File]("googlePrivateKeyFile").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional, queryParam[String]("emailSender").description("").optional, queryParam[String]("smtpUser").description("").optional, queryParam[String]("smtpHost").description("").optional, queryParam[String]("vatomBusinessId").description("").optional, queryParam[String]("vatomRestClientId").description("").optional, queryParam[String]("vatomRestSecretKey").description("").optional, queryParam[String]("twilioAccountSID").description("").optional, queryParam[String]("twilioAuthToken").description("").optional, queryParam[String]("twilioSenderPhoneNumber").description("").optional, queryParam[String]("openAISecretKey").description("").optional)
+    parameters(queryParam[String]("appName").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("about").description("").optional, queryParam[String]("bundleId").description("").optional, queryParam[Long]("appIconAssetId").description("").optional, queryParam[Long]("appLogoAssetId").description("").optional, queryParam[String]("facebookAppId").description("").optional, queryParam[String]("facebookAppSecret").description("").optional, queryParam[String]("googleApiKey").description("").optional, queryParam[Boolean]("updateEULADate").description("").optional, queryParam[String]("eulaVersion").description("").optional, queryParam[String]("landingPageUrl").description("").optional, queryParam[Boolean]("showInActivities").description("").optional, queryParam[String]("activityDescription").description("").optional, queryParam[String]("inviteWelcomeText").description("").optional, queryParam[String]("invitePageUrl").description("").optional, queryParam[String]("urlScheme").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("downloadUrls").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("scoringType").description("").optional.defaultValue(GAME_LEVEL), queryParam[Int]("hintCost").description("").optional.defaultValue(11), queryParam[Int]("maxScore").description("").optional.defaultValue(125), queryParam[Float]("ticketsPerPoint").description("").optional.defaultValue(0.037), queryParam[Boolean]("hasGameData").description("").optional.defaultValue(true), queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("useMatchingAlgorithm").description("").optional, queryParam[Boolean]("globalTickets").description("").optional.defaultValue(false), queryParam[Float]("buildVersion").description("").optional.defaultValue(1), queryParam[Float]("apiVersion").description("").optional, queryParam[String]("placementName").description("").optional, queryParam[String]("placementDescription").description("").optional, queryParam[String]("placementSize").description("").optional, queryParam[Int]("placementHeight").description("").optional, queryParam[Int]("placementWidth").description("").optional, queryParam[Int]("placementRefreshInterval").description("").optional, queryParam[Boolean]("createObjectStore").description("").optional.defaultValue(true), queryParam[Boolean]("publicContentApproval").description("").optional.defaultValue(false), queryParam[Boolean]("productionMode").description("").optional.defaultValue(false), queryParam[Int]("minimumSessionLength").description("").optional, queryParam[Int]("sessionGapLength").description("").optional, queryParam[Boolean]("localAdsEnabled").description("").optional.defaultValue(false), queryParam[String]("sqootApiKey").description("").optional, queryParam[String]("trilatProcessingType").description("").optional.defaultValue(FINGERPRINT), queryParam[Int]("maxSampleSize").description("").optional, queryParam[Double]("minRSSI").description("").optional, queryParam[String]("modules").description("").optional.defaultValue(ALL), queryParam[Int]("authorizedCount").description("").optional.defaultValue(1), queryParam[String]("authorizedServers").description("").optional, queryParam[String]("defaultTimezone").description("").optional, queryParam[String]("smtpPass").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("placementMetaData").description("").optional, queryParam[Boolean]("ipsFloor").description("").optional.defaultValue(false), queryParam[Boolean]("enableAPNSBadge").description("").optional.defaultValue(true), queryParam[Boolean]("includeInReport").description("").optional.defaultValue(true), queryParam[Long]("defaultAppFilterId").description("").optional, queryParam[Boolean]("enableWelcomeEmail").description("").optional, queryParam[String]("appleAppId").description("").optional, queryParam[String]("appleTeamId").description("").optional, queryParam[String]("appleAuthKeyId").description("").optional, queryParam[File]("appleAuthKey").description("").optional, queryParam[String]("appleIssuerId").description("").optional, queryParam[String]("appStoreKeyId").description("").optional, queryParam[File]("appStoreKey").description("").optional, queryParam[File]("googlePrivateKeyFile").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional, queryParam[String]("emailSender").description("").optional, queryParam[String]("smtpUser").description("").optional, queryParam[String]("smtpHost").description("").optional, queryParam[String]("vatomBusinessId").description("").optional, queryParam[String]("vatomRestClientId").description("").optional, queryParam[String]("vatomRestSecretKey").description("").optional, queryParam[String]("twilioAccountSID").description("").optional, queryParam[String]("twilioAuthToken").description("").optional, queryParam[String]("twilioSenderPhoneNumber").description("").optional, queryParam[String]("openAISecretKey").description("").optional)
   )
 
-  post("/api/:version/application/create", operation(createApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/create", operation(createApplicationOperation)) {
             val appName = params.getAs[String]("appName")
 
     //println("appName: " + appName)
@@ -293,12 +291,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createApplicationPlacementOperation = (apiOperation[PlacementResponse]("createApplicationPlacement")
     summary "Create Ad Placement"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("size").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("height").description("").optional, queryParam[Int]("width").description("").optional, queryParam[Int]("refreshInterval").description("").optional, queryParam[Long]("defaultImageId").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("size").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[Int]("height").description("").optional, queryParam[Int]("width").description("").optional, queryParam[Int]("refreshInterval").description("").optional, queryParam[Long]("defaultImageId").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/application/placement/create", operation(createApplicationPlacementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/placement/create", operation(createApplicationPlacementOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -338,12 +334,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteApplicationOperation = (apiOperation[SirqulResponse]("deleteApplication")
     summary "Delete Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/application/delete", operation(deleteApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/delete", operation(deleteApplicationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -356,12 +350,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteApplicationPlacementOperation = (apiOperation[PlacementResponse]("deleteApplicationPlacement")
     summary "Delete Ad Placement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("placementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("placementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/application/placement/delete", operation(deleteApplicationPlacementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/placement/delete", operation(deleteApplicationPlacementOperation)) {
             val placementId = params.getAs[Long]("placementId")
 
     //println("placementId: " + placementId)
@@ -377,12 +369,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getApplicationOperation = (apiOperation[ApplicationResponse]("getApplication")
     summary "Get Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("applicationId").description("").optional)
+    parameters(queryParam[String]("appKey").description("").optional, queryParam[Long]("applicationId").description("").optional)
   )
 
-  get("/api/:version/application/get", operation(getApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/get", operation(getApplicationOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -395,12 +385,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getApplicationPlacementOperation = (apiOperation[PlacementResponse]("getApplicationPlacement")
     summary "Get Ad Placement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("placementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("placementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  get("/api/:version/application/placement/get", operation(getApplicationPlacementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/placement/get", operation(getApplicationPlacementOperation)) {
             val placementId = params.getAs[Long]("placementId")
 
     //println("placementId: " + placementId)
@@ -416,24 +404,20 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getApplicationVersionsOperation = (apiOperation[SirqulResponse]("getApplicationVersions")
     summary "Get API versions"
-    parameters(pathParam[Double]("version").description(""))
+    parameters()
   )
 
-  get("/api/:version/application/versions", operation(getApplicationVersionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/versions", operation(getApplicationVersionsOperation)) {
   }
 
   
 
   val getUniqueUsersByAppOperation = (apiOperation[AccountListResponse]("getUniqueUsersByApp")
     summary "Search Application Users"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("since").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("since").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/application/users", operation(getUniqueUsersByAppOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/users", operation(getUniqueUsersByAppOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -464,12 +448,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val listApplicationsOperation = (apiOperation[List[ApplicationShortResponse]]("listApplications")
     summary "List Applications"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(UPDATED), queryParam[Boolean]("hasAds").description("").optional, queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("filterBillable").description("").optional, queryParam[Boolean]("filterContentAdmin").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[String]("applicationIds").description("").optional, queryParam[Boolean]("hasObjectStore").description("").optional.defaultValue(false), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("deviceIds").description("").optional, queryParam[String]("deviceVersions").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(UPDATED), queryParam[Boolean]("hasAds").description("").optional, queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("filterBillable").description("").optional, queryParam[Boolean]("filterContentAdmin").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[String]("applicationIds").description("").optional, queryParam[Boolean]("hasObjectStore").description("").optional.defaultValue(false), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/application/list", operation(listApplicationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/list", operation(listApplicationsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -536,12 +518,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchApplicationPlacementOperation = (apiOperation[List[PlacementResponse]]("searchApplicationPlacement")
     summary "Search for Ad Placements"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  get("/api/:version/application/placement/search", operation(searchApplicationPlacementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/placement/search", operation(searchApplicationPlacementOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -563,12 +543,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchApplicationSettingsOperation = (apiOperation[ApplicationSettingsResponse]("searchApplicationSettings")
     summary "Search for Application Settings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(APPLICATION_TITLE), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(APPLICATION_TITLE), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/application/settings/search", operation(searchApplicationSettingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/settings/search", operation(searchApplicationSettingsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -599,12 +577,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchApplicationsOperation = (apiOperation[List[ApplicationResponse]]("searchApplications")
     summary "Search Applications"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("qSearchFields").description("").optional.defaultValue(NAME,ABOUT,BILLABLE_ENTITY_NAME), queryParam[String]("sortField").description("").optional.defaultValue(APPLICATION_ID), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(100), queryParam[Boolean]("hasAds").description("").optional, queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("qSearchFields").description("").optional.defaultValue(NAME,ABOUT,BILLABLE_ENTITY_NAME), queryParam[String]("sortField").description("").optional.defaultValue(APPLICATION_ID), queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(100), queryParam[Boolean]("hasAds").description("").optional, queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/application/search", operation(searchApplicationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/application/search", operation(searchApplicationsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -659,12 +635,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateApplicationOperation = (apiOperation[ApplicationResponse]("updateApplication")
     summary "Update Application"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("appName").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("about").description("").optional, queryParam[String]("bundleId").description("").optional, queryParam[Long]("appIconAssetId").description("").optional, queryParam[Long]("appLogoAssetId").description("").optional, queryParam[String]("facebookAppId").description("").optional, queryParam[String]("facebookAppSecret").description("").optional, queryParam[String]("googleApiKey").description("").optional, queryParam[Boolean]("updateEULADate").description("").optional, queryParam[String]("eulaVersion").description("").optional, queryParam[String]("landingPageUrl").description("").optional, queryParam[Boolean]("showInActivities").description("").optional, queryParam[String]("activityDescription").description("").optional, queryParam[String]("inviteWelcomeText").description("").optional, queryParam[String]("invitePageUrl").description("").optional, queryParam[String]("urlScheme").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("downloadUrls").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("scoringType").description("").optional.defaultValue(GAME_LEVEL), queryParam[Int]("hintCost").description("").optional.defaultValue(11), queryParam[Int]("maxScore").description("").optional.defaultValue(125), queryParam[Float]("ticketsPerPoint").description("").optional.defaultValue(0.037), queryParam[Boolean]("hasGameData").description("").optional.defaultValue(true), queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("useMatchingAlgorithm").description("").optional, queryParam[Boolean]("globalTickets").description("").optional.defaultValue(false), queryParam[Float]("buildVersion").description("").optional.defaultValue(1), queryParam[Float]("apiVersion").description("").optional, queryParam[String]("placementName").description("").optional, queryParam[String]("placementDescription").description("").optional, queryParam[String]("placementSize").description("").optional, queryParam[Int]("placementHeight").description("").optional, queryParam[Int]("placementWidth").description("").optional, queryParam[Int]("placementRefreshInterval").description("").optional, queryParam[Boolean]("createObjectStore").description("").optional.defaultValue(true), queryParam[Boolean]("publicContentApproval").description("").optional.defaultValue(false), queryParam[Boolean]("productionMode").description("").optional.defaultValue(false), queryParam[Int]("minimumSessionLength").description("").optional, queryParam[Int]("sessionGapLength").description("").optional, queryParam[Boolean]("localAdsEnabled").description("").optional.defaultValue(false), queryParam[String]("sqootApiKey").description("").optional, queryParam[String]("trilatProcessingType").description("").optional.defaultValue(FINGERPRINT), queryParam[Int]("maxSampleSize").description("").optional, queryParam[Double]("minRSSI").description("").optional, queryParam[String]("modules").description("").optional.defaultValue(ALL), queryParam[Int]("authorizedCount").description("").optional.defaultValue(1), queryParam[String]("authorizedServers").description("").optional, queryParam[String]("defaultTimezone").description("").optional, queryParam[String]("smtpPass").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("placementMetaData").description("").optional, queryParam[Boolean]("ipsFloor").description("").optional.defaultValue(false), queryParam[Boolean]("enableAPNSBadge").description("").optional.defaultValue(true), queryParam[Boolean]("includeInReport").description("").optional.defaultValue(true), queryParam[Long]("defaultAppFilterId").description("").optional, queryParam[Boolean]("enableWelcomeEmail").description("").optional, queryParam[String]("appleAppId").description("").optional, queryParam[String]("appleTeamId").description("").optional, queryParam[String]("appleAuthKeyId").description("").optional, queryParam[File]("appleAuthKey").description("").optional, queryParam[String]("appleIssuerId").description("").optional, queryParam[String]("appStoreKeyId").description("").optional, queryParam[File]("appStoreKey").description("").optional, queryParam[File]("googlePrivateKeyFile").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional, queryParam[String]("emailSender").description("").optional, queryParam[String]("smtpUser").description("").optional, queryParam[String]("smtpHost").description("").optional, queryParam[String]("vatomBusinessId").description("").optional, queryParam[String]("vatomRestClientId").description("").optional, queryParam[String]("vatomRestSecretKey").description("").optional, queryParam[String]("twilioAccountSID").description("").optional, queryParam[String]("twilioAuthToken").description("").optional, queryParam[String]("twilioSenderPhoneNumber").description("").optional, queryParam[String]("openAISecretKey").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("appName").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("about").description("").optional, queryParam[String]("bundleId").description("").optional, queryParam[Long]("appIconAssetId").description("").optional, queryParam[Long]("appLogoAssetId").description("").optional, queryParam[String]("facebookAppId").description("").optional, queryParam[String]("facebookAppSecret").description("").optional, queryParam[String]("googleApiKey").description("").optional, queryParam[Boolean]("updateEULADate").description("").optional, queryParam[String]("eulaVersion").description("").optional, queryParam[String]("landingPageUrl").description("").optional, queryParam[Boolean]("showInActivities").description("").optional, queryParam[String]("activityDescription").description("").optional, queryParam[String]("inviteWelcomeText").description("").optional, queryParam[String]("invitePageUrl").description("").optional, queryParam[String]("urlScheme").description("").optional, queryParam[String]("platforms").description("").optional, queryParam[String]("downloadUrls").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("scoringType").description("").optional.defaultValue(GAME_LEVEL), queryParam[Int]("hintCost").description("").optional.defaultValue(11), queryParam[Int]("maxScore").description("").optional.defaultValue(125), queryParam[Float]("ticketsPerPoint").description("").optional.defaultValue(0.037), queryParam[Boolean]("hasGameData").description("").optional.defaultValue(true), queryParam[Boolean]("publicNotifications").description("").optional, queryParam[Boolean]("useMatchingAlgorithm").description("").optional, queryParam[Boolean]("globalTickets").description("").optional.defaultValue(false), queryParam[Float]("buildVersion").description("").optional.defaultValue(1), queryParam[Float]("apiVersion").description("").optional, queryParam[String]("placementName").description("").optional, queryParam[String]("placementDescription").description("").optional, queryParam[String]("placementSize").description("").optional, queryParam[Int]("placementHeight").description("").optional, queryParam[Int]("placementWidth").description("").optional, queryParam[Int]("placementRefreshInterval").description("").optional, queryParam[Boolean]("createObjectStore").description("").optional.defaultValue(true), queryParam[Boolean]("publicContentApproval").description("").optional.defaultValue(false), queryParam[Boolean]("productionMode").description("").optional.defaultValue(false), queryParam[Int]("minimumSessionLength").description("").optional, queryParam[Int]("sessionGapLength").description("").optional, queryParam[Boolean]("localAdsEnabled").description("").optional.defaultValue(false), queryParam[String]("sqootApiKey").description("").optional, queryParam[String]("trilatProcessingType").description("").optional.defaultValue(FINGERPRINT), queryParam[Int]("maxSampleSize").description("").optional, queryParam[Double]("minRSSI").description("").optional, queryParam[String]("modules").description("").optional.defaultValue(ALL), queryParam[Int]("authorizedCount").description("").optional.defaultValue(1), queryParam[String]("authorizedServers").description("").optional, queryParam[String]("defaultTimezone").description("").optional, queryParam[String]("smtpPass").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("placementMetaData").description("").optional, queryParam[Boolean]("ipsFloor").description("").optional.defaultValue(false), queryParam[Boolean]("enableAPNSBadge").description("").optional.defaultValue(true), queryParam[Boolean]("includeInReport").description("").optional.defaultValue(true), queryParam[Long]("defaultAppFilterId").description("").optional, queryParam[Boolean]("enableWelcomeEmail").description("").optional, queryParam[String]("appleAppId").description("").optional, queryParam[String]("appleTeamId").description("").optional, queryParam[String]("appleAuthKeyId").description("").optional, queryParam[File]("appleAuthKey").description("").optional, queryParam[String]("appleIssuerId").description("").optional, queryParam[String]("appStoreKeyId").description("").optional, queryParam[File]("appStoreKey").description("").optional, queryParam[File]("googlePrivateKeyFile").description("").optional, queryParam[String]("authorizeNetApiKey").description("").optional, queryParam[String]("authorizeNetTransactionKey").description("").optional, queryParam[String]("emailSender").description("").optional, queryParam[String]("smtpUser").description("").optional, queryParam[String]("smtpHost").description("").optional, queryParam[String]("vatomBusinessId").description("").optional, queryParam[String]("vatomRestClientId").description("").optional, queryParam[String]("vatomRestSecretKey").description("").optional, queryParam[String]("twilioAccountSID").description("").optional, queryParam[String]("twilioAuthToken").description("").optional, queryParam[String]("twilioSenderPhoneNumber").description("").optional, queryParam[String]("openAISecretKey").description("").optional)
   )
 
-  post("/api/:version/application/update", operation(updateApplicationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/update", operation(updateApplicationOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -908,12 +882,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateApplicationActiveOperation = (apiOperation[SirqulResponse]("updateApplicationActive")
     summary "Change Appliation Status"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("active").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Boolean]("active").description(""))
   )
 
-  post("/api/:version/application/active", operation(updateApplicationActiveOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/active", operation(updateApplicationActiveOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -929,12 +901,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateApplicationPlacementOperation = (apiOperation[PlacementResponse]("updateApplicationPlacement")
     summary "Update Ad Placement"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("placementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("size").description("").optional, queryParam[Int]("height").description("").optional, queryParam[Int]("width").description("").optional, queryParam[Int]("refreshInterval").description("").optional, queryParam[Long]("defaultImageId").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("placementId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("size").description("").optional, queryParam[Int]("height").description("").optional, queryParam[Int]("width").description("").optional, queryParam[Int]("refreshInterval").description("").optional, queryParam[Long]("defaultImageId").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/application/placement/update", operation(updateApplicationPlacementOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/placement/update", operation(updateApplicationPlacementOperation)) {
             val placementId = params.getAs[Long]("placementId")
 
     //println("placementId: " + placementId)
@@ -974,12 +944,10 @@ class ApplicationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val uploadApplicationCertificateOperation = (apiOperation[SirqulResponse]("uploadApplicationCertificate")
     summary "Create Application Certificate"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[File]("certificate").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[File]("certificate").description("").optional)
   )
 
-  post("/api/:version/application/certificate/create", operation(uploadApplicationCertificateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/application/certificate/create", operation(uploadApplicationCertificateOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)

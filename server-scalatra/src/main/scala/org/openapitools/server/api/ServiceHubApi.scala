@@ -41,12 +41,10 @@ class ServiceHubApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createServiceHubOperation = (apiOperation[ServiceHub]("createServiceHub")
     summary "Create Service Hub"
-    parameters(pathParam[Double]("version").description(""), bodyParam[ServiceHub]("body").description("").optional)
+    parameters(bodyParam[ServiceHub]("body").description("").optional)
   )
 
-  post("/api/:version/hub", operation(createServiceHubOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/hub", operation(createServiceHubOperation)) {
     //println("body: " + body)
   }
 
@@ -54,12 +52,10 @@ class ServiceHubApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteServiceHubOperation = (apiOperation[Unit]("deleteServiceHub")
     summary "Delete Service Hub"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  delete("/api/:version/hub/:id", operation(deleteServiceHubOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/hub/:id", operation(deleteServiceHubOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -68,12 +64,10 @@ class ServiceHubApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getServiceHubOperation = (apiOperation[Any]("getServiceHub")
     summary "Get Service Hub"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  get("/api/:version/hub/:id", operation(getServiceHubOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/hub/:id", operation(getServiceHubOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -82,12 +76,10 @@ class ServiceHubApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val postServiceHubOperation = (apiOperation[ServiceHub]("postServiceHub")
     summary "Update Service Hub"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[ServiceHub]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[ServiceHub]("body").description("").optional)
   )
 
-  post("/api/:version/hub/:id", operation(postServiceHubOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/hub/:id", operation(postServiceHubOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -97,12 +89,10 @@ class ServiceHubApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val putServiceHubOperation = (apiOperation[ServiceHub]("putServiceHub")
     summary "Update Service Hub"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[ServiceHub]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[ServiceHub]("body").description("").optional)
   )
 
-  put("/api/:version/hub/:id", operation(putServiceHubOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/hub/:id", operation(putServiceHubOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -112,12 +102,10 @@ class ServiceHubApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchServiceHubsOperation = (apiOperation[List[ServiceHub]]("searchServiceHubs")
     summary "Search Service Hubs"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional)
   )
 
-  get("/api/:version/hub", operation(searchServiceHubsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/hub", operation(searchServiceHubsOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)

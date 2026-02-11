@@ -42,12 +42,10 @@ class TaskApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createTaskOperation = (apiOperation[TaskResponse]("createTask")
     summary "Create Task"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional.defaultValue(true))
   )
 
-  post("/api/:version/task/create", operation(createTaskOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/task/create", operation(createTaskOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -90,12 +88,10 @@ class TaskApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteTaskOperation = (apiOperation[SirqulResponse]("deleteTask")
     summary "Delete Task"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("taskId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("taskId").description(""))
   )
 
-  post("/api/:version/task/delete", operation(deleteTaskOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/task/delete", operation(deleteTaskOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -108,12 +104,10 @@ class TaskApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTaskOperation = (apiOperation[TaskResponse]("getTask")
     summary "Get Task"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("taskId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("taskId").description(""))
   )
 
-  get("/api/:version/task/get", operation(getTaskOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/task/get", operation(getTaskOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -126,12 +120,10 @@ class TaskApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchTasksOperation = (apiOperation[List[TaskResponse]]("searchTasks")
     summary "Search Tasks"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("groupingId").description("").optional, queryParam[String]("filter").description("").optional.defaultValue(MINE), queryParam[String]("statuses").description("").optional.defaultValue(NEW,ERROR,COMPLETE,PROCESSING), queryParam[String]("templateTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("groupingId").description("").optional, queryParam[String]("filter").description("").optional.defaultValue(MINE), queryParam[String]("statuses").description("").optional.defaultValue(NEW,ERROR,COMPLETE,PROCESSING), queryParam[String]("templateTypes").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/task/search", operation(searchTasksOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/task/search", operation(searchTasksOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -174,12 +166,10 @@ class TaskApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateTaskOperation = (apiOperation[TaskResponse]("updateTask")
     summary "Update Task"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("taskId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("taskId").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("groupingId").description("").optional, queryParam[String]("endpointURL").description("").optional, queryParam[String]("payload").description("").optional, queryParam[Long]("scheduledDate").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("cronExpression").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/task/update", operation(updateTaskOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/task/update", operation(updateTaskOperation)) {
             val taskId = params.getAs[Long]("taskId")
 
     //println("taskId: " + taskId)

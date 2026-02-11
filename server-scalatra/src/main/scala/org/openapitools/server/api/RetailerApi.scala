@@ -45,12 +45,10 @@ class RetailerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRetailerOperation = (apiOperation[RetailerFullResponse]("createRetailer")
     summary "Create Retailer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("name").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("website").description("").optional, queryParam[String]("email").description("").optional, queryParam[String]("facebookUrl").description("").optional, queryParam[String]("twitterUrl").description("").optional, queryParam[File]("logo").description("").optional, queryParam[Long]("logoAssetId").description("").optional, queryParam[File]("picture1").description("").optional, queryParam[Long]("picture1AssetId").description("").optional, queryParam[File]("picture2").description("").optional, queryParam[Long]("picture2AssetId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("categoryIdsToAdd").description("").optional, queryParam[String]("categoryIdsToRemove").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("retailerType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("createDefaultLocation").description("").optional, queryParam[String]("responseFormat").description("").optional)
+    parameters(queryParam[String]("name").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("website").description("").optional, queryParam[String]("email").description("").optional, queryParam[String]("facebookUrl").description("").optional, queryParam[String]("twitterUrl").description("").optional, queryParam[File]("logo").description("").optional, queryParam[Long]("logoAssetId").description("").optional, queryParam[File]("picture1").description("").optional, queryParam[Long]("picture1AssetId").description("").optional, queryParam[File]("picture2").description("").optional, queryParam[Long]("picture2AssetId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("categoryIdsToAdd").description("").optional, queryParam[String]("categoryIdsToRemove").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("retailerType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("createDefaultLocation").description("").optional, queryParam[String]("responseFormat").description("").optional)
   )
 
-  post("/api/:version/retailer/create", operation(createRetailerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/create", operation(createRetailerOperation)) {
             val name = params.getAs[String]("name")
 
     //println("name: " + name)
@@ -153,12 +151,10 @@ class RetailerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteRetailerOperation = (apiOperation[SirqulResponse]("deleteRetailer")
     summary "Delete Retailer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("retailerId").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("retailerId").description("").optional)
   )
 
-  post("/api/:version/retailer/delete", operation(deleteRetailerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/delete", operation(deleteRetailerOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -174,12 +170,10 @@ class RetailerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRetailerOperation = (apiOperation[RetailerFullResponse]("getRetailer")
     summary "Get Retailer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("retailerId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeCounts").description("").optional)
+    parameters(queryParam[Long]("retailerId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeCounts").description("").optional)
   )
 
-  get("/api/:version/retailer/get", operation(getRetailerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer/get", operation(getRetailerOperation)) {
             val retailerId = params.getAs[Long]("retailerId")
 
     //println("retailerId: " + retailerId)
@@ -198,12 +192,10 @@ class RetailerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRetailersOperation = (apiOperation[List[RetailerResponse]]("getRetailers")
     summary "Search Retailers"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("visibility").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional)
+    parameters(queryParam[String]("visibility").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional)
   )
 
-  get("/api/:version/retailer/search", operation(getRetailersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer/search", operation(getRetailersOperation)) {
             val visibility = params.getAs[String]("visibility")
 
     //println("visibility: " + visibility)
@@ -252,12 +244,10 @@ class RetailerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val retailerLoginCheckOperation = (apiOperation[AccountLoginResponse]("retailerLoginCheck")
     summary "Login Retailer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/retailer/login", operation(retailerLoginCheckOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/login", operation(retailerLoginCheckOperation)) {
             val username = params.getAs[String]("username")
 
     //println("username: " + username)
@@ -282,12 +272,10 @@ class RetailerApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRetailerOperation = (apiOperation[RetailerFullResponse]("updateRetailer")
     summary "Update Retailer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("retailerId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("website").description("").optional, queryParam[String]("email").description("").optional, queryParam[String]("facebookUrl").description("").optional, queryParam[String]("twitterUrl").description("").optional, queryParam[File]("logo").description("").optional, queryParam[Long]("logoAssetId").description("").optional, queryParam[File]("picture1").description("").optional, queryParam[Long]("picture1AssetId").description("").optional, queryParam[File]("picture2").description("").optional, queryParam[Long]("picture2AssetId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("retailerType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("responseFormat").description("").optional)
+    parameters(queryParam[Long]("retailerId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("postalCode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("businessPhoneExt").description("").optional, queryParam[String]("website").description("").optional, queryParam[String]("email").description("").optional, queryParam[String]("facebookUrl").description("").optional, queryParam[String]("twitterUrl").description("").optional, queryParam[File]("logo").description("").optional, queryParam[Long]("logoAssetId").description("").optional, queryParam[File]("picture1").description("").optional, queryParam[Long]("picture1AssetId").description("").optional, queryParam[File]("picture2").description("").optional, queryParam[Long]("picture2AssetId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("retailerType").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("responseFormat").description("").optional)
   )
 
-  post("/api/:version/retailer/update", operation(updateRetailerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/update", operation(updateRetailerOperation)) {
             val retailerId = params.getAs[Long]("retailerId")
 
     //println("retailerId: " + retailerId)

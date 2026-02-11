@@ -41,12 +41,10 @@ class OpenAIApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val imageGenerationOperation = (apiOperation[WrappedProxyItemResponse]("imageGeneration")
     summary "Generate images with OpenAI"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("postBody").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("postBody").description(""), queryParam[Boolean]("returnRawResponse").description("").optional)
   )
 
-  post("/api/:version/openai/v1/images/generations", operation(imageGenerationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/openai/v1/images/generations", operation(imageGenerationOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

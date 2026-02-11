@@ -43,12 +43,10 @@ class OptimizeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOptimizationResultOperation = (apiOperation[Map[String, ShipmentOrder]]("getOptimizationResult")
     summary "Get Optimization Result"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("batchID").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
+    parameters(pathParam[String]("batchID").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
   )
 
-  get("/api/:version/optimize/result/:batchID", operation(getOptimizationResultOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/optimize/result/:batchID", operation(getOptimizationResultOperation)) {
     val batchID = params.getOrElse("batchID", halt(400))
     //println("batchID: " + batchID)
             val start = params.getAs[Int]("start")
@@ -63,12 +61,10 @@ class OptimizeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val requestOptimizationOperation = (apiOperation[ImportStatuses]("requestOptimization")
     summary "Request Optimization"
-    parameters(pathParam[Double]("version").description(""), bodyParam[Orders]("body").description("").optional)
+    parameters(bodyParam[Orders]("body").description("").optional)
   )
 
-  post("/api/:version/optimize/request", operation(requestOptimizationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/optimize/request", operation(requestOptimizationOperation)) {
     //println("body: " + body)
   }
 

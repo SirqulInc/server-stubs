@@ -45,12 +45,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assetDownloadOperation = (apiOperation[SirqulResponse]("assetDownload")
     summary "Download Asset"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("filename").description(""))
+    parameters(pathParam[String]("filename").description(""))
   )
 
-  get("/api/:version/asset/download/:filename", operation(assetDownloadOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/asset/download/:filename", operation(assetDownloadOperation)) {
     val filename = params.getOrElse("filename", halt(400))
     //println("filename: " + filename)
   }
@@ -59,12 +57,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assetMorphOperation = (apiOperation[AssetShortResponse]("assetMorph")
     summary "Convert Offer to Creative"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerId").description(""), queryParam[String]("adSize").description(""), queryParam[Long]("creativeId").description("").optional, queryParam[Int]("width").description("").optional, queryParam[Int]("height").description("").optional, queryParam[String]("backgroundSize").description("").optional, queryParam[String]("template").description("").optional)
+    parameters(queryParam[Long]("offerId").description(""), queryParam[String]("adSize").description(""), queryParam[Long]("creativeId").description("").optional, queryParam[Int]("width").description("").optional, queryParam[Int]("height").description("").optional, queryParam[String]("backgroundSize").description("").optional, queryParam[String]("template").description("").optional)
   )
 
-  post("/api/:version/asset/morph", operation(assetMorphOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/asset/morph", operation(assetMorphOperation)) {
             val offerId = params.getAs[Long]("offerId")
 
     //println("offerId: " + offerId)
@@ -92,12 +88,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createAssetOperation = (apiOperation[AssetResponse]("createAsset")
     summary "Create Asset"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("returnNulls").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("collectionId").description("").optional, queryParam[String]("addToDefaultAlbum").description("").optional, queryParam[Boolean]("addToMediaLibrary").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("versionName").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("caption").description("").optional, queryParam[String]("assetType").description("").optional, queryParam[String]("approvalStatus").description("").optional, queryParam[Long]("assignedAccountId").description("").optional, queryParam[File]("media").description("").optional, queryParam[String]("mediaUrl").description("").optional, queryParam[String]("mediaString").description("").optional, queryParam[String]("mediaStringFileName").description("").optional, queryParam[String]("mediaStringContentType").description("").optional, queryParam[Int]("mediaHeight").description("").optional, queryParam[Int]("mediaWidth").description("").optional, queryParam[File]("attachedMedia").description("").optional, queryParam[String]("attachedMediaUrl").description("").optional, queryParam[String]("attachedMediaString").description("").optional, queryParam[String]("attachedMediaStringFileName").description("").optional, queryParam[String]("attachedMediaStringContentType").description("").optional, queryParam[Int]("attachedMediaHeight").description("").optional, queryParam[Int]("attachedMediaWidth").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[String]("app").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("returnNulls").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("collectionId").description("").optional, queryParam[String]("addToDefaultAlbum").description("").optional, queryParam[Boolean]("addToMediaLibrary").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("versionName").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("caption").description("").optional, queryParam[String]("assetType").description("").optional, queryParam[String]("approvalStatus").description("").optional, queryParam[Long]("assignedAccountId").description("").optional, queryParam[File]("media").description("").optional, queryParam[String]("mediaUrl").description("").optional, queryParam[String]("mediaString").description("").optional, queryParam[String]("mediaStringFileName").description("").optional, queryParam[String]("mediaStringContentType").description("").optional, queryParam[Int]("mediaHeight").description("").optional, queryParam[Int]("mediaWidth").description("").optional, queryParam[File]("attachedMedia").description("").optional, queryParam[String]("attachedMediaUrl").description("").optional, queryParam[String]("attachedMediaString").description("").optional, queryParam[String]("attachedMediaStringFileName").description("").optional, queryParam[String]("attachedMediaStringContentType").description("").optional, queryParam[Int]("attachedMediaHeight").description("").optional, queryParam[Int]("attachedMediaWidth").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[String]("app").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/asset/create", operation(createAssetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/asset/create", operation(createAssetOperation)) {
             val returnNulls = params.getAs[Boolean]("returnNulls")
 
     //println("returnNulls: " + returnNulls)
@@ -204,12 +198,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteAssetOperation = (apiOperation[SirqulResponse]("deleteAsset")
     summary "Delete Asset"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/asset/delete", operation(deleteAssetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/asset/delete", operation(deleteAssetOperation)) {
             val assetId = params.getAs[String]("assetId")
 
     //println("assetId: " + assetId)
@@ -231,12 +223,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAssetOperation = (apiOperation[AssetFullResponse]("getAsset")
     summary "Get Asset"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("noteDescending").description("").optional.defaultValue(false))
+    parameters(queryParam[Long]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("noteDescending").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/asset/get", operation(getAssetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/asset/get", operation(getAssetOperation)) {
             val assetId = params.getAs[Long]("assetId")
 
     //println("assetId: " + assetId)
@@ -255,12 +245,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeAssetOperation = (apiOperation[SirqulResponse]("removeAsset")
     summary "Remove Asset from Collection"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("collectionId").description("").optional, queryParam[Boolean]("removeFromDefaultAlbums").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("collectionId").description("").optional, queryParam[Boolean]("removeFromDefaultAlbums").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/asset/remove", operation(removeAssetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/asset/remove", operation(removeAssetOperation)) {
             val assetId = params.getAs[String]("assetId")
 
     //println("assetId: " + assetId)
@@ -291,12 +279,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchAssetsOperation = (apiOperation[List[AssetResponse]]("searchAssets")
     summary "Search Assets"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[String]("assetIds").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("mediaType").description("").optional, queryParam[String]("mimeType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("versionName").description("").optional, queryParam[Long]("updatedSince").description("").optional, queryParam[Long]("updatedBefore").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("searchMediaLibrary").description("").optional, queryParam[Boolean]("filterByBillable").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("returnApp").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("searchMode").description("").optional, queryParam[String]("assetType").description("").optional, queryParam[String]("approvalStatus").description("").optional, queryParam[Long]("assignedAccountId").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("albumIds").description("").optional, queryParam[String]("assetIds").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("mediaType").description("").optional, queryParam[String]("mimeType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("versionName").description("").optional, queryParam[Long]("updatedSince").description("").optional, queryParam[Long]("updatedBefore").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("searchMediaLibrary").description("").optional, queryParam[Boolean]("filterByBillable").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("returnApp").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("searchMode").description("").optional, queryParam[String]("assetType").description("").optional, queryParam[String]("approvalStatus").description("").optional, queryParam[Long]("assignedAccountId").description("").optional)
   )
 
-  get("/api/:version/asset/search", operation(searchAssetsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/asset/search", operation(searchAssetsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -375,12 +361,10 @@ class AssetApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateAssetOperation = (apiOperation[SirqulResponse]("updateAsset")
     summary "Update Asset"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("attachedAssetId").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("versionName").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("caption").description("").optional, queryParam[String]("assetType").description("").optional, queryParam[String]("approvalStatus").description("").optional, queryParam[Long]("assignedAccountId").description("").optional, queryParam[File]("media").description("").optional, queryParam[String]("mediaUrl").description("").optional, queryParam[String]("mediaString").description("").optional, queryParam[String]("mediaStringFileName").description("").optional, queryParam[String]("mediaStringContentType").description("").optional, queryParam[Int]("mediaHeight").description("").optional, queryParam[Int]("mediaWidth").description("").optional, queryParam[File]("attachedMedia").description("").optional, queryParam[String]("attachedMediaUrl").description("").optional, queryParam[String]("attachedMediaString").description("").optional, queryParam[String]("attachedMediaStringFileName").description("").optional, queryParam[String]("attachedMediaStringContentType").description("").optional, queryParam[Int]("attachedMediaHeight").description("").optional, queryParam[Int]("attachedMediaWidth").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("assetId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("albumId").description("").optional, queryParam[Long]("attachedAssetId").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[String]("versionName").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("caption").description("").optional, queryParam[String]("assetType").description("").optional, queryParam[String]("approvalStatus").description("").optional, queryParam[Long]("assignedAccountId").description("").optional, queryParam[File]("media").description("").optional, queryParam[String]("mediaUrl").description("").optional, queryParam[String]("mediaString").description("").optional, queryParam[String]("mediaStringFileName").description("").optional, queryParam[String]("mediaStringContentType").description("").optional, queryParam[Int]("mediaHeight").description("").optional, queryParam[Int]("mediaWidth").description("").optional, queryParam[File]("attachedMedia").description("").optional, queryParam[String]("attachedMediaUrl").description("").optional, queryParam[String]("attachedMediaString").description("").optional, queryParam[String]("attachedMediaStringFileName").description("").optional, queryParam[String]("attachedMediaStringContentType").description("").optional, queryParam[Int]("attachedMediaHeight").description("").optional, queryParam[Int]("attachedMediaWidth").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/asset/update", operation(updateAssetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/asset/update", operation(updateAssetOperation)) {
             val assetId = params.getAs[Long]("assetId")
 
     //println("assetId: " + assetId)

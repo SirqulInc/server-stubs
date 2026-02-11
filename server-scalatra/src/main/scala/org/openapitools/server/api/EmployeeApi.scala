@@ -42,12 +42,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignEmployeeOperation = (apiOperation[EmployeeResponse]("assignEmployee")
     summary "Assign Employee"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("managerAccountId").description(""), queryParam[Long]("employeeAccountId").description(""), queryParam[String]("role").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("managerAccountId").description(""), queryParam[Long]("employeeAccountId").description(""), queryParam[String]("role").description("").optional)
   )
 
-  post("/api/:version/employee/assign", operation(assignEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/assign", operation(assignEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -66,12 +64,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val assignToLocationEmployeeOperation = (apiOperation[SirqulResponse]("assignToLocationEmployee")
     summary "Assign Employee to Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("retailerLocationId").description(""), queryParam[Long]("employeeAccountId").description("").optional, queryParam[Boolean]("assign").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("retailerLocationId").description(""), queryParam[Long]("employeeAccountId").description("").optional, queryParam[Boolean]("assign").description("").optional.defaultValue(true))
   )
 
-  post("/api/:version/employee/assignToLocation", operation(assignToLocationEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/assignToLocation", operation(assignToLocationEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -90,12 +86,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createEmployeeOperation = (apiOperation[EmployeeResponse]("createEmployee")
     summary "Create Employee"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("managerAccountId").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("role").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("settingsAppKey").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[String]("assignedDeviceId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("managerAccountId").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("aboutUs").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("role").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("settingsAppKey").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[String]("assignedDeviceId").description("").optional)
   )
 
-  post("/api/:version/employee/create", operation(createEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/create", operation(createEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -192,12 +186,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteEmployeeOperation = (apiOperation[SirqulResponse]("deleteEmployee")
     summary "Delete Employee"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""))
   )
 
-  post("/api/:version/employee/delete", operation(deleteEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/delete", operation(deleteEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -210,12 +202,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getEmployeeOperation = (apiOperation[EmployeeResponse]("getEmployee")
     summary "Get Employee"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""), queryParam[String]("settingsAppKey").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""), queryParam[String]("settingsAppKey").description("").optional)
   )
 
-  post("/api/:version/employee/get", operation(getEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/get", operation(getEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -231,12 +221,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchEmployeesOperation = (apiOperation[List[EmployeeResponse]]("searchEmployees")
     summary "Search Employees"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("role").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true), queryParam[Boolean]("managedOnly").description("").optional, queryParam[String]("settingsAppKey").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("query").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("role").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("i").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("l").description("").optional, queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true), queryParam[Boolean]("managedOnly").description("").optional, queryParam[String]("settingsAppKey").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("query").description("").optional)
   )
 
-  post("/api/:version/employee/search", operation(searchEmployeesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/search", operation(searchEmployeesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -294,12 +282,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val unassignEmployeeOperation = (apiOperation[EmployeeResponse]("unassignEmployee")
     summary "Unassign Employee"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""))
   )
 
-  post("/api/:version/employee/unassign", operation(unassignEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/unassign", operation(unassignEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -312,12 +298,10 @@ class EmployeeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateEmployeeOperation = (apiOperation[EmployeeResponse]("updateEmployee")
     summary "Update Employee"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""), queryParam[Long]("managerAccountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("role").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("settingsAppKey").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[String]("assignedDeviceId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("employeeAccountId").description(""), queryParam[Long]("managerAccountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("prefixName").description("").optional, queryParam[String]("firstName").description("").optional, queryParam[String]("middleName").description("").optional, queryParam[String]("lastName").description("").optional, queryParam[String]("suffixName").description("").optional, queryParam[String]("title").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("homePhone").description("").optional, queryParam[String]("cellPhone").description("").optional, queryParam[String]("cellPhoneCarrier").description("").optional, queryParam[String]("businessPhone").description("").optional, queryParam[String]("emailAddress").description("").optional, queryParam[String]("streetAddress").description("").optional, queryParam[String]("streetAddress2").description("").optional, queryParam[String]("city").description("").optional, queryParam[String]("state").description("").optional, queryParam[String]("zipcode").description("").optional, queryParam[String]("country").description("").optional, queryParam[String]("role").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("settingsAppKey").description("").optional, queryParam[String]("appBlob").description("").optional, queryParam[String]("assignedDeviceId").description("").optional)
   )
 
-  post("/api/:version/employee/update", operation(updateEmployeeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/employee/update", operation(updateEmployeeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

@@ -52,12 +52,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addMovieOperation = (apiOperation[OrsonAiAddMovieResponse]("addMovie")
     summary "Add Movie"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("movieName").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("movieName").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/addMovie", operation(addMovieOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/addMovie", operation(addMovieOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -84,12 +82,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val aiDocsOperation = (apiOperation[OrsonAiProtoResponse]("aiDocs")
     summary "Search Docs"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("doc").description(""), queryParam[Boolean]("returnTopics").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("doc").description(""), queryParam[Boolean]("returnTopics").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional)
   )
 
-  get("/api/:version/orson/ai/docs", operation(aiDocsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/docs", operation(aiDocsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -111,12 +107,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val aiFindImagesOperation = (apiOperation[OrsonAiProtoResponse]("aiFindImages")
     summary "Find images"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("text").description(""), queryParam[String]("parseFlag").description("").optional, queryParam[String]("fetchFlag").description("").optional, queryParam[String]("size").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("text").description(""), queryParam[String]("parseFlag").description("").optional, queryParam[String]("fetchFlag").description("").optional, queryParam[String]("size").description("").optional)
   )
 
-  get("/api/:version/orson/ai/img", operation(aiFindImagesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/img", operation(aiFindImagesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -138,12 +132,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val aiTagsOperation = (apiOperation[OrsonAiProtoResponse]("aiTags")
     summary "Search Tags"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("tags").description(""), queryParam[String]("conditional").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("tags").description(""), queryParam[String]("conditional").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional)
   )
 
-  get("/api/:version/orson/ai/tags", operation(aiTagsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/tags", operation(aiTagsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -165,12 +157,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val aiTextOperation = (apiOperation[OrsonAiProtoResponse]("aiText")
     summary "Search Text"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("terms").description(""), queryParam[String]("conditional").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("terms").description(""), queryParam[String]("conditional").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional)
   )
 
-  get("/api/:version/orson/ai/text", operation(aiTextOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/text", operation(aiTextOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -192,12 +182,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val batchOperation = (apiOperation[OrsonAiBatchResponse]("batch")
     summary "Batch Analysis"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("operations").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[String]("operations").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/batch", operation(batchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/batch", operation(batchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -224,12 +212,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createInstantEpisodeOperation = (apiOperation[OrsonEpisodeResponse]("createInstantEpisode")
     summary "Creates an instant episode"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("data").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("data").description(""))
   )
 
-  post("/api/:version/orson/stories/episodes/instant", operation(createInstantEpisodeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/stories/episodes/instant", operation(createInstantEpisodeOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -242,12 +228,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createVoiceCanvasOperation = (apiOperation[OrsonAiVoiceCanvasResponse]("createVoiceCanvas")
     summary "Create VoiceCanvas images"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("dimensions").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("text").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[Boolean]("parseFlag").description("").optional, queryParam[Boolean]("fetchFlag").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("dimensions").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("text").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[Boolean]("parseFlag").description("").optional, queryParam[Boolean]("fetchFlag").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/voiceCanvas", operation(createVoiceCanvasOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/voiceCanvas", operation(createVoiceCanvasOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -280,12 +264,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val emotionOperation = (apiOperation[OrsonAiEmotionsResponse]("emotion")
     summary "Detect emotions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/emotion", operation(emotionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/emotion", operation(emotionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -306,12 +288,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getAddMovieResultOperation = (apiOperation[OrsonAiAddMovieResponse]("getAddMovieResult")
     summary "Get Add Movie Result"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/addMovie/:requestId", operation(getAddMovieResultOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/addMovie/:requestId", operation(getAddMovieResultOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -323,12 +303,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBatchOperation = (apiOperation[OrsonAiBatchResponse]("getBatch")
     summary "Get Batch Analysis Results"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/batch/:requestId", operation(getBatchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/batch/:requestId", operation(getBatchOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -340,12 +318,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getEmotionOperation = (apiOperation[OrsonAiEmotionsResponse]("getEmotion")
     summary "Get Emotion Results"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/emotion/:requestId", operation(getEmotionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/emotion/:requestId", operation(getEmotionOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -357,12 +333,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getEpisodeStatusOperation = (apiOperation[OrsonEpisodeResponse]("getEpisodeStatus")
     summary "Check episode status"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("episodeId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[Long]("episodeId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/stories/episodes/:episodeId/status", operation(getEpisodeStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/stories/episodes/:episodeId/status", operation(getEpisodeStatusOperation)) {
     val episodeId = params.getOrElse("episodeId", halt(400))
     //println("episodeId: " + episodeId)
             val accountId = params.getAs[Long]("accountId")
@@ -374,12 +348,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRenderStatusOperation = (apiOperation[OrsonRenderResponse]("getRenderStatus")
     summary "Check episode status"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("renderId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("renderId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/stories/renders/:renderId/status", operation(getRenderStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/stories/renders/:renderId/status", operation(getRenderStatusOperation)) {
     val renderId = params.getOrElse("renderId", halt(400))
     //println("renderId: " + renderId)
             val accountId = params.getAs[Long]("accountId")
@@ -391,12 +363,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSTTOperation = (apiOperation[OrsonAiSTTResponse]("getSTT")
     summary "Get Speach to Text Result"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/stt/:requestId", operation(getSTTOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/stt/:requestId", operation(getSTTOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -408,12 +378,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTTSOperation = (apiOperation[OrsonAiTTSResponse]("getTTS")
     summary "Get Text to Speach Result"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/tts/:requestId", operation(getTTSOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/tts/:requestId", operation(getTTSOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -425,12 +393,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTechTuneOperation = (apiOperation[OrsonAiTechTuneResponse]("getTechTune")
     summary "Get TechTune Results"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/techTune/:requestId", operation(getTechTuneOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/techTune/:requestId", operation(getTechTuneOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -442,12 +408,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTopicsOperation = (apiOperation[OrsonAiTopicsResponse]("getTopics")
     summary "Get Topics"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/topics/:requestId", operation(getTopicsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/topics/:requestId", operation(getTopicsOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -459,12 +423,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getVoiceCanvasOperation = (apiOperation[OrsonAiVoiceCanvasResponse]("getVoiceCanvas")
     summary "Get VoiceCanvas images"
-    parameters(pathParam[Double]("version").description(""), pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(pathParam[String]("requestId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/orson/ai/voiceCanvas/:requestId", operation(getVoiceCanvasOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/orson/ai/voiceCanvas/:requestId", operation(getVoiceCanvasOperation)) {
     val requestId = params.getOrElse("requestId", halt(400))
     //println("requestId: " + requestId)
             val accountId = params.getAs[Long]("accountId")
@@ -476,12 +438,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val startVideoRenderOperation = (apiOperation[OrsonRenderResponse]("startVideoRender")
     summary "Starts a StoryStitch video render"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("data").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("data").description(""))
   )
 
-  post("/api/:version/orson/stories/renders", operation(startVideoRenderOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/stories/renders", operation(startVideoRenderOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -494,12 +454,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val sttOperation = (apiOperation[OrsonAiSTTResponse]("stt")
     summary "Speach to Text"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("sourceLanguage").description("").optional, queryParam[String]("targetLanguage").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("sourceLanguage").description("").optional, queryParam[String]("targetLanguage").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/stt", operation(sttOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/stt", operation(sttOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -526,12 +484,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val summarizeTopicsOperation = (apiOperation[OrsonAiTopicsResponse]("summarizeTopics")
     summary "Summarize Topics"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("doc").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("doc").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Int]("offset").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/topics", operation(summarizeTopicsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/topics", operation(summarizeTopicsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -561,12 +517,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val techTuneOperation = (apiOperation[OrsonAiTechTuneResponse]("techTune")
     summary "Detect Technical Issues"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Int]("numFacesExpected").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Int]("numFacesExpected").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[File]("file").description("").optional, queryParam[String]("url").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/techTune", operation(techTuneOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/techTune", operation(techTuneOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -590,12 +544,10 @@ class OrsonApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val ttsOperation = (apiOperation[OrsonAiTTSResponse]("tts")
     summary "Text to Speach"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("text").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("language").description("").optional, queryParam[String]("voice").description("").optional, queryParam[String]("callback").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("text").description(""), queryParam[String]("thirdPartyAccountId").description("").optional, queryParam[String]("language").description("").optional, queryParam[String]("voice").description("").optional, queryParam[String]("callback").description("").optional)
   )
 
-  post("/api/:version/orson/ai/tts", operation(ttsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/orson/ai/tts", operation(ttsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

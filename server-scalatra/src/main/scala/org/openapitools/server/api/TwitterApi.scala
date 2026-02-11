@@ -42,12 +42,10 @@ class TwitterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val authorizeTwitterOperation = (apiOperation[SirqulResponse]("authorizeTwitter")
     summary "Authorize Twitter"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""))
+    parameters(queryParam[String]("appKey").description(""))
   )
 
-  post("/api/:version/twitter/authorize", operation(authorizeTwitterOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/twitter/authorize", operation(authorizeTwitterOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -57,12 +55,10 @@ class TwitterApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val loginTwitterOperation = (apiOperation[ProfileResponse]("loginTwitter")
     summary "Login Twitter"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("accessToken").description(""), queryParam[String]("accessTokenSecret").description(""), queryParam[String]("appKey").description(""), queryParam[String]("responseFilters").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("accessToken").description(""), queryParam[String]("accessTokenSecret").description(""), queryParam[String]("appKey").description(""), queryParam[String]("responseFilters").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/twitter/login", operation(loginTwitterOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/twitter/login", operation(loginTwitterOperation)) {
             val accessToken = params.getAs[String]("accessToken")
 
     //println("accessToken: " + accessToken)

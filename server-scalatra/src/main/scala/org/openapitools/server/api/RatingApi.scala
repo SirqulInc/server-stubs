@@ -43,12 +43,10 @@ class RatingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRatingOperation = (apiOperation[RatingResponse]("createRating")
     summary "Create Rating"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("ratableType").description(""), queryParam[Long]("ratableId").description(""), queryParam[Int]("ratingValue").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("categoryId").description("").optional, queryParam[String]("display").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("ratableType").description(""), queryParam[Long]("ratableId").description(""), queryParam[Int]("ratingValue").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("categoryId").description("").optional, queryParam[String]("display").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/rating/create", operation(createRatingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/rating/create", operation(createRatingOperation)) {
             val ratableType = params.getAs[String]("ratableType")
 
     //println("ratableType: " + ratableType)
@@ -88,12 +86,10 @@ class RatingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteRatingOperation = (apiOperation[SirqulResponse]("deleteRating")
     summary "Delete Rating"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("ratingId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("ratingId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/rating/delete", operation(deleteRatingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/rating/delete", operation(deleteRatingOperation)) {
             val ratingId = params.getAs[Long]("ratingId")
 
     //println("ratingId: " + ratingId)
@@ -109,12 +105,10 @@ class RatingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchLocationRatingIndexesOperation = (apiOperation[List[RatingIndexResponse]]("searchLocationRatingIndexes")
     summary "Search Location Rating Indexes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("categoryIds").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("locationType").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Double]("searchRange").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnOverallRating").description("").optional, queryParam[String]("distanceUnit").description("").optional, queryParam[Boolean]("returnRetailer").description("").optional, queryParam[Boolean]("returnAssets").description("").optional, queryParam[Boolean]("returnOffers").description("").optional, queryParam[Boolean]("returnCategories").description("").optional, queryParam[Boolean]("returnFilters").description("").optional)
+    parameters(queryParam[String]("categoryIds").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("locationType").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Double]("searchRange").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnOverallRating").description("").optional, queryParam[String]("distanceUnit").description("").optional, queryParam[Boolean]("returnRetailer").description("").optional, queryParam[Boolean]("returnAssets").description("").optional, queryParam[Boolean]("returnOffers").description("").optional, queryParam[Boolean]("returnCategories").description("").optional, queryParam[Boolean]("returnFilters").description("").optional)
   )
 
-  get("/api/:version/location/rating/index/search", operation(searchLocationRatingIndexesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/location/rating/index/search", operation(searchLocationRatingIndexesOperation)) {
             val categoryIds = params.getAs[String]("categoryIds")
 
     //println("categoryIds: " + categoryIds)
@@ -172,12 +166,10 @@ class RatingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRatingIndexesOperation = (apiOperation[List[RatingIndexResponse]]("searchRatingIndexes")
     summary "Search Rating Indexes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("ratableType").description(""), queryParam[String]("ratableIds").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("secondaryType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnRatable").description("").optional, queryParam[Boolean]("returnOverallRating").description("").optional)
+    parameters(queryParam[String]("ratableType").description(""), queryParam[String]("ratableIds").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("secondaryType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnRatable").description("").optional, queryParam[Boolean]("returnOverallRating").description("").optional)
   )
 
-  get("/api/:version/rating/index/search", operation(searchRatingIndexesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/rating/index/search", operation(searchRatingIndexesOperation)) {
             val ratableType = params.getAs[String]("ratableType")
 
     //println("ratableType: " + ratableType)
@@ -223,12 +215,10 @@ class RatingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRatingsOperation = (apiOperation[List[RatingResponse]]("searchRatings")
     summary "Search Ratings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("filterAccountId").description("").optional, queryParam[String]("ratableType").description("").optional, queryParam[Long]("ratableId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("filterAccountId").description("").optional, queryParam[String]("ratableType").description("").optional, queryParam[Long]("ratableId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/rating/search", operation(searchRatingsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/rating/search", operation(searchRatingsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -268,12 +258,10 @@ class RatingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRatingOperation = (apiOperation[RatingResponse]("updateRating")
     summary "Update Rating"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("ratingId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("ratingValue").description("").optional, queryParam[Long]("categoryId").description("").optional, queryParam[String]("display").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("ratingId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("ratingValue").description("").optional, queryParam[Long]("categoryId").description("").optional, queryParam[String]("display").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/rating/update", operation(updateRatingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/rating/update", operation(updateRatingOperation)) {
             val ratingId = params.getAs[Long]("ratingId")
 
     //println("ratingId: " + ratingId)

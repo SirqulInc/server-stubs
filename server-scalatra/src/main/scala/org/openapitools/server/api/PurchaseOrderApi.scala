@@ -42,12 +42,10 @@ class PurchaseOrderApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOrderOperation = (apiOperation[OrderResponse]("createOrder")
     summary "Create Order"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("cart").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("externalOrderId").description("").optional, queryParam[String]("externalPaymentId").description("").optional, queryParam[String]("remoteRefType").description("").optional, queryParam[Long]("externalDate").description("").optional, queryParam[String]("promoCode").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("cart").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("externalOrderId").description("").optional, queryParam[String]("externalPaymentId").description("").optional, queryParam[String]("remoteRefType").description("").optional, queryParam[Long]("externalDate").description("").optional, queryParam[String]("promoCode").description("").optional)
   )
 
-  post("/api/:version/order/create", operation(createOrderOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/order/create", operation(createOrderOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -90,12 +88,10 @@ class PurchaseOrderApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteOrderOperation = (apiOperation[SirqulResponse]("deleteOrder")
     summary "Delete Order"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("orderId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("orderId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/order/delete", operation(deleteOrderOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/order/delete", operation(deleteOrderOperation)) {
             val orderId = params.getAs[Long]("orderId")
 
     //println("orderId: " + orderId)
@@ -111,12 +107,10 @@ class PurchaseOrderApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOrderOperation = (apiOperation[OrderResponse]("getOrder")
     summary "Get Order"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("orderId").description("").optional, queryParam[String]("externalOrderId").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("orderId").description("").optional, queryParam[String]("externalOrderId").description("").optional)
   )
 
-  get("/api/:version/order/get", operation(getOrderOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/order/get", operation(getOrderOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -135,12 +129,10 @@ class PurchaseOrderApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val previewOrderOperation = (apiOperation[OrderResponse]("previewOrder")
     summary "Preview Order"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("cart").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("externalOrderId").description("").optional, queryParam[String]("externalPaymentId").description("").optional, queryParam[String]("remoteRefType").description("").optional, queryParam[Long]("externalDate").description("").optional, queryParam[String]("promoCode").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("cart").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("externalOrderId").description("").optional, queryParam[String]("externalPaymentId").description("").optional, queryParam[String]("remoteRefType").description("").optional, queryParam[Long]("externalDate").description("").optional, queryParam[String]("promoCode").description("").optional)
   )
 
-  post("/api/:version/order/preview", operation(previewOrderOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/order/preview", operation(previewOrderOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -183,12 +175,10 @@ class PurchaseOrderApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchOrdersOperation = (apiOperation[List[OrderResponse]]("searchOrders")
     summary "Search Orders"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[Boolean]("ignoreCustomerFilter").description("").optional.defaultValue(false), queryParam[String]("orderItemTypes").description("").optional, queryParam[String]("orderItemIds").description("").optional, queryParam[String]("orderCustomTypes").description("").optional, queryParam[String]("orderCustomIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(ID), queryParam[String]("offerTypes").description("").optional, queryParam[String]("specialOfferTypes").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("offerAudienceIds").description("").optional, queryParam[String]("transactionAudienceIds").description("").optional, queryParam[String]("offerIds").description("").optional, queryParam[String]("offerLocationIds").description("").optional, queryParam[String]("retailerIds").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("redeemableStartDate").description("").optional, queryParam[Long]("redeemableEndDate").description("").optional, queryParam[Long]("startedSince").description("").optional, queryParam[Long]("startedBefore").description("").optional, queryParam[Long]("endedSince").description("").optional, queryParam[Long]("endedBefore").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[Boolean]("ignoreCustomerFilter").description("").optional.defaultValue(false), queryParam[String]("orderItemTypes").description("").optional, queryParam[String]("orderItemIds").description("").optional, queryParam[String]("orderCustomTypes").description("").optional, queryParam[String]("orderCustomIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(ID), queryParam[String]("offerTypes").description("").optional, queryParam[String]("specialOfferTypes").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("offerAudienceIds").description("").optional, queryParam[String]("transactionAudienceIds").description("").optional, queryParam[String]("offerIds").description("").optional, queryParam[String]("offerLocationIds").description("").optional, queryParam[String]("retailerIds").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("redeemableStartDate").description("").optional, queryParam[Long]("redeemableEndDate").description("").optional, queryParam[Long]("startedSince").description("").optional, queryParam[Long]("startedBefore").description("").optional, queryParam[Long]("endedSince").description("").optional, queryParam[Long]("endedBefore").description("").optional)
   )
 
-  get("/api/:version/order/search", operation(searchOrdersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/order/search", operation(searchOrdersOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -288,12 +278,10 @@ class PurchaseOrderApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateOrderOperation = (apiOperation[OrderResponse]("updateOrder")
     summary "Update Order"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("orderId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("cart").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("paymentTransactionId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("externalPaymentId").description("").optional, queryParam[Long]("externalDate").description("").optional)
+    parameters(queryParam[Long]("orderId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("cart").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("paymentTransactionId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Long]("paymentMethodId").description("").optional, queryParam[String]("externalPaymentId").description("").optional, queryParam[Long]("externalDate").description("").optional)
   )
 
-  post("/api/:version/order/update", operation(updateOrderOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/order/update", operation(updateOrderOperation)) {
             val orderId = params.getAs[Long]("orderId")
 
     //println("orderId: " + orderId)

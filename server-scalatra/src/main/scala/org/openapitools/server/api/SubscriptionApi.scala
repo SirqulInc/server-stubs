@@ -44,12 +44,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createSubscriptionOperation = (apiOperation[SubscriptionResponse]("createSubscription")
     summary "Create Subscription"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("planId").description("").optional, queryParam[String]("promoCode").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("planId").description("").optional, queryParam[String]("promoCode").description("").optional)
   )
 
-  post("/api/:version/subscription/create", operation(createSubscriptionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/subscription/create", operation(createSubscriptionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -65,12 +63,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteSubscriptionOperation = (apiOperation[SirqulResponse]("deleteSubscription")
     summary "Delete Subscription"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("accountId").description(""))
   )
 
-  post("/api/:version/subscription/delete", operation(deleteSubscriptionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/subscription/delete", operation(deleteSubscriptionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -80,12 +76,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSubscriptionOperation = (apiOperation[SubscriptionResponse]("getSubscription")
     summary "Get Subscription"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/subscription/get", operation(getSubscriptionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/subscription/get", operation(getSubscriptionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -95,12 +89,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSubscriptionPlanOperation = (apiOperation[SubscriptionPlanResponse]("getSubscriptionPlan")
     summary "Get Subscription Plan"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("planId").description(""))
+    parameters(queryParam[Long]("planId").description(""))
   )
 
-  get("/api/:version/subscription/plan/get", operation(getSubscriptionPlanOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/subscription/plan/get", operation(getSubscriptionPlanOperation)) {
             val planId = params.getAs[Long]("planId")
 
     //println("planId: " + planId)
@@ -110,12 +102,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSubscriptionPlansOperation = (apiOperation[List[SubscriptionPlanResponse]]("getSubscriptionPlans")
     summary "List Subscription Plans"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("visible").description("").optional, queryParam[String]("role").description("").optional)
+    parameters(queryParam[Boolean]("visible").description("").optional, queryParam[String]("role").description("").optional)
   )
 
-  get("/api/:version/subscription/plan/list", operation(getSubscriptionPlansOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/subscription/plan/list", operation(getSubscriptionPlansOperation)) {
             val visible = params.getAs[Boolean]("visible")
 
     //println("visible: " + visible)
@@ -128,12 +118,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getSubscriptionUsageOperation = (apiOperation[ApplicationUsageResponse]("getSubscriptionUsage")
     summary "Get Subscription Usage"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("applicationId").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("applicationId").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional)
   )
 
-  get("/api/:version/subscription/usage/get", operation(getSubscriptionUsageOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/subscription/usage/get", operation(getSubscriptionUsageOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -152,12 +140,10 @@ class SubscriptionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateSubscriptionOperation = (apiOperation[SubscriptionResponse]("updateSubscription")
     summary "Update Subscription"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("planId").description("").optional, queryParam[String]("promoCode").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("planId").description("").optional, queryParam[String]("promoCode").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/subscription/update", operation(updateSubscriptionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/subscription/update", operation(updateSubscriptionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

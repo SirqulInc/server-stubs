@@ -43,12 +43,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createTournamentOperation = (apiOperation[TournamentResponse]("createTournament")
     summary "Create Tournament"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("title").description(""), queryParam[Int]("costToPlay").description(""), queryParam[Long]("startDate").description(""), queryParam[String]("subType").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Int]("secondsBetweenLevels").description("").optional.defaultValue(600), queryParam[Int]("secondsForTieBreaker").description("").optional.defaultValue(600), queryParam[Int]("secondsBetweenPacks").description("").optional.defaultValue(86400), queryParam[Int]("maximumLevelLength").description("").optional.defaultValue(1800), queryParam[String]("costToPlayType").description("").optional, queryParam[Int]("minimumToPlay").description("").optional.defaultValue(1), queryParam[Int]("startingLimit").description("").optional, queryParam[Int]("availableLimit").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("enableBuyBack").description("").optional.defaultValue(false), queryParam[String]("offerIds").description("").optional, queryParam[Long]("offerAssetId").description("").optional, queryParam[Boolean]("fixedReward").description("").optional.defaultValue(false), queryParam[String]("splitReward").description("").optional.defaultValue(ALL), queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("tournamentData").description("").optional, queryParam[String]("missionType").description("").optional.defaultValue(MULTISTAGE), queryParam[String]("visibility").description("").optional.defaultValue(PUBLIC), queryParam[Int]("preliminaryGroups").description("").optional.defaultValue(1), queryParam[String]("preliminaryGroupAdvancements").description("").optional.defaultValue(1), queryParam[Boolean]("enableMultipleEntries").description("").optional.defaultValue(false), queryParam[Boolean]("enableMultipleVotes").description("").optional.defaultValue(false), queryParam[Boolean]("featured").description("").optional.defaultValue(false), queryParam[String]("winnerTag").description("").optional, queryParam[String]("tieTag").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("title").description(""), queryParam[Int]("costToPlay").description(""), queryParam[Long]("startDate").description(""), queryParam[String]("subType").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Int]("secondsBetweenLevels").description("").optional.defaultValue(600), queryParam[Int]("secondsForTieBreaker").description("").optional.defaultValue(600), queryParam[Int]("secondsBetweenPacks").description("").optional.defaultValue(86400), queryParam[Int]("maximumLevelLength").description("").optional.defaultValue(1800), queryParam[String]("costToPlayType").description("").optional, queryParam[Int]("minimumToPlay").description("").optional.defaultValue(1), queryParam[Int]("startingLimit").description("").optional, queryParam[Int]("availableLimit").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("enableBuyBack").description("").optional.defaultValue(false), queryParam[String]("offerIds").description("").optional, queryParam[Long]("offerAssetId").description("").optional, queryParam[Boolean]("fixedReward").description("").optional.defaultValue(false), queryParam[String]("splitReward").description("").optional.defaultValue(ALL), queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("tournamentData").description("").optional, queryParam[String]("missionType").description("").optional.defaultValue(MULTISTAGE), queryParam[String]("visibility").description("").optional.defaultValue(PUBLIC), queryParam[Int]("preliminaryGroups").description("").optional.defaultValue(1), queryParam[String]("preliminaryGroupAdvancements").description("").optional.defaultValue(1), queryParam[Boolean]("enableMultipleEntries").description("").optional.defaultValue(false), queryParam[Boolean]("enableMultipleVotes").description("").optional.defaultValue(false), queryParam[Boolean]("featured").description("").optional.defaultValue(false), queryParam[String]("winnerTag").description("").optional, queryParam[String]("tieTag").description("").optional)
   )
 
-  post("/api/:version/tournament/create", operation(createTournamentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tournament/create", operation(createTournamentOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -160,12 +158,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteTournamentOperation = (apiOperation[SirqulResponse]("deleteTournament")
     summary "Delete Tournament"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""))
   )
 
-  post("/api/:version/tournament/delete", operation(deleteTournamentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tournament/delete", operation(deleteTournamentOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -178,12 +174,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTournamentOperation = (apiOperation[TournamentResponse]("getTournament")
     summary "Get Tournament"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description("").optional, queryParam[String]("joinCode").description("").optional, queryParam[String]("includeScores").description("").optional, queryParam[Int]("objectPreviewSize").description("").optional.defaultValue(50))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description("").optional, queryParam[String]("joinCode").description("").optional, queryParam[String]("includeScores").description("").optional, queryParam[Int]("objectPreviewSize").description("").optional.defaultValue(50))
   )
 
-  get("/api/:version/tournament/get", operation(getTournamentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tournament/get", operation(getTournamentOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -205,12 +199,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchObjectsOperation = (apiOperation[SirqulResponse]("searchObjects")
     summary "Search Tournament Objects"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("gameLevelId").description(""), queryParam[String]("sortField").description("").optional.defaultValue(PLAYER_SCORE_COUNT), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("gameLevelId").description(""), queryParam[String]("sortField").description("").optional.defaultValue(PLAYER_SCORE_COUNT), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/tournament/object/search", operation(searchObjectsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tournament/object/search", operation(searchObjectsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -235,12 +227,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRoundsOperation = (apiOperation[SirqulResponse]("searchRounds")
     summary "Search Tournament Rounds"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("status").description("").optional.defaultValue(ACCEPTED,ACTIVE), queryParam[String]("missionType").description("").optional, queryParam[Boolean]("currentOnly").description("").optional.defaultValue(true), queryParam[String]("visibilities").description("").optional.defaultValue(PUBLIC), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("status").description("").optional.defaultValue(ACCEPTED,ACTIVE), queryParam[String]("missionType").description("").optional, queryParam[Boolean]("currentOnly").description("").optional.defaultValue(true), queryParam[String]("visibilities").description("").optional.defaultValue(PUBLIC), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/tournament/round/search", operation(searchRoundsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tournament/round/search", operation(searchRoundsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -271,12 +261,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchTournamentsOperation = (apiOperation[MissionShortResponse]("searchTournaments")
     summary "Search Tournaments"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Boolean]("includeInactive").description("").optional.defaultValue(false), queryParam[String]("missionTypes").description("").optional.defaultValue(MULTISTAGE,TOURNAMENT,POOLPLAY), queryParam[String]("filter").description("").optional.defaultValue(UPCOMING), queryParam[String]("sortField").description("").optional.defaultValue(START_DATE), queryParam[Boolean]("descending").description("").optional, queryParam[String]("visibility").description("").optional.defaultValue(PUBLIC), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("keyword").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Boolean]("includeInactive").description("").optional.defaultValue(false), queryParam[String]("missionTypes").description("").optional.defaultValue(MULTISTAGE,TOURNAMENT,POOLPLAY), queryParam[String]("filter").description("").optional.defaultValue(UPCOMING), queryParam[String]("sortField").description("").optional.defaultValue(START_DATE), queryParam[Boolean]("descending").description("").optional, queryParam[String]("visibility").description("").optional.defaultValue(PUBLIC), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/tournament/search", operation(searchTournamentsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/tournament/search", operation(searchTournamentsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -319,12 +307,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val submitTournamentScoreOperation = (apiOperation[SirqulResponse]("submitTournamentScore")
     summary "Submit Tournament Score"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description(""), queryParam[Long]("gameId").description(""), queryParam[Long]("packId").description(""), queryParam[String]("scores").description(""), queryParam[Long]("gameLevelId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description(""), queryParam[Long]("gameId").description(""), queryParam[Long]("packId").description(""), queryParam[String]("scores").description(""), queryParam[Long]("gameLevelId").description("").optional)
   )
 
-  post("/api/:version/tournament/score", operation(submitTournamentScoreOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tournament/score", operation(submitTournamentScoreOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -352,12 +338,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val submitTournamentVoteOperation = (apiOperation[SirqulResponse]("submitTournamentVote")
     summary "Submit a vote for a multi-stage album tournament."
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description(""), queryParam[Long]("gameObjectId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Boolean]("checkIfDeviceAlreadyVoted").description("").optional.defaultValue(false))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description(""), queryParam[Long]("gameObjectId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Boolean]("checkIfDeviceAlreadyVoted").description("").optional.defaultValue(false))
   )
 
-  post("/api/:version/tournament/vote", operation(submitTournamentVoteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tournament/vote", operation(submitTournamentVoteOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -382,12 +366,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val substituteTournamentPlayerOperation = (apiOperation[SirqulResponse]("substituteTournamentPlayer")
     summary "Substitute Tournament Player"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[Long]("packId").description(""), queryParam[Long]("gameLevelId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[Long]("packId").description(""), queryParam[Long]("gameLevelId").description(""))
   )
 
-  post("/api/:version/tournament/substitute", operation(substituteTournamentPlayerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tournament/substitute", operation(substituteTournamentPlayerOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -406,12 +388,10 @@ class TournamentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateTournamentOperation = (apiOperation[TournamentResponse]("updateTournament")
     summary "Update Tournament"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Int]("secondsBetweenLevels").description("").optional, queryParam[Int]("secondsForTieBreaker").description("").optional, queryParam[Int]("secondsBetweenPacks").description("").optional, queryParam[Int]("maximumLevelLength").description("").optional, queryParam[Int]("costToPlay").description("").optional, queryParam[String]("costToPlayType").description("").optional, queryParam[Int]("minimumToPlay").description("").optional, queryParam[Int]("startingLimit").description("").optional, queryParam[Int]("availableLimit").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("enableBuyBack").description("").optional, queryParam[String]("offerIds").description("").optional, queryParam[Long]("offerAssetId").description("").optional, queryParam[Boolean]("fixedReward").description("").optional, queryParam[String]("splitReward").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("tournamentData").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Int]("preliminaryGroups").description("").optional, queryParam[String]("preliminaryGroupAdvancements").description("").optional, queryParam[Boolean]("enableMultipleEntries").description("").optional, queryParam[Boolean]("enableMultipleVotes").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[String]("winnerTag").description("").optional, queryParam[String]("tieTag").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("missionId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("subType").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Int]("secondsBetweenLevels").description("").optional, queryParam[Int]("secondsForTieBreaker").description("").optional, queryParam[Int]("secondsBetweenPacks").description("").optional, queryParam[Int]("maximumLevelLength").description("").optional, queryParam[Int]("costToPlay").description("").optional, queryParam[String]("costToPlayType").description("").optional, queryParam[Int]("minimumToPlay").description("").optional, queryParam[Int]("startingLimit").description("").optional, queryParam[Int]("availableLimit").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("enableBuyBack").description("").optional, queryParam[String]("offerIds").description("").optional, queryParam[Long]("offerAssetId").description("").optional, queryParam[Boolean]("fixedReward").description("").optional, queryParam[String]("splitReward").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("tournamentData").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[Int]("preliminaryGroups").description("").optional, queryParam[String]("preliminaryGroupAdvancements").description("").optional, queryParam[Boolean]("enableMultipleEntries").description("").optional, queryParam[Boolean]("enableMultipleVotes").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[String]("winnerTag").description("").optional, queryParam[String]("tieTag").description("").optional)
   )
 
-  post("/api/:version/tournament/update", operation(updateTournamentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/tournament/update", operation(updateTournamentOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

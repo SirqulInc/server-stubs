@@ -43,12 +43,10 @@ class ReservationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createReservationOperation = (apiOperation[Unit]("createReservation")
     summary "Create Reservation"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/reservation/create", operation(createReservationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/reservation/create", operation(createReservationOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -79,12 +77,10 @@ class ReservationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteReservationOperation = (apiOperation[Unit]("deleteReservation")
     summary "Delete Reservation"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("reservationId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("reservationId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/reservation/delete", operation(deleteReservationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/reservation/delete", operation(deleteReservationOperation)) {
             val reservationId = params.getAs[Long]("reservationId")
 
     //println("reservationId: " + reservationId)
@@ -100,12 +96,10 @@ class ReservationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val reservableAvailabilityOperation = (apiOperation[List[AvailabilityResponse]]("reservableAvailability")
     summary "Update Availability"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("reservableId").description(""), queryParam[String]("reservableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("availability").description("").optional, queryParam[String]("availabilitySummary").description("").optional)
+    parameters(queryParam[Long]("reservableId").description(""), queryParam[String]("reservableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("availability").description("").optional, queryParam[String]("availabilitySummary").description("").optional)
   )
 
-  post("/api/:version/reservable/availability/update", operation(reservableAvailabilityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/reservable/availability/update", operation(reservableAvailabilityOperation)) {
             val reservableId = params.getAs[Long]("reservableId")
 
     //println("reservableId: " + reservableId)
@@ -130,12 +124,10 @@ class ReservationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchAvailabilityOperation = (apiOperation[List[AvailabilityResponse]]("searchAvailability")
     summary "Search Availability"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("reservableId").description(""), queryParam[String]("reservableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[Long]("reservableId").description(""), queryParam[String]("reservableType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  get("/api/:version/reservable/availability/search", operation(searchAvailabilityOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/reservable/availability/search", operation(searchAvailabilityOperation)) {
             val reservableId = params.getAs[Long]("reservableId")
 
     //println("reservableId: " + reservableId)
@@ -166,12 +158,10 @@ class ReservationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchReservationsOperation = (apiOperation[List[ReservationResponse]]("searchReservations")
     summary "Search Reservations"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("filterAccountId").description("").optional, queryParam[Long]("reservableId").description("").optional, queryParam[String]("reservableType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("filterAccountId").description("").optional, queryParam[Long]("reservableId").description("").optional, queryParam[String]("reservableType").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(100))
   )
 
-  get("/api/:version/reservation/search", operation(searchReservationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/reservation/search", operation(searchReservationsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -211,12 +201,10 @@ class ReservationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchScheduleOperation = (apiOperation[List[TimeSlotResponse]]("searchSchedule")
     summary "Search Schedule"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("reservableId").description(""), queryParam[String]("reservableType").description(""), queryParam[Long]("startDate").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("timeBucketMins").description("").optional.defaultValue(30))
+    parameters(queryParam[Long]("reservableId").description(""), queryParam[String]("reservableType").description(""), queryParam[Long]("startDate").description(""), queryParam[Long]("endDate").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("timeBucketMins").description("").optional.defaultValue(30))
   )
 
-  get("/api/:version/reservable/schedule/search", operation(searchScheduleOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/reservable/schedule/search", operation(searchScheduleOperation)) {
             val reservableId = params.getAs[Long]("reservableId")
 
     //println("reservableId: " + reservableId)

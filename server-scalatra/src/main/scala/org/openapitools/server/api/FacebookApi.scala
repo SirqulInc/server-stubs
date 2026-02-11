@@ -42,12 +42,10 @@ class FacebookApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getTokenOperation = (apiOperation[TokenResponse]("getToken")
     summary "Get Facebook Token"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/facebook/getfbtoken", operation(getTokenOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/facebook/getfbtoken", operation(getTokenOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -66,12 +64,10 @@ class FacebookApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val graphInterfaceOperation = (apiOperation[SirqulResponse]("graphInterface")
     summary "Post to Facebook"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("event").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("event").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("permissionableType").description("").optional, queryParam[Long]("permissionableId").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/facebook/graph", operation(graphInterfaceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/facebook/graph", operation(graphInterfaceOperation)) {
             val event = params.getAs[String]("event")
 
     //println("event: " + event)

@@ -44,12 +44,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val attendEventOperation = (apiOperation[OfferResponse]("attendEvent")
     summary "Attend Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Long]("transactionId").description("").optional, queryParam[Int]("status").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Long]("transactionId").description("").optional, queryParam[Int]("status").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/event/attend", operation(attendEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/event/attend", operation(attendEventOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -86,12 +84,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createEventOperation = (apiOperation[OfferResponse]("createEvent")
     summary "Create Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/event/create", operation(createEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/event/create", operation(createEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -134,12 +130,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteEventOperation = (apiOperation[SirqulResponse]("deleteEvent")
     summary "Delete Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("eventId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("eventId").description(""))
   )
 
-  post("/api/:version/event/delete", operation(deleteEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/event/delete", operation(deleteEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -152,12 +146,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getEventOperation = (apiOperation[OfferResponse]("getEvent")
     summary "Get Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("eventId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("eventId").description(""))
   )
 
-  get("/api/:version/event/get", operation(getEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/event/get", operation(getEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -170,12 +162,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchEventTransactionsOperation = (apiOperation[List[EventAttendanceResponse]]("searchEventTransactions")
     summary "Search Event Attendance"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[Long]("excludeRetailerLocationId").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("customerAccountIds").description("").optional, queryParam[String]("affiliatedCategoryIds").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[Long]("excludeRetailerLocationId").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("customerAccountIds").description("").optional, queryParam[String]("affiliatedCategoryIds").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[String]("statuses").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/event/attendance/search", operation(searchEventTransactionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/event/attendance/search", operation(searchEventTransactionsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -239,12 +229,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchEventsOperation = (apiOperation[List[OfferShortResponse]]("searchEvents")
     summary "Search Events"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("offerAudienceIds").description("").optional, queryParam[String]("transactionAudienceIds").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("keyword").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("offerAudienceIds").description("").optional, queryParam[String]("transactionAudienceIds").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Long]("startDate").description("").optional, queryParam[Long]("endDate").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/event/search", operation(searchEventsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/event/search", operation(searchEventsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -290,12 +278,10 @@ class EventApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateEventOperation = (apiOperation[OfferResponse]("updateEvent")
     summary "Update Event"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("eventId").description(""), queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("eventId").description(""), queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional)
   )
 
-  post("/api/:version/event/update", operation(updateEventOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/event/update", operation(updateEventOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

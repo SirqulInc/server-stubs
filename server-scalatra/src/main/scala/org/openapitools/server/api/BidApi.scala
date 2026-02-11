@@ -42,12 +42,10 @@ class BidApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createBidOperation = (apiOperation[BidResponse]("createBid")
     summary "Create Bid"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("biddableType").description(""), queryParam[Long]("biddableId").description(""), queryParam[Double]("amountPerView").description(""), queryParam[Double]("amountPerAction").description(""), queryParam[Double]("budgetAmount").description(""), queryParam[String]("budgetSchedule").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("biddableType").description(""), queryParam[Long]("biddableId").description(""), queryParam[Double]("amountPerView").description(""), queryParam[Double]("amountPerAction").description(""), queryParam[Double]("budgetAmount").description(""), queryParam[String]("budgetSchedule").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/bid/create", operation(createBidOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/bid/create", operation(createBidOperation)) {
             val biddableType = params.getAs[String]("biddableType")
 
     //println("biddableType: " + biddableType)
@@ -78,12 +76,10 @@ class BidApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteBidOperation = (apiOperation[SirqulResponse]("deleteBid")
     summary "Delete Bid"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("bidId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("bidId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/bid/delete", operation(deleteBidOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/bid/delete", operation(deleteBidOperation)) {
             val bidId = params.getAs[Long]("bidId")
 
     //println("bidId: " + bidId)
@@ -99,12 +95,10 @@ class BidApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getBidOperation = (apiOperation[BidResponse]("getBid")
     summary "Get Bid"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("bidId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("bidId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  get("/api/:version/bid/get", operation(getBidOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/bid/get", operation(getBidOperation)) {
             val bidId = params.getAs[Long]("bidId")
 
     //println("bidId: " + bidId)
@@ -120,12 +114,10 @@ class BidApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateBidOperation = (apiOperation[BidResponse]("updateBid")
     summary "Update Bid"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("bidId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("amountPerView").description("").optional, queryParam[Double]("amountPerAction").description("").optional, queryParam[Double]("budgetAmount").description("").optional, queryParam[String]("budgetSchedule").description("").optional)
+    parameters(queryParam[Long]("bidId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("amountPerView").description("").optional, queryParam[Double]("amountPerAction").description("").optional, queryParam[Double]("budgetAmount").description("").optional, queryParam[String]("budgetSchedule").description("").optional)
   )
 
-  post("/api/:version/bid/update", operation(updateBidOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/bid/update", operation(updateBidOperation)) {
             val bidId = params.getAs[Long]("bidId")
 
     //println("bidId: " + bidId)

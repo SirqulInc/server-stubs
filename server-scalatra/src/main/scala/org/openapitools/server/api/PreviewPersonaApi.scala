@@ -42,12 +42,10 @@ class PreviewPersonaApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createPersonaOperation = (apiOperation[PreviewPersonaResponse]("createPersona")
     summary "Create Persona"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[String]("previewAccounts").description("").optional, queryParam[Long]("date").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("title").description(""), queryParam[String]("previewAccounts").description("").optional, queryParam[Long]("date").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/persona/create", operation(createPersonaOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/persona/create", operation(createPersonaOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -81,12 +79,10 @@ class PreviewPersonaApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deletePersonaOperation = (apiOperation[SirqulResponse]("deletePersona")
     summary "Delete Persona"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("personaId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("personaId").description(""))
   )
 
-  post("/api/:version/persona/delete", operation(deletePersonaOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/persona/delete", operation(deletePersonaOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -99,12 +95,10 @@ class PreviewPersonaApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getPersonaListOperation = (apiOperation[PreviewPersonaResponse]("getPersonaList")
     summary "Get Persona"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("personaId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("personaId").description(""))
   )
 
-  get("/api/:version/persona/get", operation(getPersonaListOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/persona/get", operation(getPersonaListOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -117,12 +111,10 @@ class PreviewPersonaApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchPersonaOperation = (apiOperation[PreviewPersonaResponse]("searchPersona")
     summary "Search Personas"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""))
   )
 
-  get("/api/:version/persona/search", operation(searchPersonaOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/persona/search", operation(searchPersonaOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -138,12 +130,10 @@ class PreviewPersonaApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updatePersonaOperation = (apiOperation[PreviewPersonaResponse]("updatePersona")
     summary "Update Persona"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("personaId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("previewAccounts").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("date").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("personaId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("previewAccounts").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("date").description("").optional, queryParam[Int]("age").description("").optional, queryParam[String]("gender").description("").optional, queryParam[String]("gameExperienceLevel").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/persona/update", operation(updatePersonaOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/persona/update", operation(updatePersonaOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

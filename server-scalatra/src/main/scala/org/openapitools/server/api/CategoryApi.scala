@@ -43,12 +43,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val categoryDistanceSearchOperation = (apiOperation[List[CategoryResponse]]("categoryDistanceSearch")
     summary "Search Categories by Distance"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("parentCategoryIds").description("").optional, queryParam[Boolean]("rootOnly").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(DISPLAY), queryParam[String]("responseGroup").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true), queryParam[Boolean]("returnExternal").description("").optional, queryParam[Boolean]("exactMatch").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Int]("minOfferCount").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("range").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("parentCategoryIds").description("").optional, queryParam[Boolean]("rootOnly").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(DISPLAY), queryParam[String]("responseGroup").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true), queryParam[Boolean]("returnExternal").description("").optional, queryParam[Boolean]("exactMatch").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Int]("minOfferCount").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("range").description("").optional)
   )
 
-  get("/api/:version/category/distancesearch", operation(categoryDistanceSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/category/distancesearch", operation(categoryDistanceSearchOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -115,12 +113,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createCategoryOperation = (apiOperation[CategoryTreeResponse]("createCategory")
     summary "Create Category"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("parentCategoryId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[String]("externalCategorySlug").description("").optional, queryParam[String]("sqootSlug").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("name").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("parentCategoryId").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[String]("externalCategorySlug").description("").optional, queryParam[String]("sqootSlug").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional)
   )
 
-  post("/api/:version/category/create", operation(createCategoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/category/create", operation(createCategoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -169,12 +165,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteCategoryOperation = (apiOperation[SirqulResponse]("deleteCategory")
     summary "Delete Category"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("categoryId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("categoryId").description(""))
   )
 
-  post("/api/:version/category/delete", operation(deleteCategoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/category/delete", operation(deleteCategoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -187,12 +181,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val duplicateCategoryOperation = (apiOperation[CategoryTreeResponse]("duplicateCategory")
     summary "Duplicate Category"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("categoryId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("parentCategoryId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("categoryId").description(""), queryParam[String]("appKey").description("").optional, queryParam[Long]("parentCategoryId").description("").optional)
   )
 
-  post("/api/:version/category/duplicate", operation(duplicateCategoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/category/duplicate", operation(duplicateCategoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -211,12 +203,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCategoryOperation = (apiOperation[CategoryTreeResponse]("getCategory")
     summary "Get Category"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("categoryId").description(""), queryParam[Boolean]("returnExternal").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("categoryId").description(""), queryParam[Boolean]("returnExternal").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/category/get", operation(getCategoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/category/get", operation(getCategoryOperation)) {
             val categoryId = params.getAs[Long]("categoryId")
 
     //println("categoryId: " + categoryId)
@@ -229,12 +219,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchCategoriesOperation = (apiOperation[List[CategoryResponse]]("searchCategories")
     summary "Search Categories"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("categoryId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("parentCategoryIds").description("").optional, queryParam[Boolean]("rootOnly").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(DISPLAY), queryParam[String]("responseGroup").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true), queryParam[Boolean]("returnExternal").description("").optional.defaultValue(true), queryParam[Boolean]("exactMatch").description("").optional.defaultValue(false), queryParam[String]("`type`").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Boolean]("excludeExternalType").description("").optional, queryParam[Int]("minOfferCount").description("").optional, queryParam[Int]("searchDepth").description("").optional.defaultValue(4), queryParam[String]("searchMode").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("categoryId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("parentCategoryIds").description("").optional, queryParam[Boolean]("rootOnly").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(DISPLAY), queryParam[String]("responseGroup").description("").optional, queryParam[Boolean]("descending").description("").optional.defaultValue(false), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(true), queryParam[Boolean]("returnExternal").description("").optional.defaultValue(true), queryParam[Boolean]("exactMatch").description("").optional.defaultValue(false), queryParam[String]("`type`").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[Boolean]("excludeExternalType").description("").optional, queryParam[Int]("minOfferCount").description("").optional, queryParam[Int]("searchDepth").description("").optional.defaultValue(4), queryParam[String]("searchMode").description("").optional)
   )
 
-  get("/api/:version/category/search", operation(searchCategoriesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/category/search", operation(searchCategoriesOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -304,12 +292,10 @@ class CategoryApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateCategoryOperation = (apiOperation[CategoryTreeResponse]("updateCategory")
     summary "Update Category"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("categoryId").description(""), queryParam[Long]("parentCategoryId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[String]("externalCategorySlug").description("").optional, queryParam[String]("sqootSlug").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("categoryId").description(""), queryParam[Long]("parentCategoryId").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("`type`").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("externalType").description("").optional, queryParam[String]("externalCategorySlug").description("").optional, queryParam[String]("sqootSlug").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("searchTags").description("").optional)
   )
 
-  post("/api/:version/category/update", operation(updateCategoryOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/category/update", operation(updateCategoryOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

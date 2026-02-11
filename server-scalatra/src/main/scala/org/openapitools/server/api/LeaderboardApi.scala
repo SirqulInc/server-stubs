@@ -43,12 +43,10 @@ class LeaderboardApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createLeaderboardOperation = (apiOperation[LeaderboardResponse]("createLeaderboard")
     summary "Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("leaderboardMode").description("").optional, queryParam[File]("iconMedia").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[File]("bannerMedia").description("").optional, queryParam[Long]("bannerAssetId").description("").optional, queryParam[Int]("limitation").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("leaderboardMode").description("").optional, queryParam[File]("iconMedia").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[File]("bannerMedia").description("").optional, queryParam[Long]("bannerAssetId").description("").optional, queryParam[Int]("limitation").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/leaderboard/create", operation(createLeaderboardOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/leaderboard/create", operation(createLeaderboardOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -92,12 +90,10 @@ class LeaderboardApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteLeaderboardOperation = (apiOperation[SirqulResponse]("deleteLeaderboard")
     summary "Delete the Leader Board"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("leaderboardId").description(""), queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("leaderboardId").description(""), queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/leaderboard/delete", operation(deleteLeaderboardOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/leaderboard/delete", operation(deleteLeaderboardOperation)) {
             val leaderboardId = params.getAs[Long]("leaderboardId")
 
     //println("leaderboardId: " + leaderboardId)
@@ -110,12 +106,10 @@ class LeaderboardApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getLeaderboardOperation = (apiOperation[LeaderboardResponse]("getLeaderboard")
     summary "Read a leaderboard by id and retrieve the matching ranking list"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("leaderboardId").description(""), queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeFullRankingList").description("").optional)
+    parameters(queryParam[Long]("leaderboardId").description(""), queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeFullRankingList").description("").optional)
   )
 
-  get("/api/:version/leaderboard/get", operation(getLeaderboardOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/leaderboard/get", operation(getLeaderboardOperation)) {
             val leaderboardId = params.getAs[Long]("leaderboardId")
 
     //println("leaderboardId: " + leaderboardId)
@@ -131,12 +125,10 @@ class LeaderboardApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchLeaderboardsOperation = (apiOperation[LeaderboardResponse]("searchLeaderboards")
     summary "Search leaderboard and retrieve the matching ranking list"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("globalOnly").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("leaderboardIds").description("").optional, queryParam[String]("rankTypes").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[Boolean]("includeAppResponse").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Boolean]("globalOnly").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("leaderboardIds").description("").optional, queryParam[String]("rankTypes").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("includeInactive").description("").optional, queryParam[Boolean]("includeAppResponse").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/leaderboard/search", operation(searchLeaderboardsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/leaderboard/search", operation(searchLeaderboardsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -179,12 +171,10 @@ class LeaderboardApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateLeaderboardOperation = (apiOperation[LeaderboardResponse]("updateLeaderboard")
     summary "Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("leaderboardId").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("leaderboardMode").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[File]("iconMedia").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[File]("bannerMedia").description("").optional, queryParam[Long]("bannerAssetId").description("").optional, queryParam[Int]("limitation").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional)
+    parameters(queryParam[Long]("leaderboardId").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("rankType").description("").optional, queryParam[String]("leaderboardMode").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[File]("iconMedia").description("").optional, queryParam[Long]("iconAssetId").description("").optional, queryParam[File]("bannerMedia").description("").optional, queryParam[Long]("bannerAssetId").description("").optional, queryParam[Int]("limitation").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("metaData").description("").optional)
   )
 
-  post("/api/:version/leaderboard/update", operation(updateLeaderboardOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/leaderboard/update", operation(updateLeaderboardOperation)) {
             val leaderboardId = params.getAs[Long]("leaderboardId")
 
     //println("leaderboardId: " + leaderboardId)

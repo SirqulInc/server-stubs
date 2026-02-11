@@ -42,12 +42,10 @@ class WalletApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOfferTransactionOperation = (apiOperation[List[OfferTransactionResponse]]("createOfferTransaction")
     summary "Create Wallet Offers"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("offerCart").description("").optional, queryParam[String]("promoCode").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Boolean]("usePoints").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Int]("status").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("offerCart").description("").optional, queryParam[String]("promoCode").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Boolean]("usePoints").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Int]("status").description("").optional)
   )
 
-  post("/api/:version/wallet/create", operation(createOfferTransactionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/wallet/create", operation(createOfferTransactionOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -87,12 +85,10 @@ class WalletApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteOfferTransactionOperation = (apiOperation[SirqulResponse]("deleteOfferTransaction")
     summary "Delete Wallet Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("transactionId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("transactionId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/wallet/delete", operation(deleteOfferTransactionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/wallet/delete", operation(deleteOfferTransactionOperation)) {
             val transactionId = params.getAs[Long]("transactionId")
 
     //println("transactionId: " + transactionId)
@@ -108,12 +104,10 @@ class WalletApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferTransactionOperation = (apiOperation[OfferTransactionResponse]("getOfferTransaction")
     summary "Get Wallet Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("transactionId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeMission").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional.defaultValue(true))
+    parameters(queryParam[Long]("transactionId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("includeMission").description("").optional.defaultValue(false), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional.defaultValue(true))
   )
 
-  get("/api/:version/wallet/get", operation(getOfferTransactionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/wallet/get", operation(getOfferTransactionOperation)) {
             val transactionId = params.getAs[Long]("transactionId")
 
     //println("transactionId: " + transactionId)
@@ -141,12 +135,10 @@ class WalletApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val previewOfferTransactionOperation = (apiOperation[List[OfferTransactionResponse]]("previewOfferTransaction")
     summary "Preview Wallet Offers"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("offerCart").description("").optional, queryParam[String]("promoCode").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Boolean]("usePoints").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("appKey").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("offerCart").description("").optional, queryParam[String]("promoCode").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Boolean]("usePoints").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[String]("appKey").description("").optional)
   )
 
-  post("/api/:version/wallet/preview", operation(previewOfferTransactionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/wallet/preview", operation(previewOfferTransactionOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -183,12 +175,10 @@ class WalletApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchOfferTransactionsOperation = (apiOperation[List[OfferTransactionResponse]]("searchOfferTransactions")
     summary "Search Wallet Offers"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[String]("retailerIds").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("excludeRetailerLocationIds").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[String]("offerIds").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("offerLocationIds").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("offerTypes").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("specialOfferTypes").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("offerAudienceIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("redeemableStartDate").description("").optional, queryParam[Long]("redeemableEndDate").description("").optional, queryParam[Boolean]("filterByParentOffer").description("").optional.defaultValue(false), queryParam[Long]("startedSince").description("").optional, queryParam[Long]("startedBefore").description("").optional, queryParam[Long]("endedSince").description("").optional, queryParam[Long]("endedBefore").description("").optional, queryParam[Boolean]("redeemed").description("").optional.defaultValue(false), queryParam[String]("statuses").description("").optional, queryParam[Boolean]("reservationsOnly").description("").optional.defaultValue(false), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[Boolean]("returnFullResponse").description("").optional.defaultValue(false), queryParam[Long]("recurringStartedSince").description("").optional, queryParam[Long]("recurringStartedBefore").description("").optional, queryParam[Long]("recurringExpirationSince").description("").optional, queryParam[Long]("recurringExpirationBefore").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[String]("retailerIds").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("excludeRetailerLocationIds").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[String]("offerIds").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("offerLocationIds").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("offerTypes").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("specialOfferTypes").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("offerAudienceIds").description("").optional, queryParam[String]("sortField").description("").optional.defaultValue(CREATED), queryParam[Boolean]("descending").description("").optional.defaultValue(true), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20), queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Long]("redeemableStartDate").description("").optional, queryParam[Long]("redeemableEndDate").description("").optional, queryParam[Boolean]("filterByParentOffer").description("").optional.defaultValue(false), queryParam[Long]("startedSince").description("").optional, queryParam[Long]("startedBefore").description("").optional, queryParam[Long]("endedSince").description("").optional, queryParam[Long]("endedBefore").description("").optional, queryParam[Boolean]("redeemed").description("").optional.defaultValue(false), queryParam[String]("statuses").description("").optional, queryParam[Boolean]("reservationsOnly").description("").optional.defaultValue(false), queryParam[Boolean]("activeOnly").description("").optional.defaultValue(false), queryParam[Boolean]("returnFullResponse").description("").optional.defaultValue(false), queryParam[Long]("recurringStartedSince").description("").optional, queryParam[Long]("recurringStartedBefore").description("").optional, queryParam[Long]("recurringExpirationSince").description("").optional, queryParam[Long]("recurringExpirationBefore").description("").optional)
   )
 
-  get("/api/:version/wallet/search", operation(searchOfferTransactionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/wallet/search", operation(searchOfferTransactionsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -318,12 +308,10 @@ class WalletApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateOfferTransactionOperation = (apiOperation[OfferTransactionResponse]("updateOfferTransaction")
     summary "Update Wallet Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("transactionId").description(""), queryParam[Int]("status").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Boolean]("usePoints").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional.defaultValue(false), queryParam[String]("exceptionMembershipOfferIds").description("").optional)
+    parameters(queryParam[Long]("transactionId").description(""), queryParam[Int]("status").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("currencyType").description("").optional.defaultValue(CASH), queryParam[Boolean]("usePoints").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Boolean]("returnFullResponse").description("").optional.defaultValue(false), queryParam[String]("exceptionMembershipOfferIds").description("").optional)
   )
 
-  post("/api/:version/wallet/update", operation(updateOfferTransactionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/wallet/update", operation(updateOfferTransactionOperation)) {
             val transactionId = params.getAs[Long]("transactionId")
 
     //println("transactionId: " + transactionId)

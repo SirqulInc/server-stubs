@@ -46,12 +46,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createNotificationTemplateOperation = (apiOperation[NotificationTemplateResponse]("createNotificationTemplate")
     summary "Create Notification Template"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("conduit").description(""), queryParam[String]("title").description(""), queryParam[String]("body").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("event").description("").optional, queryParam[String]("tags").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("conduit").description(""), queryParam[String]("title").description(""), queryParam[String]("body").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("event").description("").optional, queryParam[String]("tags").description("").optional)
   )
 
-  post("/api/:version/notification/template/create", operation(createNotificationTemplateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/template/create", operation(createNotificationTemplateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -79,12 +77,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOrUpdateBlockedNotificationsOperation = (apiOperation[BlockedNotificationResponse]("createOrUpdateBlockedNotifications")
     summary "Create or update blocked notification settings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("data").description(""), queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("data").description(""), queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/notification/blocked/batch", operation(createOrUpdateBlockedNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/blocked/batch", operation(createOrUpdateBlockedNotificationsOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -100,12 +96,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteNotificationTemplateOperation = (apiOperation[NotificationTemplateResponse]("deleteNotificationTemplate")
     summary "Delete Notification Template"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("notificationTemplateId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("notificationTemplateId").description(""))
   )
 
-  post("/api/:version/notification/template/delete", operation(deleteNotificationTemplateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/template/delete", operation(deleteNotificationTemplateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -118,12 +112,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getNotificationTemplateOperation = (apiOperation[NotificationTemplateResponse]("getNotificationTemplate")
     summary "Get Notification Template"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("notificationTemplateId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("notificationTemplateId").description(""))
   )
 
-  get("/api/:version/notification/template/get", operation(getNotificationTemplateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/template/get", operation(getNotificationTemplateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -136,12 +128,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getNotificationsOperation = (apiOperation[NotificationMessageListResponse]("getNotifications")
     summary "Get Notifications"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("eventType").description("").optional, queryParam[String]("contentIds").description("").optional, queryParam[String]("contentTypes").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("parentTypes").description("").optional, queryParam[String]("actionCategory").description("").optional, queryParam[String]("conduits").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Boolean]("returnReadMessages").description("").optional, queryParam[Boolean]("markAsRead").description("").optional, queryParam[Long]("fromDate").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnSent").description("").optional, queryParam[Boolean]("ignoreFlagged").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("connectionAccountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("eventType").description("").optional, queryParam[String]("contentIds").description("").optional, queryParam[String]("contentTypes").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("parentTypes").description("").optional, queryParam[String]("actionCategory").description("").optional, queryParam[String]("conduits").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Boolean]("returnReadMessages").description("").optional, queryParam[Boolean]("markAsRead").description("").optional, queryParam[Long]("fromDate").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("returnSent").description("").optional, queryParam[Boolean]("ignoreFlagged").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/notification/search", operation(getNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/search", operation(getNotificationsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -211,12 +201,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val registerNotificationTokenOperation = (apiOperation[SirqulResponse]("registerNotificationToken")
     summary "Register Notification Token"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("token").description(""), queryParam[String]("pushType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("environment").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("token").description(""), queryParam[String]("pushType").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("environment").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/notification/token", operation(registerNotificationTokenOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/token", operation(registerNotificationTokenOperation)) {
             val token = params.getAs[String]("token")
 
     //println("token: " + token)
@@ -253,12 +241,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchBlockedNotificationsOperation = (apiOperation[BlockedNotificationResponse]("searchBlockedNotifications")
     summary "Search on the user's blocked notification settings"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("events").description("").optional, queryParam[String]("conduits").description("").optional, queryParam[String]("customTypes").description("").optional, queryParam[String]("contentTypes").description("").optional, queryParam[String]("contentIds").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("searchTags").description("").optional, queryParam[String]("events").description("").optional, queryParam[String]("conduits").description("").optional, queryParam[String]("customTypes").description("").optional, queryParam[String]("contentTypes").description("").optional, queryParam[String]("contentIds").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/notification/blocked/search", operation(searchBlockedNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/blocked/search", operation(searchBlockedNotificationsOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -301,12 +287,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchNotificationTemplateOperation = (apiOperation[NotificationTemplateResponse]("searchNotificationTemplate")
     summary "Search Notification Templates"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("event").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[Boolean]("globalOnly").description("").optional, queryParam[Boolean]("reservedOnly").description("").optional, queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("event").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[Boolean]("globalOnly").description("").optional, queryParam[Boolean]("reservedOnly").description("").optional, queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/notification/template/search", operation(searchNotificationTemplateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/template/search", operation(searchNotificationTemplateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -346,12 +330,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRecipientsOperation = (apiOperation[List[NotificationRecipientResponse]]("searchRecipients")
     summary "Search for Recipients"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("recipientAccountIds").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("recipientAccountIds").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/notification/recipient/search", operation(searchRecipientsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/recipient/search", operation(searchRecipientsOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -397,12 +379,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRecipientsCountOperation = (apiOperation[NotificationRecipientResponseListResponse]("searchRecipientsCount")
     summary "Search for Recipients (Counts/Grouped)"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("audienceId").description("").optional, queryParam[String]("audienceIds").description("").optional, queryParam[String]("connectionGroupIds").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/notification/recipient/search/count", operation(searchRecipientsCountOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/notification/recipient/search/count", operation(searchRecipientsCountOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -445,12 +425,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val sendBatchNotificationsOperation = (apiOperation[SirqulResponse]("sendBatchNotifications")
     summary "Send Batch Notifications"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("customMessage").description(""), queryParam[String]("conduit").description("").optional, queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[String]("customMessage").description(""), queryParam[String]("conduit").description("").optional, queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional)
   )
 
-  post("/api/:version/notification/batch", operation(sendBatchNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/batch", operation(sendBatchNotificationsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -484,12 +462,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val sendCustomNotificationsOperation = (apiOperation[SirqulResponse]("sendCustomNotifications")
     summary "Send Custom Notifications"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("receiverAccountIds").description("").optional, queryParam[Boolean]("includeFriendGroup").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional, queryParam[String]("actionCategory").description("").optional, queryParam[String]("subject").description("").optional, queryParam[String]("customMessage").description("").optional, queryParam[Boolean]("friendOnlyAPNS").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("receiverAccountIds").description("").optional, queryParam[Boolean]("includeFriendGroup").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("conduit").description("").optional, queryParam[Long]("contentId").description("").optional, queryParam[String]("contentName").description("").optional, queryParam[String]("contentType").description("").optional, queryParam[Long]("parentId").description("").optional, queryParam[String]("parentType").description("").optional, queryParam[String]("actionCategory").description("").optional, queryParam[String]("subject").description("").optional, queryParam[String]("customMessage").description("").optional, queryParam[Boolean]("friendOnlyAPNS").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/notification/custom", operation(sendCustomNotificationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/custom", operation(sendCustomNotificationsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -550,12 +526,10 @@ class NotificationApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateNotificationTemplateOperation = (apiOperation[NotificationTemplateResponse]("updateNotificationTemplate")
     summary "Update Notification Template"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("notificationTemplateId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("body").description("").optional, queryParam[String]("tags").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("notificationTemplateId").description(""), queryParam[String]("title").description("").optional, queryParam[String]("body").description("").optional, queryParam[String]("tags").description("").optional)
   )
 
-  post("/api/:version/notification/template/update", operation(updateNotificationTemplateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/notification/template/update", operation(updateNotificationTemplateOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

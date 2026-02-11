@@ -41,12 +41,10 @@ class RegionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createRegionOperation = (apiOperation[RegionResponse]("createRegion")
     summary "Create Region"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("regionClass").description(""), queryParam[String]("shortName").description(""), queryParam[String]("fullName").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("childrenIds").description("").optional, queryParam[String]("postalCodeIds").description("").optional, queryParam[String]("locations").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("polygon").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[Boolean]("root").description("").optional, queryParam[Boolean]("active").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("regionClass").description(""), queryParam[String]("shortName").description(""), queryParam[String]("fullName").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("childrenIds").description("").optional, queryParam[String]("postalCodeIds").description("").optional, queryParam[String]("locations").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("polygon").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[Boolean]("root").description("").optional, queryParam[Boolean]("active").description("").optional)
   )
 
-  post("/api/:version/region/create", operation(createRegionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/region/create", operation(createRegionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -116,12 +114,10 @@ class RegionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteRegionOperation = (apiOperation[RegionResponse]("deleteRegion")
     summary "Delete Region"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("regionId").description(""))
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("regionId").description(""))
   )
 
-  post("/api/:version/region/delete", operation(deleteRegionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/region/delete", operation(deleteRegionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -134,12 +130,10 @@ class RegionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getRegionOperation = (apiOperation[RegionResponse]("getRegion")
     summary "Get Region"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("regionId").description(""), queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("regionId").description(""), queryParam[Long]("accountId").description("").optional)
   )
 
-  get("/api/:version/region/get", operation(getRegionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/region/get", operation(getRegionOperation)) {
             val regionId = params.getAs[Long]("regionId")
 
     //println("regionId: " + regionId)
@@ -152,12 +146,10 @@ class RegionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchRegionsOperation = (apiOperation[List[RegionResponse]]("searchRegions")
     summary "Search Regions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description("").optional, queryParam[String]("query").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("range").description("").optional, queryParam[String]("regionClass").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("searchMode").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("includeParent").description("").optional, queryParam[Boolean]("includeChildren").description("").optional, queryParam[Boolean]("includePostalCodes").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("showDeleted").description("").optional, queryParam[Long]("lastUpdatedSince").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
+    parameters(queryParam[Long]("accountId").description("").optional, queryParam[String]("query").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Double]("range").description("").optional, queryParam[String]("regionClass").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("searchMode").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[Boolean]("descending").description("").optional, queryParam[Boolean]("includeParent").description("").optional, queryParam[Boolean]("includeChildren").description("").optional, queryParam[Boolean]("includePostalCodes").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[Boolean]("activeOnly").description("").optional, queryParam[Boolean]("showDeleted").description("").optional, queryParam[Long]("lastUpdatedSince").description("").optional, queryParam[Int]("start").description("").optional, queryParam[Int]("limit").description("").optional)
   )
 
-  get("/api/:version/region/search", operation(searchRegionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/region/search", operation(searchRegionsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -230,12 +222,10 @@ class RegionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateRegionOperation = (apiOperation[RegionResponse]("updateRegion")
     summary "Update Region"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("regionId").description(""), queryParam[String]("regionClass").description("").optional, queryParam[String]("shortName").description("").optional, queryParam[String]("fullName").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("childrenIds").description("").optional, queryParam[String]("postalCodeIds").description("").optional, queryParam[String]("locations").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("polygon").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[Boolean]("root").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("clearLists").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[Long]("regionId").description(""), queryParam[String]("regionClass").description("").optional, queryParam[String]("shortName").description("").optional, queryParam[String]("fullName").description("").optional, queryParam[String]("parentIds").description("").optional, queryParam[String]("childrenIds").description("").optional, queryParam[String]("postalCodeIds").description("").optional, queryParam[String]("locations").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("visibility").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Long]("start").description("").optional, queryParam[Long]("end").description("").optional, queryParam[String]("polygon").description("").optional, queryParam[String]("metaData").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Int]("versionCode").description("").optional, queryParam[Boolean]("root").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("clearLists").description("").optional)
   )
 
-  post("/api/:version/region/update", operation(updateRegionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/region/update", operation(updateRegionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

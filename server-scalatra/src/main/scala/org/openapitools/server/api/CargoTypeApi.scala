@@ -41,12 +41,10 @@ class CargoTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createCargoTypeOperation = (apiOperation[CargoType]("createCargoType")
     summary "Create Cargo Type"
-    parameters(pathParam[Double]("version").description(""), bodyParam[CargoType]("body").description("").optional)
+    parameters(bodyParam[CargoType]("body").description("").optional)
   )
 
-  post("/api/:version/cargo/type", operation(createCargoTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/cargo/type", operation(createCargoTypeOperation)) {
     //println("body: " + body)
   }
 
@@ -54,12 +52,10 @@ class CargoTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteCargoTypeOperation = (apiOperation[Unit]("deleteCargoType")
     summary "Delete Cargo Type"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("cargoTypeId").description(""))
+    parameters(pathParam[Long]("cargoTypeId").description(""))
   )
 
-  delete("/api/:version/cargo/type/:cargoTypeId", operation(deleteCargoTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/cargo/type/:cargoTypeId", operation(deleteCargoTypeOperation)) {
     val cargoTypeId = params.getOrElse("cargoTypeId", halt(400))
     //println("cargoTypeId: " + cargoTypeId)
   }
@@ -68,12 +64,10 @@ class CargoTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getCargoTypeOperation = (apiOperation[CargoType]("getCargoType")
     summary "Get Cargo Type"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("cargoTypeId").description(""))
+    parameters(pathParam[Long]("cargoTypeId").description(""))
   )
 
-  get("/api/:version/cargo/type/:cargoTypeId", operation(getCargoTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/cargo/type/:cargoTypeId", operation(getCargoTypeOperation)) {
     val cargoTypeId = params.getOrElse("cargoTypeId", halt(400))
     //println("cargoTypeId: " + cargoTypeId)
   }
@@ -82,12 +76,10 @@ class CargoTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchCargoTypesOperation = (apiOperation[List[CargoType]]("searchCargoTypes")
     summary "Search Cargo Type"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("hubId").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("retailerId").description("").optional, queryParam[Long]("hubId").description("").optional)
   )
 
-  get("/api/:version/cargo/type", operation(searchCargoTypesOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/cargo/type", operation(searchCargoTypesOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -115,12 +107,10 @@ class CargoTypeApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateCargoTypeOperation = (apiOperation[CargoType]("updateCargoType")
     summary "Update Cargo Type"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("cargoTypeId").description(""), bodyParam[CargoType]("body").description("").optional)
+    parameters(pathParam[Long]("cargoTypeId").description(""), bodyParam[CargoType]("body").description("").optional)
   )
 
-  put("/api/:version/cargo/type/:cargoTypeId", operation(updateCargoTypeOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/cargo/type/:cargoTypeId", operation(updateCargoTypeOperation)) {
     val cargoTypeId = params.getOrElse("cargoTypeId", halt(400))
     //println("cargoTypeId: " + cargoTypeId)
     //println("body: " + body)

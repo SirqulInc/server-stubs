@@ -42,12 +42,10 @@ class ActivityApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createEntityReferenceOperation = (apiOperation[ActivityResponse]("createEntityReference")
     summary "Create an entity reference."
-    parameters(pathParam[Double]("version").description(""), bodyParam[EntityReference]("body").description(""))
+    parameters(bodyParam[EntityReference]("body").description(""))
   )
 
-  post("/api/:version/entity/reference", operation(createEntityReferenceOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/entity/reference", operation(createEntityReferenceOperation)) {
     //println("body: " + body)
   }
 

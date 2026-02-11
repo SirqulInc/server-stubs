@@ -44,12 +44,10 @@ class ThemeDescriptorApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val addOrUpdateThemeDescriptorOperation = (apiOperation[ThemeDescriptorResponse]("addOrUpdateThemeDescriptor")
     summary "Create/Update Theme"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("publicRead").description(""), queryParam[Boolean]("publicWrite").description(""), queryParam[Boolean]("publicDelete").description(""), queryParam[Boolean]("publicAdd").description(""), queryParam[String]("visibility").description(""), queryParam[Boolean]("includeFriendGroup").description(""), queryParam[Boolean]("completeWithDefaultValues").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Long]("themeDescriptorId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("connectionIdsToAdd").description("").optional, queryParam[String]("connectionGroupIdsToAdd").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[String]("colorValueJson").description("").optional, queryParam[String]("stringReplacerJson").description("").optional, queryParam[String]("customJsonObjects").description("").optional, queryParam[File]("iconImage").description("").optional, queryParam[File]("sceneAtlasImage").description("").optional, queryParam[File]("bgImage").description("").optional, queryParam[File]("bgSound").description("").optional, queryParam[String]("musicSelection").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Boolean]("publicRead").description(""), queryParam[Boolean]("publicWrite").description(""), queryParam[Boolean]("publicDelete").description(""), queryParam[Boolean]("publicAdd").description(""), queryParam[String]("visibility").description(""), queryParam[Boolean]("includeFriendGroup").description(""), queryParam[Boolean]("completeWithDefaultValues").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Long]("themeDescriptorId").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("description").description("").optional, queryParam[String]("connectionIdsToAdd").description("").optional, queryParam[String]("connectionGroupIdsToAdd").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[String]("colorValueJson").description("").optional, queryParam[String]("stringReplacerJson").description("").optional, queryParam[String]("customJsonObjects").description("").optional, queryParam[File]("iconImage").description("").optional, queryParam[File]("sceneAtlasImage").description("").optional, queryParam[File]("bgImage").description("").optional, queryParam[File]("bgSound").description("").optional, queryParam[String]("musicSelection").description("").optional, queryParam[String]("locationDescription").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/theme", operation(addOrUpdateThemeDescriptorOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/theme", operation(addOrUpdateThemeDescriptorOperation)) {
             val publicRead = params.getAs[Boolean]("publicRead")
 
     //println("publicRead: " + publicRead)
@@ -133,12 +131,10 @@ class ThemeDescriptorApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getThemeDescriptorOperation = (apiOperation[PurchaseItemListResponse]("getThemeDescriptor")
     summary "Get Theme"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("themeDescriptorId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("themeDescriptorId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/consumer/theme/get", operation(getThemeDescriptorOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/theme/get", operation(getThemeDescriptorOperation)) {
             val themeDescriptorId = params.getAs[Long]("themeDescriptorId")
 
     //println("themeDescriptorId: " + themeDescriptorId)
@@ -163,12 +159,10 @@ class ThemeDescriptorApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getThemeDescriptorsOperation = (apiOperation[PurchaseItemListResponse]("getThemeDescriptors")
     summary "Search Themes"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("filter").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[String]("filter").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[String]("contestType").description("").optional, queryParam[Long]("ownerId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[Long]("dateCreated").description("").optional, queryParam[String]("appVersion").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  get("/api/:version/consumer/theme/search", operation(getThemeDescriptorsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/consumer/theme/search", operation(getThemeDescriptorsOperation)) {
             val filter = params.getAs[String]("filter")
 
     //println("filter: " + filter)
@@ -229,12 +223,10 @@ class ThemeDescriptorApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val removeThemeDescriptorOperation = (apiOperation[SirqulResponse]("removeThemeDescriptor")
     summary "Delete Theme"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("themeDescriptorId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
+    parameters(queryParam[Long]("themeDescriptorId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("gameType").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional)
   )
 
-  post("/api/:version/consumer/theme/remove", operation(removeThemeDescriptorOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/consumer/theme/remove", operation(removeThemeDescriptorOperation)) {
             val themeDescriptorId = params.getAs[Long]("themeDescriptorId")
 
     //println("themeDescriptorId: " + themeDescriptorId)

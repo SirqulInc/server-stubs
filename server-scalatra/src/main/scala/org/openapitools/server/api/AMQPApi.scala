@@ -42,12 +42,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val consumerCreateOperation = (apiOperation[QueueResponse]("consumerCreate")
     summary "Create Consumer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("name").description(""), queryParam[String]("hostname").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("dataMapping").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("port").description("").optional.defaultValue(5672), queryParam[String]("virtualHost").description("").optional, queryParam[String]("exchanger").description("").optional, queryParam[String]("exchangerType").description("").optional, queryParam[Int]("workers").description("").optional.defaultValue(1), queryParam[Boolean]("useSSL").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("name").description(""), queryParam[String]("hostname").description(""), queryParam[String]("username").description(""), queryParam[String]("password").description(""), queryParam[String]("dataMapping").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("port").description("").optional.defaultValue(5672), queryParam[String]("virtualHost").description("").optional, queryParam[String]("exchanger").description("").optional, queryParam[String]("exchangerType").description("").optional, queryParam[Int]("workers").description("").optional.defaultValue(1), queryParam[Boolean]("useSSL").description("").optional)
   )
 
-  post("/api/:version/queue/consumer/create", operation(consumerCreateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/queue/consumer/create", operation(consumerCreateOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -96,12 +94,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val consumerUpdateOperation = (apiOperation[QueueResponse]("consumerUpdate")
     summary "Update Consumer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("queueId").description(""), queryParam[String]("dataMapping").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("useSSL").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[Long]("queueId").description(""), queryParam[String]("dataMapping").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Boolean]("useSSL").description("").optional)
   )
 
-  post("/api/:version/queue/consumer/update", operation(consumerUpdateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/queue/consumer/update", operation(consumerUpdateOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -126,12 +122,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val queueCreateOperation = (apiOperation[QueueResponse]("queueCreate")
     summary "Create Queue"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("appKey").description(""), queryParam[String]("name").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("workers").description("").optional.defaultValue(1), queryParam[String]("analyticTags").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[Int]("port").description("").optional, queryParam[String]("username").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("virtualHost").description("").optional, queryParam[Boolean]("useSSL").description("").optional)
+    parameters(queryParam[String]("appKey").description(""), queryParam[String]("name").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Int]("workers").description("").optional.defaultValue(1), queryParam[String]("analyticTags").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[Int]("port").description("").optional, queryParam[String]("username").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("virtualHost").description("").optional, queryParam[Boolean]("useSSL").description("").optional)
   )
 
-  post("/api/:version/queue/create", operation(queueCreateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/queue/create", operation(queueCreateOperation)) {
             val appKey = params.getAs[String]("appKey")
 
     //println("appKey: " + appKey)
@@ -174,12 +168,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val queueDeleteOperation = (apiOperation[SirqulResponse]("queueDelete")
     summary "Delete Queue"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("queueId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("queueId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/queue/delete", operation(queueDeleteOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/queue/delete", operation(queueDeleteOperation)) {
             val queueId = params.getAs[Long]("queueId")
 
     //println("queueId: " + queueId)
@@ -195,12 +187,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val queueGetOperation = (apiOperation[QueueResponse]("queueGet")
     summary "Get Queue"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("queueId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[String]("virtualHost").description("").optional)
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("queueId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[String]("virtualHost").description("").optional)
   )
 
-  get("/api/:version/queue/get", operation(queueGetOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/queue/get", operation(queueGetOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -228,12 +218,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val queuePublishOperation = (apiOperation[SirqulResponse]("queuePublish")
     summary "Publish Queue"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("message").description(""), queryParam[Long]("queueId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[String]("virtualHost").description("").optional)
+    parameters(queryParam[String]("message").description(""), queryParam[Long]("queueId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[String]("name").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[String]("virtualHost").description("").optional)
   )
 
-  post("/api/:version/queue/publish", operation(queuePublishOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/queue/publish", operation(queuePublishOperation)) {
             val message = params.getAs[String]("message")
 
     //println("message: " + message)
@@ -258,12 +246,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val queueSearchOperation = (apiOperation[QueueResponse]("queueSearch")
     summary "Search Queue"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("queueId").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(10))
+    parameters(queryParam[Long]("queueId").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("name").description("").optional, queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(10))
   )
 
-  get("/api/:version/queue/search", operation(queueSearchOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/queue/search", operation(queueSearchOperation)) {
             val queueId = params.getAs[Long]("queueId")
 
     //println("queueId: " + queueId)
@@ -288,12 +274,10 @@ class AMQPApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val queueUpdateOperation = (apiOperation[QueueResponse]("queueUpdate")
     summary "Update Queue"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("queueId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Int]("workers").description("").optional, queryParam[String]("analyticTags").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[Int]("port").description("").optional, queryParam[String]("username").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("virtualHost").description("").optional, queryParam[Boolean]("useSSL").description("").optional)
+    parameters(queryParam[Long]("queueId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("appKey").description("").optional, queryParam[Int]("workers").description("").optional, queryParam[String]("analyticTags").description("").optional, queryParam[String]("hostname").description("").optional, queryParam[Int]("port").description("").optional, queryParam[String]("username").description("").optional, queryParam[String]("password").description("").optional, queryParam[String]("virtualHost").description("").optional, queryParam[Boolean]("useSSL").description("").optional)
   )
 
-  post("/api/:version/queue/update", operation(queueUpdateOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/queue/update", operation(queueUpdateOperation)) {
             val queueId = params.getAs[Long]("queueId")
 
     //println("queueId: " + queueId)

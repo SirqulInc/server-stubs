@@ -47,12 +47,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val batchUpdateOfferLocationsOperation = (apiOperation[SirqulResponse]("batchUpdateOfferLocations")
     summary "Update Offer Locations"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("data").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("data").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/location/batchUpdate", operation(batchUpdateOfferLocationsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/location/batchUpdate", operation(batchUpdateOfferLocationsOperation)) {
             val data = params.getAs[String]("data")
 
     //println("data: " + data)
@@ -68,12 +66,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createOfferOperation = (apiOperation[RetailerOfferResponse]("createOffer")
     summary "Create Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("title").description(""), queryParam[String]("barcodeType").description(""), queryParam[Boolean]("noExpiration").description(""), queryParam[Int]("availableLimit").description(""), queryParam[Int]("availableLimitPerUser").description(""), queryParam[Int]("addedLimit").description(""), queryParam[Int]("viewLimit").description(""), queryParam[Int]("maxPrints").description(""), queryParam[Long]("ticketPrice").description(""), queryParam[Double]("fullPrice").description(""), queryParam[Double]("discountPrice").description(""), queryParam[String]("offerType").description(""), queryParam[String]("specialOfferType").description(""), queryParam[String]("offerVisibility").description(""), queryParam[Boolean]("active").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Long]("parentOfferId").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("offerLocations").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("subDetails").description("").optional, queryParam[String]("finePrint").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("externalRedeemOptions").description("").optional, queryParam[String]("externalUrl").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("ticketsRewardType").description("").optional, queryParam[Long]("ticketsReward").description("").optional, queryParam[Long]("activated").description("").optional, queryParam[Long]("expires").description("").optional, queryParam[String]("ticketPriceType").description("").optional, queryParam[Boolean]("showRemaining").description("").optional, queryParam[Boolean]("showRedeemed").description("").optional, queryParam[Boolean]("replaced").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Long]("barcodeAssetId").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("imageAssetId1").description("").optional, queryParam[Long]("imageAssetId2").description("").optional, queryParam[Long]("imageAssetId3").description("").optional, queryParam[Long]("imageAssetId4").description("").optional, queryParam[Long]("imageAssetId5").description("").optional, queryParam[String]("publisher").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional, queryParam[String]("brand").description("").optional, queryParam[String]("productType").description("").optional, queryParam[String]("conditionType").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("catalogNumbers").description("").optional, queryParam[String]("department").description("").optional, queryParam[String]("features").description("").optional, queryParam[Double]("minimumPrice").description("").optional, queryParam[Double]("width").description("").optional, queryParam[Double]("height").description("").optional, queryParam[Double]("depth").description("").optional, queryParam[Double]("weight").description("").optional, queryParam[String]("unit").description("").optional, queryParam[String]("studio").description("").optional, queryParam[String]("parentalRating").description("").optional, queryParam[Long]("publishDate").description("").optional, queryParam[Long]("availabilityDate").description("").optional, queryParam[Long]("sizeId").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[String]("mediaType").description("").optional, queryParam[Int]("duration").description("").optional, queryParam[String]("author").description("").optional, queryParam[Long]("releaseDate").description("").optional, queryParam[String]("collectionIds").description("").optional, queryParam[Int]("rebootTimeHour").description("").optional, queryParam[Int]("rebootTimeMinute").description("").optional, queryParam[Int]("idleTimeoutInSecond").description("").optional, queryParam[String]("serialNumber").description("").optional, queryParam[String]("udid").description("").optional, queryParam[String]("deviceType").description("").optional, queryParam[Double]("devicePower").description("").optional, queryParam[Double]("deviceInterference").description("").optional, queryParam[String]("availability").description("").optional, queryParam[String]("availabilitySummary").description("").optional)
+    parameters(queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("title").description(""), queryParam[String]("barcodeType").description(""), queryParam[Boolean]("noExpiration").description(""), queryParam[Int]("availableLimit").description(""), queryParam[Int]("availableLimitPerUser").description(""), queryParam[Int]("addedLimit").description(""), queryParam[Int]("viewLimit").description(""), queryParam[Int]("maxPrints").description(""), queryParam[Long]("ticketPrice").description(""), queryParam[Double]("fullPrice").description(""), queryParam[Double]("discountPrice").description(""), queryParam[String]("offerType").description(""), queryParam[String]("specialOfferType").description(""), queryParam[String]("offerVisibility").description(""), queryParam[Boolean]("active").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("tags").description("").optional, queryParam[Long]("parentOfferId").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("offerLocations").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("subDetails").description("").optional, queryParam[String]("finePrint").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("externalRedeemOptions").description("").optional, queryParam[String]("externalUrl").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("ticketsRewardType").description("").optional, queryParam[Long]("ticketsReward").description("").optional, queryParam[Long]("activated").description("").optional, queryParam[Long]("expires").description("").optional, queryParam[String]("ticketPriceType").description("").optional, queryParam[Boolean]("showRemaining").description("").optional, queryParam[Boolean]("showRedeemed").description("").optional, queryParam[Boolean]("replaced").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Long]("barcodeAssetId").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("imageAssetId1").description("").optional, queryParam[Long]("imageAssetId2").description("").optional, queryParam[Long]("imageAssetId3").description("").optional, queryParam[Long]("imageAssetId4").description("").optional, queryParam[Long]("imageAssetId5").description("").optional, queryParam[String]("publisher").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional, queryParam[String]("brand").description("").optional, queryParam[String]("productType").description("").optional, queryParam[String]("conditionType").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("catalogNumbers").description("").optional, queryParam[String]("department").description("").optional, queryParam[String]("features").description("").optional, queryParam[Double]("minimumPrice").description("").optional, queryParam[Double]("width").description("").optional, queryParam[Double]("height").description("").optional, queryParam[Double]("depth").description("").optional, queryParam[Double]("weight").description("").optional, queryParam[String]("unit").description("").optional, queryParam[String]("studio").description("").optional, queryParam[String]("parentalRating").description("").optional, queryParam[Long]("publishDate").description("").optional, queryParam[Long]("availabilityDate").description("").optional, queryParam[Long]("sizeId").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[String]("mediaType").description("").optional, queryParam[Int]("duration").description("").optional, queryParam[String]("author").description("").optional, queryParam[Long]("releaseDate").description("").optional, queryParam[String]("collectionIds").description("").optional, queryParam[Int]("rebootTimeHour").description("").optional, queryParam[Int]("rebootTimeMinute").description("").optional, queryParam[Int]("idleTimeoutInSecond").description("").optional, queryParam[String]("serialNumber").description("").optional, queryParam[String]("udid").description("").optional, queryParam[String]("deviceType").description("").optional, queryParam[Double]("devicePower").description("").optional, queryParam[Double]("deviceInterference").description("").optional, queryParam[String]("availability").description("").optional, queryParam[String]("availabilitySummary").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/create", operation(createOfferOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/create", operation(createOfferOperation)) {
             val includeOfferLocations = params.getAs[Boolean]("includeOfferLocations")
 
     //println("includeOfferLocations: " + includeOfferLocations)
@@ -338,12 +334,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteOfferOperation = (apiOperation[SirqulResponse]("deleteOffer")
     summary "Delete Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("offerId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/delete", operation(deleteOfferOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/delete", operation(deleteOfferOperation)) {
             val offerId = params.getAs[Long]("offerId")
 
     //println("offerId: " + offerId)
@@ -359,12 +353,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteOfferLocationOperation = (apiOperation[SirqulResponse]("deleteOfferLocation")
     summary "Delete Offer Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerLocationId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("offerLocationId").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/location/delete", operation(deleteOfferLocationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/location/delete", operation(deleteOfferLocationOperation)) {
             val offerLocationId = params.getAs[Long]("offerLocationId")
 
     //println("offerLocationId: " + offerLocationId)
@@ -380,12 +372,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferOperation = (apiOperation[RetailerOfferResponse]("getOffer")
     summary "Get Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerId").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[Long]("offerId").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  get("/api/:version/retailer/offer/get", operation(getOfferOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer/offer/get", operation(getOfferOperation)) {
             val offerId = params.getAs[Long]("offerId")
 
     //println("offerId: " + offerId)
@@ -404,12 +394,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferDetailsOperation = (apiOperation[OfferResponse]("getOfferDetails")
     summary "Get Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Double]("distance").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("includeOfferLocations").description("").optional.defaultValue(false), queryParam[Boolean]("includeRetailerLocations").description("").optional.defaultValue(false), queryParam[Boolean]("includeChildOffers").description("").optional.defaultValue(false))
+    parameters(queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Double]("distance").description("").optional, queryParam[Double]("latitude").description("").optional, queryParam[Double]("longitude").description("").optional, queryParam[Boolean]("includeOfferLocations").description("").optional.defaultValue(false), queryParam[Boolean]("includeRetailerLocations").description("").optional.defaultValue(false), queryParam[Boolean]("includeChildOffers").description("").optional.defaultValue(false))
   )
 
-  get("/api/:version/offer/get", operation(getOfferDetailsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/get", operation(getOfferDetailsOperation)) {
             val deviceId = params.getAs[String]("deviceId")
 
     //println("deviceId: " + deviceId)
@@ -446,12 +434,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferListCountsOperation = (apiOperation[ListCountResponse]("getOfferListCounts")
     summary "Get Offers (Counts)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[String]("distanceUnit").description("").optional.defaultValue(MILES))
+    parameters(queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[String]("distanceUnit").description("").optional.defaultValue(MILES))
   )
 
-  get("/api/:version/offer/lists/count", operation(getOfferListCountsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/lists/count", operation(getOfferListCountsOperation)) {
             val latitude = params.getAs[Double]("latitude")
 
     //println("latitude: " + latitude)
@@ -470,12 +456,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferLocationOperation = (apiOperation[OfferShortResponse]("getOfferLocation")
     summary "Get Offer Location"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("udid").description("").optional)
+    parameters(queryParam[Long]("offerLocationId").description("").optional, queryParam[String]("udid").description("").optional)
   )
 
-  get("/api/:version/offer/location/get", operation(getOfferLocationOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/location/get", operation(getOfferLocationOperation)) {
             val offerLocationId = params.getAs[Long]("offerLocationId")
 
     //println("offerLocationId: " + offerLocationId)
@@ -488,12 +472,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOfferLocationsForRetailersOperation = (apiOperation[List[OfferShortResponse]]("getOfferLocationsForRetailers")
     summary "Search Offer Locations"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("includeRetailerLocation").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("barcodeType").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("deviceStatus").description("").optional, queryParam[Boolean]("needsNotificationSent").description("").optional, queryParam[Long]("lastNotificationSent").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("includeRetailerLocation").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("barcodeType").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("deviceStatus").description("").optional, queryParam[Boolean]("needsNotificationSent").description("").optional, queryParam[Long]("lastNotificationSent").description("").optional)
   )
 
-  get("/api/:version/retailer/offer/location/search", operation(getOfferLocationsForRetailersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer/offer/location/search", operation(getOfferLocationsForRetailersOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -560,12 +542,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getOffersForRetailersOperation = (apiOperation[List[OfferResponse]]("getOffersForRetailers")
     summary "Search Offers"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("offerVisibility").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("availableOnly").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("includeCategories").description(""), queryParam[Boolean]("includeFilters").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("couponType").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("offerTypes").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[String]("barcodeType").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("deviceStatus").description("").optional, queryParam[Boolean]("needsNotificationSent").description("").optional, queryParam[Long]("lastNotificationSent").description("").optional)
+    parameters(queryParam[String]("offerVisibility").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("availableOnly").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Boolean]("includeCategories").description(""), queryParam[Boolean]("includeFilters").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[String]("couponType").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("offerTypes").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional, queryParam[String]("barcodeType").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("deviceStatus").description("").optional, queryParam[Boolean]("needsNotificationSent").description("").optional, queryParam[Long]("lastNotificationSent").description("").optional)
   )
 
-  get("/api/:version/retailer/offer/search", operation(getOffersForRetailersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer/offer/search", operation(getOffersForRetailersOperation)) {
             val offerVisibility = params.getAs[String]("offerVisibility")
 
     //println("offerVisibility: " + offerVisibility)
@@ -665,12 +645,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val redeemOfferTransactionOperation = (apiOperation[SirqulResponse]("redeemOfferTransaction")
     summary "Update Offer Transaction"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerTransactionId").description(""), queryParam[Int]("status").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerLocationId").description("").optional)
+    parameters(queryParam[Long]("offerTransactionId").description(""), queryParam[Int]("status").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("offerLocationId").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/transaction/update", operation(redeemOfferTransactionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/transaction/update", operation(redeemOfferTransactionOperation)) {
             val offerTransactionId = params.getAs[Long]("offerTransactionId")
 
     //println("offerTransactionId: " + offerTransactionId)
@@ -692,12 +670,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchOfferTransactionsForRetailersOperation = (apiOperation[List[OfferTransactionResponse]]("searchOfferTransactionsForRetailers")
     summary "Search Offer Transactions"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Boolean]("redeemed").description("").optional, queryParam[Boolean]("reservationsOnly").description("").optional, queryParam[String]("couponType").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("customerAccountIds").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Long]("redeemableStartDate").description("").optional, queryParam[Long]("redeemableEndDate").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[String]("q").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[Long]("retailerId").description("").optional, queryParam[Long]("retailerLocationId").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Long]("offerLocationId").description("").optional, queryParam[Boolean]("redeemed").description("").optional, queryParam[Boolean]("reservationsOnly").description("").optional, queryParam[String]("couponType").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("customerAccountIds").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[Long]("redeemableStartDate").description("").optional, queryParam[Long]("redeemableEndDate").description("").optional, queryParam[Int]("i").description("").optional, queryParam[Int]("l").description("").optional)
   )
 
-  get("/api/:version/retailer/offer/transaction/search", operation(searchOfferTransactionsForRetailersOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/retailer/offer/transaction/search", operation(searchOfferTransactionsForRetailersOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -776,12 +752,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchOffersForConsumerOperation = (apiOperation[OfferListResponse]("searchOffersForConsumer")
     summary "Search Offers"
-    parameters(pathParam[Double]("version").description(""), queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("recommendationType").description(""), queryParam[Long]("locationId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Int]("maxRecommendations").description(""), queryParam[String]("distanceUnit").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[String]("tags").description("").optional, queryParam[String]("supportedPostalCodes").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("categories").description("").optional, queryParam[String]("filters").description("").optional, queryParam[String]("offerTypes").description("").optional.defaultValue(COUPON, VOUCHER), queryParam[String]("`type`").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[String]("recommendOfferIds").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Boolean]("includeMission").description("").optional, queryParam[Boolean]("includeCategories").description("").optional, queryParam[Boolean]("includeFilters").description("").optional, queryParam[Boolean]("includeExpired").description("").optional, queryParam[Boolean]("includeFavorite").description("").optional, queryParam[Boolean]("closestOfferOnly").description("").optional, queryParam[String]("searchExpression").description("").optional, queryParam[String]("groupBy").description("").optional)
+    parameters(queryParam[Double]("latitude").description(""), queryParam[Double]("longitude").description(""), queryParam[String]("recommendationType").description(""), queryParam[Long]("locationId").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Int]("maxRecommendations").description(""), queryParam[String]("distanceUnit").description(""), queryParam[String]("appKey").description("").optional, queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Double]("searchRange").description("").optional.defaultValue(5), queryParam[String]("tags").description("").optional, queryParam[String]("supportedPostalCodes").description("").optional, queryParam[String]("keyword").description("").optional, queryParam[String]("categories").description("").optional, queryParam[String]("filters").description("").optional, queryParam[String]("offerTypes").description("").optional.defaultValue(COUPON, VOUCHER), queryParam[String]("`type`").description("").optional, queryParam[String]("sortField").description("").optional, queryParam[String]("recommendOfferIds").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[Long]("offerId").description("").optional, queryParam[Boolean]("includeMission").description("").optional, queryParam[Boolean]("includeCategories").description("").optional, queryParam[Boolean]("includeFilters").description("").optional, queryParam[Boolean]("includeExpired").description("").optional, queryParam[Boolean]("includeFavorite").description("").optional, queryParam[Boolean]("closestOfferOnly").description("").optional, queryParam[String]("searchExpression").description("").optional, queryParam[String]("groupBy").description("").optional)
   )
 
-  get("/api/:version/offer/lists", operation(searchOffersForConsumerOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/lists", operation(searchOffersForConsumerOperation)) {
             val latitude = params.getAs[Double]("latitude")
 
     //println("latitude: " + latitude)
@@ -881,12 +855,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val topOfferTransactionsOperation = (apiOperation[OfferListResponse]("topOfferTransactions")
     summary "Get Offers (Top)"
-    parameters(pathParam[Double]("version").description(""), queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
+    parameters(queryParam[Int]("start").description("").optional.defaultValue(0), queryParam[Int]("limit").description("").optional.defaultValue(20))
   )
 
-  get("/api/:version/offer/top", operation(topOfferTransactionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/offer/top", operation(topOfferTransactionsOperation)) {
             val start = params.getAs[Int]("start")
 
     //println("start: " + start)
@@ -899,12 +871,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateOfferOperation = (apiOperation[RetailerOfferResponse]("updateOffer")
     summary "Update Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("offerId").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("parentOfferId").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("offerLocations").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("subDetails").description("").optional, queryParam[String]("finePrint").description("").optional, queryParam[String]("barcodeType").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("externalRedeemOptions").description("").optional, queryParam[String]("externalUrl").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("ticketsRewardType").description("").optional, queryParam[Long]("ticketsReward").description("").optional, queryParam[Long]("activated").description("").optional, queryParam[Long]("expires").description("").optional, queryParam[Boolean]("noExpiration").description("").optional, queryParam[Int]("availableLimit").description("").optional, queryParam[Int]("availableLimitPerUser").description("").optional, queryParam[Int]("addedLimit").description("").optional, queryParam[Int]("viewLimit").description("").optional, queryParam[Int]("maxPrints").description("").optional, queryParam[String]("ticketPriceType").description("").optional, queryParam[Long]("ticketPrice").description("").optional, queryParam[Double]("fullPrice").description("").optional, queryParam[Double]("discountPrice").description("").optional, queryParam[Boolean]("showRemaining").description("").optional, queryParam[Boolean]("showRedeemed").description("").optional, queryParam[Boolean]("replaced").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("offerVisibility").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("barcodeAssetId").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("imageAssetId1").description("").optional, queryParam[Long]("imageAssetId2").description("").optional, queryParam[Long]("imageAssetId3").description("").optional, queryParam[Long]("imageAssetId4").description("").optional, queryParam[Long]("imageAssetId5").description("").optional, queryParam[String]("publisher").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional, queryParam[String]("brand").description("").optional, queryParam[String]("productType").description("").optional, queryParam[String]("conditionType").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("catalogNumbers").description("").optional, queryParam[String]("department").description("").optional, queryParam[String]("features").description("").optional, queryParam[Double]("minimumPrice").description("").optional, queryParam[Double]("width").description("").optional, queryParam[Double]("height").description("").optional, queryParam[Double]("depth").description("").optional, queryParam[Double]("weight").description("").optional, queryParam[String]("unit").description("").optional, queryParam[String]("studio").description("").optional, queryParam[String]("parentalRating").description("").optional, queryParam[Long]("publishDate").description("").optional, queryParam[Long]("availabilityDate").description("").optional, queryParam[Long]("sizeId").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[String]("mediaType").description("").optional, queryParam[Int]("duration").description("").optional, queryParam[String]("author").description("").optional, queryParam[Long]("releaseDate").description("").optional, queryParam[String]("collectionIds").description("").optional, queryParam[Int]("rebootTimeHour").description("").optional, queryParam[Int]("rebootTimeMinute").description("").optional, queryParam[Int]("idleTimeoutInSecond").description("").optional, queryParam[String]("serialNumber").description("").optional, queryParam[String]("udid").description("").optional, queryParam[String]("deviceType").description("").optional, queryParam[Double]("devicePower").description("").optional, queryParam[Double]("deviceInterference").description("").optional, queryParam[String]("availability").description("").optional, queryParam[String]("availabilitySummary").description("").optional)
+    parameters(queryParam[Long]("offerId").description(""), queryParam[Boolean]("includeOfferLocations").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional, queryParam[Long]("parentOfferId").description("").optional, queryParam[String]("retailerLocationIds").description("").optional, queryParam[String]("offerLocations").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("title").description("").optional, queryParam[String]("subTitle").description("").optional, queryParam[String]("details").description("").optional, queryParam[String]("subDetails").description("").optional, queryParam[String]("finePrint").description("").optional, queryParam[String]("barcodeType").description("").optional, queryParam[String]("barcodeEntry").description("").optional, queryParam[String]("externalRedeemOptions").description("").optional, queryParam[String]("externalUrl").description("").optional, queryParam[String]("externalId").description("").optional, queryParam[String]("ticketsRewardType").description("").optional, queryParam[Long]("ticketsReward").description("").optional, queryParam[Long]("activated").description("").optional, queryParam[Long]("expires").description("").optional, queryParam[Boolean]("noExpiration").description("").optional, queryParam[Int]("availableLimit").description("").optional, queryParam[Int]("availableLimitPerUser").description("").optional, queryParam[Int]("addedLimit").description("").optional, queryParam[Int]("viewLimit").description("").optional, queryParam[Int]("maxPrints").description("").optional, queryParam[String]("ticketPriceType").description("").optional, queryParam[Long]("ticketPrice").description("").optional, queryParam[Double]("fullPrice").description("").optional, queryParam[Double]("discountPrice").description("").optional, queryParam[Boolean]("showRemaining").description("").optional, queryParam[Boolean]("showRedeemed").description("").optional, queryParam[Boolean]("replaced").description("").optional, queryParam[Boolean]("featured").description("").optional, queryParam[String]("offerType").description("").optional, queryParam[String]("specialOfferType").description("").optional, queryParam[String]("offerVisibility").description("").optional, queryParam[String]("categoryIds").description("").optional, queryParam[String]("filterIds").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Long]("barcodeAssetId").description("").optional, queryParam[Long]("imageAssetId").description("").optional, queryParam[Long]("imageAssetId1").description("").optional, queryParam[Long]("imageAssetId2").description("").optional, queryParam[Long]("imageAssetId3").description("").optional, queryParam[Long]("imageAssetId4").description("").optional, queryParam[Long]("imageAssetId5").description("").optional, queryParam[String]("publisher").description("").optional, queryParam[Long]("redeemableStart").description("").optional, queryParam[Long]("redeemableEnd").description("").optional, queryParam[String]("brand").description("").optional, queryParam[String]("productType").description("").optional, queryParam[String]("conditionType").description("").optional, queryParam[String]("isbn").description("").optional, queryParam[String]("asin").description("").optional, queryParam[String]("catalogNumbers").description("").optional, queryParam[String]("department").description("").optional, queryParam[String]("features").description("").optional, queryParam[Double]("minimumPrice").description("").optional, queryParam[Double]("width").description("").optional, queryParam[Double]("height").description("").optional, queryParam[Double]("depth").description("").optional, queryParam[Double]("weight").description("").optional, queryParam[String]("unit").description("").optional, queryParam[String]("studio").description("").optional, queryParam[String]("parentalRating").description("").optional, queryParam[Long]("publishDate").description("").optional, queryParam[Long]("availabilityDate").description("").optional, queryParam[Long]("sizeId").description("").optional, queryParam[Long]("listingId").description("").optional, queryParam[String]("mediaType").description("").optional, queryParam[Int]("duration").description("").optional, queryParam[String]("author").description("").optional, queryParam[Long]("releaseDate").description("").optional, queryParam[String]("collectionIds").description("").optional, queryParam[Int]("rebootTimeHour").description("").optional, queryParam[Int]("rebootTimeMinute").description("").optional, queryParam[Int]("idleTimeoutInSecond").description("").optional, queryParam[String]("serialNumber").description("").optional, queryParam[String]("udid").description("").optional, queryParam[String]("deviceType").description("").optional, queryParam[Double]("devicePower").description("").optional, queryParam[Double]("deviceInterference").description("").optional, queryParam[String]("availability").description("").optional, queryParam[String]("availabilitySummary").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/update", operation(updateOfferOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/update", operation(updateOfferOperation)) {
             val offerId = params.getAs[Long]("offerId")
 
     //println("offerId: " + offerId)
@@ -1172,12 +1142,10 @@ class OfferApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateOfferStatusOperation = (apiOperation[SirqulResponse]("updateOfferStatus")
     summary "Activate Offer"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("offerIds").description(""), queryParam[Boolean]("active").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
+    parameters(queryParam[String]("offerIds").description(""), queryParam[Boolean]("active").description(""), queryParam[String]("deviceId").description("").optional, queryParam[Long]("accountId").description("").optional)
   )
 
-  post("/api/:version/retailer/offer/status", operation(updateOfferStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/retailer/offer/status", operation(updateOfferStatusOperation)) {
             val offerIds = params.getAs[String]("offerIds")
 
     //println("offerIds: " + offerIds)

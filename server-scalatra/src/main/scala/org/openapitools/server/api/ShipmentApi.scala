@@ -41,12 +41,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val cancelShipmentOperation = (apiOperation[Unit]("cancelShipment")
     summary "Cancel Shipment"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  post("/api/:version/shipment/:id/cancel", operation(cancelShipmentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/shipment/:id/cancel", operation(cancelShipmentOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -55,12 +53,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createShipmentOperation = (apiOperation[Shipment]("createShipment")
     summary "Create Shipment"
-    parameters(pathParam[Double]("version").description(""), bodyParam[Shipment]("body").description("").optional)
+    parameters(bodyParam[Shipment]("body").description("").optional)
   )
 
-  post("/api/:version/shipment", operation(createShipmentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/shipment", operation(createShipmentOperation)) {
     //println("body: " + body)
   }
 
@@ -68,12 +64,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteShipmentOperation = (apiOperation[Unit]("deleteShipment")
     summary "Delete Shipment"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  delete("/api/:version/shipment/:id", operation(deleteShipmentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/shipment/:id", operation(deleteShipmentOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -82,12 +76,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getShipmentOperation = (apiOperation[Shipment]("getShipment")
     summary "Get Shipment"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  get("/api/:version/shipment/:id", operation(getShipmentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/shipment/:id", operation(getShipmentOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -96,12 +88,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchShipmentsOperation = (apiOperation[List[Shipment]]("searchShipments")
     summary "Search Shipments"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("ownerId").description("").optional, queryParam[Long]("riderId").description("").optional, queryParam[Long]("routeId").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Long]("ownerId").description("").optional, queryParam[Long]("riderId").description("").optional, queryParam[Long]("routeId").description("").optional)
   )
 
-  get("/api/:version/shipment", operation(searchShipmentsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/shipment", operation(searchShipmentsOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
@@ -132,12 +122,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateShipmentOperation = (apiOperation[Shipment]("updateShipment")
     summary "Update Shipment"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Shipment]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Shipment]("body").description("").optional)
   )
 
-  put("/api/:version/shipment/:id", operation(updateShipmentOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/shipment/:id", operation(updateShipmentOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -147,12 +135,10 @@ class ShipmentApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateShipmentStatusOperation = (apiOperation[Unit]("updateShipmentStatus")
     summary "Uupdate Shipment Status"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Map[String, Boolean]]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Map[String, Boolean]]("body").description("").optional)
   )
 
-  post("/api/:version/shipment/:id/status", operation(updateShipmentStatusOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/shipment/:id/status", operation(updateShipmentStatusOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)

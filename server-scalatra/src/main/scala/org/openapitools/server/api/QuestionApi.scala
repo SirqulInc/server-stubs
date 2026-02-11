@@ -42,12 +42,10 @@ class QuestionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createQuestionOperation = (apiOperation[QuestionResponse]("createQuestion")
     summary "Create Question"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("question").description(""), queryParam[String]("answers").description(""), queryParam[Boolean]("active").description(""), queryParam[Boolean]("allocateTickets").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("tags").description("").optional, queryParam[String]("videoURL").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("question").description(""), queryParam[String]("answers").description(""), queryParam[Boolean]("active").description(""), queryParam[Boolean]("allocateTickets").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("tags").description("").optional, queryParam[String]("videoURL").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
   )
 
-  post("/api/:version/game/question/create", operation(createQuestionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/question/create", operation(createQuestionOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -87,12 +85,10 @@ class QuestionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteQuestionOperation = (apiOperation[SirqulResponse]("deleteQuestion")
     summary "Delete Question"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("questionId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("questionId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  post("/api/:version/game/question/delete", operation(deleteQuestionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/question/delete", operation(deleteQuestionOperation)) {
             val questionId = params.getAs[Long]("questionId")
 
     //println("questionId: " + questionId)
@@ -105,12 +101,10 @@ class QuestionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getQuestionOperation = (apiOperation[QuestionResponse]("getQuestion")
     summary "Get Question"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("questionId").description(""), queryParam[Long]("accountId").description(""))
+    parameters(queryParam[Long]("questionId").description(""), queryParam[Long]("accountId").description(""))
   )
 
-  get("/api/:version/game/question/get", operation(getQuestionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/game/question/get", operation(getQuestionOperation)) {
             val questionId = params.getAs[Long]("questionId")
 
     //println("questionId: " + questionId)
@@ -123,12 +117,10 @@ class QuestionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchQuestionsOperation = (apiOperation[List[QuestionResponse]]("searchQuestions")
     summary "Search Questions"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/game/question/search", operation(searchQuestionsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/game/question/search", operation(searchQuestionsOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -156,12 +148,10 @@ class QuestionApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val updateQuestionOperation = (apiOperation[QuestionResponse]("updateQuestion")
     summary "Update Question"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("questionId").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("question").description("").optional, queryParam[String]("answers").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("videoURL").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
+    parameters(queryParam[Long]("questionId").description(""), queryParam[Long]("accountId").description(""), queryParam[Long]("ticketCount").description(""), queryParam[String]("question").description("").optional, queryParam[String]("answers").description("").optional, queryParam[String]("tags").description("").optional, queryParam[String]("videoURL").description("").optional, queryParam[Long]("assetId").description("").optional, queryParam[Boolean]("active").description("").optional, queryParam[Boolean]("allocateTickets").description("").optional, queryParam[String]("ticketType").description("").optional, queryParam[Long]("points").description("").optional)
   )
 
-  post("/api/:version/game/question/update", operation(updateQuestionOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/game/question/update", operation(updateQuestionOperation)) {
             val questionId = params.getAs[Long]("questionId")
 
     //println("questionId: " + questionId)

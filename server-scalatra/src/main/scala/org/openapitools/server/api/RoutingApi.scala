@@ -41,12 +41,10 @@ class RoutingApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val computeRoutingOperation = (apiOperation[RoutingListResponse]("computeRouting")
     summary "Compute Route"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("data").description(""))
+    parameters(queryParam[String]("data").description(""))
   )
 
-  post("/api/:version/routing/compute", operation(computeRoutingOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/routing/compute", operation(computeRoutingOperation)) {
             val data = params.getAs[String]("data")
 
     //println("data: " + data)

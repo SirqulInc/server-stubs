@@ -41,12 +41,10 @@ class ScoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createScoreOperation = (apiOperation[ScoreResponse]("createScore")
     summary "Create Score"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Int]("points").description(""), queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional, queryParam[Int]("timeTaken").description("").optional, queryParam[Boolean]("highest").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Int]("points").description(""), queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional, queryParam[Int]("timeTaken").description("").optional, queryParam[Boolean]("highest").description("").optional)
   )
 
-  post("/api/:version/score/create", operation(createScoreOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/score/create", operation(createScoreOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -83,12 +81,10 @@ class ScoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getScoreOperation = (apiOperation[ScoreResponse]("getScore")
     summary "Get Score"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional, queryParam[String]("scoreObjectType").description("").optional, queryParam[String]("scoreStatus").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional, queryParam[String]("scoreObjectType").description("").optional, queryParam[String]("scoreStatus").description("").optional)
   )
 
-  get("/api/:version/score/get", operation(getScoreOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/score/get", operation(getScoreOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)
@@ -122,12 +118,10 @@ class ScoreApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchScoresOperation = (apiOperation[List[ScoreResponse]]("searchScores")
     summary "Search Score"
-    parameters(pathParam[Double]("version").description(""), queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional)
+    parameters(queryParam[Long]("accountId").description(""), queryParam[String]("appKey").description(""), queryParam[Long]("missionId").description("").optional, queryParam[Long]("gameId").description("").optional, queryParam[Long]("packId").description("").optional, queryParam[Long]("gameLevelId").description("").optional, queryParam[Long]("gameObjectId").description("").optional)
   )
 
-  get("/api/:version/score/search", operation(searchScoresOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/score/search", operation(searchScoresOperation)) {
             val accountId = params.getAs[Long]("accountId")
 
     //println("accountId: " + accountId)

@@ -41,12 +41,10 @@ class ProgramApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val createProgramOperation = (apiOperation[Program]("createProgram")
     summary "Create Program"
-    parameters(pathParam[Double]("version").description(""), bodyParam[Program]("body").description("").optional)
+    parameters(bodyParam[Program]("body").description("").optional)
   )
 
-  post("/api/:version/program", operation(createProgramOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/program", operation(createProgramOperation)) {
     //println("body: " + body)
   }
 
@@ -54,12 +52,10 @@ class ProgramApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val deleteProgramOperation = (apiOperation[Unit]("deleteProgram")
     summary "Delete Program"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  delete("/api/:version/program/:id", operation(deleteProgramOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  delete("/program/:id", operation(deleteProgramOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -68,12 +64,10 @@ class ProgramApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val getProgramOperation = (apiOperation[Program]("getProgram")
     summary "Get Program"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""))
+    parameters(pathParam[Long]("id").description(""))
   )
 
-  get("/api/:version/program/:id", operation(getProgramOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/program/:id", operation(getProgramOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
   }
@@ -82,12 +76,10 @@ class ProgramApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val postProgramOperation = (apiOperation[Program]("postProgram")
     summary "Update Program"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Program]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Program]("body").description("").optional)
   )
 
-  post("/api/:version/program/:id", operation(postProgramOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  post("/program/:id", operation(postProgramOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -97,12 +89,10 @@ class ProgramApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val putProgramOperation = (apiOperation[Program]("putProgram")
     summary "Update Program"
-    parameters(pathParam[Double]("version").description(""), pathParam[Long]("id").description(""), bodyParam[Program]("body").description("").optional)
+    parameters(pathParam[Long]("id").description(""), bodyParam[Program]("body").description("").optional)
   )
 
-  put("/api/:version/program/:id", operation(putProgramOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  put("/program/:id", operation(putProgramOperation)) {
     val id = params.getOrElse("id", halt(400))
     //println("id: " + id)
     //println("body: " + body)
@@ -112,12 +102,10 @@ class ProgramApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val searchProgramsOperation = (apiOperation[List[Program]]("searchPrograms")
     summary "Search Programs"
-    parameters(pathParam[Double]("version").description(""), queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("keyword").description("").optional)
+    parameters(queryParam[String]("sortField").description(""), queryParam[Boolean]("descending").description(""), queryParam[Int]("start").description(""), queryParam[Int]("limit").description(""), queryParam[Boolean]("activeOnly").description(""), queryParam[String]("keyword").description("").optional)
   )
 
-  get("/api/:version/program", operation(searchProgramsOperation)) {
-    val version = params.getOrElse("version", halt(400))
-    //println("version: " + version)
+  get("/program", operation(searchProgramsOperation)) {
             val sortField = params.getAs[String]("sortField")
 
     //println("sortField: " + sortField)
