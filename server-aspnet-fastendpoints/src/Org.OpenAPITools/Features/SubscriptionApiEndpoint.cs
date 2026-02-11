@@ -12,7 +12,7 @@ public class CreateSubscriptionEndpoint : FastEndpoints.Endpoint<CreateSubscript
 {
     public override void Configure()
     {
-        Post("/api/{version}/subscription/create");
+        Post("/api/3.18/subscription/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateSubscriptionEndpoint : FastEndpoints.Endpoint<CreateSubscript
 
         Summary(s => {
             s.Summary = "Create Subscription";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the create, must be the responsible manager");
             s.RequestParam(r => r.PlanId, "The plan to subscribe to, if null use default plan");
             s.RequestParam(r => r.PromoCode, "Set a promo code for a discount.");
@@ -51,7 +50,7 @@ public class DeleteSubscriptionEndpoint : FastEndpoints.Endpoint<DeleteSubscript
 {
     public override void Configure()
     {
-        Post("/api/{version}/subscription/delete");
+        Post("/api/3.18/subscription/delete");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class DeleteSubscriptionEndpoint : FastEndpoints.Endpoint<DeleteSubscript
 
         Summary(s => {
             s.Summary = "Delete Subscription";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must be the responsible manager");
             s.Responses[200] = "successful operation";
         });
@@ -88,7 +86,7 @@ public class GetSubscriptionEndpoint : FastEndpoints.Endpoint<GetSubscriptionReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/subscription/get");
+        Get("/api/3.18/subscription/get");
         
         
         AllowAnonymous();
@@ -100,7 +98,6 @@ public class GetSubscriptionEndpoint : FastEndpoints.Endpoint<GetSubscriptionReq
 
         Summary(s => {
             s.Summary = "Get Subscription";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the lookup");
             s.Responses[200] = "successful operation";
         });
@@ -125,7 +122,7 @@ public class GetSubscriptionPlanEndpoint : FastEndpoints.Endpoint<GetSubscriptio
 {
     public override void Configure()
     {
-        Get("/api/{version}/subscription/plan/get");
+        Get("/api/3.18/subscription/plan/get");
         
         
         AllowAnonymous();
@@ -137,7 +134,6 @@ public class GetSubscriptionPlanEndpoint : FastEndpoints.Endpoint<GetSubscriptio
 
         Summary(s => {
             s.Summary = "Get Subscription Plan";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PlanId, "The ID of the plan to get");
             s.Responses[200] = "successful operation";
         });
@@ -162,7 +158,7 @@ public class GetSubscriptionPlansEndpoint : FastEndpoints.Endpoint<GetSubscripti
 {
     public override void Configure()
     {
-        Get("/api/{version}/subscription/plan/list");
+        Get("/api/3.18/subscription/plan/list");
         
         
         AllowAnonymous();
@@ -174,7 +170,6 @@ public class GetSubscriptionPlansEndpoint : FastEndpoints.Endpoint<GetSubscripti
 
         Summary(s => {
             s.Summary = "List Subscription Plans";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Visible, "Include visible only (true), hidden only (false), or all (null)");
             s.RequestParam(r => r.Role, "The role the plan is targeted for, values are: DEVELOPER, RETAILER, ADVERTISER");
             s.Responses[200] = "successful operation";
@@ -200,7 +195,7 @@ public class GetSubscriptionUsageEndpoint : FastEndpoints.Endpoint<GetSubscripti
 {
     public override void Configure()
     {
-        Get("/api/{version}/subscription/usage/get");
+        Get("/api/3.18/subscription/usage/get");
         
         
         AllowAnonymous();
@@ -212,7 +207,6 @@ public class GetSubscriptionUsageEndpoint : FastEndpoints.Endpoint<GetSubscripti
 
         Summary(s => {
             s.Summary = "Get Subscription Usage";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the lookup");
             s.RequestParam(r => r.ApplicationId, "Get for just 1 application instead of the BillableEntity");
             s.RequestParam(r => r.Start, "The start time frame");
@@ -240,7 +234,7 @@ public class UpdateSubscriptionEndpoint : FastEndpoints.Endpoint<UpdateSubscript
 {
     public override void Configure()
     {
-        Post("/api/{version}/subscription/update");
+        Post("/api/3.18/subscription/update");
         
         
         AllowAnonymous();
@@ -252,7 +246,6 @@ public class UpdateSubscriptionEndpoint : FastEndpoints.Endpoint<UpdateSubscript
 
         Summary(s => {
             s.Summary = "Update Subscription";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the update, must be the responsible manager");
             s.RequestParam(r => r.PlanId, "The plan to subscribe to");
             s.RequestParam(r => r.PromoCode, "Set a promo code for a discount.");

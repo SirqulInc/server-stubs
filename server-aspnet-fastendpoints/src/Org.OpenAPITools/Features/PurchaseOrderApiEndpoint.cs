@@ -12,7 +12,7 @@ public class CreateOrderEndpoint : FastEndpoints.Endpoint<CreateOrderRequest, Or
 {
     public override void Configure()
     {
-        Post("/api/{version}/order/create");
+        Post("/api/3.18/order/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateOrderEndpoint : FastEndpoints.Endpoint<CreateOrderRequest, Or
 
         Summary(s => {
             s.Summary = "Create Order";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application requesting the purchase");
             s.RequestParam(r => r.Cart, "&#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -60,7 +59,7 @@ public class DeleteOrderEndpoint : FastEndpoints.Endpoint<DeleteOrderRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/order/delete");
+        Post("/api/3.18/order/delete");
         
         
         AllowAnonymous();
@@ -72,7 +71,6 @@ public class DeleteOrderEndpoint : FastEndpoints.Endpoint<DeleteOrderRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Order";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OrderId, "Order Id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -99,7 +97,7 @@ public class GetOrderEndpoint : FastEndpoints.Endpoint<GetOrderRequest, OrderRes
 {
     public override void Configure()
     {
-        Get("/api/{version}/order/get");
+        Get("/api/3.18/order/get");
         
         
         AllowAnonymous();
@@ -111,7 +109,6 @@ public class GetOrderEndpoint : FastEndpoints.Endpoint<GetOrderRequest, OrderRes
 
         Summary(s => {
             s.Summary = "Get Order";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.OrderId, "The order id to get details of, either orderId or externalOrderId must be provided");
@@ -139,7 +136,7 @@ public class PreviewOrderEndpoint : FastEndpoints.Endpoint<PreviewOrderRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/order/preview");
+        Post("/api/3.18/order/preview");
         
         
         AllowAnonymous();
@@ -151,7 +148,6 @@ public class PreviewOrderEndpoint : FastEndpoints.Endpoint<PreviewOrderRequest, 
 
         Summary(s => {
             s.Summary = "Preview Order";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application requesting the purchase");
             s.RequestParam(r => r.Cart, "A JSON list of items to purchase");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -187,7 +183,7 @@ public class SearchOrdersEndpoint : FastEndpoints.Endpoint<SearchOrdersRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/order/search");
+        Get("/api/3.18/order/search");
         
         
         AllowAnonymous();
@@ -199,7 +195,6 @@ public class SearchOrdersEndpoint : FastEndpoints.Endpoint<SearchOrdersRequest, 
 
         Summary(s => {
             s.Summary = "Search Orders";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application requesting the purchase");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -254,7 +249,7 @@ public class UpdateOrderEndpoint : FastEndpoints.Endpoint<UpdateOrderRequest, Or
 {
     public override void Configure()
     {
-        Post("/api/{version}/order/update");
+        Post("/api/3.18/order/update");
         
         
         AllowAnonymous();
@@ -266,7 +261,6 @@ public class UpdateOrderEndpoint : FastEndpoints.Endpoint<UpdateOrderRequest, Or
 
         Summary(s => {
             s.Summary = "Update Order";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OrderId, "The order to add the purchase to, leave null for new order.");
             s.RequestParam(r => r.AppKey, "The application requesting the purchase");
             s.RequestParam(r => r.Cart, "&#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; ");

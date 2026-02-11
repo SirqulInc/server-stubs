@@ -12,7 +12,7 @@ public class GetStatusCSVEndpoint : FastEndpoints.Endpoint<GetStatusCSVRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/csvimport/batch/status/details");
+        Get("/api/3.18/csvimport/batch/status/details");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetStatusCSVEndpoint : FastEndpoints.Endpoint<GetStatusCSVRequest, 
 
         Summary(s => {
             s.Summary = "Detail Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.BatchId, "the id of the batch");
             s.RequestParam(r => r.ResponseGroup, "The group of categories to return: SUMMARY, DETAILS, ERRORS, OR ALL");
@@ -53,7 +52,7 @@ public class ListStatusCSVEndpoint : FastEndpoints.Endpoint<ListStatusCSVRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/csvimport/batch/list");
+        Get("/api/3.18/csvimport/batch/list");
         
         
         AllowAnonymous();
@@ -65,7 +64,6 @@ public class ListStatusCSVEndpoint : FastEndpoints.Endpoint<ListStatusCSVRequest
 
         Summary(s => {
             s.Summary = "Search Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account");
             s.RequestParam(r => r.Start, "the start of the pagination");
             s.RequestParam(r => r.Limit, "the limit of the pagination");
@@ -92,7 +90,7 @@ public class StatusCSVEndpoint : FastEndpoints.Endpoint<StatusCSVRequest, CsvImp
 {
     public override void Configure()
     {
-        Get("/api/{version}/csvimport/batch/status");
+        Get("/api/3.18/csvimport/batch/status");
         
         
         AllowAnonymous();
@@ -104,7 +102,6 @@ public class StatusCSVEndpoint : FastEndpoints.Endpoint<StatusCSVRequest, CsvImp
 
         Summary(s => {
             s.Summary = "Batch Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account");
             s.RequestParam(r => r.BatchId, "the id of the batch to get its status");
             s.Responses[200] = "successful operation";
@@ -130,7 +127,7 @@ public class UploadCSVEndpoint : FastEndpoints.Endpoint<UploadCSVRequest, CsvImp
 {
     public override void Configure()
     {
-        Post("/api/{version}/csvimport/upload");
+        Post("/api/3.18/csvimport/upload");
         
         
         AllowAnonymous();
@@ -142,7 +139,6 @@ public class UploadCSVEndpoint : FastEndpoints.Endpoint<UploadCSVRequest, CsvImp
 
         Summary(s => {
             s.Summary = "Upload CSV";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account");
             s.RequestParam(r => r.UploadType, "the upload type: OFFERS, RETAILERS, RETAILERLOCATIONS, CATEGORIES, OR FILTERS");
             s.RequestParam(r => r.ImportFile, "the import file to reference");

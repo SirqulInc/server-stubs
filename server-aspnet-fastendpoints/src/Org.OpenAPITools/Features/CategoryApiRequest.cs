@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CategoryDistanceSearchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -115,11 +110,6 @@ public class CategoryDistanceSearchRequest
 public class CreateCategoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The appKey of the application to assign the category to, if not provided then the category will be applied to the global application (if the account has permissions)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("appKey")]
@@ -193,11 +183,6 @@ public class CreateCategoryRequest
 public class DeleteCategoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the ID of the account
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -210,11 +195,6 @@ public class DeleteCategoryRequest
 }
 public class DuplicateCategoryRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The application to assign the new category to, may be different then the application the source category is assigned to
     /// </summary>
@@ -239,11 +219,6 @@ public class DuplicateCategoryRequest
 public class GetCategoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the ID of the category
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("categoryId")]
@@ -256,11 +231,6 @@ public class GetCategoryRequest
 }
 public class SearchCategoriesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>
@@ -369,11 +339,6 @@ public class SearchCategoriesRequest
 }
 public class UpdateCategoryRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>

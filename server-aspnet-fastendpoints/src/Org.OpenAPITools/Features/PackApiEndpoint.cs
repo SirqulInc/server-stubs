@@ -12,7 +12,7 @@ public class CreatePackEndpoint : FastEndpoints.Endpoint<CreatePackRequest, Pack
 {
     public override void Configure()
     {
-        Post("/api/{version}/pack/create");
+        Post("/api/3.18/pack/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreatePackEndpoint : FastEndpoints.Endpoint<CreatePackRequest, Pack
 
         Summary(s => {
             s.Summary = "Create Pack";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Title, "The title of the pack");
             s.RequestParam(r => r.PackOrder, "The order of the pack");
@@ -72,7 +71,7 @@ public class DeletePackEndpoint : FastEndpoints.Endpoint<DeletePackRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/pack/delete");
+        Post("/api/3.18/pack/delete");
         
         
         AllowAnonymous();
@@ -84,7 +83,6 @@ public class DeletePackEndpoint : FastEndpoints.Endpoint<DeletePackRequest, Sirq
 
         Summary(s => {
             s.Summary = "Delete Pack";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.PackId, "the id of the pack to delete");
             s.Responses[200] = "successful operation";
@@ -110,7 +108,7 @@ public class GetPackEndpoint : FastEndpoints.Endpoint<GetPackRequest, PackRespon
 {
     public override void Configure()
     {
-        Get("/api/{version}/pack/get");
+        Get("/api/3.18/pack/get");
         
         
         AllowAnonymous();
@@ -122,7 +120,6 @@ public class GetPackEndpoint : FastEndpoints.Endpoint<GetPackRequest, PackRespon
 
         Summary(s => {
             s.Summary = "Get Pack";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.PackId, "The id of the pack to return.");
             s.RequestParam(r => r.IncludeGameData, "If true include the game level data, otherwise don&#39;t. default is false.");
@@ -149,7 +146,7 @@ public class SearchPacksEndpoint : FastEndpoints.Endpoint<SearchPacksRequest, Li
 {
     public override void Configure()
     {
-        Get("/api/{version}/pack/search");
+        Get("/api/3.18/pack/search");
         
         
         AllowAnonymous();
@@ -161,7 +158,6 @@ public class SearchPacksEndpoint : FastEndpoints.Endpoint<SearchPacksRequest, Li
 
         Summary(s => {
             s.Summary = "Search Packs";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.SortField, "The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
@@ -195,7 +191,7 @@ public class UpdatePackEndpoint : FastEndpoints.Endpoint<UpdatePackRequest, Pack
 {
     public override void Configure()
     {
-        Post("/api/{version}/pack/update");
+        Post("/api/3.18/pack/update");
         
         
         AllowAnonymous();
@@ -207,7 +203,6 @@ public class UpdatePackEndpoint : FastEndpoints.Endpoint<UpdatePackRequest, Pack
 
         Summary(s => {
             s.Summary = "Update Pack";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.PackId, "The id of the pack to update.");
             s.RequestParam(r => r.AllocateTickets, "Flag to indicate owner should receive tickets for completed packs");

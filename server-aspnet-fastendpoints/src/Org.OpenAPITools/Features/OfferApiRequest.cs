@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class BatchUpdateOfferLocationsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -29,11 +24,6 @@ public class BatchUpdateOfferLocationsRequest
 }
 public class CreateOfferRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -468,11 +458,6 @@ public class CreateOfferRequest
 public class DeleteOfferRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -491,11 +476,6 @@ public class DeleteOfferRequest
 public class DeleteOfferLocationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -513,11 +493,6 @@ public class DeleteOfferLocationRequest
 }
 public class GetOfferRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -541,11 +516,6 @@ public class GetOfferRequest
 }
 public class GetOfferDetailsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id for returning account information (i.e. favorites)
     /// </summary>
@@ -600,11 +570,6 @@ public class GetOfferDetailsRequest
 public class GetOfferListCountsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The latitude of where the search will center at
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("latitude")]
@@ -628,11 +593,6 @@ public class GetOfferListCountsRequest
 public class GetOfferLocationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the offer location to get
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("offerLocationId")]
@@ -645,11 +605,6 @@ public class GetOfferLocationRequest
 }
 public class GetOfferLocationsForRetailersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -753,11 +708,6 @@ public class GetOfferLocationsForRetailersRequest
 }
 public class GetOffersForRetailersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -917,11 +867,6 @@ public class GetOffersForRetailersRequest
 public class RedeemOfferTransactionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -949,11 +894,6 @@ public class RedeemOfferTransactionRequest
 }
 public class SearchOfferTransactionsForRetailersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -1077,11 +1017,6 @@ public class SearchOfferTransactionsForRetailersRequest
 }
 public class SearchOffersForConsumerRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The application key used to identify the application
     /// </summary>
@@ -1241,11 +1176,6 @@ public class SearchOffersForConsumerRequest
 public class TopOfferTransactionsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The index into the record set to start with. Default is 0.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("start")]
@@ -1258,11 +1188,6 @@ public class TopOfferTransactionsRequest
 }
 public class UpdateOfferRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -1701,11 +1626,6 @@ public class UpdateOfferRequest
 }
 public class UpdateOfferStatusRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>

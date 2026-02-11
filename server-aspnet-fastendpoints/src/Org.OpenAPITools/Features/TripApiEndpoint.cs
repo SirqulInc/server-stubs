@@ -12,7 +12,7 @@ public class CreateTripEndpoint : FastEndpoints.Endpoint<CreateTripRequest, Trip
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip");
+        Post("/api/3.18/trip");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateTripEndpoint : FastEndpoints.Endpoint<CreateTripRequest, Trip
 
         Summary(s => {
             s.Summary = "Create Trip";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class DeleteEndpoint : FastEndpoints.Endpoint<DeleteRequest>
 {
     public override void Configure()
     {
-        Delete("/api/{version}/trip/{id}");
+        Delete("/api/3.18/trip/{id}");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class DeleteEndpoint : FastEndpoints.Endpoint<DeleteRequest>
 
         Summary(s => {
             s.Summary = "Delete Trip";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip to delete");
             s.Responses[0] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class DriveTripEndpoint : FastEndpoints.Endpoint<DriveTripRequest, Trip>
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/drive");
+        Post("/api/3.18/trip/{id}/drive");
         
         
         AllowAnonymous();
@@ -99,7 +97,6 @@ public class DriveTripEndpoint : FastEndpoints.Endpoint<DriveTripRequest, Trip>
 
         Summary(s => {
             s.Summary = "Set Trip Preference Driver";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip");
             s.RequestParam(r => r.Recurrence, "the frequency of the trip (e.g. weekly, until 2018-08-09)");
             s.Responses[200] = "successful operation";
@@ -125,7 +122,7 @@ public class FlexibleTripEndpoint : FastEndpoints.Endpoint<FlexibleTripRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/flexible");
+        Post("/api/3.18/trip/{id}/flexible");
         
         
         AllowAnonymous();
@@ -137,7 +134,6 @@ public class FlexibleTripEndpoint : FastEndpoints.Endpoint<FlexibleTripRequest, 
 
         Summary(s => {
             s.Summary = "Set Trip Preference Flexible";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip");
             s.RequestParam(r => r.Recurrence, "the frequency of the trip (e.g. weekly, until 2018-08-09)");
             s.Responses[200] = "successful operation";
@@ -163,7 +159,7 @@ public class GetTripEndpoint : FastEndpoints.Endpoint<GetTripRequest, Trip>
 {
     public override void Configure()
     {
-        Get("/api/{version}/trip/{id}");
+        Get("/api/3.18/trip/{id}");
         
         
         AllowAnonymous();
@@ -175,7 +171,6 @@ public class GetTripEndpoint : FastEndpoints.Endpoint<GetTripRequest, Trip>
 
         Summary(s => {
             s.Summary = "Get Trip";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip to get");
             s.Responses[200] = "successful operation";
         });
@@ -200,7 +195,7 @@ public class GetTripMatchesEndpoint : FastEndpoints.Endpoint<GetTripMatchesReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/trip/{id}/match");
+        Get("/api/3.18/trip/{id}/match");
         
         
         AllowAnonymous();
@@ -212,7 +207,6 @@ public class GetTripMatchesEndpoint : FastEndpoints.Endpoint<GetTripMatchesReque
 
         Summary(s => {
             s.Summary = "Get Trip Matches";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "The id The id of the trip to search for matches for");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
@@ -244,7 +238,7 @@ public class ProcessTripMatchesEndpoint : FastEndpoints.Endpoint<ProcessTripMatc
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/match/process");
+        Post("/api/3.18/trip/match/process");
         
         
         AllowAnonymous();
@@ -256,7 +250,6 @@ public class ProcessTripMatchesEndpoint : FastEndpoints.Endpoint<ProcessTripMatc
 
         Summary(s => {
             s.Summary = "Process Trip Matches";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.StartDate, "The lower bound date to process matchings");
             s.RequestParam(r => r.EndDate, "The upper bound date to process matchings");
             s.RequestParam(r => r.TripId, "the id of the trip to process");
@@ -283,7 +276,7 @@ public class RideEndpoint : FastEndpoints.Endpoint<RideRequest, Trip>
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/ride");
+        Post("/api/3.18/trip/{id}/ride");
         
         
         AllowAnonymous();
@@ -295,7 +288,6 @@ public class RideEndpoint : FastEndpoints.Endpoint<RideRequest, Trip>
 
         Summary(s => {
             s.Summary = "Set Trip Preference Rider";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip");
             s.RequestParam(r => r.Recurrence, "the frequency of the trip (e.g. weekly, until 2018-08-09)");
             s.Responses[200] = "successful operation";
@@ -321,7 +313,7 @@ public class SearchEndpoint : FastEndpoints.Endpoint<SearchRequest, List<Trip>>
 {
     public override void Configure()
     {
-        Get("/api/{version}/trip");
+        Get("/api/3.18/trip");
         
         
         AllowAnonymous();
@@ -333,7 +325,6 @@ public class SearchEndpoint : FastEndpoints.Endpoint<SearchRequest, List<Trip>>
 
         Summary(s => {
             s.Summary = "Search Trips";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The owner of the trips");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
@@ -366,7 +357,7 @@ public class SearchTripsEndpoint : FastEndpoints.Endpoint<SearchTripsRequest, Li
 {
     public override void Configure()
     {
-        Get("/api/{version}/trip/match");
+        Get("/api/3.18/trip/match");
         
         
         AllowAnonymous();
@@ -378,7 +369,6 @@ public class SearchTripsEndpoint : FastEndpoints.Endpoint<SearchTripsRequest, Li
 
         Summary(s => {
             s.Summary = "Search Trips";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The owner of the trips");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
@@ -412,7 +402,7 @@ public class UpdateLocationsEndpoint : FastEndpoints.Endpoint<UpdateLocationsReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/locations");
+        Post("/api/3.18/trip/{id}/locations");
         
         
         AllowAnonymous();
@@ -424,7 +414,6 @@ public class UpdateLocationsEndpoint : FastEndpoints.Endpoint<UpdateLocationsReq
 
         Summary(s => {
             s.Summary = "Update Trip Locations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip to update locations for");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -450,7 +439,7 @@ public class UpdateRecurrenceLocationsEndpoint : FastEndpoints.Endpoint<UpdateRe
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/locations/recurrence");
+        Post("/api/3.18/trip/{id}/locations/recurrence");
         
         
         AllowAnonymous();
@@ -462,7 +451,6 @@ public class UpdateRecurrenceLocationsEndpoint : FastEndpoints.Endpoint<UpdateRe
 
         Summary(s => {
             s.Summary = "Update Recurrence Locations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -488,7 +476,7 @@ public class UpdateRecurrenceShipmentsEndpoint : FastEndpoints.Endpoint<UpdateRe
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/shipments/recurrence");
+        Post("/api/3.18/trip/{id}/shipments/recurrence");
         
         
         AllowAnonymous();
@@ -500,7 +488,6 @@ public class UpdateRecurrenceShipmentsEndpoint : FastEndpoints.Endpoint<UpdateRe
 
         Summary(s => {
             s.Summary = "Update Recurrence Shipments";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -526,7 +513,7 @@ public class UpdateShipmentsEndpoint : FastEndpoints.Endpoint<UpdateShipmentsReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/{id}/shipments");
+        Post("/api/3.18/trip/{id}/shipments");
         
         
         AllowAnonymous();
@@ -538,7 +525,6 @@ public class UpdateShipmentsEndpoint : FastEndpoints.Endpoint<UpdateShipmentsReq
 
         Summary(s => {
             s.Summary = "Update Trip Shipments";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip shipments to update");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -564,7 +550,7 @@ public class UpdateTripEndpoint : FastEndpoints.Endpoint<UpdateTripRequest, Trip
 {
     public override void Configure()
     {
-        Put("/api/{version}/trip/{id}");
+        Put("/api/3.18/trip/{id}");
         
         
         AllowAnonymous();
@@ -576,7 +562,6 @@ public class UpdateTripEndpoint : FastEndpoints.Endpoint<UpdateTripRequest, Trip
 
         Summary(s => {
             s.Summary = "Update Trip";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip to update");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -602,7 +587,7 @@ public class UpdateTripNotificationsEndpoint : FastEndpoints.Endpoint<UpdateTrip
 {
     public override void Configure()
     {
-        Post("/api/{version}/trip/notifications");
+        Post("/api/3.18/trip/notifications");
         
         
         AllowAnonymous();
@@ -614,7 +599,6 @@ public class UpdateTripNotificationsEndpoint : FastEndpoints.Endpoint<UpdateTrip
 
         Summary(s => {
             s.Summary = "Trip Notifications";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the trip");
             s.RequestParam(r => r.Notifications, "the notifications to update on the trip");
             s.Responses[200] = "successful operation";

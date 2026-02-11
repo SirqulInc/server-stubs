@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddFieldRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -40,11 +35,6 @@ public class AddFieldRequest
 public class CreateDataRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the name of the object to create data for
     /// </summary>
     [FastEndpoints.BindFrom("objectName")]
@@ -62,11 +52,6 @@ public class CreateDataRequest
 }
 public class CreateObjectRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the logged in user
     /// </summary>
@@ -86,11 +71,6 @@ public class CreateObjectRequest
 public class DeleteDataRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The name of the object to search upon
     /// </summary>
     [FastEndpoints.BindFrom("objectName")]
@@ -108,11 +88,6 @@ public class DeleteDataRequest
 }
 public class DeleteFieldRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the logged in user
     /// </summary>
@@ -137,11 +112,6 @@ public class DeleteFieldRequest
 public class DeleteObjectRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -159,11 +129,6 @@ public class DeleteObjectRequest
 }
 public class GetDataRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The name of the object to search upon
     /// </summary>
@@ -188,11 +153,6 @@ public class GetDataRequest
 public class GetObjectRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -210,11 +170,6 @@ public class GetObjectRequest
 }
 public class SearchDataRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The name of the object to search upon
     /// </summary>
@@ -259,11 +214,6 @@ public class SearchDataRequest
 public class SearchObjectRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -291,11 +241,6 @@ public class SearchObjectRequest
 }
 public class UpdateDataRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The name of the object to search upon
     /// </summary>

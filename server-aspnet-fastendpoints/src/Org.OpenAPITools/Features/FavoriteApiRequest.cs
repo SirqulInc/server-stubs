@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddFavoriteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -45,11 +40,6 @@ public class AddFavoriteRequest
 public class DeleteFavoriteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -78,11 +68,6 @@ public class DeleteFavoriteRequest
 public class GetFavoriteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -110,11 +95,6 @@ public class GetFavoriteRequest
 }
 public class SearchFavoritesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -188,11 +168,6 @@ public class SearchFavoritesRequest
 }
 public class WhoHasFavoritedRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique ID given by the device (deviceId or accountId required)
     /// </summary>

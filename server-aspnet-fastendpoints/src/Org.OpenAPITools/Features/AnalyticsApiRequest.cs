@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class ActivitiesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The start of the pagination
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("start")]
@@ -29,11 +24,6 @@ public class ActivitiesRequest
 }
 public class AggregatedFilteredUsageRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -192,11 +182,6 @@ public class AggregatedFilteredUsageRequest
 }
 public class FilteredUsageRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -396,11 +381,6 @@ public class FilteredUsageRequest
 public class UsageRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The tag to apply: the name of the action or thing being logged.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("tag")]
@@ -558,11 +538,6 @@ public class UsageRequest
 }
 public class UsageBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request
     /// </summary>

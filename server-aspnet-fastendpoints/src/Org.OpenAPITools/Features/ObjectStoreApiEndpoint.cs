@@ -12,7 +12,7 @@ public class AddFieldEndpoint : FastEndpoints.Endpoint<AddFieldRequest, ObjectSt
 {
     public override void Configure()
     {
-        Post("/api/{version}/object/field/add");
+        Post("/api/3.18/object/field/add");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddFieldEndpoint : FastEndpoints.Endpoint<AddFieldRequest, ObjectSt
 
         Summary(s => {
             s.Summary = "Create Field";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.AppKey, "The application key for updating an existing application");
             s.RequestParam(r => r.ObjectName, "The name of the object to add the field to");
@@ -53,7 +52,7 @@ public class CreateDataEndpoint : FastEndpoints.Endpoint<CreateDataRequest, Obje
 {
     public override void Configure()
     {
-        Post("/api/{version}/object/data/{objectName}");
+        Post("/api/3.18/object/data/{objectName}");
         
         
         AllowAnonymous();
@@ -65,7 +64,6 @@ public class CreateDataEndpoint : FastEndpoints.Endpoint<CreateDataRequest, Obje
 
         Summary(s => {
             s.Summary = "Create Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ObjectName, "the name of the object to create data for");
             s.RequestParam(r => r.AccountId, "the account id");
             s.RequestParam(r => r.body, "");
@@ -92,7 +90,7 @@ public class CreateObjectEndpoint : FastEndpoints.Endpoint<CreateObjectRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/object/create");
+        Post("/api/3.18/object/create");
         
         
         AllowAnonymous();
@@ -104,7 +102,6 @@ public class CreateObjectEndpoint : FastEndpoints.Endpoint<CreateObjectRequest, 
 
         Summary(s => {
             s.Summary = "Create Object";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.AppKey, "The application key for updating an existing application");
             s.RequestParam(r => r.ObjectName, "The name of the object to create");
@@ -131,7 +128,7 @@ public class DeleteDataEndpoint : FastEndpoints.Endpoint<DeleteDataRequest, Obje
 {
     public override void Configure()
     {
-        Delete("/api/{version}/object/data/{objectName}/{objectId}");
+        Delete("/api/3.18/object/data/{objectName}/{objectId}");
         
         
         AllowAnonymous();
@@ -143,7 +140,6 @@ public class DeleteDataEndpoint : FastEndpoints.Endpoint<DeleteDataRequest, Obje
 
         Summary(s => {
             s.Summary = "Delete Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ObjectName, "The name of the object to search upon");
             s.RequestParam(r => r.ObjectId, "objectId The id of the record to return");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
@@ -170,7 +166,7 @@ public class DeleteFieldEndpoint : FastEndpoints.Endpoint<DeleteFieldRequest, Ob
 {
     public override void Configure()
     {
-        Post("/api/{version}/object/field/delete");
+        Post("/api/3.18/object/field/delete");
         
         
         AllowAnonymous();
@@ -182,7 +178,6 @@ public class DeleteFieldEndpoint : FastEndpoints.Endpoint<DeleteFieldRequest, Ob
 
         Summary(s => {
             s.Summary = "Delete Field";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.AppKey, "The application key for updating an existing application");
             s.RequestParam(r => r.ObjectName, "The name of the object to remove the field from");
@@ -210,7 +205,7 @@ public class DeleteObjectEndpoint : FastEndpoints.Endpoint<DeleteObjectRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/object/delete");
+        Post("/api/3.18/object/delete");
         
         
         AllowAnonymous();
@@ -222,7 +217,6 @@ public class DeleteObjectEndpoint : FastEndpoints.Endpoint<DeleteObjectRequest, 
 
         Summary(s => {
             s.Summary = "Delete Object";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.ObjectName, "the name of the object to delete");
@@ -249,7 +243,7 @@ public class GetDataEndpoint : FastEndpoints.Endpoint<GetDataRequest, ObjectStor
 {
     public override void Configure()
     {
-        Get("/api/{version}/object/data/{objectName}/{objectId}");
+        Get("/api/3.18/object/data/{objectName}/{objectId}");
         
         
         AllowAnonymous();
@@ -261,7 +255,6 @@ public class GetDataEndpoint : FastEndpoints.Endpoint<GetDataRequest, ObjectStor
 
         Summary(s => {
             s.Summary = "Get Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ObjectName, "The name of the object to search upon");
             s.RequestParam(r => r.ObjectId, "objectId The id of the record to return");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
@@ -289,7 +282,7 @@ public class GetObjectEndpoint : FastEndpoints.Endpoint<GetObjectRequest, Object
 {
     public override void Configure()
     {
-        Get("/api/{version}/object/get");
+        Get("/api/3.18/object/get");
         
         
         AllowAnonymous();
@@ -301,7 +294,6 @@ public class GetObjectEndpoint : FastEndpoints.Endpoint<GetObjectRequest, Object
 
         Summary(s => {
             s.Summary = "Get Object";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.AppKey, "The application key for updating an existing application");
             s.RequestParam(r => r.ObjectName, "The name of the object to get the definition for");
@@ -328,7 +320,7 @@ public class SearchDataEndpoint : FastEndpoints.Endpoint<SearchDataRequest, Obje
 {
     public override void Configure()
     {
-        Get("/api/{version}/object/data/{objectName}");
+        Get("/api/3.18/object/data/{objectName}");
         
         
         AllowAnonymous();
@@ -340,7 +332,6 @@ public class SearchDataEndpoint : FastEndpoints.Endpoint<SearchDataRequest, Obje
 
         Summary(s => {
             s.Summary = "Search Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ObjectName, "The name of the object to search upon");
             s.RequestParam(r => r.Count, "If true just return the record count of the search. False (default) will return the actual records");
             s.RequestParam(r => r.Start, "The start of the pagination");
@@ -372,7 +363,7 @@ public class SearchObjectEndpoint : FastEndpoints.Endpoint<SearchObjectRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/object/search");
+        Get("/api/3.18/object/search");
         
         
         AllowAnonymous();
@@ -384,7 +375,6 @@ public class SearchObjectEndpoint : FastEndpoints.Endpoint<SearchObjectRequest, 
 
         Summary(s => {
             s.Summary = "Search Objects";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.AppKey, "The application key for updating an existing application");
             s.RequestParam(r => r.Start, "The start of the pagination");
@@ -413,7 +403,7 @@ public class UpdateDataEndpoint : FastEndpoints.Endpoint<UpdateDataRequest, Obje
 {
     public override void Configure()
     {
-        Put("/api/{version}/object/data/{objectName}/{objectId}");
+        Put("/api/3.18/object/data/{objectName}/{objectId}");
         
         
         AllowAnonymous();
@@ -425,7 +415,6 @@ public class UpdateDataEndpoint : FastEndpoints.Endpoint<UpdateDataRequest, Obje
 
         Summary(s => {
             s.Summary = "Update Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ObjectName, "The name of the object to search upon");
             s.RequestParam(r => r.ObjectId, "objectId The id of the record to return");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");

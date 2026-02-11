@@ -12,7 +12,7 @@ public class ImageGenerationEndpoint : FastEndpoints.Endpoint<ImageGenerationReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/openai/v1/images/generations");
+        Post("/api/3.18/openai/v1/images/generations");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ImageGenerationEndpoint : FastEndpoints.Endpoint<ImageGenerationReq
 
         Summary(s => {
             s.Summary = "Generate images with OpenAI";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.PostBody, "Post Body Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");

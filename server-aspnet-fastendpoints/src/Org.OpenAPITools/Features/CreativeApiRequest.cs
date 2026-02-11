@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddPreviewRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the account
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -24,11 +19,6 @@ public class AddPreviewRequest
 }
 public class AdsFindRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
     /// </summary>
@@ -113,11 +103,6 @@ public class AdsFindRequest
 public class CreateCreativeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -196,11 +181,6 @@ public class CreateCreativeRequest
 public class DeleteCreativeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -214,11 +194,6 @@ public class DeleteCreativeRequest
 public class GetCreativeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -231,11 +206,6 @@ public class GetCreativeRequest
 }
 public class GetCreativesByApplicationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -270,11 +240,6 @@ public class GetCreativesByApplicationRequest
 public class RemovePreviewRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the ID of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -287,11 +252,6 @@ public class RemovePreviewRequest
 }
 public class UpdateCreativeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>

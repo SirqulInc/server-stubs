@@ -12,7 +12,7 @@ public class CreateTriggerEndpoint : FastEndpoints.Endpoint<CreateTriggerRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/trigger/create");
+        Post("/api/3.18/trigger/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateTriggerEndpoint : FastEndpoints.Endpoint<CreateTriggerRequest
 
         Summary(s => {
             s.Summary = "Create Trigger";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user");
             s.RequestParam(r => r.Name, "The name of the trigger");
             s.RequestParam(r => r.AppKey, "The application to target");
@@ -61,7 +60,7 @@ public class DeleteTriggerEndpoint : FastEndpoints.Endpoint<DeleteTriggerRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/trigger/delete");
+        Post("/api/3.18/trigger/delete");
         
         
         AllowAnonymous();
@@ -73,7 +72,6 @@ public class DeleteTriggerEndpoint : FastEndpoints.Endpoint<DeleteTriggerRequest
 
         Summary(s => {
             s.Summary = "Delete Trigger";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TriggerId, "The id of the trigger to delete.");
             s.Responses[200] = "successful operation";
@@ -99,7 +97,7 @@ public class GetTriggerEndpoint : FastEndpoints.Endpoint<GetTriggerRequest, Trig
 {
     public override void Configure()
     {
-        Get("/api/{version}/trigger/get");
+        Get("/api/3.18/trigger/get");
         
         
         AllowAnonymous();
@@ -111,7 +109,6 @@ public class GetTriggerEndpoint : FastEndpoints.Endpoint<GetTriggerRequest, Trig
 
         Summary(s => {
             s.Summary = "Get Trigger";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TriggerId, "The id of the Trigger to return.");
             s.Responses[200] = "successful operation";
@@ -137,7 +134,7 @@ public class SearchTriggersEndpoint : FastEndpoints.Endpoint<SearchTriggersReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/trigger/search");
+        Get("/api/3.18/trigger/search");
         
         
         AllowAnonymous();
@@ -149,7 +146,6 @@ public class SearchTriggersEndpoint : FastEndpoints.Endpoint<SearchTriggersReque
 
         Summary(s => {
             s.Summary = "Search Triggers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.GroupingId, "Filter results by a grouping identifier defined by the client");
             s.RequestParam(r => r.Filter, "A comma separated list of filters. * MINE - Return triggers that the user has created * SHARED - Return triggers that have been shared to the user * FOLLOWER - Return triggers that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return triggers that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC triggers that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC triggers regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all triggers that the user has liked * FEATURED - Return all triggers that have been featured * PENDING - Return all pending triggers ");
@@ -185,7 +181,7 @@ public class UpdateTriggerEndpoint : FastEndpoints.Endpoint<UpdateTriggerRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/trigger/update");
+        Post("/api/3.18/trigger/update");
         
         
         AllowAnonymous();
@@ -197,7 +193,6 @@ public class UpdateTriggerEndpoint : FastEndpoints.Endpoint<UpdateTriggerRequest
 
         Summary(s => {
             s.Summary = "Update Trigger";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.TriggerId, "The trigger to update");
             s.RequestParam(r => r.AccountId, "The logged in user");
             s.RequestParam(r => r.Name, "The name of the trigger");

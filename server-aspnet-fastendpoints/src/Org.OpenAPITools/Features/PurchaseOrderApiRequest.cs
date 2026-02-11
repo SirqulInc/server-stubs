@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateOrderRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -75,11 +70,6 @@ public class CreateOrderRequest
 public class DeleteOrderRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -97,11 +87,6 @@ public class DeleteOrderRequest
 }
 public class GetOrderRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -125,11 +110,6 @@ public class GetOrderRequest
 }
 public class PreviewOrderRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -193,11 +173,6 @@ public class PreviewOrderRequest
 }
 public class SearchOrdersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -356,11 +331,6 @@ public class SearchOrdersRequest
 }
 public class UpdateOrderRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>

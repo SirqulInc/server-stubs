@@ -9,21 +9,11 @@ public class CreateRouteSettingsRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public RouteSettings? body { get; set; }
 }
 public class DeleteRouteSettingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route setting to delete
     /// </summary>
@@ -33,11 +23,6 @@ public class DeleteRouteSettingsRequest
 public class GetRouteSettingsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route settings to get
     /// </summary>
     [FastEndpoints.BindFrom("routeSettingsId")]
@@ -45,11 +30,6 @@ public class GetRouteSettingsRequest
 }
 public class SearchRouteSettingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The service hub that the route belongs under
     /// </summary>
@@ -93,11 +73,6 @@ public class SearchRouteSettingsRequest
 }
 public class UpdateRouteSettingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route settings to update
     /// </summary>

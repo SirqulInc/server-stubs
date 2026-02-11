@@ -12,7 +12,7 @@ public class CreateMissionInviteEndpoint : FastEndpoints.Endpoint<CreateMissionI
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/invite/create");
+        Post("/api/3.18/mission/invite/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateMissionInviteEndpoint : FastEndpoints.Endpoint<CreateMissionI
 
         Summary(s => {
             s.Summary = "Create Mission Invite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required).");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required).");
             s.RequestParam(r => r.MissionId, "The mission to find the invite for.");
@@ -53,7 +52,7 @@ public class DeleteMissionInviteEndpoint : FastEndpoints.Endpoint<DeleteMissionI
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/invite/delete");
+        Post("/api/3.18/mission/invite/delete");
         
         
         AllowAnonymous();
@@ -65,7 +64,6 @@ public class DeleteMissionInviteEndpoint : FastEndpoints.Endpoint<DeleteMissionI
 
         Summary(s => {
             s.Summary = "Delete Mission Invite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required).");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required).");
             s.RequestParam(r => r.MissionId, "The mission to find the invite for (missionId or missionInviteId requried).");
@@ -94,7 +92,7 @@ public class GetMissionInviteEndpoint : FastEndpoints.Endpoint<GetMissionInviteR
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/invite/get");
+        Get("/api/3.18/mission/invite/get");
         
         
         AllowAnonymous();
@@ -106,7 +104,6 @@ public class GetMissionInviteEndpoint : FastEndpoints.Endpoint<GetMissionInviteR
 
         Summary(s => {
             s.Summary = "Get Mission Invite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required).");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required).");
             s.RequestParam(r => r.MissionId, "The mission to find the invite for (missionId or missionInviteId requried).");
@@ -136,7 +133,7 @@ public class SearchMissionInvitesEndpoint : FastEndpoints.Endpoint<SearchMission
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/invite/search");
+        Get("/api/3.18/mission/invite/search");
         
         
         AllowAnonymous();
@@ -148,7 +145,6 @@ public class SearchMissionInvitesEndpoint : FastEndpoints.Endpoint<SearchMission
 
         Summary(s => {
             s.Summary = "Search Mission Invites";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required).");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required).");
             s.RequestParam(r => r.AppKey, "the app to retrieve the data for, use your application key.");
@@ -185,7 +181,7 @@ public class UpdateMissionInviteEndpoint : FastEndpoints.Endpoint<UpdateMissionI
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/invite/update");
+        Post("/api/3.18/mission/invite/update");
         
         
         AllowAnonymous();
@@ -197,7 +193,6 @@ public class UpdateMissionInviteEndpoint : FastEndpoints.Endpoint<UpdateMissionI
 
         Summary(s => {
             s.Summary = "Update Mission Invite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required).");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required).");
             s.RequestParam(r => r.AppKey, "the application key");

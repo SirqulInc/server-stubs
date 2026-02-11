@@ -12,7 +12,7 @@ public class CreateStripeCheckoutSessionEndpoint : FastEndpoints.Endpoint<Create
 {
     public override void Configure()
     {
-        Post("/api/{version}/stripe/checkout/session/create");
+        Post("/api/3.18/stripe/checkout/session/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateStripeCheckoutSessionEndpoint : FastEndpoints.Endpoint<Create
 
         Summary(s => {
             s.Summary = "Create Stripe Checkout Session";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.StripeParameters, "Stripe Parameters");
             s.Responses[200] = "successful operation";

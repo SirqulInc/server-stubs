@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateStripeCheckoutSessionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Application Key
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("appKey")]

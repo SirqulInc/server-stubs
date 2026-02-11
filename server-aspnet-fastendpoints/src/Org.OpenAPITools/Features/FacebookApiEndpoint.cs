@@ -12,7 +12,7 @@ public class GetTokenEndpoint : FastEndpoints.Endpoint<GetTokenRequest, TokenRes
 {
     public override void Configure()
     {
-        Get("/api/{version}/facebook/getfbtoken");
+        Get("/api/3.18/facebook/getfbtoken");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetTokenEndpoint : FastEndpoints.Endpoint<GetTokenRequest, TokenRes
 
         Summary(s => {
             s.Summary = "Get Facebook Token";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Latitude, "used to update the user&#39;s current location");
@@ -52,7 +51,7 @@ public class GraphInterfaceEndpoint : FastEndpoints.Endpoint<GraphInterfaceReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/facebook/graph");
+        Post("/api/3.18/facebook/graph");
         
         
         AllowAnonymous();
@@ -64,7 +63,6 @@ public class GraphInterfaceEndpoint : FastEndpoints.Endpoint<GraphInterfaceReque
 
         Summary(s => {
             s.Summary = "Post to Facebook";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.VarEvent, "the type of Sirqul event {DOWNLOADED_APP, CHALLENGE, LEVEL_COMPLETED, LEVEL_CREATED}");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");

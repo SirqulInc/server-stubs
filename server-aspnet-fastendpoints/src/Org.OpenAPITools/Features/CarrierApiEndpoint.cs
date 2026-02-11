@@ -12,7 +12,7 @@ public class SearchCarriersEndpoint : FastEndpoints.Endpoint<SearchCarriersReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/carrier/search");
+        Get("/api/3.18/carrier/search");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class SearchCarriersEndpoint : FastEndpoints.Endpoint<SearchCarriersReque
 
         Summary(s => {
             s.Summary = "Search Carriers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Keyword, "The keyword to search on");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");

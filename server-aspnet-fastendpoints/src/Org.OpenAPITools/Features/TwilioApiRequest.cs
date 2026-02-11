@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class SmsBuyOfferRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the application key
     /// </summary>
     [FastEndpoints.BindFrom("appKey")]

@@ -12,7 +12,7 @@ public class CreateGameEndpoint : FastEndpoints.Endpoint<CreateGameRequest, Game
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/create");
+        Post("/api/3.18/game/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateGameEndpoint : FastEndpoints.Endpoint<CreateGameRequest, Game
 
         Summary(s => {
             s.Summary = "Create a Game";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The game application key to save the level for.");
             s.RequestParam(r => r.Title, "Title of the game.");
@@ -55,7 +54,7 @@ public class DeleteGameEndpoint : FastEndpoints.Endpoint<DeleteGameRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/delete");
+        Post("/api/3.18/game/delete");
         
         
         AllowAnonymous();
@@ -67,7 +66,6 @@ public class DeleteGameEndpoint : FastEndpoints.Endpoint<DeleteGameRequest, Sirq
 
         Summary(s => {
             s.Summary = "Delete a Game";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.GameId, "the updating game&#39;s id.");
             s.Responses[200] = "successful operation";
@@ -93,7 +91,7 @@ public class GetGameEndpoint : FastEndpoints.Endpoint<GetGameRequest, GameRespon
 {
     public override void Configure()
     {
-        Get("/api/{version}/game/get");
+        Get("/api/3.18/game/get");
         
         
         AllowAnonymous();
@@ -105,7 +103,6 @@ public class GetGameEndpoint : FastEndpoints.Endpoint<GetGameRequest, GameRespon
 
         Summary(s => {
             s.Summary = "Get a Game by id";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.GameId, "the updating game&#39;s id.");
             s.RequestParam(r => r.IncludeGameData, "If true include the game level data, otherwise don&#39;t. default is false.");
@@ -132,7 +129,7 @@ public class SearchGamesEndpoint : FastEndpoints.Endpoint<SearchGamesRequest, Ga
 {
     public override void Configure()
     {
-        Get("/api/{version}/game/search");
+        Get("/api/3.18/game/search");
         
         
         AllowAnonymous();
@@ -144,7 +141,6 @@ public class SearchGamesEndpoint : FastEndpoints.Endpoint<SearchGamesRequest, Ga
 
         Summary(s => {
             s.Summary = "Search a Game";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Start, "Start the result set at some index.");
@@ -176,7 +172,7 @@ public class UpdateGameEndpoint : FastEndpoints.Endpoint<UpdateGameRequest, Game
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/update");
+        Post("/api/3.18/game/update");
         
         
         AllowAnonymous();
@@ -188,7 +184,6 @@ public class UpdateGameEndpoint : FastEndpoints.Endpoint<UpdateGameRequest, Game
 
         Summary(s => {
             s.Summary = "Update a Game";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.GameId, "the updating game&#39;s id");
             s.RequestParam(r => r.AppKey, "The game application key to save the level for.");

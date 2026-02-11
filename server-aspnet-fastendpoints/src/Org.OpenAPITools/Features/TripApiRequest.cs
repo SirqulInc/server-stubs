@@ -9,21 +9,11 @@ public class CreateTripRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public Trip? body { get; set; }
 }
 public class DeleteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the trip to delete
     /// </summary>
@@ -32,11 +22,6 @@ public class DeleteRequest
 }
 public class DriveTripRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the trip
     /// </summary>
@@ -51,11 +36,6 @@ public class DriveTripRequest
 public class FlexibleTripRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the trip
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -69,11 +49,6 @@ public class FlexibleTripRequest
 public class GetTripRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the trip to get
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -81,11 +56,6 @@ public class GetTripRequest
 }
 public class GetTripMatchesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id The id of the trip to search for matches for
     /// </summary>
@@ -130,11 +100,6 @@ public class GetTripMatchesRequest
 public class ProcessTripMatchesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The lower bound date to process matchings
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("startDate")]
@@ -153,11 +118,6 @@ public class ProcessTripMatchesRequest
 public class RideRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the trip
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -170,11 +130,6 @@ public class RideRequest
 }
 public class SearchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The owner of the trips
     /// </summary>
@@ -223,11 +178,6 @@ public class SearchRequest
 }
 public class SearchTripsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The owner of the trips
     /// </summary>
@@ -282,11 +232,6 @@ public class SearchTripsRequest
 public class UpdateLocationsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the trip to update locations for
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -299,11 +244,6 @@ public class UpdateLocationsRequest
 }
 public class UpdateRecurrenceLocationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the trip
     /// </summary>
@@ -318,11 +258,6 @@ public class UpdateRecurrenceLocationsRequest
 public class UpdateRecurrenceShipmentsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the trip
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -335,11 +270,6 @@ public class UpdateRecurrenceShipmentsRequest
 }
 public class UpdateShipmentsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the trip shipments to update
     /// </summary>
@@ -354,11 +284,6 @@ public class UpdateShipmentsRequest
 public class UpdateTripRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the trip to update
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -371,11 +296,6 @@ public class UpdateTripRequest
 }
 public class UpdateTripNotificationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the trip
     /// </summary>

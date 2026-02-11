@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CheckDisbursementsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the ID of the disbursement being checked on
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("disbursementId")]
@@ -19,11 +14,6 @@ public class CheckDisbursementsRequest
 }
 public class CreateDisbursementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the ID of the logging in user (must be an EXECUTIVE account)
     /// </summary>
@@ -78,11 +68,6 @@ public class CreateDisbursementRequest
 public class GetDisbursementRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -95,11 +80,6 @@ public class GetDisbursementRequest
 }
 public class SearchDisbursementsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the logged in user
     /// </summary>
@@ -153,11 +133,6 @@ public class SearchDisbursementsRequest
 }
 public class UpdateDisbursementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the logged in user
     /// </summary>

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateMissionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -145,11 +140,6 @@ public class CreateMissionRequest
 public class DeleteMissionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -162,11 +152,6 @@ public class DeleteMissionRequest
 }
 public class FindMissionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
     /// </summary>
@@ -266,11 +251,6 @@ public class FindMissionsRequest
 public class GetMissionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -288,11 +268,6 @@ public class GetMissionRequest
 }
 public class ImportMissionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -337,11 +312,6 @@ public class ImportMissionRequest
 public class SearchMissionFormatsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The starting index in the result set to return. Default is 0.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("start")]
@@ -359,11 +329,6 @@ public class SearchMissionFormatsRequest
 }
 public class SearchMissionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -423,11 +388,6 @@ public class SearchMissionsRequest
 public class SearchMissionsByBillableEntityRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -480,11 +440,6 @@ public class SearchMissionsByBillableEntityRequest
 }
 public class UpdateMissionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AssigmentAssigneeAccountSearchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id sending the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -24,11 +19,6 @@ public class AssigmentAssigneeAccountSearchRequest
 }
 public class AssignmentCreateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the user account id
     /// </summary>
@@ -68,11 +58,6 @@ public class AssignmentCreateRequest
 public class AssignmentDeleteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user account id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -86,11 +71,6 @@ public class AssignmentDeleteRequest
 public class AssignmentGetRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user account id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -103,11 +83,6 @@ public class AssignmentGetRequest
 }
 public class AssignmentSearchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account sending the request
     /// </summary>
@@ -167,11 +142,6 @@ public class AssignmentSearchRequest
 public class AssignmentStatusCreateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user account id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -230,11 +200,6 @@ public class AssignmentStatusCreateRequest
 public class AssignmentStatusDeleteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user account id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -248,11 +213,6 @@ public class AssignmentStatusDeleteRequest
 public class AssignmentStatusGetRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user account id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -265,11 +225,6 @@ public class AssignmentStatusGetRequest
 }
 public class AssignmentStatusSearchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the user account id
     /// </summary>
@@ -334,11 +289,6 @@ public class AssignmentStatusSearchRequest
 public class AssignmentStatusUpdateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user account id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -396,11 +346,6 @@ public class AssignmentStatusUpdateRequest
 }
 public class AssignmentUpdateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the user account id
     /// </summary>

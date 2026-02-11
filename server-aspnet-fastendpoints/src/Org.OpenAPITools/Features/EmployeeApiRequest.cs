@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AssignEmployeeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -35,11 +30,6 @@ public class AssignEmployeeRequest
 public class AssignToLocationEmployeeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -62,11 +52,6 @@ public class AssignToLocationEmployeeRequest
 }
 public class CreateEmployeeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the logged in user
     /// </summary>
@@ -221,11 +206,6 @@ public class CreateEmployeeRequest
 public class DeleteEmployeeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -238,11 +218,6 @@ public class DeleteEmployeeRequest
 }
 public class GetEmployeeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of logged in user
     /// </summary>
@@ -261,11 +236,6 @@ public class GetEmployeeRequest
 }
 public class SearchEmployeesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the logged in user
     /// </summary>
@@ -355,11 +325,6 @@ public class SearchEmployeesRequest
 public class UnassignEmployeeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -372,11 +337,6 @@ public class UnassignEmployeeRequest
 }
 public class UpdateEmployeeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the logged in user
     /// </summary>

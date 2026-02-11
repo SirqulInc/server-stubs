@@ -12,7 +12,7 @@ public class CreateOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<Creat
 {
     public override void Configure()
     {
-        Post("/api/{version}/offer/status/create");
+        Post("/api/3.18/offer/status/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<Creat
 
         Summary(s => {
             s.Summary = "Create Offer Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Name, "The name of the status");
             s.RequestParam(r => r.Code, "The status code, must be unique ");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -58,7 +57,7 @@ public class DeleteOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<Delet
 {
     public override void Configure()
     {
-        Post("/api/{version}/offer/status/delete");
+        Post("/api/3.18/offer/status/delete");
         
         
         AllowAnonymous();
@@ -70,7 +69,6 @@ public class DeleteOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<Delet
 
         Summary(s => {
             s.Summary = "Delete Offer Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.StatusId, "The id of the record to delete");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -99,7 +97,7 @@ public class GetOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<GetOffer
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/status/get");
+        Get("/api/3.18/offer/status/get");
         
         
         AllowAnonymous();
@@ -111,7 +109,6 @@ public class GetOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<GetOffer
 
         Summary(s => {
             s.Summary = "Get Offer Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.StatusId, "The id of the record to get ");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -140,7 +137,7 @@ public class SearchOfferTransactionStatusesEndpoint : FastEndpoints.Endpoint<Sea
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/status/search");
+        Get("/api/3.18/offer/status/search");
         
         
         AllowAnonymous();
@@ -152,7 +149,6 @@ public class SearchOfferTransactionStatusesEndpoint : FastEndpoints.Endpoint<Sea
 
         Summary(s => {
             s.Summary = "Search Offer Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Latitude, "Used to update the user&#39;s current location");
@@ -188,7 +184,7 @@ public class UpdateOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<Updat
 {
     public override void Configure()
     {
-        Post("/api/{version}/offer/status/update");
+        Post("/api/3.18/offer/status/update");
         
         
         AllowAnonymous();
@@ -200,7 +196,6 @@ public class UpdateOfferTransactionStatusEndpoint : FastEndpoints.Endpoint<Updat
 
         Summary(s => {
             s.Summary = "Update Offer Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Latitude, "Used to update the user&#39;s current location");

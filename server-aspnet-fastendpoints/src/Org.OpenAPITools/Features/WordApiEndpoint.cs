@@ -12,7 +12,7 @@ public class CreateWordEndpoint : FastEndpoints.Endpoint<CreateWordRequest, Word
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/word/create");
+        Post("/api/3.18/game/word/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateWordEndpoint : FastEndpoints.Endpoint<CreateWordRequest, Word
 
         Summary(s => {
             s.Summary = "Create Word";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Word, "The text of the word.");
             s.RequestParam(r => r.Definition, "The definition of the word.");
@@ -57,7 +56,7 @@ public class DeleteWordEndpoint : FastEndpoints.Endpoint<DeleteWordRequest, Sirq
 {
     public override void Configure()
     {
-        Delete("/api/{version}/game/word/delete");
+        Delete("/api/3.18/game/word/delete");
         
         
         AllowAnonymous();
@@ -69,7 +68,6 @@ public class DeleteWordEndpoint : FastEndpoints.Endpoint<DeleteWordRequest, Sirq
 
         Summary(s => {
             s.Summary = "Delete Word";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.WordId, "The id of the word to delete.");
             s.RequestParam(r => r.AccountId, "The account vor validating permission");
             s.Responses[200] = "successful operation";
@@ -95,7 +93,7 @@ public class GetWordEndpoint : FastEndpoints.Endpoint<GetWordRequest, WordzWordR
 {
     public override void Configure()
     {
-        Get("/api/{version}/game/word/get");
+        Get("/api/3.18/game/word/get");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class GetWordEndpoint : FastEndpoints.Endpoint<GetWordRequest, WordzWordR
 
         Summary(s => {
             s.Summary = "Get Word";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.WordId, "The id of the word to get.");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.Responses[200] = "successful operation";
@@ -133,7 +130,7 @@ public class GetWordsEndpoint : FastEndpoints.Endpoint<GetWordsRequest, List<Wor
 {
     public override void Configure()
     {
-        Get("/api/{version}/game/word/search");
+        Get("/api/3.18/game/word/search");
         
         
         AllowAnonymous();
@@ -145,7 +142,6 @@ public class GetWordsEndpoint : FastEndpoints.Endpoint<GetWordsRequest, List<Wor
 
         Summary(s => {
             s.Summary = "Search Words";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.SortField, "The column to sort the search on");
             s.RequestParam(r => r.Descending, "The order to return the search results");
@@ -176,7 +172,7 @@ public class UpdateWordEndpoint : FastEndpoints.Endpoint<UpdateWordRequest, Word
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/word/update");
+        Post("/api/3.18/game/word/update");
         
         
         AllowAnonymous();
@@ -188,7 +184,6 @@ public class UpdateWordEndpoint : FastEndpoints.Endpoint<UpdateWordRequest, Word
 
         Summary(s => {
             s.Summary = "Update Word";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.WordId, "The id of the word to update.");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TicketCount, "The number of tickets to reward");

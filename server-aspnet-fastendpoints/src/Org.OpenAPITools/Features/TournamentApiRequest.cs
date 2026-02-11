@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateTournamentRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -190,11 +185,6 @@ public class CreateTournamentRequest
 public class DeleteTournamentRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -207,11 +197,6 @@ public class DeleteTournamentRequest
 }
 public class GetTournamentRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of the logged in user
     /// </summary>
@@ -240,11 +225,6 @@ public class GetTournamentRequest
 }
 public class SearchObjectsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account ID
     /// </summary>
@@ -278,11 +258,6 @@ public class SearchObjectsRequest
 }
 public class SearchRoundsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account ID
     /// </summary>
@@ -326,11 +301,6 @@ public class SearchRoundsRequest
 }
 public class SearchTournamentsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -395,11 +365,6 @@ public class SearchTournamentsRequest
 public class SubmitTournamentScoreRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user account ID.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -438,11 +403,6 @@ public class SubmitTournamentScoreRequest
 public class SubmitTournamentVoteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the device making the request (optional)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -476,11 +436,6 @@ public class SubmitTournamentVoteRequest
 public class SubstituteTournamentPlayerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -503,11 +458,6 @@ public class SubstituteTournamentPlayerRequest
 }
 public class UpdateTournamentRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>

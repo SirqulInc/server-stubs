@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddPaymentMethodRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -129,11 +124,6 @@ public class AddPaymentMethodRequest
 }
 public class CreatePaymentMethodRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account used to perform the the request
     /// </summary>
@@ -263,11 +253,6 @@ public class CreatePaymentMethodRequest
 public class CreateSmartContractRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -291,11 +276,6 @@ public class CreateSmartContractRequest
 public class GetCryptoBalanceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -314,11 +294,6 @@ public class GetCryptoBalanceRequest
 public class GetPaymentMethodRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -336,11 +311,6 @@ public class GetPaymentMethodRequest
 }
 public class SearchPaymentMethodRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Account Id to search on
     /// </summary>

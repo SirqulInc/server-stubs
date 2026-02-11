@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateTriggerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -80,11 +75,6 @@ public class CreateTriggerRequest
 public class DeleteTriggerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -98,11 +88,6 @@ public class DeleteTriggerRequest
 public class GetTriggerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -115,11 +100,6 @@ public class GetTriggerRequest
 }
 public class SearchTriggersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -183,11 +163,6 @@ public class SearchTriggersRequest
 }
 public class UpdateTriggerRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The trigger to update
     /// </summary>

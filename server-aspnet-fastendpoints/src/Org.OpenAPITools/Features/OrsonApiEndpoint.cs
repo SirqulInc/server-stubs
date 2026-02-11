@@ -12,7 +12,7 @@ public class AddMovieEndpoint : FastEndpoints.Endpoint<AddMovieRequest, OrsonAiA
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/addMovie");
+        Post("/api/3.18/orson/ai/addMovie");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddMovieEndpoint : FastEndpoints.Endpoint<AddMovieRequest, OrsonAiA
 
         Summary(s => {
             s.Summary = "Add Movie";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.MovieName, "Movie Name");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
@@ -55,7 +54,7 @@ public class AiDocsEndpoint : FastEndpoints.Endpoint<AiDocsRequest, OrsonAiProto
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/docs");
+        Get("/api/3.18/orson/ai/docs");
         
         
         AllowAnonymous();
@@ -67,7 +66,6 @@ public class AiDocsEndpoint : FastEndpoints.Endpoint<AiDocsRequest, OrsonAiProto
 
         Summary(s => {
             s.Summary = "Search Docs";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Doc, "Doc");
             s.RequestParam(r => r.ReturnTopics, "Return Topics");
@@ -96,7 +94,7 @@ public class AiFindImagesEndpoint : FastEndpoints.Endpoint<AiFindImagesRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/img");
+        Get("/api/3.18/orson/ai/img");
         
         
         AllowAnonymous();
@@ -108,7 +106,6 @@ public class AiFindImagesEndpoint : FastEndpoints.Endpoint<AiFindImagesRequest, 
 
         Summary(s => {
             s.Summary = "Find images";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Text, "Text");
             s.RequestParam(r => r.ParseFlag, "Parse Flag");
@@ -137,7 +134,7 @@ public class AiTagsEndpoint : FastEndpoints.Endpoint<AiTagsRequest, OrsonAiProto
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/tags");
+        Get("/api/3.18/orson/ai/tags");
         
         
         AllowAnonymous();
@@ -149,7 +146,6 @@ public class AiTagsEndpoint : FastEndpoints.Endpoint<AiTagsRequest, OrsonAiProto
 
         Summary(s => {
             s.Summary = "Search Tags";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Tags, "Tags");
             s.RequestParam(r => r.Conditional, "Conditional");
@@ -178,7 +174,7 @@ public class AiTextEndpoint : FastEndpoints.Endpoint<AiTextRequest, OrsonAiProto
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/text");
+        Get("/api/3.18/orson/ai/text");
         
         
         AllowAnonymous();
@@ -190,7 +186,6 @@ public class AiTextEndpoint : FastEndpoints.Endpoint<AiTextRequest, OrsonAiProto
 
         Summary(s => {
             s.Summary = "Search Text";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Terms, "Terms");
             s.RequestParam(r => r.Conditional, "Conditional");
@@ -219,7 +214,7 @@ public class BatchEndpoint : FastEndpoints.Endpoint<BatchRequest, OrsonAiBatchRe
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/batch");
+        Post("/api/3.18/orson/ai/batch");
         
         
         AllowAnonymous();
@@ -231,7 +226,6 @@ public class BatchEndpoint : FastEndpoints.Endpoint<BatchRequest, OrsonAiBatchRe
 
         Summary(s => {
             s.Summary = "Batch Analysis";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
             s.RequestParam(r => r.Limit, "The number of topics to return");
@@ -262,7 +256,7 @@ public class CreateInstantEpisodeEndpoint : FastEndpoints.Endpoint<CreateInstant
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/stories/episodes/instant");
+        Post("/api/3.18/orson/stories/episodes/instant");
         
         
         AllowAnonymous();
@@ -274,7 +268,6 @@ public class CreateInstantEpisodeEndpoint : FastEndpoints.Endpoint<CreateInstant
 
         Summary(s => {
             s.Summary = "Creates an instant episode";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Data, "Request Data String");
             s.Responses[200] = "successful operation";
@@ -300,7 +293,7 @@ public class CreateVoiceCanvasEndpoint : FastEndpoints.Endpoint<CreateVoiceCanva
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/voiceCanvas");
+        Post("/api/3.18/orson/ai/voiceCanvas");
         
         
         AllowAnonymous();
@@ -312,7 +305,6 @@ public class CreateVoiceCanvasEndpoint : FastEndpoints.Endpoint<CreateVoiceCanva
 
         Summary(s => {
             s.Summary = "Create VoiceCanvas images";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Dimensions, "Enum: \&quot;256x256\&quot; \&quot;512x512\&quot; \&quot;1024x1024\&quot;");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
@@ -345,7 +337,7 @@ public class EmotionEndpoint : FastEndpoints.Endpoint<EmotionRequest, OrsonAiEmo
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/emotion");
+        Post("/api/3.18/orson/ai/emotion");
         
         
         AllowAnonymous();
@@ -357,7 +349,6 @@ public class EmotionEndpoint : FastEndpoints.Endpoint<EmotionRequest, OrsonAiEmo
 
         Summary(s => {
             s.Summary = "Detect emotions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
             s.RequestParam(r => r.File, "An uploaded recording to analyze (Currently limited to 10MB)");
@@ -386,7 +377,7 @@ public class GetAddMovieResultEndpoint : FastEndpoints.Endpoint<GetAddMovieResul
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/addMovie/{requestId}");
+        Get("/api/3.18/orson/ai/addMovie/{requestId}");
         
         
         AllowAnonymous();
@@ -398,7 +389,6 @@ public class GetAddMovieResultEndpoint : FastEndpoints.Endpoint<GetAddMovieResul
 
         Summary(s => {
             s.Summary = "Get Add Movie Result";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -424,7 +414,7 @@ public class GetBatchEndpoint : FastEndpoints.Endpoint<GetBatchRequest, OrsonAiB
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/batch/{requestId}");
+        Get("/api/3.18/orson/ai/batch/{requestId}");
         
         
         AllowAnonymous();
@@ -436,7 +426,6 @@ public class GetBatchEndpoint : FastEndpoints.Endpoint<GetBatchRequest, OrsonAiB
 
         Summary(s => {
             s.Summary = "Get Batch Analysis Results";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -462,7 +451,7 @@ public class GetEmotionEndpoint : FastEndpoints.Endpoint<GetEmotionRequest, Orso
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/emotion/{requestId}");
+        Get("/api/3.18/orson/ai/emotion/{requestId}");
         
         
         AllowAnonymous();
@@ -474,7 +463,6 @@ public class GetEmotionEndpoint : FastEndpoints.Endpoint<GetEmotionRequest, Orso
 
         Summary(s => {
             s.Summary = "Get Emotion Results";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -500,7 +488,7 @@ public class GetEpisodeStatusEndpoint : FastEndpoints.Endpoint<GetEpisodeStatusR
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/stories/episodes/{episodeId}/status");
+        Get("/api/3.18/orson/stories/episodes/{episodeId}/status");
         
         
         AllowAnonymous();
@@ -512,7 +500,6 @@ public class GetEpisodeStatusEndpoint : FastEndpoints.Endpoint<GetEpisodeStatusR
 
         Summary(s => {
             s.Summary = "Check episode status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.EpisodeId, "Episode ID");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -538,7 +525,7 @@ public class GetRenderStatusEndpoint : FastEndpoints.Endpoint<GetRenderStatusReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/stories/renders/{renderId}/status");
+        Get("/api/3.18/orson/stories/renders/{renderId}/status");
         
         
         AllowAnonymous();
@@ -550,7 +537,6 @@ public class GetRenderStatusEndpoint : FastEndpoints.Endpoint<GetRenderStatusReq
 
         Summary(s => {
             s.Summary = "Check episode status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RenderId, "Render ID");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -576,7 +562,7 @@ public class GetSTTEndpoint : FastEndpoints.Endpoint<GetSTTRequest, OrsonAiSTTRe
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/stt/{requestId}");
+        Get("/api/3.18/orson/ai/stt/{requestId}");
         
         
         AllowAnonymous();
@@ -588,7 +574,6 @@ public class GetSTTEndpoint : FastEndpoints.Endpoint<GetSTTRequest, OrsonAiSTTRe
 
         Summary(s => {
             s.Summary = "Get Speach to Text Result";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -614,7 +599,7 @@ public class GetTTSEndpoint : FastEndpoints.Endpoint<GetTTSRequest, OrsonAiTTSRe
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/tts/{requestId}");
+        Get("/api/3.18/orson/ai/tts/{requestId}");
         
         
         AllowAnonymous();
@@ -626,7 +611,6 @@ public class GetTTSEndpoint : FastEndpoints.Endpoint<GetTTSRequest, OrsonAiTTSRe
 
         Summary(s => {
             s.Summary = "Get Text to Speach Result";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -652,7 +636,7 @@ public class GetTechTuneEndpoint : FastEndpoints.Endpoint<GetTechTuneRequest, Or
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/techTune/{requestId}");
+        Get("/api/3.18/orson/ai/techTune/{requestId}");
         
         
         AllowAnonymous();
@@ -664,7 +648,6 @@ public class GetTechTuneEndpoint : FastEndpoints.Endpoint<GetTechTuneRequest, Or
 
         Summary(s => {
             s.Summary = "Get TechTune Results";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -690,7 +673,7 @@ public class GetTopicsEndpoint : FastEndpoints.Endpoint<GetTopicsRequest, OrsonA
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/topics/{requestId}");
+        Get("/api/3.18/orson/ai/topics/{requestId}");
         
         
         AllowAnonymous();
@@ -702,7 +685,6 @@ public class GetTopicsEndpoint : FastEndpoints.Endpoint<GetTopicsRequest, OrsonA
 
         Summary(s => {
             s.Summary = "Get Topics";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -728,7 +710,7 @@ public class GetVoiceCanvasEndpoint : FastEndpoints.Endpoint<GetVoiceCanvasReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/orson/ai/voiceCanvas/{requestId}");
+        Get("/api/3.18/orson/ai/voiceCanvas/{requestId}");
         
         
         AllowAnonymous();
@@ -740,7 +722,6 @@ public class GetVoiceCanvasEndpoint : FastEndpoints.Endpoint<GetVoiceCanvasReque
 
         Summary(s => {
             s.Summary = "Get VoiceCanvas images";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RequestId, "Orson Request Id");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.Responses[200] = "successful operation";
@@ -766,7 +747,7 @@ public class StartVideoRenderEndpoint : FastEndpoints.Endpoint<StartVideoRenderR
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/stories/renders");
+        Post("/api/3.18/orson/stories/renders");
         
         
         AllowAnonymous();
@@ -778,7 +759,6 @@ public class StartVideoRenderEndpoint : FastEndpoints.Endpoint<StartVideoRenderR
 
         Summary(s => {
             s.Summary = "Starts a StoryStitch video render";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Data, "Request Data String");
             s.Responses[200] = "successful operation";
@@ -804,7 +784,7 @@ public class SttEndpoint : FastEndpoints.Endpoint<SttRequest, OrsonAiSTTResponse
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/stt");
+        Post("/api/3.18/orson/ai/stt");
         
         
         AllowAnonymous();
@@ -816,7 +796,6 @@ public class SttEndpoint : FastEndpoints.Endpoint<SttRequest, OrsonAiSTTResponse
 
         Summary(s => {
             s.Summary = "Speach to Text";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
             s.RequestParam(r => r.SourceLanguage, "Source Language");
@@ -847,7 +826,7 @@ public class SummarizeTopicsEndpoint : FastEndpoints.Endpoint<SummarizeTopicsReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/topics");
+        Post("/api/3.18/orson/ai/topics");
         
         
         AllowAnonymous();
@@ -859,7 +838,6 @@ public class SummarizeTopicsEndpoint : FastEndpoints.Endpoint<SummarizeTopicsReq
 
         Summary(s => {
             s.Summary = "Summarize Topics";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
             s.RequestParam(r => r.Doc, "The text to get topics for.");
@@ -891,7 +869,7 @@ public class TechTuneEndpoint : FastEndpoints.Endpoint<TechTuneRequest, OrsonAiT
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/techTune");
+        Post("/api/3.18/orson/ai/techTune");
         
         
         AllowAnonymous();
@@ -903,7 +881,6 @@ public class TechTuneEndpoint : FastEndpoints.Endpoint<TechTuneRequest, OrsonAiT
 
         Summary(s => {
             s.Summary = "Detect Technical Issues";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.NumFacesExpected, "Number of expected faces");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");
@@ -933,7 +910,7 @@ public class TtsEndpoint : FastEndpoints.Endpoint<TtsRequest, OrsonAiTTSResponse
 {
     public override void Configure()
     {
-        Post("/api/{version}/orson/ai/tts");
+        Post("/api/3.18/orson/ai/tts");
         
         
         AllowAnonymous();
@@ -945,7 +922,6 @@ public class TtsEndpoint : FastEndpoints.Endpoint<TtsRequest, OrsonAiTTSResponse
 
         Summary(s => {
             s.Summary = "Text to Speach";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.Text, "Text");
             s.RequestParam(r => r.ThirdPartyAccountId, "A third-party account id that is meaningful to your systems");

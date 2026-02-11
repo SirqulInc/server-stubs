@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateFilterRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user (must have permissions to the target application)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -60,11 +55,6 @@ public class CreateFilterRequest
 public class DeleteFilterRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user (must have permissions to the filter&#39;s assigned application)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -78,11 +68,6 @@ public class DeleteFilterRequest
 public class GetFilterRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the filter to get
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("filterId")]
@@ -90,11 +75,6 @@ public class GetFilterRequest
 }
 public class SearchFiltersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>
@@ -148,11 +128,6 @@ public class SearchFiltersRequest
 }
 public class UpdateFilterRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>

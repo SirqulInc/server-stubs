@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateBillableEntityRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -75,11 +70,6 @@ public class CreateBillableEntityRequest
 public class DeleteBillableEntityRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -92,11 +82,6 @@ public class DeleteBillableEntityRequest
 }
 public class GetBillableEntityRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
@@ -120,11 +105,6 @@ public class GetBillableEntityRequest
 }
 public class UpdateBillableEntityRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>

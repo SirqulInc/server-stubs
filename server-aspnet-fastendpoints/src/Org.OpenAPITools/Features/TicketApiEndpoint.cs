@@ -12,7 +12,7 @@ public class GetTicketCountEndpoint : FastEndpoints.Endpoint<GetTicketCountReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/ticket/count");
+        Get("/api/3.18/ticket/count");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetTicketCountEndpoint : FastEndpoints.Endpoint<GetTicketCountReque
 
         Summary(s => {
             s.Summary = "Get Ticket Count";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the id of the device that owns the tickets");
             s.RequestParam(r => r.AccountId, "the id of the account that owns the tickets");
             s.RequestParam(r => r.GameType, "this is deprecated.");
@@ -53,7 +52,7 @@ public class GetTicketListEndpoint : FastEndpoints.Endpoint<GetTicketListRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/ticket/getList");
+        Get("/api/3.18/ticket/getList");
         
         
         AllowAnonymous();
@@ -65,7 +64,6 @@ public class GetTicketListEndpoint : FastEndpoints.Endpoint<GetTicketListRequest
 
         Summary(s => {
             s.Summary = "Get Ticket List";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the id of the device that owns the tickets");
             s.RequestParam(r => r.AccountId, "the id of the account that owns the tickets");
             s.RequestParam(r => r.TicketObjectType, "comma separated list of TicketObjectType");
@@ -98,7 +96,7 @@ public class GiftPurchaseEndpoint : FastEndpoints.Endpoint<GiftPurchaseRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/purchase/gift");
+        Post("/api/3.18/purchase/gift");
         
         
         AllowAnonymous();
@@ -110,7 +108,6 @@ public class GiftPurchaseEndpoint : FastEndpoints.Endpoint<GiftPurchaseRequest, 
 
         Summary(s => {
             s.Summary = "Gift Tickets";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReceiverAccountId, "the id of the account receiving the tickets");
             s.RequestParam(r => r.TicketId, "the id of the tickets");
             s.RequestParam(r => r.DeviceId, "the id of the device");
@@ -142,7 +139,7 @@ public class SaveTicketEndpoint : FastEndpoints.Endpoint<SaveTicketRequest, Prof
 {
     public override void Configure()
     {
-        Post("/api/{version}/ticket/save");
+        Post("/api/3.18/ticket/save");
         
         
         AllowAnonymous();
@@ -154,7 +151,6 @@ public class SaveTicketEndpoint : FastEndpoints.Endpoint<SaveTicketRequest, Prof
 
         Summary(s => {
             s.Summary = "Save Ticket";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ActionType, "the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER");
             s.RequestParam(r => r.TicketObjectType, "the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
@@ -196,7 +192,7 @@ public class SaveTicketViaFileUploadEndpoint : FastEndpoints.Endpoint<SaveTicket
 {
     public override void Configure()
     {
-        Post("/api/{version}/ticket/save/fileUpload");
+        Post("/api/3.18/ticket/save/fileUpload");
         
         
         AllowAnonymous();
@@ -208,7 +204,6 @@ public class SaveTicketViaFileUploadEndpoint : FastEndpoints.Endpoint<SaveTicket
 
         Summary(s => {
             s.Summary = "Save Ticket with Reciept";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ActionType, "the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER }");
             s.RequestParam(r => r.TicketObjectType, "the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM}");
             s.RequestParam(r => r.ReceiptData, "the receipt/transaction data for validating a purchase via iTunes/Gooogle/etc. This should be in binary format.");
@@ -246,11 +241,11 @@ public class SaveTicketViaFileUploadEndpoint : FastEndpoints.Endpoint<SaveTicket
 /// Get Ticket Offers
 /// </summary>
 
-public class TicketOffersEndpoint : FastEndpoints.Endpoint<TicketOffersRequest, TicketOfferResponse>
+public class TicketOffersEndpoint : FastEndpoints.EndpointWithoutRequest<TicketOfferResponse>
 {
     public override void Configure()
     {
-        Get("/api/{version}/ticket/ticketoffers");
+        Get("/api/3.18/ticket/ticketoffers");
         
         
         AllowAnonymous();
@@ -262,12 +257,11 @@ public class TicketOffersEndpoint : FastEndpoints.Endpoint<TicketOffersRequest, 
 
         Summary(s => {
             s.Summary = "Get Ticket Offers";
-            s.RequestParam(r => r.Version, "");
             s.Responses[200] = "successful operation";
         });
     }
 
-    public override async Task HandleAsync(TicketOffersRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         //Response = new()
         //{

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateWordRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -60,11 +55,6 @@ public class CreateWordRequest
 public class DeleteWordRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The id of the word to delete.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("wordId")]
@@ -78,11 +68,6 @@ public class DeleteWordRequest
 public class GetWordRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The id of the word to get.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("wordId")]
@@ -95,11 +80,6 @@ public class GetWordRequest
 }
 public class GetWordsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -138,11 +118,6 @@ public class GetWordsRequest
 }
 public class UpdateWordRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of the word to update.
     /// </summary>

@@ -12,7 +12,7 @@ public class AddAlbumCollectionEndpoint : FastEndpoints.Endpoint<AddAlbumCollect
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/create");
+        Post("/api/3.18/album/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddAlbumCollectionEndpoint : FastEndpoints.Endpoint<AddAlbumCollect
 
         Summary(s => {
             s.Summary = "Create Album";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Title, "the title of the album");
             s.RequestParam(r => r.CoverAssetNullable, "determines whether the cover image of the album can be empty, else will use the user&#39;s profile picture as the cover image");
             s.RequestParam(r => r.IncludeCoverInAssetList, "determines whether the cover image should be added to the album asset list");
@@ -94,7 +93,7 @@ public class AddAlbumUsersEndpoint : FastEndpoints.Endpoint<AddAlbumUsersRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/user/add");
+        Post("/api/3.18/album/user/add");
         
         
         AllowAnonymous();
@@ -106,7 +105,6 @@ public class AddAlbumUsersEndpoint : FastEndpoints.Endpoint<AddAlbumUsersRequest
 
         Summary(s => {
             s.Summary = "Add Album Users";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumId, "the album ID");
             s.RequestParam(r => r.IncludeFriendGroup, "determines whether to include all friends as participants");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
@@ -140,7 +138,7 @@ public class ApproveAlbumEndpoint : FastEndpoints.Endpoint<ApproveAlbumRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/approve");
+        Post("/api/3.18/album/approve");
         
         
         AllowAnonymous();
@@ -152,7 +150,6 @@ public class ApproveAlbumEndpoint : FastEndpoints.Endpoint<ApproveAlbumRequest, 
 
         Summary(s => {
             s.Summary = "Approve Album";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumId, "The ID of the album");
             s.RequestParam(r => r.DeviceId, "A unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account ID of the user (deviceId or accountId required)");
@@ -181,7 +178,7 @@ public class GetAlbumCollectionEndpoint : FastEndpoints.Endpoint<GetAlbumCollect
 {
     public override void Configure()
     {
-        Get("/api/{version}/album/get");
+        Get("/api/3.18/album/get");
         
         
         AllowAnonymous();
@@ -193,7 +190,6 @@ public class GetAlbumCollectionEndpoint : FastEndpoints.Endpoint<GetAlbumCollect
 
         Summary(s => {
             s.Summary = " Get Album";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "This parameter is deprecated.");
             s.RequestParam(r => r.AlbumId, "the album to look up");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
@@ -226,7 +222,7 @@ public class LeaveAlbumEndpoint : FastEndpoints.Endpoint<LeaveAlbumRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/user/leave");
+        Post("/api/3.18/album/user/leave");
         
         
         AllowAnonymous();
@@ -238,7 +234,6 @@ public class LeaveAlbumEndpoint : FastEndpoints.Endpoint<LeaveAlbumRequest, Sirq
 
         Summary(s => {
             s.Summary = "Leave Album";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumId, "the album ID");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -265,7 +260,7 @@ public class RemoveAlbumEndpoint : FastEndpoints.Endpoint<RemoveAlbumRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/delete");
+        Post("/api/3.18/album/delete");
         
         
         AllowAnonymous();
@@ -277,7 +272,6 @@ public class RemoveAlbumEndpoint : FastEndpoints.Endpoint<RemoveAlbumRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Album";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumId, "the album ID to delete");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -304,7 +298,7 @@ public class RemoveAlbumUsersEndpoint : FastEndpoints.Endpoint<RemoveAlbumUsersR
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/user/delete");
+        Post("/api/3.18/album/user/delete");
         
         
         AllowAnonymous();
@@ -316,7 +310,6 @@ public class RemoveAlbumUsersEndpoint : FastEndpoints.Endpoint<RemoveAlbumUsersR
 
         Summary(s => {
             s.Summary = "Remove Album Users";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumId, "the album ID");
             s.RequestParam(r => r.RemoveFriendGroup, "remove friend group");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
@@ -346,7 +339,7 @@ public class SearchAlbumsEndpoint : FastEndpoints.Endpoint<SearchAlbumsRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/album/search");
+        Get("/api/3.18/album/search");
         
         
         AllowAnonymous();
@@ -358,7 +351,6 @@ public class SearchAlbumsEndpoint : FastEndpoints.Endpoint<SearchAlbumsRequest, 
 
         Summary(s => {
             s.Summary = "Search Albums";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Filter, "a comma separated list of filters: * MINE - Return albums that the user has created. * SHARED - Return albums that have been shared to the user via addAlbumUsers, or addUsersToPermissionable . * FOLLOWER - Return albums that have been created by the user&#39;s followers (the content needs to have been APPROVED or FEATURED). * FOLLOWING - Return albums that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). * PUBLIC - Return all PUBLIC albums that have been APPROVED or FEATURED. * ALL_PUBLIC - Return all PUBLIC albums regardless of whether they are approved or not (ignores the approval status). * LIKED - Return all albums that the user has liked. * FEATURED - Return all albums that have been featured. * PENDING - Return all pending albums. ");
             s.RequestParam(r => r.AlbumTypeId, "id of custom albumType");
             s.RequestParam(r => r.SubType, "filter albums with this album sub type");
@@ -442,7 +434,7 @@ public class UpdateAlbumCollectionEndpoint : FastEndpoints.Endpoint<UpdateAlbumC
 {
     public override void Configure()
     {
-        Post("/api/{version}/album/update");
+        Post("/api/3.18/album/update");
         
         
         AllowAnonymous();
@@ -454,7 +446,6 @@ public class UpdateAlbumCollectionEndpoint : FastEndpoints.Endpoint<UpdateAlbumC
 
         Summary(s => {
             s.Summary = "Update Album";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumId, "the ID of the album to update");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");

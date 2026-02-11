@@ -12,7 +12,7 @@ public class AddOrUpdateThemeDescriptorEndpoint : FastEndpoints.Endpoint<AddOrUp
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/theme");
+        Post("/api/3.18/consumer/theme");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddOrUpdateThemeDescriptorEndpoint : FastEndpoints.Endpoint<AddOrUp
 
         Summary(s => {
             s.Summary = "Create/Update Theme";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PublicRead, "determines whether the theme&#39;s participants have read permissions");
             s.RequestParam(r => r.PublicWrite, "determines whether the theme&#39;s participants have write permissions");
             s.RequestParam(r => r.PublicDelete, "determines whether the theme&#39;s participants have delete permissions");
@@ -75,7 +74,7 @@ public class GetThemeDescriptorEndpoint : FastEndpoints.Endpoint<GetThemeDescrip
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/theme/get");
+        Get("/api/3.18/consumer/theme/get");
         
         
         AllowAnonymous();
@@ -87,7 +86,6 @@ public class GetThemeDescriptorEndpoint : FastEndpoints.Endpoint<GetThemeDescrip
 
         Summary(s => {
             s.Summary = "Get Theme";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ThemeDescriptorId, "the theme id");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -117,7 +115,7 @@ public class GetThemeDescriptorsEndpoint : FastEndpoints.Endpoint<GetThemeDescri
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/theme/search");
+        Get("/api/3.18/consumer/theme/search");
         
         
         AllowAnonymous();
@@ -129,7 +127,6 @@ public class GetThemeDescriptorsEndpoint : FastEndpoints.Endpoint<GetThemeDescri
 
         Summary(s => {
             s.Summary = "Search Themes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Filter, "a comma separated list of Ownership");
             s.RequestParam(r => r.SortField, "the field to sort by. See ThemeDescriptorApiMap");
             s.RequestParam(r => r.Descending, "determines whether the sorted list is in descending or ascending order");
@@ -171,7 +168,7 @@ public class RemoveThemeDescriptorEndpoint : FastEndpoints.Endpoint<RemoveThemeD
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/theme/remove");
+        Post("/api/3.18/consumer/theme/remove");
         
         
         AllowAnonymous();
@@ -183,7 +180,6 @@ public class RemoveThemeDescriptorEndpoint : FastEndpoints.Endpoint<RemoveThemeD
 
         Summary(s => {
             s.Summary = "Delete Theme";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ThemeDescriptorId, "the theme id to remove");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");

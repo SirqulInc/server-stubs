@@ -12,7 +12,7 @@ public class GetStopEndpoint : FastEndpoints.Endpoint<GetStopRequest, Stop>
 {
     public override void Configure()
     {
-        Get("/api/{version}/stop/{id}");
+        Get("/api/3.18/stop/{id}");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetStopEndpoint : FastEndpoints.Endpoint<GetStopRequest, Stop>
 
         Summary(s => {
             s.Summary = "Get Stop";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the stop to get");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class UpdateStopEndpoint : FastEndpoints.Endpoint<UpdateStopRequest, Stop
 {
     public override void Configure()
     {
-        Put("/api/{version}/stop/{id}");
+        Put("/api/3.18/stop/{id}");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class UpdateStopEndpoint : FastEndpoints.Endpoint<UpdateStopRequest, Stop
 
         Summary(s => {
             s.Summary = "Update Stop";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the stop to update");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";

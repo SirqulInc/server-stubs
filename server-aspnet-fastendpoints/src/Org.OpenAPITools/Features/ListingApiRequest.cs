@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateListingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user&#39;s account ID
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -85,11 +80,6 @@ public class CreateListingRequest
 public class DeleteListingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -103,11 +93,6 @@ public class DeleteListingRequest
 public class GetListingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the listing to get
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("listingId")]
@@ -115,11 +100,6 @@ public class GetListingRequest
 }
 public class SearchListingRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>
@@ -199,11 +179,6 @@ public class SearchListingRequest
 public class SummaryListingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -231,11 +206,6 @@ public class SummaryListingRequest
 }
 public class UpdateListingRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the user&#39;s account ID
     /// </summary>

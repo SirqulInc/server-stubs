@@ -12,7 +12,7 @@ public class AcceptInviteEndpoint : FastEndpoints.Endpoint<AcceptInviteRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/accept");
+        Post("/api/3.18/invite/accept");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AcceptInviteEndpoint : FastEndpoints.Endpoint<AcceptInviteRequest, 
 
         Summary(s => {
             s.Summary = "Accept Invite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Token, "the invite token");
             s.RequestParam(r => r.AccountId, "the accountId of the user who is accepting the invite");
             s.RequestParam(r => r.AlbumId, "the album id associated with this invite (if applicable)");
@@ -62,7 +61,7 @@ public class AlbumContestInviteEndpoint : FastEndpoints.Endpoint<AlbumContestInv
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/albumContest");
+        Post("/api/3.18/invite/albumContest");
         
         
         AllowAnonymous();
@@ -74,7 +73,6 @@ public class AlbumContestInviteEndpoint : FastEndpoints.Endpoint<AlbumContestInv
 
         Summary(s => {
             s.Summary = "Invite to Contest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppId, "This parameter is deprecated.");
@@ -105,7 +103,7 @@ public class AlbumInviteEndpoint : FastEndpoints.Endpoint<AlbumInviteRequest, In
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/album");
+        Post("/api/3.18/invite/album");
         
         
         AllowAnonymous();
@@ -117,7 +115,6 @@ public class AlbumInviteEndpoint : FastEndpoints.Endpoint<AlbumInviteRequest, In
 
         Summary(s => {
             s.Summary = "Invite to Collection";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppId, "This parameter is deprecated.");
@@ -148,7 +145,7 @@ public class EventInviteEndpoint : FastEndpoints.Endpoint<EventInviteRequest, In
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/event");
+        Post("/api/3.18/invite/event");
         
         
         AllowAnonymous();
@@ -160,7 +157,6 @@ public class EventInviteEndpoint : FastEndpoints.Endpoint<EventInviteRequest, In
 
         Summary(s => {
             s.Summary = "Invite to Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user making the share");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.ListingId, "The ID of the event listing");
@@ -189,7 +185,7 @@ public class GameInviteEndpoint : FastEndpoints.Endpoint<GameInviteRequest, Invi
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/gameLevel");
+        Post("/api/3.18/invite/gameLevel");
         
         
         AllowAnonymous();
@@ -201,7 +197,6 @@ public class GameInviteEndpoint : FastEndpoints.Endpoint<GameInviteRequest, Invi
 
         Summary(s => {
             s.Summary = "Invite to Game Level";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppId, "This parameter is deprecated.");
@@ -232,7 +227,7 @@ public class GetInviteEndpoint : FastEndpoints.Endpoint<GetInviteRequest, Sirqul
 {
     public override void Configure()
     {
-        Get("/api/{version}/invite/get");
+        Get("/api/3.18/invite/get");
         
         
         AllowAnonymous();
@@ -244,7 +239,6 @@ public class GetInviteEndpoint : FastEndpoints.Endpoint<GetInviteRequest, Sirqul
 
         Summary(s => {
             s.Summary = "Get Invite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Account ID of the user if they are logged in");
             s.RequestParam(r => r.Token, "the invite token");
             s.RequestParam(r => r.AlbumId, "album id to match the invite against (if applicable)");
@@ -277,7 +271,7 @@ public class MissionInviteEndpoint : FastEndpoints.Endpoint<MissionInviteRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/mission");
+        Post("/api/3.18/invite/mission");
         
         
         AllowAnonymous();
@@ -289,7 +283,6 @@ public class MissionInviteEndpoint : FastEndpoints.Endpoint<MissionInviteRequest
 
         Summary(s => {
             s.Summary = "Invite to Mission";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppId, "This parameter is deprecated.");
@@ -320,7 +313,7 @@ public class OfferInviteEndpoint : FastEndpoints.Endpoint<OfferInviteRequest, In
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/offer");
+        Post("/api/3.18/invite/offer");
         
         
         AllowAnonymous();
@@ -332,7 +325,6 @@ public class OfferInviteEndpoint : FastEndpoints.Endpoint<OfferInviteRequest, In
 
         Summary(s => {
             s.Summary = "Invite to Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user making the share");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.OfferId, "the ID of the offer used to invite to favorite");
@@ -359,7 +351,7 @@ public class OfferLocationInviteEndpoint : FastEndpoints.Endpoint<OfferLocationI
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/offerLocation");
+        Post("/api/3.18/invite/offerLocation");
         
         
         AllowAnonymous();
@@ -371,7 +363,6 @@ public class OfferLocationInviteEndpoint : FastEndpoints.Endpoint<OfferLocationI
 
         Summary(s => {
             s.Summary = "Invite to Offer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user making the share");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.OfferLocationId, "the id of the offer location to share");
@@ -398,7 +389,7 @@ public class RetailerLocationInviteEndpoint : FastEndpoints.Endpoint<RetailerLoc
 {
     public override void Configure()
     {
-        Post("/api/{version}/invite/retailerLocation");
+        Post("/api/3.18/invite/retailerLocation");
         
         
         AllowAnonymous();
@@ -410,7 +401,6 @@ public class RetailerLocationInviteEndpoint : FastEndpoints.Endpoint<RetailerLoc
 
         Summary(s => {
             s.Summary = "Invite to Retailer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user making the share");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.RetailerLocationId, "The retailer location id of where the event will take place");

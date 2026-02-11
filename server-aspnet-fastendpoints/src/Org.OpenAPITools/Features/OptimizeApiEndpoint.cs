@@ -12,7 +12,7 @@ public class GetOptimizationResultEndpoint : FastEndpoints.Endpoint<GetOptimizat
 {
     public override void Configure()
     {
-        Get("/api/{version}/optimize/result/{batchID}");
+        Get("/api/3.18/optimize/result/{batchID}");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetOptimizationResultEndpoint : FastEndpoints.Endpoint<GetOptimizat
 
         Summary(s => {
             s.Summary = "Get Optimization Result";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BatchID, "The batchID for getting the import status of.");
             s.RequestParam(r => r.Start, "The start index for pagination");
             s.RequestParam(r => r.Limit, "The limit for pagination");
@@ -51,7 +50,7 @@ public class RequestOptimizationEndpoint : FastEndpoints.Endpoint<RequestOptimiz
 {
     public override void Configure()
     {
-        Post("/api/{version}/optimize/request");
+        Post("/api/3.18/optimize/request");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class RequestOptimizationEndpoint : FastEndpoints.Endpoint<RequestOptimiz
 
         Summary(s => {
             s.Summary = "Request Optimization";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });

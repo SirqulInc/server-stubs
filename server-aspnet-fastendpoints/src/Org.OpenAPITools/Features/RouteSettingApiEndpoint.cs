@@ -12,7 +12,7 @@ public class CreateRouteSettingsEndpoint : FastEndpoints.Endpoint<CreateRouteSet
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/setting");
+        Post("/api/3.18/route/setting");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateRouteSettingsEndpoint : FastEndpoints.Endpoint<CreateRouteSet
 
         Summary(s => {
             s.Summary = "Create Route Setting";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class DeleteRouteSettingsEndpoint : FastEndpoints.Endpoint<DeleteRouteSet
 {
     public override void Configure()
     {
-        Delete("/api/{version}/route/setting/{routeSettingsId}");
+        Delete("/api/3.18/route/setting/{routeSettingsId}");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class DeleteRouteSettingsEndpoint : FastEndpoints.Endpoint<DeleteRouteSet
 
         Summary(s => {
             s.Summary = "Delete Route Setting";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteSettingsId, "the id of the route setting to delete");
             s.Responses[200] = "successful operation";
         });
@@ -86,7 +84,7 @@ public class GetRouteSettingsEndpoint : FastEndpoints.Endpoint<GetRouteSettingsR
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/setting/{routeSettingsId}");
+        Get("/api/3.18/route/setting/{routeSettingsId}");
         
         
         AllowAnonymous();
@@ -98,7 +96,6 @@ public class GetRouteSettingsEndpoint : FastEndpoints.Endpoint<GetRouteSettingsR
 
         Summary(s => {
             s.Summary = "Get Route Setting";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteSettingsId, "the id of the route settings to get");
             s.Responses[200] = "successful operation";
         });
@@ -123,7 +120,7 @@ public class SearchRouteSettingsEndpoint : FastEndpoints.Endpoint<SearchRouteSet
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/setting");
+        Get("/api/3.18/route/setting");
         
         
         AllowAnonymous();
@@ -135,7 +132,6 @@ public class SearchRouteSettingsEndpoint : FastEndpoints.Endpoint<SearchRouteSet
 
         Summary(s => {
             s.Summary = "Search Route Settings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");
@@ -167,7 +163,7 @@ public class UpdateRouteSettingsEndpoint : FastEndpoints.Endpoint<UpdateRouteSet
 {
     public override void Configure()
     {
-        Put("/api/{version}/route/setting/{routeSettingsId}");
+        Put("/api/3.18/route/setting/{routeSettingsId}");
         
         
         AllowAnonymous();
@@ -179,7 +175,6 @@ public class UpdateRouteSettingsEndpoint : FastEndpoints.Endpoint<UpdateRouteSet
 
         Summary(s => {
             s.Summary = "Update Route Setting";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteSettingsId, "the id of the route settings to update");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";

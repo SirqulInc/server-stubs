@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class BatchSaveTrackingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -49,11 +44,6 @@ public class BatchSaveTrackingRequest
 }
 public class GetPredictedLocationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the customer
     /// </summary>
@@ -103,11 +93,6 @@ public class GetPredictedLocationsRequest
 public class GetPredictedPathRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the customer
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -125,11 +110,6 @@ public class GetPredictedPathRequest
 }
 public class GetPreferredLocationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the customer
     /// </summary>
@@ -189,11 +169,6 @@ public class GetPreferredLocationsRequest
 public class GetTrackingLegsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -236,11 +211,6 @@ public class GetTrackingLegsRequest
 }
 public class SaveTrackingLegRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -305,11 +275,6 @@ public class SaveTrackingLegRequest
 public class SaveTrackingStepRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -367,11 +332,6 @@ public class SaveTrackingStepRequest
 }
 public class SearchAccountsWithTrackingLegsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>
@@ -445,11 +405,6 @@ public class SearchAccountsWithTrackingLegsRequest
 }
 public class SearchTrackingLegsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id to search tracking for
     /// </summary>

@@ -12,7 +12,7 @@ public class CreateListingEndpoint : FastEndpoints.Endpoint<CreateListingRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/listing/create");
+        Post("/api/3.18/listing/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateListingEndpoint : FastEndpoints.Endpoint<CreateListingRequest
 
         Summary(s => {
             s.Summary = "Create Listing";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user&#39;s account ID");
             s.RequestParam(r => r.Name, "the name of the listing");
             s.RequestParam(r => r.FilterIds, "comma separated list of filter IDs");
@@ -62,7 +61,7 @@ public class DeleteListingEndpoint : FastEndpoints.Endpoint<DeleteListingRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/listing/delete");
+        Post("/api/3.18/listing/delete");
         
         
         AllowAnonymous();
@@ -74,7 +73,6 @@ public class DeleteListingEndpoint : FastEndpoints.Endpoint<DeleteListingRequest
 
         Summary(s => {
             s.Summary = "Delete Listing";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.ListingId, "the id of the listing to delete");
             s.Responses[200] = "successful operation";
@@ -100,7 +98,7 @@ public class GetListingEndpoint : FastEndpoints.Endpoint<GetListingRequest, List
 {
     public override void Configure()
     {
-        Get("/api/{version}/listing/get");
+        Get("/api/3.18/listing/get");
         
         
         AllowAnonymous();
@@ -112,7 +110,6 @@ public class GetListingEndpoint : FastEndpoints.Endpoint<GetListingRequest, List
 
         Summary(s => {
             s.Summary = "Get Listing";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ListingId, "the id of the listing to get");
             s.Responses[200] = "successful operation";
         });
@@ -137,7 +134,7 @@ public class SearchListingEndpoint : FastEndpoints.Endpoint<SearchListingRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/listing/search");
+        Get("/api/3.18/listing/search");
         
         
         AllowAnonymous();
@@ -149,7 +146,6 @@ public class SearchListingEndpoint : FastEndpoints.Endpoint<SearchListingRequest
 
         Summary(s => {
             s.Summary = "Search Listings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.Keyword, "search the event name and description for this keyword");
             s.RequestParam(r => r.Start, "the record to begin the return set on");
@@ -188,7 +184,7 @@ public class SummaryListingEndpoint : FastEndpoints.Endpoint<SummaryListingReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/listing/summary");
+        Get("/api/3.18/listing/summary");
         
         
         AllowAnonymous();
@@ -200,7 +196,6 @@ public class SummaryListingEndpoint : FastEndpoints.Endpoint<SummaryListingReque
 
         Summary(s => {
             s.Summary = "Summary Listing";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.StartDate, "the start date to search from");
             s.RequestParam(r => r.CategoryIds, "the list of categories to search on");
@@ -229,7 +224,7 @@ public class UpdateListingEndpoint : FastEndpoints.Endpoint<UpdateListingRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/listing/update");
+        Post("/api/3.18/listing/update");
         
         
         AllowAnonymous();
@@ -241,7 +236,6 @@ public class UpdateListingEndpoint : FastEndpoints.Endpoint<UpdateListingRequest
 
         Summary(s => {
             s.Summary = "Update Listing";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user&#39;s account ID");
             s.RequestParam(r => r.ListingId, "the listing to update");
             s.RequestParam(r => r.FilterIds, "comma separated list of filter IDs");

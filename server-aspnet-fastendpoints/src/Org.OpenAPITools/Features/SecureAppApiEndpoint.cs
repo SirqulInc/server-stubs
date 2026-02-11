@@ -12,7 +12,7 @@ public class CreateSecureApplicationEndpoint : FastEndpoints.Endpoint<CreateSecu
 {
     public override void Configure()
     {
-        Post("/api/{version}/secure/application/create");
+        Post("/api/3.18/secure/application/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateSecureApplicationEndpoint : FastEndpoints.Endpoint<CreateSecu
 
         Summary(s => {
             s.Summary = "Create Secure Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The unique id of the user making the request");
             s.RequestParam(r => r.AppKey, "The application to secure");
             s.RequestParam(r => r.KeyCert, "");
@@ -58,7 +57,7 @@ public class DeleteSecureApplicationEndpoint : FastEndpoints.Endpoint<DeleteSecu
 {
     public override void Configure()
     {
-        Post("/api/{version}/secure/application/delete");
+        Post("/api/3.18/secure/application/delete");
         
         
         AllowAnonymous();
@@ -70,7 +69,6 @@ public class DeleteSecureApplicationEndpoint : FastEndpoints.Endpoint<DeleteSecu
 
         Summary(s => {
             s.Summary = "Delete Secure Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The unique id of the user making the request");
             s.RequestParam(r => r.AppKey, "The application to secure");
             s.Responses[200] = "successful operation";
@@ -96,7 +94,7 @@ public class LoginSecureEndpoint : FastEndpoints.Endpoint<LoginSecureRequest, Pr
 {
     public override void Configure()
     {
-        Post("/api/{version}/secure/login");
+        Post("/api/3.18/secure/login");
         
         
         AllowAnonymous();
@@ -108,7 +106,6 @@ public class LoginSecureEndpoint : FastEndpoints.Endpoint<LoginSecureRequest, Pr
 
         Summary(s => {
             s.Summary = "Login Clear";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application making the request, defines what type and position is required to make a secure login the request.");
             s.RequestParam(r => r.BiometricFile, "The data file used to perform authentication");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request");
@@ -141,7 +138,7 @@ public class PurchaseSecureEndpoint : FastEndpoints.Endpoint<PurchaseSecureReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/secure/purchase");
+        Post("/api/3.18/secure/purchase");
         
         
         AllowAnonymous();
@@ -153,7 +150,6 @@ public class PurchaseSecureEndpoint : FastEndpoints.Endpoint<PurchaseSecureReque
 
         Summary(s => {
             s.Summary = "Purchase Clear";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "The payment request object");
             s.Responses[200] = "successful operation";
         });
@@ -178,7 +174,7 @@ public class ResetSecureEndpoint : FastEndpoints.Endpoint<ResetSecureRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/secure/application/reset");
+        Post("/api/3.18/secure/application/reset");
         
         
         AllowAnonymous();
@@ -190,7 +186,6 @@ public class ResetSecureEndpoint : FastEndpoints.Endpoint<ResetSecureRequest, Si
 
         Summary(s => {
             s.Summary = "Rest Secure Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The unique id of the user making the request");
             s.RequestParam(r => r.AppKey, "The application to secure");
             s.Responses[200] = "successful operation";
@@ -216,7 +211,7 @@ public class UpdateSecureApplicationEndpoint : FastEndpoints.Endpoint<UpdateSecu
 {
     public override void Configure()
     {
-        Post("/api/{version}/secure/application/update");
+        Post("/api/3.18/secure/application/update");
         
         
         AllowAnonymous();
@@ -228,7 +223,6 @@ public class UpdateSecureApplicationEndpoint : FastEndpoints.Endpoint<UpdateSecu
 
         Summary(s => {
             s.Summary = "Update Secure Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The unique id of the user making the request");
             s.RequestParam(r => r.AppKey, "The application to secure");
             s.RequestParam(r => r.Active, "");

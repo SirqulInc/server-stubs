@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetRetaokilerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the keyword to search on to get retailer
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("keyword")]

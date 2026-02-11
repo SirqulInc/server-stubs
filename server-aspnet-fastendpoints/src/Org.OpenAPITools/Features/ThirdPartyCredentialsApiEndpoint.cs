@@ -12,7 +12,7 @@ public class CreateCredentialEndpoint : FastEndpoints.Endpoint<CreateCredentialR
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/credential/create");
+        Post("/api/3.18/thirdparty/credential/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateCredentialEndpoint : FastEndpoints.Endpoint<CreateCredentialR
 
         Summary(s => {
             s.Summary = "Create Credential";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ThirdPartyId, "the third party user account id");
             s.RequestParam(r => r.ThirdPartyToken, "the access token to authenticate with (ex: username or fb token or phone number)");
             s.RequestParam(r => r.NetworkUID, "the access provider to authenticate against");
@@ -65,7 +64,7 @@ public class CreateNetworkEndpoint : FastEndpoints.Endpoint<CreateNetworkRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/network/create");
+        Post("/api/3.18/thirdparty/network/create");
         
         
         AllowAnonymous();
@@ -77,7 +76,6 @@ public class CreateNetworkEndpoint : FastEndpoints.Endpoint<CreateNetworkRequest
 
         Summary(s => {
             s.Summary = "Create Network";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id making the request");
             s.RequestParam(r => r.Name, "The name of the network");
             s.RequestParam(r => r.EnableIntrospection, "Whether the network uses introspection calls");
@@ -118,7 +116,7 @@ public class DeleteCredentialEndpoint : FastEndpoints.Endpoint<DeleteCredentialR
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/credential/delete");
+        Post("/api/3.18/thirdparty/credential/delete");
         
         
         AllowAnonymous();
@@ -130,7 +128,6 @@ public class DeleteCredentialEndpoint : FastEndpoints.Endpoint<DeleteCredentialR
 
         Summary(s => {
             s.Summary = "Delete Credential";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.NetworkUID, "The third party network identifier");
             s.RequestParam(r => r.ThirdPartyId, "The third party user id");
@@ -158,7 +155,7 @@ public class DeleteNetworkEndpoint : FastEndpoints.Endpoint<DeleteNetworkRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/network/delete");
+        Post("/api/3.18/thirdparty/network/delete");
         
         
         AllowAnonymous();
@@ -170,7 +167,6 @@ public class DeleteNetworkEndpoint : FastEndpoints.Endpoint<DeleteNetworkRequest
 
         Summary(s => {
             s.Summary = "Delete Network";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.NetworkUID, "The unique identifier for the third party network defined by Sirqul");
             s.Responses[200] = "successful operation";
@@ -196,7 +192,7 @@ public class GetCredentialEndpoint : FastEndpoints.Endpoint<GetCredentialRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/credential/get");
+        Post("/api/3.18/thirdparty/credential/get");
         
         
         AllowAnonymous();
@@ -208,7 +204,6 @@ public class GetCredentialEndpoint : FastEndpoints.Endpoint<GetCredentialRequest
 
         Summary(s => {
             s.Summary = "Get Credential";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NetworkUID, "the access provider to authenticate against");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.AccountId, "the unique account id of a specific account that will be bound to the third-party credentials");
@@ -247,7 +242,7 @@ public class GetNetworkEndpoint : FastEndpoints.Endpoint<GetNetworkRequest, Thir
 {
     public override void Configure()
     {
-        Get("/api/{version}/thirdparty/network/get");
+        Get("/api/3.18/thirdparty/network/get");
         
         
         AllowAnonymous();
@@ -259,7 +254,6 @@ public class GetNetworkEndpoint : FastEndpoints.Endpoint<GetNetworkRequest, Thir
 
         Summary(s => {
             s.Summary = "Get Network";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id making the request");
             s.RequestParam(r => r.NetworkUID, "The unique identifier for the third party network defined by Sirqul");
             s.Responses[200] = "successful operation";
@@ -285,7 +279,7 @@ public class SearchCredentialsEndpoint : FastEndpoints.Endpoint<SearchCredential
 {
     public override void Configure()
     {
-        Get("/api/{version}/thirdparty/credential/search");
+        Get("/api/3.18/thirdparty/credential/search");
         
         
         AllowAnonymous();
@@ -297,7 +291,6 @@ public class SearchCredentialsEndpoint : FastEndpoints.Endpoint<SearchCredential
 
         Summary(s => {
             s.Summary = "Search Credentials";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.Keyword, "The keyword used to search on the third party name and network string");
             s.RequestParam(r => r.NetworkUID, "The network UID to filter results with");
@@ -327,7 +320,7 @@ public class SearchNetworksEndpoint : FastEndpoints.Endpoint<SearchNetworksReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/thirdparty/network/search");
+        Get("/api/3.18/thirdparty/network/search");
         
         
         AllowAnonymous();
@@ -339,7 +332,6 @@ public class SearchNetworksEndpoint : FastEndpoints.Endpoint<SearchNetworksReque
 
         Summary(s => {
             s.Summary = "Search Networks";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id making the request");
             s.RequestParam(r => r.SortField, "The column to sort the search on, possible values include: UPDATED (default), CREATED, NAME");
             s.RequestParam(r => r.Descending, "The order to return the search results");
@@ -371,7 +363,7 @@ public class SendMFAChallengeEndpoint : FastEndpoints.Endpoint<SendMFAChallengeR
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/credential/mfa/send");
+        Post("/api/3.18/thirdparty/credential/mfa/send");
         
         
         AllowAnonymous();
@@ -383,7 +375,6 @@ public class SendMFAChallengeEndpoint : FastEndpoints.Endpoint<SendMFAChallengeR
 
         Summary(s => {
             s.Summary = "Send MFA Challenge";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NetworkUID, "the third party network provider that has MFA enabled");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.ThirdPartyToken, "the access token to authenticate with");
@@ -412,7 +403,7 @@ public class UpdateCredentialEndpoint : FastEndpoints.Endpoint<UpdateCredentialR
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/credential/update");
+        Post("/api/3.18/thirdparty/credential/update");
         
         
         AllowAnonymous();
@@ -424,7 +415,6 @@ public class UpdateCredentialEndpoint : FastEndpoints.Endpoint<UpdateCredentialR
 
         Summary(s => {
             s.Summary = "Update Credential";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NetworkUID, "the access provider to authenticate against");
             s.RequestParam(r => r.ThirdPartyId, "the third party user account id");
             s.RequestParam(r => r.AppKey, "the application key");
@@ -457,7 +447,7 @@ public class UpdateNetworkEndpoint : FastEndpoints.Endpoint<UpdateNetworkRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/thirdparty/network/update");
+        Post("/api/3.18/thirdparty/network/update");
         
         
         AllowAnonymous();
@@ -469,7 +459,6 @@ public class UpdateNetworkEndpoint : FastEndpoints.Endpoint<UpdateNetworkRequest
 
         Summary(s => {
             s.Summary = "Update Network";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id making the request");
             s.RequestParam(r => r.NetworkUID, "The unique identifier for the third party network defined by Sirqul");
             s.RequestParam(r => r.Name, "The name of the network");

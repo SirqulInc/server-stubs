@@ -12,7 +12,7 @@ public class ComputePathEndpoint : FastEndpoints.Endpoint<ComputePathRequest, Pa
 {
     public override void Configure()
     {
-        Get("/api/{version}/pathing/compute");
+        Get("/api/3.18/pathing/compute");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ComputePathEndpoint : FastEndpoints.Endpoint<ComputePathRequest, Pa
 
         Summary(s => {
             s.Summary = "Calculate Path";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Data, "the data to with start, end point and exclusion points");
             s.RequestParam(r => r.Units, "the system of measurement for directions: {METRIC, IMPERIAL}");
             s.RequestParam(r => r.ReducePath, "determines whether to reduce the path to go in diagonal lines");

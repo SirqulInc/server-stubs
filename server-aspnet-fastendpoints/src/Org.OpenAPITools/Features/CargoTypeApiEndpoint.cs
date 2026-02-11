@@ -12,7 +12,7 @@ public class CreateCargoTypeEndpoint : FastEndpoints.Endpoint<CreateCargoTypeReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/cargo/type");
+        Post("/api/3.18/cargo/type");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateCargoTypeEndpoint : FastEndpoints.Endpoint<CreateCargoTypeReq
 
         Summary(s => {
             s.Summary = "Create Cargo Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class DeleteCargoTypeEndpoint : FastEndpoints.Endpoint<DeleteCargoTypeReq
 {
     public override void Configure()
     {
-        Delete("/api/{version}/cargo/type/{cargoTypeId}");
+        Delete("/api/3.18/cargo/type/{cargoTypeId}");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class DeleteCargoTypeEndpoint : FastEndpoints.Endpoint<DeleteCargoTypeReq
 
         Summary(s => {
             s.Summary = "Delete Cargo Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.CargoTypeId, "the ID of the cargo type");
             s.Responses[0] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class GetCargoTypeEndpoint : FastEndpoints.Endpoint<GetCargoTypeRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/cargo/type/{cargoTypeId}");
+        Get("/api/3.18/cargo/type/{cargoTypeId}");
         
         
         AllowAnonymous();
@@ -99,7 +97,6 @@ public class GetCargoTypeEndpoint : FastEndpoints.Endpoint<GetCargoTypeRequest, 
 
         Summary(s => {
             s.Summary = "Get Cargo Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.CargoTypeId, "the cargo type ID");
             s.Responses[200] = "successful operation";
         });
@@ -124,7 +121,7 @@ public class SearchCargoTypesEndpoint : FastEndpoints.Endpoint<SearchCargoTypesR
 {
     public override void Configure()
     {
-        Get("/api/{version}/cargo/type");
+        Get("/api/3.18/cargo/type");
         
         
         AllowAnonymous();
@@ -136,7 +133,6 @@ public class SearchCargoTypesEndpoint : FastEndpoints.Endpoint<SearchCargoTypesR
 
         Summary(s => {
             s.Summary = "Search Cargo Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "the sort field to use for the cargo type");
             s.RequestParam(r => r.Descending, "if the cargo type should be should be in descending order");
             s.RequestParam(r => r.Start, "the start of the search");
@@ -167,7 +163,7 @@ public class UpdateCargoTypeEndpoint : FastEndpoints.Endpoint<UpdateCargoTypeReq
 {
     public override void Configure()
     {
-        Put("/api/{version}/cargo/type/{cargoTypeId}");
+        Put("/api/3.18/cargo/type/{cargoTypeId}");
         
         
         AllowAnonymous();
@@ -179,7 +175,6 @@ public class UpdateCargoTypeEndpoint : FastEndpoints.Endpoint<UpdateCargoTypeReq
 
         Summary(s => {
             s.Summary = "Update Cargo Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.CargoTypeId, "the ID of the cargo type");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";

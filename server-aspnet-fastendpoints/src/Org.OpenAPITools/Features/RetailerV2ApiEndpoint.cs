@@ -12,7 +12,7 @@ public class GetRetaokilerEndpoint : FastEndpoints.Endpoint<GetRetaokilerRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer");
+        Get("/api/3.18/retailer");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetRetaokilerEndpoint : FastEndpoints.Endpoint<GetRetaokilerRequest
 
         Summary(s => {
             s.Summary = "Get Retailer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerId, "the id of the retailer");
             s.RequestParam(r => r.ActiveOnly, "whether to return results that are active only or all");
             s.RequestParam(r => r.Keyword, "the keyword to search on to get retailer");

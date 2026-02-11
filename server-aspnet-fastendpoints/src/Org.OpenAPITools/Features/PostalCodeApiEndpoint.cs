@@ -12,7 +12,7 @@ public class CreatePostalCodeEndpoint : FastEndpoints.Endpoint<CreatePostalCodeR
 {
     public override void Configure()
     {
-        Post("/api/{version}/postalCode/create");
+        Post("/api/3.18/postalCode/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreatePostalCodeEndpoint : FastEndpoints.Endpoint<CreatePostalCodeR
 
         Summary(s => {
             s.Summary = "Create Postal Code";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.Code, "the postal code");
             s.RequestParam(r => r.Latitude, "the latitude of the postal code");
@@ -55,7 +54,7 @@ public class DeletePostalCodeEndpoint : FastEndpoints.Endpoint<DeletePostalCodeR
 {
     public override void Configure()
     {
-        Post("/api/{version}/postalCode/delete");
+        Post("/api/3.18/postalCode/delete");
         
         
         AllowAnonymous();
@@ -67,7 +66,6 @@ public class DeletePostalCodeEndpoint : FastEndpoints.Endpoint<DeletePostalCodeR
 
         Summary(s => {
             s.Summary = "Delete Postal Code";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.PostalCodeId, "the id of the postal code to delete");
             s.Responses[200] = "successful operation";
@@ -93,7 +91,7 @@ public class GetPostalCodeEndpoint : FastEndpoints.Endpoint<GetPostalCodeRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/postalCode/get");
+        Get("/api/3.18/postalCode/get");
         
         
         AllowAnonymous();
@@ -105,7 +103,6 @@ public class GetPostalCodeEndpoint : FastEndpoints.Endpoint<GetPostalCodeRequest
 
         Summary(s => {
             s.Summary = "Get Postal Code";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PostalCodeId, "the id of the postal code to get");
             s.Responses[200] = "successful operation";
         });
@@ -130,7 +127,7 @@ public class GetPostalCodesEndpoint : FastEndpoints.Endpoint<GetPostalCodesReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/postalCode/search");
+        Get("/api/3.18/postalCode/search");
         
         
         AllowAnonymous();
@@ -142,7 +139,6 @@ public class GetPostalCodesEndpoint : FastEndpoints.Endpoint<GetPostalCodesReque
 
         Summary(s => {
             s.Summary = "Search Postal Codes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "the field to sort the results on");
             s.RequestParam(r => r.Descending, "whether to order results in ascending or descending order");
             s.RequestParam(r => r.Latitude, "the latitude of the postal code to search on");
@@ -174,7 +170,7 @@ public class UpdatePostalCodeEndpoint : FastEndpoints.Endpoint<UpdatePostalCodeR
 {
     public override void Configure()
     {
-        Post("/api/{version}/postalCode/update");
+        Post("/api/3.18/postalCode/update");
         
         
         AllowAnonymous();
@@ -186,7 +182,6 @@ public class UpdatePostalCodeEndpoint : FastEndpoints.Endpoint<UpdatePostalCodeR
 
         Summary(s => {
             s.Summary = "Update Postal Code";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.PostalCodeId, "the id of the postal code to update");
             s.RequestParam(r => r.Code, "the postal code to update");

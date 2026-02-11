@@ -12,7 +12,7 @@ public class CreateScoreEndpoint : FastEndpoints.Endpoint<CreateScoreRequest, Sc
 {
     public override void Configure()
     {
-        Post("/api/{version}/score/create");
+        Post("/api/3.18/score/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateScoreEndpoint : FastEndpoints.Endpoint<CreateScoreRequest, Sc
 
         Summary(s => {
             s.Summary = "Create Score";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The game application key to save the score for.");
             s.RequestParam(r => r.Points, "The score");
@@ -58,7 +57,7 @@ public class GetScoreEndpoint : FastEndpoints.Endpoint<GetScoreRequest, ScoreRes
 {
     public override void Configure()
     {
-        Get("/api/{version}/score/get");
+        Get("/api/3.18/score/get");
         
         
         AllowAnonymous();
@@ -70,7 +69,6 @@ public class GetScoreEndpoint : FastEndpoints.Endpoint<GetScoreRequest, ScoreRes
 
         Summary(s => {
             s.Summary = "Get Score";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The game application key to get the level for.");
             s.RequestParam(r => r.MissionId, "The missionId to score for, null if not playing mission.");
@@ -103,7 +101,7 @@ public class SearchScoresEndpoint : FastEndpoints.Endpoint<SearchScoresRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/score/search");
+        Get("/api/3.18/score/search");
         
         
         AllowAnonymous();
@@ -115,7 +113,6 @@ public class SearchScoresEndpoint : FastEndpoints.Endpoint<SearchScoresRequest, 
 
         Summary(s => {
             s.Summary = "Search Score";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The game application key to get the level for.");
             s.RequestParam(r => r.MissionId, "The missionId to score for, null if not playing mission.");

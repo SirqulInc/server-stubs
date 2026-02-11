@@ -12,7 +12,7 @@ public class CreateOfferTransactionEndpoint : FastEndpoints.Endpoint<CreateOffer
 {
     public override void Configure()
     {
-        Post("/api/{version}/wallet/create");
+        Post("/api/3.18/wallet/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateOfferTransactionEndpoint : FastEndpoints.Endpoint<CreateOffer
 
         Summary(s => {
             s.Summary = "Create Wallet Offers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.OfferId, "The id of the offer being added (offerId or offeLocationId required)");
@@ -59,7 +58,7 @@ public class DeleteOfferTransactionEndpoint : FastEndpoints.Endpoint<DeleteOffer
 {
     public override void Configure()
     {
-        Post("/api/{version}/wallet/delete");
+        Post("/api/3.18/wallet/delete");
         
         
         AllowAnonymous();
@@ -71,7 +70,6 @@ public class DeleteOfferTransactionEndpoint : FastEndpoints.Endpoint<DeleteOffer
 
         Summary(s => {
             s.Summary = "Delete Wallet Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.TransactionId, "The offer transaction id to remove");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -98,7 +96,7 @@ public class GetOfferTransactionEndpoint : FastEndpoints.Endpoint<GetOfferTransa
 {
     public override void Configure()
     {
-        Get("/api/{version}/wallet/get");
+        Get("/api/3.18/wallet/get");
         
         
         AllowAnonymous();
@@ -110,7 +108,6 @@ public class GetOfferTransactionEndpoint : FastEndpoints.Endpoint<GetOfferTransa
 
         Summary(s => {
             s.Summary = "Get Wallet Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.TransactionId, "The offer transaction id to get details of");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -141,7 +138,7 @@ public class PreviewOfferTransactionEndpoint : FastEndpoints.Endpoint<PreviewOff
 {
     public override void Configure()
     {
-        Post("/api/{version}/wallet/preview");
+        Post("/api/3.18/wallet/preview");
         
         
         AllowAnonymous();
@@ -153,7 +150,6 @@ public class PreviewOfferTransactionEndpoint : FastEndpoints.Endpoint<PreviewOff
 
         Summary(s => {
             s.Summary = "Preview Wallet Offers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.OfferId, "The id of the offer being added (offerId or offeLocationId required)");
@@ -187,7 +183,7 @@ public class SearchOfferTransactionsEndpoint : FastEndpoints.Endpoint<SearchOffe
 {
     public override void Configure()
     {
-        Get("/api/{version}/wallet/search");
+        Get("/api/3.18/wallet/search");
         
         
         AllowAnonymous();
@@ -199,7 +195,6 @@ public class SearchOfferTransactionsEndpoint : FastEndpoints.Endpoint<SearchOffe
 
         Summary(s => {
             s.Summary = "Search Wallet Offers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Keyword, "The keyword to search for");
@@ -264,7 +259,7 @@ public class UpdateOfferTransactionEndpoint : FastEndpoints.Endpoint<UpdateOffer
 {
     public override void Configure()
     {
-        Post("/api/{version}/wallet/update");
+        Post("/api/3.18/wallet/update");
         
         
         AllowAnonymous();
@@ -276,7 +271,6 @@ public class UpdateOfferTransactionEndpoint : FastEndpoints.Endpoint<UpdateOffer
 
         Summary(s => {
             s.Summary = "Update Wallet Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.TransactionId, "The offer transaction id to remove");
             s.RequestParam(r => r.Status, "The status value to change to (0 or 1)");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");

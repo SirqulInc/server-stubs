@@ -12,7 +12,7 @@ public class SearchWeatherEndpoint : FastEndpoints.Endpoint<SearchWeatherRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/weather/search");
+        Get("/api/3.18/weather/search");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class SearchWeatherEndpoint : FastEndpoints.Endpoint<SearchWeatherRequest
 
         Summary(s => {
             s.Summary = "Search Weather";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RegionId, "Region Id");
             s.RequestParam(r => r.Latitude, "Latitude");
             s.RequestParam(r => r.Longitude, "Longitude");

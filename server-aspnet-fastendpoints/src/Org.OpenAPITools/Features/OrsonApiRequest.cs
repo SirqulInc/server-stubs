@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddMovieRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -50,11 +45,6 @@ public class AddMovieRequest
 public class AiDocsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -82,11 +72,6 @@ public class AiDocsRequest
 }
 public class AiFindImagesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -116,11 +101,6 @@ public class AiFindImagesRequest
 public class AiTagsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -149,11 +129,6 @@ public class AiTagsRequest
 public class AiTextRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -181,11 +156,6 @@ public class AiTextRequest
 }
 public class BatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -225,11 +195,6 @@ public class BatchRequest
 public class CreateInstantEpisodeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -242,11 +207,6 @@ public class CreateInstantEpisodeRequest
 }
 public class CreateVoiceCanvasRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -296,11 +256,6 @@ public class CreateVoiceCanvasRequest
 public class EmotionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -329,11 +284,6 @@ public class EmotionRequest
 public class GetAddMovieResultRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Orson Request Id
     /// </summary>
     [FastEndpoints.BindFrom("requestId")]
@@ -346,11 +296,6 @@ public class GetAddMovieResultRequest
 }
 public class GetBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Orson Request Id
     /// </summary>
@@ -365,11 +310,6 @@ public class GetBatchRequest
 public class GetEmotionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Orson Request Id
     /// </summary>
     [FastEndpoints.BindFrom("requestId")]
@@ -382,11 +322,6 @@ public class GetEmotionRequest
 }
 public class GetEpisodeStatusRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Episode ID
     /// </summary>
@@ -401,11 +336,6 @@ public class GetEpisodeStatusRequest
 public class GetRenderStatusRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Render ID
     /// </summary>
     [FastEndpoints.BindFrom("renderId")]
@@ -418,11 +348,6 @@ public class GetRenderStatusRequest
 }
 public class GetSTTRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Orson Request Id
     /// </summary>
@@ -437,11 +362,6 @@ public class GetSTTRequest
 public class GetTTSRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Orson Request Id
     /// </summary>
     [FastEndpoints.BindFrom("requestId")]
@@ -454,11 +374,6 @@ public class GetTTSRequest
 }
 public class GetTechTuneRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Orson Request Id
     /// </summary>
@@ -473,11 +388,6 @@ public class GetTechTuneRequest
 public class GetTopicsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Orson Request Id
     /// </summary>
     [FastEndpoints.BindFrom("requestId")]
@@ -490,11 +400,6 @@ public class GetTopicsRequest
 }
 public class GetVoiceCanvasRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Orson Request Id
     /// </summary>
@@ -509,11 +414,6 @@ public class GetVoiceCanvasRequest
 public class StartVideoRenderRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -526,11 +426,6 @@ public class StartVideoRenderRequest
 }
 public class SttRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -569,11 +464,6 @@ public class SttRequest
 }
 public class SummarizeTopicsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -618,11 +508,6 @@ public class SummarizeTopicsRequest
 public class TechTuneRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -655,11 +540,6 @@ public class TechTuneRequest
 }
 public class TtsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>

@@ -8,11 +8,11 @@ namespace Org.OpenAPITools.Features;
 /// Searches an Achievement Tier
 /// </summary>
 
-public class ApiVersionAchievementTierSearchPostEndpoint : FastEndpoints.Endpoint<ApiVersionAchievementTierSearchPostRequest, AchievementTierResponse>
+public class AchievementTierSearchPostEndpoint : FastEndpoints.Endpoint<AchievementTierSearchPostRequest, AchievementTierResponse>
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/tier/search");
+        Post("/api/3.18/achievement/tier/search");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ApiVersionAchievementTierSearchPostEndpoint : FastEndpoints.Endpoin
 
         Summary(s => {
             s.Summary = "Searches an Achievement Tier";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppKey, "the application key");
@@ -40,7 +39,7 @@ public class ApiVersionAchievementTierSearchPostEndpoint : FastEndpoints.Endpoin
         });
     }
 
-    public override async Task HandleAsync(ApiVersionAchievementTierSearchPostRequest req, CancellationToken ct)
+    public override async Task HandleAsync(AchievementTierSearchPostRequest req, CancellationToken ct)
     {
         //Response = new()
         //{
@@ -59,7 +58,7 @@ public class CreateAchievementEndpoint : FastEndpoints.Endpoint<CreateAchievemen
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/create");
+        Post("/api/3.18/achievement/create");
         
         
         AllowAnonymous();
@@ -71,7 +70,6 @@ public class CreateAchievementEndpoint : FastEndpoints.Endpoint<CreateAchievemen
 
         Summary(s => {
             s.Summary = "Create Achievement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "the application key the achievement is for");
             s.RequestParam(r => r.Title, "the title of the achievement (255 character limit)");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
@@ -108,7 +106,7 @@ public class CreateAchievementTierEndpoint : FastEndpoints.Endpoint<CreateAchiev
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/tier/create");
+        Post("/api/3.18/achievement/tier/create");
         
         
         AllowAnonymous();
@@ -120,7 +118,6 @@ public class CreateAchievementTierEndpoint : FastEndpoints.Endpoint<CreateAchiev
 
         Summary(s => {
             s.Summary = "Create Achievement Tier";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AchievementId, "the achievement id for adding a new tier");
             s.RequestParam(r => r.ScoreAllInstances, "score all instances");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
@@ -158,7 +155,7 @@ public class DeleteAchievementEndpoint : FastEndpoints.Endpoint<DeleteAchievemen
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/delete");
+        Post("/api/3.18/achievement/delete");
         
         
         AllowAnonymous();
@@ -170,7 +167,6 @@ public class DeleteAchievementEndpoint : FastEndpoints.Endpoint<DeleteAchievemen
 
         Summary(s => {
             s.Summary = "Delete Achievement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AchievementId, "The ID of the achievement");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.Responses[200] = "successful operation";
@@ -196,7 +192,7 @@ public class DeleteAchievementTierEndpoint : FastEndpoints.Endpoint<DeleteAchiev
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/tier/delete");
+        Post("/api/3.18/achievement/tier/delete");
         
         
         AllowAnonymous();
@@ -208,7 +204,6 @@ public class DeleteAchievementTierEndpoint : FastEndpoints.Endpoint<DeleteAchiev
 
         Summary(s => {
             s.Summary = "Delete Achievement Tier";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AchievementTierId, "the achievement id for deletion");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required).");
             s.Responses[200] = "successful operation";
@@ -234,7 +229,7 @@ public class GetAchievementEndpoint : FastEndpoints.Endpoint<GetAchievementReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/achievement/get");
+        Get("/api/3.18/achievement/get");
         
         
         AllowAnonymous();
@@ -246,7 +241,6 @@ public class GetAchievementEndpoint : FastEndpoints.Endpoint<GetAchievementReque
 
         Summary(s => {
             s.Summary = "Get Achievement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AchievementId, "The ID of the achievement");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -274,7 +268,7 @@ public class GetAchievementTierEndpoint : FastEndpoints.Endpoint<GetAchievementT
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/tier/get");
+        Post("/api/3.18/achievement/tier/get");
         
         
         AllowAnonymous();
@@ -286,7 +280,6 @@ public class GetAchievementTierEndpoint : FastEndpoints.Endpoint<GetAchievementT
 
         Summary(s => {
             s.Summary = "Gets an achievement tier";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AchievementTierId, "the achievement tier id that is being retrieved");
             s.Responses[200] = "successful operation";
@@ -312,7 +305,7 @@ public class GetUserAchievementsEndpoint : FastEndpoints.Endpoint<GetUserAchieve
 {
     public override void Configure()
     {
-        Get("/api/{version}/achievement/progress/get");
+        Get("/api/3.18/achievement/progress/get");
         
         
         AllowAnonymous();
@@ -324,7 +317,6 @@ public class GetUserAchievementsEndpoint : FastEndpoints.Endpoint<GetUserAchieve
 
         Summary(s => {
             s.Summary = "Get Achievement Progress";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "determines whether to return null fields in the response");
             s.RequestParam(r => r.AppKey, "the application key for filtering results by application");
             s.RequestParam(r => r.IncludeUndiscovered, "determines whether to return achievements that the user has not discovered yet");
@@ -359,7 +351,7 @@ public class ListAchievementTagsEndpoint : FastEndpoints.Endpoint<ListAchievemen
 {
     public override void Configure()
     {
-        Get("/api/{version}/achievement/tag/list");
+        Get("/api/3.18/achievement/tag/list");
         
         
         AllowAnonymous();
@@ -371,7 +363,6 @@ public class ListAchievementTagsEndpoint : FastEndpoints.Endpoint<ListAchievemen
 
         Summary(s => {
             s.Summary = "List Achievement Tags";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "filter results by application key");
             s.Responses[200] = "successful operation";
         });
@@ -396,7 +387,7 @@ public class ListAchievementsEndpoint : FastEndpoints.Endpoint<ListAchievementsR
 {
     public override void Configure()
     {
-        Get("/api/{version}/achievement/list");
+        Get("/api/3.18/achievement/list");
         
         
         AllowAnonymous();
@@ -408,7 +399,6 @@ public class ListAchievementsEndpoint : FastEndpoints.Endpoint<ListAchievementsR
 
         Summary(s => {
             s.Summary = "List Achievements";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "the field to sort by. See AchievementApiMap");
             s.RequestParam(r => r.Descending, "determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "the start index for pagination");
@@ -443,7 +433,7 @@ public class SearchAchievementsEndpoint : FastEndpoints.Endpoint<SearchAchieveme
 {
     public override void Configure()
     {
-        Get("/api/{version}/achievement/search");
+        Get("/api/3.18/achievement/search");
         
         
         AllowAnonymous();
@@ -455,7 +445,6 @@ public class SearchAchievementsEndpoint : FastEndpoints.Endpoint<SearchAchieveme
 
         Summary(s => {
             s.Summary = "Search Achievements";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.SortField, "the field to sort by. See AchievementApiMap");
             s.RequestParam(r => r.Descending, "determines whether the sorted list is in descending or ascending order");
@@ -491,7 +480,7 @@ public class UpdateAchievementEndpoint : FastEndpoints.Endpoint<UpdateAchievemen
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/update");
+        Post("/api/3.18/achievement/update");
         
         
         AllowAnonymous();
@@ -503,7 +492,6 @@ public class UpdateAchievementEndpoint : FastEndpoints.Endpoint<UpdateAchievemen
 
         Summary(s => {
             s.Summary = "Update Achievement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AchievementId, "the achievement ID for updating an existing achievement");
@@ -542,7 +530,7 @@ public class UpdateAchievementTierEndpoint : FastEndpoints.Endpoint<UpdateAchiev
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/tier/update");
+        Post("/api/3.18/achievement/tier/update");
         
         
         AllowAnonymous();
@@ -554,7 +542,6 @@ public class UpdateAchievementTierEndpoint : FastEndpoints.Endpoint<UpdateAchiev
 
         Summary(s => {
             s.Summary = "Update Achievement Tier";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AchievementTierId, "the achievement tier id for updating");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -592,7 +579,7 @@ public class UpdateUserAchievementEndpoint : FastEndpoints.Endpoint<UpdateUserAc
 {
     public override void Configure()
     {
-        Post("/api/{version}/achievement/progress/update");
+        Post("/api/3.18/achievement/progress/update");
         
         
         AllowAnonymous();
@@ -604,7 +591,6 @@ public class UpdateUserAchievementEndpoint : FastEndpoints.Endpoint<UpdateUserAc
 
         Summary(s => {
             s.Summary = "Update Achievement Progress";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.AchievementId, "the achievement id (achievementId or tag required)");
             s.RequestParam(r => r.Tag, "the analytic tag to identify an achievement (achievementId or tag required)");

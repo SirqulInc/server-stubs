@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateVehicleRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("vehicle")]
@@ -25,11 +20,6 @@ public class CreateVehicleRequest
 public class DeleteVehicleRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The id of the vehicle to delete
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -38,11 +28,6 @@ public class DeleteVehicleRequest
 public class GetVehicleRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The id of the vehicle requested
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -50,11 +35,6 @@ public class GetVehicleRequest
 }
 public class SearchVehicleRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Filter by service hub
     /// </summary>
@@ -93,11 +73,6 @@ public class SearchVehicleRequest
 }
 public class UpdateVehicleRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of the vehicle to update
     /// </summary>

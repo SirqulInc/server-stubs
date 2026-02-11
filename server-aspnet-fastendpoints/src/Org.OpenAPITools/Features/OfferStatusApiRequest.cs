@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateOfferTransactionStatusRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -65,11 +60,6 @@ public class CreateOfferTransactionStatusRequest
 public class DeleteOfferTransactionStatusRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -98,11 +88,6 @@ public class DeleteOfferTransactionStatusRequest
 public class GetOfferTransactionStatusRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -130,11 +115,6 @@ public class GetOfferTransactionStatusRequest
 }
 public class SearchOfferTransactionStatusesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -198,11 +178,6 @@ public class SearchOfferTransactionStatusesRequest
 }
 public class UpdateOfferTransactionStatusRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>

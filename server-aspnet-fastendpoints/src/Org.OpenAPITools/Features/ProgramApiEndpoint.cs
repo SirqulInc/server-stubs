@@ -12,7 +12,7 @@ public class CreateProgramEndpoint : FastEndpoints.Endpoint<CreateProgramRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/program");
+        Post("/api/3.18/program");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateProgramEndpoint : FastEndpoints.Endpoint<CreateProgramRequest
 
         Summary(s => {
             s.Summary = "Create Program";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class DeleteProgramEndpoint : FastEndpoints.Endpoint<DeleteProgramRequest
 {
     public override void Configure()
     {
-        Delete("/api/{version}/program/{id}");
+        Delete("/api/3.18/program/{id}");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class DeleteProgramEndpoint : FastEndpoints.Endpoint<DeleteProgramRequest
 
         Summary(s => {
             s.Summary = "Delete Program";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the program");
             s.Responses[0] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class GetProgramEndpoint : FastEndpoints.Endpoint<GetProgramRequest, Prog
 {
     public override void Configure()
     {
-        Get("/api/{version}/program/{id}");
+        Get("/api/3.18/program/{id}");
         
         
         AllowAnonymous();
@@ -99,7 +97,6 @@ public class GetProgramEndpoint : FastEndpoints.Endpoint<GetProgramRequest, Prog
 
         Summary(s => {
             s.Summary = "Get Program";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the program");
             s.Responses[200] = "successful operation";
         });
@@ -124,7 +121,7 @@ public class PostProgramEndpoint : FastEndpoints.Endpoint<PostProgramRequest, Pr
 {
     public override void Configure()
     {
-        Post("/api/{version}/program/{id}");
+        Post("/api/3.18/program/{id}");
         
         
         AllowAnonymous();
@@ -136,7 +133,6 @@ public class PostProgramEndpoint : FastEndpoints.Endpoint<PostProgramRequest, Pr
 
         Summary(s => {
             s.Summary = "Update Program";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the program");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -162,7 +158,7 @@ public class PutProgramEndpoint : FastEndpoints.Endpoint<PutProgramRequest, Prog
 {
     public override void Configure()
     {
-        Put("/api/{version}/program/{id}");
+        Put("/api/3.18/program/{id}");
         
         
         AllowAnonymous();
@@ -174,7 +170,6 @@ public class PutProgramEndpoint : FastEndpoints.Endpoint<PutProgramRequest, Prog
 
         Summary(s => {
             s.Summary = "Update Program";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the program");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -200,7 +195,7 @@ public class SearchProgramsEndpoint : FastEndpoints.Endpoint<SearchProgramsReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/program");
+        Get("/api/3.18/program");
         
         
         AllowAnonymous();
@@ -212,7 +207,6 @@ public class SearchProgramsEndpoint : FastEndpoints.Endpoint<SearchProgramsReque
 
         Summary(s => {
             s.Summary = "Search Programs";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");

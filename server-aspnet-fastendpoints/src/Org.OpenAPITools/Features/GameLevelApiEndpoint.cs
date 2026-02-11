@@ -12,7 +12,7 @@ public class CreateGameLevelEndpoint : FastEndpoints.Endpoint<CreateGameLevelReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/level/create");
+        Post("/api/3.18/level/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateGameLevelEndpoint : FastEndpoints.Endpoint<CreateGameLevelReq
 
         Summary(s => {
             s.Summary = "Create Game Level";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the level.");
             s.RequestParam(r => r.GameData, "The game level data: xml, json, or other text based format.");
@@ -74,7 +73,7 @@ public class DeleteGameLevelEndpoint : FastEndpoints.Endpoint<DeleteGameLevelReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/level/delete");
+        Post("/api/3.18/level/delete");
         
         
         AllowAnonymous();
@@ -86,7 +85,6 @@ public class DeleteGameLevelEndpoint : FastEndpoints.Endpoint<DeleteGameLevelReq
 
         Summary(s => {
             s.Summary = "Delete Game Level";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.LevelId, "The id of the level to return.");
             s.Responses[200] = "successful operation";
@@ -112,7 +110,7 @@ public class GetGameLevelEndpoint : FastEndpoints.Endpoint<GetGameLevelRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/level/get");
+        Get("/api/3.18/level/get");
         
         
         AllowAnonymous();
@@ -124,7 +122,6 @@ public class GetGameLevelEndpoint : FastEndpoints.Endpoint<GetGameLevelRequest, 
 
         Summary(s => {
             s.Summary = "Get Game Level";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.LevelId, "The id of the level to return.");
             s.RequestParam(r => r.IncludeGameData, "If true include the game level data, otherwise don&#39;t. default is false.");
@@ -151,7 +148,7 @@ public class GetGameLevelsByApplicationEndpoint : FastEndpoints.Endpoint<GetGame
 {
     public override void Configure()
     {
-        Get("/api/{version}/level/search");
+        Get("/api/3.18/level/search");
         
         
         AllowAnonymous();
@@ -163,7 +160,6 @@ public class GetGameLevelsByApplicationEndpoint : FastEndpoints.Endpoint<GetGame
 
         Summary(s => {
             s.Summary = "Search Game Levels";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Keyword, "Match the keyword to the owner name or level name.");
@@ -197,7 +193,7 @@ public class GetGameLevelsByBillableEntityEndpoint : FastEndpoints.Endpoint<GetG
 {
     public override void Configure()
     {
-        Get("/api/{version}/level/searchByBillableEntity");
+        Get("/api/3.18/level/searchByBillableEntity");
         
         
         AllowAnonymous();
@@ -209,7 +205,6 @@ public class GetGameLevelsByBillableEntityEndpoint : FastEndpoints.Endpoint<GetG
 
         Summary(s => {
             s.Summary = "Search Game Level by Billable Entity";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Keyword, "The keyword used to search");
@@ -241,7 +236,7 @@ public class GetQuestionsInLevelEndpoint : FastEndpoints.Endpoint<GetQuestionsIn
 {
     public override void Configure()
     {
-        Get("/api/{version}/level/questions/get");
+        Get("/api/3.18/level/questions/get");
         
         
         AllowAnonymous();
@@ -253,7 +248,6 @@ public class GetQuestionsInLevelEndpoint : FastEndpoints.Endpoint<GetQuestionsIn
 
         Summary(s => {
             s.Summary = "Get Level Questions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LevelId, "the id of the level to get questions from");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.Responses[200] = "successful operation";
@@ -279,7 +273,7 @@ public class GetWordsInLevelEndpoint : FastEndpoints.Endpoint<GetWordsInLevelReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/level/words/get");
+        Get("/api/3.18/level/words/get");
         
         
         AllowAnonymous();
@@ -291,7 +285,6 @@ public class GetWordsInLevelEndpoint : FastEndpoints.Endpoint<GetWordsInLevelReq
 
         Summary(s => {
             s.Summary = "Get Level Words";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LevelId, "the id of the level to get words for");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.Responses[200] = "successful operation";
@@ -317,7 +310,7 @@ public class UpdateGameLevelEndpoint : FastEndpoints.Endpoint<UpdateGameLevelReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/level/update");
+        Post("/api/3.18/level/update");
         
         
         AllowAnonymous();
@@ -329,7 +322,6 @@ public class UpdateGameLevelEndpoint : FastEndpoints.Endpoint<UpdateGameLevelReq
 
         Summary(s => {
             s.Summary = "Update Game Level";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.LevelId, "If update then include the level Id.");
             s.RequestParam(r => r.AppKey, "The game application key to save the level for.");
@@ -380,7 +372,7 @@ public class UpdateQuestionsInLevelEndpoint : FastEndpoints.Endpoint<UpdateQuest
 {
     public override void Configure()
     {
-        Post("/api/{version}/level/questions/update");
+        Post("/api/3.18/level/questions/update");
         
         
         AllowAnonymous();
@@ -392,7 +384,6 @@ public class UpdateQuestionsInLevelEndpoint : FastEndpoints.Endpoint<UpdateQuest
 
         Summary(s => {
             s.Summary = "Update Level Questions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LevelId, "the id of the level to update questions on");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.QuestionIds, "the IDs of the questions to update");
@@ -419,7 +410,7 @@ public class UpdateWordsInLevelEndpoint : FastEndpoints.Endpoint<UpdateWordsInLe
 {
     public override void Configure()
     {
-        Post("/api/{version}/level/words/update");
+        Post("/api/3.18/level/words/update");
         
         
         AllowAnonymous();
@@ -431,7 +422,6 @@ public class UpdateWordsInLevelEndpoint : FastEndpoints.Endpoint<UpdateWordsInLe
 
         Summary(s => {
             s.Summary = "Update Level Words";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LevelId, "the id of the level to update words for");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.WordIds, "the ids of the words to update for the level");

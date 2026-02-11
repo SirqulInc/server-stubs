@@ -12,7 +12,7 @@ public class AddPreviewEndpoint : FastEndpoints.Endpoint<AddPreviewRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/creative/addpreview");
+        Post("/api/3.18/creative/addpreview");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddPreviewEndpoint : FastEndpoints.Endpoint<AddPreviewRequest, Sirq
 
         Summary(s => {
             s.Summary = "Add Preview";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account");
             s.RequestParam(r => r.CreativeId, "The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.");
             s.Responses[200] = "successful operation";
@@ -50,7 +49,7 @@ public class AdsFindEndpoint : FastEndpoints.Endpoint<AdsFindRequest, List<Missi
 {
     public override void Configure()
     {
-        Get("/api/{version}/ads/find");
+        Get("/api/3.18/ads/find");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class AdsFindEndpoint : FastEndpoints.Endpoint<AdsFindRequest, List<Missi
 
         Summary(s => {
             s.Summary = "Find Missions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.");
             s.RequestParam(r => r.Randomize, "return a random set of results, default is true. If false returns in nature order.");
             s.RequestParam(r => r.TargetedAdsOnly, "return only ads targets to the specific app, no global ads.");
@@ -102,7 +100,7 @@ public class CreateCreativeEndpoint : FastEndpoints.Endpoint<CreateCreativeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/creative/create");
+        Post("/api/3.18/creative/create");
         
         
         AllowAnonymous();
@@ -114,7 +112,6 @@ public class CreateCreativeEndpoint : FastEndpoints.Endpoint<CreateCreativeReque
 
         Summary(s => {
             s.Summary = "Create Creative";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the level.");
             s.RequestParam(r => r.Active, "If true set the game level as active. Default is false.");
@@ -153,7 +150,7 @@ public class DeleteCreativeEndpoint : FastEndpoints.Endpoint<DeleteCreativeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/creative/delete");
+        Post("/api/3.18/creative/delete");
         
         
         AllowAnonymous();
@@ -165,7 +162,6 @@ public class DeleteCreativeEndpoint : FastEndpoints.Endpoint<DeleteCreativeReque
 
         Summary(s => {
             s.Summary = "Delete Creative";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.CreativeId, "the id of the creative to delete");
             s.Responses[200] = "successful operation";
@@ -191,7 +187,7 @@ public class GetCreativeEndpoint : FastEndpoints.Endpoint<GetCreativeRequest, Cr
 {
     public override void Configure()
     {
-        Get("/api/{version}/creative/get");
+        Get("/api/3.18/creative/get");
         
         
         AllowAnonymous();
@@ -203,7 +199,6 @@ public class GetCreativeEndpoint : FastEndpoints.Endpoint<GetCreativeRequest, Cr
 
         Summary(s => {
             s.Summary = "Get Creative";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.CreativeId, "the ID of the creative to get");
             s.Responses[200] = "successful operation";
@@ -229,7 +224,7 @@ public class GetCreativesByApplicationEndpoint : FastEndpoints.Endpoint<GetCreat
 {
     public override void Configure()
     {
-        Get("/api/{version}/creative/search");
+        Get("/api/3.18/creative/search");
         
         
         AllowAnonymous();
@@ -241,7 +236,6 @@ public class GetCreativesByApplicationEndpoint : FastEndpoints.Endpoint<GetCreat
 
         Summary(s => {
             s.Summary = "Search Creatives";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Start, "Start the result set at some index.");
@@ -271,7 +265,7 @@ public class RemovePreviewEndpoint : FastEndpoints.Endpoint<RemovePreviewRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/creative/removepreview");
+        Post("/api/3.18/creative/removepreview");
         
         
         AllowAnonymous();
@@ -283,7 +277,6 @@ public class RemovePreviewEndpoint : FastEndpoints.Endpoint<RemovePreviewRequest
 
         Summary(s => {
             s.Summary = "Remove Preview";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the ID of the logged in user");
             s.RequestParam(r => r.CreativeId, "the ID of the creative to remove preview");
             s.Responses[200] = "successful operation";
@@ -309,7 +302,7 @@ public class UpdateCreativeEndpoint : FastEndpoints.Endpoint<UpdateCreativeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/creative/update");
+        Post("/api/3.18/creative/update");
         
         
         AllowAnonymous();
@@ -321,7 +314,6 @@ public class UpdateCreativeEndpoint : FastEndpoints.Endpoint<UpdateCreativeReque
 
         Summary(s => {
             s.Summary = "Update Creative";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.CreativeId, "the creative Id to upate.");
             s.RequestParam(r => r.Name, "The name of the level.");

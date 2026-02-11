@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateRatingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -70,11 +65,6 @@ public class CreateRatingRequest
 public class DeleteRatingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -92,11 +82,6 @@ public class DeleteRatingRequest
 }
 public class SearchLocationRatingIndexesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Comma separated list of category ids to filter the results by
     /// </summary>
@@ -186,11 +171,6 @@ public class SearchLocationRatingIndexesRequest
 public class SearchRatingIndexesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Filter results by a ratable type {RETAILER_LOCATION}
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("ratableType")]
@@ -259,11 +239,6 @@ public class SearchRatingIndexesRequest
 public class SearchRatingsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -321,11 +296,6 @@ public class SearchRatingsRequest
 }
 public class UpdateRatingRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>

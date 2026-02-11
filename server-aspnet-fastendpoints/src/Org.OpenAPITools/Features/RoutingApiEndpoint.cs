@@ -12,7 +12,7 @@ public class ComputeRoutingEndpoint : FastEndpoints.Endpoint<ComputeRoutingReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/routing/compute");
+        Post("/api/3.18/routing/compute");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ComputeRoutingEndpoint : FastEndpoints.Endpoint<ComputeRoutingReque
 
         Summary(s => {
             s.Summary = "Compute Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Data, "Json object containing inputs for generating the routes. See description for more info. Also see RoutingRequest");
             s.Responses[200] = "successful operation";
         });

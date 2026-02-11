@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddConnectionToGroupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// whether to return nulls or not
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("returnNulls")]
@@ -60,11 +55,6 @@ public class AddConnectionToGroupRequest
 public class AddConnectionsToGroupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -103,11 +93,6 @@ public class AddConnectionsToGroupRequest
 public class AddSubGroupsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// whether to return nulls or not
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("returnNulls")]
@@ -145,11 +130,6 @@ public class AddSubGroupsRequest
 }
 public class CreateOrUpdateConnectionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -224,11 +204,6 @@ public class CreateOrUpdateConnectionRequest
 public class CreateOrUpdateGroupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// whether to return nulls or not
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("returnNulls")]
@@ -302,11 +277,6 @@ public class CreateOrUpdateGroupRequest
 public class FollowAcceptRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -324,11 +294,6 @@ public class FollowAcceptRequest
 }
 public class FollowRejectRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>
@@ -348,11 +313,6 @@ public class FollowRejectRequest
 public class FollowRemoveRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -370,11 +330,6 @@ public class FollowRemoveRequest
 }
 public class FollowRequestRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>
@@ -398,11 +353,6 @@ public class FollowRequestRequest
 }
 public class FriendAcceptRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -442,11 +392,6 @@ public class FriendAcceptRequest
 public class FriendRejectRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -485,11 +430,6 @@ public class FriendRejectRequest
 public class FriendRemoveRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -517,11 +457,6 @@ public class FriendRemoveRequest
 }
 public class FriendRequestRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -556,11 +491,6 @@ public class FriendRequestRequest
 public class GetConnectionSentFriendRequestsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the ID of the device
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -573,11 +503,6 @@ public class GetConnectionSentFriendRequestsRequest
 }
 public class GetConnectionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// whether to return nulls or not
     /// </summary>
@@ -657,11 +582,6 @@ public class GetConnectionsRequest
 public class GetGroupDetailsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -694,11 +614,6 @@ public class GetGroupDetailsRequest
 }
 public class GroupSearchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -753,11 +668,6 @@ public class GroupSearchRequest
 public class RemoveConnectionFromGroupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// whether to return nulls or not
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("returnNulls")]
@@ -806,11 +716,6 @@ public class RemoveConnectionFromGroupRequest
 public class RemoveConnectionsFromGroupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -849,11 +754,6 @@ public class RemoveConnectionsFromGroupRequest
 public class RemoveGroupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// whether to return nulls or not
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("returnNulls")]
@@ -886,11 +786,6 @@ public class RemoveGroupRequest
 }
 public class RemoveSubGroupsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// whether to return nulls or not
     /// </summary>
@@ -929,11 +824,6 @@ public class RemoveSubGroupsRequest
 }
 public class SearchConnectionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// return all json attributes if true. defualt is true.
     /// </summary>

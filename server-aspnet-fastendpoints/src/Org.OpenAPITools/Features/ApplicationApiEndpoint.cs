@@ -12,7 +12,7 @@ public class CreateApplicationEndpoint : FastEndpoints.Endpoint<CreateApplicatio
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/create");
+        Post("/api/3.18/application/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateApplicationEndpoint : FastEndpoints.Endpoint<CreateApplicatio
 
         Summary(s => {
             s.Summary = "Create Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppName, "The name of the application");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -127,7 +126,7 @@ public class CreateApplicationPlacementEndpoint : FastEndpoints.Endpoint<CreateA
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/placement/create");
+        Post("/api/3.18/application/placement/create");
         
         
         AllowAnonymous();
@@ -139,7 +138,6 @@ public class CreateApplicationPlacementEndpoint : FastEndpoints.Endpoint<CreateA
 
         Summary(s => {
             s.Summary = "Create Ad Placement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The appKey of the application the ad placement is for");
             s.RequestParam(r => r.Size, "The ad placement size {BANNER, LEADERBOARD, SKYSCRAPER, INTERSTITIAL, CUSTOM");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
@@ -174,7 +172,7 @@ public class DeleteApplicationEndpoint : FastEndpoints.Endpoint<DeleteApplicatio
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/delete");
+        Post("/api/3.18/application/delete");
         
         
         AllowAnonymous();
@@ -186,7 +184,6 @@ public class DeleteApplicationEndpoint : FastEndpoints.Endpoint<DeleteApplicatio
 
         Summary(s => {
             s.Summary = "Delete Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the application.");
             s.RequestParam(r => r.AppKey, "The key of the application to be deleted");
             s.Responses[200] = "successful operation";
@@ -212,7 +209,7 @@ public class DeleteApplicationPlacementEndpoint : FastEndpoints.Endpoint<DeleteA
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/placement/delete");
+        Post("/api/3.18/application/placement/delete");
         
         
         AllowAnonymous();
@@ -224,7 +221,6 @@ public class DeleteApplicationPlacementEndpoint : FastEndpoints.Endpoint<DeleteA
 
         Summary(s => {
             s.Summary = "Delete Ad Placement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PlacementId, "The id of the placement to delete, the user must have rights to the application the ad placement is for");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -251,7 +247,7 @@ public class GetApplicationEndpoint : FastEndpoints.Endpoint<GetApplicationReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/get");
+        Get("/api/3.18/application/get");
         
         
         AllowAnonymous();
@@ -263,7 +259,6 @@ public class GetApplicationEndpoint : FastEndpoints.Endpoint<GetApplicationReque
 
         Summary(s => {
             s.Summary = "Get Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The key of the application");
             s.RequestParam(r => r.ApplicationId, "Application Id");
             s.Responses[200] = "successful operation";
@@ -289,7 +284,7 @@ public class GetApplicationPlacementEndpoint : FastEndpoints.Endpoint<GetApplica
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/placement/get");
+        Get("/api/3.18/application/placement/get");
         
         
         AllowAnonymous();
@@ -301,7 +296,6 @@ public class GetApplicationPlacementEndpoint : FastEndpoints.Endpoint<GetApplica
 
         Summary(s => {
             s.Summary = "Get Ad Placement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PlacementId, "The id of the placement");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -324,11 +318,11 @@ public class GetApplicationPlacementEndpoint : FastEndpoints.Endpoint<GetApplica
 /// Get API versions
 /// </summary>
 
-public class GetApplicationVersionsEndpoint : FastEndpoints.Endpoint<GetApplicationVersionsRequest, SirqulResponse>
+public class GetApplicationVersionsEndpoint : FastEndpoints.EndpointWithoutRequest<SirqulResponse>
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/versions");
+        Get("/api/3.18/application/versions");
         
         
         AllowAnonymous();
@@ -340,12 +334,11 @@ public class GetApplicationVersionsEndpoint : FastEndpoints.Endpoint<GetApplicat
 
         Summary(s => {
             s.Summary = "Get API versions";
-            s.RequestParam(r => r.Version, "");
             s.Responses[200] = "successful operation";
         });
     }
 
-    public override async Task HandleAsync(GetApplicationVersionsRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         //Response = new()
         //{
@@ -364,7 +357,7 @@ public class GetUniqueUsersByAppEndpoint : FastEndpoints.Endpoint<GetUniqueUsers
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/users");
+        Get("/api/3.18/application/users");
         
         
         AllowAnonymous();
@@ -376,7 +369,6 @@ public class GetUniqueUsersByAppEndpoint : FastEndpoints.Endpoint<GetUniqueUsers
 
         Summary(s => {
             s.Summary = "Search Application Users";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.Q, "Q");
             s.RequestParam(r => r.Keyword, "The keyword used to search");
@@ -408,7 +400,7 @@ public class ListApplicationsEndpoint : FastEndpoints.Endpoint<ListApplicationsR
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/list");
+        Get("/api/3.18/application/list");
         
         
         AllowAnonymous();
@@ -420,7 +412,6 @@ public class ListApplicationsEndpoint : FastEndpoints.Endpoint<ListApplicationsR
 
         Summary(s => {
             s.Summary = "List Applications";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the application owner/manager");
             s.RequestParam(r => r.Q, "Q");
             s.RequestParam(r => r.Keyword, "The keyword used to search for title, about, and description fields");
@@ -464,7 +455,7 @@ public class SearchApplicationPlacementEndpoint : FastEndpoints.Endpoint<SearchA
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/placement/search");
+        Get("/api/3.18/application/placement/search");
         
         
         AllowAnonymous();
@@ -476,7 +467,6 @@ public class SearchApplicationPlacementEndpoint : FastEndpoints.Endpoint<SearchA
 
         Summary(s => {
             s.Summary = "Search for Ad Placements";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The key of the application");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -505,7 +495,7 @@ public class SearchApplicationSettingsEndpoint : FastEndpoints.Endpoint<SearchAp
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/settings/search");
+        Get("/api/3.18/application/settings/search");
         
         
         AllowAnonymous();
@@ -517,7 +507,6 @@ public class SearchApplicationSettingsEndpoint : FastEndpoints.Endpoint<SearchAp
 
         Summary(s => {
             s.Summary = "Search for Application Settings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ConnectionAccountId, "The account id used to view another person&#39;s account");
@@ -549,7 +538,7 @@ public class SearchApplicationsEndpoint : FastEndpoints.Endpoint<SearchApplicati
 {
     public override void Configure()
     {
-        Get("/api/{version}/application/search");
+        Get("/api/3.18/application/search");
         
         
         AllowAnonymous();
@@ -561,7 +550,6 @@ public class SearchApplicationsEndpoint : FastEndpoints.Endpoint<SearchApplicati
 
         Summary(s => {
             s.Summary = "Search Applications";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Latitude, "The location of the device");
@@ -601,7 +589,7 @@ public class UpdateApplicationEndpoint : FastEndpoints.Endpoint<UpdateApplicatio
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/update");
+        Post("/api/3.18/application/update");
         
         
         AllowAnonymous();
@@ -613,7 +601,6 @@ public class UpdateApplicationEndpoint : FastEndpoints.Endpoint<UpdateApplicatio
 
         Summary(s => {
             s.Summary = "Update Application";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key for updating an existing application");
             s.RequestParam(r => r.AppName, "The name of the application");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
@@ -717,7 +704,7 @@ public class UpdateApplicationActiveEndpoint : FastEndpoints.Endpoint<UpdateAppl
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/active");
+        Post("/api/3.18/application/active");
         
         
         AllowAnonymous();
@@ -729,7 +716,6 @@ public class UpdateApplicationActiveEndpoint : FastEndpoints.Endpoint<UpdateAppl
 
         Summary(s => {
             s.Summary = "Change Appliation Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the application.");
             s.RequestParam(r => r.AppKey, "The key of the application to be deleted");
             s.RequestParam(r => r.Active, "If true then set to active, false otherwise");
@@ -756,7 +742,7 @@ public class UpdateApplicationPlacementEndpoint : FastEndpoints.Endpoint<UpdateA
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/placement/update");
+        Post("/api/3.18/application/placement/update");
         
         
         AllowAnonymous();
@@ -768,7 +754,6 @@ public class UpdateApplicationPlacementEndpoint : FastEndpoints.Endpoint<UpdateA
 
         Summary(s => {
             s.Summary = "Update Ad Placement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PlacementId, "The id of the placement to update, the user must have rights to the application the ad placement is for");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -803,7 +788,7 @@ public class UploadApplicationCertificateEndpoint : FastEndpoints.Endpoint<Uploa
 {
     public override void Configure()
     {
-        Post("/api/{version}/application/certificate/create");
+        Post("/api/3.18/application/certificate/create");
         
         
         AllowAnonymous();
@@ -815,7 +800,6 @@ public class UploadApplicationCertificateEndpoint : FastEndpoints.Endpoint<Uploa
 
         Summary(s => {
             s.Summary = "Create Application Certificate";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The key of the application");
             s.RequestParam(r => r.DeviceId, "Device Id");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the application.");

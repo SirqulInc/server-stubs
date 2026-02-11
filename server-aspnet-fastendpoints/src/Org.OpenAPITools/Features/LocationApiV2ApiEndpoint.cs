@@ -12,7 +12,7 @@ public class CreateLocationV2Endpoint : FastEndpoints.Endpoint<CreateLocationV2R
 {
     public override void Configure()
     {
-        Post("/api/{version}/location");
+        Post("/api/3.18/location");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateLocationV2Endpoint : FastEndpoints.Endpoint<CreateLocationV2R
 
         Summary(s => {
             s.Summary = "Create new location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class UpdateLocationV2Endpoint : FastEndpoints.Endpoint<UpdateLocationV2R
 {
     public override void Configure()
     {
-        Post("/api/{version}/location/{id}");
+        Post("/api/3.18/location/{id}");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class UpdateLocationV2Endpoint : FastEndpoints.Endpoint<UpdateLocationV2R
 
         Summary(s => {
             s.Summary = "Update an existing location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the location to update");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";

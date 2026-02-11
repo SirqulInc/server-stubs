@@ -12,7 +12,7 @@ public class AddUsersToPermissionableEndpoint : FastEndpoints.Endpoint<AddUsersT
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/permissions/add");
+        Post("/api/3.18/consumer/permissions/add");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddUsersToPermissionableEndpoint : FastEndpoints.Endpoint<AddUsersT
 
         Summary(s => {
             s.Summary = "Add User";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PermissionableType, "the permissionable type of the object");
             s.RequestParam(r => r.PermissionableId, "the id of the permissionable object");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -65,7 +64,7 @@ public class ApprovePermissionableEndpoint : FastEndpoints.Endpoint<ApprovePermi
 {
     public override void Configure()
     {
-        Post("/api/{version}/permissionable/approve");
+        Post("/api/3.18/permissionable/approve");
         
         
         AllowAnonymous();
@@ -77,7 +76,6 @@ public class ApprovePermissionableEndpoint : FastEndpoints.Endpoint<ApprovePermi
 
         Summary(s => {
             s.Summary = "Approve Permissionable";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PermissionableType, "The permissionable type of the object");
             s.RequestParam(r => r.PermissionableId, "The id of the permissionable object");
             s.RequestParam(r => r.DeviceId, "A unique ID given by the device (deviceId or accountId required)");
@@ -106,7 +104,7 @@ public class LeaveFromPermissionableEndpoint : FastEndpoints.Endpoint<LeaveFromP
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/permissions/leave");
+        Post("/api/3.18/consumer/permissions/leave");
         
         
         AllowAnonymous();
@@ -118,7 +116,6 @@ public class LeaveFromPermissionableEndpoint : FastEndpoints.Endpoint<LeaveFromP
 
         Summary(s => {
             s.Summary = "Leave";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PermissionableType, "the permissionable type PermissionableType");
             s.RequestParam(r => r.PermissionableId, "the id of the permissionable object");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -148,7 +145,7 @@ public class RemoveUsersFromPermissionableEndpoint : FastEndpoints.Endpoint<Remo
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/permissions/remove");
+        Post("/api/3.18/consumer/permissions/remove");
         
         
         AllowAnonymous();
@@ -160,7 +157,6 @@ public class RemoveUsersFromPermissionableEndpoint : FastEndpoints.Endpoint<Remo
 
         Summary(s => {
             s.Summary = "Remove User";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PermissionableType, "the permissionable type of the object");
             s.RequestParam(r => r.PermissionableId, "the id of the permissionable object");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -195,7 +191,7 @@ public class SearchPermissionablesEndpoint : FastEndpoints.Endpoint<SearchPermis
 {
     public override void Configure()
     {
-        Get("/api/{version}/permissions/search");
+        Get("/api/3.18/permissions/search");
         
         
         AllowAnonymous();
@@ -207,7 +203,6 @@ public class SearchPermissionablesEndpoint : FastEndpoints.Endpoint<SearchPermis
 
         Summary(s => {
             s.Summary = "Search Permissionables";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "A unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ConnectionAccountId, "Filter results for a specific user account");
@@ -244,7 +239,7 @@ public class SearchPermissionablesFollowingDistanceEndpoint : FastEndpoints.Endp
 {
     public override void Configure()
     {
-        Get("/api/{version}/permissions/distancesearch");
+        Get("/api/3.18/permissions/distancesearch");
         
         
         AllowAnonymous();
@@ -256,7 +251,6 @@ public class SearchPermissionablesFollowingDistanceEndpoint : FastEndpoints.Endp
 
         Summary(s => {
             s.Summary = "Search Permissionables by Distnace";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Latitude, "The latitude of the current account");
             s.RequestParam(r => r.Longitude, "The longitude of the current account");
             s.RequestParam(r => r.DeviceId, "A unique ID given by the device (deviceId or accountId required)");

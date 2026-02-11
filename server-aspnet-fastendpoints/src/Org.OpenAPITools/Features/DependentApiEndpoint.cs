@@ -12,7 +12,7 @@ public class CreateEndpoint : FastEndpoints.Endpoint<CreateRequest, SirqulRespon
 {
     public override void Configure()
     {
-        Put("/api/{version}/cargo/dependent/{accountId}");
+        Put("/api/3.18/cargo/dependent/{accountId}");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateEndpoint : FastEndpoints.Endpoint<CreateRequest, SirqulRespon
 
         Summary(s => {
             s.Summary = "Create Dependent";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the parent account to create a dependent for");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -50,7 +49,7 @@ public class GetDependentsEndpoint : FastEndpoints.Endpoint<GetDependentsRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/cargo/dependent/{accountId}");
+        Get("/api/3.18/cargo/dependent/{accountId}");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class GetDependentsEndpoint : FastEndpoints.Endpoint<GetDependentsRequest
 
         Summary(s => {
             s.Summary = "Get dependent list of an account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the parent account to get a list of dependents");
             s.Responses[200] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class RemoveDependentEndpoint : FastEndpoints.Endpoint<RemoveDependentReq
 {
     public override void Configure()
     {
-        Delete("/api/{version}/cargo/dependent/{accountId}");
+        Delete("/api/3.18/cargo/dependent/{accountId}");
         
         
         AllowAnonymous();
@@ -100,7 +98,6 @@ public class RemoveDependentEndpoint : FastEndpoints.Endpoint<RemoveDependentReq
 
         Summary(s => {
             s.Summary = "Delete Dependent";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the parent account tied to the dependent");
             s.RequestParam(r => r.DependentId, "the id of the dependent to delete");
             s.Responses[0] = "successful operation";

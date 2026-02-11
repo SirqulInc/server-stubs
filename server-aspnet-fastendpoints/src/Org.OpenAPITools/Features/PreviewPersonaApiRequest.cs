@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreatePersonaRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account ID of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -60,11 +55,6 @@ public class CreatePersonaRequest
 public class DeletePersonaRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -78,11 +68,6 @@ public class DeletePersonaRequest
 public class GetPersonaListRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account ID of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -95,11 +80,6 @@ public class GetPersonaListRequest
 }
 public class SearchPersonaRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account ID of the user
     /// </summary>
@@ -118,11 +98,6 @@ public class SearchPersonaRequest
 }
 public class UpdatePersonaRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account ID of the user
     /// </summary>

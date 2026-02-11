@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateSecureApplicationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the user making the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -65,11 +60,6 @@ public class CreateSecureApplicationRequest
 public class DeleteSecureApplicationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the user making the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -82,11 +72,6 @@ public class DeleteSecureApplicationRequest
 }
 public class LoginSecureRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request
     /// </summary>
@@ -136,11 +121,6 @@ public class LoginSecureRequest
 public class PurchaseSecureRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The payment request object
     /// </summary>
     [FastEndpoints.FromBody]
@@ -148,11 +128,6 @@ public class PurchaseSecureRequest
 }
 public class ResetSecureRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the user making the request
     /// </summary>
@@ -166,11 +141,6 @@ public class ResetSecureRequest
 }
 public class UpdateSecureApplicationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the user making the request
     /// </summary>

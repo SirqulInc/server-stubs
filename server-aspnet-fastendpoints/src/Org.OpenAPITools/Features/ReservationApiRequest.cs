@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateReservationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -55,11 +50,6 @@ public class CreateReservationRequest
 public class DeleteReservationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -77,11 +67,6 @@ public class DeleteReservationRequest
 }
 public class ReservableAvailabilityRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id of the reservation
     /// </summary>
@@ -115,11 +100,6 @@ public class ReservableAvailabilityRequest
 }
 public class SearchAvailabilityRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device ID that the reservation is on
     /// </summary>
@@ -163,11 +143,6 @@ public class SearchAvailabilityRequest
 }
 public class SearchReservationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Device Id
     /// </summary>
@@ -226,11 +201,6 @@ public class SearchReservationsRequest
 }
 public class SearchScheduleRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the device that the reservation is on
     /// </summary>

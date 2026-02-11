@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class BatchOperationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -39,11 +34,6 @@ public class BatchOperationRequest
 }
 public class CreateNoteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
@@ -258,11 +248,6 @@ public class CreateNoteRequest
 public class DeleteNoteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -296,11 +281,6 @@ public class DeleteNoteRequest
 public class GetNoteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -323,11 +303,6 @@ public class GetNoteRequest
 }
 public class SearchNotesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -416,11 +391,6 @@ public class SearchNotesRequest
 }
 public class UpdateNoteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>

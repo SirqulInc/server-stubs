@@ -12,7 +12,7 @@ public class BatchOperationEndpoint : FastEndpoints.Endpoint<BatchOperationReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/note/batch");
+        Post("/api/3.18/note/batch");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class BatchOperationEndpoint : FastEndpoints.Endpoint<BatchOperationReque
 
         Summary(s => {
             s.Summary = "Batch Note Operation";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NotableId, "The id of the notable object the batch operation will affect");
             s.RequestParam(r => r.NotableType, "The notable object type (for example ALBUM, ASSET, OFFER, etc.)");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -53,7 +52,7 @@ public class CreateNoteEndpoint : FastEndpoints.Endpoint<CreateNoteRequest, Note
 {
     public override void Configure()
     {
-        Post("/api/{version}/note/create");
+        Post("/api/3.18/note/create");
         
         
         AllowAnonymous();
@@ -65,7 +64,6 @@ public class CreateNoteEndpoint : FastEndpoints.Endpoint<CreateNoteRequest, Note
 
         Summary(s => {
             s.Summary = "Create Note";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Comment, "The message the user wishes to leave a comment on");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
@@ -131,7 +129,7 @@ public class DeleteNoteEndpoint : FastEndpoints.Endpoint<DeleteNoteRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/note/delete");
+        Post("/api/3.18/note/delete");
         
         
         AllowAnonymous();
@@ -143,7 +141,6 @@ public class DeleteNoteEndpoint : FastEndpoints.Endpoint<DeleteNoteRequest, Sirq
 
         Summary(s => {
             s.Summary = "Delete Note";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NoteId, "The ID of the note to delete");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
@@ -173,7 +170,7 @@ public class GetNoteEndpoint : FastEndpoints.Endpoint<GetNoteRequest, SirqulResp
 {
     public override void Configure()
     {
-        Post("/api/{version}/note/get");
+        Post("/api/3.18/note/get");
         
         
         AllowAnonymous();
@@ -185,7 +182,6 @@ public class GetNoteEndpoint : FastEndpoints.Endpoint<GetNoteRequest, SirqulResp
 
         Summary(s => {
             s.Summary = "Get Note";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NoteId, "the id of the note to get");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
@@ -213,7 +209,7 @@ public class SearchNotesEndpoint : FastEndpoints.Endpoint<SearchNotesRequest, Li
 {
     public override void Configure()
     {
-        Post("/api/{version}/note/search");
+        Post("/api/3.18/note/search");
         
         
         AllowAnonymous();
@@ -225,7 +221,6 @@ public class SearchNotesEndpoint : FastEndpoints.Endpoint<SearchNotesRequest, Li
 
         Summary(s => {
             s.Summary = "Search Notes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.NotableType, "The notable object type {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, OFFER, OFFER_LOCATION, RETAILER, RETAILER_LOCATION, THEME_DESCRIPTOR}");
@@ -266,7 +261,7 @@ public class UpdateNoteEndpoint : FastEndpoints.Endpoint<UpdateNoteRequest, Note
 {
     public override void Configure()
     {
-        Post("/api/{version}/note/update");
+        Post("/api/3.18/note/update");
         
         
         AllowAnonymous();
@@ -278,7 +273,6 @@ public class UpdateNoteEndpoint : FastEndpoints.Endpoint<UpdateNoteRequest, Note
 
         Summary(s => {
             s.Summary = "Update Note";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.NoteId, "The id of the note, used when editing a comment");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");

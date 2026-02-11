@@ -12,7 +12,7 @@ public class CheckDisbursementsEndpoint : FastEndpoints.Endpoint<CheckDisburseme
 {
     public override void Configure()
     {
-        Get("/api/{version}/disbursement/check");
+        Get("/api/3.18/disbursement/check");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CheckDisbursementsEndpoint : FastEndpoints.Endpoint<CheckDisburseme
 
         Summary(s => {
             s.Summary = "Check Disbursements";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DisbursementId, "the ID of the disbursement being checked on");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class CreateDisbursementEndpoint : FastEndpoints.Endpoint<CreateDisbursem
 {
     public override void Configure()
     {
-        Post("/api/{version}/disbursement/create");
+        Post("/api/3.18/disbursement/create");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class CreateDisbursementEndpoint : FastEndpoints.Endpoint<CreateDisbursem
 
         Summary(s => {
             s.Summary = "Create Disbursement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the ID of the logging in user (must be an EXECUTIVE account)");
             s.RequestParam(r => r.ReceiverAccountId, "the ID of the account receiving the disbursement");
             s.RequestParam(r => r.OriginalSenderAccountId, "the ID of the original sender account");
@@ -95,7 +93,7 @@ public class GetDisbursementEndpoint : FastEndpoints.Endpoint<GetDisbursementReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/disbursement/get");
+        Get("/api/3.18/disbursement/get");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class GetDisbursementEndpoint : FastEndpoints.Endpoint<GetDisbursementReq
 
         Summary(s => {
             s.Summary = "Get Disbursement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.DisbursementId, "the id of the disbursement");
             s.Responses[200] = "successful operation";
@@ -133,7 +130,7 @@ public class SearchDisbursementsEndpoint : FastEndpoints.Endpoint<SearchDisburse
 {
     public override void Configure()
     {
-        Get("/api/{version}/disbursement/search");
+        Get("/api/3.18/disbursement/search");
         
         
         AllowAnonymous();
@@ -145,7 +142,6 @@ public class SearchDisbursementsEndpoint : FastEndpoints.Endpoint<SearchDisburse
 
         Summary(s => {
             s.Summary = "Search Disbursements";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.ReceiverAccountId, "filter results by the id of the account receiving the disbursement");
             s.RequestParam(r => r.Statuses, "comma separated list of status values to search for, possilbe values include: NEW, APPROVED, VALIDATING, ERROR, AUTHORIZED, CAPTURED, SETTLED");
@@ -179,7 +175,7 @@ public class UpdateDisbursementEndpoint : FastEndpoints.Endpoint<UpdateDisbursem
 {
     public override void Configure()
     {
-        Post("/api/{version}/disbursement/update");
+        Post("/api/3.18/disbursement/update");
         
         
         AllowAnonymous();
@@ -191,7 +187,6 @@ public class UpdateDisbursementEndpoint : FastEndpoints.Endpoint<UpdateDisbursem
 
         Summary(s => {
             s.Summary = "Update Disbursement";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.DisbursementId, "the id of the disbursement being updated");
             s.RequestParam(r => r.Amount, "the disbursement dollar amount being updated");

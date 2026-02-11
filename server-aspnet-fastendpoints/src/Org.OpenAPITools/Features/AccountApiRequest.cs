@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AccountLocationSearchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -185,11 +180,6 @@ public class AccountLocationSearchRequest
 public class BlockAccountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -227,11 +217,6 @@ public class BlockAccountRequest
 }
 public class CreateAccountRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The full name of the user. If this parameter is NOT empty, the following parameters will be ignored: prefixName, firstName, middleName, lastName, and suffixName
     /// </summary>
@@ -595,11 +580,6 @@ public class CreateAccountRequest
 }
 public class EditAccountRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -1014,11 +994,6 @@ public class EditAccountRequest
 public class EditUsernameRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -1041,11 +1016,6 @@ public class EditUsernameRequest
 }
 public class GetAccountRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Return Nulls
     /// </summary>
@@ -1109,11 +1079,6 @@ public class GetAccountRequest
 }
 public class GetProfileAssetsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Determines whether to return null fields in the response
     /// </summary>
@@ -1188,11 +1153,6 @@ public class GetProfileAssetsRequest
 public class GetReferralListRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1251,11 +1211,6 @@ public class GetReferralListRequest
 public class GetSettingsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -1278,11 +1233,6 @@ public class GetSettingsRequest
 }
 public class LoginDelegateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// 
     /// </summary>
@@ -1341,11 +1291,6 @@ public class LoginDelegateRequest
 }
 public class LoginGeneralRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request
     /// </summary>
@@ -1415,11 +1360,6 @@ public class LoginGeneralRequest
 public class LoginUsernameRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -1473,11 +1413,6 @@ public class LoginUsernameRequest
 public class LogoutRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -1506,11 +1441,6 @@ public class LogoutRequest
 public class MergeAccountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -1533,11 +1463,6 @@ public class MergeAccountRequest
 }
 public class PasswordChangeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account to update
     /// </summary>
@@ -1562,11 +1487,6 @@ public class PasswordChangeRequest
 public class PasswordResetRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The token associated with the account to update, good for 24 hours
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("token")]
@@ -1584,11 +1504,6 @@ public class PasswordResetRequest
 }
 public class RequestPasswordResetRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The email/username of the account
     /// </summary>
@@ -1618,11 +1533,6 @@ public class RequestPasswordResetRequest
 public class RequestValidateAccountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1630,11 +1540,6 @@ public class RequestValidateAccountRequest
 }
 public class SearchAccountsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of the account requesting
     /// </summary>
@@ -1729,11 +1634,6 @@ public class SearchAccountsRequest
 public class SecureLoginRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -1781,11 +1681,6 @@ public class SecureLoginRequest
 }
 public class SecureSignupRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The full name of the user. If this parameter is not empty, the  following parameters will be ignored: prefixName, firstName, middleName,  lastName, and suffixName 
     /// </summary>
@@ -2095,11 +1990,6 @@ public class SecureSignupRequest
 public class SetMatchTokenRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -2138,11 +2028,6 @@ public class SetMatchTokenRequest
 public class UpdateActveStatusRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -2171,11 +2056,6 @@ public class UpdateActveStatusRequest
 public class UpdateLocationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -2203,11 +2083,6 @@ public class UpdateLocationRequest
 }
 public class UpdateSettingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -2272,11 +2147,6 @@ public class UpdateSettingsRequest
 public class ValidateAccountSignupRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The token associated with the account to update, good for 24 hours
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("token")]
@@ -2284,11 +2154,6 @@ public class ValidateAccountSignupRequest
 }
 public class ValidatePasswordResetRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The token associated with the account to update, good for 24 hours
     /// </summary>

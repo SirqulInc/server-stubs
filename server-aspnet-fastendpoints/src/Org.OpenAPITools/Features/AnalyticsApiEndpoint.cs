@@ -12,7 +12,7 @@ public class ActivitiesEndpoint : FastEndpoints.Endpoint<ActivitiesRequest, List
 {
     public override void Configure()
     {
-        Get("/api/{version}/analytics/useractivity");
+        Get("/api/3.18/analytics/useractivity");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ActivitiesEndpoint : FastEndpoints.Endpoint<ActivitiesRequest, List
 
         Summary(s => {
             s.Summary = "Get User Activity";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Start, "The start of the pagination");
             s.RequestParam(r => r.Limit, "The limit of the pagination");
             s.RequestParam(r => r.AccountId, "the account id of the user");
@@ -51,7 +50,7 @@ public class AggregatedFilteredUsageEndpoint : FastEndpoints.Endpoint<Aggregated
 {
     public override void Configure()
     {
-        Get("/api/{version}/analytics/aggregatedFilteredUsage");
+        Get("/api/3.18/analytics/aggregatedFilteredUsage");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class AggregatedFilteredUsageEndpoint : FastEndpoints.Endpoint<Aggregated
 
         Summary(s => {
             s.Summary = "Get Aggregated Filtered Usage";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ApplicationId, "This parameter is deprecated.");
@@ -118,7 +116,7 @@ public class FilteredUsageEndpoint : FastEndpoints.Endpoint<FilteredUsageRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/analytics/filteredUsage");
+        Get("/api/3.18/analytics/filteredUsage");
         
         
         AllowAnonymous();
@@ -130,7 +128,6 @@ public class FilteredUsageEndpoint : FastEndpoints.Endpoint<FilteredUsageRequest
 
         Summary(s => {
             s.Summary = "Get Filtered Usage";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique id of the device making the request (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ApplicationId, "This parameter is deprecated.");
@@ -193,7 +190,7 @@ public class UsageEndpoint : FastEndpoints.Endpoint<UsageRequest, SirqulResponse
 {
     public override void Configure()
     {
-        Post("/api/{version}/analytics/usage");
+        Post("/api/3.18/analytics/usage");
         
         
         AllowAnonymous();
@@ -205,7 +202,6 @@ public class UsageEndpoint : FastEndpoints.Endpoint<UsageRequest, SirqulResponse
 
         Summary(s => {
             s.Summary = "Create Usage Record";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Tag, "The tag to apply: the name of the action or thing being logged.");
             s.RequestParam(r => r.DeviceId, "The client deviceID");
             s.RequestParam(r => r.AccountId, "The logged in user ID");
@@ -260,7 +256,7 @@ public class UsageBatchEndpoint : FastEndpoints.Endpoint<UsageBatchRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/analytics/usage/batch");
+        Post("/api/3.18/analytics/usage/batch");
         
         
         AllowAnonymous();
@@ -272,7 +268,6 @@ public class UsageBatchEndpoint : FastEndpoints.Endpoint<UsageBatchRequest, Sirq
 
         Summary(s => {
             s.Summary = "Create Multiple Usage Records";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key unique to each application.");
             s.RequestParam(r => r.Device, "The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)");
             s.RequestParam(r => r.Data, "The analytic data AnalyticListResponse");

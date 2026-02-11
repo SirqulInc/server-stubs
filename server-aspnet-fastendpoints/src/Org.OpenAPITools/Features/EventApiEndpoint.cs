@@ -12,7 +12,7 @@ public class AttendEventEndpoint : FastEndpoints.Endpoint<AttendEventRequest, Of
 {
     public override void Configure()
     {
-        Post("/api/{version}/event/attend");
+        Post("/api/3.18/event/attend");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AttendEventEndpoint : FastEndpoints.Endpoint<AttendEventRequest, Of
 
         Summary(s => {
             s.Summary = "Attend Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id (deviceId or accountId required)");
             s.RequestParam(r => r.AppKey, "The application of where to send notifications about the attend action");
@@ -58,7 +57,7 @@ public class CreateEventEndpoint : FastEndpoints.Endpoint<CreateEventRequest, Of
 {
     public override void Configure()
     {
-        Post("/api/{version}/event/create");
+        Post("/api/3.18/event/create");
         
         
         AllowAnonymous();
@@ -70,7 +69,6 @@ public class CreateEventEndpoint : FastEndpoints.Endpoint<CreateEventRequest, Of
 
         Summary(s => {
             s.Summary = "Create Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Title, "The event title");
             s.RequestParam(r => r.RetailerLocationIds, "The retailer location to have the event at");
@@ -106,7 +104,7 @@ public class DeleteEventEndpoint : FastEndpoints.Endpoint<DeleteEventRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/event/delete");
+        Post("/api/3.18/event/delete");
         
         
         AllowAnonymous();
@@ -118,7 +116,6 @@ public class DeleteEventEndpoint : FastEndpoints.Endpoint<DeleteEventRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.EventId, "the id of the event to update");
             s.Responses[200] = "successful operation";
@@ -144,7 +141,7 @@ public class GetEventEndpoint : FastEndpoints.Endpoint<GetEventRequest, OfferRes
 {
     public override void Configure()
     {
-        Get("/api/{version}/event/get");
+        Get("/api/3.18/event/get");
         
         
         AllowAnonymous();
@@ -156,7 +153,6 @@ public class GetEventEndpoint : FastEndpoints.Endpoint<GetEventRequest, OfferRes
 
         Summary(s => {
             s.Summary = "Get Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.EventId, "The id of the event to return");
             s.Responses[200] = "successful operation";
@@ -182,7 +178,7 @@ public class SearchEventTransactionsEndpoint : FastEndpoints.Endpoint<SearchEven
 {
     public override void Configure()
     {
-        Get("/api/{version}/event/attendance/search");
+        Get("/api/3.18/event/attendance/search");
         
         
         AllowAnonymous();
@@ -194,7 +190,6 @@ public class SearchEventTransactionsEndpoint : FastEndpoints.Endpoint<SearchEven
 
         Summary(s => {
             s.Summary = "Search Event Attendance";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppKey, "The application key");
@@ -237,7 +232,7 @@ public class SearchEventsEndpoint : FastEndpoints.Endpoint<SearchEventsRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/event/search");
+        Get("/api/3.18/event/search");
         
         
         AllowAnonymous();
@@ -249,7 +244,6 @@ public class SearchEventsEndpoint : FastEndpoints.Endpoint<SearchEventsRequest, 
 
         Summary(s => {
             s.Summary = "Search Events";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Keyword, "The keyword used to search");
             s.RequestParam(r => r.ActiveOnly, "Return only active results");
@@ -286,7 +280,7 @@ public class UpdateEventEndpoint : FastEndpoints.Endpoint<UpdateEventRequest, Of
 {
     public override void Configure()
     {
-        Post("/api/{version}/event/update");
+        Post("/api/3.18/event/update");
         
         
         AllowAnonymous();
@@ -298,7 +292,6 @@ public class UpdateEventEndpoint : FastEndpoints.Endpoint<UpdateEventRequest, Of
 
         Summary(s => {
             s.Summary = "Update Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.EventId, "The id of the event to update");
             s.RequestParam(r => r.RetailerLocationIds, "The retailer location to have the event at");

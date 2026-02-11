@@ -12,7 +12,7 @@ public class ProcessAllParticipantsEndpoint : FastEndpoints.Endpoint<ProcessAllP
 {
     public override void Configure()
     {
-        Post("/api/{version}/participant/process/all");
+        Post("/api/3.18/participant/process/all");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ProcessAllParticipantsEndpoint : FastEndpoints.Endpoint<ProcessAllP
 
         Summary(s => {
             s.Summary = "Process All Participant Feeds";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.AppKey, "The application key used to identify the application");
             s.RequestParam(r => r.UseShortNameAsID, "Whether to use short name as the participant ID");
@@ -51,7 +50,7 @@ public class ProcessParticipantsEndpoint : FastEndpoints.Endpoint<ProcessPartici
 {
     public override void Configure()
     {
-        Post("/api/{version}/participant/process");
+        Post("/api/3.18/participant/process");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class ProcessParticipantsEndpoint : FastEndpoints.Endpoint<ProcessPartici
 
         Summary(s => {
             s.Summary = "Process Participants Feed";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.League, "The league identifier to process");
             s.RequestParam(r => r.AppKey, "The application key used to identify the application");

@@ -12,7 +12,7 @@ public class CreateRetailerEndpoint : FastEndpoints.Endpoint<CreateRetailerReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/create");
+        Post("/api/3.18/retailer/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateRetailerEndpoint : FastEndpoints.Endpoint<CreateRetailerReque
 
         Summary(s => {
             s.Summary = "Create Retailer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Name, "The name of the retailer");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -81,7 +80,7 @@ public class DeleteRetailerEndpoint : FastEndpoints.Endpoint<DeleteRetailerReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/delete");
+        Post("/api/3.18/retailer/delete");
         
         
         AllowAnonymous();
@@ -93,7 +92,6 @@ public class DeleteRetailerEndpoint : FastEndpoints.Endpoint<DeleteRetailerReque
 
         Summary(s => {
             s.Summary = "Delete Retailer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the retailer.");
             s.RequestParam(r => r.RetailerId, "The ID of the retailer to be deleted");
@@ -120,7 +118,7 @@ public class GetRetailerEndpoint : FastEndpoints.Endpoint<GetRetailerRequest, Re
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/get");
+        Get("/api/3.18/retailer/get");
         
         
         AllowAnonymous();
@@ -132,7 +130,6 @@ public class GetRetailerEndpoint : FastEndpoints.Endpoint<GetRetailerRequest, Re
 
         Summary(s => {
             s.Summary = "Get Retailer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerId, "the ID of the retailer");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -160,7 +157,7 @@ public class GetRetailersEndpoint : FastEndpoints.Endpoint<GetRetailersRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/search");
+        Get("/api/3.18/retailer/search");
         
         
         AllowAnonymous();
@@ -172,7 +169,6 @@ public class GetRetailersEndpoint : FastEndpoints.Endpoint<GetRetailersRequest, 
 
         Summary(s => {
             s.Summary = "Search Retailers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Visibility, "");
             s.RequestParam(r => r.SortField, "The column to sort the search on");
             s.RequestParam(r => r.Descending, "The order to return the search results");
@@ -210,7 +206,7 @@ public class RetailerLoginCheckEndpoint : FastEndpoints.Endpoint<RetailerLoginCh
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/login");
+        Post("/api/3.18/retailer/login");
         
         
         AllowAnonymous();
@@ -222,7 +218,6 @@ public class RetailerLoginCheckEndpoint : FastEndpoints.Endpoint<RetailerLoginCh
 
         Summary(s => {
             s.Summary = "Login Retailer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Username, "the user&#39;s email address they used to sign-up");
             s.RequestParam(r => r.Password, "the password");
             s.RequestParam(r => r.DeviceId, "the device id (optional)");
@@ -252,7 +247,7 @@ public class UpdateRetailerEndpoint : FastEndpoints.Endpoint<UpdateRetailerReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/update");
+        Post("/api/3.18/retailer/update");
         
         
         AllowAnonymous();
@@ -264,7 +259,6 @@ public class UpdateRetailerEndpoint : FastEndpoints.Endpoint<UpdateRetailerReque
 
         Summary(s => {
             s.Summary = "Update Retailer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerId, "The ID of the retailer to update");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");

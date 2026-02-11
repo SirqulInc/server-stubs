@@ -12,7 +12,7 @@ public class AddFavoriteEndpoint : FastEndpoints.Endpoint<AddFavoriteRequest, Wr
 {
     public override void Configure()
     {
-        Post("/api/{version}/favorite/create");
+        Post("/api/3.18/favorite/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddFavoriteEndpoint : FastEndpoints.Endpoint<AddFavoriteRequest, Wr
 
         Summary(s => {
             s.Summary = "Create Favorite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FavoritableId, "The ID of the object to favorite {offerId, offerLocationId, retailerLocationId, categoryId}");
             s.RequestParam(r => r.FavoritableType, "The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY, ALBUM}");
             s.RequestParam(r => r.DeviceId, "The unique ID given by the device (deviceId or accountId required)");
@@ -54,7 +53,7 @@ public class DeleteFavoriteEndpoint : FastEndpoints.Endpoint<DeleteFavoriteReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/favorite/delete");
+        Post("/api/3.18/favorite/delete");
         
         
         AllowAnonymous();
@@ -66,7 +65,6 @@ public class DeleteFavoriteEndpoint : FastEndpoints.Endpoint<DeleteFavoriteReque
 
         Summary(s => {
             s.Summary = "Delete Favorite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.FavoriteId, "The ID of the favorite reference record (only optional if favoritableId &amp; favoritableType is pass in instead)");
@@ -95,7 +93,7 @@ public class GetFavoriteEndpoint : FastEndpoints.Endpoint<GetFavoriteRequest, Wr
 {
     public override void Configure()
     {
-        Get("/api/{version}/favorite/get");
+        Get("/api/3.18/favorite/get");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class GetFavoriteEndpoint : FastEndpoints.Endpoint<GetFavoriteRequest, Wr
 
         Summary(s => {
             s.Summary = "Get Favorite";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FavoriteId, "The ID of the favorite reference record");
             s.RequestParam(r => r.DeviceId, "The unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account ID of the user (deviceId or accountId required)");
@@ -136,7 +133,7 @@ public class SearchFavoritesEndpoint : FastEndpoints.Endpoint<SearchFavoritesReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/favorite/search");
+        Get("/api/3.18/favorite/search");
         
         
         AllowAnonymous();
@@ -148,7 +145,6 @@ public class SearchFavoritesEndpoint : FastEndpoints.Endpoint<SearchFavoritesReq
 
         Summary(s => {
             s.Summary = "Search Favorites";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FavoritableType, "The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}");
             s.RequestParam(r => r.SortField, "Determines what to sort the results by {CREATED, UPDATED, DISPLAY}");
             s.RequestParam(r => r.Descending, "Determines whether the results are in descending order");
@@ -186,7 +182,7 @@ public class WhoHasFavoritedEndpoint : FastEndpoints.Endpoint<WhoHasFavoritedReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/favorite/whois");
+        Get("/api/3.18/favorite/whois");
         
         
         AllowAnonymous();
@@ -198,7 +194,6 @@ public class WhoHasFavoritedEndpoint : FastEndpoints.Endpoint<WhoHasFavoritedReq
 
         Summary(s => {
             s.Summary = "Who has Favorited";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FavoritableId, "The ID of the favoritableType to search on");
             s.RequestParam(r => r.FavoritableType, "The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}");
             s.RequestParam(r => r.Start, "The start index for pagination");

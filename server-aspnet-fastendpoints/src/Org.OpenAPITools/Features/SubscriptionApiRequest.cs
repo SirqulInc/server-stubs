@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateSubscriptionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the create, must be the responsible manager
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -30,11 +25,6 @@ public class CreateSubscriptionRequest
 public class DeleteSubscriptionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the delete, must be the responsible manager
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -42,11 +32,6 @@ public class DeleteSubscriptionRequest
 }
 public class GetSubscriptionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account used to perform the lookup
     /// </summary>
@@ -56,11 +41,6 @@ public class GetSubscriptionRequest
 public class GetSubscriptionPlanRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The ID of the plan to get
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("planId")]
@@ -68,11 +48,6 @@ public class GetSubscriptionPlanRequest
 }
 public class GetSubscriptionPlansRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Include visible only (true), hidden only (false), or all (null)
     /// </summary>
@@ -86,11 +61,6 @@ public class GetSubscriptionPlansRequest
 }
 public class GetSubscriptionUsageRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account used to perform the lookup
     /// </summary>
@@ -114,11 +84,6 @@ public class GetSubscriptionUsageRequest
 }
 public class UpdateSubscriptionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account used to perform the update, must be the responsible manager
     /// </summary>

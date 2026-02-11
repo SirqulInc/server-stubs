@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateGameLevelRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -145,11 +140,6 @@ public class CreateGameLevelRequest
 public class DeleteGameLevelRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -162,11 +152,6 @@ public class DeleteGameLevelRequest
 }
 public class GetGameLevelRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -185,11 +170,6 @@ public class GetGameLevelRequest
 }
 public class GetGameLevelsByApplicationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -244,11 +224,6 @@ public class GetGameLevelsByApplicationRequest
 public class GetGameLevelsByBillableEntityRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -292,11 +267,6 @@ public class GetGameLevelsByBillableEntityRequest
 public class GetQuestionsInLevelRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the level to get questions from
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("levelId")]
@@ -310,11 +280,6 @@ public class GetQuestionsInLevelRequest
 public class GetWordsInLevelRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the level to get words for
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("levelId")]
@@ -327,11 +292,6 @@ public class GetWordsInLevelRequest
 }
 public class UpdateGameLevelRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -471,11 +431,6 @@ public class UpdateGameLevelRequest
 public class UpdateQuestionsInLevelRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the level to update questions on
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("levelId")]
@@ -493,11 +448,6 @@ public class UpdateQuestionsInLevelRequest
 }
 public class UpdateWordsInLevelRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the level to update words for
     /// </summary>

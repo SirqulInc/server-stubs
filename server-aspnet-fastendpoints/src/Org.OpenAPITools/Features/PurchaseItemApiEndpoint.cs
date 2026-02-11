@@ -12,7 +12,7 @@ public class CreatePurchaseItemEndpoint : FastEndpoints.Endpoint<CreatePurchaseI
 {
     public override void Configure()
     {
-        Post("/api/{version}/purchase/create");
+        Post("/api/3.18/purchase/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreatePurchaseItemEndpoint : FastEndpoints.Endpoint<CreatePurchaseI
 
         Summary(s => {
             s.Summary = "Create Purchase";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key that the purchase can be used in");
             s.RequestParam(r => r.Name, "The name of the purchase item");
             s.RequestParam(r => r.PurchaseType, "The purchase provider &lt;ul&gt; &lt;li&gt;SIRQUL - the Sirqul store to make purchases using tickets&lt;/li&gt; &lt;li&gt;IOS - the iTunes store for iPhone, iPod, iPod Touch&lt;/li&gt; &lt;li&gt;GOOGLE - the Google Play store&lt;/li&gt; &lt;li&gt;AMAZON - the Amazon Android store&lt;/li&gt; &lt;li&gt;MAC - the iTunes store for OSX&lt;/li&gt; &lt;li&gt;WP8 - the Windows Phone 8 store&lt;/li&gt; &lt;li&gt;FREE - used for purchase items that are free (can be used for development/testing purposes)&lt;/li&gt; &lt;/ul&gt;");
@@ -68,7 +67,7 @@ public class DeletePurchaseItemEndpoint : FastEndpoints.Endpoint<DeletePurchaseI
 {
     public override void Configure()
     {
-        Post("/api/{version}/purchase/delete");
+        Post("/api/3.18/purchase/delete");
         
         
         AllowAnonymous();
@@ -80,7 +79,6 @@ public class DeletePurchaseItemEndpoint : FastEndpoints.Endpoint<DeletePurchaseI
 
         Summary(s => {
             s.Summary = "Delete Purchase";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PurchaseItemId, "The purchase item id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -107,7 +105,7 @@ public class GetPurchaseItemEndpoint : FastEndpoints.Endpoint<GetPurchaseItemReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/purchase/get");
+        Get("/api/3.18/purchase/get");
         
         
         AllowAnonymous();
@@ -119,7 +117,6 @@ public class GetPurchaseItemEndpoint : FastEndpoints.Endpoint<GetPurchaseItemReq
 
         Summary(s => {
             s.Summary = "Get Purchase";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PurchaseItemId, "The purchase item id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -146,7 +143,7 @@ public class SearchPurchaseItemsEndpoint : FastEndpoints.Endpoint<SearchPurchase
 {
     public override void Configure()
     {
-        Get("/api/{version}/purchase/search");
+        Get("/api/3.18/purchase/search");
         
         
         AllowAnonymous();
@@ -158,7 +155,6 @@ public class SearchPurchaseItemsEndpoint : FastEndpoints.Endpoint<SearchPurchase
 
         Summary(s => {
             s.Summary = "Search Purchases";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppKey, "The application key to filter results by application");
@@ -194,7 +190,7 @@ public class UpdatePurchaseItemEndpoint : FastEndpoints.Endpoint<UpdatePurchaseI
 {
     public override void Configure()
     {
-        Post("/api/{version}/purchase/update");
+        Post("/api/3.18/purchase/update");
         
         
         AllowAnonymous();
@@ -206,7 +202,6 @@ public class UpdatePurchaseItemEndpoint : FastEndpoints.Endpoint<UpdatePurchaseI
 
         Summary(s => {
             s.Summary = "Update Purchase";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PurchaseItemId, "The purchase item id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");

@@ -12,7 +12,7 @@ public class CreateVehicleTypeEndpoint : FastEndpoints.Endpoint<CreateVehicleTyp
 {
     public override void Configure()
     {
-        Post("/api/{version}/vehicle/type");
+        Post("/api/3.18/vehicle/type");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateVehicleTypeEndpoint : FastEndpoints.Endpoint<CreateVehicleTyp
 
         Summary(s => {
             s.Summary = "Create Vehicle Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.VehicleType, "A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -50,7 +49,7 @@ public class DeleteVehicleTypeEndpoint : FastEndpoints.Endpoint<DeleteVehicleTyp
 {
     public override void Configure()
     {
-        Delete("/api/{version}/vehicle/type/{vehicleTypeId}");
+        Delete("/api/3.18/vehicle/type/{vehicleTypeId}");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class DeleteVehicleTypeEndpoint : FastEndpoints.Endpoint<DeleteVehicleTyp
 
         Summary(s => {
             s.Summary = "Delete Vehicle Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.VehicleTypeId, "The id of the requested vehicle type");
             s.Responses[0] = "successful operation";
         });
@@ -88,7 +86,7 @@ public class GetVehicleTypeEndpoint : FastEndpoints.Endpoint<GetVehicleTypeReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/vehicle/type/{vehicleTypeId}");
+        Get("/api/3.18/vehicle/type/{vehicleTypeId}");
         
         
         AllowAnonymous();
@@ -100,7 +98,6 @@ public class GetVehicleTypeEndpoint : FastEndpoints.Endpoint<GetVehicleTypeReque
 
         Summary(s => {
             s.Summary = "Get Vehicle Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.VehicleTypeId, "The id of the requested vehicle type");
             s.Responses[200] = "successful operation";
         });
@@ -125,7 +122,7 @@ public class SearchVehicleTypesEndpoint : FastEndpoints.Endpoint<SearchVehicleTy
 {
     public override void Configure()
     {
-        Get("/api/{version}/vehicle/type");
+        Get("/api/3.18/vehicle/type");
         
         
         AllowAnonymous();
@@ -137,7 +134,6 @@ public class SearchVehicleTypesEndpoint : FastEndpoints.Endpoint<SearchVehicleTy
 
         Summary(s => {
             s.Summary = "Search Vehicle Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");
@@ -168,7 +164,7 @@ public class UpdateVehicleTypeEndpoint : FastEndpoints.Endpoint<UpdateVehicleTyp
 {
     public override void Configure()
     {
-        Put("/api/{version}/vehicle/type/{vehicleTypeId}");
+        Put("/api/3.18/vehicle/type/{vehicleTypeId}");
         
         
         AllowAnonymous();
@@ -180,7 +176,6 @@ public class UpdateVehicleTypeEndpoint : FastEndpoints.Endpoint<UpdateVehicleTyp
 
         Summary(s => {
             s.Summary = "Update Vehicle Type";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.VehicleTypeId, "The id of the vehicle type to update");
             s.RequestParam(r => r.VehicleType, "The new data for the vehicle type to update to. A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.body, "");

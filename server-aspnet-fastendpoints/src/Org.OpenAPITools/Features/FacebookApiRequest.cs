@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetTokenRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -34,11 +29,6 @@ public class GetTokenRequest
 }
 public class GraphInterfaceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>

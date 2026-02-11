@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class ConsumerCreateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The client deviceID
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -85,11 +80,6 @@ public class ConsumerCreateRequest
 public class ConsumerUpdateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The client deviceID
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -122,11 +112,6 @@ public class ConsumerUpdateRequest
 }
 public class QueueCreateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The client deviceID
     /// </summary>
@@ -191,11 +176,6 @@ public class QueueCreateRequest
 public class QueueDeleteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The client device ID
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -213,11 +193,6 @@ public class QueueDeleteRequest
 }
 public class QueueGetRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The client device ID
     /// </summary>
@@ -257,11 +232,6 @@ public class QueueGetRequest
 public class QueuePublishRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The id of the queue to publish to
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("queueId")]
@@ -295,11 +265,6 @@ public class QueuePublishRequest
 public class QueueSearchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The id of the queue to find
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("queueId")]
@@ -332,11 +297,6 @@ public class QueueSearchRequest
 }
 public class QueueUpdateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The client deviceID
     /// </summary>

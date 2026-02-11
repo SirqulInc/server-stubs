@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AuthorizeTwitterRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the application key
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("appKey")]
@@ -19,11 +14,6 @@ public class AuthorizeTwitterRequest
 }
 public class LoginTwitterRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id
     /// </summary>

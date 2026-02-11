@@ -12,7 +12,7 @@ public class AddOrUpdateAlbumContestEndpoint : FastEndpoints.Endpoint<AddOrUpdat
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/album/contest");
+        Post("/api/3.18/consumer/album/contest");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddOrUpdateAlbumContestEndpoint : FastEndpoints.Endpoint<AddOrUpdat
 
         Summary(s => {
             s.Summary = "Create or Update Contest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.PublicRead, "determines whether the contest&#39;s participants has read permissions");
             s.RequestParam(r => r.PublicWrite, "determines whether the contest&#39;s participants has write permissions");
             s.RequestParam(r => r.PublicDelete, "determines whether the contest&#39;s participants has delete permissions");
@@ -73,7 +72,7 @@ public class ApproveAlbumContestEndpoint : FastEndpoints.Endpoint<ApproveAlbumCo
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/album/contest/approve");
+        Post("/api/3.18/consumer/album/contest/approve");
         
         
         AllowAnonymous();
@@ -85,7 +84,6 @@ public class ApproveAlbumContestEndpoint : FastEndpoints.Endpoint<ApproveAlbumCo
 
         Summary(s => {
             s.Summary = "Approve Contest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumContestId, "The ID of the album contest");
             s.RequestParam(r => r.ApprovalStatus, "The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}");
             s.RequestParam(r => r.DeviceId, "A unique ID given by the device (deviceId or accountId required)");
@@ -113,7 +111,7 @@ public class DeleteContestEndpoint : FastEndpoints.Endpoint<DeleteContestRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/album/contest/remove");
+        Post("/api/3.18/consumer/album/contest/remove");
         
         
         AllowAnonymous();
@@ -125,7 +123,6 @@ public class DeleteContestEndpoint : FastEndpoints.Endpoint<DeleteContestRequest
 
         Summary(s => {
             s.Summary = "Delete Contest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumContestId, "the album contest ID");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -154,7 +151,7 @@ public class GetAlbumContestEndpoint : FastEndpoints.Endpoint<GetAlbumContestReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/album/contest/get");
+        Get("/api/3.18/consumer/album/contest/get");
         
         
         AllowAnonymous();
@@ -166,7 +163,6 @@ public class GetAlbumContestEndpoint : FastEndpoints.Endpoint<GetAlbumContestReq
 
         Summary(s => {
             s.Summary = "Get Contest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumContestId, "the album contest ID");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -195,7 +191,7 @@ public class GetAlbumContestsEndpoint : FastEndpoints.Endpoint<GetAlbumContestsR
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/album/contest/search");
+        Get("/api/3.18/consumer/album/contest/search");
         
         
         AllowAnonymous();
@@ -207,7 +203,6 @@ public class GetAlbumContestsEndpoint : FastEndpoints.Endpoint<GetAlbumContestsR
 
         Summary(s => {
             s.Summary = "Search Contests";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Filter, "a comma separated list of Ownership");
             s.RequestParam(r => r.SortField, "the field to sort by. See AlbumContestApiMap");
             s.RequestParam(r => r.Descending, "determines whether the sorted list is in descending or ascending order");
@@ -250,7 +245,7 @@ public class VoteOnAlbumContestEndpoint : FastEndpoints.Endpoint<VoteOnAlbumCont
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/album/contest/vote");
+        Post("/api/3.18/consumer/album/contest/vote");
         
         
         AllowAnonymous();
@@ -262,7 +257,6 @@ public class VoteOnAlbumContestEndpoint : FastEndpoints.Endpoint<VoteOnAlbumCont
 
         Summary(s => {
             s.Summary = "Vote on Contest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AlbumContestId, "the album contest ID");
             s.RequestParam(r => r.AlbumId, "the ID of the album to vote on");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");

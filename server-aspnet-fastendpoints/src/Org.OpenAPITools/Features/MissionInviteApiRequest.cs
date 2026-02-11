@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateMissionInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -40,11 +35,6 @@ public class CreateMissionInviteRequest
 public class DeleteMissionInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -72,11 +62,6 @@ public class DeleteMissionInviteRequest
 }
 public class GetMissionInviteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>
@@ -110,11 +95,6 @@ public class GetMissionInviteRequest
 }
 public class SearchMissionInvitesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>
@@ -183,11 +163,6 @@ public class SearchMissionInvitesRequest
 }
 public class UpdateMissionInviteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>

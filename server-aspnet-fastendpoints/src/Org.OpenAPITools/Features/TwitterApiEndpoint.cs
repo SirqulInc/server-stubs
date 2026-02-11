@@ -12,7 +12,7 @@ public class AuthorizeTwitterEndpoint : FastEndpoints.Endpoint<AuthorizeTwitterR
 {
     public override void Configure()
     {
-        Post("/api/{version}/twitter/authorize");
+        Post("/api/3.18/twitter/authorize");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AuthorizeTwitterEndpoint : FastEndpoints.Endpoint<AuthorizeTwitterR
 
         Summary(s => {
             s.Summary = "Authorize Twitter";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "the application key");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class LoginTwitterEndpoint : FastEndpoints.Endpoint<LoginTwitterRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/twitter/login");
+        Post("/api/3.18/twitter/login");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class LoginTwitterEndpoint : FastEndpoints.Endpoint<LoginTwitterRequest, 
 
         Summary(s => {
             s.Summary = "Login Twitter";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccessToken, "The access token");
             s.RequestParam(r => r.AccessTokenSecret, "The secret access token");
             s.RequestParam(r => r.AppKey, "The application key");

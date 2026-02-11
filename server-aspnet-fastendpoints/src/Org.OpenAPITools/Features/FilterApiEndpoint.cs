@@ -12,7 +12,7 @@ public class CreateFilterEndpoint : FastEndpoints.Endpoint<CreateFilterRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/filter/create");
+        Post("/api/3.18/filter/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateFilterEndpoint : FastEndpoints.Endpoint<CreateFilterRequest, 
 
         Summary(s => {
             s.Summary = "Create Filter";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user (must have permissions to the target application)");
             s.RequestParam(r => r.Name, "The name of the filter");
             s.RequestParam(r => r.AppKey, "The appKey of the application to assign the filter to, if not provided then the filter will be applied to the global application (if the account has permissions)");
@@ -57,7 +56,7 @@ public class DeleteFilterEndpoint : FastEndpoints.Endpoint<DeleteFilterRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/filter/delete");
+        Post("/api/3.18/filter/delete");
         
         
         AllowAnonymous();
@@ -69,7 +68,6 @@ public class DeleteFilterEndpoint : FastEndpoints.Endpoint<DeleteFilterRequest, 
 
         Summary(s => {
             s.Summary = "Delete Filter";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user (must have permissions to the filter&#39;s assigned application)");
             s.RequestParam(r => r.FilterId, "The ID of the filter to delete");
             s.Responses[200] = "successful operation";
@@ -95,7 +93,7 @@ public class GetFilterEndpoint : FastEndpoints.Endpoint<GetFilterRequest, Filter
 {
     public override void Configure()
     {
-        Get("/api/{version}/filter/get");
+        Get("/api/3.18/filter/get");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class GetFilterEndpoint : FastEndpoints.Endpoint<GetFilterRequest, Filter
 
         Summary(s => {
             s.Summary = "Get Filter";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FilterId, "the id of the filter to get");
             s.Responses[200] = "successful operation";
         });
@@ -132,7 +129,7 @@ public class SearchFiltersEndpoint : FastEndpoints.Endpoint<SearchFiltersRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/filter/search");
+        Get("/api/3.18/filter/search");
         
         
         AllowAnonymous();
@@ -144,7 +141,6 @@ public class SearchFiltersEndpoint : FastEndpoints.Endpoint<SearchFiltersRequest
 
         Summary(s => {
             s.Summary = "Search Filters";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.Keyword, "The string to search on");
             s.RequestParam(r => r.AppKey, "the appKey of the application to retrieve filters for");
@@ -178,7 +174,7 @@ public class UpdateFilterEndpoint : FastEndpoints.Endpoint<UpdateFilterRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/filter/update");
+        Post("/api/3.18/filter/update");
         
         
         AllowAnonymous();
@@ -190,7 +186,6 @@ public class UpdateFilterEndpoint : FastEndpoints.Endpoint<UpdateFilterRequest, 
 
         Summary(s => {
             s.Summary = "Update Filter";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.FilterId, "The ID of the filter to edit");
             s.RequestParam(r => r.ParentFilterId, "The ID of the parent filter, if not provided then the parent filter will be null");

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetOptimizationResultRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The batchID for getting the import status of.
     /// </summary>
     [FastEndpoints.BindFrom("batchID")]
@@ -29,11 +24,6 @@ public class GetOptimizationResultRequest
 }
 public class RequestOptimizationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// 
     /// </summary>

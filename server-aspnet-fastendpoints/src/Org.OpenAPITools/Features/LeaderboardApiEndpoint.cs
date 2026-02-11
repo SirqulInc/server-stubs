@@ -12,7 +12,7 @@ public class CreateLeaderboardEndpoint : FastEndpoints.Endpoint<CreateLeaderboar
 {
     public override void Configure()
     {
-        Post("/api/{version}/leaderboard/create");
+        Post("/api/3.18/leaderboard/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateLeaderboardEndpoint : FastEndpoints.Endpoint<CreateLeaderboar
 
         Summary(s => {
             s.Summary = "Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user creating the leaderboard.");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.RankType, "a unique label for identifying the ranking. This can be any alphanumeric string with a maximum length of 64 characters. There are also default rank types to use which include: POINTS, DOWNLOADS, INVITATIONS, CREATIONS, VOTES, REDEEMED, ACTIONS");
@@ -61,7 +60,7 @@ public class DeleteLeaderboardEndpoint : FastEndpoints.Endpoint<DeleteLeaderboar
 {
     public override void Configure()
     {
-        Post("/api/{version}/leaderboard/delete");
+        Post("/api/3.18/leaderboard/delete");
         
         
         AllowAnonymous();
@@ -73,7 +72,6 @@ public class DeleteLeaderboardEndpoint : FastEndpoints.Endpoint<DeleteLeaderboar
 
         Summary(s => {
             s.Summary = "Delete the Leader Board";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LeaderboardId, "The leaderboard id to delete.");
             s.RequestParam(r => r.AccountId, "The account id of the user making the request.");
             s.Responses[200] = "successful operation";
@@ -99,7 +97,7 @@ public class GetLeaderboardEndpoint : FastEndpoints.Endpoint<GetLeaderboardReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/leaderboard/get");
+        Get("/api/3.18/leaderboard/get");
         
         
         AllowAnonymous();
@@ -111,7 +109,6 @@ public class GetLeaderboardEndpoint : FastEndpoints.Endpoint<GetLeaderboardReque
 
         Summary(s => {
             s.Summary = "Read a leaderboard by id and retrieve the matching ranking list";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LeaderboardId, "The leaderboard id.");
             s.RequestParam(r => r.AccountId, "A valid account.");
             s.RequestParam(r => r.IncludeFullRankingList, "set to true if need to return the leaderboard&#39;s full ranking list");
@@ -138,7 +135,7 @@ public class SearchLeaderboardsEndpoint : FastEndpoints.Endpoint<SearchLeaderboa
 {
     public override void Configure()
     {
-        Get("/api/{version}/leaderboard/search");
+        Get("/api/3.18/leaderboard/search");
         
         
         AllowAnonymous();
@@ -150,7 +147,6 @@ public class SearchLeaderboardsEndpoint : FastEndpoints.Endpoint<SearchLeaderboa
 
         Summary(s => {
             s.Summary = "Search leaderboard and retrieve the matching ranking list";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user requesting the search.");
             s.RequestParam(r => r.AppKey, "The application key.");
             s.RequestParam(r => r.GlobalOnly, "only include global leaderboards (this overrides the appKey filter)");
@@ -186,7 +182,7 @@ public class UpdateLeaderboardEndpoint : FastEndpoints.Endpoint<UpdateLeaderboar
 {
     public override void Configure()
     {
-        Post("/api/{version}/leaderboard/update");
+        Post("/api/3.18/leaderboard/update");
         
         
         AllowAnonymous();
@@ -198,7 +194,6 @@ public class UpdateLeaderboardEndpoint : FastEndpoints.Endpoint<UpdateLeaderboar
 
         Summary(s => {
             s.Summary = "Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LeaderboardId, "The leaderboard id to update.");
             s.RequestParam(r => r.AccountId, "The account id of the user updating the leaderboard.");
             s.RequestParam(r => r.AppKey, "The application key");

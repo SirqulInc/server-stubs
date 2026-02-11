@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CacheTrilaterationDataRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique identifier of the source device
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("udid")]
@@ -42,21 +37,11 @@ public class CacheTrilaterationDataGzipRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public TrilatCacheRequest? body { get; set; }
 }
 public class GetLocationByIpRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the ip address of the client device
     /// </summary>
@@ -65,11 +50,6 @@ public class GetLocationByIpRequest
 }
 public class GetLocationByTrilaterationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account making the request, if provided the last know location will be updated
     /// </summary>
@@ -98,11 +78,6 @@ public class GetLocationByTrilaterationRequest
 }
 public class GetLocationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id
     /// </summary>

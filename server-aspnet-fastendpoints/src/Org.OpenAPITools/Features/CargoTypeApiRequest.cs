@@ -9,21 +9,11 @@ public class CreateCargoTypeRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public CargoType? body { get; set; }
 }
 public class DeleteCargoTypeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the ID of the cargo type
     /// </summary>
@@ -33,11 +23,6 @@ public class DeleteCargoTypeRequest
 public class GetCargoTypeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the cargo type ID
     /// </summary>
     [FastEndpoints.BindFrom("cargoTypeId")]
@@ -45,11 +30,6 @@ public class GetCargoTypeRequest
 }
 public class SearchCargoTypesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the retailer location
     /// </summary>
@@ -88,11 +68,6 @@ public class SearchCargoTypesRequest
 }
 public class UpdateCargoTypeRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the ID of the cargo type
     /// </summary>

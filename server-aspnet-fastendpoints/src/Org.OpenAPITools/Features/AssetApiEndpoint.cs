@@ -12,7 +12,7 @@ public class AssetDownloadEndpoint : FastEndpoints.Endpoint<AssetDownloadRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/asset/download/{filename}");
+        Get("/api/3.18/asset/download/{filename}");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AssetDownloadEndpoint : FastEndpoints.Endpoint<AssetDownloadRequest
 
         Summary(s => {
             s.Summary = "Download Asset";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Filename, "the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class AssetMorphEndpoint : FastEndpoints.Endpoint<AssetMorphRequest, Asse
 {
     public override void Configure()
     {
-        Post("/api/{version}/asset/morph");
+        Post("/api/3.18/asset/morph");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class AssetMorphEndpoint : FastEndpoints.Endpoint<AssetMorphRequest, Asse
 
         Summary(s => {
             s.Summary = "Convert Offer to Creative";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferId, "offer id used for inserting offer text/flavor");
             s.RequestParam(r => r.AdSize, "the ad size used for selecting a format for the creative image");
             s.RequestParam(r => r.CreativeId, "used for inserting the newly created image into");
@@ -92,7 +90,7 @@ public class CreateAssetEndpoint : FastEndpoints.Endpoint<CreateAssetRequest, As
 {
     public override void Configure()
     {
-        Post("/api/{version}/asset/create");
+        Post("/api/3.18/asset/create");
         
         
         AllowAnonymous();
@@ -104,7 +102,6 @@ public class CreateAssetEndpoint : FastEndpoints.Endpoint<CreateAssetRequest, As
 
         Summary(s => {
             s.Summary = "Create Asset";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "to return nulls");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -162,7 +159,7 @@ public class DeleteAssetEndpoint : FastEndpoints.Endpoint<DeleteAssetRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/asset/delete");
+        Post("/api/3.18/asset/delete");
         
         
         AllowAnonymous();
@@ -174,7 +171,6 @@ public class DeleteAssetEndpoint : FastEndpoints.Endpoint<DeleteAssetRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Asset";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AssetId, "the id of the asset to delete");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -203,7 +199,7 @@ public class GetAssetEndpoint : FastEndpoints.Endpoint<GetAssetRequest, AssetFul
 {
     public override void Configure()
     {
-        Get("/api/{version}/asset/get");
+        Get("/api/3.18/asset/get");
         
         
         AllowAnonymous();
@@ -215,7 +211,6 @@ public class GetAssetEndpoint : FastEndpoints.Endpoint<GetAssetRequest, AssetFul
 
         Summary(s => {
             s.Summary = "Get Asset";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AssetId, "the asset ID");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
@@ -243,7 +238,7 @@ public class RemoveAssetEndpoint : FastEndpoints.Endpoint<RemoveAssetRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/asset/remove");
+        Post("/api/3.18/asset/remove");
         
         
         AllowAnonymous();
@@ -255,7 +250,6 @@ public class RemoveAssetEndpoint : FastEndpoints.Endpoint<RemoveAssetRequest, Si
 
         Summary(s => {
             s.Summary = "Remove Asset from Collection";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AssetId, "the id of the asset to remove");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -287,7 +281,7 @@ public class SearchAssetsEndpoint : FastEndpoints.Endpoint<SearchAssetsRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/asset/search");
+        Get("/api/3.18/asset/search");
         
         
         AllowAnonymous();
@@ -299,7 +293,6 @@ public class SearchAssetsEndpoint : FastEndpoints.Endpoint<SearchAssetsRequest, 
 
         Summary(s => {
             s.Summary = "Search Assets";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AlbumIds, "comma separated list of album ids to search on");
@@ -347,7 +340,7 @@ public class UpdateAssetEndpoint : FastEndpoints.Endpoint<UpdateAssetRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/asset/update");
+        Post("/api/3.18/asset/update");
         
         
         AllowAnonymous();
@@ -359,7 +352,6 @@ public class UpdateAssetEndpoint : FastEndpoints.Endpoint<UpdateAssetRequest, Si
 
         Summary(s => {
             s.Summary = "Update Asset";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AssetId, "the ID of the asset to update");
             s.RequestParam(r => r.DeviceId, "a unique ID given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account ID of the user (deviceId or accountId required)");

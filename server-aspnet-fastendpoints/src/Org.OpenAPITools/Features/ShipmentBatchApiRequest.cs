@@ -9,21 +9,11 @@ public class CreateShipmentBatchRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public ShipmentBatch? body { get; set; }
 }
 public class DeleteShipmentBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the shipment batch to delete
     /// </summary>
@@ -33,11 +23,6 @@ public class DeleteShipmentBatchRequest
 public class GetShipmentBatchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the shipment batch to get
     /// </summary>
     [FastEndpoints.BindFrom("batchId")]
@@ -45,11 +30,6 @@ public class GetShipmentBatchRequest
 }
 public class GetShipmentBatchStatusRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of the requested shipment batch
     /// </summary>
@@ -113,11 +93,6 @@ public class GetShipmentBatchStatusRequest
 }
 public class SearchShipmentBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The associated service hub
     /// </summary>

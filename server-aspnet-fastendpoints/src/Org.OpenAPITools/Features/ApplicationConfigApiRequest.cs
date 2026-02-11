@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateApplicationConfigRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account ID of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -50,11 +45,6 @@ public class CreateApplicationConfigRequest
 public class DeleteApplicationConfigRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account ID of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -68,11 +58,6 @@ public class DeleteApplicationConfigRequest
 public class GetApplicationConfigRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account ID of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -85,11 +70,6 @@ public class GetApplicationConfigRequest
 }
 public class GetApplicationConfigByConfigVersionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The application key
     /// </summary>
@@ -123,11 +103,6 @@ public class GetApplicationConfigByConfigVersionRequest
 }
 public class SearchApplicationConfigRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account ID of the user
     /// </summary>
@@ -181,11 +156,6 @@ public class SearchApplicationConfigRequest
 }
 public class UpdateApplicationConfigRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account ID of the user
     /// </summary>

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddOrUpdateThemeDescriptorRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -150,11 +145,6 @@ public class AddOrUpdateThemeDescriptorRequest
 public class GetThemeDescriptorRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -187,11 +177,6 @@ public class GetThemeDescriptorRequest
 }
 public class GetThemeDescriptorsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -285,11 +270,6 @@ public class GetThemeDescriptorsRequest
 }
 public class RemoveThemeDescriptorRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>

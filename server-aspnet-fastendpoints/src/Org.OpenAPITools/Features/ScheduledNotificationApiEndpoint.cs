@@ -12,7 +12,7 @@ public class CreateScheduledNotificationEndpoint : FastEndpoints.Endpoint<Create
 {
     public override void Configure()
     {
-        Post("/api/{version}/notification/schedule/create");
+        Post("/api/3.18/notification/schedule/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateScheduledNotificationEndpoint : FastEndpoints.Endpoint<Create
 
         Summary(s => {
             s.Summary = "Create Scheduled Notification";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the scheduled notification");
             s.RequestParam(r => r.Type, "The type of scheduled notification. Supported values include: MOBILE_NOTIFICATION - sends push notifications via APNS and GCM EMAIL - sends email messages SMS - sends text messages");
@@ -82,7 +81,7 @@ public class DeleteScheduledNotificationEndpoint : FastEndpoints.Endpoint<Delete
 {
     public override void Configure()
     {
-        Post("/api/{version}/notification/schedule/delete");
+        Post("/api/3.18/notification/schedule/delete");
         
         
         AllowAnonymous();
@@ -94,7 +93,6 @@ public class DeleteScheduledNotificationEndpoint : FastEndpoints.Endpoint<Delete
 
         Summary(s => {
             s.Summary = "Delete Scheduled Notification";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.ScheduledNotificationId, "the id of the scheduled notification to delete");
             s.RequestParam(r => r.DeleteByGroupingId, "If set to true, also deletes Scheduled Notifications under the same account with the same groupingId.");
@@ -121,7 +119,7 @@ public class GetScheduledNotificationEndpoint : FastEndpoints.Endpoint<GetSchedu
 {
     public override void Configure()
     {
-        Get("/api/{version}/notification/schedule/get");
+        Get("/api/3.18/notification/schedule/get");
         
         
         AllowAnonymous();
@@ -133,7 +131,6 @@ public class GetScheduledNotificationEndpoint : FastEndpoints.Endpoint<GetSchedu
 
         Summary(s => {
             s.Summary = "Get Scheduled Notification";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account logged in");
             s.RequestParam(r => r.ScheduledNotificationId, "the id of the scheduled notification to get");
             s.Responses[200] = "successful operation";
@@ -159,7 +156,7 @@ public class ScheduleNotificationListingsEndpoint : FastEndpoints.Endpoint<Sched
 {
     public override void Configure()
     {
-        Post("/api/{version}/notification/schedule/generate");
+        Post("/api/3.18/notification/schedule/generate");
         
         
         AllowAnonymous();
@@ -171,7 +168,6 @@ public class ScheduleNotificationListingsEndpoint : FastEndpoints.Endpoint<Sched
 
         Summary(s => {
             s.Summary = "Generate Schedule Notifications";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The application to target");
             s.RequestParam(r => r.ReportName, "The name of the report used to identify events. The report must return columns named: id, name, date, params, and type otherwise it will fail");
@@ -203,7 +199,7 @@ public class SearchScheduledNotificationsEndpoint : FastEndpoints.Endpoint<Searc
 {
     public override void Configure()
     {
-        Get("/api/{version}/notification/schedule/search");
+        Get("/api/3.18/notification/schedule/search");
         
         
         AllowAnonymous();
@@ -215,7 +211,6 @@ public class SearchScheduledNotificationsEndpoint : FastEndpoints.Endpoint<Searc
 
         Summary(s => {
             s.Summary = "Search Scheduled Notifications";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.GroupingId, "Filter results by a grouping identifier defined by the client");
             s.RequestParam(r => r.AudienceId, "Filter results by audience");
@@ -259,7 +254,7 @@ public class UpdateScheduledNotificationEndpoint : FastEndpoints.Endpoint<Update
 {
     public override void Configure()
     {
-        Post("/api/{version}/notification/schedule/update");
+        Post("/api/3.18/notification/schedule/update");
         
         
         AllowAnonymous();
@@ -271,7 +266,6 @@ public class UpdateScheduledNotificationEndpoint : FastEndpoints.Endpoint<Update
 
         Summary(s => {
             s.Summary = "Update Scheduled Notification";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ScheduledNotificationId, "The id of scheduled notification to update");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the scheduled notification");

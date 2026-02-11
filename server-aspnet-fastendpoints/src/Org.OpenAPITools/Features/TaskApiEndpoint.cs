@@ -12,7 +12,7 @@ public class CreateTaskEndpoint : FastEndpoints.Endpoint<CreateTaskRequest, Task
 {
     public override void Configure()
     {
-        Post("/api/{version}/task/create");
+        Post("/api/3.18/task/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateTaskEndpoint : FastEndpoints.Endpoint<CreateTaskRequest, Task
 
         Summary(s => {
             s.Summary = "Create Task";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the task");
             s.RequestParam(r => r.AppKey, "The application to target");
@@ -60,7 +59,7 @@ public class DeleteTaskEndpoint : FastEndpoints.Endpoint<DeleteTaskRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/task/delete");
+        Post("/api/3.18/task/delete");
         
         
         AllowAnonymous();
@@ -72,7 +71,6 @@ public class DeleteTaskEndpoint : FastEndpoints.Endpoint<DeleteTaskRequest, Sirq
 
         Summary(s => {
             s.Summary = "Delete Task";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TaskId, "The id of the Task to delete.");
             s.Responses[200] = "successful operation";
@@ -98,7 +96,7 @@ public class GetTaskEndpoint : FastEndpoints.Endpoint<GetTaskRequest, TaskRespon
 {
     public override void Configure()
     {
-        Get("/api/{version}/task/get");
+        Get("/api/3.18/task/get");
         
         
         AllowAnonymous();
@@ -110,7 +108,6 @@ public class GetTaskEndpoint : FastEndpoints.Endpoint<GetTaskRequest, TaskRespon
 
         Summary(s => {
             s.Summary = "Get Task";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TaskId, "The id of the Task to return.");
             s.Responses[200] = "successful operation";
@@ -136,7 +133,7 @@ public class SearchTasksEndpoint : FastEndpoints.Endpoint<SearchTasksRequest, Li
 {
     public override void Configure()
     {
-        Get("/api/{version}/task/search");
+        Get("/api/3.18/task/search");
         
         
         AllowAnonymous();
@@ -148,7 +145,6 @@ public class SearchTasksEndpoint : FastEndpoints.Endpoint<SearchTasksRequest, Li
 
         Summary(s => {
             s.Summary = "Search Tasks";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.GroupingId, "Filter results by a grouping identifier defined by the client");
             s.RequestParam(r => r.Filter, "A comma separated list of filters:  * MINE - Return tasks that the user has created * SHARED - Return tasks that have been shared to the user * FOLLOWER - Return tasks that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return tasks that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC tasks that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC tasks regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all tasks that the user has liked * FEATURED - Return all tasks that have been featured * PENDING - Return all pending tasks ");
@@ -184,7 +180,7 @@ public class UpdateTaskEndpoint : FastEndpoints.Endpoint<UpdateTaskRequest, Task
 {
     public override void Configure()
     {
-        Post("/api/{version}/task/update");
+        Post("/api/3.18/task/update");
         
         
         AllowAnonymous();
@@ -196,7 +192,6 @@ public class UpdateTaskEndpoint : FastEndpoints.Endpoint<UpdateTaskRequest, Task
 
         Summary(s => {
             s.Summary = "Update Task";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.TaskId, "Task Id");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the task");

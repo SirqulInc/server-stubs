@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class ComputePathRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the data to with start, end point and exclusion points
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("data")]

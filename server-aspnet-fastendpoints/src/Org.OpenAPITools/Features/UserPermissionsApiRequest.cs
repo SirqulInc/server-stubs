@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddUsersToPermissionableRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -100,11 +95,6 @@ public class AddUsersToPermissionableRequest
 public class ApprovePermissionableRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// A unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -132,11 +122,6 @@ public class ApprovePermissionableRequest
 }
 public class LeaveFromPermissionableRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -170,11 +155,6 @@ public class LeaveFromPermissionableRequest
 }
 public class RemoveUsersFromPermissionableRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -233,11 +213,6 @@ public class RemoveUsersFromPermissionableRequest
 }
 public class SearchPermissionablesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// A unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -306,11 +281,6 @@ public class SearchPermissionablesRequest
 }
 public class SearchPermissionablesFollowingDistanceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// A unique ID given by the device (deviceId or accountId required)
     /// </summary>

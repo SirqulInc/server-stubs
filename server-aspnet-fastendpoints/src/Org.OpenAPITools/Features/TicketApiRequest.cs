@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetTicketCountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the device that owns the tickets
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -39,11 +34,6 @@ public class GetTicketCountRequest
 }
 public class GetTicketListRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the device that owns the tickets
     /// </summary>
@@ -93,11 +83,6 @@ public class GetTicketListRequest
 public class GiftPurchaseRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the device
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -140,11 +125,6 @@ public class GiftPurchaseRequest
 }
 public class SaveTicketRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// whether to return nulls or not
     /// </summary>
@@ -239,11 +219,6 @@ public class SaveTicketRequest
 public class SaveTicketViaFileUploadRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// whether to return nulls or not
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("returnNulls")]
@@ -336,11 +311,6 @@ public class SaveTicketViaFileUploadRequest
 }
 public class TicketOffersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
 }
 
 

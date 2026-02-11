@@ -12,7 +12,7 @@ public class RegisterLikeEndpoint : FastEndpoints.Endpoint<RegisterLikeRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/like");
+        Post("/api/3.18/like");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class RegisterLikeEndpoint : FastEndpoints.Endpoint<RegisterLikeRequest, 
 
         Summary(s => {
             s.Summary = "Create Like";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LikableType, "The type of likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}");
             s.RequestParam(r => r.LikableId, "The id of the likable object");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
@@ -60,7 +59,7 @@ public class RemoveLikeEndpoint : FastEndpoints.Endpoint<RemoveLikeRequest, Lika
 {
     public override void Configure()
     {
-        Post("/api/{version}/like/delete");
+        Post("/api/3.18/like/delete");
         
         
         AllowAnonymous();
@@ -72,7 +71,6 @@ public class RemoveLikeEndpoint : FastEndpoints.Endpoint<RemoveLikeRequest, Lika
 
         Summary(s => {
             s.Summary = "Delete Like";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LikableType, "The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}");
             s.RequestParam(r => r.LikableId, "The id of the likable object");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
@@ -102,7 +100,7 @@ public class SearchLikesEndpoint : FastEndpoints.Endpoint<SearchLikesRequest, Se
 {
     public override void Configure()
     {
-        Get("/api/{version}/like/search");
+        Get("/api/3.18/like/search");
         
         
         AllowAnonymous();
@@ -114,7 +112,6 @@ public class SearchLikesEndpoint : FastEndpoints.Endpoint<SearchLikesRequest, Se
 
         Summary(s => {
             s.Summary = "Search Likes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LikableType, "The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}");
             s.RequestParam(r => r.LikableId, "The id of the likable object");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");

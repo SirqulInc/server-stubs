@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetStopRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the stop to get
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -19,11 +14,6 @@ public class GetStopRequest
 }
 public class UpdateStopRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the stop to update
     /// </summary>

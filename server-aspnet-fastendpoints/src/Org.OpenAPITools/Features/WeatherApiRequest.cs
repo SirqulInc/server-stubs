@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class SearchWeatherRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Region Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("regionId")]

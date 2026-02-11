@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateFollowingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -29,11 +24,6 @@ public class CreateFollowingRequest
 }
 public class CreateSpaceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -58,11 +48,6 @@ public class CreateSpaceRequest
 public class CreateVatomEventRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -86,11 +71,6 @@ public class CreateVatomEventRequest
 public class DeleteFollowingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -108,11 +88,6 @@ public class DeleteFollowingRequest
 }
 public class DeletePointsBalanceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -137,11 +112,6 @@ public class DeletePointsBalanceRequest
 public class DeleteSpaceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -164,11 +134,6 @@ public class DeleteSpaceRequest
 }
 public class DeleteVatomEventRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -193,11 +158,6 @@ public class DeleteVatomEventRequest
 public class DeleteVatomNFTRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -215,11 +175,6 @@ public class DeleteVatomNFTRequest
 }
 public class ExecuteActionOnNFTRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -244,11 +199,6 @@ public class ExecuteActionOnNFTRequest
 public class GeomapSearchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -266,11 +216,6 @@ public class GeomapSearchRequest
 }
 public class GetBusinessBehaviorsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -290,11 +235,6 @@ public class GetBusinessBehaviorsRequest
 public class GetBusinessCoinsBalanceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -313,11 +253,6 @@ public class GetBusinessCoinsBalanceRequest
 public class GetBusinessIdsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -330,11 +265,6 @@ public class GetBusinessIdsRequest
 }
 public class GetBusinessInfoRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -359,11 +289,6 @@ public class GetBusinessInfoRequest
 public class GetBusinessUsersRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -381,11 +306,6 @@ public class GetBusinessUsersRequest
 }
 public class GetCampaignGroupEntitiesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -410,11 +330,6 @@ public class GetCampaignGroupEntitiesRequest
 public class GetCampaignGroupRulesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -437,11 +352,6 @@ public class GetCampaignGroupRulesRequest
 }
 public class GetCampaignGroupStatsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -466,11 +376,6 @@ public class GetCampaignGroupStatsRequest
 public class GetCampaignInfoRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -493,11 +398,6 @@ public class GetCampaignInfoRequest
 }
 public class GetEventGuestListRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -522,11 +422,6 @@ public class GetEventGuestListRequest
 public class GetInventoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -545,11 +440,6 @@ public class GetInventoryRequest
 public class GetMyFollowingRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -562,11 +452,6 @@ public class GetMyFollowingRequest
 }
 public class GetPointsBalanceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -590,11 +475,6 @@ public class GetPointsBalanceRequest
 }
 public class GetPointsBalanceAsBusinessRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -624,11 +504,6 @@ public class GetPointsBalanceAsBusinessRequest
 public class GetSpaceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -651,11 +526,6 @@ public class GetSpaceRequest
 }
 public class GetUserCoinsAsBusinessRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -680,11 +550,6 @@ public class GetUserCoinsAsBusinessRequest
 public class GetUserCoinsBalanceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -708,11 +573,6 @@ public class GetUserCoinsBalanceRequest
 public class GetUserFollowersRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -730,11 +590,6 @@ public class GetUserFollowersRequest
 }
 public class GetUserFollowingRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -754,11 +609,6 @@ public class GetUserFollowingRequest
 public class GetUserInfoRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -777,11 +627,6 @@ public class GetUserInfoRequest
 public class GetUserProfileRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -794,11 +639,6 @@ public class GetUserProfileRequest
 }
 public class GetVatomEventRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -823,11 +663,6 @@ public class GetVatomEventRequest
 public class GetVatomNFTRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -845,11 +680,6 @@ public class GetVatomNFTRequest
 }
 public class ListCommunitiesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -874,11 +704,6 @@ public class ListCommunitiesRequest
 public class ListEventsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -901,11 +726,6 @@ public class ListEventsRequest
 }
 public class ListSpacesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -930,11 +750,6 @@ public class ListSpacesRequest
 public class ListUserCoinTransactionsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -957,11 +772,6 @@ public class ListUserCoinTransactionsRequest
 }
 public class ListUserCoinTransactionsAsBusinessRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -991,11 +801,6 @@ public class ListUserCoinTransactionsAsBusinessRequest
 public class PerformActionOnNFTRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1024,11 +829,6 @@ public class PerformActionOnNFTRequest
 public class RedeemNFTRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1051,11 +851,6 @@ public class RedeemNFTRequest
 }
 public class RedeemUserCoinsAsBusinessRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1085,11 +880,6 @@ public class RedeemUserCoinsAsBusinessRequest
 public class SearchBusinessesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1107,11 +897,6 @@ public class SearchBusinessesRequest
 }
 public class SearchCampaignGroupsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1131,11 +916,6 @@ public class SearchCampaignGroupsRequest
 public class SearchIdentitiesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1148,11 +928,6 @@ public class SearchIdentitiesRequest
 }
 public class SearchInventoryRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1171,11 +946,6 @@ public class SearchInventoryRequest
 }
 public class SendNFTRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1204,11 +974,6 @@ public class SendNFTRequest
 }
 public class SetPointsBalanceAsBusinessRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1243,11 +1008,6 @@ public class SetPointsBalanceAsBusinessRequest
 public class TransferUserCoinsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1271,11 +1031,6 @@ public class TransferUserCoinsRequest
 public class UpdateBusinessCoinsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1298,11 +1053,6 @@ public class UpdateBusinessCoinsRequest
 }
 public class UpdateEventGuestListRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1332,11 +1082,6 @@ public class UpdateEventGuestListRequest
 public class UpdateSpaceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1364,11 +1109,6 @@ public class UpdateSpaceRequest
 }
 public class UpdateUserCoinsAsBusinessRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>
@@ -1398,11 +1138,6 @@ public class UpdateUserCoinsAsBusinessRequest
 public class UpdateUserProfileRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// Sirqul Account Id
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1420,11 +1155,6 @@ public class UpdateUserProfileRequest
 }
 public class UpdateVatomEventRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Sirqul Account Id
     /// </summary>

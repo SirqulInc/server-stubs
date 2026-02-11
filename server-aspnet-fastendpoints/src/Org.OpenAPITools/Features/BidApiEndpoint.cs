@@ -12,7 +12,7 @@ public class CreateBidEndpoint : FastEndpoints.Endpoint<CreateBidRequest, BidRes
 {
     public override void Configure()
     {
-        Post("/api/{version}/bid/create");
+        Post("/api/3.18/bid/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateBidEndpoint : FastEndpoints.Endpoint<CreateBidRequest, BidRes
 
         Summary(s => {
             s.Summary = "Create Bid";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BiddableType, "A biddable object type. Possible values include: CREATIVE (ads).");
             s.RequestParam(r => r.BiddableId, "The id of the biddable object");
             s.RequestParam(r => r.AmountPerView, "The bid amount for views. For ads, this is the amount that will be taken for each impression.");
@@ -56,7 +55,7 @@ public class DeleteBidEndpoint : FastEndpoints.Endpoint<DeleteBidRequest, Sirqul
 {
     public override void Configure()
     {
-        Post("/api/{version}/bid/delete");
+        Post("/api/3.18/bid/delete");
         
         
         AllowAnonymous();
@@ -68,7 +67,6 @@ public class DeleteBidEndpoint : FastEndpoints.Endpoint<DeleteBidRequest, Sirqul
 
         Summary(s => {
             s.Summary = "Delete Bid";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BidId, "The bid id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -95,7 +93,7 @@ public class GetBidEndpoint : FastEndpoints.Endpoint<GetBidRequest, BidResponse>
 {
     public override void Configure()
     {
-        Get("/api/{version}/bid/get");
+        Get("/api/3.18/bid/get");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class GetBidEndpoint : FastEndpoints.Endpoint<GetBidRequest, BidResponse>
 
         Summary(s => {
             s.Summary = "Get Bid";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BidId, "The bid id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -134,7 +131,7 @@ public class UpdateBidEndpoint : FastEndpoints.Endpoint<UpdateBidRequest, BidRes
 {
     public override void Configure()
     {
-        Post("/api/{version}/bid/update");
+        Post("/api/3.18/bid/update");
         
         
         AllowAnonymous();
@@ -146,7 +143,6 @@ public class UpdateBidEndpoint : FastEndpoints.Endpoint<UpdateBidRequest, BidRes
 
         Summary(s => {
             s.Summary = "Update Bid";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BidId, "The bid id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");

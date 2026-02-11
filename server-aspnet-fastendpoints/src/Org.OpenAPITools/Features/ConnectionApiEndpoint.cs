@@ -12,7 +12,7 @@ public class AddConnectionToGroupEndpoint : FastEndpoints.Endpoint<AddConnection
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/group/addConnection");
+        Post("/api/3.18/consumer/connection/group/addConnection");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddConnectionToGroupEndpoint : FastEndpoints.Endpoint<AddConnection
 
         Summary(s => {
             s.Summary = "Add Connection";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.GroupId, "the group id");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -57,7 +56,7 @@ public class AddConnectionsToGroupEndpoint : FastEndpoints.Endpoint<AddConnectio
 {
     public override void Configure()
     {
-        Post("/api/{version}/connection/group/addConnections");
+        Post("/api/3.18/connection/group/addConnections");
         
         
         AllowAnonymous();
@@ -69,7 +68,6 @@ public class AddConnectionsToGroupEndpoint : FastEndpoints.Endpoint<AddConnectio
 
         Summary(s => {
             s.Summary = "Add Connections";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ConnectionGroupId, "the connection group ID");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -100,7 +98,7 @@ public class AddSubGroupsEndpoint : FastEndpoints.Endpoint<AddSubGroupsRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/group/addSubGroup");
+        Post("/api/3.18/consumer/connection/group/addSubGroup");
         
         
         AllowAnonymous();
@@ -112,7 +110,6 @@ public class AddSubGroupsEndpoint : FastEndpoints.Endpoint<AddSubGroupsRequest, 
 
         Summary(s => {
             s.Summary = "Add Connection Groups";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.GroupId, "the parent group id");
             s.RequestParam(r => r.SubGroupIds, "comma separated list of group IDs to add to the parent group");
@@ -143,7 +140,7 @@ public class CreateOrUpdateConnectionEndpoint : FastEndpoints.Endpoint<CreateOrU
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/add");
+        Post("/api/3.18/consumer/connection/add");
         
         
         AllowAnonymous();
@@ -155,7 +152,6 @@ public class CreateOrUpdateConnectionEndpoint : FastEndpoints.Endpoint<CreateOrU
 
         Summary(s => {
             s.Summary = "Create or Update Connection";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ConnectionId, "the connection id for editing");
@@ -193,7 +189,7 @@ public class CreateOrUpdateGroupEndpoint : FastEndpoints.Endpoint<CreateOrUpdate
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/group");
+        Post("/api/3.18/consumer/connection/group");
         
         
         AllowAnonymous();
@@ -205,7 +201,6 @@ public class CreateOrUpdateGroupEndpoint : FastEndpoints.Endpoint<CreateOrUpdate
 
         Summary(s => {
             s.Summary = "Create or Update Connection Group";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -243,7 +238,7 @@ public class FollowAcceptEndpoint : FastEndpoints.Endpoint<FollowAcceptRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/follow/accept");
+        Post("/api/3.18/consumer/follow/accept");
         
         
         AllowAnonymous();
@@ -255,7 +250,6 @@ public class FollowAcceptEndpoint : FastEndpoints.Endpoint<FollowAcceptRequest, 
 
         Summary(s => {
             s.Summary = "Accept Follow Request";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.ConnectionAccountId, "the account ID of the user who initiated the follow");
             s.RequestParam(r => r.AppKey, "the application key for sending notifications");
@@ -282,7 +276,7 @@ public class FollowRejectEndpoint : FastEndpoints.Endpoint<FollowRejectRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/follow/reject");
+        Post("/api/3.18/consumer/follow/reject");
         
         
         AllowAnonymous();
@@ -294,7 +288,6 @@ public class FollowRejectEndpoint : FastEndpoints.Endpoint<FollowRejectRequest, 
 
         Summary(s => {
             s.Summary = "Reject Follow Request";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.ConnectionAccountId, "the account ID of the user who initiated the follow");
             s.RequestParam(r => r.AppKey, "the application key for sending notifications");
@@ -321,7 +314,7 @@ public class FollowRemoveEndpoint : FastEndpoints.Endpoint<FollowRemoveRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/follow/remove");
+        Post("/api/3.18/consumer/follow/remove");
         
         
         AllowAnonymous();
@@ -333,7 +326,6 @@ public class FollowRemoveEndpoint : FastEndpoints.Endpoint<FollowRemoveRequest, 
 
         Summary(s => {
             s.Summary = "Remove Follower / Unfollow";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.ConnectionAccountId, "the account ID of the user who you want to unfollow");
             s.RequestParam(r => r.AppKey, "the application key for sending notifications");
@@ -360,7 +352,7 @@ public class FollowRequestEndpoint : FastEndpoints.Endpoint<FollowRequestRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/follow/request");
+        Post("/api/3.18/consumer/follow/request");
         
         
         AllowAnonymous();
@@ -372,7 +364,6 @@ public class FollowRequestEndpoint : FastEndpoints.Endpoint<FollowRequestRequest
 
         Summary(s => {
             s.Summary = "Send Follow Request";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.ConnectionAccountId, "the account ID of the user who you want to follow");
             s.RequestParam(r => r.AppKey, "the application key for sending notifications");
@@ -400,7 +391,7 @@ public class FriendAcceptEndpoint : FastEndpoints.Endpoint<FriendAcceptRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/friend/accept");
+        Post("/api/3.18/consumer/friend/accept");
         
         
         AllowAnonymous();
@@ -412,7 +403,6 @@ public class FriendAcceptEndpoint : FastEndpoints.Endpoint<FriendAcceptRequest, 
 
         Summary(s => {
             s.Summary = "Accept Friend";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FriendAccountId, "the friend&#39;s account id");
             s.RequestParam(r => r.NotifyFriend, "determines whether to send a notification to the afflicting party");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -443,7 +433,7 @@ public class FriendRejectEndpoint : FastEndpoints.Endpoint<FriendRejectRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/friend/reject");
+        Post("/api/3.18/consumer/friend/reject");
         
         
         AllowAnonymous();
@@ -455,7 +445,6 @@ public class FriendRejectEndpoint : FastEndpoints.Endpoint<FriendRejectRequest, 
 
         Summary(s => {
             s.Summary = "Decline Friend";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FriendAccountId, "the friend&#39;s account id");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -486,7 +475,7 @@ public class FriendRemoveEndpoint : FastEndpoints.Endpoint<FriendRemoveRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/friend/remove");
+        Post("/api/3.18/consumer/friend/remove");
         
         
         AllowAnonymous();
@@ -498,7 +487,6 @@ public class FriendRemoveEndpoint : FastEndpoints.Endpoint<FriendRemoveRequest, 
 
         Summary(s => {
             s.Summary = "Delete Friend";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FriendAccountId, "the account ID of the friend to remove");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -527,7 +515,7 @@ public class FriendRequestEndpoint : FastEndpoints.Endpoint<FriendRequestRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/friend/request");
+        Post("/api/3.18/consumer/friend/request");
         
         
         AllowAnonymous();
@@ -539,7 +527,6 @@ public class FriendRequestEndpoint : FastEndpoints.Endpoint<FriendRequestRequest
 
         Summary(s => {
             s.Summary = "Request Friend";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FriendAccountId, "the friend&#39;s account id");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -569,7 +556,7 @@ public class GetConnectionSentFriendRequestsEndpoint : FastEndpoints.Endpoint<Ge
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/connection/getRequested");
+        Get("/api/3.18/consumer/connection/getRequested");
         
         
         AllowAnonymous();
@@ -581,7 +568,6 @@ public class GetConnectionSentFriendRequestsEndpoint : FastEndpoints.Endpoint<Ge
 
         Summary(s => {
             s.Summary = "Get Sent Friend Requests";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the ID of the device");
             s.RequestParam(r => r.AccountId, "the id of the account");
             s.Responses[200] = "successful operation";
@@ -607,7 +593,7 @@ public class GetConnectionsEndpoint : FastEndpoints.Endpoint<GetConnectionsReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/connection/get");
+        Get("/api/3.18/consumer/connection/get");
         
         
         AllowAnonymous();
@@ -619,7 +605,6 @@ public class GetConnectionsEndpoint : FastEndpoints.Endpoint<GetConnectionsReque
 
         Summary(s => {
             s.Summary = "Search Connections";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.Filter, "a comma separated list of ConnectionApiMap. (NOTE on FOLLOWER vs FOLLOWING: FOLLOWER will get me a list of followers, FOLLOWING will get me a list of people I am following)");
             s.RequestParam(r => r.SortField, "sorts the response list by ConnectionApiMap");
@@ -658,7 +643,7 @@ public class GetGroupDetailsEndpoint : FastEndpoints.Endpoint<GetGroupDetailsReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/consumer/connection/group/details/get");
+        Get("/api/3.18/consumer/connection/group/details/get");
         
         
         AllowAnonymous();
@@ -670,7 +655,6 @@ public class GetGroupDetailsEndpoint : FastEndpoints.Endpoint<GetGroupDetailsReq
 
         Summary(s => {
             s.Summary = "Get Connection Group";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.CombineConnections, "whether to combine connections or not");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -700,7 +684,7 @@ public class GroupSearchEndpoint : FastEndpoints.Endpoint<GroupSearchRequest, Li
 {
     public override void Configure()
     {
-        Get("/api/{version}/connection/group/search");
+        Get("/api/3.18/connection/group/search");
         
         
         AllowAnonymous();
@@ -712,7 +696,6 @@ public class GroupSearchEndpoint : FastEndpoints.Endpoint<GroupSearchRequest, Li
 
         Summary(s => {
             s.Summary = "Search Connection Groups";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "the field to sort by");
             s.RequestParam(r => r.Descending, "whether to return results in descending or ascending order");
             s.RequestParam(r => r.ActiveOnly, "to search on active only or not");
@@ -746,7 +729,7 @@ public class RemoveConnectionFromGroupEndpoint : FastEndpoints.Endpoint<RemoveCo
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/group/removeConnection");
+        Post("/api/3.18/consumer/connection/group/removeConnection");
         
         
         AllowAnonymous();
@@ -758,7 +741,6 @@ public class RemoveConnectionFromGroupEndpoint : FastEndpoints.Endpoint<RemoveCo
 
         Summary(s => {
             s.Summary = "Delete Connection";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.GroupId, "the group id");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -791,7 +773,7 @@ public class RemoveConnectionsFromGroupEndpoint : FastEndpoints.Endpoint<RemoveC
 {
     public override void Configure()
     {
-        Post("/api/{version}/connection/group/removeConnections");
+        Post("/api/3.18/connection/group/removeConnections");
         
         
         AllowAnonymous();
@@ -803,7 +785,6 @@ public class RemoveConnectionsFromGroupEndpoint : FastEndpoints.Endpoint<RemoveC
 
         Summary(s => {
             s.Summary = "Remove Connections";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ConnectionGroupId, "connection group id");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -834,7 +815,7 @@ public class RemoveGroupEndpoint : FastEndpoints.Endpoint<RemoveGroupRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/group/remove");
+        Post("/api/3.18/consumer/connection/group/remove");
         
         
         AllowAnonymous();
@@ -846,7 +827,6 @@ public class RemoveGroupEndpoint : FastEndpoints.Endpoint<RemoveGroupRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Connection Group";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.GroupId, "the group id");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -876,7 +856,7 @@ public class RemoveSubGroupsEndpoint : FastEndpoints.Endpoint<RemoveSubGroupsReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/connection/group/removeSubGroup");
+        Post("/api/3.18/consumer/connection/group/removeSubGroup");
         
         
         AllowAnonymous();
@@ -888,7 +868,6 @@ public class RemoveSubGroupsEndpoint : FastEndpoints.Endpoint<RemoveSubGroupsReq
 
         Summary(s => {
             s.Summary = "Remove Connection Groups";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "whether to return nulls or not");
             s.RequestParam(r => r.GroupId, "the parent group id");
             s.RequestParam(r => r.SubGroupIds, "comma separated list of group IDs to remove from the parent group");
@@ -919,7 +898,7 @@ public class SearchConnectionsEndpoint : FastEndpoints.Endpoint<SearchConnection
 {
     public override void Configure()
     {
-        Get("/api/{version}/connection/search");
+        Get("/api/3.18/connection/search");
         
         
         AllowAnonymous();
@@ -931,7 +910,6 @@ public class SearchConnectionsEndpoint : FastEndpoints.Endpoint<SearchConnection
 
         Summary(s => {
             s.Summary = "Search Possible Connections";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "return all json attributes if true. defualt is true.");
             s.RequestParam(r => r.Start, "start index of the pagination");
             s.RequestParam(r => r.Limit, "limit of the pagination");

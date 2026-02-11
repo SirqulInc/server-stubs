@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class ApproveRouteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route to approve
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -19,11 +14,6 @@ public class ApproveRouteRequest
 }
 public class CopyRouteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route to duplicate
     /// </summary>
@@ -40,21 +30,11 @@ public class CreateRouteRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public Route? body { get; set; }
 }
 public class CreateRouteDirectionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route to update directions for
     /// </summary>
@@ -64,11 +44,6 @@ public class CreateRouteDirectionsRequest
 public class CreateRoutePolylineRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route to create a polyline for
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -76,11 +51,6 @@ public class CreateRoutePolylineRequest
 }
 public class DeleteRouteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route
     /// </summary>
@@ -90,11 +60,6 @@ public class DeleteRouteRequest
 public class DisapproveRouteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route to reject
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -102,11 +67,6 @@ public class DisapproveRouteRequest
 }
 public class GetRouteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route to get
     /// </summary>
@@ -121,11 +81,6 @@ public class GetRouteRequest
 public class GetRouteDirectionsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route to get directions for
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -134,11 +89,6 @@ public class GetRouteDirectionsRequest
 public class GetRouteShipmentsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route to get shipments for
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -146,11 +96,6 @@ public class GetRouteShipmentsRequest
 }
 public class GetRouteStopRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route to get stops for
     /// </summary>
@@ -165,11 +110,6 @@ public class GetRouteStopRequest
 public class GetRouteStopsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -182,11 +122,6 @@ public class GetRouteStopsRequest
 }
 public class GetShipmentsAtStopRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route
     /// </summary>
@@ -201,11 +136,6 @@ public class GetShipmentsAtStopRequest
 public class OptimizeRouteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route to optimize
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -213,11 +143,6 @@ public class OptimizeRouteRequest
 }
 public class RemoveStopRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route
     /// </summary>
@@ -232,11 +157,6 @@ public class RemoveStopRequest
 public class ReorderRouteStopsPatchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -250,11 +170,6 @@ public class ReorderRouteStopsPatchRequest
 public class ReorderRouteStopsPostRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -267,11 +182,6 @@ public class ReorderRouteStopsPostRequest
 }
 public class SearchRoutesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Filter results by service hub
     /// </summary>
@@ -381,11 +291,6 @@ public class SearchRoutesRequest
 public class SetDriverRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -399,11 +304,6 @@ public class SetDriverRequest
 public class UpdateRouteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the route
     /// </summary>
     [FastEndpoints.BindFrom("routeId")]
@@ -416,11 +316,6 @@ public class UpdateRouteRequest
 }
 public class UpdateRouteStopRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the route to update stops for
     /// </summary>

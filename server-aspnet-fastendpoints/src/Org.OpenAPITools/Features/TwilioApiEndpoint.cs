@@ -12,7 +12,7 @@ public class SmsBuyOfferEndpoint : FastEndpoints.Endpoint<SmsBuyOfferRequest, Tw
 {
     public override void Configure()
     {
-        Post("/api/{version}/sms/buyoffer/{appKey}");
+        Post("/api/3.18/sms/buyoffer/{appKey}");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class SmsBuyOfferEndpoint : FastEndpoints.Endpoint<SmsBuyOfferRequest, Tw
 
         Summary(s => {
             s.Summary = "Buy Offer by SMS";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Body, "the message of the text");
             s.RequestParam(r => r.From, "the sender of the sms");

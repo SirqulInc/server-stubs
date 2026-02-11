@@ -12,7 +12,7 @@ public class CacheTrilaterationDataEndpoint : FastEndpoints.Endpoint<CacheTrilat
 {
     public override void Configure()
     {
-        Post("/api/{version}/location/trilaterate/cache");
+        Post("/api/3.18/location/trilaterate/cache");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CacheTrilaterationDataEndpoint : FastEndpoints.Endpoint<CacheTrilat
 
         Summary(s => {
             s.Summary = "Create Trilateration Data with File";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Udid, "The unique identifier of the source device");
             s.RequestParam(r => r.SourceTime, "The current timestamp of the source device");
             s.RequestParam(r => r.MinimumSampleSize, "the minimum number of Edysen devices that must be used to be able to trilaterate a device");
@@ -53,7 +52,7 @@ public class CacheTrilaterationDataGzipEndpoint : FastEndpoints.Endpoint<CacheTr
 {
     public override void Configure()
     {
-        Post("/api/{version}/location/trilaterate/cache/submit");
+        Post("/api/3.18/location/trilaterate/cache/submit");
         
         
         AllowAnonymous();
@@ -65,7 +64,6 @@ public class CacheTrilaterationDataGzipEndpoint : FastEndpoints.Endpoint<CacheTr
 
         Summary(s => {
             s.Summary = "Create Trilateration Data with Rest";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -90,7 +88,7 @@ public class GetLocationByIpEndpoint : FastEndpoints.Endpoint<GetLocationByIpReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/location/ip");
+        Get("/api/3.18/location/ip");
         
         
         AllowAnonymous();
@@ -102,7 +100,6 @@ public class GetLocationByIpEndpoint : FastEndpoints.Endpoint<GetLocationByIpReq
 
         Summary(s => {
             s.Summary = "Get Location by IP";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Ip, "the ip address of the client device");
             s.Responses[200] = "successful operation";
         });
@@ -127,7 +124,7 @@ public class GetLocationByTrilaterationEndpoint : FastEndpoints.Endpoint<GetLoca
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/location/trilaterate");
+        Get("/api/3.18/account/location/trilaterate");
         
         
         AllowAnonymous();
@@ -139,7 +136,6 @@ public class GetLocationByTrilaterationEndpoint : FastEndpoints.Endpoint<GetLoca
 
         Summary(s => {
             s.Summary = "Get Location by Trilateration";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account making the request, if provided the last know location will be updated");
             s.RequestParam(r => r.Latitude, "The known GPS latitude to compare to the calculated version");
             s.RequestParam(r => r.Longitude, "The known GPS longitude to compare to the calculated version");
@@ -168,7 +164,7 @@ public class GetLocationsEndpoint : FastEndpoints.Endpoint<GetLocationsRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/location/search");
+        Get("/api/3.18/location/search");
         
         
         AllowAnonymous();
@@ -180,7 +176,6 @@ public class GetLocationsEndpoint : FastEndpoints.Endpoint<GetLocationsRequest, 
 
         Summary(s => {
             s.Summary = "Search Regions or Postal Codes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id");
             s.RequestParam(r => r.AccountId, "the account id");
             s.RequestParam(r => r.Currentlatitude, "This parameter is deprecated.");

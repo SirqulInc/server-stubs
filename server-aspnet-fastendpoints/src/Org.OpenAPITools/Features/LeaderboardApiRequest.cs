@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateLeaderboardRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user creating the leaderboard.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -80,11 +75,6 @@ public class CreateLeaderboardRequest
 public class DeleteLeaderboardRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user making the request.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -97,11 +87,6 @@ public class DeleteLeaderboardRequest
 }
 public class GetLeaderboardRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// A valid account.
     /// </summary>
@@ -120,11 +105,6 @@ public class GetLeaderboardRequest
 }
 public class SearchLeaderboardsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user requesting the search.
     /// </summary>
@@ -188,11 +168,6 @@ public class SearchLeaderboardsRequest
 }
 public class UpdateLeaderboardRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user updating the leaderboard.
     /// </summary>

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateAudienceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -160,11 +155,6 @@ public class CreateAudienceRequest
 public class DeleteAudienceRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -177,19 +167,9 @@ public class DeleteAudienceRequest
 }
 public class GetAgeGroupsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
 }
 public class GetAudienceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -223,11 +203,6 @@ public class GetAudienceRequest
 }
 public class GetAudienceListRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -327,11 +302,6 @@ public class GetAudienceListRequest
 public class GetDevicesRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// If true return inactive record as well. default is false.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("includeInactive")]
@@ -339,19 +309,9 @@ public class GetDevicesRequest
 }
 public class GetExperiencesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
 }
 public class GetGroupedAudiencesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -365,11 +325,6 @@ public class GetGroupedAudiencesRequest
 }
 public class ListByAccountRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account to match offers for.
     /// </summary>
@@ -388,11 +343,6 @@ public class ListByAccountRequest
 }
 public class ListByAudienceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// this is the gender to list offers by
     /// </summary>
@@ -427,11 +377,6 @@ public class ListByAudienceRequest
 public class ListLastestByAccountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account to match offers for.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -450,11 +395,6 @@ public class ListLastestByAccountRequest
 public class SendByAccountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account to match offers for.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -472,11 +412,6 @@ public class SendByAccountRequest
 }
 public class UpdateAudienceRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>

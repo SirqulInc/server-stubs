@@ -12,7 +12,7 @@ public class RunWorkflowEndpoint : FastEndpoints.Endpoint<RunWorkflowRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/workflow/run");
+        Post("/api/3.18/workflow/run");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class RunWorkflowEndpoint : FastEndpoints.Endpoint<RunWorkflowRequest, Si
 
         Summary(s => {
             s.Summary = "Run Workflow";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user");
             s.RequestParam(r => r.WorkflowId, "the workflow to run");
             s.RequestParam(r => r.SkuId, "this runs a particular sku on the workflow");

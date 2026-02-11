@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateApplicationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -410,11 +405,6 @@ public class CreateApplicationRequest
 public class CreateApplicationPlacementRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -473,11 +463,6 @@ public class CreateApplicationPlacementRequest
 public class DeleteApplicationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the delete, must have rights to edit the application.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -490,11 +475,6 @@ public class DeleteApplicationRequest
 }
 public class DeleteApplicationPlacementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -514,11 +494,6 @@ public class DeleteApplicationPlacementRequest
 public class GetApplicationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The key of the application
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("appKey")]
@@ -531,11 +506,6 @@ public class GetApplicationRequest
 }
 public class GetApplicationPlacementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -554,19 +524,9 @@ public class GetApplicationPlacementRequest
 }
 public class GetApplicationVersionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
 }
 public class GetUniqueUsersByAppRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The application key
     /// </summary>
@@ -610,11 +570,6 @@ public class GetUniqueUsersByAppRequest
 }
 public class ListApplicationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the application owner/manager
     /// </summary>
@@ -719,11 +674,6 @@ public class ListApplicationsRequest
 public class SearchApplicationPlacementRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -751,11 +701,6 @@ public class SearchApplicationPlacementRequest
 }
 public class SearchApplicationSettingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -799,11 +744,6 @@ public class SearchApplicationSettingsRequest
 }
 public class SearchApplicationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -887,11 +827,6 @@ public class SearchApplicationsRequest
 }
 public class UpdateApplicationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -1296,11 +1231,6 @@ public class UpdateApplicationRequest
 public class UpdateApplicationActiveRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account used to perform the delete, must have rights to edit the application.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -1318,11 +1248,6 @@ public class UpdateApplicationActiveRequest
 }
 public class UpdateApplicationPlacementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -1381,11 +1306,6 @@ public class UpdateApplicationPlacementRequest
 }
 public class UploadApplicationCertificateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Device Id
     /// </summary>

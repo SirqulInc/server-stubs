@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AssetDownloadRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}
     /// </summary>
     [FastEndpoints.BindFrom("filename")]
@@ -19,11 +14,6 @@ public class AssetDownloadRequest
 }
 public class AssetMorphRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// offer id used for inserting offer text/flavor
     /// </summary>
@@ -62,11 +52,6 @@ public class AssetMorphRequest
 }
 public class CreateAssetRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// to return nulls
     /// </summary>
@@ -241,11 +226,6 @@ public class CreateAssetRequest
 public class DeleteAssetRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -274,11 +254,6 @@ public class DeleteAssetRequest
 public class GetAssetRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -301,11 +276,6 @@ public class GetAssetRequest
 }
 public class RemoveAssetRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -349,11 +319,6 @@ public class RemoveAssetRequest
 }
 public class SearchAssetsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -477,11 +442,6 @@ public class SearchAssetsRequest
 }
 public class UpdateAssetRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>

@@ -12,7 +12,7 @@ public class CreateQuestionEndpoint : FastEndpoints.Endpoint<CreateQuestionReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/question/create");
+        Post("/api/3.18/game/question/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateQuestionEndpoint : FastEndpoints.Endpoint<CreateQuestionReque
 
         Summary(s => {
             s.Summary = "Create Question";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.Question, "the text of the question");
             s.RequestParam(r => r.Answers, "&#x60;&#x60;&#x60;json [   {     \&quot;text\&quot;: \&quot;1942\&quot;,     \&quot;image\&quot;: 123,     \&quot;videoURL\&quot;: \&quot;http://www.here.com\&quot;,     \&quot;correct\&quot;: true   },   {     \&quot;text\&quot;: \&quot;1943\&quot;,     \&quot;image\&quot;: 124,     \&quot;videoURL\&quot;: \&quot;http://www.there.com\&quot;,     \&quot;correct\&quot;: false   } ] &#x60;&#x60;&#x60; ");
@@ -59,7 +58,7 @@ public class DeleteQuestionEndpoint : FastEndpoints.Endpoint<DeleteQuestionReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/question/delete");
+        Post("/api/3.18/game/question/delete");
         
         
         AllowAnonymous();
@@ -71,7 +70,6 @@ public class DeleteQuestionEndpoint : FastEndpoints.Endpoint<DeleteQuestionReque
 
         Summary(s => {
             s.Summary = "Delete Question";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.QuestionId, "the id of the question to delete");
             s.RequestParam(r => r.AccountId, "the id of the account that can execute this request");
             s.Responses[200] = "successful operation";
@@ -97,7 +95,7 @@ public class GetQuestionEndpoint : FastEndpoints.Endpoint<GetQuestionRequest, Qu
 {
     public override void Configure()
     {
-        Get("/api/{version}/game/question/get");
+        Get("/api/3.18/game/question/get");
         
         
         AllowAnonymous();
@@ -109,7 +107,6 @@ public class GetQuestionEndpoint : FastEndpoints.Endpoint<GetQuestionRequest, Qu
 
         Summary(s => {
             s.Summary = "Get Question";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.QuestionId, "the id of the question to get");
             s.RequestParam(r => r.AccountId, "the id of the account that can make this request");
             s.Responses[200] = "successful operation";
@@ -135,7 +132,7 @@ public class SearchQuestionsEndpoint : FastEndpoints.Endpoint<SearchQuestionsReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/game/question/search");
+        Get("/api/3.18/game/question/search");
         
         
         AllowAnonymous();
@@ -147,7 +144,6 @@ public class SearchQuestionsEndpoint : FastEndpoints.Endpoint<SearchQuestionsReq
 
         Summary(s => {
             s.Summary = "Search Questions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.SortField, "The column to sort the search on");
             s.RequestParam(r => r.Descending, "The order to return the search results");
@@ -178,7 +174,7 @@ public class UpdateQuestionEndpoint : FastEndpoints.Endpoint<UpdateQuestionReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/game/question/update");
+        Post("/api/3.18/game/question/update");
         
         
         AllowAnonymous();
@@ -190,7 +186,6 @@ public class UpdateQuestionEndpoint : FastEndpoints.Endpoint<UpdateQuestionReque
 
         Summary(s => {
             s.Summary = "Update Question";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.QuestionId, "The id of the question to update.");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TicketCount, "The number of tickets to reward");

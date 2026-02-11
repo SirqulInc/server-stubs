@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddOrUpdateAlbumContestRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -140,11 +135,6 @@ public class AddOrUpdateAlbumContestRequest
 public class ApproveAlbumContestRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// A unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -167,11 +157,6 @@ public class ApproveAlbumContestRequest
 }
 public class DeleteContestRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -201,11 +186,6 @@ public class DeleteContestRequest
 public class GetAlbumContestRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -233,11 +213,6 @@ public class GetAlbumContestRequest
 }
 public class GetAlbumContestsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -336,11 +311,6 @@ public class GetAlbumContestsRequest
 }
 public class VoteOnAlbumContestRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>

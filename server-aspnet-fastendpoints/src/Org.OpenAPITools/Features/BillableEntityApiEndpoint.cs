@@ -12,7 +12,7 @@ public class CreateBillableEntityEndpoint : FastEndpoints.Endpoint<CreateBillabl
 {
     public override void Configure()
     {
-        Post("/api/{version}/billable/create");
+        Post("/api/3.18/billable/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateBillableEntityEndpoint : FastEndpoints.Endpoint<CreateBillabl
 
         Summary(s => {
             s.Summary = "Create Billable";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.Name, "The name of the entity responsible for billing ");
@@ -60,7 +59,7 @@ public class DeleteBillableEntityEndpoint : FastEndpoints.Endpoint<DeleteBillabl
 {
     public override void Configure()
     {
-        Post("/api/{version}/billable/delete");
+        Post("/api/3.18/billable/delete");
         
         
         AllowAnonymous();
@@ -72,7 +71,6 @@ public class DeleteBillableEntityEndpoint : FastEndpoints.Endpoint<DeleteBillabl
 
         Summary(s => {
             s.Summary = "Delete Billable";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the billable entity.");
             s.Responses[200] = "successful operation";
@@ -98,7 +96,7 @@ public class GetBillableEntityEndpoint : FastEndpoints.Endpoint<GetBillableEntit
 {
     public override void Configure()
     {
-        Get("/api/{version}/billable/get");
+        Get("/api/3.18/billable/get");
         
         
         AllowAnonymous();
@@ -110,7 +108,6 @@ public class GetBillableEntityEndpoint : FastEndpoints.Endpoint<GetBillableEntit
 
         Summary(s => {
             s.Summary = "Get Billable";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.IncludeCounts, "Determines whether to include the retailer dash board counts into the response");
@@ -138,7 +135,7 @@ public class UpdateBillableEntityEndpoint : FastEndpoints.Endpoint<UpdateBillabl
 {
     public override void Configure()
     {
-        Post("/api/{version}/billable/update");
+        Post("/api/3.18/billable/update");
         
         
         AllowAnonymous();
@@ -150,7 +147,6 @@ public class UpdateBillableEntityEndpoint : FastEndpoints.Endpoint<UpdateBillabl
 
         Summary(s => {
             s.Summary = "Update Billable";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity.");
             s.RequestParam(r => r.Name, "The name of the entity responsible for billing ");

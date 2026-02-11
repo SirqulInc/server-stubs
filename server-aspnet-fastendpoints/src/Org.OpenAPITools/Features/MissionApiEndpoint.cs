@@ -12,7 +12,7 @@ public class CreateMissionEndpoint : FastEndpoints.Endpoint<CreateMissionRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/create");
+        Post("/api/3.18/mission/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateMissionEndpoint : FastEndpoints.Endpoint<CreateMissionRequest
 
         Summary(s => {
             s.Summary = "Create Mission";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Title, "The title of the mission");
             s.RequestParam(r => r.Description, "The description of the mission");
@@ -74,7 +73,7 @@ public class DeleteMissionEndpoint : FastEndpoints.Endpoint<DeleteMissionRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/delete");
+        Post("/api/3.18/mission/delete");
         
         
         AllowAnonymous();
@@ -86,7 +85,6 @@ public class DeleteMissionEndpoint : FastEndpoints.Endpoint<DeleteMissionRequest
 
         Summary(s => {
             s.Summary = "Delete Mission";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.MissionId, "the id of the mission to delete");
             s.Responses[200] = "successful operation";
@@ -112,7 +110,7 @@ public class FindMissionsEndpoint : FastEndpoints.Endpoint<FindMissionsRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/find");
+        Get("/api/3.18/mission/find");
         
         
         AllowAnonymous();
@@ -124,7 +122,6 @@ public class FindMissionsEndpoint : FastEndpoints.Endpoint<FindMissionsRequest, 
 
         Summary(s => {
             s.Summary = "Find Missions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.");
             s.RequestParam(r => r.Suffix, "The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip");
             s.RequestParam(r => r.Type, "The type of ads to get, possible values are: BANNER, LEADERBOARD, SKYSCRAPER, FULL, VIDEO, ZIP, CONFIG. Use this instead of suffix.");
@@ -167,7 +164,7 @@ public class GetMissionEndpoint : FastEndpoints.Endpoint<GetMissionRequest, Miss
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/get");
+        Get("/api/3.18/mission/get");
         
         
         AllowAnonymous();
@@ -179,7 +176,6 @@ public class GetMissionEndpoint : FastEndpoints.Endpoint<GetMissionRequest, Miss
 
         Summary(s => {
             s.Summary = "Get Mission";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.MissionId, "The id of the mission to return.");
             s.RequestParam(r => r.ReturnCreative, "Return creatives associated with the mission when true");
@@ -206,7 +202,7 @@ public class ImportMissionEndpoint : FastEndpoints.Endpoint<ImportMissionRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/import");
+        Post("/api/3.18/mission/import");
         
         
         AllowAnonymous();
@@ -218,7 +214,6 @@ public class ImportMissionEndpoint : FastEndpoints.Endpoint<ImportMissionRequest
 
         Summary(s => {
             s.Summary = "Import Mission";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Latitude, "The current location of the requesting device");
             s.RequestParam(r => r.Longitude, "The current location of the requesting device");
@@ -250,7 +245,7 @@ public class SearchMissionFormatsEndpoint : FastEndpoints.Endpoint<SearchMission
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/format/search");
+        Get("/api/3.18/mission/format/search");
         
         
         AllowAnonymous();
@@ -262,7 +257,6 @@ public class SearchMissionFormatsEndpoint : FastEndpoints.Endpoint<SearchMission
 
         Summary(s => {
             s.Summary = "Search Mission Formats";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Start, "The starting index in the result set to return. Default is 0.");
             s.RequestParam(r => r.Limit, "The total number of records to return. Default is 20.");
             s.RequestParam(r => r.ActiveOnly, "Determines whether to return only active results. Default is false.");
@@ -289,7 +283,7 @@ public class SearchMissionsEndpoint : FastEndpoints.Endpoint<SearchMissionsReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/search");
+        Get("/api/3.18/mission/search");
         
         
         AllowAnonymous();
@@ -301,7 +295,6 @@ public class SearchMissionsEndpoint : FastEndpoints.Endpoint<SearchMissionsReque
 
         Summary(s => {
             s.Summary = "Search Missions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Keyword, "Filter by keyword");
             s.RequestParam(r => r.SubType, "Custom string client apps can use for searching/filtering missions");
@@ -336,7 +329,7 @@ public class SearchMissionsByBillableEntityEndpoint : FastEndpoints.Endpoint<Sea
 {
     public override void Configure()
     {
-        Get("/api/{version}/mission/searchByBillableEntity");
+        Get("/api/3.18/mission/searchByBillableEntity");
         
         
         AllowAnonymous();
@@ -348,7 +341,6 @@ public class SearchMissionsByBillableEntityEndpoint : FastEndpoints.Endpoint<Sea
 
         Summary(s => {
             s.Summary = "Search Missions by Billable Entity";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Keyword, "Filter by keyword");
             s.RequestParam(r => r.Start, "The index into the record set to start with. Default is 0.");
@@ -382,7 +374,7 @@ public class UpdateMissionEndpoint : FastEndpoints.Endpoint<UpdateMissionRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/mission/update");
+        Post("/api/3.18/mission/update");
         
         
         AllowAnonymous();
@@ -394,7 +386,6 @@ public class UpdateMissionEndpoint : FastEndpoints.Endpoint<UpdateMissionRequest
 
         Summary(s => {
             s.Summary = "Update Mission";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.MissionId, "The id of the mission to update.");
             s.RequestParam(r => r.Title, "The title of the mission");

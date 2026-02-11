@@ -12,7 +12,7 @@ public class CreatePersonaEndpoint : FastEndpoints.Endpoint<CreatePersonaRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/persona/create");
+        Post("/api/3.18/persona/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreatePersonaEndpoint : FastEndpoints.Endpoint<CreatePersonaRequest
 
         Summary(s => {
             s.Summary = "Create Persona";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user");
             s.RequestParam(r => r.Title, "the title of the persona");
             s.RequestParam(r => r.PreviewAccounts, "the accounts that are able to preview from this persona");
@@ -57,7 +56,7 @@ public class DeletePersonaEndpoint : FastEndpoints.Endpoint<DeletePersonaRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/persona/delete");
+        Post("/api/3.18/persona/delete");
         
         
         AllowAnonymous();
@@ -69,7 +68,6 @@ public class DeletePersonaEndpoint : FastEndpoints.Endpoint<DeletePersonaRequest
 
         Summary(s => {
             s.Summary = "Delete Persona";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.PersonaId, "the id of the persona to delete");
             s.Responses[200] = "successful operation";
@@ -95,7 +93,7 @@ public class GetPersonaListEndpoint : FastEndpoints.Endpoint<GetPersonaListReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/persona/get");
+        Get("/api/3.18/persona/get");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class GetPersonaListEndpoint : FastEndpoints.Endpoint<GetPersonaListReque
 
         Summary(s => {
             s.Summary = "Get Persona";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user");
             s.RequestParam(r => r.PersonaId, "the persona ID of the persona");
             s.Responses[200] = "successful operation";
@@ -133,7 +130,7 @@ public class SearchPersonaEndpoint : FastEndpoints.Endpoint<SearchPersonaRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/persona/search");
+        Get("/api/3.18/persona/search");
         
         
         AllowAnonymous();
@@ -145,7 +142,6 @@ public class SearchPersonaEndpoint : FastEndpoints.Endpoint<SearchPersonaRequest
 
         Summary(s => {
             s.Summary = "Search Personas";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user");
             s.RequestParam(r => r.Start, "the start index for pagination");
             s.RequestParam(r => r.Limit, "the limit for pagination (There is a hard limit of 100)");
@@ -172,7 +168,7 @@ public class UpdatePersonaEndpoint : FastEndpoints.Endpoint<UpdatePersonaRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/persona/update");
+        Post("/api/3.18/persona/update");
         
         
         AllowAnonymous();
@@ -184,7 +180,6 @@ public class UpdatePersonaEndpoint : FastEndpoints.Endpoint<UpdatePersonaRequest
 
         Summary(s => {
             s.Summary = "Update Persona";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID of the user");
             s.RequestParam(r => r.PersonaId, "the persona ID of the persona to update");
             s.RequestParam(r => r.Title, "the title of the persona");

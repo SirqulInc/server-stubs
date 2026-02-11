@@ -12,7 +12,7 @@ public class BatchSaveTrackingEndpoint : FastEndpoints.Endpoint<BatchSaveTrackin
 {
     public override void Configure()
     {
-        Post("/api/{version}/tracking/batch/create");
+        Post("/api/3.18/tracking/batch/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class BatchSaveTrackingEndpoint : FastEndpoints.Endpoint<BatchSaveTrackin
 
         Summary(s => {
             s.Summary = "Create Batch Tracking";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Data, "JSON array of tracking legs &#x60;&#x60;&#x60;json [   \&quot;distance\&quot;: \&quot;0.08\&quot;,   \&quot;duration\&quot;: \&quot;10000\&quot;,   \&quot;startLatitude\&quot;: \&quot;47.614603\&quot;,   \&quot;startLongitude\&quot;: \&quot;-122.350518\&quot;,   \&quot;endLatitude\&quot;: \&quot;47.614384\&quot;,   \&quot;endLongitude\&quot;: \&quot;-122.349161\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endDate\&quot;: \&quot;1361924020000\&quot;,   \&quot;steps\&quot;: [     {       \&quot;distance\&quot;: \&quot;0.03\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614603\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,       \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614941\&quot;,       \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;endDate\&quot;: \&quot;1361924015000\&quot;     },{       \&quot;distance\&quot;: \&quot;0.05\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614941\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;startDate\&quot;: \&quot;1361924015000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614384\&quot;,       \&quot;endLng\&quot;: \&quot;-122.349161\&quot;,       \&quot;endDate\&quot;: \&quot;1361924020000\&quot;     }   ] ] &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
@@ -55,7 +54,7 @@ public class GetPredictedLocationsEndpoint : FastEndpoints.Endpoint<GetPredicted
 {
     public override void Configure()
     {
-        Get("/api/{version}/tracking/predicted/get");
+        Get("/api/3.18/tracking/predicted/get");
         
         
         AllowAnonymous();
@@ -67,7 +66,6 @@ public class GetPredictedLocationsEndpoint : FastEndpoints.Endpoint<GetPredicted
 
         Summary(s => {
             s.Summary = "Get Predicted Locations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the customer");
             s.RequestParam(r => r.Latitude, "latitude to return a more likely result set based on the user&#39;s current location");
             s.RequestParam(r => r.Longitude, "longitude to return a more likely result set based on the user&#39;s current location");
@@ -100,7 +98,7 @@ public class GetPredictedPathEndpoint : FastEndpoints.Endpoint<GetPredictedPathR
 {
     public override void Configure()
     {
-        Get("/api/{version}/tracking/path/get");
+        Get("/api/3.18/tracking/path/get");
         
         
         AllowAnonymous();
@@ -112,7 +110,6 @@ public class GetPredictedPathEndpoint : FastEndpoints.Endpoint<GetPredictedPathR
 
         Summary(s => {
             s.Summary = "Get Tracking Path";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the customer");
             s.RequestParam(r => r.StartStepId, "The stepId to begin from");
             s.RequestParam(r => r.EndStepId, "The stepId to end with");
@@ -139,7 +136,7 @@ public class GetPreferredLocationsEndpoint : FastEndpoints.Endpoint<GetPreferred
 {
     public override void Configure()
     {
-        Get("/api/{version}/tracking/preferred/search");
+        Get("/api/3.18/tracking/preferred/search");
         
         
         AllowAnonymous();
@@ -151,7 +148,6 @@ public class GetPreferredLocationsEndpoint : FastEndpoints.Endpoint<GetPreferred
 
         Summary(s => {
             s.Summary = "Search Preferred Locations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the customer");
             s.RequestParam(r => r.Latitude, "latitude to return a more likely result set based on the user&#39;s current location");
             s.RequestParam(r => r.Longitude, "longitude to return a more likely result set based on the user&#39;s current location");
@@ -186,7 +182,7 @@ public class GetTrackingLegsEndpoint : FastEndpoints.Endpoint<GetTrackingLegsReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/tracking/search");
+        Get("/api/3.18/tracking/search");
         
         
         AllowAnonymous();
@@ -198,7 +194,6 @@ public class GetTrackingLegsEndpoint : FastEndpoints.Endpoint<GetTrackingLegsReq
 
         Summary(s => {
             s.Summary = "Search Tracking";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.OwnerId, "the account id of the person the user wants to tracking data for");
@@ -230,7 +225,7 @@ public class SaveTrackingLegEndpoint : FastEndpoints.Endpoint<SaveTrackingLegReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/tracking/leg/create");
+        Post("/api/3.18/tracking/leg/create");
         
         
         AllowAnonymous();
@@ -242,7 +237,6 @@ public class SaveTrackingLegEndpoint : FastEndpoints.Endpoint<SaveTrackingLegReq
 
         Summary(s => {
             s.Summary = "Create Tracking Leg";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.StartLat, "the latitude of the first point");
             s.RequestParam(r => r.StartLng, "the longitude of the first point");
             s.RequestParam(r => r.StartDate, "the start date (in UTC milliseconds) of the first point");
@@ -278,7 +272,7 @@ public class SaveTrackingStepEndpoint : FastEndpoints.Endpoint<SaveTrackingStepR
 {
     public override void Configure()
     {
-        Post("/api/{version}/tracking/step/create");
+        Post("/api/3.18/tracking/step/create");
         
         
         AllowAnonymous();
@@ -290,7 +284,6 @@ public class SaveTrackingStepEndpoint : FastEndpoints.Endpoint<SaveTrackingStepR
 
         Summary(s => {
             s.Summary = "Create Tracking Step";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.LegId, "the leg to add the step to");
             s.RequestParam(r => r.StartLat, "the latitude of the first point");
             s.RequestParam(r => r.StartLng, "the longitude of the first point");
@@ -325,7 +318,7 @@ public class SearchAccountsWithTrackingLegsEndpoint : FastEndpoints.Endpoint<Sea
 {
     public override void Configure()
     {
-        Get("/api/{version}/tracking/list");
+        Get("/api/3.18/tracking/list");
         
         
         AllowAnonymous();
@@ -337,7 +330,6 @@ public class SearchAccountsWithTrackingLegsEndpoint : FastEndpoints.Endpoint<Sea
 
         Summary(s => {
             s.Summary = "List Tracking";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.Keyword, "Used for LIKE search of first or last name on the acocunt");
             s.RequestParam(r => r.StartDate, "Range to begin in UTC milliseconds");
@@ -375,7 +367,7 @@ public class SearchTrackingLegsEndpoint : FastEndpoints.Endpoint<SearchTrackingL
 {
     public override void Configure()
     {
-        Get("/api/{version}/tracking/searchByBillable");
+        Get("/api/3.18/tracking/searchByBillable");
         
         
         AllowAnonymous();
@@ -387,7 +379,6 @@ public class SearchTrackingLegsEndpoint : FastEndpoints.Endpoint<SearchTrackingL
 
         Summary(s => {
             s.Summary = "Search Tracking (Billable)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id to search tracking for");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.TrackingDeviceId, "The id of the tracking device");

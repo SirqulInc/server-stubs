@@ -12,7 +12,7 @@ public class GetAppDataEndpoint : FastEndpoints.Endpoint<GetAppDataRequest, AppR
 {
     public override void Configure()
     {
-        Get("/api/{version}/app/get");
+        Get("/api/3.18/app/get");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetAppDataEndpoint : FastEndpoints.Endpoint<GetAppDataRequest, AppR
 
         Summary(s => {
             s.Summary = "Get App Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Start, "start the search results at a record.");
             s.RequestParam(r => r.Limit, "limit the search results to some number.");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required).");
@@ -73,7 +72,7 @@ public class PostAppDataEndpoint : FastEndpoints.Endpoint<PostAppDataRequest, Ap
 {
     public override void Configure()
     {
-        Post("/api/{version}/app/post");
+        Post("/api/3.18/app/post");
         
         
         AllowAnonymous();
@@ -85,7 +84,6 @@ public class PostAppDataEndpoint : FastEndpoints.Endpoint<PostAppDataRequest, Ap
 
         Summary(s => {
             s.Summary = "Create App Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.GameType, "the game to retrieve the data for, use your application key.");
             s.RequestParam(r => r.Start, "start the search results at a record.");
             s.RequestParam(r => r.Limit, "limit the search results to some number.");
@@ -135,7 +133,7 @@ public class RegenAppDataEndpoint : FastEndpoints.Endpoint<RegenAppDataRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/app/regen");
+        Post("/api/3.18/app/regen");
         
         
         AllowAnonymous();
@@ -147,7 +145,6 @@ public class RegenAppDataEndpoint : FastEndpoints.Endpoint<RegenAppDataRequest, 
 
         Summary(s => {
             s.Summary = "Regenerate App Data";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.AppKey, "process a specific application, if null process all apps with caches");
             s.RequestParam(r => r.BuildVersion, "create a specific version, if null use current version. Be careful if processing all");

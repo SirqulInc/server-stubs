@@ -12,7 +12,7 @@ public class BatchUpdateOfferLocationsEndpoint : FastEndpoints.Endpoint<BatchUpd
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/location/batchUpdate");
+        Post("/api/3.18/retailer/offer/location/batchUpdate");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class BatchUpdateOfferLocationsEndpoint : FastEndpoints.Endpoint<BatchUpd
 
         Summary(s => {
             s.Summary = "Update Offer Locations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Data, "JSON string in the following format: &#x60;&#x60;&#x60;json [{   \&quot;offerLocationId\&quot;: 1705,   \&quot;latitude\&quot;: 54.0,   \&quot;longitude\&quot;: -122.0,   \&quot;altitude\&quot;: 1.0,   \&quot;locationDetail\&quot;: \&quot;floor 1\&quot;,   \&quot;locationDescription\&quot;: \&quot;behind the Coke sign\&quot; }, {   \&quot;offerLocationId\&quot;: 1704,   \&quot;latitude\&quot;: 54.1,   \&quot;longitude\&quot;: -122.1 }] &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -51,7 +50,7 @@ public class CreateOfferEndpoint : FastEndpoints.Endpoint<CreateOfferRequest, Re
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/create");
+        Post("/api/3.18/retailer/offer/create");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class CreateOfferEndpoint : FastEndpoints.Endpoint<CreateOfferRequest, Re
 
         Summary(s => {
             s.Summary = "Create Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.IncludeOfferLocations, "If true return all the offer locations associated with the offer");
             s.RequestParam(r => r.Title, "The title (255 char limit)");
             s.RequestParam(r => r.BarcodeType, "The bar code type {NONE, UPC, CODE_128, QR, CUSTOM_MEDIA}");
@@ -173,7 +171,7 @@ public class DeleteOfferEndpoint : FastEndpoints.Endpoint<DeleteOfferRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/delete");
+        Post("/api/3.18/retailer/offer/delete");
         
         
         AllowAnonymous();
@@ -185,7 +183,6 @@ public class DeleteOfferEndpoint : FastEndpoints.Endpoint<DeleteOfferRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferId, "The ID of the offer to be deleted");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the offer.");
@@ -212,7 +209,7 @@ public class DeleteOfferLocationEndpoint : FastEndpoints.Endpoint<DeleteOfferLoc
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/location/delete");
+        Post("/api/3.18/retailer/offer/location/delete");
         
         
         AllowAnonymous();
@@ -224,7 +221,6 @@ public class DeleteOfferLocationEndpoint : FastEndpoints.Endpoint<DeleteOfferLoc
 
         Summary(s => {
             s.Summary = "Delete Offer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferLocationId, "The ID of the offer location to be deleted");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account used to perform the delete, must have rights to edit the offer location.");
@@ -251,7 +247,7 @@ public class GetOfferEndpoint : FastEndpoints.Endpoint<GetOfferRequest, Retailer
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/offer/get");
+        Get("/api/3.18/retailer/offer/get");
         
         
         AllowAnonymous();
@@ -263,7 +259,6 @@ public class GetOfferEndpoint : FastEndpoints.Endpoint<GetOfferRequest, Retailer
 
         Summary(s => {
             s.Summary = "Get Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferId, "The id of the offer");
             s.RequestParam(r => r.IncludeOfferLocations, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -291,7 +286,7 @@ public class GetOfferDetailsEndpoint : FastEndpoints.Endpoint<GetOfferDetailsReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/get");
+        Get("/api/3.18/offer/get");
         
         
         AllowAnonymous();
@@ -303,7 +298,6 @@ public class GetOfferDetailsEndpoint : FastEndpoints.Endpoint<GetOfferDetailsReq
 
         Summary(s => {
             s.Summary = "Get Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id for returning account information (i.e. favorites)");
             s.RequestParam(r => r.AccountId, "The account id for returning account information (i.e. favorites)");
             s.RequestParam(r => r.OfferId, "The offer id (either offeLocationId or offerId must be provided)");
@@ -337,7 +331,7 @@ public class GetOfferListCountsEndpoint : FastEndpoints.Endpoint<GetOfferListCou
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/lists/count");
+        Get("/api/3.18/offer/lists/count");
         
         
         AllowAnonymous();
@@ -349,7 +343,6 @@ public class GetOfferListCountsEndpoint : FastEndpoints.Endpoint<GetOfferListCou
 
         Summary(s => {
             s.Summary = "Get Offers (Counts)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Latitude, "The latitude of where the search will center at");
             s.RequestParam(r => r.Longitude, "The longitude of where the search will center at");
             s.RequestParam(r => r.SearchRange, "The range of the search");
@@ -377,7 +370,7 @@ public class GetOfferLocationEndpoint : FastEndpoints.Endpoint<GetOfferLocationR
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/location/get");
+        Get("/api/3.18/offer/location/get");
         
         
         AllowAnonymous();
@@ -389,7 +382,6 @@ public class GetOfferLocationEndpoint : FastEndpoints.Endpoint<GetOfferLocationR
 
         Summary(s => {
             s.Summary = "Get Offer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferLocationId, "the id of the offer location to get");
             s.RequestParam(r => r.Udid, "the UDID of the device");
             s.Responses[200] = "successful operation";
@@ -415,7 +407,7 @@ public class GetOfferLocationsForRetailersEndpoint : FastEndpoints.Endpoint<GetO
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/offer/location/search");
+        Get("/api/3.18/retailer/offer/location/search");
         
         
         AllowAnonymous();
@@ -427,7 +419,6 @@ public class GetOfferLocationsForRetailersEndpoint : FastEndpoints.Endpoint<GetO
 
         Summary(s => {
             s.Summary = "Search Offer Locations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The column to sort the results on. Default is \&quot;TITLE\&quot;, which will sort the results by the offer title. Possible input values: {CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, RETAILER_ID,RETAILER_LOCATION_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY}");
             s.RequestParam(r => r.Descending, "The order to return the results. Default is false, which will return the results in ascending order.");
             s.RequestParam(r => r.Start, "The index into the record set to start with. Default is 0.");
@@ -471,7 +462,7 @@ public class GetOffersForRetailersEndpoint : FastEndpoints.Endpoint<GetOffersFor
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/offer/search");
+        Get("/api/3.18/retailer/offer/search");
         
         
         AllowAnonymous();
@@ -483,7 +474,6 @@ public class GetOffersForRetailersEndpoint : FastEndpoints.Endpoint<GetOffersFor
 
         Summary(s => {
             s.Summary = "Search Offers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferVisibility, "");
             s.RequestParam(r => r.SortField, "The column to sort the search on. Possible values include: ID, CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, ESTIMATED_VALUE, VOUCHER_PRICE, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY");
             s.RequestParam(r => r.Descending, "The order to return the search results");
@@ -538,7 +528,7 @@ public class RedeemOfferTransactionEndpoint : FastEndpoints.Endpoint<RedeemOffer
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/transaction/update");
+        Post("/api/3.18/retailer/offer/transaction/update");
         
         
         AllowAnonymous();
@@ -550,7 +540,6 @@ public class RedeemOfferTransactionEndpoint : FastEndpoints.Endpoint<RedeemOffer
 
         Summary(s => {
             s.Summary = "Update Offer Transaction";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferTransactionId, "the OfferTransaction ID of the transaction being redeemed");
             s.RequestParam(r => r.Status, "the status to set the offer transaction to - 1 sets it to redeemable and 2 sets it to redeemed");
             s.RequestParam(r => r.DeviceId, "the device id (deviceId or accountId required)");
@@ -579,7 +568,7 @@ public class SearchOfferTransactionsForRetailersEndpoint : FastEndpoints.Endpoin
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/offer/transaction/search");
+        Get("/api/3.18/retailer/offer/transaction/search");
         
         
         AllowAnonymous();
@@ -591,7 +580,6 @@ public class SearchOfferTransactionsForRetailersEndpoint : FastEndpoints.Endpoin
 
         Summary(s => {
             s.Summary = "Search Offer Transactions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "Determines what to sort the results by {CREATED, UPDATED, SEARCH_TAGS, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, CUSTOMER_ID, CUSTOMER_DISPLAY, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY}");
             s.RequestParam(r => r.Descending, "Determines whether the results are in descending order");
             s.RequestParam(r => r.Start, "The start index for pagination");
@@ -639,7 +627,7 @@ public class SearchOffersForConsumerEndpoint : FastEndpoints.Endpoint<SearchOffe
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/lists");
+        Get("/api/3.18/offer/lists");
         
         
         AllowAnonymous();
@@ -651,7 +639,6 @@ public class SearchOffersForConsumerEndpoint : FastEndpoints.Endpoint<SearchOffe
 
         Summary(s => {
             s.Summary = "Search Offers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Latitude, "The latitude of where the search will center at");
             s.RequestParam(r => r.Longitude, "The longitude of where the search will center at");
             s.RequestParam(r => r.RecommendationType, "The method to use to gather recommendations: WALLET base relevance on items in users wallets CLICKS base relevance on items users have clicked on BLENDED blend using all methods available");
@@ -706,7 +693,7 @@ public class TopOfferTransactionsEndpoint : FastEndpoints.Endpoint<TopOfferTrans
 {
     public override void Configure()
     {
-        Get("/api/{version}/offer/top");
+        Get("/api/3.18/offer/top");
         
         
         AllowAnonymous();
@@ -718,7 +705,6 @@ public class TopOfferTransactionsEndpoint : FastEndpoints.Endpoint<TopOfferTrans
 
         Summary(s => {
             s.Summary = "Get Offers (Top)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Start, "The index into the record set to start with. Default is 0.");
             s.RequestParam(r => r.Limit, "The total number of record to return. Default id 20.");
             s.Responses[200] = "successful operation";
@@ -744,7 +730,7 @@ public class UpdateOfferEndpoint : FastEndpoints.Endpoint<UpdateOfferRequest, Re
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/update");
+        Post("/api/3.18/retailer/offer/update");
         
         
         AllowAnonymous();
@@ -756,7 +742,6 @@ public class UpdateOfferEndpoint : FastEndpoints.Endpoint<UpdateOfferRequest, Re
 
         Summary(s => {
             s.Summary = "Update Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferId, "The offer to update");
             s.RequestParam(r => r.IncludeOfferLocations, "If true return all the offer locations associated with the offer");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -867,7 +852,7 @@ public class UpdateOfferStatusEndpoint : FastEndpoints.Endpoint<UpdateOfferStatu
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/offer/status");
+        Post("/api/3.18/retailer/offer/status");
         
         
         AllowAnonymous();
@@ -879,7 +864,6 @@ public class UpdateOfferStatusEndpoint : FastEndpoints.Endpoint<UpdateOfferStatu
 
         Summary(s => {
             s.Summary = "Activate Offer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.OfferIds, "Comma separated list of offer ids");
             s.RequestParam(r => r.Active, "Determines whether to make the offer active as well");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");

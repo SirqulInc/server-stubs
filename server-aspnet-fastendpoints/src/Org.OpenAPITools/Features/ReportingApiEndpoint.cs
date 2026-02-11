@@ -12,7 +12,7 @@ public class CreateBatchEndpoint : FastEndpoints.Endpoint<CreateBatchRequest, Re
 {
     public override void Configure()
     {
-        Post("/api/{version}/report/batch/create");
+        Post("/api/3.18/report/batch/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateBatchEndpoint : FastEndpoints.Endpoint<CreateBatchRequest, Re
 
         Summary(s => {
             s.Summary = "Create Offline Report";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user for passing account related params");
             s.RequestParam(r => r.Status, "the status of the report");
             s.RequestParam(r => r.PreviewLimit, "the limit on how much you can preview of the batch report");
@@ -59,7 +58,7 @@ public class CreateRegionLegSummaryBatchEndpoint : FastEndpoints.Endpoint<Create
 {
     public override void Configure()
     {
-        Post("/api/{version}/report/region/summary/batch");
+        Post("/api/3.18/report/region/summary/batch");
         
         
         AllowAnonymous();
@@ -71,7 +70,6 @@ public class CreateRegionLegSummaryBatchEndpoint : FastEndpoints.Endpoint<Create
 
         Summary(s => {
             s.Summary = "Create Offline Report";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -96,7 +94,7 @@ public class DeleteBatchEndpoint : FastEndpoints.Endpoint<DeleteBatchRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/report/batch/delete");
+        Post("/api/3.18/report/batch/delete");
         
         
         AllowAnonymous();
@@ -108,7 +106,6 @@ public class DeleteBatchEndpoint : FastEndpoints.Endpoint<DeleteBatchRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Offline Report";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account");
             s.RequestParam(r => r.BatchId, "the id of the batch to delete");
             s.Responses[200] = "successful operation";
@@ -134,7 +131,7 @@ public class GetReportBatchEndpoint : FastEndpoints.Endpoint<GetReportBatchReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/report/batch/get");
+        Get("/api/3.18/report/batch/get");
         
         
         AllowAnonymous();
@@ -146,7 +143,6 @@ public class GetReportBatchEndpoint : FastEndpoints.Endpoint<GetReportBatchReque
 
         Summary(s => {
             s.Summary = "Get Offline Report";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.BatchId, "returned by /report/batch/create");
             s.RequestParam(r => r.AllResults, "whether to return all batch results or not");
@@ -173,7 +169,7 @@ public class RunReportEndpoint : FastEndpoints.Endpoint<RunReportRequest, Report
 {
     public override void Configure()
     {
-        Post("/api/{version}/report/run");
+        Post("/api/3.18/report/run");
         
         
         AllowAnonymous();
@@ -185,7 +181,6 @@ public class RunReportEndpoint : FastEndpoints.Endpoint<RunReportRequest, Report
 
         Summary(s => {
             s.Summary = "Run Report";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Desc, "If true then descending order, false is ascending");
             s.RequestParam(r => r.AccountId, "The account id of the user for passing account related params");
             s.RequestParam(r => r.Query, "The named identifier of the query");
@@ -217,7 +212,7 @@ public class SearchBatchEndpoint : FastEndpoints.Endpoint<SearchBatchRequest, Li
 {
     public override void Configure()
     {
-        Get("/api/{version}/report/batch/search");
+        Get("/api/3.18/report/batch/search");
         
         
         AllowAnonymous();
@@ -229,7 +224,6 @@ public class SearchBatchEndpoint : FastEndpoints.Endpoint<SearchBatchRequest, Li
 
         Summary(s => {
             s.Summary = "Search Offline Reports";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account logged in");
             s.RequestParam(r => r.Start, "the start of the index and/or pagination");
             s.RequestParam(r => r.Limit, "the limit of the index and/or pagination");

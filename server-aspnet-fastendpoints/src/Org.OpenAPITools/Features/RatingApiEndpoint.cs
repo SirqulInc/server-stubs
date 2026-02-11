@@ -12,7 +12,7 @@ public class CreateRatingEndpoint : FastEndpoints.Endpoint<CreateRatingRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/rating/create");
+        Post("/api/3.18/rating/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateRatingEndpoint : FastEndpoints.Endpoint<CreateRatingRequest, 
 
         Summary(s => {
             s.Summary = "Create Rating";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RatableType, "The ratable object type {RETAILER_LOCATION}");
             s.RequestParam(r => r.RatableId, "The id of the ratable object");
             s.RequestParam(r => r.RatingValue, "The integer value of 0-100");
@@ -59,7 +58,7 @@ public class DeleteRatingEndpoint : FastEndpoints.Endpoint<DeleteRatingRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/rating/delete");
+        Post("/api/3.18/rating/delete");
         
         
         AllowAnonymous();
@@ -71,7 +70,6 @@ public class DeleteRatingEndpoint : FastEndpoints.Endpoint<DeleteRatingRequest, 
 
         Summary(s => {
             s.Summary = "Delete Rating";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RatingId, "The ID of the rating to delete");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
@@ -98,7 +96,7 @@ public class SearchLocationRatingIndexesEndpoint : FastEndpoints.Endpoint<Search
 {
     public override void Configure()
     {
-        Get("/api/{version}/location/rating/index/search");
+        Get("/api/3.18/location/rating/index/search");
         
         
         AllowAnonymous();
@@ -110,7 +108,6 @@ public class SearchLocationRatingIndexesEndpoint : FastEndpoints.Endpoint<Search
 
         Summary(s => {
             s.Summary = "Search Location Rating Indexes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.CategoryIds, "Comma separated list of category ids to filter the results by");
             s.RequestParam(r => r.Keyword, "The keyword used to search");
             s.RequestParam(r => r.LocationType, "The type of location to filter the results by");
@@ -151,7 +148,7 @@ public class SearchRatingIndexesEndpoint : FastEndpoints.Endpoint<SearchRatingIn
 {
     public override void Configure()
     {
-        Get("/api/{version}/rating/index/search");
+        Get("/api/3.18/rating/index/search");
         
         
         AllowAnonymous();
@@ -163,7 +160,6 @@ public class SearchRatingIndexesEndpoint : FastEndpoints.Endpoint<SearchRatingIn
 
         Summary(s => {
             s.Summary = "Search Rating Indexes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RatableType, "Filter results by a ratable type {RETAILER_LOCATION}");
             s.RequestParam(r => r.RatableIds, "Comma separated list of ratable ids to filter the resuts by");
             s.RequestParam(r => r.CategoryIds, "Comma separated list of category ids to filter the results by");
@@ -200,7 +196,7 @@ public class SearchRatingsEndpoint : FastEndpoints.Endpoint<SearchRatingsRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/rating/search");
+        Get("/api/3.18/rating/search");
         
         
         AllowAnonymous();
@@ -212,7 +208,6 @@ public class SearchRatingsEndpoint : FastEndpoints.Endpoint<SearchRatingsRequest
 
         Summary(s => {
             s.Summary = "Search Ratings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.FilterAccountId, "Filter results for a particular account");
@@ -247,7 +242,7 @@ public class UpdateRatingEndpoint : FastEndpoints.Endpoint<UpdateRatingRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/rating/update");
+        Post("/api/3.18/rating/update");
         
         
         AllowAnonymous();
@@ -259,7 +254,6 @@ public class UpdateRatingEndpoint : FastEndpoints.Endpoint<UpdateRatingRequest, 
 
         Summary(s => {
             s.Summary = "Update Rating";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RatingId, "The id of the rating (Note: this is not the ratable object id)");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");

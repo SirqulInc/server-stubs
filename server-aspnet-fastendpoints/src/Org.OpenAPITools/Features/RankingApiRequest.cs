@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetHistoricalRankingsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -64,11 +59,6 @@ public class GetHistoricalRankingsRequest
 }
 public class GetRankingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -163,11 +153,6 @@ public class GetRankingsRequest
 public class GetUserRankRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -225,11 +210,6 @@ public class GetUserRankRequest
 }
 public class OverrideUserRankRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the logged in user&#39;s account id (must have permissions to manage data for the application)
     /// </summary>
@@ -343,11 +323,6 @@ public class OverrideUserRankRequest
 }
 public class UpdateRankingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>

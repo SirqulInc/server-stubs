@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateRetailerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -180,11 +175,6 @@ public class CreateRetailerRequest
 public class DeleteRetailerRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -202,11 +192,6 @@ public class DeleteRetailerRequest
 }
 public class GetRetailerRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required)
     /// </summary>
@@ -230,11 +215,6 @@ public class GetRetailerRequest
 }
 public class GetRetailersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>
@@ -309,11 +289,6 @@ public class GetRetailersRequest
 public class RetailerLoginCheckRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the user&#39;s email address they used to sign-up
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("username")]
@@ -346,11 +321,6 @@ public class RetailerLoginCheckRequest
 }
 public class UpdateRetailerRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The device id (deviceId or accountId required)
     /// </summary>

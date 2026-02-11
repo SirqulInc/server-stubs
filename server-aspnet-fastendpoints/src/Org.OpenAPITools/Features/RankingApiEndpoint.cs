@@ -12,7 +12,7 @@ public class GetHistoricalRankingsEndpoint : FastEndpoints.Endpoint<GetHistorica
 {
     public override void Configure()
     {
-        Get("/api/{version}/ranking/historical/search");
+        Get("/api/3.18/ranking/historical/search");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class GetHistoricalRankingsEndpoint : FastEndpoints.Endpoint<GetHistorica
 
         Summary(s => {
             s.Summary = "Search Historical Rankings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "the application key for filtering results by application");
             s.RequestParam(r => r.RankType, "the rank type to return");
             s.RequestParam(r => r.StartDate, "timestamp in milliseconds to filter results with");
@@ -58,7 +57,7 @@ public class GetRankingsEndpoint : FastEndpoints.Endpoint<GetRankingsRequest, Ra
 {
     public override void Configure()
     {
-        Get("/api/{version}/ranking/search");
+        Get("/api/3.18/ranking/search");
         
         
         AllowAnonymous();
@@ -70,7 +69,6 @@ public class GetRankingsEndpoint : FastEndpoints.Endpoint<GetRankingsRequest, Ra
 
         Summary(s => {
             s.Summary = "Search Rankings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.GameType, "This parameter is deprecated.");
@@ -112,7 +110,7 @@ public class GetUserRankEndpoint : FastEndpoints.Endpoint<GetUserRankRequest, Ob
 {
     public override void Configure()
     {
-        Post("/api/{version}/ranking/personal/ranks");
+        Post("/api/3.18/ranking/personal/ranks");
         
         
         AllowAnonymous();
@@ -124,7 +122,6 @@ public class GetUserRankEndpoint : FastEndpoints.Endpoint<GetUserRankRequest, Ob
 
         Summary(s => {
             s.Summary = "Get Personal Rankings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "a unique id given by the device (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.AppKey, "the application key for filtering results by application (required)");
@@ -159,7 +156,7 @@ public class OverrideUserRankEndpoint : FastEndpoints.Endpoint<OverrideUserRankR
 {
     public override void Configure()
     {
-        Post("/api/{version}/ranking/override");
+        Post("/api/3.18/ranking/override");
         
         
         AllowAnonymous();
@@ -171,7 +168,6 @@ public class OverrideUserRankEndpoint : FastEndpoints.Endpoint<OverrideUserRankR
 
         Summary(s => {
             s.Summary = "Override User Rank";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the logged in user&#39;s account id (must have permissions to manage data for the application)");
             s.RequestParam(r => r.OwnerAccountId, "the end user&#39;s account id to override");
             s.RequestParam(r => r.AppKey, "the application key the leaderboard is for");
@@ -217,7 +213,7 @@ public class UpdateRankingsEndpoint : FastEndpoints.Endpoint<UpdateRankingsReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/ranking/update");
+        Post("/api/3.18/ranking/update");
         
         
         AllowAnonymous();
@@ -229,7 +225,6 @@ public class UpdateRankingsEndpoint : FastEndpoints.Endpoint<UpdateRankingsReque
 
         Summary(s => {
             s.Summary = "Update Ranking";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user");
             s.RequestParam(r => r.AppKey, "the application key for filtering results by application");
             s.RequestParam(r => r.RankType, "a unique label for identifying the ranking. This can be any alphanumeric string (no spaces or special characters) with a maximum length of 64 characters. There are also default rank types to use which include: POINTS, DOWNLOADS, INVITATIONS, CREATIONS, VOTES, REDEEMED, ACTIONS");

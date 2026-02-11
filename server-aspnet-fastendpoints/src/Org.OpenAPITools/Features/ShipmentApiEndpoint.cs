@@ -12,7 +12,7 @@ public class CancelShipmentEndpoint : FastEndpoints.Endpoint<CancelShipmentReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/shipment/{id}/cancel");
+        Post("/api/3.18/shipment/{id}/cancel");
         
         
         AllowAnonymous();
@@ -25,7 +25,6 @@ public class CancelShipmentEndpoint : FastEndpoints.Endpoint<CancelShipmentReque
 
         Summary(s => {
             s.Summary = "Cancel Shipment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the shipment to cancel");
             s.Responses[0] = "successful operation";
         });
@@ -50,7 +49,7 @@ public class CreateShipmentEndpoint : FastEndpoints.Endpoint<CreateShipmentReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/shipment");
+        Post("/api/3.18/shipment");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class CreateShipmentEndpoint : FastEndpoints.Endpoint<CreateShipmentReque
 
         Summary(s => {
             s.Summary = "Create Shipment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class DeleteShipmentEndpoint : FastEndpoints.Endpoint<DeleteShipmentReque
 {
     public override void Configure()
     {
-        Delete("/api/{version}/shipment/{id}");
+        Delete("/api/3.18/shipment/{id}");
         
         
         AllowAnonymous();
@@ -100,7 +98,6 @@ public class DeleteShipmentEndpoint : FastEndpoints.Endpoint<DeleteShipmentReque
 
         Summary(s => {
             s.Summary = "Delete Shipment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the shipment to delete");
             s.Responses[0] = "successful operation";
         });
@@ -125,7 +122,7 @@ public class GetShipmentEndpoint : FastEndpoints.Endpoint<GetShipmentRequest, Sh
 {
     public override void Configure()
     {
-        Get("/api/{version}/shipment/{id}");
+        Get("/api/3.18/shipment/{id}");
         
         
         AllowAnonymous();
@@ -137,7 +134,6 @@ public class GetShipmentEndpoint : FastEndpoints.Endpoint<GetShipmentRequest, Sh
 
         Summary(s => {
             s.Summary = "Get Shipment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the shipment to get");
             s.Responses[200] = "successful operation";
         });
@@ -162,7 +158,7 @@ public class SearchShipmentsEndpoint : FastEndpoints.Endpoint<SearchShipmentsReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/shipment");
+        Get("/api/3.18/shipment");
         
         
         AllowAnonymous();
@@ -174,7 +170,6 @@ public class SearchShipmentsEndpoint : FastEndpoints.Endpoint<SearchShipmentsReq
 
         Summary(s => {
             s.Summary = "Search Shipments";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");
@@ -206,7 +201,7 @@ public class UpdateShipmentEndpoint : FastEndpoints.Endpoint<UpdateShipmentReque
 {
     public override void Configure()
     {
-        Put("/api/{version}/shipment/{id}");
+        Put("/api/3.18/shipment/{id}");
         
         
         AllowAnonymous();
@@ -218,7 +213,6 @@ public class UpdateShipmentEndpoint : FastEndpoints.Endpoint<UpdateShipmentReque
 
         Summary(s => {
             s.Summary = "Update Shipment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the shipment to update");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -244,7 +238,7 @@ public class UpdateShipmentStatusEndpoint : FastEndpoints.Endpoint<UpdateShipmen
 {
     public override void Configure()
     {
-        Post("/api/{version}/shipment/{id}/status");
+        Post("/api/3.18/shipment/{id}/status");
         
         
         AllowAnonymous();
@@ -257,7 +251,6 @@ public class UpdateShipmentStatusEndpoint : FastEndpoints.Endpoint<UpdateShipmen
 
         Summary(s => {
             s.Summary = "Uupdate Shipment Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the shipment to update status");
             s.RequestParam(r => r.body, "");
             s.Responses[0] = "successful operation";

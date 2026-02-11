@@ -12,7 +12,7 @@ public class ApproveRouteEndpoint : FastEndpoints.Endpoint<ApproveRouteRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/{routeId}/approve");
+        Post("/api/3.18/route/{routeId}/approve");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ApproveRouteEndpoint : FastEndpoints.Endpoint<ApproveRouteRequest, 
 
         Summary(s => {
             s.Summary = "Approve Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to approve");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class CopyRouteEndpoint : FastEndpoints.Endpoint<CopyRouteRequest, Route>
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/{routeId}/copy");
+        Post("/api/3.18/route/{routeId}/copy");
         
         
         AllowAnonymous();
@@ -61,7 +60,6 @@ public class CopyRouteEndpoint : FastEndpoints.Endpoint<CopyRouteRequest, Route>
 
         Summary(s => {
             s.Summary = "Copy Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to duplicate");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -87,7 +85,7 @@ public class CreateRouteEndpoint : FastEndpoints.Endpoint<CreateRouteRequest, Ro
 {
     public override void Configure()
     {
-        Post("/api/{version}/route");
+        Post("/api/3.18/route");
         
         
         AllowAnonymous();
@@ -99,7 +97,6 @@ public class CreateRouteEndpoint : FastEndpoints.Endpoint<CreateRouteRequest, Ro
 
         Summary(s => {
             s.Summary = "Create Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -124,7 +121,7 @@ public class CreateRouteDirectionsEndpoint : FastEndpoints.Endpoint<CreateRouteD
 {
     public override void Configure()
     {
-        Put("/api/{version}/route/{routeId}/directions");
+        Put("/api/3.18/route/{routeId}/directions");
         
         
         AllowAnonymous();
@@ -136,7 +133,6 @@ public class CreateRouteDirectionsEndpoint : FastEndpoints.Endpoint<CreateRouteD
 
         Summary(s => {
             s.Summary = "Update Route Directions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to update directions for");
             s.Responses[200] = "successful operation";
         });
@@ -161,7 +157,7 @@ public class CreateRoutePolylineEndpoint : FastEndpoints.Endpoint<CreateRoutePol
 {
     public override void Configure()
     {
-        Put("/api/{version}/route/{routeId}/polyline");
+        Put("/api/3.18/route/{routeId}/polyline");
         
         
         AllowAnonymous();
@@ -173,7 +169,6 @@ public class CreateRoutePolylineEndpoint : FastEndpoints.Endpoint<CreateRoutePol
 
         Summary(s => {
             s.Summary = "Create Route Polyline";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to create a polyline for");
             s.Responses[200] = "successful operation";
         });
@@ -198,7 +193,7 @@ public class DeleteRouteEndpoint : FastEndpoints.Endpoint<DeleteRouteRequest>
 {
     public override void Configure()
     {
-        Delete("/api/{version}/route/{routeId}");
+        Delete("/api/3.18/route/{routeId}");
         
         
         AllowAnonymous();
@@ -211,7 +206,6 @@ public class DeleteRouteEndpoint : FastEndpoints.Endpoint<DeleteRouteRequest>
 
         Summary(s => {
             s.Summary = "Delete Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.Responses[0] = "successful operation";
         });
@@ -236,7 +230,7 @@ public class DisapproveRouteEndpoint : FastEndpoints.Endpoint<DisapproveRouteReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/{routeId}/disapprove");
+        Post("/api/3.18/route/{routeId}/disapprove");
         
         
         AllowAnonymous();
@@ -248,7 +242,6 @@ public class DisapproveRouteEndpoint : FastEndpoints.Endpoint<DisapproveRouteReq
 
         Summary(s => {
             s.Summary = "Disapprove Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to reject");
             s.Responses[200] = "successful operation";
         });
@@ -273,7 +266,7 @@ public class GetRouteEndpoint : FastEndpoints.Endpoint<GetRouteRequest, Route>
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/{routeId}");
+        Get("/api/3.18/route/{routeId}");
         
         
         AllowAnonymous();
@@ -285,7 +278,6 @@ public class GetRouteEndpoint : FastEndpoints.Endpoint<GetRouteRequest, Route>
 
         Summary(s => {
             s.Summary = "Get Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to get");
             s.RequestParam(r => r.ShowInheritedProperties, "return inherited properties from parent or not");
             s.Responses[200] = "successful operation";
@@ -311,7 +303,7 @@ public class GetRouteDirectionsEndpoint : FastEndpoints.Endpoint<GetRouteDirecti
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/{routeId}/directions");
+        Get("/api/3.18/route/{routeId}/directions");
         
         
         AllowAnonymous();
@@ -323,7 +315,6 @@ public class GetRouteDirectionsEndpoint : FastEndpoints.Endpoint<GetRouteDirecti
 
         Summary(s => {
             s.Summary = "Get Route Directions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to get directions for");
             s.Responses[200] = "successful operation";
         });
@@ -348,7 +339,7 @@ public class GetRouteShipmentsEndpoint : FastEndpoints.Endpoint<GetRouteShipment
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/{routeId}/shipments");
+        Get("/api/3.18/route/{routeId}/shipments");
         
         
         AllowAnonymous();
@@ -360,7 +351,6 @@ public class GetRouteShipmentsEndpoint : FastEndpoints.Endpoint<GetRouteShipment
 
         Summary(s => {
             s.Summary = "Get Route Shipments";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to get shipments for");
             s.Responses[200] = "successful operation";
         });
@@ -385,7 +375,7 @@ public class GetRouteStopEndpoint : FastEndpoints.Endpoint<GetRouteStopRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/{routeId}/stop/{stopId}");
+        Get("/api/3.18/route/{routeId}/stop/{stopId}");
         
         
         AllowAnonymous();
@@ -397,7 +387,6 @@ public class GetRouteStopEndpoint : FastEndpoints.Endpoint<GetRouteStopRequest, 
 
         Summary(s => {
             s.Summary = "Get Route Stop";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to get stops for");
             s.RequestParam(r => r.StopId, "the id of the specific stop on the route");
             s.Responses[200] = "successful operation";
@@ -423,7 +412,7 @@ public class GetRouteStopsEndpoint : FastEndpoints.Endpoint<GetRouteStopsRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/{routeId}/stops");
+        Get("/api/3.18/route/{routeId}/stops");
         
         
         AllowAnonymous();
@@ -435,7 +424,6 @@ public class GetRouteStopsEndpoint : FastEndpoints.Endpoint<GetRouteStopsRequest
 
         Summary(s => {
             s.Summary = "Get Route Stops";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.RequestParam(r => r.ConfirmedOnly, "only get stops that have been confirmed or not");
             s.Responses[200] = "successful operation";
@@ -461,7 +449,7 @@ public class GetShipmentsAtStopEndpoint : FastEndpoints.Endpoint<GetShipmentsAtS
 {
     public override void Configure()
     {
-        Get("/api/{version}/route/{routeId}/stop/{stopId}/shipments");
+        Get("/api/3.18/route/{routeId}/stop/{stopId}/shipments");
         
         
         AllowAnonymous();
@@ -473,7 +461,6 @@ public class GetShipmentsAtStopEndpoint : FastEndpoints.Endpoint<GetShipmentsAtS
 
         Summary(s => {
             s.Summary = "Get Shipments At Stop";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.RequestParam(r => r.StopId, "the id of the stop to get shipments on");
             s.Responses[200] = "successful operation";
@@ -499,7 +486,7 @@ public class OptimizeRouteEndpoint : FastEndpoints.Endpoint<OptimizeRouteRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/{routeId}/optimize");
+        Post("/api/3.18/route/{routeId}/optimize");
         
         
         AllowAnonymous();
@@ -512,7 +499,6 @@ public class OptimizeRouteEndpoint : FastEndpoints.Endpoint<OptimizeRouteRequest
 
         Summary(s => {
             s.Summary = "Optimize Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to optimize");
             s.Responses[0] = "successful operation";
         });
@@ -537,7 +523,7 @@ public class RemoveStopEndpoint : FastEndpoints.Endpoint<RemoveStopRequest>
 {
     public override void Configure()
     {
-        Delete("/api/{version}/route/{routeId}/stop/{stopId}");
+        Delete("/api/3.18/route/{routeId}/stop/{stopId}");
         
         
         AllowAnonymous();
@@ -550,7 +536,6 @@ public class RemoveStopEndpoint : FastEndpoints.Endpoint<RemoveStopRequest>
 
         Summary(s => {
             s.Summary = "Delete Stop";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.RequestParam(r => r.StopId, "the id of the specific stop to delete on the route");
             s.Responses[0] = "successful operation";
@@ -576,7 +561,7 @@ public class ReorderRouteStopsPatchEndpoint : FastEndpoints.Endpoint<ReorderRout
 {
     public override void Configure()
     {
-        Patch("/api/{version}/route/{routeId}/stops/reorder");
+        Patch("/api/3.18/route/{routeId}/stops/reorder");
         
         
         AllowAnonymous();
@@ -588,7 +573,6 @@ public class ReorderRouteStopsPatchEndpoint : FastEndpoints.Endpoint<ReorderRout
 
         Summary(s => {
             s.Summary = "Reorder Route Stops";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -614,7 +598,7 @@ public class ReorderRouteStopsPostEndpoint : FastEndpoints.Endpoint<ReorderRoute
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/{routeId}/stops/reorder");
+        Post("/api/3.18/route/{routeId}/stops/reorder");
         
         
         AllowAnonymous();
@@ -626,7 +610,6 @@ public class ReorderRouteStopsPostEndpoint : FastEndpoints.Endpoint<ReorderRoute
 
         Summary(s => {
             s.Summary = "Reorder Route Stops";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -652,7 +635,7 @@ public class SearchRoutesEndpoint : FastEndpoints.Endpoint<SearchRoutesRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/route");
+        Get("/api/3.18/route");
         
         
         AllowAnonymous();
@@ -664,7 +647,6 @@ public class SearchRoutesEndpoint : FastEndpoints.Endpoint<SearchRoutesRequest, 
 
         Summary(s => {
             s.Summary = "Search Routes";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");
@@ -709,7 +691,7 @@ public class SetDriverEndpoint : FastEndpoints.Endpoint<SetDriverRequest>
 {
     public override void Configure()
     {
-        Post("/api/{version}/route/{id}/driver/{driverId}");
+        Post("/api/3.18/route/{id}/driver/{driverId}");
         
         
         AllowAnonymous();
@@ -722,7 +704,6 @@ public class SetDriverEndpoint : FastEndpoints.Endpoint<SetDriverRequest>
 
         Summary(s => {
             s.Summary = "Set Driver";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the route");
             s.RequestParam(r => r.DriverId, "the id of the driver");
             s.Responses[0] = "successful operation";
@@ -748,7 +729,7 @@ public class UpdateRouteEndpoint : FastEndpoints.Endpoint<UpdateRouteRequest, Ro
 {
     public override void Configure()
     {
-        Put("/api/{version}/route/{routeId}");
+        Put("/api/3.18/route/{routeId}");
         
         
         AllowAnonymous();
@@ -760,7 +741,6 @@ public class UpdateRouteEndpoint : FastEndpoints.Endpoint<UpdateRouteRequest, Ro
 
         Summary(s => {
             s.Summary = "Update Route";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -786,7 +766,7 @@ public class UpdateRouteStopEndpoint : FastEndpoints.Endpoint<UpdateRouteStopReq
 {
     public override void Configure()
     {
-        Put("/api/{version}/route/{routeId}/stop/{stopId}");
+        Put("/api/3.18/route/{routeId}/stop/{stopId}");
         
         
         AllowAnonymous();
@@ -799,7 +779,6 @@ public class UpdateRouteStopEndpoint : FastEndpoints.Endpoint<UpdateRouteStopReq
 
         Summary(s => {
             s.Summary = "Update Route Stop";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RouteId, "the id of the route to update stops for");
             s.RequestParam(r => r.StopId, "the id of the specific stop to update on the route");
             s.RequestParam(r => r.body, "");

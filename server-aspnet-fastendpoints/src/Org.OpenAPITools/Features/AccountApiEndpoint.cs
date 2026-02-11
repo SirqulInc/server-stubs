@@ -12,7 +12,7 @@ public class AccountLocationSearchEndpoint : FastEndpoints.Endpoint<AccountLocat
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/search");
+        Get("/api/3.18/account/search");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AccountLocationSearchEndpoint : FastEndpoints.Endpoint<AccountLocat
 
         Summary(s => {
             s.Summary = "Search Accounts by Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Q, "Deprecated - legacy query parameter");
@@ -82,7 +81,7 @@ public class BlockAccountEndpoint : FastEndpoints.Endpoint<BlockAccountRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/block");
+        Post("/api/3.18/account/block");
         
         
         AllowAnonymous();
@@ -94,7 +93,6 @@ public class BlockAccountEndpoint : FastEndpoints.Endpoint<BlockAccountRequest, 
 
         Summary(s => {
             s.Summary = "Block Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountIdBeingBlocked, "The id of the account to be blocked/unblocked");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -125,7 +123,7 @@ public class CreateAccountEndpoint : FastEndpoints.Endpoint<CreateAccountRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/create");
+        Post("/api/3.18/account/create");
         
         
         AllowAnonymous();
@@ -137,7 +135,6 @@ public class CreateAccountEndpoint : FastEndpoints.Endpoint<CreateAccountRequest
 
         Summary(s => {
             s.Summary = "Create Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Username, "The access token to authenticate with (ex: username)");
             s.RequestParam(r => r.Password, "The secret to authenticate with (ex: password)");
             s.RequestParam(r => r.Name, "The full name of the user. If this parameter is NOT empty, the following parameters will be ignored: prefixName, firstName, middleName, lastName, and suffixName");
@@ -233,7 +230,7 @@ public class EditAccountEndpoint : FastEndpoints.Endpoint<EditAccountRequest, Pr
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/profile/update");
+        Post("/api/3.18/account/profile/update");
         
         
         AllowAnonymous();
@@ -245,7 +242,6 @@ public class EditAccountEndpoint : FastEndpoints.Endpoint<EditAccountRequest, Pr
 
         Summary(s => {
             s.Summary = "Update Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ConnectionAccountId, "The account id used to edit another person&#39;s account");
@@ -351,7 +347,7 @@ public class EditUsernameEndpoint : FastEndpoints.Endpoint<EditUsernameRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/username/update");
+        Post("/api/3.18/account/username/update");
         
         
         AllowAnonymous();
@@ -363,7 +359,6 @@ public class EditUsernameEndpoint : FastEndpoints.Endpoint<EditUsernameRequest, 
 
         Summary(s => {
             s.Summary = "Update Username and Email";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.EmailAddress, "the user&#39;s contact email address (NOT the username) which is also used for email validation");
@@ -391,7 +386,7 @@ public class GetAccountEndpoint : FastEndpoints.Endpoint<GetAccountRequest, Prof
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/profile/get");
+        Get("/api/3.18/account/profile/get");
         
         
         AllowAnonymous();
@@ -403,7 +398,6 @@ public class GetAccountEndpoint : FastEndpoints.Endpoint<GetAccountRequest, Prof
 
         Summary(s => {
             s.Summary = "Get Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "Return Nulls");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -439,7 +433,7 @@ public class GetProfileAssetsEndpoint : FastEndpoints.Endpoint<GetProfileAssetsR
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/profile/assets");
+        Get("/api/3.18/account/profile/assets");
         
         
         AllowAnonymous();
@@ -451,7 +445,6 @@ public class GetProfileAssetsEndpoint : FastEndpoints.Endpoint<GetProfileAssetsR
 
         Summary(s => {
             s.Summary = "Get Profile Assets";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReturnNulls, "Determines whether to return null fields in the response");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -489,7 +482,7 @@ public class GetReferralListEndpoint : FastEndpoints.Endpoint<GetReferralListReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/referral/list");
+        Get("/api/3.18/account/referral/list");
         
         
         AllowAnonymous();
@@ -501,7 +494,6 @@ public class GetReferralListEndpoint : FastEndpoints.Endpoint<GetReferralListReq
 
         Summary(s => {
             s.Summary = "Search Accounts";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.RetrieveType, "one of these option - GET_CHILDREN will get all accounts that had signed up using the current account invite link - GET_ANCESTOR will get all accounts that referred the current account and it&#39;s parents, recursively - GET_ALL will get all of the above");
@@ -536,7 +528,7 @@ public class GetSettingsEndpoint : FastEndpoints.Endpoint<GetSettingsRequest, Us
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/settings/get");
+        Get("/api/3.18/account/settings/get");
         
         
         AllowAnonymous();
@@ -548,7 +540,6 @@ public class GetSettingsEndpoint : FastEndpoints.Endpoint<GetSettingsRequest, Us
 
         Summary(s => {
             s.Summary = "Get Account Settings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Latitude, "The current latitude of the user");
@@ -576,7 +567,7 @@ public class LoginDelegateEndpoint : FastEndpoints.Endpoint<LoginDelegateRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/login/delegate");
+        Post("/api/3.18/account/login/delegate");
         
         
         AllowAnonymous();
@@ -588,7 +579,6 @@ public class LoginDelegateEndpoint : FastEndpoints.Endpoint<LoginDelegateRequest
 
         Summary(s => {
             s.Summary = "Login as Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccessToken, "");
             s.RequestParam(r => r.AppKey, "");
             s.RequestParam(r => r.DeviceId, "");
@@ -623,7 +613,7 @@ public class LoginGeneralEndpoint : FastEndpoints.Endpoint<LoginGeneralRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/login");
+        Post("/api/3.18/account/login");
         
         
         AllowAnonymous();
@@ -635,7 +625,6 @@ public class LoginGeneralEndpoint : FastEndpoints.Endpoint<LoginGeneralRequest, 
 
         Summary(s => {
             s.Summary = "Login Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccessToken, "The access token to authenticate with (ex: username or fb token)");
             s.RequestParam(r => r.NetworkUID, "The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE ");
             s.RequestParam(r => r.AppKey, "The application key");
@@ -672,7 +661,7 @@ public class LoginUsernameEndpoint : FastEndpoints.Endpoint<LoginUsernameRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/get");
+        Post("/api/3.18/account/get");
         
         
         AllowAnonymous();
@@ -684,7 +673,6 @@ public class LoginUsernameEndpoint : FastEndpoints.Endpoint<LoginUsernameRequest
 
         Summary(s => {
             s.Summary = "Login Account (Username)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Username, "the user&#39;s email address they used to sign-up");
             s.RequestParam(r => r.Password, "the password");
             s.RequestParam(r => r.DeviceId, "the device id");
@@ -718,7 +706,7 @@ public class LogoutEndpoint : FastEndpoints.Endpoint<LogoutRequest, SirqulRespon
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/logout");
+        Post("/api/3.18/account/logout");
         
         
         AllowAnonymous();
@@ -730,7 +718,6 @@ public class LogoutEndpoint : FastEndpoints.Endpoint<LogoutRequest, SirqulRespon
 
         Summary(s => {
             s.Summary = "Logout Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.DeviceIdType, "Device Id Type");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -759,7 +746,7 @@ public class MergeAccountEndpoint : FastEndpoints.Endpoint<MergeAccountRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/merge");
+        Post("/api/3.18/account/merge");
         
         
         AllowAnonymous();
@@ -771,7 +758,6 @@ public class MergeAccountEndpoint : FastEndpoints.Endpoint<MergeAccountRequest, 
 
         Summary(s => {
             s.Summary = "Merge Account";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.MergeAccountId, "The id of the account to being merged");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -799,7 +785,7 @@ public class PasswordChangeEndpoint : FastEndpoints.Endpoint<PasswordChangeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/passwordchange");
+        Post("/api/3.18/account/passwordchange");
         
         
         AllowAnonymous();
@@ -811,7 +797,6 @@ public class PasswordChangeEndpoint : FastEndpoints.Endpoint<PasswordChangeReque
 
         Summary(s => {
             s.Summary = "Update Password";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account to update");
             s.RequestParam(r => r.OldPassword, "The current password, used to validate access");
             s.RequestParam(r => r.NewPassword, "The new password to set, cannot be empty");
@@ -839,7 +824,7 @@ public class PasswordResetEndpoint : FastEndpoints.Endpoint<PasswordResetRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/passwordreset");
+        Post("/api/3.18/account/passwordreset");
         
         
         AllowAnonymous();
@@ -851,7 +836,6 @@ public class PasswordResetEndpoint : FastEndpoints.Endpoint<PasswordResetRequest
 
         Summary(s => {
             s.Summary = "Reset Password";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Token, "The token associated with the account to update, good for 24 hours");
             s.RequestParam(r => r.Password, "The new password to set, cannot be empty");
             s.RequestParam(r => r.Confirm, "The new password to confirm, must match newPassword");
@@ -878,7 +862,7 @@ public class RequestPasswordResetEndpoint : FastEndpoints.Endpoint<RequestPasswo
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/requestpasswordreset");
+        Post("/api/3.18/account/requestpasswordreset");
         
         
         AllowAnonymous();
@@ -890,7 +874,6 @@ public class RequestPasswordResetEndpoint : FastEndpoints.Endpoint<RequestPasswo
 
         Summary(s => {
             s.Summary = "Request Password Reset";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Email, "The email/username of the account");
             s.RequestParam(r => r.From, "this is the sender email");
             s.RequestParam(r => r.Domain, "this is the domain (like dev.sirqul.com) used to generate the password reset link");
@@ -919,7 +902,7 @@ public class RequestValidateAccountEndpoint : FastEndpoints.Endpoint<RequestVali
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/requestValidateAccount");
+        Post("/api/3.18/account/requestValidateAccount");
         
         
         AllowAnonymous();
@@ -931,7 +914,6 @@ public class RequestValidateAccountEndpoint : FastEndpoints.Endpoint<RequestVali
 
         Summary(s => {
             s.Summary = "Send Validation Request";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.Responses[200] = "successful operation";
         });
@@ -956,7 +938,7 @@ public class SearchAccountsEndpoint : FastEndpoints.Endpoint<SearchAccountsReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/account/profile/search");
+        Get("/api/3.18/account/profile/search");
         
         
         AllowAnonymous();
@@ -968,7 +950,6 @@ public class SearchAccountsEndpoint : FastEndpoints.Endpoint<SearchAccountsReque
 
         Summary(s => {
             s.Summary = "Search Accounts";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The id of the account requesting");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.Keyword, "The keyword for for querying the account");
@@ -1010,7 +991,7 @@ public class SecureLoginEndpoint : FastEndpoints.Endpoint<SecureLoginRequest, Pr
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/login/validate");
+        Post("/api/3.18/account/login/validate");
         
         
         AllowAnonymous();
@@ -1022,7 +1003,6 @@ public class SecureLoginEndpoint : FastEndpoints.Endpoint<SecureLoginRequest, Pr
 
         Summary(s => {
             s.Summary = "Login Account (Encrypted Username)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Username, "The user&#39;s encrypted email address they used to sign-up");
             s.RequestParam(r => r.Password, "The encrypted password");
             s.RequestParam(r => r.GameType, "The application key");
@@ -1055,7 +1035,7 @@ public class SecureSignupEndpoint : FastEndpoints.Endpoint<SecureSignupRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/create/validate");
+        Post("/api/3.18/account/create/validate");
         
         
         AllowAnonymous();
@@ -1067,7 +1047,6 @@ public class SecureSignupEndpoint : FastEndpoints.Endpoint<SecureSignupRequest, 
 
         Summary(s => {
             s.Summary = "Create Account (Encrypted Username)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id");
             s.RequestParam(r => r.Username, "The encrypted email of the user, this is what will be used when they login");
             s.RequestParam(r => r.Password, "The encrypted password of the user");
@@ -1152,7 +1131,7 @@ public class SetMatchTokenEndpoint : FastEndpoints.Endpoint<SetMatchTokenRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/consumer/profile/matchToken");
+        Post("/api/3.18/consumer/profile/matchToken");
         
         
         AllowAnonymous();
@@ -1164,7 +1143,6 @@ public class SetMatchTokenEndpoint : FastEndpoints.Endpoint<SetMatchTokenRequest
 
         Summary(s => {
             s.Summary = "Save Match Token";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.MatchToken, "A string of numbers");
@@ -1195,7 +1173,7 @@ public class UpdateActveStatusEndpoint : FastEndpoints.Endpoint<UpdateActveStatu
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/active/update");
+        Post("/api/3.18/account/active/update");
         
         
         AllowAnonymous();
@@ -1207,7 +1185,6 @@ public class UpdateActveStatusEndpoint : FastEndpoints.Endpoint<UpdateActveStatu
 
         Summary(s => {
             s.Summary = "Update Account Active Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.ConnectionAccountId, "The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead)");
             s.RequestParam(r => r.Active, "true will activate the user and false will deactivate");
@@ -1236,7 +1213,7 @@ public class UpdateLocationEndpoint : FastEndpoints.Endpoint<UpdateLocationReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/location/update");
+        Post("/api/3.18/account/location/update");
         
         
         AllowAnonymous();
@@ -1248,7 +1225,6 @@ public class UpdateLocationEndpoint : FastEndpoints.Endpoint<UpdateLocationReque
 
         Summary(s => {
             s.Summary = "Update Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Latitude, "The current latitude of the user");
@@ -1277,7 +1253,7 @@ public class UpdateSettingsEndpoint : FastEndpoints.Endpoint<UpdateSettingsReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/settings/update");
+        Post("/api/3.18/account/settings/update");
         
         
         AllowAnonymous();
@@ -1289,7 +1265,6 @@ public class UpdateSettingsEndpoint : FastEndpoints.Endpoint<UpdateSettingsReque
 
         Summary(s => {
             s.Summary = "Update Account Settings";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.BlockedNotifications, "The notifications to be blocked");
@@ -1325,7 +1300,7 @@ public class ValidateAccountSignupEndpoint : FastEndpoints.Endpoint<ValidateAcco
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/validateAccountSignup");
+        Post("/api/3.18/account/validateAccountSignup");
         
         
         AllowAnonymous();
@@ -1337,7 +1312,6 @@ public class ValidateAccountSignupEndpoint : FastEndpoints.Endpoint<ValidateAcco
 
         Summary(s => {
             s.Summary = "Save Validation Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Token, "The token associated with the account to update, good for 24 hours");
             s.Responses[200] = "successful operation";
         });
@@ -1362,7 +1336,7 @@ public class ValidatePasswordResetEndpoint : FastEndpoints.Endpoint<ValidatePass
 {
     public override void Configure()
     {
-        Post("/api/{version}/account/validatepasswordreset");
+        Post("/api/3.18/account/validatepasswordreset");
         
         
         AllowAnonymous();
@@ -1374,7 +1348,6 @@ public class ValidatePasswordResetEndpoint : FastEndpoints.Endpoint<ValidatePass
 
         Summary(s => {
             s.Summary = "Validate Password Reset Token";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Token, "The token associated with the account to update, good for 24 hours");
             s.Responses[200] = "successful operation";
         });

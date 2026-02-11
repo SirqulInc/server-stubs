@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateFlagRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -50,11 +45,6 @@ public class CreateFlagRequest
 public class DeleteFlagRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -87,11 +77,6 @@ public class DeleteFlagRequest
 }
 public class GetFlagRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
@@ -126,11 +111,6 @@ public class GetFlagRequest
 public class GetFlagThresholdRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("itemBeingFlaggedType")]
@@ -143,11 +123,6 @@ public class GetFlagThresholdRequest
 }
 public class UpdateFlagThresholdRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>

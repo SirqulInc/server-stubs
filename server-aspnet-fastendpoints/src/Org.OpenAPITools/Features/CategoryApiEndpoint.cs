@@ -12,7 +12,7 @@ public class CategoryDistanceSearchEndpoint : FastEndpoints.Endpoint<CategoryDis
 {
     public override void Configure()
     {
-        Get("/api/{version}/category/distancesearch");
+        Get("/api/3.18/category/distancesearch");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CategoryDistanceSearchEndpoint : FastEndpoints.Endpoint<CategoryDis
 
         Summary(s => {
             s.Summary = "Search Categories by Distance";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.Keyword, "The keyword string to search on");
             s.RequestParam(r => r.AppKey, "the appKey of the application to retrieve categories for, if not specified then search on the global application.");
@@ -68,7 +67,7 @@ public class CreateCategoryEndpoint : FastEndpoints.Endpoint<CreateCategoryReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/category/create");
+        Post("/api/3.18/category/create");
         
         
         AllowAnonymous();
@@ -80,7 +79,6 @@ public class CreateCategoryEndpoint : FastEndpoints.Endpoint<CreateCategoryReque
 
         Summary(s => {
             s.Summary = "Create Category";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user (must have permissions to the target application)");
             s.RequestParam(r => r.Name, "The name of the category");
             s.RequestParam(r => r.AppKey, "The appKey of the application to assign the category to, if not provided then the category will be applied to the global application (if the account has permissions)");
@@ -118,7 +116,7 @@ public class DeleteCategoryEndpoint : FastEndpoints.Endpoint<DeleteCategoryReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/category/delete");
+        Post("/api/3.18/category/delete");
         
         
         AllowAnonymous();
@@ -130,7 +128,6 @@ public class DeleteCategoryEndpoint : FastEndpoints.Endpoint<DeleteCategoryReque
 
         Summary(s => {
             s.Summary = "Delete Category";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the ID of the account");
             s.RequestParam(r => r.CategoryId, "the ID of the category");
             s.Responses[200] = "successful operation";
@@ -156,7 +153,7 @@ public class DuplicateCategoryEndpoint : FastEndpoints.Endpoint<DuplicateCategor
 {
     public override void Configure()
     {
-        Post("/api/{version}/category/duplicate");
+        Post("/api/3.18/category/duplicate");
         
         
         AllowAnonymous();
@@ -168,7 +165,6 @@ public class DuplicateCategoryEndpoint : FastEndpoints.Endpoint<DuplicateCategor
 
         Summary(s => {
             s.Summary = "Duplicate Category";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user (must have permissions to the target application)");
             s.RequestParam(r => r.CategoryId, "The category ID to duplicate (includes all children)");
             s.RequestParam(r => r.AppKey, "The application to assign the new category to, may be different then the application the source category is assigned to");
@@ -196,7 +192,7 @@ public class GetCategoryEndpoint : FastEndpoints.Endpoint<GetCategoryRequest, Ca
 {
     public override void Configure()
     {
-        Get("/api/{version}/category/get");
+        Get("/api/3.18/category/get");
         
         
         AllowAnonymous();
@@ -208,7 +204,6 @@ public class GetCategoryEndpoint : FastEndpoints.Endpoint<GetCategoryRequest, Ca
 
         Summary(s => {
             s.Summary = "Get Category";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.CategoryId, "the ID of the category");
             s.RequestParam(r => r.ReturnExternal, "Determines whether to return extra info about the category&#39;s \&quot;Participant\&quot; reference");
             s.Responses[200] = "successful operation";
@@ -234,7 +229,7 @@ public class SearchCategoriesEndpoint : FastEndpoints.Endpoint<SearchCategoriesR
 {
     public override void Configure()
     {
-        Get("/api/{version}/category/search");
+        Get("/api/3.18/category/search");
         
         
         AllowAnonymous();
@@ -246,7 +241,6 @@ public class SearchCategoriesEndpoint : FastEndpoints.Endpoint<SearchCategoriesR
 
         Summary(s => {
             s.Summary = "Search Categories";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.Keyword, "The string to search on");
             s.RequestParam(r => r.AppKey, "the appKey of the application to retrieve categories for, if not specified then search on the global application.");
@@ -291,7 +285,7 @@ public class UpdateCategoryEndpoint : FastEndpoints.Endpoint<UpdateCategoryReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/category/update");
+        Post("/api/3.18/category/update");
         
         
         AllowAnonymous();
@@ -303,7 +297,6 @@ public class UpdateCategoryEndpoint : FastEndpoints.Endpoint<UpdateCategoryReque
 
         Summary(s => {
             s.Summary = "Update Category";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.CategoryId, "The ID of the category to edit");
             s.RequestParam(r => r.ParentCategoryId, "The ID of the parent category, if not provided then the parent category will be null");

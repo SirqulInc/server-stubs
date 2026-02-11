@@ -12,7 +12,7 @@ public class CreateFlagEndpoint : FastEndpoints.Endpoint<CreateFlagRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/flag/create");
+        Post("/api/3.18/flag/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateFlagEndpoint : FastEndpoints.Endpoint<CreateFlagRequest, Sirq
 
         Summary(s => {
             s.Summary = "Create Flag";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FlagableType, "The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}");
             s.RequestParam(r => r.FlagableId, "The flagable object id");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
@@ -55,7 +54,7 @@ public class DeleteFlagEndpoint : FastEndpoints.Endpoint<DeleteFlagRequest, Sirq
 {
     public override void Configure()
     {
-        Post("/api/{version}/flag/delete");
+        Post("/api/3.18/flag/delete");
         
         
         AllowAnonymous();
@@ -67,7 +66,6 @@ public class DeleteFlagEndpoint : FastEndpoints.Endpoint<DeleteFlagRequest, Sirq
 
         Summary(s => {
             s.Summary = "Delete Flag";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.AccountId, "The unique accountId that made the request (either deviceId or accountId must be used)");
             s.RequestParam(r => r.ItemBeingFlaggedType, "This parameter is deprecated.");
@@ -97,7 +95,7 @@ public class GetFlagEndpoint : FastEndpoints.Endpoint<GetFlagRequest, FlagRespon
 {
     public override void Configure()
     {
-        Get("/api/{version}/flag/get");
+        Get("/api/3.18/flag/get");
         
         
         AllowAnonymous();
@@ -109,7 +107,6 @@ public class GetFlagEndpoint : FastEndpoints.Endpoint<GetFlagRequest, FlagRespon
 
         Summary(s => {
             s.Summary = "Get Flag";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.FlagableType, "The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}");
             s.RequestParam(r => r.FlagableId, "The flagable object id");
             s.RequestParam(r => r.DeviceId, "The unique device identifier that made the request (either deviceId or accountId must be used)");
@@ -139,7 +136,7 @@ public class GetFlagThresholdEndpoint : FastEndpoints.Endpoint<GetFlagThresholdR
 {
     public override void Configure()
     {
-        Get("/api/{version}/flag/threshold/get");
+        Get("/api/3.18/flag/threshold/get");
         
         
         AllowAnonymous();
@@ -151,7 +148,6 @@ public class GetFlagThresholdEndpoint : FastEndpoints.Endpoint<GetFlagThresholdR
 
         Summary(s => {
             s.Summary = "Get Flag Threshold";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ItemBeingFlaggedType, "The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}");
             s.RequestParam(r => r.AppKey, "The application key");
             s.Responses[200] = "successful operation";
@@ -177,7 +173,7 @@ public class UpdateFlagThresholdEndpoint : FastEndpoints.Endpoint<UpdateFlagThre
 {
     public override void Configure()
     {
-        Post("/api/{version}/flag/threshold/update");
+        Post("/api/3.18/flag/threshold/update");
         
         
         AllowAnonymous();
@@ -189,7 +185,6 @@ public class UpdateFlagThresholdEndpoint : FastEndpoints.Endpoint<UpdateFlagThre
 
         Summary(s => {
             s.Summary = "Update Flag Threshold";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ItemBeingFlaggedType, "The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}");
             s.RequestParam(r => r.Threshold, "The threshold value");
             s.RequestParam(r => r.AppKey, "The application key");

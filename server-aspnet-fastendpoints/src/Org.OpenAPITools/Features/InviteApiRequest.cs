@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AcceptInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the invite token
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("token")]
@@ -85,11 +80,6 @@ public class AcceptInviteRequest
 public class AlbumContestInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -127,11 +117,6 @@ public class AlbumContestInviteRequest
 }
 public class AlbumInviteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -171,11 +156,6 @@ public class AlbumInviteRequest
 public class EventInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account ID of the user making the share
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -203,11 +183,6 @@ public class EventInviteRequest
 }
 public class GameInviteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -246,11 +221,6 @@ public class GameInviteRequest
 }
 public class GetInviteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Account ID of the user if they are logged in
     /// </summary>
@@ -300,11 +270,6 @@ public class GetInviteRequest
 public class MissionInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -343,11 +308,6 @@ public class MissionInviteRequest
 public class OfferInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account ID of the user making the share
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -366,11 +326,6 @@ public class OfferInviteRequest
 public class OfferLocationInviteRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account ID of the user making the share
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -388,11 +343,6 @@ public class OfferLocationInviteRequest
 }
 public class RetailerLocationInviteRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account ID of the user making the share
     /// </summary>

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CancelShipmentRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the shipment to cancel
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -22,21 +17,11 @@ public class CreateShipmentRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public Shipment? body { get; set; }
 }
 public class DeleteShipmentRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the shipment to delete
     /// </summary>
@@ -46,11 +31,6 @@ public class DeleteShipmentRequest
 public class GetShipmentRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the shipment to get
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -58,11 +38,6 @@ public class GetShipmentRequest
 }
 public class SearchShipmentsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The owner of the shipment
     /// </summary>
@@ -107,11 +82,6 @@ public class SearchShipmentsRequest
 public class UpdateShipmentRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the shipment to update
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -124,11 +94,6 @@ public class UpdateShipmentRequest
 }
 public class UpdateShipmentStatusRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the shipment to update status
     /// </summary>

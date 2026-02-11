@@ -12,7 +12,7 @@ public class CreateShipmentBatchEndpoint : FastEndpoints.Endpoint<CreateShipment
 {
     public override void Configure()
     {
-        Post("/api/{version}/shipment/batch");
+        Post("/api/3.18/shipment/batch");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateShipmentBatchEndpoint : FastEndpoints.Endpoint<CreateShipment
 
         Summary(s => {
             s.Summary = "Create Shipment Batch";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class DeleteShipmentBatchEndpoint : FastEndpoints.Endpoint<DeleteShipment
 {
     public override void Configure()
     {
-        Delete("/api/{version}/shipment/batch/{batchId}");
+        Delete("/api/3.18/shipment/batch/{batchId}");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class DeleteShipmentBatchEndpoint : FastEndpoints.Endpoint<DeleteShipment
 
         Summary(s => {
             s.Summary = "Delete Shipment Batch";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BatchId, "the id of the shipment batch to delete");
             s.Responses[0] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class GetShipmentBatchEndpoint : FastEndpoints.Endpoint<GetShipmentBatchR
 {
     public override void Configure()
     {
-        Get("/api/{version}/shipment/batch/{batchId}");
+        Get("/api/3.18/shipment/batch/{batchId}");
         
         
         AllowAnonymous();
@@ -99,7 +97,6 @@ public class GetShipmentBatchEndpoint : FastEndpoints.Endpoint<GetShipmentBatchR
 
         Summary(s => {
             s.Summary = "Get Shipment Batch";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BatchId, "the id of the shipment batch to get");
             s.Responses[200] = "successful operation";
         });
@@ -124,7 +121,7 @@ public class GetShipmentBatchStatusEndpoint : FastEndpoints.Endpoint<GetShipment
 {
     public override void Configure()
     {
-        Get("/api/{version}/shipment/batch/{batchId}/status");
+        Get("/api/3.18/shipment/batch/{batchId}/status");
         
         
         AllowAnonymous();
@@ -136,7 +133,6 @@ public class GetShipmentBatchStatusEndpoint : FastEndpoints.Endpoint<GetShipment
 
         Summary(s => {
             s.Summary = "Get Shipment Batch Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.BatchId, "The id of the requested shipment batch");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.SortField, "The field to sort by");
@@ -172,7 +168,7 @@ public class SearchShipmentBatchEndpoint : FastEndpoints.Endpoint<SearchShipment
 {
     public override void Configure()
     {
-        Get("/api/{version}/shipment/batch");
+        Get("/api/3.18/shipment/batch");
         
         
         AllowAnonymous();
@@ -184,7 +180,6 @@ public class SearchShipmentBatchEndpoint : FastEndpoints.Endpoint<SearchShipment
 
         Summary(s => {
             s.Summary = "Search Shipment Batch";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.HubId, "The associated service hub");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");

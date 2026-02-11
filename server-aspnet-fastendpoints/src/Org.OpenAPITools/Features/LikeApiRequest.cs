@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class RegisterLikeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -75,11 +70,6 @@ public class RegisterLikeRequest
 public class RemoveLikeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -112,11 +102,6 @@ public class RemoveLikeRequest
 }
 public class SearchLikesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The unique device identifier that made the request (either deviceId or accountId must be used)
     /// </summary>

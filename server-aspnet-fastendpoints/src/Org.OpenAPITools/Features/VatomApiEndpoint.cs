@@ -12,7 +12,7 @@ public class CreateFollowingEndpoint : FastEndpoints.Endpoint<CreateFollowingReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/me/rels/following/create");
+        Post("/api/3.18/vatom/me/rels/following/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateFollowingEndpoint : FastEndpoints.Endpoint<CreateFollowingReq
 
         Summary(s => {
             s.Summary = "Create following";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -51,7 +50,7 @@ public class CreateSpaceEndpoint : FastEndpoints.Endpoint<CreateSpaceRequest>
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/spaces/create");
+        Post("/api/3.18/vatom/b/spaces/create");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class CreateSpaceEndpoint : FastEndpoints.Endpoint<CreateSpaceRequest>
 
         Summary(s => {
             s.Summary = "Create Vatom Space";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -91,7 +89,7 @@ public class CreateVatomEventEndpoint : FastEndpoints.Endpoint<CreateVatomEventR
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/events/create");
+        Post("/api/3.18/vatom/b/events/create");
         
         
         AllowAnonymous();
@@ -103,7 +101,6 @@ public class CreateVatomEventEndpoint : FastEndpoints.Endpoint<CreateVatomEventR
 
         Summary(s => {
             s.Summary = "Create Vatom Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -131,7 +128,7 @@ public class DeleteFollowingEndpoint : FastEndpoints.Endpoint<DeleteFollowingReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/me/rels/following/delete");
+        Post("/api/3.18/vatom/me/rels/following/delete");
         
         
         AllowAnonymous();
@@ -143,7 +140,6 @@ public class DeleteFollowingEndpoint : FastEndpoints.Endpoint<DeleteFollowingReq
 
         Summary(s => {
             s.Summary = "Delete following";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomRelsKey, "Vatom Rels Key");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -170,7 +166,7 @@ public class DeletePointsBalanceEndpoint : FastEndpoints.Endpoint<DeletePointsBa
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/campaign/points/delete");
+        Post("/api/3.18/vatom/b/campaign/points/delete");
         
         
         AllowAnonymous();
@@ -182,7 +178,6 @@ public class DeletePointsBalanceEndpoint : FastEndpoints.Endpoint<DeletePointsBa
 
         Summary(s => {
             s.Summary = "Reset All Points Balance";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -210,7 +205,7 @@ public class DeleteSpaceEndpoint : FastEndpoints.Endpoint<DeleteSpaceRequest>
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/spaces/delete");
+        Post("/api/3.18/vatom/b/spaces/delete");
         
         
         AllowAnonymous();
@@ -222,7 +217,6 @@ public class DeleteSpaceEndpoint : FastEndpoints.Endpoint<DeleteSpaceRequest>
 
         Summary(s => {
             s.Summary = "Delete Vatom Space";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomSpaceId, "Vatom Space Id");
@@ -250,7 +244,7 @@ public class DeleteVatomEventEndpoint : FastEndpoints.Endpoint<DeleteVatomEventR
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/events/delete");
+        Post("/api/3.18/vatom/b/events/delete");
         
         
         AllowAnonymous();
@@ -262,7 +256,6 @@ public class DeleteVatomEventEndpoint : FastEndpoints.Endpoint<DeleteVatomEventR
 
         Summary(s => {
             s.Summary = "Delete Vatom Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomEventId, "Vatom Event Id");
@@ -290,7 +283,7 @@ public class DeleteVatomNFTEndpoint : FastEndpoints.Endpoint<DeleteVatomNFTReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/vatoms/delete");
+        Post("/api/3.18/vatom/vatoms/delete");
         
         
         AllowAnonymous();
@@ -302,7 +295,6 @@ public class DeleteVatomNFTEndpoint : FastEndpoints.Endpoint<DeleteVatomNFTReque
 
         Summary(s => {
             s.Summary = "Delete Vatom NFT";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomId, "Vatom NFT Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -329,7 +321,7 @@ public class ExecuteActionOnNFTEndpoint : FastEndpoints.Endpoint<ExecuteActionOn
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/vatoms/execute-action");
+        Post("/api/3.18/vatom/vatoms/execute-action");
         
         
         AllowAnonymous();
@@ -341,7 +333,6 @@ public class ExecuteActionOnNFTEndpoint : FastEndpoints.Endpoint<ExecuteActionOn
 
         Summary(s => {
             s.Summary = "Execute Action on NFT";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomId, "Vatom NFT Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -369,7 +360,7 @@ public class GeomapSearchEndpoint : FastEndpoints.Endpoint<GeomapSearchRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/vatoms/geo-map/search");
+        Get("/api/3.18/vatom/vatoms/geo-map/search");
         
         
         AllowAnonymous();
@@ -381,7 +372,6 @@ public class GeomapSearchEndpoint : FastEndpoints.Endpoint<GeomapSearchRequest>
 
         Summary(s => {
             s.Summary = "Search Vatom Geo Map";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -408,7 +398,7 @@ public class GetBusinessBehaviorsEndpoint : FastEndpoints.Endpoint<GetBusinessBe
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/behaviors");
+        Get("/api/3.18/vatom/b/behaviors");
         
         
         AllowAnonymous();
@@ -420,7 +410,6 @@ public class GetBusinessBehaviorsEndpoint : FastEndpoints.Endpoint<GetBusinessBe
 
         Summary(s => {
             s.Summary = "Get Vatom Business Behaviors";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -447,7 +436,7 @@ public class GetBusinessCoinsBalanceEndpoint : FastEndpoints.Endpoint<GetBusines
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/coins/get");
+        Get("/api/3.18/vatom/b/coins/get");
         
         
         AllowAnonymous();
@@ -459,7 +448,6 @@ public class GetBusinessCoinsBalanceEndpoint : FastEndpoints.Endpoint<GetBusines
 
         Summary(s => {
             s.Summary = "Get the coins for a Business";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -486,7 +474,7 @@ public class GetBusinessIdsEndpoint : FastEndpoints.Endpoint<GetBusinessIdsReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/me/businesses");
+        Get("/api/3.18/vatom/me/businesses");
         
         
         AllowAnonymous();
@@ -498,7 +486,6 @@ public class GetBusinessIdsEndpoint : FastEndpoints.Endpoint<GetBusinessIdsReque
 
         Summary(s => {
             s.Summary = "Get the user business ids";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
             s.Responses[200] = "successful operation";
@@ -524,7 +511,7 @@ public class GetBusinessInfoEndpoint : FastEndpoints.Endpoint<GetBusinessInfoReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/get");
+        Get("/api/3.18/vatom/b/get");
         
         
         AllowAnonymous();
@@ -536,7 +523,6 @@ public class GetBusinessInfoEndpoint : FastEndpoints.Endpoint<GetBusinessInfoReq
 
         Summary(s => {
             s.Summary = "Get Vatom Business Info";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -564,7 +550,7 @@ public class GetBusinessUsersEndpoint : FastEndpoints.Endpoint<GetBusinessUsersR
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/users");
+        Get("/api/3.18/vatom/b/users");
         
         
         AllowAnonymous();
@@ -576,7 +562,6 @@ public class GetBusinessUsersEndpoint : FastEndpoints.Endpoint<GetBusinessUsersR
 
         Summary(s => {
             s.Summary = "Get Vatom Business Users";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -603,7 +588,7 @@ public class GetCampaignGroupEntitiesEndpoint : FastEndpoints.Endpoint<GetCampai
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/campaign-groups/entities");
+        Get("/api/3.18/vatom/b/campaign-groups/entities");
         
         
         AllowAnonymous();
@@ -615,7 +600,6 @@ public class GetCampaignGroupEntitiesEndpoint : FastEndpoints.Endpoint<GetCampai
 
         Summary(s => {
             s.Summary = "Get Campaign Group Entities";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -643,7 +627,7 @@ public class GetCampaignGroupRulesEndpoint : FastEndpoints.Endpoint<GetCampaignG
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/campaign-groups/rules");
+        Get("/api/3.18/vatom/b/campaign-groups/rules");
         
         
         AllowAnonymous();
@@ -655,7 +639,6 @@ public class GetCampaignGroupRulesEndpoint : FastEndpoints.Endpoint<GetCampaignG
 
         Summary(s => {
             s.Summary = "Get Campaign Group Rules";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -683,7 +666,7 @@ public class GetCampaignGroupStatsEndpoint : FastEndpoints.Endpoint<GetCampaignG
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/campaign-groups/stats");
+        Get("/api/3.18/vatom/b/campaign-groups/stats");
         
         
         AllowAnonymous();
@@ -695,7 +678,6 @@ public class GetCampaignGroupStatsEndpoint : FastEndpoints.Endpoint<GetCampaignG
 
         Summary(s => {
             s.Summary = "Get Campaign Group Stats";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -723,7 +705,7 @@ public class GetCampaignInfoEndpoint : FastEndpoints.Endpoint<GetCampaignInfoReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/campaign-groups/get");
+        Get("/api/3.18/vatom/b/campaign-groups/get");
         
         
         AllowAnonymous();
@@ -735,7 +717,6 @@ public class GetCampaignInfoEndpoint : FastEndpoints.Endpoint<GetCampaignInfoReq
 
         Summary(s => {
             s.Summary = "Get Campaign Info";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -763,7 +744,7 @@ public class GetEventGuestListEndpoint : FastEndpoints.Endpoint<GetEventGuestLis
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/events/guests/get");
+        Get("/api/3.18/vatom/b/events/guests/get");
         
         
         AllowAnonymous();
@@ -775,7 +756,6 @@ public class GetEventGuestListEndpoint : FastEndpoints.Endpoint<GetEventGuestLis
 
         Summary(s => {
             s.Summary = "Get Vatom Event Guest List";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomEventId, "Vatom Event Id");
@@ -803,7 +783,7 @@ public class GetInventoryEndpoint : FastEndpoints.Endpoint<GetInventoryRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/me/inventory");
+        Get("/api/3.18/vatom/me/inventory");
         
         
         AllowAnonymous();
@@ -815,7 +795,6 @@ public class GetInventoryEndpoint : FastEndpoints.Endpoint<GetInventoryRequest>
 
         Summary(s => {
             s.Summary = "Get Vatom User&#39;s Inventory";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -842,7 +821,7 @@ public class GetMyFollowingEndpoint : FastEndpoints.Endpoint<GetMyFollowingReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/me/rels/following");
+        Get("/api/3.18/vatom/me/rels/following");
         
         
         AllowAnonymous();
@@ -854,7 +833,6 @@ public class GetMyFollowingEndpoint : FastEndpoints.Endpoint<GetMyFollowingReque
 
         Summary(s => {
             s.Summary = "Get following";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
             s.Responses[200] = "successful operation";
@@ -880,7 +858,7 @@ public class GetPointsBalanceEndpoint : FastEndpoints.Endpoint<GetPointsBalanceR
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/u/campaign/points/get");
+        Get("/api/3.18/vatom/u/campaign/points/get");
         
         
         AllowAnonymous();
@@ -892,7 +870,6 @@ public class GetPointsBalanceEndpoint : FastEndpoints.Endpoint<GetPointsBalanceR
 
         Summary(s => {
             s.Summary = "Get Points Balance";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -920,7 +897,7 @@ public class GetPointsBalanceAsBusinessEndpoint : FastEndpoints.Endpoint<GetPoin
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/campaign/u/points/get");
+        Get("/api/3.18/vatom/b/campaign/u/points/get");
         
         
         AllowAnonymous();
@@ -932,7 +909,6 @@ public class GetPointsBalanceAsBusinessEndpoint : FastEndpoints.Endpoint<GetPoin
 
         Summary(s => {
             s.Summary = "Get Points Balance as Business";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
@@ -961,7 +937,7 @@ public class GetSpaceEndpoint : FastEndpoints.Endpoint<GetSpaceRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/spaces/get");
+        Get("/api/3.18/vatom/b/spaces/get");
         
         
         AllowAnonymous();
@@ -973,7 +949,6 @@ public class GetSpaceEndpoint : FastEndpoints.Endpoint<GetSpaceRequest>
 
         Summary(s => {
             s.Summary = "Get Vatom Space";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomSpaceId, "Vatom Space Id");
@@ -1001,7 +976,7 @@ public class GetUserCoinsAsBusinessEndpoint : FastEndpoints.Endpoint<GetUserCoin
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/users/coins/get");
+        Get("/api/3.18/vatom/b/users/coins/get");
         
         
         AllowAnonymous();
@@ -1013,7 +988,6 @@ public class GetUserCoinsAsBusinessEndpoint : FastEndpoints.Endpoint<GetUserCoin
 
         Summary(s => {
             s.Summary = "Get the coins for a user (as a Business)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
@@ -1041,7 +1015,7 @@ public class GetUserCoinsBalanceEndpoint : FastEndpoints.Endpoint<GetUserCoinsBa
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/u/coins/get");
+        Get("/api/3.18/vatom/u/coins/get");
         
         
         AllowAnonymous();
@@ -1053,7 +1027,6 @@ public class GetUserCoinsBalanceEndpoint : FastEndpoints.Endpoint<GetUserCoinsBa
 
         Summary(s => {
             s.Summary = "Gets the coins balance for a Vatom User";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1081,7 +1054,7 @@ public class GetUserFollowersEndpoint : FastEndpoints.Endpoint<GetUserFollowersR
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/users/rels/followers");
+        Get("/api/3.18/vatom/users/rels/followers");
         
         
         AllowAnonymous();
@@ -1093,7 +1066,6 @@ public class GetUserFollowersEndpoint : FastEndpoints.Endpoint<GetUserFollowersR
 
         Summary(s => {
             s.Summary = "Get user followers";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1120,7 +1092,7 @@ public class GetUserFollowingEndpoint : FastEndpoints.Endpoint<GetUserFollowingR
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/users/rels/following");
+        Get("/api/3.18/vatom/users/rels/following");
         
         
         AllowAnonymous();
@@ -1132,7 +1104,6 @@ public class GetUserFollowingEndpoint : FastEndpoints.Endpoint<GetUserFollowingR
 
         Summary(s => {
             s.Summary = "Get user following";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1159,7 +1130,7 @@ public class GetUserInfoEndpoint : FastEndpoints.Endpoint<GetUserInfoRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/user/get");
+        Get("/api/3.18/vatom/user/get");
         
         
         AllowAnonymous();
@@ -1171,7 +1142,6 @@ public class GetUserInfoEndpoint : FastEndpoints.Endpoint<GetUserInfoRequest>
 
         Summary(s => {
             s.Summary = "Get User Info";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1198,7 +1168,7 @@ public class GetUserProfileEndpoint : FastEndpoints.Endpoint<GetUserProfileReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/me/get");
+        Get("/api/3.18/vatom/me/get");
         
         
         AllowAnonymous();
@@ -1210,7 +1180,6 @@ public class GetUserProfileEndpoint : FastEndpoints.Endpoint<GetUserProfileReque
 
         Summary(s => {
             s.Summary = "Get Vatom User Profile";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
             s.Responses[200] = "successful operation";
@@ -1236,7 +1205,7 @@ public class GetVatomEventEndpoint : FastEndpoints.Endpoint<GetVatomEventRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/events/get");
+        Get("/api/3.18/vatom/b/events/get");
         
         
         AllowAnonymous();
@@ -1248,7 +1217,6 @@ public class GetVatomEventEndpoint : FastEndpoints.Endpoint<GetVatomEventRequest
 
         Summary(s => {
             s.Summary = "Get Vatom Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomEventId, "Vatom Event Id");
@@ -1276,7 +1244,7 @@ public class GetVatomNFTEndpoint : FastEndpoints.Endpoint<GetVatomNFTRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/vatoms/get");
+        Get("/api/3.18/vatom/vatoms/get");
         
         
         AllowAnonymous();
@@ -1288,7 +1256,6 @@ public class GetVatomNFTEndpoint : FastEndpoints.Endpoint<GetVatomNFTRequest>
 
         Summary(s => {
             s.Summary = "Get Vatom NFT Details";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomId, "Vatom NFT Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1315,7 +1282,7 @@ public class ListCommunitiesEndpoint : FastEndpoints.Endpoint<ListCommunitiesReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/communities/search");
+        Get("/api/3.18/vatom/b/communities/search");
         
         
         AllowAnonymous();
@@ -1327,7 +1294,6 @@ public class ListCommunitiesEndpoint : FastEndpoints.Endpoint<ListCommunitiesReq
 
         Summary(s => {
             s.Summary = "List Vatom Communities";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1355,7 +1321,7 @@ public class ListEventsEndpoint : FastEndpoints.Endpoint<ListEventsRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/events/search");
+        Get("/api/3.18/vatom/b/events/search");
         
         
         AllowAnonymous();
@@ -1367,7 +1333,6 @@ public class ListEventsEndpoint : FastEndpoints.Endpoint<ListEventsRequest>
 
         Summary(s => {
             s.Summary = "List Vatom Events";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1395,7 +1360,7 @@ public class ListSpacesEndpoint : FastEndpoints.Endpoint<ListSpacesRequest>
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/spaces/search");
+        Get("/api/3.18/vatom/b/spaces/search");
         
         
         AllowAnonymous();
@@ -1407,7 +1372,6 @@ public class ListSpacesEndpoint : FastEndpoints.Endpoint<ListSpacesRequest>
 
         Summary(s => {
             s.Summary = "List Vatom Spaces";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1435,7 +1399,7 @@ public class ListUserCoinTransactionsEndpoint : FastEndpoints.Endpoint<ListUserC
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/u/coins/txns/search");
+        Get("/api/3.18/vatom/u/coins/txns/search");
         
         
         AllowAnonymous();
@@ -1447,7 +1411,6 @@ public class ListUserCoinTransactionsEndpoint : FastEndpoints.Endpoint<ListUserC
 
         Summary(s => {
             s.Summary = "List Coin Transactions for a Vatom User";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1475,7 +1438,7 @@ public class ListUserCoinTransactionsAsBusinessEndpoint : FastEndpoints.Endpoint
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/users/coins/txns/search");
+        Get("/api/3.18/vatom/b/users/coins/txns/search");
         
         
         AllowAnonymous();
@@ -1487,7 +1450,6 @@ public class ListUserCoinTransactionsAsBusinessEndpoint : FastEndpoints.Endpoint
 
         Summary(s => {
             s.Summary = "List coin transactions for a user (as a Business)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
@@ -1516,7 +1478,7 @@ public class PerformActionOnNFTEndpoint : FastEndpoints.Endpoint<PerformActionOn
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/me/vatoms/actions");
+        Post("/api/3.18/vatom/me/vatoms/actions");
         
         
         AllowAnonymous();
@@ -1528,7 +1490,6 @@ public class PerformActionOnNFTEndpoint : FastEndpoints.Endpoint<PerformActionOn
 
         Summary(s => {
             s.Summary = "Perform Action on NFT";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomId, "Vatom NFT Id");
             s.RequestParam(r => r.VatomAction, "Vatom Action");
@@ -1557,7 +1518,7 @@ public class RedeemNFTEndpoint : FastEndpoints.Endpoint<RedeemNFTRequest>
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/redemptions");
+        Post("/api/3.18/vatom/b/redemptions");
         
         
         AllowAnonymous();
@@ -1569,7 +1530,6 @@ public class RedeemNFTEndpoint : FastEndpoints.Endpoint<RedeemNFTRequest>
 
         Summary(s => {
             s.Summary = "Redeem NFT";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1597,7 +1557,7 @@ public class RedeemUserCoinsAsBusinessEndpoint : FastEndpoints.Endpoint<RedeemUs
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/users/coins/redeem");
+        Post("/api/3.18/vatom/b/users/coins/redeem");
         
         
         AllowAnonymous();
@@ -1609,7 +1569,6 @@ public class RedeemUserCoinsAsBusinessEndpoint : FastEndpoints.Endpoint<RedeemUs
 
         Summary(s => {
             s.Summary = "Redeem the coins for a user (as a Business)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
@@ -1638,7 +1597,7 @@ public class SearchBusinessesEndpoint : FastEndpoints.Endpoint<SearchBusinessesR
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/search");
+        Get("/api/3.18/vatom/b/search");
         
         
         AllowAnonymous();
@@ -1650,7 +1609,6 @@ public class SearchBusinessesEndpoint : FastEndpoints.Endpoint<SearchBusinessesR
 
         Summary(s => {
             s.Summary = "Search for Vatom Businesses";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1677,7 +1635,7 @@ public class SearchCampaignGroupsEndpoint : FastEndpoints.Endpoint<SearchCampaig
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/b/campaign-groups/search");
+        Get("/api/3.18/vatom/b/campaign-groups/search");
         
         
         AllowAnonymous();
@@ -1689,7 +1647,6 @@ public class SearchCampaignGroupsEndpoint : FastEndpoints.Endpoint<SearchCampaig
 
         Summary(s => {
             s.Summary = "Search Campaign Groups";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1716,7 +1673,7 @@ public class SearchIdentitiesEndpoint : FastEndpoints.Endpoint<SearchIdentitiesR
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/me/identities/search");
+        Get("/api/3.18/vatom/me/identities/search");
         
         
         AllowAnonymous();
@@ -1728,7 +1685,6 @@ public class SearchIdentitiesEndpoint : FastEndpoints.Endpoint<SearchIdentitiesR
 
         Summary(s => {
             s.Summary = "Search User Identities";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
             s.Responses[200] = "successful operation";
@@ -1754,7 +1710,7 @@ public class SearchInventoryEndpoint : FastEndpoints.Endpoint<SearchInventoryReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/vatom/user-inventory/search");
+        Get("/api/3.18/vatom/user-inventory/search");
         
         
         AllowAnonymous();
@@ -1766,7 +1722,6 @@ public class SearchInventoryEndpoint : FastEndpoints.Endpoint<SearchInventoryReq
 
         Summary(s => {
             s.Summary = "Search Vatom User&#39;s Inventory";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -1793,7 +1748,7 @@ public class SendNFTEndpoint : FastEndpoints.Endpoint<SendNFTRequest>
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/campaigns/send");
+        Post("/api/3.18/vatom/b/campaigns/send");
         
         
         AllowAnonymous();
@@ -1805,7 +1760,6 @@ public class SendNFTEndpoint : FastEndpoints.Endpoint<SendNFTRequest>
 
         Summary(s => {
             s.Summary = "Send NFT";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomCampaignId, "Vatom Campaign Id");
@@ -1834,7 +1788,7 @@ public class SetPointsBalanceAsBusinessEndpoint : FastEndpoints.Endpoint<SetPoin
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/campaign/u/points/update");
+        Post("/api/3.18/vatom/b/campaign/u/points/update");
         
         
         AllowAnonymous();
@@ -1846,7 +1800,6 @@ public class SetPointsBalanceAsBusinessEndpoint : FastEndpoints.Endpoint<SetPoin
 
         Summary(s => {
             s.Summary = "Set Points Balance as Business";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
@@ -1876,7 +1829,7 @@ public class TransferUserCoinsEndpoint : FastEndpoints.Endpoint<TransferUserCoin
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/u/coins/transfer");
+        Post("/api/3.18/vatom/u/coins/transfer");
         
         
         AllowAnonymous();
@@ -1888,7 +1841,6 @@ public class TransferUserCoinsEndpoint : FastEndpoints.Endpoint<TransferUserCoin
 
         Summary(s => {
             s.Summary = "Transfer coins from Vatom Users";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1916,7 +1868,7 @@ public class UpdateBusinessCoinsEndpoint : FastEndpoints.Endpoint<UpdateBusiness
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/coins/update");
+        Post("/api/3.18/vatom/b/coins/update");
         
         
         AllowAnonymous();
@@ -1928,7 +1880,6 @@ public class UpdateBusinessCoinsEndpoint : FastEndpoints.Endpoint<UpdateBusiness
 
         Summary(s => {
             s.Summary = "Fund coins for a Business";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
@@ -1956,7 +1907,7 @@ public class UpdateEventGuestListEndpoint : FastEndpoints.Endpoint<UpdateEventGu
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/events/guests/update");
+        Post("/api/3.18/vatom/b/events/guests/update");
         
         
         AllowAnonymous();
@@ -1968,7 +1919,6 @@ public class UpdateEventGuestListEndpoint : FastEndpoints.Endpoint<UpdateEventGu
 
         Summary(s => {
             s.Summary = "Update Vatom Event Guest List";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomEventId, "Vatom Event Id");
@@ -1997,7 +1947,7 @@ public class UpdateSpaceEndpoint : FastEndpoints.Endpoint<UpdateSpaceRequest>
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/spaces/update");
+        Post("/api/3.18/vatom/b/spaces/update");
         
         
         AllowAnonymous();
@@ -2009,7 +1959,6 @@ public class UpdateSpaceEndpoint : FastEndpoints.Endpoint<UpdateSpaceRequest>
 
         Summary(s => {
             s.Summary = "Update Vatom Space";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomSpaceId, "Vatom Space Id");
@@ -2038,7 +1987,7 @@ public class UpdateUserCoinsAsBusinessEndpoint : FastEndpoints.Endpoint<UpdateUs
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/users/coins/update");
+        Post("/api/3.18/vatom/b/users/coins/update");
         
         
         AllowAnonymous();
@@ -2050,7 +1999,6 @@ public class UpdateUserCoinsAsBusinessEndpoint : FastEndpoints.Endpoint<UpdateUs
 
         Summary(s => {
             s.Summary = "Update the coins for a user (as a Business)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomUserId, "Vatom User Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
@@ -2079,7 +2027,7 @@ public class UpdateUserProfileEndpoint : FastEndpoints.Endpoint<UpdateUserProfil
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/me/update");
+        Post("/api/3.18/vatom/me/update");
         
         
         AllowAnonymous();
@@ -2091,7 +2039,6 @@ public class UpdateUserProfileEndpoint : FastEndpoints.Endpoint<UpdateUserProfil
 
         Summary(s => {
             s.Summary = "Update Vatom User Profile";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.VatomParameters, "Vatom Parameters");
             s.RequestParam(r => r.ReturnRawResponse, "Return raw response");
@@ -2118,7 +2065,7 @@ public class UpdateVatomEventEndpoint : FastEndpoints.Endpoint<UpdateVatomEventR
 {
     public override void Configure()
     {
-        Post("/api/{version}/vatom/b/events/update");
+        Post("/api/3.18/vatom/b/events/update");
         
         
         AllowAnonymous();
@@ -2130,7 +2077,6 @@ public class UpdateVatomEventEndpoint : FastEndpoints.Endpoint<UpdateVatomEventR
 
         Summary(s => {
             s.Summary = "Update Vatom Event";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Sirqul Account Id");
             s.RequestParam(r => r.AppKey, "Sirqul Application Key");
             s.RequestParam(r => r.VatomEventId, "Vatom Event Id");

@@ -12,7 +12,7 @@ public class AssigmentAssigneeAccountSearchEndpoint : FastEndpoints.Endpoint<Ass
 {
     public override void Configure()
     {
-        Get("/api/{version}/assignment/assignee/search");
+        Get("/api/3.18/assignment/assignee/search");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AssigmentAssigneeAccountSearchEndpoint : FastEndpoints.Endpoint<Ass
 
         Summary(s => {
             s.Summary = "Search Assignment Assignees";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id sending the request");
             s.RequestParam(r => r.Keyword, "The keyword to filter the returned results");
             s.Responses[200] = "successful operation";
@@ -50,7 +49,7 @@ public class AssignmentCreateEndpoint : FastEndpoints.Endpoint<AssignmentCreateR
 {
     public override void Configure()
     {
-        Post("/api/{version}/assignment/create");
+        Post("/api/3.18/assignment/create");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class AssignmentCreateEndpoint : FastEndpoints.Endpoint<AssignmentCreateR
 
         Summary(s => {
             s.Summary = "Create Assignment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.Name, "the name for the assignment");
             s.RequestParam(r => r.AssigneeAccountId, "the account id to assign to");
@@ -93,7 +91,7 @@ public class AssignmentDeleteEndpoint : FastEndpoints.Endpoint<AssignmentDeleteR
 {
     public override void Configure()
     {
-        Post("/api/{version}/assignment/delete");
+        Post("/api/3.18/assignment/delete");
         
         
         AllowAnonymous();
@@ -105,7 +103,6 @@ public class AssignmentDeleteEndpoint : FastEndpoints.Endpoint<AssignmentDeleteR
 
         Summary(s => {
             s.Summary = "Delete Assignment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentId, "the assignment id");
             s.Responses[200] = "successful operation";
@@ -131,7 +128,7 @@ public class AssignmentGetEndpoint : FastEndpoints.Endpoint<AssignmentGetRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/assignment/get");
+        Get("/api/3.18/assignment/get");
         
         
         AllowAnonymous();
@@ -143,7 +140,6 @@ public class AssignmentGetEndpoint : FastEndpoints.Endpoint<AssignmentGetRequest
 
         Summary(s => {
             s.Summary = "Get Assignment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentId, "the assignment id");
             s.Responses[200] = "successful operation";
@@ -169,7 +165,7 @@ public class AssignmentSearchEndpoint : FastEndpoints.Endpoint<AssignmentSearchR
 {
     public override void Configure()
     {
-        Get("/api/{version}/assignment/search");
+        Get("/api/3.18/assignment/search");
         
         
         AllowAnonymous();
@@ -181,7 +177,6 @@ public class AssignmentSearchEndpoint : FastEndpoints.Endpoint<AssignmentSearchR
 
         Summary(s => {
             s.Summary = "Search Assignments";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account sending the request");
             s.RequestParam(r => r.SortField, "sort by table field");
             s.RequestParam(r => r.Descending, "return results in descending order or not");
@@ -216,7 +211,7 @@ public class AssignmentStatusCreateEndpoint : FastEndpoints.Endpoint<AssignmentS
 {
     public override void Configure()
     {
-        Post("/api/{version}/assignment/status/create");
+        Post("/api/3.18/assignment/status/create");
         
         
         AllowAnonymous();
@@ -228,7 +223,6 @@ public class AssignmentStatusCreateEndpoint : FastEndpoints.Endpoint<AssignmentS
 
         Summary(s => {
             s.Summary = "Create Assignment Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentId, "the assignment id");
             s.RequestParam(r => r.ScheduledNotificationId, "the scheduled notification id for reminders");
@@ -263,7 +257,7 @@ public class AssignmentStatusDeleteEndpoint : FastEndpoints.Endpoint<AssignmentS
 {
     public override void Configure()
     {
-        Post("/api/{version}/assignment/status/delete");
+        Post("/api/3.18/assignment/status/delete");
         
         
         AllowAnonymous();
@@ -275,7 +269,6 @@ public class AssignmentStatusDeleteEndpoint : FastEndpoints.Endpoint<AssignmentS
 
         Summary(s => {
             s.Summary = "Deletes Assignment Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentStatusId, "the assignment status id");
             s.Responses[200] = "successful operation";
@@ -301,7 +294,7 @@ public class AssignmentStatusGetEndpoint : FastEndpoints.Endpoint<AssignmentStat
 {
     public override void Configure()
     {
-        Get("/api/{version}/assignment/status/get");
+        Get("/api/3.18/assignment/status/get");
         
         
         AllowAnonymous();
@@ -313,7 +306,6 @@ public class AssignmentStatusGetEndpoint : FastEndpoints.Endpoint<AssignmentStat
 
         Summary(s => {
             s.Summary = "Get Assignment Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentStatusId, "the assignment status id");
             s.Responses[200] = "successful operation";
@@ -339,7 +331,7 @@ public class AssignmentStatusSearchEndpoint : FastEndpoints.Endpoint<AssignmentS
 {
     public override void Configure()
     {
-        Get("/api/{version}/assignment/status/search");
+        Get("/api/3.18/assignment/status/search");
         
         
         AllowAnonymous();
@@ -351,7 +343,6 @@ public class AssignmentStatusSearchEndpoint : FastEndpoints.Endpoint<AssignmentS
 
         Summary(s => {
             s.Summary = "Search Assignment Statuses";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.SortField, "the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP");
             s.RequestParam(r => r.Descending, "determines whether the sorted list is in descending or ascending order");
@@ -387,7 +378,7 @@ public class AssignmentStatusUpdateEndpoint : FastEndpoints.Endpoint<AssignmentS
 {
     public override void Configure()
     {
-        Post("/api/{version}/assignment/status/update");
+        Post("/api/3.18/assignment/status/update");
         
         
         AllowAnonymous();
@@ -399,7 +390,6 @@ public class AssignmentStatusUpdateEndpoint : FastEndpoints.Endpoint<AssignmentS
 
         Summary(s => {
             s.Summary = "Update Assignment Status";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentStatusId, "the assignment status id");
             s.RequestParam(r => r.ScheduledNotificationId, "the scheduled notification id for reminders");
@@ -434,7 +424,7 @@ public class AssignmentUpdateEndpoint : FastEndpoints.Endpoint<AssignmentUpdateR
 {
     public override void Configure()
     {
-        Post("/api/{version}/assignment/update");
+        Post("/api/3.18/assignment/update");
         
         
         AllowAnonymous();
@@ -446,7 +436,6 @@ public class AssignmentUpdateEndpoint : FastEndpoints.Endpoint<AssignmentUpdateR
 
         Summary(s => {
             s.Summary = "Update Assignment";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the user account id");
             s.RequestParam(r => r.AssignmentId, "the assignment id");
             s.RequestParam(r => r.Name, "the name of the assignment");

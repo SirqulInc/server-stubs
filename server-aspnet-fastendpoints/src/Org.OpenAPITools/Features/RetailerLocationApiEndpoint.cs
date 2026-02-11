@@ -12,7 +12,7 @@ public class CreateRetailerLocationConsumerEndpoint : FastEndpoints.Endpoint<Cre
 {
     public override void Configure()
     {
-        Post("/api/{version}/location/create");
+        Post("/api/3.18/location/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateRetailerLocationConsumerEndpoint : FastEndpoints.Endpoint<Cre
 
         Summary(s => {
             s.Summary = "Create Retailer Location (Consumer)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Name, "The name of the retailer location");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
@@ -77,7 +76,7 @@ public class CreateRetailerLocationsEndpoint : FastEndpoints.Endpoint<CreateReta
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/location/create");
+        Post("/api/3.18/retailer/location/create");
         
         
         AllowAnonymous();
@@ -89,7 +88,6 @@ public class CreateRetailerLocationsEndpoint : FastEndpoints.Endpoint<CreateReta
 
         Summary(s => {
             s.Summary = "Create Retailer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerId, "The ID of the retailer");
             s.RequestParam(r => r.Name, "The name of the retailer location");
             s.RequestParam(r => r.StreetAddress, "The street address of the retailer location");
@@ -152,7 +150,7 @@ public class DeleteRetailerLocationEndpoint : FastEndpoints.Endpoint<DeleteRetai
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/location/delete");
+        Post("/api/3.18/retailer/location/delete");
         
         
         AllowAnonymous();
@@ -164,7 +162,6 @@ public class DeleteRetailerLocationEndpoint : FastEndpoints.Endpoint<DeleteRetai
 
         Summary(s => {
             s.Summary = "Delete Retailer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "the device id");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.RetailerLocationId, "the id of the retailer location to delete");
@@ -191,7 +188,7 @@ public class GetRetailerLocationEndpoint : FastEndpoints.Endpoint<GetRetailerLoc
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/location/get");
+        Get("/api/3.18/retailer/location/get");
         
         
         AllowAnonymous();
@@ -203,7 +200,6 @@ public class GetRetailerLocationEndpoint : FastEndpoints.Endpoint<GetRetailerLoc
 
         Summary(s => {
             s.Summary = "Get Retailer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerLocationId, "The ID of the retailer location");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -231,7 +227,7 @@ public class GetRetailerLocationConsumerEndpoint : FastEndpoints.Endpoint<GetRet
 {
     public override void Configure()
     {
-        Get("/api/{version}/location/get");
+        Get("/api/3.18/location/get");
         
         
         AllowAnonymous();
@@ -243,7 +239,6 @@ public class GetRetailerLocationConsumerEndpoint : FastEndpoints.Endpoint<GetRet
 
         Summary(s => {
             s.Summary = "Get Retailer Location (Consumer)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerLocationId, "The retailer location id");
             s.RequestParam(r => r.DeviceId, "The device id for returning account information (i.e. favorites)");
             s.RequestParam(r => r.AccountId, "The account id for returning account information (i.e. favorites)");
@@ -270,7 +265,7 @@ public class IndexedRetailerLocationDistanceSearchEndpoint : FastEndpoints.Endpo
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/location/idistancesearch");
+        Get("/api/3.18/retailer/location/idistancesearch");
         
         
         AllowAnonymous();
@@ -282,7 +277,6 @@ public class IndexedRetailerLocationDistanceSearchEndpoint : FastEndpoints.Endpo
 
         Summary(s => {
             s.Summary = "Distance Search Retailer Locations (Indexed)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Latitude, "The latitude to center the search on");
             s.RequestParam(r => r.Longitude, "The longitude to center the search on");
             s.RequestParam(r => r.SearchRange, "The search range in the distanceUnit specified; default is MILES.");
@@ -340,7 +334,7 @@ public class IndexedRetailerLocationSearchEndpoint : FastEndpoints.Endpoint<Inde
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/location/isearch");
+        Get("/api/3.18/retailer/location/isearch");
         
         
         AllowAnonymous();
@@ -352,7 +346,6 @@ public class IndexedRetailerLocationSearchEndpoint : FastEndpoints.Endpoint<Inde
 
         Summary(s => {
             s.Summary = "Keyword Search Retailer Locations (Indexed)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the user");
             s.RequestParam(r => r.Start, "The start index for pagination");
             s.RequestParam(r => r.Limit, "The limit for pagination");
@@ -404,7 +397,7 @@ public class SearchRetailerLocationsEndpoint : FastEndpoints.Endpoint<SearchReta
 {
     public override void Configure()
     {
-        Get("/api/{version}/retailer/location/search");
+        Get("/api/3.18/retailer/location/search");
         
         
         AllowAnonymous();
@@ -416,7 +409,6 @@ public class SearchRetailerLocationsEndpoint : FastEndpoints.Endpoint<SearchReta
 
         Summary(s => {
             s.Summary = "Search Retailer Locations (Owned)";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.Q, "This parameter is deprecated.");
@@ -465,7 +457,7 @@ public class UpdateRetailerLocationsEndpoint : FastEndpoints.Endpoint<UpdateReta
 {
     public override void Configure()
     {
-        Post("/api/{version}/retailer/location/update");
+        Post("/api/3.18/retailer/location/update");
         
         
         AllowAnonymous();
@@ -477,7 +469,6 @@ public class UpdateRetailerLocationsEndpoint : FastEndpoints.Endpoint<UpdateReta
 
         Summary(s => {
             s.Summary = "Update Retailer Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RetailerLocationId, "The ID of the retailer location");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");

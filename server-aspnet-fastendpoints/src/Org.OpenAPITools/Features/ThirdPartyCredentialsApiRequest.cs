@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateCredentialRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the unique id of the account that needs authenticating (optional for PHONE_V2)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -99,11 +94,6 @@ public class CreateCredentialRequest
 }
 public class CreateNetworkRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id making the request
     /// </summary>
@@ -193,11 +183,6 @@ public class CreateNetworkRequest
 public class DeleteCredentialRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -221,11 +206,6 @@ public class DeleteCredentialRequest
 public class DeleteNetworkRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -238,11 +218,6 @@ public class DeleteNetworkRequest
 }
 public class GetCredentialRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the unique account id of a specific account that will be bound to the third-party credentials
     /// </summary>
@@ -322,11 +297,6 @@ public class GetCredentialRequest
 public class GetNetworkRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id making the request
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -339,11 +309,6 @@ public class GetNetworkRequest
 }
 public class SearchCredentialsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>
@@ -377,11 +342,6 @@ public class SearchCredentialsRequest
 }
 public class SearchNetworksRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id making the request
     /// </summary>
@@ -426,11 +386,6 @@ public class SearchNetworksRequest
 public class SendMFAChallengeRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the access token to authenticate with
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("thirdPartyToken")]
@@ -458,11 +413,6 @@ public class SendMFAChallengeRequest
 }
 public class UpdateCredentialRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the unique id of the device making the request
     /// </summary>
@@ -511,11 +461,6 @@ public class UpdateCredentialRequest
 }
 public class UpdateNetworkRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id making the request
     /// </summary>

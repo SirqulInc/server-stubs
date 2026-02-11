@@ -12,7 +12,7 @@ public class CreateApplicationConfigEndpoint : FastEndpoints.Endpoint<CreateAppl
 {
     public override void Configure()
     {
-        Post("/api/{version}/appconfig/create");
+        Post("/api/3.18/appconfig/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateApplicationConfigEndpoint : FastEndpoints.Endpoint<CreateAppl
 
         Summary(s => {
             s.Summary = "Create AppConfig";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account ID of the user");
             s.RequestParam(r => r.AppKey, "The application key that the newly created applicationConfig will be associated to");
             s.RequestParam(r => r.ConfigVersion, "The application configuration, has to be unique within the application");
@@ -55,7 +54,7 @@ public class DeleteApplicationConfigEndpoint : FastEndpoints.Endpoint<DeleteAppl
 {
     public override void Configure()
     {
-        Post("/api/{version}/appconfig/delete");
+        Post("/api/3.18/appconfig/delete");
         
         
         AllowAnonymous();
@@ -67,7 +66,6 @@ public class DeleteApplicationConfigEndpoint : FastEndpoints.Endpoint<DeleteAppl
 
         Summary(s => {
             s.Summary = "Delete AppConfig";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account ID of the user");
             s.RequestParam(r => r.ConfigId, "The config ID of the application configuration to delete");
             s.Responses[200] = "successful operation";
@@ -93,7 +91,7 @@ public class GetApplicationConfigEndpoint : FastEndpoints.Endpoint<GetApplicatio
 {
     public override void Configure()
     {
-        Get("/api/{version}/appconfig/get");
+        Get("/api/3.18/appconfig/get");
         
         
         AllowAnonymous();
@@ -105,7 +103,6 @@ public class GetApplicationConfigEndpoint : FastEndpoints.Endpoint<GetApplicatio
 
         Summary(s => {
             s.Summary = "Get AppConfig";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account ID of the user");
             s.RequestParam(r => r.ConfigId, "The config ID of the application configuration");
             s.Responses[200] = "successful operation";
@@ -131,7 +128,7 @@ public class GetApplicationConfigByConfigVersionEndpoint : FastEndpoints.Endpoin
 {
     public override void Configure()
     {
-        Get("/api/{version}/appconfig/getbyversion");
+        Get("/api/3.18/appconfig/getbyversion");
         
         
         AllowAnonymous();
@@ -143,7 +140,6 @@ public class GetApplicationConfigByConfigVersionEndpoint : FastEndpoints.Endpoin
 
         Summary(s => {
             s.Summary = "Get AppConfig by Version";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.ConfigVersion, "The version of the application configuration");
             s.RequestParam(r => r.RetailerId, "Only returns the config that matches the given retailer");
@@ -173,7 +169,7 @@ public class SearchApplicationConfigEndpoint : FastEndpoints.Endpoint<SearchAppl
 {
     public override void Configure()
     {
-        Get("/api/{version}/appconfig/search");
+        Get("/api/3.18/appconfig/search");
         
         
         AllowAnonymous();
@@ -185,7 +181,6 @@ public class SearchApplicationConfigEndpoint : FastEndpoints.Endpoint<SearchAppl
 
         Summary(s => {
             s.Summary = "Search AppConfigs";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account ID of the user");
             s.RequestParam(r => r.AppKey, "The application key to filter results by application Leaving this empty will return all application configurations for all applications (executive user only)");
             s.RequestParam(r => r.RetailerId, "Only returns the configs that matches the given retailer");
@@ -219,7 +214,7 @@ public class UpdateApplicationConfigEndpoint : FastEndpoints.Endpoint<UpdateAppl
 {
     public override void Configure()
     {
-        Post("/api/{version}/appconfig/update");
+        Post("/api/3.18/appconfig/update");
         
         
         AllowAnonymous();
@@ -231,7 +226,6 @@ public class UpdateApplicationConfigEndpoint : FastEndpoints.Endpoint<UpdateAppl
 
         Summary(s => {
             s.Summary = "Update AppConfig";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account ID of the user");
             s.RequestParam(r => r.ConfigId, "The config ID of the application configuration to update");
             s.RequestParam(r => r.AppKey, "The application key that the updated applicationConfig will be associated to");

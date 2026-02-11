@@ -9,21 +9,11 @@ public class CreateProgramRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public Program? body { get; set; }
 }
 public class DeleteProgramRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the program
     /// </summary>
@@ -33,11 +23,6 @@ public class DeleteProgramRequest
 public class GetProgramRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the program
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -45,11 +30,6 @@ public class GetProgramRequest
 }
 public class PostProgramRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the program
     /// </summary>
@@ -64,11 +44,6 @@ public class PostProgramRequest
 public class PutProgramRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the program
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -81,11 +56,6 @@ public class PutProgramRequest
 }
 public class SearchProgramsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The keyword to filter results by
     /// </summary>

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateBatchRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user for passing account related params
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -72,21 +67,11 @@ public class CreateRegionLegSummaryBatchRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public List<RegionLegSummary>? body { get; set; }
 }
 public class DeleteBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the account
     /// </summary>
@@ -100,11 +85,6 @@ public class DeleteBatchRequest
 }
 public class GetReportBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the logged in user
     /// </summary>
@@ -123,11 +103,6 @@ public class GetReportBatchRequest
 }
 public class RunReportRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user for passing account related params
     /// </summary>
@@ -171,11 +146,6 @@ public class RunReportRequest
 }
 public class SearchBatchRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the account logged in
     /// </summary>

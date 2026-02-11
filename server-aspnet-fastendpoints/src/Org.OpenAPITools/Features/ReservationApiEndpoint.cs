@@ -12,7 +12,7 @@ public class CreateReservationEndpoint : FastEndpoints.Endpoint<CreateReservatio
 {
     public override void Configure()
     {
-        Post("/api/{version}/reservation/create");
+        Post("/api/3.18/reservation/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateReservationEndpoint : FastEndpoints.Endpoint<CreateReservatio
 
         Summary(s => {
             s.Summary = "Create Reservation";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
             s.RequestParam(r => r.StartDate, "The start date");
@@ -56,7 +55,7 @@ public class DeleteReservationEndpoint : FastEndpoints.Endpoint<DeleteReservatio
 {
     public override void Configure()
     {
-        Post("/api/{version}/reservation/delete");
+        Post("/api/3.18/reservation/delete");
         
         
         AllowAnonymous();
@@ -68,7 +67,6 @@ public class DeleteReservationEndpoint : FastEndpoints.Endpoint<DeleteReservatio
 
         Summary(s => {
             s.Summary = "Delete Reservation";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReservationId, "The reservation id");
             s.RequestParam(r => r.DeviceId, "The device id (deviceId or accountId required)");
             s.RequestParam(r => r.AccountId, "The account id of the user (deviceId or accountId required)");
@@ -95,7 +93,7 @@ public class ReservableAvailabilityEndpoint : FastEndpoints.Endpoint<ReservableA
 {
     public override void Configure()
     {
-        Post("/api/{version}/reservable/availability/update");
+        Post("/api/3.18/reservable/availability/update");
         
         
         AllowAnonymous();
@@ -107,7 +105,6 @@ public class ReservableAvailabilityEndpoint : FastEndpoints.Endpoint<ReservableA
 
         Summary(s => {
             s.Summary = "Update Availability";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReservableId, "the id of the reservation");
             s.RequestParam(r => r.ReservableType, "the type of reservation");
             s.RequestParam(r => r.DeviceId, "the device id of the reservation");
@@ -137,7 +134,7 @@ public class SearchAvailabilityEndpoint : FastEndpoints.Endpoint<SearchAvailabil
 {
     public override void Configure()
     {
-        Get("/api/{version}/reservable/availability/search");
+        Get("/api/3.18/reservable/availability/search");
         
         
         AllowAnonymous();
@@ -149,7 +146,6 @@ public class SearchAvailabilityEndpoint : FastEndpoints.Endpoint<SearchAvailabil
 
         Summary(s => {
             s.Summary = "Search Availability";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReservableId, "the id of the reservation");
             s.RequestParam(r => r.ReservableType, "the reservable type");
             s.RequestParam(r => r.DeviceId, "the device ID that the reservation is on");
@@ -181,7 +177,7 @@ public class SearchReservationsEndpoint : FastEndpoints.Endpoint<SearchReservati
 {
     public override void Configure()
     {
-        Get("/api/{version}/reservation/search");
+        Get("/api/3.18/reservation/search");
         
         
         AllowAnonymous();
@@ -193,7 +189,6 @@ public class SearchReservationsEndpoint : FastEndpoints.Endpoint<SearchReservati
 
         Summary(s => {
             s.Summary = "Search Reservations";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "Device Id");
             s.RequestParam(r => r.AppKey, "Appilcation Key");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
@@ -228,7 +223,7 @@ public class SearchScheduleEndpoint : FastEndpoints.Endpoint<SearchScheduleReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/reservable/schedule/search");
+        Get("/api/3.18/reservable/schedule/search");
         
         
         AllowAnonymous();
@@ -240,7 +235,6 @@ public class SearchScheduleEndpoint : FastEndpoints.Endpoint<SearchScheduleReque
 
         Summary(s => {
             s.Summary = "Search Schedule";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.ReservableId, "the id of the reservation");
             s.RequestParam(r => r.ReservableType, "the reservation type");
             s.RequestParam(r => r.StartDate, "the start date of the reservation");

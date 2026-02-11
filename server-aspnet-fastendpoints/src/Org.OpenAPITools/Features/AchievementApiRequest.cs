@@ -4,13 +4,8 @@ using Org.OpenAPITools.Models;
 namespace Org.OpenAPITools.Features;
 
 
-public class ApiVersionAchievementTierSearchPostRequest
+public class AchievementTierSearchPostRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -69,11 +64,6 @@ public class ApiVersionAchievementTierSearchPostRequest
 }
 public class CreateAchievementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -142,11 +132,6 @@ public class CreateAchievementRequest
 }
 public class CreateAchievementTierRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -221,11 +206,6 @@ public class CreateAchievementTierRequest
 public class DeleteAchievementRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -239,11 +219,6 @@ public class DeleteAchievementRequest
 public class DeleteAchievementTierRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user (deviceId or accountId required).
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -256,11 +231,6 @@ public class DeleteAchievementTierRequest
 }
 public class GetAchievementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -285,11 +255,6 @@ public class GetAchievementRequest
 public class GetAchievementTierRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -302,11 +267,6 @@ public class GetAchievementTierRequest
 }
 public class GetUserAchievementsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// determines whether to return null fields in the response
     /// </summary>
@@ -366,11 +326,6 @@ public class GetUserAchievementsRequest
 public class ListAchievementTagsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// filter results by application key
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("appKey")]
@@ -378,11 +333,6 @@ public class ListAchievementTagsRequest
 }
 public class ListAchievementsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -441,11 +391,6 @@ public class ListAchievementsRequest
 }
 public class SearchAchievementsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -509,11 +454,6 @@ public class SearchAchievementsRequest
 }
 public class UpdateAchievementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
@@ -593,11 +533,6 @@ public class UpdateAchievementRequest
 public class UpdateAchievementTierRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique id given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -670,11 +605,6 @@ public class UpdateAchievementTierRequest
 }
 public class UpdateUserAchievementRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>

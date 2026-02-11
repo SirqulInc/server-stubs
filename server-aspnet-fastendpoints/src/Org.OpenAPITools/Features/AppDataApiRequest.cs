@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class GetAppDataRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -139,11 +134,6 @@ public class GetAppDataRequest
 }
 public class PostAppDataRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the device id (deviceId or accountId required).
     /// </summary>
@@ -277,11 +267,6 @@ public class PostAppDataRequest
 }
 public class RegenAppDataRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>

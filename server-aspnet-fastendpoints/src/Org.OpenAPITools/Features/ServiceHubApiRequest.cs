@@ -9,21 +9,11 @@ public class CreateServiceHubRequest
     /// <summary>
     /// 
     /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
     [FastEndpoints.FromBody]
     public ServiceHub? body { get; set; }
 }
 public class DeleteServiceHubRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the service hub to delete
     /// </summary>
@@ -33,11 +23,6 @@ public class DeleteServiceHubRequest
 public class GetServiceHubRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the service hub to get
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -45,11 +30,6 @@ public class GetServiceHubRequest
 }
 public class PostServiceHubRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the id of the service hub
     /// </summary>
@@ -64,11 +44,6 @@ public class PostServiceHubRequest
 public class PutServiceHubRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the service hub
     /// </summary>
     [FastEndpoints.BindFrom("id")]
@@ -81,11 +56,6 @@ public class PutServiceHubRequest
 }
 public class SearchServiceHubsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The keyword to search for
     /// </summary>

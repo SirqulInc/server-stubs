@@ -12,7 +12,7 @@ public class CreateEntityReferenceEndpoint : FastEndpoints.Endpoint<CreateEntity
 {
     public override void Configure()
     {
-        Post("/api/{version}/entity/reference");
+        Post("/api/3.18/entity/reference");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateEntityReferenceEndpoint : FastEndpoints.Endpoint<CreateEntity
 
         Summary(s => {
             s.Summary = "Create an entity reference.";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "The entity reference object");
             s.Responses[200] = "successful operation";
         });

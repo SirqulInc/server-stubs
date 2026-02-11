@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class ProcessAllParticipantsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -29,11 +24,6 @@ public class ProcessAllParticipantsRequest
 }
 public class ProcessParticipantsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account id of the user
     /// </summary>

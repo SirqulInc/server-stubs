@@ -12,7 +12,7 @@ public class AssignEmployeeEndpoint : FastEndpoints.Endpoint<AssignEmployeeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/assign");
+        Post("/api/3.18/employee/assign");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AssignEmployeeEndpoint : FastEndpoints.Endpoint<AssignEmployeeReque
 
         Summary(s => {
             s.Summary = "Assign Employee";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.ManagerAccountId, "The account id of the manager to assign under");
             s.RequestParam(r => r.EmployeeAccountId, "The account id of the user to be assigned as employee");
@@ -52,7 +51,7 @@ public class AssignToLocationEmployeeEndpoint : FastEndpoints.Endpoint<AssignToL
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/assignToLocation");
+        Post("/api/3.18/employee/assignToLocation");
         
         
         AllowAnonymous();
@@ -64,7 +63,6 @@ public class AssignToLocationEmployeeEndpoint : FastEndpoints.Endpoint<AssignToL
 
         Summary(s => {
             s.Summary = "Assign Employee to Location";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.RetailerLocationId, "The retailer location to apply the change to");
             s.RequestParam(r => r.EmployeeAccountId, "The account id of the user to apply the change to");
@@ -92,7 +90,7 @@ public class CreateEmployeeEndpoint : FastEndpoints.Endpoint<CreateEmployeeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/create");
+        Post("/api/3.18/employee/create");
         
         
         AllowAnonymous();
@@ -104,7 +102,6 @@ public class CreateEmployeeEndpoint : FastEndpoints.Endpoint<CreateEmployeeReque
 
         Summary(s => {
             s.Summary = "Create Employee";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.ManagerAccountId, "The account id of the manager to assign under");
             s.RequestParam(r => r.Username, "The username/email for the new user. This must be unique across the entire the system.");
@@ -158,7 +155,7 @@ public class DeleteEmployeeEndpoint : FastEndpoints.Endpoint<DeleteEmployeeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/delete");
+        Post("/api/3.18/employee/delete");
         
         
         AllowAnonymous();
@@ -170,7 +167,6 @@ public class DeleteEmployeeEndpoint : FastEndpoints.Endpoint<DeleteEmployeeReque
 
         Summary(s => {
             s.Summary = "Delete Employee";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.EmployeeAccountId, "the id of the employee to delete");
             s.Responses[200] = "successful operation";
@@ -196,7 +192,7 @@ public class GetEmployeeEndpoint : FastEndpoints.Endpoint<GetEmployeeRequest, Em
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/get");
+        Post("/api/3.18/employee/get");
         
         
         AllowAnonymous();
@@ -208,7 +204,6 @@ public class GetEmployeeEndpoint : FastEndpoints.Endpoint<GetEmployeeRequest, Em
 
         Summary(s => {
             s.Summary = "Get Employee";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of logged in user");
             s.RequestParam(r => r.EmployeeAccountId, "the id of the employee account to get");
             s.RequestParam(r => r.SettingsAppKey, "Determines whether to return the application settings for the employee for a particular application");
@@ -235,7 +230,7 @@ public class SearchEmployeesEndpoint : FastEndpoints.Endpoint<SearchEmployeesReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/search");
+        Post("/api/3.18/employee/search");
         
         
         AllowAnonymous();
@@ -247,7 +242,6 @@ public class SearchEmployeesEndpoint : FastEndpoints.Endpoint<SearchEmployeesReq
 
         Summary(s => {
             s.Summary = "Search Employees";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.Role, "The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles.");
             s.RequestParam(r => r.RetailerId, "Filters employees by retailer");
@@ -288,7 +282,7 @@ public class UnassignEmployeeEndpoint : FastEndpoints.Endpoint<UnassignEmployeeR
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/unassign");
+        Post("/api/3.18/employee/unassign");
         
         
         AllowAnonymous();
@@ -300,7 +294,6 @@ public class UnassignEmployeeEndpoint : FastEndpoints.Endpoint<UnassignEmployeeR
 
         Summary(s => {
             s.Summary = "Unassign Employee";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.EmployeeAccountId, "The account id of the user to be unassigned");
             s.Responses[200] = "successful operation";
@@ -326,7 +319,7 @@ public class UpdateEmployeeEndpoint : FastEndpoints.Endpoint<UpdateEmployeeReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/employee/update");
+        Post("/api/3.18/employee/update");
         
         
         AllowAnonymous();
@@ -338,7 +331,6 @@ public class UpdateEmployeeEndpoint : FastEndpoints.Endpoint<UpdateEmployeeReque
 
         Summary(s => {
             s.Summary = "Update Employee";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.EmployeeAccountId, "the id of the employee account");
             s.RequestParam(r => r.ManagerAccountId, "The account id of the manager to assign under");

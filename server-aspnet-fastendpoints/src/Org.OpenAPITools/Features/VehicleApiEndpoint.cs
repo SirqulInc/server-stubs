@@ -12,7 +12,7 @@ public class CreateVehicleEndpoint : FastEndpoints.Endpoint<CreateVehicleRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/vehicle");
+        Post("/api/3.18/vehicle");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateVehicleEndpoint : FastEndpoints.Endpoint<CreateVehicleRequest
 
         Summary(s => {
             s.Summary = "Create Vehicle";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Vehicle, "A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -50,7 +49,7 @@ public class DeleteVehicleEndpoint : FastEndpoints.Endpoint<DeleteVehicleRequest
 {
     public override void Configure()
     {
-        Delete("/api/{version}/vehicle/{id}");
+        Delete("/api/3.18/vehicle/{id}");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class DeleteVehicleEndpoint : FastEndpoints.Endpoint<DeleteVehicleRequest
 
         Summary(s => {
             s.Summary = "Delete Vehicle";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "The id of the vehicle to delete");
             s.Responses[0] = "successful operation";
         });
@@ -88,7 +86,7 @@ public class GetVehicleEndpoint : FastEndpoints.Endpoint<GetVehicleRequest, Vehi
 {
     public override void Configure()
     {
-        Get("/api/{version}/vehicle/{id}");
+        Get("/api/3.18/vehicle/{id}");
         
         
         AllowAnonymous();
@@ -100,7 +98,6 @@ public class GetVehicleEndpoint : FastEndpoints.Endpoint<GetVehicleRequest, Vehi
 
         Summary(s => {
             s.Summary = "Get Vehicle";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "The id of the vehicle requested");
             s.Responses[200] = "successful operation";
         });
@@ -125,7 +122,7 @@ public class SearchVehicleEndpoint : FastEndpoints.Endpoint<SearchVehicleRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/vehicle");
+        Get("/api/3.18/vehicle");
         
         
         AllowAnonymous();
@@ -137,7 +134,6 @@ public class SearchVehicleEndpoint : FastEndpoints.Endpoint<SearchVehicleRequest
 
         Summary(s => {
             s.Summary = "Search Vehicle";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.HubId, "Filter by service hub");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
@@ -168,7 +164,7 @@ public class UpdateVehicleEndpoint : FastEndpoints.Endpoint<UpdateVehicleRequest
 {
     public override void Configure()
     {
-        Put("/api/{version}/vehicle/{id}");
+        Put("/api/3.18/vehicle/{id}");
         
         
         AllowAnonymous();
@@ -180,7 +176,6 @@ public class UpdateVehicleEndpoint : FastEndpoints.Endpoint<UpdateVehicleRequest
 
         Summary(s => {
             s.Summary = "Update Vehicle";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "The id of the vehicle to update");
             s.RequestParam(r => r.Vehicle, "A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; ");
             s.RequestParam(r => r.body, "");

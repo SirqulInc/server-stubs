@@ -12,7 +12,7 @@ public class CreateTournamentEndpoint : FastEndpoints.Endpoint<CreateTournamentR
 {
     public override void Configure()
     {
-        Post("/api/{version}/tournament/create");
+        Post("/api/3.18/tournament/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateTournamentEndpoint : FastEndpoints.Endpoint<CreateTournamentR
 
         Summary(s => {
             s.Summary = "Create Tournament";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The appKey the tournament is created for.");
             s.RequestParam(r => r.Title, "The title of the tournament");
@@ -83,7 +82,7 @@ public class DeleteTournamentEndpoint : FastEndpoints.Endpoint<DeleteTournamentR
 {
     public override void Configure()
     {
-        Post("/api/{version}/tournament/delete");
+        Post("/api/3.18/tournament/delete");
         
         
         AllowAnonymous();
@@ -95,7 +94,6 @@ public class DeleteTournamentEndpoint : FastEndpoints.Endpoint<DeleteTournamentR
 
         Summary(s => {
             s.Summary = "Delete Tournament";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.MissionId, "the id of the mission to delete");
             s.Responses[200] = "successful operation";
@@ -121,7 +119,7 @@ public class GetTournamentEndpoint : FastEndpoints.Endpoint<GetTournamentRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/tournament/get");
+        Get("/api/3.18/tournament/get");
         
         
         AllowAnonymous();
@@ -133,7 +131,6 @@ public class GetTournamentEndpoint : FastEndpoints.Endpoint<GetTournamentRequest
 
         Summary(s => {
             s.Summary = "Get Tournament";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The id of the logged in user");
             s.RequestParam(r => r.MissionId, "The id of the mission to return (either missionId or joinCode is required)");
             s.RequestParam(r => r.JoinCode, "Optional identifier for getting the tournament (either missionId or joinCode is required)");
@@ -162,7 +159,7 @@ public class SearchObjectsEndpoint : FastEndpoints.Endpoint<SearchObjectsRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/tournament/object/search");
+        Get("/api/3.18/tournament/object/search");
         
         
         AllowAnonymous();
@@ -174,7 +171,6 @@ public class SearchObjectsEndpoint : FastEndpoints.Endpoint<SearchObjectsRequest
 
         Summary(s => {
             s.Summary = "Search Tournament Objects";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID");
             s.RequestParam(r => r.GameLevelId, "the game level id to filter results by");
             s.RequestParam(r => r.SortField, "the field to sort by");
@@ -204,7 +200,7 @@ public class SearchRoundsEndpoint : FastEndpoints.Endpoint<SearchRoundsRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/tournament/round/search");
+        Get("/api/3.18/tournament/round/search");
         
         
         AllowAnonymous();
@@ -216,7 +212,6 @@ public class SearchRoundsEndpoint : FastEndpoints.Endpoint<SearchRoundsRequest, 
 
         Summary(s => {
             s.Summary = "Search Tournament Rounds";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the account ID");
             s.RequestParam(r => r.AppKey, "the application key");
             s.RequestParam(r => r.Status, "comma separated list of statuses to filter results by");
@@ -248,7 +243,7 @@ public class SearchTournamentsEndpoint : FastEndpoints.Endpoint<SearchTournament
 {
     public override void Configure()
     {
-        Get("/api/{version}/tournament/search");
+        Get("/api/3.18/tournament/search");
         
         
         AllowAnonymous();
@@ -260,7 +255,6 @@ public class SearchTournamentsEndpoint : FastEndpoints.Endpoint<SearchTournament
 
         Summary(s => {
             s.Summary = "Search Tournaments";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The application key");
             s.RequestParam(r => r.Keyword, "the keyword to search tournament on");
@@ -296,7 +290,7 @@ public class SubmitTournamentScoreEndpoint : FastEndpoints.Endpoint<SubmitTourna
 {
     public override void Configure()
     {
-        Post("/api/{version}/tournament/score");
+        Post("/api/3.18/tournament/score");
         
         
         AllowAnonymous();
@@ -308,7 +302,6 @@ public class SubmitTournamentScoreEndpoint : FastEndpoints.Endpoint<SubmitTourna
 
         Summary(s => {
             s.Summary = "Submit Tournament Score";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user account ID.");
             s.RequestParam(r => r.AppKey, "The application key.");
             s.RequestParam(r => r.MissionId, "The missionId to score for");
@@ -339,7 +332,7 @@ public class SubmitTournamentVoteEndpoint : FastEndpoints.Endpoint<SubmitTournam
 {
     public override void Configure()
     {
-        Post("/api/{version}/tournament/vote");
+        Post("/api/3.18/tournament/vote");
         
         
         AllowAnonymous();
@@ -351,7 +344,6 @@ public class SubmitTournamentVoteEndpoint : FastEndpoints.Endpoint<SubmitTournam
 
         Summary(s => {
             s.Summary = "Submit a vote for a multi-stage album tournament.";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AppKey, "The application to target");
             s.RequestParam(r => r.MissionId, "The tournament&#39;s primary id");
@@ -381,7 +373,7 @@ public class SubstituteTournamentPlayerEndpoint : FastEndpoints.Endpoint<Substit
 {
     public override void Configure()
     {
-        Post("/api/{version}/tournament/substitute");
+        Post("/api/3.18/tournament/substitute");
         
         
         AllowAnonymous();
@@ -393,7 +385,6 @@ public class SubstituteTournamentPlayerEndpoint : FastEndpoints.Endpoint<Substit
 
         Summary(s => {
             s.Summary = "Substitute Tournament Player";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.MissionId, "the id of the mission");
             s.RequestParam(r => r.PackId, "the id of the pack");
@@ -421,7 +412,7 @@ public class UpdateTournamentEndpoint : FastEndpoints.Endpoint<UpdateTournamentR
 {
     public override void Configure()
     {
-        Post("/api/{version}/tournament/update");
+        Post("/api/3.18/tournament/update");
         
         
         AllowAnonymous();
@@ -433,7 +424,6 @@ public class UpdateTournamentEndpoint : FastEndpoints.Endpoint<UpdateTournamentR
 
         Summary(s => {
             s.Summary = "Update Tournament";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.MissionId, "The mission/tournament to update");
             s.RequestParam(r => r.Title, "The title of the tournament");

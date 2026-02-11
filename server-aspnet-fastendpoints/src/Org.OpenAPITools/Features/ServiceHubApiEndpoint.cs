@@ -12,7 +12,7 @@ public class CreateServiceHubEndpoint : FastEndpoints.Endpoint<CreateServiceHubR
 {
     public override void Configure()
     {
-        Post("/api/{version}/hub");
+        Post("/api/3.18/hub");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateServiceHubEndpoint : FastEndpoints.Endpoint<CreateServiceHubR
 
         Summary(s => {
             s.Summary = "Create Service Hub";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
         });
@@ -49,7 +48,7 @@ public class DeleteServiceHubEndpoint : FastEndpoints.Endpoint<DeleteServiceHubR
 {
     public override void Configure()
     {
-        Delete("/api/{version}/hub/{id}");
+        Delete("/api/3.18/hub/{id}");
         
         
         AllowAnonymous();
@@ -62,7 +61,6 @@ public class DeleteServiceHubEndpoint : FastEndpoints.Endpoint<DeleteServiceHubR
 
         Summary(s => {
             s.Summary = "Delete Service Hub";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the service hub to delete");
             s.Responses[0] = "successful operation";
         });
@@ -87,7 +85,7 @@ public class GetServiceHubEndpoint : FastEndpoints.Endpoint<GetServiceHubRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/hub/{id}");
+        Get("/api/3.18/hub/{id}");
         
         
         AllowAnonymous();
@@ -99,7 +97,6 @@ public class GetServiceHubEndpoint : FastEndpoints.Endpoint<GetServiceHubRequest
 
         Summary(s => {
             s.Summary = "Get Service Hub";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the service hub to get");
             s.Responses[200] = "successful operation";
         });
@@ -124,7 +121,7 @@ public class PostServiceHubEndpoint : FastEndpoints.Endpoint<PostServiceHubReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/hub/{id}");
+        Post("/api/3.18/hub/{id}");
         
         
         AllowAnonymous();
@@ -136,7 +133,6 @@ public class PostServiceHubEndpoint : FastEndpoints.Endpoint<PostServiceHubReque
 
         Summary(s => {
             s.Summary = "Update Service Hub";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the service hub");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -162,7 +158,7 @@ public class PutServiceHubEndpoint : FastEndpoints.Endpoint<PutServiceHubRequest
 {
     public override void Configure()
     {
-        Put("/api/{version}/hub/{id}");
+        Put("/api/3.18/hub/{id}");
         
         
         AllowAnonymous();
@@ -174,7 +170,6 @@ public class PutServiceHubEndpoint : FastEndpoints.Endpoint<PutServiceHubRequest
 
         Summary(s => {
             s.Summary = "Update Service Hub";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Id, "the id of the service hub");
             s.RequestParam(r => r.body, "");
             s.Responses[200] = "successful operation";
@@ -200,7 +195,7 @@ public class SearchServiceHubsEndpoint : FastEndpoints.Endpoint<SearchServiceHub
 {
     public override void Configure()
     {
-        Get("/api/{version}/hub");
+        Get("/api/3.18/hub");
         
         
         AllowAnonymous();
@@ -212,7 +207,6 @@ public class SearchServiceHubsEndpoint : FastEndpoints.Endpoint<SearchServiceHub
 
         Summary(s => {
             s.Summary = "Search Service Hubs";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "The field to sort by");
             s.RequestParam(r => r.Descending, "Determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Start, "The start index for pagination");

@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateScheduledNotificationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -185,11 +180,6 @@ public class CreateScheduledNotificationRequest
 public class DeleteScheduledNotificationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -208,11 +198,6 @@ public class DeleteScheduledNotificationRequest
 public class GetScheduledNotificationRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the account logged in
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -225,11 +210,6 @@ public class GetScheduledNotificationRequest
 }
 public class ScheduleNotificationListingsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -273,11 +253,6 @@ public class ScheduleNotificationListingsRequest
 }
 public class SearchScheduledNotificationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -381,11 +356,6 @@ public class SearchScheduledNotificationsRequest
 }
 public class UpdateScheduledNotificationRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of scheduled notification to update
     /// </summary>

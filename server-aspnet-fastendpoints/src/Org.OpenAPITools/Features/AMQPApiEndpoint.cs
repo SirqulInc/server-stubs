@@ -12,7 +12,7 @@ public class ConsumerCreateEndpoint : FastEndpoints.Endpoint<ConsumerCreateReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/queue/consumer/create");
+        Post("/api/3.18/queue/consumer/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class ConsumerCreateEndpoint : FastEndpoints.Endpoint<ConsumerCreateReque
 
         Summary(s => {
             s.Summary = "Create Consumer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.");
             s.RequestParam(r => r.Name, "The name of the queue to connect to");
             s.RequestParam(r => r.Hostname, "The hostname of the server the queue is hosted on");
@@ -62,7 +61,7 @@ public class ConsumerUpdateEndpoint : FastEndpoints.Endpoint<ConsumerUpdateReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/queue/consumer/update");
+        Post("/api/3.18/queue/consumer/update");
         
         
         AllowAnonymous();
@@ -74,7 +73,6 @@ public class ConsumerUpdateEndpoint : FastEndpoints.Endpoint<ConsumerUpdateReque
 
         Summary(s => {
             s.Summary = "Update Consumer";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.");
             s.RequestParam(r => r.QueueId, "The queue to update");
             s.RequestParam(r => r.DataMapping, "The data mapping information in the format of AMQPRequest");
@@ -104,7 +102,7 @@ public class QueueCreateEndpoint : FastEndpoints.Endpoint<QueueCreateRequest, Qu
 {
     public override void Configure()
     {
-        Post("/api/{version}/queue/create");
+        Post("/api/3.18/queue/create");
         
         
         AllowAnonymous();
@@ -116,7 +114,6 @@ public class QueueCreateEndpoint : FastEndpoints.Endpoint<QueueCreateRequest, Qu
 
         Summary(s => {
             s.Summary = "Create Queue";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AppKey, "The application key unique to each application.");
             s.RequestParam(r => r.Name, "The name of the queue to create");
             s.RequestParam(r => r.DeviceId, "The client deviceID");
@@ -152,7 +149,7 @@ public class QueueDeleteEndpoint : FastEndpoints.Endpoint<QueueDeleteRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/queue/delete");
+        Post("/api/3.18/queue/delete");
         
         
         AllowAnonymous();
@@ -164,7 +161,6 @@ public class QueueDeleteEndpoint : FastEndpoints.Endpoint<QueueDeleteRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Queue";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.QueueId, "The id of the queue to find");
             s.RequestParam(r => r.DeviceId, "The client device ID");
             s.RequestParam(r => r.AccountId, "The logged in user ID");
@@ -191,7 +187,7 @@ public class QueueGetEndpoint : FastEndpoints.Endpoint<QueueGetRequest, QueueRes
 {
     public override void Configure()
     {
-        Get("/api/{version}/queue/get");
+        Get("/api/3.18/queue/get");
         
         
         AllowAnonymous();
@@ -203,7 +199,6 @@ public class QueueGetEndpoint : FastEndpoints.Endpoint<QueueGetRequest, QueueRes
 
         Summary(s => {
             s.Summary = "Get Queue";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.DeviceId, "The client device ID");
             s.RequestParam(r => r.AccountId, "The logged in user ID");
             s.RequestParam(r => r.QueueId, "The id of the queue to find");
@@ -234,7 +229,7 @@ public class QueuePublishEndpoint : FastEndpoints.Endpoint<QueuePublishRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/queue/publish");
+        Post("/api/3.18/queue/publish");
         
         
         AllowAnonymous();
@@ -246,7 +241,6 @@ public class QueuePublishEndpoint : FastEndpoints.Endpoint<QueuePublishRequest, 
 
         Summary(s => {
             s.Summary = "Publish Queue";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Message, "The payload to send to the queue");
             s.RequestParam(r => r.QueueId, "The id of the queue to publish to");
             s.RequestParam(r => r.AppKey, "The application key the queue was assigned to");
@@ -276,7 +270,7 @@ public class QueueSearchEndpoint : FastEndpoints.Endpoint<QueueSearchRequest, Qu
 {
     public override void Configure()
     {
-        Get("/api/{version}/queue/search");
+        Get("/api/3.18/queue/search");
         
         
         AllowAnonymous();
@@ -288,7 +282,6 @@ public class QueueSearchEndpoint : FastEndpoints.Endpoint<QueueSearchRequest, Qu
 
         Summary(s => {
             s.Summary = "Search Queue";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.QueueId, "The id of the queue to find");
             s.RequestParam(r => r.DeviceId, "The client device ID");
             s.RequestParam(r => r.AccountId, "The logged in user ID");
@@ -318,7 +311,7 @@ public class QueueUpdateEndpoint : FastEndpoints.Endpoint<QueueUpdateRequest, Qu
 {
     public override void Configure()
     {
-        Post("/api/{version}/queue/update");
+        Post("/api/3.18/queue/update");
         
         
         AllowAnonymous();
@@ -330,7 +323,6 @@ public class QueueUpdateEndpoint : FastEndpoints.Endpoint<QueueUpdateRequest, Qu
 
         Summary(s => {
             s.Summary = "Update Queue";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.QueueId, "The id of the queue to update");
             s.RequestParam(r => r.DeviceId, "The client deviceID");
             s.RequestParam(r => r.AccountId, "The logged in user ID");

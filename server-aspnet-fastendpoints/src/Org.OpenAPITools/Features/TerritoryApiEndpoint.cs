@@ -12,7 +12,7 @@ public class CreateTerritoryEndpoint : FastEndpoints.Endpoint<CreateTerritoryReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/territory/create");
+        Post("/api/3.18/territory/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateTerritoryEndpoint : FastEndpoints.Endpoint<CreateTerritoryReq
 
         Summary(s => {
             s.Summary = "Create Territory";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the territory");
             s.RequestParam(r => r.Active, "If true set the game level as active. Default is true.");
@@ -51,7 +50,7 @@ public class DeleteTerritoryEndpoint : FastEndpoints.Endpoint<DeleteTerritoryReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/territory/delete");
+        Post("/api/3.18/territory/delete");
         
         
         AllowAnonymous();
@@ -63,7 +62,6 @@ public class DeleteTerritoryEndpoint : FastEndpoints.Endpoint<DeleteTerritoryReq
 
         Summary(s => {
             s.Summary = "Delete Territory";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.TerritoryId, "the id of the territory to delete");
             s.Responses[200] = "successful operation";
@@ -89,7 +87,7 @@ public class GetTerritoryEndpoint : FastEndpoints.Endpoint<GetTerritoryRequest, 
 {
     public override void Configure()
     {
-        Get("/api/{version}/territory/get");
+        Get("/api/3.18/territory/get");
         
         
         AllowAnonymous();
@@ -101,7 +99,6 @@ public class GetTerritoryEndpoint : FastEndpoints.Endpoint<GetTerritoryRequest, 
 
         Summary(s => {
             s.Summary = "Get Territory";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.TerritoryId, "the id of the territory to get");
             s.Responses[200] = "successful operation";
         });
@@ -126,7 +123,7 @@ public class SearchTerritoriesEndpoint : FastEndpoints.Endpoint<SearchTerritorie
 {
     public override void Configure()
     {
-        Get("/api/{version}/territory/search");
+        Get("/api/3.18/territory/search");
         
         
         AllowAnonymous();
@@ -138,7 +135,6 @@ public class SearchTerritoriesEndpoint : FastEndpoints.Endpoint<SearchTerritorie
 
         Summary(s => {
             s.Summary = "Search Territories";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.SortField, "the field to sort by. Supported values include: ID, CREATED, UPDATED, NAME");
             s.RequestParam(r => r.Descending, "determines whether the sorted list is in descending or ascending order");
             s.RequestParam(r => r.Keyword, "Return results that match this keyword.");
@@ -167,7 +163,7 @@ public class UpdateTerritoryEndpoint : FastEndpoints.Endpoint<UpdateTerritoryReq
 {
     public override void Configure()
     {
-        Post("/api/{version}/territory/update");
+        Post("/api/3.18/territory/update");
         
         
         AllowAnonymous();
@@ -179,7 +175,6 @@ public class UpdateTerritoryEndpoint : FastEndpoints.Endpoint<UpdateTerritoryReq
 
         Summary(s => {
             s.Summary = "Update Territory";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.TerritoryId, "the id of the territory to update");
             s.RequestParam(r => r.Name, "The name of the territory");

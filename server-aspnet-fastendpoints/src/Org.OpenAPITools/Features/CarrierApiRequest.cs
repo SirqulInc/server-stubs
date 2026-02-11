@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class SearchCarriersRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The keyword to search on
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("keyword")]

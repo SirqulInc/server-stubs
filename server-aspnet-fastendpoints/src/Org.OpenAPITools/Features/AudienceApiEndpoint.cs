@@ -12,7 +12,7 @@ public class CreateAudienceEndpoint : FastEndpoints.Endpoint<CreateAudienceReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/audience/create");
+        Post("/api/3.18/audience/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateAudienceEndpoint : FastEndpoints.Endpoint<CreateAudienceReque
 
         Summary(s => {
             s.Summary = "Create Audience";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.Name, "The name of the audience");
             s.RequestParam(r => r.Description, "The description of the audience");
@@ -77,7 +76,7 @@ public class DeleteAudienceEndpoint : FastEndpoints.Endpoint<DeleteAudienceReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/audience/delete");
+        Post("/api/3.18/audience/delete");
         
         
         AllowAnonymous();
@@ -89,7 +88,6 @@ public class DeleteAudienceEndpoint : FastEndpoints.Endpoint<DeleteAudienceReque
 
         Summary(s => {
             s.Summary = "Delete Audience";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AudienceId, "The id of the audience to delete.");
             s.Responses[200] = "successful operation";
@@ -111,11 +109,11 @@ public class DeleteAudienceEndpoint : FastEndpoints.Endpoint<DeleteAudienceReque
 /// Get Age Groups
 /// </summary>
 
-public class GetAgeGroupsEndpoint : FastEndpoints.Endpoint<GetAgeGroupsRequest, List<AgeGroupResponse>>
+public class GetAgeGroupsEndpoint : FastEndpoints.EndpointWithoutRequest<List<AgeGroupResponse>>
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/ageGroups");
+        Get("/api/3.18/audience/ageGroups");
         
         
         AllowAnonymous();
@@ -127,12 +125,11 @@ public class GetAgeGroupsEndpoint : FastEndpoints.Endpoint<GetAgeGroupsRequest, 
 
         Summary(s => {
             s.Summary = "Get Age Groups";
-            s.RequestParam(r => r.Version, "");
             s.Responses[200] = "successful operation";
         });
     }
 
-    public override async Task HandleAsync(GetAgeGroupsRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         //Response = new()
         //{
@@ -151,7 +148,7 @@ public class GetAudienceEndpoint : FastEndpoints.Endpoint<GetAudienceRequest, Au
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/get");
+        Get("/api/3.18/audience/get");
         
         
         AllowAnonymous();
@@ -163,7 +160,6 @@ public class GetAudienceEndpoint : FastEndpoints.Endpoint<GetAudienceRequest, Au
 
         Summary(s => {
             s.Summary = "Get Audience";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AudienceId, "The id of the audience to return.");
             s.RequestParam(r => r.AppKey, "The application key (optional). If provided, results may be scoped to this application.");
@@ -193,7 +189,7 @@ public class GetAudienceListEndpoint : FastEndpoints.Endpoint<GetAudienceListReq
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/search");
+        Get("/api/3.18/audience/search");
         
         
         AllowAnonymous();
@@ -205,7 +201,6 @@ public class GetAudienceListEndpoint : FastEndpoints.Endpoint<GetAudienceListReq
 
         Summary(s => {
             s.Summary = "Search Audiences";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AlbumIds, "Comma separated list of album IDs to filter results with");
             s.RequestParam(r => r.Keyword, "The keyword used to search");
@@ -248,7 +243,7 @@ public class GetDevicesEndpoint : FastEndpoints.Endpoint<GetDevicesRequest, List
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/devices");
+        Get("/api/3.18/audience/devices");
         
         
         AllowAnonymous();
@@ -260,7 +255,6 @@ public class GetDevicesEndpoint : FastEndpoints.Endpoint<GetDevicesRequest, List
 
         Summary(s => {
             s.Summary = "Get Devices";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.IncludeInactive, "If true return inactive record as well. default is false.");
             s.Responses[200] = "successful operation";
         });
@@ -281,11 +275,11 @@ public class GetDevicesEndpoint : FastEndpoints.Endpoint<GetDevicesRequest, List
 /// Get Experiences
 /// </summary>
 
-public class GetExperiencesEndpoint : FastEndpoints.Endpoint<GetExperiencesRequest, SirqulResponse>
+public class GetExperiencesEndpoint : FastEndpoints.EndpointWithoutRequest<SirqulResponse>
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/experiences");
+        Get("/api/3.18/audience/experiences");
         
         
         AllowAnonymous();
@@ -297,12 +291,11 @@ public class GetExperiencesEndpoint : FastEndpoints.Endpoint<GetExperiencesReque
 
         Summary(s => {
             s.Summary = "Get Experiences";
-            s.RequestParam(r => r.Version, "");
             s.Responses[200] = "successful operation";
         });
     }
 
-    public override async Task HandleAsync(GetExperiencesRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         //Response = new()
         //{
@@ -321,7 +314,7 @@ public class GetGroupedAudiencesEndpoint : FastEndpoints.Endpoint<GetGroupedAudi
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/grouped/get");
+        Get("/api/3.18/audience/grouped/get");
         
         
         AllowAnonymous();
@@ -333,7 +326,6 @@ public class GetGroupedAudiencesEndpoint : FastEndpoints.Endpoint<GetGroupedAudi
 
         Summary(s => {
             s.Summary = "Get GroupedAudiences";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AudienceGroupingId, "The audience grouping id to return.");
             s.Responses[200] = "successful operation";
@@ -359,7 +351,7 @@ public class ListByAccountEndpoint : FastEndpoints.Endpoint<ListByAccountRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/audience/suggestion/list");
+        Post("/api/3.18/audience/suggestion/list");
         
         
         AllowAnonymous();
@@ -371,7 +363,6 @@ public class ListByAccountEndpoint : FastEndpoints.Endpoint<ListByAccountRequest
 
         Summary(s => {
             s.Summary = "List Suggestions by Audience";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account to match offers for.");
             s.RequestParam(r => r.Limit, "the limit of the index");
             s.RequestParam(r => r.SuggestionType, "the type of suggestion");
@@ -398,7 +389,7 @@ public class ListByAudienceEndpoint : FastEndpoints.Endpoint<ListByAudienceReque
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/suggestion/offersByAudience");
+        Get("/api/3.18/audience/suggestion/offersByAudience");
         
         
         AllowAnonymous();
@@ -410,7 +401,6 @@ public class ListByAudienceEndpoint : FastEndpoints.Endpoint<ListByAudienceReque
 
         Summary(s => {
             s.Summary = "List Offers by Audience";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.Limit, "this is the limit of the index");
             s.RequestParam(r => r.Gender, "this is the gender to list offers by");
             s.RequestParam(r => r.Age, "this is the age to list offers by");
@@ -440,7 +430,7 @@ public class ListLastestByAccountEndpoint : FastEndpoints.Endpoint<ListLastestBy
 {
     public override void Configure()
     {
-        Get("/api/{version}/audience/suggestion/latest");
+        Get("/api/3.18/audience/suggestion/latest");
         
         
         AllowAnonymous();
@@ -452,7 +442,6 @@ public class ListLastestByAccountEndpoint : FastEndpoints.Endpoint<ListLastestBy
 
         Summary(s => {
             s.Summary = "List Sent Suggestions ";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account to match offers for.");
             s.RequestParam(r => r.Timeframe, "The timeframe in seconds of the latest suggestions");
             s.RequestParam(r => r.SuggestionType, "The type of trigger suggestions to return");
@@ -479,7 +468,7 @@ public class SendByAccountEndpoint : FastEndpoints.Endpoint<SendByAccountRequest
 {
     public override void Configure()
     {
-        Post("/api/{version}/audience/suggestion/send");
+        Post("/api/3.18/audience/suggestion/send");
         
         
         AllowAnonymous();
@@ -491,7 +480,6 @@ public class SendByAccountEndpoint : FastEndpoints.Endpoint<SendByAccountRequest
 
         Summary(s => {
             s.Summary = "Send Suggestions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account to match offers for.");
             s.RequestParam(r => r.Latitude, "the latitude");
             s.RequestParam(r => r.Longitude, "the longitude");
@@ -518,7 +506,7 @@ public class UpdateAudienceEndpoint : FastEndpoints.Endpoint<UpdateAudienceReque
 {
     public override void Configure()
     {
-        Post("/api/{version}/audience/update");
+        Post("/api/3.18/audience/update");
         
         
         AllowAnonymous();
@@ -530,7 +518,6 @@ public class UpdateAudienceEndpoint : FastEndpoints.Endpoint<UpdateAudienceReque
 
         Summary(s => {
             s.Summary = "Update Audience";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.AudienceId, "The id of the audience to update.");
             s.RequestParam(r => r.Name, "The name of the audience");

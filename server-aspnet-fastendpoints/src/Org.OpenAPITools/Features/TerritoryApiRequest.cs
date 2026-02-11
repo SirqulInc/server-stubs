@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateTerritoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The logged in user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -30,11 +25,6 @@ public class CreateTerritoryRequest
 public class DeleteTerritoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -48,11 +38,6 @@ public class DeleteTerritoryRequest
 public class GetTerritoryRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the territory to get
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("territoryId")]
@@ -60,11 +45,6 @@ public class GetTerritoryRequest
 }
 public class SearchTerritoriesRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// Return results that match this keyword.
     /// </summary>
@@ -93,11 +73,6 @@ public class SearchTerritoriesRequest
 }
 public class UpdateTerritoryRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>

@@ -12,7 +12,7 @@ public class CreateMediaEndpoint : FastEndpoints.Endpoint<CreateMediaRequest, Me
 {
     public override void Configure()
     {
-        Post("/api/{version}/media/create");
+        Post("/api/3.18/media/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateMediaEndpoint : FastEndpoints.Endpoint<CreateMediaRequest, Me
 
         Summary(s => {
             s.Summary = "Create Media";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account id of the logged in user");
             s.RequestParam(r => r.Title, "The title (255 char limit)");
             s.RequestParam(r => r.BarcodeType, "The bar code type {NONE, UPC, CODE_128, QR, CUSTOM_MEDIA}");
@@ -105,7 +104,7 @@ public class DeleteMediaEndpoint : FastEndpoints.Endpoint<DeleteMediaRequest, Si
 {
     public override void Configure()
     {
-        Post("/api/{version}/media/delete");
+        Post("/api/3.18/media/delete");
         
         
         AllowAnonymous();
@@ -117,7 +116,6 @@ public class DeleteMediaEndpoint : FastEndpoints.Endpoint<DeleteMediaRequest, Si
 
         Summary(s => {
             s.Summary = "Delete Media";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.MediaId, "the ID of the media to delete");
             s.Responses[200] = "successful operation";
@@ -143,7 +141,7 @@ public class GetMediaEndpoint : FastEndpoints.Endpoint<GetMediaRequest, MediaOff
 {
     public override void Configure()
     {
-        Get("/api/{version}/media/get");
+        Get("/api/3.18/media/get");
         
         
         AllowAnonymous();
@@ -155,7 +153,6 @@ public class GetMediaEndpoint : FastEndpoints.Endpoint<GetMediaRequest, MediaOff
 
         Summary(s => {
             s.Summary = "Media Get";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.RequestParam(r => r.MediaId, "the id of the media to get");
             s.Responses[200] = "successful operation";
@@ -181,7 +178,7 @@ public class SearchMediaEndpoint : FastEndpoints.Endpoint<SearchMediaRequest, Li
 {
     public override void Configure()
     {
-        Get("/api/{version}/media/search");
+        Get("/api/3.18/media/search");
         
         
         AllowAnonymous();
@@ -193,7 +190,6 @@ public class SearchMediaEndpoint : FastEndpoints.Endpoint<SearchMediaRequest, Li
 
         Summary(s => {
             s.Summary = "Search Media";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The logged in user.");
             s.RequestParam(r => r.ActiveOnly, "Return only active results");
             s.RequestParam(r => r.SortField, "The column to sort the search on. Possible values include: ID, CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, ESTIMATED_VALUE, VOUCHER_PRICE, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY, AVAILABILITY_DATE, RELEASE_DATE");
@@ -226,7 +222,7 @@ public class UpdateMediaEndpoint : FastEndpoints.Endpoint<UpdateMediaRequest, Me
 {
     public override void Configure()
     {
-        Post("/api/{version}/media/update");
+        Post("/api/3.18/media/update");
         
         
         AllowAnonymous();
@@ -238,7 +234,6 @@ public class UpdateMediaEndpoint : FastEndpoints.Endpoint<UpdateMediaRequest, Me
 
         Summary(s => {
             s.Summary = "Update Media";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the update, must have rights to edit the offer (deviceId or accountId required)");
             s.RequestParam(r => r.MediaId, "");
             s.RequestParam(r => r.RetailerLocationIds, "Comma separated list of retailer location ids. This will assign the offer to these retailer locations.");

@@ -12,7 +12,7 @@ public class AddPaymentMethodEndpoint : FastEndpoints.Endpoint<AddPaymentMethodR
 {
     public override void Configure()
     {
-        Post("/api/{version}/billing/update");
+        Post("/api/3.18/billing/update");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class AddPaymentMethodEndpoint : FastEndpoints.Endpoint<AddPaymentMethodR
 
         Summary(s => {
             s.Summary = "Update Payment Method";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the the request");
             s.RequestParam(r => r.PaymentMethodId, "Payment Method Id");
             s.RequestParam(r => r.AccountName, "the name of the account");
@@ -71,7 +70,7 @@ public class CreatePaymentMethodEndpoint : FastEndpoints.Endpoint<CreatePaymentM
 {
     public override void Configure()
     {
-        Post("/api/{version}/billing/create");
+        Post("/api/3.18/billing/create");
         
         
         AllowAnonymous();
@@ -83,7 +82,6 @@ public class CreatePaymentMethodEndpoint : FastEndpoints.Endpoint<CreatePaymentM
 
         Summary(s => {
             s.Summary = "Create Payment Method";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the the request");
             s.RequestParam(r => r.AccountName, "Account Name of the credit card user");
             s.RequestParam(r => r.FirstName, "The first name on the credit card");
@@ -132,7 +130,7 @@ public class CreateSmartContractEndpoint : FastEndpoints.Endpoint<CreateSmartCon
 {
     public override void Configure()
     {
-        Post("/api/{version}/billing/crypto/transfer");
+        Post("/api/3.18/billing/crypto/transfer");
         
         
         AllowAnonymous();
@@ -144,7 +142,6 @@ public class CreateSmartContractEndpoint : FastEndpoints.Endpoint<CreateSmartCon
 
         Summary(s => {
             s.Summary = "Create Smart Contract";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the the request");
             s.RequestParam(r => r.TokenName, "The token name");
             s.RequestParam(r => r.TokenSymbol, "The token symbol");
@@ -172,7 +169,7 @@ public class GetCryptoBalanceEndpoint : FastEndpoints.Endpoint<GetCryptoBalanceR
 {
     public override void Configure()
     {
-        Get("/api/{version}/billing/crypto/get");
+        Get("/api/3.18/billing/crypto/get");
         
         
         AllowAnonymous();
@@ -184,7 +181,6 @@ public class GetCryptoBalanceEndpoint : FastEndpoints.Endpoint<GetCryptoBalanceR
 
         Summary(s => {
             s.Summary = "Get Crypto Balances";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the the request");
             s.RequestParam(r => r.OwnerAccountId, "The account to retreive balances for");
             s.RequestParam(r => r.PaymentMethodId, "The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.");
@@ -211,7 +207,7 @@ public class GetPaymentMethodEndpoint : FastEndpoints.Endpoint<GetPaymentMethodR
 {
     public override void Configure()
     {
-        Get("/api/{version}/billing/get");
+        Get("/api/3.18/billing/get");
         
         
         AllowAnonymous();
@@ -223,7 +219,6 @@ public class GetPaymentMethodEndpoint : FastEndpoints.Endpoint<GetPaymentMethodR
 
         Summary(s => {
             s.Summary = "Get Payment Method";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The account used to perform the the request");
             s.RequestParam(r => r.PaymentMethodId, "The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.");
             s.RequestParam(r => r.GetCurrentBalance, "Determines whether to get the user&#39;s current balance for the requested payment method option (not all payment method options support this)");
@@ -250,7 +245,7 @@ public class SearchPaymentMethodEndpoint : FastEndpoints.Endpoint<SearchPaymentM
 {
     public override void Configure()
     {
-        Get("/api/{version}/billing/search");
+        Get("/api/3.18/billing/search");
         
         
         AllowAnonymous();
@@ -262,7 +257,6 @@ public class SearchPaymentMethodEndpoint : FastEndpoints.Endpoint<SearchPaymentM
 
         Summary(s => {
             s.Summary = "Search Payment Methods";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "Account Id to search on");
             s.RequestParam(r => r.Provider, "Provider to search on");
             s.RequestParam(r => r.Type, "the type to search on");

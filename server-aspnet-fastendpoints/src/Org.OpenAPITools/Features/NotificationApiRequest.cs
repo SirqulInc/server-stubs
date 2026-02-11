@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateNotificationTemplateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account ID of the user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -50,11 +45,6 @@ public class CreateNotificationTemplateRequest
 public class CreateOrUpdateBlockedNotificationsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -73,11 +63,6 @@ public class CreateOrUpdateBlockedNotificationsRequest
 public class DeleteNotificationTemplateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the account id of the user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -91,11 +76,6 @@ public class DeleteNotificationTemplateRequest
 public class GetNotificationTemplateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the account
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -108,11 +88,6 @@ public class GetNotificationTemplateRequest
 }
 public class GetNotificationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -222,11 +197,6 @@ public class GetNotificationsRequest
 public class RegisterNotificationTokenRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The unique id of the device making the request (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -279,11 +249,6 @@ public class RegisterNotificationTokenRequest
 }
 public class SearchBlockedNotificationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the account id of the user
     /// </summary>
@@ -348,11 +313,6 @@ public class SearchBlockedNotificationsRequest
 public class SearchNotificationTemplateRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account ID of the user.
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -410,11 +370,6 @@ public class SearchNotificationTemplateRequest
 }
 public class SearchRecipientsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -484,11 +439,6 @@ public class SearchRecipientsRequest
 public class SearchRecipientsCountRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the unique id of the device making the request (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -552,11 +502,6 @@ public class SearchRecipientsCountRequest
 public class SendBatchNotificationsRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// The account id of the application owner/manager
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -604,11 +549,6 @@ public class SendBatchNotificationsRequest
 }
 public class SendCustomNotificationsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// the unique id of the device making the request (deviceId or accountId required)
     /// </summary>
@@ -702,11 +642,6 @@ public class SendCustomNotificationsRequest
 }
 public class UpdateNotificationTemplateRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The account ID of the user.
     /// </summary>

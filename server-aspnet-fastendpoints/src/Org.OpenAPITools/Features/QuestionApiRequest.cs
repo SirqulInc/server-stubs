@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class CreateQuestionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the logged in user
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("accountId")]
@@ -70,11 +65,6 @@ public class CreateQuestionRequest
 public class DeleteQuestionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the question to delete
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("questionId")]
@@ -88,11 +78,6 @@ public class DeleteQuestionRequest
 public class GetQuestionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// the id of the question to get
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("questionId")]
@@ -105,11 +90,6 @@ public class GetQuestionRequest
 }
 public class SearchQuestionsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The logged in user.
     /// </summary>
@@ -148,11 +128,6 @@ public class SearchQuestionsRequest
 }
 public class UpdateQuestionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// The id of the question to update.
     /// </summary>

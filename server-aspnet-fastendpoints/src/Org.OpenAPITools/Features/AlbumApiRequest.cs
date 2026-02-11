@@ -7,11 +7,6 @@ namespace Org.OpenAPITools.Features;
 public class AddAlbumCollectionRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -245,11 +240,6 @@ public class AddAlbumCollectionRequest
 public class AddAlbumUsersRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -303,11 +293,6 @@ public class AddAlbumUsersRequest
 public class ApproveAlbumRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// A unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -335,11 +320,6 @@ public class ApproveAlbumRequest
 }
 public class GetAlbumCollectionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// This parameter is deprecated.
     /// </summary>
@@ -389,11 +369,6 @@ public class GetAlbumCollectionRequest
 public class LeaveAlbumRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -412,11 +387,6 @@ public class LeaveAlbumRequest
 public class RemoveAlbumRequest
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
-    /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
     [FastEndpoints.QueryParam, FastEndpoints.BindFrom("deviceId")]
@@ -434,11 +404,6 @@ public class RemoveAlbumRequest
 }
 public class RemoveAlbumUsersRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -472,11 +437,6 @@ public class RemoveAlbumUsersRequest
 }
 public class SearchAlbumsRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>
@@ -780,11 +740,6 @@ public class SearchAlbumsRequest
 }
 public class UpdateAlbumCollectionRequest
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    [FastEndpoints.BindFrom("version")]
-    public decimal Version { get; set; }
     /// <summary>
     /// a unique ID given by the device (deviceId or accountId required)
     /// </summary>

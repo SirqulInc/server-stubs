@@ -12,7 +12,7 @@ public class CreateRegionEndpoint : FastEndpoints.Endpoint<CreateRegionRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/region/create");
+        Post("/api/3.18/region/create");
         
         
         AllowAnonymous();
@@ -24,7 +24,6 @@ public class CreateRegionEndpoint : FastEndpoints.Endpoint<CreateRegionRequest, 
 
         Summary(s => {
             s.Summary = "Create Region";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The id of the account sending the request");
             s.RequestParam(r => r.RegionClass, "RegionClass of this region");
             s.RequestParam(r => r.ShortName, "Short name of the region. This is optimized for search");
@@ -69,7 +68,7 @@ public class DeleteRegionEndpoint : FastEndpoints.Endpoint<DeleteRegionRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/region/delete");
+        Post("/api/3.18/region/delete");
         
         
         AllowAnonymous();
@@ -81,7 +80,6 @@ public class DeleteRegionEndpoint : FastEndpoints.Endpoint<DeleteRegionRequest, 
 
         Summary(s => {
             s.Summary = "Delete Region";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the id of the account logged in");
             s.RequestParam(r => r.RegionId, "the id of the region");
             s.Responses[200] = "successful operation";
@@ -107,7 +105,7 @@ public class GetRegionEndpoint : FastEndpoints.Endpoint<GetRegionRequest, Region
 {
     public override void Configure()
     {
-        Get("/api/{version}/region/get");
+        Get("/api/3.18/region/get");
         
         
         AllowAnonymous();
@@ -119,7 +117,6 @@ public class GetRegionEndpoint : FastEndpoints.Endpoint<GetRegionRequest, Region
 
         Summary(s => {
             s.Summary = "Get Region";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.RegionId, "the id of the region to get");
             s.RequestParam(r => r.AccountId, "the id of the logged in user");
             s.Responses[200] = "successful operation";
@@ -145,7 +142,7 @@ public class SearchRegionsEndpoint : FastEndpoints.Endpoint<SearchRegionsRequest
 {
     public override void Configure()
     {
-        Get("/api/{version}/region/search");
+        Get("/api/3.18/region/search");
         
         
         AllowAnonymous();
@@ -157,7 +154,6 @@ public class SearchRegionsEndpoint : FastEndpoints.Endpoint<SearchRegionsRequest
 
         Summary(s => {
             s.Summary = "Search Regions";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "the owner account id of the region to be created");
             s.RequestParam(r => r.Query, "This parameter is deprecated. deprecated - use \&quot;keyword\&quot;");
             s.RequestParam(r => r.Keyword, "the keyword to filter results on");
@@ -203,7 +199,7 @@ public class UpdateRegionEndpoint : FastEndpoints.Endpoint<UpdateRegionRequest, 
 {
     public override void Configure()
     {
-        Post("/api/{version}/region/update");
+        Post("/api/3.18/region/update");
         
         
         AllowAnonymous();
@@ -215,7 +211,6 @@ public class UpdateRegionEndpoint : FastEndpoints.Endpoint<UpdateRegionRequest, 
 
         Summary(s => {
             s.Summary = "Update Region";
-            s.RequestParam(r => r.Version, "");
             s.RequestParam(r => r.AccountId, "The id of the account sending the request");
             s.RequestParam(r => r.RegionId, "The id of the region to be updated");
             s.RequestParam(r => r.RegionClass, "RegionClass of this region");
