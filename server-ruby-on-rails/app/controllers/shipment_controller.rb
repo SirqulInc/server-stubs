@@ -16,31 +16,31 @@ class ShipmentController < ApplicationController
     render json: {"message" => "yes, it worked"}
   end
 
-  def create_shipment
+  def create
     # Your code here
 
     render json: {"message" => "yes, it worked"}
   end
 
-  def delete_shipment
+  def destroy
     # Your code here
 
     render json: {"message" => "yes, it worked"}
   end
 
-  def get_shipment
+  def show
     # Your code here
 
     render json: {"message" => "yes, it worked"}
   end
 
-  def search_shipments
+  def index
     # Your code here
 
     render json: {"message" => "yes, it worked"}
   end
 
-  def update_shipment
+  def update
     # Your code here
 
     render json: {"message" => "yes, it worked"}

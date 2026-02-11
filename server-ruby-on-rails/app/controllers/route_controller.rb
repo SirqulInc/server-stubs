@@ -22,7 +22,7 @@ class RouteController < ApplicationController
     render json: {"message" => "yes, it worked"}
   end
 
-  def create_route
+  def create
     # Your code here
 
     render json: {"message" => "yes, it worked"}
@@ -40,7 +40,7 @@ class RouteController < ApplicationController
     render json: {"message" => "yes, it worked"}
   end
 
-  def delete_route
+  def destroy
     # Your code here
 
     render json: {"message" => "yes, it worked"}
@@ -52,7 +52,7 @@ class RouteController < ApplicationController
     render json: {"message" => "yes, it worked"}
   end
 
-  def get_route
+  def show
     # Your code here
 
     render json: {"message" => "yes, it worked"}
@@ -112,7 +112,7 @@ class RouteController < ApplicationController
     render json: {"message" => "yes, it worked"}
   end
 
-  def search_routes
+  def index
     # Your code here
 
     render json: {"message" => "yes, it worked"}
@@ -124,7 +124,7 @@ class RouteController < ApplicationController
     render json: {"message" => "yes, it worked"}
   end
 
-  def update_route
+  def update
     # Your code here
 
     render json: {"message" => "yes, it worked"}
