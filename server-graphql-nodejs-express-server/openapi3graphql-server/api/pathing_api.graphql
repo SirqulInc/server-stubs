@@ -20,12 +20,11 @@ type Mutation {
 type Query {
   # Calculate Path
   # Calculates the shortest path from point to point on a grid
-  # @param Float! version 
   # @param String! data the data to with start, end point and exclusion points
   # @param String! units the system of measurement for directions: {METRIC, IMPERIAL}
   # @param Boolean! reducePath determines whether to reduce the path to go in diagonal lines
   # @param Boolean! directions determines whether to return text directions
   # @return [PathingResponse]
-  ComputePath(version: Float!, data: String!, units: String!, reducePath: Boolean!, directions: Boolean!): PathingResponse
+  ComputePath(data: String!, units: String!, reducePath: Boolean!, directions: Boolean!): PathingResponse
 }
 

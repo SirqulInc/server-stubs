@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return PaymentTypesResponse
-        GetCryptoBalance: ($version, $accountId, $ownerAccountId, $paymentMethodId) => {
+        GetCryptoBalance: ($accountId, $ownerAccountId, $paymentMethodId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "ownerAccountId": "789",
                 "paymentMethodId": "789"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return PaymentTypesResponse
-        GetPaymentMethod: ($version, $accountId, $paymentMethodId, $getCurrentBalance) => {
+        GetPaymentMethod: ($accountId, $paymentMethodId, $getCurrentBalance) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "paymentMethodId": "789",
                 "getCurrentBalance": "true"
@@ -38,9 +36,8 @@ export default {
         },
 
         // @return PaymentTypesResponse
-        SearchPaymentMethod: ($version, $accountId, $provider, $Type_, $keyword, $sortField, $descending, $start, $limit) => {
+        SearchPaymentMethod: ($accountId, $provider, $Type_, $keyword, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "provider": "provider_example",
                 "Type_": "Type__example",
@@ -57,9 +54,8 @@ export default {
     Mutation: {
 
         // @return PaymentTypesResponse
-        AddPaymentMethod: ($version, $accountId, $paymentMethodId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $defaultPaymentMethod, $paymentMethodNickname, $taxId, $providerCustomerProfileId, $providerPaymentProfileId, $metaData) => {
+        AddPaymentMethod: ($accountId, $paymentMethodId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $defaultPaymentMethod, $paymentMethodNickname, $taxId, $providerCustomerProfileId, $providerPaymentProfileId, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "paymentMethodId": "789",
                 "accountName": "accountName_example",
@@ -87,9 +83,8 @@ export default {
         },
 
         // @return PaymentTypesResponse
-        CreatePaymentMethod: ($version, $accountId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $paymentMethodNickname, $taxId, $defaultPaymentMethod, $authToken, $provider, $providerCustomerProfileId, $providerPaymentProfileId, $metaData, $appKey) => {
+        CreatePaymentMethod: ($accountId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $paymentMethodNickname, $taxId, $defaultPaymentMethod, $authToken, $provider, $providerCustomerProfileId, $providerPaymentProfileId, $metaData, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "accountName": "accountName_example",
                 "firstName": "firstName_example",
@@ -119,9 +114,8 @@ export default {
         },
 
         // @return PaymentTypesResponse
-        CreateSmartContract: ($version, $accountId, $tokenName, $tokenSymbol, $paymentMethodId) => {
+        CreateSmartContract: ($accountId, $tokenName, $tokenSymbol, $paymentMethodId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "tokenName": "tokenName_example",
                 "tokenSymbol": "tokenSymbol_example",

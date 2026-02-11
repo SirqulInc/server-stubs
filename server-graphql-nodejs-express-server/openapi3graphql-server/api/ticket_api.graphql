@@ -15,8 +15,6 @@
 
 
 input GiftPurchaseInput {
-    
-    version: Float!, 
     # the id of the account receiving the tickets
     receiverAccountId: Int!, 
     # the id of the tickets
@@ -36,8 +34,6 @@ input GiftPurchaseInput {
 }
 
 input SaveTicketInput {
-    
-    version: Float!, 
     # the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER
     actionType: String!, 
     # the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM
@@ -77,8 +73,6 @@ input SaveTicketInput {
 }
 
 input SaveTicketViaFileUploadInput {
-    
-    version: Float!, 
     # the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER }
     actionType: String!, 
     # the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM}
@@ -120,7 +114,6 @@ input SaveTicketViaFileUploadInput {
 type Mutation {
   # Gift Tickets
   # Gift tickets to another user.
-  # @param Float! version 
   # @param Int! receiverAccountId the id of the account receiving the tickets
   # @param Int! ticketId the id of the tickets
   # @param String! deviceId the id of the device
@@ -133,7 +126,6 @@ type Mutation {
   GiftPurchase(input: GiftPurchaseInput!): SirqulResponse
   # Save Ticket
   # Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system.
-  # @param Float! version 
   # @param String! actionType the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER
   # @param String! ticketObjectType the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM
   # @param Boolean! returnNulls whether to return nulls or not
@@ -156,7 +148,6 @@ type Mutation {
   SaveTicket(input: SaveTicketInput!): ProfileResponse
   # Save Ticket with Reciept
   # Similar to the Save Ticket endpoint but allows the receiptData to be in binary format. This must be a multi-part post
-  # @param Float! version 
   # @param String! actionType the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER }
   # @param String! ticketObjectType the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM}
   # @param String! receiptData the receipt/transaction data for validating a purchase via iTunes/Gooogle/etc. This should be in binary format.
@@ -182,17 +173,15 @@ type Mutation {
 type Query {
   # Get Ticket Count
   # Gets the ticket count.
-  # @param Float! version 
   # @param String! deviceId the id of the device that owns the tickets
   # @param Int! accountId the id of the account that owns the tickets
   # @param String! gameType this is deprecated.
   # @param String! appKey the applicationkey
   # @param String! ticketType the type of ticket
   # @return [CountResponse]
-  GetTicketCount(version: Float!, deviceId: String!, accountId: Int!, gameType: String!, appKey: String!, ticketType: String!): CountResponse
+  GetTicketCount(deviceId: String!, accountId: Int!, gameType: String!, appKey: String!, ticketType: String!): CountResponse
   # Get Ticket List
   # Gets the list of tickets.
-  # @param Float! version 
   # @param String! deviceId the id of the device that owns the tickets
   # @param Int! accountId the id of the account that owns the tickets
   # @param String! ticketObjectType comma separated list of TicketObjectType
@@ -203,11 +192,10 @@ type Query {
   # @param String! gameType 
   # @param String! appKey the application key
   # @return [TicketListResponse]
-  GetTicketList(version: Float!, deviceId: String!, accountId: Int!, ticketObjectType: String!, actionType: String!, ticketIds: String!, objectIds: String!, receiptTokens: String!, gameType: String!, appKey: String!): TicketListResponse
+  GetTicketList(deviceId: String!, accountId: Int!, ticketObjectType: String!, actionType: String!, ticketIds: String!, objectIds: String!, receiptTokens: String!, gameType: String!, appKey: String!): TicketListResponse
   # Get Ticket Offers
   # Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.
-  # @param Float! version 
   # @return [TicketOfferResponse]
-  TicketOffers(version: Float!): TicketOfferResponse
+  TicketOffers: TicketOfferResponse
 }
 

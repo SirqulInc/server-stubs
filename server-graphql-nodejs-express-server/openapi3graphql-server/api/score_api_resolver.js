@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return ScoreResponse
-        GetScore: ($version, $accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreObjectType, $scoreStatus) => {
+        GetScore: ($accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreObjectType, $scoreStatus) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "missionId": "789",
@@ -34,9 +33,8 @@ export default {
         },
 
         // @return ScoreResponse
-        SearchScores: ($version, $accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId) => {
+        SearchScores: ($accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "missionId": "789",
@@ -52,9 +50,8 @@ export default {
     Mutation: {
 
         // @return ScoreResponse
-        CreateScore: ($version, $accountId, $appKey, $points, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $timeTaken, $highest) => {
+        CreateScore: ($accountId, $appKey, $points, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $timeTaken, $highest) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "points": "56",

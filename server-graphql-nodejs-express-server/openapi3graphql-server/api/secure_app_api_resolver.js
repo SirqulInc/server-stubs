@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        CreateSecureApplication: ($version, $accountId, $appKey, $keyCert, $trustStore, $username, $password, $active, $biometricType, $biometricPosition, $biometricPosition2) => {
+        CreateSecureApplication: ($accountId, $appKey, $keyCert, $trustStore, $username, $password, $active, $biometricType, $biometricPosition, $biometricPosition2) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "keyCert": "BINARY_DATA_HERE",
@@ -39,18 +38,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteSecureApplication: ($version, $accountId, $appKey) => {
+        DeleteSecureApplication: ($accountId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example"
             };
         },
 
         // @return ProfileResponse
-        LoginSecure: ($version, $appKey, $biometricFile, $deviceId, $biometricFile2, $ageRestriction, $returnProfile, $responseFilters, $latitude, $longitude) => {
+        LoginSecure: ($appKey, $biometricFile, $deviceId, $biometricFile2, $ageRestriction, $returnProfile, $responseFilters, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "biometricFile": "BINARY_DATA_HERE",
                 "deviceId": "deviceId_example",
@@ -64,26 +61,23 @@ export default {
         },
 
         // @return ProfileResponse
-        PurchaseSecure: ($version, $body) => {
+        PurchaseSecure: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return SirqulResponse
-        ResetSecure: ($version, $accountId, $appKey) => {
+        ResetSecure: ($accountId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example"
             };
         },
 
         // @return SirqulResponse
-        UpdateSecureApplication: ($version, $accountId, $appKey, $active, $keyCert, $trustStore, $username, $password, $biometricType, $biometricPosition, $biometricPosition2) => {
+        UpdateSecureApplication: ($accountId, $appKey, $active, $keyCert, $trustStore, $username, $password, $biometricType, $biometricPosition, $biometricPosition2) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "active": "true",

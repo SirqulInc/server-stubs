@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return ListingFullResponse
-        GetListing: ($version, $listingId) => {
+        GetListing: ($listingId) => {
             return {
-                "version": "3.16",
                 "listingId": "789"
             };
         },
 
         // @return ListingResponse
-        SearchListing: ($version, $accountId, $keyword, $start, $limit, $activeOnly, $latitude, $longitude, $startDate, $endDate, $categoryIds, $filterIds, $useListingOrderIds, $externalId, $externalId2, $externalGroupId) => {
+        SearchListing: ($accountId, $keyword, $start, $limit, $activeOnly, $latitude, $longitude, $startDate, $endDate, $categoryIds, $filterIds, $useListingOrderIds, $externalId, $externalId2, $externalGroupId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "start": "56",
@@ -48,9 +46,8 @@ export default {
         },
 
         // @return ListingGroupResponse
-        SummaryListing: ($version, $accountId, $startDate, $categoryIds, $daysToInclude, $useListingOrderIds) => {
+        SummaryListing: ($accountId, $startDate, $categoryIds, $daysToInclude, $useListingOrderIds) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "startDate": "789",
                 "categoryIds": "categoryIds_example",
@@ -64,9 +61,8 @@ export default {
     Mutation: {
 
         // @return ListingFullResponse
-        CreateListing: ($version, $accountId, $name, $filterIds, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData) => {
+        CreateListing: ($accountId, $name, $filterIds, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "filterIds": "filterIds_example",
@@ -85,18 +81,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteListing: ($version, $accountId, $listingId) => {
+        DeleteListing: ($accountId, $listingId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "listingId": "789"
             };
         },
 
         // @return ListingFullResponse
-        UpdateListing: ($version, $accountId, $listingId, $filterIds, $name, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData) => {
+        UpdateListing: ($accountId, $listingId, $filterIds, $name, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "listingId": "789",
                 "filterIds": "filterIds_example",

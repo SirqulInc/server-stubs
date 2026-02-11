@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return AlbumContestResponse
-        GetAlbumContest: ($version, $albumContestId, $deviceId, $accountId, $latitude, $longitude) => {
+        GetAlbumContest: ($albumContestId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "albumContestId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return AlbumContestListResponse
-        GetAlbumContests: ($version, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $appKey, $appType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $latitude, $longitude) => {
+        GetAlbumContests: ($filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $appKey, $appType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "filter": "filter_example",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -60,9 +58,8 @@ export default {
     Mutation: {
 
         // @return AlbumContestResponse
-        AddOrUpdateAlbumContest: ($version, $publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $deviceId, $accountId, $gameType, $appKey, $contestType, $albumContestId, $title, $description, $albumId1, $removeAlbum1, $albumId2, $removeAlbum2, $startDate, $endDate, $locationDescription, $connectionIdsToAdd, $connectionGroupIdsToAdd, $latitude, $longitude) => {
+        AddOrUpdateAlbumContest: ($publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $deviceId, $accountId, $gameType, $appKey, $contestType, $albumContestId, $title, $description, $albumId1, $removeAlbum1, $albumId2, $removeAlbum2, $startDate, $endDate, $locationDescription, $connectionIdsToAdd, $connectionGroupIdsToAdd, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "publicRead": "true",
                 "publicWrite": "true",
                 "publicDelete": "true",
@@ -92,9 +89,8 @@ export default {
         },
 
         // @return SirqulResponse
-        ApproveAlbumContest: ($version, $albumContestId, $approvalStatus, $deviceId, $accountId) => {
+        ApproveAlbumContest: ($albumContestId, $approvalStatus, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "albumContestId": "789",
                 "approvalStatus": "approvalStatus_example",
                 "deviceId": "deviceId_example",
@@ -103,9 +99,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteContest: ($version, $albumContestId, $deviceId, $accountId, $latitude, $longitude) => {
+        DeleteContest: ($albumContestId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "albumContestId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -115,9 +110,8 @@ export default {
         },
 
         // @return AlbumContestResponse
-        VoteOnAlbumContest: ($version, $albumContestId, $albumId, $deviceId, $accountId, $contestType, $latitude, $longitude) => {
+        VoteOnAlbumContest: ($albumContestId, $albumId, $deviceId, $accountId, $contestType, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "albumContestId": "789",
                 "albumId": "789",
                 "deviceId": "deviceId_example",

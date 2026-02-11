@@ -15,8 +15,6 @@
 
 
 input ProcessAllParticipantsInput {
-    
-    version: Float!, 
     # The account id of the user
     accountId: Int!, 
     # The application key used to identify the application
@@ -26,8 +24,6 @@ input ProcessAllParticipantsInput {
 }
 
 input ProcessParticipantsInput {
-    
-    version: Float!, 
     # The account id of the user
     accountId: Int!, 
     # The league identifier to process
@@ -43,7 +39,6 @@ input ProcessParticipantsInput {
 type Mutation {
   # Process All Participant Feeds
   # Processes all supported participant feeds.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @param String! appKey The application key used to identify the application
   # @param Boolean! useShortNameAsID Whether to use short name as the participant ID
@@ -51,7 +46,6 @@ type Mutation {
   ProcessAllParticipants(input: ProcessAllParticipantsInput!): SirqulResponse
   # Process Participants Feed
   # Processes a participant feed or uploaded file for a specific league.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @param String! league The league identifier to process
   # @param String! appKey The application key used to identify the application

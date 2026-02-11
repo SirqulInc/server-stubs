@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return RegionResponse
-        GetRegion: ($version, $regionId, $accountId) => {
+        GetRegion: ($regionId, $accountId) => {
             return {
-                "version": "3.16",
                 "regionId": "789",
                 "accountId": "789"
             };
         },
 
         // @return RegionResponse
-        SearchRegions: ($version, $accountId, $Query_, $keyword, $latitude, $longitude, $range, $regionClass, $visibility, $searchMode, $sortField, $descending, $includeParent, $includeChildren, $includePostalCodes, $categoryIds, $filterIds, $versionCode, $activeOnly, $showDeleted, $lastUpdatedSince, $start, $limit) => {
+        SearchRegions: ($accountId, $Query_, $keyword, $latitude, $longitude, $range, $regionClass, $visibility, $searchMode, $sortField, $descending, $includeParent, $includeChildren, $includePostalCodes, $categoryIds, $filterIds, $versionCode, $activeOnly, $showDeleted, $lastUpdatedSince, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "Query_": "Query__example",
                 "keyword": "keyword_example",
@@ -60,9 +58,8 @@ export default {
     Mutation: {
 
         // @return RegionResponse
-        CreateRegion: ($version, $accountId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active) => {
+        CreateRegion: ($accountId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "regionClass": "regionClass_example",
                 "shortName": "shortName_example",
@@ -88,18 +85,16 @@ export default {
         },
 
         // @return RegionResponse
-        DeleteRegion: ($version, $accountId, $regionId) => {
+        DeleteRegion: ($accountId, $regionId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "regionId": "789"
             };
         },
 
         // @return RegionResponse
-        UpdateRegion: ($version, $accountId, $regionId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active, $clearLists) => {
+        UpdateRegion: ($accountId, $regionId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active, $clearLists) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "regionId": "789",
                 "regionClass": "regionClass_example",

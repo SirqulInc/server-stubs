@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return SirqulResponse
-        AssetDownload: ($version, $filename) => {
+        AssetDownload: ($filename) => {
             return {
-                "version": "3.16",
                 "filename": "filename_example"
             };
         },
 
         // @return AssetFullResponse
-        GetAsset: ($version, $assetId, $deviceId, $accountId, $noteDescending) => {
+        GetAsset: ($assetId, $deviceId, $accountId, $noteDescending) => {
             return {
-                "version": "3.16",
                 "assetId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -37,9 +35,8 @@ export default {
         },
 
         // @return AssetResponse
-        SearchAssets: ($version, $deviceId, $accountId, $albumIds, $assetIds, $appKey, $mediaType, $mimeType, $keyword, $versionCode, $versionName, $updatedSince, $updatedBefore, $sortField, $descending, $searchMediaLibrary, $filterByBillable, $activeOnly, $returnApp, $start, $limit, $searchMode, $assetType, $approvalStatus, $assignedAccountId) => {
+        SearchAssets: ($deviceId, $accountId, $albumIds, $assetIds, $appKey, $mediaType, $mimeType, $keyword, $versionCode, $versionName, $updatedSince, $updatedBefore, $sortField, $descending, $searchMediaLibrary, $filterByBillable, $activeOnly, $returnApp, $start, $limit, $searchMode, $assetType, $approvalStatus, $assignedAccountId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "albumIds": "albumIds_example",
@@ -72,9 +69,8 @@ export default {
     Mutation: {
 
         // @return AssetShortResponse
-        AssetMorph: ($version, $offerId, $adSize, $creativeId, $width, $height, $backgroundSize, $template) => {
+        AssetMorph: ($offerId, $adSize, $creativeId, $width, $height, $backgroundSize, $template) => {
             return {
-                "version": "3.16",
                 "offerId": "789",
                 "adSize": "adSize_example",
                 "creativeId": "789",
@@ -86,9 +82,8 @@ export default {
         },
 
         // @return AssetResponse
-        CreateAsset: ($version, $returnNulls, $deviceId, $accountId, $albumId, $collectionId, $addToDefaultAlbum, $addToMediaLibrary, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $app, $appKey, $searchTags, $latitude, $longitude) => {
+        CreateAsset: ($returnNulls, $deviceId, $accountId, $albumId, $collectionId, $addToDefaultAlbum, $addToMediaLibrary, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $app, $appKey, $searchTags, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -127,9 +122,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteAsset: ($version, $assetId, $deviceId, $accountId, $latitude, $longitude) => {
+        DeleteAsset: ($assetId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "assetId": "assetId_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -139,9 +133,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveAsset: ($version, $assetId, $deviceId, $accountId, $albumId, $collectionId, $removeFromDefaultAlbums, $latitude, $longitude) => {
+        RemoveAsset: ($assetId, $deviceId, $accountId, $albumId, $collectionId, $removeFromDefaultAlbums, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "assetId": "assetId_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -154,9 +147,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateAsset: ($version, $assetId, $deviceId, $accountId, $albumId, $attachedAssetId, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $searchTags, $appKey, $latitude, $longitude) => {
+        UpdateAsset: ($assetId, $deviceId, $accountId, $albumId, $attachedAssetId, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $searchTags, $appKey, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "assetId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

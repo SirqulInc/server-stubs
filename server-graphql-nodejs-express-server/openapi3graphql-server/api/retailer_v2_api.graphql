@@ -20,7 +20,6 @@ type Mutation {
 type Query {
   # Get Retailer
   # Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
-  # @param Float! version 
   # @param Int! retailerId the id of the retailer
   # @param Boolean! activeOnly whether to return results that are active only or all
   # @param String! keyword the keyword to search on to get retailer
@@ -28,6 +27,6 @@ type Query {
   # @param Int! start the start of the index and/or pagination
   # @param Int! limit the limit of the index and/or pagination
   # @return [SirqulResponse]
-  GetRetaokiler(version: Float!, retailerId: Int!, activeOnly: Boolean!, keyword: String!, sortField: String!, start: Int!, limit: Int!): SirqulResponse
+  GetRetaokiler(retailerId: Int!, activeOnly: Boolean!, keyword: String!, sortField: String!, start: Int!, limit: Int!): SirqulResponse
 }
 

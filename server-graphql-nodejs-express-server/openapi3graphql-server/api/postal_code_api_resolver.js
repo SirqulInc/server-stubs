@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return PostalCodeResponse
-        GetPostalCode: ($version, $postalCodeId) => {
+        GetPostalCode: ($postalCodeId) => {
             return {
-                "version": "3.16",
                 "postalCodeId": "789"
             };
         },
 
         // @return PostalCodeResponse
-        GetPostalCodes: ($version, $sortField, $descending, $latitude, $longitude, $keyword, $miles, $start, $limit) => {
+        GetPostalCodes: ($sortField, $descending, $latitude, $longitude, $keyword, $miles, $start, $limit) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "latitude": "1.2",
@@ -45,9 +43,8 @@ export default {
     Mutation: {
 
         // @return PostalCodeResponse
-        CreatePostalCode: ($version, $accountId, $code, $latitude, $longitude, $stateCode, $city, $active) => {
+        CreatePostalCode: ($accountId, $code, $latitude, $longitude, $stateCode, $city, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "code": "code_example",
                 "latitude": "1.2",
@@ -59,18 +56,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeletePostalCode: ($version, $accountId, $postalCodeId) => {
+        DeletePostalCode: ($accountId, $postalCodeId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "postalCodeId": "789"
             };
         },
 
         // @return PostalCodeResponse
-        UpdatePostalCode: ($version, $accountId, $postalCodeId, $code, $latitude, $longitude, $stateCode, $city, $active) => {
+        UpdatePostalCode: ($accountId, $postalCodeId, $code, $latitude, $longitude, $stateCode, $city, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "postalCodeId": "789",
                 "code": "code_example",

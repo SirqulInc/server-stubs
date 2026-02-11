@@ -18,61 +18,54 @@ export default {
     Query: {
 
         // @return Route
-        GetRoute: ($version, $routeId, $showInheritedProperties) => {
+        GetRoute: ($routeId, $showInheritedProperties) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "showInheritedProperties": "true"
             };
         },
 
         // @return Direction
-        GetRouteDirections: ($version, $routeId) => {
+        GetRouteDirections: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return Shipment
-        GetRouteShipments: ($version, $routeId) => {
+        GetRouteShipments: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return Stop
-        GetRouteStop: ($version, $routeId, $stopId) => {
+        GetRouteStop: ($routeId, $stopId) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "stopId": "789"
             };
         },
 
         // @return Stop
-        GetRouteStops: ($version, $routeId, $confirmedOnly) => {
+        GetRouteStops: ($routeId, $confirmedOnly) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "confirmedOnly": "true"
             };
         },
 
         // @return Shipment
-        GetShipmentsAtStop: ($version, $routeId, $stopId) => {
+        GetShipmentsAtStop: ($routeId, $stopId) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "stopId": "789"
             };
         },
 
         // @return Route
-        SearchRoutes: ($version, $sortField, $descending, $start, $limit, $activeOnly, $includesEmpty, $rootOnly, $showInheritedProperties, $hubId, $programId, $scheduledStart, $scheduledEnd, $updatedStart, $updatedEnd, $featured, $seatCount, $approved, $started, $completed, $valid, $parentId) => {
+        SearchRoutes: ($sortField, $descending, $start, $limit, $activeOnly, $includesEmpty, $rootOnly, $showInheritedProperties, $hubId, $programId, $scheduledStart, $scheduledEnd, $updatedStart, $updatedEnd, $featured, $seatCount, $approved, $started, $completed, $valid, $parentId) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -102,119 +95,105 @@ export default {
     Mutation: {
 
         // @return Route
-        ApproveRoute: ($version, $routeId) => {
+        ApproveRoute: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return Route
-        CopyRoute: ($version, $routeId, $body) => {
+        CopyRoute: ($routeId, $body) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "body": ""
             };
         },
 
         // @return Route
-        CreateRoute: ($version, $body) => {
+        CreateRoute: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return Direction
-        CreateRouteDirections: ($version, $routeId) => {
+        CreateRouteDirections: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return Route
-        CreateRoutePolyline: ($version, $routeId) => {
+        CreateRoutePolyline: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return 
-        DeleteRoute: ($version, $routeId) => {
+        DeleteRoute: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return Route
-        DisapproveRoute: ($version, $routeId) => {
+        DisapproveRoute: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return 
-        OptimizeRoute: ($version, $routeId) => {
+        OptimizeRoute: ($routeId) => {
             return {
-                "version": "3.16",
                 "routeId": "789"
             };
         },
 
         // @return 
-        RemoveStop: ($version, $routeId, $stopId) => {
+        RemoveStop: ($routeId, $stopId) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "stopId": "789"
             };
         },
 
         // @return Stop
-        ReorderRouteStopsPatch: ($version, $routeId, $body) => {
+        ReorderRouteStopsPatch: ($routeId, $body) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "body": ""
             };
         },
 
         // @return Stop
-        ReorderRouteStopsPost: ($version, $routeId, $body) => {
+        ReorderRouteStopsPost: ($routeId, $body) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "body": ""
             };
         },
 
         // @return 
-        SetDriver: ($version, $Id_, $driverId) => {
+        SetDriver: ($Id_, $driverId) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "driverId": "789"
             };
         },
 
         // @return Route
-        UpdateRoute: ($version, $routeId, $body) => {
+        UpdateRoute: ($routeId, $body) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "body": ""
             };
         },
 
         // @return 
-        UpdateRouteStop: ($version, $routeId, $stopId, $body) => {
+        UpdateRouteStop: ($routeId, $stopId, $body) => {
             return {
-                "version": "3.16",
                 "routeId": "789",
                 "stopId": "789",
                 "body": ""

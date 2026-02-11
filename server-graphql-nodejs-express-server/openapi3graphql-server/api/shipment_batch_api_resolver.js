@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return ShipmentBatch
-        GetShipmentBatch: ($version, $batchId) => {
+        GetShipmentBatch: ($batchId) => {
             return {
-                "version": "3.16",
                 "batchId": "789"
             };
         },
 
         // @return ShipmentImportStatus
-        GetShipmentBatchStatus: ($version, $batchId, $accountId, $sortField, $descending, $start, $limit, $valid, $started, $completed, $hasShipment, $hasRoute, $keyword) => {
+        GetShipmentBatchStatus: ($batchId, $accountId, $sortField, $descending, $start, $limit, $valid, $started, $completed, $hasShipment, $hasRoute, $keyword) => {
             return {
-                "version": "3.16",
                 "batchId": "789",
                 "accountId": "789",
                 "sortField": "sortField_example",
@@ -45,9 +43,8 @@ export default {
         },
 
         // @return ShipmentBatch
-        SearchShipmentBatch: ($version, $hubId, $sortField, $descending, $start, $limit) => {
+        SearchShipmentBatch: ($hubId, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "hubId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -61,17 +58,15 @@ export default {
     Mutation: {
 
         // @return ShipmentBatch
-        CreateShipmentBatch: ($version, $body) => {
+        CreateShipmentBatch: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteShipmentBatch: ($version, $batchId) => {
+        DeleteShipmentBatch: ($batchId) => {
             return {
-                "version": "3.16",
                 "batchId": "789"
             };
         },

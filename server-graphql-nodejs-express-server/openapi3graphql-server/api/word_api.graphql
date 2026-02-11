@@ -15,8 +15,6 @@
 
 
 input CreateWordInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The text of the word.
@@ -38,8 +36,6 @@ input CreateWordInput {
 }
 
 input DeleteWordInput {
-    
-    version: Float!, 
     # The id of the word to delete.
     wordId: Int!, 
     # The account vor validating permission
@@ -47,8 +43,6 @@ input DeleteWordInput {
 }
 
 input UpdateWordInput {
-    
-    version: Float!, 
     # The id of the word to update.
     wordId: Int!, 
     # The logged in user.
@@ -74,7 +68,6 @@ input UpdateWordInput {
 type Mutation {
   # Create Word
   # Create a word by the given params.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! word The text of the word.
   # @param String! definition The definition of the word.
@@ -88,14 +81,12 @@ type Mutation {
   CreateWord(input: CreateWordInput!): WordzWordResponse
   # Delete Word
   # Delete a word by the given id. The accountId given needs to be the owner or executive to delete.
-  # @param Float! version 
   # @param Int! wordId The id of the word to delete.
   # @param Int! accountId The account vor validating permission
   # @return [SirqulResponse]
   DeleteWord(input: DeleteWordInput!): SirqulResponse
   # Update Word
   # Update a word by the given params.
-  # @param Float! version 
   # @param Int! wordId The id of the word to update.
   # @param Int! accountId The logged in user.
   # @param Int! ticketCount The number of tickets to reward
@@ -113,14 +104,12 @@ type Mutation {
 type Query {
   # Get Word
   # Get a word by the given id.
-  # @param Float! version 
   # @param Int! wordId The id of the word to get.
   # @param Int! accountId The logged in user.
   # @return [WordzWordResponse]
-  GetWord(version: Float!, wordId: Int!, accountId: Int!): WordzWordResponse
+  GetWord(wordId: Int!, accountId: Int!): WordzWordResponse
   # Search Words
   # Search for words by the given params.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! sortField The column to sort the search on
   # @param Boolean! descending The order to return the search results
@@ -129,6 +118,6 @@ type Query {
   # @param Int! limit The number of records to return.
   # @param String! keyword The keyword for searching words with matching definition or word text.
   # @return [WordzWordResponse]
-  GetWords(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, keyword: String!): WordzWordResponse
+  GetWords(accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, keyword: String!): WordzWordResponse
 }
 

@@ -15,8 +15,6 @@
 
 
 input CreateInput {
-    
-    version: Float!, 
     # the id of the parent account to create a dependent for
     accountId: Int!, 
     
@@ -24,8 +22,6 @@ input CreateInput {
 }
 
 input RemoveDependentInput {
-    
-    version: Float!, 
     # the id of the parent account tied to the dependent
     accountId: Int!, 
     # the id of the dependent to delete
@@ -35,14 +31,12 @@ input RemoveDependentInput {
 type Mutation {
   # Create Dependent
   # Create dependent of the account
-  # @param Float! version 
   # @param Int! accountId the id of the parent account to create a dependent for
   # @param Account body 
   # @return [SirqulResponse]
   Create(input: CreateInput!): SirqulResponse
   # Delete Dependent
   # Delete the Dependent
-  # @param Float! version 
   # @param Int! accountId the id of the parent account tied to the dependent
   # @param Int! dependentId the id of the dependent to delete
   # @return [Boolean]
@@ -52,9 +46,8 @@ type Mutation {
 type Query {
   # Get dependent list of an account
   # Get the dependent list of an account
-  # @param Float! version 
   # @param Int! accountId the id of the parent account to get a list of dependents
   # @return [SirqulResponse]
-  GetDependents(version: Float!, accountId: Int!): SirqulResponse
+  GetDependents(accountId: Int!): SirqulResponse
 }
 

@@ -15,8 +15,6 @@
 
 
 input CreateEntityReferenceInput {
-    
-    version: Float!, 
     # The entity reference object
     body: EntityReferenceInput
 }
@@ -24,7 +22,6 @@ input CreateEntityReferenceInput {
 type Mutation {
   # Create an entity reference.
   # Creates a reference for an entity for syncing data between servers.
-  # @param Float! version 
   # @param EntityReference body The entity reference object
   # @return [ActivityResponse]
   CreateEntityReference(input: CreateEntityReferenceInput!): ActivityResponse

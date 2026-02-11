@@ -15,8 +15,6 @@
 
 
 input SmsBuyOfferInput {
-    
-    version: Float!, 
     # the application key
     appKey: String!, 
     # the message of the text
@@ -30,7 +28,6 @@ input SmsBuyOfferInput {
 type Mutation {
   # Buy Offer by SMS
   # Recieve an SMS payload from Twillio to purchase an offer.
-  # @param Float! version 
   # @param String! appKey the application key
   # @param String! body the message of the text
   # @param String! from the sender of the sms

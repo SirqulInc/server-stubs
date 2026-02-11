@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return ScheduledNotificationFullResponse
-        GetScheduledNotification: ($version, $accountId, $scheduledNotificationId) => {
+        GetScheduledNotification: ($accountId, $scheduledNotificationId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "scheduledNotificationId": "789"
             };
         },
 
         // @return ScheduledNotificationFullResponse
-        SearchScheduledNotifications: ($version, $accountId, $groupingId, $audienceId, $filter, $types, $contentIds, $contentTypes, $parentIds, $parentTypes, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly, $groupByGroupingId, $returnAudienceAccountCount) => {
+        SearchScheduledNotifications: ($accountId, $groupingId, $audienceId, $filter, $types, $contentIds, $contentTypes, $parentIds, $parentTypes, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly, $groupByGroupingId, $returnAudienceAccountCount) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "groupingId": "groupingId_example",
                 "audienceId": "789",
@@ -58,9 +56,8 @@ export default {
     Mutation: {
 
         // @return ScheduledNotificationFullResponse
-        CreateScheduledNotification: ($version, $accountId, $name, $Type_, $message, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $sendNow, $eventType, $deepLinkURI, $sendToAll) => {
+        CreateScheduledNotification: ($accountId, $name, $Type_, $message, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $sendNow, $eventType, $deepLinkURI, $sendToAll) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "Type_": "Type__example",
@@ -99,9 +96,8 @@ export default {
         },
 
         // @return ScheduledNotificationFullResponse
-        DeleteScheduledNotification: ($version, $accountId, $scheduledNotificationId, $deleteByGroupingId) => {
+        DeleteScheduledNotification: ($accountId, $scheduledNotificationId, $deleteByGroupingId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "scheduledNotificationId": "789",
                 "deleteByGroupingId": "true"
@@ -109,9 +105,8 @@ export default {
         },
 
         // @return SirqulResponse
-        ScheduleNotificationListings: ($version, $accountId, $appKey, $reportName, $message, $offset, $recipientReportId, $reportParams, $Type_) => {
+        ScheduleNotificationListings: ($accountId, $appKey, $reportName, $message, $offset, $recipientReportId, $reportParams, $Type_) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "reportName": "reportName_example",
@@ -124,9 +119,8 @@ export default {
         },
 
         // @return ScheduledNotificationFullResponse
-        UpdateScheduledNotification: ($version, $scheduledNotificationId, $accountId, $name, $Type_, $message, $payload, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $errorMessage, $status, $updateByGroupingId, $sendNow, $eventType, $deepLinkURI, $sendToAll) => {
+        UpdateScheduledNotification: ($scheduledNotificationId, $accountId, $name, $Type_, $message, $payload, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $errorMessage, $status, $updateByGroupingId, $sendNow, $eventType, $deepLinkURI, $sendToAll) => {
             return {
-                "version": "3.16",
                 "scheduledNotificationId": "789",
                 "accountId": "789",
                 "name": "name_example",

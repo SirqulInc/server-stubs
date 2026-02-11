@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return Program
-        GetProgram: ($version, $Id_) => {
+        GetProgram: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Program
-        SearchPrograms: ($version, $sortField, $descending, $start, $limit, $activeOnly, $keyword) => {
+        SearchPrograms: ($sortField, $descending, $start, $limit, $activeOnly, $keyword) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -43,34 +41,30 @@ export default {
     Mutation: {
 
         // @return Program
-        CreateProgram: ($version, $body) => {
+        CreateProgram: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteProgram: ($version, $Id_) => {
+        DeleteProgram: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Program
-        PostProgram: ($version, $Id_, $body) => {
+        PostProgram: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return Program
-        PutProgram: ($version, $Id_, $body) => {
+        PutProgram: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };

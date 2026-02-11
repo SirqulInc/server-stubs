@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return ShipmentOrder
-        GetOptimizationResult: ($version, $batchID, $start, $limit) => {
+        GetOptimizationResult: ($batchID, $start, $limit) => {
             return {
-                "version": "3.16",
                 "batchID": "batchID_example",
                 "start": "56",
                 "limit": "56"
@@ -32,9 +31,8 @@ export default {
     Mutation: {
 
         // @return ImportStatuses
-        RequestOptimization: ($version, $body) => {
+        RequestOptimization: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },

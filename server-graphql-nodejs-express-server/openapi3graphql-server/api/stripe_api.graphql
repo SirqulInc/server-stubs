@@ -15,8 +15,6 @@
 
 
 input CreateStripeCheckoutSessionInput {
-    
-    version: Float!, 
     # Sirqul Application Key
     appKey: String!, 
     # Stripe Parameters
@@ -26,7 +24,6 @@ input CreateStripeCheckoutSessionInput {
 type Mutation {
   # Create Stripe Checkout Session
   # Create a Stripe checkout session
-  # @param Float! version 
   # @param String! appKey Sirqul Application Key
   # @param String! stripeParameters Stripe Parameters
   # @return [SirqulResponse]

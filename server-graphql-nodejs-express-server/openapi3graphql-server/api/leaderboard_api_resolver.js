@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return LeaderboardResponse
-        GetLeaderboard: ($version, $leaderboardId, $accountId, $includeFullRankingList) => {
+        GetLeaderboard: ($leaderboardId, $accountId, $includeFullRankingList) => {
             return {
-                "version": "3.16",
                 "leaderboardId": "789",
                 "accountId": "789",
                 "includeFullRankingList": "true"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return LeaderboardResponse
-        SearchLeaderboards: ($version, $accountId, $appKey, $globalOnly, $keyword, $leaderboardIds, $rankTypes, $sortField, $descending, $includeInactive, $includeAppResponse, $start, $limit) => {
+        SearchLeaderboards: ($accountId, $appKey, $globalOnly, $keyword, $leaderboardIds, $rankTypes, $sortField, $descending, $includeInactive, $includeAppResponse, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "globalOnly": "true",
@@ -51,9 +49,8 @@ export default {
     Mutation: {
 
         // @return LeaderboardResponse
-        CreateLeaderboard: ($version, $accountId, $appKey, $rankType, $leaderboardMode, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $sortField, $title, $description, $metaData) => {
+        CreateLeaderboard: ($accountId, $appKey, $rankType, $leaderboardMode, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $sortField, $title, $description, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "rankType": "rankType_example",
@@ -71,18 +68,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteLeaderboard: ($version, $leaderboardId, $accountId) => {
+        DeleteLeaderboard: ($leaderboardId, $accountId) => {
             return {
-                "version": "3.16",
                 "leaderboardId": "789",
                 "accountId": "789"
             };
         },
 
         // @return LeaderboardResponse
-        UpdateLeaderboard: ($version, $leaderboardId, $accountId, $appKey, $rankType, $leaderboardMode, $sortField, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $active, $title, $description, $metaData) => {
+        UpdateLeaderboard: ($leaderboardId, $accountId, $appKey, $rankType, $leaderboardMode, $sortField, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $active, $title, $description, $metaData) => {
             return {
-                "version": "3.16",
                 "leaderboardId": "789",
                 "accountId": "789",
                 "appKey": "appKey_example",

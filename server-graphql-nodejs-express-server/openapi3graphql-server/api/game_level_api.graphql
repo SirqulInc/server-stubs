@@ -15,8 +15,6 @@
 
 
 input CreateGameLevelInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The name of the level.
@@ -72,8 +70,6 @@ input CreateGameLevelInput {
 }
 
 input DeleteGameLevelInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The id of the level to return.
@@ -81,8 +77,6 @@ input DeleteGameLevelInput {
 }
 
 input UpdateGameLevelInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # If update then include the level Id.
@@ -140,8 +134,6 @@ input UpdateGameLevelInput {
 }
 
 input UpdateQuestionsInLevelInput {
-    
-    version: Float!, 
     # the id of the level to update questions on
     levelId: Int!, 
     # the id of the logged in user
@@ -151,8 +143,6 @@ input UpdateQuestionsInLevelInput {
 }
 
 input UpdateWordsInLevelInput {
-    
-    version: Float!, 
     # the id of the level to update words for
     levelId: Int!, 
     # the id of the logged in user
@@ -164,7 +154,6 @@ input UpdateWordsInLevelInput {
 type Mutation {
   # Create Game Level
   # Create a game level. Currently does NOT support game objects.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! name The name of the level.
   # @param String! gameData The game level data: xml, json, or other text based format.
@@ -195,14 +184,12 @@ type Mutation {
   CreateGameLevel(input: CreateGameLevelInput!): GameLevelResponse
   # Delete Game Level
   # Delete a game level. The level and account must be valid and have the appropirate permissions to view the content.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! levelId The id of the level to return.
   # @return [SirqulResponse]
   DeleteGameLevel(input: DeleteGameLevelInput!): SirqulResponse
   # Update Game Level
   # Update a game level. Currently does NOT support game objects.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! levelId If update then include the level Id.
   # @param String! appKey The game application key to save the level for.
@@ -234,7 +221,6 @@ type Mutation {
   UpdateGameLevel(input: UpdateGameLevelInput!): GameLevelResponse
   # Update Level Questions
   # Updates a level with question game objects.
-  # @param Float! version 
   # @param Int! levelId the id of the level to update questions on
   # @param Int! accountId the id of the logged in user
   # @param String! questionIds the IDs of the questions to update
@@ -242,7 +228,6 @@ type Mutation {
   UpdateQuestionsInLevel(input: UpdateQuestionsInLevelInput!): SirqulResponse
   # Update Level Words
   # Updates a level with word game objects.
-  # @param Float! version 
   # @param Int! levelId the id of the level to update words for
   # @param Int! accountId the id of the logged in user
   # @param String! wordIds the ids of the words to update for the level
@@ -253,15 +238,13 @@ type Mutation {
 type Query {
   # Get Game Level
   # Get a game level. The level and account must be valid and have the appropirate permissions to view the content.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! levelId The id of the level to return.
   # @param Boolean! includeGameData If true include the game level data, otherwise don&#39;t. default is false.
   # @return [GameLevelResponse]
-  GetGameLevel(version: Float!, accountId: Int!, levelId: Int!, includeGameData: Boolean!): GameLevelResponse
+  GetGameLevel(accountId: Int!, levelId: Int!, includeGameData: Boolean!): GameLevelResponse
   # Search Game Levels
   # Get a list of levels for an application, just those the account has permissions to view.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! appKey the application key
   # @param String! keyword Match the keyword to the owner name or level name.
@@ -273,10 +256,9 @@ type Query {
   # @param Boolean! includeGameData If true include the game level data, otherwise don&#39;t. default is false.
   # @param String! filters 
   # @return [GameLevelListResponse]
-  GetGameLevelsByApplication(version: Float!, accountId: Int!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, appVersion: String!, includeGameData: Boolean!, filters: String!): GameLevelListResponse
+  GetGameLevelsByApplication(accountId: Int!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, appVersion: String!, includeGameData: Boolean!, filters: String!): GameLevelListResponse
   # Search Game Level by Billable Entity
   # Searches on game levels that the logged in user has access to. A user would have access if the creator of the game level is managed under the same BillableEntity.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @param String! appKey the application key
   # @param String! keyword The keyword used to search
@@ -286,20 +268,18 @@ type Query {
   # @param Int! start The record to begin the return set on
   # @param Int! limit The number of records to return
   # @return [GameLevelResponse]
-  GetGameLevelsByBillableEntity(version: Float!, accountId: Int!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!): GameLevelResponse
+  GetGameLevelsByBillableEntity(accountId: Int!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!): GameLevelResponse
   # Get Level Questions
   # Get questions within a level.
-  # @param Float! version 
   # @param Int! levelId the id of the level to get questions from
   # @param Int! accountId the id of the logged in user
   # @return [QuestionResponse]
-  GetQuestionsInLevel(version: Float!, levelId: Int!, accountId: Int!): QuestionResponse
+  GetQuestionsInLevel(levelId: Int!, accountId: Int!): QuestionResponse
   # Get Level Words
   # Get words within a level.
-  # @param Float! version 
   # @param Int! levelId the id of the level to get words for
   # @param Int! accountId the id of the logged in user
   # @return [WordzWordResponse]
-  GetWordsInLevel(version: Float!, levelId: Int!, accountId: Int!): WordzWordResponse
+  GetWordsInLevel(levelId: Int!, accountId: Int!): WordzWordResponse
 }
 

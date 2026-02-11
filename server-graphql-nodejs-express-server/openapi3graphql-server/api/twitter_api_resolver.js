@@ -22,17 +22,15 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        AuthorizeTwitter: ($version, $appKey) => {
+        AuthorizeTwitter: ($appKey) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example"
             };
         },
 
         // @return ProfileResponse
-        LoginTwitter: ($version, $accessToken, $accessTokenSecret, $appKey, $responseFilters, $deviceId, $latitude, $longitude) => {
+        LoginTwitter: ($accessToken, $accessTokenSecret, $appKey, $responseFilters, $deviceId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "accessToken": "accessToken_example",
                 "accessTokenSecret": "accessTokenSecret_example",
                 "appKey": "appKey_example",

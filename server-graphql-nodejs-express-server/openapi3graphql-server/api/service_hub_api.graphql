@@ -16,21 +16,15 @@
 
 input CreateServiceHubInput {
     
-    version: Float!, 
-    
     body: ServiceHubInput
 }
 
 input DeleteServiceHubInput {
-    
-    version: Float!, 
     # the id of the service hub to delete
     Id_: Int!
 }
 
 input PostServiceHubInput {
-    
-    version: Float!, 
     # the id of the service hub
     Id_: Int!, 
     
@@ -38,8 +32,6 @@ input PostServiceHubInput {
 }
 
 input PutServiceHubInput {
-    
-    version: Float!, 
     # the id of the service hub
     Id_: Int!, 
     
@@ -49,26 +41,22 @@ input PutServiceHubInput {
 type Mutation {
   # Create Service Hub
   # Create new service hub
-  # @param Float! version 
   # @param ServiceHub body 
   # @return [ServiceHub]
   CreateServiceHub(input: CreateServiceHubInput!): ServiceHub
   # Delete Service Hub
   # Delete an existing service hub
-  # @param Float! version 
   # @param Int! Id_ the id of the service hub to delete
   # @return [Boolean]
   DeleteServiceHub(input: DeleteServiceHubInput!): Boolean
   # Update Service Hub
   # Update an existing service hub
-  # @param Float! version 
   # @param Int! Id_ the id of the service hub
   # @param ServiceHub body 
   # @return [ServiceHub]
   PostServiceHub(input: PostServiceHubInput!): ServiceHub
   # Update Service Hub
   # Update an existing service hub
-  # @param Float! version 
   # @param Int! Id_ the id of the service hub
   # @param ServiceHub body 
   # @return [ServiceHub]
@@ -78,13 +66,11 @@ type Mutation {
 type Query {
   # Get Service Hub
   # Get an existing service hub
-  # @param Float! version 
   # @param Int! Id_ the id of the service hub to get
   # @return [TodoObjectMapping]
-  GetServiceHub(version: Float!, Id_: Int!): TodoObjectMapping
+  GetServiceHub(Id_: Int!): TodoObjectMapping
   # Search Service Hubs
   # Search for service hubs.
-  # @param Float! version 
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
@@ -93,6 +79,6 @@ type Query {
   # @param String! keyword The keyword to search for
   # @param Int! retailerId The retailer belongs to
   # @return [ServiceHub]
-  SearchServiceHubs(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, keyword: String!, retailerId: Int!): ServiceHub
+  SearchServiceHubs(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, keyword: String!, retailerId: Int!): ServiceHub
 }
 

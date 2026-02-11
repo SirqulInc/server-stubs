@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return MissionResponse
-        GetMissionInvite: ($version, $deviceId, $accountId, $missionId, $missionInviteId, $includeGameData, $includeScores) => {
+        GetMissionInvite: ($deviceId, $accountId, $missionId, $missionInviteId, $includeGameData, $includeScores) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "missionId": "789",
@@ -31,9 +30,8 @@ export default {
         },
 
         // @return MissionResponse
-        SearchMissionInvites: ($version, $deviceId, $accountId, $appKey, $appVersion, $missionId, $status, $lastUpdated, $start, $limit, $keyword, $missionTypes, $filterByBillable, $includeGameData) => {
+        SearchMissionInvites: ($deviceId, $accountId, $appKey, $appVersion, $missionId, $status, $lastUpdated, $start, $limit, $keyword, $missionTypes, $filterByBillable, $includeGameData) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -55,9 +53,8 @@ export default {
     Mutation: {
 
         // @return MissionResponse
-        CreateMissionInvite: ($version, $deviceId, $accountId, $missionId, $joinCode, $includeGameData) => {
+        CreateMissionInvite: ($deviceId, $accountId, $missionId, $joinCode, $includeGameData) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "missionId": "789",
@@ -67,9 +64,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteMissionInvite: ($version, $deviceId, $accountId, $missionId, $missionInviteId, $includeGameData) => {
+        DeleteMissionInvite: ($deviceId, $accountId, $missionId, $missionInviteId, $includeGameData) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "missionId": "789",
@@ -79,9 +75,8 @@ export default {
         },
 
         // @return MissionResponse
-        UpdateMissionInvite: ($version, $deviceId, $accountId, $appKey, $missionId, $missionInviteId, $packId, $gameLevelId, $status, $permissionableType, $permissionableId, $includeGameData) => {
+        UpdateMissionInvite: ($deviceId, $accountId, $appKey, $missionId, $missionInviteId, $packId, $gameLevelId, $status, $permissionableType, $permissionableId, $includeGameData) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",

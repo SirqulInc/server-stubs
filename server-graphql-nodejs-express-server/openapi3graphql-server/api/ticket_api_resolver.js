@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return CountResponse
-        GetTicketCount: ($version, $deviceId, $accountId, $gameType, $appKey, $ticketType) => {
+        GetTicketCount: ($deviceId, $accountId, $gameType, $appKey, $ticketType) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "gameType": "gameType_example",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return TicketListResponse
-        GetTicketList: ($version, $deviceId, $accountId, $ticketObjectType, $actionType, $ticketIds, $objectIds, $receiptTokens, $gameType, $appKey) => {
+        GetTicketList: ($deviceId, $accountId, $ticketObjectType, $actionType, $ticketIds, $objectIds, $receiptTokens, $gameType, $appKey) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "ticketObjectType": "ticketObjectType_example",
@@ -46,9 +44,9 @@ export default {
         },
 
         // @return TicketOfferResponse
-        TicketOffers: ($version) => {
+        TicketOffers: () => {
             return {
-                "version": "3.16"
+                
             };
         },
 
@@ -57,9 +55,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        GiftPurchase: ($version, $receiverAccountId, $ticketId, $deviceId, $accountId, $assetId, $customMessage, $gameType, $appKey) => {
+        GiftPurchase: ($receiverAccountId, $ticketId, $deviceId, $accountId, $assetId, $customMessage, $gameType, $appKey) => {
             return {
-                "version": "3.16",
                 "receiverAccountId": "789",
                 "ticketId": "789",
                 "deviceId": "deviceId_example",
@@ -72,9 +69,8 @@ export default {
         },
 
         // @return ProfileResponse
-        SaveTicket: ($version, $actionType, $ticketObjectType, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $receiptData, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion) => {
+        SaveTicket: ($actionType, $ticketObjectType, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $receiptData, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion) => {
             return {
-                "version": "3.16",
                 "actionType": "actionType_example",
                 "ticketObjectType": "ticketObjectType_example",
                 "returnNulls": "true",
@@ -97,9 +93,8 @@ export default {
         },
 
         // @return ProfileResponse
-        SaveTicketViaFileUpload: ($version, $actionType, $ticketObjectType, $receiptData, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion) => {
+        SaveTicketViaFileUpload: ($actionType, $ticketObjectType, $receiptData, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion) => {
             return {
-                "version": "3.16",
                 "actionType": "actionType_example",
                 "ticketObjectType": "ticketObjectType_example",
                 "receiptData": "BINARY_DATA_HERE",

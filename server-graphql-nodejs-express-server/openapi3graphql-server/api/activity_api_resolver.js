@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return ActivityResponse
-        CreateEntityReference: ($version, $body) => {
+        CreateEntityReference: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },

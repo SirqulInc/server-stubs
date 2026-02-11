@@ -15,8 +15,6 @@
 
 
 input UsageInput {
-    
-    version: Float!, 
     # The tag to apply: the name of the action or thing being logged.
     tag: String!, 
     # The client deviceID
@@ -82,8 +80,6 @@ input UsageInput {
 }
 
 input UsageBatchInput {
-    
-    version: Float!, 
     # The application key unique to each application.
     appKey: String!, 
     # The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)
@@ -111,7 +107,6 @@ input UsageBatchInput {
 type Mutation {
   # Create Usage Record
   # Record an analytic record for a known state within the application.
-  # @param Float! version 
   # @param String! tag The tag to apply: the name of the action or thing being logged.
   # @param String! deviceId The client deviceID
   # @param Int! accountId The logged in user ID
@@ -147,7 +142,6 @@ type Mutation {
   Usage(input: UsageInput!): SirqulResponse
   # Create Multiple Usage Records
   # Sends multiple analytics. Can be used to send in the user&#39;s stored usage when they did not have internet access. Should not include more than 100 items per batch.
-  # @param Float! version 
   # @param String! appKey The application key unique to each application.
   # @param String! device The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)
   # @param String! data The analytic data AnalyticListResponse
@@ -166,15 +160,13 @@ type Mutation {
 type Query {
   # Get User Activity
   # Get an activity feed by user.
-  # @param Float! version 
   # @param Int! start The start of the pagination
   # @param Int! limit The limit of the pagination
   # @param Int! accountId the account id of the user
   # @return [UserActivityResponse]
-  Activities(version: Float!, start: Int!, limit: Int!, accountId: Int!): UserActivityResponse
+  Activities(start: Int!, limit: Int!, accountId: Int!): UserActivityResponse
   # Get Aggregated Filtered Usage
   # Query analytics to get data used for nested graphs and charts
-  # @param Float! version 
   # @param String! deviceId The unique id of the device making the request (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Int! applicationId This parameter is deprecated.
@@ -207,10 +199,9 @@ type Query {
   # @param Float! latitude the current latitude of the user
   # @param Float! longitude the current longitude of the user
   # @return [ChartData]
-  AggregatedFilteredUsage(version: Float!, deviceId: String!, accountId: Int!, applicationId: Int!, appKey: String!, startDate: Int!, endDate: Int!, deviceType: String!, device: String!, deviceOS: String!, gender: String!, ageGroup: String!, country: String!, state: String!, city: String!, zip: String!, model: String!, tag: String!, userAccountId: Int!, userAccountDisplay: String!, userAccountUsername: String!, groupByRoot: String!, groupBy: String!, distinctCount: String!, sortField: String!, descending: Boolean!, hideUnknown: Boolean!, responseFormat: String!, l: Int!, limit: Int!, latitude: Float!, longitude: Float!): ChartData
+  AggregatedFilteredUsage(deviceId: String!, accountId: Int!, applicationId: Int!, appKey: String!, startDate: Int!, endDate: Int!, deviceType: String!, device: String!, deviceOS: String!, gender: String!, ageGroup: String!, country: String!, state: String!, city: String!, zip: String!, model: String!, tag: String!, userAccountId: Int!, userAccountDisplay: String!, userAccountUsername: String!, groupByRoot: String!, groupBy: String!, distinctCount: String!, sortField: String!, descending: Boolean!, hideUnknown: Boolean!, responseFormat: String!, l: Int!, limit: Int!, latitude: Float!, longitude: Float!): ChartData
   # Get Filtered Usage
   # Query analytics to get data used for graphs and charts
-  # @param Float! version 
   # @param String! deviceId The unique id of the device making the request (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Int! applicationId This parameter is deprecated.
@@ -251,6 +242,6 @@ type Query {
   # @param Float! latitude the current latitude of the user
   # @param Float! longitude the current longitude of the user
   # @return [ChartData]
-  FilteredUsage(version: Float!, deviceId: String!, accountId: Int!, applicationId: Int!, appKey: String!, startDate: Int!, endDate: Int!, deviceType: String!, device: String!, deviceOS: String!, gender: String!, ageGroup: String!, country: String!, state: String!, city: String!, zip: String!, model: String!, tag: String!, userAccountId: Int!, userAccountDisplay: String!, userAccountUsername: String!, customId: Int!, customType: String!, customValue: Float!, customValue2: Float!, customLong: Int!, customLong2: Int!, customMessage: String!, customMessage2: String!, groupBy: String!, distinctCount: String!, sumColumn: String!, sortField: String!, descending: Boolean!, hideUnknown: Boolean!, responseFormat: String!, l: Int!, limit: Int!, latitude: Float!, longitude: Float!): ChartData
+  FilteredUsage(deviceId: String!, accountId: Int!, applicationId: Int!, appKey: String!, startDate: Int!, endDate: Int!, deviceType: String!, device: String!, deviceOS: String!, gender: String!, ageGroup: String!, country: String!, state: String!, city: String!, zip: String!, model: String!, tag: String!, userAccountId: Int!, userAccountDisplay: String!, userAccountUsername: String!, customId: Int!, customType: String!, customValue: Float!, customValue2: Float!, customLong: Int!, customLong2: Int!, customMessage: String!, customMessage2: String!, groupBy: String!, distinctCount: String!, sumColumn: String!, sortField: String!, descending: Boolean!, hideUnknown: Boolean!, responseFormat: String!, l: Int!, limit: Int!, latitude: Float!, longitude: Float!): ChartData
 }
 

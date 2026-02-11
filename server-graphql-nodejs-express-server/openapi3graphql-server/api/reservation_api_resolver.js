@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return AvailabilityResponse
-        SearchAvailability: ($version, $reservableId, $reservableType, $deviceId, $accountId, $startDate, $endDate, $start, $limit) => {
+        SearchAvailability: ($reservableId, $reservableType, $deviceId, $accountId, $startDate, $endDate, $start, $limit) => {
             return {
-                "version": "3.16",
                 "reservableId": "789",
                 "reservableType": "reservableType_example",
                 "deviceId": "deviceId_example",
@@ -33,9 +32,8 @@ export default {
         },
 
         // @return ReservationResponse
-        SearchReservations: ($version, $deviceId, $appKey, $accountId, $filterAccountId, $reservableId, $reservableType, $keyword, $startDate, $endDate, $start, $limit) => {
+        SearchReservations: ($deviceId, $appKey, $accountId, $filterAccountId, $reservableId, $reservableType, $keyword, $startDate, $endDate, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "appKey": "appKey_example",
                 "accountId": "789",
@@ -51,9 +49,8 @@ export default {
         },
 
         // @return TimeSlotResponse
-        SearchSchedule: ($version, $reservableId, $reservableType, $startDate, $endDate, $deviceId, $accountId, $timeBucketMins) => {
+        SearchSchedule: ($reservableId, $reservableType, $startDate, $endDate, $deviceId, $accountId, $timeBucketMins) => {
             return {
-                "version": "3.16",
                 "reservableId": "789",
                 "reservableType": "reservableType_example",
                 "startDate": "789",
@@ -69,9 +66,8 @@ export default {
     Mutation: {
 
         // @return 
-        CreateReservation: ($version, $deviceId, $accountId, $startDate, $endDate, $offerId, $offerLocationId, $appKey, $metaData) => {
+        CreateReservation: ($deviceId, $accountId, $startDate, $endDate, $offerId, $offerLocationId, $appKey, $metaData) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "startDate": "789",
@@ -84,9 +80,8 @@ export default {
         },
 
         // @return 
-        DeleteReservation: ($version, $reservationId, $deviceId, $accountId) => {
+        DeleteReservation: ($reservationId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "reservationId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -94,9 +89,8 @@ export default {
         },
 
         // @return AvailabilityResponse
-        ReservableAvailability: ($version, $reservableId, $reservableType, $deviceId, $accountId, $availability, $availabilitySummary) => {
+        ReservableAvailability: ($reservableId, $reservableType, $deviceId, $accountId, $availability, $availabilitySummary) => {
             return {
-                "version": "3.16",
                 "reservableId": "789",
                 "reservableType": "reservableType_example",
                 "deviceId": "deviceId_example",

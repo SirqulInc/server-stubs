@@ -15,8 +15,6 @@
 
 
 input AssignEmployeeInput {
-    
-    version: Float!, 
     # The account id of the logged in user
     accountId: Int!, 
     # The account id of the manager to assign under
@@ -28,8 +26,6 @@ input AssignEmployeeInput {
 }
 
 input AssignToLocationEmployeeInput {
-    
-    version: Float!, 
     # The account id of the logged in user
     accountId: Int!, 
     # The retailer location to apply the change to
@@ -41,8 +37,6 @@ input AssignToLocationEmployeeInput {
 }
 
 input CreateEmployeeInput {
-    
-    version: Float!, 
     # The account id of the logged in user
     accountId: Int!, 
     # The account id of the manager to assign under
@@ -106,8 +100,6 @@ input CreateEmployeeInput {
 }
 
 input DeleteEmployeeInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the employee to delete
@@ -115,8 +107,6 @@ input DeleteEmployeeInput {
 }
 
 input GetEmployeeInput {
-    
-    version: Float!, 
     # the id of logged in user
     accountId: Int!, 
     # the id of the employee account to get
@@ -126,8 +116,6 @@ input GetEmployeeInput {
 }
 
 input SearchEmployeesInput {
-    
-    version: Float!, 
     # The account id of the logged in user
     accountId: Int!, 
     # The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles.
@@ -165,8 +153,6 @@ input SearchEmployeesInput {
 }
 
 input UnassignEmployeeInput {
-    
-    version: Float!, 
     # The account id of the logged in user
     accountId: Int!, 
     # The account id of the user to be unassigned
@@ -174,8 +160,6 @@ input UnassignEmployeeInput {
 }
 
 input UpdateEmployeeInput {
-    
-    version: Float!, 
     # The account id of the logged in user
     accountId: Int!, 
     # the id of the employee account
@@ -241,7 +225,6 @@ input UpdateEmployeeInput {
 type Mutation {
   # Assign Employee
   # Assign An existing account to be an employee
-  # @param Float! version 
   # @param Int! accountId The account id of the logged in user
   # @param Int! managerAccountId The account id of the manager to assign under
   # @param Int! employeeAccountId The account id of the user to be assigned as employee
@@ -250,7 +233,6 @@ type Mutation {
   AssignEmployee(input: AssignEmployeeInput!): EmployeeResponse
   # Assign Employee to Location
   # Assign or unassign the account to a retailer location.
-  # @param Float! version 
   # @param Int! accountId The account id of the logged in user
   # @param Int! retailerLocationId The retailer location to apply the change to
   # @param Int! employeeAccountId The account id of the user to apply the change to
@@ -259,7 +241,6 @@ type Mutation {
   AssignToLocationEmployee(input: AssignToLocationEmployeeInput!): SirqulResponse
   # Create Employee
   # Create a new account record with the provided information.
-  # @param Float! version 
   # @param Int! accountId The account id of the logged in user
   # @param Int! managerAccountId The account id of the manager to assign under
   # @param String! username The username/email for the new user. This must be unique across the entire the system.
@@ -294,14 +275,12 @@ type Mutation {
   CreateEmployee(input: CreateEmployeeInput!): EmployeeResponse
   # Delete Employee
   # Set the deleted date field which marks the record as deleted.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! employeeAccountId the id of the employee to delete
   # @return [SirqulResponse]
   DeleteEmployee(input: DeleteEmployeeInput!): SirqulResponse
   # Get Employee
   # Get the account record for the account id provided.
-  # @param Float! version 
   # @param Int! accountId the id of logged in user
   # @param Int! employeeAccountId the id of the employee account to get
   # @param String! settingsAppKey Determines whether to return the application settings for the employee for a particular application
@@ -309,7 +288,6 @@ type Mutation {
   GetEmployee(input: GetEmployeeInput!): EmployeeResponse
   # Search Employees
   # Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees.
-  # @param Float! version 
   # @param Int! accountId The account id of the logged in user
   # @param String! role The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles.
   # @param Int! retailerId Filters employees by retailer
@@ -331,14 +309,12 @@ type Mutation {
   SearchEmployees(input: SearchEmployeesInput!): EmployeeResponse
   # Unassign Employee
   # Unassign An existing account to be an employee
-  # @param Float! version 
   # @param Int! accountId The account id of the logged in user
   # @param Int! employeeAccountId The account id of the user to be unassigned
   # @return [EmployeeResponse]
   UnassignEmployee(input: UnassignEmployeeInput!): EmployeeResponse
   # Update Employee
   # Update the account record with the provided information.
-  # @param Float! version 
   # @param Int! accountId The account id of the logged in user
   # @param Int! employeeAccountId the id of the employee account
   # @param Int! managerAccountId The account id of the manager to assign under

@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return ConnectionListResponse
-        GetConnectionSentFriendRequests: ($version, $deviceId, $accountId) => {
+        GetConnectionSentFriendRequests: ($deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
             };
         },
 
         // @return ConnectionListResponse
-        GetConnections: ($version, $returnNulls, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $connectionAccountId, $q, $keyword, $i, $l, $latitude, $longitude) => {
+        GetConnections: ($returnNulls, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $connectionAccountId, $q, $keyword, $i, $l, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "filter": "filter_example",
                 "sortField": "sortField_example",
@@ -49,9 +47,8 @@ export default {
         },
 
         // @return ConnectionGroupResponse
-        GetGroupDetails: ($version, $combineConnections, $deviceId, $accountId, $groupId, $latitude, $longitude) => {
+        GetGroupDetails: ($combineConnections, $deviceId, $accountId, $groupId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "combineConnections": "true",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -62,9 +59,8 @@ export default {
         },
 
         // @return ConnectionInfoResponse
-        GroupSearch: ($version, $sortField, $descending, $activeOnly, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword) => {
+        GroupSearch: ($sortField, $descending, $activeOnly, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "activeOnly": "true",
@@ -79,9 +75,8 @@ export default {
         },
 
         // @return ConnectionListResponse
-        SearchConnections: ($version, $returnNulls, $start, $limit, $deviceId, $accountId, $q, $keyword, $latitude, $longitude, $gameType, $appKey, $i, $l, $sortField, $hasLocation) => {
+        SearchConnections: ($returnNulls, $start, $limit, $deviceId, $accountId, $q, $keyword, $latitude, $longitude, $gameType, $appKey, $i, $l, $sortField, $hasLocation) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "start": "56",
                 "limit": "56",
@@ -105,9 +100,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        AddConnectionToGroup: ($version, $returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude) => {
+        AddConnectionToGroup: ($returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "groupId": "789",
                 "deviceId": "deviceId_example",
@@ -121,9 +115,8 @@ export default {
         },
 
         // @return SirqulResponse
-        AddConnectionsToGroup: ($version, $connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude) => {
+        AddConnectionsToGroup: ($connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "connectionGroupId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -135,9 +128,8 @@ export default {
         },
 
         // @return ConnectionGroupResponse
-        AddSubGroups: ($version, $returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude) => {
+        AddSubGroups: ($returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "groupId": "789",
                 "subGroupIds": "subGroupIds_example",
@@ -149,9 +141,8 @@ export default {
         },
 
         // @return ConnectionResponse
-        CreateOrUpdateConnection: ($version, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $groupId, $gameType, $appKey, $isTrusted, $ignoreFriendRequest, $isContact, $isBlocked, $isFollowing, $connectionResponse) => {
+        CreateOrUpdateConnection: ($deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $groupId, $gameType, $appKey, $isTrusted, $ignoreFriendRequest, $isContact, $isBlocked, $isFollowing, $connectionResponse) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "connectionId": "789",
@@ -170,9 +161,8 @@ export default {
         },
 
         // @return SirqulResponse
-        CreateOrUpdateGroup: ($version, $returnNulls, $deviceId, $accountId, $name, $groupId, $assetId, $connections, $description, $canViewProfileInfo, $canViewGameInfo, $canViewFriendInfo, $active, $latitude, $longitude) => {
+        CreateOrUpdateGroup: ($returnNulls, $deviceId, $accountId, $name, $groupId, $assetId, $connections, $description, $canViewProfileInfo, $canViewGameInfo, $canViewFriendInfo, $active, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -191,9 +181,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FollowAccept: ($version, $accountId, $connectionAccountId, $appKey) => {
+        FollowAccept: ($accountId, $connectionAccountId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "connectionAccountId": "789",
                 "appKey": "appKey_example"
@@ -201,9 +190,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FollowReject: ($version, $accountId, $connectionAccountId, $appKey) => {
+        FollowReject: ($accountId, $connectionAccountId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "connectionAccountId": "789",
                 "appKey": "appKey_example"
@@ -211,9 +199,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FollowRemove: ($version, $accountId, $connectionAccountId, $appKey) => {
+        FollowRemove: ($accountId, $connectionAccountId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "connectionAccountId": "789",
                 "appKey": "appKey_example"
@@ -221,9 +208,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FollowRequest: ($version, $accountId, $connectionAccountId, $appKey, $approvalNeeded) => {
+        FollowRequest: ($accountId, $connectionAccountId, $appKey, $approvalNeeded) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "connectionAccountId": "789",
                 "appKey": "appKey_example",
@@ -232,9 +218,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FriendAccept: ($version, $friendAccountId, $notifyFriend, $deviceId, $accountId, $gameType, $appKey, $notificationMessage) => {
+        FriendAccept: ($friendAccountId, $notifyFriend, $deviceId, $accountId, $gameType, $appKey, $notificationMessage) => {
             return {
-                "version": "3.16",
                 "friendAccountId": "789",
                 "notifyFriend": "true",
                 "deviceId": "deviceId_example",
@@ -246,9 +231,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FriendReject: ($version, $friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notifyFriend, $notificationMessage) => {
+        FriendReject: ($friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notifyFriend, $notificationMessage) => {
             return {
-                "version": "3.16",
                 "friendAccountId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -260,9 +244,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FriendRemove: ($version, $friendAccountId, $deviceId, $accountId, $notifyFriend, $removeFromGroups) => {
+        FriendRemove: ($friendAccountId, $deviceId, $accountId, $notifyFriend, $removeFromGroups) => {
             return {
-                "version": "3.16",
                 "friendAccountId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -272,9 +255,8 @@ export default {
         },
 
         // @return SirqulResponse
-        FriendRequest: ($version, $friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notificationMessage) => {
+        FriendRequest: ($friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notificationMessage) => {
             return {
-                "version": "3.16",
                 "friendAccountId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -285,9 +267,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveConnectionFromGroup: ($version, $returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude) => {
+        RemoveConnectionFromGroup: ($returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "groupId": "789",
                 "deviceId": "deviceId_example",
@@ -301,9 +282,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveConnectionsFromGroup: ($version, $connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude) => {
+        RemoveConnectionsFromGroup: ($connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "connectionGroupId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -315,9 +295,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveGroup: ($version, $returnNulls, $groupId, $deviceId, $accountId, $latitude, $longitude) => {
+        RemoveGroup: ($returnNulls, $groupId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "groupId": "789",
                 "deviceId": "deviceId_example",
@@ -328,9 +307,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveSubGroups: ($version, $returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude) => {
+        RemoveSubGroups: ($returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "groupId": "789",
                 "subGroupIds": "subGroupIds_example",

@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return QueueResponse
-        QueueGet: ($version, $deviceId, $accountId, $queueId, $appKey, $name, $hostname, $virtualHost) => {
+        QueueGet: ($deviceId, $accountId, $queueId, $appKey, $name, $hostname, $virtualHost) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "queueId": "789",
@@ -32,9 +31,8 @@ export default {
         },
 
         // @return QueueResponse
-        QueueSearch: ($version, $queueId, $deviceId, $accountId, $name, $start, $limit) => {
+        QueueSearch: ($queueId, $deviceId, $accountId, $name, $start, $limit) => {
             return {
-                "version": "3.16",
                 "queueId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -49,9 +47,8 @@ export default {
     Mutation: {
 
         // @return QueueResponse
-        ConsumerCreate: ($version, $appKey, $name, $hostname, $username, $password, $dataMapping, $deviceId, $accountId, $port, $virtualHost, $exchanger, $exchangerType, $workers, $useSSL) => {
+        ConsumerCreate: ($appKey, $name, $hostname, $username, $password, $dataMapping, $deviceId, $accountId, $port, $virtualHost, $exchanger, $exchangerType, $workers, $useSSL) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "name": "name_example",
                 "hostname": "hostname_example",
@@ -70,9 +67,8 @@ export default {
         },
 
         // @return QueueResponse
-        ConsumerUpdate: ($version, $appKey, $queueId, $dataMapping, $deviceId, $accountId, $useSSL) => {
+        ConsumerUpdate: ($appKey, $queueId, $dataMapping, $deviceId, $accountId, $useSSL) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "queueId": "789",
                 "dataMapping": "dataMapping_example",
@@ -83,9 +79,8 @@ export default {
         },
 
         // @return QueueResponse
-        QueueCreate: ($version, $appKey, $name, $deviceId, $accountId, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL) => {
+        QueueCreate: ($appKey, $name, $deviceId, $accountId, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "name": "name_example",
                 "deviceId": "deviceId_example",
@@ -102,9 +97,8 @@ export default {
         },
 
         // @return SirqulResponse
-        QueueDelete: ($version, $queueId, $deviceId, $accountId) => {
+        QueueDelete: ($queueId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "queueId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -112,9 +106,8 @@ export default {
         },
 
         // @return SirqulResponse
-        QueuePublish: ($version, $message, $queueId, $appKey, $name, $hostname, $virtualHost) => {
+        QueuePublish: ($message, $queueId, $appKey, $name, $hostname, $virtualHost) => {
             return {
-                "version": "3.16",
                 "message": "message_example",
                 "queueId": "789",
                 "appKey": "appKey_example",
@@ -125,9 +118,8 @@ export default {
         },
 
         // @return QueueResponse
-        QueueUpdate: ($version, $queueId, $deviceId, $accountId, $appKey, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL) => {
+        QueueUpdate: ($queueId, $deviceId, $accountId, $appKey, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL) => {
             return {
-                "version": "3.16",
                 "queueId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

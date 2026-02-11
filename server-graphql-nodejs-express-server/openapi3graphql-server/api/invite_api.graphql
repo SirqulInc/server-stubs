@@ -15,8 +15,6 @@
 
 
 input AcceptInviteInput {
-    
-    version: Float!, 
     # the invite token
     token: String!, 
     # the accountId of the user who is accepting the invite
@@ -48,8 +46,6 @@ input AcceptInviteInput {
 }
 
 input AlbumContestInviteInput {
-    
-    version: Float!, 
     # a unique ID given by the device (deviceId or accountId required)
     deviceId: String!, 
     # the account ID of the user (deviceId or accountId required)
@@ -67,8 +63,6 @@ input AlbumContestInviteInput {
 }
 
 input AlbumInviteInput {
-    
-    version: Float!, 
     # a unique ID given by the device (deviceId or accountId required)
     deviceId: String!, 
     # the account ID of the user (deviceId or accountId required)
@@ -86,8 +80,6 @@ input AlbumInviteInput {
 }
 
 input EventInviteInput {
-    
-    version: Float!, 
     # the account ID of the user making the share
     accountId: Int!, 
     # the application key
@@ -101,8 +93,6 @@ input EventInviteInput {
 }
 
 input GameInviteInput {
-    
-    version: Float!, 
     # a unique ID given by the device (deviceId or accountId required)
     deviceId: String!, 
     # the account ID of the user (deviceId or accountId required)
@@ -120,8 +110,6 @@ input GameInviteInput {
 }
 
 input MissionInviteInput {
-    
-    version: Float!, 
     # a unique ID given by the device (deviceId or accountId required)
     deviceId: String!, 
     # the account ID of the user (deviceId or accountId required)
@@ -139,8 +127,6 @@ input MissionInviteInput {
 }
 
 input OfferInviteInput {
-    
-    version: Float!, 
     # the account ID of the user making the share
     accountId: Int!, 
     # the application key
@@ -150,8 +136,6 @@ input OfferInviteInput {
 }
 
 input OfferLocationInviteInput {
-    
-    version: Float!, 
     # the account ID of the user making the share
     accountId: Int!, 
     # the application key
@@ -161,8 +145,6 @@ input OfferLocationInviteInput {
 }
 
 input RetailerLocationInviteInput {
-    
-    version: Float!, 
     # the account ID of the user making the share
     accountId: Int!, 
     # the application key
@@ -176,7 +158,6 @@ input RetailerLocationInviteInput {
 type Mutation {
   # Accept Invite
   # Allows a user to accept an invite. The user could also become the inviter&#39;s friend.
-  # @param Float! version 
   # @param String! token the invite token
   # @param Int! accountId the accountId of the user who is accepting the invite
   # @param Int! albumId the album id associated with this invite (if applicable)
@@ -195,7 +176,6 @@ type Mutation {
   AcceptInvite(input: AcceptInviteInput!): ConsumerInviteResponse
   # Invite to Contest
   # Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-  # @param Float! version 
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param Int! appId This parameter is deprecated.
@@ -207,7 +187,6 @@ type Mutation {
   AlbumContestInvite(input: AlbumContestInviteInput!): InviteResponse
   # Invite to Collection
   # Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-  # @param Float! version 
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param Int! appId This parameter is deprecated.
@@ -219,7 +198,6 @@ type Mutation {
   AlbumInvite(input: AlbumInviteInput!): InviteResponse
   # Invite to Event
   # Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet.
-  # @param Float! version 
   # @param Int! accountId the account ID of the user making the share
   # @param String! appKey the application key
   # @param Int! listingId The ID of the event listing
@@ -229,7 +207,6 @@ type Mutation {
   EventInvite(input: EventInviteInput!): InviteResponse
   # Invite to Game Level
   # Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-  # @param Float! version 
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param Int! appId This parameter is deprecated.
@@ -241,7 +218,6 @@ type Mutation {
   GameInvite(input: GameInviteInput!): InviteResponse
   # Invite to Mission
   # Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-  # @param Float! version 
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param Int! appId This parameter is deprecated.
@@ -253,7 +229,6 @@ type Mutation {
   MissionInvite(input: MissionInviteInput!): InviteResponse
   # Invite to Offer
   # Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite&#39;s list.
-  # @param Float! version 
   # @param Int! accountId the account ID of the user making the share
   # @param String! appKey the application key
   # @param Int! offerId the ID of the offer used to invite to favorite
@@ -261,7 +236,6 @@ type Mutation {
   OfferInvite(input: OfferInviteInput!): InviteResponse
   # Invite to Offer Location
   # Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite&#39;s list.
-  # @param Float! version 
   # @param Int! accountId the account ID of the user making the share
   # @param String! appKey the application key
   # @param Int! offerLocationId the id of the offer location to share
@@ -269,7 +243,6 @@ type Mutation {
   OfferLocationInvite(input: OfferLocationInviteInput!): InviteResponse
   # Invite to Retailer Location
   # Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite&#39;s list.
-  # @param Float! version 
   # @param Int! accountId the account ID of the user making the share
   # @param String! appKey the application key
   # @param Int! retailerLocationId The retailer location id of where the event will take place
@@ -281,7 +254,6 @@ type Mutation {
 type Query {
   # Get Invite
   # This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to.
-  # @param Float! version 
   # @param Int! accountId Account ID of the user if they are logged in
   # @param String! token the invite token
   # @param Int! albumId album id to match the invite against (if applicable)
@@ -292,6 +264,6 @@ type Query {
   # @param Int! retailerLocationId retailer location id to match the invite against (if applicable)
   # @param String! appKey the application key
   # @return [SirqulResponse]
-  GetInvite(version: Float!, accountId: Int!, token: String!, albumId: Int!, missionId: Int!, albumContestId: Int!, offerId: Int!, offerLocationId: Int!, retailerLocationId: Int!, appKey: String!): SirqulResponse
+  GetInvite(accountId: Int!, token: String!, albumId: Int!, missionId: Int!, albumContestId: Int!, offerId: Int!, offerLocationId: Int!, retailerLocationId: Int!, appKey: String!): SirqulResponse
 }
 

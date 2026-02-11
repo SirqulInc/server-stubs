@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return GameResponse
-        GetGame: ($version, $accountId, $gameId, $includeGameData) => {
+        GetGame: ($accountId, $gameId, $includeGameData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "gameId": "789",
                 "includeGameData": "true"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return GameResponse
-        SearchGames: ($version, $accountId, $appKey, $start, $limit, $keyword, $appVersion, $includeGameData, $includeInactive) => {
+        SearchGames: ($accountId, $appKey, $start, $limit, $keyword, $appVersion, $includeGameData, $includeInactive) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "start": "56",
@@ -47,9 +45,8 @@ export default {
     Mutation: {
 
         // @return GameResponse
-        CreateGame: ($version, $accountId, $appKey, $title, $description, $metaData, $packIds, $includeGameData) => {
+        CreateGame: ($accountId, $appKey, $title, $description, $metaData, $packIds, $includeGameData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "title": "title_example",
@@ -61,18 +58,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteGame: ($version, $accountId, $gameId) => {
+        DeleteGame: ($accountId, $gameId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "gameId": "789"
             };
         },
 
         // @return GameResponse
-        UpdateGame: ($version, $accountId, $gameId, $appKey, $title, $description, $metaData, $packIds, $includeGameData) => {
+        UpdateGame: ($accountId, $gameId, $appKey, $title, $description, $metaData, $packIds, $includeGameData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "gameId": "789",
                 "appKey": "appKey_example",

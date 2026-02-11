@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return SearchResponse
-        SearchLikes: ($version, $likableType, $likableId, $deviceId, $accountId, $connectionAccountIds, $sortField, $descending, $updatedSince, $updatedBefore, $start, $limit) => {
+        SearchLikes: ($likableType, $likableId, $deviceId, $accountId, $connectionAccountIds, $sortField, $descending, $updatedSince, $updatedBefore, $start, $limit) => {
             return {
-                "version": "3.16",
                 "likableType": "likableType_example",
                 "likableId": "789",
                 "deviceId": "deviceId_example",
@@ -40,9 +39,8 @@ export default {
     Mutation: {
 
         // @return LikableResponse
-        RegisterLike: ($version, $likableType, $likableId, $deviceId, $accountId, $permissionableType, $permissionableId, $like, $app, $gameType, $appKey, $latitude, $longitude) => {
+        RegisterLike: ($likableType, $likableId, $deviceId, $accountId, $permissionableType, $permissionableId, $like, $app, $gameType, $appKey, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "likableType": "likableType_example",
                 "likableId": "789",
                 "deviceId": "deviceId_example",
@@ -59,9 +57,8 @@ export default {
         },
 
         // @return LikableResponse
-        RemoveLike: ($version, $likableType, $likableId, $deviceId, $accountId, $latitude, $longitude) => {
+        RemoveLike: ($likableType, $likableId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "likableType": "likableType_example",
                 "likableId": "789",
                 "deviceId": "deviceId_example",

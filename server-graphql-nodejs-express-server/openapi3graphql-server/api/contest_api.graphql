@@ -15,8 +15,6 @@
 
 
 input AddOrUpdateAlbumContestInput {
-    
-    version: Float!, 
     # determines whether the contest&#39;s participants has read permissions
     publicRead: Boolean!, 
     # determines whether the contest&#39;s participants has write permissions
@@ -70,8 +68,6 @@ input AddOrUpdateAlbumContestInput {
 }
 
 input ApproveAlbumContestInput {
-    
-    version: Float!, 
     # The ID of the album contest
     albumContestId: Int!, 
     # The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}
@@ -83,8 +79,6 @@ input ApproveAlbumContestInput {
 }
 
 input DeleteContestInput {
-    
-    version: Float!, 
     # the album contest ID
     albumContestId: Int!, 
     # a unique ID given by the device (deviceId or accountId required)
@@ -98,8 +92,6 @@ input DeleteContestInput {
 }
 
 input VoteOnAlbumContestInput {
-    
-    version: Float!, 
     # the album contest ID
     albumContestId: Int!, 
     # the ID of the album to vote on
@@ -119,7 +111,6 @@ input VoteOnAlbumContestInput {
 type Mutation {
   # Create or Update Contest
   # Creates or updates a contest.
-  # @param Float! version 
   # @param Boolean! publicRead determines whether the contest&#39;s participants has read permissions
   # @param Boolean! publicWrite determines whether the contest&#39;s participants has write permissions
   # @param Boolean! publicDelete determines whether the contest&#39;s participants has delete permissions
@@ -149,7 +140,6 @@ type Mutation {
   AddOrUpdateAlbumContest(input: AddOrUpdateAlbumContestInput!): AlbumContestResponse
   # Approve Contest
   # Sets the approval status of a contest.
-  # @param Float! version 
   # @param Int! albumContestId The ID of the album contest
   # @param String! approvalStatus The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}
   # @param String! deviceId A unique ID given by the device (deviceId or accountId required)
@@ -158,7 +148,6 @@ type Mutation {
   ApproveAlbumContest(input: ApproveAlbumContestInput!): SirqulResponse
   # Delete Contest
   # Deletes a contest.
-  # @param Float! version 
   # @param Int! albumContestId the album contest ID
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
@@ -168,7 +157,6 @@ type Mutation {
   DeleteContest(input: DeleteContestInput!): SirqulResponse
   # Vote on Contest
   # Vote on a collection in a contest.
-  # @param Float! version 
   # @param Int! albumContestId the album contest ID
   # @param Int! albumId the ID of the album to vote on
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
@@ -183,17 +171,15 @@ type Mutation {
 type Query {
   # Get Contest
   # Gets the contest object including the likes and notes
-  # @param Float! version 
   # @param Int! albumContestId the album contest ID
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param Float! latitude latitude used to update the user&#39;s current location
   # @param Float! longitude longitude used to update the user&#39;s current location
   # @return [AlbumContestResponse]
-  GetAlbumContest(version: Float!, albumContestId: Int!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!): AlbumContestResponse
+  GetAlbumContest(albumContestId: Int!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!): AlbumContestResponse
   # Search Contests
   # Searches on contests.
-  # @param Float! version 
   # @param String! filter a comma separated list of Ownership
   # @param String! sortField the field to sort by. See AlbumContestApiMap
   # @param Boolean! descending determines whether the sorted list is in descending or ascending order
@@ -214,6 +200,6 @@ type Query {
   # @param Float! latitude latitude used to update the user&#39;s current location
   # @param Float! longitude longitude used to update the user&#39;s current location
   # @return [AlbumContestListResponse]
-  GetAlbumContests(version: Float!, filter: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, gameType: String!, appKey: String!, appType: String!, contestType: String!, ownerId: Int!, q: String!, keyword: String!, i: Int!, l: Int!, dateCreated: Int!, latitude: Float!, longitude: Float!): AlbumContestListResponse
+  GetAlbumContests(filter: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, gameType: String!, appKey: String!, appType: String!, contestType: String!, ownerId: Int!, q: String!, keyword: String!, i: Int!, l: Int!, dateCreated: Int!, latitude: Float!, longitude: Float!): AlbumContestListResponse
 }
 

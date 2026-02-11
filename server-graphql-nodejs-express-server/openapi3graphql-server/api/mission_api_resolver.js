@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return MissionResponse
-        FindMissions: ($version, $appKey, $suffix, $Type_, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeGameData, $includeAudiences, $allocatesTickets, $randomize, $targetedAdsOnly, $missionIds, $audienceOperator) => {
+        FindMissions: ($appKey, $suffix, $Type_, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeGameData, $includeAudiences, $allocatesTickets, $randomize, $targetedAdsOnly, $missionIds, $audienceOperator) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "suffix": "suffix_example",
                 "Type_": "Type__example",
@@ -44,9 +43,8 @@ export default {
         },
 
         // @return MissionResponse
-        GetMission: ($version, $accountId, $missionId, $returnCreative) => {
+        GetMission: ($accountId, $missionId, $returnCreative) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789",
                 "returnCreative": "true"
@@ -54,9 +52,8 @@ export default {
         },
 
         // @return MissionFormatResponse
-        SearchMissionFormats: ($version, $start, $limit, $activeOnly) => {
+        SearchMissionFormats: ($start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "start": "56",
                 "limit": "56",
                 "activeOnly": "true"
@@ -64,9 +61,8 @@ export default {
         },
 
         // @return MissionResponse
-        SearchMissions: ($version, $accountId, $keyword, $subType, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending) => {
+        SearchMissions: ($accountId, $keyword, $subType, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "subType": "subType_example",
@@ -82,9 +78,8 @@ export default {
         },
 
         // @return MissionResponse
-        SearchMissionsByBillableEntity: ($version, $accountId, $keyword, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending) => {
+        SearchMissionsByBillableEntity: ($accountId, $keyword, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "start": "56",
@@ -103,9 +98,8 @@ export default {
     Mutation: {
 
         // @return MissionResponse
-        CreateMission: ($version, $accountId, $title, $description, $subType, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $missionTask, $formatType, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $metaData, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius) => {
+        CreateMission: ($accountId, $title, $description, $subType, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $missionTask, $formatType, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $metaData, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "title": "title_example",
                 "description": "description_example",
@@ -136,18 +130,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteMission: ($version, $accountId, $missionId) => {
+        DeleteMission: ($accountId, $missionId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789"
             };
         },
 
         // @return SirqulResponse
-        ImportMission: ($version, $accountId, $latitude, $longitude, $appKey, $keyword, $start, $limit, $adSize) => {
+        ImportMission: ($accountId, $latitude, $longitude, $appKey, $keyword, $start, $limit, $adSize) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "latitude": "1.2",
                 "longitude": "1.2",
@@ -160,9 +152,8 @@ export default {
         },
 
         // @return MissionResponse
-        UpdateMission: ($version, $accountId, $missionId, $title, $description, $subType, $metaData, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius) => {
+        UpdateMission: ($accountId, $missionId, $title, $description, $subType, $metaData, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789",
                 "title": "title_example",

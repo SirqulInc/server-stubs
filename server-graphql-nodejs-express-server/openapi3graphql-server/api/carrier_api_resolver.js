@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return CellCarrierResponse
-        SearchCarriers: ($version, $keyword, $descending, $start, $limit, $activeOnly) => {
+        SearchCarriers: ($keyword, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "keyword": "keyword_example",
                 "descending": "true",
                 "start": "56",

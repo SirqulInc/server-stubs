@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return RouteSettings
-        GetRouteSettings: ($version, $routeSettingsId) => {
+        GetRouteSettings: ($routeSettingsId) => {
             return {
-                "version": "3.16",
                 "routeSettingsId": "789"
             };
         },
 
         // @return RouteSettings
-        SearchRouteSettings: ($version, $sortField, $descending, $start, $limit, $activeOnly, $hubId, $programId, $keyword) => {
+        SearchRouteSettings: ($sortField, $descending, $start, $limit, $activeOnly, $hubId, $programId, $keyword) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -45,25 +43,22 @@ export default {
     Mutation: {
 
         // @return RouteSettings
-        CreateRouteSettings: ($version, $body) => {
+        CreateRouteSettings: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return TodoObjectMapping
-        DeleteRouteSettings: ($version, $routeSettingsId) => {
+        DeleteRouteSettings: ($routeSettingsId) => {
             return {
-                "version": "3.16",
                 "routeSettingsId": "789"
             };
         },
 
         // @return RouteSettings
-        UpdateRouteSettings: ($version, $routeSettingsId, $body) => {
+        UpdateRouteSettings: ($routeSettingsId, $body) => {
             return {
-                "version": "3.16",
                 "routeSettingsId": "789",
                 "body": ""
             };

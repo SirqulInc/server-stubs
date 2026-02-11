@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return ReportBatchResponse
-        GetReportBatch: ($version, $accountId, $batchId, $allResults) => {
+        GetReportBatch: ($accountId, $batchId, $allResults) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "batchId": "789",
                 "allResults": "true"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return ReportBatchResponse
-        SearchBatch: ($version, $accountId, $start, $limit, $names, $appKey, $status, $globalAppSearch, $startDate, $endDate) => {
+        SearchBatch: ($accountId, $start, $limit, $names, $appKey, $status, $globalAppSearch, $startDate, $endDate) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "start": "56",
                 "limit": "56",
@@ -48,9 +46,8 @@ export default {
     Mutation: {
 
         // @return ReportBatchResponse
-        CreateBatch: ($version, $accountId, $status, $previewLimit, $appKey, $endpoint, $parameters, $name, $startDate, $endDate, $description, $pageUrl) => {
+        CreateBatch: ($accountId, $status, $previewLimit, $appKey, $endpoint, $parameters, $name, $startDate, $endDate, $description, $pageUrl) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "status": "status_example",
                 "previewLimit": "56",
@@ -66,26 +63,23 @@ export default {
         },
 
         // @return ReportRegionLegSummaryBatchResponse
-        CreateRegionLegSummaryBatch: ($version, $body) => {
+        CreateRegionLegSummaryBatch: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return SirqulResponse
-        DeleteBatch: ($version, $accountId, $batchId) => {
+        DeleteBatch: ($accountId, $batchId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "batchId": "789"
             };
         },
 
         // @return ReportResponse
-        RunReport: ($version, $desc, $accountId, $Query_, $parameters, $order, $start, $limit, $responseFormat) => {
+        RunReport: ($desc, $accountId, $Query_, $parameters, $order, $start, $limit, $responseFormat) => {
             return {
-                "version": "3.16",
                 "desc": "true",
                 "accountId": "789",
                 "Query_": "Query__example",

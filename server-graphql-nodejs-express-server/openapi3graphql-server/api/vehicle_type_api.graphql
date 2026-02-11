@@ -15,8 +15,6 @@
 
 
 input CreateVehicleTypeInput {
-    
-    version: Float!, 
     # A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
     vehicleType: String!, 
     
@@ -24,15 +22,11 @@ input CreateVehicleTypeInput {
 }
 
 input DeleteVehicleTypeInput {
-    
-    version: Float!, 
     # The id of the requested vehicle type
     vehicleTypeId: Int!
 }
 
 input UpdateVehicleTypeInput {
-    
-    version: Float!, 
     # The id of the vehicle type to update
     vehicleTypeId: Int!, 
     # The new data for the vehicle type to update to. A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
@@ -44,20 +38,17 @@ input UpdateVehicleTypeInput {
 type Mutation {
   # Create Vehicle Type
   # Create a new vehicle type
-  # @param Float! version 
   # @param String! vehicleType A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
   # @param VehicleType body 
   # @return [VehicleType]
   CreateVehicleType(input: CreateVehicleTypeInput!): VehicleType
   # Delete Vehicle Type
   # Delete a vehicle type
-  # @param Float! version 
   # @param Int! vehicleTypeId The id of the requested vehicle type
   # @return [Boolean]
   DeleteVehicleType(input: DeleteVehicleTypeInput!): Boolean
   # Update Vehicle Type
   # Update a vehicle type
-  # @param Float! version 
   # @param Int! vehicleTypeId The id of the vehicle type to update
   # @param String! vehicleType The new data for the vehicle type to update to. A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
   # @param VehicleType body 
@@ -68,13 +59,11 @@ type Mutation {
 type Query {
   # Get Vehicle Type
   # Get a vehicle type
-  # @param Float! version 
   # @param Int! vehicleTypeId The id of the requested vehicle type
   # @return [VehicleType]
-  GetVehicleType(version: Float!, vehicleTypeId: Int!): VehicleType
+  GetVehicleType(vehicleTypeId: Int!): VehicleType
   # Search Vehicle Type
   # Search for types of vehicles
-  # @param Float! version 
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
@@ -83,6 +72,6 @@ type Query {
   # @param Int! retailerId Filter by retailer
   # @param Int! hubId Filter by service hub
   # @return [VehicleType]
-  SearchVehicleTypes(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, retailerId: Int!, hubId: Int!): VehicleType
+  SearchVehicleTypes(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, retailerId: Int!, hubId: Int!): VehicleType
 }
 

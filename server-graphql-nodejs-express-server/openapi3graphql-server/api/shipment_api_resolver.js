@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return Shipment
-        GetShipment: ($version, $Id_) => {
+        GetShipment: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Shipment
-        SearchShipments: ($version, $sortField, $descending, $start, $limit, $activeOnly, $ownerId, $riderId, $routeId) => {
+        SearchShipments: ($sortField, $descending, $start, $limit, $activeOnly, $ownerId, $riderId, $routeId) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -45,42 +43,37 @@ export default {
     Mutation: {
 
         // @return 
-        CancelShipment: ($version, $Id_) => {
+        CancelShipment: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Shipment
-        CreateShipment: ($version, $body) => {
+        CreateShipment: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteShipment: ($version, $Id_) => {
+        DeleteShipment: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Shipment
-        UpdateShipment: ($version, $Id_, $body) => {
+        UpdateShipment: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return 
-        UpdateShipmentStatus: ($version, $Id_, $body) => {
+        UpdateShipmentStatus: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };

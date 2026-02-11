@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return OrderResponse
-        GetOrder: ($version, $deviceId, $accountId, $orderId, $externalOrderId) => {
+        GetOrder: ($deviceId, $accountId, $orderId, $externalOrderId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "orderId": "789",
@@ -29,9 +28,8 @@ export default {
         },
 
         // @return OrderResponse
-        SearchOrders: ($version, $appKey, $deviceId, $accountId, $start, $limit, $descending, $activeOnly, $ignoreCustomerFilter, $orderItemTypes, $orderItemIds, $orderCustomTypes, $orderCustomIds, $sortField, $offerTypes, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $offerIds, $offerLocationIds, $retailerIds, $retailerLocationIds, $statuses, $keyword, $redeemableStartDate, $redeemableEndDate, $startedSince, $startedBefore, $endedSince, $endedBefore) => {
+        SearchOrders: ($appKey, $deviceId, $accountId, $start, $limit, $descending, $activeOnly, $ignoreCustomerFilter, $orderItemTypes, $orderItemIds, $orderCustomTypes, $orderCustomIds, $sortField, $offerTypes, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $offerIds, $offerLocationIds, $retailerIds, $retailerLocationIds, $statuses, $keyword, $redeemableStartDate, $redeemableEndDate, $startedSince, $startedBefore, $endedSince, $endedBefore) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -71,9 +69,8 @@ export default {
     Mutation: {
 
         // @return OrderResponse
-        CreateOrder: ($version, $appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode) => {
+        CreateOrder: ($appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "cart": "cart_example",
                 "deviceId": "deviceId_example",
@@ -90,9 +87,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteOrder: ($version, $orderId, $deviceId, $accountId) => {
+        DeleteOrder: ($orderId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "orderId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -100,9 +96,8 @@ export default {
         },
 
         // @return OrderResponse
-        PreviewOrder: ($version, $appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode) => {
+        PreviewOrder: ($appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "cart": "cart_example",
                 "deviceId": "deviceId_example",
@@ -119,9 +114,8 @@ export default {
         },
 
         // @return OrderResponse
-        UpdateOrder: ($version, $orderId, $appKey, $cart, $deviceId, $accountId, $paymentTransactionId, $description, $currencyType, $paymentMethodId, $externalPaymentId, $externalDate) => {
+        UpdateOrder: ($orderId, $appKey, $cart, $deviceId, $accountId, $paymentTransactionId, $description, $currencyType, $paymentMethodId, $externalPaymentId, $externalDate) => {
             return {
-                "version": "3.16",
                 "orderId": "789",
                 "appKey": "appKey_example",
                 "cart": "cart_example",

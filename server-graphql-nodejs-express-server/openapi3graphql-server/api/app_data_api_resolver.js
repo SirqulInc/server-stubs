@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return AppResponse
-        GetAppData: ($version, $start, $limit, $deviceId, $accountId, $gameType, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType) => {
+        GetAppData: ($start, $limit, $deviceId, $accountId, $gameType, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType) => {
             return {
-                "version": "3.16",
                 "start": "56",
                 "limit": "56",
                 "deviceId": "deviceId_example",
@@ -54,9 +53,8 @@ export default {
     Mutation: {
 
         // @return AppResponse
-        PostAppData: ($version, $gameType, $start, $limit, $data, $deviceId, $accountId, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType) => {
+        PostAppData: ($gameType, $start, $limit, $data, $deviceId, $accountId, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType) => {
             return {
-                "version": "3.16",
                 "gameType": "gameType_example",
                 "start": "56",
                 "limit": "56",
@@ -87,9 +85,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RegenAppData: ($version, $accountId, $appKey, $buildVersion, $apiVersion) => {
+        RegenAppData: ($accountId, $appKey, $buildVersion, $apiVersion) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "buildVersion": "buildVersion_example",

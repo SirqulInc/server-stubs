@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return OrsonAiProtoResponse
-        AiDocs: ($version, $accountId, $doc, $returnTopics, $limit, $offset) => {
+        AiDocs: ($accountId, $doc, $returnTopics, $limit, $offset) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "doc": "doc_example",
                 "returnTopics": "true",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return OrsonAiProtoResponse
-        AiFindImages: ($version, $accountId, $text, $parseFlag, $fetchFlag, $size) => {
+        AiFindImages: ($accountId, $text, $parseFlag, $fetchFlag, $size) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "text": "text_example",
                 "parseFlag": "parseFlag_example",
@@ -42,9 +40,8 @@ export default {
         },
 
         // @return OrsonAiProtoResponse
-        AiTags: ($version, $accountId, $tags, $conditional, $limit, $offset) => {
+        AiTags: ($accountId, $tags, $conditional, $limit, $offset) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "tags": "tags_example",
                 "conditional": "conditional_example",
@@ -54,9 +51,8 @@ export default {
         },
 
         // @return OrsonAiProtoResponse
-        AiText: ($version, $accountId, $terms, $conditional, $limit, $offset) => {
+        AiText: ($accountId, $terms, $conditional, $limit, $offset) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "terms": "terms_example",
                 "conditional": "conditional_example",
@@ -66,90 +62,80 @@ export default {
         },
 
         // @return OrsonAiAddMovieResponse
-        GetAddMovieResult: ($version, $requestId, $accountId) => {
+        GetAddMovieResult: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiBatchResponse
-        GetBatch: ($version, $requestId, $accountId) => {
+        GetBatch: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiEmotionsResponse
-        GetEmotion: ($version, $requestId, $accountId) => {
+        GetEmotion: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonEpisodeResponse
-        GetEpisodeStatus: ($version, $episodeId, $accountId) => {
+        GetEpisodeStatus: ($episodeId, $accountId) => {
             return {
-                "version": "3.16",
                 "episodeId": "789",
                 "accountId": "789"
             };
         },
 
         // @return OrsonRenderResponse
-        GetRenderStatus: ($version, $renderId, $accountId) => {
+        GetRenderStatus: ($renderId, $accountId) => {
             return {
-                "version": "3.16",
                 "renderId": "renderId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiSttResponse
-        GetSTT: ($version, $requestId, $accountId) => {
+        GetSTT: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiTtsResponse
-        GetTTS: ($version, $requestId, $accountId) => {
+        GetTTS: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiTechTuneResponse
-        GetTechTune: ($version, $requestId, $accountId) => {
+        GetTechTune: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiTopicsResponse
-        GetTopics: ($version, $requestId, $accountId) => {
+        GetTopics: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
         },
 
         // @return OrsonAiVoiceCanvasResponse
-        GetVoiceCanvas: ($version, $requestId, $accountId) => {
+        GetVoiceCanvas: ($requestId, $accountId) => {
             return {
-                "version": "3.16",
                 "requestId": "requestId_example",
                 "accountId": "789"
             };
@@ -160,9 +146,8 @@ export default {
     Mutation: {
 
         // @return OrsonAiAddMovieResponse
-        AddMovie: ($version, $accountId, $movieName, $thirdPartyAccountId, $tags, $file, $url, $callback) => {
+        AddMovie: ($accountId, $movieName, $thirdPartyAccountId, $tags, $file, $url, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "movieName": "movieName_example",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
@@ -174,9 +159,8 @@ export default {
         },
 
         // @return OrsonAiBatchResponse
-        Batch: ($version, $accountId, $thirdPartyAccountId, $limit, $operations, $file, $url, $callback) => {
+        Batch: ($accountId, $thirdPartyAccountId, $limit, $operations, $file, $url, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
                 "limit": "56",
@@ -188,18 +172,16 @@ export default {
         },
 
         // @return OrsonEpisodeResponse
-        CreateInstantEpisode: ($version, $accountId, $data) => {
+        CreateInstantEpisode: ($accountId, $data) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "data": "data_example"
             };
         },
 
         // @return OrsonAiVoiceCanvasResponse
-        CreateVoiceCanvas: ($version, $accountId, $dimensions, $thirdPartyAccountId, $text, $file, $url, $parseFlag, $fetchFlag, $callback) => {
+        CreateVoiceCanvas: ($accountId, $dimensions, $thirdPartyAccountId, $text, $file, $url, $parseFlag, $fetchFlag, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "dimensions": "dimensions_example",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
@@ -213,9 +195,8 @@ export default {
         },
 
         // @return OrsonAiEmotionsResponse
-        Emotion: ($version, $accountId, $thirdPartyAccountId, $file, $url, $callback) => {
+        Emotion: ($accountId, $thirdPartyAccountId, $file, $url, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
                 "file": "BINARY_DATA_HERE",
@@ -225,18 +206,16 @@ export default {
         },
 
         // @return OrsonRenderResponse
-        StartVideoRender: ($version, $accountId, $data) => {
+        StartVideoRender: ($accountId, $data) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "data": "data_example"
             };
         },
 
         // @return OrsonAiSttResponse
-        Stt: ($version, $accountId, $thirdPartyAccountId, $sourceLanguage, $targetLanguage, $file, $url, $callback) => {
+        Stt: ($accountId, $thirdPartyAccountId, $sourceLanguage, $targetLanguage, $file, $url, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
                 "sourceLanguage": "sourceLanguage_example",
@@ -248,9 +227,8 @@ export default {
         },
 
         // @return OrsonAiTopicsResponse
-        SummarizeTopics: ($version, $accountId, $thirdPartyAccountId, $doc, $file, $url, $limit, $offset, $callback) => {
+        SummarizeTopics: ($accountId, $thirdPartyAccountId, $doc, $file, $url, $limit, $offset, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
                 "doc": "doc_example",
@@ -263,9 +241,8 @@ export default {
         },
 
         // @return OrsonAiTechTuneResponse
-        TechTune: ($version, $accountId, $numFacesExpected, $thirdPartyAccountId, $file, $url, $callback) => {
+        TechTune: ($accountId, $numFacesExpected, $thirdPartyAccountId, $file, $url, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "numFacesExpected": "56",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",
@@ -276,9 +253,8 @@ export default {
         },
 
         // @return OrsonAiTtsResponse
-        Tts: ($version, $accountId, $text, $thirdPartyAccountId, $language, $voice, $callback) => {
+        Tts: ($accountId, $text, $thirdPartyAccountId, $language, $voice, $callback) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "text": "text_example",
                 "thirdPartyAccountId": "thirdPartyAccountId_example",

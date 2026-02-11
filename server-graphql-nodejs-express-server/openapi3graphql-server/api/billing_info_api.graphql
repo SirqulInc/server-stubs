@@ -15,8 +15,6 @@
 
 
 input AddPaymentMethodInput {
-    
-    version: Float!, 
     # The account used to perform the the request
     accountId: Int!, 
     # Payment Method Id
@@ -66,8 +64,6 @@ input AddPaymentMethodInput {
 }
 
 input CreatePaymentMethodInput {
-    
-    version: Float!, 
     # The account used to perform the the request
     accountId: Int!, 
     # Account Name of the credit card user
@@ -121,8 +117,6 @@ input CreatePaymentMethodInput {
 }
 
 input CreateSmartContractInput {
-    
-    version: Float!, 
     # The account used to perform the the request
     accountId: Int!, 
     # The token name
@@ -136,7 +130,6 @@ input CreateSmartContractInput {
 type Mutation {
   # Update Payment Method
   # Update a method of payment. If the paymentMethodId is not passed in then will update their default payment method.
-  # @param Float! version 
   # @param Int! accountId The account used to perform the the request
   # @param Int! paymentMethodId Payment Method Id
   # @param String! accountName the name of the account
@@ -164,7 +157,6 @@ type Mutation {
   AddPaymentMethod(input: AddPaymentMethodInput!): PaymentTypesResponse
   # Create Payment Method
   # Add a new method of payment.
-  # @param Float! version 
   # @param Int! accountId The account used to perform the the request
   # @param String! accountName Account Name of the credit card user
   # @param String! firstName The first name on the credit card
@@ -194,7 +186,6 @@ type Mutation {
   CreatePaymentMethod(input: CreatePaymentMethodInput!): PaymentTypesResponse
   # Create Smart Contract
   # Adds a smart contract.
-  # @param Float! version 
   # @param Int! accountId The account used to perform the the request
   # @param String! tokenName The token name
   # @param String! tokenSymbol The token symbol
@@ -206,23 +197,20 @@ type Mutation {
 type Query {
   # Get Crypto Balances
   # Get the cypto balance details for a user
-  # @param Float! version 
   # @param Int! accountId The account used to perform the the request
   # @param Int! ownerAccountId The account to retreive balances for
   # @param Int! paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.
   # @return [PaymentTypesResponse]
-  GetCryptoBalance(version: Float!, accountId: Int!, ownerAccountId: Int!, paymentMethodId: Int!): PaymentTypesResponse
+  GetCryptoBalance(accountId: Int!, ownerAccountId: Int!, paymentMethodId: Int!): PaymentTypesResponse
   # Get Payment Method
   # Get the details of the user&#39;s payment method or their current default method of payment
-  # @param Float! version 
   # @param Int! accountId The account used to perform the the request
   # @param Int! paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned.
   # @param Boolean! getCurrentBalance Determines whether to get the user&#39;s current balance for the requested payment method option (not all payment method options support this)
   # @return [PaymentTypesResponse]
-  GetPaymentMethod(version: Float!, accountId: Int!, paymentMethodId: Int!, getCurrentBalance: Boolean!): PaymentTypesResponse
+  GetPaymentMethod(accountId: Int!, paymentMethodId: Int!, getCurrentBalance: Boolean!): PaymentTypesResponse
   # Search Payment Methods
   # Search the payment methods of an account
-  # @param Float! version 
   # @param Int! accountId Account Id to search on
   # @param String! provider Provider to search on
   # @param String! Type_ the type to search on
@@ -232,6 +220,6 @@ type Query {
   # @param Int! start the start of the search
   # @param Int! limit the limit of the search
   # @return [PaymentTypesResponse]
-  SearchPaymentMethod(version: Float!, accountId: Int!, provider: String!, Type_: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): PaymentTypesResponse
+  SearchPaymentMethod(accountId: Int!, provider: String!, Type_: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): PaymentTypesResponse
 }
 

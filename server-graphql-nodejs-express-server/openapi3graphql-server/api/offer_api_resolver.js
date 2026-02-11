@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return RetailerOfferResponse
-        GetOffer: ($version, $offerId, $includeOfferLocations, $deviceId, $accountId) => {
+        GetOffer: ($offerId, $includeOfferLocations, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "offerId": "789",
                 "includeOfferLocations": "true",
                 "deviceId": "deviceId_example",
@@ -29,9 +28,8 @@ export default {
         },
 
         // @return OfferResponse
-        GetOfferDetails: ($version, $deviceId, $accountId, $offerId, $offerLocationId, $distance, $latitude, $longitude, $includeOfferLocations, $includeRetailerLocations, $includeChildOffers) => {
+        GetOfferDetails: ($deviceId, $accountId, $offerId, $offerLocationId, $distance, $latitude, $longitude, $includeOfferLocations, $includeRetailerLocations, $includeChildOffers) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "offerId": "789",
@@ -46,9 +44,8 @@ export default {
         },
 
         // @return ListCountResponse
-        GetOfferListCounts: ($version, $latitude, $longitude, $searchRange, $distanceUnit) => {
+        GetOfferListCounts: ($latitude, $longitude, $searchRange, $distanceUnit) => {
             return {
-                "version": "3.16",
                 "latitude": "1.2",
                 "longitude": "1.2",
                 "searchRange": "8.14",
@@ -57,18 +54,16 @@ export default {
         },
 
         // @return OfferShortResponse
-        GetOfferLocation: ($version, $offerLocationId, $udid) => {
+        GetOfferLocation: ($offerLocationId, $udid) => {
             return {
-                "version": "3.16",
                 "offerLocationId": "789",
                 "udid": "udid_example"
             };
         },
 
         // @return OfferShortResponse
-        GetOfferLocationsForRetailers: ($version, $sortField, $descending, $start, $limit, $activeOnly, $includeRetailerLocation, $deviceId, $accountId, $keyword, $retailerId, $retailerLocationId, $offerType, $specialOfferType, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent) => {
+        GetOfferLocationsForRetailers: ($sortField, $descending, $start, $limit, $activeOnly, $includeRetailerLocation, $deviceId, $accountId, $keyword, $retailerId, $retailerLocationId, $offerType, $specialOfferType, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -93,9 +88,8 @@ export default {
         },
 
         // @return OfferResponse
-        GetOffersForRetailers: ($version, $offerVisibility, $sortField, $descending, $start, $limit, $availableOnly, $activeOnly, $includeCategories, $includeFilters, $includeOfferLocations, $deviceId, $accountId, $categoryIds, $filterIds, $q, $keyword, $retailerId, $retailerLocationId, $couponType, $offerType, $offerTypes, $specialOfferType, $i, $l, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent) => {
+        GetOffersForRetailers: ($offerVisibility, $sortField, $descending, $start, $limit, $availableOnly, $activeOnly, $includeCategories, $includeFilters, $includeOfferLocations, $deviceId, $accountId, $categoryIds, $filterIds, $q, $keyword, $retailerId, $retailerLocationId, $couponType, $offerType, $offerTypes, $specialOfferType, $i, $l, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent) => {
             return {
-                "version": "3.16",
                 "offerVisibility": "offerVisibility_example",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -131,9 +125,8 @@ export default {
         },
 
         // @return OfferTransactionResponse
-        SearchOfferTransactionsForRetailers: ($version, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $retailerId, $retailerLocationId, $offerId, $offerLocationId, $redeemed, $reservationsOnly, $couponType, $offerType, $specialOfferType, $customerAccountIds, $categoryIds, $redeemableStartDate, $redeemableEndDate, $i, $l) => {
+        SearchOfferTransactionsForRetailers: ($sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $retailerId, $retailerLocationId, $offerId, $offerLocationId, $redeemed, $reservationsOnly, $couponType, $offerType, $specialOfferType, $customerAccountIds, $categoryIds, $redeemableStartDate, $redeemableEndDate, $i, $l) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -162,9 +155,8 @@ export default {
         },
 
         // @return OfferListResponse
-        SearchOffersForConsumer: ($version, $latitude, $longitude, $recommendationType, $locationId, $start, $limit, $maxRecommendations, $distanceUnit, $appKey, $deviceId, $accountId, $searchRange, $tags, $supportedPostalCodes, $keyword, $categories, $filters, $offerTypes, $Type_, $sortField, $recommendOfferIds, $retailerLocationIds, $offerId, $includeMission, $includeCategories, $includeFilters, $includeExpired, $includeFavorite, $closestOfferOnly, $searchExpression, $groupBy) => {
+        SearchOffersForConsumer: ($latitude, $longitude, $recommendationType, $locationId, $start, $limit, $maxRecommendations, $distanceUnit, $appKey, $deviceId, $accountId, $searchRange, $tags, $supportedPostalCodes, $keyword, $categories, $filters, $offerTypes, $Type_, $sortField, $recommendOfferIds, $retailerLocationIds, $offerId, $includeMission, $includeCategories, $includeFilters, $includeExpired, $includeFavorite, $closestOfferOnly, $searchExpression, $groupBy) => {
             return {
-                "version": "3.16",
                 "latitude": "1.2",
                 "longitude": "1.2",
                 "recommendationType": "recommendationType_example",
@@ -200,9 +192,8 @@ export default {
         },
 
         // @return OfferListResponse
-        TopOfferTransactions: ($version, $start, $limit) => {
+        TopOfferTransactions: ($start, $limit) => {
             return {
-                "version": "3.16",
                 "start": "56",
                 "limit": "56"
             };
@@ -213,9 +204,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        BatchUpdateOfferLocations: ($version, $data, $deviceId, $accountId) => {
+        BatchUpdateOfferLocations: ($data, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "data": "data_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -223,9 +213,8 @@ export default {
         },
 
         // @return RetailerOfferResponse
-        CreateOffer: ($version, $includeOfferLocations, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $offerType, $specialOfferType, $offerVisibility, $active, $deviceId, $accountId, $tags, $parentOfferId, $retailerLocationIds, $offerLocations, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary) => {
+        CreateOffer: ($includeOfferLocations, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $offerType, $specialOfferType, $offerVisibility, $active, $deviceId, $accountId, $tags, $parentOfferId, $retailerLocationIds, $offerLocations, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary) => {
             return {
-                "version": "3.16",
                 "includeOfferLocations": "true",
                 "title": "title_example",
                 "barcodeType": "barcodeType_example",
@@ -316,9 +305,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteOffer: ($version, $offerId, $deviceId, $accountId) => {
+        DeleteOffer: ($offerId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "offerId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -326,9 +314,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteOfferLocation: ($version, $offerLocationId, $deviceId, $accountId) => {
+        DeleteOfferLocation: ($offerLocationId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "offerLocationId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -336,9 +323,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RedeemOfferTransaction: ($version, $offerTransactionId, $status, $deviceId, $accountId, $offerLocationId) => {
+        RedeemOfferTransaction: ($offerTransactionId, $status, $deviceId, $accountId, $offerLocationId) => {
             return {
-                "version": "3.16",
                 "offerTransactionId": "789",
                 "status": "56",
                 "deviceId": "deviceId_example",
@@ -348,9 +334,8 @@ export default {
         },
 
         // @return RetailerOfferResponse
-        UpdateOffer: ($version, $offerId, $includeOfferLocations, $deviceId, $accountId, $parentOfferId, $retailerLocationIds, $offerLocations, $tags, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $offerType, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary) => {
+        UpdateOffer: ($offerId, $includeOfferLocations, $deviceId, $accountId, $parentOfferId, $retailerLocationIds, $offerLocations, $tags, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $offerType, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary) => {
             return {
-                "version": "3.16",
                 "offerId": "789",
                 "includeOfferLocations": "true",
                 "deviceId": "deviceId_example",
@@ -442,9 +427,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateOfferStatus: ($version, $offerIds, $active, $deviceId, $accountId) => {
+        UpdateOfferStatus: ($offerIds, $active, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "offerIds": "offerIds_example",
                 "active": "true",
                 "deviceId": "deviceId_example",

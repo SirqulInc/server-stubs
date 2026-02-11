@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return SirqulResponse
-        GetStatusCSV: ($version, $accountId, $batchId, $responseGroup, $start, $limit) => {
+        GetStatusCSV: ($accountId, $batchId, $responseGroup, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "batchId": "789",
                 "responseGroup": "responseGroup_example",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return CsvImportResponse
-        ListStatusCSV: ($version, $accountId, $start, $limit) => {
+        ListStatusCSV: ($accountId, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "start": "56",
                 "limit": "56"
@@ -40,9 +38,8 @@ export default {
         },
 
         // @return CsvImportResponse
-        StatusCSV: ($version, $accountId, $batchId) => {
+        StatusCSV: ($accountId, $batchId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "batchId": "789"
             };
@@ -53,9 +50,8 @@ export default {
     Mutation: {
 
         // @return CsvImportResponse
-        UploadCSV: ($version, $accountId, $uploadType, $importFile, $fileFormat, $appKey) => {
+        UploadCSV: ($accountId, $uploadType, $importFile, $fileFormat, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "uploadType": "uploadType_example",
                 "importFile": "BINARY_DATA_HERE",

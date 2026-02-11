@@ -18,16 +18,15 @@ export default {
     Query: {
 
         // @return AgeGroupResponse
-        GetAgeGroups: ($version) => {
+        GetAgeGroups: () => {
             return {
-                "version": "3.16"
+                
             };
         },
 
         // @return AudienceResponse
-        GetAudience: ($version, $accountId, $audienceId, $appKey, $returnAccountCount, $returnAlbumCount, $albumTypesForCount) => {
+        GetAudience: ($accountId, $audienceId, $appKey, $returnAccountCount, $returnAlbumCount, $albumTypesForCount) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "audienceId": "789",
                 "appKey": "appKey_example",
@@ -38,9 +37,8 @@ export default {
         },
 
         // @return SearchResponse
-        GetAudienceList: ($version, $accountId, $albumIds, $keyword, $keywordFields, $sortField, $descending, $start, $limit, $sendSuggestion, $activeOnly, $groupByGroupingId, $appKey, $returnGlobal, $exactKeyword, $audienceType, $audienceTypes, $returnAccountCount, $returnAlbumCount, $albumTypesForCount) => {
+        GetAudienceList: ($accountId, $albumIds, $keyword, $keywordFields, $sortField, $descending, $start, $limit, $sendSuggestion, $activeOnly, $groupByGroupingId, $appKey, $returnGlobal, $exactKeyword, $audienceType, $audienceTypes, $returnAccountCount, $returnAlbumCount, $albumTypesForCount) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "albumIds": "albumIds_example",
                 "keyword": "keyword_example",
@@ -64,33 +62,30 @@ export default {
         },
 
         // @return AudienceDeviceResponse
-        GetDevices: ($version, $includeInactive) => {
+        GetDevices: ($includeInactive) => {
             return {
-                "version": "3.16",
                 "includeInactive": "true"
             };
         },
 
         // @return SirqulResponse
-        GetExperiences: ($version) => {
+        GetExperiences: () => {
             return {
-                "version": "3.16"
+                
             };
         },
 
         // @return AudienceResponse
-        GetGroupedAudiences: ($version, $accountId, $audienceGroupingId) => {
+        GetGroupedAudiences: ($accountId, $audienceGroupingId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "audienceGroupingId": "audienceGroupingId_example"
             };
         },
 
         // @return OfferListResponse
-        ListByAudience: ($version, $limit, $gender, $age, $categoryIds, $latitude, $longitude) => {
+        ListByAudience: ($limit, $gender, $age, $categoryIds, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "limit": "56",
                 "gender": "gender_example",
                 "age": "56",
@@ -101,9 +96,8 @@ export default {
         },
 
         // @return OfferListResponse
-        ListLastestByAccount: ($version, $accountId, $timeframe, $suggestionType) => {
+        ListLastestByAccount: ($accountId, $timeframe, $suggestionType) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "timeframe": "56",
                 "suggestionType": "suggestionType_example"
@@ -115,9 +109,8 @@ export default {
     Mutation: {
 
         // @return AudienceResponse
-        CreateAudience: ($version, $accountId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $startTimeOffset, $endTimeOffset, $sendSuggestion, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName) => {
+        CreateAudience: ($accountId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $startTimeOffset, $endTimeOffset, $sendSuggestion, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "description": "description_example",
@@ -151,18 +144,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteAudience: ($version, $accountId, $audienceId) => {
+        DeleteAudience: ($accountId, $audienceId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "audienceId": "789"
             };
         },
 
         // @return OfferListResponse
-        ListByAccount: ($version, $accountId, $limit, $suggestionType) => {
+        ListByAccount: ($accountId, $limit, $suggestionType) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "limit": "56",
                 "suggestionType": "suggestionType_example"
@@ -170,9 +161,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SendByAccount: ($version, $accountId, $latitude, $longitude) => {
+        SendByAccount: ($accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "latitude": "1.2",
                 "longitude": "1.2"
@@ -180,9 +170,8 @@ export default {
         },
 
         // @return AudienceResponse
-        UpdateAudience: ($version, $accountId, $audienceId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $active, $sendSuggestion, $startTimeOffset, $endTimeOffset, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName) => {
+        UpdateAudience: ($accountId, $audienceId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $active, $sendSuggestion, $startTimeOffset, $endTimeOffset, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "audienceId": "789",
                 "name": "name_example",

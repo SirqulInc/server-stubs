@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return UserActivityResponse
-        Activities: ($version, $start, $limit, $accountId) => {
+        Activities: ($start, $limit, $accountId) => {
             return {
-                "version": "3.16",
                 "start": "56",
                 "limit": "56",
                 "accountId": "789"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return ChartData
-        AggregatedFilteredUsage: ($version, $deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $groupByRoot, $groupBy, $distinctCount, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude) => {
+        AggregatedFilteredUsage: ($deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $groupByRoot, $groupBy, $distinctCount, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "applicationId": "789",
@@ -66,9 +64,8 @@ export default {
         },
 
         // @return ChartData
-        FilteredUsage: ($version, $deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $customId, $customType, $customValue, $customValue2, $customLong, $customLong2, $customMessage, $customMessage2, $groupBy, $distinctCount, $sumColumn, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude) => {
+        FilteredUsage: ($deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $customId, $customType, $customValue, $customValue2, $customLong, $customLong2, $customMessage, $customMessage2, $groupBy, $distinctCount, $sumColumn, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "applicationId": "789",
@@ -116,9 +113,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        Usage: ($version, $tag, $deviceId, $accountId, $applicationId, $appKey, $appVersion, $device, $deviceType, $deviceOS, $model, $latitude, $longitude, $customId, $customType, $achievementIncrement, $city, $state, $country, $zip, $locationDescription, $clientTime, $errorMessage, $ip, $userAgent, $backgroundEvent, $customMessage, $customMessage2, $customValue, $customValue2, $customLong, $customLong2) => {
+        Usage: ($tag, $deviceId, $accountId, $applicationId, $appKey, $appVersion, $device, $deviceType, $deviceOS, $model, $latitude, $longitude, $customId, $customType, $achievementIncrement, $city, $state, $country, $zip, $locationDescription, $clientTime, $errorMessage, $ip, $userAgent, $backgroundEvent, $customMessage, $customMessage2, $customValue, $customValue2, $customLong, $customLong2) => {
             return {
-                "version": "3.16",
                 "tag": "tag_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -154,9 +150,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UsageBatch: ($version, $appKey, $device, $data, $deviceId, $accountId, $appVersion, $deviceType, $deviceOS, $model, $updateRanking, $returnSummaryResponse) => {
+        UsageBatch: ($appKey, $device, $data, $deviceId, $accountId, $appVersion, $deviceType, $deviceOS, $model, $updateRanking, $returnSummaryResponse) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "device": "device_example",
                 "data": "data_example",

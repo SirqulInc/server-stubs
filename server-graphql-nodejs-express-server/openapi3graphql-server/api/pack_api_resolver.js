@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return PackResponse
-        GetPack: ($version, $accountId, $packId, $includeGameData) => {
+        GetPack: ($accountId, $packId, $includeGameData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "packId": "789",
                 "includeGameData": "true"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return PackResponse
-        SearchPacks: ($version, $accountId, $sortField, $descending, $keyword, $packType, $start, $limit, $includeGameData, $includeInactive, $appKey) => {
+        SearchPacks: ($accountId, $sortField, $descending, $keyword, $packType, $start, $limit, $includeGameData, $includeInactive, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -49,9 +47,8 @@ export default {
     Mutation: {
 
         // @return PackResponse
-        CreatePack: ($version, $accountId, $title, $packOrder, $price, $highest, $allocateTickets, $ticketCount, $description, $searchTags, $active, $gameType, $appKey, $packType, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $priceType, $gameLevelIds, $inGame, $ticketType, $points) => {
+        CreatePack: ($accountId, $title, $packOrder, $price, $highest, $allocateTickets, $ticketCount, $description, $searchTags, $active, $gameType, $appKey, $packType, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $priceType, $gameLevelIds, $inGame, $ticketType, $points) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "title": "title_example",
                 "packOrder": "789",
@@ -80,18 +77,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeletePack: ($version, $accountId, $packId) => {
+        DeletePack: ($accountId, $packId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "packId": "789"
             };
         },
 
         // @return PackResponse
-        UpdatePack: ($version, $accountId, $packId, $allocateTickets, $ticketCount, $title, $description, $searchTags, $active, $gameType, $appKey, $packType, $packOrder, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $price, $priceType, $gameLevelIds, $inGame, $highest, $ticketType, $points) => {
+        UpdatePack: ($accountId, $packId, $allocateTickets, $ticketCount, $title, $description, $searchTags, $active, $gameType, $appKey, $packType, $packOrder, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $price, $priceType, $gameLevelIds, $inGame, $highest, $ticketType, $points) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "packId": "789",
                 "allocateTickets": "true",

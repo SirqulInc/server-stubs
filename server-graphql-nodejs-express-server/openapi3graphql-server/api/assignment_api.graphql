@@ -15,8 +15,6 @@
 
 
 input AssignmentCreateInput {
-    
-    version: Float!, 
     # the user account id
     accountId: Int!, 
     # the name for the assignment
@@ -34,8 +32,6 @@ input AssignmentCreateInput {
 }
 
 input AssignmentDeleteInput {
-    
-    version: Float!, 
     # the user account id
     accountId: Int!, 
     # the assignment id
@@ -43,8 +39,6 @@ input AssignmentDeleteInput {
 }
 
 input AssignmentStatusCreateInput {
-    
-    version: Float!, 
     # the user account id
     accountId: Int!, 
     # the assignment id
@@ -70,8 +64,6 @@ input AssignmentStatusCreateInput {
 }
 
 input AssignmentStatusDeleteInput {
-    
-    version: Float!, 
     # the user account id
     accountId: Int!, 
     # the assignment status id
@@ -79,8 +71,6 @@ input AssignmentStatusDeleteInput {
 }
 
 input AssignmentStatusUpdateInput {
-    
-    version: Float!, 
     # the user account id
     accountId: Int!, 
     # the assignment status id
@@ -106,8 +96,6 @@ input AssignmentStatusUpdateInput {
 }
 
 input AssignmentUpdateInput {
-    
-    version: Float!, 
     # the user account id
     accountId: Int!, 
     # the assignment id
@@ -129,7 +117,6 @@ input AssignmentUpdateInput {
 type Mutation {
   # Create Assignment
   # Create an assignment.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param String! name the name for the assignment
   # @param Int! assigneeAccountId the account id to assign to
@@ -141,14 +128,12 @@ type Mutation {
   AssignmentCreate(input: AssignmentCreateInput!): AssignmentResponse
   # Delete Assignment
   # Delete an assignment.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentId the assignment id
   # @return [SirqulResponse]
   AssignmentDelete(input: AssignmentDeleteInput!): SirqulResponse
   # Create Assignment Status
   # Create an assignment status.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentId the assignment id
   # @param Int! scheduledNotificationId the scheduled notification id for reminders
@@ -164,14 +149,12 @@ type Mutation {
   AssignmentStatusCreate(input: AssignmentStatusCreateInput!): AssignmentStatusResponse
   # Deletes Assignment Status
   # Deletes an assignment status.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentStatusId the assignment status id
   # @return [SirqulResponse]
   AssignmentStatusDelete(input: AssignmentStatusDeleteInput!): SirqulResponse
   # Update Assignment Status
   # Updates an assignment status.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentStatusId the assignment status id
   # @param Int! scheduledNotificationId the scheduled notification id for reminders
@@ -187,7 +170,6 @@ type Mutation {
   AssignmentStatusUpdate(input: AssignmentStatusUpdateInput!): AssignmentStatusResponse
   # Update Assignment
   # Updates an assignment.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentId the assignment id
   # @param String! name the name of the assignment
@@ -203,21 +185,18 @@ type Mutation {
 type Query {
   # Search Assignment Assignees
   # Search for avaiable users for creating or updating assignment.
-  # @param Float! version 
   # @param Int! accountId The account id sending the request
   # @param String! keyword The keyword to filter the returned results
   # @return [AccountMiniResponse]
-  AssigmentAssigneeAccountSearch(version: Float!, accountId: Int!, keyword: String!): AccountMiniResponse
+  AssigmentAssigneeAccountSearch(accountId: Int!, keyword: String!): AccountMiniResponse
   # Get Assignment
   # Get the details of an assignment.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentId the assignment id
   # @return [AssignmentResponse]
-  AssignmentGet(version: Float!, accountId: Int!, assignmentId: Int!): AssignmentResponse
+  AssignmentGet(accountId: Int!, assignmentId: Int!): AssignmentResponse
   # Search Assignments
   # Search for assignments by the given parameters.
-  # @param Float! version 
   # @param Int! accountId the account sending the request
   # @param String! sortField sort by table field
   # @param Boolean! descending return results in descending order or not
@@ -230,17 +209,15 @@ type Query {
   # @param String! currentStatusType filter results by assignment status
   # @param String! keyword filter results by keyword search that matches the assignee, creator, or retailer location name
   # @return [AssignmentResponse]
-  AssignmentSearch(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, creatorAccountId: Int!, assigneeAccountIds: String!, retailerLocationIds: String!, currentStatusType: String!, keyword: String!): AssignmentResponse
+  AssignmentSearch(accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, creatorAccountId: Int!, assigneeAccountIds: String!, retailerLocationIds: String!, currentStatusType: String!, keyword: String!): AssignmentResponse
   # Get Assignment Status
   # Get an assignment status.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param Int! assignmentStatusId the assignment status id
   # @return [AssignmentStatusResponse]
-  AssignmentStatusGet(version: Float!, accountId: Int!, assignmentStatusId: Int!): AssignmentStatusResponse
+  AssignmentStatusGet(accountId: Int!, assignmentStatusId: Int!): AssignmentStatusResponse
   # Search Assignment Statuses
   # Search on assignment statuses.
-  # @param Float! version 
   # @param Int! accountId the user account id
   # @param String! sortField the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP
   # @param Boolean! descending determines whether the sorted list is in descending or ascending order
@@ -254,6 +231,6 @@ type Query {
   # @param String! statusType filter results by the status type
   # @param String! keyword filter results by keyword search
   # @return [AssignmentStatusResponse]
-  AssignmentStatusSearch(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, assignmentId: Int!, creatorAccountId: Int!, assigneeAccountId: Int!, retailerLocationId: Int!, statusType: String!, keyword: String!): AssignmentStatusResponse
+  AssignmentStatusSearch(accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, assignmentId: Int!, creatorAccountId: Int!, assigneeAccountId: Int!, retailerLocationId: Int!, statusType: String!, keyword: String!): AssignmentStatusResponse
 }
 

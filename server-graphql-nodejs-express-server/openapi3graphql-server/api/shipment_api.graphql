@@ -15,29 +15,21 @@
 
 
 input CancelShipmentInput {
-    
-    version: Float!, 
     # the id of the shipment to cancel
     Id_: Int!
 }
 
 input CreateShipmentInput {
     
-    version: Float!, 
-    
     body: ShipmentInput
 }
 
 input DeleteShipmentInput {
-    
-    version: Float!, 
     # the id of the shipment to delete
     Id_: Int!
 }
 
 input UpdateShipmentInput {
-    
-    version: Float!, 
     # the id of the shipment to update
     Id_: Int!, 
     
@@ -45,8 +37,6 @@ input UpdateShipmentInput {
 }
 
 input UpdateShipmentStatusInput {
-    
-    version: Float!, 
     # the id of the shipment to update status
     Id_: Int!, 
     
@@ -56,32 +46,27 @@ input UpdateShipmentStatusInput {
 type Mutation {
   # Cancel Shipment
   # Remove shipment from route
-  # @param Float! version 
   # @param Int! Id_ the id of the shipment to cancel
   # @return [Boolean]
   CancelShipment(input: CancelShipmentInput!): Boolean
   # Create Shipment
   # Create new shipment
-  # @param Float! version 
   # @param Shipment body 
   # @return [Shipment]
   CreateShipment(input: CreateShipmentInput!): Shipment
   # Delete Shipment
   # Delete an existing shipment
-  # @param Float! version 
   # @param Int! Id_ the id of the shipment to delete
   # @return [Boolean]
   DeleteShipment(input: DeleteShipmentInput!): Boolean
   # Update Shipment
   # Update an existing shipment
-  # @param Float! version 
   # @param Int! Id_ the id of the shipment to update
   # @param Shipment body 
   # @return [Shipment]
   UpdateShipment(input: UpdateShipmentInput!): Shipment
   # Uupdate Shipment Status
   # Update status of an existing shipment
-  # @param Float! version 
   # @param Int! Id_ the id of the shipment to update status
   # @param Boolean! body 
   # @return [Boolean]
@@ -91,13 +76,11 @@ type Mutation {
 type Query {
   # Get Shipment
   # Get an existing shipment
-  # @param Float! version 
   # @param Int! Id_ the id of the shipment to get
   # @return [Shipment]
-  GetShipment(version: Float!, Id_: Int!): Shipment
+  GetShipment(Id_: Int!): Shipment
   # Search Shipments
   # Search for shipments
-  # @param Float! version 
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
@@ -107,6 +90,6 @@ type Query {
   # @param Int! riderId The rider associate to this shipment
   # @param Int! routeId The route associate to this shipment
   # @return [Shipment]
-  SearchShipments(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, ownerId: Int!, riderId: Int!, routeId: Int!): Shipment
+  SearchShipments(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, ownerId: Int!, riderId: Int!, routeId: Int!): Shipment
 }
 

@@ -15,8 +15,6 @@
 
 
 input CreateFollowingInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom Parameters
@@ -26,8 +24,6 @@ input CreateFollowingInput {
 }
 
 input CreateSpaceInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -39,8 +35,6 @@ input CreateSpaceInput {
 }
 
 input CreateVatomEventInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -52,8 +46,6 @@ input CreateVatomEventInput {
 }
 
 input DeleteFollowingInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom Rels Key
@@ -63,8 +55,6 @@ input DeleteFollowingInput {
 }
 
 input DeletePointsBalanceInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -76,8 +66,6 @@ input DeletePointsBalanceInput {
 }
 
 input DeleteSpaceInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -89,8 +77,6 @@ input DeleteSpaceInput {
 }
 
 input DeleteVatomEventInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -102,8 +88,6 @@ input DeleteVatomEventInput {
 }
 
 input DeleteVatomNFTInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom NFT Id
@@ -113,8 +97,6 @@ input DeleteVatomNFTInput {
 }
 
 input ExecuteActionOnNFTInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom NFT Id
@@ -126,8 +108,6 @@ input ExecuteActionOnNFTInput {
 }
 
 input PerformActionOnNFTInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom NFT Id
@@ -141,8 +121,6 @@ input PerformActionOnNFTInput {
 }
 
 input RedeemNFTInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -154,8 +132,6 @@ input RedeemNFTInput {
 }
 
 input RedeemUserCoinsAsBusinessInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom User Id
@@ -169,8 +145,6 @@ input RedeemUserCoinsAsBusinessInput {
 }
 
 input SendNFTInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -184,8 +158,6 @@ input SendNFTInput {
 }
 
 input SetPointsBalanceAsBusinessInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -201,8 +173,6 @@ input SetPointsBalanceAsBusinessInput {
 }
 
 input TransferUserCoinsInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom User Id
@@ -214,8 +184,6 @@ input TransferUserCoinsInput {
 }
 
 input UpdateBusinessCoinsInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -227,8 +195,6 @@ input UpdateBusinessCoinsInput {
 }
 
 input UpdateEventGuestListInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -242,8 +208,6 @@ input UpdateEventGuestListInput {
 }
 
 input UpdateSpaceInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -257,8 +221,6 @@ input UpdateSpaceInput {
 }
 
 input UpdateUserCoinsAsBusinessInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom User Id
@@ -272,8 +234,6 @@ input UpdateUserCoinsAsBusinessInput {
 }
 
 input UpdateUserProfileInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Vatom Parameters
@@ -283,8 +243,6 @@ input UpdateUserProfileInput {
 }
 
 input UpdateVatomEventInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Sirqul Application Key
@@ -300,7 +258,6 @@ input UpdateVatomEventInput {
 type Mutation {
   # Create following
   # Create following.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
@@ -308,7 +265,6 @@ type Mutation {
   CreateFollowing(input: CreateFollowingInput!): Boolean
   # Create Vatom Space
   # Create a Vatom space.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
@@ -317,7 +273,6 @@ type Mutation {
   CreateSpace(input: CreateSpaceInput!): Boolean
   # Create Vatom Event
   # Create a Vatom event.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
@@ -326,7 +281,6 @@ type Mutation {
   CreateVatomEvent(input: CreateVatomEventInput!): Boolean
   # Delete following
   # Delete following.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomRelsKey Vatom Rels Key
   # @param Boolean! returnRawResponse Return raw response
@@ -334,7 +288,6 @@ type Mutation {
   DeleteFollowing(input: DeleteFollowingInput!): Boolean
   # Reset All Points Balance
   # Reset All Points Balance.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomCampaignId Vatom Campaign Id
@@ -343,7 +296,6 @@ type Mutation {
   DeletePointsBalance(input: DeletePointsBalanceInput!): Boolean
   # Delete Vatom Space
   # Delete a Vatom space.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomSpaceId Vatom Space Id
@@ -352,7 +304,6 @@ type Mutation {
   DeleteSpace(input: DeleteSpaceInput!): Boolean
   # Delete Vatom Event
   # Delete a Vatom event.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomEventId Vatom Event Id
@@ -361,7 +312,6 @@ type Mutation {
   DeleteVatomEvent(input: DeleteVatomEventInput!): Boolean
   # Delete Vatom NFT
   # Delete Vatom NFT
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomId Vatom NFT Id
   # @param Boolean! returnRawResponse Return raw response
@@ -369,7 +319,6 @@ type Mutation {
   DeleteVatomNFT(input: DeleteVatomNFTInput!): Boolean
   # Execute Action on NFT
   # Execute Action on NFT.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomId Vatom NFT Id
   # @param String! vatomParameters Vatom Parameters
@@ -378,7 +327,6 @@ type Mutation {
   ExecuteActionOnNFT(input: ExecuteActionOnNFTInput!): Boolean
   # Perform Action on NFT
   # Perform Action on NFT.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomId Vatom NFT Id
   # @param String! vatomAction Vatom Action
@@ -388,7 +336,6 @@ type Mutation {
   PerformActionOnNFT(input: PerformActionOnNFTInput!): Boolean
   # Redeem NFT
   # Redeem an NFT.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
@@ -397,7 +344,6 @@ type Mutation {
   RedeemNFT(input: RedeemNFTInput!): Boolean
   # Redeem the coins for a user (as a Business)
   # Redeem the coins for a user (as a Business).
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! appKey Sirqul Application Key
@@ -407,7 +353,6 @@ type Mutation {
   RedeemUserCoinsAsBusiness(input: RedeemUserCoinsAsBusinessInput!): Boolean
   # Send NFT
   # Send an NFT.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomCampaignId Vatom Campaign Id
@@ -417,7 +362,6 @@ type Mutation {
   SendNFT(input: SendNFTInput!): Boolean
   # Set Points Balance as Business
   # Sets the points balance of a Vatom user.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomUserId Vatom User Id
@@ -428,7 +372,6 @@ type Mutation {
   SetPointsBalanceAsBusiness(input: SetPointsBalanceAsBusinessInput!): Boolean
   # Transfer coins from Vatom Users
   # Transfer coins from Vatom Users.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! vatomParameters Vatom Parameters
@@ -437,7 +380,6 @@ type Mutation {
   TransferUserCoins(input: TransferUserCoinsInput!): Boolean
   # Fund coins for a Business
   # Fund/update coins for a Businesss.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
@@ -446,7 +388,6 @@ type Mutation {
   UpdateBusinessCoins(input: UpdateBusinessCoinsInput!): Boolean
   # Update Vatom Event Guest List
   # Update the guest list of an event.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomEventId Vatom Event Id
@@ -456,7 +397,6 @@ type Mutation {
   UpdateEventGuestList(input: UpdateEventGuestListInput!): Boolean
   # Update Vatom Space
   # Update a Vatom space.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomSpaceId Vatom Space Id
@@ -466,7 +406,6 @@ type Mutation {
   UpdateSpace(input: UpdateSpaceInput!): Boolean
   # Update the coins for a user (as a Business)
   # Update the coins for a user (as a Business).
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! appKey Sirqul Application Key
@@ -476,7 +415,6 @@ type Mutation {
   UpdateUserCoinsAsBusiness(input: UpdateUserCoinsAsBusinessInput!): Boolean
   # Update Vatom User Profile
   # Gets the logged in user&#39;s profile in Vatom.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
@@ -484,7 +422,6 @@ type Mutation {
   UpdateUserProfile(input: UpdateUserProfileInput!): Boolean
   # Update Vatom Event
   # Update a Vatom event.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomEventId Vatom Event Id
@@ -497,282 +434,249 @@ type Mutation {
 type Query {
   # Search Vatom Geo Map
   # Search Vatom Geo Map
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GeomapSearch(version: Float!, accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  GeomapSearch(accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom Business Behaviors
   # Gets the behaviors of a business.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetBusinessBehaviors(version: Float!, accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
+  GetBusinessBehaviors(accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
   # Get the coins for a Business
   # Get the coins for a Businesss.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetBusinessCoinsBalance(version: Float!, accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
+  GetBusinessCoinsBalance(accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
   # Get the user business ids
   # Get the business ids the logged in user has access to.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetBusinessIds(version: Float!, accountId: Int!, returnRawResponse: Boolean!): Boolean
+  GetBusinessIds(accountId: Int!, returnRawResponse: Boolean!): Boolean
   # Get Vatom Business Info
   # Gets the business info tied to this account.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetBusinessInfo(version: Float!, accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  GetBusinessInfo(accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom Business Users
   # Gets the users of a business.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetBusinessUsers(version: Float!, accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
+  GetBusinessUsers(accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
   # Get Campaign Group Entities
   # Get campaign group entities.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomCampaignId Vatom Campaign Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetCampaignGroupEntities(version: Float!, accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
+  GetCampaignGroupEntities(accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
   # Get Campaign Group Rules
   # Get campaign group rules.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomCampaignId Vatom Campaign Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetCampaignGroupRules(version: Float!, accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
+  GetCampaignGroupRules(accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
   # Get Campaign Group Stats
   # Get campaign group stats.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomCampaignId Vatom Campaign Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetCampaignGroupStats(version: Float!, accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
+  GetCampaignGroupStats(accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
   # Get Campaign Info
   # Gets the info on a campaign.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomCampaignId Vatom Campaign Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetCampaignInfo(version: Float!, accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
+  GetCampaignInfo(accountId: Int!, appKey: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom Event Guest List
   # Gets the guest list of an event.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomEventId Vatom Event Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetEventGuestList(version: Float!, accountId: Int!, appKey: String!, vatomEventId: String!, returnRawResponse: Boolean!): Boolean
+  GetEventGuestList(accountId: Int!, appKey: String!, vatomEventId: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom User&#39;s Inventory
   # Gets the logged in user&#39;s Vatom Inventory.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetInventory(version: Float!, accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  GetInventory(accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # Get following
   # Get following.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetMyFollowing(version: Float!, accountId: Int!, returnRawResponse: Boolean!): Boolean
+  GetMyFollowing(accountId: Int!, returnRawResponse: Boolean!): Boolean
   # Get Points Balance
   # Gets the points balance of a Vatom user.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! vatomCampaignId Vatom Campaign Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetPointsBalance(version: Float!, accountId: Int!, vatomUserId: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
+  GetPointsBalance(accountId: Int!, vatomUserId: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
   # Get Points Balance as Business
   # Gets the points balance of a Vatom user.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomUserId Vatom User Id
   # @param String! vatomCampaignId Vatom Campaign Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetPointsBalanceAsBusiness(version: Float!, accountId: Int!, appKey: String!, vatomUserId: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
+  GetPointsBalanceAsBusiness(accountId: Int!, appKey: String!, vatomUserId: String!, vatomCampaignId: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom Space
   # Gets the details of a space.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomSpaceId Vatom Space Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetSpace(version: Float!, accountId: Int!, appKey: String!, vatomSpaceId: String!, returnRawResponse: Boolean!): Boolean
+  GetSpace(accountId: Int!, appKey: String!, vatomSpaceId: String!, returnRawResponse: Boolean!): Boolean
   # Get the coins for a user (as a Business)
   # Get the coins for a user (as a Business).
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! appKey Sirqul Application Key
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetUserCoinsAsBusiness(version: Float!, accountId: Int!, vatomUserId: String!, appKey: String!, returnRawResponse: Boolean!): Boolean
+  GetUserCoinsAsBusiness(accountId: Int!, vatomUserId: String!, appKey: String!, returnRawResponse: Boolean!): Boolean
   # Gets the coins balance for a Vatom User
   # Gets the coins balance for a Vatom User.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetUserCoinsBalance(version: Float!, accountId: Int!, vatomUserId: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  GetUserCoinsBalance(accountId: Int!, vatomUserId: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # Get user followers
   # Get user followers.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetUserFollowers(version: Float!, accountId: Int!, vatomUserId: String!, returnRawResponse: Boolean!): Boolean
+  GetUserFollowers(accountId: Int!, vatomUserId: String!, returnRawResponse: Boolean!): Boolean
   # Get user following
   # Get user following.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetUserFollowing(version: Float!, accountId: Int!, vatomUserId: String!, returnRawResponse: Boolean!): Boolean
+  GetUserFollowing(accountId: Int!, vatomUserId: String!, returnRawResponse: Boolean!): Boolean
   # Get User Info
   # Get a User&#39;s Info.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetUserInfo(version: Float!, accountId: Int!, vatomUserId: String!, returnRawResponse: Boolean!): Boolean
+  GetUserInfo(accountId: Int!, vatomUserId: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom User Profile
   # Gets the logged in user&#39;s profile in Vatom.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetUserProfile(version: Float!, accountId: Int!, returnRawResponse: Boolean!): Boolean
+  GetUserProfile(accountId: Int!, returnRawResponse: Boolean!): Boolean
   # Get Vatom Event
   # Gets the details of a event.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomEventId Vatom Event Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetVatomEvent(version: Float!, accountId: Int!, appKey: String!, vatomEventId: String!, returnRawResponse: Boolean!): Boolean
+  GetVatomEvent(accountId: Int!, appKey: String!, vatomEventId: String!, returnRawResponse: Boolean!): Boolean
   # Get Vatom NFT Details
   # Get Vatom NFT Details
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomId Vatom NFT Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  GetVatomNFT(version: Float!, accountId: Int!, vatomId: String!, returnRawResponse: Boolean!): Boolean
+  GetVatomNFT(accountId: Int!, vatomId: String!, returnRawResponse: Boolean!): Boolean
   # List Vatom Communities
   # Gets the communities tied to a business.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  ListCommunities(version: Float!, accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  ListCommunities(accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # List Vatom Events
   # Gets the events tied to a business.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  ListEvents(version: Float!, accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  ListEvents(accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # List Vatom Spaces
   # Gets the spaces tied to a business.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  ListSpaces(version: Float!, accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  ListSpaces(accountId: Int!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # List Coin Transactions for a Vatom User
   # Gets the logged in user&#39;s Vatom coin transactions.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  ListUserCoinTransactions(version: Float!, accountId: Int!, vatomUserId: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  ListUserCoinTransactions(accountId: Int!, vatomUserId: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # List coin transactions for a user (as a Business)
   # List coin transactions for a user (as a Business).
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomUserId Vatom User Id
   # @param String! appKey Sirqul Application Key
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  ListUserCoinTransactionsAsBusiness(version: Float!, accountId: Int!, vatomUserId: String!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  ListUserCoinTransactionsAsBusiness(accountId: Int!, vatomUserId: String!, appKey: String!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # Search for Vatom Businesses
   # Searches for Vatom businesses.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  SearchBusinesses(version: Float!, accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  SearchBusinesses(accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
   # Search Campaign Groups
   # Search campaign groups.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! appKey Sirqul Application Key
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  SearchCampaignGroups(version: Float!, accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
+  SearchCampaignGroups(accountId: Int!, appKey: String!, returnRawResponse: Boolean!): Boolean
   # Search User Identities
   # Search User Identities.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  SearchIdentities(version: Float!, accountId: Int!, returnRawResponse: Boolean!): Boolean
+  SearchIdentities(accountId: Int!, returnRawResponse: Boolean!): Boolean
   # Search Vatom User&#39;s Inventory
   # Searches the logged in user&#39;s Vatom Inventory.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! vatomParameters Vatom Parameters
   # @param Boolean! returnRawResponse Return raw response
   # @return [Boolean]
-  SearchInventory(version: Float!, accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
+  SearchInventory(accountId: Int!, vatomParameters: String!, returnRawResponse: Boolean!): Boolean
 }
 

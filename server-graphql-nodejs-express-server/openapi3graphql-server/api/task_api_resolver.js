@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return TaskResponse
-        GetTask: ($version, $accountId, $taskId) => {
+        GetTask: ($accountId, $taskId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "taskId": "789"
             };
         },
 
         // @return TaskResponse
-        SearchTasks: ($version, $accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly) => {
+        SearchTasks: ($accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "groupingId": "groupingId_example",
                 "filter": "filter_example",
@@ -50,9 +48,8 @@ export default {
     Mutation: {
 
         // @return TaskResponse
-        CreateTask: ($version, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active) => {
+        CreateTask: ($accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "appKey": "appKey_example",
@@ -69,18 +66,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteTask: ($version, $accountId, $taskId) => {
+        DeleteTask: ($accountId, $taskId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "taskId": "789"
             };
         },
 
         // @return TaskResponse
-        UpdateTask: ($version, $taskId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active) => {
+        UpdateTask: ($taskId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active) => {
             return {
-                "version": "3.16",
                 "taskId": "789",
                 "accountId": "789",
                 "name": "name_example",

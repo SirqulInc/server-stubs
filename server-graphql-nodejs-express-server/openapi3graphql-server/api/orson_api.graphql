@@ -15,8 +15,6 @@
 
 
 input AddMovieInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Movie Name
@@ -34,8 +32,6 @@ input AddMovieInput {
 }
 
 input BatchInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # A third-party account id that is meaningful to your systems
@@ -53,8 +49,6 @@ input BatchInput {
 }
 
 input CreateInstantEpisodeInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Request Data String
@@ -62,8 +56,6 @@ input CreateInstantEpisodeInput {
 }
 
 input CreateVoiceCanvasInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Enum: \&quot;256x256\&quot; \&quot;512x512\&quot; \&quot;1024x1024\&quot;
@@ -85,8 +77,6 @@ input CreateVoiceCanvasInput {
 }
 
 input EmotionInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # A third-party account id that is meaningful to your systems
@@ -100,8 +90,6 @@ input EmotionInput {
 }
 
 input StartVideoRenderInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Request Data String
@@ -109,8 +97,6 @@ input StartVideoRenderInput {
 }
 
 input SttInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # A third-party account id that is meaningful to your systems
@@ -128,8 +114,6 @@ input SttInput {
 }
 
 input SummarizeTopicsInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # A third-party account id that is meaningful to your systems
@@ -149,8 +133,6 @@ input SummarizeTopicsInput {
 }
 
 input TechTuneInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Number of expected faces
@@ -166,8 +148,6 @@ input TechTuneInput {
 }
 
 input TtsInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Text
@@ -185,7 +165,6 @@ input TtsInput {
 type Mutation {
   # Add Movie
   # Add a movie to be indexed for Topics. Indexing a movie analyses the content and incorporates it into the topics model for future /topics calls. This does not store the movie file long-term.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! movieName Movie Name
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
@@ -197,7 +176,6 @@ type Mutation {
   AddMovie(input: AddMovieInput!): OrsonAiAddMovieResponse
   # Batch Analysis
   # Run several types of analysis on an audio or video file in a single API call, instead of calling several operations for the same file..
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
   # @param Int! limit The number of topics to return
@@ -209,14 +187,12 @@ type Mutation {
   Batch(input: BatchInput!): OrsonAiBatchResponse
   # Creates an instant episode
   # Creates an instant episode for a given StoryStrip by providing all necessary inputs, interview recordings, and pictures, kicking off a render immediately.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! data Request Data String
   # @return [OrsonEpisodeResponse]
   CreateInstantEpisode(input: CreateInstantEpisodeInput!): OrsonEpisodeResponse
   # Create VoiceCanvas images
   # Create VoiceCanvas images for provided text, file upload, or file URL
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! dimensions Enum: \&quot;256x256\&quot; \&quot;512x512\&quot; \&quot;1024x1024\&quot;
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
@@ -230,7 +206,6 @@ type Mutation {
   CreateVoiceCanvas(input: CreateVoiceCanvasInput!): OrsonAiVoiceCanvasResponse
   # Detect emotions
   # Detects emotions in an audio or video recording.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
   # @param String! file An uploaded recording to analyze (Currently limited to 10MB)
@@ -240,14 +215,12 @@ type Mutation {
   Emotion(input: EmotionInput!): OrsonAiEmotionsResponse
   # Starts a StoryStitch video render
   # Starts a StoryStitch video render to produce your final video, returning the status details.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! data Request Data String
   # @return [OrsonRenderResponse]
   StartVideoRender(input: StartVideoRenderInput!): OrsonRenderResponse
   # Speach to Text
   # Accepts a movie URL or uploaded file and transcribes it. You also have the option to translate it into one of our additional supported languages.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
   # @param String! sourceLanguage Source Language
@@ -259,7 +232,6 @@ type Mutation {
   Stt(input: SttInput!): OrsonAiSttResponse
   # Summarize Topics
   # Takes in a string of text sentences (also known as a document) and returns a list of associated topics and their proximity score.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
   # @param String! doc The text to get topics for.
@@ -272,7 +244,6 @@ type Mutation {
   SummarizeTopics(input: SummarizeTopicsInput!): OrsonAiTopicsResponse
   # Detect Technical Issues
   # Analyses a movie file to detect technical issues, such as too few people in frame.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param Int! numFacesExpected Number of expected faces
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
@@ -283,7 +254,6 @@ type Mutation {
   TechTune(input: TechTuneInput!): OrsonAiTechTuneResponse
   # Text to Speach
   # Creates an audio file for the given text, with the option of language and voice selection.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! text Text
   # @param String! thirdPartyAccountId A third-party account id that is meaningful to your systems
@@ -297,113 +267,99 @@ type Mutation {
 type Query {
   # Search Docs
   # Takes in a text string representing one or more sentences and it returns a list of documents which are related to the provided document.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! doc Doc
   # @param Boolean! returnTopics Return Topics
   # @param Int! limit Limit
   # @param Int! offset Offset
   # @return [OrsonAiProtoResponse]
-  AiDocs(version: Float!, accountId: Int!, doc: String!, returnTopics: Boolean!, limit: Int!, offset: Int!): OrsonAiProtoResponse
+  AiDocs(accountId: Int!, doc: String!, returnTopics: Boolean!, limit: Int!, offset: Int!): OrsonAiProtoResponse
   # Find images
   # Returns a list of URIs of images that match the text.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! text Text
   # @param String! parseFlag Parse Flag
   # @param String! fetchFlag Fetch Flag
   # @param String! size Size
   # @return [OrsonAiProtoResponse]
-  AiFindImages(version: Float!, accountId: Int!, text: String!, parseFlag: String!, fetchFlag: String!, size: String!): OrsonAiProtoResponse
+  AiFindImages(accountId: Int!, text: String!, parseFlag: String!, fetchFlag: String!, size: String!): OrsonAiProtoResponse
   # Search Tags
   # Search the tags column of user provided tags using this endpoint.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! tags Tags
   # @param String! conditional Conditional
   # @param Int! limit Limit
   # @param Int! offset Offset
   # @return [OrsonAiProtoResponse]
-  AiTags(version: Float!, accountId: Int!, tags: String!, conditional: String!, limit: Int!, offset: Int!): OrsonAiProtoResponse
+  AiTags(accountId: Int!, tags: String!, conditional: String!, limit: Int!, offset: Int!): OrsonAiProtoResponse
   # Search Text
   # Search the movie text column of movie text using this endpoint.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! terms Terms
   # @param String! conditional Conditional
   # @param Int! limit Limit
   # @param Int! offset Offset
   # @return [OrsonAiProtoResponse]
-  AiText(version: Float!, accountId: Int!, terms: String!, conditional: String!, limit: Int!, offset: Int!): OrsonAiProtoResponse
+  AiText(accountId: Int!, terms: String!, conditional: String!, limit: Int!, offset: Int!): OrsonAiProtoResponse
   # Get Add Movie Result
   # Get the result of an in progress Add Movie request from an earlier POST.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiAddMovieResponse]
-  GetAddMovieResult(version: Float!, requestId: String!, accountId: Int!): OrsonAiAddMovieResponse
+  GetAddMovieResult(requestId: String!, accountId: Int!): OrsonAiAddMovieResponse
   # Get Batch Analysis Results
   # Gets the completed Video Batch results, if done, or an error or status update if not.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiBatchResponse]
-  GetBatch(version: Float!, requestId: String!, accountId: Int!): OrsonAiBatchResponse
+  GetBatch(requestId: String!, accountId: Int!): OrsonAiBatchResponse
   # Get Emotion Results
   # Checks the Emotion analysis and returns in progress, results, or error.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiEmotionsResponse]
-  GetEmotion(version: Float!, requestId: String!, accountId: Int!): OrsonAiEmotionsResponse
+  GetEmotion(requestId: String!, accountId: Int!): OrsonAiEmotionsResponse
   # Check episode status
   # Gets a summary of the episode&#39;s status, including any renders.
-  # @param Float! version 
   # @param Int! episodeId Episode ID
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonEpisodeResponse]
-  GetEpisodeStatus(version: Float!, episodeId: Int!, accountId: Int!): OrsonEpisodeResponse
+  GetEpisodeStatus(episodeId: Int!, accountId: Int!): OrsonEpisodeResponse
   # Check episode status
   # Gets a summary of the episode&#39;s status, including any renders.
-  # @param Float! version 
   # @param String! renderId Render ID
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonRenderResponse]
-  GetRenderStatus(version: Float!, renderId: String!, accountId: Int!): OrsonRenderResponse
+  GetRenderStatus(renderId: String!, accountId: Int!): OrsonRenderResponse
   # Get Speach to Text Result
   # The results of the video transcription and optional translation.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiSttResponse]
-  GetSTT(version: Float!, requestId: String!, accountId: Int!): OrsonAiSttResponse
+  GetSTT(requestId: String!, accountId: Int!): OrsonAiSttResponse
   # Get Text to Speach Result
   # Check the status of an in progress Text-to-Speech call or download the result.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiTtsResponse]
-  GetTTS(version: Float!, requestId: String!, accountId: Int!): OrsonAiTtsResponse
+  GetTTS(requestId: String!, accountId: Int!): OrsonAiTtsResponse
   # Get TechTune Results
   # Get a result or continue waiting for a pending request for TechTune analysis.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiTechTuneResponse]
-  GetTechTune(version: Float!, requestId: String!, accountId: Int!): OrsonAiTechTuneResponse
+  GetTechTune(requestId: String!, accountId: Int!): OrsonAiTechTuneResponse
   # Get Topics
   # Get the result of an in progress Topics Analysis from an earlier POST.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiTopicsResponse]
-  GetTopics(version: Float!, requestId: String!, accountId: Int!): OrsonAiTopicsResponse
+  GetTopics(requestId: String!, accountId: Int!): OrsonAiTopicsResponse
   # Get VoiceCanvas images
   # Get a result or continue waiting for a pending request for VoiceCanvas Images.
-  # @param Float! version 
   # @param String! requestId Orson Request Id
   # @param Int! accountId Sirqul Account Id
   # @return [OrsonAiVoiceCanvasResponse]
-  GetVoiceCanvas(version: Float!, requestId: String!, accountId: Int!): OrsonAiVoiceCanvasResponse
+  GetVoiceCanvas(requestId: String!, accountId: Int!): OrsonAiVoiceCanvasResponse
 }
 

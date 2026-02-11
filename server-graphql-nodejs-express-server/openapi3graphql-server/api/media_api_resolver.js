@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return MediaOfferResponse
-        GetMedia: ($version, $accountId, $mediaId) => {
+        GetMedia: ($accountId, $mediaId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "mediaId": "789"
             };
         },
 
         // @return MediaOfferResponse
-        SearchMedia: ($version, $accountId, $activeOnly, $sortField, $descending, $keyword, $categoryIds, $filterIds, $start, $limit) => {
+        SearchMedia: ($accountId, $activeOnly, $sortField, $descending, $keyword, $categoryIds, $filterIds, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "activeOnly": "true",
                 "sortField": "sortField_example",
@@ -47,9 +45,8 @@ export default {
     Mutation: {
 
         // @return MediaOfferResponse
-        CreateMedia: ($version, $accountId, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $specialOfferType, $offerVisibility, $active, $retailerLocationIds, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $parentalRating, $availabilityDate, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary) => {
+        CreateMedia: ($accountId, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $specialOfferType, $offerVisibility, $active, $retailerLocationIds, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $parentalRating, $availabilityDate, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "title": "title_example",
                 "barcodeType": "barcodeType_example",
@@ -111,18 +108,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteMedia: ($version, $accountId, $mediaId) => {
+        DeleteMedia: ($accountId, $mediaId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "mediaId": "789"
             };
         },
 
         // @return MediaOfferResponse
-        UpdateMedia: ($version, $accountId, $mediaId, $retailerLocationIds, $offerLocations, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $availabilityDate, $parentalRating, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary) => {
+        UpdateMedia: ($accountId, $mediaId, $retailerLocationIds, $offerLocations, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $availabilityDate, $parentalRating, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "mediaId": "789",
                 "retailerLocationIds": "retailerLocationIds_example",

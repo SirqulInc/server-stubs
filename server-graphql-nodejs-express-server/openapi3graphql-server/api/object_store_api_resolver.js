@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return ObjectStoreResponse
-        GetData: ($version, $objectName, $objectId, $accountId, $include) => {
+        GetData: ($objectName, $objectId, $accountId, $include) => {
             return {
-                "version": "3.16",
                 "objectName": "objectName_example",
                 "objectId": "objectId_example",
                 "accountId": "789",
@@ -29,9 +28,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        GetObject: ($version, $accountId, $appKey, $objectName) => {
+        GetObject: ($accountId, $appKey, $objectName) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "objectName": "objectName_example"
@@ -39,9 +37,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        SearchData: ($version, $objectName, $count, $start, $limit, $accountId, $criteria, $order, $include) => {
+        SearchData: ($objectName, $count, $start, $limit, $accountId, $criteria, $order, $include) => {
             return {
-                "version": "3.16",
                 "objectName": "objectName_example",
                 "count": "true",
                 "start": "789",
@@ -54,9 +51,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        SearchObject: ($version, $accountId, $appKey, $start, $limit, $keyword) => {
+        SearchObject: ($accountId, $appKey, $start, $limit, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "start": "789",
@@ -70,9 +66,8 @@ export default {
     Mutation: {
 
         // @return ObjectStoreResponse
-        AddField: ($version, $accountId, $appKey, $objectName, $fieldName, $fieldType) => {
+        AddField: ($accountId, $appKey, $objectName, $fieldName, $fieldType) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "objectName": "objectName_example",
@@ -82,9 +77,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        CreateData: ($version, $objectName, $accountId, $body) => {
+        CreateData: ($objectName, $accountId, $body) => {
             return {
-                "version": "3.16",
                 "objectName": "objectName_example",
                 "accountId": "789",
                 "body": "body_example"
@@ -92,9 +86,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        CreateObject: ($version, $accountId, $appKey, $objectName) => {
+        CreateObject: ($accountId, $appKey, $objectName) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "objectName": "objectName_example"
@@ -102,9 +95,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        DeleteData: ($version, $objectName, $objectId, $accountId) => {
+        DeleteData: ($objectName, $objectId, $accountId) => {
             return {
-                "version": "3.16",
                 "objectName": "objectName_example",
                 "objectId": "objectId_example",
                 "accountId": "789"
@@ -112,9 +104,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        DeleteField: ($version, $accountId, $appKey, $objectName, $fieldName) => {
+        DeleteField: ($accountId, $appKey, $objectName, $fieldName) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "objectName": "objectName_example",
@@ -123,9 +114,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        DeleteObject: ($version, $accountId, $appKey, $objectName) => {
+        DeleteObject: ($accountId, $appKey, $objectName) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "objectName": "objectName_example"
@@ -133,9 +123,8 @@ export default {
         },
 
         // @return ObjectStoreResponse
-        UpdateData: ($version, $objectName, $objectId, $accountId, $body) => {
+        UpdateData: ($objectName, $objectId, $accountId, $body) => {
             return {
-                "version": "3.16",
                 "objectName": "objectName_example",
                 "objectId": "objectId_example",
                 "accountId": "789",

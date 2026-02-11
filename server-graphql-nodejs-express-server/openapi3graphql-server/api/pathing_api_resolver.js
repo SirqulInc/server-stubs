@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return PathingResponse
-        ComputePath: ($version, $data, $units, $reducePath, $directions) => {
+        ComputePath: ($data, $units, $reducePath, $directions) => {
             return {
-                "version": "3.16",
                 "data": "data_example",
                 "units": "units_example",
                 "reducePath": "true",

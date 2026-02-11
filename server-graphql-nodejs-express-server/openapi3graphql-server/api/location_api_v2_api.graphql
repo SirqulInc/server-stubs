@@ -16,14 +16,10 @@
 
 input CreateLocationV2Input {
     
-    version: Float!, 
-    
     body: LocationInput
 }
 
 input UpdateLocationV2Input {
-    
-    version: Float!, 
     # the id of the location to update
     Id_: Int!, 
     
@@ -33,13 +29,11 @@ input UpdateLocationV2Input {
 type Mutation {
   # Create new location
   # Create a new location from a real object location.
-  # @param Float! version 
   # @param Location body 
   # @return [SirqulResponse]
   CreateLocationV2(input: CreateLocationV2Input!): SirqulResponse
   # Update an existing location
   # Update an existing location
-  # @param Float! version 
   # @param Int! Id_ the id of the location to update
   # @param Location body 
   # @return [SirqulResponse]

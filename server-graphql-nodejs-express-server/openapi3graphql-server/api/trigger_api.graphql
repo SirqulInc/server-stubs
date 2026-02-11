@@ -15,8 +15,6 @@
 
 
 input CreateTriggerInput {
-    
-    version: Float!, 
     # The logged in user
     accountId: Int!, 
     # The name of the trigger
@@ -46,8 +44,6 @@ input CreateTriggerInput {
 }
 
 input DeleteTriggerInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The id of the trigger to delete.
@@ -55,8 +51,6 @@ input DeleteTriggerInput {
 }
 
 input UpdateTriggerInput {
-    
-    version: Float!, 
     # The trigger to update
     triggerId: Int!, 
     # The logged in user
@@ -90,7 +84,6 @@ input UpdateTriggerInput {
 type Mutation {
   # Create Trigger
   # Create a trigger
-  # @param Float! version 
   # @param Int! accountId The logged in user
   # @param String! name The name of the trigger
   # @param String! appKey The application to target
@@ -108,14 +101,12 @@ type Mutation {
   CreateTrigger(input: CreateTriggerInput!): TriggerResponse
   # Delete Trigger
   # Mark a trigger as deleted.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! triggerId The id of the trigger to delete.
   # @return [SirqulResponse]
   DeleteTrigger(input: DeleteTriggerInput!): SirqulResponse
   # Update Trigger
   # Update a trigger
-  # @param Float! version 
   # @param Int! triggerId The trigger to update
   # @param Int! accountId The logged in user
   # @param String! name The name of the trigger
@@ -137,14 +128,12 @@ type Mutation {
 type Query {
   # Get Trigger
   # Get a trigger
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! triggerId The id of the Trigger to return.
   # @return [TriggerResponse]
-  GetTrigger(version: Float!, accountId: Int!, triggerId: Int!): TriggerResponse
+  GetTrigger(accountId: Int!, triggerId: Int!): TriggerResponse
   # Search Triggers
   # Search for triggers
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! groupingId Filter results by a grouping identifier defined by the client
   # @param String! filter A comma separated list of filters. * MINE - Return triggers that the user has created * SHARED - Return triggers that have been shared to the user * FOLLOWER - Return triggers that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return triggers that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC triggers that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC triggers regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all triggers that the user has liked * FEATURED - Return all triggers that have been featured * PENDING - Return all pending triggers 
@@ -158,6 +147,6 @@ type Query {
   # @param Int! limit Limit the result to some number.
   # @param Boolean! activeOnly Determines whether to return only active results
   # @return [TriggerResponse]
-  SearchTriggers(version: Float!, accountId: Int!, groupingId: String!, filter: String!, statuses: String!, templateTypes: String!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): TriggerResponse
+  SearchTriggers(accountId: Int!, groupingId: String!, filter: String!, statuses: String!, templateTypes: String!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): TriggerResponse
 }
 

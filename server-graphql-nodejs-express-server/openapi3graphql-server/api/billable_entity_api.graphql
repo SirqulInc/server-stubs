@@ -15,8 +15,6 @@
 
 
 input CreateBillableEntityInput {
-    
-    version: Float!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
     deviceId: String!, 
     # The unique accountId that made the request (either deviceId or accountId must be used)
@@ -44,8 +42,6 @@ input CreateBillableEntityInput {
 }
 
 input DeleteBillableEntityInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account used to perform the delete, must have rights to edit the billable entity.
@@ -53,8 +49,6 @@ input DeleteBillableEntityInput {
 }
 
 input UpdateBillableEntityInput {
-    
-    version: Float!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
     deviceId: String!, 
     # The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity.
@@ -84,7 +78,6 @@ input UpdateBillableEntityInput {
 type Mutation {
   # Create Billable
   # reate a billable entity for an account. The creator is assumed to be the responsible account. An account can only have one billable entity
-  # @param Float! version 
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
   # @param String! name The name of the entity responsible for billing 
@@ -101,14 +94,12 @@ type Mutation {
   CreateBillableEntity(input: CreateBillableEntityInput!): BillableEntityResponse
   # Delete Billable
   # Mark the billable as deleted
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account used to perform the delete, must have rights to edit the billable entity.
   # @return [SirqulResponse]
   DeleteBillableEntity(input: DeleteBillableEntityInput!): SirqulResponse
   # Update Billable
   # Updates the billable record for an account
-  # @param Float! version 
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity.
   # @param String! name The name of the entity responsible for billing 
@@ -128,12 +119,11 @@ type Mutation {
 type Query {
   # Get Billable
   # Used to determine the associated BillableEntity of an account
-  # @param Float! version 
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
   # @param Boolean! includeCounts Determines whether to include the retailer dash board counts into the response
   # @param Boolean! includePayments Whether to enable payments or not
   # @return [BillableEntityResponse]
-  GetBillableEntity(version: Float!, deviceId: String!, accountId: Int!, includeCounts: Boolean!, includePayments: Boolean!): BillableEntityResponse
+  GetBillableEntity(deviceId: String!, accountId: Int!, includeCounts: Boolean!, includePayments: Boolean!): BillableEntityResponse
 }
 

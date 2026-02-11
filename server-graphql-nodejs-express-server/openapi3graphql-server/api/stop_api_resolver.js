@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return Stop
-        GetStop: ($version, $Id_) => {
+        GetStop: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
@@ -30,9 +29,8 @@ export default {
     Mutation: {
 
         // @return Stop
-        UpdateStop: ($version, $Id_, $body) => {
+        UpdateStop: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };

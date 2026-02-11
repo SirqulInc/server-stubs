@@ -15,15 +15,11 @@
 
 
 input AuthorizeTwitterInput {
-    
-    version: Float!, 
     # the application key
     appKey: String!
 }
 
 input LoginTwitterInput {
-    
-    version: Float!, 
     # The access token
     accessToken: String!, 
     # The secret access token
@@ -43,13 +39,11 @@ input LoginTwitterInput {
 type Mutation {
   # Authorize Twitter
   # Makes an authorization call to twitter for a user to login and allow any app permissions.
-  # @param Float! version 
   # @param String! appKey the application key
   # @return [SirqulResponse]
   AuthorizeTwitter(input: AuthorizeTwitterInput!): SirqulResponse
   # Login Twitter
   # Returns the user profile information given an access token and the secret access token. This call verifies the tokens with twitter and creates a Sirqul account for the user if its their first time logging in.
-  # @param Float! version 
   # @param String! accessToken The access token
   # @param String! accessTokenSecret The secret access token
   # @param String! appKey The application key

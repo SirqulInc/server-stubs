@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return OfferTransactionStatusResponse
-        GetOfferTransactionStatus: ($version, $statusId, $deviceId, $accountId, $latitude, $longitude) => {
+        GetOfferTransactionStatus: ($statusId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "statusId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return OfferTransactionStatusResponse
-        SearchOfferTransactionStatuses: ($version, $deviceId, $accountId, $latitude, $longitude, $keyword, $role, $appKey, $sortField, $descending, $start, $limit, $includeInactive) => {
+        SearchOfferTransactionStatuses: ($deviceId, $accountId, $latitude, $longitude, $keyword, $role, $appKey, $sortField, $descending, $start, $limit, $includeInactive) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "latitude": "1.2",
@@ -53,9 +51,8 @@ export default {
     Mutation: {
 
         // @return OfferTransactionStatusResponse
-        CreateOfferTransactionStatus: ($version, $name, $code, $deviceId, $accountId, $latitude, $longitude, $description, $role, $active, $applicationIds) => {
+        CreateOfferTransactionStatus: ($name, $code, $deviceId, $accountId, $latitude, $longitude, $description, $role, $active, $applicationIds) => {
             return {
-                "version": "3.16",
                 "name": "name_example",
                 "code": "56",
                 "deviceId": "deviceId_example",
@@ -70,9 +67,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteOfferTransactionStatus: ($version, $statusId, $deviceId, $accountId, $latitude, $longitude) => {
+        DeleteOfferTransactionStatus: ($statusId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "statusId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -82,9 +78,8 @@ export default {
         },
 
         // @return OfferTransactionStatusResponse
-        UpdateOfferTransactionStatus: ($version, $deviceId, $accountId, $latitude, $longitude, $statusId, $name, $description, $code, $role, $active, $applicationIds) => {
+        UpdateOfferTransactionStatus: ($deviceId, $accountId, $latitude, $longitude, $statusId, $name, $description, $code, $role, $active, $applicationIds) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "latitude": "1.2",

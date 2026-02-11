@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return UserPermissionsResponse
-        SearchPermissionables: ($version, $deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $keyword, $sortField, $descending, $pending, $admin, $start, $limit) => {
+        SearchPermissionables: ($deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $keyword, $sortField, $descending, $pending, $admin, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "connectionAccountId": "789",
@@ -38,9 +37,8 @@ export default {
         },
 
         // @return UserPermissionsResponse
-        SearchPermissionablesFollowingDistance: ($version, $latitude, $longitude, $deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $searchRange, $keyword, $pending, $admin, $start, $limit) => {
+        SearchPermissionablesFollowingDistance: ($latitude, $longitude, $deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $searchRange, $keyword, $pending, $admin, $start, $limit) => {
             return {
-                "version": "3.16",
                 "latitude": "1.2",
                 "longitude": "1.2",
                 "deviceId": "deviceId_example",
@@ -63,9 +61,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        AddUsersToPermissionable: ($version, $permissionableType, $permissionableId, $deviceId, $accountId, $read, $write, $delete, $add, $connectionIds, $connectionAccountIds, $connectionGroupIds, $pending, $admin, $includeFriendGroup, $latitude, $longitude, $audienceIds) => {
+        AddUsersToPermissionable: ($permissionableType, $permissionableId, $deviceId, $accountId, $read, $write, $delete, $add, $connectionIds, $connectionAccountIds, $connectionGroupIds, $pending, $admin, $includeFriendGroup, $latitude, $longitude, $audienceIds) => {
             return {
-                "version": "3.16",
                 "permissionableType": "permissionableType_example",
                 "permissionableId": "789",
                 "deviceId": "deviceId_example",
@@ -87,9 +84,8 @@ export default {
         },
 
         // @return SirqulResponse
-        ApprovePermissionable: ($version, $permissionableType, $permissionableId, $deviceId, $accountId, $approvalStatus) => {
+        ApprovePermissionable: ($permissionableType, $permissionableId, $deviceId, $accountId, $approvalStatus) => {
             return {
-                "version": "3.16",
                 "permissionableType": "permissionableType_example",
                 "permissionableId": "789",
                 "deviceId": "deviceId_example",
@@ -99,9 +95,8 @@ export default {
         },
 
         // @return SirqulResponse
-        LeaveFromPermissionable: ($version, $permissionableType, $permissionableId, $deviceId, $accountId, $latitude, $longitude) => {
+        LeaveFromPermissionable: ($permissionableType, $permissionableId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "permissionableType": "permissionableType_example",
                 "permissionableId": "789",
                 "deviceId": "deviceId_example",
@@ -112,9 +107,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveUsersFromPermissionable: ($version, $permissionableType, $permissionableId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $connectionGroupIds, $removeFriendGroup, $latitude, $longitude, $audienceIds) => {
+        RemoveUsersFromPermissionable: ($permissionableType, $permissionableId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $connectionGroupIds, $removeFriendGroup, $latitude, $longitude, $audienceIds) => {
             return {
-                "version": "3.16",
                 "permissionableType": "permissionableType_example",
                 "permissionableId": "789",
                 "deviceId": "deviceId_example",

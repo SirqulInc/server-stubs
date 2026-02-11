@@ -16,14 +16,10 @@
 
 input CreateShipmentBatchInput {
     
-    version: Float!, 
-    
     body: ShipmentBatchInput
 }
 
 input DeleteShipmentBatchInput {
-    
-    version: Float!, 
     # the id of the shipment batch to delete
     batchId: Int!
 }
@@ -31,13 +27,11 @@ input DeleteShipmentBatchInput {
 type Mutation {
   # Create Shipment Batch
   # Create a new shipment batch
-  # @param Float! version 
   # @param ShipmentBatch body 
   # @return [ShipmentBatch]
   CreateShipmentBatch(input: CreateShipmentBatchInput!): ShipmentBatch
   # Delete Shipment Batch
   # Search for shipment batches
-  # @param Float! version 
   # @param Int! batchId the id of the shipment batch to delete
   # @return [Boolean]
   DeleteShipmentBatch(input: DeleteShipmentBatchInput!): Boolean
@@ -46,13 +40,11 @@ type Mutation {
 type Query {
   # Get Shipment Batch
   # Get an existing shipment batch
-  # @param Float! version 
   # @param Int! batchId the id of the shipment batch to get
   # @return [ShipmentBatch]
-  GetShipmentBatch(version: Float!, batchId: Int!): ShipmentBatch
+  GetShipmentBatch(batchId: Int!): ShipmentBatch
   # Get Shipment Batch Status
   # Get the import status list of the import shipment batch
-  # @param Float! version 
   # @param Int! batchId The id of the requested shipment batch
   # @param Int! accountId the id of the logged in user
   # @param String! sortField The field to sort by
@@ -66,16 +58,15 @@ type Query {
   # @param Boolean! hasRoute Has route associate to the status
   # @param String! keyword The keyword to search for
   # @return [ShipmentImportStatus]
-  GetShipmentBatchStatus(version: Float!, batchId: Int!, accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, valid: Boolean!, started: Boolean!, completed: Boolean!, hasShipment: Boolean!, hasRoute: Boolean!, keyword: String!): ShipmentImportStatus
+  GetShipmentBatchStatus(batchId: Int!, accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, valid: Boolean!, started: Boolean!, completed: Boolean!, hasShipment: Boolean!, hasRoute: Boolean!, keyword: String!): ShipmentImportStatus
   # Search Shipment Batch
   # Search for shipment batches
-  # @param Float! version 
   # @param Int! hubId The associated service hub
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
   # @param Int! limit The limit for pagination
   # @return [ShipmentBatch]
-  SearchShipmentBatch(version: Float!, hubId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): ShipmentBatch
+  SearchShipmentBatch(hubId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): ShipmentBatch
 }
 

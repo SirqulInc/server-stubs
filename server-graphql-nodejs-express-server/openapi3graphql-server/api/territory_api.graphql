@@ -15,8 +15,6 @@
 
 
 input CreateTerritoryInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The name of the territory
@@ -26,8 +24,6 @@ input CreateTerritoryInput {
 }
 
 input DeleteTerritoryInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the territory to delete
@@ -35,8 +31,6 @@ input DeleteTerritoryInput {
 }
 
 input UpdateTerritoryInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # the id of the territory to update
@@ -50,7 +44,6 @@ input UpdateTerritoryInput {
 type Mutation {
   # Create Territory
   # Creates a territory.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! name The name of the territory
   # @param Boolean! active If true set the game level as active. Default is true.
@@ -58,14 +51,12 @@ type Mutation {
   CreateTerritory(input: CreateTerritoryInput!): TerritoryResponse
   # Delete Territory
   # Deletes a territory.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! territoryId the id of the territory to delete
   # @return [SirqulResponse]
   DeleteTerritory(input: DeleteTerritoryInput!): SirqulResponse
   # Update Territory
   # Updates a territory.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! territoryId the id of the territory to update
   # @param String! name The name of the territory
@@ -77,19 +68,17 @@ type Mutation {
 type Query {
   # Get Territory
   # Get a territory.
-  # @param Float! version 
   # @param Int! territoryId the id of the territory to get
   # @return [TerritoryResponse]
-  GetTerritory(version: Float!, territoryId: Int!): TerritoryResponse
+  GetTerritory(territoryId: Int!): TerritoryResponse
   # Search Territories
   # Searches on territories.
-  # @param Float! version 
   # @param String! sortField the field to sort by. Supported values include: ID, CREATED, UPDATED, NAME
   # @param Boolean! descending determines whether the sorted list is in descending or ascending order
   # @param String! keyword Return results that match this keyword.
   # @param Int! start The start index for pagination
   # @param Int! limit The limit for pagination
   # @return [TerritoryResponse]
-  SearchTerritories(version: Float!, sortField: String!, descending: Boolean!, keyword: String!, start: Int!, limit: Int!): TerritoryResponse
+  SearchTerritories(sortField: String!, descending: Boolean!, keyword: String!, start: Int!, limit: Int!): TerritoryResponse
 }
 

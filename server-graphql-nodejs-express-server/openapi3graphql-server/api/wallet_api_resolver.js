@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return OfferTransactionResponse
-        GetOfferTransaction: ($version, $transactionId, $deviceId, $accountId, $includeMission, $latitude, $longitude, $returnFullResponse) => {
+        GetOfferTransaction: ($transactionId, $deviceId, $accountId, $includeMission, $latitude, $longitude, $returnFullResponse) => {
             return {
-                "version": "3.16",
                 "transactionId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -32,9 +31,8 @@ export default {
         },
 
         // @return OfferTransactionResponse
-        SearchOfferTransactions: ($version, $deviceId, $accountId, $keyword, $retailerId, $retailerIds, $retailerLocationId, $retailerLocationIds, $excludeRetailerLocationIds, $offerId, $offerIds, $offerLocationId, $offerLocationIds, $offerType, $offerTypes, $specialOfferType, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $sortField, $descending, $start, $limit, $latitude, $longitude, $redeemableStartDate, $redeemableEndDate, $filterByParentOffer, $startedSince, $startedBefore, $endedSince, $endedBefore, $redeemed, $statuses, $reservationsOnly, $activeOnly, $returnFullResponse, $recurringStartedSince, $recurringStartedBefore, $recurringExpirationSince, $recurringExpirationBefore) => {
+        SearchOfferTransactions: ($deviceId, $accountId, $keyword, $retailerId, $retailerIds, $retailerLocationId, $retailerLocationIds, $excludeRetailerLocationIds, $offerId, $offerIds, $offerLocationId, $offerLocationIds, $offerType, $offerTypes, $specialOfferType, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $sortField, $descending, $start, $limit, $latitude, $longitude, $redeemableStartDate, $redeemableEndDate, $filterByParentOffer, $startedSince, $startedBefore, $endedSince, $endedBefore, $redeemed, $statuses, $reservationsOnly, $activeOnly, $returnFullResponse, $recurringStartedSince, $recurringStartedBefore, $recurringExpirationSince, $recurringExpirationBefore) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "keyword": "keyword_example",
@@ -84,9 +82,8 @@ export default {
     Mutation: {
 
         // @return OfferTransactionResponse
-        CreateOfferTransaction: ($version, $deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey, $status) => {
+        CreateOfferTransaction: ($deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey, $status) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "offerId": "789",
@@ -102,9 +99,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteOfferTransaction: ($version, $transactionId, $deviceId, $accountId) => {
+        DeleteOfferTransaction: ($transactionId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "transactionId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -112,9 +108,8 @@ export default {
         },
 
         // @return OfferTransactionResponse
-        PreviewOfferTransaction: ($version, $deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey) => {
+        PreviewOfferTransaction: ($deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "offerId": "789",
@@ -129,9 +124,8 @@ export default {
         },
 
         // @return OfferTransactionResponse
-        UpdateOfferTransaction: ($version, $transactionId, $status, $deviceId, $accountId, $offerLocationId, $currencyType, $usePoints, $appKey, $latitude, $longitude, $metaData, $returnFullResponse, $exceptionMembershipOfferIds) => {
+        UpdateOfferTransaction: ($transactionId, $status, $deviceId, $accountId, $offerLocationId, $currencyType, $usePoints, $appKey, $latitude, $longitude, $metaData, $returnFullResponse, $exceptionMembershipOfferIds) => {
             return {
-                "version": "3.16",
                 "transactionId": "789",
                 "status": "56",
                 "deviceId": "deviceId_example",

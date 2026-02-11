@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return Trip
-        GetTrip: ($version, $Id_) => {
+        GetTrip: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Trip
-        GetTripMatches: ($version, $Id_, $sortField, $descending, $start, $limit, $activeOnly, $matchedHasRoute, $matchedHasDriver) => {
+        GetTripMatches: ($Id_, $sortField, $descending, $start, $limit, $activeOnly, $matchedHasRoute, $matchedHasDriver) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -41,9 +39,8 @@ export default {
         },
 
         // @return Trip
-        Search: ($version, $accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $hasNotifications) => {
+        Search: ($accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $hasNotifications) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -57,9 +54,8 @@ export default {
         },
 
         // @return Trip
-        SearchTrips: ($version, $accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $matchedHasRoute, $matchedHasDriver) => {
+        SearchTrips: ($accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $matchedHasRoute, $matchedHasDriver) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -78,43 +74,38 @@ export default {
     Mutation: {
 
         // @return Trip
-        CreateTrip: ($version, $body) => {
+        CreateTrip: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return 
-        Delete: ($version, $Id_) => {
+        Delete: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Trip
-        DriveTrip: ($version, $Id_, $recurrence) => {
+        DriveTrip: ($Id_, $recurrence) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "recurrence": "true"
             };
         },
 
         // @return Trip
-        FlexibleTrip: ($version, $Id_, $recurrence) => {
+        FlexibleTrip: ($Id_, $recurrence) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "recurrence": "true"
             };
         },
 
         // @return Trip
-        ProcessTripMatches: ($version, $startDate, $endDate, $tripId) => {
+        ProcessTripMatches: ($startDate, $endDate, $tripId) => {
             return {
-                "version": "3.16",
                 "startDate": "789",
                 "endDate": "789",
                 "tripId": "789"
@@ -122,63 +113,56 @@ export default {
         },
 
         // @return Trip
-        Ride: ($version, $Id_, $recurrence) => {
+        Ride: ($Id_, $recurrence) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "recurrence": "true"
             };
         },
 
         // @return Trip
-        UpdateLocations: ($version, $Id_, $body) => {
+        UpdateLocations: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return Trip
-        UpdateRecurrenceLocations: ($version, $Id_, $body) => {
+        UpdateRecurrenceLocations: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return Trip
-        UpdateRecurrenceShipments: ($version, $Id_, $body) => {
+        UpdateRecurrenceShipments: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return Trip
-        UpdateShipments: ($version, $Id_, $body) => {
+        UpdateShipments: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return Trip
-        UpdateTrip: ($version, $Id_, $body) => {
+        UpdateTrip: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return Trip
-        UpdateTripNotifications: ($version, $Id_, $notifications) => {
+        UpdateTripNotifications: ($Id_, $notifications) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "notifications": "notifications_example"
             };

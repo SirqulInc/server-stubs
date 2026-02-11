@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return TwiMlResponse
-        SmsBuyOffer: ($version, $appKey, $body, $from, $currencyType) => {
+        SmsBuyOffer: ($appKey, $body, $from, $currencyType) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "body": "body_example",
                 "from": "from_example",

@@ -18,26 +18,23 @@ export default {
     Query: {
 
         // @return DisbursementResponse
-        CheckDisbursements: ($version, $disbursementId) => {
+        CheckDisbursements: ($disbursementId) => {
             return {
-                "version": "3.16",
                 "disbursementId": "789"
             };
         },
 
         // @return DisbursementResponse
-        GetDisbursement: ($version, $accountId, $disbursementId) => {
+        GetDisbursement: ($accountId, $disbursementId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "disbursementId": "789"
             };
         },
 
         // @return DisbursementResponse
-        SearchDisbursements: ($version, $accountId, $receiverAccountId, $statuses, $providers, $beforeDate, $afterDate, $start, $limit, $activeOnly, $externalId) => {
+        SearchDisbursements: ($accountId, $receiverAccountId, $statuses, $providers, $beforeDate, $afterDate, $start, $limit, $activeOnly, $externalId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "receiverAccountId": "789",
                 "statuses": "statuses_example",
@@ -56,9 +53,8 @@ export default {
     Mutation: {
 
         // @return DisbursementResponse
-        CreateDisbursement: ($version, $accountId, $receiverAccountId, $originalSenderAccountId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $introspectionParams) => {
+        CreateDisbursement: ($accountId, $receiverAccountId, $originalSenderAccountId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $introspectionParams) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "receiverAccountId": "789",
                 "originalSenderAccountId": "789",
@@ -73,9 +69,8 @@ export default {
         },
 
         // @return DisbursementResponse
-        UpdateDisbursement: ($version, $accountId, $disbursementId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $retry, $introspectionParams) => {
+        UpdateDisbursement: ($accountId, $disbursementId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $retry, $introspectionParams) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "disbursementId": "789",
                 "amount": "8.14",

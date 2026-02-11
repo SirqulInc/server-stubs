@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return AchievementTierResponse
-        GetAchievement: ($version, $achievementId, $deviceId, $accountId, $achievementType) => {
+        GetAchievement: ($achievementId, $deviceId, $accountId, $achievementType) => {
             return {
-                "version": "3.16",
                 "achievementId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -29,9 +28,8 @@ export default {
         },
 
         // @return AchievementProgressResponse
-        GetUserAchievements: ($version, $returnNulls, $appKey, $includeUndiscovered, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $rankType, $achievementType, $latitude, $longitude) => {
+        GetUserAchievements: ($returnNulls, $appKey, $includeUndiscovered, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $rankType, $achievementType, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "appKey": "appKey_example",
                 "includeUndiscovered": "true",
@@ -47,17 +45,15 @@ export default {
         },
 
         // @return SirqulResponse
-        ListAchievementTags: ($version, $appKey) => {
+        ListAchievementTags: ($appKey) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example"
             };
         },
 
         // @return AchievementShortResponse
-        ListAchievements: ($version, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType) => {
+        ListAchievements: ($sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -73,9 +69,8 @@ export default {
         },
 
         // @return AchievementShortResponse
-        SearchAchievements: ($version, $appKey, $sortField, $descending, $includeTiers, $includeInactiveTiers, $start, $limit, $deviceId, $accountId, $keyword, $achievementType, $rankType) => {
+        SearchAchievements: ($appKey, $sortField, $descending, $includeTiers, $includeInactiveTiers, $start, $limit, $deviceId, $accountId, $keyword, $achievementType, $rankType) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -96,9 +91,8 @@ export default {
     Mutation: {
 
         // @return AchievementTierResponse
-        ApiVersionAchievementTierSearchPost: ($version, $deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType, $sortField, $descending, $descendingGoal, $start, $limit) => {
+        AchievementTierSearchPost: ($deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType, $sortField, $descending, $descendingGoal, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -114,9 +108,8 @@ export default {
         },
 
         // @return AchievementResponse
-        CreateAchievement: ($version, $appKey, $title, $deviceId, $accountId, $analyticsTag, $description, $rankType, $rankIncrement, $minIncrement, $maxIncrement, $validate, $active, $triggerDefinition) => {
+        CreateAchievement: ($appKey, $title, $deviceId, $accountId, $analyticsTag, $description, $rankType, $rankIncrement, $minIncrement, $maxIncrement, $validate, $active, $triggerDefinition) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "title": "title_example",
                 "deviceId": "deviceId_example",
@@ -134,9 +127,8 @@ export default {
         },
 
         // @return AchievementTierResponse
-        CreateAchievementTier: ($version, $achievementId, $scoreAllInstances, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId) => {
+        CreateAchievementTier: ($achievementId, $scoreAllInstances, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId) => {
             return {
-                "version": "3.16",
                 "achievementId": "789",
                 "scoreAllInstances": "true",
                 "deviceId": "deviceId_example",
@@ -155,36 +147,32 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteAchievement: ($version, $achievementId, $accountId) => {
+        DeleteAchievement: ($achievementId, $accountId) => {
             return {
-                "version": "3.16",
                 "achievementId": "789",
                 "accountId": "789"
             };
         },
 
         // @return SirqulResponse
-        DeleteAchievementTier: ($version, $achievementTierId, $accountId) => {
+        DeleteAchievementTier: ($achievementTierId, $accountId) => {
             return {
-                "version": "3.16",
                 "achievementTierId": "789",
                 "accountId": "789"
             };
         },
 
         // @return AchievementTierResponse
-        GetAchievementTier: ($version, $accountId, $achievementTierId) => {
+        GetAchievementTier: ($accountId, $achievementTierId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "achievementTierId": "789"
             };
         },
 
         // @return AchievementResponse
-        UpdateAchievement: ($version, $deviceId, $accountId, $achievementId, $analyticsTag, $title, $description, $rankType, $rankIncrement, $minIncrement, $nullMinIncrement, $maxIncrement, $nullMaxIncrement, $validate, $active, $triggerDefinition) => {
+        UpdateAchievement: ($deviceId, $accountId, $achievementId, $analyticsTag, $title, $description, $rankType, $rankIncrement, $minIncrement, $nullMinIncrement, $maxIncrement, $nullMaxIncrement, $validate, $active, $triggerDefinition) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "achievementId": "789",
@@ -204,9 +192,8 @@ export default {
         },
 
         // @return AchievementTierResponse
-        UpdateAchievementTier: ($version, $achievementTierId, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreAllInstances) => {
+        UpdateAchievementTier: ($achievementTierId, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreAllInstances) => {
             return {
-                "version": "3.16",
                 "achievementTierId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -225,9 +212,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateUserAchievement: ($version, $accountId, $achievementId, $tag, $customId, $increment, $startDate, $endDate, $returnProgress) => {
+        UpdateUserAchievement: ($accountId, $achievementId, $tag, $customId, $increment, $startDate, $endDate, $returnProgress) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "achievementId": "789",
                 "tag": "tag_example",

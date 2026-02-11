@@ -15,8 +15,6 @@
 
 
 input AssetMorphInput {
-    
-    version: Float!, 
     # offer id used for inserting offer text/flavor
     offerId: Int!, 
     # the ad size used for selecting a format for the creative image
@@ -34,8 +32,6 @@ input AssetMorphInput {
 }
 
 input CreateAssetInput {
-    
-    version: Float!, 
     # to return nulls
     returnNulls: Boolean!, 
     # a unique ID given by the device (deviceId or accountId required)
@@ -107,8 +103,6 @@ input CreateAssetInput {
 }
 
 input DeleteAssetInput {
-    
-    version: Float!, 
     # the id of the asset to delete
     assetId: String!, 
     # the device id (deviceId or accountId required)
@@ -122,8 +116,6 @@ input DeleteAssetInput {
 }
 
 input RemoveAssetInput {
-    
-    version: Float!, 
     # the id of the asset to remove
     assetId: String!, 
     # the device id (deviceId or accountId required)
@@ -143,8 +135,6 @@ input RemoveAssetInput {
 }
 
 input UpdateAssetInput {
-    
-    version: Float!, 
     # the ID of the asset to update
     assetId: Int!, 
     # a unique ID given by the device (deviceId or accountId required)
@@ -212,7 +202,6 @@ input UpdateAssetInput {
 type Mutation {
   # Convert Offer to Creative
   # Converts an offer image + text into a creative image.
-  # @param Float! version 
   # @param Int! offerId offer id used for inserting offer text/flavor
   # @param String! adSize the ad size used for selecting a format for the creative image
   # @param Int! creativeId used for inserting the newly created image into
@@ -224,7 +213,6 @@ type Mutation {
   AssetMorph(input: AssetMorphInput!): AssetShortResponse
   # Create Asset
   # Uploads an asset to server and returns an asset id which can be used to assign to various objects.
-  # @param Float! version 
   # @param Boolean! returnNulls to return nulls
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
@@ -263,7 +251,6 @@ type Mutation {
   CreateAsset(input: CreateAssetInput!): AssetResponse
   # Delete Asset
   # Delete an asset.
-  # @param Float! version 
   # @param String! assetId the id of the asset to delete
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -273,7 +260,6 @@ type Mutation {
   DeleteAsset(input: DeleteAssetInput!): SirqulResponse
   # Remove Asset from Collection
   # Remove assets from collections
-  # @param Float! version 
   # @param String! assetId the id of the asset to remove
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -286,7 +272,6 @@ type Mutation {
   RemoveAsset(input: RemoveAssetInput!): SirqulResponse
   # Update Asset
   # Updates an asset&#39;s meta data. If an album reference is passed in, the participants with write permissions are allowed to edit the asset. Otherwise, only the asset up-loader has permission to edit the data.
-  # @param Float! version 
   # @param Int! assetId the ID of the asset to update
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
@@ -325,22 +310,19 @@ type Mutation {
 type Query {
   # Download Asset
   # Downloads an asset from the server for assets that have been uploaded to the server.
-  # @param Float! version 
   # @param String! filename the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}
   # @return [SirqulResponse]
-  AssetDownload(version: Float!, filename: String!): SirqulResponse
+  AssetDownload(filename: String!): SirqulResponse
   # Get Asset
   # Gets the full asset response including attached likes and notes.
-  # @param Float! version 
   # @param Int! assetId the asset ID
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param Boolean! noteDescending determines whether the notes on the asset are in descending order
   # @return [AssetFullResponse]
-  GetAsset(version: Float!, assetId: Int!, deviceId: String!, accountId: Int!, noteDescending: Boolean!): AssetFullResponse
+  GetAsset(assetId: Int!, deviceId: String!, accountId: Int!, noteDescending: Boolean!): AssetFullResponse
   # Search Assets
   # Searches for assets
-  # @param Float! version 
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
   # @param String! albumIds comma separated list of album ids to search on
@@ -366,6 +348,6 @@ type Query {
   # @param String! approvalStatus filter by approval status
   # @param Int! assignedAccountId filter results by an assigned account id
   # @return [AssetResponse]
-  SearchAssets(version: Float!, deviceId: String!, accountId: Int!, albumIds: String!, assetIds: String!, appKey: String!, mediaType: String!, mimeType: String!, keyword: String!, versionCode: Int!, versionName: String!, updatedSince: Int!, updatedBefore: Int!, sortField: String!, descending: Boolean!, searchMediaLibrary: Boolean!, filterByBillable: Boolean!, activeOnly: Boolean!, returnApp: Boolean!, start: Int!, limit: Int!, searchMode: String!, assetType: String!, approvalStatus: String!, assignedAccountId: Int!): AssetResponse
+  SearchAssets(deviceId: String!, accountId: Int!, albumIds: String!, assetIds: String!, appKey: String!, mediaType: String!, mimeType: String!, keyword: String!, versionCode: Int!, versionName: String!, updatedSince: Int!, updatedBefore: Int!, sortField: String!, descending: Boolean!, searchMediaLibrary: Boolean!, filterByBillable: Boolean!, activeOnly: Boolean!, returnApp: Boolean!, start: Int!, limit: Int!, searchMode: String!, assetType: String!, approvalStatus: String!, assignedAccountId: Int!): AssetResponse
 }
 

@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return RoutingListResponse
-        ComputeRouting: ($version, $data) => {
+        ComputeRouting: ($data) => {
             return {
-                "version": "3.16",
                 "data": "data_example"
             };
         },

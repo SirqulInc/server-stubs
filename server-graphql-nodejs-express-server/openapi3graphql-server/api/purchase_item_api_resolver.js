@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return PurchaseItemFullResponse
-        GetPurchaseItem: ($version, $purchaseItemId, $deviceId, $accountId) => {
+        GetPurchaseItem: ($purchaseItemId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "purchaseItemId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return PurchaseItemResponse
-        SearchPurchaseItems: ($version, $deviceId, $accountId, $appKey, $filterByBillable, $purchaseType, $serviceAction, $keyword, $sortField, $descending, $start, $limit, $activeOnly) => {
+        SearchPurchaseItems: ($deviceId, $accountId, $appKey, $filterByBillable, $purchaseType, $serviceAction, $keyword, $sortField, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -51,9 +49,8 @@ export default {
     Mutation: {
 
         // @return PurchaseItemFullResponse
-        CreatePurchaseItem: ($version, $appKey, $name, $purchaseType, $deviceId, $accountId, $description, $tickets, $price, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $allocateTickets, $ticketType, $points, $offerLocationId) => {
+        CreatePurchaseItem: ($appKey, $name, $purchaseType, $deviceId, $accountId, $description, $tickets, $price, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $allocateTickets, $ticketType, $points, $offerLocationId) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "name": "name_example",
                 "purchaseType": "purchaseType_example",
@@ -78,9 +75,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeletePurchaseItem: ($version, $purchaseItemId, $deviceId, $accountId) => {
+        DeletePurchaseItem: ($purchaseItemId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "purchaseItemId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -88,9 +84,8 @@ export default {
         },
 
         // @return PurchaseItemFullResponse
-        UpdatePurchaseItem: ($version, $purchaseItemId, $deviceId, $accountId, $name, $description, $tickets, $price, $purchaseType, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $active, $allocateTickets, $ticketType, $points, $offerLocationId) => {
+        UpdatePurchaseItem: ($purchaseItemId, $deviceId, $accountId, $name, $description, $tickets, $price, $purchaseType, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $active, $allocateTickets, $ticketType, $points, $offerLocationId) => {
             return {
-                "version": "3.16",
                 "purchaseItemId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

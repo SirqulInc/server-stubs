@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return EmployeeResponse
-        AssignEmployee: ($version, $accountId, $managerAccountId, $employeeAccountId, $role) => {
+        AssignEmployee: ($accountId, $managerAccountId, $employeeAccountId, $role) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "managerAccountId": "789",
                 "employeeAccountId": "789",
@@ -33,9 +32,8 @@ export default {
         },
 
         // @return SirqulResponse
-        AssignToLocationEmployee: ($version, $accountId, $retailerLocationId, $employeeAccountId, $assign) => {
+        AssignToLocationEmployee: ($accountId, $retailerLocationId, $employeeAccountId, $assign) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "retailerLocationId": "789",
                 "employeeAccountId": "789",
@@ -44,9 +42,8 @@ export default {
         },
 
         // @return EmployeeResponse
-        CreateEmployee: ($version, $accountId, $managerAccountId, $username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $aboutUs, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId) => {
+        CreateEmployee: ($accountId, $managerAccountId, $username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $aboutUs, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "managerAccountId": "789",
                 "username": "username_example",
@@ -81,18 +78,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteEmployee: ($version, $accountId, $employeeAccountId) => {
+        DeleteEmployee: ($accountId, $employeeAccountId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "employeeAccountId": "789"
             };
         },
 
         // @return EmployeeResponse
-        GetEmployee: ($version, $accountId, $employeeAccountId, $settingsAppKey) => {
+        GetEmployee: ($accountId, $employeeAccountId, $settingsAppKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "employeeAccountId": "789",
                 "settingsAppKey": "settingsAppKey_example"
@@ -100,9 +95,8 @@ export default {
         },
 
         // @return EmployeeResponse
-        SearchEmployees: ($version, $accountId, $role, $retailerId, $retailerLocationId, $q, $keyword, $sortField, $descending, $i, $start, $l, $limit, $activeOnly, $managedOnly, $settingsAppKey, $categoryIds, $Query_) => {
+        SearchEmployees: ($accountId, $role, $retailerId, $retailerLocationId, $q, $keyword, $sortField, $descending, $i, $start, $l, $limit, $activeOnly, $managedOnly, $settingsAppKey, $categoryIds, $Query_) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "role": "role_example",
                 "retailerId": "789",
@@ -124,18 +118,16 @@ export default {
         },
 
         // @return EmployeeResponse
-        UnassignEmployee: ($version, $accountId, $employeeAccountId) => {
+        UnassignEmployee: ($accountId, $employeeAccountId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "employeeAccountId": "789"
             };
         },
 
         // @return EmployeeResponse
-        UpdateEmployee: ($version, $accountId, $employeeAccountId, $managerAccountId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $active, $password, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId) => {
+        UpdateEmployee: ($accountId, $employeeAccountId, $managerAccountId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $active, $password, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "employeeAccountId": "789",
                 "managerAccountId": "789",

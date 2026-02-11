@@ -16,15 +16,12 @@
 
 input RequestOptimizationInput {
     
-    version: Float!, 
-    
     body: OrdersInput
 }
 
 type Mutation {
   # Request Optimization
   # Request and upload of shipment orders and create ShipmentImportBatch for optimization.
-  # @param Float! version 
   # @param Orders body 
   # @return [ImportStatuses]
   RequestOptimization(input: RequestOptimizationInput!): ImportStatuses
@@ -33,11 +30,10 @@ type Mutation {
 type Query {
   # Get Optimization Result
   # Get the results of the import batch.
-  # @param Float! version 
   # @param String! batchID The batchID for getting the import status of.
   # @param Int! start The start index for pagination
   # @param Int! limit The limit for pagination
   # @return [ShipmentOrder]
-  GetOptimizationResult(version: Float!, batchID: String!, start: Int!, limit: Int!): ShipmentOrder
+  GetOptimizationResult(batchID: String!, start: Int!, limit: Int!): ShipmentOrder
 }
 

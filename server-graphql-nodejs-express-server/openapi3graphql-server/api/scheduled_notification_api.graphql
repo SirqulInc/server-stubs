@@ -15,8 +15,6 @@
 
 
 input CreateScheduledNotificationInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The name of the scheduled notification
@@ -88,8 +86,6 @@ input CreateScheduledNotificationInput {
 }
 
 input DeleteScheduledNotificationInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the scheduled notification to delete
@@ -99,8 +95,6 @@ input DeleteScheduledNotificationInput {
 }
 
 input ScheduleNotificationListingsInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The application to target
@@ -120,8 +114,6 @@ input ScheduleNotificationListingsInput {
 }
 
 input UpdateScheduledNotificationInput {
-    
-    version: Float!, 
     # The id of scheduled notification to update
     scheduledNotificationId: Int!, 
     # The logged in user.
@@ -203,7 +195,6 @@ input UpdateScheduledNotificationInput {
 type Mutation {
   # Create Scheduled Notification
   # This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! name The name of the scheduled notification
   # @param String! Type_ The type of scheduled notification. Supported values include: MOBILE_NOTIFICATION - sends push notifications via APNS and GCM EMAIL - sends email messages SMS - sends text messages
@@ -242,7 +233,6 @@ type Mutation {
   CreateScheduledNotification(input: CreateScheduledNotificationInput!): ScheduledNotificationFullResponse
   # Delete Scheduled Notification
   # This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! scheduledNotificationId the id of the scheduled notification to delete
   # @param Boolean! deleteByGroupingId If set to true, also deletes Scheduled Notifications under the same account with the same groupingId.
@@ -250,7 +240,6 @@ type Mutation {
   DeleteScheduledNotification(input: DeleteScheduledNotificationInput!): ScheduledNotificationFullResponse
   # Generate Schedule Notifications
   # Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! appKey The application to target
   # @param String! reportName The name of the report used to identify events. The report must return columns named: id, name, date, params, and type otherwise it will fail
@@ -263,7 +252,6 @@ type Mutation {
   ScheduleNotificationListings(input: ScheduleNotificationListingsInput!): SirqulResponse
   # Update Scheduled Notification
   # This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.  Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi.
-  # @param Float! version 
   # @param Int! scheduledNotificationId The id of scheduled notification to update
   # @param Int! accountId The logged in user.
   # @param String! name The name of the scheduled notification
@@ -309,14 +297,12 @@ type Mutation {
 type Query {
   # Get Scheduled Notification
   # Get a ScheduledNotification
-  # @param Float! version 
   # @param Int! accountId the id of the account logged in
   # @param Int! scheduledNotificationId the id of the scheduled notification to get
   # @return [ScheduledNotificationFullResponse]
-  GetScheduledNotification(version: Float!, accountId: Int!, scheduledNotificationId: Int!): ScheduledNotificationFullResponse
+  GetScheduledNotification(accountId: Int!, scheduledNotificationId: Int!): ScheduledNotificationFullResponse
   # Search Scheduled Notifications
   # This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.  In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! groupingId Filter results by a grouping identifier defined by the client
   # @param Int! audienceId Filter results by audience
@@ -338,6 +324,6 @@ type Query {
   # @param Boolean! groupByGroupingId Determines whether to group results with the same groupingId together.
   # @param Boolean! returnAudienceAccountCount If true, include audience account counts in the response
   # @return [ScheduledNotificationFullResponse]
-  SearchScheduledNotifications(version: Float!, accountId: Int!, groupingId: String!, audienceId: Int!, filter: String!, types: String!, contentIds: String!, contentTypes: String!, parentIds: String!, parentTypes: String!, statuses: String!, templateTypes: String!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, groupByGroupingId: Boolean!, returnAudienceAccountCount: Boolean!): ScheduledNotificationFullResponse
+  SearchScheduledNotifications(accountId: Int!, groupingId: String!, audienceId: Int!, filter: String!, types: String!, contentIds: String!, contentTypes: String!, parentIds: String!, parentTypes: String!, statuses: String!, templateTypes: String!, appKey: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, groupByGroupingId: Boolean!, returnAudienceAccountCount: Boolean!): ScheduledNotificationFullResponse
 }
 

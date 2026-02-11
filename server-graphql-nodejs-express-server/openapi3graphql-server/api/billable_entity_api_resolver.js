@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return BillableEntityResponse
-        GetBillableEntity: ($version, $deviceId, $accountId, $includeCounts, $includePayments) => {
+        GetBillableEntity: ($deviceId, $accountId, $includeCounts, $includePayments) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "includeCounts": "true",
@@ -33,9 +32,8 @@ export default {
     Mutation: {
 
         // @return BillableEntityResponse
-        CreateBillableEntity: ($version, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey) => {
+        CreateBillableEntity: ($deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "name": "name_example",
@@ -52,18 +50,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteBillableEntity: ($version, $deviceId, $accountId) => {
+        DeleteBillableEntity: ($deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
             };
         },
 
         // @return BillableEntityResponse
-        UpdateBillableEntity: ($version, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey) => {
+        UpdateBillableEntity: ($deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "name": "name_example",

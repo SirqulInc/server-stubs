@@ -15,8 +15,6 @@
 
 
 input CreateVehicleInput {
-    
-    version: Float!, 
     # A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
     vehicle: String!, 
     
@@ -24,15 +22,11 @@ input CreateVehicleInput {
 }
 
 input DeleteVehicleInput {
-    
-    version: Float!, 
     # The id of the vehicle to delete
     Id_: Int!
 }
 
 input UpdateVehicleInput {
-    
-    version: Float!, 
     # The id of the vehicle to update
     Id_: Int!, 
     # A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
@@ -44,20 +38,17 @@ input UpdateVehicleInput {
 type Mutation {
   # Create Vehicle
   # Create new vehicle
-  # @param Float! version 
   # @param String! vehicle A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
   # @param Vehicle body 
   # @return [Vehicle]
   CreateVehicle(input: CreateVehicleInput!): Vehicle
   # Delete Vehicle
   # Delete an existing vehicle
-  # @param Float! version 
   # @param Int! Id_ The id of the vehicle to delete
   # @return [Boolean]
   DeleteVehicle(input: DeleteVehicleInput!): Boolean
   # Update Vehicle
   # Update an existing vehicle
-  # @param Float! version 
   # @param Int! Id_ The id of the vehicle to update
   # @param String! vehicle A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60; 
   # @param Vehicle body 
@@ -68,13 +59,11 @@ type Mutation {
 type Query {
   # Get Vehicle
   # Get an existing vehicle
-  # @param Float! version 
   # @param Int! Id_ The id of the vehicle requested
   # @return [Vehicle]
-  GetVehicle(version: Float!, Id_: Int!): Vehicle
+  GetVehicle(Id_: Int!): Vehicle
   # Search Vehicle
   # Search for vehicles
-  # @param Float! version 
   # @param Int! hubId Filter by service hub
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
@@ -83,6 +72,6 @@ type Query {
   # @param Boolean! activeOnly Return only active results
   # @param String! keyword The keyword to search for
   # @return [Vehicle]
-  SearchVehicle(version: Float!, hubId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, keyword: String!): Vehicle
+  SearchVehicle(hubId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, keyword: String!): Vehicle
 }
 

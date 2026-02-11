@@ -15,8 +15,6 @@
 
 
 input CreateFilterInput {
-    
-    version: Float!, 
     # The account id of the user (must have permissions to the target application)
     accountId: Int!, 
     # The name of the filter
@@ -38,8 +36,6 @@ input CreateFilterInput {
 }
 
 input DeleteFilterInput {
-    
-    version: Float!, 
     # The account id of the user (must have permissions to the filter&#39;s assigned application)
     accountId: Int!, 
     # The ID of the filter to delete
@@ -47,8 +43,6 @@ input DeleteFilterInput {
 }
 
 input UpdateFilterInput {
-    
-    version: Float!, 
     # The account id of the user
     accountId: Int!, 
     # The ID of the filter to edit
@@ -72,7 +66,6 @@ input UpdateFilterInput {
 type Mutation {
   # Create Filter
   # Create a filter
-  # @param Float! version 
   # @param Int! accountId The account id of the user (must have permissions to the target application)
   # @param String! name The name of the filter
   # @param String! appKey The appKey of the application to assign the filter to, if not provided then the filter will be applied to the global application (if the account has permissions)
@@ -86,14 +79,12 @@ type Mutation {
   CreateFilter(input: CreateFilterInput!): FilterTreeResponse
   # Delete Filter
   # Delete a filter.
-  # @param Float! version 
   # @param Int! accountId The account id of the user (must have permissions to the filter&#39;s assigned application)
   # @param Int! filterId The ID of the filter to delete
   # @return [SirqulResponse]
   DeleteFilter(input: DeleteFilterInput!): SirqulResponse
   # Update Filter
   # Update a filter.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @param Int! filterId The ID of the filter to edit
   # @param Int! parentFilterId The ID of the parent filter, if not provided then the parent filter will be null
@@ -110,13 +101,11 @@ type Mutation {
 type Query {
   # Get Filter
   # Get the details of a specific filter. Recursively include all child filters and their children.
-  # @param Float! version 
   # @param Int! filterId the id of the filter to get
   # @return [FilterTreeResponse]
-  GetFilter(version: Float!, filterId: Int!): FilterTreeResponse
+  GetFilter(filterId: Int!): FilterTreeResponse
   # Search Filters
   # Search for filters.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @param String! keyword The string to search on
   # @param String! appKey the appKey of the application to retrieve filters for
@@ -128,6 +117,6 @@ type Query {
   # @param Int! limit The number of records to return
   # @param Boolean! activeOnly Determines whether to return only active categories
   # @return [FilterResponse]
-  SearchFilters(version: Float!, accountId: Int!, keyword: String!, appKey: String!, responseGroup: String!, rootOnly: Boolean!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): FilterResponse
+  SearchFilters(accountId: Int!, keyword: String!, appKey: String!, responseGroup: String!, rootOnly: Boolean!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): FilterResponse
 }
 

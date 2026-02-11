@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return RankFullResponse
-        GetHistoricalRankings: ($version, $appKey, $rankType, $startDate, $endDate, $deviceId, $accountId, $sortField, $descending, $start, $limit) => {
+        GetHistoricalRankings: ($appKey, $rankType, $startDate, $endDate, $deviceId, $accountId, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "rankType": "rankType_example",
                 "startDate": "789",
@@ -35,9 +34,8 @@ export default {
         },
 
         // @return RankFullResponse
-        GetRankings: ($version, $deviceId, $accountId, $gameType, $appKey, $q, $keyword, $rankType, $leaderboardMode, $withinAccountIds, $returnUserRank, $albumId, $audienceId, $sortField, $descending, $i, $start, $l, $limit) => {
+        GetRankings: ($deviceId, $accountId, $gameType, $appKey, $q, $keyword, $rankType, $leaderboardMode, $withinAccountIds, $returnUserRank, $albumId, $audienceId, $sortField, $descending, $i, $start, $l, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "gameType": "gameType_example",
@@ -64,9 +62,8 @@ export default {
     Mutation: {
 
         // @return TodoObjectMapping
-        GetUserRank: ($version, $deviceId, $accountId, $appKey, $rankType, $returnUserRank, $leaderboardMode, $sortField, $keyword, $descending, $start, $limit) => {
+        GetUserRank: ($deviceId, $accountId, $appKey, $rankType, $returnUserRank, $leaderboardMode, $sortField, $keyword, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -82,9 +79,8 @@ export default {
         },
 
         // @return SirqulResponse
-        OverrideUserRank: ($version, $accountId, $ownerAccountId, $appKey, $rankType, $totalScore, $totalCount, $totalTime, $dailyScore, $dailyCount, $dailyTime, $weeklyScore, $weeklyCount, $weeklyTime, $monthlyScore, $monthlyCount, $monthlyTime, $topScore, $lowestScore, $streakCount, $streakBestCount, $startDate, $endDate) => {
+        OverrideUserRank: ($accountId, $ownerAccountId, $appKey, $rankType, $totalScore, $totalCount, $totalTime, $dailyScore, $dailyCount, $dailyTime, $weeklyScore, $weeklyCount, $weeklyTime, $monthlyScore, $monthlyCount, $monthlyTime, $topScore, $lowestScore, $streakCount, $streakBestCount, $startDate, $endDate) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "ownerAccountId": "789",
                 "appKey": "appKey_example",
@@ -111,9 +107,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateRankings: ($version, $accountId, $appKey, $rankType, $increment, $timeIncrement, $tag, $startDate, $endDate, $updateGlobal, $createLeaderboard) => {
+        UpdateRankings: ($accountId, $appKey, $rankType, $increment, $timeIncrement, $tag, $startDate, $endDate, $updateGlobal, $createLeaderboard) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "rankType": "rankType_example",

@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return MissionResponse
-        AdsFind: ($version, $appKey, $randomize, $targetedAdsOnly, $Type_, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeAudiences, $allocatesTickets, $missionIds) => {
+        AdsFind: ($appKey, $randomize, $targetedAdsOnly, $Type_, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeAudiences, $allocatesTickets, $missionIds) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "randomize": "true",
                 "targetedAdsOnly": "true",
@@ -41,18 +40,16 @@ export default {
         },
 
         // @return CreativeResponse
-        GetCreative: ($version, $accountId, $creativeId) => {
+        GetCreative: ($accountId, $creativeId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "creativeId": "789"
             };
         },
 
         // @return CreativeResponse
-        GetCreativesByApplication: ($version, $accountId, $appKey, $start, $limit, $missionId, $keyword) => {
+        GetCreativesByApplication: ($accountId, $appKey, $start, $limit, $missionId, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "start": "56",
@@ -67,18 +64,16 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        AddPreview: ($version, $accountId, $creativeId) => {
+        AddPreview: ($accountId, $creativeId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "creativeId": "789"
             };
         },
 
         // @return CreativeResponse
-        CreateCreative: ($version, $accountId, $name, $active, $waitForAsset, $description, $assetImageId, $action, $data, $suffix, $Type_, $balance, $referenceId, $appVersion, $missionId, $offerId) => {
+        CreateCreative: ($accountId, $name, $active, $waitForAsset, $description, $assetImageId, $action, $data, $suffix, $Type_, $balance, $referenceId, $appVersion, $missionId, $offerId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "active": "true",
@@ -98,27 +93,24 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteCreative: ($version, $accountId, $creativeId) => {
+        DeleteCreative: ($accountId, $creativeId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "creativeId": "789"
             };
         },
 
         // @return SirqulResponse
-        RemovePreview: ($version, $accountId, $creativeId) => {
+        RemovePreview: ($accountId, $creativeId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "creativeId": "789"
             };
         },
 
         // @return CreativeResponse
-        UpdateCreative: ($version, $accountId, $creativeId, $name, $description, $assetImageId, $action, $data, $suffix, $Type_, $balance, $active, $referenceId, $appVersion, $missionId) => {
+        UpdateCreative: ($accountId, $creativeId, $name, $description, $assetImageId, $action, $data, $suffix, $Type_, $balance, $active, $referenceId, $appVersion, $missionId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "creativeId": "789",
                 "name": "name_example",

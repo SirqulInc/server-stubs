@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        ProcessAllParticipants: ($version, $accountId, $appKey, $useShortNameAsID) => {
+        ProcessAllParticipants: ($accountId, $appKey, $useShortNameAsID) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "useShortNameAsID": "true"
@@ -32,9 +31,8 @@ export default {
         },
 
         // @return SirqulResponse
-        ProcessParticipants: ($version, $accountId, $league, $appKey, $useShortNameAsID, $file) => {
+        ProcessParticipants: ($accountId, $league, $appKey, $useShortNameAsID, $file) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "league": "league_example",
                 "appKey": "appKey_example",

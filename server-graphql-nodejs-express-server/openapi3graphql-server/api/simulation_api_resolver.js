@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        Simulation: ($version, $data, $realTime) => {
+        Simulation: ($data, $realTime) => {
             return {
-                "version": "3.16",
                 "data": "data_example",
                 "realTime": "true"
             };

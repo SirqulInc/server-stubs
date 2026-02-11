@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return FilterTreeResponse
-        GetFilter: ($version, $filterId) => {
+        GetFilter: ($filterId) => {
             return {
-                "version": "3.16",
                 "filterId": "789"
             };
         },
 
         // @return FilterResponse
-        SearchFilters: ($version, $accountId, $keyword, $appKey, $responseGroup, $rootOnly, $sortField, $descending, $start, $limit, $activeOnly) => {
+        SearchFilters: ($accountId, $keyword, $appKey, $responseGroup, $rootOnly, $sortField, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "appKey": "appKey_example",
@@ -47,9 +45,8 @@ export default {
     Mutation: {
 
         // @return FilterTreeResponse
-        CreateFilter: ($version, $accountId, $name, $appKey, $parentFilterId, $description, $externalId, $externalType, $active, $metaData) => {
+        CreateFilter: ($accountId, $name, $appKey, $parentFilterId, $description, $externalId, $externalType, $active, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "appKey": "appKey_example",
@@ -63,18 +60,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteFilter: ($version, $accountId, $filterId) => {
+        DeleteFilter: ($accountId, $filterId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "filterId": "789"
             };
         },
 
         // @return FilterTreeResponse
-        UpdateFilter: ($version, $accountId, $filterId, $parentFilterId, $name, $description, $externalId, $externalType, $active, $metaData) => {
+        UpdateFilter: ($accountId, $filterId, $parentFilterId, $name, $description, $externalId, $externalType, $active, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "filterId": "789",
                 "parentFilterId": "789",

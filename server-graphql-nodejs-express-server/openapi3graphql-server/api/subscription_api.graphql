@@ -15,8 +15,6 @@
 
 
 input CreateSubscriptionInput {
-    
-    version: Float!, 
     # The account used to perform the create, must be the responsible manager
     accountId: Int!, 
     # The plan to subscribe to, if null use default plan
@@ -26,15 +24,11 @@ input CreateSubscriptionInput {
 }
 
 input DeleteSubscriptionInput {
-    
-    version: Float!, 
     # The account used to perform the delete, must be the responsible manager
     accountId: Int!
 }
 
 input UpdateSubscriptionInput {
-    
-    version: Float!, 
     # The account used to perform the update, must be the responsible manager
     accountId: Int!, 
     # The plan to subscribe to
@@ -48,7 +42,6 @@ input UpdateSubscriptionInput {
 type Mutation {
   # Create Subscription
   # Create a subscription for a billable entity.  Provide a planId, if not provided then the base plan will be assigned.
-  # @param Float! version 
   # @param Int! accountId The account used to perform the create, must be the responsible manager
   # @param Int! planId The plan to subscribe to, if null use default plan
   # @param String! promoCode Set a promo code for a discount.
@@ -56,13 +49,11 @@ type Mutation {
   CreateSubscription(input: CreateSubscriptionInput!): SubscriptionResponse
   # Delete Subscription
   # Suspend the current subscription for the billable entity managed by the account.  The account must be the responsible manager to perform this action
-  # @param Float! version 
   # @param Int! accountId The account used to perform the delete, must be the responsible manager
   # @return [SirqulResponse]
   DeleteSubscription(input: DeleteSubscriptionInput!): SirqulResponse
   # Update Subscription
   # Updates the subscription for the billable entity for an account
-  # @param Float! version 
   # @param Int! accountId The account used to perform the update, must be the responsible manager
   # @param Int! planId The plan to subscribe to
   # @param String! promoCode Set a promo code for a discount.
@@ -74,31 +65,27 @@ type Mutation {
 type Query {
   # Get Subscription
   # Use the accountId to determine the associated BillableEntity.  Then get the subscription.
-  # @param Float! version 
   # @param Int! accountId The account used to perform the lookup
   # @return [SubscriptionResponse]
-  GetSubscription(version: Float!, accountId: Int!): SubscriptionResponse
+  GetSubscription(accountId: Int!): SubscriptionResponse
   # Get Subscription Plan
   # Get the matched subscription plan
-  # @param Float! version 
   # @param Int! planId The ID of the plan to get
   # @return [SubscriptionPlanResponse]
-  GetSubscriptionPlan(version: Float!, planId: Int!): SubscriptionPlanResponse
+  GetSubscriptionPlan(planId: Int!): SubscriptionPlanResponse
   # List Subscription Plans
   # Get the matched subscription plan
-  # @param Float! version 
   # @param Boolean! visible Include visible only (true), hidden only (false), or all (null)
   # @param String! role The role the plan is targeted for, values are: DEVELOPER, RETAILER, ADVERTISER
   # @return [SubscriptionPlanResponse]
-  GetSubscriptionPlans(version: Float!, visible: Boolean!, role: String!): SubscriptionPlanResponse
+  GetSubscriptionPlans(visible: Boolean!, role: String!): SubscriptionPlanResponse
   # Get Subscription Usage
   # Use the accountId to determine the associated BillableEntity.  Then get the application usage.
-  # @param Float! version 
   # @param Int! accountId The account used to perform the lookup
   # @param Int! applicationId Get for just 1 application instead of the BillableEntity
   # @param Int! start The start time frame
   # @param Int! end The end time frame
   # @return [ApplicationUsageResponse]
-  GetSubscriptionUsage(version: Float!, accountId: Int!, applicationId: Int!, start: Int!, end: Int!): ApplicationUsageResponse
+  GetSubscriptionUsage(accountId: Int!, applicationId: Int!, start: Int!, end: Int!): ApplicationUsageResponse
 }
 

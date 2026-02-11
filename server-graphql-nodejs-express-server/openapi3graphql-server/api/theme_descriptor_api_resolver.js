@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return PurchaseItemListResponse
-        GetThemeDescriptor: ($version, $themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude) => {
+        GetThemeDescriptor: ($themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "themeDescriptorId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -31,9 +30,8 @@ export default {
         },
 
         // @return PurchaseItemListResponse
-        GetThemeDescriptors: ($version, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $appVersion, $latitude, $longitude) => {
+        GetThemeDescriptors: ($filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $appVersion, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "filter": "filter_example",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -60,9 +58,8 @@ export default {
     Mutation: {
 
         // @return ThemeDescriptorResponse
-        AddOrUpdateThemeDescriptor: ($version, $publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $completeWithDefaultValues, $deviceId, $accountId, $gameType, $themeDescriptorId, $title, $description, $connectionIdsToAdd, $connectionGroupIdsToAdd, $appVersion, $colorValueJson, $stringReplacerJson, $customJsonObjects, $iconImage, $sceneAtlasImage, $bgImage, $bgSound, $musicSelection, $locationDescription, $latitude, $longitude) => {
+        AddOrUpdateThemeDescriptor: ($publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $completeWithDefaultValues, $deviceId, $accountId, $gameType, $themeDescriptorId, $title, $description, $connectionIdsToAdd, $connectionGroupIdsToAdd, $appVersion, $colorValueJson, $stringReplacerJson, $customJsonObjects, $iconImage, $sceneAtlasImage, $bgImage, $bgSound, $musicSelection, $locationDescription, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "publicRead": "true",
                 "publicWrite": "true",
                 "publicDelete": "true",
@@ -94,9 +91,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveThemeDescriptor: ($version, $themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude) => {
+        RemoveThemeDescriptor: ($themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "themeDescriptorId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

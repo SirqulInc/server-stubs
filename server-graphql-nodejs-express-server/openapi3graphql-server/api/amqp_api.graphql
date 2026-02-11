@@ -15,8 +15,6 @@
 
 
 input ConsumerCreateInput {
-    
-    version: Float!, 
     # The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
     appKey: String!, 
     # The name of the queue to connect to
@@ -48,8 +46,6 @@ input ConsumerCreateInput {
 }
 
 input ConsumerUpdateInput {
-    
-    version: Float!, 
     # The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
     appKey: String!, 
     # The queue to update
@@ -65,8 +61,6 @@ input ConsumerUpdateInput {
 }
 
 input QueueCreateInput {
-    
-    version: Float!, 
     # The application key unique to each application.
     appKey: String!, 
     # The name of the queue to create
@@ -94,8 +88,6 @@ input QueueCreateInput {
 }
 
 input QueueDeleteInput {
-    
-    version: Float!, 
     # The id of the queue to find
     queueId: Int!, 
     # The client device ID
@@ -105,8 +97,6 @@ input QueueDeleteInput {
 }
 
 input QueuePublishInput {
-    
-    version: Float!, 
     # The payload to send to the queue
     message: String!, 
     # The id of the queue to publish to
@@ -122,8 +112,6 @@ input QueuePublishInput {
 }
 
 input QueueUpdateInput {
-    
-    version: Float!, 
     # The id of the queue to update
     queueId: Int!, 
     # The client deviceID
@@ -153,7 +141,6 @@ input QueueUpdateInput {
 type Mutation {
   # Create Consumer
   # Create a connection to an existing amqp queue and register as a consumer.
-  # @param Float! version 
   # @param String! appKey The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
   # @param String! name The name of the queue to connect to
   # @param String! hostname The hostname of the server the queue is hosted on
@@ -172,7 +159,6 @@ type Mutation {
   ConsumerCreate(input: ConsumerCreateInput!): QueueResponse
   # Update Consumer
   # Update an existing amqp queue&#39;s data mapping.
-  # @param Float! version 
   # @param String! appKey The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
   # @param Int! queueId The queue to update
   # @param String! dataMapping The data mapping information in the format of AMQPRequest
@@ -183,7 +169,6 @@ type Mutation {
   ConsumerUpdate(input: ConsumerUpdateInput!): QueueResponse
   # Create Queue
   # Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application.
-  # @param Float! version 
   # @param String! appKey The application key unique to each application.
   # @param String! name The name of the queue to create
   # @param String! deviceId The client deviceID
@@ -200,7 +185,6 @@ type Mutation {
   QueueCreate(input: QueueCreateInput!): QueueResponse
   # Delete Queue
   # Delete the stored queue record and close any active connections to the AMQP servers.
-  # @param Float! version 
   # @param Int! queueId The id of the queue to find
   # @param String! deviceId The client device ID
   # @param Int! accountId The logged in user ID
@@ -208,7 +192,6 @@ type Mutation {
   QueueDelete(input: QueueDeleteInput!): SirqulResponse
   # Publish Queue
   # Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
-  # @param Float! version 
   # @param String! message The payload to send to the queue
   # @param Int! queueId The id of the queue to publish to
   # @param String! appKey The application key the queue was assigned to
@@ -219,7 +202,6 @@ type Mutation {
   QueuePublish(input: QueuePublishInput!): SirqulResponse
   # Update Queue
   # Update the basic AMQP queue.
-  # @param Float! version 
   # @param Int! queueId The id of the queue to update
   # @param String! deviceId The client deviceID
   # @param Int! accountId The logged in user ID
@@ -239,7 +221,6 @@ type Mutation {
 type Query {
   # Get Queue
   # Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
-  # @param Float! version 
   # @param String! deviceId The client device ID
   # @param Int! accountId The logged in user ID
   # @param Int! queueId The id of the queue to find
@@ -248,10 +229,9 @@ type Query {
   # @param String! hostname The hostname of the queue to find
   # @param String! virtualHost The virtual host of the queue to find
   # @return [QueueResponse]
-  QueueGet(version: Float!, deviceId: String!, accountId: Int!, queueId: Int!, appKey: String!, name: String!, hostname: String!, virtualHost: String!): QueueResponse
+  QueueGet(deviceId: String!, accountId: Int!, queueId: Int!, appKey: String!, name: String!, hostname: String!, virtualHost: String!): QueueResponse
   # Search Queue
   # Get the queues setup for the BillableEntity&#39;s applications.
-  # @param Float! version 
   # @param Int! queueId The id of the queue to find
   # @param String! deviceId The client device ID
   # @param Int! accountId The logged in user ID
@@ -259,6 +239,6 @@ type Query {
   # @param Int! start Start of the index
   # @param Int! limit Limit of the index
   # @return [QueueResponse]
-  QueueSearch(version: Float!, queueId: Int!, deviceId: String!, accountId: Int!, name: String!, start: Int!, limit: Int!): QueueResponse
+  QueueSearch(queueId: Int!, deviceId: String!, accountId: Int!, name: String!, start: Int!, limit: Int!): QueueResponse
 }
 

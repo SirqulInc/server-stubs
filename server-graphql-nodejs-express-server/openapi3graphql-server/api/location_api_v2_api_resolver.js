@@ -22,17 +22,15 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        CreateLocationV2: ($version, $body) => {
+        CreateLocationV2: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return SirqulResponse
-        UpdateLocationV2: ($version, $Id_, $body) => {
+        UpdateLocationV2: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };

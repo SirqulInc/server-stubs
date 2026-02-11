@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return ApplicationResponse
-        GetApplication: ($version, $appKey, $applicationId) => {
+        GetApplication: ($appKey, $applicationId) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "applicationId": "789"
             };
         },
 
         // @return PlacementResponse
-        GetApplicationPlacement: ($version, $placementId, $deviceId, $accountId) => {
+        GetApplicationPlacement: ($placementId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "placementId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -37,16 +35,15 @@ export default {
         },
 
         // @return SirqulResponse
-        GetApplicationVersions: ($version) => {
+        GetApplicationVersions: () => {
             return {
-                "version": "3.16"
+                
             };
         },
 
         // @return AccountListResponse
-        GetUniqueUsersByApp: ($version, $appKey, $q, $keyword, $since, $i, $start, $l, $limit) => {
+        GetUniqueUsersByApp: ($appKey, $q, $keyword, $since, $i, $start, $l, $limit) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "q": "q_example",
                 "keyword": "keyword_example",
@@ -59,9 +56,8 @@ export default {
         },
 
         // @return ApplicationShortResponse
-        ListApplications: ($version, $accountId, $q, $keyword, $platforms, $deviceIds, $deviceVersions, $categoryIds, $sortField, $hasAds, $publicNotifications, $filterBillable, $filterContentAdmin, $descending, $i, $start, $l, $limit, $applicationIds, $hasObjectStore, $activeOnly) => {
+        ListApplications: ($accountId, $q, $keyword, $platforms, $deviceIds, $deviceVersions, $categoryIds, $sortField, $hasAds, $publicNotifications, $filterBillable, $filterContentAdmin, $descending, $i, $start, $l, $limit, $applicationIds, $hasObjectStore, $activeOnly) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "q": "q_example",
                 "keyword": "keyword_example",
@@ -86,9 +82,8 @@ export default {
         },
 
         // @return PlacementResponse
-        SearchApplicationPlacement: ($version, $appKey, $deviceId, $accountId, $start, $limit) => {
+        SearchApplicationPlacement: ($appKey, $deviceId, $accountId, $start, $limit) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -98,9 +93,8 @@ export default {
         },
 
         // @return ApplicationSettingsResponse
-        SearchApplicationSettings: ($version, $deviceId, $accountId, $connectionAccountId, $keyword, $sortField, $descending, $start, $limit) => {
+        SearchApplicationSettings: ($deviceId, $accountId, $connectionAccountId, $keyword, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "connectionAccountId": "789",
@@ -113,9 +107,8 @@ export default {
         },
 
         // @return ApplicationResponse
-        SearchApplications: ($version, $deviceId, $accountId, $latitude, $longitude, $q, $keyword, $qSearchFields, $sortField, $descending, $i, $start, $l, $limit, $hasAds, $publicNotifications, $activeOnly) => {
+        SearchApplications: ($deviceId, $accountId, $latitude, $longitude, $q, $keyword, $qSearchFields, $sortField, $descending, $i, $start, $l, $limit, $hasAds, $publicNotifications, $activeOnly) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "latitude": "1.2",
@@ -140,9 +133,8 @@ export default {
     Mutation: {
 
         // @return ApplicationResponse
-        CreateApplication: ($version, $appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey) => {
+        CreateApplication: ($appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey) => {
             return {
-                "version": "3.16",
                 "appName": "appName_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -226,9 +218,8 @@ export default {
         },
 
         // @return PlacementResponse
-        CreateApplicationPlacement: ($version, $appKey, $size, $deviceId, $accountId, $name, $description, $height, $width, $refreshInterval, $defaultImageId, $active) => {
+        CreateApplicationPlacement: ($appKey, $size, $deviceId, $accountId, $name, $description, $height, $width, $refreshInterval, $defaultImageId, $active) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "size": "size_example",
                 "deviceId": "deviceId_example",
@@ -244,18 +235,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteApplication: ($version, $accountId, $appKey) => {
+        DeleteApplication: ($accountId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example"
             };
         },
 
         // @return PlacementResponse
-        DeleteApplicationPlacement: ($version, $placementId, $deviceId, $accountId) => {
+        DeleteApplicationPlacement: ($placementId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "placementId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -263,9 +252,8 @@ export default {
         },
 
         // @return ApplicationResponse
-        UpdateApplication: ($version, $appKey, $appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey) => {
+        UpdateApplication: ($appKey, $appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "appName": "appName_example",
                 "deviceId": "deviceId_example",
@@ -350,9 +338,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateApplicationActive: ($version, $accountId, $appKey, $active) => {
+        UpdateApplicationActive: ($accountId, $appKey, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "active": "true"
@@ -360,9 +347,8 @@ export default {
         },
 
         // @return PlacementResponse
-        UpdateApplicationPlacement: ($version, $placementId, $deviceId, $accountId, $name, $description, $size, $height, $width, $refreshInterval, $defaultImageId, $active) => {
+        UpdateApplicationPlacement: ($placementId, $deviceId, $accountId, $name, $description, $size, $height, $width, $refreshInterval, $defaultImageId, $active) => {
             return {
-                "version": "3.16",
                 "placementId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -378,9 +364,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UploadApplicationCertificate: ($version, $appKey, $deviceId, $accountId, $certificate) => {
+        UploadApplicationCertificate: ($appKey, $deviceId, $accountId, $certificate) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

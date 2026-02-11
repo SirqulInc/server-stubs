@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return CoordsResponse
-        GetLocationByIp: ($version, $ip) => {
+        GetLocationByIp: ($ip) => {
             return {
-                "version": "3.16",
                 "ip": "ip_example"
             };
         },
 
         // @return GeoPointResponse
-        GetLocationByTrilateration: ($version, $accountId, $latitude, $longitude, $data, $responseFilters) => {
+        GetLocationByTrilateration: ($accountId, $latitude, $longitude, $data, $responseFilters) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "latitude": "1.2",
                 "longitude": "1.2",
@@ -38,9 +36,8 @@ export default {
         },
 
         // @return LocationSearchResponse
-        GetLocations: ($version, $deviceId, $accountId, $currentlatitude, $currentlongitude, $currentLatitude, $currentLongitude, $Query_, $zipcode, $zipCode, $selectedMaplatitude, $selectedMaplongitude, $selectedMapLatitude, $selectedMapLongitude, $searchRange, $useGeocode, $i, $start, $l, $limit) => {
+        GetLocations: ($deviceId, $accountId, $currentlatitude, $currentlongitude, $currentLatitude, $currentLongitude, $Query_, $zipcode, $zipCode, $selectedMaplatitude, $selectedMaplongitude, $selectedMapLatitude, $selectedMapLongitude, $searchRange, $useGeocode, $i, $start, $l, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "currentlatitude": "1.2",
@@ -68,9 +65,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        CacheTrilaterationData: ($version, $udid, $sourceTime, $minimumSampleSize, $data, $dataFile) => {
+        CacheTrilaterationData: ($udid, $sourceTime, $minimumSampleSize, $data, $dataFile) => {
             return {
-                "version": "3.16",
                 "udid": "udid_example",
                 "sourceTime": "789",
                 "minimumSampleSize": "56",
@@ -80,9 +76,8 @@ export default {
         },
 
         // @return SirqulResponse
-        CacheTrilaterationDataGzip: ($version, $body) => {
+        CacheTrilaterationDataGzip: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },

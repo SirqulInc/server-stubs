@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return QuestionResponse
-        GetQuestion: ($version, $questionId, $accountId) => {
+        GetQuestion: ($questionId, $accountId) => {
             return {
-                "version": "3.16",
                 "questionId": "789",
                 "accountId": "789"
             };
         },
 
         // @return QuestionResponse
-        SearchQuestions: ($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword) => {
+        SearchQuestions: ($accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -45,9 +43,8 @@ export default {
     Mutation: {
 
         // @return QuestionResponse
-        CreateQuestion: ($version, $accountId, $question, $answers, $active, $allocateTickets, $ticketCount, $tags, $videoURL, $assetId, $ticketType, $points) => {
+        CreateQuestion: ($accountId, $question, $answers, $active, $allocateTickets, $ticketCount, $tags, $videoURL, $assetId, $ticketType, $points) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "question": "question_example",
                 "answers": "answers_example",
@@ -63,18 +60,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteQuestion: ($version, $questionId, $accountId) => {
+        DeleteQuestion: ($questionId, $accountId) => {
             return {
-                "version": "3.16",
                 "questionId": "789",
                 "accountId": "789"
             };
         },
 
         // @return QuestionResponse
-        UpdateQuestion: ($version, $questionId, $accountId, $ticketCount, $question, $answers, $tags, $videoURL, $assetId, $active, $allocateTickets, $ticketType, $points) => {
+        UpdateQuestion: ($questionId, $accountId, $ticketCount, $question, $answers, $tags, $videoURL, $assetId, $active, $allocateTickets, $ticketType, $points) => {
             return {
-                "version": "3.16",
                 "questionId": "789",
                 "accountId": "789",
                 "ticketCount": "789",

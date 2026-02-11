@@ -15,8 +15,6 @@
 
 
 input CreateReservationInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -36,8 +34,6 @@ input CreateReservationInput {
 }
 
 input DeleteReservationInput {
-    
-    version: Float!, 
     # The reservation id
     reservationId: Int!, 
     # The device id (deviceId or accountId required)
@@ -47,8 +43,6 @@ input DeleteReservationInput {
 }
 
 input ReservableAvailabilityInput {
-    
-    version: Float!, 
     # the id of the reservation
     reservableId: Int!, 
     # the type of reservation
@@ -66,7 +60,6 @@ input ReservableAvailabilityInput {
 type Mutation {
   # Create Reservation
   # Creates a reservation on an offer object
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Int! startDate The start date
@@ -79,14 +72,12 @@ type Mutation {
   CreateReservation(input: CreateReservationInput!): Boolean
   # Delete Reservation
   # Deleted a reservation on a reservation object
-  # @param Float! version 
   # @param Int! reservationId The reservation id
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @return [Boolean]
   DeleteReservation(input: DeleteReservationInput!): Boolean
   # Update Availability
-  # @param Float! version 
   # @param Int! reservableId the id of the reservation
   # @param String! reservableType the type of reservation
   # @param String! deviceId the device id of the reservation
@@ -99,7 +90,6 @@ type Mutation {
 
 type Query {
   # Search Availability
-  # @param Float! version 
   # @param Int! reservableId the id of the reservation
   # @param String! reservableType the reservable type
   # @param String! deviceId the device ID that the reservation is on
@@ -109,9 +99,8 @@ type Query {
   # @param Int! start the start of the index and/or pagination
   # @param Int! limit the limit of the index and/or pagination
   # @return [AvailabilityResponse]
-  SearchAvailability(version: Float!, reservableId: Int!, reservableType: String!, deviceId: String!, accountId: Int!, startDate: Int!, endDate: Int!, start: Int!, limit: Int!): AvailabilityResponse
+  SearchAvailability(reservableId: Int!, reservableType: String!, deviceId: String!, accountId: Int!, startDate: Int!, endDate: Int!, start: Int!, limit: Int!): AvailabilityResponse
   # Search Reservations
-  # @param Float! version 
   # @param String! deviceId Device Id
   # @param String! appKey Appilcation Key
   # @param Int! accountId the id of the logged in user
@@ -124,9 +113,8 @@ type Query {
   # @param Int! start the start of the index and/or pagination
   # @param Int! limit the limit of the index and/or pagination
   # @return [ReservationResponse]
-  SearchReservations(version: Float!, deviceId: String!, appKey: String!, accountId: Int!, filterAccountId: Int!, reservableId: Int!, reservableType: String!, keyword: String!, startDate: Int!, endDate: Int!, start: Int!, limit: Int!): ReservationResponse
+  SearchReservations(deviceId: String!, appKey: String!, accountId: Int!, filterAccountId: Int!, reservableId: Int!, reservableType: String!, keyword: String!, startDate: Int!, endDate: Int!, start: Int!, limit: Int!): ReservationResponse
   # Search Schedule
-  # @param Float! version 
   # @param Int! reservableId the id of the reservation
   # @param String! reservableType the reservation type
   # @param Int! startDate the start date of the reservation
@@ -135,6 +123,6 @@ type Query {
   # @param Int! accountId the id of the logged in user
   # @param Int! timeBucketMins the length of time in minutes to search on for reservation
   # @return [TimeSlotResponse]
-  SearchSchedule(version: Float!, reservableId: Int!, reservableType: String!, startDate: Int!, endDate: Int!, deviceId: String!, accountId: Int!, timeBucketMins: Int!): TimeSlotResponse
+  SearchSchedule(reservableId: Int!, reservableType: String!, startDate: Int!, endDate: Int!, deviceId: String!, accountId: Int!, timeBucketMins: Int!): TimeSlotResponse
 }
 

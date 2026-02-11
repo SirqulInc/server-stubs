@@ -15,15 +15,11 @@
 
 
 input ApproveRouteInput {
-    
-    version: Float!, 
     # the id of the route to approve
     routeId: Int!
 }
 
 input CopyRouteInput {
-    
-    version: Float!, 
     # the id of the route to duplicate
     routeId: Int!, 
     
@@ -32,49 +28,35 @@ input CopyRouteInput {
 
 input CreateRouteInput {
     
-    version: Float!, 
-    
     body: RouteInput
 }
 
 input CreateRouteDirectionsInput {
-    
-    version: Float!, 
     # the id of the route to update directions for
     routeId: Int!
 }
 
 input CreateRoutePolylineInput {
-    
-    version: Float!, 
     # the id of the route to create a polyline for
     routeId: Int!
 }
 
 input DeleteRouteInput {
-    
-    version: Float!, 
     # the id of the route
     routeId: Int!
 }
 
 input DisapproveRouteInput {
-    
-    version: Float!, 
     # the id of the route to reject
     routeId: Int!
 }
 
 input OptimizeRouteInput {
-    
-    version: Float!, 
     # the id of the route to optimize
     routeId: Int!
 }
 
 input RemoveStopInput {
-    
-    version: Float!, 
     # the id of the route
     routeId: Int!, 
     # the id of the specific stop to delete on the route
@@ -82,8 +64,6 @@ input RemoveStopInput {
 }
 
 input ReorderRouteStopsPatchInput {
-    
-    version: Float!, 
     # the id of the route
     routeId: Int!, 
     
@@ -91,8 +71,6 @@ input ReorderRouteStopsPatchInput {
 }
 
 input ReorderRouteStopsPostInput {
-    
-    version: Float!, 
     # the id of the route
     routeId: Int!, 
     
@@ -100,8 +78,6 @@ input ReorderRouteStopsPostInput {
 }
 
 input SetDriverInput {
-    
-    version: Float!, 
     # the id of the route
     Id_: Int!, 
     # the id of the driver
@@ -109,8 +85,6 @@ input SetDriverInput {
 }
 
 input UpdateRouteInput {
-    
-    version: Float!, 
     # the id of the route
     routeId: Int!, 
     
@@ -118,8 +92,6 @@ input UpdateRouteInput {
 }
 
 input UpdateRouteStopInput {
-    
-    version: Float!, 
     # the id of the route to update stops for
     routeId: Int!, 
     # the id of the specific stop to update on the route
@@ -131,91 +103,77 @@ input UpdateRouteStopInput {
 type Mutation {
   # Approve Route
   # Approve a route
-  # @param Float! version 
   # @param Int! routeId the id of the route to approve
   # @return [Route]
   ApproveRoute(input: ApproveRouteInput!): Route
   # Copy Route
   # Make an copy of the given route with optional overriding properties
-  # @param Float! version 
   # @param Int! routeId the id of the route to duplicate
   # @param Route body 
   # @return [Route]
   CopyRoute(input: CopyRouteInput!): Route
   # Create Route
   # Create new route
-  # @param Float! version 
   # @param Route body 
   # @return [Route]
   CreateRoute(input: CreateRouteInput!): Route
   # Update Route Directions
   # Regenerate the directions of a route
-  # @param Float! version 
   # @param Int! routeId the id of the route to update directions for
   # @return [Direction]
   CreateRouteDirections(input: CreateRouteDirectionsInput!): Direction
   # Create Route Polyline
   # Update the polyline of the requested route
-  # @param Float! version 
   # @param Int! routeId the id of the route to create a polyline for
   # @return [Route]
   CreateRoutePolyline(input: CreateRoutePolylineInput!): Route
   # Delete Route
   # Delete an existing route
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @return [Boolean]
   DeleteRoute(input: DeleteRouteInput!): Boolean
   # Disapprove Route
   # Disapprove a route
-  # @param Float! version 
   # @param Int! routeId the id of the route to reject
   # @return [Route]
   DisapproveRoute(input: DisapproveRouteInput!): Route
   # Optimize Route
   # Optimize a route. The optimization method based on how the server is configured.
-  # @param Float! version 
   # @param Int! routeId the id of the route to optimize
   # @return [Boolean]
   OptimizeRoute(input: OptimizeRouteInput!): Boolean
   # Delete Stop
   # Delete a stop on a route
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @param Int! stopId the id of the specific stop to delete on the route
   # @return [Boolean]
   RemoveStop(input: RemoveStopInput!): Boolean
   # Reorder Route Stops
   # Reordering the stops on the route with and update route distance, time, direction, and polyline
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @param Stop body 
   # @return [Stop]
   ReorderRouteStopsPatch(input: ReorderRouteStopsPatchInput!): Stop
   # Reorder Route Stops
   # Reordering the stops on the route with and update route distance, time, direction, and polyline
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @param Stop body 
   # @return [Stop]
   ReorderRouteStopsPost(input: ReorderRouteStopsPostInput!): Stop
   # Set Driver
   # Update the driver of the route.
-  # @param Float! version 
   # @param Int! Id_ the id of the route
   # @param Int! driverId the id of the driver
   # @return [Boolean]
   SetDriver(input: SetDriverInput!): Boolean
   # Update Route
   # Update an existing route
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @param Route body 
   # @return [Route]
   UpdateRoute(input: UpdateRouteInput!): Route
   # Update Route Stop
   # Update a stop on a specified route
-  # @param Float! version 
   # @param Int! routeId the id of the route to update stops for
   # @param Int! stopId the id of the specific stop to update on the route
   # @param Stop body 
@@ -226,47 +184,40 @@ type Mutation {
 type Query {
   # Get Route
   # Get an existing route
-  # @param Float! version 
   # @param Int! routeId the id of the route to get
   # @param Boolean! showInheritedProperties return inherited properties from parent or not
   # @return [Route]
-  GetRoute(version: Float!, routeId: Int!, showInheritedProperties: Boolean!): Route
+  GetRoute(routeId: Int!, showInheritedProperties: Boolean!): Route
   # Get Route Directions
   # Get the directions of a route
-  # @param Float! version 
   # @param Int! routeId the id of the route to get directions for
   # @return [Direction]
-  GetRouteDirections(version: Float!, routeId: Int!): Direction
+  GetRouteDirections(routeId: Int!): Direction
   # Get Route Shipments
   # Get the shipments on the requested route
-  # @param Float! version 
   # @param Int! routeId the id of the route to get shipments for
   # @return [Shipment]
-  GetRouteShipments(version: Float!, routeId: Int!): Shipment
+  GetRouteShipments(routeId: Int!): Shipment
   # Get Route Stop
   # Get the specific stop on a route
-  # @param Float! version 
   # @param Int! routeId the id of the route to get stops for
   # @param Int! stopId the id of the specific stop on the route
   # @return [Stop]
-  GetRouteStop(version: Float!, routeId: Int!, stopId: Int!): Stop
+  GetRouteStop(routeId: Int!, stopId: Int!): Stop
   # Get Route Stops
   # The stops of the route requested
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @param Boolean! confirmedOnly only get stops that have been confirmed or not
   # @return [Stop]
-  GetRouteStops(version: Float!, routeId: Int!, confirmedOnly: Boolean!): Stop
+  GetRouteStops(routeId: Int!, confirmedOnly: Boolean!): Stop
   # Get Shipments At Stop
   # Get the list of shipments on the requested route at a stop
-  # @param Float! version 
   # @param Int! routeId the id of the route
   # @param Int! stopId the id of the stop to get shipments on
   # @return [Shipment]
-  GetShipmentsAtStop(version: Float!, routeId: Int!, stopId: Int!): Shipment
+  GetShipmentsAtStop(routeId: Int!, stopId: Int!): Shipment
   # Search Routes
   # Search for routes.
-  # @param Float! version 
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
@@ -289,6 +240,6 @@ type Query {
   # @param Boolean! valid Is valid or not
   # @param Int! parentId If it is a recurring route based on the parent route
   # @return [Route]
-  SearchRoutes(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, includesEmpty: Boolean!, rootOnly: Boolean!, showInheritedProperties: Boolean!, hubId: Int!, programId: Int!, scheduledStart: Int!, scheduledEnd: Int!, updatedStart: Int!, updatedEnd: Int!, featured: Boolean!, seatCount: Int!, approved: Boolean!, started: Boolean!, completed: Boolean!, valid: Boolean!, parentId: Int!): Route
+  SearchRoutes(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, includesEmpty: Boolean!, rootOnly: Boolean!, showInheritedProperties: Boolean!, hubId: Int!, programId: Int!, scheduledStart: Int!, scheduledEnd: Int!, updatedStart: Int!, updatedEnd: Int!, featured: Boolean!, seatCount: Int!, approved: Boolean!, started: Boolean!, completed: Boolean!, valid: Boolean!, parentId: Int!): Route
 }
 

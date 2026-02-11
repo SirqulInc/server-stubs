@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return RetailerLocationResponse
-        GetRetailerLocation: ($version, $retailerLocationId, $deviceId, $accountId, $retailerLocationToken) => {
+        GetRetailerLocation: ($retailerLocationId, $deviceId, $accountId, $retailerLocationToken) => {
             return {
-                "version": "3.16",
                 "retailerLocationId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -29,9 +28,8 @@ export default {
         },
 
         // @return RetailerLocationResponse
-        GetRetailerLocationConsumer: ($version, $retailerLocationId, $deviceId, $accountId) => {
+        GetRetailerLocationConsumer: ($retailerLocationId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "retailerLocationId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -39,9 +37,8 @@ export default {
         },
 
         // @return RetailerLocationResponse
-        IndexedRetailerLocationDistanceSearch: ($version, $latitude, $longitude, $searchRange, $start, $limit, $accountId, $address, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $distanceUnit, $returnFavorited, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating) => {
+        IndexedRetailerLocationDistanceSearch: ($latitude, $longitude, $searchRange, $start, $limit, $accountId, $address, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $distanceUnit, $returnFavorited, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating) => {
             return {
-                "version": "3.16",
                 "latitude": "1.2",
                 "longitude": "1.2",
                 "searchRange": "1.2",
@@ -80,9 +77,8 @@ export default {
         },
 
         // @return RetailerLocationResponse
-        IndexedRetailerLocationSearch: ($version, $accountId, $start, $limit, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating) => {
+        IndexedRetailerLocationSearch: ($accountId, $start, $limit, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "start": "56",
                 "limit": "56",
@@ -115,9 +111,8 @@ export default {
         },
 
         // @return RetailerLocationResponse
-        SearchRetailerLocations: ($version, $deviceId, $accountId, $q, $keyword, $retailerIds, $retailerLocationIds, $locationType, $sortField, $descending, $i, $start, $l, $limit, $showPublicLocations, $activeOnly, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $includeFavorite, $includeLiked, $includeRating) => {
+        SearchRetailerLocations: ($deviceId, $accountId, $q, $keyword, $retailerIds, $retailerLocationIds, $locationType, $sortField, $descending, $i, $start, $l, $limit, $showPublicLocations, $activeOnly, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $includeFavorite, $includeLiked, $includeRating) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "q": "q_example",
@@ -151,9 +146,8 @@ export default {
     Mutation: {
 
         // @return RetailerLocationResponse
-        CreateRetailerLocationConsumer: ($version, $appKey, $name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $detailsHeader, $detailsBody, $hours, $tags, $logoAssetId, $picture1AssetId, $picture2AssetId, $categoryIds, $filterIds, $metaData, $publicLocation, $active, $locationType, $latitude, $longitude) => {
+        CreateRetailerLocationConsumer: ($appKey, $name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $detailsHeader, $detailsBody, $hours, $tags, $logoAssetId, $picture1AssetId, $picture2AssetId, $categoryIds, $filterIds, $metaData, $publicLocation, $active, $locationType, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "name": "name_example",
                 "deviceId": "deviceId_example",
@@ -187,9 +181,8 @@ export default {
         },
 
         // @return RetailerLocationResponse
-        CreateRetailerLocations: ($version, $retailerId, $name, $streetAddress, $city, $state, $postalCode, $deviceId, $accountId, $streetAddress2, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $responseIncludes) => {
+        CreateRetailerLocations: ($retailerId, $name, $streetAddress, $city, $state, $postalCode, $deviceId, $accountId, $streetAddress2, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $responseIncludes) => {
             return {
-                "version": "3.16",
                 "retailerId": "789",
                 "name": "name_example",
                 "streetAddress": "streetAddress_example",
@@ -233,9 +226,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteRetailerLocation: ($version, $deviceId, $accountId, $retailerLocationId) => {
+        DeleteRetailerLocation: ($deviceId, $accountId, $retailerLocationId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "retailerLocationId": "789"
@@ -243,9 +235,8 @@ export default {
         },
 
         // @return RetailerLocationResponse
-        UpdateRetailerLocations: ($version, $retailerLocationId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $metaData, $paymentProvider, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $tags) => {
+        UpdateRetailerLocations: ($retailerLocationId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $metaData, $paymentProvider, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $tags) => {
             return {
-                "version": "3.16",
                 "retailerLocationId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return WrappedProxyItemResponse
-        ImageGeneration: ($version, $accountId, $postBody, $returnRawResponse) => {
+        ImageGeneration: ($accountId, $postBody, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "postBody": "postBody_example",
                 "returnRawResponse": "true"

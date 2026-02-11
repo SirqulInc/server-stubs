@@ -15,8 +15,6 @@
 
 
 input AddAlbumCollectionInput {
-    
-    version: Float!, 
     # the title of the album
     title: String!, 
     # determines whether the cover image of the album can be empty, else will use the user&#39;s profile picture as the cover image
@@ -112,8 +110,6 @@ input AddAlbumCollectionInput {
 }
 
 input AddAlbumUsersInput {
-    
-    version: Float!, 
     # the album ID
     albumId: Int!, 
     # determines whether to include all friends as participants
@@ -137,8 +133,6 @@ input AddAlbumUsersInput {
 }
 
 input ApproveAlbumInput {
-    
-    version: Float!, 
     # The ID of the album
     albumId: Int!, 
     # A unique ID given by the device (deviceId or accountId required)
@@ -152,8 +146,6 @@ input ApproveAlbumInput {
 }
 
 input LeaveAlbumInput {
-    
-    version: Float!, 
     # the album ID
     albumId: Int!, 
     # a unique ID given by the device (deviceId or accountId required)
@@ -163,8 +155,6 @@ input LeaveAlbumInput {
 }
 
 input RemoveAlbumInput {
-    
-    version: Float!, 
     # the album ID to delete
     albumId: Int!, 
     # a unique ID given by the device (deviceId or accountId required)
@@ -174,8 +164,6 @@ input RemoveAlbumInput {
 }
 
 input RemoveAlbumUsersInput {
-    
-    version: Float!, 
     # the album ID
     albumId: Int!, 
     # remove friend group
@@ -191,8 +179,6 @@ input RemoveAlbumUsersInput {
 }
 
 input UpdateAlbumCollectionInput {
-    
-    version: Float!, 
     # the ID of the album to update
     albumId: Int!, 
     # a unique ID given by the device (deviceId or accountId required)
@@ -288,7 +274,6 @@ input UpdateAlbumCollectionInput {
 type Mutation {
   # Create Album
   # Create an Album.
-  # @param Float! version 
   # @param String! title the title of the album
   # @param Boolean! coverAssetNullable determines whether the cover image of the album can be empty, else will use the user&#39;s profile picture as the cover image
   # @param Boolean! includeCoverInAssetList determines whether the cover image should be added to the album asset list
@@ -339,7 +324,6 @@ type Mutation {
   AddAlbumCollection(input: AddAlbumCollectionInput!): SearchResponse
   # Add Album Users
   # Add users to an album as participants.
-  # @param Float! version 
   # @param Int! albumId the album ID
   # @param Boolean! includeFriendGroup determines whether to include all friends as participants
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
@@ -354,7 +338,6 @@ type Mutation {
   AddAlbumUsers(input: AddAlbumUsersInput!): SirqulResponse
   # Approve Album
   # Sets the approval status of an Album.
-  # @param Float! version 
   # @param Int! albumId The ID of the album
   # @param String! deviceId A unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId The account ID of the user (deviceId or accountId required)
@@ -364,7 +347,6 @@ type Mutation {
   ApproveAlbum(input: ApproveAlbumInput!): SirqulResponse
   # Leave Album
   #  Allows a user to leave an album (they are no longer considered a participant). The album creator cannot leave their own albums.
-  # @param Float! version 
   # @param Int! albumId the album ID
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
@@ -372,7 +354,6 @@ type Mutation {
   LeaveAlbum(input: LeaveAlbumInput!): SirqulResponse
   # Delete Album
   # Deletes an Album
-  # @param Float! version 
   # @param Int! albumId the album ID to delete
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
@@ -380,7 +361,6 @@ type Mutation {
   RemoveAlbum(input: RemoveAlbumInput!): SirqulResponse
   # Remove Album Users
   # Remove participants of an album.
-  # @param Float! version 
   # @param Int! albumId the album ID
   # @param Boolean! removeFriendGroup remove friend group
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
@@ -391,7 +371,6 @@ type Mutation {
   RemoveAlbumUsers(input: RemoveAlbumUsersInput!): SirqulResponse
   # Update Album
   # Update an Album.
-  # @param Float! version 
   # @param Int! albumId the ID of the album to update
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId the account ID of the user (deviceId or accountId required)
@@ -444,7 +423,6 @@ type Mutation {
 type Query {
   #  Get Album
   # Get an Album.
-  # @param Float! version 
   # @param Boolean! returnNulls This parameter is deprecated.
   # @param Int! albumId the album to look up
   # @param String! deviceId a unique ID given by the device (deviceId or accountId required)
@@ -455,10 +433,9 @@ type Query {
   # @param Int! connectionPreviewSize returns the first X users/connections. To search on and paginate the remaining connections - please use the \&quot;/permissions/search\&quot; endpoint.
   # @param Int! audiencePreviewSize returns the first X audiences. To search on and paginate the remaining audiences - please use the \&quot;/audience/search\&quot; endpoint.
   # @return [AlbumFullResponse]
-  GetAlbumCollection(version: Float!, returnNulls: Boolean!, albumId: Int!, deviceId: String!, accountId: Int!, likePreviewSize: Int!, assetPreviewSize: Int!, notePreviewSize: Int!, connectionPreviewSize: Int!, audiencePreviewSize: Int!): AlbumFullResponse
+  GetAlbumCollection(returnNulls: Boolean!, albumId: Int!, deviceId: String!, accountId: Int!, likePreviewSize: Int!, assetPreviewSize: Int!, notePreviewSize: Int!, connectionPreviewSize: Int!, audiencePreviewSize: Int!): AlbumFullResponse
   # Search Albums
   # Searches on Albums.
-  # @param Float! version 
   # @param String! filter a comma separated list of filters: * MINE - Return albums that the user has created. * SHARED - Return albums that have been shared to the user via addAlbumUsers, or addUsersToPermissionable . * FOLLOWER - Return albums that have been created by the user&#39;s followers (the content needs to have been APPROVED or FEATURED). * FOLLOWING - Return albums that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). * PUBLIC - Return all PUBLIC albums that have been APPROVED or FEATURED. * ALL_PUBLIC - Return all PUBLIC albums regardless of whether they are approved or not (ignores the approval status). * LIKED - Return all albums that the user has liked. * FEATURED - Return all albums that have been featured. * PENDING - Return all pending albums. 
   # @param Int! albumTypeId id of custom albumType
   # @param String! subType filter albums with this album sub type
@@ -520,6 +497,6 @@ type Query {
   # @param String! searchExpression Advanced search expression to be used by the server
   # @param Boolean! generateAlbums If true and results are empty, attempt to generate albums via templates
   # @return [AlbumFullResponse]
-  SearchAlbums(version: Float!, filter: String!, albumTypeId: Int!, subType: String!, includeInactive: Boolean!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, range: Float!, includeLiked: Boolean!, includeFavorited: Boolean!, includePermissions: Boolean!, likePreviewSize: Int!, assetPreviewSize: Int!, notePreviewSize: Int!, connectionPreviewSize: Int!, audiencePreviewSize: Int!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, ownerId: Int!, albumIds: String!, excludeAlbumIds: String!, mediaId: Int!, keyword: String!, albumType: String!, limitPerAlbumType: Int!, dateCreated: Int!, updatedSince: Int!, updatedBefore: Int!, createdSince: Int!, createdBefore: Int!, startedSince: Int!, startedBefore: Int!, endedSince: Int!, endedBefore: Int!, latitude: Float!, longitude: Float!, appKey: String!, categoryIds: String!, categoryFilterIds: String!, audienceIds: String!, excludeAudienceIds: String!, includeCompletable: Boolean!, includeRating: Boolean!, searchMode: String!, stackSearch: Boolean!, stackWindowSize: Int!, minStackPerPage: Int!, stackPaginationIdentifier: String!, stackDetails: Boolean!, flagCountMinimum: Int!, removeFlaggedContent: Boolean!, verifiedFilter: Boolean!, linkedObjectType: String!, linkedObjectId: Int!, orderAudienceId: Int!, ignoreDefaultAppFilter: Boolean!, searchExpression: String!, generateAlbums: Boolean!): AlbumFullResponse
+  SearchAlbums(filter: String!, albumTypeId: Int!, subType: String!, includeInactive: Boolean!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, range: Float!, includeLiked: Boolean!, includeFavorited: Boolean!, includePermissions: Boolean!, likePreviewSize: Int!, assetPreviewSize: Int!, notePreviewSize: Int!, connectionPreviewSize: Int!, audiencePreviewSize: Int!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, ownerId: Int!, albumIds: String!, excludeAlbumIds: String!, mediaId: Int!, keyword: String!, albumType: String!, limitPerAlbumType: Int!, dateCreated: Int!, updatedSince: Int!, updatedBefore: Int!, createdSince: Int!, createdBefore: Int!, startedSince: Int!, startedBefore: Int!, endedSince: Int!, endedBefore: Int!, latitude: Float!, longitude: Float!, appKey: String!, categoryIds: String!, categoryFilterIds: String!, audienceIds: String!, excludeAudienceIds: String!, includeCompletable: Boolean!, includeRating: Boolean!, searchMode: String!, stackSearch: Boolean!, stackWindowSize: Int!, minStackPerPage: Int!, stackPaginationIdentifier: String!, stackDetails: Boolean!, flagCountMinimum: Int!, removeFlaggedContent: Boolean!, verifiedFilter: Boolean!, linkedObjectType: String!, linkedObjectId: Int!, orderAudienceId: Int!, ignoreDefaultAppFilter: Boolean!, searchExpression: String!, generateAlbums: Boolean!): AlbumFullResponse
 }
 

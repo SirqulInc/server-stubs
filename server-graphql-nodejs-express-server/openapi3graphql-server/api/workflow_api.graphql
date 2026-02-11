@@ -15,8 +15,6 @@
 
 
 input RunWorkflowInput {
-    
-    version: Float!, 
     # the account ID of the user
     accountId: Int!, 
     # the workflow to run
@@ -32,7 +30,6 @@ input RunWorkflowInput {
 type Mutation {
   # Run Workflow
   # Runs a published executable workflow
-  # @param Float! version 
   # @param Int! accountId the account ID of the user
   # @param Int! workflowId the workflow to run
   # @param Int! skuId this runs a particular sku on the workflow

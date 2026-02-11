@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return BidResponse
-        GetBid: ($version, $bidId, $deviceId, $accountId) => {
+        GetBid: ($bidId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "bidId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -32,9 +31,8 @@ export default {
     Mutation: {
 
         // @return BidResponse
-        CreateBid: ($version, $biddableType, $biddableId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule, $deviceId, $accountId) => {
+        CreateBid: ($biddableType, $biddableId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "biddableType": "biddableType_example",
                 "biddableId": "789",
                 "amountPerView": "1.2",
@@ -47,9 +45,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteBid: ($version, $bidId, $deviceId, $accountId) => {
+        DeleteBid: ($bidId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "bidId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -57,9 +54,8 @@ export default {
         },
 
         // @return BidResponse
-        UpdateBid: ($version, $bidId, $deviceId, $accountId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule) => {
+        UpdateBid: ($bidId, $deviceId, $accountId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule) => {
             return {
-                "version": "3.16",
                 "bidId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

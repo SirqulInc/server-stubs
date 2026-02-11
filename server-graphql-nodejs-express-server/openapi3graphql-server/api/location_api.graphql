@@ -15,8 +15,6 @@
 
 
 input CacheTrilaterationDataInput {
-    
-    version: Float!, 
     # The unique identifier of the source device
     udid: String!, 
     # The current timestamp of the source device
@@ -31,15 +29,12 @@ input CacheTrilaterationDataInput {
 
 input CacheTrilaterationDataGzipInput {
     
-    version: Float!, 
-    
     body: TrilatCacheRequestInput
 }
 
 type Mutation {
   # Create Trilateration Data with File
   # Creates trilateration samples for a source device (i.e. a router).
-  # @param Float! version 
   # @param String! udid The unique identifier of the source device
   # @param Int! sourceTime The current timestamp of the source device
   # @param Int! minimumSampleSize the minimum number of Edysen devices that must be used to be able to trilaterate a device
@@ -49,7 +44,6 @@ type Mutation {
   CacheTrilaterationData(input: CacheTrilaterationDataInput!): SirqulResponse
   # Create Trilateration Data with Rest
   # Creates trilateration samples for a source device (i.e. a router).
-  # @param Float! version 
   # @param TrilatCacheRequest body 
   # @return [SirqulResponse]
   CacheTrilaterationDataGzip(input: CacheTrilaterationDataGzipInput!): SirqulResponse
@@ -58,23 +52,20 @@ type Mutation {
 type Query {
   # Get Location by IP
   # Get location information based on an IP address.
-  # @param Float! version 
   # @param String! ip the ip address of the client device
   # @return [CoordsResponse]
-  GetLocationByIp(version: Float!, ip: String!): CoordsResponse
+  GetLocationByIp(ip: String!): CoordsResponse
   # Get Location by Trilateration
   # Send in device data and calculate a position based on signal strengths.
-  # @param Float! version 
   # @param Int! accountId The account making the request, if provided the last know location will be updated
   # @param Float! latitude The known GPS latitude to compare to the calculated version
   # @param Float! longitude The known GPS longitude to compare to the calculated version
   # @param String! data The json formated sample data:  &#x60;&#x60;&#x60;json {    \&quot;count\&quot;: 2,   \&quot;timespan\&quot;: 10,    \&quot;samples\&quot;: [     {       \&quot;deviceId\&quot;: \&quot;device1\&quot;,       \&quot;rssi\&quot;: [-63, -75]     },      {       \&quot;deviceId\&quot;: \&quot;device2\&quot;,       \&quot;rssi\&quot;: [-83, -79]     }   ] } &#x60;&#x60;&#x60; 
   # @param String! responseFilters Optional response filters (not used currently)
   # @return [GeoPointResponse]
-  GetLocationByTrilateration(version: Float!, accountId: Int!, latitude: Float!, longitude: Float!, data: String!, responseFilters: String!): GeoPointResponse
+  GetLocationByTrilateration(accountId: Int!, latitude: Float!, longitude: Float!, data: String!, responseFilters: String!): GeoPointResponse
   # Search Regions or Postal Codes
   # Searches geographic locations by proximity via address or keyword.
-  # @param Float! version 
   # @param String! deviceId the device id
   # @param Int! accountId the account id
   # @param Float! currentlatitude This parameter is deprecated.
@@ -95,6 +86,6 @@ type Query {
   # @param Int! l This parameter is deprecated.
   # @param Int! limit the limit for pagination
   # @return [LocationSearchResponse]
-  GetLocations(version: Float!, deviceId: String!, accountId: Int!, currentlatitude: Float!, currentlongitude: Float!, currentLatitude: Float!, currentLongitude: Float!, Query_: String!, zipcode: String!, zipCode: String!, selectedMaplatitude: Float!, selectedMaplongitude: Float!, selectedMapLatitude: Float!, selectedMapLongitude: Float!, searchRange: Float!, useGeocode: Boolean!, i: Int!, start: Int!, l: Int!, limit: Int!): LocationSearchResponse
+  GetLocations(deviceId: String!, accountId: Int!, currentlatitude: Float!, currentlongitude: Float!, currentLatitude: Float!, currentLongitude: Float!, Query_: String!, zipcode: String!, zipCode: String!, selectedMaplatitude: Float!, selectedMaplongitude: Float!, selectedMapLatitude: Float!, selectedMapLongitude: Float!, searchRange: Float!, useGeocode: Boolean!, i: Int!, start: Int!, l: Int!, limit: Int!): LocationSearchResponse
 }
 

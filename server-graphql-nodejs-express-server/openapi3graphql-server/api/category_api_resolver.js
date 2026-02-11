@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return CategoryResponse
-        CategoryDistanceSearch: ($version, $accountId, $keyword, $appKey, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $Type_, $externalType, $minOfferCount, $latitude, $longitude, $range) => {
+        CategoryDistanceSearch: ($accountId, $keyword, $appKey, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $Type_, $externalType, $minOfferCount, $latitude, $longitude, $range) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "appKey": "appKey_example",
@@ -45,18 +44,16 @@ export default {
         },
 
         // @return CategoryTreeResponse
-        GetCategory: ($version, $categoryId, $returnExternal) => {
+        GetCategory: ($categoryId, $returnExternal) => {
             return {
-                "version": "3.16",
                 "categoryId": "789",
                 "returnExternal": "true"
             };
         },
 
         // @return CategoryResponse
-        SearchCategories: ($version, $accountId, $keyword, $appKey, $categoryId, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $Type_, $externalType, $excludeExternalType, $minOfferCount, $searchDepth, $searchMode) => {
+        SearchCategories: ($accountId, $keyword, $appKey, $categoryId, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $Type_, $externalType, $excludeExternalType, $minOfferCount, $searchDepth, $searchMode) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "appKey": "appKey_example",
@@ -86,9 +83,8 @@ export default {
     Mutation: {
 
         // @return CategoryTreeResponse
-        CreateCategory: ($version, $accountId, $name, $appKey, $parentCategoryId, $description, $Type_, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags) => {
+        CreateCategory: ($accountId, $name, $appKey, $parentCategoryId, $description, $Type_, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "appKey": "appKey_example",
@@ -107,18 +103,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteCategory: ($version, $accountId, $categoryId) => {
+        DeleteCategory: ($accountId, $categoryId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "categoryId": "789"
             };
         },
 
         // @return CategoryTreeResponse
-        DuplicateCategory: ($version, $accountId, $categoryId, $appKey, $parentCategoryId) => {
+        DuplicateCategory: ($accountId, $categoryId, $appKey, $parentCategoryId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "categoryId": "789",
                 "appKey": "appKey_example",
@@ -127,9 +121,8 @@ export default {
         },
 
         // @return CategoryTreeResponse
-        UpdateCategory: ($version, $accountId, $categoryId, $parentCategoryId, $name, $description, $Type_, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags) => {
+        UpdateCategory: ($accountId, $categoryId, $parentCategoryId, $name, $description, $Type_, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "categoryId": "789",
                 "parentCategoryId": "789",

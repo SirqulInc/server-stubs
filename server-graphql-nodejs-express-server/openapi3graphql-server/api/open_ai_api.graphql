@@ -15,8 +15,6 @@
 
 
 input ImageGenerationInput {
-    
-    version: Float!, 
     # Sirqul Account Id
     accountId: Int!, 
     # Post Body Parameters
@@ -28,7 +26,6 @@ input ImageGenerationInput {
 type Mutation {
   # Generate images with OpenAI
   # Generate images with OpenAI.
-  # @param Float! version 
   # @param Int! accountId Sirqul Account Id
   # @param String! postBody Post Body Parameters
   # @param Boolean! returnRawResponse Return raw response

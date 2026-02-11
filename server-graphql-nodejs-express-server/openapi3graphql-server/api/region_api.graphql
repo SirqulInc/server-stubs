@@ -15,8 +15,6 @@
 
 
 input CreateRegionInput {
-    
-    version: Float!, 
     # The id of the account sending the request
     accountId: Int!, 
     # RegionClass of this region
@@ -62,8 +60,6 @@ input CreateRegionInput {
 }
 
 input DeleteRegionInput {
-    
-    version: Float!, 
     # the id of the account logged in
     accountId: Int!, 
     # the id of the region
@@ -71,8 +67,6 @@ input DeleteRegionInput {
 }
 
 input UpdateRegionInput {
-    
-    version: Float!, 
     # The id of the account sending the request
     accountId: Int!, 
     # The id of the region to be updated
@@ -124,7 +118,6 @@ input UpdateRegionInput {
 type Mutation {
   # Create Region
   # Create a region.
-  # @param Float! version 
   # @param Int! accountId The id of the account sending the request
   # @param String! regionClass RegionClass of this region
   # @param String! shortName Short name of the region. This is optimized for search
@@ -150,14 +143,12 @@ type Mutation {
   CreateRegion(input: CreateRegionInput!): RegionResponse
   # Delete Region
   # Delete a region.
-  # @param Float! version 
   # @param Int! accountId the id of the account logged in
   # @param Int! regionId the id of the region
   # @return [RegionResponse]
   DeleteRegion(input: DeleteRegionInput!): RegionResponse
   # Update Region
   # Update a region.
-  # @param Float! version 
   # @param Int! accountId The id of the account sending the request
   # @param Int! regionId The id of the region to be updated
   # @param String! regionClass RegionClass of this region
@@ -188,14 +179,12 @@ type Mutation {
 type Query {
   # Get Region
   # Get a region.
-  # @param Float! version 
   # @param Int! regionId the id of the region to get
   # @param Int! accountId the id of the logged in user
   # @return [RegionResponse]
-  GetRegion(version: Float!, regionId: Int!, accountId: Int!): RegionResponse
+  GetRegion(regionId: Int!, accountId: Int!): RegionResponse
   # Search Regions
   # Get the list of regions.
-  # @param Float! version 
   # @param Int! accountId the owner account id of the region to be created
   # @param String! Query_ This parameter is deprecated. deprecated - use \&quot;keyword\&quot;
   # @param String! keyword the keyword to filter results on
@@ -219,6 +208,6 @@ type Query {
   # @param Int! start the start index for pagination
   # @param Int! limit the limit for pagination
   # @return [RegionResponse]
-  SearchRegions(version: Float!, accountId: Int!, Query_: String!, keyword: String!, latitude: Float!, longitude: Float!, range: Float!, regionClass: String!, visibility: String!, searchMode: String!, sortField: String!, descending: Boolean!, includeParent: Boolean!, includeChildren: Boolean!, includePostalCodes: Boolean!, categoryIds: String!, filterIds: String!, versionCode: Int!, activeOnly: Boolean!, showDeleted: Boolean!, lastUpdatedSince: Int!, start: Int!, limit: Int!): RegionResponse
+  SearchRegions(accountId: Int!, Query_: String!, keyword: String!, latitude: Float!, longitude: Float!, range: Float!, regionClass: String!, visibility: String!, searchMode: String!, sortField: String!, descending: Boolean!, includeParent: Boolean!, includeChildren: Boolean!, includePostalCodes: Boolean!, categoryIds: String!, filterIds: String!, versionCode: Int!, activeOnly: Boolean!, showDeleted: Boolean!, lastUpdatedSince: Int!, start: Int!, limit: Int!): RegionResponse
 }
 

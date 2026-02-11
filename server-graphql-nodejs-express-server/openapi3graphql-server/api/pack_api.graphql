@@ -15,8 +15,6 @@
 
 
 input CreatePackInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The title of the pack
@@ -68,8 +66,6 @@ input CreatePackInput {
 }
 
 input DeletePackInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the pack to delete
@@ -77,8 +73,6 @@ input DeletePackInput {
 }
 
 input UpdatePackInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The id of the pack to update.
@@ -134,7 +128,6 @@ input UpdatePackInput {
 type Mutation {
   # Create Pack
   # Create a pack.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! title The title of the pack
   # @param Int! packOrder The order of the pack
@@ -163,14 +156,12 @@ type Mutation {
   CreatePack(input: CreatePackInput!): PackResponse
   # Delete Pack
   # Delete a pack.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! packId the id of the pack to delete
   # @return [SirqulResponse]
   DeletePack(input: DeletePackInput!): SirqulResponse
   # Update Pack
   # Update a pack.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! packId The id of the pack to update.
   # @param Boolean! allocateTickets Flag to indicate owner should receive tickets for completed packs
@@ -203,15 +194,13 @@ type Mutation {
 type Query {
   # Get Pack
   # Get a pack.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! packId The id of the pack to return.
   # @param Boolean! includeGameData If true include the game level data, otherwise don&#39;t. default is false.
   # @return [PackResponse]
-  GetPack(version: Float!, accountId: Int!, packId: Int!, includeGameData: Boolean!): PackResponse
+  GetPack(accountId: Int!, packId: Int!, includeGameData: Boolean!): PackResponse
   # Search Packs
   # Search on packs.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! sortField The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
@@ -223,6 +212,6 @@ type Query {
   # @param Boolean! includeInactive Determines whether to include inactive results
   # @param String! appKey The application to filter results on
   # @return [PackResponse]
-  SearchPacks(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, keyword: String!, packType: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeInactive: Boolean!, appKey: String!): PackResponse
+  SearchPacks(accountId: Int!, sortField: String!, descending: Boolean!, keyword: String!, packType: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeInactive: Boolean!, appKey: String!): PackResponse
 }
 

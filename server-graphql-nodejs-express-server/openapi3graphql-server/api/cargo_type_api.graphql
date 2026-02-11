@@ -16,21 +16,15 @@
 
 input CreateCargoTypeInput {
     
-    version: Float!, 
-    
     body: CargoTypeInput
 }
 
 input DeleteCargoTypeInput {
-    
-    version: Float!, 
     # the ID of the cargo type
     cargoTypeId: Int!
 }
 
 input UpdateCargoTypeInput {
-    
-    version: Float!, 
     # the ID of the cargo type
     cargoTypeId: Int!, 
     
@@ -40,19 +34,16 @@ input UpdateCargoTypeInput {
 type Mutation {
   # Create Cargo Type
   # Create new cargo type
-  # @param Float! version 
   # @param CargoType body 
   # @return [CargoType]
   CreateCargoType(input: CreateCargoTypeInput!): CargoType
   # Delete Cargo Type
   # Delete a type of cargo
-  # @param Float! version 
   # @param Int! cargoTypeId the ID of the cargo type
   # @return [Boolean]
   DeleteCargoType(input: DeleteCargoTypeInput!): Boolean
   # Update Cargo Type
   # Update an existing cargo type
-  # @param Float! version 
   # @param Int! cargoTypeId the ID of the cargo type
   # @param CargoType body 
   # @return [CargoType]
@@ -62,13 +53,11 @@ type Mutation {
 type Query {
   # Get Cargo Type
   # Get an existing cargo type
-  # @param Float! version 
   # @param Int! cargoTypeId the cargo type ID
   # @return [CargoType]
-  GetCargoType(version: Float!, cargoTypeId: Int!): CargoType
+  GetCargoType(cargoTypeId: Int!): CargoType
   # Search Cargo Type
   # Search for types of cargo
-  # @param Float! version 
   # @param String! sortField the sort field to use for the cargo type
   # @param Boolean! descending if the cargo type should be should be in descending order
   # @param Int! start the start of the search
@@ -77,6 +66,6 @@ type Query {
   # @param Int! retailerId the id of the retailer location
   # @param Int! hubId the ID of the hub
   # @return [CargoType]
-  SearchCargoTypes(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, retailerId: Int!, hubId: Int!): CargoType
+  SearchCargoTypes(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, retailerId: Int!, hubId: Int!): CargoType
 }
 

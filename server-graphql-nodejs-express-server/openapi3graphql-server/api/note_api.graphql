@@ -15,8 +15,6 @@
 
 
 input BatchOperationInput {
-    
-    version: Float!, 
     # The id of the notable object the batch operation will affect
     notableId: Int!, 
     # The notable object type (for example ALBUM, ASSET, OFFER, etc.)
@@ -30,8 +28,6 @@ input BatchOperationInput {
 }
 
 input CreateNoteInput {
-    
-    version: Float!, 
     # The message the user wishes to leave a comment on
     comment: String!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -119,8 +115,6 @@ input CreateNoteInput {
 }
 
 input DeleteNoteInput {
-    
-    version: Float!, 
     # The ID of the note to delete
     noteId: Int!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -136,8 +130,6 @@ input DeleteNoteInput {
 }
 
 input GetNoteInput {
-    
-    version: Float!, 
     # the id of the note to get
     noteId: Int!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -149,8 +141,6 @@ input GetNoteInput {
 }
 
 input SearchNotesInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -188,8 +178,6 @@ input SearchNotesInput {
 }
 
 input UpdateNoteInput {
-    
-    version: Float!, 
     # The id of the note, used when editing a comment
     noteId: Int!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -277,7 +265,6 @@ input UpdateNoteInput {
 type Mutation {
   # Batch Note Operation
   # Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE). 
-  # @param Float! version 
   # @param Int! notableId The id of the notable object the batch operation will affect
   # @param String! notableType The notable object type (for example ALBUM, ASSET, OFFER, etc.)
   # @param String! deviceId The device id (deviceId or accountId required)
@@ -287,7 +274,6 @@ type Mutation {
   BatchOperation(input: BatchOperationInput!): SirqulResponse
   # Create Note
   # This is used to leave a comment (note) on a notable object (i.e. albums, album contests, assets, game levels, offers, offer locations, retailers, retailer locations, and theme descriptors). Leaving a comment on a notable object will be visiable to everyone who has access to view the object.
-  # @param Float! version 
   # @param String! comment The message the user wishes to leave a comment on
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
@@ -334,7 +320,6 @@ type Mutation {
   CreateNote(input: CreateNoteInput!): NoteResponse
   # Delete Note
   # Sets a comment (note) as deleted.
-  # @param Float! version 
   # @param Int! noteId The ID of the note to delete
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
@@ -345,7 +330,6 @@ type Mutation {
   DeleteNote(input: DeleteNoteInput!): SirqulResponse
   # Get Note
   # Get for a note based on its Id.
-  # @param Float! version 
   # @param Int! noteId the id of the note to get
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
@@ -354,7 +338,6 @@ type Mutation {
   GetNote(input: GetNoteInput!): SirqulResponse
   # Search Notes
   # Search for notes on a notable object.
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! notableType The notable object type {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, OFFER, OFFER_LOCATION, RETAILER, RETAILER_LOCATION, THEME_DESCRIPTOR}
@@ -376,7 +359,6 @@ type Mutation {
   SearchNotes(input: SearchNotesInput!): NoteResponse
   # Update Note
   # Update an existing comment (note). Only the creator of the note have permission to update.
-  # @param Float! version 
   # @param Int! noteId The id of the note, used when editing a comment
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)

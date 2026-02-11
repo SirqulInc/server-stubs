@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return AlbumFullResponse
-        GetAlbumCollection: ($version, $returnNulls, $albumId, $deviceId, $accountId, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize) => {
+        GetAlbumCollection: ($returnNulls, $albumId, $deviceId, $accountId, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "albumId": "789",
                 "deviceId": "deviceId_example",
@@ -34,9 +33,8 @@ export default {
         },
 
         // @return AlbumFullResponse
-        SearchAlbums: ($version, $filter, $albumTypeId, $subType, $includeInactive, $sortField, $descending, $start, $limit, $range, $includeLiked, $includeFavorited, $includePermissions, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize, $deviceId, $accountId, $connectionAccountId, $ownerId, $albumIds, $excludeAlbumIds, $mediaId, $keyword, $albumType, $limitPerAlbumType, $dateCreated, $updatedSince, $updatedBefore, $createdSince, $createdBefore, $startedSince, $startedBefore, $endedSince, $endedBefore, $latitude, $longitude, $appKey, $categoryIds, $categoryFilterIds, $audienceIds, $excludeAudienceIds, $includeCompletable, $includeRating, $searchMode, $stackSearch, $stackWindowSize, $minStackPerPage, $stackPaginationIdentifier, $stackDetails, $flagCountMinimum, $removeFlaggedContent, $verifiedFilter, $linkedObjectType, $linkedObjectId, $orderAudienceId, $ignoreDefaultAppFilter, $searchExpression, $generateAlbums) => {
+        SearchAlbums: ($filter, $albumTypeId, $subType, $includeInactive, $sortField, $descending, $start, $limit, $range, $includeLiked, $includeFavorited, $includePermissions, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize, $deviceId, $accountId, $connectionAccountId, $ownerId, $albumIds, $excludeAlbumIds, $mediaId, $keyword, $albumType, $limitPerAlbumType, $dateCreated, $updatedSince, $updatedBefore, $createdSince, $createdBefore, $startedSince, $startedBefore, $endedSince, $endedBefore, $latitude, $longitude, $appKey, $categoryIds, $categoryFilterIds, $audienceIds, $excludeAudienceIds, $includeCompletable, $includeRating, $searchMode, $stackSearch, $stackWindowSize, $minStackPerPage, $stackPaginationIdentifier, $stackDetails, $flagCountMinimum, $removeFlaggedContent, $verifiedFilter, $linkedObjectType, $linkedObjectId, $orderAudienceId, $ignoreDefaultAppFilter, $searchExpression, $generateAlbums) => {
             return {
-                "version": "3.16",
                 "filter": "filter_example",
                 "albumTypeId": "789",
                 "subType": "subType_example",
@@ -105,9 +103,8 @@ export default {
     Mutation: {
 
         // @return SearchResponse
-        AddAlbumCollection: ($version, $title, $coverAssetNullable, $includeCoverInAssetList, $publicRead, $publicWrite, $publicDelete, $publicAdd, $anonymous, $deviceId, $accountId, $assetsToAdd, $media, $mediaURL, $assetId, $attachedMedia, $attachedMediaURL, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $latitude, $longitude, $locationDescription, $visibility, $gameType, $appKey, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $approvalStatus, $linkedObjectType, $linkedObjectId) => {
+        AddAlbumCollection: ($title, $coverAssetNullable, $includeCoverInAssetList, $publicRead, $publicWrite, $publicDelete, $publicAdd, $anonymous, $deviceId, $accountId, $assetsToAdd, $media, $mediaURL, $assetId, $attachedMedia, $attachedMediaURL, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $latitude, $longitude, $locationDescription, $visibility, $gameType, $appKey, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $approvalStatus, $linkedObjectType, $linkedObjectId) => {
             return {
-                "version": "3.16",
                 "title": "title_example",
                 "coverAssetNullable": "true",
                 "includeCoverInAssetList": "true",
@@ -158,9 +155,8 @@ export default {
         },
 
         // @return SirqulResponse
-        AddAlbumUsers: ($version, $albumId, $includeFriendGroup, $deviceId, $accountId, $read, $write, $delete, $add, $connections, $connectionGroups) => {
+        AddAlbumUsers: ($albumId, $includeFriendGroup, $deviceId, $accountId, $read, $write, $delete, $add, $connections, $connectionGroups) => {
             return {
-                "version": "3.16",
                 "albumId": "789",
                 "includeFriendGroup": "true",
                 "deviceId": "deviceId_example",
@@ -175,9 +171,8 @@ export default {
         },
 
         // @return SirqulResponse
-        ApproveAlbum: ($version, $albumId, $deviceId, $accountId, $approvalStatus, $verified) => {
+        ApproveAlbum: ($albumId, $deviceId, $accountId, $approvalStatus, $verified) => {
             return {
-                "version": "3.16",
                 "albumId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -187,9 +182,8 @@ export default {
         },
 
         // @return SirqulResponse
-        LeaveAlbum: ($version, $albumId, $deviceId, $accountId) => {
+        LeaveAlbum: ($albumId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "albumId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -197,9 +191,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveAlbum: ($version, $albumId, $deviceId, $accountId) => {
+        RemoveAlbum: ($albumId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "albumId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -207,9 +200,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RemoveAlbumUsers: ($version, $albumId, $removeFriendGroup, $deviceId, $accountId, $connections, $connectionGroups) => {
+        RemoveAlbumUsers: ($albumId, $removeFriendGroup, $deviceId, $accountId, $connections, $connectionGroups) => {
             return {
-                "version": "3.16",
                 "albumId": "789",
                 "removeFriendGroup": "true",
                 "deviceId": "deviceId_example",
@@ -220,9 +212,8 @@ export default {
         },
 
         // @return AlbumResponse
-        UpdateAlbumCollection: ($version, $albumId, $deviceId, $accountId, $assetsToAdd, $assetsToRemove, $assetId, $media, $mediaURL, $active, $title, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $publicRead, $publicWrite, $publicDelete, $publicAdd, $latitude, $longitude, $locationDescription, $visibility, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $anonymous, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $linkedObjectType, $linkedObjectId, $indexNow) => {
+        UpdateAlbumCollection: ($albumId, $deviceId, $accountId, $assetsToAdd, $assetsToRemove, $assetId, $media, $mediaURL, $active, $title, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $publicRead, $publicWrite, $publicDelete, $publicAdd, $latitude, $longitude, $locationDescription, $visibility, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $anonymous, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $linkedObjectType, $linkedObjectId, $indexNow) => {
             return {
-                "version": "3.16",
                 "albumId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

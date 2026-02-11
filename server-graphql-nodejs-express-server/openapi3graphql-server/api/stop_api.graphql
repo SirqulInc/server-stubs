@@ -15,8 +15,6 @@
 
 
 input UpdateStopInput {
-    
-    version: Float!, 
     # the id of the stop to update
     Id_: Int!, 
     
@@ -26,7 +24,6 @@ input UpdateStopInput {
 type Mutation {
   # Update Stop
   # Update an existing stop
-  # @param Float! version 
   # @param Int! Id_ the id of the stop to update
   # @param Stop body 
   # @return [Stop]
@@ -36,9 +33,8 @@ type Mutation {
 type Query {
   # Get Stop
   # Get an existing stop
-  # @param Float! version 
   # @param Int! Id_ the id of the stop to get
   # @return [Stop]
-  GetStop(version: Float!, Id_: Int!): Stop
+  GetStop(Id_: Int!): Stop
 }
 

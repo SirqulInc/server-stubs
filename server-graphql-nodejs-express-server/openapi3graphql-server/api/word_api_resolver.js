@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return WordzWordResponse
-        GetWord: ($version, $wordId, $accountId) => {
+        GetWord: ($wordId, $accountId) => {
             return {
-                "version": "3.16",
                 "wordId": "789",
                 "accountId": "789"
             };
         },
 
         // @return WordzWordResponse
-        GetWords: ($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword) => {
+        GetWords: ($accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -45,9 +43,8 @@ export default {
     Mutation: {
 
         // @return WordzWordResponse
-        CreateWord: ($version, $accountId, $word, $definition, $active, $allocateTickets, $ticketCount, $assetId, $ticketType, $points) => {
+        CreateWord: ($accountId, $word, $definition, $active, $allocateTickets, $ticketCount, $assetId, $ticketType, $points) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "word": "word_example",
                 "definition": "definition_example",
@@ -61,18 +58,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteWord: ($version, $wordId, $accountId) => {
+        DeleteWord: ($wordId, $accountId) => {
             return {
-                "version": "3.16",
                 "wordId": "789",
                 "accountId": "789"
             };
         },
 
         // @return WordzWordResponse
-        UpdateWord: ($version, $wordId, $accountId, $ticketCount, $wordText, $definition, $assetId, $active, $allocateTickets, $ticketType, $points) => {
+        UpdateWord: ($wordId, $accountId, $ticketCount, $wordText, $definition, $assetId, $active, $allocateTickets, $ticketType, $points) => {
             return {
-                "version": "3.16",
                 "wordId": "789",
                 "accountId": "789",
                 "ticketCount": "789",

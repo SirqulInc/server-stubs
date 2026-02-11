@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return SirqulResponse
-        GetInvite: ($version, $accountId, $token, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey) => {
+        GetInvite: ($accountId, $token, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "token": "token_example",
                 "albumId": "789",
@@ -38,9 +37,8 @@ export default {
     Mutation: {
 
         // @return ConsumerInviteResponse
-        AcceptInvite: ($version, $token, $accountId, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey, $autoFriend, $autoAttendEvent, $autoFavoriteOffer, $autoFavoriteOfferLocation, $autoFavoriteRetailerLocation) => {
+        AcceptInvite: ($token, $accountId, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey, $autoFriend, $autoAttendEvent, $autoFavoriteOffer, $autoFavoriteOfferLocation, $autoFavoriteRetailerLocation) => {
             return {
-                "version": "3.16",
                 "token": "token_example",
                 "accountId": "789",
                 "albumId": "789",
@@ -59,9 +57,8 @@ export default {
         },
 
         // @return InviteResponse
-        AlbumContestInvite: ($version, $deviceId, $accountId, $appId, $appKey, $albumContestId, $latitude, $longitude) => {
+        AlbumContestInvite: ($deviceId, $accountId, $appId, $appKey, $albumContestId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appId": "789",
@@ -73,9 +70,8 @@ export default {
         },
 
         // @return InviteResponse
-        AlbumInvite: ($version, $deviceId, $accountId, $appId, $appKey, $albumId, $latitude, $longitude) => {
+        AlbumInvite: ($deviceId, $accountId, $appId, $appKey, $albumId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appId": "789",
@@ -87,9 +83,8 @@ export default {
         },
 
         // @return InviteResponse
-        EventInvite: ($version, $accountId, $appKey, $listingId, $receiverAccountIds, $retailerLocationId) => {
+        EventInvite: ($accountId, $appKey, $listingId, $receiverAccountIds, $retailerLocationId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "listingId": "789",
@@ -99,9 +94,8 @@ export default {
         },
 
         // @return InviteResponse
-        GameInvite: ($version, $deviceId, $accountId, $appId, $appKey, $gameLevelId, $latitude, $longitude) => {
+        GameInvite: ($deviceId, $accountId, $appId, $appKey, $gameLevelId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appId": "789",
@@ -113,9 +107,8 @@ export default {
         },
 
         // @return InviteResponse
-        MissionInvite: ($version, $deviceId, $accountId, $appId, $appKey, $missionId, $latitude, $longitude) => {
+        MissionInvite: ($deviceId, $accountId, $appId, $appKey, $missionId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appId": "789",
@@ -127,9 +120,8 @@ export default {
         },
 
         // @return InviteResponse
-        OfferInvite: ($version, $accountId, $appKey, $offerId) => {
+        OfferInvite: ($accountId, $appKey, $offerId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "offerId": "789"
@@ -137,9 +129,8 @@ export default {
         },
 
         // @return InviteResponse
-        OfferLocationInvite: ($version, $accountId, $appKey, $offerLocationId) => {
+        OfferLocationInvite: ($accountId, $appKey, $offerLocationId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "offerLocationId": "789"
@@ -147,9 +138,8 @@ export default {
         },
 
         // @return InviteResponse
-        RetailerLocationInvite: ($version, $accountId, $appKey, $retailerLocationId, $albumId) => {
+        RetailerLocationInvite: ($accountId, $appKey, $retailerLocationId, $albumId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "retailerLocationId": "789",

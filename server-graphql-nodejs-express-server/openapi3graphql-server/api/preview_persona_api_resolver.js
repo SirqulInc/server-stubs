@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return PreviewPersonaResponse
-        GetPersonaList: ($version, $accountId, $personaId) => {
+        GetPersonaList: ($accountId, $personaId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "personaId": "789"
             };
         },
 
         // @return PreviewPersonaResponse
-        SearchPersona: ($version, $accountId, $start, $limit) => {
+        SearchPersona: ($accountId, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "start": "56",
                 "limit": "56"
@@ -41,9 +39,8 @@ export default {
     Mutation: {
 
         // @return PreviewPersonaResponse
-        CreatePersona: ($version, $accountId, $title, $previewAccounts, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude) => {
+        CreatePersona: ($accountId, $title, $previewAccounts, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "title": "title_example",
                 "previewAccounts": "previewAccounts_example",
@@ -57,18 +54,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeletePersona: ($version, $accountId, $personaId) => {
+        DeletePersona: ($accountId, $personaId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "personaId": "789"
             };
         },
 
         // @return PreviewPersonaResponse
-        UpdatePersona: ($version, $accountId, $personaId, $title, $previewAccounts, $active, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude) => {
+        UpdatePersona: ($accountId, $personaId, $title, $previewAccounts, $active, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "personaId": "789",
                 "title": "title_example",

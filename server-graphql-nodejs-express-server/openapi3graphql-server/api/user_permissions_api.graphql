@@ -15,8 +15,6 @@
 
 
 input AddUsersToPermissionableInput {
-    
-    version: Float!, 
     # the permissionable type of the object
     permissionableType: String!, 
     # the id of the permissionable object
@@ -54,8 +52,6 @@ input AddUsersToPermissionableInput {
 }
 
 input ApprovePermissionableInput {
-    
-    version: Float!, 
     # The permissionable type of the object
     permissionableType: String!, 
     # The id of the permissionable object
@@ -69,8 +65,6 @@ input ApprovePermissionableInput {
 }
 
 input LeaveFromPermissionableInput {
-    
-    version: Float!, 
     # the permissionable type PermissionableType
     permissionableType: String!, 
     # the id of the permissionable object
@@ -86,8 +80,6 @@ input LeaveFromPermissionableInput {
 }
 
 input RemoveUsersFromPermissionableInput {
-    
-    version: Float!, 
     # the permissionable type of the object
     permissionableType: String!, 
     # the id of the permissionable object
@@ -115,7 +107,6 @@ input RemoveUsersFromPermissionableInput {
 type Mutation {
   # Add User
   # Adds a user to a permissionable object.
-  # @param Float! version 
   # @param String! permissionableType the permissionable type of the object
   # @param Int! permissionableId the id of the permissionable object
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -137,7 +128,6 @@ type Mutation {
   AddUsersToPermissionable(input: AddUsersToPermissionableInput!): SirqulResponse
   # Approve Permissionable
   # Sets the approval status of a permissionable object.
-  # @param Float! version 
   # @param String! permissionableType The permissionable type of the object
   # @param Int! permissionableId The id of the permissionable object
   # @param String! deviceId A unique ID given by the device (deviceId or accountId required)
@@ -147,7 +137,6 @@ type Mutation {
   ApprovePermissionable(input: ApprovePermissionableInput!): SirqulResponse
   # Leave
   # Used when the user wants to leave from someone else&#39;s permissionable object
-  # @param Float! version 
   # @param String! permissionableType the permissionable type PermissionableType
   # @param Int! permissionableId the id of the permissionable object
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -158,7 +147,6 @@ type Mutation {
   LeaveFromPermissionable(input: LeaveFromPermissionableInput!): SirqulResponse
   # Remove User
   # Used to remove someone (assuming they have permission) from a permissionable object
-  # @param Float! version 
   # @param String! permissionableType the permissionable type of the object
   # @param Int! permissionableId the id of the permissionable object
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -177,7 +165,6 @@ type Mutation {
 type Query {
   # Search Permissionables
   # Search on UserPermissions
-  # @param Float! version 
   # @param String! deviceId A unique ID given by the device (deviceId or accountId required)
   # @param Int! accountId The account ID of the user (deviceId or accountId required)
   # @param Int! connectionAccountId Filter results for a specific user account
@@ -192,10 +179,9 @@ type Query {
   # @param Int! start the start index for pagination
   # @param Int! limit the limit for pagination
   # @return [UserPermissionsResponse]
-  SearchPermissionables(version: Float!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, connectionAccountIds: String!, permissionableType: String!, permissionableId: Int!, keyword: String!, sortField: String!, descending: Boolean!, pending: Boolean!, admin: Boolean!, start: Int!, limit: Int!): UserPermissionsResponse
+  SearchPermissionables(deviceId: String!, accountId: Int!, connectionAccountId: Int!, connectionAccountIds: String!, permissionableType: String!, permissionableId: Int!, keyword: String!, sortField: String!, descending: Boolean!, pending: Boolean!, admin: Boolean!, start: Int!, limit: Int!): UserPermissionsResponse
   # Search Permissionables by Distnace
   # Search on UserPermissions by distance
-  # @param Float! version 
   # @param Float! latitude The latitude of the current account
   # @param Float! longitude The longitude of the current account
   # @param String! deviceId A unique ID given by the device (deviceId or accountId required)
@@ -211,6 +197,6 @@ type Query {
   # @param Int! start The start index for pagination
   # @param Int! limit The limit for pagination
   # @return [UserPermissionsResponse]
-  SearchPermissionablesFollowingDistance(version: Float!, latitude: Float!, longitude: Float!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, connectionAccountIds: String!, permissionableType: String!, permissionableId: Int!, searchRange: Float!, keyword: String!, pending: Boolean!, admin: Boolean!, start: Int!, limit: Int!): UserPermissionsResponse
+  SearchPermissionablesFollowingDistance(latitude: Float!, longitude: Float!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, connectionAccountIds: String!, permissionableType: String!, permissionableId: Int!, searchRange: Float!, keyword: String!, pending: Boolean!, admin: Boolean!, start: Int!, limit: Int!): UserPermissionsResponse
 }
 

@@ -15,8 +15,6 @@
 
 
 input CreateQuestionInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the text of the question
@@ -42,8 +40,6 @@ input CreateQuestionInput {
 }
 
 input DeleteQuestionInput {
-    
-    version: Float!, 
     # the id of the question to delete
     questionId: Int!, 
     # the id of the account that can execute this request
@@ -51,8 +47,6 @@ input DeleteQuestionInput {
 }
 
 input UpdateQuestionInput {
-    
-    version: Float!, 
     # The id of the question to update.
     questionId: Int!, 
     # The logged in user.
@@ -82,7 +76,6 @@ input UpdateQuestionInput {
 type Mutation {
   # Create Question
   # Create a question and related answers by the given params.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param String! question the text of the question
   # @param String! answers &#x60;&#x60;&#x60;json [   {     \&quot;text\&quot;: \&quot;1942\&quot;,     \&quot;image\&quot;: 123,     \&quot;videoURL\&quot;: \&quot;http://www.here.com\&quot;,     \&quot;correct\&quot;: true   },   {     \&quot;text\&quot;: \&quot;1943\&quot;,     \&quot;image\&quot;: 124,     \&quot;videoURL\&quot;: \&quot;http://www.there.com\&quot;,     \&quot;correct\&quot;: false   } ] &#x60;&#x60;&#x60; 
@@ -98,14 +91,12 @@ type Mutation {
   CreateQuestion(input: CreateQuestionInput!): QuestionResponse
   # Delete Question
   # Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete.
-  # @param Float! version 
   # @param Int! questionId the id of the question to delete
   # @param Int! accountId the id of the account that can execute this request
   # @return [SirqulResponse]
   DeleteQuestion(input: DeleteQuestionInput!): SirqulResponse
   # Update Question
   # Update a question and related answers.
-  # @param Float! version 
   # @param Int! questionId The id of the question to update.
   # @param Int! accountId The logged in user.
   # @param Int! ticketCount The number of tickets to reward
@@ -125,14 +116,12 @@ type Mutation {
 type Query {
   # Get Question
   # Get a question by the given id.
-  # @param Float! version 
   # @param Int! questionId the id of the question to get
   # @param Int! accountId the id of the account that can make this request
   # @return [QuestionResponse]
-  GetQuestion(version: Float!, questionId: Int!, accountId: Int!): QuestionResponse
+  GetQuestion(questionId: Int!, accountId: Int!): QuestionResponse
   # Search Questions
   # Search for questions by the given params.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! sortField The column to sort the search on
   # @param Boolean! descending The order to return the search results
@@ -141,6 +130,6 @@ type Query {
   # @param Int! limit The number of records to return.
   # @param String! keyword The keyword for searching questions with matching tags or question text.
   # @return [QuestionResponse]
-  SearchQuestions(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, keyword: String!): QuestionResponse
+  SearchQuestions(accountId: Int!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, keyword: String!): QuestionResponse
 }
 

@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return SirqulResponse
-        GetRetaokiler: ($version, $retailerId, $activeOnly, $keyword, $sortField, $start, $limit) => {
+        GetRetaokiler: ($retailerId, $activeOnly, $keyword, $sortField, $start, $limit) => {
             return {
-                "version": "3.16",
                 "retailerId": "789",
                 "activeOnly": "true",
                 "keyword": "keyword_example",

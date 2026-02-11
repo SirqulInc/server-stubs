@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return RatingIndexResponse
-        SearchLocationRatingIndexes: ($version, $categoryIds, $keyword, $locationType, $sortField, $descending, $start, $limit, $searchRange, $latitude, $longitude, $returnOverallRating, $distanceUnit, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters) => {
+        SearchLocationRatingIndexes: ($categoryIds, $keyword, $locationType, $sortField, $descending, $start, $limit, $searchRange, $latitude, $longitude, $returnOverallRating, $distanceUnit, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters) => {
             return {
-                "version": "3.16",
                 "categoryIds": "categoryIds_example",
                 "keyword": "keyword_example",
                 "locationType": "locationType_example",
@@ -42,9 +41,8 @@ export default {
         },
 
         // @return RatingIndexResponse
-        SearchRatingIndexes: ($version, $ratableType, $ratableIds, $categoryIds, $secondaryType, $keyword, $sortField, $descending, $start, $limit, $latitude, $longitude, $returnRatable, $returnOverallRating) => {
+        SearchRatingIndexes: ($ratableType, $ratableIds, $categoryIds, $secondaryType, $keyword, $sortField, $descending, $start, $limit, $latitude, $longitude, $returnRatable, $returnOverallRating) => {
             return {
-                "version": "3.16",
                 "ratableType": "ratableType_example",
                 "ratableIds": "ratableIds_example",
                 "categoryIds": "categoryIds_example",
@@ -62,9 +60,8 @@ export default {
         },
 
         // @return RatingResponse
-        SearchRatings: ($version, $deviceId, $accountId, $filterAccountId, $ratableType, $ratableId, $categoryIds, $keyword, $sortField, $descending, $start, $limit) => {
+        SearchRatings: ($deviceId, $accountId, $filterAccountId, $ratableType, $ratableId, $categoryIds, $keyword, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "filterAccountId": "789",
@@ -84,9 +81,8 @@ export default {
     Mutation: {
 
         // @return RatingResponse
-        CreateRating: ($version, $ratableType, $ratableId, $ratingValue, $deviceId, $accountId, $categoryId, $display, $description, $locationDescription, $latitude, $longitude) => {
+        CreateRating: ($ratableType, $ratableId, $ratingValue, $deviceId, $accountId, $categoryId, $display, $description, $locationDescription, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "ratableType": "ratableType_example",
                 "ratableId": "789",
                 "ratingValue": "56",
@@ -102,9 +98,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteRating: ($version, $ratingId, $deviceId, $accountId) => {
+        DeleteRating: ($ratingId, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "ratingId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789"
@@ -112,9 +107,8 @@ export default {
         },
 
         // @return RatingResponse
-        UpdateRating: ($version, $ratingId, $deviceId, $accountId, $ratingValue, $categoryId, $display, $description, $locationDescription, $latitude, $longitude) => {
+        UpdateRating: ($ratingId, $deviceId, $accountId, $ratingValue, $categoryId, $display, $description, $locationDescription, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "ratingId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

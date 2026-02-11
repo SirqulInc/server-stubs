@@ -15,8 +15,6 @@
 
 
 input PostAppDataInput {
-    
-    version: Float!, 
     # the game to retrieve the data for, use your application key.
     gameType: String!, 
     # start the search results at a record.
@@ -72,8 +70,6 @@ input PostAppDataInput {
 }
 
 input RegenAppDataInput {
-    
-    version: Float!, 
     # the account id of the user
     accountId: Int!, 
     # process a specific application, if null process all apps with caches
@@ -87,7 +83,6 @@ input RegenAppDataInput {
 type Mutation {
   # Create App Data
   # Publish the application data structure.  Can be used to save levels   and scores.  It then returns the application data structure.  The basic   structure is a node tree, with the root node being a AppResponse.  The response   contains the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.      Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application
-  # @param Float! version 
   # @param String! gameType the game to retrieve the data for, use your application key.
   # @param Int! start start the search results at a record.
   # @param Int! limit limit the search results to some number.
@@ -118,7 +113,6 @@ type Mutation {
   PostAppData(input: PostAppDataInput!): AppResponse
   # Regenerate App Data
   # Regenerate the app data cache for apps
-  # @param Float! version 
   # @param Int! accountId the account id of the user
   # @param String! appKey process a specific application, if null process all apps with caches
   # @param String! buildVersion create a specific version, if null use current version. Be careful if processing all
@@ -130,7 +124,6 @@ type Mutation {
 type Query {
   # Get App Data
   # Get the application data structure.  The basic structure is a   node tree, with the root node being a AppResponse.  The response contains   the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.     Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application.
-  # @param Float! version 
   # @param Int! start start the search results at a record.
   # @param Int! limit limit the search results to some number.
   # @param String! deviceId the device id (deviceId or accountId required).
@@ -157,6 +150,6 @@ type Query {
   # @param String! responseGroups use response groups to include large parts of the structure. possible values are: * MISSION_DEFAULT (default) - include the default mission (built-in packs), excludes all other mission groups * MISSION_DEFAULT_LEVELS_SAVED - include saved levels, excludes all other mission groups * MISSION_DEFAULT_LEVELS_COMMUNITY - include community levels, excludes all other mission groups * MISSION_INVITED (default) - include challenges sent to user * PROFILE (default) - include entire profile * PROFILE_DATA - only include profile date (exclude friends) * PROFILE_FRIENDS - include friends list 
   # @param String! purchaseType the will return the correct in app purchases for the device, possible values are: * SIRQUL (default) - purchasing from the sirqul store using tickets * IOS - purchasing from the itunes store for iPhone, iPod, iPod Touch * GOOGLE - purchasing from the google android store * AMAZON - purchasing from the amazon android store * MAC - purchasing from the itunes store for OSX * FREE - the item is free to purchase 
   # @return [AppResponse]
-  GetAppData(version: Float!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, gameType: String!, includeGameData: Boolean!, q: String!, keyword: String!, sortField: String!, descending: Boolean!, i: Int!, l: Int!, gameObjectCount: Boolean!, filter: String!, dateCreated: Int!, ownerId: Int!, missionIds: String!, gameIds: String!, packIds: String!, gameLevelIds: String!, appVersion: String!, includeHigherVersionPacks: Boolean!, includeHigherVersionLevels: Boolean!, responseGroups: String!, purchaseType: String!): AppResponse
+  GetAppData(start: Int!, limit: Int!, deviceId: String!, accountId: Int!, gameType: String!, includeGameData: Boolean!, q: String!, keyword: String!, sortField: String!, descending: Boolean!, i: Int!, l: Int!, gameObjectCount: Boolean!, filter: String!, dateCreated: Int!, ownerId: Int!, missionIds: String!, gameIds: String!, packIds: String!, gameLevelIds: String!, appVersion: String!, includeHigherVersionPacks: Boolean!, includeHigherVersionLevels: Boolean!, responseGroups: String!, purchaseType: String!): AppResponse
 }
 

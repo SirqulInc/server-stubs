@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return TriggerResponse
-        GetTrigger: ($version, $accountId, $triggerId) => {
+        GetTrigger: ($accountId, $triggerId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "triggerId": "789"
             };
         },
 
         // @return TriggerResponse
-        SearchTriggers: ($version, $accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly) => {
+        SearchTriggers: ($accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "groupingId": "groupingId_example",
                 "filter": "filter_example",
@@ -50,9 +48,8 @@ export default {
     Mutation: {
 
         // @return TriggerResponse
-        CreateTrigger: ($version, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active) => {
+        CreateTrigger: ($accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "appKey": "appKey_example",
@@ -70,18 +67,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteTrigger: ($version, $accountId, $triggerId) => {
+        DeleteTrigger: ($accountId, $triggerId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "triggerId": "789"
             };
         },
 
         // @return TriggerResponse
-        UpdateTrigger: ($version, $triggerId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active) => {
+        UpdateTrigger: ($triggerId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active) => {
             return {
-                "version": "3.16",
                 "triggerId": "789",
                 "accountId": "789",
                 "name": "name_example",

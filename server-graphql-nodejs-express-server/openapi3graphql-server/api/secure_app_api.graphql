@@ -15,8 +15,6 @@
 
 
 input CreateSecureApplicationInput {
-    
-    version: Float!, 
     # The unique id of the user making the request
     accountId: Int!, 
     # The application to secure
@@ -40,8 +38,6 @@ input CreateSecureApplicationInput {
 }
 
 input DeleteSecureApplicationInput {
-    
-    version: Float!, 
     # The unique id of the user making the request
     accountId: Int!, 
     # The application to secure
@@ -49,8 +45,6 @@ input DeleteSecureApplicationInput {
 }
 
 input LoginSecureInput {
-    
-    version: Float!, 
     # The application making the request, defines what type and position is required to make a secure login the request.
     appKey: String!, 
     # The data file used to perform authentication
@@ -72,15 +66,11 @@ input LoginSecureInput {
 }
 
 input PurchaseSecureInput {
-    
-    version: Float!, 
     # The payment request object
     body: PaymentRequestInput
 }
 
 input ResetSecureInput {
-    
-    version: Float!, 
     # The unique id of the user making the request
     accountId: Int!, 
     # The application to secure
@@ -88,8 +78,6 @@ input ResetSecureInput {
 }
 
 input UpdateSecureApplicationInput {
-    
-    version: Float!, 
     # The unique id of the user making the request
     accountId: Int!, 
     # The application to secure
@@ -115,7 +103,6 @@ input UpdateSecureApplicationInput {
 type Mutation {
   # Create Secure Application
   # Create a secure application record.
-  # @param Float! version 
   # @param Int! accountId The unique id of the user making the request
   # @param String! appKey The application to secure
   # @param String! keyCert 
@@ -130,14 +117,12 @@ type Mutation {
   CreateSecureApplication(input: CreateSecureApplicationInput!): SirqulResponse
   # Delete Secure Application
   # Delete a secure application record.
-  # @param Float! version 
   # @param Int! accountId The unique id of the user making the request
   # @param String! appKey The application to secure
   # @return [SirqulResponse]
   DeleteSecureApplication(input: DeleteSecureApplicationInput!): SirqulResponse
   # Login Clear
   # Login via Clear.me. Creates a new account if logging in for the first time.
-  # @param Float! version 
   # @param String! appKey The application making the request, defines what type and position is required to make a secure login the request.
   # @param String! biometricFile The data file used to perform authentication
   # @param String! deviceId The unique id of the device making the request
@@ -151,20 +136,17 @@ type Mutation {
   LoginSecure(input: LoginSecureInput!): ProfileResponse
   # Purchase Clear
   # Purchase via Clear.me. Creates a new account if purchasing for the first time.
-  # @param Float! version 
   # @param PaymentRequest body The payment request object
   # @return [ProfileResponse]
   PurchaseSecure(input: PurchaseSecureInput!): ProfileResponse
   # Rest Secure Application
   # Reset a secure application client.
-  # @param Float! version 
   # @param Int! accountId The unique id of the user making the request
   # @param String! appKey The application to secure
   # @return [SirqulResponse]
   ResetSecure(input: ResetSecureInput!): SirqulResponse
   # Update Secure Application
   # Update a secure application record.
-  # @param Float! version 
   # @param Int! accountId The unique id of the user making the request
   # @param String! appKey The application to secure
   # @param Boolean! active 

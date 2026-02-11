@@ -15,8 +15,6 @@
 
 
 input BatchSaveTrackingInput {
-    
-    version: Float!, 
     # JSON array of tracking legs &#x60;&#x60;&#x60;json [   \&quot;distance\&quot;: \&quot;0.08\&quot;,   \&quot;duration\&quot;: \&quot;10000\&quot;,   \&quot;startLatitude\&quot;: \&quot;47.614603\&quot;,   \&quot;startLongitude\&quot;: \&quot;-122.350518\&quot;,   \&quot;endLatitude\&quot;: \&quot;47.614384\&quot;,   \&quot;endLongitude\&quot;: \&quot;-122.349161\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endDate\&quot;: \&quot;1361924020000\&quot;,   \&quot;steps\&quot;: [     {       \&quot;distance\&quot;: \&quot;0.03\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614603\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,       \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614941\&quot;,       \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;endDate\&quot;: \&quot;1361924015000\&quot;     },{       \&quot;distance\&quot;: \&quot;0.05\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614941\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;startDate\&quot;: \&quot;1361924015000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614384\&quot;,       \&quot;endLng\&quot;: \&quot;-122.349161\&quot;,       \&quot;endDate\&quot;: \&quot;1361924020000\&quot;     }   ] ] &#x60;&#x60;&#x60; 
     data: String!, 
     # the device id (deviceId or accountId required)
@@ -34,8 +32,6 @@ input BatchSaveTrackingInput {
 }
 
 input SaveTrackingLegInput {
-    
-    version: Float!, 
     # the latitude of the first point
     startLat: Float!, 
     # the longitude of the first point
@@ -63,8 +59,6 @@ input SaveTrackingLegInput {
 }
 
 input SaveTrackingStepInput {
-    
-    version: Float!, 
     # the leg to add the step to
     legId: Int!, 
     # the latitude of the first point
@@ -92,7 +86,6 @@ input SaveTrackingStepInput {
 type Mutation {
   # Create Batch Tracking
   # Batch create tracking legs
-  # @param Float! version 
   # @param String! data JSON array of tracking legs &#x60;&#x60;&#x60;json [   \&quot;distance\&quot;: \&quot;0.08\&quot;,   \&quot;duration\&quot;: \&quot;10000\&quot;,   \&quot;startLatitude\&quot;: \&quot;47.614603\&quot;,   \&quot;startLongitude\&quot;: \&quot;-122.350518\&quot;,   \&quot;endLatitude\&quot;: \&quot;47.614384\&quot;,   \&quot;endLongitude\&quot;: \&quot;-122.349161\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endDate\&quot;: \&quot;1361924020000\&quot;,   \&quot;steps\&quot;: [     {       \&quot;distance\&quot;: \&quot;0.03\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614603\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,       \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614941\&quot;,       \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;endDate\&quot;: \&quot;1361924015000\&quot;     },{       \&quot;distance\&quot;: \&quot;0.05\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614941\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;startDate\&quot;: \&quot;1361924015000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614384\&quot;,       \&quot;endLng\&quot;: \&quot;-122.349161\&quot;,       \&quot;endDate\&quot;: \&quot;1361924020000\&quot;     }   ] ] &#x60;&#x60;&#x60; 
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -104,7 +97,6 @@ type Mutation {
   BatchSaveTracking(input: BatchSaveTrackingInput!): Leg
   # Create Tracking Leg
   # Send tracking points to be able to generate pathing data
-  # @param Float! version 
   # @param Float! startLat the latitude of the first point
   # @param Float! startLng the longitude of the first point
   # @param Int! startDate the start date (in UTC milliseconds) of the first point
@@ -121,7 +113,6 @@ type Mutation {
   SaveTrackingLeg(input: SaveTrackingLegInput!): SirqulResponse
   # Create Tracking Step
   # Send tracking points to be able to generate pathing data
-  # @param Float! version 
   # @param Int! legId the leg to add the step to
   # @param Float! startLat the latitude of the first point
   # @param Float! startLng the longitude of the first point
@@ -140,7 +131,6 @@ type Mutation {
 type Query {
   # Get Predicted Locations
   # Get the predicted location for a customer based on previous behavior.  If a customer resides in a place for a period of time this is marked as a preferred location.  We look back over the previous few days and the previous days of the week from the day specified.  If for instance the day was a Wednesday then this would check the days before, including: Tuesday, Monday, Sunday, etc. It will also check some number of previous Wednesdays in the past few weeks.
-  # @param Float! version 
   # @param Int! accountId The account id of the customer
   # @param Float! latitude latitude to return a more likely result set based on the user&#39;s current location
   # @param Float! longitude longitude to return a more likely result set based on the user&#39;s current location
@@ -151,18 +141,16 @@ type Query {
   # @param Float! searchRange Filter results so only locations within the specified radius will be returned. The distance can either be in miles or kilometers as specified in the distanceUnit parameter. A value of \&quot;0\&quot; (zero) will ignore the radius restriction.
   # @param String! sortOrder The ordering algorithm for sorting the returned results: {MATCHES, DISTANCE, WEIGHTED}
   # @return [PredictedLocationResponse]
-  GetPredictedLocations(version: Float!, accountId: Int!, latitude: Float!, longitude: Float!, dateCheck: Int!, hourCheck: String!, threshold: Int!, distanceUnit: String!, searchRange: Float!, sortOrder: String!): PredictedLocationResponse
+  GetPredictedLocations(accountId: Int!, latitude: Float!, longitude: Float!, dateCheck: Int!, hourCheck: String!, threshold: Int!, distanceUnit: String!, searchRange: Float!, sortOrder: String!): PredictedLocationResponse
   # Get Tracking Path
   # Get the path (lat/long coordinates) between 2 steps previously logged for a customer.
-  # @param Float! version 
   # @param Int! accountId The account id of the customer
   # @param Int! startStepId The stepId to begin from
   # @param Int! endStepId The stepId to end with
   # @return [StepResponse]
-  GetPredictedPath(version: Float!, accountId: Int!, startStepId: Int!, endStepId: Int!): StepResponse
+  GetPredictedPath(accountId: Int!, startStepId: Int!, endStepId: Int!): StepResponse
   # Search Preferred Locations
   # Search on preferred locations for a user, which is created when a customer resides in a place for a period of time.
-  # @param Float! version 
   # @param Int! accountId The account id of the customer
   # @param Float! latitude latitude to return a more likely result set based on the user&#39;s current location
   # @param Float! longitude longitude to return a more likely result set based on the user&#39;s current location
@@ -175,10 +163,9 @@ type Query {
   # @param Float! searchRange Filter results so only locations within the specified radius will be returned. The distance can either be in miles or kilometers as specified in the distanceUnit parameter. A value of \&quot;0\&quot; (zero) will ignore the radius restriction.
   # @param String! distanceUnit Determines which unit of measurement gets returned for distances: {MILES, KILOMETERS}
   # @return [PreferredLocationResponse]
-  GetPreferredLocations(version: Float!, accountId: Int!, latitude: Float!, longitude: Float!, dateCheck: Int!, hourCheck: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, searchRange: Float!, distanceUnit: String!): PreferredLocationResponse
+  GetPreferredLocations(accountId: Int!, latitude: Float!, longitude: Float!, dateCheck: Int!, hourCheck: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, searchRange: Float!, distanceUnit: String!): PreferredLocationResponse
   # Search Tracking
   # Retrieve tracking data to be able to show where a user has been.
-  # @param Float! version 
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
   # @param Int! ownerId the account id of the person the user wants to tracking data for
@@ -188,10 +175,9 @@ type Query {
   # @param String! tags filter results by tag
   # @param Boolean! getLastPoint gets the last known location of the user
   # @return [LegResponse]
-  GetTrackingLegs(version: Float!, deviceId: String!, accountId: Int!, ownerId: Int!, trackingDeviceId: String!, startDate: Int!, endDate: Int!, tags: String!, getLastPoint: Boolean!): LegResponse
+  GetTrackingLegs(deviceId: String!, accountId: Int!, ownerId: Int!, trackingDeviceId: String!, startDate: Int!, endDate: Int!, tags: String!, getLastPoint: Boolean!): LegResponse
   # List Tracking
   # Search for all accounts that have tracking legs data by the given constraints.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @param String! keyword Used for LIKE search of first or last name on the acocunt
   # @param Int! startDate Range to begin in UTC milliseconds
@@ -207,10 +193,9 @@ type Query {
   # @param Int! limit The total number of records to return. Default is 20.
   # @param Boolean! activeOnly Determines whether to return only active results. Default is false.
   # @return [AccountMiniResponse]
-  SearchAccountsWithTrackingLegs(version: Float!, accountId: Int!, keyword: String!, startDate: Int!, endDate: Int!, tags: String!, audienceIds: String!, latitude: Float!, longitude: Float!, range: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): AccountMiniResponse
+  SearchAccountsWithTrackingLegs(accountId: Int!, keyword: String!, startDate: Int!, endDate: Int!, tags: String!, audienceIds: String!, latitude: Float!, longitude: Float!, range: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): AccountMiniResponse
   # Search Tracking (Billable)
   # Retrieve tracking data for billable/account scoped queries.
-  # @param Float! version 
   # @param Int! accountId The account id to search tracking for
   # @param String! appKey The application key
   # @param String! trackingDeviceId The id of the tracking device
@@ -220,6 +205,6 @@ type Query {
   # @param Int! start The start index for pagination
   # @param Int! limit The limit for pagination
   # @return [LegResponse]
-  SearchTrackingLegs(version: Float!, accountId: Int!, appKey: String!, trackingDeviceId: String!, startDate: Int!, endDate: Int!, tags: String!, start: Int!, limit: Int!): LegResponse
+  SearchTrackingLegs(accountId: Int!, appKey: String!, trackingDeviceId: String!, startDate: Int!, endDate: Int!, tags: String!, start: Int!, limit: Int!): LegResponse
 }
 

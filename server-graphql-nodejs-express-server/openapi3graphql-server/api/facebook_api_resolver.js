@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return TokenResponse
-        GetToken: ($version, $deviceId, $accountId, $latitude, $longitude) => {
+        GetToken: ($deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "latitude": "1.2",
@@ -33,9 +32,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        GraphInterface: ($version, $event, $deviceId, $accountId, $permissionableType, $permissionableId, $assetId, $gameType, $appKey, $latitude, $longitude) => {
+        GraphInterface: ($event, $deviceId, $accountId, $permissionableType, $permissionableId, $assetId, $gameType, $appKey, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "event": "event_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

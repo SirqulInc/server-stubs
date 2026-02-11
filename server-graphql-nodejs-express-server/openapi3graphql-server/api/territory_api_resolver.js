@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return TerritoryResponse
-        GetTerritory: ($version, $territoryId) => {
+        GetTerritory: ($territoryId) => {
             return {
-                "version": "3.16",
                 "territoryId": "789"
             };
         },
 
         // @return TerritoryResponse
-        SearchTerritories: ($version, $sortField, $descending, $keyword, $start, $limit) => {
+        SearchTerritories: ($sortField, $descending, $keyword, $start, $limit) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "keyword": "keyword_example",
@@ -42,9 +40,8 @@ export default {
     Mutation: {
 
         // @return TerritoryResponse
-        CreateTerritory: ($version, $accountId, $name, $active) => {
+        CreateTerritory: ($accountId, $name, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "active": "true"
@@ -52,18 +49,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteTerritory: ($version, $accountId, $territoryId) => {
+        DeleteTerritory: ($accountId, $territoryId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "territoryId": "789"
             };
         },
 
         // @return TerritoryResponse
-        UpdateTerritory: ($version, $accountId, $territoryId, $name, $active) => {
+        UpdateTerritory: ($accountId, $territoryId, $name, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "territoryId": "789",
                 "name": "name_example",

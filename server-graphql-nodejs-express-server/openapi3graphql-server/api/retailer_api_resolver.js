@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return RetailerFullResponse
-        GetRetailer: ($version, $retailerId, $deviceId, $accountId, $includeCounts) => {
+        GetRetailer: ($retailerId, $deviceId, $accountId, $includeCounts) => {
             return {
-                "version": "3.16",
                 "retailerId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -29,9 +28,8 @@ export default {
         },
 
         // @return RetailerResponse
-        GetRetailers: ($version, $visibility, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $categoryIds, $filterIds, $i, $l) => {
+        GetRetailers: ($visibility, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $categoryIds, $filterIds, $i, $l) => {
             return {
-                "version": "3.16",
                 "visibility": "visibility_example",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -54,9 +52,8 @@ export default {
     Mutation: {
 
         // @return RetailerFullResponse
-        CreateRetailer: ($version, $name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $categoryIdsToAdd, $categoryIdsToRemove, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $createDefaultLocation, $responseFormat) => {
+        CreateRetailer: ($name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $categoryIdsToAdd, $categoryIdsToRemove, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $createDefaultLocation, $responseFormat) => {
             return {
-                "version": "3.16",
                 "name": "name_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -94,9 +91,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteRetailer: ($version, $deviceId, $accountId, $retailerId) => {
+        DeleteRetailer: ($deviceId, $accountId, $retailerId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "retailerId": "789"
@@ -104,9 +100,8 @@ export default {
         },
 
         // @return AccountLoginResponse
-        RetailerLoginCheck: ($version, $username, $password, $deviceId, $latitude, $longitude, $appKey) => {
+        RetailerLoginCheck: ($username, $password, $deviceId, $latitude, $longitude, $appKey) => {
             return {
-                "version": "3.16",
                 "username": "username_example",
                 "password": "password_example",
                 "deviceId": "deviceId_example",
@@ -117,9 +112,8 @@ export default {
         },
 
         // @return RetailerFullResponse
-        UpdateRetailer: ($version, $retailerId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $active, $responseFormat) => {
+        UpdateRetailer: ($retailerId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $active, $responseFormat) => {
             return {
-                "version": "3.16",
                 "retailerId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

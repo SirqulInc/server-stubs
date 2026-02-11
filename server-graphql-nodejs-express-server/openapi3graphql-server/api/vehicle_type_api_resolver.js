@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return VehicleType
-        GetVehicleType: ($version, $vehicleTypeId) => {
+        GetVehicleType: ($vehicleTypeId) => {
             return {
-                "version": "3.16",
                 "vehicleTypeId": "789"
             };
         },
 
         // @return VehicleType
-        SearchVehicleTypes: ($version, $sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId) => {
+        SearchVehicleTypes: ($sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -44,26 +42,23 @@ export default {
     Mutation: {
 
         // @return VehicleType
-        CreateVehicleType: ($version, $vehicleType, $body) => {
+        CreateVehicleType: ($vehicleType, $body) => {
             return {
-                "version": "3.16",
                 "vehicleType": "vehicleType_example",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteVehicleType: ($version, $vehicleTypeId) => {
+        DeleteVehicleType: ($vehicleTypeId) => {
             return {
-                "version": "3.16",
                 "vehicleTypeId": "789"
             };
         },
 
         // @return VehicleType
-        UpdateVehicleType: ($version, $vehicleTypeId, $vehicleType, $body) => {
+        UpdateVehicleType: ($vehicleTypeId, $vehicleType, $body) => {
             return {
-                "version": "3.16",
                 "vehicleTypeId": "789",
                 "vehicleType": "vehicleType_example",
                 "body": ""

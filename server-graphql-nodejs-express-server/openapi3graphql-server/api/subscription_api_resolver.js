@@ -18,34 +18,30 @@ export default {
     Query: {
 
         // @return SubscriptionResponse
-        GetSubscription: ($version, $accountId) => {
+        GetSubscription: ($accountId) => {
             return {
-                "version": "3.16",
                 "accountId": "789"
             };
         },
 
         // @return SubscriptionPlanResponse
-        GetSubscriptionPlan: ($version, $planId) => {
+        GetSubscriptionPlan: ($planId) => {
             return {
-                "version": "3.16",
                 "planId": "789"
             };
         },
 
         // @return SubscriptionPlanResponse
-        GetSubscriptionPlans: ($version, $visible, $role) => {
+        GetSubscriptionPlans: ($visible, $role) => {
             return {
-                "version": "3.16",
                 "visible": "true",
                 "role": "role_example"
             };
         },
 
         // @return ApplicationUsageResponse
-        GetSubscriptionUsage: ($version, $accountId, $applicationId, $start, $end) => {
+        GetSubscriptionUsage: ($accountId, $applicationId, $start, $end) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "applicationId": "789",
                 "start": "789",
@@ -58,9 +54,8 @@ export default {
     Mutation: {
 
         // @return SubscriptionResponse
-        CreateSubscription: ($version, $accountId, $planId, $promoCode) => {
+        CreateSubscription: ($accountId, $planId, $promoCode) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "planId": "789",
                 "promoCode": "promoCode_example"
@@ -68,17 +63,15 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteSubscription: ($version, $accountId) => {
+        DeleteSubscription: ($accountId) => {
             return {
-                "version": "3.16",
                 "accountId": "789"
             };
         },
 
         // @return SubscriptionResponse
-        UpdateSubscription: ($version, $accountId, $planId, $promoCode, $active) => {
+        UpdateSubscription: ($accountId, $planId, $promoCode, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "planId": "789",
                 "promoCode": "promoCode_example",

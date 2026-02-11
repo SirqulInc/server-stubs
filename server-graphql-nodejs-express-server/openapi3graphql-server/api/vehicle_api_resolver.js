@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return Vehicle
-        GetVehicle: ($version, $Id_) => {
+        GetVehicle: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Vehicle
-        SearchVehicle: ($version, $hubId, $sortField, $descending, $start, $limit, $activeOnly, $keyword) => {
+        SearchVehicle: ($hubId, $sortField, $descending, $start, $limit, $activeOnly, $keyword) => {
             return {
-                "version": "3.16",
                 "hubId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -44,26 +42,23 @@ export default {
     Mutation: {
 
         // @return Vehicle
-        CreateVehicle: ($version, $vehicle, $body) => {
+        CreateVehicle: ($vehicle, $body) => {
             return {
-                "version": "3.16",
                 "vehicle": "vehicle_example",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteVehicle: ($version, $Id_) => {
+        DeleteVehicle: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return Vehicle
-        UpdateVehicle: ($version, $Id_, $vehicle, $body) => {
+        UpdateVehicle: ($Id_, $vehicle, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "vehicle": "vehicle_example",
                 "body": ""

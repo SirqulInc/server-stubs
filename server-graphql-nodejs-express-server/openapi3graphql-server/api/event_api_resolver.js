@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return OfferResponse
-        GetEvent: ($version, $accountId, $eventId) => {
+        GetEvent: ($accountId, $eventId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "eventId": "789"
             };
         },
 
         // @return EventAttendanceResponse
-        SearchEventTransactions: ($version, $deviceId, $accountId, $appKey, $keyword, $retailerId, $retailerLocationId, $excludeRetailerLocationId, $listingId, $offerId, $offerLocationId, $customerAccountIds, $affiliatedCategoryIds, $startDate, $endDate, $statuses, $sortField, $descending, $start, $limit) => {
+        SearchEventTransactions: ($deviceId, $accountId, $appKey, $keyword, $retailerId, $retailerLocationId, $excludeRetailerLocationId, $listingId, $offerId, $offerLocationId, $customerAccountIds, $affiliatedCategoryIds, $startDate, $endDate, $statuses, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -53,9 +51,8 @@ export default {
         },
 
         // @return OfferShortResponse
-        SearchEvents: ($version, $accountId, $keyword, $activeOnly, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $sortField, $descending, $startDate, $endDate, $start, $limit) => {
+        SearchEvents: ($accountId, $keyword, $activeOnly, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $sortField, $descending, $startDate, $endDate, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "activeOnly": "true",
@@ -77,9 +74,8 @@ export default {
     Mutation: {
 
         // @return OfferResponse
-        AttendEvent: ($version, $deviceId, $accountId, $appKey, $listingId, $retailerLocationId, $offerLocationId, $transactionId, $status, $latitude, $longitude) => {
+        AttendEvent: ($deviceId, $accountId, $appKey, $listingId, $retailerLocationId, $offerLocationId, $transactionId, $status, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -94,9 +90,8 @@ export default {
         },
 
         // @return OfferResponse
-        CreateEvent: ($version, $accountId, $title, $retailerLocationIds, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd, $metaData) => {
+        CreateEvent: ($accountId, $title, $retailerLocationIds, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "title": "title_example",
                 "retailerLocationIds": "retailerLocationIds_example",
@@ -113,18 +108,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteEvent: ($version, $accountId, $eventId) => {
+        DeleteEvent: ($accountId, $eventId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "eventId": "789"
             };
         },
 
         // @return OfferResponse
-        UpdateEvent: ($version, $accountId, $eventId, $retailerLocationIds, $title, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd) => {
+        UpdateEvent: ($accountId, $eventId, $retailerLocationIds, $title, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "eventId": "789",
                 "retailerLocationIds": "retailerLocationIds_example",

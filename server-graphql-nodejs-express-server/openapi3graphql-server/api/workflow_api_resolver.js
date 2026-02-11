@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        RunWorkflow: ($version, $accountId, $workflowId, $skuId, $versionCode, $parameters) => {
+        RunWorkflow: ($accountId, $workflowId, $skuId, $versionCode, $parameters) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "workflowId": "789",
                 "skuId": "789",

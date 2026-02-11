@@ -15,8 +15,6 @@
 
 
 input CreateOfferTransactionStatusInput {
-    
-    version: Float!, 
     # The name of the status
     name: String!, 
     # The status code, must be unique 
@@ -40,8 +38,6 @@ input CreateOfferTransactionStatusInput {
 }
 
 input DeleteOfferTransactionStatusInput {
-    
-    version: Float!, 
     # The id of the record to delete
     statusId: Int!, 
     # The device id (deviceId or accountId required)
@@ -55,8 +51,6 @@ input DeleteOfferTransactionStatusInput {
 }
 
 input UpdateOfferTransactionStatusInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -84,7 +78,6 @@ input UpdateOfferTransactionStatusInput {
 type Mutation {
   # Create Offer Status
   # Create an offer status record
-  # @param Float! version 
   # @param String! name The name of the status
   # @param Int! code The status code, must be unique 
   # @param String! deviceId The device id (deviceId or accountId required)
@@ -99,7 +92,6 @@ type Mutation {
   CreateOfferTransactionStatus(input: CreateOfferTransactionStatusInput!): OfferTransactionStatusResponse
   # Delete Offer Status
   # Mark an offer status record as deleted
-  # @param Float! version 
   # @param Int! statusId The id of the record to delete
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -109,7 +101,6 @@ type Mutation {
   DeleteOfferTransactionStatus(input: DeleteOfferTransactionStatusInput!): SirqulResponse
   # Update Offer Status
   # Update an offer status record
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Float! latitude Used to update the user&#39;s current location
@@ -128,17 +119,15 @@ type Mutation {
 type Query {
   # Get Offer Status
   # Get an offer status record
-  # @param Float! version 
   # @param Int! statusId The id of the record to get 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Float! latitude Used to update the user&#39;s current location
   # @param Float! longitude Used to update the user&#39;s current location
   # @return [OfferTransactionStatusResponse]
-  GetOfferTransactionStatus(version: Float!, statusId: Int!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!): OfferTransactionStatusResponse
+  GetOfferTransactionStatus(statusId: Int!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!): OfferTransactionStatusResponse
   # Search Offer Status
   # Search for the available offer statuses
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Float! latitude Used to update the user&#39;s current location
@@ -152,6 +141,6 @@ type Query {
   # @param Int! limit The limit for pagination
   # @param Boolean! includeInactive If true include inactive items
   # @return [OfferTransactionStatusResponse]
-  SearchOfferTransactionStatuses(version: Float!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!, keyword: String!, role: String!, appKey: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, includeInactive: Boolean!): OfferTransactionStatusResponse
+  SearchOfferTransactionStatuses(deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!, keyword: String!, role: String!, appKey: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, includeInactive: Boolean!): OfferTransactionStatusResponse
 }
 

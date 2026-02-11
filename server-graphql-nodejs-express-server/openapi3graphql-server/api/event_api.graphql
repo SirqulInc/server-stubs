@@ -15,8 +15,6 @@
 
 
 input AttendEventInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id (deviceId or accountId required)
@@ -40,8 +38,6 @@ input AttendEventInput {
 }
 
 input CreateEventInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The event title
@@ -69,8 +65,6 @@ input CreateEventInput {
 }
 
 input DeleteEventInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the event to update
@@ -78,8 +72,6 @@ input DeleteEventInput {
 }
 
 input UpdateEventInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The id of the event to update
@@ -109,7 +101,6 @@ input UpdateEventInput {
 type Mutation {
   # Attend Event
   #  Specify whether the user is attending an event at a particular location. This can also be used as a \&quot;check-in\&quot; action.
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id (deviceId or accountId required)
   # @param String! appKey The application of where to send notifications about the attend action
@@ -124,7 +115,6 @@ type Mutation {
   AttendEvent(input: AttendEventInput!): OfferResponse
   # Create Event
   # Create a private event to share with associates.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! title The event title
   # @param String! retailerLocationIds The retailer location to have the event at
@@ -141,14 +131,12 @@ type Mutation {
   CreateEvent(input: CreateEventInput!): OfferResponse
   # Delete Event
   # Delete an event that the user has permissions to.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! eventId the id of the event to update
   # @return [SirqulResponse]
   DeleteEvent(input: DeleteEventInput!): SirqulResponse
   # Update Event
   # Update a private event to share with associates.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! eventId The id of the event to update
   # @param String! retailerLocationIds The retailer location to have the event at
@@ -168,14 +156,12 @@ type Mutation {
 type Query {
   # Get Event
   # Get an event.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! eventId The id of the event to return
   # @return [OfferResponse]
-  GetEvent(version: Float!, accountId: Int!, eventId: Int!): OfferResponse
+  GetEvent(accountId: Int!, eventId: Int!): OfferResponse
   # Search Event Attendance
   # Searches on event type transactions. This can be used to see who is attending an event.
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! appKey The application key
@@ -196,10 +182,9 @@ type Query {
   # @param Int! start The start index for pagination
   # @param Int! limit The limit for pagination
   # @return [EventAttendanceResponse]
-  SearchEventTransactions(version: Float!, deviceId: String!, accountId: Int!, appKey: String!, keyword: String!, retailerId: Int!, retailerLocationId: Int!, excludeRetailerLocationId: Int!, listingId: Int!, offerId: Int!, offerLocationId: Int!, customerAccountIds: String!, affiliatedCategoryIds: String!, startDate: Int!, endDate: Int!, statuses: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): EventAttendanceResponse
+  SearchEventTransactions(deviceId: String!, accountId: Int!, appKey: String!, keyword: String!, retailerId: Int!, retailerLocationId: Int!, excludeRetailerLocationId: Int!, listingId: Int!, offerId: Int!, offerLocationId: Int!, customerAccountIds: String!, affiliatedCategoryIds: String!, startDate: Int!, endDate: Int!, statuses: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): EventAttendanceResponse
   # Search Events
   # Searches on events that the account has access to.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! keyword The keyword used to search
   # @param Boolean! activeOnly Return only active results
@@ -214,6 +199,6 @@ type Query {
   # @param Int! start The record to begin the return set on
   # @param Int! limit The number of records to return
   # @return [OfferShortResponse]
-  SearchEvents(version: Float!, accountId: Int!, keyword: String!, activeOnly: Boolean!, categoryIds: String!, filterIds: String!, offerAudienceIds: String!, transactionAudienceIds: String!, sortField: String!, descending: Boolean!, startDate: Int!, endDate: Int!, start: Int!, limit: Int!): OfferShortResponse
+  SearchEvents(accountId: Int!, keyword: String!, activeOnly: Boolean!, categoryIds: String!, filterIds: String!, offerAudienceIds: String!, transactionAudienceIds: String!, sortField: String!, descending: Boolean!, startDate: Int!, endDate: Int!, start: Int!, limit: Int!): OfferShortResponse
 }
 

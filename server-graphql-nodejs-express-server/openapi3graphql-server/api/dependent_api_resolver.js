@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return SirqulResponse
-        GetDependents: ($version, $accountId) => {
+        GetDependents: ($accountId) => {
             return {
-                "version": "3.16",
                 "accountId": "789"
             };
         },
@@ -30,18 +29,16 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        Create: ($version, $accountId, $body) => {
+        Create: ($accountId, $body) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "body": ""
             };
         },
 
         // @return 
-        RemoveDependent: ($version, $accountId, $dependentId) => {
+        RemoveDependent: ($accountId, $dependentId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "dependentId": "789"
             };

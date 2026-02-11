@@ -15,8 +15,6 @@
 
 
 input CreateBidInput {
-    
-    version: Float!, 
     # A biddable object type. Possible values include: CREATIVE (ads).
     biddableType: String!, 
     # The id of the biddable object
@@ -36,8 +34,6 @@ input CreateBidInput {
 }
 
 input DeleteBidInput {
-    
-    version: Float!, 
     # The bid id
     bidId: Int!, 
     # The device id (deviceId or accountId required)
@@ -47,8 +43,6 @@ input DeleteBidInput {
 }
 
 input UpdateBidInput {
-    
-    version: Float!, 
     # The bid id
     bidId: Int!, 
     # The device id (deviceId or accountId required)
@@ -68,7 +62,6 @@ input UpdateBidInput {
 type Mutation {
   # Create Bid
   # Creates a bid on a biddable object
-  # @param Float! version 
   # @param String! biddableType A biddable object type. Possible values include: CREATIVE (ads).
   # @param Int! biddableId The id of the biddable object
   # @param Float! amountPerView The bid amount for views. For ads, this is the amount that will be taken for each impression.
@@ -81,7 +74,6 @@ type Mutation {
   CreateBid(input: CreateBidInput!): BidResponse
   # Delete Bid
   # Deleted a bid on a biddable object
-  # @param Float! version 
   # @param Int! bidId The bid id
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -89,7 +81,6 @@ type Mutation {
   DeleteBid(input: DeleteBidInput!): SirqulResponse
   # Update Bid
   # Updates a bid on a biddable object
-  # @param Float! version 
   # @param Int! bidId The bid id
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -104,11 +95,10 @@ type Mutation {
 type Query {
   # Get Bid
   # Get the bid details of a biddable object
-  # @param Float! version 
   # @param Int! bidId The bid id
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @return [BidResponse]
-  GetBid(version: Float!, bidId: Int!, deviceId: String!, accountId: Int!): BidResponse
+  GetBid(bidId: Int!, deviceId: String!, accountId: Int!): BidResponse
 }
 

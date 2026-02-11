@@ -15,8 +15,6 @@
 
 
 input AddConnectionToGroupInput {
-    
-    version: Float!, 
     # whether to return nulls or not
     returnNulls: Boolean!, 
     # the group id
@@ -38,8 +36,6 @@ input AddConnectionToGroupInput {
 }
 
 input AddConnectionsToGroupInput {
-    
-    version: Float!, 
     # the connection group ID
     connectionGroupId: Int!, 
     # the device id (deviceId or accountId required)
@@ -57,8 +53,6 @@ input AddConnectionsToGroupInput {
 }
 
 input AddSubGroupsInput {
-    
-    version: Float!, 
     # whether to return nulls or not
     returnNulls: Boolean!, 
     # the parent group id
@@ -76,8 +70,6 @@ input AddSubGroupsInput {
 }
 
 input CreateOrUpdateConnectionInput {
-    
-    version: Float!, 
     # the device id (deviceId or accountId required)
     deviceId: String!, 
     # the account id of the user (deviceId or accountId required)
@@ -109,8 +101,6 @@ input CreateOrUpdateConnectionInput {
 }
 
 input CreateOrUpdateGroupInput {
-    
-    version: Float!, 
     # whether to return nulls or not
     returnNulls: Boolean!, 
     # the device id (deviceId or accountId required)
@@ -142,8 +132,6 @@ input CreateOrUpdateGroupInput {
 }
 
 input FollowAcceptInput {
-    
-    version: Float!, 
     # the account id of the user
     accountId: Int!, 
     # the account ID of the user who initiated the follow
@@ -153,8 +141,6 @@ input FollowAcceptInput {
 }
 
 input FollowRejectInput {
-    
-    version: Float!, 
     # the account id of the user
     accountId: Int!, 
     # the account ID of the user who initiated the follow
@@ -164,8 +150,6 @@ input FollowRejectInput {
 }
 
 input FollowRemoveInput {
-    
-    version: Float!, 
     # the account id of the user
     accountId: Int!, 
     # the account ID of the user who you want to unfollow
@@ -175,8 +159,6 @@ input FollowRemoveInput {
 }
 
 input FollowRequestInput {
-    
-    version: Float!, 
     # the account id of the user
     accountId: Int!, 
     # the account ID of the user who you want to follow
@@ -188,8 +170,6 @@ input FollowRequestInput {
 }
 
 input FriendAcceptInput {
-    
-    version: Float!, 
     # the friend&#39;s account id
     friendAccountId: Int!, 
     # determines whether to send a notification to the afflicting party
@@ -207,8 +187,6 @@ input FriendAcceptInput {
 }
 
 input FriendRejectInput {
-    
-    version: Float!, 
     # the friend&#39;s account id
     friendAccountId: Int!, 
     # the device id (deviceId or accountId required)
@@ -226,8 +204,6 @@ input FriendRejectInput {
 }
 
 input FriendRemoveInput {
-    
-    version: Float!, 
     # the account ID of the friend to remove
     friendAccountId: Int!, 
     # the device id (deviceId or accountId required)
@@ -241,8 +217,6 @@ input FriendRemoveInput {
 }
 
 input FriendRequestInput {
-    
-    version: Float!, 
     # the friend&#39;s account id
     friendAccountId: Int!, 
     # the device id (deviceId or accountId required)
@@ -258,8 +232,6 @@ input FriendRequestInput {
 }
 
 input RemoveConnectionFromGroupInput {
-    
-    version: Float!, 
     # whether to return nulls or not
     returnNulls: Boolean!, 
     # the group id
@@ -281,8 +253,6 @@ input RemoveConnectionFromGroupInput {
 }
 
 input RemoveConnectionsFromGroupInput {
-    
-    version: Float!, 
     # connection group id
     connectionGroupId: Int!, 
     # the device id (deviceId or accountId required)
@@ -300,8 +270,6 @@ input RemoveConnectionsFromGroupInput {
 }
 
 input RemoveGroupInput {
-    
-    version: Float!, 
     # whether to return nulls or not
     returnNulls: Boolean!, 
     # the group id
@@ -317,8 +285,6 @@ input RemoveGroupInput {
 }
 
 input RemoveSubGroupsInput {
-    
-    version: Float!, 
     # whether to return nulls or not
     returnNulls: Boolean!, 
     # the parent group id
@@ -338,7 +304,6 @@ input RemoveSubGroupsInput {
 type Mutation {
   # Add Connection
   # Adds a connection to a group.
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param Int! groupId the group id
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -352,7 +317,6 @@ type Mutation {
   AddConnectionToGroup(input: AddConnectionToGroupInput!): SirqulResponse
   # Add Connections
   # Adds a list of connections to a group.
-  # @param Float! version 
   # @param Int! connectionGroupId the connection group ID
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -364,7 +328,6 @@ type Mutation {
   AddConnectionsToGroup(input: AddConnectionsToGroupInput!): SirqulResponse
   # Add Connection Groups
   # Add sub groups to a group.
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param Int! groupId the parent group id
   # @param String! subGroupIds comma separated list of group IDs to add to the parent group
@@ -376,7 +339,6 @@ type Mutation {
   AddSubGroups(input: AddSubGroupsInput!): ConnectionGroupResponse
   # Create or Update Connection
   # Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group.
-  # @param Float! version 
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
   # @param Int! connectionId the connection id for editing
@@ -395,7 +357,6 @@ type Mutation {
   CreateOrUpdateConnection(input: CreateOrUpdateConnectionInput!): ConnectionResponse
   # Create or Update Connection Group
   # Creates a new private group.
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -414,7 +375,6 @@ type Mutation {
   CreateOrUpdateGroup(input: CreateOrUpdateGroupInput!): SirqulResponse
   # Accept Follow Request
   # Accept someone&#39;s follow request.
-  # @param Float! version 
   # @param Int! accountId the account id of the user
   # @param Int! connectionAccountId the account ID of the user who initiated the follow
   # @param String! appKey the application key for sending notifications
@@ -422,7 +382,6 @@ type Mutation {
   FollowAccept(input: FollowAcceptInput!): SirqulResponse
   # Reject Follow Request
   # Reject someone&#39;s follow request or remove them as a follower.
-  # @param Float! version 
   # @param Int! accountId the account id of the user
   # @param Int! connectionAccountId the account ID of the user who initiated the follow
   # @param String! appKey the application key for sending notifications
@@ -430,7 +389,6 @@ type Mutation {
   FollowReject(input: FollowRejectInput!): SirqulResponse
   # Remove Follower / Unfollow
   # Unfollow someone you are following or remove them as a follower.
-  # @param Float! version 
   # @param Int! accountId the account id of the user
   # @param Int! connectionAccountId the account ID of the user who you want to unfollow
   # @param String! appKey the application key for sending notifications
@@ -438,7 +396,6 @@ type Mutation {
   FollowRemove(input: FollowRemoveInput!): SirqulResponse
   # Send Follow Request
   # Send a request to follow someone.
-  # @param Float! version 
   # @param Int! accountId the account id of the user
   # @param Int! connectionAccountId the account ID of the user who you want to follow
   # @param String! appKey the application key for sending notifications
@@ -447,7 +404,6 @@ type Mutation {
   FollowRequest(input: FollowRequestInput!): SirqulResponse
   # Accept Friend
   # Accept a friend request and optionally sends a notification.
-  # @param Float! version 
   # @param Int! friendAccountId the friend&#39;s account id
   # @param Boolean! notifyFriend determines whether to send a notification to the afflicting party
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -459,7 +415,6 @@ type Mutation {
   FriendAccept(input: FriendAcceptInput!): SirqulResponse
   # Decline Friend
   # Request a friend request and optionally sends a notification.
-  # @param Float! version 
   # @param Int! friendAccountId the friend&#39;s account id
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -471,7 +426,6 @@ type Mutation {
   FriendReject(input: FriendRejectInput!): SirqulResponse
   # Delete Friend
   # Removes a friend from the user&#39;s friends list.
-  # @param Float! version 
   # @param Int! friendAccountId the account ID of the friend to remove
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -481,7 +435,6 @@ type Mutation {
   FriendRemove(input: FriendRemoveInput!): SirqulResponse
   # Request Friend
   # Sends a friend request notification to another user.
-  # @param Float! version 
   # @param Int! friendAccountId the friend&#39;s account id
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -492,7 +445,6 @@ type Mutation {
   FriendRequest(input: FriendRequestInput!): SirqulResponse
   # Delete Connection
   # Removes the connection from group.
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param Int! groupId the group id
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -506,7 +458,6 @@ type Mutation {
   RemoveConnectionFromGroup(input: RemoveConnectionFromGroupInput!): SirqulResponse
   # Remove Connections
   # Remove a list of connections from a group.
-  # @param Float! version 
   # @param Int! connectionGroupId connection group id
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -518,7 +469,6 @@ type Mutation {
   RemoveConnectionsFromGroup(input: RemoveConnectionsFromGroupInput!): SirqulResponse
   # Delete Connection Group
   # Remove a user&#39;s group.
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param Int! groupId the group id
   # @param String! deviceId the device id (deviceId or accountId required)
@@ -529,7 +479,6 @@ type Mutation {
   RemoveGroup(input: RemoveGroupInput!): SirqulResponse
   # Remove Connection Groups
   # Remove sub groups from a group
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param Int! groupId the parent group id
   # @param String! subGroupIds comma separated list of group IDs to remove from the parent group
@@ -544,14 +493,12 @@ type Mutation {
 type Query {
   # Get Sent Friend Requests
   # Gets the connection sent friend requests.
-  # @param Float! version 
   # @param String! deviceId the ID of the device
   # @param Int! accountId the id of the account
   # @return [ConnectionListResponse]
-  GetConnectionSentFriendRequests(version: Float!, deviceId: String!, accountId: Int!): ConnectionListResponse
+  GetConnectionSentFriendRequests(deviceId: String!, accountId: Int!): ConnectionListResponse
   # Search Connections
   # Gets the connections.
-  # @param Float! version 
   # @param Boolean! returnNulls whether to return nulls or not
   # @param String! filter a comma separated list of ConnectionApiMap. (NOTE on FOLLOWER vs FOLLOWING: FOLLOWER will get me a list of followers, FOLLOWING will get me a list of people I am following)
   # @param String! sortField sorts the response list by ConnectionApiMap
@@ -568,9 +515,8 @@ type Query {
   # @param Float! latitude the current latitude of the user
   # @param Float! longitude the current longitude of the user
   # @return [ConnectionListResponse]
-  GetConnections(version: Float!, returnNulls: Boolean!, filter: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, q: String!, keyword: String!, i: Int!, l: Int!, latitude: Float!, longitude: Float!): ConnectionListResponse
+  GetConnections(returnNulls: Boolean!, filter: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, connectionAccountId: Int!, q: String!, keyword: String!, i: Int!, l: Int!, latitude: Float!, longitude: Float!): ConnectionListResponse
   # Get Connection Group
-  # @param Float! version 
   # @param Boolean! combineConnections whether to combine connections or not
   # @param String! deviceId the device id (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
@@ -578,10 +524,9 @@ type Query {
   # @param Float! latitude the current latitude of the user
   # @param Float! longitude the current longitude of the user
   # @return [ConnectionGroupResponse]
-  GetGroupDetails(version: Float!, combineConnections: Boolean!, deviceId: String!, accountId: Int!, groupId: Int!, latitude: Float!, longitude: Float!): ConnectionGroupResponse
+  GetGroupDetails(combineConnections: Boolean!, deviceId: String!, accountId: Int!, groupId: Int!, latitude: Float!, longitude: Float!): ConnectionGroupResponse
   # Search Connection Groups
   # Gets a user&#39;s private groups and default groups.
-  # @param Float! version 
   # @param String! sortField the field to sort by
   # @param Boolean! descending whether to return results in descending or ascending order
   # @param Boolean! activeOnly to search on active only or not
@@ -593,10 +538,9 @@ type Query {
   # @param Float! longitude the current longitude of the user
   # @param String! keyword keyword search string
   # @return [ConnectionInfoResponse]
-  GroupSearch(version: Float!, sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!, keyword: String!): ConnectionInfoResponse
+  GroupSearch(sortField: String!, descending: Boolean!, activeOnly: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!, keyword: String!): ConnectionInfoResponse
   # Search Possible Connections
   # Search for accounts that the user may not have a connection with.
-  # @param Float! version 
   # @param Boolean! returnNulls return all json attributes if true. defualt is true.
   # @param Int! start start index of the pagination
   # @param Int! limit limit of the pagination
@@ -613,6 +557,6 @@ type Query {
   # @param String! sortField the field to sort on
   # @param Boolean! hasLocation whether the search has location or not
   # @return [ConnectionListResponse]
-  SearchConnections(version: Float!, returnNulls: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, q: String!, keyword: String!, latitude: Float!, longitude: Float!, gameType: String!, appKey: String!, i: Int!, l: Int!, sortField: String!, hasLocation: Boolean!): ConnectionListResponse
+  SearchConnections(returnNulls: Boolean!, start: Int!, limit: Int!, deviceId: String!, accountId: Int!, q: String!, keyword: String!, latitude: Float!, longitude: Float!, gameType: String!, appKey: String!, i: Int!, l: Int!, sortField: String!, hasLocation: Boolean!): ConnectionListResponse
 }
 

@@ -15,8 +15,6 @@
 
 
 input CreateBatchInput {
-    
-    version: Float!, 
     # The account id of the user for passing account related params
     accountId: Int!, 
     # the status of the report
@@ -43,14 +41,10 @@ input CreateBatchInput {
 
 input CreateRegionLegSummaryBatchInput {
     
-    version: Float!, 
-    
     body: [RegionLegSummaryInput]
 }
 
 input DeleteBatchInput {
-    
-    version: Float!, 
     # the id of the account
     accountId: Int!, 
     # the id of the batch to delete
@@ -58,8 +52,6 @@ input DeleteBatchInput {
 }
 
 input RunReportInput {
-    
-    version: Float!, 
     # If true then descending order, false is ascending
     desc: Boolean!, 
     # The account id of the user for passing account related params
@@ -81,7 +73,6 @@ input RunReportInput {
 type Mutation {
   # Create Offline Report
   # Create an entry for the batch for offline report
-  # @param Float! version 
   # @param Int! accountId The account id of the user for passing account related params
   # @param String! status the status of the report
   # @param Int! previewLimit the limit on how much you can preview of the batch report
@@ -97,20 +88,17 @@ type Mutation {
   CreateBatch(input: CreateBatchInput!): ReportBatchResponse
   # Create Offline Report
   # Create an entry for the batch for offline report
-  # @param Float! version 
   # @param RegionLegSummary body 
   # @return [ReportRegionLegSummaryBatchResponse]
   CreateRegionLegSummaryBatch(input: CreateRegionLegSummaryBatchInput!): ReportRegionLegSummaryBatchResponse
   # Delete Offline Report
   # Deletes a batch report.
-  # @param Float! version 
   # @param Int! accountId the id of the account
   # @param Int! batchId the id of the batch to delete
   # @return [SirqulResponse]
   DeleteBatch(input: DeleteBatchInput!): SirqulResponse
   # Run Report
   #  This endpoint allows you to run a set of predefined reports that can be used to understand your users&#39; behavior as well as trends within your application.
-  # @param Float! version 
   # @param Boolean! desc If true then descending order, false is ascending
   # @param Int! accountId The account id of the user for passing account related params
   # @param String! Query_ The named identifier of the query
@@ -126,15 +114,13 @@ type Mutation {
 type Query {
   # Get Offline Report
   # Checks status of batch report.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! batchId returned by /report/batch/create
   # @param Boolean! allResults whether to return all batch results or not
   # @return [ReportBatchResponse]
-  GetReportBatch(version: Float!, accountId: Int!, batchId: Int!, allResults: Boolean!): ReportBatchResponse
+  GetReportBatch(accountId: Int!, batchId: Int!, allResults: Boolean!): ReportBatchResponse
   # Search Offline Reports
   # Retrieves batches for a user..
-  # @param Float! version 
   # @param Int! accountId the id of the account logged in
   # @param Int! start the start of the index and/or pagination
   # @param Int! limit the limit of the index and/or pagination
@@ -145,6 +131,6 @@ type Query {
   # @param Int! startDate the start date of the report batch to search on
   # @param Int! endDate the end date of the report batch to search on
   # @return [ReportBatchResponse]
-  SearchBatch(version: Float!, accountId: Int!, start: Int!, limit: Int!, names: String!, appKey: String!, status: String!, globalAppSearch: Boolean!, startDate: Int!, endDate: Int!): ReportBatchResponse
+  SearchBatch(accountId: Int!, start: Int!, limit: Int!, names: String!, appKey: String!, status: String!, globalAppSearch: Boolean!, startDate: Int!, endDate: Int!): ReportBatchResponse
 }
 

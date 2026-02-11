@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return TodoObjectMapping
-        GetServiceHub: ($version, $Id_) => {
+        GetServiceHub: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return ServiceHub
-        SearchServiceHubs: ($version, $sortField, $descending, $start, $limit, $activeOnly, $keyword, $retailerId) => {
+        SearchServiceHubs: ($sortField, $descending, $start, $limit, $activeOnly, $keyword, $retailerId) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -44,34 +42,30 @@ export default {
     Mutation: {
 
         // @return ServiceHub
-        CreateServiceHub: ($version, $body) => {
+        CreateServiceHub: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteServiceHub: ($version, $Id_) => {
+        DeleteServiceHub: ($Id_) => {
             return {
-                "version": "3.16",
                 "Id_": "789"
             };
         },
 
         // @return ServiceHub
-        PostServiceHub: ($version, $Id_, $body) => {
+        PostServiceHub: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };
         },
 
         // @return ServiceHub
-        PutServiceHub: ($version, $Id_, $body) => {
+        PutServiceHub: ($Id_, $body) => {
             return {
-                "version": "3.16",
                 "Id_": "789",
                 "body": ""
             };

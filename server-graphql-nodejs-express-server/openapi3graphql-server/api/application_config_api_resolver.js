@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return ApplicationConfigResponse
-        GetApplicationConfig: ($version, $accountId, $configId) => {
+        GetApplicationConfig: ($accountId, $configId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "configId": "789"
             };
         },
 
         // @return ApplicationConfigResponse
-        GetApplicationConfigByConfigVersion: ($version, $appKey, $configVersion, $retailerId, $retailerLocationId, $udid, $allowOlderVersions) => {
+        GetApplicationConfigByConfigVersion: ($appKey, $configVersion, $retailerId, $retailerLocationId, $udid, $allowOlderVersions) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "configVersion": "configVersion_example",
                 "retailerId": "789",
@@ -40,9 +38,8 @@ export default {
         },
 
         // @return ApplicationConfigResponse
-        SearchApplicationConfig: ($version, $accountId, $appKey, $retailerId, $retailerLocationId, $udid, $configVersion, $sortField, $descending, $start, $limit) => {
+        SearchApplicationConfig: ($accountId, $appKey, $retailerId, $retailerLocationId, $udid, $configVersion, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "retailerId": "789",
@@ -61,9 +58,8 @@ export default {
     Mutation: {
 
         // @return ApplicationConfigResponse
-        CreateApplicationConfig: ($version, $accountId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid) => {
+        CreateApplicationConfig: ($accountId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "configVersion": "configVersion_example",
@@ -75,18 +71,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteApplicationConfig: ($version, $accountId, $configId) => {
+        DeleteApplicationConfig: ($accountId, $configId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "configId": "789"
             };
         },
 
         // @return ApplicationConfigResponse
-        UpdateApplicationConfig: ($version, $accountId, $configId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid) => {
+        UpdateApplicationConfig: ($accountId, $configId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "configId": "789",
                 "appKey": "appKey_example",

@@ -18,27 +18,24 @@ export default {
     Query: {
 
         // @return AccountMiniResponse
-        AssigmentAssigneeAccountSearch: ($version, $accountId, $keyword) => {
+        AssigmentAssigneeAccountSearch: ($accountId, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example"
             };
         },
 
         // @return AssignmentResponse
-        AssignmentGet: ($version, $accountId, $assignmentId) => {
+        AssignmentGet: ($accountId, $assignmentId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentId": "789"
             };
         },
 
         // @return AssignmentResponse
-        AssignmentSearch: ($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $creatorAccountId, $assigneeAccountIds, $retailerLocationIds, $currentStatusType, $keyword) => {
+        AssignmentSearch: ($accountId, $sortField, $descending, $activeOnly, $start, $limit, $creatorAccountId, $assigneeAccountIds, $retailerLocationIds, $currentStatusType, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -54,18 +51,16 @@ export default {
         },
 
         // @return AssignmentStatusResponse
-        AssignmentStatusGet: ($version, $accountId, $assignmentStatusId) => {
+        AssignmentStatusGet: ($accountId, $assignmentStatusId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentStatusId": "789"
             };
         },
 
         // @return AssignmentStatusResponse
-        AssignmentStatusSearch: ($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $assignmentId, $creatorAccountId, $assigneeAccountId, $retailerLocationId, $statusType, $keyword) => {
+        AssignmentStatusSearch: ($accountId, $sortField, $descending, $activeOnly, $start, $limit, $assignmentId, $creatorAccountId, $assigneeAccountId, $retailerLocationId, $statusType, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -86,9 +81,8 @@ export default {
     Mutation: {
 
         // @return AssignmentResponse
-        AssignmentCreate: ($version, $accountId, $name, $assigneeAccountId, $description, $retailerLocationId, $tags, $active) => {
+        AssignmentCreate: ($accountId, $name, $assigneeAccountId, $description, $retailerLocationId, $tags, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "assigneeAccountId": "789",
@@ -100,18 +94,16 @@ export default {
         },
 
         // @return SirqulResponse
-        AssignmentDelete: ($version, $accountId, $assignmentId) => {
+        AssignmentDelete: ($accountId, $assignmentId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentId": "789"
             };
         },
 
         // @return AssignmentStatusResponse
-        AssignmentStatusCreate: ($version, $accountId, $assignmentId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active) => {
+        AssignmentStatusCreate: ($accountId, $assignmentId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentId": "789",
                 "scheduledNotificationId": "789",
@@ -127,18 +119,16 @@ export default {
         },
 
         // @return SirqulResponse
-        AssignmentStatusDelete: ($version, $accountId, $assignmentStatusId) => {
+        AssignmentStatusDelete: ($accountId, $assignmentStatusId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentStatusId": "789"
             };
         },
 
         // @return AssignmentStatusResponse
-        AssignmentStatusUpdate: ($version, $accountId, $assignmentStatusId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active) => {
+        AssignmentStatusUpdate: ($accountId, $assignmentStatusId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentStatusId": "789",
                 "scheduledNotificationId": "789",
@@ -154,9 +144,8 @@ export default {
         },
 
         // @return AssignmentResponse
-        AssignmentUpdate: ($version, $accountId, $assignmentId, $name, $description, $assigneeAccountId, $retailerLocationId, $tags, $active) => {
+        AssignmentUpdate: ($accountId, $assignmentId, $name, $description, $assigneeAccountId, $retailerLocationId, $tags, $active) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "assignmentId": "789",
                 "name": "name_example",

@@ -15,8 +15,6 @@
 
 
 input CreateMissionInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The title of the mission
@@ -72,8 +70,6 @@ input CreateMissionInput {
 }
 
 input DeleteMissionInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the mission to delete
@@ -81,8 +77,6 @@ input DeleteMissionInput {
 }
 
 input ImportMissionInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The current location of the requesting device
@@ -102,8 +96,6 @@ input ImportMissionInput {
 }
 
 input UpdateMissionInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The id of the mission to update.
@@ -159,7 +151,6 @@ input UpdateMissionInput {
 type Mutation {
   # Create Mission
   # Create a user defined mission.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! title The title of the mission
   # @param String! description The description of the mission
@@ -190,14 +181,12 @@ type Mutation {
   CreateMission(input: CreateMissionInput!): MissionResponse
   # Delete Mission
   # Delete a mission.
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! missionId the id of the mission to delete
   # @return [SirqulResponse]
   DeleteMission(input: DeleteMissionInput!): SirqulResponse
   # Import Mission
   # Create a mission using a source item such as an offer location.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Float! latitude The current location of the requesting device
   # @param Float! longitude The current location of the requesting device
@@ -210,7 +199,6 @@ type Mutation {
   ImportMission(input: ImportMissionInput!): SirqulResponse
   # Update Mission
   # Update a mission.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! missionId The id of the mission to update.
   # @param String! title The title of the mission
@@ -243,7 +231,6 @@ type Mutation {
 type Query {
   # Find Missions
   # Get a set of ad filtered by the parameters provided.
-  # @param Float! version 
   # @param String! appKey The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
   # @param String! suffix The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip
   # @param String! Type_ The type of ads to get, possible values are: BANNER, LEADERBOARD, SKYSCRAPER, FULL, VIDEO, ZIP, CONFIG. Use this instead of suffix.
@@ -264,26 +251,23 @@ type Query {
   # @param String! missionIds return only ads from the specified campaigns.
   # @param String! audienceOperator will return the items that have at least 1 or all of their audiences exist in the logged in user’s audiences, depending if the value is OR or AND
   # @return [MissionResponse]
-  FindMissions(version: Float!, appKey: String!, suffix: String!, Type_: String!, accountId: Int!, appVersion: String!, latitude: Float!, longitude: Float!, device: String!, deviceIdentifier: Int!, deviceVersion: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeAudiences: Boolean!, allocatesTickets: Boolean!, randomize: Boolean!, targetedAdsOnly: Boolean!, missionIds: String!, audienceOperator: String!): MissionResponse
+  FindMissions(appKey: String!, suffix: String!, Type_: String!, accountId: Int!, appVersion: String!, latitude: Float!, longitude: Float!, device: String!, deviceIdentifier: Int!, deviceVersion: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeAudiences: Boolean!, allocatesTickets: Boolean!, randomize: Boolean!, targetedAdsOnly: Boolean!, missionIds: String!, audienceOperator: String!): MissionResponse
   # Get Mission
   # Get a mission.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! missionId The id of the mission to return.
   # @param Boolean! returnCreative Return creatives associated with the mission when true
   # @return [MissionResponse]
-  GetMission(version: Float!, accountId: Int!, missionId: Int!, returnCreative: Boolean!): MissionResponse
+  GetMission(accountId: Int!, missionId: Int!, returnCreative: Boolean!): MissionResponse
   # Search Mission Formats
   # Searches on pre-defined mission formats
-  # @param Float! version 
   # @param Int! start The starting index in the result set to return. Default is 0.
   # @param Int! limit The total number of records to return. Default is 20.
   # @param Boolean! activeOnly Determines whether to return only active results. Default is false.
   # @return [MissionFormatResponse]
-  SearchMissionFormats(version: Float!, start: Int!, limit: Int!, activeOnly: Boolean!): MissionFormatResponse
+  SearchMissionFormats(start: Int!, limit: Int!, activeOnly: Boolean!): MissionFormatResponse
   # Search Missions
   # Get the list missions available to the account.  
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! keyword Filter by keyword
   # @param String! subType Custom string client apps can use for searching/filtering missions
@@ -296,10 +280,9 @@ type Query {
   # @param String! sortField The field to sort the search on (for example TITLE)
   # @param Boolean! descending Whether to sort in descending order (default true)
   # @return [MissionResponse]
-  SearchMissions(version: Float!, accountId: Int!, keyword: String!, subType: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeAudiences: Boolean!, includeInactive: Boolean!, suffix: String!, sortField: String!, descending: Boolean!): MissionResponse
+  SearchMissions(accountId: Int!, keyword: String!, subType: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeAudiences: Boolean!, includeInactive: Boolean!, suffix: String!, sortField: String!, descending: Boolean!): MissionResponse
   # Search Missions by Billable Entity
   # Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! keyword Filter by keyword
   # @param Int! start The index into the record set to start with. Default is 0.
@@ -311,6 +294,6 @@ type Query {
   # @param String! sortField The field to sort the search on (for example TITLE)
   # @param Boolean! descending Whether to sort in descending order (default true)
   # @return [MissionResponse]
-  SearchMissionsByBillableEntity(version: Float!, accountId: Int!, keyword: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeAudiences: Boolean!, includeInactive: Boolean!, suffix: String!, sortField: String!, descending: Boolean!): MissionResponse
+  SearchMissionsByBillableEntity(accountId: Int!, keyword: String!, start: Int!, limit: Int!, includeGameData: Boolean!, includeAudiences: Boolean!, includeInactive: Boolean!, suffix: String!, sortField: String!, descending: Boolean!): MissionResponse
 }
 

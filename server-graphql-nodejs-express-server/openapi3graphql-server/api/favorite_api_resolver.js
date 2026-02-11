@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return WrappedResponse
-        GetFavorite: ($version, $favoriteId, $deviceId, $accountId, $latitude, $longitude) => {
+        GetFavorite: ($favoriteId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "favoriteId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return SearchResponse
-        SearchFavorites: ($version, $favoritableType, $sortField, $descending, $start, $limit, $activeOnly, $returnFullResponse, $deviceId, $accountId, $connectionAccountId, $secondaryType, $keyword, $latitude, $longitude) => {
+        SearchFavorites: ($favoritableType, $sortField, $descending, $start, $limit, $activeOnly, $returnFullResponse, $deviceId, $accountId, $connectionAccountId, $secondaryType, $keyword, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "favoritableType": "favoritableType_example",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -51,9 +49,8 @@ export default {
         },
 
         // @return AccountResponse
-        WhoHasFavorited: ($version, $favoritableId, $favoritableType, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword) => {
+        WhoHasFavorited: ($favoritableId, $favoritableType, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword) => {
             return {
-                "version": "3.16",
                 "favoritableId": "789",
                 "favoritableType": "favoritableType_example",
                 "start": "56",
@@ -71,9 +68,8 @@ export default {
     Mutation: {
 
         // @return WrappedResponse
-        AddFavorite: ($version, $favoritableId, $favoritableType, $deviceId, $accountId, $latitude, $longitude) => {
+        AddFavorite: ($favoritableId, $favoritableType, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "favoritableId": "789",
                 "favoritableType": "favoritableType_example",
                 "deviceId": "deviceId_example",
@@ -84,9 +80,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteFavorite: ($version, $deviceId, $accountId, $favoriteId, $favoritableId, $favoritableType) => {
+        DeleteFavorite: ($deviceId, $accountId, $favoriteId, $favoritableId, $favoritableType) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "favoriteId": "789",

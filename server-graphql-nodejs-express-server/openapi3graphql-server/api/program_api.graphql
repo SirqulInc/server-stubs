@@ -16,21 +16,15 @@
 
 input CreateProgramInput {
     
-    version: Float!, 
-    
     body: ProgramInput
 }
 
 input DeleteProgramInput {
-    
-    version: Float!, 
     # the id of the program
     Id_: Int!
 }
 
 input PostProgramInput {
-    
-    version: Float!, 
     # the id of the program
     Id_: Int!, 
     
@@ -38,8 +32,6 @@ input PostProgramInput {
 }
 
 input PutProgramInput {
-    
-    version: Float!, 
     # the id of the program
     Id_: Int!, 
     
@@ -49,26 +41,22 @@ input PutProgramInput {
 type Mutation {
   # Create Program
   # Create a new program
-  # @param Float! version 
   # @param Program body 
   # @return [Program]
   CreateProgram(input: CreateProgramInput!): Program
   # Delete Program
   # Delete an existing program
-  # @param Float! version 
   # @param Int! Id_ the id of the program
   # @return [Boolean]
   DeleteProgram(input: DeleteProgramInput!): Boolean
   # Update Program
   # Update an existing program
-  # @param Float! version 
   # @param Int! Id_ the id of the program
   # @param Program body 
   # @return [Program]
   PostProgram(input: PostProgramInput!): Program
   # Update Program
   # Update an existing program
-  # @param Float! version 
   # @param Int! Id_ the id of the program
   # @param Program body 
   # @return [Program]
@@ -78,13 +66,11 @@ type Mutation {
 type Query {
   # Get Program
   # Get an existing program
-  # @param Float! version 
   # @param Int! Id_ the id of the program
   # @return [Program]
-  GetProgram(version: Float!, Id_: Int!): Program
+  GetProgram(Id_: Int!): Program
   # Search Programs
   # Search for programs
-  # @param Float! version 
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
@@ -92,6 +78,6 @@ type Query {
   # @param Boolean! activeOnly Return only active results
   # @param String! keyword The keyword to filter results by
   # @return [Program]
-  SearchPrograms(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, keyword: String!): Program
+  SearchPrograms(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, keyword: String!): Program
 }
 

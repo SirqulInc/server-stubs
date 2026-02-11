@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return PredictedLocationResponse
-        GetPredictedLocations: ($version, $accountId, $latitude, $longitude, $dateCheck, $hourCheck, $threshold, $distanceUnit, $searchRange, $sortOrder) => {
+        GetPredictedLocations: ($accountId, $latitude, $longitude, $dateCheck, $hourCheck, $threshold, $distanceUnit, $searchRange, $sortOrder) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "latitude": "1.2",
                 "longitude": "1.2",
@@ -34,9 +33,8 @@ export default {
         },
 
         // @return StepResponse
-        GetPredictedPath: ($version, $accountId, $startStepId, $endStepId) => {
+        GetPredictedPath: ($accountId, $startStepId, $endStepId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "startStepId": "789",
                 "endStepId": "789"
@@ -44,9 +42,8 @@ export default {
         },
 
         // @return PreferredLocationResponse
-        GetPreferredLocations: ($version, $accountId, $latitude, $longitude, $dateCheck, $hourCheck, $sortField, $descending, $start, $limit, $searchRange, $distanceUnit) => {
+        GetPreferredLocations: ($accountId, $latitude, $longitude, $dateCheck, $hourCheck, $sortField, $descending, $start, $limit, $searchRange, $distanceUnit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "latitude": "1.2",
                 "longitude": "1.2",
@@ -62,9 +59,8 @@ export default {
         },
 
         // @return LegResponse
-        GetTrackingLegs: ($version, $deviceId, $accountId, $ownerId, $trackingDeviceId, $startDate, $endDate, $tags, $getLastPoint) => {
+        GetTrackingLegs: ($deviceId, $accountId, $ownerId, $trackingDeviceId, $startDate, $endDate, $tags, $getLastPoint) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "ownerId": "789",
@@ -77,9 +73,8 @@ export default {
         },
 
         // @return AccountMiniResponse
-        SearchAccountsWithTrackingLegs: ($version, $accountId, $keyword, $startDate, $endDate, $tags, $audienceIds, $latitude, $longitude, $range, $sortField, $descending, $start, $limit, $activeOnly) => {
+        SearchAccountsWithTrackingLegs: ($accountId, $keyword, $startDate, $endDate, $tags, $audienceIds, $latitude, $longitude, $range, $sortField, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "startDate": "789",
@@ -98,9 +93,8 @@ export default {
         },
 
         // @return LegResponse
-        SearchTrackingLegs: ($version, $accountId, $appKey, $trackingDeviceId, $startDate, $endDate, $tags, $start, $limit) => {
+        SearchTrackingLegs: ($accountId, $appKey, $trackingDeviceId, $startDate, $endDate, $tags, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "trackingDeviceId": "trackingDeviceId_example",
@@ -117,9 +111,8 @@ export default {
     Mutation: {
 
         // @return Leg
-        BatchSaveTracking: ($version, $data, $deviceId, $accountId, $generateAccounts, $updateAccountLocations, $defaultTag, $slaveUID) => {
+        BatchSaveTracking: ($data, $deviceId, $accountId, $generateAccounts, $updateAccountLocations, $defaultTag, $slaveUID) => {
             return {
-                "version": "3.16",
                 "data": "data_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -131,9 +124,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SaveTrackingLeg: ($version, $startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration, $steps, $tags) => {
+        SaveTrackingLeg: ($startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration, $steps, $tags) => {
             return {
-                "version": "3.16",
                 "startLat": "1.2",
                 "startLng": "1.2",
                 "startDate": "789",
@@ -150,9 +142,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SaveTrackingStep: ($version, $legId, $startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration) => {
+        SaveTrackingStep: ($legId, $startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration) => {
             return {
-                "version": "3.16",
                 "legId": "789",
                 "startLat": "1.2",
                 "startLng": "1.2",

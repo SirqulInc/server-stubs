@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return NotificationTemplateResponse
-        GetNotificationTemplate: ($version, $accountId, $notificationTemplateId) => {
+        GetNotificationTemplate: ($accountId, $notificationTemplateId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "notificationTemplateId": "789"
             };
         },
 
         // @return NotificationMessageListResponse
-        GetNotifications: ($version, $deviceId, $accountId, $connectionAccountId, $appKey, $eventType, $contentIds, $contentTypes, $parentIds, $parentTypes, $actionCategory, $conduits, $keyword, $returnReadMessages, $markAsRead, $fromDate, $latitude, $longitude, $returnSent, $ignoreFlagged, $start, $limit) => {
+        GetNotifications: ($deviceId, $accountId, $connectionAccountId, $appKey, $eventType, $contentIds, $contentTypes, $parentIds, $parentTypes, $actionCategory, $conduits, $keyword, $returnReadMessages, $markAsRead, $fromDate, $latitude, $longitude, $returnSent, $ignoreFlagged, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "connectionAccountId": "789",
@@ -55,9 +53,8 @@ export default {
         },
 
         // @return BlockedNotificationResponse
-        SearchBlockedNotifications: ($version, $appKey, $accountId, $searchTags, $events, $conduits, $customTypes, $contentTypes, $contentIds, $sortField, $descending, $start, $limit) => {
+        SearchBlockedNotifications: ($appKey, $accountId, $searchTags, $events, $conduits, $customTypes, $contentTypes, $contentIds, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "accountId": "789",
                 "searchTags": "searchTags_example",
@@ -74,9 +71,8 @@ export default {
         },
 
         // @return NotificationTemplateResponse
-        SearchNotificationTemplate: ($version, $accountId, $sortField, $descending, $start, $limit, $appKey, $event, $conduit, $globalOnly, $reservedOnly, $keyword) => {
+        SearchNotificationTemplate: ($accountId, $sortField, $descending, $start, $limit, $appKey, $event, $conduit, $globalOnly, $reservedOnly, $keyword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -92,9 +88,8 @@ export default {
         },
 
         // @return NotificationRecipientResponse
-        SearchRecipients: ($version, $sortField, $deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $recipientAccountIds, $descending, $start, $limit) => {
+        SearchRecipients: ($sortField, $deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $recipientAccountIds, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -112,9 +107,8 @@ export default {
         },
 
         // @return NotificationRecipientResponseListResponse
-        SearchRecipientsCount: ($version, $deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $sortField, $descending, $start, $limit) => {
+        SearchRecipientsCount: ($deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "appKey": "appKey_example",
@@ -135,9 +129,8 @@ export default {
     Mutation: {
 
         // @return NotificationTemplateResponse
-        CreateNotificationTemplate: ($version, $accountId, $conduit, $title, $body, $appKey, $event, $tags) => {
+        CreateNotificationTemplate: ($accountId, $conduit, $title, $body, $appKey, $event, $tags) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "conduit": "conduit_example",
                 "title": "title_example",
@@ -149,9 +142,8 @@ export default {
         },
 
         // @return BlockedNotificationResponse
-        CreateOrUpdateBlockedNotifications: ($version, $appKey, $data, $accountId) => {
+        CreateOrUpdateBlockedNotifications: ($appKey, $data, $accountId) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "data": "data_example",
                 "accountId": "789"
@@ -159,18 +151,16 @@ export default {
         },
 
         // @return NotificationTemplateResponse
-        DeleteNotificationTemplate: ($version, $accountId, $notificationTemplateId) => {
+        DeleteNotificationTemplate: ($accountId, $notificationTemplateId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "notificationTemplateId": "789"
             };
         },
 
         // @return SirqulResponse
-        RegisterNotificationToken: ($version, $token, $pushType, $deviceId, $accountId, $environment, $appKey, $gameType, $active, $latitude, $longitude) => {
+        RegisterNotificationToken: ($token, $pushType, $deviceId, $accountId, $environment, $appKey, $gameType, $active, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "token": "token_example",
                 "pushType": "pushType_example",
                 "deviceId": "deviceId_example",
@@ -185,9 +175,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SendBatchNotifications: ($version, $accountId, $appKey, $customMessage, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType) => {
+        SendBatchNotifications: ($accountId, $appKey, $customMessage, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "customMessage": "customMessage_example",
@@ -201,9 +190,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SendCustomNotifications: ($version, $deviceId, $accountId, $receiverAccountIds, $includeFriendGroup, $appKey, $gameType, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType, $actionCategory, $subject, $customMessage, $friendOnlyAPNS, $latitude, $longitude) => {
+        SendCustomNotifications: ($deviceId, $accountId, $receiverAccountIds, $includeFriendGroup, $appKey, $gameType, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType, $actionCategory, $subject, $customMessage, $friendOnlyAPNS, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "receiverAccountIds": "receiverAccountIds_example",
@@ -226,9 +214,8 @@ export default {
         },
 
         // @return NotificationTemplateResponse
-        UpdateNotificationTemplate: ($version, $accountId, $notificationTemplateId, $title, $body, $tags) => {
+        UpdateNotificationTemplate: ($accountId, $notificationTemplateId, $title, $body, $tags) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "notificationTemplateId": "789",
                 "title": "title_example",

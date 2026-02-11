@@ -18,17 +18,15 @@ export default {
     Query: {
 
         // @return CargoType
-        GetCargoType: ($version, $cargoTypeId) => {
+        GetCargoType: ($cargoTypeId) => {
             return {
-                "version": "3.16",
                 "cargoTypeId": "789"
             };
         },
 
         // @return CargoType
-        SearchCargoTypes: ($version, $sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId) => {
+        SearchCargoTypes: ($sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId) => {
             return {
-                "version": "3.16",
                 "sortField": "sortField_example",
                 "descending": "true",
                 "start": "56",
@@ -44,25 +42,22 @@ export default {
     Mutation: {
 
         // @return CargoType
-        CreateCargoType: ($version, $body) => {
+        CreateCargoType: ($body) => {
             return {
-                "version": "3.16",
                 "body": ""
             };
         },
 
         // @return 
-        DeleteCargoType: ($version, $cargoTypeId) => {
+        DeleteCargoType: ($cargoTypeId) => {
             return {
-                "version": "3.16",
                 "cargoTypeId": "789"
             };
         },
 
         // @return CargoType
-        UpdateCargoType: ($version, $cargoTypeId, $body) => {
+        UpdateCargoType: ($cargoTypeId, $body) => {
             return {
-                "version": "3.16",
                 "cargoTypeId": "789",
                 "body": ""
             };

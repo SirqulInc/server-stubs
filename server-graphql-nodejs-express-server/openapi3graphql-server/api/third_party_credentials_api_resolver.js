@@ -18,18 +18,16 @@ export default {
     Query: {
 
         // @return ThirdPartyNetworkResponse
-        GetNetwork: ($version, $accountId, $networkUID) => {
+        GetNetwork: ($accountId, $networkUID) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "networkUID": "networkUID_example"
             };
         },
 
         // @return ThirdPartyCredentialResponse
-        SearchCredentials: ($version, $accountId, $keyword, $networkUID, $descending, $start, $limit) => {
+        SearchCredentials: ($accountId, $keyword, $networkUID, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "keyword": "keyword_example",
                 "networkUID": "networkUID_example",
@@ -40,9 +38,8 @@ export default {
         },
 
         // @return ThirdPartyNetworkShortResponse
-        SearchNetworks: ($version, $accountId, $sortField, $descending, $start, $limit, $activeOnly, $keyword, $filterBillable) => {
+        SearchNetworks: ($accountId, $sortField, $descending, $start, $limit, $activeOnly, $keyword, $filterBillable) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "sortField": "sortField_example",
                 "descending": "true",
@@ -59,9 +56,8 @@ export default {
     Mutation: {
 
         // @return ProfileResponse
-        CreateCredential: ($version, $thirdPartyId, $thirdPartyToken, $networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyName, $emailAddress, $signinOnlyMode, $responseFilters, $latitude, $longitude, $metaData, $thirdPartyRefreshToken, $audienceIdsToAdd, $audienceIdsToRemove) => {
+        CreateCredential: ($thirdPartyId, $thirdPartyToken, $networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyName, $emailAddress, $signinOnlyMode, $responseFilters, $latitude, $longitude, $metaData, $thirdPartyRefreshToken, $audienceIdsToAdd, $audienceIdsToRemove) => {
             return {
-                "version": "3.16",
                 "thirdPartyId": "thirdPartyId_example",
                 "thirdPartyToken": "thirdPartyToken_example",
                 "networkUID": "networkUID_example",
@@ -83,9 +79,8 @@ export default {
         },
 
         // @return ThirdPartyNetworkResponse
-        CreateNetwork: ($version, $accountId, $name, $enableIntrospection, $description, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body) => {
+        CreateNetwork: ($accountId, $name, $enableIntrospection, $description, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "enableIntrospection": "true",
@@ -107,9 +102,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteCredential: ($version, $accountId, $networkUID, $thirdPartyId, $appKey) => {
+        DeleteCredential: ($accountId, $networkUID, $thirdPartyId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "networkUID": "networkUID_example",
                 "thirdPartyId": "thirdPartyId_example",
@@ -118,18 +112,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteNetwork: ($version, $accountId, $networkUID) => {
+        DeleteNetwork: ($accountId, $networkUID) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "networkUID": "networkUID_example"
             };
         },
 
         // @return ProfileResponse
-        GetCredential: ($version, $networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyCredentialId, $thirdPartyToken, $thirdPartySecret, $createNewAccount, $responseFilters, $latitude, $longitude, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId) => {
+        GetCredential: ($networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyCredentialId, $thirdPartyToken, $thirdPartySecret, $createNewAccount, $responseFilters, $latitude, $longitude, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId) => {
             return {
-                "version": "3.16",
                 "networkUID": "networkUID_example",
                 "appKey": "appKey_example",
                 "accountId": "789",
@@ -149,9 +141,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SendMFAChallenge: ($version, $networkUID, $appKey, $thirdPartyToken, $thirdPartyCredentialId, $deviceId) => {
+        SendMFAChallenge: ($networkUID, $appKey, $thirdPartyToken, $thirdPartyCredentialId, $deviceId) => {
             return {
-                "version": "3.16",
                 "networkUID": "networkUID_example",
                 "appKey": "appKey_example",
                 "thirdPartyToken": "thirdPartyToken_example",
@@ -161,9 +152,8 @@ export default {
         },
 
         // @return ProfileResponse
-        UpdateCredential: ($version, $networkUID, $thirdPartyId, $appKey, $deviceId, $thirdPartyName, $thirdPartyToken, $responseFilters, $metaData, $thirdPartyRefreshToken) => {
+        UpdateCredential: ($networkUID, $thirdPartyId, $appKey, $deviceId, $thirdPartyName, $thirdPartyToken, $responseFilters, $metaData, $thirdPartyRefreshToken) => {
             return {
-                "version": "3.16",
                 "networkUID": "networkUID_example",
                 "thirdPartyId": "thirdPartyId_example",
                 "appKey": "appKey_example",
@@ -177,9 +167,8 @@ export default {
         },
 
         // @return ThirdPartyNetworkResponse
-        UpdateNetwork: ($version, $accountId, $networkUID, $name, $description, $enableIntrospection, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body) => {
+        UpdateNetwork: ($accountId, $networkUID, $name, $description, $enableIntrospection, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "networkUID": "networkUID_example",
                 "name": "name_example",

@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        BatchOperation: ($version, $notableId, $notableType, $deviceId, $accountId, $batchOperation) => {
+        BatchOperation: ($notableId, $notableType, $deviceId, $accountId, $batchOperation) => {
             return {
-                "version": "3.16",
                 "notableId": "789",
                 "notableType": "notableType_example",
                 "deviceId": "deviceId_example",
@@ -34,9 +33,8 @@ export default {
         },
 
         // @return NoteResponse
-        CreateNote: ($version, $comment, $deviceId, $accountId, $notableType, $notableId, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $receiverAccountIds, $returnFullResponse, $initializeAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude) => {
+        CreateNote: ($comment, $deviceId, $accountId, $notableType, $notableId, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $receiverAccountIds, $returnFullResponse, $initializeAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude) => {
             return {
-                "version": "3.16",
                 "comment": "comment_example",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -83,9 +81,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteNote: ($version, $noteId, $deviceId, $accountId, $latitude, $longitude, $appKey) => {
+        DeleteNote: ($noteId, $deviceId, $accountId, $latitude, $longitude, $appKey) => {
             return {
-                "version": "3.16",
                 "noteId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -96,9 +93,8 @@ export default {
         },
 
         // @return SirqulResponse
-        GetNote: ($version, $noteId, $deviceId, $accountId, $returnFullResponse) => {
+        GetNote: ($noteId, $deviceId, $accountId, $returnFullResponse) => {
             return {
-                "version": "3.16",
                 "noteId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -107,9 +103,8 @@ export default {
         },
 
         // @return NoteResponse
-        SearchNotes: ($version, $deviceId, $accountId, $notableType, $notableId, $noteTypes, $appKey, $keyword, $flagCountMinimum, $flagsExceedThreshold, $includeInactive, $sortField, $descending, $returnFullResponse, $updatedSince, $updatedBefore, $start, $limit) => {
+        SearchNotes: ($deviceId, $accountId, $notableType, $notableId, $noteTypes, $appKey, $keyword, $flagCountMinimum, $flagsExceedThreshold, $includeInactive, $sortField, $descending, $returnFullResponse, $updatedSince, $updatedBefore, $start, $limit) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "notableType": "notableType_example",
@@ -131,9 +126,8 @@ export default {
         },
 
         // @return NoteResponse
-        UpdateNote: ($version, $noteId, $deviceId, $accountId, $comment, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $returnFullResponse, $active, $updateAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude) => {
+        UpdateNote: ($noteId, $deviceId, $accountId, $comment, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $returnFullResponse, $active, $updateAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude) => {
             return {
-                "version": "3.16",
                 "noteId": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",

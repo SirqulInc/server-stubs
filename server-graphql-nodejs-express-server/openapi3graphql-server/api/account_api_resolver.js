@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return UserLocationSearchResponse
-        AccountLocationSearch: ($version, $deviceId, $accountId, $q, $keyword, $postalCode, $latitude, $longitude, $appKey, $range, $locationLastUpdated, $gender, $minAge, $maxAge, $companionshipIndex, $i, $start, $l, $limit, $searchMode, $sortField, $descending, $roles, $tags, $experience, $categoryIds, $audienceIds, $audienceOperator, $updateCurrentLocation, $updatePreferredSettings, $showExactLocations, $showConnectionToSearcher, $flagCountMinimum, $verifiedUserOnly, $contentAdminOnly) => {
+        AccountLocationSearch: ($deviceId, $accountId, $q, $keyword, $postalCode, $latitude, $longitude, $appKey, $range, $locationLastUpdated, $gender, $minAge, $maxAge, $companionshipIndex, $i, $start, $l, $limit, $searchMode, $sortField, $descending, $roles, $tags, $experience, $categoryIds, $audienceIds, $audienceOperator, $updateCurrentLocation, $updatePreferredSettings, $showExactLocations, $showConnectionToSearcher, $flagCountMinimum, $verifiedUserOnly, $contentAdminOnly) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "q": "q_example",
@@ -59,9 +58,8 @@ export default {
         },
 
         // @return ProfileResponse
-        GetAccount: ($version, $returnNulls, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $responseFilters, $gameType, $appKey, $purchaseType, $updateViewedDate, $latitude, $longitude) => {
+        GetAccount: ($returnNulls, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $responseFilters, $gameType, $appKey, $purchaseType, $updateViewedDate, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -78,9 +76,8 @@ export default {
         },
 
         // @return AssetListResponse
-        GetProfileAssets: ($version, $returnNulls, $deviceId, $accountId, $ownerId, $mediaTypes, $mimeTypes, $sortField, $descending, $latitude, $longitude, $i, $start, $l, $limit) => {
+        GetProfileAssets: ($returnNulls, $deviceId, $accountId, $ownerId, $mediaTypes, $mimeTypes, $sortField, $descending, $latitude, $longitude, $i, $start, $l, $limit) => {
             return {
-                "version": "3.16",
                 "returnNulls": "true",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -99,9 +96,8 @@ export default {
         },
 
         // @return 
-        GetReferralList: ($version, $accountId, $appKey, $retrieveType, $levelLimit, $ancestorLevelLimit, $childrenLevelLimit, $ancestorListStart, $ancestorListLimit, $childrenListStart, $childrenListLimit, $childrenChildren) => {
+        GetReferralList: ($accountId, $appKey, $retrieveType, $levelLimit, $ancestorLevelLimit, $childrenLevelLimit, $ancestorListStart, $ancestorListLimit, $childrenListStart, $childrenListLimit, $childrenChildren) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "retrieveType": "retrieveType_example",
@@ -117,9 +113,8 @@ export default {
         },
 
         // @return UserSettingsResponse
-        GetSettings: ($version, $deviceId, $accountId, $latitude, $longitude) => {
+        GetSettings: ($deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "latitude": "1.2",
@@ -128,9 +123,8 @@ export default {
         },
 
         // @return ProfileResponse
-        SearchAccounts: ($version, $accountId, $appKey, $keyword, $latitude, $longitude, $radius, $gender, $gameExperience, $age, $categoryIds, $returnNulls, $responseFilters, $purchaseType, $sortField, $descending, $start, $limit, $activeOnly) => {
+        SearchAccounts: ($accountId, $appKey, $keyword, $latitude, $longitude, $radius, $gender, $gameExperience, $age, $categoryIds, $returnNulls, $responseFilters, $purchaseType, $sortField, $descending, $start, $limit, $activeOnly) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "keyword": "keyword_example",
@@ -157,9 +151,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        BlockAccount: ($version, $accountIdBeingBlocked, $deviceId, $accountId, $blockFlagValue, $removeFromGroupsIfBlocked, $latitude, $longitude) => {
+        BlockAccount: ($accountIdBeingBlocked, $deviceId, $accountId, $blockFlagValue, $removeFromGroupsIfBlocked, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "accountIdBeingBlocked": "789",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
@@ -171,9 +164,8 @@ export default {
         },
 
         // @return AccountLoginResponse
-        CreateAccount: ($version, $username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceId, $deviceIdType, $emailAddress, $assetId, $streetAddress, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $inviteToken, $referralAccountId, $sendValidation, $gameType, $appKey, $appVersion, $responseType, $audienceIdsToAdd, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $locationVisibility, $homeLatitude, $homeLongitude, $appNickname, $personalAudienceId) => {
+        CreateAccount: ($username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceId, $deviceIdType, $emailAddress, $assetId, $streetAddress, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $inviteToken, $referralAccountId, $sendValidation, $gameType, $appKey, $appVersion, $responseType, $audienceIdsToAdd, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $locationVisibility, $homeLatitude, $homeLongitude, $appNickname, $personalAudienceId) => {
             return {
-                "version": "3.16",
                 "username": "username_example",
                 "password": "password_example",
                 "name": "name_example",
@@ -250,9 +242,8 @@ export default {
         },
 
         // @return ProfileInfoResponse
-        EditAccount: ($version, $deviceId, $accountId, $connectionAccountId, $role, $assetId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $gender, $age, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $makeProfileInfoPublic, $makeGameInfoPublic, $makeFriendsInfoPublic, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $platforms, $tags, $aboutUs, $matchToken, $gameExperience, $categories, $categoryIds, $responseFilters, $showAsZipcode, $showExactLocation, $showOthersExactLocation, $acceptedTerms, $locationVisibility, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $gameType, $appKey, $latitude, $longitude, $returnProfile, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId, $appNickname, $personalAudienceId, $nonGuestUsername) => {
+        EditAccount: ($deviceId, $accountId, $connectionAccountId, $role, $assetId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $gender, $age, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $makeProfileInfoPublic, $makeGameInfoPublic, $makeFriendsInfoPublic, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $platforms, $tags, $aboutUs, $matchToken, $gameExperience, $categories, $categoryIds, $responseFilters, $showAsZipcode, $showExactLocation, $showOthersExactLocation, $acceptedTerms, $locationVisibility, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $gameType, $appKey, $latitude, $longitude, $returnProfile, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId, $appNickname, $personalAudienceId, $nonGuestUsername) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "connectionAccountId": "789",
@@ -339,9 +330,8 @@ export default {
         },
 
         // @return SirqulResponse
-        EditUsername: ($version, $deviceId, $accountId, $emailAddress, $username) => {
+        EditUsername: ($deviceId, $accountId, $emailAddress, $username) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "emailAddress": "emailAddress_example",
@@ -350,9 +340,8 @@ export default {
         },
 
         // @return ProfileResponse
-        LoginDelegate: ($version, $accessToken, $appKey, $deviceId, $accessTokenSecret, $delegatedAccountId, $delegatedUsername, $networkUID, $ageRestriction, $responseFilters, $latitude, $longitude) => {
+        LoginDelegate: ($accessToken, $appKey, $deviceId, $accessTokenSecret, $delegatedAccountId, $delegatedUsername, $networkUID, $ageRestriction, $responseFilters, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "accessToken": "accessToken_example",
                 "appKey": "appKey_example",
                 "deviceId": "deviceId_example",
@@ -368,9 +357,8 @@ export default {
         },
 
         // @return ProfileResponse
-        LoginGeneral: ($version, $accessToken, $networkUID, $appKey, $deviceId, $deviceIdType, $accessTokenSecret, $ageRestriction, $responseFilters, $latitude, $longitude, $emailMatch, $chosenAccountId, $thirdPartyCredentialId) => {
+        LoginGeneral: ($accessToken, $networkUID, $appKey, $deviceId, $deviceIdType, $accessTokenSecret, $ageRestriction, $responseFilters, $latitude, $longitude, $emailMatch, $chosenAccountId, $thirdPartyCredentialId) => {
             return {
-                "version": "3.16",
                 "accessToken": "accessToken_example",
                 "networkUID": "networkUID_example",
                 "appKey": "appKey_example",
@@ -388,9 +376,8 @@ export default {
         },
 
         // @return ProfileResponse
-        LoginUsername: ($version, $username, $password, $deviceId, $latitude, $longitude, $app, $gameType, $appKey, $returnProfile, $responseFilters) => {
+        LoginUsername: ($username, $password, $deviceId, $latitude, $longitude, $app, $gameType, $appKey, $returnProfile, $responseFilters) => {
             return {
-                "version": "3.16",
                 "username": "username_example",
                 "password": "password_example",
                 "deviceId": "deviceId_example",
@@ -405,9 +392,8 @@ export default {
         },
 
         // @return SirqulResponse
-        Logout: ($version, $deviceId, $deviceIdType, $accountId, $latitude, $longitude) => {
+        Logout: ($deviceId, $deviceIdType, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "deviceIdType": "deviceIdType_example",
                 "accountId": "789",
@@ -417,9 +403,8 @@ export default {
         },
 
         // @return SirqulResponse
-        MergeAccount: ($version, $mergeAccountId, $appKey, $deviceId, $accountId) => {
+        MergeAccount: ($mergeAccountId, $appKey, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "mergeAccountId": "789",
                 "appKey": "appKey_example",
                 "deviceId": "deviceId_example",
@@ -428,9 +413,8 @@ export default {
         },
 
         // @return SirqulResponse
-        PasswordChange: ($version, $accountId, $oldPassword, $newPassword, $confirmPassword) => {
+        PasswordChange: ($accountId, $oldPassword, $newPassword, $confirmPassword) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "oldPassword": "oldPassword_example",
                 "newPassword": "newPassword_example",
@@ -439,9 +423,8 @@ export default {
         },
 
         // @return SirqulResponse
-        PasswordReset: ($version, $token, $password, $confirm) => {
+        PasswordReset: ($token, $password, $confirm) => {
             return {
-                "version": "3.16",
                 "token": "token_example",
                 "password": "password_example",
                 "confirm": "confirm_example"
@@ -449,9 +432,8 @@ export default {
         },
 
         // @return SirqulResponse
-        RequestPasswordReset: ($version, $email, $from, $domain, $subUrl, $referer) => {
+        RequestPasswordReset: ($email, $from, $domain, $subUrl, $referer) => {
             return {
-                "version": "3.16",
                 "email": "email_example",
                 "from": "from_example",
                 "domain": "domain_example",
@@ -461,17 +443,15 @@ export default {
         },
 
         // @return SirqulResponse
-        RequestValidateAccount: ($version, $accountId) => {
+        RequestValidateAccount: ($accountId) => {
             return {
-                "version": "3.16",
                 "accountId": "789"
             };
         },
 
         // @return ProfileResponse
-        SecureLogin: ($version, $username, $password, $gameType, $deviceId, $charsetName, $latitude, $longitude, $returnProfile, $responseFilters) => {
+        SecureLogin: ($username, $password, $gameType, $deviceId, $charsetName, $latitude, $longitude, $returnProfile, $responseFilters) => {
             return {
-                "version": "3.16",
                 "username": "username_example",
                 "password": "password_example",
                 "gameType": "gameType_example",
@@ -485,9 +465,8 @@ export default {
         },
 
         // @return ProfileInfoResponse
-        SecureSignup: ($version, $deviceId, $username, $password, $name, $inviteToken, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceIdType, $emailAddress, $assetId, $address, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $charsetName, $gameType, $appKey, $appVersion, $responseType) => {
+        SecureSignup: ($deviceId, $username, $password, $name, $inviteToken, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceIdType, $emailAddress, $assetId, $address, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $charsetName, $gameType, $appKey, $appVersion, $responseType) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "username": "username_example",
                 "password": "password_example",
@@ -553,9 +532,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SetMatchToken: ($version, $deviceId, $accountId, $matchToken, $gameType, $appKey, $latitude, $longitude) => {
+        SetMatchToken: ($deviceId, $accountId, $matchToken, $gameType, $appKey, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "matchToken": "matchToken_example",
@@ -567,9 +545,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateActveStatus: ($version, $accountId, $connectionAccountId, $active, $deviceId, $appKey) => {
+        UpdateActveStatus: ($accountId, $connectionAccountId, $active, $deviceId, $appKey) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "connectionAccountId": "789",
                 "active": "true",
@@ -579,9 +556,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateLocation: ($version, $deviceId, $accountId, $latitude, $longitude, $clientTime) => {
+        UpdateLocation: ($deviceId, $accountId, $latitude, $longitude, $clientTime) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "latitude": "1.2",
@@ -591,9 +567,8 @@ export default {
         },
 
         // @return UserSettingsResponse
-        UpdateSettings: ($version, $deviceId, $accountId, $blockedNotifications, $suggestionMethod, $suggestionCount, $suggestionTimeFrame, $showOthersExactLocation, $showAsZipcode, $showExactLocation, $favoriteVisibility, $latitude, $longitude) => {
+        UpdateSettings: ($deviceId, $accountId, $blockedNotifications, $suggestionMethod, $suggestionCount, $suggestionTimeFrame, $showOthersExactLocation, $showAsZipcode, $showExactLocation, $favoriteVisibility, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "blockedNotifications": "blockedNotifications_example",
@@ -610,17 +585,15 @@ export default {
         },
 
         // @return AccountLoginResponse
-        ValidateAccountSignup: ($version, $token) => {
+        ValidateAccountSignup: ($token) => {
             return {
-                "version": "3.16",
                 "token": "token_example"
             };
         },
 
         // @return SirqulResponse
-        ValidatePasswordReset: ($version, $token) => {
+        ValidatePasswordReset: ($token) => {
             return {
-                "version": "3.16",
                 "token": "token_example"
             };
         },

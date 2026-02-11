@@ -15,8 +15,6 @@
 
 
 input CreateOrderInput {
-    
-    version: Float!, 
     # The application requesting the purchase
     appKey: String!, 
     # &#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; 
@@ -44,8 +42,6 @@ input CreateOrderInput {
 }
 
 input DeleteOrderInput {
-    
-    version: Float!, 
     # Order Id
     orderId: Int!, 
     # The device id (deviceId or accountId required)
@@ -55,8 +51,6 @@ input DeleteOrderInput {
 }
 
 input PreviewOrderInput {
-    
-    version: Float!, 
     # The application requesting the purchase
     appKey: String!, 
     # A JSON list of items to purchase
@@ -84,8 +78,6 @@ input PreviewOrderInput {
 }
 
 input UpdateOrderInput {
-    
-    version: Float!, 
     # The order to add the purchase to, leave null for new order.
     orderId: Int!, 
     # The application requesting the purchase
@@ -113,7 +105,6 @@ input UpdateOrderInput {
 type Mutation {
   # Create Order
   # Creates a new purchase with some number of items associated with it. The purchase is added to the order that was created
-  # @param Float! version 
   # @param String! appKey The application requesting the purchase
   # @param String! cart &#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; 
   # @param String! deviceId The device id (deviceId or accountId required)
@@ -130,7 +121,6 @@ type Mutation {
   CreateOrder(input: CreateOrderInput!): OrderResponse
   # Delete Order
   # Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
-  # @param Float! version 
   # @param Int! orderId Order Id
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -138,7 +128,6 @@ type Mutation {
   DeleteOrder(input: DeleteOrderInput!): SirqulResponse
   # Preview Order
   # Previews a purchase to see the total cost before making it.
-  # @param Float! version 
   # @param String! appKey The application requesting the purchase
   # @param String! cart A JSON list of items to purchase
   # @param String! deviceId The device id (deviceId or accountId required)
@@ -155,7 +144,6 @@ type Mutation {
   PreviewOrder(input: PreviewOrderInput!): OrderResponse
   # Update Order
   # Updates new purchase with some number of items associated with it. The orderId provided is used to retrieve the record and the payment is added to it.
-  # @param Float! version 
   # @param Int! orderId The order to add the purchase to, leave null for new order.
   # @param String! appKey The application requesting the purchase
   # @param String! cart &#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; 
@@ -174,16 +162,14 @@ type Mutation {
 type Query {
   # Get Order
   # Get an order record
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Int! orderId The order id to get details of, either orderId or externalOrderId must be provided
   # @param String! externalOrderId The external order id to get details of, either orderId or externalOrderId must be provided
   # @return [OrderResponse]
-  GetOrder(version: Float!, deviceId: String!, accountId: Int!, orderId: Int!, externalOrderId: String!): OrderResponse
+  GetOrder(deviceId: String!, accountId: Int!, orderId: Int!, externalOrderId: String!): OrderResponse
   # Search Orders
   # Search on active orders by customer
-  # @param Float! version 
   # @param String! appKey The application requesting the purchase
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -216,6 +202,6 @@ type Query {
   # @param Int! endedSince Filter results by the offer end date
   # @param Int! endedBefore Filter results by the offer end date
   # @return [OrderResponse]
-  SearchOrders(version: Float!, appKey: String!, deviceId: String!, accountId: Int!, start: Int!, limit: Int!, descending: Boolean!, activeOnly: Boolean!, ignoreCustomerFilter: Boolean!, orderItemTypes: String!, orderItemIds: String!, orderCustomTypes: String!, orderCustomIds: String!, sortField: String!, offerTypes: String!, specialOfferTypes: String!, categoryIds: String!, filterIds: String!, offerAudienceIds: String!, transactionAudienceIds: String!, offerIds: String!, offerLocationIds: String!, retailerIds: String!, retailerLocationIds: String!, statuses: String!, keyword: String!, redeemableStartDate: Int!, redeemableEndDate: Int!, startedSince: Int!, startedBefore: Int!, endedSince: Int!, endedBefore: Int!): OrderResponse
+  SearchOrders(appKey: String!, deviceId: String!, accountId: Int!, start: Int!, limit: Int!, descending: Boolean!, activeOnly: Boolean!, ignoreCustomerFilter: Boolean!, orderItemTypes: String!, orderItemIds: String!, orderCustomTypes: String!, orderCustomIds: String!, sortField: String!, offerTypes: String!, specialOfferTypes: String!, categoryIds: String!, filterIds: String!, offerAudienceIds: String!, transactionAudienceIds: String!, offerIds: String!, offerLocationIds: String!, retailerIds: String!, retailerLocationIds: String!, statuses: String!, keyword: String!, redeemableStartDate: Int!, redeemableEndDate: Int!, startedSince: Int!, startedBefore: Int!, endedSince: Int!, endedBefore: Int!): OrderResponse
 }
 

@@ -22,9 +22,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        CreateStripeCheckoutSession: ($version, $appKey, $stripeParameters) => {
+        CreateStripeCheckoutSession: ($appKey, $stripeParameters) => {
             return {
-                "version": "3.16",
                 "appKey": "appKey_example",
                 "stripeParameters": "stripeParameters_example"
             };

@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return TournamentResponse
-        GetTournament: ($version, $accountId, $missionId, $joinCode, $includeScores, $objectPreviewSize) => {
+        GetTournament: ($accountId, $missionId, $joinCode, $includeScores, $objectPreviewSize) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789",
                 "joinCode": "joinCode_example",
@@ -30,9 +29,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SearchObjects: ($version, $accountId, $gameLevelId, $sortField, $descending, $start, $limit) => {
+        SearchObjects: ($accountId, $gameLevelId, $sortField, $descending, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "gameLevelId": "789",
                 "sortField": "sortField_example",
@@ -43,9 +41,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SearchRounds: ($version, $accountId, $appKey, $status, $missionType, $currentOnly, $visibilities, $start, $limit) => {
+        SearchRounds: ($accountId, $appKey, $status, $missionType, $currentOnly, $visibilities, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "status": "status_example",
@@ -58,9 +55,8 @@ export default {
         },
 
         // @return MissionShortResponse
-        SearchTournaments: ($version, $accountId, $appKey, $keyword, $subType, $includeInactive, $missionTypes, $filter, $sortField, $descending, $visibility, $start, $limit) => {
+        SearchTournaments: ($accountId, $appKey, $keyword, $subType, $includeInactive, $missionTypes, $filter, $sortField, $descending, $visibility, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "keyword": "keyword_example",
@@ -81,9 +77,8 @@ export default {
     Mutation: {
 
         // @return TournamentResponse
-        CreateTournament: ($version, $accountId, $appKey, $title, $costToPlay, $startDate, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $missionType, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag) => {
+        CreateTournament: ($accountId, $appKey, $title, $costToPlay, $startDate, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $missionType, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "title": "title_example",
@@ -123,18 +118,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteTournament: ($version, $accountId, $missionId) => {
+        DeleteTournament: ($accountId, $missionId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789"
             };
         },
 
         // @return SirqulResponse
-        SubmitTournamentScore: ($version, $accountId, $appKey, $missionId, $gameId, $packId, $scores, $gameLevelId) => {
+        SubmitTournamentScore: ($accountId, $appKey, $missionId, $gameId, $packId, $scores, $gameLevelId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "missionId": "789",
@@ -146,9 +139,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SubmitTournamentVote: ($version, $accountId, $appKey, $missionId, $gameObjectId, $deviceId, $checkIfDeviceAlreadyVoted) => {
+        SubmitTournamentVote: ($accountId, $appKey, $missionId, $gameObjectId, $deviceId, $checkIfDeviceAlreadyVoted) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "missionId": "789",
@@ -159,9 +151,8 @@ export default {
         },
 
         // @return SirqulResponse
-        SubstituteTournamentPlayer: ($version, $accountId, $missionId, $packId, $gameLevelId) => {
+        SubstituteTournamentPlayer: ($accountId, $missionId, $packId, $gameLevelId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789",
                 "packId": "789",
@@ -170,9 +161,8 @@ export default {
         },
 
         // @return TournamentResponse
-        UpdateTournament: ($version, $accountId, $missionId, $title, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlay, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $startDate, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag) => {
+        UpdateTournament: ($accountId, $missionId, $title, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlay, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $startDate, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "missionId": "789",
                 "title": "title_example",

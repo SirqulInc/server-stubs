@@ -15,8 +15,6 @@
 
 
 input CreateRatingInput {
-    
-    version: Float!, 
     # The ratable object type {RETAILER_LOCATION}
     ratableType: String!, 
     # The id of the ratable object
@@ -42,8 +40,6 @@ input CreateRatingInput {
 }
 
 input DeleteRatingInput {
-    
-    version: Float!, 
     # The ID of the rating to delete
     ratingId: Int!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -53,8 +49,6 @@ input DeleteRatingInput {
 }
 
 input UpdateRatingInput {
-    
-    version: Float!, 
     # The id of the rating (Note: this is not the ratable object id)
     ratingId: Int!, 
     # The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -80,7 +74,6 @@ input UpdateRatingInput {
 type Mutation {
   # Create Rating
   # This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object.
-  # @param Float! version 
   # @param String! ratableType The ratable object type {RETAILER_LOCATION}
   # @param Int! ratableId The id of the ratable object
   # @param Int! ratingValue The integer value of 0-100
@@ -96,7 +89,6 @@ type Mutation {
   CreateRating(input: CreateRatingInput!): RatingResponse
   # Delete Rating
   # Sets a rating as deleted.
-  # @param Float! version 
   # @param Int! ratingId The ID of the rating to delete
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
@@ -104,7 +96,6 @@ type Mutation {
   DeleteRating(input: DeleteRatingInput!): SirqulResponse
   # Update Rating
   # Update an existing rating. Only the creator of the rating have permission to update.
-  # @param Float! version 
   # @param Int! ratingId The id of the rating (Note: this is not the ratable object id)
   # @param String! deviceId The unique device identifier that made the request (either deviceId or accountId must be used)
   # @param Int! accountId The unique accountId that made the request (either deviceId or accountId must be used)
@@ -122,7 +113,6 @@ type Mutation {
 type Query {
   # Search Location Rating Indexes
   # Search for retailer locations by averages near you.
-  # @param Float! version 
   # @param String! categoryIds Comma separated list of category ids to filter the results by
   # @param String! keyword The keyword used to search
   # @param String! locationType The type of location to filter the results by
@@ -141,10 +131,9 @@ type Query {
   # @param Boolean! returnCategories whether to return the categories or not
   # @param Boolean! returnFilters whether to return the filters or not
   # @return [RatingIndexResponse]
-  SearchLocationRatingIndexes(version: Float!, categoryIds: String!, keyword: String!, locationType: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, searchRange: Float!, latitude: Float!, longitude: Float!, returnOverallRating: Boolean!, distanceUnit: String!, returnRetailer: Boolean!, returnAssets: Boolean!, returnOffers: Boolean!, returnCategories: Boolean!, returnFilters: Boolean!): RatingIndexResponse
+  SearchLocationRatingIndexes(categoryIds: String!, keyword: String!, locationType: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, searchRange: Float!, latitude: Float!, longitude: Float!, returnOverallRating: Boolean!, distanceUnit: String!, returnRetailer: Boolean!, returnAssets: Boolean!, returnOffers: Boolean!, returnCategories: Boolean!, returnFilters: Boolean!): RatingIndexResponse
   # Search Rating Indexes
   # Search for ratable items by averages.
-  # @param Float! version 
   # @param String! ratableType Filter results by a ratable type {RETAILER_LOCATION}
   # @param String! ratableIds Comma separated list of ratable ids to filter the resuts by
   # @param String! categoryIds Comma separated list of category ids to filter the results by
@@ -159,10 +148,9 @@ type Query {
   # @param Boolean! returnRatable Determines whether to return the ratable object in the response
   # @param Boolean! returnOverallRating Determines whether to return the overall rating record instead
   # @return [RatingIndexResponse]
-  SearchRatingIndexes(version: Float!, ratableType: String!, ratableIds: String!, categoryIds: String!, secondaryType: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, latitude: Float!, longitude: Float!, returnRatable: Boolean!, returnOverallRating: Boolean!): RatingIndexResponse
+  SearchRatingIndexes(ratableType: String!, ratableIds: String!, categoryIds: String!, secondaryType: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, latitude: Float!, longitude: Float!, returnRatable: Boolean!, returnOverallRating: Boolean!): RatingIndexResponse
   # Search Ratings
   # Search for ratings on a ratable object.
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Int! filterAccountId Filter results for a particular account
@@ -175,6 +163,6 @@ type Query {
   # @param Int! start The record to begin the return set on
   # @param Int! limit The number of records to return
   # @return [RatingResponse]
-  SearchRatings(version: Float!, deviceId: String!, accountId: Int!, filterAccountId: Int!, ratableType: String!, ratableId: Int!, categoryIds: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): RatingResponse
+  SearchRatings(deviceId: String!, accountId: Int!, filterAccountId: Int!, ratableType: String!, ratableId: Int!, categoryIds: String!, keyword: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): RatingResponse
 }
 

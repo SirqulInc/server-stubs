@@ -16,21 +16,15 @@
 
 input CreateRouteSettingsInput {
     
-    version: Float!, 
-    
     body: RouteSettingsInput
 }
 
 input DeleteRouteSettingsInput {
-    
-    version: Float!, 
     # the id of the route setting to delete
     routeSettingsId: Int!
 }
 
 input UpdateRouteSettingsInput {
-    
-    version: Float!, 
     # the id of the route settings to update
     routeSettingsId: Int!, 
     
@@ -40,19 +34,16 @@ input UpdateRouteSettingsInput {
 type Mutation {
   # Create Route Setting
   # Create a new route setting
-  # @param Float! version 
   # @param RouteSettings body 
   # @return [RouteSettings]
   CreateRouteSettings(input: CreateRouteSettingsInput!): RouteSettings
   # Delete Route Setting
   # Delete an existing route setting
-  # @param Float! version 
   # @param Int! routeSettingsId the id of the route setting to delete
   # @return [TodoObjectMapping]
   DeleteRouteSettings(input: DeleteRouteSettingsInput!): TodoObjectMapping
   # Update Route Setting
   # Update an existing route setting
-  # @param Float! version 
   # @param Int! routeSettingsId the id of the route settings to update
   # @param RouteSettings body 
   # @return [RouteSettings]
@@ -62,13 +53,11 @@ type Mutation {
 type Query {
   # Get Route Setting
   # Get an existing route settings
-  # @param Float! version 
   # @param Int! routeSettingsId the id of the route settings to get
   # @return [RouteSettings]
-  GetRouteSettings(version: Float!, routeSettingsId: Int!): RouteSettings
+  GetRouteSettings(routeSettingsId: Int!): RouteSettings
   # Search Route Settings
   # Search for route settings
-  # @param Float! version 
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
   # @param Int! start The start index for pagination
@@ -78,6 +67,6 @@ type Query {
   # @param Int! programId The program that the route belongs under
   # @param String! keyword The keyword to search for the route
   # @return [RouteSettings]
-  SearchRouteSettings(version: Float!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, hubId: Int!, programId: Int!, keyword: String!): RouteSettings
+  SearchRouteSettings(sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, hubId: Int!, programId: Int!, keyword: String!): RouteSettings
 }
 

@@ -15,8 +15,6 @@
 
 
 input AddPreviewInput {
-    
-    version: Float!, 
     # the id of the account
     accountId: Int!, 
     # The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.
@@ -24,8 +22,6 @@ input AddPreviewInput {
 }
 
 input CreateCreativeInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The name of the level.
@@ -59,8 +55,6 @@ input CreateCreativeInput {
 }
 
 input DeleteCreativeInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the creative to delete
@@ -68,8 +62,6 @@ input DeleteCreativeInput {
 }
 
 input RemovePreviewInput {
-    
-    version: Float!, 
     # the ID of the logged in user
     accountId: Int!, 
     # the ID of the creative to remove preview
@@ -77,8 +69,6 @@ input RemovePreviewInput {
 }
 
 input UpdateCreativeInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # the creative Id to upate.
@@ -112,14 +102,12 @@ input UpdateCreativeInput {
 type Mutation {
   # Add Preview
   # Enable this ad for preview for this account.
-  # @param Float! version 
   # @param Int! accountId the id of the account
   # @param Int! creativeId The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.
   # @return [SirqulResponse]
   AddPreview(input: AddPreviewInput!): SirqulResponse
   # Create Creative
   # Create a creative
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! name The name of the level.
   # @param Boolean! active If true set the game level as active. Default is false.
@@ -139,21 +127,18 @@ type Mutation {
   CreateCreative(input: CreateCreativeInput!): CreativeResponse
   # Delete Creative
   # Delete a creative
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! creativeId the id of the creative to delete
   # @return [SirqulResponse]
   DeleteCreative(input: DeleteCreativeInput!): SirqulResponse
   # Remove Preview
   # Remove this ad for preview for this account.
-  # @param Float! version 
   # @param Int! accountId the ID of the logged in user
   # @param Int! creativeId the ID of the creative to remove preview
   # @return [SirqulResponse]
   RemovePreview(input: RemovePreviewInput!): SirqulResponse
   # Update Creative
   # Update a creative
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! creativeId the creative Id to upate.
   # @param String! name The name of the level.
@@ -175,7 +160,6 @@ type Mutation {
 type Query {
   # Find Missions
   # Get a set of ad filtered by the parameters provided.
-  # @param Float! version 
   # @param String! appKey The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
   # @param Boolean! randomize return a random set of results, default is true. If false returns in nature order.
   # @param Boolean! targetedAdsOnly return only ads targets to the specific app, no global ads.
@@ -193,17 +177,15 @@ type Query {
   # @param Boolean! allocatesTickets If true/false only return missions whose game levels allocate (or don&#39;t allocate) tickets. Do not provide a value to return both.
   # @param String! missionIds return only ads from the specified campaigns.
   # @return [MissionResponse]
-  AdsFind(version: Float!, appKey: String!, randomize: Boolean!, targetedAdsOnly: Boolean!, Type_: String!, accountId: Int!, appVersion: String!, latitude: Float!, longitude: Float!, device: String!, deviceIdentifier: Int!, deviceVersion: String!, start: Int!, limit: Int!, includeAudiences: Boolean!, allocatesTickets: Boolean!, missionIds: String!): MissionResponse
+  AdsFind(appKey: String!, randomize: Boolean!, targetedAdsOnly: Boolean!, Type_: String!, accountId: Int!, appVersion: String!, latitude: Float!, longitude: Float!, device: String!, deviceIdentifier: Int!, deviceVersion: String!, start: Int!, limit: Int!, includeAudiences: Boolean!, allocatesTickets: Boolean!, missionIds: String!): MissionResponse
   # Get Creative
   # Get a creative
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! creativeId the ID of the creative to get
   # @return [CreativeResponse]
-  GetCreative(version: Float!, accountId: Int!, creativeId: Int!): CreativeResponse
+  GetCreative(accountId: Int!, creativeId: Int!): CreativeResponse
   # Search Creatives
   # Get a list of levels for an application, just those the account has permissions to view.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! appKey the application key
   # @param Int! start Start the result set at some index.
@@ -211,6 +193,6 @@ type Query {
   # @param Int! missionId Creatives contained in the provided mission.
   # @param String! keyword Match the keyword to the owner name or level name.
   # @return [CreativeResponse]
-  GetCreativesByApplication(version: Float!, accountId: Int!, appKey: String!, start: Int!, limit: Int!, missionId: Int!, keyword: String!): CreativeResponse
+  GetCreativesByApplication(accountId: Int!, appKey: String!, start: Int!, limit: Int!, missionId: Int!, keyword: String!): CreativeResponse
 }
 

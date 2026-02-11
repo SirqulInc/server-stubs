@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return 
-        GeomapSearch: ($version, $accountId, $vatomParameters, $returnRawResponse) => {
+        GeomapSearch: ($accountId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomParameters": "vatomParameters_example",
                 "returnRawResponse": "true"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return 
-        GetBusinessBehaviors: ($version, $accountId, $appKey, $returnRawResponse) => {
+        GetBusinessBehaviors: ($accountId, $appKey, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "returnRawResponse": "true"
@@ -38,9 +36,8 @@ export default {
         },
 
         // @return 
-        GetBusinessCoinsBalance: ($version, $accountId, $appKey, $returnRawResponse) => {
+        GetBusinessCoinsBalance: ($accountId, $appKey, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "returnRawResponse": "true"
@@ -48,18 +45,16 @@ export default {
         },
 
         // @return 
-        GetBusinessIds: ($version, $accountId, $returnRawResponse) => {
+        GetBusinessIds: ($accountId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "returnRawResponse": "true"
             };
         },
 
         // @return 
-        GetBusinessInfo: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        GetBusinessInfo: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -68,9 +63,8 @@ export default {
         },
 
         // @return 
-        GetBusinessUsers: ($version, $accountId, $appKey, $returnRawResponse) => {
+        GetBusinessUsers: ($accountId, $appKey, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "returnRawResponse": "true"
@@ -78,20 +72,8 @@ export default {
         },
 
         // @return 
-        GetCampaignGroupEntities: ($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
+        GetCampaignGroupEntities: ($accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
-                "accountId": "789",
-                "appKey": "appKey_example",
-                "vatomCampaignId": "vatomCampaignId_example",
-                "returnRawResponse": "true"
-            };
-        },
-
-        // @return 
-        GetCampaignGroupRules: ($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
-            return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomCampaignId": "vatomCampaignId_example",
@@ -100,9 +82,8 @@ export default {
         },
 
         // @return 
-        GetCampaignGroupStats: ($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
+        GetCampaignGroupRules: ($accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomCampaignId": "vatomCampaignId_example",
@@ -111,9 +92,8 @@ export default {
         },
 
         // @return 
-        GetCampaignInfo: ($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
+        GetCampaignGroupStats: ($accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomCampaignId": "vatomCampaignId_example",
@@ -122,9 +102,18 @@ export default {
         },
 
         // @return 
-        GetEventGuestList: ($version, $accountId, $appKey, $vatomEventId, $returnRawResponse) => {
+        GetCampaignInfo: ($accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
+                "accountId": "789",
+                "appKey": "appKey_example",
+                "vatomCampaignId": "vatomCampaignId_example",
+                "returnRawResponse": "true"
+            };
+        },
+
+        // @return 
+        GetEventGuestList: ($accountId, $appKey, $vatomEventId, $returnRawResponse) => {
+            return {
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomEventId": "vatomEventId_example",
@@ -133,9 +122,8 @@ export default {
         },
 
         // @return 
-        GetInventory: ($version, $accountId, $vatomParameters, $returnRawResponse) => {
+        GetInventory: ($accountId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomParameters": "vatomParameters_example",
                 "returnRawResponse": "true"
@@ -143,18 +131,16 @@ export default {
         },
 
         // @return 
-        GetMyFollowing: ($version, $accountId, $returnRawResponse) => {
+        GetMyFollowing: ($accountId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "returnRawResponse": "true"
             };
         },
 
         // @return 
-        GetPointsBalance: ($version, $accountId, $vatomUserId, $vatomCampaignId, $returnRawResponse) => {
+        GetPointsBalance: ($accountId, $vatomUserId, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "vatomCampaignId": "vatomCampaignId_example",
@@ -163,9 +149,8 @@ export default {
         },
 
         // @return 
-        GetPointsBalanceAsBusiness: ($version, $accountId, $appKey, $vatomUserId, $vatomCampaignId, $returnRawResponse) => {
+        GetPointsBalanceAsBusiness: ($accountId, $appKey, $vatomUserId, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomUserId": "vatomUserId_example",
@@ -175,9 +160,8 @@ export default {
         },
 
         // @return 
-        GetSpace: ($version, $accountId, $appKey, $vatomSpaceId, $returnRawResponse) => {
+        GetSpace: ($accountId, $appKey, $vatomSpaceId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomSpaceId": "vatomSpaceId_example",
@@ -186,9 +170,8 @@ export default {
         },
 
         // @return 
-        GetUserCoinsAsBusiness: ($version, $accountId, $vatomUserId, $appKey, $returnRawResponse) => {
+        GetUserCoinsAsBusiness: ($accountId, $vatomUserId, $appKey, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "appKey": "appKey_example",
@@ -197,9 +180,8 @@ export default {
         },
 
         // @return 
-        GetUserCoinsBalance: ($version, $accountId, $vatomUserId, $vatomParameters, $returnRawResponse) => {
+        GetUserCoinsBalance: ($accountId, $vatomUserId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "vatomParameters": "vatomParameters_example",
@@ -208,9 +190,8 @@ export default {
         },
 
         // @return 
-        GetUserFollowers: ($version, $accountId, $vatomUserId, $returnRawResponse) => {
+        GetUserFollowers: ($accountId, $vatomUserId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "returnRawResponse": "true"
@@ -218,9 +199,8 @@ export default {
         },
 
         // @return 
-        GetUserFollowing: ($version, $accountId, $vatomUserId, $returnRawResponse) => {
+        GetUserFollowing: ($accountId, $vatomUserId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "returnRawResponse": "true"
@@ -228,9 +208,8 @@ export default {
         },
 
         // @return 
-        GetUserInfo: ($version, $accountId, $vatomUserId, $returnRawResponse) => {
+        GetUserInfo: ($accountId, $vatomUserId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "returnRawResponse": "true"
@@ -238,18 +217,16 @@ export default {
         },
 
         // @return 
-        GetUserProfile: ($version, $accountId, $returnRawResponse) => {
+        GetUserProfile: ($accountId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "returnRawResponse": "true"
             };
         },
 
         // @return 
-        GetVatomEvent: ($version, $accountId, $appKey, $vatomEventId, $returnRawResponse) => {
+        GetVatomEvent: ($accountId, $appKey, $vatomEventId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomEventId": "vatomEventId_example",
@@ -258,9 +235,8 @@ export default {
         },
 
         // @return 
-        GetVatomNFT: ($version, $accountId, $vatomId, $returnRawResponse) => {
+        GetVatomNFT: ($accountId, $vatomId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomId": "vatomId_example",
                 "returnRawResponse": "true"
@@ -268,9 +244,8 @@ export default {
         },
 
         // @return 
-        ListCommunities: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        ListCommunities: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -279,9 +254,8 @@ export default {
         },
 
         // @return 
-        ListEvents: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        ListEvents: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -290,9 +264,8 @@ export default {
         },
 
         // @return 
-        ListSpaces: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        ListSpaces: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -301,9 +274,8 @@ export default {
         },
 
         // @return 
-        ListUserCoinTransactions: ($version, $accountId, $vatomUserId, $vatomParameters, $returnRawResponse) => {
+        ListUserCoinTransactions: ($accountId, $vatomUserId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "vatomParameters": "vatomParameters_example",
@@ -312,9 +284,8 @@ export default {
         },
 
         // @return 
-        ListUserCoinTransactionsAsBusiness: ($version, $accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse) => {
+        ListUserCoinTransactionsAsBusiness: ($accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "appKey": "appKey_example",
@@ -324,9 +295,8 @@ export default {
         },
 
         // @return 
-        SearchBusinesses: ($version, $accountId, $vatomParameters, $returnRawResponse) => {
+        SearchBusinesses: ($accountId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomParameters": "vatomParameters_example",
                 "returnRawResponse": "true"
@@ -334,9 +304,8 @@ export default {
         },
 
         // @return 
-        SearchCampaignGroups: ($version, $accountId, $appKey, $returnRawResponse) => {
+        SearchCampaignGroups: ($accountId, $appKey, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "returnRawResponse": "true"
@@ -344,18 +313,16 @@ export default {
         },
 
         // @return 
-        SearchIdentities: ($version, $accountId, $returnRawResponse) => {
+        SearchIdentities: ($accountId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "returnRawResponse": "true"
             };
         },
 
         // @return 
-        SearchInventory: ($version, $accountId, $vatomParameters, $returnRawResponse) => {
+        SearchInventory: ($accountId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomParameters": "vatomParameters_example",
                 "returnRawResponse": "true"
@@ -367,9 +334,8 @@ export default {
     Mutation: {
 
         // @return 
-        CreateFollowing: ($version, $accountId, $vatomParameters, $returnRawResponse) => {
+        CreateFollowing: ($accountId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomParameters": "vatomParameters_example",
                 "returnRawResponse": "true"
@@ -377,9 +343,8 @@ export default {
         },
 
         // @return 
-        CreateSpace: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        CreateSpace: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -388,9 +353,8 @@ export default {
         },
 
         // @return 
-        CreateVatomEvent: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        CreateVatomEvent: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -399,9 +363,8 @@ export default {
         },
 
         // @return 
-        DeleteFollowing: ($version, $accountId, $vatomRelsKey, $returnRawResponse) => {
+        DeleteFollowing: ($accountId, $vatomRelsKey, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomRelsKey": "vatomRelsKey_example",
                 "returnRawResponse": "true"
@@ -409,9 +372,8 @@ export default {
         },
 
         // @return 
-        DeletePointsBalance: ($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
+        DeletePointsBalance: ($accountId, $appKey, $vatomCampaignId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomCampaignId": "vatomCampaignId_example",
@@ -420,9 +382,8 @@ export default {
         },
 
         // @return 
-        DeleteSpace: ($version, $accountId, $appKey, $vatomSpaceId, $returnRawResponse) => {
+        DeleteSpace: ($accountId, $appKey, $vatomSpaceId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomSpaceId": "vatomSpaceId_example",
@@ -431,9 +392,8 @@ export default {
         },
 
         // @return 
-        DeleteVatomEvent: ($version, $accountId, $appKey, $vatomEventId, $returnRawResponse) => {
+        DeleteVatomEvent: ($accountId, $appKey, $vatomEventId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomEventId": "vatomEventId_example",
@@ -442,9 +402,8 @@ export default {
         },
 
         // @return 
-        DeleteVatomNFT: ($version, $accountId, $vatomId, $returnRawResponse) => {
+        DeleteVatomNFT: ($accountId, $vatomId, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomId": "vatomId_example",
                 "returnRawResponse": "true"
@@ -452,9 +411,8 @@ export default {
         },
 
         // @return 
-        ExecuteActionOnNFT: ($version, $accountId, $vatomId, $vatomParameters, $returnRawResponse) => {
+        ExecuteActionOnNFT: ($accountId, $vatomId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomId": "vatomId_example",
                 "vatomParameters": "vatomParameters_example",
@@ -463,9 +421,8 @@ export default {
         },
 
         // @return 
-        PerformActionOnNFT: ($version, $accountId, $vatomId, $vatomAction, $vatomParameters, $returnRawResponse) => {
+        PerformActionOnNFT: ($accountId, $vatomId, $vatomAction, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomId": "vatomId_example",
                 "vatomAction": "vatomAction_example",
@@ -475,9 +432,8 @@ export default {
         },
 
         // @return 
-        RedeemNFT: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        RedeemNFT: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -486,9 +442,8 @@ export default {
         },
 
         // @return 
-        RedeemUserCoinsAsBusiness: ($version, $accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse) => {
+        RedeemUserCoinsAsBusiness: ($accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "appKey": "appKey_example",
@@ -498,9 +453,8 @@ export default {
         },
 
         // @return 
-        SendNFT: ($version, $accountId, $appKey, $vatomCampaignId, $vatomParameters, $returnRawResponse) => {
+        SendNFT: ($accountId, $appKey, $vatomCampaignId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomCampaignId": "vatomCampaignId_example",
@@ -510,9 +464,8 @@ export default {
         },
 
         // @return 
-        SetPointsBalanceAsBusiness: ($version, $accountId, $appKey, $vatomUserId, $vatomCampaignId, $vatomParameters, $returnRawResponse) => {
+        SetPointsBalanceAsBusiness: ($accountId, $appKey, $vatomUserId, $vatomCampaignId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomUserId": "vatomUserId_example",
@@ -523,9 +476,8 @@ export default {
         },
 
         // @return 
-        TransferUserCoins: ($version, $accountId, $vatomUserId, $vatomParameters, $returnRawResponse) => {
+        TransferUserCoins: ($accountId, $vatomUserId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "vatomParameters": "vatomParameters_example",
@@ -534,9 +486,8 @@ export default {
         },
 
         // @return 
-        UpdateBusinessCoins: ($version, $accountId, $appKey, $vatomParameters, $returnRawResponse) => {
+        UpdateBusinessCoins: ($accountId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomParameters": "vatomParameters_example",
@@ -545,9 +496,8 @@ export default {
         },
 
         // @return 
-        UpdateEventGuestList: ($version, $accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse) => {
+        UpdateEventGuestList: ($accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomEventId": "vatomEventId_example",
@@ -557,9 +507,8 @@ export default {
         },
 
         // @return 
-        UpdateSpace: ($version, $accountId, $appKey, $vatomSpaceId, $vatomParameters, $returnRawResponse) => {
+        UpdateSpace: ($accountId, $appKey, $vatomSpaceId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomSpaceId": "vatomSpaceId_example",
@@ -569,9 +518,8 @@ export default {
         },
 
         // @return 
-        UpdateUserCoinsAsBusiness: ($version, $accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse) => {
+        UpdateUserCoinsAsBusiness: ($accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomUserId": "vatomUserId_example",
                 "appKey": "appKey_example",
@@ -581,9 +529,8 @@ export default {
         },
 
         // @return 
-        UpdateUserProfile: ($version, $accountId, $vatomParameters, $returnRawResponse) => {
+        UpdateUserProfile: ($accountId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "vatomParameters": "vatomParameters_example",
                 "returnRawResponse": "true"
@@ -591,9 +538,8 @@ export default {
         },
 
         // @return 
-        UpdateVatomEvent: ($version, $accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse) => {
+        UpdateVatomEvent: ($accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "vatomEventId": "vatomEventId_example",

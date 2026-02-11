@@ -20,12 +20,11 @@ type Mutation {
 type Query {
   # Search Weather
   # Search the weather forcast for the next 5 days
-  # @param Float! version 
   # @param Int! regionId Region Id
   # @param Float! latitude Latitude
   # @param Float! longitude Longitude
   # @param Int! timezoneOffset Timezone Offset
   # @return [WeatherResponse]
-  SearchWeather(version: Float!, regionId: Int!, latitude: Float!, longitude: Float!, timezoneOffset: Int!): WeatherResponse
+  SearchWeather(regionId: Int!, latitude: Float!, longitude: Float!, timezoneOffset: Int!): WeatherResponse
 }
 

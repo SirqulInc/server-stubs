@@ -15,8 +15,6 @@
 
 
 input CreateDisbursementInput {
-    
-    version: Float!, 
     # the ID of the logging in user (must be an EXECUTIVE account)
     accountId: Int!, 
     # the ID of the account receiving the disbursement
@@ -40,8 +38,6 @@ input CreateDisbursementInput {
 }
 
 input UpdateDisbursementInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the disbursement being updated
@@ -67,7 +63,6 @@ input UpdateDisbursementInput {
 type Mutation {
   # Create Disbursement
   # Creates a Disbursement for sending money to a retailer
-  # @param Float! version 
   # @param Int! accountId the ID of the logging in user (must be an EXECUTIVE account)
   # @param Int! receiverAccountId the ID of the account receiving the disbursement
   # @param Int! originalSenderAccountId the ID of the original sender account
@@ -82,7 +77,6 @@ type Mutation {
   CreateDisbursement(input: CreateDisbursementInput!): DisbursementResponse
   # Update Disbursement
   # Update Disbursement
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! disbursementId the id of the disbursement being updated
   # @param Float! amount the disbursement dollar amount being updated
@@ -100,20 +94,17 @@ type Mutation {
 type Query {
   # Check Disbursements
   # Checks the status of a captured disbrusement to see if it has been settled.
-  # @param Float! version 
   # @param Int! disbursementId the ID of the disbursement being checked on
   # @return [DisbursementResponse]
-  CheckDisbursements(version: Float!, disbursementId: Int!): DisbursementResponse
+  CheckDisbursements(disbursementId: Int!): DisbursementResponse
   # Get Disbursement
   # Get Disbursement details
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! disbursementId the id of the disbursement
   # @return [DisbursementResponse]
-  GetDisbursement(version: Float!, accountId: Int!, disbursementId: Int!): DisbursementResponse
+  GetDisbursement(accountId: Int!, disbursementId: Int!): DisbursementResponse
   # Search Disbursements
   # Search Disbursements
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! receiverAccountId filter results by the id of the account receiving the disbursement
   # @param String! statuses comma separated list of status values to search for, possilbe values include: NEW, APPROVED, VALIDATING, ERROR, AUTHORIZED, CAPTURED, SETTLED
@@ -125,6 +116,6 @@ type Query {
   # @param Boolean! activeOnly search on disbursements that are active only
   # @param String! externalId search results by this external ID (that can be used to reference the disbursement)
   # @return [DisbursementResponse]
-  SearchDisbursements(version: Float!, accountId: Int!, receiverAccountId: Int!, statuses: String!, providers: String!, beforeDate: Int!, afterDate: Int!, start: Int!, limit: Int!, activeOnly: Boolean!, externalId: String!): DisbursementResponse
+  SearchDisbursements(accountId: Int!, receiverAccountId: Int!, statuses: String!, providers: String!, beforeDate: Int!, afterDate: Int!, start: Int!, limit: Int!, activeOnly: Boolean!, externalId: String!): DisbursementResponse
 }
 

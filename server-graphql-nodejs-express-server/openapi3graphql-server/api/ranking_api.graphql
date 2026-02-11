@@ -15,8 +15,6 @@
 
 
 input GetUserRankInput {
-    
-    version: Float!, 
     # a unique id given by the device (deviceId or accountId required)
     deviceId: String!, 
     # the account id of the user
@@ -42,8 +40,6 @@ input GetUserRankInput {
 }
 
 input OverrideUserRankInput {
-    
-    version: Float!, 
     # the logged in user&#39;s account id (must have permissions to manage data for the application)
     accountId: Int!, 
     # the end user&#39;s account id to override
@@ -91,8 +87,6 @@ input OverrideUserRankInput {
 }
 
 input UpdateRankingsInput {
-    
-    version: Float!, 
     # the account id of the user
     accountId: Int!, 
     # the application key for filtering results by application
@@ -118,7 +112,6 @@ input UpdateRankingsInput {
 type Mutation {
   # Get Personal Rankings
   # Returns the user&#39;s ranks for one or more rank types and modes.
-  # @param Float! version 
   # @param String! deviceId a unique id given by the device (deviceId or accountId required)
   # @param Int! accountId the account id of the user
   # @param String! appKey the application key for filtering results by application (required)
@@ -134,7 +127,6 @@ type Mutation {
   GetUserRank(input: GetUserRankInput!): TodoObjectMapping
   # Override User Rank
   # Allows an admin of an application to override a user&#39;s scores for a leaderboard.
-  # @param Float! version 
   # @param Int! accountId the logged in user&#39;s account id (must have permissions to manage data for the application)
   # @param Int! ownerAccountId the end user&#39;s account id to override
   # @param String! appKey the application key the leaderboard is for
@@ -161,7 +153,6 @@ type Mutation {
   OverrideUserRank(input: OverrideUserRankInput!): SirqulResponse
   # Update Ranking
   # Update the rank value 
-  # @param Float! version 
   # @param Int! accountId the account id of the user
   # @param String! appKey the application key for filtering results by application
   # @param String! rankType a unique label for identifying the ranking. This can be any alphanumeric string (no spaces or special characters) with a maximum length of 64 characters. There are also default rank types to use which include: POINTS, DOWNLOADS, INVITATIONS, CREATIONS, VOTES, REDEEMED, ACTIONS
@@ -179,7 +170,6 @@ type Mutation {
 type Query {
   # Search Historical Rankings
   # Get historical leaderboard rankings by time-frame.
-  # @param Float! version 
   # @param String! appKey the application key for filtering results by application
   # @param String! rankType the rank type to return
   # @param Int! startDate timestamp in milliseconds to filter results with
@@ -191,10 +181,9 @@ type Query {
   # @param Int! start the start index for pagination
   # @param Int! limit the limit for pagination
   # @return [RankFullResponse]
-  GetHistoricalRankings(version: Float!, appKey: String!, rankType: String!, startDate: Int!, endDate: Int!, deviceId: String!, accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): RankFullResponse
+  GetHistoricalRankings(appKey: String!, rankType: String!, startDate: Int!, endDate: Int!, deviceId: String!, accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!): RankFullResponse
   # Search Rankings
   # Get leader board rankings. This is an all in one endpoint that can return multiple ranking types and also the current user rank.
-  # @param Float! version 
   # @param String! deviceId a unique id given by the device (deviceId or accountId required)
   # @param Int! accountId the account id of the user (deviceId or accountId required)
   # @param String! gameType This parameter is deprecated.
@@ -214,6 +203,6 @@ type Query {
   # @param Int! l This parameter is deprecated.
   # @param Int! limit the limit for pagination
   # @return [RankFullResponse]
-  GetRankings(version: Float!, deviceId: String!, accountId: Int!, gameType: String!, appKey: String!, q: String!, keyword: String!, rankType: String!, leaderboardMode: String!, withinAccountIds: String!, returnUserRank: Boolean!, albumId: Int!, audienceId: Int!, sortField: String!, descending: Boolean!, i: Int!, start: Int!, l: Int!, limit: Int!): RankFullResponse
+  GetRankings(deviceId: String!, accountId: Int!, gameType: String!, appKey: String!, q: String!, keyword: String!, rankType: String!, leaderboardMode: String!, withinAccountIds: String!, returnUserRank: Boolean!, albumId: Int!, audienceId: Int!, sortField: String!, descending: Boolean!, i: Int!, start: Int!, l: Int!, limit: Int!): RankFullResponse
 }
 

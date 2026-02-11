@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return FlagResponse
-        GetFlag: ($version, $flagableType, $flagableId, $deviceId, $accountId, $latitude, $longitude) => {
+        GetFlag: ($flagableType, $flagableId, $deviceId, $accountId, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "flagableType": "flagableType_example",
                 "flagableId": "789",
                 "deviceId": "deviceId_example",
@@ -31,9 +30,8 @@ export default {
         },
 
         // @return CountResponse
-        GetFlagThreshold: ($version, $itemBeingFlaggedType, $appKey) => {
+        GetFlagThreshold: ($itemBeingFlaggedType, $appKey) => {
             return {
-                "version": "3.16",
                 "itemBeingFlaggedType": "itemBeingFlaggedType_example",
                 "appKey": "appKey_example"
             };
@@ -44,9 +42,8 @@ export default {
     Mutation: {
 
         // @return SirqulResponse
-        CreateFlag: ($version, $flagableType, $flagableId, $deviceId, $accountId, $flagDescription, $latitude, $longitude) => {
+        CreateFlag: ($flagableType, $flagableId, $deviceId, $accountId, $flagDescription, $latitude, $longitude) => {
             return {
-                "version": "3.16",
                 "flagableType": "flagableType_example",
                 "flagableId": "789",
                 "deviceId": "deviceId_example",
@@ -58,9 +55,8 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteFlag: ($version, $deviceId, $accountId, $itemBeingFlaggedType, $itemBeingFlaggedId, $flagableType, $flagableId) => {
+        DeleteFlag: ($deviceId, $accountId, $itemBeingFlaggedType, $itemBeingFlaggedId, $flagableType, $flagableId) => {
             return {
-                "version": "3.16",
                 "deviceId": "deviceId_example",
                 "accountId": "789",
                 "itemBeingFlaggedType": "itemBeingFlaggedType_example",
@@ -71,9 +67,8 @@ export default {
         },
 
         // @return CountResponse
-        UpdateFlagThreshold: ($version, $itemBeingFlaggedType, $threshold, $appKey, $deviceId, $accountId) => {
+        UpdateFlagThreshold: ($itemBeingFlaggedType, $threshold, $appKey, $deviceId, $accountId) => {
             return {
-                "version": "3.16",
                 "itemBeingFlaggedType": "itemBeingFlaggedType_example",
                 "threshold": "789",
                 "appKey": "appKey_example",

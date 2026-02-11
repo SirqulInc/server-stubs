@@ -15,8 +15,6 @@
 
 
 input CreateGameInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # The game application key to save the level for.
@@ -34,8 +32,6 @@ input CreateGameInput {
 }
 
 input DeleteGameInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # the updating game&#39;s id.
@@ -43,8 +39,6 @@ input DeleteGameInput {
 }
 
 input UpdateGameInput {
-    
-    version: Float!, 
     # The logged in user.
     accountId: Int!, 
     # the updating game&#39;s id
@@ -66,7 +60,6 @@ input UpdateGameInput {
 type Mutation {
   # Create a Game
   # Create a Game.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! appKey The game application key to save the level for.
   # @param String! title Title of the game.
@@ -78,14 +71,12 @@ type Mutation {
   CreateGame(input: CreateGameInput!): GameResponse
   # Delete a Game
   # Delete a game.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! gameId the updating game&#39;s id.
   # @return [SirqulResponse]
   DeleteGame(input: DeleteGameInput!): SirqulResponse
   # Update a Game
   # Update a Game
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! gameId the updating game&#39;s id
   # @param String! appKey The game application key to save the level for.
@@ -101,15 +92,13 @@ type Mutation {
 type Query {
   # Get a Game by id
   # Get a Game by id.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param Int! gameId the updating game&#39;s id.
   # @param Boolean! includeGameData If true include the game level data, otherwise don&#39;t. default is false.
   # @return [GameResponse]
-  GetGame(version: Float!, accountId: Int!, gameId: Int!, includeGameData: Boolean!): GameResponse
+  GetGame(accountId: Int!, gameId: Int!, includeGameData: Boolean!): GameResponse
   # Search a Game
   # Get a list of games for an application, just those the account has permissions to view.
-  # @param Float! version 
   # @param Int! accountId The logged in user.
   # @param String! appKey the application key
   # @param Int! start Start the result set at some index.
@@ -119,6 +108,6 @@ type Query {
   # @param Boolean! includeGameData more details in response
   # @param Boolean! includeInactive more details in response
   # @return [GameResponse]
-  SearchGames(version: Float!, accountId: Int!, appKey: String!, start: Int!, limit: Int!, keyword: String!, appVersion: String!, includeGameData: Boolean!, includeInactive: Boolean!): GameResponse
+  SearchGames(accountId: Int!, appKey: String!, start: Int!, limit: Int!, keyword: String!, appVersion: String!, includeGameData: Boolean!, includeInactive: Boolean!): GameResponse
 }
 

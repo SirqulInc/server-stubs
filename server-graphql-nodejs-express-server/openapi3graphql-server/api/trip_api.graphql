@@ -16,21 +16,15 @@
 
 input CreateTripInput {
     
-    version: Float!, 
-    
     body: TripInput
 }
 
 input DeleteInput {
-    
-    version: Float!, 
     # the id of the trip to delete
     Id_: Int!
 }
 
 input DriveTripInput {
-    
-    version: Float!, 
     # the id of the trip
     Id_: Int!, 
     # the frequency of the trip (e.g. weekly, until 2018-08-09)
@@ -38,8 +32,6 @@ input DriveTripInput {
 }
 
 input FlexibleTripInput {
-    
-    version: Float!, 
     # the id of the trip
     Id_: Int!, 
     # the frequency of the trip (e.g. weekly, until 2018-08-09)
@@ -47,8 +39,6 @@ input FlexibleTripInput {
 }
 
 input ProcessTripMatchesInput {
-    
-    version: Float!, 
     # The lower bound date to process matchings
     startDate: Int!, 
     # The upper bound date to process matchings
@@ -58,8 +48,6 @@ input ProcessTripMatchesInput {
 }
 
 input RideInput {
-    
-    version: Float!, 
     # the id of the trip
     Id_: Int!, 
     # the frequency of the trip (e.g. weekly, until 2018-08-09)
@@ -67,8 +55,6 @@ input RideInput {
 }
 
 input UpdateLocationsInput {
-    
-    version: Float!, 
     # the id of the trip to update locations for
     Id_: Int!, 
     
@@ -76,8 +62,6 @@ input UpdateLocationsInput {
 }
 
 input UpdateRecurrenceLocationsInput {
-    
-    version: Float!, 
     # the id of the trip
     Id_: Int!, 
     
@@ -85,8 +69,6 @@ input UpdateRecurrenceLocationsInput {
 }
 
 input UpdateRecurrenceShipmentsInput {
-    
-    version: Float!, 
     # the id of the trip
     Id_: Int!, 
     
@@ -94,8 +76,6 @@ input UpdateRecurrenceShipmentsInput {
 }
 
 input UpdateShipmentsInput {
-    
-    version: Float!, 
     # the id of the trip shipments to update
     Id_: Int!, 
     
@@ -103,8 +83,6 @@ input UpdateShipmentsInput {
 }
 
 input UpdateTripInput {
-    
-    version: Float!, 
     # the id of the trip to update
     Id_: Int!, 
     
@@ -112,8 +90,6 @@ input UpdateTripInput {
 }
 
 input UpdateTripNotificationsInput {
-    
-    version: Float!, 
     # the id of the trip
     Id_: Int!, 
     # the notifications to update on the trip
@@ -123,33 +99,28 @@ input UpdateTripNotificationsInput {
 type Mutation {
   # Create Trip
   # Create a new trip
-  # @param Float! version 
   # @param Trip body 
   # @return [Trip]
   CreateTrip(input: CreateTripInput!): Trip
   # Delete Trip
   # Delete an existing trip
-  # @param Float! version 
   # @param Int! Id_ the id of the trip to delete
   # @return [Boolean]
   Delete(input: DeleteInput!): Boolean
   # Set Trip Preference Driver
   # Update trip preference to drive, also create a route and assign the trip to the route
-  # @param Float! version 
   # @param Int! Id_ the id of the trip
   # @param Boolean! recurrence the frequency of the trip (e.g. weekly, until 2018-08-09)
   # @return [Trip]
   DriveTrip(input: DriveTripInput!): Trip
   # Set Trip Preference Flexible
   # Update trip preference to flexible.
-  # @param Float! version 
   # @param Int! Id_ the id of the trip
   # @param Boolean! recurrence the frequency of the trip (e.g. weekly, until 2018-08-09)
   # @return [Trip]
   FlexibleTrip(input: FlexibleTripInput!): Trip
   # Process Trip Matches
   # Process trip matching, assign trips with no route to matched trips with route.
-  # @param Float! version 
   # @param Int! startDate The lower bound date to process matchings
   # @param Int! endDate The upper bound date to process matchings
   # @param Int! tripId the id of the trip to process
@@ -157,45 +128,38 @@ type Mutation {
   ProcessTripMatches(input: ProcessTripMatchesInput!): Trip
   # Set Trip Preference Rider
   # Update trip preference to ride.
-  # @param Float! version 
   # @param Int! Id_ the id of the trip
   # @param Boolean! recurrence the frequency of the trip (e.g. weekly, until 2018-08-09)
   # @return [Trip]
   Ride(input: RideInput!): Trip
   # Update Trip Locations
-  # @param Float! version 
   # @param Int! Id_ the id of the trip to update locations for
   # @param Trip body 
   # @return [Trip]
   UpdateLocations(input: UpdateLocationsInput!): Trip
   # Update Recurrence Locations
-  # @param Float! version 
   # @param Int! Id_ the id of the trip
   # @param Trip body 
   # @return [Trip]
   UpdateRecurrenceLocations(input: UpdateRecurrenceLocationsInput!): Trip
   # Update Recurrence Shipments
-  # @param Float! version 
   # @param Int! Id_ the id of the trip
   # @param Trip body 
   # @return [Trip]
   UpdateRecurrenceShipments(input: UpdateRecurrenceShipmentsInput!): Trip
   # Update Trip Shipments
-  # @param Float! version 
   # @param Int! Id_ the id of the trip shipments to update
   # @param Trip body 
   # @return [Trip]
   UpdateShipments(input: UpdateShipmentsInput!): Trip
   # Update Trip
   # Update an existing trip. Does not support recurring trip update.
-  # @param Float! version 
   # @param Int! Id_ the id of the trip to update
   # @param Trip body 
   # @return [Trip]
   UpdateTrip(input: UpdateTripInput!): Trip
   # Trip Notifications
   # Update the trip notifications
-  # @param Float! version 
   # @param Int! Id_ the id of the trip
   # @param String! notifications the notifications to update on the trip
   # @return [Trip]
@@ -205,13 +169,11 @@ type Mutation {
 type Query {
   # Get Trip
   # Get an existing trip
-  # @param Float! version 
   # @param Int! Id_ the id of the trip to get
   # @return [Trip]
-  GetTrip(version: Float!, Id_: Int!): Trip
+  GetTrip(Id_: Int!): Trip
   # Get Trip Matches
   # Get matching trips of specific trip
-  # @param Float! version 
   # @param Int! Id_ The id The id of the trip to search for matches for
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
@@ -221,10 +183,9 @@ type Query {
   # @param Boolean! matchedHasRoute Only return matchings that already have route assigned
   # @param Boolean! matchedHasDriver Only return matchings that already have driver assigned
   # @return [Trip]
-  GetTripMatches(version: Float!, Id_: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, matchedHasRoute: Boolean!, matchedHasDriver: Boolean!): Trip
+  GetTripMatches(Id_: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, matchedHasRoute: Boolean!, matchedHasDriver: Boolean!): Trip
   # Search Trips
   # Search for trips
-  # @param Float! version 
   # @param Int! accountId The owner of the trips
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
@@ -235,10 +196,9 @@ type Query {
   # @param Int! endDate The upper bound limit of time
   # @param Boolean! hasNotifications whether to search on trips that have notifications or not
   # @return [Trip]
-  Search(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, startDate: Int!, endDate: Int!, hasNotifications: Boolean!): Trip
+  Search(accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, startDate: Int!, endDate: Int!, hasNotifications: Boolean!): Trip
   # Search Trips
   # Search for trips with matching information.
-  # @param Float! version 
   # @param Int! accountId The owner of the trips
   # @param String! sortField The field to sort by
   # @param Boolean! descending Determines whether the sorted list is in descending or ascending order
@@ -250,6 +210,6 @@ type Query {
   # @param Boolean! matchedHasRoute Only return matchings that already have route assigned
   # @param Boolean! matchedHasDriver Only return matchings that already have driver assigned
   # @return [Trip]
-  SearchTrips(version: Float!, accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, startDate: Int!, endDate: Int!, matchedHasRoute: Boolean!, matchedHasDriver: Boolean!): Trip
+  SearchTrips(accountId: Int!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!, startDate: Int!, endDate: Int!, matchedHasRoute: Boolean!, matchedHasDriver: Boolean!): Trip
 }
 

@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return GameLevelResponse
-        GetGameLevel: ($version, $accountId, $levelId, $includeGameData) => {
+        GetGameLevel: ($accountId, $levelId, $includeGameData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "levelId": "789",
                 "includeGameData": "true"
@@ -28,9 +27,8 @@ export default {
         },
 
         // @return GameLevelListResponse
-        GetGameLevelsByApplication: ($version, $accountId, $appKey, $keyword, $sortField, $descending, $start, $limit, $appVersion, $includeGameData, $filters) => {
+        GetGameLevelsByApplication: ($accountId, $appKey, $keyword, $sortField, $descending, $start, $limit, $appVersion, $includeGameData, $filters) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "keyword": "keyword_example",
@@ -45,9 +43,8 @@ export default {
         },
 
         // @return GameLevelResponse
-        GetGameLevelsByBillableEntity: ($version, $accountId, $appKey, $keyword, $sortField, $descending, $activeOnly, $start, $limit) => {
+        GetGameLevelsByBillableEntity: ($accountId, $appKey, $keyword, $sortField, $descending, $activeOnly, $start, $limit) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "appKey": "appKey_example",
                 "keyword": "keyword_example",
@@ -60,18 +57,16 @@ export default {
         },
 
         // @return QuestionResponse
-        GetQuestionsInLevel: ($version, $levelId, $accountId) => {
+        GetQuestionsInLevel: ($levelId, $accountId) => {
             return {
-                "version": "3.16",
                 "levelId": "789",
                 "accountId": "789"
             };
         },
 
         // @return WordzWordResponse
-        GetWordsInLevel: ($version, $levelId, $accountId) => {
+        GetWordsInLevel: ($levelId, $accountId) => {
             return {
-                "version": "3.16",
                 "levelId": "789",
                 "accountId": "789"
             };
@@ -82,9 +77,8 @@ export default {
     Mutation: {
 
         // @return GameLevelResponse
-        CreateGameLevel: ($version, $accountId, $name, $gameData, $gameDataSuffix, $appKey, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData) => {
+        CreateGameLevel: ($accountId, $name, $gameData, $gameDataSuffix, $appKey, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "name": "name_example",
                 "gameData": "gameData_example",
@@ -115,18 +109,16 @@ export default {
         },
 
         // @return SirqulResponse
-        DeleteGameLevel: ($version, $accountId, $levelId) => {
+        DeleteGameLevel: ($accountId, $levelId) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "levelId": "789"
             };
         },
 
         // @return GameLevelResponse
-        UpdateGameLevel: ($version, $accountId, $levelId, $appKey, $name, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $gameData, $gameDataSuffix, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData) => {
+        UpdateGameLevel: ($accountId, $levelId, $appKey, $name, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $gameData, $gameDataSuffix, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData) => {
             return {
-                "version": "3.16",
                 "accountId": "789",
                 "levelId": "789",
                 "appKey": "appKey_example",
@@ -158,9 +150,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateQuestionsInLevel: ($version, $levelId, $accountId, $questionIds) => {
+        UpdateQuestionsInLevel: ($levelId, $accountId, $questionIds) => {
             return {
-                "version": "3.16",
                 "levelId": "789",
                 "accountId": "789",
                 "questionIds": "questionIds_example"
@@ -168,9 +159,8 @@ export default {
         },
 
         // @return SirqulResponse
-        UpdateWordsInLevel: ($version, $levelId, $accountId, $wordIds) => {
+        UpdateWordsInLevel: ($levelId, $accountId, $wordIds) => {
             return {
-                "version": "3.16",
                 "levelId": "789",
                 "accountId": "789",
                 "wordIds": "wordIds_example"

@@ -15,8 +15,6 @@
 
 
 input BlockAccountInput {
-    
-    version: Float!, 
     # The id of the account to be blocked/unblocked
     accountIdBeingBlocked: Int!, 
     # The device id (deviceId or accountId required)
@@ -34,8 +32,6 @@ input BlockAccountInput {
 }
 
 input CreateAccountInput {
-    
-    version: Float!, 
     # The access token to authenticate with (ex: username)
     username: String!, 
     # The secret to authenticate with (ex: password)
@@ -183,8 +179,6 @@ input CreateAccountInput {
 }
 
 input EditAccountInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -352,8 +346,6 @@ input EditAccountInput {
 }
 
 input EditUsernameInput {
-    
-    version: Float!, 
     # The device id
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -365,8 +357,6 @@ input EditUsernameInput {
 }
 
 input LoginDelegateInput {
-    
-    version: Float!, 
     
     accessToken: String!, 
     
@@ -392,8 +382,6 @@ input LoginDelegateInput {
 }
 
 input LoginGeneralInput {
-    
-    version: Float!, 
     # The access token to authenticate with (ex: username or fb token)
     accessToken: String!, 
     # The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE 
@@ -423,8 +411,6 @@ input LoginGeneralInput {
 }
 
 input LoginUsernameInput {
-    
-    version: Float!, 
     # the user&#39;s email address they used to sign-up
     username: String!, 
     # the password
@@ -448,8 +434,6 @@ input LoginUsernameInput {
 }
 
 input LogoutInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # Device Id Type
@@ -463,8 +447,6 @@ input LogoutInput {
 }
 
 input MergeAccountInput {
-    
-    version: Float!, 
     # The id of the account to being merged
     mergeAccountId: Int!, 
     # The application key
@@ -476,8 +458,6 @@ input MergeAccountInput {
 }
 
 input PasswordChangeInput {
-    
-    version: Float!, 
     # The account to update
     accountId: Int!, 
     # The current password, used to validate access
@@ -489,8 +469,6 @@ input PasswordChangeInput {
 }
 
 input PasswordResetInput {
-    
-    version: Float!, 
     # The token associated with the account to update, good for 24 hours
     token: String!, 
     # The new password to set, cannot be empty
@@ -500,8 +478,6 @@ input PasswordResetInput {
 }
 
 input RequestPasswordResetInput {
-    
-    version: Float!, 
     # The email/username of the account
     email: String!, 
     # this is the sender email
@@ -515,15 +491,11 @@ input RequestPasswordResetInput {
 }
 
 input RequestValidateAccountInput {
-    
-    version: Float!, 
     # The account id of the user
     accountId: Int!
 }
 
 input SecureLoginInput {
-    
-    version: Float!, 
     # The user&#39;s encrypted email address they used to sign-up
     username: String!, 
     # The encrypted password
@@ -545,8 +517,6 @@ input SecureLoginInput {
 }
 
 input SecureSignupInput {
-    
-    version: Float!, 
     # The device id
     deviceId: String!, 
     # The encrypted email of the user, this is what will be used when they login
@@ -672,8 +642,6 @@ input SecureSignupInput {
 }
 
 input SetMatchTokenInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -691,8 +659,6 @@ input SetMatchTokenInput {
 }
 
 input UpdateActveStatusInput {
-    
-    version: Float!, 
     # the account id of the user (deviceId or accountId required)
     accountId: Int!, 
     # The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead)
@@ -706,8 +672,6 @@ input UpdateActveStatusInput {
 }
 
 input UpdateLocationInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -721,8 +685,6 @@ input UpdateLocationInput {
 }
 
 input UpdateSettingsInput {
-    
-    version: Float!, 
     # The device id (deviceId or accountId required)
     deviceId: String!, 
     # The account id of the user (deviceId or accountId required)
@@ -750,15 +712,11 @@ input UpdateSettingsInput {
 }
 
 input ValidateAccountSignupInput {
-    
-    version: Float!, 
     # The token associated with the account to update, good for 24 hours
     token: String!
 }
 
 input ValidatePasswordResetInput {
-    
-    version: Float!, 
     # The token associated with the account to update, good for 24 hours
     token: String!
 }
@@ -766,7 +724,6 @@ input ValidatePasswordResetInput {
 type Mutation {
   # Block Account
   # Moves or removes an account into the user&#39;s blocked group.
-  # @param Float! version 
   # @param Int! accountIdBeingBlocked The id of the account to be blocked/unblocked
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -778,7 +735,6 @@ type Mutation {
   BlockAccount(input: BlockAccountInput!): SirqulResponse
   # Create Account
   # Create a new account by role.
-  # @param Float! version 
   # @param String! username The access token to authenticate with (ex: username)
   # @param String! password The secret to authenticate with (ex: password)
   # @param String! name The full name of the user. If this parameter is NOT empty, the following parameters will be ignored: prefixName, firstName, middleName, lastName, and suffixName
@@ -855,7 +811,6 @@ type Mutation {
   CreateAccount(input: CreateAccountInput!): AccountLoginResponse
   # Update Account
   # Edit the user&#39;s profile information
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Int! connectionAccountId The account id used to edit another person&#39;s account
@@ -942,7 +897,6 @@ type Mutation {
   EditAccount(input: EditAccountInput!): ProfileInfoResponse
   # Update Username and Email
   # Update account&#39;s own username and/or emailAddress
-  # @param Float! version 
   # @param String! deviceId The device id
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! emailAddress the user&#39;s contact email address (NOT the username) which is also used for email validation
@@ -951,7 +905,6 @@ type Mutation {
   EditUsername(input: EditUsernameInput!): SirqulResponse
   # Login as Account
   # A login service that supports logging in as someone else (accounts that the user manages). Intended for internal use for now.
-  # @param Float! version 
   # @param String! accessToken 
   # @param String! appKey 
   # @param String! deviceId 
@@ -967,7 +920,6 @@ type Mutation {
   LoginDelegate(input: LoginDelegateInput!): ProfileResponse
   # Login Account
   # General login service that supports various authentication methods. Currently supports Facebook, Twitter, Sirqul Username, and Sirqul Phone by default. Can also support custom networks created using the {@link ThirdPartyApi}
-  # @param Float! version 
   # @param String! accessToken The access token to authenticate with (ex: username or fb token)
   # @param String! networkUID The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE 
   # @param String! appKey The application key
@@ -985,7 +937,6 @@ type Mutation {
   LoginGeneral(input: LoginGeneralInput!): ProfileResponse
   # Login Account (Username)
   # Login to system with an account
-  # @param Float! version 
   # @param String! username the user&#39;s email address they used to sign-up
   # @param String! password the password
   # @param String! deviceId the device id
@@ -1000,7 +951,6 @@ type Mutation {
   LoginUsername(input: LoginUsernameInput!): ProfileResponse
   # Logout Account
   # Cleans up the users data for logging out.
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param String! deviceIdType Device Id Type
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -1010,7 +960,6 @@ type Mutation {
   Logout(input: LogoutInput!): SirqulResponse
   # Merge Account
   # Merges the analytics, achievements, leaderboards of two accounts.
-  # @param Float! version 
   # @param Int! mergeAccountId The id of the account to being merged
   # @param String! appKey The application key
   # @param String! deviceId The device id (deviceId or accountId required)
@@ -1019,7 +968,6 @@ type Mutation {
   MergeAccount(input: MergeAccountInput!): SirqulResponse
   # Update Password
   # Update the account password.
-  # @param Float! version 
   # @param Int! accountId The account to update
   # @param String! oldPassword The current password, used to validate access
   # @param String! newPassword The new password to set, cannot be empty
@@ -1028,7 +976,6 @@ type Mutation {
   PasswordChange(input: PasswordChangeInput!): SirqulResponse
   # Reset Password
   # Reset the account password. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token.
-  # @param Float! version 
   # @param String! token The token associated with the account to update, good for 24 hours
   # @param String! password The new password to set, cannot be empty
   # @param String! confirm The new password to confirm, must match newPassword
@@ -1036,7 +983,6 @@ type Mutation {
   PasswordReset(input: PasswordResetInput!): SirqulResponse
   # Request Password Reset
   # Request that an account password be reset. The account is looked up by email address and then a link is sent via email to that account with a reset token. The token is valid for 24 hours.
-  # @param Float! version 
   # @param String! email The email/username of the account
   # @param String! from this is the sender email
   # @param String! domain this is the domain (like dev.sirqul.com) used to generate the password reset link
@@ -1046,13 +992,11 @@ type Mutation {
   RequestPasswordReset(input: RequestPasswordResetInput!): SirqulResponse
   # Send Validation Request
   # Send an email to validate a user&#39;s account.
-  # @param Float! version 
   # @param Int! accountId The account id of the user
   # @return [SirqulResponse]
   RequestValidateAccount(input: RequestValidateAccountInput!): SirqulResponse
   # Login Account (Encrypted Username)
   # ogin with encrypted user-name and password.
-  # @param Float! version 
   # @param String! username The user&#39;s encrypted email address they used to sign-up
   # @param String! password The encrypted password
   # @param String! gameType The application key
@@ -1066,7 +1010,6 @@ type Mutation {
   SecureLogin(input: SecureLoginInput!): ProfileResponse
   # Create Account (Encrypted Username)
   # Create a new account by role (with encrypted user-name and password)
-  # @param Float! version 
   # @param String! deviceId The device id
   # @param String! username The encrypted email of the user, this is what will be used when they login
   # @param String! password The encrypted password of the user
@@ -1132,7 +1075,6 @@ type Mutation {
   SecureSignup(input: SecureSignupInput!): ProfileInfoResponse
   # Save Match Token
   # Save user&#39;s match token to be used for profile match making
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! matchToken A string of numbers
@@ -1144,7 +1086,6 @@ type Mutation {
   SetMatchToken(input: SetMatchTokenInput!): SirqulResponse
   # Update Account Active Status
   # Activate or deactivate an account (requires appropriate permissions).
-  # @param Float! version 
   # @param Int! accountId the account id of the user (deviceId or accountId required)
   # @param Int! connectionAccountId The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead)
   # @param Boolean! active true will activate the user and false will deactivate
@@ -1154,7 +1095,6 @@ type Mutation {
   UpdateActveStatus(input: UpdateActveStatusInput!): SirqulResponse
   # Update Location
   # Update the account location
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Float! latitude The current latitude of the user
@@ -1164,7 +1104,6 @@ type Mutation {
   UpdateLocation(input: UpdateLocationInput!): SirqulResponse
   # Update Account Settings
   # Update the account settings for a user
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! blockedNotifications The notifications to be blocked
@@ -1181,13 +1120,11 @@ type Mutation {
   UpdateSettings(input: UpdateSettingsInput!): UserSettingsResponse
   # Save Validation Status
   # Validate the account&#39;s email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.
-  # @param Float! version 
   # @param String! token The token associated with the account to update, good for 24 hours
   # @return [AccountLoginResponse]
   ValidateAccountSignup(input: ValidateAccountSignupInput!): AccountLoginResponse
   # Validate Password Reset Token
   # Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.
-  # @param Float! version 
   # @param String! token The token associated with the account to update, good for 24 hours
   # @return [SirqulResponse]
   ValidatePasswordReset(input: ValidatePasswordResetInput!): SirqulResponse
@@ -1196,7 +1133,6 @@ type Mutation {
 type Query {
   # Search Accounts by Location
   # Search accounts by their location. This only searches on users that have location data. Use ConnectionApi to perform a regular search on accounts.
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! q Deprecated - legacy query parameter
@@ -1232,10 +1168,9 @@ type Query {
   # @param Boolean! verifiedUserOnly Returns only verified users
   # @param Boolean! contentAdminOnly Returns only content admin users
   # @return [UserLocationSearchResponse]
-  AccountLocationSearch(version: Float!, deviceId: String!, accountId: Int!, q: String!, keyword: String!, postalCode: String!, latitude: Float!, longitude: Float!, appKey: String!, range: Float!, locationLastUpdated: Int!, gender: String!, minAge: Int!, maxAge: Int!, companionshipIndex: Int!, i: Int!, start: Int!, l: Int!, limit: Int!, searchMode: String!, sortField: String!, descending: Boolean!, roles: String!, tags: String!, experience: String!, categoryIds: String!, audienceIds: String!, audienceOperator: String!, updateCurrentLocation: Boolean!, updatePreferredSettings: Boolean!, showExactLocations: Boolean!, showConnectionToSearcher: Boolean!, flagCountMinimum: Int!, verifiedUserOnly: Boolean!, contentAdminOnly: Boolean!): UserLocationSearchResponse
+  AccountLocationSearch(deviceId: String!, accountId: Int!, q: String!, keyword: String!, postalCode: String!, latitude: Float!, longitude: Float!, appKey: String!, range: Float!, locationLastUpdated: Int!, gender: String!, minAge: Int!, maxAge: Int!, companionshipIndex: Int!, i: Int!, start: Int!, l: Int!, limit: Int!, searchMode: String!, sortField: String!, descending: Boolean!, roles: String!, tags: String!, experience: String!, categoryIds: String!, audienceIds: String!, audienceOperator: String!, updateCurrentLocation: Boolean!, updatePreferredSettings: Boolean!, showExactLocations: Boolean!, showConnectionToSearcher: Boolean!, flagCountMinimum: Int!, verifiedUserOnly: Boolean!, contentAdminOnly: Boolean!): UserLocationSearchResponse
   # Get Account
   # Gets a user&#39;s account profile. Application settings and account settings will also be returned for the owner of the account.
-  # @param Float! version 
   # @param Boolean! returnNulls Return Nulls
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -1249,10 +1184,9 @@ type Query {
   # @param Float! latitude Latitude used to update the user&#39;s current location
   # @param Float! longitude Longitude used to update the user&#39;s current location
   # @return [ProfileResponse]
-  GetAccount(version: Float!, returnNulls: Boolean!, deviceId: String!, accountId: Int!, connectionAccountEmail: String!, connectionAccountId: Int!, responseFilters: String!, gameType: String!, appKey: String!, purchaseType: String!, updateViewedDate: Boolean!, latitude: Float!, longitude: Float!): ProfileResponse
+  GetAccount(returnNulls: Boolean!, deviceId: String!, accountId: Int!, connectionAccountEmail: String!, connectionAccountId: Int!, responseFilters: String!, gameType: String!, appKey: String!, purchaseType: String!, updateViewedDate: Boolean!, latitude: Float!, longitude: Float!): ProfileResponse
   # Get Profile Assets
   # Get a list of assets a person has ever uploaded. Filters the list based on parameters.
-  # @param Float! version 
   # @param Boolean! returnNulls Determines whether to return null fields in the response
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
@@ -1268,10 +1202,9 @@ type Query {
   # @param Int! l _l
   # @param Int! limit Limit of the pagination
   # @return [AssetListResponse]
-  GetProfileAssets(version: Float!, returnNulls: Boolean!, deviceId: String!, accountId: Int!, ownerId: Int!, mediaTypes: String!, mimeTypes: String!, sortField: String!, descending: Boolean!, latitude: Float!, longitude: Float!, i: Int!, start: Int!, l: Int!, limit: Int!): AssetListResponse
+  GetProfileAssets(returnNulls: Boolean!, deviceId: String!, accountId: Int!, ownerId: Int!, mediaTypes: String!, mimeTypes: String!, sortField: String!, descending: Boolean!, latitude: Float!, longitude: Float!, i: Int!, start: Int!, l: Int!, limit: Int!): AssetListResponse
   # Search Accounts
   # Gets a user&#39;s account profile and their referral List.
-  # @param Float! version 
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param String! appKey The application key
   # @param String! retrieveType one of these option - GET_CHILDREN will get all accounts that had signed up using the current account invite link - GET_ANCESTOR will get all accounts that referred the current account and it&#39;s parents, recursively - GET_ALL will get all of the above
@@ -1284,19 +1217,17 @@ type Query {
   # @param Float! childrenListLimit pagination limit for children list
   # @param Boolean! childrenChildren if true, on each item in ancestor and children list, return the childrenTotalNumber and ancestorTotalNumber for that item
   # @return [Boolean]
-  GetReferralList(version: Float!, accountId: Int!, appKey: String!, retrieveType: String!, levelLimit: Float!, ancestorLevelLimit: Float!, childrenLevelLimit: Float!, ancestorListStart: Float!, ancestorListLimit: Float!, childrenListStart: Float!, childrenListLimit: Float!, childrenChildren: Boolean!): Boolean
+  GetReferralList(accountId: Int!, appKey: String!, retrieveType: String!, levelLimit: Float!, ancestorLevelLimit: Float!, childrenLevelLimit: Float!, ancestorListStart: Float!, ancestorListLimit: Float!, childrenListStart: Float!, childrenListLimit: Float!, childrenChildren: Boolean!): Boolean
   # Get Account Settings
   # Get the account settings for a user
-  # @param Float! version 
   # @param String! deviceId The device id (deviceId or accountId required)
   # @param Int! accountId The account id of the user (deviceId or accountId required)
   # @param Float! latitude The current latitude of the user
   # @param Float! longitude The current longitude of the user
   # @return [UserSettingsResponse]
-  GetSettings(version: Float!, deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!): UserSettingsResponse
+  GetSettings(deviceId: String!, accountId: Int!, latitude: Float!, longitude: Float!): UserSettingsResponse
   # Search Accounts
   # Search for account profiles.
-  # @param Float! version 
   # @param Int! accountId The id of the account requesting
   # @param String! appKey The application key
   # @param String! keyword The keyword for for querying the account
@@ -1316,6 +1247,6 @@ type Query {
   # @param Int! limit The total number of record to return.
   # @param Boolean! activeOnly Determines whether to return only active results. Default is false.
   # @return [ProfileResponse]
-  SearchAccounts(version: Float!, accountId: Int!, appKey: String!, keyword: String!, latitude: Float!, longitude: Float!, radius: Float!, gender: String!, gameExperience: String!, age: Int!, categoryIds: String!, returnNulls: Boolean!, responseFilters: String!, purchaseType: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): ProfileResponse
+  SearchAccounts(accountId: Int!, appKey: String!, keyword: String!, latitude: Float!, longitude: Float!, radius: Float!, gender: String!, gameExperience: String!, age: Int!, categoryIds: String!, returnNulls: Boolean!, responseFilters: String!, purchaseType: String!, sortField: String!, descending: Boolean!, start: Int!, limit: Int!, activeOnly: Boolean!): ProfileResponse
 }
 

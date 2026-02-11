@@ -15,8 +15,6 @@
 
 
 input CreatePostalCodeInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the postal code
@@ -34,8 +32,6 @@ input CreatePostalCodeInput {
 }
 
 input DeletePostalCodeInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the postal code to delete
@@ -43,8 +39,6 @@ input DeletePostalCodeInput {
 }
 
 input UpdatePostalCodeInput {
-    
-    version: Float!, 
     # the id of the logged in user
     accountId: Int!, 
     # the id of the postal code to update
@@ -66,7 +60,6 @@ input UpdatePostalCodeInput {
 type Mutation {
   # Create Postal Code
   # Create a Postal Code
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param String! code the postal code
   # @param Float! latitude the latitude of the postal code
@@ -78,14 +71,12 @@ type Mutation {
   CreatePostalCode(input: CreatePostalCodeInput!): PostalCodeResponse
   # Delete Postal Code
   # Delete a Postal Code
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! postalCodeId the id of the postal code to delete
   # @return [SirqulResponse]
   DeletePostalCode(input: DeletePostalCodeInput!): SirqulResponse
   # Update Postal Code
   # Update a Postal Code
-  # @param Float! version 
   # @param Int! accountId the id of the logged in user
   # @param Int! postalCodeId the id of the postal code to update
   # @param String! code the postal code to update
@@ -101,13 +92,11 @@ type Mutation {
 type Query {
   # Get Postal Code
   # Get a Postal Code
-  # @param Float! version 
   # @param Int! postalCodeId the id of the postal code to get
   # @return [PostalCodeResponse]
-  GetPostalCode(version: Float!, postalCodeId: Int!): PostalCodeResponse
+  GetPostalCode(postalCodeId: Int!): PostalCodeResponse
   # Search Postal Codes
   # Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response.
-  # @param Float! version 
   # @param String! sortField the field to sort the results on
   # @param Boolean! descending whether to order results in ascending or descending order
   # @param Float! latitude the latitude of the postal code to search on
@@ -117,6 +106,6 @@ type Query {
   # @param Int! start the start of the index and/or pagination
   # @param Int! limit the limit of the index and/or pagination
   # @return [PostalCodeResponse]
-  GetPostalCodes(version: Float!, sortField: String!, descending: Boolean!, latitude: Float!, longitude: Float!, keyword: String!, miles: Float!, start: Int!, limit: Int!): PostalCodeResponse
+  GetPostalCodes(sortField: String!, descending: Boolean!, latitude: Float!, longitude: Float!, keyword: String!, miles: Float!, start: Int!, limit: Int!): PostalCodeResponse
 }
 

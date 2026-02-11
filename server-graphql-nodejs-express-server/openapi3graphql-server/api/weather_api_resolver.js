@@ -18,9 +18,8 @@ export default {
     Query: {
 
         // @return WeatherResponse
-        SearchWeather: ($version, $regionId, $latitude, $longitude, $timezoneOffset) => {
+        SearchWeather: ($regionId, $latitude, $longitude, $timezoneOffset) => {
             return {
-                "version": "3.16",
                 "regionId": "789",
                 "latitude": "1.2",
                 "longitude": "1.2",
