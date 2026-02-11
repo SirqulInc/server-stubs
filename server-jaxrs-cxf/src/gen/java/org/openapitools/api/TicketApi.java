@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.CountResponse;
 import java.io.File;
 import org.openapitools.model.ProfileResponse;
@@ -27,7 +26,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}")
+@Path("")
 @Api(value = "/", description = "")
 public interface TicketApi  {
 
@@ -43,7 +42,7 @@ public interface TicketApi  {
     @ApiOperation(value = "Get Ticket Count", tags={ "Ticket" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CountResponse.class) })
-    public CountResponse getTicketCount(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("ticketType") String ticketType);
+    public CountResponse getTicketCount(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("ticketType") String ticketType);
 
     /**
      * Get Ticket List
@@ -57,7 +56,7 @@ public interface TicketApi  {
     @ApiOperation(value = "Get Ticket List", tags={ "Ticket" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TicketListResponse.class) })
-    public TicketListResponse getTicketList(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("ticketObjectType") String ticketObjectType, @QueryParam("actionType") String actionType, @QueryParam("ticketIds") String ticketIds, @QueryParam("objectIds") String objectIds, @QueryParam("receiptTokens") String receiptTokens, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey);
+    public TicketListResponse getTicketList(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("ticketObjectType") String ticketObjectType, @QueryParam("actionType") String actionType, @QueryParam("ticketIds") String ticketIds, @QueryParam("objectIds") String objectIds, @QueryParam("receiptTokens") String receiptTokens, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey);
 
     /**
      * Gift Tickets
@@ -71,7 +70,7 @@ public interface TicketApi  {
     @ApiOperation(value = "Gift Tickets", tags={ "Ticket" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse giftPurchase(@PathParam("version") BigDecimal version, @QueryParam("receiverAccountId") @NotNull Long receiverAccountId, @QueryParam("ticketId") @NotNull Long ticketId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("assetId") Long assetId, @QueryParam("customMessage") String customMessage, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey);
+    public SirqulResponse giftPurchase(@QueryParam("receiverAccountId") @NotNull Long receiverAccountId, @QueryParam("ticketId") @NotNull Long ticketId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("assetId") Long assetId, @QueryParam("customMessage") String customMessage, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey);
 
     /**
      * Save Ticket
@@ -85,7 +84,7 @@ public interface TicketApi  {
     @ApiOperation(value = "Save Ticket", tags={ "Ticket" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse saveTicket(@PathParam("version") BigDecimal version, @QueryParam("actionType") @NotNull String actionType, @QueryParam("ticketObjectType") @NotNull String ticketObjectType, @QueryParam("returnNulls") Boolean returnNulls, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("objectId") Long objectId, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("receiptToken") String receiptToken, @QueryParam("receiptData") String receiptData, @QueryParam("count") Long count, @QueryParam("ticketType") String ticketType, @QueryParam("purchaseProvider") String purchaseProvider, @QueryParam("purchaseType") String purchaseType, @QueryParam("returnProfileResponse") Boolean returnProfileResponse, @QueryParam("includeProfileResponse") Boolean includeProfileResponse, @QueryParam("appVersion") String appVersion);
+    public ProfileResponse saveTicket(@QueryParam("actionType") @NotNull String actionType, @QueryParam("ticketObjectType") @NotNull String ticketObjectType, @QueryParam("returnNulls") Boolean returnNulls, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("objectId") Long objectId, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("receiptToken") String receiptToken, @QueryParam("receiptData") String receiptData, @QueryParam("count") Long count, @QueryParam("ticketType") String ticketType, @QueryParam("purchaseProvider") String purchaseProvider, @QueryParam("purchaseType") String purchaseType, @QueryParam("returnProfileResponse") Boolean returnProfileResponse, @QueryParam("includeProfileResponse") Boolean includeProfileResponse, @QueryParam("appVersion") String appVersion);
 
     /**
      * Save Ticket with Reciept
@@ -99,7 +98,7 @@ public interface TicketApi  {
     @ApiOperation(value = "Save Ticket with Reciept", tags={ "Ticket" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse saveTicketViaFileUpload(@PathParam("version") BigDecimal version, @QueryParam("actionType") @NotNull String actionType, @QueryParam("ticketObjectType") @NotNull String ticketObjectType, @QueryParam("receiptData") @NotNull File receiptData, @QueryParam("returnNulls") Boolean returnNulls, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("objectId") Long objectId, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("receiptToken") String receiptToken, @QueryParam("count") Long count, @QueryParam("ticketType") String ticketType, @QueryParam("purchaseProvider") String purchaseProvider, @QueryParam("purchaseType") String purchaseType, @QueryParam("returnProfileResponse") Boolean returnProfileResponse, @QueryParam("includeProfileResponse") Boolean includeProfileResponse, @QueryParam("appVersion") String appVersion);
+    public ProfileResponse saveTicketViaFileUpload(@QueryParam("actionType") @NotNull String actionType, @QueryParam("ticketObjectType") @NotNull String ticketObjectType, @QueryParam("receiptData") @NotNull File receiptData, @QueryParam("returnNulls") Boolean returnNulls, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("objectId") Long objectId, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("receiptToken") String receiptToken, @QueryParam("count") Long count, @QueryParam("ticketType") String ticketType, @QueryParam("purchaseProvider") String purchaseProvider, @QueryParam("purchaseType") String purchaseType, @QueryParam("returnProfileResponse") Boolean returnProfileResponse, @QueryParam("includeProfileResponse") Boolean includeProfileResponse, @QueryParam("appVersion") String appVersion);
 
     /**
      * Get Ticket Offers
@@ -113,5 +112,5 @@ public interface TicketApi  {
     @ApiOperation(value = "Get Ticket Offers", tags={ "Ticket" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TicketOfferResponse.class) })
-    public TicketOfferResponse ticketOffers(@PathParam("version") BigDecimal version);
+    public TicketOfferResponse ticketOffers();
 }

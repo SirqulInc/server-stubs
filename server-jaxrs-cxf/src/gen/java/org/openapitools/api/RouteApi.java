@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.Direction;
 import org.openapitools.model.Route;
 import org.openapitools.model.Shipment;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/route")
+@Path("/route")
 @Api(value = "/", description = "")
 public interface RouteApi  {
 
@@ -41,7 +40,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Approve Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route approveRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public Route approveRoute(@PathParam("routeId") Long routeId);
 
     /**
      * Copy Route
@@ -55,7 +54,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Copy Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route copyRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @Valid Route body);
+    public Route copyRoute(@PathParam("routeId") Long routeId, @Valid Route body);
 
     /**
      * Create Route
@@ -69,7 +68,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Create Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route createRoute(@PathParam("version") BigDecimal version, @Valid Route body);
+    public Route createRoute(@Valid Route body);
 
     /**
      * Update Route Directions
@@ -83,7 +82,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Update Route Directions", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Direction.class, responseContainer = "List") })
-    public List<Direction> createRouteDirections(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public List<Direction> createRouteDirections(@PathParam("routeId") Long routeId);
 
     /**
      * Create Route Polyline
@@ -97,7 +96,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Create Route Polyline", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route createRoutePolyline(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public Route createRoutePolyline(@PathParam("routeId") Long routeId);
 
     /**
      * Delete Route
@@ -110,7 +109,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Delete Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public void deleteRoute(@PathParam("routeId") Long routeId);
 
     /**
      * Disapprove Route
@@ -124,7 +123,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Disapprove Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route disapproveRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public Route disapproveRoute(@PathParam("routeId") Long routeId);
 
     /**
      * Get Route
@@ -138,7 +137,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Get Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route getRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @QueryParam("showInheritedProperties") @NotNull Boolean showInheritedProperties);
+    public Route getRoute(@PathParam("routeId") Long routeId, @QueryParam("showInheritedProperties") @NotNull Boolean showInheritedProperties);
 
     /**
      * Get Route Directions
@@ -152,7 +151,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Get Route Directions", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Direction.class, responseContainer = "List") })
-    public List<Direction> getRouteDirections(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public List<Direction> getRouteDirections(@PathParam("routeId") Long routeId);
 
     /**
      * Get Route Shipments
@@ -166,7 +165,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Get Route Shipments", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Shipment.class, responseContainer = "List") })
-    public List<Shipment> getRouteShipments(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public List<Shipment> getRouteShipments(@PathParam("routeId") Long routeId);
 
     /**
      * Get Route Stop
@@ -180,7 +179,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Get Route Stop", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Stop.class) })
-    public Stop getRouteStop(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId);
+    public Stop getRouteStop(@PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId);
 
     /**
      * Get Route Stops
@@ -194,7 +193,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Get Route Stops", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Stop.class, responseContainer = "List") })
-    public List<Stop> getRouteStops(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @QueryParam("confirmedOnly") @NotNull Boolean confirmedOnly);
+    public List<Stop> getRouteStops(@PathParam("routeId") Long routeId, @QueryParam("confirmedOnly") @NotNull Boolean confirmedOnly);
 
     /**
      * Get Shipments At Stop
@@ -208,7 +207,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Get Shipments At Stop", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Shipment.class, responseContainer = "List") })
-    public List<Shipment> getShipmentsAtStop(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId);
+    public List<Shipment> getShipmentsAtStop(@PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId);
 
     /**
      * Optimize Route
@@ -221,7 +220,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Optimize Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void optimizeRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId);
+    public void optimizeRoute(@PathParam("routeId") Long routeId);
 
     /**
      * Delete Stop
@@ -234,7 +233,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Delete Stop", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void removeStop(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId);
+    public void removeStop(@PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId);
 
     /**
      * Reorder Route Stops
@@ -248,7 +247,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Reorder Route Stops", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Stop.class, responseContainer = "List") })
-    public List<Stop> reorderRouteStopsPatch(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @Valid List<@Valid Stop> body);
+    public List<Stop> reorderRouteStopsPatch(@PathParam("routeId") Long routeId, @Valid List<@Valid Stop> body);
 
     /**
      * Reorder Route Stops
@@ -262,7 +261,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Reorder Route Stops", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Stop.class, responseContainer = "List") })
-    public List<Stop> reorderRouteStopsPost(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @Valid List<@Valid Stop> body);
+    public List<Stop> reorderRouteStopsPost(@PathParam("routeId") Long routeId, @Valid List<@Valid Stop> body);
 
     /**
      * Search Routes
@@ -276,7 +275,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Search Routes", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class, responseContainer = "List") })
-    public List<Route> searchRoutes(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("includesEmpty") @NotNull Boolean includesEmpty, @QueryParam("rootOnly") @NotNull Boolean rootOnly, @QueryParam("showInheritedProperties") @NotNull Boolean showInheritedProperties, @QueryParam("hubId") Long hubId, @QueryParam("programId") Long programId, @QueryParam("scheduledStart") Long scheduledStart, @QueryParam("scheduledEnd") Long scheduledEnd, @QueryParam("updatedStart") Long updatedStart, @QueryParam("updatedEnd") Long updatedEnd, @QueryParam("featured") Boolean featured, @QueryParam("seatCount") Integer seatCount, @QueryParam("approved") Boolean approved, @QueryParam("started") Boolean started, @QueryParam("completed") Boolean completed, @QueryParam("valid") Boolean valid, @QueryParam("parentId") Long parentId);
+    public List<Route> searchRoutes(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("includesEmpty") @NotNull Boolean includesEmpty, @QueryParam("rootOnly") @NotNull Boolean rootOnly, @QueryParam("showInheritedProperties") @NotNull Boolean showInheritedProperties, @QueryParam("hubId") Long hubId, @QueryParam("programId") Long programId, @QueryParam("scheduledStart") Long scheduledStart, @QueryParam("scheduledEnd") Long scheduledEnd, @QueryParam("updatedStart") Long updatedStart, @QueryParam("updatedEnd") Long updatedEnd, @QueryParam("featured") Boolean featured, @QueryParam("seatCount") Integer seatCount, @QueryParam("approved") Boolean approved, @QueryParam("started") Boolean started, @QueryParam("completed") Boolean completed, @QueryParam("valid") Boolean valid, @QueryParam("parentId") Long parentId);
 
     /**
      * Set Driver
@@ -289,7 +288,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Set Driver", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void setDriver(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @PathParam("driverId") Long driverId);
+    public void setDriver(@PathParam("id") Long id, @PathParam("driverId") Long driverId);
 
     /**
      * Update Route
@@ -303,7 +302,7 @@ public interface RouteApi  {
     @ApiOperation(value = "Update Route", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Route.class) })
-    public Route updateRoute(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @Valid Route body);
+    public Route updateRoute(@PathParam("routeId") Long routeId, @Valid Route body);
 
     /**
      * Update Route Stop
@@ -316,5 +315,5 @@ public interface RouteApi  {
     @ApiOperation(value = "Update Route Stop", tags={ "Route" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateRouteStop(@PathParam("version") BigDecimal version, @PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId, @Valid Stop body);
+    public void updateRouteStop(@PathParam("routeId") Long routeId, @PathParam("stopId") Long stopId, @Valid Stop body);
 }

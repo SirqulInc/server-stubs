@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.ServiceHub;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/hub")
+@Path("/hub")
 @Api(value = "/", description = "")
 public interface ServiceHubApi  {
 
@@ -38,7 +37,7 @@ public interface ServiceHubApi  {
     @ApiOperation(value = "Create Service Hub", tags={ "Service Hub" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ServiceHub.class) })
-    public ServiceHub createServiceHub(@PathParam("version") BigDecimal version, @Valid ServiceHub body);
+    public ServiceHub createServiceHub(@Valid ServiceHub body);
 
     /**
      * Delete Service Hub
@@ -51,7 +50,7 @@ public interface ServiceHubApi  {
     @ApiOperation(value = "Delete Service Hub", tags={ "Service Hub" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteServiceHub(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public void deleteServiceHub(@PathParam("id") Long id);
 
     /**
      * Get Service Hub
@@ -65,7 +64,7 @@ public interface ServiceHubApi  {
     @ApiOperation(value = "Get Service Hub", tags={ "Service Hub" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Object.class) })
-    public Object getServiceHub(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public Object getServiceHub(@PathParam("id") Long id);
 
     /**
      * Update Service Hub
@@ -79,7 +78,7 @@ public interface ServiceHubApi  {
     @ApiOperation(value = "Update Service Hub", tags={ "Service Hub" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ServiceHub.class) })
-    public ServiceHub postServiceHub(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid ServiceHub body);
+    public ServiceHub postServiceHub(@PathParam("id") Long id, @Valid ServiceHub body);
 
     /**
      * Update Service Hub
@@ -93,7 +92,7 @@ public interface ServiceHubApi  {
     @ApiOperation(value = "Update Service Hub", tags={ "Service Hub" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ServiceHub.class) })
-    public ServiceHub putServiceHub(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid ServiceHub body);
+    public ServiceHub putServiceHub(@PathParam("id") Long id, @Valid ServiceHub body);
 
     /**
      * Search Service Hubs
@@ -107,5 +106,5 @@ public interface ServiceHubApi  {
     @ApiOperation(value = "Search Service Hubs", tags={ "Service Hub" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ServiceHub.class, responseContainer = "List") })
-    public List<ServiceHub> searchServiceHubs(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("keyword") String keyword, @QueryParam("retailerId") Long retailerId);
+    public List<ServiceHub> searchServiceHubs(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("keyword") String keyword, @QueryParam("retailerId") Long retailerId);
 }

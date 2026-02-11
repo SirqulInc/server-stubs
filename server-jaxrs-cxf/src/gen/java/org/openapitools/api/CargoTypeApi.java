@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.CargoType;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/cargo/type")
+@Path("/cargo/type")
 @Api(value = "/", description = "")
 public interface CargoTypeApi  {
 
@@ -38,7 +37,7 @@ public interface CargoTypeApi  {
     @ApiOperation(value = "Create Cargo Type", tags={ "Cargo Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CargoType.class) })
-    public CargoType createCargoType(@PathParam("version") BigDecimal version, @Valid CargoType body);
+    public CargoType createCargoType(@Valid CargoType body);
 
     /**
      * Delete Cargo Type
@@ -51,7 +50,7 @@ public interface CargoTypeApi  {
     @ApiOperation(value = "Delete Cargo Type", tags={ "Cargo Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteCargoType(@PathParam("version") BigDecimal version, @PathParam("cargoTypeId") Long cargoTypeId);
+    public void deleteCargoType(@PathParam("cargoTypeId") Long cargoTypeId);
 
     /**
      * Get Cargo Type
@@ -65,7 +64,7 @@ public interface CargoTypeApi  {
     @ApiOperation(value = "Get Cargo Type", tags={ "Cargo Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CargoType.class) })
-    public CargoType getCargoType(@PathParam("version") BigDecimal version, @PathParam("cargoTypeId") Long cargoTypeId);
+    public CargoType getCargoType(@PathParam("cargoTypeId") Long cargoTypeId);
 
     /**
      * Search Cargo Type
@@ -79,7 +78,7 @@ public interface CargoTypeApi  {
     @ApiOperation(value = "Search Cargo Type", tags={ "Cargo Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CargoType.class, responseContainer = "List") })
-    public List<CargoType> searchCargoTypes(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("retailerId") Long retailerId, @QueryParam("hubId") Long hubId);
+    public List<CargoType> searchCargoTypes(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("retailerId") Long retailerId, @QueryParam("hubId") Long hubId);
 
     /**
      * Update Cargo Type
@@ -93,5 +92,5 @@ public interface CargoTypeApi  {
     @ApiOperation(value = "Update Cargo Type", tags={ "Cargo Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CargoType.class) })
-    public CargoType updateCargoType(@PathParam("version") BigDecimal version, @PathParam("cargoTypeId") Long cargoTypeId, @Valid CargoType body);
+    public CargoType updateCargoType(@PathParam("cargoTypeId") Long cargoTypeId, @Valid CargoType body);
 }

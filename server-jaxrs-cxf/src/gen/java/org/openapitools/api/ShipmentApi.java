@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import java.util.Map;
 import org.openapitools.model.Shipment;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/shipment")
+@Path("/shipment")
 @Api(value = "/", description = "")
 public interface ShipmentApi  {
 
@@ -38,7 +37,7 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Cancel Shipment", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void cancelShipment(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public void cancelShipment(@PathParam("id") Long id);
 
     /**
      * Create Shipment
@@ -52,7 +51,7 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Create Shipment", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Shipment.class) })
-    public Shipment createShipment(@PathParam("version") BigDecimal version, @Valid Shipment body);
+    public Shipment createShipment(@Valid Shipment body);
 
     /**
      * Delete Shipment
@@ -65,7 +64,7 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Delete Shipment", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteShipment(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public void deleteShipment(@PathParam("id") Long id);
 
     /**
      * Get Shipment
@@ -79,7 +78,7 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Get Shipment", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Shipment.class) })
-    public Shipment getShipment(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public Shipment getShipment(@PathParam("id") Long id);
 
     /**
      * Search Shipments
@@ -93,7 +92,7 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Search Shipments", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Shipment.class, responseContainer = "List") })
-    public List<Shipment> searchShipments(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("ownerId") Long ownerId, @QueryParam("riderId") Long riderId, @QueryParam("routeId") Long routeId);
+    public List<Shipment> searchShipments(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("ownerId") Long ownerId, @QueryParam("riderId") Long riderId, @QueryParam("routeId") Long routeId);
 
     /**
      * Update Shipment
@@ -107,7 +106,7 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Update Shipment", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Shipment.class) })
-    public Shipment updateShipment(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Shipment body);
+    public Shipment updateShipment(@PathParam("id") Long id, @Valid Shipment body);
 
     /**
      * Uupdate Shipment Status
@@ -120,5 +119,5 @@ public interface ShipmentApi  {
     @ApiOperation(value = "Uupdate Shipment Status", tags={ "Shipment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateShipmentStatus(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Map<String, Boolean> body);
+    public void updateShipmentStatus(@PathParam("id") Long id, @Valid Map<String, Boolean> body);
 }

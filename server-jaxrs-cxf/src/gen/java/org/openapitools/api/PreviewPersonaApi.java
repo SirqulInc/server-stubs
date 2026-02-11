@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.PreviewPersonaResponse;
 import org.openapitools.model.SirqulResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/persona")
+@Path("/persona")
 @Api(value = "/", description = "")
 public interface PreviewPersonaApi  {
 
@@ -39,7 +38,7 @@ public interface PreviewPersonaApi  {
     @ApiOperation(value = "Create Persona", tags={ "Preview Persona" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PreviewPersonaResponse.class) })
-    public PreviewPersonaResponse createPersona(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("title") @NotNull String title, @QueryParam("previewAccounts") String previewAccounts, @QueryParam("date") Long date, @QueryParam("age") Integer age, @QueryParam("gender") String gender, @QueryParam("gameExperienceLevel") String gameExperienceLevel, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public PreviewPersonaResponse createPersona(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("title") @NotNull String title, @QueryParam("previewAccounts") String previewAccounts, @QueryParam("date") Long date, @QueryParam("age") Integer age, @QueryParam("gender") String gender, @QueryParam("gameExperienceLevel") String gameExperienceLevel, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Delete Persona
@@ -53,7 +52,7 @@ public interface PreviewPersonaApi  {
     @ApiOperation(value = "Delete Persona", tags={ "Preview Persona" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deletePersona(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("personaId") @NotNull Long personaId);
+    public SirqulResponse deletePersona(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("personaId") @NotNull Long personaId);
 
     /**
      * Get Persona
@@ -67,7 +66,7 @@ public interface PreviewPersonaApi  {
     @ApiOperation(value = "Get Persona", tags={ "Preview Persona" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PreviewPersonaResponse.class) })
-    public PreviewPersonaResponse getPersonaList(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("personaId") @NotNull Long personaId);
+    public PreviewPersonaResponse getPersonaList(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("personaId") @NotNull Long personaId);
 
     /**
      * Search Personas
@@ -81,7 +80,7 @@ public interface PreviewPersonaApi  {
     @ApiOperation(value = "Search Personas", tags={ "Preview Persona" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PreviewPersonaResponse.class) })
-    public PreviewPersonaResponse searchPersona(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit);
+    public PreviewPersonaResponse searchPersona(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit);
 
     /**
      * Update Persona
@@ -95,5 +94,5 @@ public interface PreviewPersonaApi  {
     @ApiOperation(value = "Update Persona", tags={ "Preview Persona" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PreviewPersonaResponse.class) })
-    public PreviewPersonaResponse updatePersona(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("personaId") @NotNull Long personaId, @QueryParam("title") String title, @QueryParam("previewAccounts") String previewAccounts, @QueryParam("active") Boolean active, @QueryParam("date") Long date, @QueryParam("age") Integer age, @QueryParam("gender") String gender, @QueryParam("gameExperienceLevel") String gameExperienceLevel, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public PreviewPersonaResponse updatePersona(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("personaId") @NotNull Long personaId, @QueryParam("title") String title, @QueryParam("previewAccounts") String previewAccounts, @QueryParam("active") Boolean active, @QueryParam("date") Long date, @QueryParam("age") Integer age, @QueryParam("gender") String gender, @QueryParam("gameExperienceLevel") String gameExperienceLevel, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 }

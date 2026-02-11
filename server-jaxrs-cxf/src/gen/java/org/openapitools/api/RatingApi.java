@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.RatingIndexResponse;
 import org.openapitools.model.RatingResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}")
+@Path("")
 @Api(value = "/", description = "")
 public interface RatingApi  {
 
@@ -40,7 +39,7 @@ public interface RatingApi  {
     @ApiOperation(value = "Create Rating", tags={ "Rating" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = RatingResponse.class) })
-    public RatingResponse createRating(@PathParam("version") BigDecimal version, @QueryParam("ratableType") @NotNull String ratableType, @QueryParam("ratableId") @NotNull Long ratableId, @QueryParam("ratingValue") @NotNull Integer ratingValue, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("categoryId") Long categoryId, @QueryParam("display") String display, @QueryParam("description") String description, @QueryParam("locationDescription") String locationDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public RatingResponse createRating(@QueryParam("ratableType") @NotNull String ratableType, @QueryParam("ratableId") @NotNull Long ratableId, @QueryParam("ratingValue") @NotNull Integer ratingValue, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("categoryId") Long categoryId, @QueryParam("display") String display, @QueryParam("description") String description, @QueryParam("locationDescription") String locationDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Delete Rating
@@ -54,7 +53,7 @@ public interface RatingApi  {
     @ApiOperation(value = "Delete Rating", tags={ "Rating" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteRating(@PathParam("version") BigDecimal version, @QueryParam("ratingId") @NotNull Long ratingId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse deleteRating(@QueryParam("ratingId") @NotNull Long ratingId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 
     /**
      * Search Location Rating Indexes
@@ -68,7 +67,7 @@ public interface RatingApi  {
     @ApiOperation(value = "Search Location Rating Indexes", tags={ "Rating" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = RatingIndexResponse.class, responseContainer = "List") })
-    public List<RatingIndexResponse> searchLocationRatingIndexes(@PathParam("version") BigDecimal version, @QueryParam("categoryIds") String categoryIds, @QueryParam("keyword") String keyword, @QueryParam("locationType") String locationType, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("searchRange") Double searchRange, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("returnOverallRating") Boolean returnOverallRating, @QueryParam("distanceUnit") String distanceUnit, @QueryParam("returnRetailer") Boolean returnRetailer, @QueryParam("returnAssets") Boolean returnAssets, @QueryParam("returnOffers") Boolean returnOffers, @QueryParam("returnCategories") Boolean returnCategories, @QueryParam("returnFilters") Boolean returnFilters);
+    public List<RatingIndexResponse> searchLocationRatingIndexes(@QueryParam("categoryIds") String categoryIds, @QueryParam("keyword") String keyword, @QueryParam("locationType") String locationType, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("searchRange") Double searchRange, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("returnOverallRating") Boolean returnOverallRating, @QueryParam("distanceUnit") String distanceUnit, @QueryParam("returnRetailer") Boolean returnRetailer, @QueryParam("returnAssets") Boolean returnAssets, @QueryParam("returnOffers") Boolean returnOffers, @QueryParam("returnCategories") Boolean returnCategories, @QueryParam("returnFilters") Boolean returnFilters);
 
     /**
      * Search Rating Indexes
@@ -82,7 +81,7 @@ public interface RatingApi  {
     @ApiOperation(value = "Search Rating Indexes", tags={ "Rating" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = RatingIndexResponse.class, responseContainer = "List") })
-    public List<RatingIndexResponse> searchRatingIndexes(@PathParam("version") BigDecimal version, @QueryParam("ratableType") @NotNull String ratableType, @QueryParam("ratableIds") String ratableIds, @QueryParam("categoryIds") String categoryIds, @QueryParam("secondaryType") String secondaryType, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("returnRatable") Boolean returnRatable, @QueryParam("returnOverallRating") Boolean returnOverallRating);
+    public List<RatingIndexResponse> searchRatingIndexes(@QueryParam("ratableType") @NotNull String ratableType, @QueryParam("ratableIds") String ratableIds, @QueryParam("categoryIds") String categoryIds, @QueryParam("secondaryType") String secondaryType, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("returnRatable") Boolean returnRatable, @QueryParam("returnOverallRating") Boolean returnOverallRating);
 
     /**
      * Search Ratings
@@ -96,7 +95,7 @@ public interface RatingApi  {
     @ApiOperation(value = "Search Ratings", tags={ "Rating" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = RatingResponse.class, responseContainer = "List") })
-    public List<RatingResponse> searchRatings(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("filterAccountId") Long filterAccountId, @QueryParam("ratableType") String ratableType, @QueryParam("ratableId") Long ratableId, @QueryParam("categoryIds") String categoryIds, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
+    public List<RatingResponse> searchRatings(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("filterAccountId") Long filterAccountId, @QueryParam("ratableType") String ratableType, @QueryParam("ratableId") Long ratableId, @QueryParam("categoryIds") String categoryIds, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
 
     /**
      * Update Rating
@@ -110,5 +109,5 @@ public interface RatingApi  {
     @ApiOperation(value = "Update Rating", tags={ "Rating" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = RatingResponse.class) })
-    public RatingResponse updateRating(@PathParam("version") BigDecimal version, @QueryParam("ratingId") @NotNull Long ratingId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("ratingValue") Integer ratingValue, @QueryParam("categoryId") Long categoryId, @QueryParam("display") String display, @QueryParam("description") String description, @QueryParam("locationDescription") String locationDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public RatingResponse updateRating(@QueryParam("ratingId") @NotNull Long ratingId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("ratingValue") Integer ratingValue, @QueryParam("categoryId") Long categoryId, @QueryParam("display") String display, @QueryParam("description") String description, @QueryParam("locationDescription") String locationDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 }

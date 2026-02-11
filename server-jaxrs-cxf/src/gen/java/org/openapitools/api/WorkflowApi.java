@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/workflow/run")
+@Path("/workflow/run")
 @Api(value = "/", description = "")
 public interface WorkflowApi  {
 
@@ -38,5 +37,5 @@ public interface WorkflowApi  {
     @ApiOperation(value = "Run Workflow", tags={ "Workflow" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse runWorkflow(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("workflowId") @NotNull Long workflowId, @QueryParam("skuId") Long skuId, @QueryParam("versionCode") Integer versionCode, @QueryParam("parameters") String parameters);
+    public SirqulResponse runWorkflow(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("workflowId") @NotNull Long workflowId, @QueryParam("skuId") Long skuId, @QueryParam("versionCode") Integer versionCode, @QueryParam("parameters") String parameters);
 }

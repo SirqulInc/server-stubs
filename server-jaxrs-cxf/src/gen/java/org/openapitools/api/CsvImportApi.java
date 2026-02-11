@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.CsvImportResponse;
 import java.io.File;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/csvimport")
+@Path("/csvimport")
 @Api(value = "/", description = "")
 public interface CsvImportApi  {
 
@@ -38,7 +37,7 @@ public interface CsvImportApi  {
     @ApiOperation(value = "Detail Status", tags={ "CSV Import" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse getStatusCSV(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("batchId") @NotNull Long batchId, @QueryParam("responseGroup") @NotNull String responseGroup, @QueryParam("start") @NotNull Long start, @QueryParam("limit") @NotNull Long limit);
+    public SirqulResponse getStatusCSV(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("batchId") @NotNull Long batchId, @QueryParam("responseGroup") @NotNull String responseGroup, @QueryParam("start") @NotNull Long start, @QueryParam("limit") @NotNull Long limit);
 
     /**
      * Search Status
@@ -52,7 +51,7 @@ public interface CsvImportApi  {
     @ApiOperation(value = "Search Status", tags={ "CSV Import" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CsvImportResponse.class) })
-    public CsvImportResponse listStatusCSV(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit);
+    public CsvImportResponse listStatusCSV(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit);
 
     /**
      * Batch Status
@@ -66,7 +65,7 @@ public interface CsvImportApi  {
     @ApiOperation(value = "Batch Status", tags={ "CSV Import" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CsvImportResponse.class) })
-    public CsvImportResponse statusCSV(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("batchId") @NotNull Long batchId);
+    public CsvImportResponse statusCSV(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("batchId") @NotNull Long batchId);
 
     /**
      * Upload CSV
@@ -80,5 +79,5 @@ public interface CsvImportApi  {
     @ApiOperation(value = "Upload CSV", tags={ "CSV Import" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CsvImportResponse.class) })
-    public CsvImportResponse uploadCSV(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("uploadType") @NotNull String uploadType, @QueryParam("importFile") @NotNull File importFile, @QueryParam("fileFormat") @NotNull String fileFormat, @QueryParam("appKey") String appKey);
+    public CsvImportResponse uploadCSV(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("uploadType") @NotNull String uploadType, @QueryParam("importFile") @NotNull File importFile, @QueryParam("fileFormat") @NotNull String fileFormat, @QueryParam("appKey") String appKey);
 }

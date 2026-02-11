@@ -3,7 +3,6 @@ package org.openapitools.api;
 import org.openapitools.model.AccountMiniResponse;
 import org.openapitools.model.AssignmentResponse;
 import org.openapitools.model.AssignmentStatusResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 
 import java.util.List;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/assignment")
+@Path("/assignment")
 @Api(value = "/", description = "")
 public interface AssignmentApi  {
 
@@ -41,7 +40,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Search Assignment Assignees", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AccountMiniResponse.class, responseContainer = "List") })
-    public List<AccountMiniResponse> assigmentAssigneeAccountSearch(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword);
+    public List<AccountMiniResponse> assigmentAssigneeAccountSearch(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword);
 
     /**
      * Create Assignment
@@ -55,7 +54,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Create Assignment", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentResponse.class) })
-    public AssignmentResponse assignmentCreate(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("assigneeAccountId") @NotNull Long assigneeAccountId, @QueryParam("description") String description, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("tags") String tags, @QueryParam("active") Boolean active);
+    public AssignmentResponse assignmentCreate(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("assigneeAccountId") @NotNull Long assigneeAccountId, @QueryParam("description") String description, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("tags") String tags, @QueryParam("active") Boolean active);
 
     /**
      * Delete Assignment
@@ -69,7 +68,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Delete Assignment", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse assignmentDelete(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId);
+    public SirqulResponse assignmentDelete(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId);
 
     /**
      * Get Assignment
@@ -83,7 +82,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Get Assignment", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentResponse.class) })
-    public AssignmentResponse assignmentGet(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId);
+    public AssignmentResponse assignmentGet(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId);
 
     /**
      * Search Assignments
@@ -97,7 +96,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Search Assignments", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentResponse.class, responseContainer = "List") })
-    public List<AssignmentResponse> assignmentSearch(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("creatorAccountId") Long creatorAccountId, @QueryParam("assigneeAccountIds") String assigneeAccountIds, @QueryParam("retailerLocationIds") String retailerLocationIds, @QueryParam("currentStatusType") String currentStatusType, @QueryParam("keyword") String keyword);
+    public List<AssignmentResponse> assignmentSearch(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("creatorAccountId") Long creatorAccountId, @QueryParam("assigneeAccountIds") String assigneeAccountIds, @QueryParam("retailerLocationIds") String retailerLocationIds, @QueryParam("currentStatusType") String currentStatusType, @QueryParam("keyword") String keyword);
 
     /**
      * Create Assignment Status
@@ -111,7 +110,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Create Assignment Status", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentStatusResponse.class) })
-    public AssignmentStatusResponse assignmentStatusCreate(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId, @QueryParam("scheduledNotificationId") Long scheduledNotificationId, @QueryParam("toDo") String toDo, @QueryParam("connection") String connection, @QueryParam("method") String method, @QueryParam("status") String status, @QueryParam("closure") String closure, @QueryParam("message") String message, @QueryParam("followUp") Long followUp, @QueryParam("active") Boolean active);
+    public AssignmentStatusResponse assignmentStatusCreate(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId, @QueryParam("scheduledNotificationId") Long scheduledNotificationId, @QueryParam("toDo") String toDo, @QueryParam("connection") String connection, @QueryParam("method") String method, @QueryParam("status") String status, @QueryParam("closure") String closure, @QueryParam("message") String message, @QueryParam("followUp") Long followUp, @QueryParam("active") Boolean active);
 
     /**
      * Deletes Assignment Status
@@ -125,7 +124,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Deletes Assignment Status", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse assignmentStatusDelete(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentStatusId") @NotNull Long assignmentStatusId);
+    public SirqulResponse assignmentStatusDelete(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentStatusId") @NotNull Long assignmentStatusId);
 
     /**
      * Get Assignment Status
@@ -139,7 +138,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Get Assignment Status", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentStatusResponse.class) })
-    public AssignmentStatusResponse assignmentStatusGet(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentStatusId") @NotNull Long assignmentStatusId);
+    public AssignmentStatusResponse assignmentStatusGet(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentStatusId") @NotNull Long assignmentStatusId);
 
     /**
      * Search Assignment Statuses
@@ -153,7 +152,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Search Assignment Statuses", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentStatusResponse.class, responseContainer = "List") })
-    public List<AssignmentStatusResponse> assignmentStatusSearch(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("assignmentId") Long assignmentId, @QueryParam("creatorAccountId") Long creatorAccountId, @QueryParam("assigneeAccountId") Long assigneeAccountId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("statusType") String statusType, @QueryParam("keyword") String keyword);
+    public List<AssignmentStatusResponse> assignmentStatusSearch(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("assignmentId") Long assignmentId, @QueryParam("creatorAccountId") Long creatorAccountId, @QueryParam("assigneeAccountId") Long assigneeAccountId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("statusType") String statusType, @QueryParam("keyword") String keyword);
 
     /**
      * Update Assignment Status
@@ -167,7 +166,7 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Update Assignment Status", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentStatusResponse.class) })
-    public AssignmentStatusResponse assignmentStatusUpdate(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentStatusId") @NotNull Long assignmentStatusId, @QueryParam("scheduledNotificationId") Long scheduledNotificationId, @QueryParam("toDo") String toDo, @QueryParam("connection") String connection, @QueryParam("method") String method, @QueryParam("status") String status, @QueryParam("closure") String closure, @QueryParam("message") String message, @QueryParam("followUp") Long followUp, @QueryParam("active") Boolean active);
+    public AssignmentStatusResponse assignmentStatusUpdate(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentStatusId") @NotNull Long assignmentStatusId, @QueryParam("scheduledNotificationId") Long scheduledNotificationId, @QueryParam("toDo") String toDo, @QueryParam("connection") String connection, @QueryParam("method") String method, @QueryParam("status") String status, @QueryParam("closure") String closure, @QueryParam("message") String message, @QueryParam("followUp") Long followUp, @QueryParam("active") Boolean active);
 
     /**
      * Update Assignment
@@ -181,5 +180,5 @@ public interface AssignmentApi  {
     @ApiOperation(value = "Update Assignment", tags={ "Assignment" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssignmentResponse.class) })
-    public AssignmentResponse assignmentUpdate(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("assigneeAccountId") Long assigneeAccountId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("tags") String tags, @QueryParam("active") Boolean active);
+    public AssignmentResponse assignmentUpdate(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("assignmentId") @NotNull Long assignmentId, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("assigneeAccountId") Long assigneeAccountId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("tags") String tags, @QueryParam("active") Boolean active);
 }

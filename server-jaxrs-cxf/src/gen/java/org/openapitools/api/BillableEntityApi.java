@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.BillableEntityResponse;
 import org.openapitools.model.SirqulResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/billable")
+@Path("/billable")
 @Api(value = "/", description = "")
 public interface BillableEntityApi  {
 
@@ -39,7 +38,7 @@ public interface BillableEntityApi  {
     @ApiOperation(value = "Create Billable", tags={ "Billable Entity" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = BillableEntityResponse.class) })
-    public BillableEntityResponse createBillableEntity(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("name") String name, @QueryParam("streetAddress") String streetAddress, @QueryParam("streetAddress2") String streetAddress2, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("businessPhone") String businessPhone, @QueryParam("businessPhoneExt") String businessPhoneExt, @QueryParam("authorizeNetApiKey") String authorizeNetApiKey, @QueryParam("authorizeNetTransactionKey") String authorizeNetTransactionKey);
+    public BillableEntityResponse createBillableEntity(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("name") String name, @QueryParam("streetAddress") String streetAddress, @QueryParam("streetAddress2") String streetAddress2, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("businessPhone") String businessPhone, @QueryParam("businessPhoneExt") String businessPhoneExt, @QueryParam("authorizeNetApiKey") String authorizeNetApiKey, @QueryParam("authorizeNetTransactionKey") String authorizeNetTransactionKey);
 
     /**
      * Delete Billable
@@ -53,7 +52,7 @@ public interface BillableEntityApi  {
     @ApiOperation(value = "Delete Billable", tags={ "Billable Entity" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteBillableEntity(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse deleteBillableEntity(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 
     /**
      * Get Billable
@@ -67,7 +66,7 @@ public interface BillableEntityApi  {
     @ApiOperation(value = "Get Billable", tags={ "Billable Entity" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = BillableEntityResponse.class) })
-    public BillableEntityResponse getBillableEntity(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("includeCounts") @DefaultValue("false")Boolean includeCounts, @QueryParam("includePayments") @DefaultValue("true")Boolean includePayments);
+    public BillableEntityResponse getBillableEntity(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("includeCounts") @DefaultValue("false")Boolean includeCounts, @QueryParam("includePayments") @DefaultValue("true")Boolean includePayments);
 
     /**
      * Update Billable
@@ -81,5 +80,5 @@ public interface BillableEntityApi  {
     @ApiOperation(value = "Update Billable", tags={ "Billable Entity" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = BillableEntityResponse.class) })
-    public BillableEntityResponse updateBillableEntity(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("name") String name, @QueryParam("streetAddress") String streetAddress, @QueryParam("streetAddress2") String streetAddress2, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("businessPhone") String businessPhone, @QueryParam("businessPhoneExt") String businessPhoneExt, @QueryParam("authorizeNetApiKey") String authorizeNetApiKey, @QueryParam("authorizeNetTransactionKey") String authorizeNetTransactionKey);
+    public BillableEntityResponse updateBillableEntity(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("name") String name, @QueryParam("streetAddress") String streetAddress, @QueryParam("streetAddress2") String streetAddress2, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("businessPhone") String businessPhone, @QueryParam("businessPhoneExt") String businessPhoneExt, @QueryParam("authorizeNetApiKey") String authorizeNetApiKey, @QueryParam("authorizeNetTransactionKey") String authorizeNetTransactionKey);
 }

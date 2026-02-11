@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.ConsumerInviteResponse;
 import org.openapitools.model.InviteResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/invite")
+@Path("/invite")
 @Api(value = "/", description = "")
 public interface InviteApi  {
 
@@ -40,7 +39,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Accept Invite", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ConsumerInviteResponse.class) })
-    public ConsumerInviteResponse acceptInvite(@PathParam("version") BigDecimal version, @QueryParam("token") @NotNull String token, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("missionId") Long missionId, @QueryParam("albumContestId") Long albumContestId, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("appKey") String appKey, @QueryParam("autoFriend") @DefaultValue("true")Boolean autoFriend, @QueryParam("autoAttendEvent") @DefaultValue("false")Boolean autoAttendEvent, @QueryParam("autoFavoriteOffer") @DefaultValue("false")Boolean autoFavoriteOffer, @QueryParam("autoFavoriteOfferLocation") @DefaultValue("false")Boolean autoFavoriteOfferLocation, @QueryParam("autoFavoriteRetailerLocation") @DefaultValue("false")Boolean autoFavoriteRetailerLocation);
+    public ConsumerInviteResponse acceptInvite(@QueryParam("token") @NotNull String token, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("missionId") Long missionId, @QueryParam("albumContestId") Long albumContestId, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("appKey") String appKey, @QueryParam("autoFriend") @DefaultValue("true")Boolean autoFriend, @QueryParam("autoAttendEvent") @DefaultValue("false")Boolean autoAttendEvent, @QueryParam("autoFavoriteOffer") @DefaultValue("false")Boolean autoFavoriteOffer, @QueryParam("autoFavoriteOfferLocation") @DefaultValue("false")Boolean autoFavoriteOfferLocation, @QueryParam("autoFavoriteRetailerLocation") @DefaultValue("false")Boolean autoFavoriteRetailerLocation);
 
     /**
      * Invite to Contest
@@ -54,7 +53,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Contest", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse albumContestInvite(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("albumContestId") Long albumContestId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public InviteResponse albumContestInvite(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("albumContestId") Long albumContestId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Invite to Collection
@@ -68,7 +67,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Collection", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse albumInvite(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("albumId") Long albumId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public InviteResponse albumInvite(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("albumId") Long albumId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Invite to Event
@@ -82,7 +81,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Event", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse eventInvite(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("listingId") @NotNull Long listingId, @QueryParam("receiverAccountIds") String receiverAccountIds, @QueryParam("retailerLocationId") Long retailerLocationId);
+    public InviteResponse eventInvite(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("listingId") @NotNull Long listingId, @QueryParam("receiverAccountIds") String receiverAccountIds, @QueryParam("retailerLocationId") Long retailerLocationId);
 
     /**
      * Invite to Game Level
@@ -96,7 +95,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Game Level", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse gameInvite(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public InviteResponse gameInvite(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Get Invite
@@ -110,7 +109,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Get Invite", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse getInvite(@PathParam("version") BigDecimal version, @QueryParam("accountId") Long accountId, @QueryParam("token") String token, @QueryParam("albumId") Long albumId, @QueryParam("missionId") Long missionId, @QueryParam("albumContestId") Long albumContestId, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("appKey") String appKey);
+    public SirqulResponse getInvite(@QueryParam("accountId") Long accountId, @QueryParam("token") String token, @QueryParam("albumId") Long albumId, @QueryParam("missionId") Long missionId, @QueryParam("albumContestId") Long albumContestId, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("appKey") String appKey);
 
     /**
      * Invite to Mission
@@ -124,7 +123,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Mission", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse missionInvite(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("missionId") Long missionId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public InviteResponse missionInvite(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appId") Long appId, @QueryParam("appKey") String appKey, @QueryParam("missionId") Long missionId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Invite to Offer
@@ -138,7 +137,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Offer", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse offerInvite(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("offerId") @NotNull Long offerId);
+    public InviteResponse offerInvite(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("offerId") @NotNull Long offerId);
 
     /**
      * Invite to Offer Location
@@ -152,7 +151,7 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Offer Location", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse offerLocationInvite(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("offerLocationId") @NotNull Long offerLocationId);
+    public InviteResponse offerLocationInvite(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("offerLocationId") @NotNull Long offerLocationId);
 
     /**
      * Invite to Retailer Location
@@ -166,5 +165,5 @@ public interface InviteApi  {
     @ApiOperation(value = "Invite to Retailer Location", tags={ "Invite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = InviteResponse.class) })
-    public InviteResponse retailerLocationInvite(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("retailerLocationId") @NotNull Long retailerLocationId, @QueryParam("albumId") Long albumId);
+    public InviteResponse retailerLocationInvite(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("retailerLocationId") @NotNull Long retailerLocationId, @QueryParam("albumId") Long albumId);
 }

@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.QuestionResponse;
 import org.openapitools.model.SirqulResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/game/question")
+@Path("/game/question")
 @Api(value = "/", description = "")
 public interface QuestionApi  {
 
@@ -39,7 +38,7 @@ public interface QuestionApi  {
     @ApiOperation(value = "Create Question", tags={ "Question" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = QuestionResponse.class) })
-    public QuestionResponse createQuestion(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("question") @NotNull String question, @QueryParam("answers") @NotNull String answers, @QueryParam("active") @NotNull Boolean active, @QueryParam("allocateTickets") @NotNull Boolean allocateTickets, @QueryParam("ticketCount") @NotNull Long ticketCount, @QueryParam("tags") String tags, @QueryParam("videoURL") String videoURL, @QueryParam("assetId") Long assetId, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points);
+    public QuestionResponse createQuestion(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("question") @NotNull String question, @QueryParam("answers") @NotNull String answers, @QueryParam("active") @NotNull Boolean active, @QueryParam("allocateTickets") @NotNull Boolean allocateTickets, @QueryParam("ticketCount") @NotNull Long ticketCount, @QueryParam("tags") String tags, @QueryParam("videoURL") String videoURL, @QueryParam("assetId") Long assetId, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points);
 
     /**
      * Delete Question
@@ -53,7 +52,7 @@ public interface QuestionApi  {
     @ApiOperation(value = "Delete Question", tags={ "Question" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteQuestion(@PathParam("version") BigDecimal version, @QueryParam("questionId") @NotNull Long questionId, @QueryParam("accountId") @NotNull Long accountId);
+    public SirqulResponse deleteQuestion(@QueryParam("questionId") @NotNull Long questionId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Question
@@ -67,7 +66,7 @@ public interface QuestionApi  {
     @ApiOperation(value = "Get Question", tags={ "Question" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = QuestionResponse.class) })
-    public QuestionResponse getQuestion(@PathParam("version") BigDecimal version, @QueryParam("questionId") @NotNull Long questionId, @QueryParam("accountId") @NotNull Long accountId);
+    public QuestionResponse getQuestion(@QueryParam("questionId") @NotNull Long questionId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Search Questions
@@ -81,7 +80,7 @@ public interface QuestionApi  {
     @ApiOperation(value = "Search Questions", tags={ "Question" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = QuestionResponse.class, responseContainer = "List") })
-    public List<QuestionResponse> searchQuestions(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("keyword") String keyword);
+    public List<QuestionResponse> searchQuestions(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("keyword") String keyword);
 
     /**
      * Update Question
@@ -95,5 +94,5 @@ public interface QuestionApi  {
     @ApiOperation(value = "Update Question", tags={ "Question" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = QuestionResponse.class) })
-    public QuestionResponse updateQuestion(@PathParam("version") BigDecimal version, @QueryParam("questionId") @NotNull Long questionId, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("ticketCount") @NotNull Long ticketCount, @QueryParam("question") String question, @QueryParam("answers") String answers, @QueryParam("tags") String tags, @QueryParam("videoURL") String videoURL, @QueryParam("assetId") Long assetId, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points);
+    public QuestionResponse updateQuestion(@QueryParam("questionId") @NotNull Long questionId, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("ticketCount") @NotNull Long ticketCount, @QueryParam("question") String question, @QueryParam("answers") String answers, @QueryParam("tags") String tags, @QueryParam("videoURL") String videoURL, @QueryParam("assetId") Long assetId, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points);
 }

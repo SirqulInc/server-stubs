@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 import org.openapitools.model.UserPermissionsResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}")
+@Path("")
 @Api(value = "/", description = "")
 public interface UserPermissionsApi  {
 
@@ -39,7 +38,7 @@ public interface UserPermissionsApi  {
     @ApiOperation(value = "Add User", tags={ "User Permissions" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse addUsersToPermissionable(@PathParam("version") BigDecimal version, @QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("read") @DefaultValue("true")Boolean read, @QueryParam("write") @DefaultValue("false")Boolean write, @QueryParam("delete") @DefaultValue("false")Boolean delete, @QueryParam("add") @DefaultValue("false")Boolean add, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("pending") @DefaultValue("false")Boolean pending, @QueryParam("admin") Boolean admin, @QueryParam("includeFriendGroup") @DefaultValue("false")Boolean includeFriendGroup, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("audienceIds") String audienceIds);
+    public SirqulResponse addUsersToPermissionable(@QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("read") @DefaultValue("true")Boolean read, @QueryParam("write") @DefaultValue("false")Boolean write, @QueryParam("delete") @DefaultValue("false")Boolean delete, @QueryParam("add") @DefaultValue("false")Boolean add, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("pending") @DefaultValue("false")Boolean pending, @QueryParam("admin") Boolean admin, @QueryParam("includeFriendGroup") @DefaultValue("false")Boolean includeFriendGroup, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("audienceIds") String audienceIds);
 
     /**
      * Approve Permissionable
@@ -53,7 +52,7 @@ public interface UserPermissionsApi  {
     @ApiOperation(value = "Approve Permissionable", tags={ "User Permissions" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse approvePermissionable(@PathParam("version") BigDecimal version, @QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("approvalStatus") @DefaultValue("APPROVED")String approvalStatus);
+    public SirqulResponse approvePermissionable(@QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("approvalStatus") @DefaultValue("APPROVED")String approvalStatus);
 
     /**
      * Leave
@@ -67,7 +66,7 @@ public interface UserPermissionsApi  {
     @ApiOperation(value = "Leave", tags={ "User Permissions" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse leaveFromPermissionable(@PathParam("version") BigDecimal version, @QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse leaveFromPermissionable(@QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Remove User
@@ -81,7 +80,7 @@ public interface UserPermissionsApi  {
     @ApiOperation(value = "Remove User", tags={ "User Permissions" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse removeUsersFromPermissionable(@PathParam("version") BigDecimal version, @QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("removeFriendGroup") @DefaultValue("false")Boolean removeFriendGroup, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("audienceIds") String audienceIds);
+    public SirqulResponse removeUsersFromPermissionable(@QueryParam("permissionableType") @NotNull String permissionableType, @QueryParam("permissionableId") @NotNull Long permissionableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("removeFriendGroup") @DefaultValue("false")Boolean removeFriendGroup, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("audienceIds") String audienceIds);
 
     /**
      * Search Permissionables
@@ -95,7 +94,7 @@ public interface UserPermissionsApi  {
     @ApiOperation(value = "Search Permissionables", tags={ "User Permissions" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = UserPermissionsResponse.class, responseContainer = "List") })
-    public List<UserPermissionsResponse> searchPermissionables(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("permissionableType") String permissionableType, @QueryParam("permissionableId") Long permissionableId, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("pending") Boolean pending, @QueryParam("admin") Boolean admin, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public List<UserPermissionsResponse> searchPermissionables(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("permissionableType") String permissionableType, @QueryParam("permissionableId") Long permissionableId, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("pending") Boolean pending, @QueryParam("admin") Boolean admin, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 
     /**
      * Search Permissionables by Distnace
@@ -109,5 +108,5 @@ public interface UserPermissionsApi  {
     @ApiOperation(value = "Search Permissionables by Distnace", tags={ "User Permissions" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = UserPermissionsResponse.class, responseContainer = "List") })
-    public List<UserPermissionsResponse> searchPermissionablesFollowingDistance(@PathParam("version") BigDecimal version, @QueryParam("latitude") @NotNull Double latitude, @QueryParam("longitude") @NotNull Double longitude, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("permissionableType") String permissionableType, @QueryParam("permissionableId") Long permissionableId, @QueryParam("searchRange") @DefaultValue("5")Double searchRange, @QueryParam("keyword") String keyword, @QueryParam("pending") Boolean pending, @QueryParam("admin") Boolean admin, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public List<UserPermissionsResponse> searchPermissionablesFollowingDistance(@QueryParam("latitude") @NotNull Double latitude, @QueryParam("longitude") @NotNull Double longitude, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("connectionAccountIds") String connectionAccountIds, @QueryParam("permissionableType") String permissionableType, @QueryParam("permissionableId") Long permissionableId, @QueryParam("searchRange") @DefaultValue("5")Double searchRange, @QueryParam("keyword") String keyword, @QueryParam("pending") Boolean pending, @QueryParam("admin") Boolean admin, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 }

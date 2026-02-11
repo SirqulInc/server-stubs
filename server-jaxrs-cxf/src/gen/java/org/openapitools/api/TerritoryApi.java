@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 import org.openapitools.model.TerritoryResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/territory")
+@Path("/territory")
 @Api(value = "/", description = "")
 public interface TerritoryApi  {
 
@@ -39,7 +38,7 @@ public interface TerritoryApi  {
     @ApiOperation(value = "Create Territory", tags={ "Territory" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TerritoryResponse.class) })
-    public TerritoryResponse createTerritory(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("active") Boolean active);
+    public TerritoryResponse createTerritory(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("active") Boolean active);
 
     /**
      * Delete Territory
@@ -53,7 +52,7 @@ public interface TerritoryApi  {
     @ApiOperation(value = "Delete Territory", tags={ "Territory" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteTerritory(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("territoryId") @NotNull Long territoryId);
+    public SirqulResponse deleteTerritory(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("territoryId") @NotNull Long territoryId);
 
     /**
      * Get Territory
@@ -67,7 +66,7 @@ public interface TerritoryApi  {
     @ApiOperation(value = "Get Territory", tags={ "Territory" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TerritoryResponse.class) })
-    public TerritoryResponse getTerritory(@PathParam("version") BigDecimal version, @QueryParam("territoryId") @NotNull Long territoryId);
+    public TerritoryResponse getTerritory(@QueryParam("territoryId") @NotNull Long territoryId);
 
     /**
      * Search Territories
@@ -81,7 +80,7 @@ public interface TerritoryApi  {
     @ApiOperation(value = "Search Territories", tags={ "Territory" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TerritoryResponse.class, responseContainer = "List") })
-    public List<TerritoryResponse> searchTerritories(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("keyword") String keyword, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
+    public List<TerritoryResponse> searchTerritories(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("keyword") String keyword, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
 
     /**
      * Update Territory
@@ -95,5 +94,5 @@ public interface TerritoryApi  {
     @ApiOperation(value = "Update Territory", tags={ "Territory" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TerritoryResponse.class) })
-    public TerritoryResponse updateTerritory(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("territoryId") @NotNull Long territoryId, @QueryParam("name") String name, @QueryParam("active") Boolean active);
+    public TerritoryResponse updateTerritory(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("territoryId") @NotNull Long territoryId, @QueryParam("name") String name, @QueryParam("active") Boolean active);
 }

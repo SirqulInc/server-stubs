@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.LeaderboardResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/leaderboard")
+@Path("/leaderboard")
 @Api(value = "/", description = "")
 public interface LeaderboardApi  {
 
@@ -40,7 +39,7 @@ public interface LeaderboardApi  {
     @ApiOperation(value = "Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation", tags={ "Leaderboard" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = LeaderboardResponse.class) })
-    public LeaderboardResponse createLeaderboard(@PathParam("version") BigDecimal version, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("rankType") String rankType, @QueryParam("leaderboardMode") String leaderboardMode, @QueryParam("iconMedia") File iconMedia, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("bannerMedia") File bannerMedia, @QueryParam("bannerAssetId") Long bannerAssetId, @QueryParam("limitation") Integer limitation, @QueryParam("sortField") String sortField, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData);
+    public LeaderboardResponse createLeaderboard(@QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("rankType") String rankType, @QueryParam("leaderboardMode") String leaderboardMode, @QueryParam("iconMedia") File iconMedia, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("bannerMedia") File bannerMedia, @QueryParam("bannerAssetId") Long bannerAssetId, @QueryParam("limitation") Integer limitation, @QueryParam("sortField") String sortField, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData);
 
     /**
      * Delete the Leader Board
@@ -54,7 +53,7 @@ public interface LeaderboardApi  {
     @ApiOperation(value = "Delete the Leader Board", tags={ "Leaderboard" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteLeaderboard(@PathParam("version") BigDecimal version, @QueryParam("leaderboardId") @NotNull Long leaderboardId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse deleteLeaderboard(@QueryParam("leaderboardId") @NotNull Long leaderboardId, @QueryParam("accountId") Long accountId);
 
     /**
      * Read a leaderboard by id and retrieve the matching ranking list
@@ -68,7 +67,7 @@ public interface LeaderboardApi  {
     @ApiOperation(value = "Read a leaderboard by id and retrieve the matching ranking list", tags={ "Leaderboard" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = LeaderboardResponse.class) })
-    public LeaderboardResponse getLeaderboard(@PathParam("version") BigDecimal version, @QueryParam("leaderboardId") @NotNull Long leaderboardId, @QueryParam("accountId") Long accountId, @QueryParam("includeFullRankingList") Boolean includeFullRankingList);
+    public LeaderboardResponse getLeaderboard(@QueryParam("leaderboardId") @NotNull Long leaderboardId, @QueryParam("accountId") Long accountId, @QueryParam("includeFullRankingList") Boolean includeFullRankingList);
 
     /**
      * Search leaderboard and retrieve the matching ranking list
@@ -82,7 +81,7 @@ public interface LeaderboardApi  {
     @ApiOperation(value = "Search leaderboard and retrieve the matching ranking list", tags={ "Leaderboard" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = LeaderboardResponse.class) })
-    public LeaderboardResponse searchLeaderboards(@PathParam("version") BigDecimal version, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("globalOnly") Boolean globalOnly, @QueryParam("keyword") String keyword, @QueryParam("leaderboardIds") String leaderboardIds, @QueryParam("rankTypes") String rankTypes, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("includeInactive") Boolean includeInactive, @QueryParam("includeAppResponse") Boolean includeAppResponse, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
+    public LeaderboardResponse searchLeaderboards(@QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("globalOnly") Boolean globalOnly, @QueryParam("keyword") String keyword, @QueryParam("leaderboardIds") String leaderboardIds, @QueryParam("rankTypes") String rankTypes, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("includeInactive") Boolean includeInactive, @QueryParam("includeAppResponse") Boolean includeAppResponse, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
 
     /**
      * Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
@@ -96,5 +95,5 @@ public interface LeaderboardApi  {
     @ApiOperation(value = "Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation", tags={ "Leaderboard" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = LeaderboardResponse.class) })
-    public LeaderboardResponse updateLeaderboard(@PathParam("version") BigDecimal version, @QueryParam("leaderboardId") @NotNull Long leaderboardId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("rankType") String rankType, @QueryParam("leaderboardMode") String leaderboardMode, @QueryParam("sortField") String sortField, @QueryParam("iconMedia") File iconMedia, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("bannerMedia") File bannerMedia, @QueryParam("bannerAssetId") Long bannerAssetId, @QueryParam("limitation") Integer limitation, @QueryParam("active") Boolean active, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData);
+    public LeaderboardResponse updateLeaderboard(@QueryParam("leaderboardId") @NotNull Long leaderboardId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("rankType") String rankType, @QueryParam("leaderboardMode") String leaderboardMode, @QueryParam("sortField") String sortField, @QueryParam("iconMedia") File iconMedia, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("bannerMedia") File bannerMedia, @QueryParam("bannerAssetId") Long bannerAssetId, @QueryParam("limitation") Integer limitation, @QueryParam("active") Boolean active, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData);
 }

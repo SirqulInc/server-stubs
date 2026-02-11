@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.CountResponse;
 import org.openapitools.model.FlagResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/flag")
+@Path("/flag")
 @Api(value = "/", description = "")
 public interface FlagApi  {
 
@@ -40,7 +39,7 @@ public interface FlagApi  {
     @ApiOperation(value = "Create Flag", tags={ "Flag" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse createFlag(@PathParam("version") BigDecimal version, @QueryParam("flagableType") @NotNull String flagableType, @QueryParam("flagableId") @NotNull Long flagableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("flagDescription") String flagDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse createFlag(@QueryParam("flagableType") @NotNull String flagableType, @QueryParam("flagableId") @NotNull Long flagableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("flagDescription") String flagDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Delete Flag
@@ -54,7 +53,7 @@ public interface FlagApi  {
     @ApiOperation(value = "Delete Flag", tags={ "Flag" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteFlag(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("itemBeingFlaggedType") String itemBeingFlaggedType, @QueryParam("itemBeingFlaggedId") Long itemBeingFlaggedId, @QueryParam("flagableType") String flagableType, @QueryParam("flagableId") Long flagableId);
+    public SirqulResponse deleteFlag(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("itemBeingFlaggedType") String itemBeingFlaggedType, @QueryParam("itemBeingFlaggedId") Long itemBeingFlaggedId, @QueryParam("flagableType") String flagableType, @QueryParam("flagableId") Long flagableId);
 
     /**
      * Get Flag
@@ -68,7 +67,7 @@ public interface FlagApi  {
     @ApiOperation(value = "Get Flag", tags={ "Flag" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = FlagResponse.class) })
-    public FlagResponse getFlag(@PathParam("version") BigDecimal version, @QueryParam("flagableType") @NotNull String flagableType, @QueryParam("flagableId") @NotNull Long flagableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public FlagResponse getFlag(@QueryParam("flagableType") @NotNull String flagableType, @QueryParam("flagableId") @NotNull Long flagableId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Get Flag Threshold
@@ -82,7 +81,7 @@ public interface FlagApi  {
     @ApiOperation(value = "Get Flag Threshold", tags={ "Flag" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CountResponse.class) })
-    public CountResponse getFlagThreshold(@PathParam("version") BigDecimal version, @QueryParam("itemBeingFlaggedType") @NotNull String itemBeingFlaggedType, @QueryParam("appKey") @NotNull String appKey);
+    public CountResponse getFlagThreshold(@QueryParam("itemBeingFlaggedType") @NotNull String itemBeingFlaggedType, @QueryParam("appKey") @NotNull String appKey);
 
     /**
      * Update Flag Threshold
@@ -96,5 +95,5 @@ public interface FlagApi  {
     @ApiOperation(value = "Update Flag Threshold", tags={ "Flag" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CountResponse.class) })
-    public CountResponse updateFlagThreshold(@PathParam("version") BigDecimal version, @QueryParam("itemBeingFlaggedType") @NotNull String itemBeingFlaggedType, @QueryParam("threshold") @NotNull Long threshold, @QueryParam("appKey") @NotNull String appKey, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public CountResponse updateFlagThreshold(@QueryParam("itemBeingFlaggedType") @NotNull String itemBeingFlaggedType, @QueryParam("threshold") @NotNull Long threshold, @QueryParam("appKey") @NotNull String appKey, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 }

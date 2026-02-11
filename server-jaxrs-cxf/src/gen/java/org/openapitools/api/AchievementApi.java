@@ -4,7 +4,6 @@ import org.openapitools.model.AchievementProgressResponse;
 import org.openapitools.model.AchievementResponse;
 import org.openapitools.model.AchievementShortResponse;
 import org.openapitools.model.AchievementTierResponse;
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.SirqulResponse;
 
@@ -27,7 +26,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/achievement")
+@Path("/achievement")
 @Api(value = "/", description = "")
 public interface AchievementApi  {
 
@@ -43,7 +42,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Searches an Achievement Tier", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementTierResponse.class) })
-    public AchievementTierResponse apiVersionAchievementTierSearchPost(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("achievementType") Long achievementType, @QueryParam("rankType") String rankType, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("descendingGoal") Boolean descendingGoal, @QueryParam("start") Long start, @QueryParam("limit") Long limit);
+    public AchievementTierResponse achievementTierSearchPost(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("achievementType") Long achievementType, @QueryParam("rankType") String rankType, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("descendingGoal") Boolean descendingGoal, @QueryParam("start") Long start, @QueryParam("limit") Long limit);
 
     /**
      * Create Achievement
@@ -57,7 +56,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Create Achievement", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementResponse.class) })
-    public AchievementResponse createAchievement(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("title") @NotNull String title, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("analyticsTag") String analyticsTag, @QueryParam("description") String description, @QueryParam("rankType") String rankType, @QueryParam("rankIncrement") Integer rankIncrement, @QueryParam("minIncrement") Integer minIncrement, @QueryParam("maxIncrement") Integer maxIncrement, @QueryParam("validate") Boolean validate, @QueryParam("active") Boolean active, @QueryParam("triggerDefinition") String triggerDefinition);
+    public AchievementResponse createAchievement(@QueryParam("appKey") @NotNull String appKey, @QueryParam("title") @NotNull String title, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("analyticsTag") String analyticsTag, @QueryParam("description") String description, @QueryParam("rankType") String rankType, @QueryParam("rankIncrement") Integer rankIncrement, @QueryParam("minIncrement") Integer minIncrement, @QueryParam("maxIncrement") Integer maxIncrement, @QueryParam("validate") Boolean validate, @QueryParam("active") Boolean active, @QueryParam("triggerDefinition") String triggerDefinition);
 
     /**
      * Create Achievement Tier
@@ -71,7 +70,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Create Achievement Tier", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementTierResponse.class) })
-    public AchievementTierResponse createAchievementTier(@PathParam("version") BigDecimal version, @QueryParam("achievementId") @NotNull Long achievementId, @QueryParam("scoreAllInstances") @NotNull Boolean scoreAllInstances, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("icon") File icon, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("goalCount") Long goalCount, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Integer gameObjectId);
+    public AchievementTierResponse createAchievementTier(@QueryParam("achievementId") @NotNull Long achievementId, @QueryParam("scoreAllInstances") @NotNull Boolean scoreAllInstances, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("icon") File icon, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("goalCount") Long goalCount, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Integer gameObjectId);
 
     /**
      * Delete Achievement
@@ -85,7 +84,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Delete Achievement", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteAchievement(@PathParam("version") BigDecimal version, @QueryParam("achievementId") @NotNull Long achievementId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse deleteAchievement(@QueryParam("achievementId") @NotNull Long achievementId, @QueryParam("accountId") Long accountId);
 
     /**
      * Delete Achievement Tier
@@ -99,7 +98,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Delete Achievement Tier", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteAchievementTier(@PathParam("version") BigDecimal version, @QueryParam("achievementTierId") @NotNull Long achievementTierId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse deleteAchievementTier(@QueryParam("achievementTierId") @NotNull Long achievementTierId, @QueryParam("accountId") Long accountId);
 
     /**
      * Get Achievement
@@ -113,7 +112,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Get Achievement", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementTierResponse.class) })
-    public AchievementTierResponse getAchievement(@PathParam("version") BigDecimal version, @QueryParam("achievementId") @NotNull Long achievementId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("achievementType") String achievementType);
+    public AchievementTierResponse getAchievement(@QueryParam("achievementId") @NotNull Long achievementId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("achievementType") String achievementType);
 
     /**
      * Gets an achievement tier
@@ -127,7 +126,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Gets an achievement tier", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementTierResponse.class) })
-    public AchievementTierResponse getAchievementTier(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("achievementTierId") @NotNull Long achievementTierId);
+    public AchievementTierResponse getAchievementTier(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("achievementTierId") @NotNull Long achievementTierId);
 
     /**
      * Get Achievement Progress
@@ -141,7 +140,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Get Achievement Progress", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementProgressResponse.class, responseContainer = "List") })
-    public List<AchievementProgressResponse> getUserAchievements(@PathParam("version") BigDecimal version, @QueryParam("returnNulls") @NotNull @DefaultValue("true")Boolean returnNulls, @QueryParam("appKey") @NotNull String appKey, @QueryParam("includeUndiscovered") @NotNull @DefaultValue("true")Boolean includeUndiscovered, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountEmail") String connectionAccountEmail, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("rankType") String rankType, @QueryParam("achievementType") String achievementType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public List<AchievementProgressResponse> getUserAchievements(@QueryParam("returnNulls") @NotNull @DefaultValue("true")Boolean returnNulls, @QueryParam("appKey") @NotNull String appKey, @QueryParam("includeUndiscovered") @NotNull @DefaultValue("true")Boolean includeUndiscovered, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountEmail") String connectionAccountEmail, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("rankType") String rankType, @QueryParam("achievementType") String achievementType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * List Achievement Tags
@@ -155,7 +154,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "List Achievement Tags", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse listAchievementTags(@PathParam("version") BigDecimal version, @QueryParam("appKey") String appKey);
+    public SirqulResponse listAchievementTags(@QueryParam("appKey") String appKey);
 
     /**
      * List Achievements
@@ -169,7 +168,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "List Achievements", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementShortResponse.class, responseContainer = "List") })
-    public List<AchievementShortResponse> listAchievements(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("achievementType") String achievementType, @QueryParam("rankType") String rankType);
+    public List<AchievementShortResponse> listAchievements(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("achievementType") String achievementType, @QueryParam("rankType") String rankType);
 
     /**
      * Search Achievements
@@ -183,7 +182,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Search Achievements", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementShortResponse.class, responseContainer = "List") })
-    public List<AchievementShortResponse> searchAchievements(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("sortField") @NotNull @DefaultValue("TITLE")String sortField, @QueryParam("descending") @NotNull @DefaultValue("false")Boolean descending, @QueryParam("includeTiers") @NotNull @DefaultValue("false")Boolean includeTiers, @QueryParam("includeInactiveTiers") @NotNull @DefaultValue("false")Boolean includeInactiveTiers, @QueryParam("start") @NotNull @DefaultValue("0")Integer start, @QueryParam("limit") @NotNull @DefaultValue("100")Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("keyword") String keyword, @QueryParam("achievementType") String achievementType, @QueryParam("rankType") String rankType);
+    public List<AchievementShortResponse> searchAchievements(@QueryParam("appKey") @NotNull String appKey, @QueryParam("sortField") @NotNull @DefaultValue("TITLE")String sortField, @QueryParam("descending") @NotNull @DefaultValue("false")Boolean descending, @QueryParam("includeTiers") @NotNull @DefaultValue("false")Boolean includeTiers, @QueryParam("includeInactiveTiers") @NotNull @DefaultValue("false")Boolean includeInactiveTiers, @QueryParam("start") @NotNull @DefaultValue("0")Integer start, @QueryParam("limit") @NotNull @DefaultValue("100")Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("keyword") String keyword, @QueryParam("achievementType") String achievementType, @QueryParam("rankType") String rankType);
 
     /**
      * Update Achievement
@@ -197,7 +196,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Update Achievement", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementResponse.class) })
-    public AchievementResponse updateAchievement(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("achievementId") Long achievementId, @QueryParam("analyticsTag") String analyticsTag, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("rankType") String rankType, @QueryParam("rankIncrement") Integer rankIncrement, @QueryParam("minIncrement") Integer minIncrement, @QueryParam("nullMinIncrement") Boolean nullMinIncrement, @QueryParam("maxIncrement") Integer maxIncrement, @QueryParam("nullMaxIncrement") Boolean nullMaxIncrement, @QueryParam("validate") Boolean validate, @QueryParam("active") Boolean active, @QueryParam("triggerDefinition") String triggerDefinition);
+    public AchievementResponse updateAchievement(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("achievementId") Long achievementId, @QueryParam("analyticsTag") String analyticsTag, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("rankType") String rankType, @QueryParam("rankIncrement") Integer rankIncrement, @QueryParam("minIncrement") Integer minIncrement, @QueryParam("nullMinIncrement") Boolean nullMinIncrement, @QueryParam("maxIncrement") Integer maxIncrement, @QueryParam("nullMaxIncrement") Boolean nullMaxIncrement, @QueryParam("validate") Boolean validate, @QueryParam("active") Boolean active, @QueryParam("triggerDefinition") String triggerDefinition);
 
     /**
      * Update Achievement Tier
@@ -211,7 +210,7 @@ public interface AchievementApi  {
     @ApiOperation(value = "Update Achievement Tier", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AchievementTierResponse.class) })
-    public AchievementTierResponse updateAchievementTier(@PathParam("version") BigDecimal version, @QueryParam("achievementTierId") @NotNull Long achievementTierId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("icon") File icon, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("goalCount") Long goalCount, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId, @QueryParam("scoreAllInstances") Boolean scoreAllInstances);
+    public AchievementTierResponse updateAchievementTier(@QueryParam("achievementTierId") @NotNull Long achievementTierId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("icon") File icon, @QueryParam("iconAssetId") Long iconAssetId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("goalCount") Long goalCount, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId, @QueryParam("scoreAllInstances") Boolean scoreAllInstances);
 
     /**
      * Update Achievement Progress
@@ -225,5 +224,5 @@ public interface AchievementApi  {
     @ApiOperation(value = "Update Achievement Progress", tags={ "Achievement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse updateUserAchievement(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("achievementId") Long achievementId, @QueryParam("tag") String tag, @QueryParam("customId") Long customId, @QueryParam("increment") Long increment, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("returnProgress") Boolean returnProgress);
+    public SirqulResponse updateUserAchievement(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("achievementId") Long achievementId, @QueryParam("tag") String tag, @QueryParam("customId") Long customId, @QueryParam("increment") Long increment, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("returnProgress") Boolean returnProgress);
 }

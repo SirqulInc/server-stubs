@@ -2,7 +2,6 @@ package org.openapitools.api;
 
 import org.openapitools.model.AlbumContestListResponse;
 import org.openapitools.model.AlbumContestResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 
 import java.util.List;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/consumer/album/contest")
+@Path("/consumer/album/contest")
 @Api(value = "/", description = "")
 public interface ContestApi  {
 
@@ -40,7 +39,7 @@ public interface ContestApi  {
     @ApiOperation(value = "Create or Update Contest", tags={ "Contest" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AlbumContestResponse.class) })
-    public AlbumContestResponse addOrUpdateAlbumContest(@PathParam("version") BigDecimal version, @QueryParam("publicRead") @NotNull Boolean publicRead, @QueryParam("publicWrite") @NotNull Boolean publicWrite, @QueryParam("publicDelete") @NotNull Boolean publicDelete, @QueryParam("publicAdd") @NotNull Boolean publicAdd, @QueryParam("visibility") @NotNull String visibility, @QueryParam("includeFriendGroup") @NotNull Boolean includeFriendGroup, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("contestType") String contestType, @QueryParam("albumContestId") Long albumContestId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("albumId1") Long albumId1, @QueryParam("removeAlbum1") Boolean removeAlbum1, @QueryParam("albumId2") Long albumId2, @QueryParam("removeAlbum2") Boolean removeAlbum2, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("locationDescription") String locationDescription, @QueryParam("connectionIdsToAdd") String connectionIdsToAdd, @QueryParam("connectionGroupIdsToAdd") String connectionGroupIdsToAdd, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public AlbumContestResponse addOrUpdateAlbumContest(@QueryParam("publicRead") @NotNull Boolean publicRead, @QueryParam("publicWrite") @NotNull Boolean publicWrite, @QueryParam("publicDelete") @NotNull Boolean publicDelete, @QueryParam("publicAdd") @NotNull Boolean publicAdd, @QueryParam("visibility") @NotNull String visibility, @QueryParam("includeFriendGroup") @NotNull Boolean includeFriendGroup, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("contestType") String contestType, @QueryParam("albumContestId") Long albumContestId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("albumId1") Long albumId1, @QueryParam("removeAlbum1") Boolean removeAlbum1, @QueryParam("albumId2") Long albumId2, @QueryParam("removeAlbum2") Boolean removeAlbum2, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("locationDescription") String locationDescription, @QueryParam("connectionIdsToAdd") String connectionIdsToAdd, @QueryParam("connectionGroupIdsToAdd") String connectionGroupIdsToAdd, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Approve Contest
@@ -54,7 +53,7 @@ public interface ContestApi  {
     @ApiOperation(value = "Approve Contest", tags={ "Contest" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse approveAlbumContest(@PathParam("version") BigDecimal version, @QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("approvalStatus") @NotNull String approvalStatus, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse approveAlbumContest(@QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("approvalStatus") @NotNull String approvalStatus, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 
     /**
      * Delete Contest
@@ -68,7 +67,7 @@ public interface ContestApi  {
     @ApiOperation(value = "Delete Contest", tags={ "Contest" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteContest(@PathParam("version") BigDecimal version, @QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse deleteContest(@QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Get Contest
@@ -82,7 +81,7 @@ public interface ContestApi  {
     @ApiOperation(value = "Get Contest", tags={ "Contest" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AlbumContestResponse.class) })
-    public AlbumContestResponse getAlbumContest(@PathParam("version") BigDecimal version, @QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public AlbumContestResponse getAlbumContest(@QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Search Contests
@@ -96,7 +95,7 @@ public interface ContestApi  {
     @ApiOperation(value = "Search Contests", tags={ "Contest" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AlbumContestListResponse.class) })
-    public AlbumContestListResponse getAlbumContests(@PathParam("version") BigDecimal version, @QueryParam("filter") @NotNull String filter, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("appType") String appType, @QueryParam("contestType") String contestType, @QueryParam("ownerId") Long ownerId, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("dateCreated") Long dateCreated, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public AlbumContestListResponse getAlbumContests(@QueryParam("filter") @NotNull String filter, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("appKey") String appKey, @QueryParam("appType") String appType, @QueryParam("contestType") String contestType, @QueryParam("ownerId") Long ownerId, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("dateCreated") Long dateCreated, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Vote on Contest
@@ -110,5 +109,5 @@ public interface ContestApi  {
     @ApiOperation(value = "Vote on Contest", tags={ "Contest" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AlbumContestResponse.class) })
-    public AlbumContestResponse voteOnAlbumContest(@PathParam("version") BigDecimal version, @QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("albumId") @NotNull Long albumId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("contestType") String contestType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public AlbumContestResponse voteOnAlbumContest(@QueryParam("albumContestId") @NotNull Long albumContestId, @QueryParam("albumId") @NotNull Long albumId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("contestType") String contestType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 }

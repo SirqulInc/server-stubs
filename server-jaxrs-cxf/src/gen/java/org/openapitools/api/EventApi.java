@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.EventAttendanceResponse;
 import org.openapitools.model.OfferResponse;
 import org.openapitools.model.OfferShortResponse;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/event")
+@Path("/event")
 @Api(value = "/", description = "")
 public interface EventApi  {
 
@@ -41,7 +40,7 @@ public interface EventApi  {
     @ApiOperation(value = "Attend Event", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OfferResponse.class) })
-    public OfferResponse attendEvent(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("listingId") Long listingId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("transactionId") Long transactionId, @QueryParam("status") Integer status, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public OfferResponse attendEvent(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("listingId") Long listingId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("transactionId") Long transactionId, @QueryParam("status") Integer status, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Create Event
@@ -55,7 +54,7 @@ public interface EventApi  {
     @ApiOperation(value = "Create Event", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OfferResponse.class) })
-    public OfferResponse createEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("title") @NotNull String title, @QueryParam("retailerLocationIds") String retailerLocationIds, @QueryParam("subTitle") String subTitle, @QueryParam("details") String details, @QueryParam("categoryIds") String categoryIds, @QueryParam("filterIds") String filterIds, @QueryParam("active") Boolean active, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("redeemableStart") Long redeemableStart, @QueryParam("redeemableEnd") Long redeemableEnd, @QueryParam("metaData") String metaData);
+    public OfferResponse createEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("title") @NotNull String title, @QueryParam("retailerLocationIds") String retailerLocationIds, @QueryParam("subTitle") String subTitle, @QueryParam("details") String details, @QueryParam("categoryIds") String categoryIds, @QueryParam("filterIds") String filterIds, @QueryParam("active") Boolean active, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("redeemableStart") Long redeemableStart, @QueryParam("redeemableEnd") Long redeemableEnd, @QueryParam("metaData") String metaData);
 
     /**
      * Delete Event
@@ -69,7 +68,7 @@ public interface EventApi  {
     @ApiOperation(value = "Delete Event", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("eventId") @NotNull Long eventId);
+    public SirqulResponse deleteEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("eventId") @NotNull Long eventId);
 
     /**
      * Get Event
@@ -83,7 +82,7 @@ public interface EventApi  {
     @ApiOperation(value = "Get Event", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OfferResponse.class) })
-    public OfferResponse getEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("eventId") @NotNull Long eventId);
+    public OfferResponse getEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("eventId") @NotNull Long eventId);
 
     /**
      * Search Event Attendance
@@ -97,7 +96,7 @@ public interface EventApi  {
     @ApiOperation(value = "Search Event Attendance", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = EventAttendanceResponse.class, responseContainer = "List") })
-    public List<EventAttendanceResponse> searchEventTransactions(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("excludeRetailerLocationId") Long excludeRetailerLocationId, @QueryParam("listingId") Long listingId, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("customerAccountIds") String customerAccountIds, @QueryParam("affiliatedCategoryIds") String affiliatedCategoryIds, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("statuses") String statuses, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
+    public List<EventAttendanceResponse> searchEventTransactions(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("excludeRetailerLocationId") Long excludeRetailerLocationId, @QueryParam("listingId") Long listingId, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("customerAccountIds") String customerAccountIds, @QueryParam("affiliatedCategoryIds") String affiliatedCategoryIds, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("statuses") String statuses, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
 
     /**
      * Search Events
@@ -111,7 +110,7 @@ public interface EventApi  {
     @ApiOperation(value = "Search Events", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OfferShortResponse.class, responseContainer = "List") })
-    public List<OfferShortResponse> searchEvents(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("activeOnly") Boolean activeOnly, @QueryParam("categoryIds") String categoryIds, @QueryParam("filterIds") String filterIds, @QueryParam("offerAudienceIds") String offerAudienceIds, @QueryParam("transactionAudienceIds") String transactionAudienceIds, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
+    public List<OfferShortResponse> searchEvents(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("activeOnly") Boolean activeOnly, @QueryParam("categoryIds") String categoryIds, @QueryParam("filterIds") String filterIds, @QueryParam("offerAudienceIds") String offerAudienceIds, @QueryParam("transactionAudienceIds") String transactionAudienceIds, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit);
 
     /**
      * Update Event
@@ -125,5 +124,5 @@ public interface EventApi  {
     @ApiOperation(value = "Update Event", tags={ "Event" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OfferResponse.class) })
-    public OfferResponse updateEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("eventId") @NotNull Long eventId, @QueryParam("retailerLocationIds") String retailerLocationIds, @QueryParam("title") String title, @QueryParam("subTitle") String subTitle, @QueryParam("details") String details, @QueryParam("categoryIds") String categoryIds, @QueryParam("filterIds") String filterIds, @QueryParam("active") Boolean active, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("redeemableStart") Long redeemableStart, @QueryParam("redeemableEnd") Long redeemableEnd);
+    public OfferResponse updateEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("eventId") @NotNull Long eventId, @QueryParam("retailerLocationIds") String retailerLocationIds, @QueryParam("title") String title, @QueryParam("subTitle") String subTitle, @QueryParam("details") String details, @QueryParam("categoryIds") String categoryIds, @QueryParam("filterIds") String filterIds, @QueryParam("active") Boolean active, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("redeemableStart") Long redeemableStart, @QueryParam("redeemableEnd") Long redeemableEnd);
 }

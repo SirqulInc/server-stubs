@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.PaymentRequest;
 import org.openapitools.model.ProfileResponse;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/secure")
+@Path("/secure")
 @Api(value = "/", description = "")
 public interface SecureAppApi  {
 
@@ -41,7 +40,7 @@ public interface SecureAppApi  {
     @ApiOperation(value = "Create Secure Application", tags={ "SecureApp" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse createSecureApplication(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyCert") @NotNull File keyCert, @QueryParam("trustStore") @NotNull File trustStore, @QueryParam("username") @NotNull String username, @QueryParam("password") @NotNull String password, @QueryParam("active") @DefaultValue("true")Boolean active, @QueryParam("biometricType") @DefaultValue("FACIAL")String biometricType, @QueryParam("biometricPosition") @DefaultValue("UNKNOWN")String biometricPosition, @QueryParam("biometricPosition2") @DefaultValue("UNKNOWN")String biometricPosition2);
+    public SirqulResponse createSecureApplication(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyCert") @NotNull File keyCert, @QueryParam("trustStore") @NotNull File trustStore, @QueryParam("username") @NotNull String username, @QueryParam("password") @NotNull String password, @QueryParam("active") @DefaultValue("true")Boolean active, @QueryParam("biometricType") @DefaultValue("FACIAL")String biometricType, @QueryParam("biometricPosition") @DefaultValue("UNKNOWN")String biometricPosition, @QueryParam("biometricPosition2") @DefaultValue("UNKNOWN")String biometricPosition2);
 
     /**
      * Delete Secure Application
@@ -55,7 +54,7 @@ public interface SecureAppApi  {
     @ApiOperation(value = "Delete Secure Application", tags={ "SecureApp" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteSecureApplication(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey);
+    public SirqulResponse deleteSecureApplication(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey);
 
     /**
      * Login Clear
@@ -69,7 +68,7 @@ public interface SecureAppApi  {
     @ApiOperation(value = "Login Clear", tags={ "SecureApp" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse loginSecure(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("biometricFile") @NotNull File biometricFile, @QueryParam("deviceId") String deviceId, @QueryParam("biometricFile2") File biometricFile2, @QueryParam("ageRestriction") @DefaultValue("0")Integer ageRestriction, @QueryParam("returnProfile") @DefaultValue("false")Boolean returnProfile, @QueryParam("responseFilters") @DefaultValue("PROFILE")String responseFilters, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public ProfileResponse loginSecure(@QueryParam("appKey") @NotNull String appKey, @QueryParam("biometricFile") @NotNull File biometricFile, @QueryParam("deviceId") String deviceId, @QueryParam("biometricFile2") File biometricFile2, @QueryParam("ageRestriction") @DefaultValue("0")Integer ageRestriction, @QueryParam("returnProfile") @DefaultValue("false")Boolean returnProfile, @QueryParam("responseFilters") @DefaultValue("PROFILE")String responseFilters, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Purchase Clear
@@ -84,7 +83,7 @@ public interface SecureAppApi  {
     @ApiOperation(value = "Purchase Clear", tags={ "SecureApp" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse purchaseSecure(@PathParam("version") BigDecimal version, @Valid @NotNull PaymentRequest body);
+    public ProfileResponse purchaseSecure(@Valid @NotNull PaymentRequest body);
 
     /**
      * Rest Secure Application
@@ -98,7 +97,7 @@ public interface SecureAppApi  {
     @ApiOperation(value = "Rest Secure Application", tags={ "SecureApp" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse resetSecure(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey);
+    public SirqulResponse resetSecure(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey);
 
     /**
      * Update Secure Application
@@ -112,5 +111,5 @@ public interface SecureAppApi  {
     @ApiOperation(value = "Update Secure Application", tags={ "SecureApp" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse updateSecureApplication(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("active") Boolean active, @QueryParam("keyCert") File keyCert, @QueryParam("trustStore") File trustStore, @QueryParam("username") String username, @QueryParam("password") String password, @QueryParam("biometricType") String biometricType, @QueryParam("biometricPosition") String biometricPosition, @QueryParam("biometricPosition2") String biometricPosition2);
+    public SirqulResponse updateSecureApplication(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("active") Boolean active, @QueryParam("keyCert") File keyCert, @QueryParam("trustStore") File trustStore, @QueryParam("username") String username, @QueryParam("password") String password, @QueryParam("biometricType") String biometricType, @QueryParam("biometricPosition") String biometricPosition, @QueryParam("biometricPosition2") String biometricPosition2);
 }

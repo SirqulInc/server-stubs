@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.CellCarrierResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/carrier/search")
+@Path("/carrier/search")
 @Api(value = "/", description = "")
 public interface CarrierApi  {
 
@@ -38,5 +37,5 @@ public interface CarrierApi  {
     @ApiOperation(value = "Search Carriers", tags={ "Carrier" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CellCarrierResponse.class, responseContainer = "List") })
-    public List<CellCarrierResponse> searchCarriers(@PathParam("version") BigDecimal version, @QueryParam("keyword") String keyword, @QueryParam("descending") @DefaultValue("false")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("true")Boolean activeOnly);
+    public List<CellCarrierResponse> searchCarriers(@QueryParam("keyword") String keyword, @QueryParam("descending") @DefaultValue("false")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("true")Boolean activeOnly);
 }

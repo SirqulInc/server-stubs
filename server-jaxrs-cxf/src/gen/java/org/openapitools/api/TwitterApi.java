@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.ProfileResponse;
 import org.openapitools.model.SirqulResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/twitter")
+@Path("/twitter")
 @Api(value = "/", description = "")
 public interface TwitterApi  {
 
@@ -39,7 +38,7 @@ public interface TwitterApi  {
     @ApiOperation(value = "Authorize Twitter", tags={ "Twitter" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse authorizeTwitter(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey);
+    public SirqulResponse authorizeTwitter(@QueryParam("appKey") @NotNull String appKey);
 
     /**
      * Login Twitter
@@ -53,5 +52,5 @@ public interface TwitterApi  {
     @ApiOperation(value = "Login Twitter", tags={ "Twitter" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse loginTwitter(@PathParam("version") BigDecimal version, @QueryParam("accessToken") @NotNull String accessToken, @QueryParam("accessTokenSecret") @NotNull String accessTokenSecret, @QueryParam("appKey") @NotNull String appKey, @QueryParam("responseFilters") @NotNull String responseFilters, @QueryParam("deviceId") String deviceId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public ProfileResponse loginTwitter(@QueryParam("accessToken") @NotNull String accessToken, @QueryParam("accessTokenSecret") @NotNull String accessTokenSecret, @QueryParam("appKey") @NotNull String appKey, @QueryParam("responseFilters") @NotNull String responseFilters, @QueryParam("deviceId") String deviceId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 }

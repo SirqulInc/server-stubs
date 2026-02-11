@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.GameLevelListResponse;
 import org.openapitools.model.GameLevelResponse;
 import org.openapitools.model.QuestionResponse;
@@ -26,7 +25,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/level")
+@Path("/level")
 @Api(value = "/", description = "")
 public interface GameLevelApi  {
 
@@ -42,7 +41,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Create Game Level", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameLevelResponse.class) })
-    public GameLevelResponse createGameLevel(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("gameData") @NotNull String gameData, @QueryParam("gameDataSuffix") @NotNull String gameDataSuffix, @QueryParam("appKey") String appKey, @QueryParam("description") String description, @QueryParam("difficulty") String difficulty, @QueryParam("appVersion") String appVersion, @QueryParam("assetImageId") Long assetImageId, @QueryParam("assetIconId") Long assetIconId, @QueryParam("visibility") String visibility, @QueryParam("friendGroup") Boolean friendGroup, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("balance") Double balance, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("tutorialTitle") String tutorialTitle, @QueryParam("tutorialMessage") String tutorialMessage, @QueryParam("tutorialAlignment") String tutorialAlignment, @QueryParam("tutorialImageAssetId") Long tutorialImageAssetId, @QueryParam("offerId") Long offerId, @QueryParam("metaData") String metaData);
+    public GameLevelResponse createGameLevel(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("gameData") @NotNull String gameData, @QueryParam("gameDataSuffix") @NotNull String gameDataSuffix, @QueryParam("appKey") String appKey, @QueryParam("description") String description, @QueryParam("difficulty") String difficulty, @QueryParam("appVersion") String appVersion, @QueryParam("assetImageId") Long assetImageId, @QueryParam("assetIconId") Long assetIconId, @QueryParam("visibility") String visibility, @QueryParam("friendGroup") Boolean friendGroup, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("balance") Double balance, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("tutorialTitle") String tutorialTitle, @QueryParam("tutorialMessage") String tutorialMessage, @QueryParam("tutorialAlignment") String tutorialAlignment, @QueryParam("tutorialImageAssetId") Long tutorialImageAssetId, @QueryParam("offerId") Long offerId, @QueryParam("metaData") String metaData);
 
     /**
      * Delete Game Level
@@ -56,7 +55,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Delete Game Level", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteGameLevel(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("levelId") @NotNull Long levelId);
+    public SirqulResponse deleteGameLevel(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("levelId") @NotNull Long levelId);
 
     /**
      * Get Game Level
@@ -70,7 +69,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Get Game Level", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameLevelResponse.class) })
-    public GameLevelResponse getGameLevel(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("includeGameData") Boolean includeGameData);
+    public GameLevelResponse getGameLevel(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("includeGameData") Boolean includeGameData);
 
     /**
      * Search Game Levels
@@ -84,7 +83,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Search Game Levels", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameLevelListResponse.class) })
-    public GameLevelListResponse getGameLevelsByApplication(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("appVersion") String appVersion, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("filters") String filters);
+    public GameLevelListResponse getGameLevelsByApplication(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("appVersion") String appVersion, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("filters") String filters);
 
     /**
      * Search Game Level by Billable Entity
@@ -98,7 +97,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Search Game Level by Billable Entity", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameLevelResponse.class) })
-    public GameLevelResponse getGameLevelsByBillableEntity(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("activeOnly") Boolean activeOnly, @QueryParam("start") Long start, @QueryParam("limit") Long limit);
+    public GameLevelResponse getGameLevelsByBillableEntity(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") String appKey, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("activeOnly") Boolean activeOnly, @QueryParam("start") Long start, @QueryParam("limit") Long limit);
 
     /**
      * Get Level Questions
@@ -112,7 +111,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Get Level Questions", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = QuestionResponse.class) })
-    public QuestionResponse getQuestionsInLevel(@PathParam("version") BigDecimal version, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId);
+    public QuestionResponse getQuestionsInLevel(@QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Level Words
@@ -126,7 +125,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Get Level Words", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = WordzWordResponse.class) })
-    public WordzWordResponse getWordsInLevel(@PathParam("version") BigDecimal version, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId);
+    public WordzWordResponse getWordsInLevel(@QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Update Game Level
@@ -140,7 +139,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Update Game Level", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameLevelResponse.class) })
-    public GameLevelResponse updateGameLevel(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("appKey") String appKey, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("difficulty") String difficulty, @QueryParam("appVersion") String appVersion, @QueryParam("assetImageId") Long assetImageId, @QueryParam("assetIconId") Long assetIconId, @QueryParam("gameData") String gameData, @QueryParam("gameDataSuffix") String gameDataSuffix, @QueryParam("visibility") String visibility, @QueryParam("friendGroup") Boolean friendGroup, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("balance") Double balance, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("tutorialTitle") String tutorialTitle, @QueryParam("tutorialMessage") String tutorialMessage, @QueryParam("tutorialAlignment") String tutorialAlignment, @QueryParam("tutorialImageAssetId") Long tutorialImageAssetId, @QueryParam("offerId") Long offerId, @QueryParam("metaData") String metaData);
+    public GameLevelResponse updateGameLevel(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("appKey") String appKey, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("difficulty") String difficulty, @QueryParam("appVersion") String appVersion, @QueryParam("assetImageId") Long assetImageId, @QueryParam("assetIconId") Long assetIconId, @QueryParam("gameData") String gameData, @QueryParam("gameDataSuffix") String gameDataSuffix, @QueryParam("visibility") String visibility, @QueryParam("friendGroup") Boolean friendGroup, @QueryParam("connectionIds") String connectionIds, @QueryParam("connectionGroupIds") String connectionGroupIds, @QueryParam("balance") Double balance, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("tutorialTitle") String tutorialTitle, @QueryParam("tutorialMessage") String tutorialMessage, @QueryParam("tutorialAlignment") String tutorialAlignment, @QueryParam("tutorialImageAssetId") Long tutorialImageAssetId, @QueryParam("offerId") Long offerId, @QueryParam("metaData") String metaData);
 
     /**
      * Update Level Questions
@@ -154,7 +153,7 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Update Level Questions", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse updateQuestionsInLevel(@PathParam("version") BigDecimal version, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("questionIds") @NotNull String questionIds);
+    public SirqulResponse updateQuestionsInLevel(@QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("questionIds") @NotNull String questionIds);
 
     /**
      * Update Level Words
@@ -168,5 +167,5 @@ public interface GameLevelApi  {
     @ApiOperation(value = "Update Level Words", tags={ "Game Level" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse updateWordsInLevel(@PathParam("version") BigDecimal version, @QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("wordIds") @NotNull String wordIds);
+    public SirqulResponse updateWordsInLevel(@QueryParam("levelId") @NotNull Long levelId, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("wordIds") @NotNull String wordIds);
 }

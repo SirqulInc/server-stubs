@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.ActivityResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.EntityReference;
 
 import java.util.List;
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/entity/reference")
+@Path("/entity/reference")
 @Api(value = "/", description = "")
 public interface ActivityApi  {
 
@@ -40,5 +39,5 @@ public interface ActivityApi  {
     @ApiOperation(value = "Create an entity reference.", tags={ "Activity" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ActivityResponse.class) })
-    public ActivityResponse createEntityReference(@PathParam("version") BigDecimal version, @Valid @NotNull EntityReference body);
+    public ActivityResponse createEntityReference(@Valid @NotNull EntityReference body);
 }

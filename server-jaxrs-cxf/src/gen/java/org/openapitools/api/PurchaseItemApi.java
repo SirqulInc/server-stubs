@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.PurchaseItemFullResponse;
 import org.openapitools.model.PurchaseItemResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/purchase")
+@Path("/purchase")
 @Api(value = "/", description = "")
 public interface PurchaseItemApi  {
 
@@ -40,7 +39,7 @@ public interface PurchaseItemApi  {
     @ApiOperation(value = "Create Purchase", tags={ "Purchase Item" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PurchaseItemFullResponse.class) })
-    public PurchaseItemFullResponse createPurchaseItem(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("name") @NotNull String name, @QueryParam("purchaseType") @NotNull String purchaseType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("description") String description, @QueryParam("tickets") Integer tickets, @QueryParam("price") Float price, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("secretKey") String secretKey, @QueryParam("purchaseLimit") @DefaultValue("0")Integer purchaseLimit, @QueryParam("serviceAction") String serviceAction, @QueryParam("coverAssetId") Long coverAssetId, @QueryParam("promoAssetId") Long promoAssetId, @QueryParam("giftable") Boolean giftable, @QueryParam("assetable") Boolean assetable, @QueryParam("allocateTickets") @DefaultValue("false")Boolean allocateTickets, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("offerLocationId") Long offerLocationId);
+    public PurchaseItemFullResponse createPurchaseItem(@QueryParam("appKey") @NotNull String appKey, @QueryParam("name") @NotNull String name, @QueryParam("purchaseType") @NotNull String purchaseType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("description") String description, @QueryParam("tickets") Integer tickets, @QueryParam("price") Float price, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("secretKey") String secretKey, @QueryParam("purchaseLimit") @DefaultValue("0")Integer purchaseLimit, @QueryParam("serviceAction") String serviceAction, @QueryParam("coverAssetId") Long coverAssetId, @QueryParam("promoAssetId") Long promoAssetId, @QueryParam("giftable") Boolean giftable, @QueryParam("assetable") Boolean assetable, @QueryParam("allocateTickets") @DefaultValue("false")Boolean allocateTickets, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("offerLocationId") Long offerLocationId);
 
     /**
      * Delete Purchase
@@ -54,7 +53,7 @@ public interface PurchaseItemApi  {
     @ApiOperation(value = "Delete Purchase", tags={ "Purchase Item" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deletePurchaseItem(@PathParam("version") BigDecimal version, @QueryParam("purchaseItemId") @NotNull Long purchaseItemId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public SirqulResponse deletePurchaseItem(@QueryParam("purchaseItemId") @NotNull Long purchaseItemId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 
     /**
      * Get Purchase
@@ -68,7 +67,7 @@ public interface PurchaseItemApi  {
     @ApiOperation(value = "Get Purchase", tags={ "Purchase Item" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PurchaseItemFullResponse.class) })
-    public PurchaseItemFullResponse getPurchaseItem(@PathParam("version") BigDecimal version, @QueryParam("purchaseItemId") @NotNull Long purchaseItemId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public PurchaseItemFullResponse getPurchaseItem(@QueryParam("purchaseItemId") @NotNull Long purchaseItemId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 
     /**
      * Search Purchases
@@ -82,7 +81,7 @@ public interface PurchaseItemApi  {
     @ApiOperation(value = "Search Purchases", tags={ "Purchase Item" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PurchaseItemResponse.class, responseContainer = "List") })
-    public List<PurchaseItemResponse> searchPurchaseItems(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("filterByBillable") @DefaultValue("false")Boolean filterByBillable, @QueryParam("purchaseType") String purchaseType, @QueryParam("serviceAction") String serviceAction, @QueryParam("keyword") String keyword, @QueryParam("sortField") @DefaultValue("NAME")String sortField, @QueryParam("descending") @DefaultValue("false")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("false")Boolean activeOnly);
+    public List<PurchaseItemResponse> searchPurchaseItems(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("filterByBillable") @DefaultValue("false")Boolean filterByBillable, @QueryParam("purchaseType") String purchaseType, @QueryParam("serviceAction") String serviceAction, @QueryParam("keyword") String keyword, @QueryParam("sortField") @DefaultValue("NAME")String sortField, @QueryParam("descending") @DefaultValue("false")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("false")Boolean activeOnly);
 
     /**
      * Update Purchase
@@ -96,5 +95,5 @@ public interface PurchaseItemApi  {
     @ApiOperation(value = "Update Purchase", tags={ "Purchase Item" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PurchaseItemFullResponse.class) })
-    public PurchaseItemFullResponse updatePurchaseItem(@PathParam("version") BigDecimal version, @QueryParam("purchaseItemId") @NotNull Long purchaseItemId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("tickets") Integer tickets, @QueryParam("price") Float price, @QueryParam("purchaseType") String purchaseType, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("secretKey") String secretKey, @QueryParam("purchaseLimit") Integer purchaseLimit, @QueryParam("serviceAction") String serviceAction, @QueryParam("coverAssetId") Long coverAssetId, @QueryParam("promoAssetId") Long promoAssetId, @QueryParam("giftable") Boolean giftable, @QueryParam("assetable") Boolean assetable, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") @DefaultValue("false")Boolean allocateTickets, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("offerLocationId") Long offerLocationId);
+    public PurchaseItemFullResponse updatePurchaseItem(@QueryParam("purchaseItemId") @NotNull Long purchaseItemId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("tickets") Integer tickets, @QueryParam("price") Float price, @QueryParam("purchaseType") String purchaseType, @QueryParam("purchaseCode") String purchaseCode, @QueryParam("secretKey") String secretKey, @QueryParam("purchaseLimit") Integer purchaseLimit, @QueryParam("serviceAction") String serviceAction, @QueryParam("coverAssetId") Long coverAssetId, @QueryParam("promoAssetId") Long promoAssetId, @QueryParam("giftable") Boolean giftable, @QueryParam("assetable") Boolean assetable, @QueryParam("active") Boolean active, @QueryParam("allocateTickets") @DefaultValue("false")Boolean allocateTickets, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("offerLocationId") Long offerLocationId);
 }

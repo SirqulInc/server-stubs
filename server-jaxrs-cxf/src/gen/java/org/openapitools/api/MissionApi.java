@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.MissionFormatResponse;
 import org.openapitools.model.MissionResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/mission")
+@Path("/mission")
 @Api(value = "/", description = "")
 public interface MissionApi  {
 
@@ -40,7 +39,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Create Mission", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class) })
-    public MissionResponse createMission(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("title") @NotNull String title, @QueryParam("description") String description, @QueryParam("subType") String subType, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("active") Boolean active, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("creativeIds") String creativeIds, @QueryParam("audienceIds") String audienceIds, @QueryParam("missionTask") String missionTask, @QueryParam("formatType") String formatType, @QueryParam("offerId") Long offerId, @QueryParam("balance") Double balance, @QueryParam("advancedReporting") Boolean advancedReporting, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("metaData") String metaData, @QueryParam("applicationIds") String applicationIds, @QueryParam("devices") String devices, @QueryParam("deviceIds") String deviceIds, @QueryParam("deviceVersions") String deviceVersions, @QueryParam("locations") String locations, @QueryParam("radius") String radius);
+    public MissionResponse createMission(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("title") @NotNull String title, @QueryParam("description") String description, @QueryParam("subType") String subType, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("active") Boolean active, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("creativeIds") String creativeIds, @QueryParam("audienceIds") String audienceIds, @QueryParam("missionTask") String missionTask, @QueryParam("formatType") String formatType, @QueryParam("offerId") Long offerId, @QueryParam("balance") Double balance, @QueryParam("advancedReporting") Boolean advancedReporting, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("metaData") String metaData, @QueryParam("applicationIds") String applicationIds, @QueryParam("devices") String devices, @QueryParam("deviceIds") String deviceIds, @QueryParam("deviceVersions") String deviceVersions, @QueryParam("locations") String locations, @QueryParam("radius") String radius);
 
     /**
      * Delete Mission
@@ -54,7 +53,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Delete Mission", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteMission(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId);
+    public SirqulResponse deleteMission(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId);
 
     /**
      * Find Missions
@@ -68,7 +67,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Find Missions", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class) })
-    public MissionResponse findMissions(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("suffix") String suffix, @QueryParam("type") String type, @QueryParam("accountId") Long accountId, @QueryParam("appVersion") String appVersion, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("device") String device, @QueryParam("deviceIdentifier") Long deviceIdentifier, @QueryParam("deviceVersion") String deviceVersion, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("allocatesTickets") Boolean allocatesTickets, @QueryParam("randomize") Boolean randomize, @QueryParam("targetedAdsOnly") Boolean targetedAdsOnly, @QueryParam("missionIds") String missionIds, @QueryParam("audienceOperator") String audienceOperator);
+    public MissionResponse findMissions(@QueryParam("appKey") @NotNull String appKey, @QueryParam("suffix") String suffix, @QueryParam("type") String type, @QueryParam("accountId") Long accountId, @QueryParam("appVersion") String appVersion, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("device") String device, @QueryParam("deviceIdentifier") Long deviceIdentifier, @QueryParam("deviceVersion") String deviceVersion, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("allocatesTickets") Boolean allocatesTickets, @QueryParam("randomize") Boolean randomize, @QueryParam("targetedAdsOnly") Boolean targetedAdsOnly, @QueryParam("missionIds") String missionIds, @QueryParam("audienceOperator") String audienceOperator);
 
     /**
      * Get Mission
@@ -82,7 +81,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Get Mission", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class) })
-    public MissionResponse getMission(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("returnCreative") Boolean returnCreative);
+    public MissionResponse getMission(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("returnCreative") Boolean returnCreative);
 
     /**
      * Import Mission
@@ -96,7 +95,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Import Mission", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse importMission(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("latitude") @NotNull Double latitude, @QueryParam("longitude") @NotNull Double longitude, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyword") String keyword, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("adSize") String adSize);
+    public SirqulResponse importMission(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("latitude") @NotNull Double latitude, @QueryParam("longitude") @NotNull Double longitude, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyword") String keyword, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("adSize") String adSize);
 
     /**
      * Search Mission Formats
@@ -110,7 +109,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Search Mission Formats", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionFormatResponse.class, responseContainer = "List") })
-    public List<MissionFormatResponse> searchMissionFormats(@PathParam("version") BigDecimal version, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly);
+    public List<MissionFormatResponse> searchMissionFormats(@QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly);
 
     /**
      * Search Missions
@@ -124,7 +123,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Search Missions", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class, responseContainer = "List") })
-    public List<MissionResponse> searchMissions(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("subType") String subType, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("includeInactive") Boolean includeInactive, @QueryParam("suffix") String suffix, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending);
+    public List<MissionResponse> searchMissions(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("subType") String subType, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("includeInactive") Boolean includeInactive, @QueryParam("suffix") String suffix, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending);
 
     /**
      * Search Missions by Billable Entity
@@ -138,7 +137,7 @@ public interface MissionApi  {
     @ApiOperation(value = "Search Missions by Billable Entity", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class, responseContainer = "List") })
-    public List<MissionResponse> searchMissionsByBillableEntity(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("includeInactive") Boolean includeInactive, @QueryParam("suffix") String suffix, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending);
+    public List<MissionResponse> searchMissionsByBillableEntity(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("includeInactive") Boolean includeInactive, @QueryParam("suffix") String suffix, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending);
 
     /**
      * Update Mission
@@ -152,5 +151,5 @@ public interface MissionApi  {
     @ApiOperation(value = "Update Mission", tags={ "Mission" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class) })
-    public MissionResponse updateMission(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("subType") String subType, @QueryParam("metaData") String metaData, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("active") Boolean active, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("creativeIds") String creativeIds, @QueryParam("audienceIds") String audienceIds, @QueryParam("offerId") Long offerId, @QueryParam("balance") Double balance, @QueryParam("advancedReporting") Boolean advancedReporting, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("applicationIds") String applicationIds, @QueryParam("devices") String devices, @QueryParam("deviceIds") String deviceIds, @QueryParam("deviceVersions") String deviceVersions, @QueryParam("locations") String locations, @QueryParam("radius") String radius);
+    public MissionResponse updateMission(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("subType") String subType, @QueryParam("metaData") String metaData, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("active") Boolean active, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("creativeIds") String creativeIds, @QueryParam("audienceIds") String audienceIds, @QueryParam("offerId") Long offerId, @QueryParam("balance") Double balance, @QueryParam("advancedReporting") Boolean advancedReporting, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("ticketCount") Long ticketCount, @QueryParam("ticketType") String ticketType, @QueryParam("points") Long points, @QueryParam("applicationIds") String applicationIds, @QueryParam("devices") String devices, @QueryParam("deviceIds") String deviceIds, @QueryParam("deviceVersions") String deviceVersions, @QueryParam("locations") String locations, @QueryParam("radius") String radius);
 }

@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.OrsonAiAddMovieResponse;
 import org.openapitools.model.OrsonAiBatchResponse;
@@ -33,7 +32,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/orson")
+@Path("/orson")
 @Api(value = "/", description = "")
 public interface OrsonApi  {
 
@@ -49,7 +48,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Add Movie", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiAddMovieResponse.class) })
-    public OrsonAiAddMovieResponse addMovie(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("movieName") @NotNull String movieName, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("tags") String tags, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
+    public OrsonAiAddMovieResponse addMovie(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("movieName") @NotNull String movieName, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("tags") String tags, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
 
     /**
      * Search Docs
@@ -63,7 +62,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Search Docs", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiProtoResponse.class) })
-    public OrsonAiProtoResponse aiDocs(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("doc") @NotNull String doc, @QueryParam("return_topics") Boolean returnTopics, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset);
+    public OrsonAiProtoResponse aiDocs(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("doc") @NotNull String doc, @QueryParam("return_topics") Boolean returnTopics, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset);
 
     /**
      * Find images
@@ -77,7 +76,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Find images", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiProtoResponse.class) })
-    public OrsonAiProtoResponse aiFindImages(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("text") @NotNull String text, @QueryParam("parse_flag") String parseFlag, @QueryParam("fetch_flag") String fetchFlag, @QueryParam("size") String size);
+    public OrsonAiProtoResponse aiFindImages(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("text") @NotNull String text, @QueryParam("parse_flag") String parseFlag, @QueryParam("fetch_flag") String fetchFlag, @QueryParam("size") String size);
 
     /**
      * Search Tags
@@ -91,7 +90,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Search Tags", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiProtoResponse.class) })
-    public OrsonAiProtoResponse aiTags(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("tags") @NotNull String tags, @QueryParam("conditional") String conditional, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset);
+    public OrsonAiProtoResponse aiTags(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("tags") @NotNull String tags, @QueryParam("conditional") String conditional, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset);
 
     /**
      * Search Text
@@ -105,7 +104,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Search Text", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiProtoResponse.class) })
-    public OrsonAiProtoResponse aiText(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("terms") @NotNull String terms, @QueryParam("conditional") String conditional, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset);
+    public OrsonAiProtoResponse aiText(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("terms") @NotNull String terms, @QueryParam("conditional") String conditional, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset);
 
     /**
      * Batch Analysis
@@ -119,7 +118,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Batch Analysis", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiBatchResponse.class) })
-    public OrsonAiBatchResponse batch(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("limit") Integer limit, @QueryParam("operations") String operations, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
+    public OrsonAiBatchResponse batch(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("limit") Integer limit, @QueryParam("operations") String operations, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
 
     /**
      * Creates an instant episode
@@ -133,7 +132,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Creates an instant episode", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonEpisodeResponse.class) })
-    public OrsonEpisodeResponse createInstantEpisode(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("data") @NotNull String data);
+    public OrsonEpisodeResponse createInstantEpisode(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("data") @NotNull String data);
 
     /**
      * Create VoiceCanvas images
@@ -147,7 +146,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Create VoiceCanvas images", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiVoiceCanvasResponse.class) })
-    public OrsonAiVoiceCanvasResponse createVoiceCanvas(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("dimensions") @NotNull String dimensions, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("text") String text, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("parseFlag") Boolean parseFlag, @QueryParam("fetchFlag") Boolean fetchFlag, @QueryParam("callback") String paramCallback);
+    public OrsonAiVoiceCanvasResponse createVoiceCanvas(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("dimensions") @NotNull String dimensions, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("text") String text, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("parseFlag") Boolean parseFlag, @QueryParam("fetchFlag") Boolean fetchFlag, @QueryParam("callback") String paramCallback);
 
     /**
      * Detect emotions
@@ -161,7 +160,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Detect emotions", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiEmotionsResponse.class) })
-    public OrsonAiEmotionsResponse emotion(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
+    public OrsonAiEmotionsResponse emotion(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
 
     /**
      * Get Add Movie Result
@@ -175,7 +174,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get Add Movie Result", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiAddMovieResponse.class) })
-    public OrsonAiAddMovieResponse getAddMovieResult(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiAddMovieResponse getAddMovieResult(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Batch Analysis Results
@@ -189,7 +188,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get Batch Analysis Results", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiBatchResponse.class) })
-    public OrsonAiBatchResponse getBatch(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiBatchResponse getBatch(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Emotion Results
@@ -203,7 +202,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get Emotion Results", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiEmotionsResponse.class) })
-    public OrsonAiEmotionsResponse getEmotion(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiEmotionsResponse getEmotion(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Check episode status
@@ -217,7 +216,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Check episode status", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonEpisodeResponse.class) })
-    public OrsonEpisodeResponse getEpisodeStatus(@PathParam("version") BigDecimal version, @PathParam("episodeId") Long episodeId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonEpisodeResponse getEpisodeStatus(@PathParam("episodeId") Long episodeId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Check episode status
@@ -231,7 +230,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Check episode status", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonRenderResponse.class) })
-    public OrsonRenderResponse getRenderStatus(@PathParam("version") BigDecimal version, @PathParam("renderId") String renderId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonRenderResponse getRenderStatus(@PathParam("renderId") String renderId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Speach to Text Result
@@ -245,7 +244,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get Speach to Text Result", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiSTTResponse.class) })
-    public OrsonAiSTTResponse getSTT(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiSTTResponse getSTT(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Text to Speach Result
@@ -259,7 +258,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get Text to Speach Result", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiTTSResponse.class) })
-    public OrsonAiTTSResponse getTTS(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiTTSResponse getTTS(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get TechTune Results
@@ -273,7 +272,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get TechTune Results", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiTechTuneResponse.class) })
-    public OrsonAiTechTuneResponse getTechTune(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiTechTuneResponse getTechTune(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Topics
@@ -287,7 +286,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get Topics", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiTopicsResponse.class) })
-    public OrsonAiTopicsResponse getTopics(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiTopicsResponse getTopics(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get VoiceCanvas images
@@ -301,7 +300,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Get VoiceCanvas images", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiVoiceCanvasResponse.class) })
-    public OrsonAiVoiceCanvasResponse getVoiceCanvas(@PathParam("version") BigDecimal version, @PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
+    public OrsonAiVoiceCanvasResponse getVoiceCanvas(@PathParam("requestId") String requestId, @QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Starts a StoryStitch video render
@@ -315,7 +314,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Starts a StoryStitch video render", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonRenderResponse.class) })
-    public OrsonRenderResponse startVideoRender(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("data") @NotNull String data);
+    public OrsonRenderResponse startVideoRender(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("data") @NotNull String data);
 
     /**
      * Speach to Text
@@ -329,7 +328,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Speach to Text", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiSTTResponse.class) })
-    public OrsonAiSTTResponse stt(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("sourceLanguage") String sourceLanguage, @QueryParam("targetLanguage") String targetLanguage, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
+    public OrsonAiSTTResponse stt(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("sourceLanguage") String sourceLanguage, @QueryParam("targetLanguage") String targetLanguage, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
 
     /**
      * Summarize Topics
@@ -343,7 +342,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Summarize Topics", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiTopicsResponse.class) })
-    public OrsonAiTopicsResponse summarizeTopics(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("doc") String doc, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset, @QueryParam("callback") String paramCallback);
+    public OrsonAiTopicsResponse summarizeTopics(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("doc") String doc, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset, @QueryParam("callback") String paramCallback);
 
     /**
      * Detect Technical Issues
@@ -357,7 +356,7 @@ public interface OrsonApi  {
     @ApiOperation(value = "Detect Technical Issues", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiTechTuneResponse.class) })
-    public OrsonAiTechTuneResponse techTune(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("numFacesExpected") @NotNull Integer numFacesExpected, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
+    public OrsonAiTechTuneResponse techTune(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("numFacesExpected") @NotNull Integer numFacesExpected, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("file") File _file, @QueryParam("url") String url, @QueryParam("callback") String paramCallback);
 
     /**
      * Text to Speach
@@ -371,5 +370,5 @@ public interface OrsonApi  {
     @ApiOperation(value = "Text to Speach", tags={ "Orson" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = OrsonAiTTSResponse.class) })
-    public OrsonAiTTSResponse tts(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("text") @NotNull String text, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("language") String language, @QueryParam("voice") String voice, @QueryParam("callback") String paramCallback);
+    public OrsonAiTTSResponse tts(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("text") @NotNull String text, @QueryParam("thirdPartyAccountId") String thirdPartyAccountId, @QueryParam("language") String language, @QueryParam("voice") String voice, @QueryParam("callback") String paramCallback);
 }

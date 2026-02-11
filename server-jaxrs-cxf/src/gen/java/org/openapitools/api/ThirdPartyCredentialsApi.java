@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.ProfileResponse;
 import org.openapitools.model.SirqulResponse;
@@ -27,7 +26,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/thirdparty")
+@Path("/thirdparty")
 @Api(value = "/", description = "")
 public interface ThirdPartyCredentialsApi  {
 
@@ -43,7 +42,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Create Credential", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse createCredential(@PathParam("version") BigDecimal version, @QueryParam("thirdPartyId") @NotNull String thirdPartyId, @QueryParam("thirdPartyToken") @NotNull String thirdPartyToken, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("appKey") @NotNull String appKey, @QueryParam("accountId") Long accountId, @QueryParam("deviceId") String deviceId, @QueryParam("sessionId") String sessionId, @QueryParam("thirdPartyName") String thirdPartyName, @QueryParam("emailAddress") String emailAddress, @QueryParam("signinOnlyMode") @DefaultValue("false")Boolean signinOnlyMode, @QueryParam("responseFilters") String responseFilters, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("metaData") String metaData, @QueryParam("thirdPartyRefreshToken") String thirdPartyRefreshToken, @QueryParam("audienceIdsToAdd") String audienceIdsToAdd, @QueryParam("audienceIdsToRemove") String audienceIdsToRemove);
+    public ProfileResponse createCredential(@QueryParam("thirdPartyId") @NotNull String thirdPartyId, @QueryParam("thirdPartyToken") @NotNull String thirdPartyToken, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("appKey") @NotNull String appKey, @QueryParam("accountId") Long accountId, @QueryParam("deviceId") String deviceId, @QueryParam("sessionId") String sessionId, @QueryParam("thirdPartyName") String thirdPartyName, @QueryParam("emailAddress") String emailAddress, @QueryParam("signinOnlyMode") @DefaultValue("false")Boolean signinOnlyMode, @QueryParam("responseFilters") String responseFilters, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("metaData") String metaData, @QueryParam("thirdPartyRefreshToken") String thirdPartyRefreshToken, @QueryParam("audienceIdsToAdd") String audienceIdsToAdd, @QueryParam("audienceIdsToRemove") String audienceIdsToRemove);
 
     /**
      * Create Network
@@ -57,7 +56,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Create Network", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ThirdPartyNetworkResponse.class) })
-    public ThirdPartyNetworkResponse createNetwork(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("enableIntrospection") @NotNull Boolean enableIntrospection, @QueryParam("description") String description, @QueryParam("introspectionMethod") String introspectionMethod, @QueryParam("introspectionURL") String introspectionURL, @QueryParam("introspectionParams") String introspectionParams, @QueryParam("requiredRootField") String requiredRootField, @QueryParam("enableMFA") Boolean enableMFA, @QueryParam("sizeMFA") Integer sizeMFA, @QueryParam("shelfLifeMFA") Integer shelfLifeMFA, @QueryParam("oauthTokenURL") String oauthTokenURL, @QueryParam("oauthPrivateKey") File oauthPrivateKey, @QueryParam("oauthPublicKey") File oauthPublicKey, @QueryParam("oauthClientId") String oauthClientId, @QueryParam("oauthSecretKey") String oauthSecretKey, @Valid String body);
+    public ThirdPartyNetworkResponse createNetwork(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("enableIntrospection") @NotNull Boolean enableIntrospection, @QueryParam("description") String description, @QueryParam("introspectionMethod") String introspectionMethod, @QueryParam("introspectionURL") String introspectionURL, @QueryParam("introspectionParams") String introspectionParams, @QueryParam("requiredRootField") String requiredRootField, @QueryParam("enableMFA") Boolean enableMFA, @QueryParam("sizeMFA") Integer sizeMFA, @QueryParam("shelfLifeMFA") Integer shelfLifeMFA, @QueryParam("oauthTokenURL") String oauthTokenURL, @QueryParam("oauthPrivateKey") File oauthPrivateKey, @QueryParam("oauthPublicKey") File oauthPublicKey, @QueryParam("oauthClientId") String oauthClientId, @QueryParam("oauthSecretKey") String oauthSecretKey, @Valid String body);
 
     /**
      * Delete Credential
@@ -71,7 +70,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Delete Credential", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteCredential(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("thirdPartyId") @NotNull String thirdPartyId, @QueryParam("appKey") @NotNull String appKey);
+    public SirqulResponse deleteCredential(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("thirdPartyId") @NotNull String thirdPartyId, @QueryParam("appKey") @NotNull String appKey);
 
     /**
      * Delete Network
@@ -85,7 +84,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Delete Network", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteNetwork(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID);
+    public SirqulResponse deleteNetwork(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID);
 
     /**
      * Get Credential
@@ -99,7 +98,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Get Credential", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse getCredential(@PathParam("version") BigDecimal version, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("appKey") @NotNull String appKey, @QueryParam("accountId") Long accountId, @QueryParam("deviceId") String deviceId, @QueryParam("sessionId") String sessionId, @QueryParam("thirdPartyCredentialId") Long thirdPartyCredentialId, @QueryParam("thirdPartyToken") String thirdPartyToken, @QueryParam("thirdPartySecret") String thirdPartySecret, @QueryParam("createNewAccount") @DefaultValue("false")Boolean createNewAccount, @QueryParam("responseFilters") String responseFilters, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("audienceIdsToAdd") String audienceIdsToAdd, @QueryParam("audienceIdsToRemove") String audienceIdsToRemove, @QueryParam("referralAccountId") Long referralAccountId);
+    public ProfileResponse getCredential(@QueryParam("networkUID") @NotNull String networkUID, @QueryParam("appKey") @NotNull String appKey, @QueryParam("accountId") Long accountId, @QueryParam("deviceId") String deviceId, @QueryParam("sessionId") String sessionId, @QueryParam("thirdPartyCredentialId") Long thirdPartyCredentialId, @QueryParam("thirdPartyToken") String thirdPartyToken, @QueryParam("thirdPartySecret") String thirdPartySecret, @QueryParam("createNewAccount") @DefaultValue("false")Boolean createNewAccount, @QueryParam("responseFilters") String responseFilters, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("audienceIdsToAdd") String audienceIdsToAdd, @QueryParam("audienceIdsToRemove") String audienceIdsToRemove, @QueryParam("referralAccountId") Long referralAccountId);
 
     /**
      * Get Network
@@ -113,7 +112,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Get Network", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ThirdPartyNetworkResponse.class) })
-    public ThirdPartyNetworkResponse getNetwork(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID);
+    public ThirdPartyNetworkResponse getNetwork(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID);
 
     /**
      * Search Credentials
@@ -127,7 +126,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Search Credentials", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ThirdPartyCredentialResponse.class, responseContainer = "List") })
-    public List<ThirdPartyCredentialResponse> searchCredentials(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("networkUID") String networkUID, @QueryParam("descending") Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public List<ThirdPartyCredentialResponse> searchCredentials(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("networkUID") String networkUID, @QueryParam("descending") Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 
     /**
      * Search Networks
@@ -141,7 +140,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Search Networks", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ThirdPartyNetworkShortResponse.class, responseContainer = "List") })
-    public List<ThirdPartyNetworkShortResponse> searchNetworks(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("keyword") String keyword, @QueryParam("filterBillable") Boolean filterBillable);
+    public List<ThirdPartyNetworkShortResponse> searchNetworks(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("keyword") String keyword, @QueryParam("filterBillable") Boolean filterBillable);
 
     /**
      * Send MFA Challenge
@@ -155,7 +154,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Send MFA Challenge", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse sendMFAChallenge(@PathParam("version") BigDecimal version, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("appKey") @NotNull String appKey, @QueryParam("thirdPartyToken") String thirdPartyToken, @QueryParam("thirdPartyCredentialId") Long thirdPartyCredentialId, @QueryParam("deviceId") String deviceId);
+    public SirqulResponse sendMFAChallenge(@QueryParam("networkUID") @NotNull String networkUID, @QueryParam("appKey") @NotNull String appKey, @QueryParam("thirdPartyToken") String thirdPartyToken, @QueryParam("thirdPartyCredentialId") Long thirdPartyCredentialId, @QueryParam("deviceId") String deviceId);
 
     /**
      * Update Credential
@@ -169,7 +168,7 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Update Credential", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ProfileResponse.class) })
-    public ProfileResponse updateCredential(@PathParam("version") BigDecimal version, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("thirdPartyId") @NotNull String thirdPartyId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("deviceId") String deviceId, @QueryParam("thirdPartyName") String thirdPartyName, @QueryParam("thirdPartyToken") String thirdPartyToken, @QueryParam("responseFilters") String responseFilters, @QueryParam("metaData") String metaData, @QueryParam("thirdPartyRefreshToken") String thirdPartyRefreshToken);
+    public ProfileResponse updateCredential(@QueryParam("networkUID") @NotNull String networkUID, @QueryParam("thirdPartyId") @NotNull String thirdPartyId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("deviceId") String deviceId, @QueryParam("thirdPartyName") String thirdPartyName, @QueryParam("thirdPartyToken") String thirdPartyToken, @QueryParam("responseFilters") String responseFilters, @QueryParam("metaData") String metaData, @QueryParam("thirdPartyRefreshToken") String thirdPartyRefreshToken);
 
     /**
      * Update Network
@@ -183,5 +182,5 @@ public interface ThirdPartyCredentialsApi  {
     @ApiOperation(value = "Update Network", tags={ "ThirdParty Credentials" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ThirdPartyNetworkResponse.class) })
-    public ThirdPartyNetworkResponse updateNetwork(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("enableIntrospection") Boolean enableIntrospection, @QueryParam("introspectionMethod") String introspectionMethod, @QueryParam("introspectionURL") String introspectionURL, @QueryParam("introspectionParams") String introspectionParams, @QueryParam("requiredRootField") String requiredRootField, @QueryParam("enableMFA") Boolean enableMFA, @QueryParam("sizeMFA") Integer sizeMFA, @QueryParam("shelfLifeMFA") Integer shelfLifeMFA, @QueryParam("oauthTokenURL") String oauthTokenURL, @QueryParam("oauthPrivateKey") File oauthPrivateKey, @QueryParam("oauthPublicKey") File oauthPublicKey, @QueryParam("oauthClientId") String oauthClientId, @QueryParam("oauthSecretKey") String oauthSecretKey, @Valid String body);
+    public ThirdPartyNetworkResponse updateNetwork(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("networkUID") @NotNull String networkUID, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("enableIntrospection") Boolean enableIntrospection, @QueryParam("introspectionMethod") String introspectionMethod, @QueryParam("introspectionURL") String introspectionURL, @QueryParam("introspectionParams") String introspectionParams, @QueryParam("requiredRootField") String requiredRootField, @QueryParam("enableMFA") Boolean enableMFA, @QueryParam("sizeMFA") Integer sizeMFA, @QueryParam("shelfLifeMFA") Integer shelfLifeMFA, @QueryParam("oauthTokenURL") String oauthTokenURL, @QueryParam("oauthPrivateKey") File oauthPrivateKey, @QueryParam("oauthPublicKey") File oauthPublicKey, @QueryParam("oauthClientId") String oauthClientId, @QueryParam("oauthSecretKey") String oauthSecretKey, @Valid String body);
 }

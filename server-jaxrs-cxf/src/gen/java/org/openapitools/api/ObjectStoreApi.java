@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.ObjectStoreResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/object")
+@Path("/object")
 @Api(value = "/", description = "")
 public interface ObjectStoreApi  {
 
@@ -38,7 +37,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Create Field", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse addField(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName, @QueryParam("fieldName") @NotNull String fieldName, @QueryParam("fieldType") @NotNull String fieldType);
+    public ObjectStoreResponse addField(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName, @QueryParam("fieldName") @NotNull String fieldName, @QueryParam("fieldType") @NotNull String fieldType);
 
     /**
      * Create Data
@@ -52,7 +51,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Create Data", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse createData(@PathParam("version") BigDecimal version, @PathParam("objectName") String objectName, @QueryParam("accountId") Long accountId, @Valid String body);
+    public ObjectStoreResponse createData(@PathParam("objectName") String objectName, @QueryParam("accountId") Long accountId, @Valid String body);
 
     /**
      * Create Object
@@ -66,7 +65,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Create Object", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse createObject(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName);
+    public ObjectStoreResponse createObject(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName);
 
     /**
      * Delete Data
@@ -80,7 +79,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Delete Data", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse deleteData(@PathParam("version") BigDecimal version, @PathParam("objectName") String objectName, @PathParam("objectId") String objectId, @QueryParam("accountId") Long accountId);
+    public ObjectStoreResponse deleteData(@PathParam("objectName") String objectName, @PathParam("objectId") String objectId, @QueryParam("accountId") Long accountId);
 
     /**
      * Delete Field
@@ -94,7 +93,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Delete Field", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse deleteField(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName, @QueryParam("fieldName") @NotNull String fieldName);
+    public ObjectStoreResponse deleteField(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName, @QueryParam("fieldName") @NotNull String fieldName);
 
     /**
      * Delete Object
@@ -108,7 +107,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Delete Object", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse deleteObject(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName);
+    public ObjectStoreResponse deleteObject(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName);
 
     /**
      * Get Data
@@ -122,7 +121,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Get Data", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse getData(@PathParam("version") BigDecimal version, @PathParam("objectName") String objectName, @PathParam("objectId") String objectId, @QueryParam("accountId") Long accountId, @QueryParam("include") String include);
+    public ObjectStoreResponse getData(@PathParam("objectName") String objectName, @PathParam("objectId") String objectId, @QueryParam("accountId") Long accountId, @QueryParam("include") String include);
 
     /**
      * Get Object
@@ -136,7 +135,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Get Object", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse getObject(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName);
+    public ObjectStoreResponse getObject(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("objectName") @NotNull String objectName);
 
     /**
      * Search Data
@@ -150,7 +149,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Search Data", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse searchData(@PathParam("version") BigDecimal version, @PathParam("objectName") String objectName, @QueryParam("count") @NotNull Boolean count, @QueryParam("start") @NotNull Long start, @QueryParam("limit") @NotNull Long limit, @QueryParam("accountId") Long accountId, @QueryParam("criteria") String criteria, @QueryParam("order") String order, @QueryParam("include") String include);
+    public ObjectStoreResponse searchData(@PathParam("objectName") String objectName, @QueryParam("count") @NotNull Boolean count, @QueryParam("start") @NotNull Long start, @QueryParam("limit") @NotNull Long limit, @QueryParam("accountId") Long accountId, @QueryParam("criteria") String criteria, @QueryParam("order") String order, @QueryParam("include") String include);
 
     /**
      * Search Objects
@@ -164,7 +163,7 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Search Objects", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse searchObject(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("start") @NotNull Long start, @QueryParam("limit") @NotNull Long limit, @QueryParam("keyword") String keyword);
+    public ObjectStoreResponse searchObject(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("start") @NotNull Long start, @QueryParam("limit") @NotNull Long limit, @QueryParam("keyword") String keyword);
 
     /**
      * Update Data
@@ -178,5 +177,5 @@ public interface ObjectStoreApi  {
     @ApiOperation(value = "Update Data", tags={ "Object Store" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ObjectStoreResponse.class) })
-    public ObjectStoreResponse updateData(@PathParam("version") BigDecimal version, @PathParam("objectName") String objectName, @PathParam("objectId") String objectId, @QueryParam("accountId") Long accountId, @Valid String body);
+    public ObjectStoreResponse updateData(@PathParam("objectName") String objectName, @PathParam("objectId") String objectId, @QueryParam("accountId") Long accountId, @Valid String body);
 }

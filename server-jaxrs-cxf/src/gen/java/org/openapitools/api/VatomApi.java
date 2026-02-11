@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/vatom")
+@Path("/vatom")
 @Api(value = "/", description = "")
 public interface VatomApi  {
 
@@ -36,7 +35,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Create following", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void createFollowing(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void createFollowing(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Create Vatom Space
@@ -49,7 +48,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Create Vatom Space", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void createSpace(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void createSpace(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Create Vatom Event
@@ -62,7 +61,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Create Vatom Event", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void createVatomEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void createVatomEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Delete following
@@ -75,7 +74,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Delete following", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteFollowing(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomRelsKey") @NotNull String vatomRelsKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void deleteFollowing(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomRelsKey") @NotNull String vatomRelsKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Reset All Points Balance
@@ -88,7 +87,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Reset All Points Balance", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deletePointsBalance(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void deletePointsBalance(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Delete Vatom Space
@@ -101,7 +100,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Delete Vatom Space", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteSpace(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomSpaceId") @NotNull String vatomSpaceId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void deleteSpace(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomSpaceId") @NotNull String vatomSpaceId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Delete Vatom Event
@@ -114,7 +113,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Delete Vatom Event", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteVatomEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void deleteVatomEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Delete Vatom NFT
@@ -127,7 +126,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Delete Vatom NFT", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteVatomNFT(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void deleteVatomNFT(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Execute Action on NFT
@@ -140,7 +139,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Execute Action on NFT", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void executeActionOnNFT(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void executeActionOnNFT(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Search Vatom Geo Map
@@ -153,7 +152,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Search Vatom Geo Map", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void geomapSearch(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void geomapSearch(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom Business Behaviors
@@ -166,7 +165,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom Business Behaviors", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getBusinessBehaviors(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getBusinessBehaviors(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get the coins for a Business
@@ -179,7 +178,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get the coins for a Business", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getBusinessCoinsBalance(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getBusinessCoinsBalance(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get the user business ids
@@ -192,7 +191,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get the user business ids", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getBusinessIds(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getBusinessIds(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom Business Info
@@ -205,7 +204,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom Business Info", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getBusinessInfo(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getBusinessInfo(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom Business Users
@@ -218,7 +217,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom Business Users", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getBusinessUsers(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getBusinessUsers(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Campaign Group Entities
@@ -231,7 +230,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Campaign Group Entities", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getCampaignGroupEntities(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getCampaignGroupEntities(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Campaign Group Rules
@@ -244,7 +243,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Campaign Group Rules", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getCampaignGroupRules(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getCampaignGroupRules(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Campaign Group Stats
@@ -257,7 +256,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Campaign Group Stats", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getCampaignGroupStats(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getCampaignGroupStats(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Campaign Info
@@ -270,7 +269,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Campaign Info", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getCampaignInfo(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getCampaignInfo(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom Event Guest List
@@ -283,7 +282,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom Event Guest List", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getEventGuestList(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getEventGuestList(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom User&#39;s Inventory
@@ -296,7 +295,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom User's Inventory", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getInventory(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getInventory(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get following
@@ -309,7 +308,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get following", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getMyFollowing(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getMyFollowing(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Points Balance
@@ -322,7 +321,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Points Balance", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getPointsBalance(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getPointsBalance(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Points Balance as Business
@@ -335,7 +334,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Points Balance as Business", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getPointsBalanceAsBusiness(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getPointsBalanceAsBusiness(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom Space
@@ -348,7 +347,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom Space", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getSpace(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomSpaceId") @NotNull String vatomSpaceId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getSpace(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomSpaceId") @NotNull String vatomSpaceId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get the coins for a user (as a Business)
@@ -361,7 +360,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get the coins for a user (as a Business)", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getUserCoinsAsBusiness(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getUserCoinsAsBusiness(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Gets the coins balance for a Vatom User
@@ -374,7 +373,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Gets the coins balance for a Vatom User", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getUserCoinsBalance(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getUserCoinsBalance(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get user followers
@@ -387,7 +386,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get user followers", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getUserFollowers(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getUserFollowers(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get user following
@@ -400,7 +399,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get user following", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getUserFollowing(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getUserFollowing(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get User Info
@@ -413,7 +412,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get User Info", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getUserInfo(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getUserInfo(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom User Profile
@@ -426,7 +425,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom User Profile", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getUserProfile(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getUserProfile(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom Event
@@ -439,7 +438,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom Event", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getVatomEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getVatomEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Get Vatom NFT Details
@@ -452,7 +451,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Get Vatom NFT Details", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void getVatomNFT(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void getVatomNFT(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * List Vatom Communities
@@ -465,7 +464,7 @@ public interface VatomApi  {
     @ApiOperation(value = "List Vatom Communities", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void listCommunities(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void listCommunities(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * List Vatom Events
@@ -478,7 +477,7 @@ public interface VatomApi  {
     @ApiOperation(value = "List Vatom Events", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void listEvents(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void listEvents(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * List Vatom Spaces
@@ -491,7 +490,7 @@ public interface VatomApi  {
     @ApiOperation(value = "List Vatom Spaces", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void listSpaces(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void listSpaces(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * List Coin Transactions for a Vatom User
@@ -504,7 +503,7 @@ public interface VatomApi  {
     @ApiOperation(value = "List Coin Transactions for a Vatom User", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void listUserCoinTransactions(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void listUserCoinTransactions(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * List coin transactions for a user (as a Business)
@@ -517,7 +516,7 @@ public interface VatomApi  {
     @ApiOperation(value = "List coin transactions for a user (as a Business)", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void listUserCoinTransactionsAsBusiness(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void listUserCoinTransactionsAsBusiness(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Perform Action on NFT
@@ -530,7 +529,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Perform Action on NFT", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void performActionOnNFT(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("vatomAction") @NotNull String vatomAction, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void performActionOnNFT(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomId") @NotNull String vatomId, @QueryParam("vatomAction") @NotNull String vatomAction, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Redeem NFT
@@ -543,7 +542,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Redeem NFT", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void redeemNFT(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void redeemNFT(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Redeem the coins for a user (as a Business)
@@ -556,7 +555,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Redeem the coins for a user (as a Business)", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void redeemUserCoinsAsBusiness(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void redeemUserCoinsAsBusiness(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Search for Vatom Businesses
@@ -569,7 +568,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Search for Vatom Businesses", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void searchBusinesses(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void searchBusinesses(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Search Campaign Groups
@@ -582,7 +581,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Search Campaign Groups", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void searchCampaignGroups(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void searchCampaignGroups(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Search User Identities
@@ -595,7 +594,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Search User Identities", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void searchIdentities(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void searchIdentities(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Search Vatom User&#39;s Inventory
@@ -608,7 +607,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Search Vatom User's Inventory", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void searchInventory(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void searchInventory(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Send NFT
@@ -621,7 +620,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Send NFT", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void sendNFT(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void sendNFT(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Set Points Balance as Business
@@ -634,7 +633,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Set Points Balance as Business", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void setPointsBalanceAsBusiness(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void setPointsBalanceAsBusiness(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomCampaignId") @NotNull String vatomCampaignId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Transfer coins from Vatom Users
@@ -647,7 +646,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Transfer coins from Vatom Users", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void transferUserCoins(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void transferUserCoins(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Fund coins for a Business
@@ -660,7 +659,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Fund coins for a Business", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateBusinessCoins(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void updateBusinessCoins(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Update Vatom Event Guest List
@@ -673,7 +672,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Update Vatom Event Guest List", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateEventGuestList(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void updateEventGuestList(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Update Vatom Space
@@ -686,7 +685,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Update Vatom Space", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateSpace(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomSpaceId") @NotNull String vatomSpaceId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void updateSpace(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomSpaceId") @NotNull String vatomSpaceId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Update the coins for a user (as a Business)
@@ -699,7 +698,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Update the coins for a user (as a Business)", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateUserCoinsAsBusiness(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void updateUserCoinsAsBusiness(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomUserId") @NotNull String vatomUserId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Update Vatom User Profile
@@ -712,7 +711,7 @@ public interface VatomApi  {
     @ApiOperation(value = "Update Vatom User Profile", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateUserProfile(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void updateUserProfile(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 
     /**
      * Update Vatom Event
@@ -725,5 +724,5 @@ public interface VatomApi  {
     @ApiOperation(value = "Update Vatom Event", tags={ "Vatom" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void updateVatomEvent(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
+    public void updateVatomEvent(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("vatomEventId") @NotNull String vatomEventId, @QueryParam("vatomParameters") @NotNull String vatomParameters, @QueryParam("returnRawResponse") Boolean returnRawResponse);
 }

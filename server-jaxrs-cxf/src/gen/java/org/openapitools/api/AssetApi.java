@@ -3,7 +3,6 @@ package org.openapitools.api;
 import org.openapitools.model.AssetFullResponse;
 import org.openapitools.model.AssetResponse;
 import org.openapitools.model.AssetShortResponse;
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.SirqulResponse;
 
@@ -26,7 +25,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/asset")
+@Path("/asset")
 @Api(value = "/", description = "")
 public interface AssetApi  {
 
@@ -42,7 +41,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Download Asset", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse assetDownload(@PathParam("version") BigDecimal version, @PathParam("filename") @Pattern(regexp=".+") String filename);
+    public SirqulResponse assetDownload(@PathParam("filename") @Pattern(regexp=".+") String filename);
 
     /**
      * Convert Offer to Creative
@@ -56,7 +55,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Convert Offer to Creative", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssetShortResponse.class) })
-    public AssetShortResponse assetMorph(@PathParam("version") BigDecimal version, @QueryParam("offerId") @NotNull Long offerId, @QueryParam("adSize") @NotNull String adSize, @QueryParam("creativeId") Long creativeId, @QueryParam("width") Integer width, @QueryParam("height") Integer height, @QueryParam("backgroundSize") String backgroundSize, @QueryParam("template") String template);
+    public AssetShortResponse assetMorph(@QueryParam("offerId") @NotNull Long offerId, @QueryParam("adSize") @NotNull String adSize, @QueryParam("creativeId") Long creativeId, @QueryParam("width") Integer width, @QueryParam("height") Integer height, @QueryParam("backgroundSize") String backgroundSize, @QueryParam("template") String template);
 
     /**
      * Create Asset
@@ -70,7 +69,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Create Asset", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssetResponse.class) })
-    public AssetResponse createAsset(@PathParam("version") BigDecimal version, @QueryParam("returnNulls") Boolean returnNulls, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("collectionId") Long collectionId, @QueryParam("addToDefaultAlbum") String addToDefaultAlbum, @QueryParam("addToMediaLibrary") Boolean addToMediaLibrary, @QueryParam("versionCode") Integer versionCode, @QueryParam("versionName") String versionName, @QueryParam("metaData") String metaData, @QueryParam("caption") String caption, @QueryParam("assetType") String assetType, @QueryParam("approvalStatus") String approvalStatus, @QueryParam("assignedAccountId") Long assignedAccountId, @QueryParam("media") File media, @QueryParam("mediaUrl") String mediaUrl, @QueryParam("mediaString") String mediaString, @QueryParam("mediaStringFileName") String mediaStringFileName, @QueryParam("mediaStringContentType") String mediaStringContentType, @QueryParam("mediaHeight") Integer mediaHeight, @QueryParam("mediaWidth") Integer mediaWidth, @QueryParam("attachedMedia") File attachedMedia, @QueryParam("attachedMediaUrl") String attachedMediaUrl, @QueryParam("attachedMediaString") String attachedMediaString, @QueryParam("attachedMediaStringFileName") String attachedMediaStringFileName, @QueryParam("attachedMediaStringContentType") String attachedMediaStringContentType, @QueryParam("attachedMediaHeight") Integer attachedMediaHeight, @QueryParam("attachedMediaWidth") Integer attachedMediaWidth, @QueryParam("locationDescription") String locationDescription, @QueryParam("app") String app, @QueryParam("appKey") String appKey, @QueryParam("searchTags") String searchTags, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public AssetResponse createAsset(@QueryParam("returnNulls") Boolean returnNulls, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("collectionId") Long collectionId, @QueryParam("addToDefaultAlbum") String addToDefaultAlbum, @QueryParam("addToMediaLibrary") Boolean addToMediaLibrary, @QueryParam("versionCode") Integer versionCode, @QueryParam("versionName") String versionName, @QueryParam("metaData") String metaData, @QueryParam("caption") String caption, @QueryParam("assetType") String assetType, @QueryParam("approvalStatus") String approvalStatus, @QueryParam("assignedAccountId") Long assignedAccountId, @QueryParam("media") File media, @QueryParam("mediaUrl") String mediaUrl, @QueryParam("mediaString") String mediaString, @QueryParam("mediaStringFileName") String mediaStringFileName, @QueryParam("mediaStringContentType") String mediaStringContentType, @QueryParam("mediaHeight") Integer mediaHeight, @QueryParam("mediaWidth") Integer mediaWidth, @QueryParam("attachedMedia") File attachedMedia, @QueryParam("attachedMediaUrl") String attachedMediaUrl, @QueryParam("attachedMediaString") String attachedMediaString, @QueryParam("attachedMediaStringFileName") String attachedMediaStringFileName, @QueryParam("attachedMediaStringContentType") String attachedMediaStringContentType, @QueryParam("attachedMediaHeight") Integer attachedMediaHeight, @QueryParam("attachedMediaWidth") Integer attachedMediaWidth, @QueryParam("locationDescription") String locationDescription, @QueryParam("app") String app, @QueryParam("appKey") String appKey, @QueryParam("searchTags") String searchTags, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Delete Asset
@@ -84,7 +83,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Delete Asset", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteAsset(@PathParam("version") BigDecimal version, @QueryParam("assetId") @NotNull String assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse deleteAsset(@QueryParam("assetId") @NotNull String assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Get Asset
@@ -98,7 +97,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Get Asset", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssetFullResponse.class) })
-    public AssetFullResponse getAsset(@PathParam("version") BigDecimal version, @QueryParam("assetId") @NotNull Long assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("noteDescending") @DefaultValue("false")Boolean noteDescending);
+    public AssetFullResponse getAsset(@QueryParam("assetId") @NotNull Long assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("noteDescending") @DefaultValue("false")Boolean noteDescending);
 
     /**
      * Remove Asset from Collection
@@ -112,7 +111,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Remove Asset from Collection", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse removeAsset(@PathParam("version") BigDecimal version, @QueryParam("assetId") @NotNull String assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("collectionId") Long collectionId, @QueryParam("removeFromDefaultAlbums") Boolean removeFromDefaultAlbums, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse removeAsset(@QueryParam("assetId") @NotNull String assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("collectionId") Long collectionId, @QueryParam("removeFromDefaultAlbums") Boolean removeFromDefaultAlbums, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Search Assets
@@ -126,7 +125,7 @@ public interface AssetApi  {
     @ApiOperation(value = "Search Assets", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AssetResponse.class, responseContainer = "List") })
-    public List<AssetResponse> searchAssets(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumIds") String albumIds, @QueryParam("assetIds") String assetIds, @QueryParam("appKey") String appKey, @QueryParam("mediaType") String mediaType, @QueryParam("mimeType") String mimeType, @QueryParam("keyword") String keyword, @QueryParam("versionCode") Integer versionCode, @QueryParam("versionName") String versionName, @QueryParam("updatedSince") Long updatedSince, @QueryParam("updatedBefore") Long updatedBefore, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("searchMediaLibrary") Boolean searchMediaLibrary, @QueryParam("filterByBillable") Boolean filterByBillable, @QueryParam("activeOnly") Boolean activeOnly, @QueryParam("returnApp") Boolean returnApp, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("searchMode") String searchMode, @QueryParam("assetType") String assetType, @QueryParam("approvalStatus") String approvalStatus, @QueryParam("assignedAccountId") Long assignedAccountId);
+    public List<AssetResponse> searchAssets(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumIds") String albumIds, @QueryParam("assetIds") String assetIds, @QueryParam("appKey") String appKey, @QueryParam("mediaType") String mediaType, @QueryParam("mimeType") String mimeType, @QueryParam("keyword") String keyword, @QueryParam("versionCode") Integer versionCode, @QueryParam("versionName") String versionName, @QueryParam("updatedSince") Long updatedSince, @QueryParam("updatedBefore") Long updatedBefore, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("searchMediaLibrary") Boolean searchMediaLibrary, @QueryParam("filterByBillable") Boolean filterByBillable, @QueryParam("activeOnly") Boolean activeOnly, @QueryParam("returnApp") Boolean returnApp, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("searchMode") String searchMode, @QueryParam("assetType") String assetType, @QueryParam("approvalStatus") String approvalStatus, @QueryParam("assignedAccountId") Long assignedAccountId);
 
     /**
      * Update Asset
@@ -140,5 +139,5 @@ public interface AssetApi  {
     @ApiOperation(value = "Update Asset", tags={ "Asset" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse updateAsset(@PathParam("version") BigDecimal version, @QueryParam("assetId") @NotNull Long assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("attachedAssetId") Long attachedAssetId, @QueryParam("versionCode") Integer versionCode, @QueryParam("versionName") String versionName, @QueryParam("metaData") String metaData, @QueryParam("caption") String caption, @QueryParam("assetType") String assetType, @QueryParam("approvalStatus") String approvalStatus, @QueryParam("assignedAccountId") Long assignedAccountId, @QueryParam("media") File media, @QueryParam("mediaUrl") String mediaUrl, @QueryParam("mediaString") String mediaString, @QueryParam("mediaStringFileName") String mediaStringFileName, @QueryParam("mediaStringContentType") String mediaStringContentType, @QueryParam("mediaHeight") Integer mediaHeight, @QueryParam("mediaWidth") Integer mediaWidth, @QueryParam("attachedMedia") File attachedMedia, @QueryParam("attachedMediaUrl") String attachedMediaUrl, @QueryParam("attachedMediaString") String attachedMediaString, @QueryParam("attachedMediaStringFileName") String attachedMediaStringFileName, @QueryParam("attachedMediaStringContentType") String attachedMediaStringContentType, @QueryParam("attachedMediaHeight") Integer attachedMediaHeight, @QueryParam("attachedMediaWidth") Integer attachedMediaWidth, @QueryParam("locationDescription") String locationDescription, @QueryParam("searchTags") String searchTags, @QueryParam("appKey") String appKey, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse updateAsset(@QueryParam("assetId") @NotNull Long assetId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("albumId") Long albumId, @QueryParam("attachedAssetId") Long attachedAssetId, @QueryParam("versionCode") Integer versionCode, @QueryParam("versionName") String versionName, @QueryParam("metaData") String metaData, @QueryParam("caption") String caption, @QueryParam("assetType") String assetType, @QueryParam("approvalStatus") String approvalStatus, @QueryParam("assignedAccountId") Long assignedAccountId, @QueryParam("media") File media, @QueryParam("mediaUrl") String mediaUrl, @QueryParam("mediaString") String mediaString, @QueryParam("mediaStringFileName") String mediaStringFileName, @QueryParam("mediaStringContentType") String mediaStringContentType, @QueryParam("mediaHeight") Integer mediaHeight, @QueryParam("mediaWidth") Integer mediaWidth, @QueryParam("attachedMedia") File attachedMedia, @QueryParam("attachedMediaUrl") String attachedMediaUrl, @QueryParam("attachedMediaString") String attachedMediaString, @QueryParam("attachedMediaStringFileName") String attachedMediaStringFileName, @QueryParam("attachedMediaStringContentType") String attachedMediaStringContentType, @QueryParam("attachedMediaHeight") Integer attachedMediaHeight, @QueryParam("attachedMediaWidth") Integer attachedMediaWidth, @QueryParam("locationDescription") String locationDescription, @QueryParam("searchTags") String searchTags, @QueryParam("appKey") String appKey, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 }

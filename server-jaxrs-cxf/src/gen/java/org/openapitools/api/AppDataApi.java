@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AppResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 
 import java.util.List;
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/app")
+@Path("/app")
 @Api(value = "/", description = "")
 public interface AppDataApi  {
 
@@ -39,7 +38,7 @@ public interface AppDataApi  {
     @ApiOperation(value = "Get App Data", tags={ "AppData" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AppResponse.class) })
-    public AppResponse getAppData(@PathParam("version") BigDecimal version, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("gameObjectCount") Boolean gameObjectCount, @QueryParam("filter") String filter, @QueryParam("dateCreated") Long dateCreated, @QueryParam("ownerId") Long ownerId, @QueryParam("missionIds") String missionIds, @QueryParam("gameIds") String gameIds, @QueryParam("packIds") String packIds, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("appVersion") String appVersion, @QueryParam("includeHigherVersionPacks") Boolean includeHigherVersionPacks, @QueryParam("includeHigherVersionLevels") Boolean includeHigherVersionLevels, @QueryParam("responseGroups") String responseGroups, @QueryParam("purchaseType") String purchaseType);
+    public AppResponse getAppData(@QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("gameObjectCount") Boolean gameObjectCount, @QueryParam("filter") String filter, @QueryParam("dateCreated") Long dateCreated, @QueryParam("ownerId") Long ownerId, @QueryParam("missionIds") String missionIds, @QueryParam("gameIds") String gameIds, @QueryParam("packIds") String packIds, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("appVersion") String appVersion, @QueryParam("includeHigherVersionPacks") Boolean includeHigherVersionPacks, @QueryParam("includeHigherVersionLevels") Boolean includeHigherVersionLevels, @QueryParam("responseGroups") String responseGroups, @QueryParam("purchaseType") String purchaseType);
 
     /**
      * Create App Data
@@ -53,7 +52,7 @@ public interface AppDataApi  {
     @ApiOperation(value = "Create App Data", tags={ "AppData" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AppResponse.class) })
-    public AppResponse postAppData(@PathParam("version") BigDecimal version, @QueryParam("gameType") @NotNull String gameType, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("data") @NotNull String data, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("gameObjectCount") Boolean gameObjectCount, @QueryParam("filter") String filter, @QueryParam("dateCreated") Long dateCreated, @QueryParam("ownerId") Long ownerId, @QueryParam("missionIds") String missionIds, @QueryParam("gameIds") String gameIds, @QueryParam("packIds") String packIds, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("appVersion") String appVersion, @QueryParam("includeHigherVersionPacks") Boolean includeHigherVersionPacks, @QueryParam("includeHigherVersionLevels") Boolean includeHigherVersionLevels, @QueryParam("responseGroups") String responseGroups, @QueryParam("purchaseType") String purchaseType);
+    public AppResponse postAppData(@QueryParam("gameType") @NotNull String gameType, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("data") @NotNull String data, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("sortField") String sortField, @QueryParam("descending") Boolean descending, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("gameObjectCount") Boolean gameObjectCount, @QueryParam("filter") String filter, @QueryParam("dateCreated") Long dateCreated, @QueryParam("ownerId") Long ownerId, @QueryParam("missionIds") String missionIds, @QueryParam("gameIds") String gameIds, @QueryParam("packIds") String packIds, @QueryParam("gameLevelIds") String gameLevelIds, @QueryParam("appVersion") String appVersion, @QueryParam("includeHigherVersionPacks") Boolean includeHigherVersionPacks, @QueryParam("includeHigherVersionLevels") Boolean includeHigherVersionLevels, @QueryParam("responseGroups") String responseGroups, @QueryParam("purchaseType") String purchaseType);
 
     /**
      * Regenerate App Data
@@ -67,5 +66,5 @@ public interface AppDataApi  {
     @ApiOperation(value = "Regenerate App Data", tags={ "AppData" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse regenAppData(@PathParam("version") BigDecimal version, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("buildVersion") String buildVersion, @QueryParam("apiVersion") String apiVersion);
+    public SirqulResponse regenAppData(@QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("buildVersion") String buildVersion, @QueryParam("apiVersion") String apiVersion);
 }

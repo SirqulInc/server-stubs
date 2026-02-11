@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AccountResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.SearchResponse;
 import org.openapitools.model.SirqulResponse;
 import org.openapitools.model.WrappedResponse;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/favorite")
+@Path("/favorite")
 @Api(value = "/", description = "")
 public interface FavoriteApi  {
 
@@ -41,7 +40,7 @@ public interface FavoriteApi  {
     @ApiOperation(value = "Create Favorite", tags={ "Favorite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = WrappedResponse.class) })
-    public WrappedResponse addFavorite(@PathParam("version") BigDecimal version, @QueryParam("favoritableId") @NotNull Long favoritableId, @QueryParam("favoritableType") @NotNull String favoritableType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public WrappedResponse addFavorite(@QueryParam("favoritableId") @NotNull Long favoritableId, @QueryParam("favoritableType") @NotNull String favoritableType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Delete Favorite
@@ -55,7 +54,7 @@ public interface FavoriteApi  {
     @ApiOperation(value = "Delete Favorite", tags={ "Favorite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteFavorite(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("favoriteId") Long favoriteId, @QueryParam("favoritableId") Long favoritableId, @QueryParam("favoritableType") String favoritableType);
+    public SirqulResponse deleteFavorite(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("favoriteId") Long favoriteId, @QueryParam("favoritableId") Long favoritableId, @QueryParam("favoritableType") String favoritableType);
 
     /**
      * Get Favorite
@@ -69,7 +68,7 @@ public interface FavoriteApi  {
     @ApiOperation(value = "Get Favorite", tags={ "Favorite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = WrappedResponse.class) })
-    public WrappedResponse getFavorite(@PathParam("version") BigDecimal version, @QueryParam("favoriteId") @NotNull Long favoriteId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public WrappedResponse getFavorite(@QueryParam("favoriteId") @NotNull Long favoriteId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Search Favorites
@@ -83,7 +82,7 @@ public interface FavoriteApi  {
     @ApiOperation(value = "Search Favorites", tags={ "Favorite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SearchResponse.class) })
-    public SearchResponse searchFavorites(@PathParam("version") BigDecimal version, @QueryParam("favoritableType") @NotNull String favoritableType, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("returnFullResponse") @NotNull Boolean returnFullResponse, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("secondaryType") String secondaryType, @QueryParam("keyword") String keyword, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SearchResponse searchFavorites(@QueryParam("favoritableType") @NotNull String favoritableType, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("returnFullResponse") @NotNull Boolean returnFullResponse, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("connectionAccountId") Long connectionAccountId, @QueryParam("secondaryType") String secondaryType, @QueryParam("keyword") String keyword, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Who has Favorited
@@ -97,5 +96,5 @@ public interface FavoriteApi  {
     @ApiOperation(value = "Who has Favorited", tags={ "Favorite" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AccountResponse.class, responseContainer = "List") })
-    public List<AccountResponse> whoHasFavorited(@PathParam("version") BigDecimal version, @QueryParam("favoritableId") @NotNull Long favoritableId, @QueryParam("favoritableType") @NotNull String favoritableType, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("keyword") String keyword);
+    public List<AccountResponse> whoHasFavorited(@QueryParam("favoritableId") @NotNull Long favoritableId, @QueryParam("favoritableType") @NotNull String favoritableType, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("keyword") String keyword);
 }

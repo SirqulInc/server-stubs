@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.Vehicle;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/vehicle")
+@Path("/vehicle")
 @Api(value = "/", description = "")
 public interface VehicleApi  {
 
@@ -38,7 +37,7 @@ public interface VehicleApi  {
     @ApiOperation(value = "Create Vehicle", tags={ "Vehicle" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Vehicle.class) })
-    public Vehicle createVehicle(@PathParam("version") BigDecimal version, @QueryParam("vehicle") @NotNull String vehicle, @Valid Vehicle body);
+    public Vehicle createVehicle(@QueryParam("vehicle") @NotNull String vehicle, @Valid Vehicle body);
 
     /**
      * Delete Vehicle
@@ -51,7 +50,7 @@ public interface VehicleApi  {
     @ApiOperation(value = "Delete Vehicle", tags={ "Vehicle" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteVehicle(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public void deleteVehicle(@PathParam("id") Long id);
 
     /**
      * Get Vehicle
@@ -65,7 +64,7 @@ public interface VehicleApi  {
     @ApiOperation(value = "Get Vehicle", tags={ "Vehicle" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Vehicle.class) })
-    public Vehicle getVehicle(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public Vehicle getVehicle(@PathParam("id") Long id);
 
     /**
      * Search Vehicle
@@ -79,7 +78,7 @@ public interface VehicleApi  {
     @ApiOperation(value = "Search Vehicle", tags={ "Vehicle" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Vehicle.class, responseContainer = "List") })
-    public List<Vehicle> searchVehicle(@PathParam("version") BigDecimal version, @QueryParam("hubId") @NotNull Long hubId, @QueryParam("sortField") @NotNull @DefaultValue("id")String sortField, @QueryParam("descending") @NotNull @DefaultValue("false")Boolean descending, @QueryParam("start") @NotNull @DefaultValue("0")Integer start, @QueryParam("limit") @NotNull @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @NotNull @DefaultValue("true")Boolean activeOnly, @QueryParam("keyword") String keyword);
+    public List<Vehicle> searchVehicle(@QueryParam("hubId") @NotNull Long hubId, @QueryParam("sortField") @NotNull @DefaultValue("id")String sortField, @QueryParam("descending") @NotNull @DefaultValue("false")Boolean descending, @QueryParam("start") @NotNull @DefaultValue("0")Integer start, @QueryParam("limit") @NotNull @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @NotNull @DefaultValue("true")Boolean activeOnly, @QueryParam("keyword") String keyword);
 
     /**
      * Update Vehicle
@@ -93,5 +92,5 @@ public interface VehicleApi  {
     @ApiOperation(value = "Update Vehicle", tags={ "Vehicle" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Vehicle.class) })
-    public Vehicle updateVehicle(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @QueryParam("vehicle") @NotNull String vehicle, @Valid Vehicle body);
+    public Vehicle updateVehicle(@PathParam("id") Long id, @QueryParam("vehicle") @NotNull String vehicle, @Valid Vehicle body);
 }

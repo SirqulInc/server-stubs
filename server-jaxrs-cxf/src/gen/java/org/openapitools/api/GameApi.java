@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.GameResponse;
 import org.openapitools.model.SirqulResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/game")
+@Path("/game")
 @Api(value = "/", description = "")
 public interface GameApi  {
 
@@ -39,7 +38,7 @@ public interface GameApi  {
     @ApiOperation(value = "Create a Game", tags={ "Game" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameResponse.class) })
-    public GameResponse createGame(@PathParam("version") BigDecimal version, @QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("packIds") String packIds, @QueryParam("includeGameData") Boolean includeGameData);
+    public GameResponse createGame(@QueryParam("accountId") Long accountId, @QueryParam("appKey") String appKey, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("packIds") String packIds, @QueryParam("includeGameData") Boolean includeGameData);
 
     /**
      * Delete a Game
@@ -53,7 +52,7 @@ public interface GameApi  {
     @ApiOperation(value = "Delete a Game", tags={ "Game" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteGame(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("gameId") @NotNull Long gameId);
+    public SirqulResponse deleteGame(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("gameId") @NotNull Long gameId);
 
     /**
      * Get a Game by id
@@ -67,7 +66,7 @@ public interface GameApi  {
     @ApiOperation(value = "Get a Game by id", tags={ "Game" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameResponse.class) })
-    public GameResponse getGame(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("gameId") @NotNull Long gameId, @QueryParam("includeGameData") Boolean includeGameData);
+    public GameResponse getGame(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("gameId") @NotNull Long gameId, @QueryParam("includeGameData") Boolean includeGameData);
 
     /**
      * Search a Game
@@ -81,7 +80,7 @@ public interface GameApi  {
     @ApiOperation(value = "Search a Game", tags={ "Game" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameResponse.class) })
-    public GameResponse searchGames(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("keyword") String keyword, @QueryParam("appVersion") String appVersion, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeInactive") Boolean includeInactive);
+    public GameResponse searchGames(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("keyword") String keyword, @QueryParam("appVersion") String appVersion, @QueryParam("includeGameData") Boolean includeGameData, @QueryParam("includeInactive") Boolean includeInactive);
 
     /**
      * Update a Game
@@ -95,5 +94,5 @@ public interface GameApi  {
     @ApiOperation(value = "Update a Game", tags={ "Game" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = GameResponse.class) })
-    public GameResponse updateGame(@PathParam("version") BigDecimal version, @QueryParam("accountId") Long accountId, @QueryParam("gameId") Long gameId, @QueryParam("appKey") String appKey, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("packIds") String packIds, @QueryParam("includeGameData") Boolean includeGameData);
+    public GameResponse updateGame(@QueryParam("accountId") Long accountId, @QueryParam("gameId") Long gameId, @QueryParam("appKey") String appKey, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("packIds") String packIds, @QueryParam("includeGameData") Boolean includeGameData);
 }

@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.Trip;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/trip")
+@Path("/trip")
 @Api(value = "/", description = "")
 public interface TripApi  {
 
@@ -38,7 +37,7 @@ public interface TripApi  {
     @ApiOperation(value = "Create Trip", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip createTrip(@PathParam("version") BigDecimal version, @Valid Trip body);
+    public Trip createTrip(@Valid Trip body);
 
     /**
      * Delete Trip
@@ -51,7 +50,7 @@ public interface TripApi  {
     @ApiOperation(value = "Delete Trip", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void delete(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public void delete(@PathParam("id") Long id);
 
     /**
      * Set Trip Preference Driver
@@ -65,7 +64,7 @@ public interface TripApi  {
     @ApiOperation(value = "Set Trip Preference Driver", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip driveTrip(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @QueryParam("recurrence") @NotNull Boolean recurrence);
+    public Trip driveTrip(@PathParam("id") Long id, @QueryParam("recurrence") @NotNull Boolean recurrence);
 
     /**
      * Set Trip Preference Flexible
@@ -79,7 +78,7 @@ public interface TripApi  {
     @ApiOperation(value = "Set Trip Preference Flexible", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip flexibleTrip(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @QueryParam("recurrence") @NotNull Boolean recurrence);
+    public Trip flexibleTrip(@PathParam("id") Long id, @QueryParam("recurrence") @NotNull Boolean recurrence);
 
     /**
      * Get Trip
@@ -93,7 +92,7 @@ public interface TripApi  {
     @ApiOperation(value = "Get Trip", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip getTrip(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public Trip getTrip(@PathParam("id") Long id);
 
     /**
      * Get Trip Matches
@@ -107,7 +106,7 @@ public interface TripApi  {
     @ApiOperation(value = "Get Trip Matches", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class, responseContainer = "List") })
-    public List<Trip> getTripMatches(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("matchedHasRoute") Boolean matchedHasRoute, @QueryParam("matchedHasDriver") Boolean matchedHasDriver);
+    public List<Trip> getTripMatches(@PathParam("id") Long id, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("matchedHasRoute") Boolean matchedHasRoute, @QueryParam("matchedHasDriver") Boolean matchedHasDriver);
 
     /**
      * Process Trip Matches
@@ -121,7 +120,7 @@ public interface TripApi  {
     @ApiOperation(value = "Process Trip Matches", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class, responseContainer = "List") })
-    public List<Trip> processTripMatches(@PathParam("version") BigDecimal version, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tripId") Long tripId);
+    public List<Trip> processTripMatches(@QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tripId") Long tripId);
 
     /**
      * Set Trip Preference Rider
@@ -135,7 +134,7 @@ public interface TripApi  {
     @ApiOperation(value = "Set Trip Preference Rider", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip ride(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @QueryParam("recurrence") @NotNull Boolean recurrence);
+    public Trip ride(@PathParam("id") Long id, @QueryParam("recurrence") @NotNull Boolean recurrence);
 
     /**
      * Search Trips
@@ -149,7 +148,7 @@ public interface TripApi  {
     @ApiOperation(value = "Search Trips", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class, responseContainer = "List") })
-    public List<Trip> search(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("hasNotifications") Boolean hasNotifications);
+    public List<Trip> search(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("hasNotifications") Boolean hasNotifications);
 
     /**
      * Search Trips
@@ -163,7 +162,7 @@ public interface TripApi  {
     @ApiOperation(value = "Search Trips", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class, responseContainer = "List") })
-    public List<Trip> searchTrips(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("matchedHasRoute") Boolean matchedHasRoute, @QueryParam("matchedHasDriver") Boolean matchedHasDriver);
+    public List<Trip> searchTrips(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("matchedHasRoute") Boolean matchedHasRoute, @QueryParam("matchedHasDriver") Boolean matchedHasDriver);
 
     /**
      * Update Trip Locations
@@ -175,7 +174,7 @@ public interface TripApi  {
     @ApiOperation(value = "Update Trip Locations", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip updateLocations(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Trip body);
+    public Trip updateLocations(@PathParam("id") Long id, @Valid Trip body);
 
     /**
      * Update Recurrence Locations
@@ -187,7 +186,7 @@ public interface TripApi  {
     @ApiOperation(value = "Update Recurrence Locations", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class, responseContainer = "List") })
-    public List<Trip> updateRecurrenceLocations(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Trip body);
+    public List<Trip> updateRecurrenceLocations(@PathParam("id") Long id, @Valid Trip body);
 
     /**
      * Update Recurrence Shipments
@@ -199,7 +198,7 @@ public interface TripApi  {
     @ApiOperation(value = "Update Recurrence Shipments", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class, responseContainer = "List") })
-    public List<Trip> updateRecurrenceShipments(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Trip body);
+    public List<Trip> updateRecurrenceShipments(@PathParam("id") Long id, @Valid Trip body);
 
     /**
      * Update Trip Shipments
@@ -211,7 +210,7 @@ public interface TripApi  {
     @ApiOperation(value = "Update Trip Shipments", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip updateShipments(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Trip body);
+    public Trip updateShipments(@PathParam("id") Long id, @Valid Trip body);
 
     /**
      * Update Trip
@@ -225,7 +224,7 @@ public interface TripApi  {
     @ApiOperation(value = "Update Trip", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip updateTrip(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Trip body);
+    public Trip updateTrip(@PathParam("id") Long id, @Valid Trip body);
 
     /**
      * Trip Notifications
@@ -239,5 +238,5 @@ public interface TripApi  {
     @ApiOperation(value = "Trip Notifications", tags={ "Trip" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Trip.class) })
-    public Trip updateTripNotifications(@PathParam("version") BigDecimal version, @QueryParam("id") @NotNull Long id, @QueryParam("notifications") String notifications);
+    public Trip updateTripNotifications(@QueryParam("id") @NotNull Long id, @QueryParam("notifications") String notifications);
 }

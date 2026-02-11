@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.CreativeResponse;
 import org.openapitools.model.MissionResponse;
 import org.openapitools.model.SirqulResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}")
+@Path("")
 @Api(value = "/", description = "")
 public interface CreativeApi  {
 
@@ -40,7 +39,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Add Preview", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse addPreview(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
+    public SirqulResponse addPreview(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
 
     /**
      * Find Missions
@@ -54,7 +53,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Find Missions", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionResponse.class, responseContainer = "List") })
-    public List<MissionResponse> adsFind(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("randomize") @NotNull Boolean randomize, @QueryParam("targetedAdsOnly") @NotNull Boolean targetedAdsOnly, @QueryParam("type") String type, @QueryParam("accountId") Long accountId, @QueryParam("appVersion") String appVersion, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("device") String device, @QueryParam("deviceIdentifier") Long deviceIdentifier, @QueryParam("deviceVersion") String deviceVersion, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("allocatesTickets") Boolean allocatesTickets, @QueryParam("missionIds") String missionIds);
+    public List<MissionResponse> adsFind(@QueryParam("appKey") @NotNull String appKey, @QueryParam("randomize") @NotNull Boolean randomize, @QueryParam("targetedAdsOnly") @NotNull Boolean targetedAdsOnly, @QueryParam("type") String type, @QueryParam("accountId") Long accountId, @QueryParam("appVersion") String appVersion, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("device") String device, @QueryParam("deviceIdentifier") Long deviceIdentifier, @QueryParam("deviceVersion") String deviceVersion, @QueryParam("start") Integer start, @QueryParam("limit") Integer limit, @QueryParam("includeAudiences") Boolean includeAudiences, @QueryParam("allocatesTickets") Boolean allocatesTickets, @QueryParam("missionIds") String missionIds);
 
     /**
      * Create Creative
@@ -68,7 +67,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Create Creative", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CreativeResponse.class) })
-    public CreativeResponse createCreative(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("active") @NotNull Boolean active, @QueryParam("waitForAsset") @NotNull Boolean waitForAsset, @QueryParam("description") String description, @QueryParam("assetImageId") Long assetImageId, @QueryParam("action") String action, @QueryParam("data") String data, @QueryParam("suffix") String suffix, @QueryParam("type") String type, @QueryParam("balance") Double balance, @QueryParam("referenceId") Long referenceId, @QueryParam("appVersion") String appVersion, @QueryParam("missionId") Long missionId, @QueryParam("offerId") Long offerId);
+    public CreativeResponse createCreative(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("name") @NotNull String name, @QueryParam("active") @NotNull Boolean active, @QueryParam("waitForAsset") @NotNull Boolean waitForAsset, @QueryParam("description") String description, @QueryParam("assetImageId") Long assetImageId, @QueryParam("action") String action, @QueryParam("data") String data, @QueryParam("suffix") String suffix, @QueryParam("type") String type, @QueryParam("balance") Double balance, @QueryParam("referenceId") Long referenceId, @QueryParam("appVersion") String appVersion, @QueryParam("missionId") Long missionId, @QueryParam("offerId") Long offerId);
 
     /**
      * Delete Creative
@@ -82,7 +81,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Delete Creative", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteCreative(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
+    public SirqulResponse deleteCreative(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
 
     /**
      * Get Creative
@@ -96,7 +95,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Get Creative", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CreativeResponse.class) })
-    public CreativeResponse getCreative(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
+    public CreativeResponse getCreative(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
 
     /**
      * Search Creatives
@@ -110,7 +109,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Search Creatives", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CreativeResponse.class, responseContainer = "List") })
-    public List<CreativeResponse> getCreativesByApplication(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("missionId") Long missionId, @QueryParam("keyword") String keyword);
+    public List<CreativeResponse> getCreativesByApplication(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("missionId") Long missionId, @QueryParam("keyword") String keyword);
 
     /**
      * Remove Preview
@@ -124,7 +123,7 @@ public interface CreativeApi  {
     @ApiOperation(value = "Remove Preview", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse removePreview(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
+    public SirqulResponse removePreview(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId);
 
     /**
      * Update Creative
@@ -138,5 +137,5 @@ public interface CreativeApi  {
     @ApiOperation(value = "Update Creative", tags={ "Creative" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CreativeResponse.class) })
-    public CreativeResponse updateCreative(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("assetImageId") Long assetImageId, @QueryParam("action") String action, @QueryParam("data") String data, @QueryParam("suffix") String suffix, @QueryParam("type") String type, @QueryParam("balance") Double balance, @QueryParam("active") Boolean active, @QueryParam("referenceId") Long referenceId, @QueryParam("appVersion") String appVersion, @QueryParam("missionId") Long missionId);
+    public CreativeResponse updateCreative(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("creativeId") @NotNull Long creativeId, @QueryParam("name") String name, @QueryParam("description") String description, @QueryParam("assetImageId") Long assetImageId, @QueryParam("action") String action, @QueryParam("data") String data, @QueryParam("suffix") String suffix, @QueryParam("type") String type, @QueryParam("balance") Double balance, @QueryParam("active") Boolean active, @QueryParam("referenceId") Long referenceId, @QueryParam("appVersion") String appVersion, @QueryParam("missionId") Long missionId);
 }

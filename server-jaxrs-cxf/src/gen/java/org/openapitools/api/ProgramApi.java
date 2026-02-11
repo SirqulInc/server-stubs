@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.Program;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/program")
+@Path("/program")
 @Api(value = "/", description = "")
 public interface ProgramApi  {
 
@@ -38,7 +37,7 @@ public interface ProgramApi  {
     @ApiOperation(value = "Create Program", tags={ "Program" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Program.class) })
-    public Program createProgram(@PathParam("version") BigDecimal version, @Valid Program body);
+    public Program createProgram(@Valid Program body);
 
     /**
      * Delete Program
@@ -51,7 +50,7 @@ public interface ProgramApi  {
     @ApiOperation(value = "Delete Program", tags={ "Program" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteProgram(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public void deleteProgram(@PathParam("id") Long id);
 
     /**
      * Get Program
@@ -65,7 +64,7 @@ public interface ProgramApi  {
     @ApiOperation(value = "Get Program", tags={ "Program" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Program.class) })
-    public Program getProgram(@PathParam("version") BigDecimal version, @PathParam("id") Long id);
+    public Program getProgram(@PathParam("id") Long id);
 
     /**
      * Update Program
@@ -79,7 +78,7 @@ public interface ProgramApi  {
     @ApiOperation(value = "Update Program", tags={ "Program" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Program.class) })
-    public Program postProgram(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Program body);
+    public Program postProgram(@PathParam("id") Long id, @Valid Program body);
 
     /**
      * Update Program
@@ -93,7 +92,7 @@ public interface ProgramApi  {
     @ApiOperation(value = "Update Program", tags={ "Program" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Program.class) })
-    public Program putProgram(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Program body);
+    public Program putProgram(@PathParam("id") Long id, @Valid Program body);
 
     /**
      * Search Programs
@@ -107,5 +106,5 @@ public interface ProgramApi  {
     @ApiOperation(value = "Search Programs", tags={ "Program" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Program.class, responseContainer = "List") })
-    public List<Program> searchPrograms(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("keyword") String keyword);
+    public List<Program> searchPrograms(@QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("activeOnly") @NotNull Boolean activeOnly, @QueryParam("keyword") String keyword);
 }

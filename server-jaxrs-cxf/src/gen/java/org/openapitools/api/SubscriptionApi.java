@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.ApplicationUsageResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 import org.openapitools.model.SubscriptionPlanResponse;
 import org.openapitools.model.SubscriptionResponse;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/subscription")
+@Path("/subscription")
 @Api(value = "/", description = "")
 public interface SubscriptionApi  {
 
@@ -41,7 +40,7 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "Create Subscription", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SubscriptionResponse.class) })
-    public SubscriptionResponse createSubscription(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("planId") Long planId, @QueryParam("promoCode") String promoCode);
+    public SubscriptionResponse createSubscription(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("planId") Long planId, @QueryParam("promoCode") String promoCode);
 
     /**
      * Delete Subscription
@@ -55,7 +54,7 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "Delete Subscription", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteSubscription(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId);
+    public SirqulResponse deleteSubscription(@QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Subscription
@@ -69,7 +68,7 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "Get Subscription", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SubscriptionResponse.class) })
-    public SubscriptionResponse getSubscription(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId);
+    public SubscriptionResponse getSubscription(@QueryParam("accountId") @NotNull Long accountId);
 
     /**
      * Get Subscription Plan
@@ -83,7 +82,7 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "Get Subscription Plan", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SubscriptionPlanResponse.class) })
-    public SubscriptionPlanResponse getSubscriptionPlan(@PathParam("version") BigDecimal version, @QueryParam("planId") @NotNull Long planId);
+    public SubscriptionPlanResponse getSubscriptionPlan(@QueryParam("planId") @NotNull Long planId);
 
     /**
      * List Subscription Plans
@@ -97,7 +96,7 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "List Subscription Plans", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SubscriptionPlanResponse.class, responseContainer = "List") })
-    public List<SubscriptionPlanResponse> getSubscriptionPlans(@PathParam("version") BigDecimal version, @QueryParam("visible") Boolean visible, @QueryParam("role") String role);
+    public List<SubscriptionPlanResponse> getSubscriptionPlans(@QueryParam("visible") Boolean visible, @QueryParam("role") String role);
 
     /**
      * Get Subscription Usage
@@ -111,7 +110,7 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "Get Subscription Usage", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ApplicationUsageResponse.class) })
-    public ApplicationUsageResponse getSubscriptionUsage(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("applicationId") Long applicationId, @QueryParam("start") Long start, @QueryParam("end") Long end);
+    public ApplicationUsageResponse getSubscriptionUsage(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("applicationId") Long applicationId, @QueryParam("start") Long start, @QueryParam("end") Long end);
 
     /**
      * Update Subscription
@@ -125,5 +124,5 @@ public interface SubscriptionApi  {
     @ApiOperation(value = "Update Subscription", tags={ "Subscription" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SubscriptionResponse.class) })
-    public SubscriptionResponse updateSubscription(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("planId") Long planId, @QueryParam("promoCode") String promoCode, @QueryParam("active") Boolean active);
+    public SubscriptionResponse updateSubscription(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("planId") Long planId, @QueryParam("promoCode") String promoCode, @QueryParam("active") Boolean active);
 }

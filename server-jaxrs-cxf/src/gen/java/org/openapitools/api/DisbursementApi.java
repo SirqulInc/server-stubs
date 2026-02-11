@@ -22,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/disbursement")
+@Path("/disbursement")
 @Api(value = "/", description = "")
 public interface DisbursementApi  {
 
@@ -38,7 +38,7 @@ public interface DisbursementApi  {
     @ApiOperation(value = "Check Disbursements", tags={ "Disbursement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = DisbursementResponse.class) })
-    public DisbursementResponse checkDisbursements(@PathParam("version") BigDecimal version, @QueryParam("disbursementId") @NotNull Long disbursementId);
+    public DisbursementResponse checkDisbursements(@QueryParam("disbursementId") @NotNull Long disbursementId);
 
     /**
      * Create Disbursement
@@ -52,7 +52,7 @@ public interface DisbursementApi  {
     @ApiOperation(value = "Create Disbursement", tags={ "Disbursement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = DisbursementResponse.class) })
-    public DisbursementResponse createDisbursement(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("receiverAccountId") @NotNull Long receiverAccountId, @QueryParam("originalSenderAccountId") @NotNull Long originalSenderAccountId, @QueryParam("amount") @NotNull BigDecimal amount, @QueryParam("provider") @NotNull String provider, @QueryParam("scheduledDate") Long scheduledDate, @QueryParam("title") String title, @QueryParam("comment") String comment, @QueryParam("externalId") String externalId, @QueryParam("introspectionParams") String introspectionParams);
+    public DisbursementResponse createDisbursement(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("receiverAccountId") @NotNull Long receiverAccountId, @QueryParam("originalSenderAccountId") @NotNull Long originalSenderAccountId, @QueryParam("amount") @NotNull BigDecimal amount, @QueryParam("provider") @NotNull String provider, @QueryParam("scheduledDate") Long scheduledDate, @QueryParam("title") String title, @QueryParam("comment") String comment, @QueryParam("externalId") String externalId, @QueryParam("introspectionParams") String introspectionParams);
 
     /**
      * Get Disbursement
@@ -66,7 +66,7 @@ public interface DisbursementApi  {
     @ApiOperation(value = "Get Disbursement", tags={ "Disbursement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = DisbursementResponse.class) })
-    public DisbursementResponse getDisbursement(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("disbursementId") @NotNull Long disbursementId);
+    public DisbursementResponse getDisbursement(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("disbursementId") @NotNull Long disbursementId);
 
     /**
      * Search Disbursements
@@ -80,7 +80,7 @@ public interface DisbursementApi  {
     @ApiOperation(value = "Search Disbursements", tags={ "Disbursement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = DisbursementResponse.class, responseContainer = "List") })
-    public List<DisbursementResponse> searchDisbursements(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("receiverAccountId") Long receiverAccountId, @QueryParam("statuses") String statuses, @QueryParam("providers") String providers, @QueryParam("beforeDate") Long beforeDate, @QueryParam("afterDate") Long afterDate, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("false")Boolean activeOnly, @QueryParam("externalId") String externalId);
+    public List<DisbursementResponse> searchDisbursements(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("receiverAccountId") Long receiverAccountId, @QueryParam("statuses") String statuses, @QueryParam("providers") String providers, @QueryParam("beforeDate") Long beforeDate, @QueryParam("afterDate") Long afterDate, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("false")Boolean activeOnly, @QueryParam("externalId") String externalId);
 
     /**
      * Update Disbursement
@@ -94,5 +94,5 @@ public interface DisbursementApi  {
     @ApiOperation(value = "Update Disbursement", tags={ "Disbursement" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = DisbursementResponse.class) })
-    public DisbursementResponse updateDisbursement(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("disbursementId") @NotNull Long disbursementId, @QueryParam("amount") BigDecimal amount, @QueryParam("provider") String provider, @QueryParam("scheduledDate") Long scheduledDate, @QueryParam("title") String title, @QueryParam("comment") String comment, @QueryParam("externalId") String externalId, @QueryParam("retry") Boolean retry, @QueryParam("introspectionParams") String introspectionParams);
+    public DisbursementResponse updateDisbursement(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("disbursementId") @NotNull Long disbursementId, @QueryParam("amount") BigDecimal amount, @QueryParam("provider") String provider, @QueryParam("scheduledDate") Long scheduledDate, @QueryParam("title") String title, @QueryParam("comment") String comment, @QueryParam("externalId") String externalId, @QueryParam("retry") Boolean retry, @QueryParam("introspectionParams") String introspectionParams);
 }

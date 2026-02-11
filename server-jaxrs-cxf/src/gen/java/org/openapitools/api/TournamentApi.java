@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.MissionShortResponse;
 import org.openapitools.model.SirqulResponse;
 import org.openapitools.model.TournamentResponse;
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/tournament")
+@Path("/tournament")
 @Api(value = "/", description = "")
 public interface TournamentApi  {
 
@@ -40,7 +39,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Create Tournament", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TournamentResponse.class) })
-    public TournamentResponse createTournament(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("title") @NotNull String title, @QueryParam("costToPlay") @NotNull Integer costToPlay, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("subType") String subType, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("secondsBetweenLevels") @DefaultValue("600")Integer secondsBetweenLevels, @QueryParam("secondsForTieBreaker") @DefaultValue("600")Integer secondsForTieBreaker, @QueryParam("secondsBetweenPacks") @DefaultValue("86400")Integer secondsBetweenPacks, @QueryParam("maximumLevelLength") @DefaultValue("1800")Integer maximumLevelLength, @QueryParam("costToPlayType") String costToPlayType, @QueryParam("minimumToPlay") @DefaultValue("1")Integer minimumToPlay, @QueryParam("startingLimit") Integer startingLimit, @QueryParam("availableLimit") Integer availableLimit, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("audienceIds") String audienceIds, @QueryParam("active") Boolean active, @QueryParam("enableBuyBack") @DefaultValue("false")Boolean enableBuyBack, @QueryParam("offerIds") String offerIds, @QueryParam("offerAssetId") Long offerAssetId, @QueryParam("fixedReward") @DefaultValue("false")Boolean fixedReward, @QueryParam("splitReward") @DefaultValue("ALL")String splitReward, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("tournamentData") String tournamentData, @QueryParam("missionType") @DefaultValue("MULTISTAGE")String missionType, @QueryParam("visibility") @DefaultValue("PUBLIC")String visibility, @QueryParam("preliminaryGroups") @DefaultValue("1")Integer preliminaryGroups, @QueryParam("preliminaryGroupAdvancements") @DefaultValue("1")String preliminaryGroupAdvancements, @QueryParam("enableMultipleEntries") @DefaultValue("false")Boolean enableMultipleEntries, @QueryParam("enableMultipleVotes") @DefaultValue("false")Boolean enableMultipleVotes, @QueryParam("featured") @DefaultValue("false")Boolean featured, @QueryParam("winnerTag") String winnerTag, @QueryParam("tieTag") String tieTag);
+    public TournamentResponse createTournament(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("title") @NotNull String title, @QueryParam("costToPlay") @NotNull Integer costToPlay, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("subType") String subType, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("secondsBetweenLevels") @DefaultValue("600")Integer secondsBetweenLevels, @QueryParam("secondsForTieBreaker") @DefaultValue("600")Integer secondsForTieBreaker, @QueryParam("secondsBetweenPacks") @DefaultValue("86400")Integer secondsBetweenPacks, @QueryParam("maximumLevelLength") @DefaultValue("1800")Integer maximumLevelLength, @QueryParam("costToPlayType") String costToPlayType, @QueryParam("minimumToPlay") @DefaultValue("1")Integer minimumToPlay, @QueryParam("startingLimit") Integer startingLimit, @QueryParam("availableLimit") Integer availableLimit, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("audienceIds") String audienceIds, @QueryParam("active") Boolean active, @QueryParam("enableBuyBack") @DefaultValue("false")Boolean enableBuyBack, @QueryParam("offerIds") String offerIds, @QueryParam("offerAssetId") Long offerAssetId, @QueryParam("fixedReward") @DefaultValue("false")Boolean fixedReward, @QueryParam("splitReward") @DefaultValue("ALL")String splitReward, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("tournamentData") String tournamentData, @QueryParam("missionType") @DefaultValue("MULTISTAGE")String missionType, @QueryParam("visibility") @DefaultValue("PUBLIC")String visibility, @QueryParam("preliminaryGroups") @DefaultValue("1")Integer preliminaryGroups, @QueryParam("preliminaryGroupAdvancements") @DefaultValue("1")String preliminaryGroupAdvancements, @QueryParam("enableMultipleEntries") @DefaultValue("false")Boolean enableMultipleEntries, @QueryParam("enableMultipleVotes") @DefaultValue("false")Boolean enableMultipleVotes, @QueryParam("featured") @DefaultValue("false")Boolean featured, @QueryParam("winnerTag") String winnerTag, @QueryParam("tieTag") String tieTag);
 
     /**
      * Delete Tournament
@@ -54,7 +53,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Delete Tournament", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteTournament(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId);
+    public SirqulResponse deleteTournament(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId);
 
     /**
      * Get Tournament
@@ -68,7 +67,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Get Tournament", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TournamentResponse.class) })
-    public TournamentResponse getTournament(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") Long missionId, @QueryParam("joinCode") String joinCode, @QueryParam("includeScores") String includeScores, @QueryParam("objectPreviewSize") @DefaultValue("50")Integer objectPreviewSize);
+    public TournamentResponse getTournament(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") Long missionId, @QueryParam("joinCode") String joinCode, @QueryParam("includeScores") String includeScores, @QueryParam("objectPreviewSize") @DefaultValue("50")Integer objectPreviewSize);
 
     /**
      * Search Tournament Objects
@@ -82,7 +81,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Search Tournament Objects", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse searchObjects(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("gameLevelId") @NotNull Long gameLevelId, @QueryParam("sortField") @DefaultValue("PLAYER_SCORE_COUNT")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public SirqulResponse searchObjects(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("gameLevelId") @NotNull Long gameLevelId, @QueryParam("sortField") @DefaultValue("PLAYER_SCORE_COUNT")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 
     /**
      * Search Tournament Rounds
@@ -96,7 +95,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Search Tournament Rounds", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse searchRounds(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("status") @DefaultValue("ACCEPTED,ACTIVE")String status, @QueryParam("missionType") String missionType, @QueryParam("currentOnly") @DefaultValue("true")Boolean currentOnly, @QueryParam("visibilities") @DefaultValue("PUBLIC")String visibilities, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public SirqulResponse searchRounds(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("status") @DefaultValue("ACCEPTED,ACTIVE")String status, @QueryParam("missionType") String missionType, @QueryParam("currentOnly") @DefaultValue("true")Boolean currentOnly, @QueryParam("visibilities") @DefaultValue("PUBLIC")String visibilities, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 
     /**
      * Search Tournaments
@@ -110,7 +109,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Search Tournaments", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = MissionShortResponse.class) })
-    public MissionShortResponse searchTournaments(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyword") String keyword, @QueryParam("subType") String subType, @QueryParam("includeInactive") @DefaultValue("false")Boolean includeInactive, @QueryParam("missionTypes") @DefaultValue("MULTISTAGE,TOURNAMENT,POOLPLAY")String missionTypes, @QueryParam("filter") @DefaultValue("UPCOMING")String filter, @QueryParam("sortField") @DefaultValue("START_DATE")String sortField, @QueryParam("descending") Boolean descending, @QueryParam("visibility") @DefaultValue("PUBLIC")String visibility, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public MissionShortResponse searchTournaments(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("keyword") String keyword, @QueryParam("subType") String subType, @QueryParam("includeInactive") @DefaultValue("false")Boolean includeInactive, @QueryParam("missionTypes") @DefaultValue("MULTISTAGE,TOURNAMENT,POOLPLAY")String missionTypes, @QueryParam("filter") @DefaultValue("UPCOMING")String filter, @QueryParam("sortField") @DefaultValue("START_DATE")String sortField, @QueryParam("descending") Boolean descending, @QueryParam("visibility") @DefaultValue("PUBLIC")String visibility, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 
     /**
      * Submit Tournament Score
@@ -124,7 +123,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Submit Tournament Score", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse submitTournamentScore(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("gameId") @NotNull Long gameId, @QueryParam("packId") @NotNull Long packId, @QueryParam("scores") @NotNull String scores, @QueryParam("gameLevelId") Long gameLevelId);
+    public SirqulResponse submitTournamentScore(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("gameId") @NotNull Long gameId, @QueryParam("packId") @NotNull Long packId, @QueryParam("scores") @NotNull String scores, @QueryParam("gameLevelId") Long gameLevelId);
 
     /**
      * Submit a vote for a multi-stage album tournament.
@@ -138,7 +137,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Submit a vote for a multi-stage album tournament.", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse submitTournamentVote(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("gameObjectId") @NotNull Long gameObjectId, @QueryParam("deviceId") String deviceId, @QueryParam("checkIfDeviceAlreadyVoted") @DefaultValue("false")Boolean checkIfDeviceAlreadyVoted);
+    public SirqulResponse submitTournamentVote(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("gameObjectId") @NotNull Long gameObjectId, @QueryParam("deviceId") String deviceId, @QueryParam("checkIfDeviceAlreadyVoted") @DefaultValue("false")Boolean checkIfDeviceAlreadyVoted);
 
     /**
      * Substitute Tournament Player
@@ -152,7 +151,7 @@ public interface TournamentApi  {
     @ApiOperation(value = "Substitute Tournament Player", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse substituteTournamentPlayer(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("packId") @NotNull Long packId, @QueryParam("gameLevelId") @NotNull Long gameLevelId);
+    public SirqulResponse substituteTournamentPlayer(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("packId") @NotNull Long packId, @QueryParam("gameLevelId") @NotNull Long gameLevelId);
 
     /**
      * Update Tournament
@@ -166,5 +165,5 @@ public interface TournamentApi  {
     @ApiOperation(value = "Update Tournament", tags={ "Tournament" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TournamentResponse.class) })
-    public TournamentResponse updateTournament(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("title") String title, @QueryParam("subType") String subType, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("secondsBetweenLevels") Integer secondsBetweenLevels, @QueryParam("secondsForTieBreaker") Integer secondsForTieBreaker, @QueryParam("secondsBetweenPacks") Integer secondsBetweenPacks, @QueryParam("maximumLevelLength") Integer maximumLevelLength, @QueryParam("costToPlay") Integer costToPlay, @QueryParam("costToPlayType") String costToPlayType, @QueryParam("minimumToPlay") Integer minimumToPlay, @QueryParam("startingLimit") Integer startingLimit, @QueryParam("availableLimit") Integer availableLimit, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("startDate") Long startDate, @QueryParam("audienceIds") String audienceIds, @QueryParam("active") Boolean active, @QueryParam("enableBuyBack") Boolean enableBuyBack, @QueryParam("offerIds") String offerIds, @QueryParam("offerAssetId") Long offerAssetId, @QueryParam("fixedReward") Boolean fixedReward, @QueryParam("splitReward") String splitReward, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("tournamentData") String tournamentData, @QueryParam("visibility") String visibility, @QueryParam("preliminaryGroups") Integer preliminaryGroups, @QueryParam("preliminaryGroupAdvancements") String preliminaryGroupAdvancements, @QueryParam("enableMultipleEntries") Boolean enableMultipleEntries, @QueryParam("enableMultipleVotes") Boolean enableMultipleVotes, @QueryParam("featured") Boolean featured, @QueryParam("winnerTag") String winnerTag, @QueryParam("tieTag") String tieTag);
+    public TournamentResponse updateTournament(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("missionId") @NotNull Long missionId, @QueryParam("title") String title, @QueryParam("subType") String subType, @QueryParam("imageAssetId") Long imageAssetId, @QueryParam("secondsBetweenLevels") Integer secondsBetweenLevels, @QueryParam("secondsForTieBreaker") Integer secondsForTieBreaker, @QueryParam("secondsBetweenPacks") Integer secondsBetweenPacks, @QueryParam("maximumLevelLength") Integer maximumLevelLength, @QueryParam("costToPlay") Integer costToPlay, @QueryParam("costToPlayType") String costToPlayType, @QueryParam("minimumToPlay") Integer minimumToPlay, @QueryParam("startingLimit") Integer startingLimit, @QueryParam("availableLimit") Integer availableLimit, @QueryParam("description") String description, @QueryParam("metaData") String metaData, @QueryParam("startDate") Long startDate, @QueryParam("audienceIds") String audienceIds, @QueryParam("active") Boolean active, @QueryParam("enableBuyBack") Boolean enableBuyBack, @QueryParam("offerIds") String offerIds, @QueryParam("offerAssetId") Long offerAssetId, @QueryParam("fixedReward") Boolean fixedReward, @QueryParam("splitReward") String splitReward, @QueryParam("allocateTickets") Boolean allocateTickets, @QueryParam("tournamentData") String tournamentData, @QueryParam("visibility") String visibility, @QueryParam("preliminaryGroups") Integer preliminaryGroups, @QueryParam("preliminaryGroupAdvancements") String preliminaryGroupAdvancements, @QueryParam("enableMultipleEntries") Boolean enableMultipleEntries, @QueryParam("enableMultipleVotes") Boolean enableMultipleVotes, @QueryParam("featured") Boolean featured, @QueryParam("winnerTag") String winnerTag, @QueryParam("tieTag") String tieTag);
 }

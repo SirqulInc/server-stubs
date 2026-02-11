@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.VehicleType;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/vehicle/type")
+@Path("/vehicle/type")
 @Api(value = "/", description = "")
 public interface VehicleTypeApi  {
 
@@ -38,7 +37,7 @@ public interface VehicleTypeApi  {
     @ApiOperation(value = "Create Vehicle Type", tags={ "Vehicle Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = VehicleType.class) })
-    public VehicleType createVehicleType(@PathParam("version") BigDecimal version, @QueryParam("vehicleType") @NotNull String vehicleType, @Valid VehicleType body);
+    public VehicleType createVehicleType(@QueryParam("vehicleType") @NotNull String vehicleType, @Valid VehicleType body);
 
     /**
      * Delete Vehicle Type
@@ -51,7 +50,7 @@ public interface VehicleTypeApi  {
     @ApiOperation(value = "Delete Vehicle Type", tags={ "Vehicle Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteVehicleType(@PathParam("version") BigDecimal version, @PathParam("vehicleTypeId") Long vehicleTypeId);
+    public void deleteVehicleType(@PathParam("vehicleTypeId") Long vehicleTypeId);
 
     /**
      * Get Vehicle Type
@@ -65,7 +64,7 @@ public interface VehicleTypeApi  {
     @ApiOperation(value = "Get Vehicle Type", tags={ "Vehicle Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = VehicleType.class) })
-    public VehicleType getVehicleType(@PathParam("version") BigDecimal version, @PathParam("vehicleTypeId") Long vehicleTypeId);
+    public VehicleType getVehicleType(@PathParam("vehicleTypeId") Long vehicleTypeId);
 
     /**
      * Search Vehicle Type
@@ -79,7 +78,7 @@ public interface VehicleTypeApi  {
     @ApiOperation(value = "Search Vehicle Type", tags={ "Vehicle Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = VehicleType.class, responseContainer = "List") })
-    public List<VehicleType> searchVehicleTypes(@PathParam("version") BigDecimal version, @QueryParam("sortField") @NotNull @DefaultValue("id")String sortField, @QueryParam("descending") @NotNull @DefaultValue("false")Boolean descending, @QueryParam("start") @NotNull @DefaultValue("0")Integer start, @QueryParam("limit") @NotNull @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @NotNull @DefaultValue("true")Boolean activeOnly, @QueryParam("retailerId") Long retailerId, @QueryParam("hubId") Long hubId);
+    public List<VehicleType> searchVehicleTypes(@QueryParam("sortField") @NotNull @DefaultValue("id")String sortField, @QueryParam("descending") @NotNull @DefaultValue("false")Boolean descending, @QueryParam("start") @NotNull @DefaultValue("0")Integer start, @QueryParam("limit") @NotNull @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @NotNull @DefaultValue("true")Boolean activeOnly, @QueryParam("retailerId") Long retailerId, @QueryParam("hubId") Long hubId);
 
     /**
      * Update Vehicle Type
@@ -93,5 +92,5 @@ public interface VehicleTypeApi  {
     @ApiOperation(value = "Update Vehicle Type", tags={ "Vehicle Type" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = VehicleType.class) })
-    public VehicleType updateVehicleType(@PathParam("version") BigDecimal version, @PathParam("vehicleTypeId") Long vehicleTypeId, @QueryParam("vehicleType") @NotNull String vehicleType, @Valid VehicleType body);
+    public VehicleType updateVehicleType(@PathParam("vehicleTypeId") Long vehicleTypeId, @QueryParam("vehicleType") @NotNull String vehicleType, @Valid VehicleType body);
 }

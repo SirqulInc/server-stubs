@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.ScoreResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/score")
+@Path("/score")
 @Api(value = "/", description = "")
 public interface ScoreApi  {
 
@@ -38,7 +37,7 @@ public interface ScoreApi  {
     @ApiOperation(value = "Create Score", tags={ "Score" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ScoreResponse.class) })
-    public ScoreResponse createScore(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("points") @NotNull Integer points, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId, @QueryParam("timeTaken") Integer timeTaken, @QueryParam("highest") Boolean highest);
+    public ScoreResponse createScore(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("points") @NotNull Integer points, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId, @QueryParam("timeTaken") Integer timeTaken, @QueryParam("highest") Boolean highest);
 
     /**
      * Get Score
@@ -52,7 +51,7 @@ public interface ScoreApi  {
     @ApiOperation(value = "Get Score", tags={ "Score" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ScoreResponse.class) })
-    public ScoreResponse getScore(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId, @QueryParam("scoreObjectType") String scoreObjectType, @QueryParam("scoreStatus") String scoreStatus);
+    public ScoreResponse getScore(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId, @QueryParam("scoreObjectType") String scoreObjectType, @QueryParam("scoreStatus") String scoreStatus);
 
     /**
      * Search Score
@@ -66,5 +65,5 @@ public interface ScoreApi  {
     @ApiOperation(value = "Search Score", tags={ "Score" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ScoreResponse.class, responseContainer = "List") })
-    public List<ScoreResponse> searchScores(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId);
+    public List<ScoreResponse> searchScores(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("missionId") Long missionId, @QueryParam("gameId") Long gameId, @QueryParam("packId") Long packId, @QueryParam("gameLevelId") Long gameLevelId, @QueryParam("gameObjectId") Long gameObjectId);
 }

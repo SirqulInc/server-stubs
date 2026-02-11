@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/simulation/routing")
+@Path("/simulation/routing")
 @Api(value = "/", description = "")
 public interface SimulationApi  {
 
@@ -38,5 +37,5 @@ public interface SimulationApi  {
     @ApiOperation(value = "Routing Simulation", tags={ "Simulation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse simulation(@PathParam("version") BigDecimal version, @QueryParam("data") @NotNull String data, @QueryParam("realTime") @NotNull Boolean realTime);
+    public SirqulResponse simulation(@QueryParam("data") @NotNull String data, @QueryParam("realTime") @NotNull Boolean realTime);
 }

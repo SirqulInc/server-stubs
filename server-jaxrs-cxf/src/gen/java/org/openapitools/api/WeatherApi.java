@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.WeatherResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/weather/search")
+@Path("/weather/search")
 @Api(value = "/", description = "")
 public interface WeatherApi  {
 
@@ -38,5 +37,5 @@ public interface WeatherApi  {
     @ApiOperation(value = "Search Weather", tags={ "Weather" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = WeatherResponse.class) })
-    public WeatherResponse searchWeather(@PathParam("version") BigDecimal version, @QueryParam("regionId") Long regionId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("timezoneOffset") @DefaultValue("-6")Long timezoneOffset);
+    public WeatherResponse searchWeather(@QueryParam("regionId") Long regionId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("timezoneOffset") @DefaultValue("-6")Long timezoneOffset);
 }

@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.ApplicationConfigResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.SirqulResponse;
 
 import java.util.List;
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/appconfig")
+@Path("/appconfig")
 @Api(value = "/", description = "")
 public interface ApplicationConfigApi  {
 
@@ -39,7 +38,7 @@ public interface ApplicationConfigApi  {
     @ApiOperation(value = "Create AppConfig", tags={ "Application Config" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ApplicationConfigResponse.class) })
-    public ApplicationConfigResponse createApplicationConfig(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("configVersion") @NotNull String configVersion, @QueryParam("assetId") @NotNull Long assetId, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid);
+    public ApplicationConfigResponse createApplicationConfig(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("configVersion") @NotNull String configVersion, @QueryParam("assetId") @NotNull Long assetId, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid);
 
     /**
      * Delete AppConfig
@@ -53,7 +52,7 @@ public interface ApplicationConfigApi  {
     @ApiOperation(value = "Delete AppConfig", tags={ "Application Config" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse deleteApplicationConfig(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("configId") @NotNull Long configId);
+    public SirqulResponse deleteApplicationConfig(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("configId") @NotNull Long configId);
 
     /**
      * Get AppConfig
@@ -67,7 +66,7 @@ public interface ApplicationConfigApi  {
     @ApiOperation(value = "Get AppConfig", tags={ "Application Config" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ApplicationConfigResponse.class) })
-    public ApplicationConfigResponse getApplicationConfig(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("configId") @NotNull Long configId);
+    public ApplicationConfigResponse getApplicationConfig(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("configId") @NotNull Long configId);
 
     /**
      * Get AppConfig by Version
@@ -81,7 +80,7 @@ public interface ApplicationConfigApi  {
     @ApiOperation(value = "Get AppConfig by Version", tags={ "Application Config" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ApplicationConfigResponse.class) })
-    public ApplicationConfigResponse getApplicationConfigByConfigVersion(@PathParam("version") BigDecimal version, @QueryParam("appKey") @NotNull String appKey, @QueryParam("configVersion") @NotNull String configVersion, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid, @QueryParam("allowOlderVersions") @DefaultValue("false")Boolean allowOlderVersions);
+    public ApplicationConfigResponse getApplicationConfigByConfigVersion(@QueryParam("appKey") @NotNull String appKey, @QueryParam("configVersion") @NotNull String configVersion, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid, @QueryParam("allowOlderVersions") @DefaultValue("false")Boolean allowOlderVersions);
 
     /**
      * Search AppConfigs
@@ -95,7 +94,7 @@ public interface ApplicationConfigApi  {
     @ApiOperation(value = "Search AppConfigs", tags={ "Application Config" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ApplicationConfigResponse.class, responseContainer = "List") })
-    public List<ApplicationConfigResponse> searchApplicationConfig(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") String appKey, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid, @QueryParam("configVersion") String configVersion, @QueryParam("sortField") @DefaultValue("CONFIG_VERSION_INDEX")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
+    public List<ApplicationConfigResponse> searchApplicationConfig(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") String appKey, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid, @QueryParam("configVersion") String configVersion, @QueryParam("sortField") @DefaultValue("CONFIG_VERSION_INDEX")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit);
 
     /**
      * Update AppConfig
@@ -109,5 +108,5 @@ public interface ApplicationConfigApi  {
     @ApiOperation(value = "Update AppConfig", tags={ "Application Config" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ApplicationConfigResponse.class) })
-    public ApplicationConfigResponse updateApplicationConfig(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("configId") @NotNull Long configId, @QueryParam("appKey") String appKey, @QueryParam("configVersion") String configVersion, @QueryParam("assetId") Long assetId, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid);
+    public ApplicationConfigResponse updateApplicationConfig(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("configId") @NotNull Long configId, @QueryParam("appKey") String appKey, @QueryParam("configVersion") String configVersion, @QueryParam("assetId") Long assetId, @QueryParam("retailerId") Long retailerId, @QueryParam("retailerLocationId") Long retailerLocationId, @QueryParam("udid") String udid);
 }

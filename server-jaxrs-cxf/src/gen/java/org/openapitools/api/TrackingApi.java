@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AccountMiniResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.Leg;
 import org.openapitools.model.LegResponse;
 import org.openapitools.model.PredictedLocationResponse;
@@ -28,7 +27,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/tracking")
+@Path("/tracking")
 @Api(value = "/", description = "")
 public interface TrackingApi  {
 
@@ -44,7 +43,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Create Batch Tracking", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Leg.class, responseContainer = "List") })
-    public List<Leg> batchSaveTracking(@PathParam("version") BigDecimal version, @QueryParam("data") @NotNull String data, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("generateAccounts") Boolean generateAccounts, @QueryParam("updateAccountLocations") Boolean updateAccountLocations, @QueryParam("defaultTag") @DefaultValue("PASSIVE")String defaultTag, @QueryParam("slaveUID") String slaveUID);
+    public List<Leg> batchSaveTracking(@QueryParam("data") @NotNull String data, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("generateAccounts") Boolean generateAccounts, @QueryParam("updateAccountLocations") Boolean updateAccountLocations, @QueryParam("defaultTag") @DefaultValue("PASSIVE")String defaultTag, @QueryParam("slaveUID") String slaveUID);
 
     /**
      * Get Predicted Locations
@@ -58,7 +57,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Get Predicted Locations", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PredictedLocationResponse.class) })
-    public PredictedLocationResponse getPredictedLocations(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("dateCheck") Long dateCheck, @QueryParam("hourCheck") String hourCheck, @QueryParam("threshold") @DefaultValue("1")Long threshold, @QueryParam("distanceUnit") @DefaultValue("MILES")String distanceUnit, @QueryParam("searchRange") @DefaultValue("0")Double searchRange, @QueryParam("sortOrder") @DefaultValue("MATCHES")String sortOrder);
+    public PredictedLocationResponse getPredictedLocations(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("dateCheck") Long dateCheck, @QueryParam("hourCheck") String hourCheck, @QueryParam("threshold") @DefaultValue("1")Long threshold, @QueryParam("distanceUnit") @DefaultValue("MILES")String distanceUnit, @QueryParam("searchRange") @DefaultValue("0")Double searchRange, @QueryParam("sortOrder") @DefaultValue("MATCHES")String sortOrder);
 
     /**
      * Get Tracking Path
@@ -72,7 +71,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Get Tracking Path", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = StepResponse.class, responseContainer = "List") })
-    public List<StepResponse> getPredictedPath(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("startStepId") @NotNull Long startStepId, @QueryParam("endStepId") @NotNull Long endStepId);
+    public List<StepResponse> getPredictedPath(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("startStepId") @NotNull Long startStepId, @QueryParam("endStepId") @NotNull Long endStepId);
 
     /**
      * Search Preferred Locations
@@ -86,7 +85,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Search Preferred Locations", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PreferredLocationResponse.class, responseContainer = "List") })
-    public List<PreferredLocationResponse> getPreferredLocations(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("dateCheck") Long dateCheck, @QueryParam("hourCheck") String hourCheck, @QueryParam("sortField") @DefaultValue("PREFERRED_DATE")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("searchRange") @DefaultValue("0")Double searchRange, @QueryParam("distanceUnit") @DefaultValue("MILES")String distanceUnit);
+    public List<PreferredLocationResponse> getPreferredLocations(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("dateCheck") Long dateCheck, @QueryParam("hourCheck") String hourCheck, @QueryParam("sortField") @DefaultValue("PREFERRED_DATE")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("searchRange") @DefaultValue("0")Double searchRange, @QueryParam("distanceUnit") @DefaultValue("MILES")String distanceUnit);
 
     /**
      * Search Tracking
@@ -100,7 +99,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Search Tracking", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = LegResponse.class, responseContainer = "List") })
-    public List<LegResponse> getTrackingLegs(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("ownerId") Long ownerId, @QueryParam("trackingDeviceId") String trackingDeviceId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tags") String tags, @QueryParam("getLastPoint") @DefaultValue("false")Boolean getLastPoint);
+    public List<LegResponse> getTrackingLegs(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("ownerId") Long ownerId, @QueryParam("trackingDeviceId") String trackingDeviceId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tags") String tags, @QueryParam("getLastPoint") @DefaultValue("false")Boolean getLastPoint);
 
     /**
      * Create Tracking Leg
@@ -114,7 +113,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Create Tracking Leg", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse saveTrackingLeg(@PathParam("version") BigDecimal version, @QueryParam("startLat") @NotNull Double startLat, @QueryParam("startLng") @NotNull Double startLng, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("endLat") @NotNull Double endLat, @QueryParam("endLng") @NotNull Double endLng, @QueryParam("endDate") @NotNull Long endDate, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("distance") Double distance, @QueryParam("duration") Long duration, @QueryParam("steps") String steps, @QueryParam("tags") String tags);
+    public SirqulResponse saveTrackingLeg(@QueryParam("startLat") @NotNull Double startLat, @QueryParam("startLng") @NotNull Double startLng, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("endLat") @NotNull Double endLat, @QueryParam("endLng") @NotNull Double endLng, @QueryParam("endDate") @NotNull Long endDate, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("distance") Double distance, @QueryParam("duration") Long duration, @QueryParam("steps") String steps, @QueryParam("tags") String tags);
 
     /**
      * Create Tracking Step
@@ -128,7 +127,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "Create Tracking Step", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse saveTrackingStep(@PathParam("version") BigDecimal version, @QueryParam("legId") @NotNull Long legId, @QueryParam("startLat") @NotNull Double startLat, @QueryParam("startLng") @NotNull Double startLng, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("endLat") @NotNull Double endLat, @QueryParam("endLng") @NotNull Double endLng, @QueryParam("endDate") @NotNull Long endDate, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("distance") Double distance, @QueryParam("duration") Long duration);
+    public SirqulResponse saveTrackingStep(@QueryParam("legId") @NotNull Long legId, @QueryParam("startLat") @NotNull Double startLat, @QueryParam("startLng") @NotNull Double startLng, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("endLat") @NotNull Double endLat, @QueryParam("endLng") @NotNull Double endLng, @QueryParam("endDate") @NotNull Long endDate, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("distance") Double distance, @QueryParam("duration") Long duration);
 
     /**
      * List Tracking
@@ -142,7 +141,7 @@ public interface TrackingApi  {
     @ApiOperation(value = "List Tracking", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AccountMiniResponse.class, responseContainer = "List") })
-    public List<AccountMiniResponse> searchAccountsWithTrackingLegs(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tags") String tags, @QueryParam("audienceIds") String audienceIds, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("range") @DefaultValue("5")Double range, @QueryParam("sortField") @DefaultValue("LEG_START_DATE")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("false")Boolean activeOnly);
+    public List<AccountMiniResponse> searchAccountsWithTrackingLegs(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("keyword") String keyword, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tags") String tags, @QueryParam("audienceIds") String audienceIds, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude, @QueryParam("range") @DefaultValue("5")Double range, @QueryParam("sortField") @DefaultValue("LEG_START_DATE")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("20")Integer limit, @QueryParam("activeOnly") @DefaultValue("false")Boolean activeOnly);
 
     /**
      * Search Tracking (Billable)
@@ -156,5 +155,5 @@ public interface TrackingApi  {
     @ApiOperation(value = "Search Tracking (Billable)", tags={ "Tracking" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = LegResponse.class, responseContainer = "List") })
-    public List<LegResponse> searchTrackingLegs(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("trackingDeviceId") String trackingDeviceId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tags") String tags, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("100")Integer limit);
+    public List<LegResponse> searchTrackingLegs(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("appKey") @NotNull String appKey, @QueryParam("trackingDeviceId") String trackingDeviceId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("tags") String tags, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("100")Integer limit);
 }

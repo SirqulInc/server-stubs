@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import java.io.File;
 import org.openapitools.model.PurchaseItemListResponse;
 import org.openapitools.model.SirqulResponse;
@@ -25,7 +24,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/consumer/theme")
+@Path("/consumer/theme")
 @Api(value = "/", description = "")
 public interface ThemeDescriptorApi  {
 
@@ -41,7 +40,7 @@ public interface ThemeDescriptorApi  {
     @ApiOperation(value = "Create/Update Theme", tags={ "Theme Descriptor" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ThemeDescriptorResponse.class) })
-    public ThemeDescriptorResponse addOrUpdateThemeDescriptor(@PathParam("version") BigDecimal version, @QueryParam("publicRead") @NotNull Boolean publicRead, @QueryParam("publicWrite") @NotNull Boolean publicWrite, @QueryParam("publicDelete") @NotNull Boolean publicDelete, @QueryParam("publicAdd") @NotNull Boolean publicAdd, @QueryParam("visibility") @NotNull String visibility, @QueryParam("includeFriendGroup") @NotNull Boolean includeFriendGroup, @QueryParam("completeWithDefaultValues") @NotNull Boolean completeWithDefaultValues, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("themeDescriptorId") Long themeDescriptorId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("connectionIdsToAdd") String connectionIdsToAdd, @QueryParam("connectionGroupIdsToAdd") String connectionGroupIdsToAdd, @QueryParam("appVersion") String appVersion, @QueryParam("colorValueJson") String colorValueJson, @QueryParam("stringReplacerJson") String stringReplacerJson, @QueryParam("customJsonObjects") String customJsonObjects, @QueryParam("iconImage") File iconImage, @QueryParam("sceneAtlasImage") File sceneAtlasImage, @QueryParam("bgImage") File bgImage, @QueryParam("bgSound") File bgSound, @QueryParam("musicSelection") String musicSelection, @QueryParam("locationDescription") String locationDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public ThemeDescriptorResponse addOrUpdateThemeDescriptor(@QueryParam("publicRead") @NotNull Boolean publicRead, @QueryParam("publicWrite") @NotNull Boolean publicWrite, @QueryParam("publicDelete") @NotNull Boolean publicDelete, @QueryParam("publicAdd") @NotNull Boolean publicAdd, @QueryParam("visibility") @NotNull String visibility, @QueryParam("includeFriendGroup") @NotNull Boolean includeFriendGroup, @QueryParam("completeWithDefaultValues") @NotNull Boolean completeWithDefaultValues, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("themeDescriptorId") Long themeDescriptorId, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("connectionIdsToAdd") String connectionIdsToAdd, @QueryParam("connectionGroupIdsToAdd") String connectionGroupIdsToAdd, @QueryParam("appVersion") String appVersion, @QueryParam("colorValueJson") String colorValueJson, @QueryParam("stringReplacerJson") String stringReplacerJson, @QueryParam("customJsonObjects") String customJsonObjects, @QueryParam("iconImage") File iconImage, @QueryParam("sceneAtlasImage") File sceneAtlasImage, @QueryParam("bgImage") File bgImage, @QueryParam("bgSound") File bgSound, @QueryParam("musicSelection") String musicSelection, @QueryParam("locationDescription") String locationDescription, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Get Theme
@@ -55,7 +54,7 @@ public interface ThemeDescriptorApi  {
     @ApiOperation(value = "Get Theme", tags={ "Theme Descriptor" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PurchaseItemListResponse.class) })
-    public PurchaseItemListResponse getThemeDescriptor(@PathParam("version") BigDecimal version, @QueryParam("themeDescriptorId") @NotNull Long themeDescriptorId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public PurchaseItemListResponse getThemeDescriptor(@QueryParam("themeDescriptorId") @NotNull Long themeDescriptorId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Search Themes
@@ -69,7 +68,7 @@ public interface ThemeDescriptorApi  {
     @ApiOperation(value = "Search Themes", tags={ "Theme Descriptor" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PurchaseItemListResponse.class) })
-    public PurchaseItemListResponse getThemeDescriptors(@PathParam("version") BigDecimal version, @QueryParam("filter") @NotNull String filter, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("contestType") String contestType, @QueryParam("ownerId") Long ownerId, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("dateCreated") Long dateCreated, @QueryParam("appVersion") String appVersion, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public PurchaseItemListResponse getThemeDescriptors(@QueryParam("filter") @NotNull String filter, @QueryParam("sortField") @NotNull String sortField, @QueryParam("descending") @NotNull Boolean descending, @QueryParam("start") @NotNull Integer start, @QueryParam("limit") @NotNull Integer limit, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("contestType") String contestType, @QueryParam("ownerId") Long ownerId, @QueryParam("q") String q, @QueryParam("keyword") String keyword, @QueryParam("_i") Integer i, @QueryParam("_l") Integer l, @QueryParam("dateCreated") Long dateCreated, @QueryParam("appVersion") String appVersion, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 
     /**
      * Delete Theme
@@ -83,5 +82,5 @@ public interface ThemeDescriptorApi  {
     @ApiOperation(value = "Delete Theme", tags={ "Theme Descriptor" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse removeThemeDescriptor(@PathParam("version") BigDecimal version, @QueryParam("themeDescriptorId") @NotNull Long themeDescriptorId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
+    public SirqulResponse removeThemeDescriptor(@QueryParam("themeDescriptorId") @NotNull Long themeDescriptorId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("gameType") String gameType, @QueryParam("latitude") Double latitude, @QueryParam("longitude") Double longitude);
 }

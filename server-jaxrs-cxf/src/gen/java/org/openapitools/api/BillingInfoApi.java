@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.PaymentTypesResponse;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/billing")
+@Path("/billing")
 @Api(value = "/", description = "")
 public interface BillingInfoApi  {
 
@@ -38,7 +37,7 @@ public interface BillingInfoApi  {
     @ApiOperation(value = "Update Payment Method", tags={ "Billing Info" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PaymentTypesResponse.class) })
-    public PaymentTypesResponse addPaymentMethod(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("paymentMethodId") Long paymentMethodId, @QueryParam("accountName") String accountName, @QueryParam("firstName") String firstName, @QueryParam("lastName") String lastName, @QueryParam("address") String address, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("country") String country, @QueryParam("phone") String phone, @QueryParam("creditCardNumber") String creditCardNumber, @QueryParam("expirationDate") String expirationDate, @QueryParam("ccv") String ccv, @QueryParam("accountNumber") String accountNumber, @QueryParam("bankName") String bankName, @QueryParam("routingNumber") String routingNumber, @QueryParam("defaultPaymentMethod") Boolean defaultPaymentMethod, @QueryParam("paymentMethodNickname") String paymentMethodNickname, @QueryParam("taxId") String taxId, @QueryParam("providerCustomerProfileId") String providerCustomerProfileId, @QueryParam("providerPaymentProfileId") String providerPaymentProfileId, @QueryParam("metaData") String metaData);
+    public PaymentTypesResponse addPaymentMethod(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("paymentMethodId") Long paymentMethodId, @QueryParam("accountName") String accountName, @QueryParam("firstName") String firstName, @QueryParam("lastName") String lastName, @QueryParam("address") String address, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("country") String country, @QueryParam("phone") String phone, @QueryParam("creditCardNumber") String creditCardNumber, @QueryParam("expirationDate") String expirationDate, @QueryParam("ccv") String ccv, @QueryParam("accountNumber") String accountNumber, @QueryParam("bankName") String bankName, @QueryParam("routingNumber") String routingNumber, @QueryParam("defaultPaymentMethod") Boolean defaultPaymentMethod, @QueryParam("paymentMethodNickname") String paymentMethodNickname, @QueryParam("taxId") String taxId, @QueryParam("providerCustomerProfileId") String providerCustomerProfileId, @QueryParam("providerPaymentProfileId") String providerPaymentProfileId, @QueryParam("metaData") String metaData);
 
     /**
      * Create Payment Method
@@ -52,7 +51,7 @@ public interface BillingInfoApi  {
     @ApiOperation(value = "Create Payment Method", tags={ "Billing Info" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PaymentTypesResponse.class) })
-    public PaymentTypesResponse createPaymentMethod(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("accountName") String accountName, @QueryParam("firstName") String firstName, @QueryParam("lastName") String lastName, @QueryParam("address") String address, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("country") String country, @QueryParam("phone") String phone, @QueryParam("creditCardNumber") String creditCardNumber, @QueryParam("expirationDate") String expirationDate, @QueryParam("ccv") String ccv, @QueryParam("accountNumber") String accountNumber, @QueryParam("bankName") String bankName, @QueryParam("routingNumber") String routingNumber, @QueryParam("paymentMethodNickname") String paymentMethodNickname, @QueryParam("taxId") String taxId, @QueryParam("defaultPaymentMethod") @DefaultValue("true")Boolean defaultPaymentMethod, @QueryParam("authToken") String authToken, @QueryParam("provider") @DefaultValue("AUTHORIZE_NET")String provider, @QueryParam("providerCustomerProfileId") String providerCustomerProfileId, @QueryParam("providerPaymentProfileId") String providerPaymentProfileId, @QueryParam("metaData") String metaData, @QueryParam("appKey") String appKey);
+    public PaymentTypesResponse createPaymentMethod(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("accountName") String accountName, @QueryParam("firstName") String firstName, @QueryParam("lastName") String lastName, @QueryParam("address") String address, @QueryParam("city") String city, @QueryParam("state") String state, @QueryParam("postalCode") String postalCode, @QueryParam("country") String country, @QueryParam("phone") String phone, @QueryParam("creditCardNumber") String creditCardNumber, @QueryParam("expirationDate") String expirationDate, @QueryParam("ccv") String ccv, @QueryParam("accountNumber") String accountNumber, @QueryParam("bankName") String bankName, @QueryParam("routingNumber") String routingNumber, @QueryParam("paymentMethodNickname") String paymentMethodNickname, @QueryParam("taxId") String taxId, @QueryParam("defaultPaymentMethod") @DefaultValue("true")Boolean defaultPaymentMethod, @QueryParam("authToken") String authToken, @QueryParam("provider") @DefaultValue("AUTHORIZE_NET")String provider, @QueryParam("providerCustomerProfileId") String providerCustomerProfileId, @QueryParam("providerPaymentProfileId") String providerPaymentProfileId, @QueryParam("metaData") String metaData, @QueryParam("appKey") String appKey);
 
     /**
      * Create Smart Contract
@@ -66,7 +65,7 @@ public interface BillingInfoApi  {
     @ApiOperation(value = "Create Smart Contract", tags={ "Billing Info" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PaymentTypesResponse.class) })
-    public PaymentTypesResponse createSmartContract(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("tokenName") @NotNull String tokenName, @QueryParam("tokenSymbol") @NotNull String tokenSymbol, @QueryParam("paymentMethodId") Long paymentMethodId);
+    public PaymentTypesResponse createSmartContract(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("tokenName") @NotNull String tokenName, @QueryParam("tokenSymbol") @NotNull String tokenSymbol, @QueryParam("paymentMethodId") Long paymentMethodId);
 
     /**
      * Get Crypto Balances
@@ -80,7 +79,7 @@ public interface BillingInfoApi  {
     @ApiOperation(value = "Get Crypto Balances", tags={ "Billing Info" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PaymentTypesResponse.class) })
-    public PaymentTypesResponse getCryptoBalance(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("ownerAccountId") Long ownerAccountId, @QueryParam("paymentMethodId") Long paymentMethodId);
+    public PaymentTypesResponse getCryptoBalance(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("ownerAccountId") Long ownerAccountId, @QueryParam("paymentMethodId") Long paymentMethodId);
 
     /**
      * Get Payment Method
@@ -94,7 +93,7 @@ public interface BillingInfoApi  {
     @ApiOperation(value = "Get Payment Method", tags={ "Billing Info" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PaymentTypesResponse.class) })
-    public PaymentTypesResponse getPaymentMethod(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("paymentMethodId") Long paymentMethodId, @QueryParam("getCurrentBalance") Boolean getCurrentBalance);
+    public PaymentTypesResponse getPaymentMethod(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("paymentMethodId") Long paymentMethodId, @QueryParam("getCurrentBalance") Boolean getCurrentBalance);
 
     /**
      * Search Payment Methods
@@ -108,5 +107,5 @@ public interface BillingInfoApi  {
     @ApiOperation(value = "Search Payment Methods", tags={ "Billing Info" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = PaymentTypesResponse.class) })
-    public PaymentTypesResponse searchPaymentMethod(@PathParam("version") BigDecimal version, @QueryParam("accountId") @NotNull Long accountId, @QueryParam("provider") @DefaultValue("AUTHORIZE_NET")String provider, @QueryParam("type") String type, @QueryParam("keyword") String keyword, @QueryParam("sortField") @DefaultValue("UPDATED")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("5")Integer limit);
+    public PaymentTypesResponse searchPaymentMethod(@QueryParam("accountId") @NotNull Long accountId, @QueryParam("provider") @DefaultValue("AUTHORIZE_NET")String provider, @QueryParam("type") String type, @QueryParam("keyword") String keyword, @QueryParam("sortField") @DefaultValue("UPDATED")String sortField, @QueryParam("descending") @DefaultValue("true")Boolean descending, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("5")Integer limit);
 }

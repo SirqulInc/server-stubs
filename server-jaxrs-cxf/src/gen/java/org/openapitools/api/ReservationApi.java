@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AvailabilityResponse;
-import java.math.BigDecimal;
 import org.openapitools.model.ReservationResponse;
 import org.openapitools.model.TimeSlotResponse;
 
@@ -24,7 +23,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}")
+@Path("")
 @Api(value = "/", description = "")
 public interface ReservationApi  {
 
@@ -39,7 +38,7 @@ public interface ReservationApi  {
     @ApiOperation(value = "Create Reservation", tags={ "Reservation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void createReservation(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("appKey") String appKey, @QueryParam("metaData") String metaData);
+    public void createReservation(@QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("offerId") Long offerId, @QueryParam("offerLocationId") Long offerLocationId, @QueryParam("appKey") String appKey, @QueryParam("metaData") String metaData);
 
     /**
      * Delete Reservation
@@ -52,7 +51,7 @@ public interface ReservationApi  {
     @ApiOperation(value = "Delete Reservation", tags={ "Reservation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public void deleteReservation(@PathParam("version") BigDecimal version, @QueryParam("reservationId") @NotNull Long reservationId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
+    public void deleteReservation(@QueryParam("reservationId") @NotNull Long reservationId, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId);
 
     /**
      * Update Availability
@@ -64,7 +63,7 @@ public interface ReservationApi  {
     @ApiOperation(value = "Update Availability", tags={ "Reservation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AvailabilityResponse.class, responseContainer = "List") })
-    public List<AvailabilityResponse> reservableAvailability(@PathParam("version") BigDecimal version, @QueryParam("reservableId") @NotNull Long reservableId, @QueryParam("reservableType") @NotNull String reservableType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("availability") String availability, @QueryParam("availabilitySummary") String availabilitySummary);
+    public List<AvailabilityResponse> reservableAvailability(@QueryParam("reservableId") @NotNull Long reservableId, @QueryParam("reservableType") @NotNull String reservableType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("availability") String availability, @QueryParam("availabilitySummary") String availabilitySummary);
 
     /**
      * Search Availability
@@ -76,7 +75,7 @@ public interface ReservationApi  {
     @ApiOperation(value = "Search Availability", tags={ "Reservation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = AvailabilityResponse.class, responseContainer = "List") })
-    public List<AvailabilityResponse> searchAvailability(@PathParam("version") BigDecimal version, @QueryParam("reservableId") @NotNull Long reservableId, @QueryParam("reservableType") @NotNull String reservableType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("100")Integer limit);
+    public List<AvailabilityResponse> searchAvailability(@QueryParam("reservableId") @NotNull Long reservableId, @QueryParam("reservableType") @NotNull String reservableType, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("100")Integer limit);
 
     /**
      * Search Reservations
@@ -88,7 +87,7 @@ public interface ReservationApi  {
     @ApiOperation(value = "Search Reservations", tags={ "Reservation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = ReservationResponse.class, responseContainer = "List") })
-    public List<ReservationResponse> searchReservations(@PathParam("version") BigDecimal version, @QueryParam("deviceId") String deviceId, @QueryParam("appKey") String appKey, @QueryParam("accountId") Long accountId, @QueryParam("filterAccountId") Long filterAccountId, @QueryParam("reservableId") Long reservableId, @QueryParam("reservableType") String reservableType, @QueryParam("keyword") String keyword, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("100")Integer limit);
+    public List<ReservationResponse> searchReservations(@QueryParam("deviceId") String deviceId, @QueryParam("appKey") String appKey, @QueryParam("accountId") Long accountId, @QueryParam("filterAccountId") Long filterAccountId, @QueryParam("reservableId") Long reservableId, @QueryParam("reservableType") String reservableType, @QueryParam("keyword") String keyword, @QueryParam("startDate") Long startDate, @QueryParam("endDate") Long endDate, @QueryParam("start") @DefaultValue("0")Integer start, @QueryParam("limit") @DefaultValue("100")Integer limit);
 
     /**
      * Search Schedule
@@ -100,5 +99,5 @@ public interface ReservationApi  {
     @ApiOperation(value = "Search Schedule", tags={ "Reservation" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = TimeSlotResponse.class, responseContainer = "List") })
-    public List<TimeSlotResponse> searchSchedule(@PathParam("version") BigDecimal version, @QueryParam("reservableId") @NotNull Long reservableId, @QueryParam("reservableType") @NotNull String reservableType, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("endDate") @NotNull Long endDate, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("timeBucketMins") @DefaultValue("30")Integer timeBucketMins);
+    public List<TimeSlotResponse> searchSchedule(@QueryParam("reservableId") @NotNull Long reservableId, @QueryParam("reservableType") @NotNull String reservableType, @QueryParam("startDate") @NotNull Long startDate, @QueryParam("endDate") @NotNull Long endDate, @QueryParam("deviceId") String deviceId, @QueryParam("accountId") Long accountId, @QueryParam("timeBucketMins") @DefaultValue("30")Integer timeBucketMins);
 }

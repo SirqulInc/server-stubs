@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import java.math.BigDecimal;
 import org.openapitools.model.Location;
 import org.openapitools.model.SirqulResponse;
 
@@ -23,7 +22,7 @@ import javax.validation.Valid;
  * <p>Sirqul provides an Engagement-as-a-Service (EaaS)            IoT Platform with Smart Mesh network technology to drive            engagement, operational efficiency, rapid innovation and new            revenue streams. Please visit https://dev.sirqul.com/ for more            documents, examples, and sample applications.<?php $a = htmlspecialchars($_GET['appKey']);$b = htmlspecialchars($_GET['appRestKey']);?>
  *
  */
-@Path("/api/{version}/location")
+@Path("/location")
 @Api(value = "/", description = "")
 public interface LocationApiV2Api  {
 
@@ -39,7 +38,7 @@ public interface LocationApiV2Api  {
     @ApiOperation(value = "Create new location", tags={ "LocationApiV2" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse createLocationV2(@PathParam("version") BigDecimal version, @Valid Location body);
+    public SirqulResponse createLocationV2(@Valid Location body);
 
     /**
      * Update an existing location
@@ -53,5 +52,5 @@ public interface LocationApiV2Api  {
     @ApiOperation(value = "Update an existing location", tags={ "LocationApiV2" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = SirqulResponse.class) })
-    public SirqulResponse updateLocationV2(@PathParam("version") BigDecimal version, @PathParam("id") Long id, @Valid Location body);
+    public SirqulResponse updateLocationV2(@PathParam("id") Long id, @Valid Location body);
 }
