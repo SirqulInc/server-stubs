@@ -19,7 +19,6 @@ object Paths {
     /**
      * Create Consumer
      * Create a connection to an existing amqp queue and register as a consumer.
-     * @param version  
      * @param appKey The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied. 
      * @param name The name of the queue to connect to 
      * @param hostname The hostname of the server the queue is hosted on 
@@ -35,12 +34,11 @@ object Paths {
      * @param workers The number of workers to generate  (optional, default to 1)
      * @param useSSL Use SSL (optional)
      */
-    @Resource("/api/{version}/queue/consumer/create") class consumerCreate(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val hostname: kotlin.String, val port: kotlin.Int? = null, val username: kotlin.String, val password: kotlin.String, val virtualHost: kotlin.String? = null, val exchanger: kotlin.String? = null, val exchangerType: kotlin.String? = null, val workers: kotlin.Int? = null, val dataMapping: kotlin.String, val useSSL: kotlin.Boolean? = null)
+    @Resource("/queue/consumer/create") class consumerCreate(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val hostname: kotlin.String, val port: kotlin.Int? = null, val username: kotlin.String, val password: kotlin.String, val virtualHost: kotlin.String? = null, val exchanger: kotlin.String? = null, val exchangerType: kotlin.String? = null, val workers: kotlin.Int? = null, val dataMapping: kotlin.String, val useSSL: kotlin.Boolean? = null)
 
     /**
      * Update Consumer
      * Update an existing amqp queue&#39;s data mapping.
-     * @param version  
      * @param appKey The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied. 
      * @param queueId The queue to update 
      * @param dataMapping The data mapping information in the format of AMQPRequest 
@@ -48,12 +46,11 @@ object Paths {
      * @param accountId The logged in user ID (optional)
      * @param useSSL Use SSL (optional)
      */
-    @Resource("/api/{version}/queue/consumer/update") class consumerUpdate(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val queueId: kotlin.Long, val dataMapping: kotlin.String, val useSSL: kotlin.Boolean? = null)
+    @Resource("/queue/consumer/update") class consumerUpdate(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val queueId: kotlin.Long, val dataMapping: kotlin.String, val useSSL: kotlin.Boolean? = null)
 
     /**
      * Create Queue
      * Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application.
-     * @param version  
      * @param appKey The application key unique to each application. 
      * @param name The name of the queue to create 
      * @param deviceId The client deviceID (optional)
@@ -67,22 +64,20 @@ object Paths {
      * @param virtualHost The virtual host defined on the server to queue (optional)
      * @param useSSL Use SSL (optional)
      */
-    @Resource("/api/{version}/queue/create") class queueCreate(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val workers: kotlin.Int? = null, val analyticTags: kotlin.String? = null, val hostname: kotlin.String? = null, val port: kotlin.Int? = null, val username: kotlin.String? = null, val password: kotlin.String? = null, val virtualHost: kotlin.String? = null, val useSSL: kotlin.Boolean? = null)
+    @Resource("/queue/create") class queueCreate(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val workers: kotlin.Int? = null, val analyticTags: kotlin.String? = null, val hostname: kotlin.String? = null, val port: kotlin.Int? = null, val username: kotlin.String? = null, val password: kotlin.String? = null, val virtualHost: kotlin.String? = null, val useSSL: kotlin.Boolean? = null)
 
     /**
      * Delete Queue
      * Delete the stored queue record and close any active connections to the AMQP servers.
-     * @param version  
      * @param queueId The id of the queue to find 
      * @param deviceId The client device ID (optional)
      * @param accountId The logged in user ID (optional)
      */
-    @Resource("/api/{version}/queue/delete") class queueDelete(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val queueId: kotlin.Long)
+    @Resource("/queue/delete") class queueDelete(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val queueId: kotlin.Long)
 
     /**
      * Get Queue
      * Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
-     * @param version  
      * @param deviceId The client device ID (optional)
      * @param accountId The logged in user ID (optional)
      * @param queueId The id of the queue to find (optional)
@@ -91,12 +86,11 @@ object Paths {
      * @param hostname The hostname of the queue to find (optional)
      * @param virtualHost The virtual host of the queue to find (optional)
      */
-    @Resource("/api/{version}/queue/get") class queueGet(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val queueId: kotlin.Long? = null, val appKey: kotlin.String? = null, val name: kotlin.String? = null, val hostname: kotlin.String? = null, val virtualHost: kotlin.String? = null)
+    @Resource("/queue/get") class queueGet(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val queueId: kotlin.Long? = null, val appKey: kotlin.String? = null, val name: kotlin.String? = null, val hostname: kotlin.String? = null, val virtualHost: kotlin.String? = null)
 
     /**
      * Publish Queue
      * Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
-     * @param version  
      * @param message The payload to send to the queue 
      * @param queueId The id of the queue to publish to (optional)
      * @param appKey The application key the queue was assigned to (optional)
@@ -104,12 +98,11 @@ object Paths {
      * @param hostname The hostname of the server the queue is hosted on (optional)
      * @param virtualHost The virtual host defined on the server to queue (optional)
      */
-    @Resource("/api/{version}/queue/publish") class queuePublish(val version: java.math.BigDecimal, val queueId: kotlin.Long? = null, val appKey: kotlin.String? = null, val name: kotlin.String? = null, val hostname: kotlin.String? = null, val virtualHost: kotlin.String? = null, val message: kotlin.String)
+    @Resource("/queue/publish") class queuePublish(val queueId: kotlin.Long? = null, val appKey: kotlin.String? = null, val name: kotlin.String? = null, val hostname: kotlin.String? = null, val virtualHost: kotlin.String? = null, val message: kotlin.String)
 
     /**
      * Search Queue
      * Get the queues setup for the BillableEntity&#39;s applications.
-     * @param version  
      * @param queueId The id of the queue to find (optional)
      * @param deviceId The client device ID (optional)
      * @param accountId The logged in user ID (optional)
@@ -117,12 +110,11 @@ object Paths {
      * @param start Start of the index (optional, default to 0)
      * @param limit Limit of the index (optional, default to 10)
      */
-    @Resource("/api/{version}/queue/search") class queueSearch(val version: java.math.BigDecimal, val queueId: kotlin.Long? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/queue/search") class queueSearch(val queueId: kotlin.Long? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Queue
      * Update the basic AMQP queue.
-     * @param version  
      * @param queueId The id of the queue to update 
      * @param deviceId The client deviceID (optional)
      * @param accountId The logged in user ID (optional)
@@ -136,12 +128,11 @@ object Paths {
      * @param virtualHost The virtual host defined on the server to queue (optional)
      * @param useSSL the SSL to use (optional)
      */
-    @Resource("/api/{version}/queue/update") class queueUpdate(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val queueId: kotlin.Long, val workers: kotlin.Int? = null, val analyticTags: kotlin.String? = null, val hostname: kotlin.String? = null, val port: kotlin.Int? = null, val username: kotlin.String? = null, val password: kotlin.String? = null, val virtualHost: kotlin.String? = null, val useSSL: kotlin.Boolean? = null)
+    @Resource("/queue/update") class queueUpdate(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val queueId: kotlin.Long, val workers: kotlin.Int? = null, val analyticTags: kotlin.String? = null, val hostname: kotlin.String? = null, val port: kotlin.Int? = null, val username: kotlin.String? = null, val password: kotlin.String? = null, val virtualHost: kotlin.String? = null, val useSSL: kotlin.Boolean? = null)
 
     /**
      * Search Accounts by Location
      * Search accounts by their location. This only searches on users that have location data. Use ConnectionApi to perform a regular search on accounts.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param q Deprecated - legacy query parameter (optional)
@@ -177,12 +168,11 @@ object Paths {
      * @param verifiedUserOnly Returns only verified users (optional)
      * @param contentAdminOnly Returns only content admin users (optional)
      */
-    @Resource("/api/{version}/account/search") class accountLocationSearch(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val postalCode: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val appKey: kotlin.String? = null, val range: kotlin.Double? = null, val locationLastUpdated: kotlin.Long? = null, val gender: kotlin.String? = null, val minAge: kotlin.Int? = null, val maxAge: kotlin.Int? = null, val companionshipIndex: kotlin.Int? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchMode: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val roles: kotlin.String? = null, val tags: kotlin.String? = null, val experience: kotlin.String? = null, val categoryIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceOperator: kotlin.String? = null, val updateCurrentLocation: kotlin.Boolean? = null, val updatePreferredSettings: kotlin.Boolean? = null, val showExactLocations: kotlin.Boolean? = null, val showConnectionToSearcher: kotlin.Boolean? = null, val flagCountMinimum: kotlin.Long? = null, val verifiedUserOnly: kotlin.Boolean? = null, val contentAdminOnly: kotlin.Boolean? = null)
+    @Resource("/account/search") class accountLocationSearch(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val postalCode: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val appKey: kotlin.String? = null, val range: kotlin.Double? = null, val locationLastUpdated: kotlin.Long? = null, val gender: kotlin.String? = null, val minAge: kotlin.Int? = null, val maxAge: kotlin.Int? = null, val companionshipIndex: kotlin.Int? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchMode: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val roles: kotlin.String? = null, val tags: kotlin.String? = null, val experience: kotlin.String? = null, val categoryIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceOperator: kotlin.String? = null, val updateCurrentLocation: kotlin.Boolean? = null, val updatePreferredSettings: kotlin.Boolean? = null, val showExactLocations: kotlin.Boolean? = null, val showConnectionToSearcher: kotlin.Boolean? = null, val flagCountMinimum: kotlin.Long? = null, val verifiedUserOnly: kotlin.Boolean? = null, val contentAdminOnly: kotlin.Boolean? = null)
 
     /**
      * Block Account
      * Moves or removes an account into the user&#39;s blocked group.
-     * @param version  
      * @param accountIdBeingBlocked The id of the account to be blocked/unblocked 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -191,12 +181,11 @@ object Paths {
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/account/block") class blockAccount(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val accountIdBeingBlocked: kotlin.Long, val blockFlagValue: kotlin.Boolean? = null, val removeFromGroupsIfBlocked: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/account/block") class blockAccount(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val accountIdBeingBlocked: kotlin.Long, val blockFlagValue: kotlin.Boolean? = null, val removeFromGroupsIfBlocked: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Account
      * Create a new account by role.
-     * @param version  
      * @param username The access token to authenticate with (ex: username) 
      * @param password The secret to authenticate with (ex: password) 
      * @param name The full name of the user. If this parameter is NOT empty, the following parameters will be ignored: prefixName, firstName, middleName, lastName, and suffixName (optional)
@@ -270,12 +259,11 @@ object Paths {
      * @param appNickname The nickname used in the application for this account (optional)
      * @param personalAudienceId Personal audience id to associate with this account (optional)
      */
-    @Resource("/api/{version}/account/create") class createAccount(val version: java.math.BigDecimal, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val deviceId: kotlin.String? = null, val deviceIdType: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val emailAddress: kotlin.String? = null, val assetId: kotlin.Long? = null, val streetAddress: kotlin.String? = null, val zipcode: kotlin.String? = null, val gender: kotlin.String? = null, val birthday: kotlin.Long? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val role: kotlin.String? = null, val platforms: kotlin.String? = null, val tags: kotlin.String? = null, val aboutUs: kotlin.String? = null, val gameExperience: kotlin.String? = null, val categoryIds: kotlin.String? = null, val hometown: kotlin.String? = null, val height: kotlin.String? = null, val heightIndex: kotlin.Int? = null, val ethnicity: kotlin.String? = null, val bodyType: kotlin.String? = null, val maritalStatus: kotlin.String? = null, val children: kotlin.String? = null, val religion: kotlin.String? = null, val education: kotlin.String? = null, val educationIndex: kotlin.Int? = null, val smoke: kotlin.String? = null, val drink: kotlin.String? = null, val companionship: kotlin.String? = null, val companionshipIndex: kotlin.Int? = null, val preferredMinAge: kotlin.Int? = null, val preferredMaxAge: kotlin.Int? = null, val preferredMinHeight: kotlin.Int? = null, val preferredMaxHeight: kotlin.Int? = null, val preferredGender: kotlin.String? = null, val preferredEducation: kotlin.String? = null, val preferredEducationIndex: kotlin.Int? = null, val preferredBodyType: kotlin.String? = null, val preferredEthnicity: kotlin.String? = null, val preferredLocation: kotlin.String? = null, val preferredLocationRange: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val acceptedTerms: kotlin.Boolean? = null, val inviteToken: kotlin.String? = null, val referralAccountId: kotlin.Long? = null, val sendValidation: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val responseType: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val appBlob: kotlin.String? = null, val appEnablePush: kotlin.Boolean? = null, val appEnableSMS: kotlin.Boolean? = null, val appEnableEmail: kotlin.Boolean? = null, val locationVisibility: kotlin.String? = null, val homeLatitude: kotlin.Double? = null, val homeLongitude: kotlin.Double? = null, val appNickname: kotlin.String? = null, val personalAudienceId: kotlin.Long? = null)
+    @Resource("/account/create") class createAccount(val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val deviceId: kotlin.String? = null, val deviceIdType: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val emailAddress: kotlin.String? = null, val assetId: kotlin.Long? = null, val streetAddress: kotlin.String? = null, val zipcode: kotlin.String? = null, val gender: kotlin.String? = null, val birthday: kotlin.Long? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val role: kotlin.String? = null, val platforms: kotlin.String? = null, val tags: kotlin.String? = null, val aboutUs: kotlin.String? = null, val gameExperience: kotlin.String? = null, val categoryIds: kotlin.String? = null, val hometown: kotlin.String? = null, val height: kotlin.String? = null, val heightIndex: kotlin.Int? = null, val ethnicity: kotlin.String? = null, val bodyType: kotlin.String? = null, val maritalStatus: kotlin.String? = null, val children: kotlin.String? = null, val religion: kotlin.String? = null, val education: kotlin.String? = null, val educationIndex: kotlin.Int? = null, val smoke: kotlin.String? = null, val drink: kotlin.String? = null, val companionship: kotlin.String? = null, val companionshipIndex: kotlin.Int? = null, val preferredMinAge: kotlin.Int? = null, val preferredMaxAge: kotlin.Int? = null, val preferredMinHeight: kotlin.Int? = null, val preferredMaxHeight: kotlin.Int? = null, val preferredGender: kotlin.String? = null, val preferredEducation: kotlin.String? = null, val preferredEducationIndex: kotlin.Int? = null, val preferredBodyType: kotlin.String? = null, val preferredEthnicity: kotlin.String? = null, val preferredLocation: kotlin.String? = null, val preferredLocationRange: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val acceptedTerms: kotlin.Boolean? = null, val inviteToken: kotlin.String? = null, val referralAccountId: kotlin.Long? = null, val sendValidation: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val responseType: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val appBlob: kotlin.String? = null, val appEnablePush: kotlin.Boolean? = null, val appEnableSMS: kotlin.Boolean? = null, val appEnableEmail: kotlin.Boolean? = null, val locationVisibility: kotlin.String? = null, val homeLatitude: kotlin.Double? = null, val homeLongitude: kotlin.Double? = null, val appNickname: kotlin.String? = null, val personalAudienceId: kotlin.Long? = null)
 
     /**
      * Update Account
      * Edit the user&#39;s profile information
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param connectionAccountId The account id used to edit another person&#39;s account (optional)
@@ -359,23 +347,21 @@ object Paths {
      * @param personalAudienceId Personal Audience (optional)
      * @param nonGuestUsername The user&#39;s username to update with if they currently have a guest username (optional)
      */
-    @Resource("/api/{version}/account/profile/update") class editAccount(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val role: kotlin.String? = null, val assetId: kotlin.Long? = null, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val gender: kotlin.String? = null, val age: kotlin.Int? = null, val birthday: kotlin.Long? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val emailAddress: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val zipcode: kotlin.String? = null, val country: kotlin.String? = null, val makeProfileInfoPublic: kotlin.Boolean? = null, val makeGameInfoPublic: kotlin.Boolean? = null, val makeFriendsInfoPublic: kotlin.Boolean? = null, val hometown: kotlin.String? = null, val height: kotlin.String? = null, val heightIndex: kotlin.Int? = null, val ethnicity: kotlin.String? = null, val bodyType: kotlin.String? = null, val maritalStatus: kotlin.String? = null, val children: kotlin.String? = null, val religion: kotlin.String? = null, val education: kotlin.String? = null, val educationIndex: kotlin.Int? = null, val smoke: kotlin.String? = null, val drink: kotlin.String? = null, val companionship: kotlin.String? = null, val companionshipIndex: kotlin.Int? = null, val preferredMinAge: kotlin.Int? = null, val preferredMaxAge: kotlin.Int? = null, val preferredMinHeight: kotlin.Int? = null, val preferredMaxHeight: kotlin.Int? = null, val preferredGender: kotlin.String? = null, val preferredEducation: kotlin.String? = null, val preferredEducationIndex: kotlin.Int? = null, val preferredBodyType: kotlin.String? = null, val preferredEthnicity: kotlin.String? = null, val preferredLocation: kotlin.String? = null, val preferredLocationRange: kotlin.Double? = null, val platforms: kotlin.String? = null, val tags: kotlin.String? = null, val aboutUs: kotlin.String? = null, val matchToken: kotlin.String? = null, val gameExperience: kotlin.String? = null, val categories: kotlin.String? = null, val categoryIds: kotlin.String? = null, val responseFilters: kotlin.String? = null, val showAsZipcode: kotlin.Boolean? = null, val showExactLocation: kotlin.Boolean? = null, val showOthersExactLocation: kotlin.Boolean? = null, val acceptedTerms: kotlin.Boolean? = null, val locationVisibility: kotlin.String? = null, val appBlob: kotlin.String? = null, val appEnablePush: kotlin.Boolean? = null, val appEnableSMS: kotlin.Boolean? = null, val appEnableEmail: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnProfile: kotlin.Boolean? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val referralAccountId: kotlin.Long? = null, val appNickname: kotlin.String? = null, val personalAudienceId: kotlin.Long? = null, val nonGuestUsername: kotlin.String? = null)
+    @Resource("/account/profile/update") class editAccount(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val role: kotlin.String? = null, val assetId: kotlin.Long? = null, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val gender: kotlin.String? = null, val age: kotlin.Int? = null, val birthday: kotlin.Long? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val emailAddress: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val zipcode: kotlin.String? = null, val country: kotlin.String? = null, val makeProfileInfoPublic: kotlin.Boolean? = null, val makeGameInfoPublic: kotlin.Boolean? = null, val makeFriendsInfoPublic: kotlin.Boolean? = null, val hometown: kotlin.String? = null, val height: kotlin.String? = null, val heightIndex: kotlin.Int? = null, val ethnicity: kotlin.String? = null, val bodyType: kotlin.String? = null, val maritalStatus: kotlin.String? = null, val children: kotlin.String? = null, val religion: kotlin.String? = null, val education: kotlin.String? = null, val educationIndex: kotlin.Int? = null, val smoke: kotlin.String? = null, val drink: kotlin.String? = null, val companionship: kotlin.String? = null, val companionshipIndex: kotlin.Int? = null, val preferredMinAge: kotlin.Int? = null, val preferredMaxAge: kotlin.Int? = null, val preferredMinHeight: kotlin.Int? = null, val preferredMaxHeight: kotlin.Int? = null, val preferredGender: kotlin.String? = null, val preferredEducation: kotlin.String? = null, val preferredEducationIndex: kotlin.Int? = null, val preferredBodyType: kotlin.String? = null, val preferredEthnicity: kotlin.String? = null, val preferredLocation: kotlin.String? = null, val preferredLocationRange: kotlin.Double? = null, val platforms: kotlin.String? = null, val tags: kotlin.String? = null, val aboutUs: kotlin.String? = null, val matchToken: kotlin.String? = null, val gameExperience: kotlin.String? = null, val categories: kotlin.String? = null, val categoryIds: kotlin.String? = null, val responseFilters: kotlin.String? = null, val showAsZipcode: kotlin.Boolean? = null, val showExactLocation: kotlin.Boolean? = null, val showOthersExactLocation: kotlin.Boolean? = null, val acceptedTerms: kotlin.Boolean? = null, val locationVisibility: kotlin.String? = null, val appBlob: kotlin.String? = null, val appEnablePush: kotlin.Boolean? = null, val appEnableSMS: kotlin.Boolean? = null, val appEnableEmail: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnProfile: kotlin.Boolean? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val referralAccountId: kotlin.Long? = null, val appNickname: kotlin.String? = null, val personalAudienceId: kotlin.Long? = null, val nonGuestUsername: kotlin.String? = null)
 
     /**
      * Update Username and Email
      * Update account&#39;s own username and/or emailAddress
-     * @param version  
      * @param deviceId The device id (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param emailAddress the user&#39;s contact email address (NOT the username) which is also used for email validation (optional)
      * @param username the user&#39;s username to update with if they currently have a guest username (optional)
      */
-    @Resource("/api/{version}/account/username/update") class editUsername(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val emailAddress: kotlin.String? = null, val username: kotlin.String? = null)
+    @Resource("/account/username/update") class editUsername(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val emailAddress: kotlin.String? = null, val username: kotlin.String? = null)
 
     /**
      * Get Account
      * Gets a user&#39;s account profile. Application settings and account settings will also be returned for the owner of the account.
-     * @param version  
      * @param returnNulls Return Nulls (optional, default to false)
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -389,12 +375,11 @@ object Paths {
      * @param latitude Latitude used to update the user&#39;s current location (optional)
      * @param longitude Longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/account/profile/get") class getAccount(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountEmail: kotlin.String? = null, val connectionAccountId: kotlin.Long? = null, val responseFilters: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val purchaseType: kotlin.String? = null, val updateViewedDate: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/account/profile/get") class getAccount(val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountEmail: kotlin.String? = null, val connectionAccountId: kotlin.Long? = null, val responseFilters: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val purchaseType: kotlin.String? = null, val updateViewedDate: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Profile Assets
      * Get a list of assets a person has ever uploaded. Filters the list based on parameters.
-     * @param version  
      * @param returnNulls Determines whether to return null fields in the response (optional, default to false)
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -410,12 +395,11 @@ object Paths {
      * @param l _l (optional)
      * @param limit Limit of the pagination (optional, default to 0)
      */
-    @Resource("/api/{version}/account/profile/assets") class getProfileAssets(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val mediaTypes: kotlin.String? = null, val mimeTypes: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/account/profile/assets") class getProfileAssets(val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val mediaTypes: kotlin.String? = null, val mimeTypes: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Accounts
      * Gets a user&#39;s account profile and their referral List.
-     * @param version  
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param appKey The application key (optional)
      * @param retrieveType one of these option - GET_CHILDREN will get all accounts that had signed up using the current account invite link - GET_ANCESTOR will get all accounts that referred the current account and it&#39;s parents, recursively - GET_ALL will get all of the above (optional)
@@ -428,23 +412,21 @@ object Paths {
      * @param childrenListLimit pagination limit for children list (optional)
      * @param childrenChildren if true, on each item in ancestor and children list, return the childrenTotalNumber and ancestorTotalNumber for that item (optional, default to true)
      */
-    @Resource("/api/{version}/account/referral/list") class getReferralList(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val retrieveType: kotlin.String? = null, val levelLimit: java.math.BigDecimal? = null, val ancestorLevelLimit: java.math.BigDecimal? = null, val childrenLevelLimit: java.math.BigDecimal? = null, val ancestorListStart: java.math.BigDecimal? = null, val ancestorListLimit: java.math.BigDecimal? = null, val childrenListStart: java.math.BigDecimal? = null, val childrenListLimit: java.math.BigDecimal? = null, val childrenChildren: kotlin.Boolean? = null)
+    @Resource("/account/referral/list") class getReferralList(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val retrieveType: kotlin.String? = null, val levelLimit: java.math.BigDecimal? = null, val ancestorLevelLimit: java.math.BigDecimal? = null, val childrenLevelLimit: java.math.BigDecimal? = null, val ancestorListStart: java.math.BigDecimal? = null, val ancestorListLimit: java.math.BigDecimal? = null, val childrenListStart: java.math.BigDecimal? = null, val childrenListLimit: java.math.BigDecimal? = null, val childrenChildren: kotlin.Boolean? = null)
 
     /**
      * Get Account Settings
      * Get the account settings for a user
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/account/settings/get") class getSettings(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/account/settings/get") class getSettings(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Login as Account
      * A login service that supports logging in as someone else (accounts that the user manages). Intended for internal use for now.
-     * @param version  
      * @param accessToken  
      * @param appKey  
      * @param deviceId  (optional)
@@ -457,12 +439,11 @@ object Paths {
      * @param latitude  (optional)
      * @param longitude  (optional)
      */
-    @Resource("/api/{version}/account/login/delegate") class loginDelegate(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accessToken: kotlin.String, val accessTokenSecret: kotlin.String? = null, val delegatedAccountId: kotlin.Long? = null, val delegatedUsername: kotlin.String? = null, val networkUID: kotlin.String? = null, val appKey: kotlin.String, val ageRestriction: kotlin.Int? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/account/login/delegate") class loginDelegate(val deviceId: kotlin.String? = null, val accessToken: kotlin.String, val accessTokenSecret: kotlin.String? = null, val delegatedAccountId: kotlin.Long? = null, val delegatedUsername: kotlin.String? = null, val networkUID: kotlin.String? = null, val appKey: kotlin.String, val ageRestriction: kotlin.Int? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Login Account
      * General login service that supports various authentication methods. Currently supports Facebook, Twitter, Sirqul Username, and Sirqul Phone by default. Can also support custom networks created using the {@link ThirdPartyApi}
-     * @param version  
      * @param accessToken The access token to authenticate with (ex: username or fb token) 
      * @param networkUID The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE  
      * @param appKey The application key 
@@ -477,12 +458,11 @@ object Paths {
      * @param chosenAccountId Chosen account Id sent from the app - pass in the 2nd request to choose an account from multiple accounts matching the email - use one of the account id from the previous request (optional, default to 0L)
      * @param thirdPartyCredentialId Third-party credential Id, pass in the 2nd request to choose an account from multiple accounts matching the email - use the id from the previous call ThirdPartyCredential object (optional, default to 0L)
      */
-    @Resource("/api/{version}/account/login") class loginGeneral(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val deviceIdType: kotlin.String? = null, val accessToken: kotlin.String, val accessTokenSecret: kotlin.String? = null, val networkUID: kotlin.String, val appKey: kotlin.String, val ageRestriction: kotlin.Int? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val emailMatch: kotlin.Boolean? = null, val chosenAccountId: kotlin.Long? = null, val thirdPartyCredentialId: kotlin.Long? = null)
+    @Resource("/account/login") class loginGeneral(val deviceId: kotlin.String? = null, val deviceIdType: kotlin.String? = null, val accessToken: kotlin.String, val accessTokenSecret: kotlin.String? = null, val networkUID: kotlin.String, val appKey: kotlin.String, val ageRestriction: kotlin.Int? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val emailMatch: kotlin.Boolean? = null, val chosenAccountId: kotlin.Long? = null, val thirdPartyCredentialId: kotlin.Long? = null)
 
     /**
      * Login Account (Username)
      * Login to system with an account
-     * @param version  
      * @param username the user&#39;s email address they used to sign-up 
      * @param password the password 
      * @param deviceId the device id (optional)
@@ -494,76 +474,69 @@ object Paths {
      * @param returnProfile the profile to return (optional)
      * @param responseFilters a comma separated list of ProfileFilters for filtering the returned response data (optional)
      */
-    @Resource("/api/{version}/account/get") class loginUsername(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val app: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val returnProfile: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null)
+    @Resource("/account/get") class loginUsername(val deviceId: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val app: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val returnProfile: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null)
 
     /**
      * Logout Account
      * Cleans up the users data for logging out.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param deviceIdType Device Id Type (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/account/logout") class logout(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val deviceIdType: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/account/logout") class logout(val deviceId: kotlin.String? = null, val deviceIdType: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Merge Account
      * Merges the analytics, achievements, leaderboards of two accounts.
-     * @param version  
      * @param mergeAccountId The id of the account to being merged 
      * @param appKey The application key 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/account/merge") class mergeAccount(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val mergeAccountId: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/account/merge") class mergeAccount(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val mergeAccountId: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Update Password
      * Update the account password.
-     * @param version  
      * @param accountId The account to update 
      * @param oldPassword The current password, used to validate access 
      * @param newPassword The new password to set, cannot be empty 
      * @param confirmPassword The new password to confirm, must match newPassword 
      */
-    @Resource("/api/{version}/account/passwordchange") class passwordChange(val version: java.math.BigDecimal, val accountId: kotlin.Long, val oldPassword: kotlin.String, val newPassword: kotlin.String, val confirmPassword: kotlin.String)
+    @Resource("/account/passwordchange") class passwordChange(val accountId: kotlin.Long, val oldPassword: kotlin.String, val newPassword: kotlin.String, val confirmPassword: kotlin.String)
 
     /**
      * Reset Password
      * Reset the account password. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token.
-     * @param version  
      * @param token The token associated with the account to update, good for 24 hours 
      * @param password The new password to set, cannot be empty 
      * @param confirm The new password to confirm, must match newPassword 
      */
-    @Resource("/api/{version}/account/passwordreset") class passwordReset(val version: java.math.BigDecimal, val token: kotlin.String, val password: kotlin.String, val confirm: kotlin.String)
+    @Resource("/account/passwordreset") class passwordReset(val token: kotlin.String, val password: kotlin.String, val confirm: kotlin.String)
 
     /**
      * Request Password Reset
      * Request that an account password be reset. The account is looked up by email address and then a link is sent via email to that account with a reset token. The token is valid for 24 hours.
-     * @param version  
      * @param email The email/username of the account 
      * @param from this is the sender email (optional, default to "Sirqul")
      * @param domain this is the domain (like dev.sirqul.com) used to generate the password reset link (optional)
      * @param subUrl this is the the subUrl (like resetpassword) used to generate a password reset link (optional)
      * @param referer this is used to generate a password reset link (optional, default to "http://dev.sirqul.com/resetpassword")
      */
-    @Resource("/api/{version}/account/requestpasswordreset") class requestPasswordReset(val version: java.math.BigDecimal, val email: kotlin.String, val from: kotlin.String? = null, val domain: kotlin.String? = null, val subUrl: kotlin.String? = null, val referer: kotlin.String? = null)
+    @Resource("/account/requestpasswordreset") class requestPasswordReset(val email: kotlin.String, val from: kotlin.String? = null, val domain: kotlin.String? = null, val subUrl: kotlin.String? = null, val referer: kotlin.String? = null)
 
     /**
      * Send Validation Request
      * Send an email to validate a user&#39;s account.
-     * @param version  
      * @param accountId The account id of the user 
      */
-    @Resource("/api/{version}/account/requestValidateAccount") class requestValidateAccount(val version: java.math.BigDecimal, val accountId: kotlin.Long)
+    @Resource("/account/requestValidateAccount") class requestValidateAccount(val accountId: kotlin.Long)
 
     /**
      * Search Accounts
      * Search for account profiles.
-     * @param version  
      * @param accountId The id of the account requesting 
      * @param appKey The application key 
      * @param keyword The keyword for for querying the account (optional)
@@ -583,12 +556,11 @@ object Paths {
      * @param limit The total number of record to return. (optional, default to 20)
      * @param activeOnly Determines whether to return only active results. Default is false. (optional, default to false)
      */
-    @Resource("/api/{version}/account/profile/search") class searchAccounts(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val radius: kotlin.Double? = null, val gender: kotlin.String? = null, val gameExperience: kotlin.String? = null, val age: kotlin.Int? = null, val categoryIds: kotlin.String? = null, val returnNulls: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null, val purchaseType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/account/profile/search") class searchAccounts(val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val radius: kotlin.Double? = null, val gender: kotlin.String? = null, val gameExperience: kotlin.String? = null, val age: kotlin.Int? = null, val categoryIds: kotlin.String? = null, val returnNulls: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null, val purchaseType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Login Account (Encrypted Username)
      * ogin with encrypted user-name and password.
-     * @param version  
      * @param username The user&#39;s encrypted email address they used to sign-up 
      * @param password The encrypted password 
      * @param gameType The application key 
@@ -599,12 +571,11 @@ object Paths {
      * @param returnProfile Return Profile (optional, default to false)
      * @param responseFilters A comma separated list of ProfileFilters for filtering the returned response data (optional, default to "PROFILE")
      */
-    @Resource("/api/{version}/account/login/validate") class secureLogin(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val gameType: kotlin.String, val charsetName: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnProfile: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null)
+    @Resource("/account/login/validate") class secureLogin(val deviceId: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val gameType: kotlin.String, val charsetName: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnProfile: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null)
 
     /**
      * Create Account (Encrypted Username)
      * Create a new account by role (with encrypted user-name and password)
-     * @param version  
      * @param deviceId The device id 
      * @param username The encrypted email of the user, this is what will be used when they login 
      * @param password The encrypted password of the user 
@@ -667,12 +638,11 @@ object Paths {
      * @param appVersion App Version (optional)
      * @param responseType Response Type (optional)
      */
-    @Resource("/api/{version}/account/create/validate") class secureSignup(val version: java.math.BigDecimal, val name: kotlin.String? = null, val inviteToken: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val deviceId: kotlin.String, val deviceIdType: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val emailAddress: kotlin.String? = null, val assetId: kotlin.Long? = null, val address: kotlin.String? = null, val zipcode: kotlin.String? = null, val gender: kotlin.String? = null, val birthday: kotlin.Long? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val role: kotlin.String? = null, val platforms: kotlin.String? = null, val tags: kotlin.String? = null, val aboutUs: kotlin.String? = null, val gameExperience: kotlin.String? = null, val categoryIds: kotlin.String? = null, val hometown: kotlin.String? = null, val height: kotlin.String? = null, val heightIndex: kotlin.Int? = null, val ethnicity: kotlin.String? = null, val bodyType: kotlin.String? = null, val maritalStatus: kotlin.String? = null, val children: kotlin.String? = null, val religion: kotlin.String? = null, val education: kotlin.String? = null, val educationIndex: kotlin.Int? = null, val smoke: kotlin.String? = null, val drink: kotlin.String? = null, val companionship: kotlin.String? = null, val companionshipIndex: kotlin.Int? = null, val preferredMinAge: kotlin.Int? = null, val preferredMaxAge: kotlin.Int? = null, val preferredMinHeight: kotlin.Int? = null, val preferredMaxHeight: kotlin.Int? = null, val preferredGender: kotlin.String? = null, val preferredEducation: kotlin.String? = null, val preferredEducationIndex: kotlin.Int? = null, val preferredBodyType: kotlin.String? = null, val preferredEthnicity: kotlin.String? = null, val preferredLocation: kotlin.String? = null, val preferredLocationRange: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val acceptedTerms: kotlin.Boolean? = null, val charsetName: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val responseType: kotlin.String? = null)
+    @Resource("/account/create/validate") class secureSignup(val name: kotlin.String? = null, val inviteToken: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val deviceId: kotlin.String, val deviceIdType: kotlin.String? = null, val username: kotlin.String, val password: kotlin.String, val emailAddress: kotlin.String? = null, val assetId: kotlin.Long? = null, val address: kotlin.String? = null, val zipcode: kotlin.String? = null, val gender: kotlin.String? = null, val birthday: kotlin.Long? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val role: kotlin.String? = null, val platforms: kotlin.String? = null, val tags: kotlin.String? = null, val aboutUs: kotlin.String? = null, val gameExperience: kotlin.String? = null, val categoryIds: kotlin.String? = null, val hometown: kotlin.String? = null, val height: kotlin.String? = null, val heightIndex: kotlin.Int? = null, val ethnicity: kotlin.String? = null, val bodyType: kotlin.String? = null, val maritalStatus: kotlin.String? = null, val children: kotlin.String? = null, val religion: kotlin.String? = null, val education: kotlin.String? = null, val educationIndex: kotlin.Int? = null, val smoke: kotlin.String? = null, val drink: kotlin.String? = null, val companionship: kotlin.String? = null, val companionshipIndex: kotlin.Int? = null, val preferredMinAge: kotlin.Int? = null, val preferredMaxAge: kotlin.Int? = null, val preferredMinHeight: kotlin.Int? = null, val preferredMaxHeight: kotlin.Int? = null, val preferredGender: kotlin.String? = null, val preferredEducation: kotlin.String? = null, val preferredEducationIndex: kotlin.Int? = null, val preferredBodyType: kotlin.String? = null, val preferredEthnicity: kotlin.String? = null, val preferredLocation: kotlin.String? = null, val preferredLocationRange: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val acceptedTerms: kotlin.Boolean? = null, val charsetName: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val responseType: kotlin.String? = null)
 
     /**
      * Save Match Token
      * Save user&#39;s match token to be used for profile match making
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param matchToken A string of numbers (optional)
@@ -681,36 +651,33 @@ object Paths {
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/profile/matchToken") class setMatchToken(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val matchToken: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/profile/matchToken") class setMatchToken(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val matchToken: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Update Account Active Status
      * Activate or deactivate an account (requires appropriate permissions).
-     * @param version  
      * @param accountId the account id of the user (deviceId or accountId required) 
      * @param connectionAccountId The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead) 
      * @param active true will activate the user and false will deactivate 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param appKey the application key that the user belongs to (optional)
      */
-    @Resource("/api/{version}/account/active/update") class updateActveStatus(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String? = null, val active: kotlin.Boolean)
+    @Resource("/account/active/update") class updateActveStatus(val deviceId: kotlin.String? = null, val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String? = null, val active: kotlin.Boolean)
 
     /**
      * Update Location
      * Update the account location
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      * @param clientTime The time of the update (optional)
      */
-    @Resource("/api/{version}/account/location/update") class updateLocation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val clientTime: kotlin.Long? = null)
+    @Resource("/account/location/update") class updateLocation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val clientTime: kotlin.Long? = null)
 
     /**
      * Update Account Settings
      * Update the account settings for a user
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param blockedNotifications The notifications to be blocked (optional)
@@ -724,28 +691,25 @@ object Paths {
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/account/settings/update") class updateSettings(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val blockedNotifications: kotlin.String? = null, val suggestionMethod: kotlin.String? = null, val suggestionCount: kotlin.Int? = null, val suggestionTimeFrame: kotlin.Int? = null, val showOthersExactLocation: kotlin.Boolean? = null, val showAsZipcode: kotlin.Boolean? = null, val showExactLocation: kotlin.Boolean? = null, val favoriteVisibility: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/account/settings/update") class updateSettings(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val blockedNotifications: kotlin.String? = null, val suggestionMethod: kotlin.String? = null, val suggestionCount: kotlin.Int? = null, val suggestionTimeFrame: kotlin.Int? = null, val showOthersExactLocation: kotlin.Boolean? = null, val showAsZipcode: kotlin.Boolean? = null, val showExactLocation: kotlin.Boolean? = null, val favoriteVisibility: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Save Validation Status
      * Validate the account&#39;s email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.
-     * @param version  
      * @param token The token associated with the account to update, good for 24 hours 
      */
-    @Resource("/api/{version}/account/validateAccountSignup") class validateAccountSignup(val version: java.math.BigDecimal, val token: kotlin.String)
+    @Resource("/account/validateAccountSignup") class validateAccountSignup(val token: kotlin.String)
 
     /**
      * Validate Password Reset Token
      * Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.
-     * @param version  
      * @param token The token associated with the account to update, good for 24 hours 
      */
-    @Resource("/api/{version}/account/validatepasswordreset") class validatePasswordReset(val version: java.math.BigDecimal, val token: kotlin.String)
+    @Resource("/account/validatepasswordreset") class validatePasswordReset(val token: kotlin.String)
 
     /**
      * Searches an Achievement Tier
      * Searches a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param appKey the application key (optional)
@@ -758,12 +722,11 @@ object Paths {
      * @param start The start of the index for pagination (optional)
      * @param limit the limit for pagination (has a hard limit of 1000) (optional)
      */
-    @Resource("/api/{version}/achievement/tier/search") class apiVersionAchievementTierSearchPost(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val achievementType: kotlin.Long? = null, val rankType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val descendingGoal: kotlin.Boolean? = null, val start: kotlin.Long? = null, val limit: kotlin.Long? = null)
+    @Resource("/achievement/tier/search") class achievementTierSearchPost(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val achievementType: kotlin.Long? = null, val rankType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val descendingGoal: kotlin.Boolean? = null, val start: kotlin.Long? = null, val limit: kotlin.Long? = null)
 
     /**
      * Create Achievement
      * Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param appKey the application key the achievement is for 
      * @param title the title of the achievement (255 character limit) 
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
@@ -778,12 +741,11 @@ object Paths {
      * @param active achievement is active or inactive (optional)
      * @param triggerDefinition if provided will define what triggers to run after a tier is completed (optional)
      */
-    @Resource("/api/{version}/achievement/create") class createAchievement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val analyticsTag: kotlin.String? = null, val title: kotlin.String, val description: kotlin.String? = null, val rankType: kotlin.String? = null, val rankIncrement: kotlin.Int? = null, val minIncrement: kotlin.Int? = null, val maxIncrement: kotlin.Int? = null, val validate: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val triggerDefinition: kotlin.String? = null)
+    @Resource("/achievement/create") class createAchievement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val analyticsTag: kotlin.String? = null, val title: kotlin.String, val description: kotlin.String? = null, val rankType: kotlin.String? = null, val rankIncrement: kotlin.Int? = null, val minIncrement: kotlin.Int? = null, val maxIncrement: kotlin.Int? = null, val validate: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val triggerDefinition: kotlin.String? = null)
 
     /**
      * Create Achievement Tier
      * Create a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param achievementId the achievement id for adding a new tier 
      * @param scoreAllInstances score all instances 
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
@@ -799,50 +761,45 @@ object Paths {
      * @param gameLevelId The ID of the game level to associate with the achievement (optional)
      * @param gameObjectId The ID of the game object to associate with the achievement (optional)
      */
-    @Resource("/api/{version}/achievement/tier/create") class createAchievementTier(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long, val icon: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val goalCount: kotlin.Long? = null, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Int? = null, val scoreAllInstances: kotlin.Boolean)
+    @Resource("/achievement/tier/create") class createAchievementTier(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long, val icon: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val goalCount: kotlin.Long? = null, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Int? = null, val scoreAllInstances: kotlin.Boolean)
 
     /**
      * Delete Achievement
      * Deletes an achievement (for developer/retailer use). User must have permissions to the application the achievement was created for.
-     * @param version  
      * @param achievementId The ID of the achievement 
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/achievement/delete") class deleteAchievement(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long)
+    @Resource("/achievement/delete") class deleteAchievement(val accountId: kotlin.Long? = null, val achievementId: kotlin.Long)
 
     /**
      * Delete Achievement Tier
      * Deletes an achievement tier (for developer/retailer use). User must have permissions to the application the achievement was created for.
-     * @param version  
      * @param achievementTierId the achievement id for deletion 
      * @param accountId the account id of the user (deviceId or accountId required). (optional)
      */
-    @Resource("/api/{version}/achievement/tier/delete") class deleteAchievementTier(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val achievementTierId: kotlin.Long)
+    @Resource("/achievement/tier/delete") class deleteAchievementTier(val accountId: kotlin.Long? = null, val achievementTierId: kotlin.Long)
 
     /**
      * Get Achievement
      * Get an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param achievementId The ID of the achievement 
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param achievementType achievementType (optional)
      */
-    @Resource("/api/{version}/achievement/get") class getAchievement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long, val achievementType: kotlin.String? = null)
+    @Resource("/achievement/get") class getAchievement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long, val achievementType: kotlin.String? = null)
 
     /**
      * Gets an achievement tier
      * Gets an achievement tier (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param accountId the account id of the user (deviceId or accountId required) 
      * @param achievementTierId the achievement tier id that is being retrieved 
      */
-    @Resource("/api/{version}/achievement/tier/get") class getAchievementTier(val version: java.math.BigDecimal, val accountId: kotlin.Long, val achievementTierId: kotlin.Long)
+    @Resource("/achievement/tier/get") class getAchievementTier(val accountId: kotlin.Long, val achievementTierId: kotlin.Long)
 
     /**
      * Get Achievement Progress
      * Gets a list of user achievements.
-     * @param version  
      * @param returnNulls determines whether to return null fields in the response 
      * @param appKey the application key for filtering results by application 
      * @param includeUndiscovered determines whether to return achievements that the user has not discovered yet 
@@ -855,20 +812,18 @@ object Paths {
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/achievement/progress/get") class getUserAchievements(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountEmail: kotlin.String? = null, val connectionAccountId: kotlin.Long? = null, val appKey: kotlin.String, val rankType: kotlin.String? = null, val achievementType: kotlin.String? = null, val includeUndiscovered: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/achievement/progress/get") class getUserAchievements(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountEmail: kotlin.String? = null, val connectionAccountId: kotlin.Long? = null, val appKey: kotlin.String, val rankType: kotlin.String? = null, val achievementType: kotlin.String? = null, val includeUndiscovered: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * List Achievement Tags
      * List achievement tags by application
-     * @param version  
      * @param appKey filter results by application key (optional)
      */
-    @Resource("/api/{version}/achievement/tag/list") class listAchievementTags(val version: java.math.BigDecimal, val appKey: kotlin.String? = null)
+    @Resource("/achievement/tag/list") class listAchievementTags(val appKey: kotlin.String? = null)
 
     /**
      * List Achievements
      * List achievements by billable.
-     * @param version  
      * @param sortField the field to sort by. See AchievementApiMap 
      * @param descending determines whether the sorted list is in descending or ascending order 
      * @param start the start index for pagination 
@@ -881,12 +836,11 @@ object Paths {
      * @param achievementType filter results by the achievementType (these are exact case sensitive matches) (optional)
      * @param rankType filter results by the rankType (these are exact case sensitive matches) (optional)
      */
-    @Resource("/api/{version}/achievement/list") class listAchievements(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val achievementType: kotlin.String? = null, val rankType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/achievement/list") class listAchievements(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val achievementType: kotlin.String? = null, val rankType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Search Achievements
      * Searches achievements by application for consumers.
-     * @param version  
      * @param appKey the application key 
      * @param sortField the field to sort by. See AchievementApiMap 
      * @param descending determines whether the sorted list is in descending or ascending order 
@@ -900,12 +854,11 @@ object Paths {
      * @param achievementType filter results by the achievementType (these are exact case sensitive matches) (optional)
      * @param rankType filter results by the rankType (these are exact case sensitive matches) (optional)
      */
-    @Resource("/api/{version}/achievement/search") class searchAchievements(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val keyword: kotlin.String? = null, val achievementType: kotlin.String? = null, val rankType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val includeTiers: kotlin.Boolean, val includeInactiveTiers: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/achievement/search") class searchAchievements(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val keyword: kotlin.String? = null, val achievementType: kotlin.String? = null, val rankType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val includeTiers: kotlin.Boolean, val includeInactiveTiers: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Update Achievement
      * Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param achievementId the achievement ID for updating an existing achievement (optional)
@@ -922,12 +875,11 @@ object Paths {
      * @param active if it&#39;s active or inactive (optional)
      * @param triggerDefinition if provided will define what triggers to run after a tier is completed (optional)
      */
-    @Resource("/api/{version}/achievement/update") class updateAchievement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long? = null, val analyticsTag: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val rankType: kotlin.String? = null, val rankIncrement: kotlin.Int? = null, val minIncrement: kotlin.Int? = null, val nullMinIncrement: kotlin.Boolean? = null, val maxIncrement: kotlin.Int? = null, val nullMaxIncrement: kotlin.Boolean? = null, val validate: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val triggerDefinition: kotlin.String? = null)
+    @Resource("/achievement/update") class updateAchievement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementId: kotlin.Long? = null, val analyticsTag: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val rankType: kotlin.String? = null, val rankIncrement: kotlin.Int? = null, val minIncrement: kotlin.Int? = null, val nullMinIncrement: kotlin.Boolean? = null, val maxIncrement: kotlin.Int? = null, val nullMaxIncrement: kotlin.Boolean? = null, val validate: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val triggerDefinition: kotlin.String? = null)
 
     /**
      * Update Achievement Tier
      * Updates a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
-     * @param version  
      * @param achievementTierId the achievement tier id for updating 
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -943,12 +895,11 @@ object Paths {
      * @param gameObjectId The ID of the game object to associate with the achievement (optional)
      * @param scoreAllInstances score all instances (optional)
      */
-    @Resource("/api/{version}/achievement/tier/update") class updateAchievementTier(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementTierId: kotlin.Long, val icon: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val goalCount: kotlin.Long? = null, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null, val scoreAllInstances: kotlin.Boolean? = null)
+    @Resource("/achievement/tier/update") class updateAchievementTier(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val achievementTierId: kotlin.Long, val icon: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val goalCount: kotlin.Long? = null, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null, val scoreAllInstances: kotlin.Boolean? = null)
 
     /**
      * Update Achievement Progress
      * Update user achievement progress.
-     * @param version  
      * @param accountId the account id of the user 
      * @param achievementId the achievement id (achievementId or tag required) (optional)
      * @param tag the analytic tag to identify an achievement (achievementId or tag required) (optional)
@@ -958,20 +909,18 @@ object Paths {
      * @param endDate a custom end date that the client can set (not yet used in server logic) (optional)
      * @param returnProgress determines whether to return the achievement progress response (optional)
      */
-    @Resource("/api/{version}/achievement/progress/update") class updateUserAchievement(val version: java.math.BigDecimal, val accountId: kotlin.Long, val achievementId: kotlin.Long? = null, val tag: kotlin.String? = null, val customId: kotlin.Long? = null, val increment: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val returnProgress: kotlin.Boolean? = null)
+    @Resource("/achievement/progress/update") class updateUserAchievement(val accountId: kotlin.Long, val achievementId: kotlin.Long? = null, val tag: kotlin.String? = null, val customId: kotlin.Long? = null, val increment: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val returnProgress: kotlin.Boolean? = null)
 
     /**
      * Create an entity reference.
      * Creates a reference for an entity for syncing data between servers.
-     * @param version  
      * @param body The entity reference object 
      */
-    @Resource("/api/{version}/entity/reference") class createEntityReference(val version: java.math.BigDecimal)
+    @Resource("/entity/reference") class createEntityReference()
 
     /**
      * Create Album
      * Create an Album.
-     * @param version  
      * @param title the title of the album 
      * @param coverAssetNullable determines whether the cover image of the album can be empty, else will use the user&#39;s profile picture as the cover image 
      * @param includeCoverInAssetList determines whether the cover image should be added to the album asset list 
@@ -1019,12 +968,11 @@ object Paths {
      * @param linkedObjectType sets a linked object so that it can be returned as part of the album response (optional)
      * @param linkedObjectId sets a linked object id so that it can be returned as part of the album response (optional)
      */
-    @Resource("/api/{version}/album/create") class addAlbumCollection(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val title: kotlin.String, val assetsToAdd: kotlin.String? = null, val media: java.io.File? = null, val mediaURL: kotlin.String? = null, val assetId: kotlin.Long? = null, val attachedMedia: java.io.File? = null, val attachedMediaURL: kotlin.String? = null, val coverAssetNullable: kotlin.Boolean, val includeCoverInAssetList: kotlin.Boolean, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val description: kotlin.String? = null, val albumType: kotlin.String? = null, val albumTypeId: kotlin.Long? = null, val subType: kotlin.String? = null, val publicRead: kotlin.Boolean, val publicWrite: kotlin.Boolean, val publicDelete: kotlin.Boolean, val publicAdd: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val locationDescription: kotlin.String? = null, val visibility: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val cellPhone: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val fullAddress: kotlin.String? = null, val anonymous: kotlin.Boolean, val metaData: kotlin.String? = null, val categoryIds: kotlin.String? = null, val categoryFilterIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val includeAllAppUsersAsMembers: kotlin.Boolean? = null, val includeAudiencesAsMembers: kotlin.Boolean? = null, val audienceOperator: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val linkedObjectType: kotlin.String? = null, val linkedObjectId: kotlin.Long? = null)
+    @Resource("/album/create") class addAlbumCollection(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val title: kotlin.String, val assetsToAdd: kotlin.String? = null, val media: java.io.File? = null, val mediaURL: kotlin.String? = null, val assetId: kotlin.Long? = null, val attachedMedia: java.io.File? = null, val attachedMediaURL: kotlin.String? = null, val coverAssetNullable: kotlin.Boolean, val includeCoverInAssetList: kotlin.Boolean, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val description: kotlin.String? = null, val albumType: kotlin.String? = null, val albumTypeId: kotlin.Long? = null, val subType: kotlin.String? = null, val publicRead: kotlin.Boolean, val publicWrite: kotlin.Boolean, val publicDelete: kotlin.Boolean, val publicAdd: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val locationDescription: kotlin.String? = null, val visibility: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val cellPhone: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val fullAddress: kotlin.String? = null, val anonymous: kotlin.Boolean, val metaData: kotlin.String? = null, val categoryIds: kotlin.String? = null, val categoryFilterIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val includeAllAppUsersAsMembers: kotlin.Boolean? = null, val includeAudiencesAsMembers: kotlin.Boolean? = null, val audienceOperator: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val linkedObjectType: kotlin.String? = null, val linkedObjectId: kotlin.Long? = null)
 
     /**
      * Add Album Users
      * Add users to an album as participants.
-     * @param version  
      * @param albumId the album ID 
      * @param includeFriendGroup determines whether to include all friends as participants 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
@@ -1036,24 +984,22 @@ object Paths {
      * @param connections comma separated list of connection IDs (optional)
      * @param connectionGroups comma separated list of connection group IDs (optional)
      */
-    @Resource("/api/{version}/album/user/add") class addAlbumUsers(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val read: kotlin.Boolean? = null, val write: kotlin.Boolean? = null, val delete: kotlin.Boolean? = null, val add: kotlin.Boolean? = null, val connections: kotlin.String? = null, val connectionGroups: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean)
+    @Resource("/album/user/add") class addAlbumUsers(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val read: kotlin.Boolean? = null, val write: kotlin.Boolean? = null, val delete: kotlin.Boolean? = null, val add: kotlin.Boolean? = null, val connections: kotlin.String? = null, val connectionGroups: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean)
 
     /**
      * Approve Album
      * Sets the approval status of an Album.
-     * @param version  
      * @param albumId The ID of the album 
      * @param deviceId A unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId The account ID of the user (deviceId or accountId required) (optional)
      * @param approvalStatus The approval status to set {PENDING, REJECTED, APPROVED, FEATURED} (optional)
      * @param verified Sets whether the album should be marked as \&quot;verified\&quot; (optional)
      */
-    @Resource("/api/{version}/album/approve") class approveAlbum(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val approvalStatus: kotlin.String? = null, val verified: kotlin.Boolean? = null)
+    @Resource("/album/approve") class approveAlbum(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val approvalStatus: kotlin.String? = null, val verified: kotlin.Boolean? = null)
 
     /**
      *  Get Album
      * Get an Album.
-     * @param version  
      * @param returnNulls This parameter is deprecated. 
      * @param albumId the album to look up 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
@@ -1064,32 +1010,29 @@ object Paths {
      * @param connectionPreviewSize returns the first X users/connections. To search on and paginate the remaining connections - please use the \&quot;/permissions/search\&quot; endpoint. (optional)
      * @param audiencePreviewSize returns the first X audiences. To search on and paginate the remaining audiences - please use the \&quot;/audience/search\&quot; endpoint. (optional)
      */
-    @Resource("/api/{version}/album/get") class getAlbumCollection(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val likePreviewSize: kotlin.Int? = null, val assetPreviewSize: kotlin.Int? = null, val notePreviewSize: kotlin.Int? = null, val connectionPreviewSize: kotlin.Int? = null, val audiencePreviewSize: kotlin.Int? = null)
+    @Resource("/album/get") class getAlbumCollection(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val likePreviewSize: kotlin.Int? = null, val assetPreviewSize: kotlin.Int? = null, val notePreviewSize: kotlin.Int? = null, val connectionPreviewSize: kotlin.Int? = null, val audiencePreviewSize: kotlin.Int? = null)
 
     /**
      * Leave Album
      *  Allows a user to leave an album (they are no longer considered a participant). The album creator cannot leave their own albums.
-     * @param version  
      * @param albumId the album ID 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/album/user/leave") class leaveAlbum(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long)
+    @Resource("/album/user/leave") class leaveAlbum(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long)
 
     /**
      * Delete Album
      * Deletes an Album
-     * @param version  
      * @param albumId the album ID to delete 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/album/delete") class removeAlbum(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long)
+    @Resource("/album/delete") class removeAlbum(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long)
 
     /**
      * Remove Album Users
      * Remove participants of an album.
-     * @param version  
      * @param albumId the album ID 
      * @param removeFriendGroup remove friend group 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
@@ -1097,12 +1040,11 @@ object Paths {
      * @param connections comma separated list of connection IDs (optional)
      * @param connectionGroups comma separated list of connection group IDs (optional)
      */
-    @Resource("/api/{version}/album/user/delete") class removeAlbumUsers(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val connections: kotlin.String? = null, val connectionGroups: kotlin.String? = null, val removeFriendGroup: kotlin.Boolean)
+    @Resource("/album/user/delete") class removeAlbumUsers(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val connections: kotlin.String? = null, val connectionGroups: kotlin.String? = null, val removeFriendGroup: kotlin.Boolean)
 
     /**
      * Search Albums
      * Searches on Albums.
-     * @param version  
      * @param filter a comma separated list of filters: * MINE - Return albums that the user has created. * SHARED - Return albums that have been shared to the user via addAlbumUsers, or addUsersToPermissionable . * FOLLOWER - Return albums that have been created by the user&#39;s followers (the content needs to have been APPROVED or FEATURED). * FOLLOWING - Return albums that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). * PUBLIC - Return all PUBLIC albums that have been APPROVED or FEATURED. * ALL_PUBLIC - Return all PUBLIC albums regardless of whether they are approved or not (ignores the approval status). * LIKED - Return all albums that the user has liked. * FEATURED - Return all albums that have been featured. * PENDING - Return all pending albums.  
      * @param albumTypeId id of custom albumType 
      * @param subType filter albums with this album sub type 
@@ -1164,12 +1106,11 @@ object Paths {
      * @param searchExpression Advanced search expression to be used by the server (optional)
      * @param generateAlbums If true and results are empty, attempt to generate albums via templates (optional)
      */
-    @Resource("/api/{version}/album/search") class searchAlbums(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val albumIds: kotlin.String? = null, val excludeAlbumIds: kotlin.String? = null, val mediaId: kotlin.Long? = null, val keyword: kotlin.String? = null, val filter: kotlin.String, val albumType: kotlin.String? = null, val albumTypeId: kotlin.Long, val subType: kotlin.String, val includeInactive: kotlin.Boolean, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val limitPerAlbumType: kotlin.Int? = null, val dateCreated: kotlin.Long? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val createdSince: kotlin.Long? = null, val createdBefore: kotlin.Long? = null, val startedSince: kotlin.Long? = null, val startedBefore: kotlin.Long? = null, val endedSince: kotlin.Long? = null, val endedBefore: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double, val appKey: kotlin.String? = null, val categoryIds: kotlin.String? = null, val categoryFilterIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val excludeAudienceIds: kotlin.String? = null, val includeLiked: kotlin.Boolean, val includeFavorited: kotlin.Boolean, val includePermissions: kotlin.Boolean, val includeCompletable: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null, val likePreviewSize: kotlin.Int, val assetPreviewSize: kotlin.Int, val notePreviewSize: kotlin.Int, val connectionPreviewSize: kotlin.Int, val audiencePreviewSize: kotlin.Int, val searchMode: kotlin.String? = null, val stackSearch: kotlin.Boolean? = null, val stackWindowSize: kotlin.Int? = null, val minStackPerPage: kotlin.Int? = null, val stackPaginationIdentifier: kotlin.String? = null, val stackDetails: kotlin.Boolean? = null, val flagCountMinimum: kotlin.Long? = null, val removeFlaggedContent: kotlin.Boolean? = null, val verifiedFilter: kotlin.Boolean? = null, val linkedObjectType: kotlin.String? = null, val linkedObjectId: kotlin.Long? = null, val orderAudienceId: kotlin.Long? = null, val ignoreDefaultAppFilter: kotlin.Boolean? = null, val searchExpression: kotlin.String? = null, val generateAlbums: kotlin.Boolean? = null)
+    @Resource("/album/search") class searchAlbums(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val albumIds: kotlin.String? = null, val excludeAlbumIds: kotlin.String? = null, val mediaId: kotlin.Long? = null, val keyword: kotlin.String? = null, val filter: kotlin.String, val albumType: kotlin.String? = null, val albumTypeId: kotlin.Long, val subType: kotlin.String, val includeInactive: kotlin.Boolean, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val limitPerAlbumType: kotlin.Int? = null, val dateCreated: kotlin.Long? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val createdSince: kotlin.Long? = null, val createdBefore: kotlin.Long? = null, val startedSince: kotlin.Long? = null, val startedBefore: kotlin.Long? = null, val endedSince: kotlin.Long? = null, val endedBefore: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double, val appKey: kotlin.String? = null, val categoryIds: kotlin.String? = null, val categoryFilterIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val excludeAudienceIds: kotlin.String? = null, val includeLiked: kotlin.Boolean, val includeFavorited: kotlin.Boolean, val includePermissions: kotlin.Boolean, val includeCompletable: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null, val likePreviewSize: kotlin.Int, val assetPreviewSize: kotlin.Int, val notePreviewSize: kotlin.Int, val connectionPreviewSize: kotlin.Int, val audiencePreviewSize: kotlin.Int, val searchMode: kotlin.String? = null, val stackSearch: kotlin.Boolean? = null, val stackWindowSize: kotlin.Int? = null, val minStackPerPage: kotlin.Int? = null, val stackPaginationIdentifier: kotlin.String? = null, val stackDetails: kotlin.Boolean? = null, val flagCountMinimum: kotlin.Long? = null, val removeFlaggedContent: kotlin.Boolean? = null, val verifiedFilter: kotlin.Boolean? = null, val linkedObjectType: kotlin.String? = null, val linkedObjectId: kotlin.Long? = null, val orderAudienceId: kotlin.Long? = null, val ignoreDefaultAppFilter: kotlin.Boolean? = null, val searchExpression: kotlin.String? = null, val generateAlbums: kotlin.Boolean? = null)
 
     /**
      * Update Album
      * Update an Album.
-     * @param version  
      * @param albumId the ID of the album to update 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
@@ -1216,22 +1157,20 @@ object Paths {
      * @param linkedObjectId sets a linked object id so that it can be returned as part of the album response (optional)
      * @param indexNow determines whether the album should be indexed immediately (optional)
      */
-    @Resource("/api/{version}/album/update") class updateAlbumCollection(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val assetsToAdd: kotlin.String? = null, val assetsToRemove: kotlin.String? = null, val assetId: kotlin.Long? = null, val media: java.io.File? = null, val mediaURL: kotlin.String? = null, val active: kotlin.Boolean? = null, val title: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val description: kotlin.String? = null, val albumType: kotlin.String? = null, val albumTypeId: kotlin.Long? = null, val subType: kotlin.String? = null, val publicRead: kotlin.Boolean? = null, val publicWrite: kotlin.Boolean? = null, val publicDelete: kotlin.Boolean? = null, val publicAdd: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val locationDescription: kotlin.String? = null, val visibility: kotlin.String? = null, val cellPhone: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val fullAddress: kotlin.String? = null, val anonymous: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val categoryIds: kotlin.String? = null, val categoryFilterIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val includeAllAppUsersAsMembers: kotlin.Boolean? = null, val includeAudiencesAsMembers: kotlin.Boolean? = null, val audienceOperator: kotlin.String? = null, val linkedObjectType: kotlin.String? = null, val linkedObjectId: kotlin.Long? = null, val indexNow: kotlin.Boolean? = null)
+    @Resource("/album/update") class updateAlbumCollection(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long, val assetsToAdd: kotlin.String? = null, val assetsToRemove: kotlin.String? = null, val assetId: kotlin.Long? = null, val media: java.io.File? = null, val mediaURL: kotlin.String? = null, val active: kotlin.Boolean? = null, val title: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val description: kotlin.String? = null, val albumType: kotlin.String? = null, val albumTypeId: kotlin.Long? = null, val subType: kotlin.String? = null, val publicRead: kotlin.Boolean? = null, val publicWrite: kotlin.Boolean? = null, val publicDelete: kotlin.Boolean? = null, val publicAdd: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val locationDescription: kotlin.String? = null, val visibility: kotlin.String? = null, val cellPhone: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val fullAddress: kotlin.String? = null, val anonymous: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val categoryIds: kotlin.String? = null, val categoryFilterIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val includeAllAppUsersAsMembers: kotlin.Boolean? = null, val includeAudiencesAsMembers: kotlin.Boolean? = null, val audienceOperator: kotlin.String? = null, val linkedObjectType: kotlin.String? = null, val linkedObjectId: kotlin.Long? = null, val indexNow: kotlin.Boolean? = null)
 
     /**
      * Get User Activity
      * Get an activity feed by user.
-     * @param version  
      * @param start The start of the pagination 
      * @param limit The limit of the pagination 
      * @param accountId the account id of the user 
      */
-    @Resource("/api/{version}/analytics/useractivity") class activities(val version: java.math.BigDecimal, val start: kotlin.Int, val limit: kotlin.Int, val accountId: kotlin.Long)
+    @Resource("/analytics/useractivity") class activities(val start: kotlin.Int, val limit: kotlin.Int, val accountId: kotlin.Long)
 
     /**
      * Get Aggregated Filtered Usage
      * Query analytics to get data used for nested graphs and charts
-     * @param version  
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param applicationId This parameter is deprecated. (optional)
@@ -1264,12 +1203,11 @@ object Paths {
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/analytics/aggregatedFilteredUsage") class aggregatedFilteredUsage(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val applicationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val deviceType: kotlin.String? = null, val device: kotlin.String? = null, val deviceOS: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroup: kotlin.String? = null, val country: kotlin.String? = null, val state: kotlin.String? = null, val city: kotlin.String? = null, val zip: kotlin.String? = null, val model: kotlin.String? = null, val tag: kotlin.String? = null, val userAccountId: kotlin.Long? = null, val userAccountDisplay: kotlin.String? = null, val userAccountUsername: kotlin.String? = null, val groupByRoot: kotlin.String? = null, val groupBy: kotlin.String? = null, val distinctCount: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val hideUnknown: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/analytics/aggregatedFilteredUsage") class aggregatedFilteredUsage(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val applicationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val deviceType: kotlin.String? = null, val device: kotlin.String? = null, val deviceOS: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroup: kotlin.String? = null, val country: kotlin.String? = null, val state: kotlin.String? = null, val city: kotlin.String? = null, val zip: kotlin.String? = null, val model: kotlin.String? = null, val tag: kotlin.String? = null, val userAccountId: kotlin.Long? = null, val userAccountDisplay: kotlin.String? = null, val userAccountUsername: kotlin.String? = null, val groupByRoot: kotlin.String? = null, val groupBy: kotlin.String? = null, val distinctCount: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val hideUnknown: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Filtered Usage
      * Query analytics to get data used for graphs and charts
-     * @param version  
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param applicationId This parameter is deprecated. (optional)
@@ -1310,12 +1248,11 @@ object Paths {
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/analytics/filteredUsage") class filteredUsage(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val applicationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val deviceType: kotlin.String? = null, val device: kotlin.String? = null, val deviceOS: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroup: kotlin.String? = null, val country: kotlin.String? = null, val state: kotlin.String? = null, val city: kotlin.String? = null, val zip: kotlin.String? = null, val model: kotlin.String? = null, val tag: kotlin.String? = null, val userAccountId: kotlin.Long? = null, val userAccountDisplay: kotlin.String? = null, val userAccountUsername: kotlin.String? = null, val customId: kotlin.Long? = null, val customType: kotlin.String? = null, val customValue: kotlin.Double? = null, val customValue2: kotlin.Double? = null, val customLong: kotlin.Long? = null, val customLong2: kotlin.Long? = null, val customMessage: kotlin.String? = null, val customMessage2: kotlin.String? = null, val groupBy: kotlin.String? = null, val distinctCount: kotlin.String? = null, val sumColumn: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val hideUnknown: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/analytics/filteredUsage") class filteredUsage(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val applicationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val deviceType: kotlin.String? = null, val device: kotlin.String? = null, val deviceOS: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroup: kotlin.String? = null, val country: kotlin.String? = null, val state: kotlin.String? = null, val city: kotlin.String? = null, val zip: kotlin.String? = null, val model: kotlin.String? = null, val tag: kotlin.String? = null, val userAccountId: kotlin.Long? = null, val userAccountDisplay: kotlin.String? = null, val userAccountUsername: kotlin.String? = null, val customId: kotlin.Long? = null, val customType: kotlin.String? = null, val customValue: kotlin.Double? = null, val customValue2: kotlin.Double? = null, val customLong: kotlin.Long? = null, val customLong2: kotlin.Long? = null, val customMessage: kotlin.String? = null, val customMessage2: kotlin.String? = null, val groupBy: kotlin.String? = null, val distinctCount: kotlin.String? = null, val sumColumn: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val hideUnknown: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Usage Record
      * Record an analytic record for a known state within the application.
-     * @param version  
      * @param tag The tag to apply: the name of the action or thing being logged. 
      * @param deviceId The client deviceID (optional)
      * @param accountId The logged in user ID (optional)
@@ -1348,12 +1285,11 @@ object Paths {
      * @param customLong a custom long value for the usage record (optional)
      * @param customLong2 a custom long value for the usage record (optional)
      */
-    @Resource("/api/{version}/analytics/usage") class usage(val version: java.math.BigDecimal, val tag: kotlin.String, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val applicationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val device: kotlin.String? = null, val deviceType: kotlin.String? = null, val deviceOS: kotlin.String? = null, val model: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val customId: kotlin.Long? = null, val customType: kotlin.String? = null, val achievementIncrement: kotlin.Long? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val country: kotlin.String? = null, val zip: kotlin.String? = null, val locationDescription: kotlin.String? = null, val clientTime: kotlin.Long? = null, val errorMessage: kotlin.String? = null, val ip: kotlin.String? = null, val userAgent: kotlin.String? = null, val backgroundEvent: kotlin.Boolean? = null, val customMessage: kotlin.String? = null, val customMessage2: kotlin.String? = null, val customValue: kotlin.Double? = null, val customValue2: kotlin.Double? = null, val customLong: kotlin.Long? = null, val customLong2: kotlin.Long? = null)
+    @Resource("/analytics/usage") class usage(val tag: kotlin.String, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val applicationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val device: kotlin.String? = null, val deviceType: kotlin.String? = null, val deviceOS: kotlin.String? = null, val model: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val customId: kotlin.Long? = null, val customType: kotlin.String? = null, val achievementIncrement: kotlin.Long? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val country: kotlin.String? = null, val zip: kotlin.String? = null, val locationDescription: kotlin.String? = null, val clientTime: kotlin.Long? = null, val errorMessage: kotlin.String? = null, val ip: kotlin.String? = null, val userAgent: kotlin.String? = null, val backgroundEvent: kotlin.Boolean? = null, val customMessage: kotlin.String? = null, val customMessage2: kotlin.String? = null, val customValue: kotlin.Double? = null, val customValue2: kotlin.Double? = null, val customLong: kotlin.Long? = null, val customLong2: kotlin.Long? = null)
 
     /**
      * Create Multiple Usage Records
      * Sends multiple analytics. Can be used to send in the user&#39;s stored usage when they did not have internet access. Should not include more than 100 items per batch.
-     * @param version  
      * @param appKey The application key unique to each application. 
      * @param device The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.) 
      * @param &#x60;data&#x60; The analytic data AnalyticListResponse 
@@ -1366,14 +1302,13 @@ object Paths {
      * @param updateRanking Will create a leaderboard if one does not exist for the \&quot;tag\&quot; yet (optional)
      * @param returnSummaryResponse Returns a summary response of the achievements that have been completed due to the analytics (optional)
      */
-    @Resource("/api/{version}/analytics/usage/batch") class usageBatch(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val appVersion: kotlin.String? = null, val device: kotlin.String, val deviceType: kotlin.String? = null, val deviceOS: kotlin.String? = null, val model: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String, val updateRanking: kotlin.Boolean? = null, val returnSummaryResponse: kotlin.Boolean? = null)
+    @Resource("/analytics/usage/batch") class usageBatch(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val appVersion: kotlin.String? = null, val device: kotlin.String, val deviceType: kotlin.String? = null, val deviceOS: kotlin.String? = null, val model: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String, val updateRanking: kotlin.Boolean? = null, val returnSummaryResponse: kotlin.Boolean? = null)
 
     /**
      * Get App Data
      * Get the application data structure.  The basic structure is a   node tree, with the root node being a AppResponse.  The response contains   the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.   
 
 Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application.
-     * @param version  
      * @param start start the search results at a record. 
      * @param limit limit the search results to some number. 
      * @param deviceId the device id (deviceId or accountId required). (optional)
@@ -1400,7 +1335,7 @@ Using the various parameters can return the applications default mission   (buil
      * @param responseGroups use response groups to include large parts of the structure. possible values are: * MISSION_DEFAULT (default) - include the default mission (built-in packs), excludes all other mission groups * MISSION_DEFAULT_LEVELS_SAVED - include saved levels, excludes all other mission groups * MISSION_DEFAULT_LEVELS_COMMUNITY - include community levels, excludes all other mission groups * MISSION_INVITED (default) - include challenges sent to user * PROFILE (default) - include entire profile * PROFILE_DATA - only include profile date (exclude friends) * PROFILE_FRIENDS - include friends list  (optional)
      * @param purchaseType the will return the correct in app purchases for the device, possible values are: * SIRQUL (default) - purchasing from the sirqul store using tickets * IOS - purchasing from the itunes store for iPhone, iPod, iPod Touch * GOOGLE - purchasing from the google android store * AMAZON - purchasing from the amazon android store * MAC - purchasing from the itunes store for OSX * FREE - the item is free to purchase  (optional)
      */
-    @Resource("/api/{version}/app/get") class getAppData(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val gameObjectCount: kotlin.Boolean? = null, val filter: kotlin.String? = null, val dateCreated: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val missionIds: kotlin.String? = null, val gameIds: kotlin.String? = null, val packIds: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val appVersion: kotlin.String? = null, val includeHigherVersionPacks: kotlin.Boolean? = null, val includeHigherVersionLevels: kotlin.Boolean? = null, val responseGroups: kotlin.String? = null, val purchaseType: kotlin.String? = null)
+    @Resource("/app/get") class getAppData(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val gameObjectCount: kotlin.Boolean? = null, val filter: kotlin.String? = null, val dateCreated: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val missionIds: kotlin.String? = null, val gameIds: kotlin.String? = null, val packIds: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val appVersion: kotlin.String? = null, val includeHigherVersionPacks: kotlin.Boolean? = null, val includeHigherVersionLevels: kotlin.Boolean? = null, val responseGroups: kotlin.String? = null, val purchaseType: kotlin.String? = null)
 
     /**
      * Create App Data
@@ -1409,7 +1344,6 @@ Using the various parameters can return the applications default mission   (buil
 The basic   structure is a node tree, with the root node being a AppResponse.  The response   contains the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.    
 
 Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application
-     * @param version  
      * @param gameType the game to retrieve the data for, use your application key. 
      * @param start start the search results at a record. 
      * @param limit limit the search results to some number. 
@@ -1437,23 +1371,21 @@ Using the various parameters can return the applications default mission   (buil
      * @param responseGroups use response groups to include large parts of the structure. possible values are: * MISSION_DEFAULT (default) - include the default mission (built-in packs), excludes all other mission groups * MISSION_DEFAULT_LEVELS_SAVED - include saved levels, excludes all other mission groups * MISSION_DEFAULT_LEVELS_COMMUNITY - include community levels, excludes all other mission groups * MISSION_INVITED (default) - include challenges sent to user * PROFILE (default) - include entire profile * PROFILE_DATA - only include profile date (exclude friends) * PROFILE_FRIENDS - include friends list  (optional)
      * @param purchaseType the will return the correct in app purchases for the device, possible values are: * SIRQUL (default) - purchasing from the sirqul store using tickets * IOS - purchasing from the itunes store for iPhone, iPod, iPod Touch * GOOGLE - purchasing from the google android store * AMAZON - purchasing from the amazon android store * MAC - purchasing from the itunes store for OSX * FREE - the item is free to purchase  (optional)
      */
-    @Resource("/api/{version}/app/post") class postAppData(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String, val includeGameData: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val gameObjectCount: kotlin.Boolean? = null, val filter: kotlin.String? = null, val dateCreated: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val missionIds: kotlin.String? = null, val gameIds: kotlin.String? = null, val packIds: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val appVersion: kotlin.String? = null, val includeHigherVersionPacks: kotlin.Boolean? = null, val includeHigherVersionLevels: kotlin.Boolean? = null, val responseGroups: kotlin.String? = null, val purchaseType: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String)
+    @Resource("/app/post") class postAppData(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String, val includeGameData: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val gameObjectCount: kotlin.Boolean? = null, val filter: kotlin.String? = null, val dateCreated: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val missionIds: kotlin.String? = null, val gameIds: kotlin.String? = null, val packIds: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val appVersion: kotlin.String? = null, val includeHigherVersionPacks: kotlin.Boolean? = null, val includeHigherVersionLevels: kotlin.Boolean? = null, val responseGroups: kotlin.String? = null, val purchaseType: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String)
 
     /**
      * Regenerate App Data
      * Regenerate the app data cache for apps
-     * @param version  
      * @param accountId the account id of the user (optional)
      * @param appKey process a specific application, if null process all apps with caches (optional)
      * @param buildVersion create a specific version, if null use current version. Be careful if processing all (optional)
      * @param apiVersion create a specific version, if null use current version. Be careful if processing all (optional)
      */
-    @Resource("/api/{version}/app/regen") class regenAppData(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val buildVersion: kotlin.String? = null, val apiVersion: kotlin.String? = null)
+    @Resource("/app/regen") class regenAppData(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val buildVersion: kotlin.String? = null, val apiVersion: kotlin.String? = null)
 
     /**
      * Create Application
      * Create an application record and one placement record for that application. You can create more placements for this application by using {@link createApplicationPlacement}.
-     * @param version  
      * @param appName The name of the application 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -1534,12 +1466,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param twilioSenderPhoneNumber Twilio Sender Phone Number (optional)
      * @param openAISecretKey OpenAI Secret API Key (optional)
      */
-    @Resource("/api/{version}/application/create") class createApplication(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appName: kotlin.String, val about: kotlin.String? = null, val bundleId: kotlin.String? = null, val appIconAssetId: kotlin.Long? = null, val appLogoAssetId: kotlin.Long? = null, val facebookAppId: kotlin.String? = null, val facebookAppSecret: kotlin.String? = null, val googleApiKey: kotlin.String? = null, val updateEULADate: kotlin.Boolean? = null, val eulaVersion: kotlin.String? = null, val landingPageUrl: kotlin.String? = null, val showInActivities: kotlin.Boolean? = null, val activityDescription: kotlin.String? = null, val inviteWelcomeText: kotlin.String? = null, val invitePageUrl: kotlin.String? = null, val urlScheme: kotlin.String? = null, val platforms: kotlin.String? = null, val downloadUrls: kotlin.String? = null, val categoryIds: kotlin.String? = null, val scoringType: kotlin.String? = null, val hintCost: kotlin.Int? = null, val maxScore: kotlin.Int? = null, val ticketsPerPoint: kotlin.Float? = null, val hasGameData: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val useMatchingAlgorithm: kotlin.Boolean? = null, val globalTickets: kotlin.Boolean? = null, val buildVersion: kotlin.Float? = null, val apiVersion: kotlin.Float? = null, val placementName: kotlin.String? = null, val placementDescription: kotlin.String? = null, val placementSize: kotlin.String? = null, val placementHeight: kotlin.Int? = null, val placementWidth: kotlin.Int? = null, val placementRefreshInterval: kotlin.Int? = null, val createObjectStore: kotlin.Boolean? = null, val publicContentApproval: kotlin.Boolean? = null, val productionMode: kotlin.Boolean? = null, val minimumSessionLength: kotlin.Int? = null, val sessionGapLength: kotlin.Int? = null, val localAdsEnabled: kotlin.Boolean? = null, val sqootApiKey: kotlin.String? = null, val trilatProcessingType: kotlin.String? = null, val maxSampleSize: kotlin.Int? = null, val minRSSI: kotlin.Double? = null, val modules: kotlin.String? = null, val authorizedCount: kotlin.Int? = null, val authorizedServers: kotlin.String? = null, val defaultTimezone: kotlin.String? = null, val smtpPass: kotlin.String? = null, val metaData: kotlin.String? = null, val placementMetaData: kotlin.String? = null, val ipsFloor: kotlin.Boolean? = null, val enableAPNSBadge: kotlin.Boolean? = null, val includeInReport: kotlin.Boolean? = null, val defaultAppFilterId: kotlin.Long? = null, val enableWelcomeEmail: kotlin.Boolean? = null, val appleAppId: kotlin.String? = null, val appleTeamId: kotlin.String? = null, val appleAuthKeyId: kotlin.String? = null, val appleAuthKey: java.io.File? = null, val appleIssuerId: kotlin.String? = null, val appStoreKeyId: kotlin.String? = null, val appStoreKey: java.io.File? = null, val googlePrivateKeyFile: java.io.File? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null, val emailSender: kotlin.String? = null, val smtpUser: kotlin.String? = null, val smtpHost: kotlin.String? = null, val vatomBusinessId: kotlin.String? = null, val vatomRestClientId: kotlin.String? = null, val vatomRestSecretKey: kotlin.String? = null, val twilioAccountSID: kotlin.String? = null, val twilioAuthToken: kotlin.String? = null, val twilioSenderPhoneNumber: kotlin.String? = null, val openAISecretKey: kotlin.String? = null)
+    @Resource("/application/create") class createApplication(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appName: kotlin.String, val about: kotlin.String? = null, val bundleId: kotlin.String? = null, val appIconAssetId: kotlin.Long? = null, val appLogoAssetId: kotlin.Long? = null, val facebookAppId: kotlin.String? = null, val facebookAppSecret: kotlin.String? = null, val googleApiKey: kotlin.String? = null, val updateEULADate: kotlin.Boolean? = null, val eulaVersion: kotlin.String? = null, val landingPageUrl: kotlin.String? = null, val showInActivities: kotlin.Boolean? = null, val activityDescription: kotlin.String? = null, val inviteWelcomeText: kotlin.String? = null, val invitePageUrl: kotlin.String? = null, val urlScheme: kotlin.String? = null, val platforms: kotlin.String? = null, val downloadUrls: kotlin.String? = null, val categoryIds: kotlin.String? = null, val scoringType: kotlin.String? = null, val hintCost: kotlin.Int? = null, val maxScore: kotlin.Int? = null, val ticketsPerPoint: kotlin.Float? = null, val hasGameData: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val useMatchingAlgorithm: kotlin.Boolean? = null, val globalTickets: kotlin.Boolean? = null, val buildVersion: kotlin.Float? = null, val apiVersion: kotlin.Float? = null, val placementName: kotlin.String? = null, val placementDescription: kotlin.String? = null, val placementSize: kotlin.String? = null, val placementHeight: kotlin.Int? = null, val placementWidth: kotlin.Int? = null, val placementRefreshInterval: kotlin.Int? = null, val createObjectStore: kotlin.Boolean? = null, val publicContentApproval: kotlin.Boolean? = null, val productionMode: kotlin.Boolean? = null, val minimumSessionLength: kotlin.Int? = null, val sessionGapLength: kotlin.Int? = null, val localAdsEnabled: kotlin.Boolean? = null, val sqootApiKey: kotlin.String? = null, val trilatProcessingType: kotlin.String? = null, val maxSampleSize: kotlin.Int? = null, val minRSSI: kotlin.Double? = null, val modules: kotlin.String? = null, val authorizedCount: kotlin.Int? = null, val authorizedServers: kotlin.String? = null, val defaultTimezone: kotlin.String? = null, val smtpPass: kotlin.String? = null, val metaData: kotlin.String? = null, val placementMetaData: kotlin.String? = null, val ipsFloor: kotlin.Boolean? = null, val enableAPNSBadge: kotlin.Boolean? = null, val includeInReport: kotlin.Boolean? = null, val defaultAppFilterId: kotlin.Long? = null, val enableWelcomeEmail: kotlin.Boolean? = null, val appleAppId: kotlin.String? = null, val appleTeamId: kotlin.String? = null, val appleAuthKeyId: kotlin.String? = null, val appleAuthKey: java.io.File? = null, val appleIssuerId: kotlin.String? = null, val appStoreKeyId: kotlin.String? = null, val appStoreKey: java.io.File? = null, val googlePrivateKeyFile: java.io.File? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null, val emailSender: kotlin.String? = null, val smtpUser: kotlin.String? = null, val smtpHost: kotlin.String? = null, val vatomBusinessId: kotlin.String? = null, val vatomRestClientId: kotlin.String? = null, val vatomRestSecretKey: kotlin.String? = null, val twilioAccountSID: kotlin.String? = null, val twilioAuthToken: kotlin.String? = null, val twilioSenderPhoneNumber: kotlin.String? = null, val openAISecretKey: kotlin.String? = null)
 
     /**
      * Create Ad Placement
      * Creates a new ad placement for an application.
-     * @param version  
      * @param appKey The appKey of the application the ad placement is for 
      * @param size The ad placement size {BANNER, LEADERBOARD, SKYSCRAPER, INTERSTITIAL, CUSTOM 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
@@ -1552,57 +1483,51 @@ Using the various parameters can return the applications default mission   (buil
      * @param defaultImageId Default Image Id (optional)
      * @param active Active (optional)
      */
-    @Resource("/api/{version}/application/placement/create") class createApplicationPlacement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String? = null, val description: kotlin.String? = null, val size: kotlin.String, val height: kotlin.Int? = null, val width: kotlin.Int? = null, val refreshInterval: kotlin.Int? = null, val defaultImageId: kotlin.Long? = null, val active: kotlin.Boolean? = null)
+    @Resource("/application/placement/create") class createApplicationPlacement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String? = null, val description: kotlin.String? = null, val size: kotlin.String, val height: kotlin.Int? = null, val width: kotlin.Int? = null, val refreshInterval: kotlin.Int? = null, val defaultImageId: kotlin.Long? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Application
      * Set the deleted timestamp to current time. This effectively deletes the application since all queries should ignore any records with a deleted timestamp
-     * @param version  
      * @param accountId The account used to perform the delete, must have rights to edit the application. (optional)
      * @param appKey The key of the application to be deleted (optional)
      */
-    @Resource("/api/{version}/application/delete") class deleteApplication(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null)
+    @Resource("/application/delete") class deleteApplication(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null)
 
     /**
      * Delete Ad Placement
      * Deletes an ad placement for an application.
-     * @param version  
      * @param placementId The id of the placement to delete, the user must have rights to the application the ad placement is for 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/application/placement/delete") class deleteApplicationPlacement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val placementId: kotlin.Long)
+    @Resource("/application/placement/delete") class deleteApplicationPlacement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val placementId: kotlin.Long)
 
     /**
      * Get Application
      * Get a specific application by appKey
-     * @param version  
      * @param appKey The key of the application (optional)
      * @param applicationId Application Id (optional)
      */
-    @Resource("/api/{version}/application/get") class getApplication(val version: java.math.BigDecimal, val appKey: kotlin.String? = null, val applicationId: kotlin.Long? = null)
+    @Resource("/application/get") class getApplication(val appKey: kotlin.String? = null, val applicationId: kotlin.Long? = null)
 
     /**
      * Get Ad Placement
      * Get details of an ad placement
-     * @param version  
      * @param placementId The id of the placement 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/application/placement/get") class getApplicationPlacement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val placementId: kotlin.Long)
+    @Resource("/application/placement/get") class getApplicationPlacement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val placementId: kotlin.Long)
 
     /**
      * Get API versions
      * Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8
-     * @param version  
      */
-    @Resource("/api/{version}/application/versions") class getApplicationVersions(val version: java.math.BigDecimal)
+    @Resource("/application/versions") class getApplicationVersions
 
     /**
      * Search Application Users
      * Get a list of users per application
-     * @param version  
      * @param appKey The application key 
      * @param q Q (optional)
      * @param keyword The keyword used to search (optional)
@@ -1612,12 +1537,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param l the limit of the index (optional)
      * @param limit The limit of the pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/application/users") class getUniqueUsersByApp(val version: java.math.BigDecimal, val appKey: kotlin.String, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val since: kotlin.Long? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/application/users") class getUniqueUsersByApp(val appKey: kotlin.String, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val since: kotlin.Long? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * List Applications
      * List active applications matching the criteria (as a consumer)
-     * @param version  
      * @param accountId The account id of the application owner/manager (optional)
      * @param q Q (optional)
      * @param keyword The keyword used to search for title, about, and description fields (optional)
@@ -1639,24 +1563,22 @@ Using the various parameters can return the applications default mission   (buil
      * @param hasObjectStore Only include applications with a object store (default is false) (optional, default to false)
      * @param activeOnly Return only active results (optional, default to true)
      */
-    @Resource("/api/{version}/application/list") class listApplications(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val platforms: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val categoryIds: kotlin.String? = null, val sortField: kotlin.String? = null, val hasAds: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val filterBillable: kotlin.Boolean? = null, val filterContentAdmin: kotlin.Boolean? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val applicationIds: kotlin.String? = null, val hasObjectStore: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/application/list") class listApplications(val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val platforms: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val categoryIds: kotlin.String? = null, val sortField: kotlin.String? = null, val hasAds: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val filterBillable: kotlin.Boolean? = null, val filterContentAdmin: kotlin.Boolean? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val applicationIds: kotlin.String? = null, val hasObjectStore: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Search for Ad Placements
      * Searches placements for an application.
-     * @param version  
      * @param appKey The key of the application 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param start The start of the pagination (optional, default to 0)
      * @param limit The limit of the pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/application/placement/search") class searchApplicationPlacement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/application/placement/search") class searchApplicationPlacement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search for Application Settings
      * Returns a list of applications that the user has logged into before, and returns specific settings for that application and user
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param connectionAccountId The account id used to view another person&#39;s account (optional)
@@ -1666,12 +1588,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The start index for pagination (optional, default to 0)
      * @param limit The limit per result set for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/application/settings/search") class searchApplicationSettings(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/application/settings/search") class searchApplicationSettings(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Applications
      * Search for applications matching the criteria that the logged in user has access to
-     * @param version  
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude The location of the device (optional)
@@ -1689,12 +1610,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param publicNotifications Filter results on whether the application is available for public trigger notifications (optional)
      * @param activeOnly Return only active results (optional, default to false)
      */
-    @Resource("/api/{version}/application/search") class searchApplications(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val qSearchFields: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val hasAds: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/application/search") class searchApplications(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val qSearchFields: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val hasAds: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Update Application
      * Update an application record
-     * @param version  
      * @param appKey The application key for updating an existing application 
      * @param appName The name of the application 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
@@ -1776,22 +1696,20 @@ Using the various parameters can return the applications default mission   (buil
      * @param twilioSenderPhoneNumber Twilio Sender Phone Number (optional)
      * @param openAISecretKey OpenAI Secret API Key (optional)
      */
-    @Resource("/api/{version}/application/update") class updateApplication(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val appName: kotlin.String, val about: kotlin.String? = null, val bundleId: kotlin.String? = null, val appIconAssetId: kotlin.Long? = null, val appLogoAssetId: kotlin.Long? = null, val facebookAppId: kotlin.String? = null, val facebookAppSecret: kotlin.String? = null, val googleApiKey: kotlin.String? = null, val updateEULADate: kotlin.Boolean? = null, val eulaVersion: kotlin.String? = null, val landingPageUrl: kotlin.String? = null, val showInActivities: kotlin.Boolean? = null, val activityDescription: kotlin.String? = null, val inviteWelcomeText: kotlin.String? = null, val invitePageUrl: kotlin.String? = null, val urlScheme: kotlin.String? = null, val platforms: kotlin.String? = null, val downloadUrls: kotlin.String? = null, val categoryIds: kotlin.String? = null, val scoringType: kotlin.String? = null, val hintCost: kotlin.Int? = null, val maxScore: kotlin.Int? = null, val ticketsPerPoint: kotlin.Float? = null, val hasGameData: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val useMatchingAlgorithm: kotlin.Boolean? = null, val globalTickets: kotlin.Boolean? = null, val buildVersion: kotlin.Float? = null, val apiVersion: kotlin.Float? = null, val placementName: kotlin.String? = null, val placementDescription: kotlin.String? = null, val placementSize: kotlin.String? = null, val placementHeight: kotlin.Int? = null, val placementWidth: kotlin.Int? = null, val placementRefreshInterval: kotlin.Int? = null, val createObjectStore: kotlin.Boolean? = null, val publicContentApproval: kotlin.Boolean? = null, val productionMode: kotlin.Boolean? = null, val minimumSessionLength: kotlin.Int? = null, val sessionGapLength: kotlin.Int? = null, val localAdsEnabled: kotlin.Boolean? = null, val sqootApiKey: kotlin.String? = null, val trilatProcessingType: kotlin.String? = null, val maxSampleSize: kotlin.Int? = null, val minRSSI: kotlin.Double? = null, val modules: kotlin.String? = null, val authorizedCount: kotlin.Int? = null, val authorizedServers: kotlin.String? = null, val defaultTimezone: kotlin.String? = null, val smtpPass: kotlin.String? = null, val metaData: kotlin.String? = null, val placementMetaData: kotlin.String? = null, val ipsFloor: kotlin.Boolean? = null, val enableAPNSBadge: kotlin.Boolean? = null, val includeInReport: kotlin.Boolean? = null, val defaultAppFilterId: kotlin.Long? = null, val enableWelcomeEmail: kotlin.Boolean? = null, val appleAppId: kotlin.String? = null, val appleTeamId: kotlin.String? = null, val appleAuthKeyId: kotlin.String? = null, val appleAuthKey: java.io.File? = null, val appleIssuerId: kotlin.String? = null, val appStoreKeyId: kotlin.String? = null, val appStoreKey: java.io.File? = null, val googlePrivateKeyFile: java.io.File? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null, val emailSender: kotlin.String? = null, val smtpUser: kotlin.String? = null, val smtpHost: kotlin.String? = null, val vatomBusinessId: kotlin.String? = null, val vatomRestClientId: kotlin.String? = null, val vatomRestSecretKey: kotlin.String? = null, val twilioAccountSID: kotlin.String? = null, val twilioAuthToken: kotlin.String? = null, val twilioSenderPhoneNumber: kotlin.String? = null, val openAISecretKey: kotlin.String? = null)
+    @Resource("/application/update") class updateApplication(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val appName: kotlin.String, val about: kotlin.String? = null, val bundleId: kotlin.String? = null, val appIconAssetId: kotlin.Long? = null, val appLogoAssetId: kotlin.Long? = null, val facebookAppId: kotlin.String? = null, val facebookAppSecret: kotlin.String? = null, val googleApiKey: kotlin.String? = null, val updateEULADate: kotlin.Boolean? = null, val eulaVersion: kotlin.String? = null, val landingPageUrl: kotlin.String? = null, val showInActivities: kotlin.Boolean? = null, val activityDescription: kotlin.String? = null, val inviteWelcomeText: kotlin.String? = null, val invitePageUrl: kotlin.String? = null, val urlScheme: kotlin.String? = null, val platforms: kotlin.String? = null, val downloadUrls: kotlin.String? = null, val categoryIds: kotlin.String? = null, val scoringType: kotlin.String? = null, val hintCost: kotlin.Int? = null, val maxScore: kotlin.Int? = null, val ticketsPerPoint: kotlin.Float? = null, val hasGameData: kotlin.Boolean? = null, val publicNotifications: kotlin.Boolean? = null, val useMatchingAlgorithm: kotlin.Boolean? = null, val globalTickets: kotlin.Boolean? = null, val buildVersion: kotlin.Float? = null, val apiVersion: kotlin.Float? = null, val placementName: kotlin.String? = null, val placementDescription: kotlin.String? = null, val placementSize: kotlin.String? = null, val placementHeight: kotlin.Int? = null, val placementWidth: kotlin.Int? = null, val placementRefreshInterval: kotlin.Int? = null, val createObjectStore: kotlin.Boolean? = null, val publicContentApproval: kotlin.Boolean? = null, val productionMode: kotlin.Boolean? = null, val minimumSessionLength: kotlin.Int? = null, val sessionGapLength: kotlin.Int? = null, val localAdsEnabled: kotlin.Boolean? = null, val sqootApiKey: kotlin.String? = null, val trilatProcessingType: kotlin.String? = null, val maxSampleSize: kotlin.Int? = null, val minRSSI: kotlin.Double? = null, val modules: kotlin.String? = null, val authorizedCount: kotlin.Int? = null, val authorizedServers: kotlin.String? = null, val defaultTimezone: kotlin.String? = null, val smtpPass: kotlin.String? = null, val metaData: kotlin.String? = null, val placementMetaData: kotlin.String? = null, val ipsFloor: kotlin.Boolean? = null, val enableAPNSBadge: kotlin.Boolean? = null, val includeInReport: kotlin.Boolean? = null, val defaultAppFilterId: kotlin.Long? = null, val enableWelcomeEmail: kotlin.Boolean? = null, val appleAppId: kotlin.String? = null, val appleTeamId: kotlin.String? = null, val appleAuthKeyId: kotlin.String? = null, val appleAuthKey: java.io.File? = null, val appleIssuerId: kotlin.String? = null, val appStoreKeyId: kotlin.String? = null, val appStoreKey: java.io.File? = null, val googlePrivateKeyFile: java.io.File? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null, val emailSender: kotlin.String? = null, val smtpUser: kotlin.String? = null, val smtpHost: kotlin.String? = null, val vatomBusinessId: kotlin.String? = null, val vatomRestClientId: kotlin.String? = null, val vatomRestSecretKey: kotlin.String? = null, val twilioAccountSID: kotlin.String? = null, val twilioAuthToken: kotlin.String? = null, val twilioSenderPhoneNumber: kotlin.String? = null, val openAISecretKey: kotlin.String? = null)
 
     /**
      * Change Appliation Status
      * Set the application&#39;s active flag to true/false. This effectively activates or deactivates the application.
-     * @param version  
      * @param accountId The account used to perform the delete, must have rights to edit the application. 
      * @param appKey The key of the application to be deleted 
      * @param active If true then set to active, false otherwise 
      */
-    @Resource("/api/{version}/application/active") class updateApplicationActive(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val active: kotlin.Boolean)
+    @Resource("/application/active") class updateApplicationActive(val accountId: kotlin.Long, val appKey: kotlin.String, val active: kotlin.Boolean)
 
     /**
      * Update Ad Placement
      * Updates an ad placement for an application.
-     * @param version  
      * @param placementId The id of the placement to update, the user must have rights to the application the ad placement is for 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -1804,23 +1722,21 @@ Using the various parameters can return the applications default mission   (buil
      * @param defaultImageId Default Image Id (optional)
      * @param active Active (optional)
      */
-    @Resource("/api/{version}/application/placement/update") class updateApplicationPlacement(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val placementId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val size: kotlin.String? = null, val height: kotlin.Int? = null, val width: kotlin.Int? = null, val refreshInterval: kotlin.Int? = null, val defaultImageId: kotlin.Long? = null, val active: kotlin.Boolean? = null)
+    @Resource("/application/placement/update") class updateApplicationPlacement(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val placementId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val size: kotlin.String? = null, val height: kotlin.Int? = null, val width: kotlin.Int? = null, val refreshInterval: kotlin.Int? = null, val defaultImageId: kotlin.Long? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create Application Certificate
      * Uploads a certificate for an application that the user has access to.
-     * @param version  
      * @param appKey The key of the application 
      * @param deviceId Device Id (optional)
      * @param accountId The account used to perform the delete, must have rights to edit the application. (optional)
      * @param certificate Certificate (optional)
      */
-    @Resource("/api/{version}/application/certificate/create") class uploadApplicationCertificate(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val certificate: java.io.File? = null)
+    @Resource("/application/certificate/create") class uploadApplicationCertificate(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val certificate: java.io.File? = null)
 
     /**
      * Create AppConfig
      * Creates a new application configuration. If the configVersion provided already exists for the given app, an invalid response is returned and the application configuration won&#39;t be created.
-     * @param version  
      * @param accountId The account ID of the user 
      * @param appKey The application key that the newly created applicationConfig will be associated to 
      * @param configVersion The application configuration, has to be unique within the application 
@@ -1829,30 +1745,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param retailerLocationId The retailer location id for retailer location specific configurations (optional)
      * @param udid The device udid for device specific configurations (optional)
      */
-    @Resource("/api/{version}/appconfig/create") class createApplicationConfig(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val configVersion: kotlin.String, val assetId: kotlin.Long, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null)
+    @Resource("/appconfig/create") class createApplicationConfig(val accountId: kotlin.Long, val appKey: kotlin.String, val configVersion: kotlin.String, val assetId: kotlin.Long, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null)
 
     /**
      * Delete AppConfig
      * Mark the application configuration for deletion.
-     * @param version  
      * @param accountId The account ID of the user 
      * @param configId The config ID of the application configuration to delete 
      */
-    @Resource("/api/{version}/appconfig/delete") class deleteApplicationConfig(val version: java.math.BigDecimal, val accountId: kotlin.Long, val configId: kotlin.Long)
+    @Resource("/appconfig/delete") class deleteApplicationConfig(val accountId: kotlin.Long, val configId: kotlin.Long)
 
     /**
      * Get AppConfig
      * Gets the appConfig data by the given configId. If appConfig cannot be found, it returns an invalid response.
-     * @param version  
      * @param accountId The account ID of the user 
      * @param configId The config ID of the application configuration 
      */
-    @Resource("/api/{version}/appconfig/get") class getApplicationConfig(val version: java.math.BigDecimal, val accountId: kotlin.Long, val configId: kotlin.Long)
+    @Resource("/appconfig/get") class getApplicationConfig(val accountId: kotlin.Long, val configId: kotlin.Long)
 
     /**
      * Get AppConfig by Version
      * Gets the appConfig data by the given appKey and app configVersion number.If the appKey is is invalid or appConfig is not found, it returns an invalid response. 
-     * @param version  
      * @param appKey The application key 
      * @param configVersion The version of the application configuration 
      * @param retailerId Only returns the config that matches the given retailer (optional)
@@ -1860,12 +1773,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param udid Only returns only returns the config that matches the given device udid (optional)
      * @param allowOlderVersions Determines whether to return older config versions if the exact version is not found. If this happens, will try to return the latest version. (optional, default to false)
      */
-    @Resource("/api/{version}/appconfig/getbyversion") class getApplicationConfigByConfigVersion(val version: java.math.BigDecimal, val appKey: kotlin.String, val configVersion: kotlin.String, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null, val allowOlderVersions: kotlin.Boolean? = null)
+    @Resource("/appconfig/getbyversion") class getApplicationConfigByConfigVersion(val appKey: kotlin.String, val configVersion: kotlin.String, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null, val allowOlderVersions: kotlin.Boolean? = null)
 
     /**
      * Search AppConfigs
      * Gets all versions of application configurations in a particular app by the given appKey.
-     * @param version  
      * @param accountId The account ID of the user 
      * @param appKey The application key to filter results by application Leaving this empty will return all application configurations for all applications (executive user only) (optional)
      * @param retailerId Only returns the configs that matches the given retailer (optional)
@@ -1877,12 +1789,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The start index for pagination (optional, default to 0)
      * @param limit The limit for pagination (There is a hard limit of 100) (optional, default to 20)
      */
-    @Resource("/api/{version}/appconfig/search") class searchApplicationConfig(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null, val configVersion: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/appconfig/search") class searchApplicationConfig(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null, val configVersion: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update AppConfig
      * pdates an existing application configuration. If the configVersion provided already exists for the given app the application configuration won&#39;t be updated.
-     * @param version  
      * @param accountId The account ID of the user 
      * @param configId The config ID of the application configuration to update 
      * @param appKey The application key that the updated applicationConfig will be associated to (optional)
@@ -1892,20 +1803,18 @@ Using the various parameters can return the applications default mission   (buil
      * @param retailerLocationId The retailer location id for retailer location specific configurations (optional)
      * @param udid The device udid for device specific configurations (optional)
      */
-    @Resource("/api/{version}/appconfig/update") class updateApplicationConfig(val version: java.math.BigDecimal, val accountId: kotlin.Long, val configId: kotlin.Long, val appKey: kotlin.String? = null, val configVersion: kotlin.String? = null, val assetId: kotlin.Long? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null)
+    @Resource("/appconfig/update") class updateApplicationConfig(val accountId: kotlin.Long, val configId: kotlin.Long, val appKey: kotlin.String? = null, val configVersion: kotlin.String? = null, val assetId: kotlin.Long? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null)
 
     /**
      * Download Asset
      * Downloads an asset from the server for assets that have been uploaded to the server.
-     * @param version  
      * @param filename the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId} 
      */
-    @Resource("/api/{version}/asset/download/{filename}") class assetDownload(val version: java.math.BigDecimal, val filename: kotlin.String)
+    @Resource("/asset/download/{filename}") class assetDownload(val filename: kotlin.String)
 
     /**
      * Convert Offer to Creative
      * Converts an offer image + text into a creative image.
-     * @param version  
      * @param offerId offer id used for inserting offer text/flavor 
      * @param adSize the ad size used for selecting a format for the creative image 
      * @param creativeId used for inserting the newly created image into (optional)
@@ -1914,12 +1823,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param backgroundSize the size of the background (optional)
      * @param template the template to use (optional)
      */
-    @Resource("/api/{version}/asset/morph") class assetMorph(val version: java.math.BigDecimal, val offerId: kotlin.Long, val creativeId: kotlin.Long? = null, val adSize: kotlin.String, val width: kotlin.Int? = null, val height: kotlin.Int? = null, val backgroundSize: kotlin.String? = null, val template: kotlin.String? = null)
+    @Resource("/asset/morph") class assetMorph(val offerId: kotlin.Long, val creativeId: kotlin.Long? = null, val adSize: kotlin.String, val width: kotlin.Int? = null, val height: kotlin.Int? = null, val backgroundSize: kotlin.String? = null, val template: kotlin.String? = null)
 
     /**
      * Create Asset
      * Uploads an asset to server and returns an asset id which can be used to assign to various objects.
-     * @param version  
      * @param returnNulls to return nulls (optional)
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
@@ -1955,35 +1863,32 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the latitude (optional) (optional)
      * @param longitude the longitude (optional) (optional)
      */
-    @Resource("/api/{version}/asset/create") class createAsset(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long? = null, val collectionId: kotlin.Long? = null, val addToDefaultAlbum: kotlin.String? = null, val addToMediaLibrary: kotlin.Boolean? = null, val versionCode: kotlin.Int? = null, val versionName: kotlin.String? = null, val metaData: kotlin.String? = null, val caption: kotlin.String? = null, val assetType: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val assignedAccountId: kotlin.Long? = null, val media: java.io.File? = null, val mediaUrl: kotlin.String? = null, val mediaString: kotlin.String? = null, val mediaStringFileName: kotlin.String? = null, val mediaStringContentType: kotlin.String? = null, val mediaHeight: kotlin.Int? = null, val mediaWidth: kotlin.Int? = null, val attachedMedia: java.io.File? = null, val attachedMediaUrl: kotlin.String? = null, val attachedMediaString: kotlin.String? = null, val attachedMediaStringFileName: kotlin.String? = null, val attachedMediaStringContentType: kotlin.String? = null, val attachedMediaHeight: kotlin.Int? = null, val attachedMediaWidth: kotlin.Int? = null, val locationDescription: kotlin.String? = null, val app: kotlin.String? = null, val appKey: kotlin.String? = null, val searchTags: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/asset/create") class createAsset(val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long? = null, val collectionId: kotlin.Long? = null, val addToDefaultAlbum: kotlin.String? = null, val addToMediaLibrary: kotlin.Boolean? = null, val versionCode: kotlin.Int? = null, val versionName: kotlin.String? = null, val metaData: kotlin.String? = null, val caption: kotlin.String? = null, val assetType: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val assignedAccountId: kotlin.Long? = null, val media: java.io.File? = null, val mediaUrl: kotlin.String? = null, val mediaString: kotlin.String? = null, val mediaStringFileName: kotlin.String? = null, val mediaStringContentType: kotlin.String? = null, val mediaHeight: kotlin.Int? = null, val mediaWidth: kotlin.Int? = null, val attachedMedia: java.io.File? = null, val attachedMediaUrl: kotlin.String? = null, val attachedMediaString: kotlin.String? = null, val attachedMediaStringFileName: kotlin.String? = null, val attachedMediaStringContentType: kotlin.String? = null, val attachedMediaHeight: kotlin.Int? = null, val attachedMediaWidth: kotlin.Int? = null, val locationDescription: kotlin.String? = null, val app: kotlin.String? = null, val appKey: kotlin.String? = null, val searchTags: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Asset
      * Delete an asset.
-     * @param version  
      * @param assetId the id of the asset to delete 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/asset/delete") class deleteAsset(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val assetId: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/asset/delete") class deleteAsset(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val assetId: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Asset
      * Gets the full asset response including attached likes and notes.
-     * @param version  
      * @param assetId the asset ID 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param noteDescending determines whether the notes on the asset are in descending order (optional, default to false)
      */
-    @Resource("/api/{version}/asset/get") class getAsset(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val assetId: kotlin.Long, val noteDescending: kotlin.Boolean? = null)
+    @Resource("/asset/get") class getAsset(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val assetId: kotlin.Long, val noteDescending: kotlin.Boolean? = null)
 
     /**
      * Remove Asset from Collection
      * Remove assets from collections
-     * @param version  
      * @param assetId the id of the asset to remove 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -1993,12 +1898,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/asset/remove") class removeAsset(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long? = null, val collectionId: kotlin.Long? = null, val assetId: kotlin.String, val removeFromDefaultAlbums: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/asset/remove") class removeAsset(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumId: kotlin.Long? = null, val collectionId: kotlin.Long? = null, val assetId: kotlin.String, val removeFromDefaultAlbums: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Assets
      * Searches for assets
-     * @param version  
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param albumIds comma separated list of album ids to search on (optional)
@@ -2024,12 +1928,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param approvalStatus filter by approval status (optional)
      * @param assignedAccountId filter results by an assigned account id (optional)
      */
-    @Resource("/api/{version}/asset/search") class searchAssets(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumIds: kotlin.String? = null, val assetIds: kotlin.String? = null, val appKey: kotlin.String? = null, val mediaType: kotlin.String? = null, val mimeType: kotlin.String? = null, val keyword: kotlin.String? = null, val versionCode: kotlin.Int? = null, val versionName: kotlin.String? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val searchMediaLibrary: kotlin.Boolean? = null, val filterByBillable: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val returnApp: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchMode: kotlin.String? = null, val assetType: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val assignedAccountId: kotlin.Long? = null)
+    @Resource("/asset/search") class searchAssets(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumIds: kotlin.String? = null, val assetIds: kotlin.String? = null, val appKey: kotlin.String? = null, val mediaType: kotlin.String? = null, val mimeType: kotlin.String? = null, val keyword: kotlin.String? = null, val versionCode: kotlin.Int? = null, val versionName: kotlin.String? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val searchMediaLibrary: kotlin.Boolean? = null, val filterByBillable: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val returnApp: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchMode: kotlin.String? = null, val assetType: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val assignedAccountId: kotlin.Long? = null)
 
     /**
      * Update Asset
      * Updates an asset&#39;s meta data. If an album reference is passed in, the participants with write permissions are allowed to edit the asset. Otherwise, only the asset up-loader has permission to edit the data.
-     * @param version  
      * @param assetId the ID of the asset to update 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
@@ -2062,21 +1965,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude latitude used to update the asset&#39;s location (optional)
      * @param longitude longitude used to update the asset&#39;s location (optional)
      */
-    @Resource("/api/{version}/asset/update") class updateAsset(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val assetId: kotlin.Long, val albumId: kotlin.Long? = null, val attachedAssetId: kotlin.Long? = null, val versionCode: kotlin.Int? = null, val versionName: kotlin.String? = null, val metaData: kotlin.String? = null, val caption: kotlin.String? = null, val assetType: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val assignedAccountId: kotlin.Long? = null, val media: java.io.File? = null, val mediaUrl: kotlin.String? = null, val mediaString: kotlin.String? = null, val mediaStringFileName: kotlin.String? = null, val mediaStringContentType: kotlin.String? = null, val mediaHeight: kotlin.Int? = null, val mediaWidth: kotlin.Int? = null, val attachedMedia: java.io.File? = null, val attachedMediaUrl: kotlin.String? = null, val attachedMediaString: kotlin.String? = null, val attachedMediaStringFileName: kotlin.String? = null, val attachedMediaStringContentType: kotlin.String? = null, val attachedMediaHeight: kotlin.Int? = null, val attachedMediaWidth: kotlin.Int? = null, val locationDescription: kotlin.String? = null, val searchTags: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/asset/update") class updateAsset(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val assetId: kotlin.Long, val albumId: kotlin.Long? = null, val attachedAssetId: kotlin.Long? = null, val versionCode: kotlin.Int? = null, val versionName: kotlin.String? = null, val metaData: kotlin.String? = null, val caption: kotlin.String? = null, val assetType: kotlin.String? = null, val approvalStatus: kotlin.String? = null, val assignedAccountId: kotlin.Long? = null, val media: java.io.File? = null, val mediaUrl: kotlin.String? = null, val mediaString: kotlin.String? = null, val mediaStringFileName: kotlin.String? = null, val mediaStringContentType: kotlin.String? = null, val mediaHeight: kotlin.Int? = null, val mediaWidth: kotlin.Int? = null, val attachedMedia: java.io.File? = null, val attachedMediaUrl: kotlin.String? = null, val attachedMediaString: kotlin.String? = null, val attachedMediaStringFileName: kotlin.String? = null, val attachedMediaStringContentType: kotlin.String? = null, val attachedMediaHeight: kotlin.Int? = null, val attachedMediaWidth: kotlin.Int? = null, val locationDescription: kotlin.String? = null, val searchTags: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Assignment Assignees
      * Search for avaiable users for creating or updating assignment.
-     * @param version  
      * @param accountId The account id sending the request 
      * @param keyword The keyword to filter the returned results (optional)
      */
-    @Resource("/api/{version}/assignment/assignee/search") class assigmentAssigneeAccountSearch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null)
+    @Resource("/assignment/assignee/search") class assigmentAssigneeAccountSearch(val accountId: kotlin.Long, val keyword: kotlin.String? = null)
 
     /**
      * Create Assignment
      * Create an assignment.
-     * @param version  
      * @param accountId the user account id 
      * @param name the name for the assignment 
      * @param assigneeAccountId the account id to assign to 
@@ -2085,30 +1986,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param tags the tags (optional)
      * @param active determines whether the assignment is active or inactive (optional)
      */
-    @Resource("/api/{version}/assignment/create") class assignmentCreate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val assigneeAccountId: kotlin.Long, val retailerLocationId: kotlin.Long? = null, val tags: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/assignment/create") class assignmentCreate(val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val assigneeAccountId: kotlin.Long, val retailerLocationId: kotlin.Long? = null, val tags: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Assignment
      * Delete an assignment.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentId the assignment id 
      */
-    @Resource("/api/{version}/assignment/delete") class assignmentDelete(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentId: kotlin.Long)
+    @Resource("/assignment/delete") class assignmentDelete(val accountId: kotlin.Long, val assignmentId: kotlin.Long)
 
     /**
      * Get Assignment
      * Get the details of an assignment.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentId the assignment id 
      */
-    @Resource("/api/{version}/assignment/get") class assignmentGet(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentId: kotlin.Long)
+    @Resource("/assignment/get") class assignmentGet(val accountId: kotlin.Long, val assignmentId: kotlin.Long)
 
     /**
      * Search Assignments
      * Search for assignments by the given parameters.
-     * @param version  
      * @param accountId the account sending the request 
      * @param sortField sort by table field 
      * @param descending return results in descending order or not 
@@ -2121,12 +2019,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param currentStatusType filter results by assignment status (optional)
      * @param keyword filter results by keyword search that matches the assignee, creator, or retailer location name (optional)
      */
-    @Resource("/api/{version}/assignment/search") class assignmentSearch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val creatorAccountId: kotlin.Long? = null, val assigneeAccountIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val currentStatusType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/assignment/search") class assignmentSearch(val accountId: kotlin.Long, val creatorAccountId: kotlin.Long? = null, val assigneeAccountIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val currentStatusType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Create Assignment Status
      * Create an assignment status.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentId the assignment id 
      * @param scheduledNotificationId the scheduled notification id for reminders (optional)
@@ -2139,30 +2036,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param followUp the date to follow up by (optional)
      * @param active determines whether the assignment status is active or inactive (optional)
      */
-    @Resource("/api/{version}/assignment/status/create") class assignmentStatusCreate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentId: kotlin.Long, val scheduledNotificationId: kotlin.Long? = null, val toDo: kotlin.String? = null, val connection: kotlin.String? = null, val method: kotlin.String? = null, val status: kotlin.String? = null, val closure: kotlin.String? = null, val message: kotlin.String? = null, val followUp: kotlin.Long? = null, val active: kotlin.Boolean? = null)
+    @Resource("/assignment/status/create") class assignmentStatusCreate(val accountId: kotlin.Long, val assignmentId: kotlin.Long, val scheduledNotificationId: kotlin.Long? = null, val toDo: kotlin.String? = null, val connection: kotlin.String? = null, val method: kotlin.String? = null, val status: kotlin.String? = null, val closure: kotlin.String? = null, val message: kotlin.String? = null, val followUp: kotlin.Long? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Deletes Assignment Status
      * Deletes an assignment status.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentStatusId the assignment status id 
      */
-    @Resource("/api/{version}/assignment/status/delete") class assignmentStatusDelete(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentStatusId: kotlin.Long)
+    @Resource("/assignment/status/delete") class assignmentStatusDelete(val accountId: kotlin.Long, val assignmentStatusId: kotlin.Long)
 
     /**
      * Get Assignment Status
      * Get an assignment status.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentStatusId the assignment status id 
      */
-    @Resource("/api/{version}/assignment/status/get") class assignmentStatusGet(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentStatusId: kotlin.Long)
+    @Resource("/assignment/status/get") class assignmentStatusGet(val accountId: kotlin.Long, val assignmentStatusId: kotlin.Long)
 
     /**
      * Search Assignment Statuses
      * Search on assignment statuses.
-     * @param version  
      * @param accountId the user account id 
      * @param sortField the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP 
      * @param descending determines whether the sorted list is in descending or ascending order 
@@ -2176,12 +2070,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param statusType filter results by the status type (optional)
      * @param keyword filter results by keyword search (optional)
      */
-    @Resource("/api/{version}/assignment/status/search") class assignmentStatusSearch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentId: kotlin.Long? = null, val creatorAccountId: kotlin.Long? = null, val assigneeAccountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val statusType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/assignment/status/search") class assignmentStatusSearch(val accountId: kotlin.Long, val assignmentId: kotlin.Long? = null, val creatorAccountId: kotlin.Long? = null, val assigneeAccountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val statusType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Update Assignment Status
      * Updates an assignment status.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentStatusId the assignment status id 
      * @param scheduledNotificationId the scheduled notification id for reminders (optional)
@@ -2194,12 +2087,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param followUp the date to follow up by (optional)
      * @param active determines whether the assignment status is active or inactive (optional)
      */
-    @Resource("/api/{version}/assignment/status/update") class assignmentStatusUpdate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentStatusId: kotlin.Long, val scheduledNotificationId: kotlin.Long? = null, val toDo: kotlin.String? = null, val connection: kotlin.String? = null, val method: kotlin.String? = null, val status: kotlin.String? = null, val closure: kotlin.String? = null, val message: kotlin.String? = null, val followUp: kotlin.Long? = null, val active: kotlin.Boolean? = null)
+    @Resource("/assignment/status/update") class assignmentStatusUpdate(val accountId: kotlin.Long, val assignmentStatusId: kotlin.Long, val scheduledNotificationId: kotlin.Long? = null, val toDo: kotlin.String? = null, val connection: kotlin.String? = null, val method: kotlin.String? = null, val status: kotlin.String? = null, val closure: kotlin.String? = null, val message: kotlin.String? = null, val followUp: kotlin.Long? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Update Assignment
      * Updates an assignment.
-     * @param version  
      * @param accountId the user account id 
      * @param assignmentId the assignment id 
      * @param name the name of the assignment (optional)
@@ -2209,12 +2101,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param tags the tags (optional)
      * @param active determines whether the assignment is active or inactive (optional)
      */
-    @Resource("/api/{version}/assignment/update") class assignmentUpdate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val assignmentId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val assigneeAccountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val tags: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/assignment/update") class assignmentUpdate(val accountId: kotlin.Long, val assignmentId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val assigneeAccountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val tags: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create Audience
      * Create a user defined audience.
-     * @param version  
      * @param accountId The logged in user. 
      * @param name The name of the audience 
      * @param description The description of the audience (optional)
@@ -2245,28 +2136,25 @@ Using the various parameters can return the applications default mission   (buil
      * @param trilaterationTypes Trilateration types (optional)
      * @param uniqueName If true, makes sure the audience name is unique (optional)
      */
-    @Resource("/api/{version}/audience/create") class createAudience(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroups: kotlin.String? = null, val categoryIds: kotlin.String? = null, val applicationIds: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null, val startTimeOffset: kotlin.Int? = null, val endTimeOffset: kotlin.Int? = null, val sendSuggestion: kotlin.Boolean? = null, val associateDescription: kotlin.String? = null, val associateType: kotlin.String? = null, val associateId: kotlin.Long? = null, val groupingId: kotlin.String? = null, val metaData: kotlin.String? = null, val visibility: kotlin.String? = null, val audienceType: kotlin.String? = null, val useOrder: kotlin.Boolean? = null, val cohortRegionsData: kotlin.String? = null, val appKey: kotlin.String? = null, val trilaterationTypes: kotlin.String? = null, val uniqueName: kotlin.Boolean? = null)
+    @Resource("/audience/create") class createAudience(val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroups: kotlin.String? = null, val categoryIds: kotlin.String? = null, val applicationIds: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null, val startTimeOffset: kotlin.Int? = null, val endTimeOffset: kotlin.Int? = null, val sendSuggestion: kotlin.Boolean? = null, val associateDescription: kotlin.String? = null, val associateType: kotlin.String? = null, val associateId: kotlin.Long? = null, val groupingId: kotlin.String? = null, val metaData: kotlin.String? = null, val visibility: kotlin.String? = null, val audienceType: kotlin.String? = null, val useOrder: kotlin.Boolean? = null, val cohortRegionsData: kotlin.String? = null, val appKey: kotlin.String? = null, val trilaterationTypes: kotlin.String? = null, val uniqueName: kotlin.Boolean? = null)
 
     /**
      * Delete Audience
      * Delete an audience. The audience and account must be valid and have the appropirate permissions to view the content.
-     * @param version  
      * @param accountId The logged in user. 
      * @param audienceId The id of the audience to delete. 
      */
-    @Resource("/api/{version}/audience/delete") class deleteAudience(val version: java.math.BigDecimal, val accountId: kotlin.Long, val audienceId: kotlin.Long)
+    @Resource("/audience/delete") class deleteAudience(val accountId: kotlin.Long, val audienceId: kotlin.Long)
 
     /**
      * Get Age Groups
      * Gets the list of available age groups that can be selected by consumers and retailers targeting offers.
-     * @param version  
      */
-    @Resource("/api/{version}/audience/ageGroups") class getAgeGroups(val version: java.math.BigDecimal)
+    @Resource("/audience/ageGroups") class getAgeGroups
 
     /**
      * Get Audience
      * Get an audience. The audience and account must be valid and have the appropriate permissions to view the content.
-     * @param version  
      * @param accountId The logged in user. 
      * @param audienceId The id of the audience to return. 
      * @param appKey The application key (optional). If provided, results may be scoped to this application. (optional)
@@ -2274,12 +2162,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param returnAlbumCount (boolean) set to true to include the albumCount associated with current audience of the current app (optional, default to false)
      * @param albumTypesForCount (String) comma separated list, return an array with each item is the count of each album type. If not provided, \&quot;all_types\&quot; count is returned. (optional)
      */
-    @Resource("/api/{version}/audience/get") class getAudience(val version: java.math.BigDecimal, val accountId: kotlin.Long, val audienceId: kotlin.Long, val appKey: kotlin.String? = null, val returnAccountCount: kotlin.Boolean? = null, val returnAlbumCount: kotlin.Boolean? = null, val albumTypesForCount: kotlin.String? = null)
+    @Resource("/audience/get") class getAudience(val accountId: kotlin.Long, val audienceId: kotlin.Long, val appKey: kotlin.String? = null, val returnAccountCount: kotlin.Boolean? = null, val returnAlbumCount: kotlin.Boolean? = null, val albumTypesForCount: kotlin.String? = null)
 
     /**
      * Search Audiences
      * Get the list audiences owned by the account
-     * @param version  
      * @param accountId The logged in user. (optional)
      * @param albumIds Comma separated list of album IDs to filter results with (optional)
      * @param keyword The keyword used to search (optional)
@@ -2300,46 +2187,41 @@ Using the various parameters can return the applications default mission   (buil
      * @param returnAlbumCount (boolean) set to true to include the albumCount associated with current audience of the current app (optional, default to false)
      * @param albumTypesForCount (String) comma separated list, return an array with each item is the count of each album type. If not provided, \&quot;all_types\&quot; count is returned. (optional)
      */
-    @Resource("/api/{version}/audience/search") class getAudienceList(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val albumIds: kotlin.String? = null, val keyword: kotlin.String? = null, val keywordFields: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val sendSuggestion: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val groupByGroupingId: kotlin.Boolean? = null, val appKey: kotlin.String? = null, val returnGlobal: kotlin.Boolean? = null, val exactKeyword: kotlin.Boolean? = null, val audienceType: kotlin.String? = null, val audienceTypes: kotlin.String? = null, val returnAccountCount: kotlin.Boolean? = null, val returnAlbumCount: kotlin.Boolean? = null, val albumTypesForCount: kotlin.String? = null)
+    @Resource("/audience/search") class getAudienceList(val accountId: kotlin.Long? = null, val albumIds: kotlin.String? = null, val keyword: kotlin.String? = null, val keywordFields: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val sendSuggestion: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val groupByGroupingId: kotlin.Boolean? = null, val appKey: kotlin.String? = null, val returnGlobal: kotlin.Boolean? = null, val exactKeyword: kotlin.Boolean? = null, val audienceType: kotlin.String? = null, val audienceTypes: kotlin.String? = null, val returnAccountCount: kotlin.Boolean? = null, val returnAlbumCount: kotlin.Boolean? = null, val albumTypesForCount: kotlin.String? = null)
 
     /**
      * Get Devices
      * Gets the list of available devices that can be selected by consumers and retailers.
-     * @param version  
      * @param includeInactive If true return inactive record as well. default is false. 
      */
-    @Resource("/api/{version}/audience/devices") class getDevices(val version: java.math.BigDecimal, val includeInactive: kotlin.Boolean)
+    @Resource("/audience/devices") class getDevices(val includeInactive: kotlin.Boolean)
 
     /**
      * Get Experiences
      * Gets the list of available experiences that can be selected by consumers and retailers.
-     * @param version  
      */
-    @Resource("/api/{version}/audience/experiences") class getExperiences(val version: java.math.BigDecimal)
+    @Resource("/audience/experiences") class getExperiences
 
     /**
      * Get GroupedAudiences
      * Get a group of audiences. The audience and account must be valid and have the appropriate permissions to view the content.
-     * @param version  
      * @param accountId The logged in user. 
      * @param audienceGroupingId The audience grouping id to return. 
      */
-    @Resource("/api/{version}/audience/grouped/get") class getGroupedAudiences(val version: java.math.BigDecimal, val accountId: kotlin.Long, val audienceGroupingId: kotlin.String)
+    @Resource("/audience/grouped/get") class getGroupedAudiences(val accountId: kotlin.Long, val audienceGroupingId: kotlin.String)
 
     /**
      * List Suggestions by Audience
      * List either Missions or Offers that the user matches the assigned audience.
-     * @param version  
      * @param accountId The account to match offers for. 
      * @param limit the limit of the index 
      * @param suggestionType the type of suggestion 
      */
-    @Resource("/api/{version}/audience/suggestion/list") class listByAccount(val version: java.math.BigDecimal, val accountId: kotlin.Long, val limit: kotlin.Int, val suggestionType: kotlin.String)
+    @Resource("/audience/suggestion/list") class listByAccount(val accountId: kotlin.Long, val limit: kotlin.Int, val suggestionType: kotlin.String)
 
     /**
      * List Offers by Audience
      * Get a list of offer locations based on audience information provided.
-     * @param version  
      * @param limit this is the limit of the index 
      * @param gender this is the gender to list offers by (optional)
      * @param age this is the age to list offers by (optional)
@@ -2347,32 +2229,29 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude this is the latitude to list offers by (optional)
      * @param longitude this is the longitude to list offers by (optional)
      */
-    @Resource("/api/{version}/audience/suggestion/offersByAudience") class listByAudience(val version: java.math.BigDecimal, val gender: kotlin.String? = null, val age: kotlin.Int? = null, val categoryIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val limit: kotlin.Int)
+    @Resource("/audience/suggestion/offersByAudience") class listByAudience(val gender: kotlin.String? = null, val age: kotlin.Int? = null, val categoryIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val limit: kotlin.Int)
 
     /**
      * List Sent Suggestions 
      * Return list of recent trigger suggestions that have been sent to the user.
-     * @param version  
      * @param accountId The account to match offers for. 
      * @param timeframe The timeframe in seconds of the latest suggestions 
      * @param suggestionType The type of trigger suggestions to return 
      */
-    @Resource("/api/{version}/audience/suggestion/latest") class listLastestByAccount(val version: java.math.BigDecimal, val accountId: kotlin.Long, val timeframe: kotlin.Int, val suggestionType: kotlin.String)
+    @Resource("/audience/suggestion/latest") class listLastestByAccount(val accountId: kotlin.Long, val timeframe: kotlin.Int, val suggestionType: kotlin.String)
 
     /**
      * Send Suggestions
      * Use the accountId to determine the associated BillableEntity. From there get a list of all triggers associated with the BillableEntity.
-     * @param version  
      * @param accountId The account to match offers for. 
      * @param latitude the latitude 
      * @param longitude the longitude 
      */
-    @Resource("/api/{version}/audience/suggestion/send") class sendByAccount(val version: java.math.BigDecimal, val accountId: kotlin.Long, val latitude: kotlin.Double, val longitude: kotlin.Double)
+    @Resource("/audience/suggestion/send") class sendByAccount(val accountId: kotlin.Long, val latitude: kotlin.Double, val longitude: kotlin.Double)
 
     /**
      * Update Audience
      * Update a user defined audience.
-     * @param version  
      * @param accountId The logged in user. 
      * @param audienceId The id of the audience to update. 
      * @param name The name of the audience (optional)
@@ -2405,12 +2284,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param trilaterationTypes Trilateration types (optional)
      * @param uniqueName If true, makes sure the audience name is unique (optional)
      */
-    @Resource("/api/{version}/audience/update") class updateAudience(val version: java.math.BigDecimal, val accountId: kotlin.Long, val audienceId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroups: kotlin.String? = null, val categoryIds: kotlin.String? = null, val applicationIds: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null, val active: kotlin.Boolean? = null, val sendSuggestion: kotlin.Boolean? = null, val startTimeOffset: kotlin.Int? = null, val endTimeOffset: kotlin.Int? = null, val associateDescription: kotlin.String? = null, val associateType: kotlin.String? = null, val associateId: kotlin.Long? = null, val groupingId: kotlin.String? = null, val metaData: kotlin.String? = null, val visibility: kotlin.String? = null, val audienceType: kotlin.String? = null, val useOrder: kotlin.Boolean? = null, val cohortRegionsData: kotlin.String? = null, val appKey: kotlin.String? = null, val trilaterationTypes: kotlin.String? = null, val uniqueName: kotlin.Boolean? = null)
+    @Resource("/audience/update") class updateAudience(val accountId: kotlin.Long, val audienceId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val gender: kotlin.String? = null, val ageGroups: kotlin.String? = null, val categoryIds: kotlin.String? = null, val applicationIds: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null, val active: kotlin.Boolean? = null, val sendSuggestion: kotlin.Boolean? = null, val startTimeOffset: kotlin.Int? = null, val endTimeOffset: kotlin.Int? = null, val associateDescription: kotlin.String? = null, val associateType: kotlin.String? = null, val associateId: kotlin.Long? = null, val groupingId: kotlin.String? = null, val metaData: kotlin.String? = null, val visibility: kotlin.String? = null, val audienceType: kotlin.String? = null, val useOrder: kotlin.Boolean? = null, val cohortRegionsData: kotlin.String? = null, val appKey: kotlin.String? = null, val trilaterationTypes: kotlin.String? = null, val uniqueName: kotlin.Boolean? = null)
 
     /**
      * Create Bid
      * Creates a bid on a biddable object
-     * @param version  
      * @param biddableType A biddable object type. Possible values include: CREATIVE (ads). 
      * @param biddableId The id of the biddable object 
      * @param amountPerView The bid amount for views. For ads, this is the amount that will be taken for each impression. 
@@ -2420,32 +2298,29 @@ Using the various parameters can return the applications default mission   (buil
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/bid/create") class createBid(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val biddableType: kotlin.String, val biddableId: kotlin.Long, val amountPerView: kotlin.Double, val amountPerAction: kotlin.Double, val budgetAmount: kotlin.Double, val budgetSchedule: kotlin.String)
+    @Resource("/bid/create") class createBid(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val biddableType: kotlin.String, val biddableId: kotlin.Long, val amountPerView: kotlin.Double, val amountPerAction: kotlin.Double, val budgetAmount: kotlin.Double, val budgetSchedule: kotlin.String)
 
     /**
      * Delete Bid
      * Deleted a bid on a biddable object
-     * @param version  
      * @param bidId The bid id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/bid/delete") class deleteBid(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val bidId: kotlin.Long)
+    @Resource("/bid/delete") class deleteBid(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val bidId: kotlin.Long)
 
     /**
      * Get Bid
      * Get the bid details of a biddable object
-     * @param version  
      * @param bidId The bid id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/bid/get") class getBid(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val bidId: kotlin.Long)
+    @Resource("/bid/get") class getBid(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val bidId: kotlin.Long)
 
     /**
      * Update Bid
      * Updates a bid on a biddable object
-     * @param version  
      * @param bidId The bid id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -2454,12 +2329,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param budgetAmount The allocated budget amount that will be used (optional)
      * @param budgetSchedule The schedule for when the allocated budget amount is reset (optional)
      */
-    @Resource("/api/{version}/bid/update") class updateBid(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val bidId: kotlin.Long, val amountPerView: kotlin.Double? = null, val amountPerAction: kotlin.Double? = null, val budgetAmount: kotlin.Double? = null, val budgetSchedule: kotlin.String? = null)
+    @Resource("/bid/update") class updateBid(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val bidId: kotlin.Long, val amountPerView: kotlin.Double? = null, val amountPerAction: kotlin.Double? = null, val budgetAmount: kotlin.Double? = null, val budgetSchedule: kotlin.String? = null)
 
     /**
      * Create Billable
      * reate a billable entity for an account. The creator is assumed to be the responsible account. An account can only have one billable entity
-     * @param version  
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
      * @param name The name of the entity responsible for billing  (optional)
@@ -2473,32 +2347,29 @@ Using the various parameters can return the applications default mission   (buil
      * @param authorizeNetApiKey Authorize Net Api Key (optional)
      * @param authorizeNetTransactionKey Authorize Net Transaction Key (optional)
      */
-    @Resource("/api/{version}/billable/create") class createBillableEntity(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null)
+    @Resource("/billable/create") class createBillableEntity(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null)
 
     /**
      * Delete Billable
      * Mark the billable as deleted
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account used to perform the delete, must have rights to edit the billable entity. (optional)
      */
-    @Resource("/api/{version}/billable/delete") class deleteBillableEntity(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null)
+    @Resource("/billable/delete") class deleteBillableEntity(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null)
 
     /**
      * Get Billable
      * Used to determine the associated BillableEntity of an account
-     * @param version  
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
      * @param includeCounts Determines whether to include the retailer dash board counts into the response (optional, default to false)
      * @param includePayments Whether to enable payments or not (optional, default to true)
      */
-    @Resource("/api/{version}/billable/get") class getBillableEntity(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val includeCounts: kotlin.Boolean? = null, val includePayments: kotlin.Boolean? = null)
+    @Resource("/billable/get") class getBillableEntity(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val includeCounts: kotlin.Boolean? = null, val includePayments: kotlin.Boolean? = null)
 
     /**
      * Update Billable
      * Updates the billable record for an account
-     * @param version  
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity. (optional)
      * @param name The name of the entity responsible for billing  (optional)
@@ -2512,12 +2383,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param authorizeNetApiKey Authorize Net Api Key of the billable entity (optional)
      * @param authorizeNetTransactionKey Authorize Net Transaction Key of the billable entity (optional)
      */
-    @Resource("/api/{version}/billable/update") class updateBillableEntity(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null)
+    @Resource("/billable/update") class updateBillableEntity(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val authorizeNetApiKey: kotlin.String? = null, val authorizeNetTransactionKey: kotlin.String? = null)
 
     /**
      * Update Payment Method
      * Update a method of payment. If the paymentMethodId is not passed in then will update their default payment method.
-     * @param version  
      * @param accountId The account used to perform the the request 
      * @param paymentMethodId Payment Method Id (optional)
      * @param accountName the name of the account (optional)
@@ -2542,12 +2412,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param providerPaymentProfileId Provider customer payment profile Id (optional)
      * @param metaData Meta Data (optional)
      */
-    @Resource("/api/{version}/billing/update") class addPaymentMethod(val version: java.math.BigDecimal, val accountId: kotlin.Long, val paymentMethodId: kotlin.Long? = null, val accountName: kotlin.String? = null, val firstName: kotlin.String? = null, val lastName: kotlin.String? = null, val address: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val phone: kotlin.String? = null, val creditCardNumber: kotlin.String? = null, val expirationDate: kotlin.String? = null, val ccv: kotlin.String? = null, val accountNumber: kotlin.String? = null, val bankName: kotlin.String? = null, val routingNumber: kotlin.String? = null, val defaultPaymentMethod: kotlin.Boolean? = null, val paymentMethodNickname: kotlin.String? = null, val taxId: kotlin.String? = null, val providerCustomerProfileId: kotlin.String? = null, val providerPaymentProfileId: kotlin.String? = null, val metaData: kotlin.String? = null)
+    @Resource("/billing/update") class addPaymentMethod(val accountId: kotlin.Long, val paymentMethodId: kotlin.Long? = null, val accountName: kotlin.String? = null, val firstName: kotlin.String? = null, val lastName: kotlin.String? = null, val address: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val phone: kotlin.String? = null, val creditCardNumber: kotlin.String? = null, val expirationDate: kotlin.String? = null, val ccv: kotlin.String? = null, val accountNumber: kotlin.String? = null, val bankName: kotlin.String? = null, val routingNumber: kotlin.String? = null, val defaultPaymentMethod: kotlin.Boolean? = null, val paymentMethodNickname: kotlin.String? = null, val taxId: kotlin.String? = null, val providerCustomerProfileId: kotlin.String? = null, val providerPaymentProfileId: kotlin.String? = null, val metaData: kotlin.String? = null)
 
     /**
      * Create Payment Method
      * Add a new method of payment.
-     * @param version  
      * @param accountId The account used to perform the the request 
      * @param accountName Account Name of the credit card user (optional)
      * @param firstName The first name on the credit card (optional)
@@ -2574,43 +2443,39 @@ Using the various parameters can return the applications default mission   (buil
      * @param metaData Meta Data (optional)
      * @param appKey Application Key (optional)
      */
-    @Resource("/api/{version}/billing/create") class createPaymentMethod(val version: java.math.BigDecimal, val accountId: kotlin.Long, val accountName: kotlin.String? = null, val firstName: kotlin.String? = null, val lastName: kotlin.String? = null, val address: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val phone: kotlin.String? = null, val creditCardNumber: kotlin.String? = null, val expirationDate: kotlin.String? = null, val ccv: kotlin.String? = null, val accountNumber: kotlin.String? = null, val bankName: kotlin.String? = null, val routingNumber: kotlin.String? = null, val paymentMethodNickname: kotlin.String? = null, val taxId: kotlin.String? = null, val defaultPaymentMethod: kotlin.Boolean? = null, val authToken: kotlin.String? = null, val provider: kotlin.String? = null, val providerCustomerProfileId: kotlin.String? = null, val providerPaymentProfileId: kotlin.String? = null, val metaData: kotlin.String? = null, val appKey: kotlin.String? = null)
+    @Resource("/billing/create") class createPaymentMethod(val accountId: kotlin.Long, val accountName: kotlin.String? = null, val firstName: kotlin.String? = null, val lastName: kotlin.String? = null, val address: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val phone: kotlin.String? = null, val creditCardNumber: kotlin.String? = null, val expirationDate: kotlin.String? = null, val ccv: kotlin.String? = null, val accountNumber: kotlin.String? = null, val bankName: kotlin.String? = null, val routingNumber: kotlin.String? = null, val paymentMethodNickname: kotlin.String? = null, val taxId: kotlin.String? = null, val defaultPaymentMethod: kotlin.Boolean? = null, val authToken: kotlin.String? = null, val provider: kotlin.String? = null, val providerCustomerProfileId: kotlin.String? = null, val providerPaymentProfileId: kotlin.String? = null, val metaData: kotlin.String? = null, val appKey: kotlin.String? = null)
 
     /**
      * Create Smart Contract
      * Adds a smart contract.
-     * @param version  
      * @param accountId The account used to perform the the request 
      * @param tokenName The token name 
      * @param tokenSymbol The token symbol 
      * @param paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned. (optional)
      */
-    @Resource("/api/{version}/billing/crypto/transfer") class createSmartContract(val version: java.math.BigDecimal, val accountId: kotlin.Long, val paymentMethodId: kotlin.Long? = null, val tokenName: kotlin.String, val tokenSymbol: kotlin.String)
+    @Resource("/billing/crypto/transfer") class createSmartContract(val accountId: kotlin.Long, val paymentMethodId: kotlin.Long? = null, val tokenName: kotlin.String, val tokenSymbol: kotlin.String)
 
     /**
      * Get Crypto Balances
      * Get the cypto balance details for a user
-     * @param version  
      * @param accountId The account used to perform the the request 
      * @param ownerAccountId The account to retreive balances for (optional)
      * @param paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned. (optional)
      */
-    @Resource("/api/{version}/billing/crypto/get") class getCryptoBalance(val version: java.math.BigDecimal, val accountId: kotlin.Long, val ownerAccountId: kotlin.Long? = null, val paymentMethodId: kotlin.Long? = null)
+    @Resource("/billing/crypto/get") class getCryptoBalance(val accountId: kotlin.Long, val ownerAccountId: kotlin.Long? = null, val paymentMethodId: kotlin.Long? = null)
 
     /**
      * Get Payment Method
      * Get the details of the user&#39;s payment method or their current default method of payment
-     * @param version  
      * @param accountId The account used to perform the the request 
      * @param paymentMethodId The payment method to return details on. If this is not set, then the user&#39;s default payment method will be returned. (optional)
      * @param getCurrentBalance Determines whether to get the user&#39;s current balance for the requested payment method option (not all payment method options support this) (optional)
      */
-    @Resource("/api/{version}/billing/get") class getPaymentMethod(val version: java.math.BigDecimal, val accountId: kotlin.Long, val paymentMethodId: kotlin.Long? = null, val getCurrentBalance: kotlin.Boolean? = null)
+    @Resource("/billing/get") class getPaymentMethod(val accountId: kotlin.Long, val paymentMethodId: kotlin.Long? = null, val getCurrentBalance: kotlin.Boolean? = null)
 
     /**
      * Search Payment Methods
      * Search the payment methods of an account
-     * @param version  
      * @param accountId Account Id to search on 
      * @param provider Provider to search on (optional, default to "AUTHORIZE_NET")
      * @param type the type to search on (optional)
@@ -2620,79 +2485,71 @@ Using the various parameters can return the applications default mission   (buil
      * @param start the start of the search (optional, default to 0)
      * @param limit the limit of the search (optional, default to 5)
      */
-    @Resource("/api/{version}/billing/search") class searchPaymentMethod(val version: java.math.BigDecimal, val accountId: kotlin.Long, val provider: kotlin.String? = null, val type: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/billing/search") class searchPaymentMethod(val accountId: kotlin.Long, val provider: kotlin.String? = null, val type: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Detail Status
      * 
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param batchId the id of the batch 
      * @param responseGroup The group of categories to return: SUMMARY, DETAILS, ERRORS, OR ALL 
      * @param start the start of the pagination 
      * @param limit the limit of the pagination 
      */
-    @Resource("/api/{version}/csvimport/batch/status/details") class getStatusCSV(val version: java.math.BigDecimal, val accountId: kotlin.Long, val batchId: kotlin.Long, val responseGroup: kotlin.String, val start: kotlin.Long, val limit: kotlin.Long)
+    @Resource("/csvimport/batch/status/details") class getStatusCSV(val accountId: kotlin.Long, val batchId: kotlin.Long, val responseGroup: kotlin.String, val start: kotlin.Long, val limit: kotlin.Long)
 
     /**
      * Search Status
      * Retrieves batches for a user.
-     * @param version  
      * @param accountId the id of the account 
      * @param start the start of the pagination 
      * @param limit the limit of the pagination 
      */
-    @Resource("/api/{version}/csvimport/batch/list") class listStatusCSV(val version: java.math.BigDecimal, val accountId: kotlin.Long, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/csvimport/batch/list") class listStatusCSV(val accountId: kotlin.Long, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Batch Status
      * Checks status of batch upload.
-     * @param version  
      * @param accountId the id of the account 
      * @param batchId the id of the batch to get its status 
      */
-    @Resource("/api/{version}/csvimport/batch/status") class statusCSV(val version: java.math.BigDecimal, val accountId: kotlin.Long, val batchId: kotlin.Long)
+    @Resource("/csvimport/batch/status") class statusCSV(val accountId: kotlin.Long, val batchId: kotlin.Long)
 
     /**
      * Upload CSV
      * Uploads a CSV import file.
-     * @param version  
      * @param accountId the id of the account 
      * @param uploadType the upload type: OFFERS, RETAILERS, RETAILERLOCATIONS, CATEGORIES, OR FILTERS 
      * @param importFile the import file to reference 
      * @param fileFormat the format of the file 
      * @param appKey the application key (optional)
      */
-    @Resource("/api/{version}/csvimport/upload") class uploadCSV(val version: java.math.BigDecimal, val accountId: kotlin.Long, val uploadType: kotlin.String, val importFile: java.io.File, val appKey: kotlin.String? = null, val fileFormat: kotlin.String)
+    @Resource("/csvimport/upload") class uploadCSV(val accountId: kotlin.Long, val uploadType: kotlin.String, val importFile: java.io.File, val appKey: kotlin.String? = null, val fileFormat: kotlin.String)
 
     /**
      * Create Cargo Type
      * Create new cargo type
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/cargo/type") class createCargoType(val version: java.math.BigDecimal)
+    @Resource("/cargo/type") class createCargoType()
 
     /**
      * Delete Cargo Type
      * Delete a type of cargo
-     * @param version  
      * @param cargoTypeId the ID of the cargo type 
      */
-    @Resource("/api/{version}/cargo/type/{cargoTypeId}") class deleteCargoType(val version: java.math.BigDecimal, val cargoTypeId: kotlin.Long)
+    @Resource("/cargo/type/{cargoTypeId}") class deleteCargoType(val cargoTypeId: kotlin.Long)
 
     /**
      * Get Cargo Type
      * Get an existing cargo type
-     * @param version  
      * @param cargoTypeId the cargo type ID 
      */
-    @Resource("/api/{version}/cargo/type/{cargoTypeId}") class getCargoType(val version: java.math.BigDecimal, val cargoTypeId: kotlin.Long)
+    @Resource("/cargo/type/{cargoTypeId}") class getCargoType(val cargoTypeId: kotlin.Long)
 
     /**
      * Search Cargo Type
      * Search for types of cargo
-     * @param version  
      * @param sortField the sort field to use for the cargo type 
      * @param descending if the cargo type should be should be in descending order 
      * @param start the start of the search 
@@ -2701,33 +2558,30 @@ Using the various parameters can return the applications default mission   (buil
      * @param retailerId the id of the retailer location (optional)
      * @param hubId the ID of the hub (optional)
      */
-    @Resource("/api/{version}/cargo/type") class searchCargoTypes(val version: java.math.BigDecimal, val retailerId: kotlin.Long? = null, val hubId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/cargo/type") class searchCargoTypes(val retailerId: kotlin.Long? = null, val hubId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Update Cargo Type
      * Update an existing cargo type
-     * @param version  
      * @param cargoTypeId the ID of the cargo type 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/cargo/type/{cargoTypeId}") class updateCargoType(val version: java.math.BigDecimal, val cargoTypeId: kotlin.Long)
+    @Resource("/cargo/type/{cargoTypeId}") class updateCargoType(val cargoTypeId: kotlin.Long)
 
     /**
      * Search Carriers
      * Search on supported mobile telephone carriers that can be used to send SMS notifications via email.
-     * @param version  
      * @param keyword The keyword to search on (optional)
      * @param descending Determines whether the sorted list is in descending or ascending order (optional, default to false)
      * @param start The start index for pagination (optional, default to 0)
      * @param limit The limit for pagination (optional, default to 20)
      * @param activeOnly Determines whether to return inactive results (optional, default to true)
      */
-    @Resource("/api/{version}/carrier/search") class searchCarriers(val version: java.math.BigDecimal, val keyword: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/carrier/search") class searchCarriers(val keyword: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Search Categories by Distance
      * Search for categories by distance.
-     * @param version  
      * @param accountId The account id of the user (optional)
      * @param keyword The keyword string to search on (optional)
      * @param appKey the appKey of the application to retrieve categories for, if not specified then search on the global application. (optional)
@@ -2749,12 +2603,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param longitude the longitude of where the search is centered on (optional)
      * @param range the maximum range the category can be from the center (optional)
      */
-    @Resource("/api/{version}/category/distancesearch") class categoryDistanceSearch(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val appKey: kotlin.String? = null, val categoryIds: kotlin.String? = null, val parentCategoryIds: kotlin.String? = null, val rootOnly: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val responseGroup: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val returnExternal: kotlin.Boolean? = null, val exactMatch: kotlin.Boolean? = null, val type: kotlin.String? = null, val externalType: kotlin.String? = null, val minOfferCount: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double? = null)
+    @Resource("/category/distancesearch") class categoryDistanceSearch(val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val appKey: kotlin.String? = null, val categoryIds: kotlin.String? = null, val parentCategoryIds: kotlin.String? = null, val rootOnly: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val responseGroup: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val returnExternal: kotlin.Boolean? = null, val exactMatch: kotlin.Boolean? = null, val type: kotlin.String? = null, val externalType: kotlin.String? = null, val minOfferCount: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double? = null)
 
     /**
      * Create Category
      * Create a new category.
-     * @param version  
      * @param accountId The account id of the user (must have permissions to the target application) 
      * @param name The name of the category 
      * @param appKey The appKey of the application to assign the category to, if not provided then the category will be applied to the global application (if the account has permissions) (optional)
@@ -2770,41 +2623,37 @@ Using the various parameters can return the applications default mission   (buil
      * @param metaData external custom client defined data (optional)
      * @param searchTags user defined strings for searching (optional)
      */
-    @Resource("/api/{version}/category/create") class createCategory(val version: java.math.BigDecimal, val appKey: kotlin.String? = null, val accountId: kotlin.Long, val parentCategoryId: kotlin.Long? = null, val name: kotlin.String, val description: kotlin.String? = null, val type: kotlin.String? = null, val assetId: kotlin.Long? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val externalCategorySlug: kotlin.String? = null, val sqootSlug: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null)
+    @Resource("/category/create") class createCategory(val appKey: kotlin.String? = null, val accountId: kotlin.Long, val parentCategoryId: kotlin.Long? = null, val name: kotlin.String, val description: kotlin.String? = null, val type: kotlin.String? = null, val assetId: kotlin.Long? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val externalCategorySlug: kotlin.String? = null, val sqootSlug: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null)
 
     /**
      * Delete Category
      * Delete a category.
-     * @param version  
      * @param accountId the ID of the account 
      * @param categoryId the ID of the category 
      */
-    @Resource("/api/{version}/category/delete") class deleteCategory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val categoryId: kotlin.Long)
+    @Resource("/category/delete") class deleteCategory(val accountId: kotlin.Long, val categoryId: kotlin.Long)
 
     /**
      * Duplicate Category
      * Duplicate a category, including all its children.
-     * @param version  
      * @param accountId The account id of the user (must have permissions to the target application) 
      * @param categoryId The category ID to duplicate (includes all children) 
      * @param appKey The application to assign the new category to, may be different then the application the source category is assigned to (optional)
      * @param parentCategoryId The parent category ID to add the target category to. (optional)
      */
-    @Resource("/api/{version}/category/duplicate") class duplicateCategory(val version: java.math.BigDecimal, val appKey: kotlin.String? = null, val accountId: kotlin.Long, val categoryId: kotlin.Long, val parentCategoryId: kotlin.Long? = null)
+    @Resource("/category/duplicate") class duplicateCategory(val appKey: kotlin.String? = null, val accountId: kotlin.Long, val categoryId: kotlin.Long, val parentCategoryId: kotlin.Long? = null)
 
     /**
      * Get Category
      * Get the details of a specific category. Recursively include all child categories and their children.
-     * @param version  
      * @param categoryId the ID of the category 
      * @param returnExternal Determines whether to return extra info about the category&#39;s \&quot;Participant\&quot; reference (optional, default to true)
      */
-    @Resource("/api/{version}/category/get") class getCategory(val version: java.math.BigDecimal, val categoryId: kotlin.Long, val returnExternal: kotlin.Boolean? = null)
+    @Resource("/category/get") class getCategory(val categoryId: kotlin.Long, val returnExternal: kotlin.Boolean? = null)
 
     /**
      * Search Categories
      * Search for categories.
-     * @param version  
      * @param accountId The account id of the user (optional)
      * @param keyword The string to search on (optional)
      * @param appKey the appKey of the application to retrieve categories for, if not specified then search on the global application. (optional)
@@ -2827,12 +2676,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param searchDepth When searching by a specific parent category (to return sub children), this determines the number of child layers to search in. The minimum is 1, the maximum is 4. (optional, default to 4)
      * @param searchMode The search index mode to use (e.g. OPENSEARCH or RDS) (optional)
      */
-    @Resource("/api/{version}/category/search") class searchCategories(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val appKey: kotlin.String? = null, val categoryId: kotlin.String? = null, val categoryIds: kotlin.String? = null, val parentCategoryIds: kotlin.String? = null, val rootOnly: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val responseGroup: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val returnExternal: kotlin.Boolean? = null, val exactMatch: kotlin.Boolean? = null, val type: kotlin.String? = null, val externalType: kotlin.String? = null, val excludeExternalType: kotlin.Boolean? = null, val minOfferCount: kotlin.Int? = null, val searchDepth: kotlin.Int? = null, val searchMode: kotlin.String? = null)
+    @Resource("/category/search") class searchCategories(val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val appKey: kotlin.String? = null, val categoryId: kotlin.String? = null, val categoryIds: kotlin.String? = null, val parentCategoryIds: kotlin.String? = null, val rootOnly: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val responseGroup: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val returnExternal: kotlin.Boolean? = null, val exactMatch: kotlin.Boolean? = null, val type: kotlin.String? = null, val externalType: kotlin.String? = null, val excludeExternalType: kotlin.Boolean? = null, val minOfferCount: kotlin.Int? = null, val searchDepth: kotlin.Int? = null, val searchMode: kotlin.String? = null)
 
     /**
      * Update Category
      * Update a category.
-     * @param version  
      * @param accountId The account id of the user 
      * @param categoryId The ID of the category to edit 
      * @param parentCategoryId The ID of the parent category, if not provided then the parent category will be null (optional)
@@ -2848,12 +2696,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param metaData external custom client defined data (optional)
      * @param searchTags user defined strings for searching (optional)
      */
-    @Resource("/api/{version}/category/update") class updateCategory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val categoryId: kotlin.Long, val parentCategoryId: kotlin.Long? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val type: kotlin.String? = null, val assetId: kotlin.Long? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val externalCategorySlug: kotlin.String? = null, val sqootSlug: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null)
+    @Resource("/category/update") class updateCategory(val accountId: kotlin.Long, val categoryId: kotlin.Long, val parentCategoryId: kotlin.Long? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val type: kotlin.String? = null, val assetId: kotlin.Long? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val externalCategorySlug: kotlin.String? = null, val sqootSlug: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null)
 
     /**
      * Add Connection
      * Adds a connection to a group.
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param groupId the group id 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -2864,12 +2711,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group/addConnection") class addConnectionToGroup(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val pendingId: kotlin.Long? = null, val groupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group/addConnection") class addConnectionToGroup(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val pendingId: kotlin.Long? = null, val groupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Add Connections
      * Adds a list of connections to a group.
-     * @param version  
      * @param connectionGroupId the connection group ID 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -2878,12 +2724,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/connection/group/addConnections") class addConnectionsToGroup(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/connection/group/addConnections") class addConnectionsToGroup(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Add Connection Groups
      * Add sub groups to a group.
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param groupId the parent group id 
      * @param subGroupIds comma separated list of group IDs to add to the parent group 
@@ -2892,12 +2737,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group/addSubGroup") class addSubGroups(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long, val subGroupIds: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group/addSubGroup") class addSubGroups(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long, val subGroupIds: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create or Update Connection
      * Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param connectionId the connection id for editing (optional)
@@ -2913,12 +2757,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param isFollowing determines whether the user is following this account (optional)
      * @param connectionResponse whether to return the connection response or not (optional)
      */
-    @Resource("/api/{version}/consumer/connection/add") class createOrUpdateConnection(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val pendingId: kotlin.Long? = null, val groupId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val isTrusted: kotlin.Boolean? = null, val ignoreFriendRequest: kotlin.Boolean? = null, val isContact: kotlin.Boolean? = null, val isBlocked: kotlin.Boolean? = null, val isFollowing: kotlin.Boolean? = null, val connectionResponse: kotlin.Boolean? = null)
+    @Resource("/consumer/connection/add") class createOrUpdateConnection(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val pendingId: kotlin.Long? = null, val groupId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val isTrusted: kotlin.Boolean? = null, val ignoreFriendRequest: kotlin.Boolean? = null, val isContact: kotlin.Boolean? = null, val isBlocked: kotlin.Boolean? = null, val isFollowing: kotlin.Boolean? = null, val connectionResponse: kotlin.Boolean? = null)
 
     /**
      * Create or Update Connection Group
      * Creates a new private group.
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -2934,53 +2777,48 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the latitude of the group (optional)
      * @param longitude the longitude of the group (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group") class createOrUpdateGroup(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val groupId: kotlin.Long? = null, val assetId: kotlin.Long? = null, val connections: kotlin.String? = null, val description: kotlin.String? = null, val canViewProfileInfo: kotlin.Boolean? = null, val canViewGameInfo: kotlin.Boolean? = null, val canViewFriendInfo: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group") class createOrUpdateGroup(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String? = null, val groupId: kotlin.Long? = null, val assetId: kotlin.Long? = null, val connections: kotlin.String? = null, val description: kotlin.String? = null, val canViewProfileInfo: kotlin.Boolean? = null, val canViewGameInfo: kotlin.Boolean? = null, val canViewFriendInfo: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Accept Follow Request
      * Accept someone&#39;s follow request.
-     * @param version  
      * @param accountId the account id of the user 
      * @param connectionAccountId the account ID of the user who initiated the follow 
      * @param appKey the application key for sending notifications 
      */
-    @Resource("/api/{version}/consumer/follow/accept") class followAccept(val version: java.math.BigDecimal, val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/consumer/follow/accept") class followAccept(val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Reject Follow Request
      * Reject someone&#39;s follow request or remove them as a follower.
-     * @param version  
      * @param accountId the account id of the user 
      * @param connectionAccountId the account ID of the user who initiated the follow 
      * @param appKey the application key for sending notifications 
      */
-    @Resource("/api/{version}/consumer/follow/reject") class followReject(val version: java.math.BigDecimal, val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/consumer/follow/reject") class followReject(val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Remove Follower / Unfollow
      * Unfollow someone you are following or remove them as a follower.
-     * @param version  
      * @param accountId the account id of the user 
      * @param connectionAccountId the account ID of the user who you want to unfollow 
      * @param appKey the application key for sending notifications 
      */
-    @Resource("/api/{version}/consumer/follow/remove") class followRemove(val version: java.math.BigDecimal, val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/consumer/follow/remove") class followRemove(val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Send Follow Request
      * Send a request to follow someone.
-     * @param version  
      * @param accountId the account id of the user 
      * @param connectionAccountId the account ID of the user who you want to follow 
      * @param appKey the application key for sending notifications 
      * @param approvalNeeded determines if the other user needs to confirm the follow request (optional, default to true)
      */
-    @Resource("/api/{version}/consumer/follow/request") class followRequest(val version: java.math.BigDecimal, val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String, val approvalNeeded: kotlin.Boolean? = null)
+    @Resource("/consumer/follow/request") class followRequest(val accountId: kotlin.Long, val connectionAccountId: kotlin.Long, val appKey: kotlin.String, val approvalNeeded: kotlin.Boolean? = null)
 
     /**
      * Accept Friend
      * Accept a friend request and optionally sends a notification.
-     * @param version  
      * @param friendAccountId the friend&#39;s account id 
      * @param notifyFriend determines whether to send a notification to the afflicting party 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -2989,12 +2827,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param appKey the application key (optional)
      * @param notificationMessage optional message to send in a notification (optional)
      */
-    @Resource("/api/{version}/consumer/friend/accept") class friendAccept(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val notifyFriend: kotlin.Boolean, val notificationMessage: kotlin.String? = null)
+    @Resource("/consumer/friend/accept") class friendAccept(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val notifyFriend: kotlin.Boolean, val notificationMessage: kotlin.String? = null)
 
     /**
      * Decline Friend
      * Request a friend request and optionally sends a notification.
-     * @param version  
      * @param friendAccountId the friend&#39;s account id 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -3003,24 +2840,22 @@ Using the various parameters can return the applications default mission   (buil
      * @param notifyFriend determines whether to send a notification to the afflicting party (optional)
      * @param notificationMessage optional message to send in a notification (optional)
      */
-    @Resource("/api/{version}/consumer/friend/reject") class friendReject(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val notifyFriend: kotlin.Boolean? = null, val notificationMessage: kotlin.String? = null)
+    @Resource("/consumer/friend/reject") class friendReject(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val notifyFriend: kotlin.Boolean? = null, val notificationMessage: kotlin.String? = null)
 
     /**
      * Delete Friend
      * Removes a friend from the user&#39;s friends list.
-     * @param version  
      * @param friendAccountId the account ID of the friend to remove 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param notifyFriend optionally notifies the connection that they have been removed as a friend (optional)
      * @param removeFromGroups optionally removes the connection from the user&#39;s groups (optional)
      */
-    @Resource("/api/{version}/consumer/friend/remove") class friendRemove(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val notifyFriend: kotlin.Boolean? = null, val removeFromGroups: kotlin.Boolean? = null)
+    @Resource("/consumer/friend/remove") class friendRemove(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val notifyFriend: kotlin.Boolean? = null, val removeFromGroups: kotlin.Boolean? = null)
 
     /**
      * Request Friend
      * Sends a friend request notification to another user.
-     * @param version  
      * @param friendAccountId the friend&#39;s account id 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -3028,21 +2863,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param appKey the application key (optional)
      * @param notificationMessage optional message to send in a notification (optional)
      */
-    @Resource("/api/{version}/consumer/friend/request") class friendRequest(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val notificationMessage: kotlin.String? = null)
+    @Resource("/consumer/friend/request") class friendRequest(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val friendAccountId: kotlin.Long, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val notificationMessage: kotlin.String? = null)
 
     /**
      * Get Sent Friend Requests
      * Gets the connection sent friend requests.
-     * @param version  
      * @param deviceId the ID of the device (optional)
      * @param accountId the id of the account (optional)
      */
-    @Resource("/api/{version}/consumer/connection/getRequested") class getConnectionSentFriendRequests(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null)
+    @Resource("/consumer/connection/getRequested") class getConnectionSentFriendRequests(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null)
 
     /**
      * Search Connections
      * Gets the connections.
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param filter a comma separated list of ConnectionApiMap. (NOTE on FOLLOWER vs FOLLOWING: FOLLOWER will get me a list of followers, FOLLOWING will get me a list of people I am following) 
      * @param sortField sorts the response list by ConnectionApiMap 
@@ -3059,12 +2892,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/get") class getConnections(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val filter: kotlin.String, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/get") class getConnections(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val filter: kotlin.String, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Connection Group
      * 
-     * @param version  
      * @param combineConnections whether to combine connections or not 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -3072,12 +2904,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group/details/get") class getGroupDetails(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long? = null, val combineConnections: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group/details/get") class getGroupDetails(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long? = null, val combineConnections: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Connection Groups
      * Gets a user&#39;s private groups and default groups.
-     * @param version  
      * @param sortField the field to sort by 
      * @param descending whether to return results in descending or ascending order 
      * @param activeOnly to search on active only or not 
@@ -3089,12 +2920,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param longitude the current longitude of the user (optional)
      * @param keyword keyword search string (optional)
      */
-    @Resource("/api/{version}/connection/group/search") class groupSearch(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/connection/group/search") class groupSearch(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Delete Connection
      * Removes the connection from group.
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param groupId the group id 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -3105,12 +2935,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group/removeConnection") class removeConnectionFromGroup(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val pendingId: kotlin.Long? = null, val groupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group/removeConnection") class removeConnectionFromGroup(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val pendingId: kotlin.Long? = null, val groupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Remove Connections
      * Remove a list of connections from a group.
-     * @param version  
      * @param connectionGroupId connection group id 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -3119,12 +2948,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/connection/group/removeConnections") class removeConnectionsFromGroup(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/connection/group/removeConnections") class removeConnectionsFromGroup(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Connection Group
      * Remove a user&#39;s group.
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param groupId the group id 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -3132,12 +2960,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group/remove") class removeGroup(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group/remove") class removeGroup(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Remove Connection Groups
      * Remove sub groups from a group
-     * @param version  
      * @param returnNulls whether to return nulls or not 
      * @param groupId the parent group id 
      * @param subGroupIds comma separated list of group IDs to remove from the parent group 
@@ -3146,12 +2973,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/connection/group/removeSubGroup") class removeSubGroups(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long, val subGroupIds: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/connection/group/removeSubGroup") class removeSubGroups(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val groupId: kotlin.Long, val subGroupIds: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Possible Connections
      * Search for accounts that the user may not have a connection with.
-     * @param version  
      * @param returnNulls return all json attributes if true. defualt is true. 
      * @param start start index of the pagination 
      * @param limit limit of the pagination 
@@ -3168,12 +2994,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param sortField the field to sort on (optional)
      * @param hasLocation whether the search has location or not (optional)
      */
-    @Resource("/api/{version}/connection/search") class searchConnections(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val sortField: kotlin.String? = null, val hasLocation: kotlin.Boolean? = null)
+    @Resource("/connection/search") class searchConnections(val returnNulls: kotlin.Boolean, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val sortField: kotlin.String? = null, val hasLocation: kotlin.Boolean? = null)
 
     /**
      * Create or Update Contest
      * Creates or updates a contest.
-     * @param version  
      * @param publicRead determines whether the contest&#39;s participants has read permissions 
      * @param publicWrite determines whether the contest&#39;s participants has write permissions 
      * @param publicDelete determines whether the contest&#39;s participants has delete permissions 
@@ -3200,47 +3025,43 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/album/contest") class addOrUpdateAlbumContest(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val contestType: kotlin.String? = null, val albumContestId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val albumId1: kotlin.Long? = null, val removeAlbum1: kotlin.Boolean? = null, val albumId2: kotlin.Long? = null, val removeAlbum2: kotlin.Boolean? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val publicRead: kotlin.Boolean, val publicWrite: kotlin.Boolean, val publicDelete: kotlin.Boolean, val publicAdd: kotlin.Boolean, val locationDescription: kotlin.String? = null, val visibility: kotlin.String, val connectionIdsToAdd: kotlin.String? = null, val connectionGroupIdsToAdd: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/album/contest") class addOrUpdateAlbumContest(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val contestType: kotlin.String? = null, val albumContestId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val albumId1: kotlin.Long? = null, val removeAlbum1: kotlin.Boolean? = null, val albumId2: kotlin.Long? = null, val removeAlbum2: kotlin.Boolean? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val publicRead: kotlin.Boolean, val publicWrite: kotlin.Boolean, val publicDelete: kotlin.Boolean, val publicAdd: kotlin.Boolean, val locationDescription: kotlin.String? = null, val visibility: kotlin.String, val connectionIdsToAdd: kotlin.String? = null, val connectionGroupIdsToAdd: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Approve Contest
      * Sets the approval status of a contest.
-     * @param version  
      * @param albumContestId The ID of the album contest 
      * @param approvalStatus The approval status to set {PENDING, REJECTED, APPROVED, FEATURED} 
      * @param deviceId A unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId The account ID of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/consumer/album/contest/approve") class approveAlbumContest(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val approvalStatus: kotlin.String)
+    @Resource("/consumer/album/contest/approve") class approveAlbumContest(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val approvalStatus: kotlin.String)
 
     /**
      * Delete Contest
      * Deletes a contest.
-     * @param version  
      * @param albumContestId the album contest ID 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/album/contest/remove") class deleteContest(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/album/contest/remove") class deleteContest(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Contest
      * Gets the contest object including the likes and notes
-     * @param version  
      * @param albumContestId the album contest ID 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/album/contest/get") class getAlbumContest(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/album/contest/get") class getAlbumContest(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Contests
      * Searches on contests.
-     * @param version  
      * @param filter a comma separated list of Ownership 
      * @param sortField the field to sort by. See AlbumContestApiMap 
      * @param descending determines whether the sorted list is in descending or ascending order 
@@ -3261,12 +3082,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/album/contest/search") class getAlbumContests(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val appType: kotlin.String? = null, val contestType: kotlin.String? = null, val ownerId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val filter: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val dateCreated: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/album/contest/search") class getAlbumContests(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val appType: kotlin.String? = null, val contestType: kotlin.String? = null, val ownerId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val filter: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val dateCreated: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Vote on Contest
      * Vote on a collection in a contest.
-     * @param version  
      * @param albumContestId the album contest ID 
      * @param albumId the ID of the album to vote on 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
@@ -3275,21 +3095,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/album/contest/vote") class voteOnAlbumContest(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val albumId: kotlin.Long, val contestType: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/album/contest/vote") class voteOnAlbumContest(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val albumContestId: kotlin.Long, val albumId: kotlin.Long, val contestType: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Add Preview
      * Enable this ad for preview for this account.
-     * @param version  
      * @param accountId the id of the account 
      * @param creativeId The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied. 
      */
-    @Resource("/api/{version}/creative/addpreview") class addPreview(val version: java.math.BigDecimal, val accountId: kotlin.Long, val creativeId: kotlin.Long)
+    @Resource("/creative/addpreview") class addPreview(val accountId: kotlin.Long, val creativeId: kotlin.Long)
 
     /**
      * Find Missions
      * Get a set of ad filtered by the parameters provided.
-     * @param version  
      * @param appKey The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic. 
      * @param randomize return a random set of results, default is true. If false returns in nature order. 
      * @param targetedAdsOnly return only ads targets to the specific app, no global ads. 
@@ -3307,12 +3125,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param allocatesTickets If true/false only return missions whose game levels allocate (or don&#39;t allocate) tickets. Do not provide a value to return both. (optional)
      * @param missionIds return only ads from the specified campaigns. (optional)
      */
-    @Resource("/api/{version}/ads/find") class adsFind(val version: java.math.BigDecimal, val appKey: kotlin.String, val type: kotlin.String? = null, val accountId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val device: kotlin.String? = null, val deviceIdentifier: kotlin.Long? = null, val deviceVersion: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeAudiences: kotlin.Boolean? = null, val allocatesTickets: kotlin.Boolean? = null, val randomize: kotlin.Boolean, val targetedAdsOnly: kotlin.Boolean, val missionIds: kotlin.String? = null)
+    @Resource("/ads/find") class adsFind(val appKey: kotlin.String, val type: kotlin.String? = null, val accountId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val device: kotlin.String? = null, val deviceIdentifier: kotlin.Long? = null, val deviceVersion: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeAudiences: kotlin.Boolean? = null, val allocatesTickets: kotlin.Boolean? = null, val randomize: kotlin.Boolean, val targetedAdsOnly: kotlin.Boolean, val missionIds: kotlin.String? = null)
 
     /**
      * Create Creative
      * Create a creative
-     * @param version  
      * @param accountId The logged in user. 
      * @param name The name of the level. 
      * @param active If true set the game level as active. Default is false. 
@@ -3329,30 +3146,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param missionId Assign the creative to a campaign for timing and audience matching. (optional)
      * @param offerId the id of the offer (optional)
      */
-    @Resource("/api/{version}/creative/create") class createCreative(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val action: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String? = null, val suffix: kotlin.String? = null, val type: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean, val referenceId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val missionId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val waitForAsset: kotlin.Boolean)
+    @Resource("/creative/create") class createCreative(val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val action: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String? = null, val suffix: kotlin.String? = null, val type: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean, val referenceId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val missionId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val waitForAsset: kotlin.Boolean)
 
     /**
      * Delete Creative
      * Delete a creative
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param creativeId the id of the creative to delete 
      */
-    @Resource("/api/{version}/creative/delete") class deleteCreative(val version: java.math.BigDecimal, val accountId: kotlin.Long, val creativeId: kotlin.Long)
+    @Resource("/creative/delete") class deleteCreative(val accountId: kotlin.Long, val creativeId: kotlin.Long)
 
     /**
      * Get Creative
      * Get a creative
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param creativeId the ID of the creative to get 
      */
-    @Resource("/api/{version}/creative/get") class getCreative(val version: java.math.BigDecimal, val accountId: kotlin.Long, val creativeId: kotlin.Long)
+    @Resource("/creative/get") class getCreative(val accountId: kotlin.Long, val creativeId: kotlin.Long)
 
     /**
      * Search Creatives
      * Get a list of levels for an application, just those the account has permissions to view.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey the application key 
      * @param start Start the result set at some index. 
@@ -3360,21 +3174,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param missionId Creatives contained in the provided mission. (optional)
      * @param keyword Match the keyword to the owner name or level name. (optional)
      */
-    @Resource("/api/{version}/creative/search") class getCreativesByApplication(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val keyword: kotlin.String? = null, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/creative/search") class getCreativesByApplication(val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val keyword: kotlin.String? = null, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Remove Preview
      * Remove this ad for preview for this account.
-     * @param version  
      * @param accountId the ID of the logged in user 
      * @param creativeId the ID of the creative to remove preview 
      */
-    @Resource("/api/{version}/creative/removepreview") class removePreview(val version: java.math.BigDecimal, val accountId: kotlin.Long, val creativeId: kotlin.Long)
+    @Resource("/creative/removepreview") class removePreview(val accountId: kotlin.Long, val creativeId: kotlin.Long)
 
     /**
      * Update Creative
      * Update a creative
-     * @param version  
      * @param accountId The logged in user. 
      * @param creativeId the creative Id to upate. 
      * @param name The name of the level. (optional)
@@ -3390,46 +3202,41 @@ Using the various parameters can return the applications default mission   (buil
      * @param appVersion The version of the application, will not return creatives newer than the appVersion. Only used when requesting application configuration creatives. (optional)
      * @param missionId Assign the creative to a campaign for timing and audience matching. (optional)
      */
-    @Resource("/api/{version}/creative/update") class updateCreative(val version: java.math.BigDecimal, val accountId: kotlin.Long, val creativeId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val action: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String? = null, val suffix: kotlin.String? = null, val type: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean? = null, val referenceId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val missionId: kotlin.Long? = null)
+    @Resource("/creative/update") class updateCreative(val accountId: kotlin.Long, val creativeId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val action: kotlin.String? = null, val &#x60;data&#x60;: kotlin.String? = null, val suffix: kotlin.String? = null, val type: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean? = null, val referenceId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val missionId: kotlin.Long? = null)
 
     /**
      * Create Dependent
      * Create dependent of the account
-     * @param version  
      * @param accountId the id of the parent account to create a dependent for 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/cargo/dependent/{accountId}") class create(val version: java.math.BigDecimal, val accountId: kotlin.Long)
+    @Resource("/cargo/dependent/{accountId}") class create(val accountId: kotlin.Long)
 
     /**
      * Get dependent list of an account
      * Get the dependent list of an account
-     * @param version  
      * @param accountId the id of the parent account to get a list of dependents 
      */
-    @Resource("/api/{version}/cargo/dependent/{accountId}") class getDependents(val version: java.math.BigDecimal, val accountId: kotlin.Long)
+    @Resource("/cargo/dependent/{accountId}") class getDependents(val accountId: kotlin.Long)
 
     /**
      * Delete Dependent
      * Delete the Dependent
-     * @param version  
      * @param accountId the id of the parent account tied to the dependent 
      * @param dependentId the id of the dependent to delete 
      */
-    @Resource("/api/{version}/cargo/dependent/{accountId}") class removeDependent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val dependentId: kotlin.Long)
+    @Resource("/cargo/dependent/{accountId}") class removeDependent(val accountId: kotlin.Long, val dependentId: kotlin.Long)
 
     /**
      * Check Disbursements
      * Checks the status of a captured disbrusement to see if it has been settled.
-     * @param version  
      * @param disbursementId the ID of the disbursement being checked on 
      */
-    @Resource("/api/{version}/disbursement/check") class checkDisbursements(val version: java.math.BigDecimal, val disbursementId: kotlin.Long)
+    @Resource("/disbursement/check") class checkDisbursements(val disbursementId: kotlin.Long)
 
     /**
      * Create Disbursement
      * Creates a Disbursement for sending money to a retailer
-     * @param version  
      * @param accountId the ID of the logging in user (must be an EXECUTIVE account) 
      * @param receiverAccountId the ID of the account receiving the disbursement 
      * @param originalSenderAccountId the ID of the original sender account 
@@ -3441,21 +3248,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param externalId external ID, which can be used as a way to reference the disbursement (optional)
      * @param introspectionParams This is for specifying parameters to make an http callback request for validating that the disbursement is valid (optional)
      */
-    @Resource("/api/{version}/disbursement/create") class createDisbursement(val version: java.math.BigDecimal, val accountId: kotlin.Long, val receiverAccountId: kotlin.Long, val originalSenderAccountId: kotlin.Long, val amount: java.math.BigDecimal, val provider: kotlin.String, val scheduledDate: kotlin.Long? = null, val title: kotlin.String? = null, val comment: kotlin.String? = null, val externalId: kotlin.String? = null, val introspectionParams: kotlin.String? = null)
+    @Resource("/disbursement/create") class createDisbursement(val accountId: kotlin.Long, val receiverAccountId: kotlin.Long, val originalSenderAccountId: kotlin.Long, val amount: java.math.BigDecimal, val provider: kotlin.String, val scheduledDate: kotlin.Long? = null, val title: kotlin.String? = null, val comment: kotlin.String? = null, val externalId: kotlin.String? = null, val introspectionParams: kotlin.String? = null)
 
     /**
      * Get Disbursement
      * Get Disbursement details
-     * @param version  
      * @param accountId The logged in user. 
      * @param disbursementId the id of the disbursement 
      */
-    @Resource("/api/{version}/disbursement/get") class getDisbursement(val version: java.math.BigDecimal, val accountId: kotlin.Long, val disbursementId: kotlin.Long)
+    @Resource("/disbursement/get") class getDisbursement(val accountId: kotlin.Long, val disbursementId: kotlin.Long)
 
     /**
      * Search Disbursements
      * Search Disbursements
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param receiverAccountId filter results by the id of the account receiving the disbursement (optional)
      * @param statuses comma separated list of status values to search for, possilbe values include: NEW, APPROVED, VALIDATING, ERROR, AUTHORIZED, CAPTURED, SETTLED (optional)
@@ -3467,12 +3272,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param activeOnly search on disbursements that are active only (optional, default to false)
      * @param externalId search results by this external ID (that can be used to reference the disbursement) (optional)
      */
-    @Resource("/api/{version}/disbursement/search") class searchDisbursements(val version: java.math.BigDecimal, val accountId: kotlin.Long, val receiverAccountId: kotlin.Long? = null, val statuses: kotlin.String? = null, val providers: kotlin.String? = null, val beforeDate: kotlin.Long? = null, val afterDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val externalId: kotlin.String? = null)
+    @Resource("/disbursement/search") class searchDisbursements(val accountId: kotlin.Long, val receiverAccountId: kotlin.Long? = null, val statuses: kotlin.String? = null, val providers: kotlin.String? = null, val beforeDate: kotlin.Long? = null, val afterDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val externalId: kotlin.String? = null)
 
     /**
      * Update Disbursement
      * Update Disbursement
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param disbursementId the id of the disbursement being updated 
      * @param amount the disbursement dollar amount being updated (optional)
@@ -3484,34 +3288,31 @@ Using the various parameters can return the applications default mission   (buil
      * @param retry determines whether to try sending the disbursement again in the case of a previous failure (optional)
      * @param introspectionParams for specifying parameters to make an http callback request for validating that the disbursement is valid (optional)
      */
-    @Resource("/api/{version}/disbursement/update") class updateDisbursement(val version: java.math.BigDecimal, val accountId: kotlin.Long, val disbursementId: kotlin.Long, val amount: java.math.BigDecimal? = null, val provider: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val title: kotlin.String? = null, val comment: kotlin.String? = null, val externalId: kotlin.String? = null, val retry: kotlin.Boolean? = null, val introspectionParams: kotlin.String? = null)
+    @Resource("/disbursement/update") class updateDisbursement(val accountId: kotlin.Long, val disbursementId: kotlin.Long, val amount: java.math.BigDecimal? = null, val provider: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val title: kotlin.String? = null, val comment: kotlin.String? = null, val externalId: kotlin.String? = null, val retry: kotlin.Boolean? = null, val introspectionParams: kotlin.String? = null)
 
     /**
      * Assign Employee
      * Assign An existing account to be an employee
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param managerAccountId The account id of the manager to assign under 
      * @param employeeAccountId The account id of the user to be assigned as employee 
      * @param role The role to assign to the employee (e.g. RETAILER or RETAILER_LIMITED) (optional)
      */
-    @Resource("/api/{version}/employee/assign") class assignEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val managerAccountId: kotlin.Long, val employeeAccountId: kotlin.Long, val role: kotlin.String? = null)
+    @Resource("/employee/assign") class assignEmployee(val accountId: kotlin.Long, val managerAccountId: kotlin.Long, val employeeAccountId: kotlin.Long, val role: kotlin.String? = null)
 
     /**
      * Assign Employee to Location
      * Assign or unassign the account to a retailer location.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param retailerLocationId The retailer location to apply the change to 
      * @param employeeAccountId The account id of the user to apply the change to (optional)
      * @param assign If true (default) assign to the location, otherwise remove from the retailer (optional, default to true)
      */
-    @Resource("/api/{version}/employee/assignToLocation") class assignToLocationEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val employeeAccountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long, val assign: kotlin.Boolean? = null)
+    @Resource("/employee/assignToLocation") class assignToLocationEmployee(val accountId: kotlin.Long, val employeeAccountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long, val assign: kotlin.Boolean? = null)
 
     /**
      * Create Employee
      * Create a new account record with the provided information.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param managerAccountId The account id of the manager to assign under 
      * @param username The username/email for the new user. This must be unique across the entire the system. 
@@ -3543,31 +3344,28 @@ Using the various parameters can return the applications default mission   (buil
      * @param appBlob external custom client defined data (per Application) (optional)
      * @param assignedDeviceId The device id to assign to the user (used for IPS beacon tracking) (optional)
      */
-    @Resource("/api/{version}/employee/create") class createEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val managerAccountId: kotlin.Long, val username: kotlin.String, val password: kotlin.String, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val aboutUs: kotlin.String? = null, val assetId: kotlin.Long? = null, val gender: kotlin.String? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val emailAddress: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val zipcode: kotlin.String? = null, val country: kotlin.String? = null, val role: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val settingsAppKey: kotlin.String? = null, val appBlob: kotlin.String? = null, val assignedDeviceId: kotlin.String? = null)
+    @Resource("/employee/create") class createEmployee(val accountId: kotlin.Long, val managerAccountId: kotlin.Long, val username: kotlin.String, val password: kotlin.String, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val aboutUs: kotlin.String? = null, val assetId: kotlin.Long? = null, val gender: kotlin.String? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val emailAddress: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val zipcode: kotlin.String? = null, val country: kotlin.String? = null, val role: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val settingsAppKey: kotlin.String? = null, val appBlob: kotlin.String? = null, val assignedDeviceId: kotlin.String? = null)
 
     /**
      * Delete Employee
      * Set the deleted date field which marks the record as deleted.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param employeeAccountId the id of the employee to delete 
      */
-    @Resource("/api/{version}/employee/delete") class deleteEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val employeeAccountId: kotlin.Long)
+    @Resource("/employee/delete") class deleteEmployee(val accountId: kotlin.Long, val employeeAccountId: kotlin.Long)
 
     /**
      * Get Employee
      * Get the account record for the account id provided.
-     * @param version  
      * @param accountId the id of logged in user 
      * @param employeeAccountId the id of the employee account to get 
      * @param settingsAppKey Determines whether to return the application settings for the employee for a particular application (optional)
      */
-    @Resource("/api/{version}/employee/get") class getEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val employeeAccountId: kotlin.Long, val settingsAppKey: kotlin.String? = null)
+    @Resource("/employee/get") class getEmployee(val accountId: kotlin.Long, val employeeAccountId: kotlin.Long, val settingsAppKey: kotlin.String? = null)
 
     /**
      * Search Employees
      * Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param role The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles. (optional)
      * @param retailerId Filters employees by retailer (optional)
@@ -3586,21 +3384,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param categoryIds Comma separated list of category ids to filter results (optional)
      * @param query Legacy/reporting query parameter used for formatting employee responses (optional)
      */
-    @Resource("/api/{version}/employee/search") class searchEmployees(val version: java.math.BigDecimal, val accountId: kotlin.Long, val role: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val managedOnly: kotlin.Boolean? = null, val settingsAppKey: kotlin.String? = null, val categoryIds: kotlin.String? = null, val query: kotlin.String? = null)
+    @Resource("/employee/search") class searchEmployees(val accountId: kotlin.Long, val role: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val managedOnly: kotlin.Boolean? = null, val settingsAppKey: kotlin.String? = null, val categoryIds: kotlin.String? = null, val query: kotlin.String? = null)
 
     /**
      * Unassign Employee
      * Unassign An existing account to be an employee
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param employeeAccountId The account id of the user to be unassigned 
      */
-    @Resource("/api/{version}/employee/unassign") class unassignEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val employeeAccountId: kotlin.Long)
+    @Resource("/employee/unassign") class unassignEmployee(val accountId: kotlin.Long, val employeeAccountId: kotlin.Long)
 
     /**
      * Update Employee
      * Update the account record with the provided information.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param employeeAccountId the id of the employee account 
      * @param managerAccountId The account id of the manager to assign under (optional)
@@ -3632,12 +3428,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param appBlob external custom client defined data (per Application) (optional)
      * @param assignedDeviceId The device id to assign to the user (used for IPS beacon tracking) (optional)
      */
-    @Resource("/api/{version}/employee/update") class updateEmployee(val version: java.math.BigDecimal, val accountId: kotlin.Long, val employeeAccountId: kotlin.Long, val managerAccountId: kotlin.Long? = null, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val assetId: kotlin.Long? = null, val gender: kotlin.String? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val emailAddress: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val zipcode: kotlin.String? = null, val country: kotlin.String? = null, val role: kotlin.String? = null, val active: kotlin.Boolean? = null, val password: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val settingsAppKey: kotlin.String? = null, val appBlob: kotlin.String? = null, val assignedDeviceId: kotlin.String? = null)
+    @Resource("/employee/update") class updateEmployee(val accountId: kotlin.Long, val employeeAccountId: kotlin.Long, val managerAccountId: kotlin.Long? = null, val name: kotlin.String? = null, val prefixName: kotlin.String? = null, val firstName: kotlin.String? = null, val middleName: kotlin.String? = null, val lastName: kotlin.String? = null, val suffixName: kotlin.String? = null, val title: kotlin.String? = null, val assetId: kotlin.Long? = null, val gender: kotlin.String? = null, val homePhone: kotlin.String? = null, val cellPhone: kotlin.String? = null, val cellPhoneCarrier: kotlin.String? = null, val businessPhone: kotlin.String? = null, val emailAddress: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val zipcode: kotlin.String? = null, val country: kotlin.String? = null, val role: kotlin.String? = null, val active: kotlin.Boolean? = null, val password: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val settingsAppKey: kotlin.String? = null, val appBlob: kotlin.String? = null, val assignedDeviceId: kotlin.String? = null)
 
     /**
      * Attend Event
      *  Specify whether the user is attending an event at a particular location. This can also be used as a &quot;check-in&quot; action.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id (deviceId or accountId required) (optional)
      * @param appKey The application of where to send notifications about the attend action (optional)
@@ -3649,12 +3444,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The location of the status update (optional)
      * @param longitude The location of the status update (optional)
      */
-    @Resource("/api/{version}/event/attend") class attendEvent(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val listingId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val transactionId: kotlin.Long? = null, val status: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/event/attend") class attendEvent(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val listingId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val transactionId: kotlin.Long? = null, val status: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Event
      * Create a private event to share with associates.
-     * @param version  
      * @param accountId The logged in user. 
      * @param title The event title 
      * @param retailerLocationIds The retailer location to have the event at (optional)
@@ -3668,30 +3462,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param redeemableEnd The event end date/time (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/event/create") class createEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val title: kotlin.String, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val imageAssetId: kotlin.Long? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val metaData: kotlin.String? = null)
+    @Resource("/event/create") class createEvent(val accountId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val title: kotlin.String, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val imageAssetId: kotlin.Long? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val metaData: kotlin.String? = null)
 
     /**
      * Delete Event
      * Delete an event that the user has permissions to.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param eventId the id of the event to update 
      */
-    @Resource("/api/{version}/event/delete") class deleteEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val eventId: kotlin.Long)
+    @Resource("/event/delete") class deleteEvent(val accountId: kotlin.Long, val eventId: kotlin.Long)
 
     /**
      * Get Event
      * Get an event.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param eventId The id of the event to return 
      */
-    @Resource("/api/{version}/event/get") class getEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val eventId: kotlin.Long)
+    @Resource("/event/get") class getEvent(val accountId: kotlin.Long, val eventId: kotlin.Long)
 
     /**
      * Search Event Attendance
      * Searches on event type transactions. This can be used to see who is attending an event.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param appKey The application key (optional)
@@ -3712,12 +3503,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The start index for pagination (optional)
      * @param limit The limit for pagination (optional)
      */
-    @Resource("/api/{version}/event/attendance/search") class searchEventTransactions(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val excludeRetailerLocationId: kotlin.Long? = null, val listingId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val customerAccountIds: kotlin.String? = null, val affiliatedCategoryIds: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val statuses: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/event/attendance/search") class searchEventTransactions(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val excludeRetailerLocationId: kotlin.Long? = null, val listingId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val customerAccountIds: kotlin.String? = null, val affiliatedCategoryIds: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val statuses: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Events
      * Searches on events that the account has access to.
-     * @param version  
      * @param accountId The logged in user. 
      * @param keyword The keyword used to search (optional)
      * @param activeOnly Return only active results (optional)
@@ -3732,12 +3522,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The record to begin the return set on (optional)
      * @param limit The number of records to return (optional)
      */
-    @Resource("/api/{version}/event/search") class searchEvents(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val activeOnly: kotlin.Boolean? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val offerAudienceIds: kotlin.String? = null, val transactionAudienceIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/event/search") class searchEvents(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val activeOnly: kotlin.Boolean? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val offerAudienceIds: kotlin.String? = null, val transactionAudienceIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Event
      * Update a private event to share with associates.
-     * @param version  
      * @param accountId The logged in user. 
      * @param eventId The id of the event to update 
      * @param retailerLocationIds The retailer location to have the event at (optional)
@@ -3751,23 +3540,21 @@ Using the various parameters can return the applications default mission   (buil
      * @param redeemableStart The event start date/time (optional)
      * @param redeemableEnd The event end date/time (optional)
      */
-    @Resource("/api/{version}/event/update") class updateEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val eventId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val title: kotlin.String? = null, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val imageAssetId: kotlin.Long? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null)
+    @Resource("/event/update") class updateEvent(val accountId: kotlin.Long, val eventId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val title: kotlin.String? = null, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val imageAssetId: kotlin.Long? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null)
 
     /**
      * Get Facebook Token
      * Gets a user&#39;s Facebook token.
-     * @param version  
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param latitude used to update the user&#39;s current location (optional)
      * @param longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/facebook/getfbtoken") class getToken(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/facebook/getfbtoken") class getToken(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Post to Facebook
      * Make Facebook posts on behalf of the user.
-     * @param version  
      * @param event the type of Sirqul event {DOWNLOADED_APP, CHALLENGE, LEVEL_COMPLETED, LEVEL_CREATED} 
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -3779,12 +3566,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude used to update the user&#39;s current location (optional)
      * @param longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/facebook/graph") class graphInterface(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val event: kotlin.String, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val assetId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/facebook/graph") class graphInterface(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val event: kotlin.String, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val assetId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Favorite
      * Adds an offer, offer location, retailer location, or category to your favorites.
-     * @param version  
      * @param favoritableId The ID of the object to favorite {offerId, offerLocationId, retailerLocationId, categoryId} 
      * @param favoritableType The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY, ALBUM} 
      * @param deviceId The unique ID given by the device (deviceId or accountId required) (optional)
@@ -3792,36 +3578,33 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/favorite/create") class addFavorite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val favoritableId: kotlin.Long, val favoritableType: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/favorite/create") class addFavorite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val favoritableId: kotlin.Long, val favoritableType: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Favorite
      * Removes a favorited item from the user&#39;s favorites list.
-     * @param version  
      * @param deviceId The unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId The account ID of the user (deviceId or accountId required) (optional)
      * @param favoriteId The ID of the favorite reference record (only optional if favoritableId &amp; favoritableType is pass in instead) (optional)
      * @param favoritableId The ID of the object to un-favorite {offerId, offerLocationId, retailerLocationId, categoryId} (this is required if favoriteId is NOT passed in) (optional)
      * @param favoritableType The type of the object to un-favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY} (this is required if favoriteId is NOT passed in) (optional)
      */
-    @Resource("/api/{version}/favorite/delete") class deleteFavorite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val favoriteId: kotlin.Long? = null, val favoritableId: kotlin.Long? = null, val favoritableType: kotlin.String? = null)
+    @Resource("/favorite/delete") class deleteFavorite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val favoriteId: kotlin.Long? = null, val favoritableId: kotlin.Long? = null, val favoritableType: kotlin.String? = null)
 
     /**
      * Get Favorite
      * Retrieves a single favorited item.
-     * @param version  
      * @param favoriteId The ID of the favorite reference record 
      * @param deviceId The unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId The account ID of the user (deviceId or accountId required) (optional)
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/favorite/get") class getFavorite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val favoriteId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/favorite/get") class getFavorite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val favoriteId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Favorites
      * Searches on the user&#39;s favorites.
-     * @param version  
      * @param favoritableType The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY} 
      * @param sortField Determines what to sort the results by {CREATED, UPDATED, DISPLAY} 
      * @param descending Determines whether the results are in descending order 
@@ -3837,12 +3620,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/favorite/search") class searchFavorites(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val favoritableType: kotlin.String, val secondaryType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val returnFullResponse: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/favorite/search") class searchFavorites(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val favoritableType: kotlin.String, val secondaryType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val returnFullResponse: kotlin.Boolean, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Who has Favorited
      * Searches for everyone that has favorited an item
-     * @param version  
      * @param favoritableId The ID of the favoritableType to search on 
      * @param favoritableType The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY} 
      * @param start The start index for pagination 
@@ -3853,12 +3635,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param longitude The current longitude of the user (optional)
      * @param keyword The keyword to limit that account list (optional)
      */
-    @Resource("/api/{version}/favorite/whois") class whoHasFavorited(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val favoritableId: kotlin.Long, val favoritableType: kotlin.String, val keyword: kotlin.String? = null, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/favorite/whois") class whoHasFavorited(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val favoritableId: kotlin.Long, val favoritableType: kotlin.String, val keyword: kotlin.String? = null, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Create Filter
      * Create a filter
-     * @param version  
      * @param accountId The account id of the user (must have permissions to the target application) 
      * @param name The name of the filter 
      * @param appKey The appKey of the application to assign the filter to, if not provided then the filter will be applied to the global application (if the account has permissions) (optional)
@@ -3869,29 +3650,26 @@ Using the various parameters can return the applications default mission   (buil
      * @param active Sets whether the filter is active or inactive (hidden from consumers) (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/filter/create") class createFilter(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val parentFilterId: kotlin.Long? = null, val name: kotlin.String, val description: kotlin.String? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
+    @Resource("/filter/create") class createFilter(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val parentFilterId: kotlin.Long? = null, val name: kotlin.String, val description: kotlin.String? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
 
     /**
      * Delete Filter
      * Delete a filter.
-     * @param version  
      * @param accountId The account id of the user (must have permissions to the filter&#39;s assigned application) 
      * @param filterId The ID of the filter to delete 
      */
-    @Resource("/api/{version}/filter/delete") class deleteFilter(val version: java.math.BigDecimal, val accountId: kotlin.Long, val filterId: kotlin.Long)
+    @Resource("/filter/delete") class deleteFilter(val accountId: kotlin.Long, val filterId: kotlin.Long)
 
     /**
      * Get Filter
      * Get the details of a specific filter. Recursively include all child filters and their children.
-     * @param version  
      * @param filterId the id of the filter to get 
      */
-    @Resource("/api/{version}/filter/get") class getFilter(val version: java.math.BigDecimal, val filterId: kotlin.Long)
+    @Resource("/filter/get") class getFilter(val filterId: kotlin.Long)
 
     /**
      * Search Filters
      * Search for filters.
-     * @param version  
      * @param accountId The account id of the user (optional)
      * @param keyword The string to search on (optional)
      * @param appKey the appKey of the application to retrieve filters for (optional)
@@ -3903,12 +3681,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param limit The number of records to return (optional, default to 20)
      * @param activeOnly Determines whether to return only active categories (optional, default to true)
      */
-    @Resource("/api/{version}/filter/search") class searchFilters(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val appKey: kotlin.String? = null, val responseGroup: kotlin.String? = null, val rootOnly: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/filter/search") class searchFilters(val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val appKey: kotlin.String? = null, val responseGroup: kotlin.String? = null, val rootOnly: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Update Filter
      * Update a filter.
-     * @param version  
      * @param accountId The account id of the user 
      * @param filterId The ID of the filter to edit 
      * @param parentFilterId The ID of the parent filter, if not provided then the parent filter will be null (optional)
@@ -3919,12 +3696,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param active Sets whether the filter is active or inactive (hidden from consumers) (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/filter/update") class updateFilter(val version: java.math.BigDecimal, val accountId: kotlin.Long, val filterId: kotlin.Long, val parentFilterId: kotlin.Long? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
+    @Resource("/filter/update") class updateFilter(val accountId: kotlin.Long, val filterId: kotlin.Long, val parentFilterId: kotlin.Long? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val externalId: kotlin.String? = null, val externalType: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
 
     /**
      * Create Flag
      * Allows a user to flag an object that the user deems inappropriate or offensive. Flagable objects include accounts, albums, album contests, assets, game levels, and theme descriptors
-     * @param version  
      * @param flagableType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER} 
      * @param flagableId The flagable object id 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
@@ -3933,12 +3709,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The current location of the user (optional)
      * @param longitude The current location of the user (optional)
      */
-    @Resource("/api/{version}/flag/create") class createFlag(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val flagableType: kotlin.String, val flagableId: kotlin.Long, val flagDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/flag/create") class createFlag(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val flagableType: kotlin.String, val flagableId: kotlin.Long, val flagDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Flag
      * Deletes a flag.
-     * @param version  
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
      * @param itemBeingFlaggedType This parameter is deprecated. (optional)
@@ -3946,12 +3721,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param flagableType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE} (optional)
      * @param flagableId The flagable object id (optional)
      */
-    @Resource("/api/{version}/flag/delete") class deleteFlag(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val itemBeingFlaggedType: kotlin.String? = null, val itemBeingFlaggedId: kotlin.Long? = null, val flagableType: kotlin.String? = null, val flagableId: kotlin.Long? = null)
+    @Resource("/flag/delete") class deleteFlag(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val itemBeingFlaggedType: kotlin.String? = null, val itemBeingFlaggedId: kotlin.Long? = null, val flagableType: kotlin.String? = null, val flagableId: kotlin.Long? = null)
 
     /**
      * Get Flag
      * Gets the details on whether the user has flagged a particular flagable object.
-     * @param version  
      * @param flagableType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER} 
      * @param flagableId The flagable object id 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
@@ -3959,33 +3733,30 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The current location of the user (optional)
      * @param longitude The current location of the user (optional)
      */
-    @Resource("/api/{version}/flag/get") class getFlag(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val flagableType: kotlin.String, val flagableId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/flag/get") class getFlag(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val flagableType: kotlin.String, val flagableId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Flag Threshold
      * Get the flag threshold value on an object type for a particular application.
-     * @param version  
      * @param itemBeingFlaggedType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE} 
      * @param appKey The application key 
      */
-    @Resource("/api/{version}/flag/threshold/get") class getFlagThreshold(val version: java.math.BigDecimal, val itemBeingFlaggedType: kotlin.String, val appKey: kotlin.String)
+    @Resource("/flag/threshold/get") class getFlagThreshold(val itemBeingFlaggedType: kotlin.String, val appKey: kotlin.String)
 
     /**
      * Update Flag Threshold
      * Update the flag threshold on an object type for a particular application.
-     * @param version  
      * @param itemBeingFlaggedType The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE} 
      * @param threshold The threshold value 
      * @param appKey The application key 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
      */
-    @Resource("/api/{version}/flag/threshold/update") class updateFlagThreshold(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val itemBeingFlaggedType: kotlin.String, val threshold: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/flag/threshold/update") class updateFlagThreshold(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val itemBeingFlaggedType: kotlin.String, val threshold: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Create a Game
      * Create a Game.
-     * @param version  
      * @param accountId The logged in user. (optional)
      * @param appKey The game application key to save the level for. (optional)
      * @param title Title of the game. (optional)
@@ -3994,31 +3765,28 @@ Using the various parameters can return the applications default mission   (buil
      * @param packIds comma separated String of pack Ids that will associate with the game. (optional)
      * @param includeGameData Show more details in response. (optional)
      */
-    @Resource("/api/{version}/game/create") class createGame(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val packIds: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/game/create") class createGame(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val packIds: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Delete a Game
      * Delete a game.
-     * @param version  
      * @param accountId The logged in user. 
      * @param gameId the updating game&#39;s id. 
      */
-    @Resource("/api/{version}/game/delete") class deleteGame(val version: java.math.BigDecimal, val accountId: kotlin.Long, val gameId: kotlin.Long)
+    @Resource("/game/delete") class deleteGame(val accountId: kotlin.Long, val gameId: kotlin.Long)
 
     /**
      * Get a Game by id
      * Get a Game by id.
-     * @param version  
      * @param accountId The logged in user. 
      * @param gameId the updating game&#39;s id. 
      * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false. (optional)
      */
-    @Resource("/api/{version}/game/get") class getGame(val version: java.math.BigDecimal, val accountId: kotlin.Long, val gameId: kotlin.Long, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/game/get") class getGame(val accountId: kotlin.Long, val gameId: kotlin.Long, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Search a Game
      * Get a list of games for an application, just those the account has permissions to view.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey the application key 
      * @param start Start the result set at some index. 
@@ -4028,12 +3796,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param includeGameData more details in response (optional)
      * @param includeInactive more details in response (optional)
      */
-    @Resource("/api/{version}/game/search") class searchGames(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val start: kotlin.Int, val limit: kotlin.Int, val appVersion: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null)
+    @Resource("/game/search") class searchGames(val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val start: kotlin.Int, val limit: kotlin.Int, val appVersion: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null)
 
     /**
      * Update a Game
      * Update a Game
-     * @param version  
      * @param accountId The logged in user. (optional)
      * @param gameId the updating game&#39;s id (optional)
      * @param appKey The game application key to save the level for. (optional)
@@ -4043,12 +3810,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param packIds comma separated String of pack Ids that will associate with the game. (optional)
      * @param includeGameData show more details in response. (optional)
      */
-    @Resource("/api/{version}/game/update") class updateGame(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val appKey: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val packIds: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/game/update") class updateGame(val accountId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val appKey: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val packIds: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Create Game Level
      * Create a game level. Currently does NOT support game objects.
-     * @param version  
      * @param accountId The logged in user. 
      * @param name The name of the level. 
      * @param gameData The game level data: xml, json, or other text based format. 
@@ -4076,31 +3842,28 @@ Using the various parameters can return the applications default mission   (buil
      * @param offerId id of the offer (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/level/create") class createGameLevel(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val name: kotlin.String, val description: kotlin.String? = null, val difficulty: kotlin.String? = null, val appVersion: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val assetIconId: kotlin.Long? = null, val gameData: kotlin.String, val gameDataSuffix: kotlin.String, val visibility: kotlin.String? = null, val friendGroup: kotlin.Boolean? = null, val connectionIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val tutorialTitle: kotlin.String? = null, val tutorialMessage: kotlin.String? = null, val tutorialAlignment: kotlin.String? = null, val tutorialImageAssetId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val metaData: kotlin.String? = null)
+    @Resource("/level/create") class createGameLevel(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val name: kotlin.String, val description: kotlin.String? = null, val difficulty: kotlin.String? = null, val appVersion: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val assetIconId: kotlin.Long? = null, val gameData: kotlin.String, val gameDataSuffix: kotlin.String, val visibility: kotlin.String? = null, val friendGroup: kotlin.Boolean? = null, val connectionIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val tutorialTitle: kotlin.String? = null, val tutorialMessage: kotlin.String? = null, val tutorialAlignment: kotlin.String? = null, val tutorialImageAssetId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val metaData: kotlin.String? = null)
 
     /**
      * Delete Game Level
      * Delete a game level. The level and account must be valid and have the appropirate permissions to view the content.
-     * @param version  
      * @param accountId The logged in user. 
      * @param levelId The id of the level to return. 
      */
-    @Resource("/api/{version}/level/delete") class deleteGameLevel(val version: java.math.BigDecimal, val accountId: kotlin.Long, val levelId: kotlin.Long)
+    @Resource("/level/delete") class deleteGameLevel(val accountId: kotlin.Long, val levelId: kotlin.Long)
 
     /**
      * Get Game Level
      * Get a game level. The level and account must be valid and have the appropirate permissions to view the content.
-     * @param version  
      * @param accountId The logged in user. 
      * @param levelId The id of the level to return. 
      * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false. (optional)
      */
-    @Resource("/api/{version}/level/get") class getGameLevel(val version: java.math.BigDecimal, val accountId: kotlin.Long, val levelId: kotlin.Long, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/level/get") class getGameLevel(val accountId: kotlin.Long, val levelId: kotlin.Long, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Search Game Levels
      * Get a list of levels for an application, just those the account has permissions to view.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey the application key 
      * @param keyword Match the keyword to the owner name or level name. (optional)
@@ -4112,12 +3875,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false. (optional)
      * @param filters  (optional)
      */
-    @Resource("/api/{version}/level/search") class getGameLevelsByApplication(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val appVersion: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null, val filters: kotlin.String? = null)
+    @Resource("/level/search") class getGameLevelsByApplication(val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val appVersion: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null, val filters: kotlin.String? = null)
 
     /**
      * Search Game Level by Billable Entity
      * Searches on game levels that the logged in user has access to. A user would have access if the creator of the game level is managed under the same BillableEntity.
-     * @param version  
      * @param accountId The account id of the user 
      * @param appKey the application key (optional)
      * @param keyword The keyword used to search (optional)
@@ -4127,30 +3889,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The record to begin the return set on (optional)
      * @param limit The number of records to return (optional)
      */
-    @Resource("/api/{version}/level/searchByBillableEntity") class getGameLevelsByBillableEntity(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val start: kotlin.Long? = null, val limit: kotlin.Long? = null)
+    @Resource("/level/searchByBillableEntity") class getGameLevelsByBillableEntity(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val start: kotlin.Long? = null, val limit: kotlin.Long? = null)
 
     /**
      * Get Level Questions
      * Get questions within a level.
-     * @param version  
      * @param levelId the id of the level to get questions from 
      * @param accountId the id of the logged in user 
      */
-    @Resource("/api/{version}/level/questions/get") class getQuestionsInLevel(val version: java.math.BigDecimal, val levelId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/level/questions/get") class getQuestionsInLevel(val levelId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Get Level Words
      * Get words within a level.
-     * @param version  
      * @param levelId the id of the level to get words for 
      * @param accountId the id of the logged in user 
      */
-    @Resource("/api/{version}/level/words/get") class getWordsInLevel(val version: java.math.BigDecimal, val levelId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/level/words/get") class getWordsInLevel(val levelId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Update Game Level
      * Update a game level. Currently does NOT support game objects.
-     * @param version  
      * @param accountId The logged in user. 
      * @param levelId If update then include the level Id. 
      * @param appKey The game application key to save the level for. (optional)
@@ -4179,32 +3938,29 @@ Using the various parameters can return the applications default mission   (buil
      * @param offerId  (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/level/update") class updateGameLevel(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val levelId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val difficulty: kotlin.String? = null, val appVersion: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val assetIconId: kotlin.Long? = null, val gameData: kotlin.String? = null, val gameDataSuffix: kotlin.String? = null, val visibility: kotlin.String? = null, val friendGroup: kotlin.Boolean? = null, val connectionIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val tutorialTitle: kotlin.String? = null, val tutorialMessage: kotlin.String? = null, val tutorialAlignment: kotlin.String? = null, val tutorialImageAssetId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val metaData: kotlin.String? = null)
+    @Resource("/level/update") class updateGameLevel(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val levelId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val difficulty: kotlin.String? = null, val appVersion: kotlin.String? = null, val assetImageId: kotlin.Long? = null, val assetIconId: kotlin.Long? = null, val gameData: kotlin.String? = null, val gameDataSuffix: kotlin.String? = null, val visibility: kotlin.String? = null, val friendGroup: kotlin.Boolean? = null, val connectionIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val balance: kotlin.Double? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val tutorialTitle: kotlin.String? = null, val tutorialMessage: kotlin.String? = null, val tutorialAlignment: kotlin.String? = null, val tutorialImageAssetId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val metaData: kotlin.String? = null)
 
     /**
      * Update Level Questions
      * Updates a level with question game objects.
-     * @param version  
      * @param levelId the id of the level to update questions on 
      * @param accountId the id of the logged in user 
      * @param questionIds the IDs of the questions to update 
      */
-    @Resource("/api/{version}/level/questions/update") class updateQuestionsInLevel(val version: java.math.BigDecimal, val levelId: kotlin.Long, val accountId: kotlin.Long, val questionIds: kotlin.String)
+    @Resource("/level/questions/update") class updateQuestionsInLevel(val levelId: kotlin.Long, val accountId: kotlin.Long, val questionIds: kotlin.String)
 
     /**
      * Update Level Words
      * Updates a level with word game objects.
-     * @param version  
      * @param levelId the id of the level to update words for 
      * @param accountId the id of the logged in user 
      * @param wordIds the ids of the words to update for the level 
      */
-    @Resource("/api/{version}/level/words/update") class updateWordsInLevel(val version: java.math.BigDecimal, val levelId: kotlin.Long, val accountId: kotlin.Long, val wordIds: kotlin.String)
+    @Resource("/level/words/update") class updateWordsInLevel(val levelId: kotlin.Long, val accountId: kotlin.Long, val wordIds: kotlin.String)
 
     /**
      * Accept Invite
      * Allows a user to accept an invite. The user could also become the inviter&#39;s friend.
-     * @param version  
      * @param token the invite token 
      * @param accountId the accountId of the user who is accepting the invite 
      * @param albumId the album id associated with this invite (if applicable) (optional)
@@ -4220,12 +3976,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param autoFavoriteOfferLocation whether to mark the offer location as favorited automatically after invite is accepted (optional, default to false)
      * @param autoFavoriteRetailerLocation whether to mark the retailer location as favorited automatically after invite is accepted (optional, default to false)
      */
-    @Resource("/api/{version}/invite/accept") class acceptInvite(val version: java.math.BigDecimal, val token: kotlin.String, val accountId: kotlin.Long, val albumId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val albumContestId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val autoFriend: kotlin.Boolean? = null, val autoAttendEvent: kotlin.Boolean? = null, val autoFavoriteOffer: kotlin.Boolean? = null, val autoFavoriteOfferLocation: kotlin.Boolean? = null, val autoFavoriteRetailerLocation: kotlin.Boolean? = null)
+    @Resource("/invite/accept") class acceptInvite(val token: kotlin.String, val accountId: kotlin.Long, val albumId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val albumContestId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val autoFriend: kotlin.Boolean? = null, val autoAttendEvent: kotlin.Boolean? = null, val autoFavoriteOffer: kotlin.Boolean? = null, val autoFavoriteOfferLocation: kotlin.Boolean? = null, val autoFavoriteRetailerLocation: kotlin.Boolean? = null)
 
     /**
      * Invite to Contest
      * Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-     * @param version  
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param appId This parameter is deprecated. (optional)
@@ -4234,12 +3989,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/invite/albumContest") class albumContestInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val albumContestId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/invite/albumContest") class albumContestInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val albumContestId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Invite to Collection
      * Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-     * @param version  
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param appId This parameter is deprecated. (optional)
@@ -4248,24 +4002,22 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/invite/album") class albumInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val albumId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/invite/album") class albumInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val albumId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Invite to Event
      * Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet.
-     * @param version  
      * @param accountId the account ID of the user making the share 
      * @param appKey the application key 
      * @param listingId The ID of the event listing 
      * @param receiverAccountIds the account ID of a Sirqul user they would like to share an event with (optional)
      * @param retailerLocationId The retailer location id of where the event will take place (optional)
      */
-    @Resource("/api/{version}/invite/event") class eventInvite(val version: java.math.BigDecimal, val accountId: kotlin.Long, val receiverAccountIds: kotlin.String? = null, val appKey: kotlin.String, val listingId: kotlin.Long, val retailerLocationId: kotlin.Long? = null)
+    @Resource("/invite/event") class eventInvite(val accountId: kotlin.Long, val receiverAccountIds: kotlin.String? = null, val appKey: kotlin.String, val listingId: kotlin.Long, val retailerLocationId: kotlin.Long? = null)
 
     /**
      * Invite to Game Level
      * Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-     * @param version  
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param appId This parameter is deprecated. (optional)
@@ -4274,12 +4026,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/invite/gameLevel") class gameInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val gameLevelId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/invite/gameLevel") class gameInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val gameLevelId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Invite
      * This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to.
-     * @param version  
      * @param accountId Account ID of the user if they are logged in (optional)
      * @param token the invite token (optional)
      * @param albumId album id to match the invite against (if applicable) (optional)
@@ -4290,12 +4041,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param retailerLocationId retailer location id to match the invite against (if applicable) (optional)
      * @param appKey the application key (optional)
      */
-    @Resource("/api/{version}/invite/get") class getInvite(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val token: kotlin.String? = null, val albumId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val albumContestId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val appKey: kotlin.String? = null)
+    @Resource("/invite/get") class getInvite(val accountId: kotlin.Long? = null, val token: kotlin.String? = null, val albumId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val albumContestId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val appKey: kotlin.String? = null)
 
     /**
      * Invite to Mission
      * Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
-     * @param version  
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
      * @param appId This parameter is deprecated. (optional)
@@ -4304,43 +4054,39 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/invite/mission") class missionInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val missionId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/invite/mission") class missionInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appId: kotlin.Long? = null, val appKey: kotlin.String? = null, val missionId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Invite to Offer
      * Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite&#39;s list.
-     * @param version  
      * @param accountId the account ID of the user making the share 
      * @param appKey the application key 
      * @param offerId the ID of the offer used to invite to favorite 
      */
-    @Resource("/api/{version}/invite/offer") class offerInvite(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val offerId: kotlin.Long)
+    @Resource("/invite/offer") class offerInvite(val accountId: kotlin.Long, val appKey: kotlin.String, val offerId: kotlin.Long)
 
     /**
      * Invite to Offer Location
      * Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite&#39;s list.
-     * @param version  
      * @param accountId the account ID of the user making the share 
      * @param appKey the application key 
      * @param offerLocationId the id of the offer location to share 
      */
-    @Resource("/api/{version}/invite/offerLocation") class offerLocationInvite(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val offerLocationId: kotlin.Long)
+    @Resource("/invite/offerLocation") class offerLocationInvite(val accountId: kotlin.Long, val appKey: kotlin.String, val offerLocationId: kotlin.Long)
 
     /**
      * Invite to Retailer Location
      * Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite&#39;s list.
-     * @param version  
      * @param accountId the account ID of the user making the share 
      * @param appKey the application key 
      * @param retailerLocationId The retailer location id of where the event will take place 
      * @param albumId Optional album id to link with the invite (optional)
      */
-    @Resource("/api/{version}/invite/retailerLocation") class retailerLocationInvite(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val retailerLocationId: kotlin.Long, val albumId: kotlin.Long? = null)
+    @Resource("/invite/retailerLocation") class retailerLocationInvite(val accountId: kotlin.Long, val appKey: kotlin.String, val retailerLocationId: kotlin.Long, val albumId: kotlin.Long? = null)
 
     /**
      * Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
      * Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
-     * @param version  
      * @param accountId The account id of the user creating the leaderboard. (optional)
      * @param appKey The application key (optional)
      * @param rankType a unique label for identifying the ranking. This can be any alphanumeric string with a maximum length of 64 characters. There are also default rank types to use which include: POINTS, DOWNLOADS, INVITATIONS, CREATIONS, VOTES, REDEEMED, ACTIONS (optional)
@@ -4355,31 +4101,28 @@ Using the various parameters can return the applications default mission   (buil
      * @param description leaderboard&#39;s description (optional)
      * @param metaData custom meta data for the leaderboard (optional)
      */
-    @Resource("/api/{version}/leaderboard/create") class createLeaderboard(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val rankType: kotlin.String? = null, val leaderboardMode: kotlin.String? = null, val iconMedia: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val bannerMedia: java.io.File? = null, val bannerAssetId: kotlin.Long? = null, val limitation: kotlin.Int? = null, val sortField: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null)
+    @Resource("/leaderboard/create") class createLeaderboard(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val rankType: kotlin.String? = null, val leaderboardMode: kotlin.String? = null, val iconMedia: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val bannerMedia: java.io.File? = null, val bannerAssetId: kotlin.Long? = null, val limitation: kotlin.Int? = null, val sortField: kotlin.String? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null)
 
     /**
      * Delete the Leader Board
      * Removes a leader board id.
-     * @param version  
      * @param leaderboardId The leaderboard id to delete. 
      * @param accountId The account id of the user making the request. (optional)
      */
-    @Resource("/api/{version}/leaderboard/delete") class deleteLeaderboard(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val leaderboardId: kotlin.Long)
+    @Resource("/leaderboard/delete") class deleteLeaderboard(val accountId: kotlin.Long? = null, val leaderboardId: kotlin.Long)
 
     /**
      * Read a leaderboard by id and retrieve the matching ranking list
      * Read a leaderboard by id and retrieve the matching ranking list
-     * @param version  
      * @param leaderboardId The leaderboard id. 
      * @param accountId A valid account. (optional)
      * @param includeFullRankingList set to true if need to return the leaderboard&#39;s full ranking list (optional)
      */
-    @Resource("/api/{version}/leaderboard/get") class getLeaderboard(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val leaderboardId: kotlin.Long, val includeFullRankingList: kotlin.Boolean? = null)
+    @Resource("/leaderboard/get") class getLeaderboard(val accountId: kotlin.Long? = null, val leaderboardId: kotlin.Long, val includeFullRankingList: kotlin.Boolean? = null)
 
     /**
      * Search leaderboard and retrieve the matching ranking list
      * Search leaderboard and retrieve the matching ranking list
-     * @param version  
      * @param accountId The account id of the user requesting the search. (optional)
      * @param appKey The application key. (optional)
      * @param globalOnly only include global leaderboards (this overrides the appKey filter) (optional)
@@ -4393,12 +4136,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start Start the result set at some index. (optional)
      * @param limit Limit the result to some number. (optional)
      */
-    @Resource("/api/{version}/leaderboard/search") class searchLeaderboards(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val globalOnly: kotlin.Boolean? = null, val keyword: kotlin.String? = null, val leaderboardIds: kotlin.String? = null, val rankTypes: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val includeAppResponse: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/leaderboard/search") class searchLeaderboards(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val globalOnly: kotlin.Boolean? = null, val keyword: kotlin.String? = null, val leaderboardIds: kotlin.String? = null, val rankTypes: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val includeAppResponse: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
      * Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
-     * @param version  
      * @param leaderboardId The leaderboard id to update. 
      * @param accountId The account id of the user updating the leaderboard. (optional)
      * @param appKey The application key (optional)
@@ -4415,12 +4157,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param description leaderboard&#39;s description (optional)
      * @param metaData custom meta data for the leaderboard (optional)
      */
-    @Resource("/api/{version}/leaderboard/update") class updateLeaderboard(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val leaderboardId: kotlin.Long, val rankType: kotlin.String? = null, val leaderboardMode: kotlin.String? = null, val sortField: kotlin.String? = null, val iconMedia: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val bannerMedia: java.io.File? = null, val bannerAssetId: kotlin.Long? = null, val limitation: kotlin.Int? = null, val active: kotlin.Boolean? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null)
+    @Resource("/leaderboard/update") class updateLeaderboard(val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val leaderboardId: kotlin.Long, val rankType: kotlin.String? = null, val leaderboardMode: kotlin.String? = null, val sortField: kotlin.String? = null, val iconMedia: java.io.File? = null, val iconAssetId: kotlin.Long? = null, val bannerMedia: java.io.File? = null, val bannerAssetId: kotlin.Long? = null, val limitation: kotlin.Int? = null, val active: kotlin.Boolean? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null)
 
     /**
      * Create Like
      * Allows a user to like or dislike accounts, albums, album contests, assets, game levels, notes, and theme descriptors. Multiple likes\dislikes on the same object will replace the previous one.
-     * @param version  
      * @param likableType The type of likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR} 
      * @param likableId The id of the likable object 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
@@ -4434,12 +4175,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The current location of the user (optional)
      * @param longitude The current location of the user (optional)
      */
-    @Resource("/api/{version}/like") class registerLike(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val likableType: kotlin.String, val likableId: kotlin.Long, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val like: kotlin.Boolean? = null, val app: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/like") class registerLike(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val likableType: kotlin.String, val likableId: kotlin.Long, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val like: kotlin.Boolean? = null, val app: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Like
      * Removes a like. This will make the user &quot;neutral&quot;.
-     * @param version  
      * @param likableType The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR} 
      * @param likableId The id of the likable object 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
@@ -4447,12 +4187,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude The current location of the user (optional)
      * @param longitude The current location of the user (optional)
      */
-    @Resource("/api/{version}/like/delete") class removeLike(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val likableType: kotlin.String, val likableId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/like/delete") class removeLike(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val likableType: kotlin.String, val likableId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Likes
      * Search for likes on a likable object.
-     * @param version  
      * @param likableType The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR} 
      * @param likableId The id of the likable object 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
@@ -4465,12 +4204,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start the start index for pagination (optional, default to 0)
      * @param limit the limit for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/like/search") class searchLikes(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountIds: kotlin.String? = null, val likableType: kotlin.String, val likableId: kotlin.Long, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/like/search") class searchLikes(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountIds: kotlin.String? = null, val likableType: kotlin.String, val likableId: kotlin.Long, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Create Listing
      * Creates a listing.
-     * @param version  
      * @param accountId the user&#39;s account ID 
      * @param name the name of the listing 
      * @param filterIds comma separated list of filter IDs (optional)
@@ -4486,29 +4224,26 @@ Using the various parameters can return the applications default mission   (buil
      * @param active Sets the active flag (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/listing/create") class createListing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val filterIds: kotlin.String? = null, val description: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val locationName: kotlin.String? = null, val locationDescription: kotlin.String? = null, val isPrivate: kotlin.Boolean? = null, val externalId: kotlin.String? = null, val externalId2: kotlin.String? = null, val externalGroupId: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
+    @Resource("/listing/create") class createListing(val accountId: kotlin.Long, val name: kotlin.String, val filterIds: kotlin.String? = null, val description: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val locationName: kotlin.String? = null, val locationDescription: kotlin.String? = null, val isPrivate: kotlin.Boolean? = null, val externalId: kotlin.String? = null, val externalId2: kotlin.String? = null, val externalGroupId: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
 
     /**
      * Delete Listing
      * Delete a listing.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param listingId the id of the listing to delete 
      */
-    @Resource("/api/{version}/listing/delete") class deleteListing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val listingId: kotlin.Long)
+    @Resource("/listing/delete") class deleteListing(val accountId: kotlin.Long, val listingId: kotlin.Long)
 
     /**
      * Get Listing
      * Get a listing by id.
-     * @param version  
      * @param listingId the id of the listing to get 
      */
-    @Resource("/api/{version}/listing/get") class getListing(val version: java.math.BigDecimal, val listingId: kotlin.Long)
+    @Resource("/listing/get") class getListing(val listingId: kotlin.Long)
 
     /**
      * Search Listings
      * Search for event listings from the start time to end time
-     * @param version  
      * @param accountId the account id of the user (optional)
      * @param keyword search the event name and description for this keyword (optional)
      * @param start the record to begin the return set on (optional, default to 0)
@@ -4525,24 +4260,22 @@ Using the various parameters can return the applications default mission   (buil
      * @param externalId2 secondary external identifier used by a third party (optional)
      * @param externalGroupId external group identifier used by a third party (optional)
      */
-    @Resource("/api/{version}/listing/search") class searchListing(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val useListingOrderIds: kotlin.Boolean? = null, val externalId: kotlin.String? = null, val externalId2: kotlin.String? = null, val externalGroupId: kotlin.String? = null)
+    @Resource("/listing/search") class searchListing(val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val useListingOrderIds: kotlin.Boolean? = null, val externalId: kotlin.String? = null, val externalId2: kotlin.String? = null, val externalGroupId: kotlin.String? = null)
 
     /**
      * Summary Listing
      * Search for a list of summary listings from the start time up to 8 days out.
-     * @param version  
      * @param accountId the account id of the user (optional)
      * @param startDate the start date to search from (optional)
      * @param categoryIds the list of categories to search on (optional)
      * @param daysToInclude how far out to search, in days (optional, default to 15)
      * @param useListingOrderIds determines whether to use configured listing order ids (optional, default to true)
      */
-    @Resource("/api/{version}/listing/summary") class summaryListing(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val daysToInclude: kotlin.Int? = null, val useListingOrderIds: kotlin.Boolean? = null)
+    @Resource("/listing/summary") class summaryListing(val accountId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val daysToInclude: kotlin.Int? = null, val useListingOrderIds: kotlin.Boolean? = null)
 
     /**
      * Update Listing
      * Updates a listing.
-     * @param version  
      * @param accountId the user&#39;s account ID 
      * @param listingId the listing to update 
      * @param filterIds comma separated list of filter IDs (optional)
@@ -4559,52 +4292,47 @@ Using the various parameters can return the applications default mission   (buil
      * @param active Sets the active flag (optional)
      * @param metaData external custom client defined data (optional)
      */
-    @Resource("/api/{version}/listing/update") class updateListing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val listingId: kotlin.Long, val filterIds: kotlin.String? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val locationName: kotlin.String? = null, val locationDescription: kotlin.String? = null, val isPrivate: kotlin.Boolean? = null, val externalId: kotlin.String? = null, val externalId2: kotlin.String? = null, val externalGroupId: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
+    @Resource("/listing/update") class updateListing(val accountId: kotlin.Long, val listingId: kotlin.Long, val filterIds: kotlin.String? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val locationName: kotlin.String? = null, val locationDescription: kotlin.String? = null, val isPrivate: kotlin.Boolean? = null, val externalId: kotlin.String? = null, val externalId2: kotlin.String? = null, val externalGroupId: kotlin.String? = null, val active: kotlin.Boolean? = null, val metaData: kotlin.String? = null)
 
     /**
      * Create Trilateration Data with File
      * Creates trilateration samples for a source device (i.e. a router).
-     * @param version  
      * @param udid The unique identifier of the source device 
      * @param sourceTime The current timestamp of the source device (optional)
      * @param minimumSampleSize the minimum number of Edysen devices that must be used to be able to trilaterate a device (optional)
      * @param &#x60;data&#x60; The json formated sample data:  &#x60;&#x60;&#x60;json {    \&quot;count\&quot;: 2,   \&quot;timespan\&quot;: 10,    \&quot;samples\&quot;: [     {       \&quot;deviceId\&quot;: \&quot;device1\&quot;,       \&quot;randomizedId\&quot;: true,        \&quot;deviceSignature\&quot;: \&quot;probe:xyz...\&quot;,        \&quot;alternativeId\&quot;:\&quot;adc123\&quot;,        \&quot;rssi\&quot;: [-63, -75]     },      {       \&quot;deviceId\&quot;: \&quot;device2\&quot;,       \&quot;randomizedId\&quot;: true,        \&quot;deviceSignature\&quot;: \&quot;probe:xyz...\&quot;,        \&quot;alternativeId\&quot;: \&quot;adc123\&quot;,        \&quot;rssi\&quot;: [-83, -79]     }   ] } &#x60;&#x60;&#x60;  (optional)
      * @param dataFile Binary file containing data (multipart upload) (optional)
      */
-    @Resource("/api/{version}/location/trilaterate/cache") class cacheTrilaterationData(val version: java.math.BigDecimal, val udid: kotlin.String, val sourceTime: kotlin.Long? = null, val minimumSampleSize: kotlin.Int? = null, val &#x60;data&#x60;: kotlin.String? = null, val dataFile: java.io.File? = null)
+    @Resource("/location/trilaterate/cache") class cacheTrilaterationData(val udid: kotlin.String, val sourceTime: kotlin.Long? = null, val minimumSampleSize: kotlin.Int? = null, val &#x60;data&#x60;: kotlin.String? = null, val dataFile: java.io.File? = null)
 
     /**
      * Create Trilateration Data with Rest
      * Creates trilateration samples for a source device (i.e. a router).
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/location/trilaterate/cache/submit") class cacheTrilaterationDataGzip(val version: java.math.BigDecimal)
+    @Resource("/location/trilaterate/cache/submit") class cacheTrilaterationDataGzip()
 
     /**
      * Get Location by IP
      * Get location information based on an IP address.
-     * @param version  
      * @param ip the ip address of the client device (optional)
      */
-    @Resource("/api/{version}/location/ip") class getLocationByIp(val version: java.math.BigDecimal, val ip: kotlin.String? = null)
+    @Resource("/location/ip") class getLocationByIp(val ip: kotlin.String? = null)
 
     /**
      * Get Location by Trilateration
      * Send in device data and calculate a position based on signal strengths.
-     * @param version  
      * @param accountId The account making the request, if provided the last know location will be updated (optional)
      * @param latitude The known GPS latitude to compare to the calculated version (optional)
      * @param longitude The known GPS longitude to compare to the calculated version (optional)
      * @param &#x60;data&#x60; The json formated sample data:  &#x60;&#x60;&#x60;json {    \&quot;count\&quot;: 2,   \&quot;timespan\&quot;: 10,    \&quot;samples\&quot;: [     {       \&quot;deviceId\&quot;: \&quot;device1\&quot;,       \&quot;rssi\&quot;: [-63, -75]     },      {       \&quot;deviceId\&quot;: \&quot;device2\&quot;,       \&quot;rssi\&quot;: [-83, -79]     }   ] } &#x60;&#x60;&#x60;  (optional)
      * @param responseFilters Optional response filters (not used currently) (optional)
      */
-    @Resource("/api/{version}/account/location/trilaterate") class getLocationByTrilateration(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val &#x60;data&#x60;: kotlin.String? = null, val responseFilters: kotlin.String? = null)
+    @Resource("/account/location/trilaterate") class getLocationByTrilateration(val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val &#x60;data&#x60;: kotlin.String? = null, val responseFilters: kotlin.String? = null)
 
     /**
      * Search Regions or Postal Codes
      * Searches geographic locations by proximity via address or keyword.
-     * @param version  
      * @param deviceId the device id (optional)
      * @param accountId the account id (optional)
      * @param currentlatitude This parameter is deprecated. (optional)
@@ -4625,29 +4353,26 @@ Using the various parameters can return the applications default mission   (buil
      * @param l This parameter is deprecated. (optional)
      * @param limit the limit for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/location/search") class getLocations(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val currentlatitude: kotlin.Double? = null, val currentlongitude: kotlin.Double? = null, val currentLatitude: kotlin.Double? = null, val currentLongitude: kotlin.Double? = null, val query: kotlin.String? = null, val zipcode: kotlin.String? = null, val zipCode: kotlin.String? = null, val selectedMaplatitude: kotlin.Double? = null, val selectedMaplongitude: kotlin.Double? = null, val selectedMapLatitude: kotlin.Double? = null, val selectedMapLongitude: kotlin.Double? = null, val searchRange: kotlin.Double? = null, val useGeocode: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/location/search") class getLocations(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val currentlatitude: kotlin.Double? = null, val currentlongitude: kotlin.Double? = null, val currentLatitude: kotlin.Double? = null, val currentLongitude: kotlin.Double? = null, val query: kotlin.String? = null, val zipcode: kotlin.String? = null, val zipCode: kotlin.String? = null, val selectedMaplatitude: kotlin.Double? = null, val selectedMaplongitude: kotlin.Double? = null, val selectedMapLatitude: kotlin.Double? = null, val selectedMapLongitude: kotlin.Double? = null, val searchRange: kotlin.Double? = null, val useGeocode: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Create new location
      * Create a new location from a real object location.
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/location") class createLocationV2(val version: java.math.BigDecimal)
+    @Resource("/location") class createLocationV2()
 
     /**
      * Update an existing location
      * Update an existing location
-     * @param version  
      * @param id the id of the location to update 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/location/{id}") class updateLocationV2(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/location/{id}") class updateLocationV2(val id: kotlin.Long)
 
     /**
      * Create Media
      * Create a media offering.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param title The title (255 char limit) 
      * @param barcodeType The bar code type {NONE, UPC, CODE_128, QR, CUSTOM_MEDIA} 
@@ -4706,30 +4431,27 @@ Using the various parameters can return the applications default mission   (buil
      * @param availability ability to assign if this media should active or not (optional)
      * @param availabilitySummary ability to assign when the media expires (optional)
      */
-    @Resource("/api/{version}/media/create") class createMedia(val version: java.math.BigDecimal, val accountId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val title: kotlin.String, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean, val availableLimit: kotlin.Int, val availableLimitPerUser: kotlin.Int, val addedLimit: kotlin.Int, val viewLimit: kotlin.Int, val maxPrints: kotlin.Int, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long, val fullPrice: kotlin.Double, val discountPrice: kotlin.Double, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val specialOfferType: kotlin.String, val offerVisibility: kotlin.String, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val parentalRating: kotlin.String? = null, val availabilityDate: kotlin.Long? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
+    @Resource("/media/create") class createMedia(val accountId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val title: kotlin.String, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean, val availableLimit: kotlin.Int, val availableLimitPerUser: kotlin.Int, val addedLimit: kotlin.Int, val viewLimit: kotlin.Int, val maxPrints: kotlin.Int, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long, val fullPrice: kotlin.Double, val discountPrice: kotlin.Double, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val specialOfferType: kotlin.String, val offerVisibility: kotlin.String, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val parentalRating: kotlin.String? = null, val availabilityDate: kotlin.Long? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
 
     /**
      * Delete Media
      * Delete a media offering that the user has permissions to.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param mediaId the ID of the media to delete 
      */
-    @Resource("/api/{version}/media/delete") class deleteMedia(val version: java.math.BigDecimal, val accountId: kotlin.Long, val mediaId: kotlin.Long)
+    @Resource("/media/delete") class deleteMedia(val accountId: kotlin.Long, val mediaId: kotlin.Long)
 
     /**
      * Media Get
      * Get a media offering.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param mediaId the id of the media to get 
      */
-    @Resource("/api/{version}/media/get") class getMedia(val version: java.math.BigDecimal, val accountId: kotlin.Long, val mediaId: kotlin.Long)
+    @Resource("/media/get") class getMedia(val accountId: kotlin.Long, val mediaId: kotlin.Long)
 
     /**
      * Search Media
      * Searches on events that the account has access to.
-     * @param version  
      * @param accountId The logged in user. 
      * @param activeOnly Return only active results 
      * @param sortField The column to sort the search on. Possible values include: ID, CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, ESTIMATED_VALUE, VOUCHER_PRICE, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY, AVAILABILITY_DATE, RELEASE_DATE 
@@ -4740,12 +4462,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The record to begin the return set on (optional)
      * @param limit The number of records to return (optional)
      */
-    @Resource("/api/{version}/media/search") class searchMedia(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val activeOnly: kotlin.Boolean, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/media/search") class searchMedia(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val activeOnly: kotlin.Boolean, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Media
      * Update a media offering.
-     * @param version  
      * @param accountId The account used to perform the update, must have rights to edit the offer (deviceId or accountId required) 
      * @param mediaId  
      * @param retailerLocationIds Comma separated list of retailer location ids. This will assign the offer to these retailer locations. (optional)
@@ -4806,12 +4527,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param availability  (optional)
      * @param availabilitySummary  (optional)
      */
-    @Resource("/api/{version}/media/update") class updateMedia(val version: java.math.BigDecimal, val accountId: kotlin.Long, val mediaId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val offerLocations: kotlin.String? = null, val title: kotlin.String? = null, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean? = null, val availableLimit: kotlin.Int? = null, val availableLimitPerUser: kotlin.Int? = null, val addedLimit: kotlin.Int? = null, val viewLimit: kotlin.Int? = null, val maxPrints: kotlin.Int? = null, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long? = null, val fullPrice: kotlin.Double? = null, val discountPrice: kotlin.Double? = null, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val specialOfferType: kotlin.String? = null, val offerVisibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val availabilityDate: kotlin.Long? = null, val parentalRating: kotlin.String? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
+    @Resource("/media/update") class updateMedia(val accountId: kotlin.Long, val mediaId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val offerLocations: kotlin.String? = null, val title: kotlin.String? = null, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean? = null, val availableLimit: kotlin.Int? = null, val availableLimitPerUser: kotlin.Int? = null, val addedLimit: kotlin.Int? = null, val viewLimit: kotlin.Int? = null, val maxPrints: kotlin.Int? = null, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long? = null, val fullPrice: kotlin.Double? = null, val discountPrice: kotlin.Double? = null, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val specialOfferType: kotlin.String? = null, val offerVisibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val availabilityDate: kotlin.Long? = null, val parentalRating: kotlin.String? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
 
     /**
      * Create Mission
      * Create a user defined mission.
-     * @param version  
      * @param accountId The logged in user. 
      * @param title The title of the mission 
      * @param description The description of the mission (optional)
@@ -4839,21 +4559,19 @@ Using the various parameters can return the applications default mission   (buil
      * @param locations List of lat/long pairs for mission locations (optional)
      * @param radius Comma separated list of radii for locations (optional)
      */
-    @Resource("/api/{version}/mission/create") class createMission(val version: java.math.BigDecimal, val accountId: kotlin.Long, val title: kotlin.String, val description: kotlin.String? = null, val subType: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val active: kotlin.Boolean? = null, val gameLevelIds: kotlin.String? = null, val creativeIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val missionTask: kotlin.String? = null, val formatType: kotlin.String? = null, val offerId: kotlin.Long? = null, val balance: kotlin.Double? = null, val advancedReporting: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val metaData: kotlin.String? = null, val applicationIds: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null)
+    @Resource("/mission/create") class createMission(val accountId: kotlin.Long, val title: kotlin.String, val description: kotlin.String? = null, val subType: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val active: kotlin.Boolean? = null, val gameLevelIds: kotlin.String? = null, val creativeIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val missionTask: kotlin.String? = null, val formatType: kotlin.String? = null, val offerId: kotlin.Long? = null, val balance: kotlin.Double? = null, val advancedReporting: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val metaData: kotlin.String? = null, val applicationIds: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null)
 
     /**
      * Delete Mission
      * Delete a mission.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param missionId the id of the mission to delete 
      */
-    @Resource("/api/{version}/mission/delete") class deleteMission(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long)
+    @Resource("/mission/delete") class deleteMission(val accountId: kotlin.Long, val missionId: kotlin.Long)
 
     /**
      * Find Missions
      * Get a set of ad filtered by the parameters provided.
-     * @param version  
      * @param appKey The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic. 
      * @param suffix The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip (optional)
      * @param type The type of ads to get, possible values are: BANNER, LEADERBOARD, SKYSCRAPER, FULL, VIDEO, ZIP, CONFIG. Use this instead of suffix. (optional)
@@ -4874,22 +4592,20 @@ Using the various parameters can return the applications default mission   (buil
      * @param missionIds return only ads from the specified campaigns. (optional)
      * @param audienceOperator will return the items that have at least 1 or all of their audiences exist in the logged in user’s audiences, depending if the value is OR or AND (optional)
      */
-    @Resource("/api/{version}/mission/find") class findMissions(val version: java.math.BigDecimal, val appKey: kotlin.String, val suffix: kotlin.String? = null, val type: kotlin.String? = null, val accountId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val device: kotlin.String? = null, val deviceIdentifier: kotlin.Long? = null, val deviceVersion: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeAudiences: kotlin.Boolean? = null, val allocatesTickets: kotlin.Boolean? = null, val randomize: kotlin.Boolean? = null, val targetedAdsOnly: kotlin.Boolean? = null, val missionIds: kotlin.String? = null, val audienceOperator: kotlin.String? = null)
+    @Resource("/mission/find") class findMissions(val appKey: kotlin.String, val suffix: kotlin.String? = null, val type: kotlin.String? = null, val accountId: kotlin.Long? = null, val appVersion: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val device: kotlin.String? = null, val deviceIdentifier: kotlin.Long? = null, val deviceVersion: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeAudiences: kotlin.Boolean? = null, val allocatesTickets: kotlin.Boolean? = null, val randomize: kotlin.Boolean? = null, val targetedAdsOnly: kotlin.Boolean? = null, val missionIds: kotlin.String? = null, val audienceOperator: kotlin.String? = null)
 
     /**
      * Get Mission
      * Get a mission.
-     * @param version  
      * @param accountId The logged in user. 
      * @param missionId The id of the mission to return. 
      * @param returnCreative Return creatives associated with the mission when true (optional)
      */
-    @Resource("/api/{version}/mission/get") class getMission(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long, val returnCreative: kotlin.Boolean? = null)
+    @Resource("/mission/get") class getMission(val accountId: kotlin.Long, val missionId: kotlin.Long, val returnCreative: kotlin.Boolean? = null)
 
     /**
      * Import Mission
      * Create a mission using a source item such as an offer location.
-     * @param version  
      * @param accountId The logged in user. 
      * @param latitude The current location of the requesting device 
      * @param longitude The current location of the requesting device 
@@ -4899,22 +4615,20 @@ Using the various parameters can return the applications default mission   (buil
      * @param limit The total number of records to return. Default is 20. (optional)
      * @param adSize the size of the ad (optional)
      */
-    @Resource("/api/{version}/mission/import") class importMission(val version: java.math.BigDecimal, val accountId: kotlin.Long, val latitude: kotlin.Double, val longitude: kotlin.Double, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val appKey: kotlin.String, val adSize: kotlin.String? = null)
+    @Resource("/mission/import") class importMission(val accountId: kotlin.Long, val latitude: kotlin.Double, val longitude: kotlin.Double, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val appKey: kotlin.String, val adSize: kotlin.String? = null)
 
     /**
      * Search Mission Formats
      * Searches on pre-defined mission formats
-     * @param version  
      * @param start The starting index in the result set to return. Default is 0. 
      * @param limit The total number of records to return. Default is 20. 
      * @param activeOnly Determines whether to return only active results. Default is false. 
      */
-    @Resource("/api/{version}/mission/format/search") class searchMissionFormats(val version: java.math.BigDecimal, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/mission/format/search") class searchMissionFormats(val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Search Missions
      * Get the list missions available to the account.  
-     * @param version  
      * @param accountId The logged in user. 
      * @param keyword Filter by keyword (optional)
      * @param subType Custom string client apps can use for searching/filtering missions (optional)
@@ -4927,12 +4641,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param sortField The field to sort the search on (for example TITLE) (optional)
      * @param descending Whether to sort in descending order (default true) (optional)
      */
-    @Resource("/api/{version}/mission/search") class searchMissions(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val subType: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeAudiences: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val suffix: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null)
+    @Resource("/mission/search") class searchMissions(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val subType: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeAudiences: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val suffix: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null)
 
     /**
      * Search Missions by Billable Entity
      * Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers.
-     * @param version  
      * @param accountId The logged in user. 
      * @param keyword Filter by keyword (optional)
      * @param start The index into the record set to start with. Default is 0. (optional)
@@ -4944,12 +4657,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param sortField The field to sort the search on (for example TITLE) (optional)
      * @param descending Whether to sort in descending order (default true) (optional)
      */
-    @Resource("/api/{version}/mission/searchByBillableEntity") class searchMissionsByBillableEntity(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeAudiences: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val suffix: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null)
+    @Resource("/mission/searchByBillableEntity") class searchMissionsByBillableEntity(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeAudiences: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val suffix: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null)
 
     /**
      * Update Mission
      * Update a mission.
-     * @param version  
      * @param accountId The logged in user. 
      * @param missionId The id of the mission to update. 
      * @param title The title of the mission (optional)
@@ -4976,36 +4688,33 @@ Using the various parameters can return the applications default mission   (buil
      * @param locations List of lat/long pairs for mission locations (optional)
      * @param radius Comma separated list of radii for locations (optional)
      */
-    @Resource("/api/{version}/mission/update") class updateMission(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long, val title: kotlin.String? = null, val description: kotlin.String? = null, val subType: kotlin.String? = null, val metaData: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val active: kotlin.Boolean? = null, val gameLevelIds: kotlin.String? = null, val creativeIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val offerId: kotlin.Long? = null, val balance: kotlin.Double? = null, val advancedReporting: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val applicationIds: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null)
+    @Resource("/mission/update") class updateMission(val accountId: kotlin.Long, val missionId: kotlin.Long, val title: kotlin.String? = null, val description: kotlin.String? = null, val subType: kotlin.String? = null, val metaData: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val active: kotlin.Boolean? = null, val gameLevelIds: kotlin.String? = null, val creativeIds: kotlin.String? = null, val audienceIds: kotlin.String? = null, val offerId: kotlin.Long? = null, val balance: kotlin.Double? = null, val advancedReporting: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val applicationIds: kotlin.String? = null, val devices: kotlin.String? = null, val deviceIds: kotlin.String? = null, val deviceVersions: kotlin.String? = null, val locations: kotlin.String? = null, val radius: kotlin.String? = null)
 
     /**
      * Create Mission Invite
      * Create the mission invite. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required). (optional)
      * @param accountId the account id of the user (deviceId or accountId required). (optional)
      * @param missionId The mission to find the invite for. (optional)
      * @param joinCode code to be entered for user to join the mission (optional)
      * @param includeGameData Include the game level data with the mission. (optional)
      */
-    @Resource("/api/{version}/mission/invite/create") class createMissionInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val joinCode: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/mission/invite/create") class createMissionInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val joinCode: kotlin.String? = null, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Delete Mission Invite
      * Update the mission invite status to quit.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required). (optional)
      * @param accountId the account id of the user (deviceId or accountId required). (optional)
      * @param missionId The mission to find the invite for (missionId or missionInviteId requried). (optional)
      * @param missionInviteId The mission invite id. This checks on the user&#39;s billable for permission (missionId or missionInviteId requried). (optional)
      * @param includeGameData Include the game level data with the mission. (optional)
      */
-    @Resource("/api/{version}/mission/invite/delete") class deleteMissionInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val missionInviteId: kotlin.Long? = null, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/mission/invite/delete") class deleteMissionInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val missionInviteId: kotlin.Long? = null, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Get Mission Invite
      * Get the mission invite. An account can only be invited to a mission one time.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required). (optional)
      * @param accountId the account id of the user (deviceId or accountId required). (optional)
      * @param missionId The mission to find the invite for (missionId or missionInviteId requried). (optional)
@@ -5013,12 +4722,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param includeGameData Include the game level data with the mission. (optional)
      * @param includeScores include the scores with the mission (optional)
      */
-    @Resource("/api/{version}/mission/invite/get") class getMissionInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val missionInviteId: kotlin.Long? = null, val includeGameData: kotlin.Boolean? = null, val includeScores: kotlin.String? = null)
+    @Resource("/mission/invite/get") class getMissionInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val missionId: kotlin.Long? = null, val missionInviteId: kotlin.Long? = null, val includeGameData: kotlin.Boolean? = null, val includeScores: kotlin.String? = null)
 
     /**
      * Search Mission Invites
      * Get a list of mission invites that the account has.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required). (optional)
      * @param accountId the account id of the user (deviceId or accountId required). (optional)
      * @param appKey the app to retrieve the data for, use your application key. (optional)
@@ -5033,12 +4741,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param filterByBillable filter results by the account&#39;s billable (optional)
      * @param includeGameData Include the game level data with the mission. (optional)
      */
-    @Resource("/api/{version}/mission/invite/search") class searchMissionInvites(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val missionId: kotlin.Long? = null, val status: kotlin.String? = null, val lastUpdated: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val keyword: kotlin.String? = null, val missionTypes: kotlin.String? = null, val filterByBillable: kotlin.Boolean? = null, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/mission/invite/search") class searchMissionInvites(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val appVersion: kotlin.String? = null, val missionId: kotlin.Long? = null, val status: kotlin.String? = null, val lastUpdated: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val keyword: kotlin.String? = null, val missionTypes: kotlin.String? = null, val filterByBillable: kotlin.Boolean? = null, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Update Mission Invite
      * Update the mission invite status. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required). (optional)
      * @param accountId the account id of the user (deviceId or accountId required). (optional)
      * @param appKey the application key (optional)
@@ -5051,25 +4758,23 @@ Using the various parameters can return the applications default mission   (buil
      * @param permissionableId The id of the content being submitted. (optional)
      * @param includeGameData Include the game level data with the mission. (optional)
      */
-    @Resource("/api/{version}/mission/invite/update") class updateMissionInvite(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val missionId: kotlin.Long? = null, val missionInviteId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val status: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val includeGameData: kotlin.Boolean? = null)
+    @Resource("/mission/invite/update") class updateMissionInvite(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val missionId: kotlin.Long? = null, val missionInviteId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val status: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val includeGameData: kotlin.Boolean? = null)
 
     /**
      * Batch Note Operation
      * Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE).
 
-     * @param version  
      * @param notableId The id of the notable object the batch operation will affect 
      * @param notableType The notable object type (for example ALBUM, ASSET, OFFER, etc.) 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param batchOperation The batch operation to perform (e.g., DELETE_ALL_NOTES_IN_NOTABLE). Optional. (optional)
      */
-    @Resource("/api/{version}/note/batch") class batchOperation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val notableId: kotlin.Long, val notableType: kotlin.String, val batchOperation: kotlin.String? = null)
+    @Resource("/note/batch") class batchOperation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val notableId: kotlin.Long, val notableType: kotlin.String, val batchOperation: kotlin.String? = null)
 
     /**
      * Create Note
      * This is used to leave a comment (note) on a notable object (i.e. albums, album contests, assets, game levels, offers, offer locations, retailers, retailer locations, and theme descriptors). Leaving a comment on a notable object will be visiable to everyone who has access to view the object.
-     * @param version  
      * @param comment The message the user wishes to leave a comment on 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
@@ -5113,12 +4818,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param assetLatitude the latitude of the asset (optional)
      * @param assetLongitude the longitude of the asset (optional)
      */
-    @Resource("/api/{version}/note/create") class createNote(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val notableType: kotlin.String? = null, val notableId: kotlin.Long? = null, val comment: kotlin.String, val noteType: kotlin.String? = null, val assetIds: kotlin.String? = null, val tags: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val appKey: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val receiverAccountIds: kotlin.String? = null, val returnFullResponse: kotlin.Boolean? = null, val initializeAsset: kotlin.Boolean? = null, val assetReturnNulls: kotlin.Boolean? = null, val assetAlbumId: kotlin.Long? = null, val assetCollectionId: kotlin.Long? = null, val assetAddToDefaultAlbum: kotlin.String? = null, val assetAddToMediaLibrary: kotlin.Boolean? = null, val assetVersionCode: kotlin.Int? = null, val assetVersionName: kotlin.String? = null, val assetMetaData: kotlin.String? = null, val assetCaption: kotlin.String? = null, val assetMedia: java.io.File? = null, val assetMediaUrl: kotlin.String? = null, val assetMediaString: kotlin.String? = null, val assetMediaStringFileName: kotlin.String? = null, val assetMediaStringContentType: kotlin.String? = null, val assetAttachedMedia: java.io.File? = null, val assetAttachedMediaUrl: kotlin.String? = null, val assetAttachedMediaString: kotlin.String? = null, val assetAttachedMediaStringFileName: kotlin.String? = null, val assetAttachedMediaStringContentType: kotlin.String? = null, val assetLocationDescription: kotlin.String? = null, val assetApp: kotlin.String? = null, val assetSearchTags: kotlin.String? = null, val assetLatitude: kotlin.Double? = null, val assetLongitude: java.math.BigDecimal? = null)
+    @Resource("/note/create") class createNote(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val notableType: kotlin.String? = null, val notableId: kotlin.Long? = null, val comment: kotlin.String, val noteType: kotlin.String? = null, val assetIds: kotlin.String? = null, val tags: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val appKey: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val receiverAccountIds: kotlin.String? = null, val returnFullResponse: kotlin.Boolean? = null, val initializeAsset: kotlin.Boolean? = null, val assetReturnNulls: kotlin.Boolean? = null, val assetAlbumId: kotlin.Long? = null, val assetCollectionId: kotlin.Long? = null, val assetAddToDefaultAlbum: kotlin.String? = null, val assetAddToMediaLibrary: kotlin.Boolean? = null, val assetVersionCode: kotlin.Int? = null, val assetVersionName: kotlin.String? = null, val assetMetaData: kotlin.String? = null, val assetCaption: kotlin.String? = null, val assetMedia: java.io.File? = null, val assetMediaUrl: kotlin.String? = null, val assetMediaString: kotlin.String? = null, val assetMediaStringFileName: kotlin.String? = null, val assetMediaStringContentType: kotlin.String? = null, val assetAttachedMedia: java.io.File? = null, val assetAttachedMediaUrl: kotlin.String? = null, val assetAttachedMediaString: kotlin.String? = null, val assetAttachedMediaStringFileName: kotlin.String? = null, val assetAttachedMediaStringContentType: kotlin.String? = null, val assetLocationDescription: kotlin.String? = null, val assetApp: kotlin.String? = null, val assetSearchTags: kotlin.String? = null, val assetLatitude: kotlin.Double? = null, val assetLongitude: java.math.BigDecimal? = null)
 
     /**
      * Delete Note
      * Sets a comment (note) as deleted.
-     * @param version  
      * @param noteId The ID of the note to delete 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
@@ -5126,23 +4830,21 @@ Using the various parameters can return the applications default mission   (buil
      * @param longitude The current location of the user (optional)
      * @param appKey The application key used to identify the application (optional)
      */
-    @Resource("/api/{version}/note/delete") class deleteNote(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val noteId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val appKey: kotlin.String? = null)
+    @Resource("/note/delete") class deleteNote(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val noteId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val appKey: kotlin.String? = null)
 
     /**
      * Get Note
      * Get for a note based on its Id.
-     * @param version  
      * @param noteId the id of the note to get 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
      * @param returnFullResponse Determines whether to return the NoteFullResponse for the item (optional)
      */
-    @Resource("/api/{version}/note/get") class getNote(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val returnFullResponse: kotlin.Boolean? = null, val noteId: kotlin.Long)
+    @Resource("/note/get") class getNote(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val returnFullResponse: kotlin.Boolean? = null, val noteId: kotlin.Long)
 
     /**
      * Search Notes
      * Search for notes on a notable object.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param notableType The notable object type {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, OFFER, OFFER_LOCATION, RETAILER, RETAILER_LOCATION, THEME_DESCRIPTOR} (optional)
@@ -5161,12 +4863,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start The record to begin the return set on (optional)
      * @param limit The number of records to return (optional)
      */
-    @Resource("/api/{version}/note/search") class searchNotes(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val notableType: kotlin.String? = null, val notableId: kotlin.Long? = null, val noteTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val flagCountMinimum: kotlin.Long? = null, val flagsExceedThreshold: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val returnFullResponse: kotlin.Boolean? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/note/search") class searchNotes(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val notableType: kotlin.String? = null, val notableId: kotlin.Long? = null, val noteTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val flagCountMinimum: kotlin.Long? = null, val flagsExceedThreshold: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val returnFullResponse: kotlin.Boolean? = null, val updatedSince: kotlin.Long? = null, val updatedBefore: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Note
      * Update an existing comment (note). Only the creator of the note have permission to update.
-     * @param version  
      * @param noteId The id of the note, used when editing a comment 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
@@ -5209,12 +4910,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param assetLatitude the latitude of the asset (optional)
      * @param assetLongitude the longitude of the asset (optional)
      */
-    @Resource("/api/{version}/note/update") class updateNote(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val noteId: kotlin.Long, val comment: kotlin.String? = null, val noteType: kotlin.String? = null, val assetIds: kotlin.String? = null, val tags: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val appKey: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val returnFullResponse: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val updateAsset: kotlin.Boolean? = null, val assetReturnNulls: kotlin.Boolean? = null, val assetAlbumId: kotlin.Long? = null, val assetCollectionId: kotlin.Long? = null, val assetAddToDefaultAlbum: kotlin.String? = null, val assetAddToMediaLibrary: kotlin.Boolean? = null, val assetVersionCode: kotlin.Int? = null, val assetVersionName: kotlin.String? = null, val assetMetaData: kotlin.String? = null, val assetCaption: kotlin.String? = null, val assetMedia: java.io.File? = null, val assetMediaUrl: kotlin.String? = null, val assetMediaString: kotlin.String? = null, val assetMediaStringFileName: kotlin.String? = null, val assetMediaStringContentType: kotlin.String? = null, val assetAttachedMedia: java.io.File? = null, val assetAttachedMediaUrl: kotlin.String? = null, val assetAttachedMediaString: kotlin.String? = null, val assetAttachedMediaStringFileName: kotlin.String? = null, val assetAttachedMediaStringContentType: kotlin.String? = null, val assetLocationDescription: kotlin.String? = null, val assetApp: kotlin.String? = null, val assetSearchTags: kotlin.String? = null, val assetLatitude: kotlin.Double? = null, val assetLongitude: kotlin.Double? = null)
+    @Resource("/note/update") class updateNote(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val noteId: kotlin.Long, val comment: kotlin.String? = null, val noteType: kotlin.String? = null, val assetIds: kotlin.String? = null, val tags: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val appKey: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val returnFullResponse: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val updateAsset: kotlin.Boolean? = null, val assetReturnNulls: kotlin.Boolean? = null, val assetAlbumId: kotlin.Long? = null, val assetCollectionId: kotlin.Long? = null, val assetAddToDefaultAlbum: kotlin.String? = null, val assetAddToMediaLibrary: kotlin.Boolean? = null, val assetVersionCode: kotlin.Int? = null, val assetVersionName: kotlin.String? = null, val assetMetaData: kotlin.String? = null, val assetCaption: kotlin.String? = null, val assetMedia: java.io.File? = null, val assetMediaUrl: kotlin.String? = null, val assetMediaString: kotlin.String? = null, val assetMediaStringFileName: kotlin.String? = null, val assetMediaStringContentType: kotlin.String? = null, val assetAttachedMedia: java.io.File? = null, val assetAttachedMediaUrl: kotlin.String? = null, val assetAttachedMediaString: kotlin.String? = null, val assetAttachedMediaStringFileName: kotlin.String? = null, val assetAttachedMediaStringContentType: kotlin.String? = null, val assetLocationDescription: kotlin.String? = null, val assetApp: kotlin.String? = null, val assetSearchTags: kotlin.String? = null, val assetLatitude: kotlin.Double? = null, val assetLongitude: kotlin.Double? = null)
 
     /**
      * Create Notification Template
      * Create a notification template. Developers will only be able to create notification templates for their own applications.
-     * @param version  
      * @param accountId The account ID of the user. 
      * @param conduit Filter results by notification type: EMAIL, SMS, PUSH, MOBILE_NOTIFICATION. 
      * @param title title of the notification template 
@@ -5223,40 +4923,36 @@ Using the various parameters can return the applications default mission   (buil
      * @param event Filter results by event. (optional)
      * @param tags tags associated with the note template (optional)
      */
-    @Resource("/api/{version}/notification/template/create") class createNotificationTemplate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val event: kotlin.String? = null, val conduit: kotlin.String, val title: kotlin.String, val body: kotlin.String, val tags: kotlin.String? = null)
+    @Resource("/notification/template/create") class createNotificationTemplate(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val event: kotlin.String? = null, val conduit: kotlin.String, val title: kotlin.String, val body: kotlin.String, val tags: kotlin.String? = null)
 
     /**
      * Create or update blocked notification settings
      * Create or update blocked notification settings
-     * @param version  
      * @param appKey The application key 
      * @param &#x60;data&#x60; batch data payload (application specific) 
      * @param accountId the account id of the user (optional)
      */
-    @Resource("/api/{version}/notification/blocked/batch") class createOrUpdateBlockedNotifications(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val &#x60;data&#x60;: kotlin.String)
+    @Resource("/notification/blocked/batch") class createOrUpdateBlockedNotifications(val accountId: kotlin.Long? = null, val appKey: kotlin.String, val &#x60;data&#x60;: kotlin.String)
 
     /**
      * Delete Notification Template
      * Deletes a notification template. Developers will only be able to delete notification templates for their own applications.
-     * @param version  
      * @param accountId the account id of the user 
      * @param notificationTemplateId the id of the notification template to delete 
      */
-    @Resource("/api/{version}/notification/template/delete") class deleteNotificationTemplate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val notificationTemplateId: kotlin.Long)
+    @Resource("/notification/template/delete") class deleteNotificationTemplate(val accountId: kotlin.Long, val notificationTemplateId: kotlin.Long)
 
     /**
      * Get Notification Template
      * Get the details of a notification template. Developers will only be able to see notification templates for their own applications.
-     * @param version  
      * @param accountId the id of the account 
      * @param notificationTemplateId the id of the notification template to get 
      */
-    @Resource("/api/{version}/notification/template/get") class getNotificationTemplate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val notificationTemplateId: kotlin.Long)
+    @Resource("/notification/template/get") class getNotificationTemplate(val accountId: kotlin.Long, val notificationTemplateId: kotlin.Long)
 
     /**
      * Get Notifications
      * Get a list of notifications for a user. If the &quot;markAsRead&quot; parameter is set to true, the returned notifications will be marked as &quot;read&quot; after the response has been sent. By default, read messages will not be returned, so to see read messages, set &quot;returnReadMessages&quot; to true.
-     * @param version  
      * @param deviceId the unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param connectionAccountId the account id used to view another person&#39;s notifications (optional)
@@ -5279,12 +4975,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start start of the pagination (optional)
      * @param limit limit of the pagination (optional)
      */
-    @Resource("/api/{version}/notification/search") class getNotifications(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val eventType: kotlin.String? = null, val contentIds: kotlin.String? = null, val contentTypes: kotlin.String? = null, val parentIds: kotlin.String? = null, val parentTypes: kotlin.String? = null, val actionCategory: kotlin.String? = null, val conduits: kotlin.String? = null, val keyword: kotlin.String? = null, val returnReadMessages: kotlin.Boolean? = null, val markAsRead: kotlin.Boolean? = null, val fromDate: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnSent: kotlin.Boolean? = null, val ignoreFlagged: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/notification/search") class getNotifications(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val eventType: kotlin.String? = null, val contentIds: kotlin.String? = null, val contentTypes: kotlin.String? = null, val parentIds: kotlin.String? = null, val parentTypes: kotlin.String? = null, val actionCategory: kotlin.String? = null, val conduits: kotlin.String? = null, val keyword: kotlin.String? = null, val returnReadMessages: kotlin.Boolean? = null, val markAsRead: kotlin.Boolean? = null, val fromDate: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnSent: kotlin.Boolean? = null, val ignoreFlagged: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Register Notification Token
      * Register a token to send application dependent notifications like Google Cloud Messaging, or Apple Push Notifications.
-     * @param version  
      * @param token A token that is generated by the device to sign requests for the notification service providers 
      * @param pushType The type of push notification. Possible values include: APNS, GCM 
      * @param deviceId The unique id of the device making the request (deviceId or accountId required) (optional)
@@ -5296,12 +4991,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude Latitude used to update the user&#39;s current location (optional)
      * @param longitude Longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/notification/token") class registerNotificationToken(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val token: kotlin.String, val pushType: kotlin.String, val environment: kotlin.String? = null, val appKey: kotlin.String? = null, val gameType: kotlin.String? = null, val active: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/notification/token") class registerNotificationToken(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val token: kotlin.String, val pushType: kotlin.String, val environment: kotlin.String? = null, val appKey: kotlin.String? = null, val gameType: kotlin.String? = null, val active: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search on the user&#39;s blocked notification settings
      * Search on the user&#39;s blocked notification settings
-     * @param version  
      * @param appKey The application key 
      * @param accountId the account id of the user (optional)
      * @param searchTags search tags to filter results (optional)
@@ -5315,12 +5009,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start start of the pagination (optional)
      * @param limit limit of the pagination (optional)
      */
-    @Resource("/api/{version}/notification/blocked/search") class searchBlockedNotifications(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val searchTags: kotlin.String? = null, val events: kotlin.String? = null, val conduits: kotlin.String? = null, val customTypes: kotlin.String? = null, val contentTypes: kotlin.String? = null, val contentIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/notification/blocked/search") class searchBlockedNotifications(val accountId: kotlin.Long? = null, val appKey: kotlin.String, val searchTags: kotlin.String? = null, val events: kotlin.String? = null, val conduits: kotlin.String? = null, val customTypes: kotlin.String? = null, val contentTypes: kotlin.String? = null, val contentIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Notification Templates
      * Search for notification templates on owned applications.
-     * @param version  
      * @param accountId The account ID of the user. 
      * @param sortField Specifies how results are ordered.ID - order results by the notificationTemplateId CREATED - order results by the created date UPDATED - order results by the updated date TITLE - order results by title EVENT - order results by event CONDUIT - order results by conduit APP_NAME - order results by the application name (&#39;global&#39; templates will not have an application and will be returned last if &#39;descending&#39; is set to false. 
      * @param descending Specified whether the results are returned in descending or ascending order. 
@@ -5333,12 +5026,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param reservedOnly Returns only templates that use reserved events. (optional)
      * @param keyword Filter results by keyword on the title, tags. (optional)
      */
-    @Resource("/api/{version}/notification/template/search") class searchNotificationTemplate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val event: kotlin.String? = null, val conduit: kotlin.String? = null, val globalOnly: kotlin.Boolean? = null, val reservedOnly: kotlin.Boolean? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/notification/template/search") class searchNotificationTemplate(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val event: kotlin.String? = null, val conduit: kotlin.String? = null, val globalOnly: kotlin.Boolean? = null, val reservedOnly: kotlin.Boolean? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Search for Recipients
      * Search for application users to send notifications.
-     * @param version  
      * @param sortField The field to sort by. Possible values include: {ACCOUNT_DISPLAY, CREATED, UPDATED, ACTIVE, DELETED, LAST_LOGGED_IN, CONTACT_EMAIL, RETAILER_LOCATION_NAME, RETAILER_NAME, APPLICATION_NAME} 
      * @param deviceId the unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -5353,12 +5045,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start start of the pagination (optional)
      * @param limit limit of the pagination (hard limit of 1000) (optional)
      */
-    @Resource("/api/{version}/notification/recipient/search") class searchRecipients(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val conduit: kotlin.String? = null, val keyword: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val recipientAccountIds: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/notification/recipient/search") class searchRecipients(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val conduit: kotlin.String? = null, val keyword: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val recipientAccountIds: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search for Recipients (Counts/Grouped)
      * Search for application users to send notifications (count/grouped variant).
-     * @param version  
      * @param deviceId the unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param appKey filters results by application. If this is empty, will return all recipients for all applications that the user has access to. (optional)
@@ -5372,12 +5063,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param start start of the pagination (optional)
      * @param limit limit of the pagination (optional)
      */
-    @Resource("/api/{version}/notification/recipient/search/count") class searchRecipientsCount(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val conduit: kotlin.String? = null, val keyword: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/notification/recipient/search/count") class searchRecipientsCount(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val conduit: kotlin.String? = null, val keyword: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Send Batch Notifications
      * Send notifications to all users of an application. Only someone with permissions to the application can do this.
-     * @param version  
      * @param accountId The account id of the application owner/manager 
      * @param appKey The application key for updating an existing application 
      * @param customMessage Message string that will be displayed in on the notification 
@@ -5388,12 +5078,11 @@ Using the various parameters can return the applications default mission   (buil
      * @param parentId Default notification pay-load field (usage is dependent on the app and the type of event) (optional)
      * @param parentType Default notification pay-load field (usage is dependent on the app and the type of event) (optional)
      */
-    @Resource("/api/{version}/notification/batch") class sendBatchNotifications(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val conduit: kotlin.String? = null, val customMessage: kotlin.String, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null)
+    @Resource("/notification/batch") class sendBatchNotifications(val accountId: kotlin.Long, val appKey: kotlin.String, val conduit: kotlin.String? = null, val customMessage: kotlin.String, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null)
 
     /**
      * Send Custom Notifications
      * Send your own custom notification to a user. NOTE: the EventType of these notifications will be CUSTOM. Notifications sent to yourself will currently be ignored.
-     * @param version  
      * @param deviceId the unique id of the device making the request (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param receiverAccountIds comma separated list of account IDs that will receive the notification (optional)
@@ -5413,19 +5102,18 @@ Using the various parameters can return the applications default mission   (buil
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/notification/custom") class sendCustomNotifications(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val receiverAccountIds: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean? = null, val appKey: kotlin.String? = null, val gameType: kotlin.String? = null, val conduit: kotlin.String? = null, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null, val actionCategory: kotlin.String? = null, val subject: kotlin.String? = null, val customMessage: kotlin.String? = null, val friendOnlyAPNS: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/notification/custom") class sendCustomNotifications(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val receiverAccountIds: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean? = null, val appKey: kotlin.String? = null, val gameType: kotlin.String? = null, val conduit: kotlin.String? = null, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null, val actionCategory: kotlin.String? = null, val subject: kotlin.String? = null, val customMessage: kotlin.String? = null, val friendOnlyAPNS: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Update Notification Template
      * Update a notification template. Developers will only be able to update notification templates for their own applications.
-     * @param version  
      * @param accountId The account ID of the user. 
      * @param notificationTemplateId The notification template ID to update. 
      * @param title The title of the message (this would become the subject title for emails). There is a 191 character limit. (optional)
      * @param body The body of the message. (optional)
      * @param tags The search tags on the template used during search queries. (optional)
      */
-    @Resource("/api/{version}/notification/template/update") class updateNotificationTemplate(val version: java.math.BigDecimal, val accountId: kotlin.Long, val notificationTemplateId: kotlin.Long, val title: kotlin.String? = null, val body: kotlin.String? = null, val tags: kotlin.String? = null)
+    @Resource("/notification/template/update") class updateNotificationTemplate(val accountId: kotlin.Long, val notificationTemplateId: kotlin.Long, val title: kotlin.String? = null, val body: kotlin.String? = null, val tags: kotlin.String? = null)
 
     /**
      * Create Field
@@ -5436,24 +5124,22 @@ Duplicate   field names are not allowed.
 The field name cannot be any of the following   reserved words: ACCESSIBLE, ADD, ALL, ALTER, ANALYZE, AND, AS, ASC, ASENSITIVE,   BEFORE, BETWEEN, BIGINT, BINARY, BLOB, BOTH, BY, CALL, CASCADE, CASE, CHANGE,   CHAR, CHARACTER, CHECK, COLLATE, COLUMN, CONDITION, CONSTRAINT, CONTINUE,   CONVERT, CREATE, CROSS, CURRENT_, ATE, CURRENT_TIME, CURRENT_TIMESTAMP,   CURRENT_USER, CURSOR, DATABASE, DATABASES, DAY_HOUR, DAY_MICROSECOND, DAY_MINUTE,   DAY_SECOND, DEC, DECIMAL, DECLARE, DEFAULT, DELAYED, DELETE, DESC, DESCRIBE,   DETERMINISTIC, DISTINCT, DISTINCTROW, DIV, DOUBLE, DROP, DUAL, EACH, ELSE,   ELSEIF, ENCLOSED, ESCAPED, EXISTS, EXIT, EXPLAIN, FALSE, FETCH, FLOAT, FLOAT4,   FLOAT8, FOR, FORCE, FOREIGN, FROM, FULLTEXT, GRANT, GROUP, HAVING, HIGH_PRIORITY,   HOUR_MICROSECOND, HOUR_MINUTE, HOUR_SECOND, IF, IGNORE, IN, INDEX, INFILE,   INNER, INOUT, INSENSITIVE, INSERT, INT, INT1, INT2, INT3, INT4, INT8, INTEGER,   INTERVAL, INTO, IS, ITERATE, JOIN, KEY, KEYS, KILL, LEADING, LEAVE, LEFT,   LIKE, LIMIT, LINEAR, LINES, LOAD, LOCALTIME, LOCALTIMESTAMP, LOCK, LONG,   LONGBLOB, LONGT, XT, LOOP, LOW_PRIORITY, MASTER_SSL_VERIFY_SERVER_CERT,   MATCH, MAXVALUE, MEDIUMBLOB, MEDIUMINT, MEDIUMTEXT, MIDDLEINT, MINUTE_MICROSECOND,   MINUTE_SECOND, MOD, MODIFIES, NATURAL, NOT, NO_WRITE_TO_BINLOG, NULL, NUMERIC,   ON, OPTIMIZE, OPTION, OPTIONALLY, OR, ORDER, OUT, OUTER, OUTFILE, PRECISION,   PRIMARY, PROCEDURE, PURGE, RANGE, READ, READS, READ_WRITE, REAL, REFERENCES,   REGEXP, RELEASE, RENAME, REPEAT, REPLACE, REQUIRE, RESIGNAL, RESTRICT, RETURN,   REVOKE, RIGHT, RLIKE, SCHEMA, SCHEMAS, SECOND_MICROSECOND, SELECT, SENSITIVE,   SEPARATOR, SET, SHOW, SIGNAL, SMALLINT, SPATIAL, SPECIFIC, SQL, SQLEXCEPTION,   SQLSTATE, SQLWARNING, SQL_BIG_RESULT, SQL_CALC_FOUND_ROWS, SQL_SMALL_RESULT,   SSL, STARTING, STRAIGHT_JOIN, TABLE, TERMINATED, THEN, TINYBLOB, TINYINT,   TINYTEXT, TO, TRAILING, TRIGGER, TRUE, NDO, UNION, UNIQUE, UNLOCK, UNSIGNED,   UPDATE, USAGE, USE, USING, UTC_DATE, UTC_TIME, UTC_TIMESTAMP, VALUES, VARBINARY,   VARCHAR, VARCHARACTER, VARYING, WHEN, WHERE, WHILE, WITH, WRITE, XOR, YEAR_MONTH,   ZEROFILL, GENERAL, IGNORE_SERVER_IDS, MASTER_HEARTBEAT_PERIOD, SLOW. 
 
   The following field names are reserved (cannot be used directly) and are automatically   included during object creation: ID, OBJECTID, CREATED, UPDATED, DELETED.   Additionally the field names must start with a letter or number.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param appKey The application key for updating an existing application 
      * @param objectName The name of the object to add the field to 
      * @param fieldName field name The name of the field to add. 
      * @param fieldType field type The field type to create, supported types are: STRING, DATE, NUMBER, BOOLEAN, IDENTITY 
      */
-    @Resource("/api/{version}/object/field/add") class addField(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String, val fieldName: kotlin.String, val fieldType: kotlin.String)
+    @Resource("/object/field/add") class addField(val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String, val fieldName: kotlin.String, val fieldType: kotlin.String)
 
     /**
      * Create Data
      * Create a record for the specified object.  If the object does not exist then a new one will be created prior to inserting the record.  If any of the fields included does not exist for the object then they are added to the object. 
-     * @param version  
      * @param objectName the name of the object to create data for 
      * @param accountId the account id (optional)
      * @param body  (optional)
      */
-    @Resource("/api/{version}/object/data/{objectName}") class createData(val version: java.math.BigDecimal, val objectName: kotlin.String, val accountId: kotlin.Long? = null)
+    @Resource("/object/data/{objectName}") class createData(val objectName: kotlin.String, val accountId: kotlin.Long? = null)
 
     /**
      * Create Object
@@ -5462,71 +5148,64 @@ The field name cannot be any of the following   reserved words: ACCESSIBLE, ADD,
 Duplicate object names are not allowed. 
 
 The object name cannot be any of the following reserved words: ACCESSIBLE, ADD, ALL, ALTER, ANALYZE, AND, AS, ASC, ASENSITIVE, BEFORE, BETWEEN, BIGINT, BINARY, BLOB, BOTH, BY, CALL, CASCADE, CASE, CHANGE, CHAR, CHARACTER, CHECK, COLLATE, COLUMN, CONDITION, CONSTRAINT, CONTINUE, CONVERT, CREATE, CROSS, CURRENT_, ATE, CURRENT_TIME, CURRENT_TIMESTAMP, CURRENT_USER, CURSOR, DATABASE, DATABASES, DAY_HOUR, DAY_MICROSECOND, DAY_MINUTE, DAY_SECOND, DEC, DECIMAL, DECLARE, DEFAULT, DELAYED, DELETE, DESC, DESCRIBE, DETERMINISTIC, DISTINCT, DISTINCTROW, DIV, DOUBLE, DROP, DUAL, EACH, ELSE, ELSEIF, ENCLOSED, ESCAPED, EXISTS, EXIT, EXPLAIN, FALSE, FETCH, FLOAT, FLOAT4, FLOAT8, FOR, FORCE, FOREIGN, FROM, FULLTEXT, GRANT, GROUP, HAVING, HIGH_PRIORITY, HOUR_MICROSECOND, HOUR_MINUTE, HOUR_SECOND, IF, IGNORE, IN, INDEX, INFILE, INNER, INOUT, INSENSITIVE, INSERT, INT, INT1, INT2, INT3, INT4, INT8, INTEGER, INTERVAL, INTO, IS, ITERATE, JOIN, KEY, KEYS, KILL, LEADING, LEAVE, LEFT, LIKE, LIMIT, LINEAR, LINES, LOAD, LOCALTIME, LOCALTIMESTAMP, LOCK, LONG, LONGBLOB, LONGT, XT, LOOP, LOW_PRIORITY, MASTER_SSL_VERIFY_SERVER_CERT, MATCH, MAXVALUE, MEDIUMBLOB, MEDIUMINT, MEDIUMTEXT, MIDDLEINT, MINUTE_MICROSECOND, MINUTE_SECOND, MOD, MODIFIES, NATURAL, NOT, NO_WRITE_TO_BINLOG, NULL, NUMERIC, ON, OPTIMIZE, OPTION, OPTIONALLY, OR, ORDER, OUT, OUTER, OUTFILE, PRECISION, PRIMARY, PROCEDURE, PURGE, RANGE, READ, READS, READ_WRITE, REAL, REFERENCES, REGEXP, RELEASE, RENAME, REPEAT, REPLACE, REQUIRE, RESIGNAL, RESTRICT, RETURN, REVOKE, RIGHT, RLIKE, SCHEMA, SCHEMAS, SECOND_MICROSECOND, SELECT, SENSITIVE, SEPARATOR, SET, SHOW, SIGNAL, SMALLINT, SPATIAL, SPECIFIC, SQL, SQLEXCEPTION, SQLSTATE, SQLWARNING, SQL_BIG_RESULT, SQL_CALC_FOUND_ROWS, SQL_SMALL_RESULT, SSL, STARTING, STRAIGHT_JOIN, TABLE, TERMINATED, THEN, TINYBLOB, TINYINT, TINYTEXT, TO, TRAILING, TRIGGER, TRUE, NDO, UNION, UNIQUE, UNLOCK, UNSIGNED, UPDATE, USAGE, USE, USING, UTC_DATE, UTC_TIME, UTC_TIMESTAMP, VALUES, VARBINARY, VARCHAR, VARCHARACTER, VARYING, WHEN, WHERE, WHILE, WITH, WRITE, XOR, YEAR_MONTH, ZEROFILL, GENERAL, IGNORE_SERVER_IDS, MASTER_HEARTBEAT_PERIOD, SLOW. 
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param appKey The application key for updating an existing application 
      * @param objectName The name of the object to create 
      */
-    @Resource("/api/{version}/object/create") class createObject(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String)
+    @Resource("/object/create") class createObject(val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String)
 
     /**
      * Delete Data
      * Delete a record for the specified object. Cannot be undone so use only when abolutely sure.
-     * @param version  
      * @param objectName The name of the object to search upon 
      * @param objectId objectId The id of the record to return 
      * @param accountId The account id of the logged in user (optional)
      */
-    @Resource("/api/{version}/object/data/{objectName}/{objectId}") class deleteData(val version: java.math.BigDecimal, val objectName: kotlin.String, val objectId: kotlin.String, val accountId: kotlin.Long? = null)
+    @Resource("/object/data/{objectName}/{objectId}") class deleteData(val objectName: kotlin.String, val objectId: kotlin.String, val accountId: kotlin.Long? = null)
 
     /**
      * Delete Field
      * Delete a field from an object.  This will remove the field, indexes,   and foreign keys associated with the field. 
 
 The following field names   are reserved and cannot be removed from the object: ID, OBJECTID, CREATED,   UPDATED, DELETED
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param appKey The application key for updating an existing application 
      * @param objectName The name of the object to remove the field from 
      * @param fieldName field name The name of the field to remove. 
      */
-    @Resource("/api/{version}/object/field/delete") class deleteField(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String, val fieldName: kotlin.String)
+    @Resource("/object/field/delete") class deleteField(val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String, val fieldName: kotlin.String)
 
     /**
      * Delete Object
      * Delete and Object in the store.  This will delete the table and clean up and foreign keys referencing it. Cannot be undone so use only when abolutely sure.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param appKey the application key 
      * @param objectName the name of the object to delete 
      */
-    @Resource("/api/{version}/object/delete") class deleteObject(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String)
+    @Resource("/object/delete") class deleteObject(val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String)
 
     /**
      * Get Data
      * Get a specific record from a specified object.
-     * @param version  
      * @param objectName The name of the object to search upon 
      * @param objectId objectId The id of the record to return 
      * @param accountId The account id of the logged in user (optional)
      * @param include  (optional)
      */
-    @Resource("/api/{version}/object/data/{objectName}/{objectId}") class getData(val version: java.math.BigDecimal, val objectName: kotlin.String, val objectId: kotlin.String, val accountId: kotlin.Long? = null, val include: kotlin.String? = null)
+    @Resource("/object/data/{objectName}/{objectId}") class getData(val objectName: kotlin.String, val objectId: kotlin.String, val accountId: kotlin.Long? = null, val include: kotlin.String? = null)
 
     /**
      * Get Object
      * Get the definition of an Object. Returns all field names, types, and current size. The types supported are: STRING, DATE, NUMBER, BOOLEAN, IDENTITY.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param appKey The application key for updating an existing application 
      * @param objectName The name of the object to get the definition for 
      */
-    @Resource("/api/{version}/object/get") class getObject(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String)
+    @Resource("/object/get") class getObject(val accountId: kotlin.Long, val appKey: kotlin.String, val objectName: kotlin.String)
 
     /**
      * Search Data
      * Search for records given the specified criteria.  The criteria is a defined set of json values used to build a query
-     * @param version  
      * @param objectName The name of the object to search upon 
      * @param count If true just return the record count of the search. False (default) will return the actual records 
      * @param start The start of the pagination 
@@ -5536,45 +5215,41 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param order The order of results; comma seperated list of field names. Illegal field names will be ignored. Direction by defualt is ascending. Prepend a minus to the field name to make that field descending. (optional)
      * @param include  (optional)
      */
-    @Resource("/api/{version}/object/data/{objectName}") class searchData(val version: java.math.BigDecimal, val objectName: kotlin.String, val accountId: kotlin.Long? = null, val criteria: kotlin.String? = null, val count: kotlin.Boolean, val start: kotlin.Long, val limit: kotlin.Long, val order: kotlin.String? = null, val include: kotlin.String? = null)
+    @Resource("/object/data/{objectName}") class searchData(val objectName: kotlin.String, val accountId: kotlin.Long? = null, val criteria: kotlin.String? = null, val count: kotlin.Boolean, val start: kotlin.Long, val limit: kotlin.Long, val order: kotlin.String? = null, val include: kotlin.String? = null)
 
     /**
      * Search Objects
      * Search for Objects and return the list of names found.  Use this in conjunction with the object get service to present the current data model defined.
-     * @param version  
      * @param accountId The account id of the logged in user 
      * @param appKey The application key for updating an existing application 
      * @param start The start of the pagination 
      * @param limit The limit of the pagination 
      * @param keyword The name of the object(s) to search for, can be a partial match (optional)
      */
-    @Resource("/api/{version}/object/search") class searchObject(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val start: kotlin.Long, val limit: kotlin.Long)
+    @Resource("/object/search") class searchObject(val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val start: kotlin.Long, val limit: kotlin.Long)
 
     /**
      * Update Data
      * Update a record for the specified object.  If the object does not exist the request will be rejected, use the data create service for the first entry. If any of the fields included does not exist for the object then they are added to the object.
-     * @param version  
      * @param objectName The name of the object to search upon 
      * @param objectId objectId The id of the record to return 
      * @param accountId The account id of the logged in user (optional)
      * @param body  (optional)
      */
-    @Resource("/api/{version}/object/data/{objectName}/{objectId}") class updateData(val version: java.math.BigDecimal, val objectName: kotlin.String, val objectId: kotlin.String, val accountId: kotlin.Long? = null)
+    @Resource("/object/data/{objectName}/{objectId}") class updateData(val objectName: kotlin.String, val objectId: kotlin.String, val accountId: kotlin.Long? = null)
 
     /**
      * Update Offer Locations
      * Batch update offer locations.
-     * @param version  
      * @param &#x60;data&#x60; JSON string in the following format: &#x60;&#x60;&#x60;json [{   \&quot;offerLocationId\&quot;: 1705,   \&quot;latitude\&quot;: 54.0,   \&quot;longitude\&quot;: -122.0,   \&quot;altitude\&quot;: 1.0,   \&quot;locationDetail\&quot;: \&quot;floor 1\&quot;,   \&quot;locationDescription\&quot;: \&quot;behind the Coke sign\&quot; }, {   \&quot;offerLocationId\&quot;: 1704,   \&quot;latitude\&quot;: 54.1,   \&quot;longitude\&quot;: -122.1 }] &#x60;&#x60;&#x60;  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/retailer/offer/location/batchUpdate") class batchUpdateOfferLocations(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val &#x60;data&#x60;: kotlin.String)
+    @Resource("/retailer/offer/location/batchUpdate") class batchUpdateOfferLocations(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val &#x60;data&#x60;: kotlin.String)
 
     /**
      * Create Offer
      * Create an offer and assign it to the provided retailer locations.
-     * @param version  
      * @param includeOfferLocations If true return all the offer locations associated with the offer 
      * @param title The title (255 char limit) 
      * @param barcodeType The bar code type {NONE, UPC, CODE_128, QR, CUSTOM_MEDIA} 
@@ -5662,43 +5337,39 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param availability  (optional)
      * @param availabilitySummary  (optional)
      */
-    @Resource("/api/{version}/retailer/offer/create") class createOffer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val tags: kotlin.String? = null, val parentOfferId: kotlin.Long? = null, val includeOfferLocations: kotlin.Boolean, val retailerLocationIds: kotlin.String? = null, val offerLocations: kotlin.String? = null, val title: kotlin.String, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val externalId: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean, val availableLimit: kotlin.Int, val availableLimitPerUser: kotlin.Int, val addedLimit: kotlin.Int, val viewLimit: kotlin.Int, val maxPrints: kotlin.Int, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long, val fullPrice: kotlin.Double, val discountPrice: kotlin.Double, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val offerType: kotlin.String, val specialOfferType: kotlin.String, val offerVisibility: kotlin.String, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val brand: kotlin.String? = null, val productType: kotlin.String? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val department: kotlin.String? = null, val features: kotlin.String? = null, val minimumPrice: kotlin.Double? = null, val width: kotlin.Double? = null, val height: kotlin.Double? = null, val depth: kotlin.Double? = null, val weight: kotlin.Double? = null, val unit: kotlin.String? = null, val studio: kotlin.String? = null, val parentalRating: kotlin.String? = null, val publishDate: kotlin.Long? = null, val availabilityDate: kotlin.Long? = null, val sizeId: kotlin.Long? = null, val listingId: kotlin.Long? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val rebootTimeHour: kotlin.Int? = null, val rebootTimeMinute: kotlin.Int? = null, val idleTimeoutInSecond: kotlin.Int? = null, val serialNumber: kotlin.String? = null, val udid: kotlin.String? = null, val deviceType: kotlin.String? = null, val devicePower: kotlin.Double? = null, val deviceInterference: kotlin.Double? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
+    @Resource("/retailer/offer/create") class createOffer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val tags: kotlin.String? = null, val parentOfferId: kotlin.Long? = null, val includeOfferLocations: kotlin.Boolean, val retailerLocationIds: kotlin.String? = null, val offerLocations: kotlin.String? = null, val title: kotlin.String, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val externalId: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean, val availableLimit: kotlin.Int, val availableLimitPerUser: kotlin.Int, val addedLimit: kotlin.Int, val viewLimit: kotlin.Int, val maxPrints: kotlin.Int, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long, val fullPrice: kotlin.Double, val discountPrice: kotlin.Double, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val offerType: kotlin.String, val specialOfferType: kotlin.String, val offerVisibility: kotlin.String, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val brand: kotlin.String? = null, val productType: kotlin.String? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val department: kotlin.String? = null, val features: kotlin.String? = null, val minimumPrice: kotlin.Double? = null, val width: kotlin.Double? = null, val height: kotlin.Double? = null, val depth: kotlin.Double? = null, val weight: kotlin.Double? = null, val unit: kotlin.String? = null, val studio: kotlin.String? = null, val parentalRating: kotlin.String? = null, val publishDate: kotlin.Long? = null, val availabilityDate: kotlin.Long? = null, val sizeId: kotlin.Long? = null, val listingId: kotlin.Long? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val rebootTimeHour: kotlin.Int? = null, val rebootTimeMinute: kotlin.Int? = null, val idleTimeoutInSecond: kotlin.Int? = null, val serialNumber: kotlin.String? = null, val udid: kotlin.String? = null, val deviceType: kotlin.String? = null, val devicePower: kotlin.Double? = null, val deviceInterference: kotlin.Double? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
 
     /**
      * Delete Offer
      * Set the deleted timestamp to current time. This effectively deletes the offer since all queries should ignore any records with a deleted time stamp.
-     * @param version  
      * @param offerId The ID of the offer to be deleted 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account used to perform the delete, must have rights to edit the offer. (optional)
      */
-    @Resource("/api/{version}/retailer/offer/delete") class deleteOffer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long)
+    @Resource("/retailer/offer/delete") class deleteOffer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long)
 
     /**
      * Delete Offer Location
      * Set the deleted timestamp to current time. This effectively deletes the offer location since all queries should ignore any records with a deleted time stamp.
-     * @param version  
      * @param offerLocationId The ID of the offer location to be deleted 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account used to perform the delete, must have rights to edit the offer location. (optional)
      */
-    @Resource("/api/{version}/retailer/offer/location/delete") class deleteOfferLocation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerLocationId: kotlin.Long)
+    @Resource("/retailer/offer/location/delete") class deleteOfferLocation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerLocationId: kotlin.Long)
 
     /**
      * Get Offer
      * Gets the details of an offer that the user has access to.
-     * @param version  
      * @param offerId The id of the offer 
      * @param includeOfferLocations  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/retailer/offer/get") class getOffer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long, val includeOfferLocations: kotlin.Boolean)
+    @Resource("/retailer/offer/get") class getOffer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long, val includeOfferLocations: kotlin.Boolean)
 
     /**
      * Get Offer
      * Gets offer or offer location details as a consumer.  Will check if it is a favorite if the deviceId/accountId is provided.  If the offerId is provided it will look up the main offer and ignore the the offerLocationId. If no offerId is provided then an offerLocationId must be specified.
-     * @param version  
      * @param deviceId The device id for returning account information (i.e. favorites) (optional)
      * @param accountId The account id for returning account information (i.e. favorites) (optional)
      * @param offerId The offer id (either offeLocationId or offerId must be provided) (optional)
@@ -5710,32 +5381,29 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param includeRetailerLocations Determines whether to return the retailer location info for each offer location response (includeOfferLocations must also be true for this to work) (optional, default to false)
      * @param includeChildOffers Determines whether to include child offers in the response (optional, default to false)
      */
-    @Resource("/api/{version}/offer/get") class getOfferDetails(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val distance: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val includeOfferLocations: kotlin.Boolean? = null, val includeRetailerLocations: kotlin.Boolean? = null, val includeChildOffers: kotlin.Boolean? = null)
+    @Resource("/offer/get") class getOfferDetails(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val distance: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val includeOfferLocations: kotlin.Boolean? = null, val includeRetailerLocations: kotlin.Boolean? = null, val includeChildOffers: kotlin.Boolean? = null)
 
     /**
      * Get Offers (Counts)
      * Gets the offer list counts.
-     * @param version  
      * @param latitude The latitude of where the search will center at 
      * @param longitude The longitude of where the search will center at 
      * @param searchRange The range of the search (optional, default to 5)
      * @param distanceUnit The units to use for distance calculations (e.g. MILES, KILOMETERS) (optional, default to MILES)
      */
-    @Resource("/api/{version}/offer/lists/count") class getOfferListCounts(val version: java.math.BigDecimal, val latitude: kotlin.Double, val longitude: kotlin.Double, val searchRange: java.math.BigDecimal? = null, val distanceUnit: kotlin.String? = null)
+    @Resource("/offer/lists/count") class getOfferListCounts(val latitude: kotlin.Double, val longitude: kotlin.Double, val searchRange: java.math.BigDecimal? = null, val distanceUnit: kotlin.String? = null)
 
     /**
      * Get Offer Location
      * Gets the offer location by offer location id or udid (of a device)
-     * @param version  
      * @param offerLocationId the id of the offer location to get (optional)
      * @param udid the UDID of the device (optional)
      */
-    @Resource("/api/{version}/offer/location/get") class getOfferLocation(val version: java.math.BigDecimal, val offerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null)
+    @Resource("/offer/location/get") class getOfferLocation(val offerLocationId: kotlin.Long? = null, val udid: kotlin.String? = null)
 
     /**
      * Search Offer Locations
      * Searches on offer locations, which are records that represent an offer that has been assigned to a retailer location. If an offer does not have any locations assigned, then it will NOT be returned.
-     * @param version  
      * @param sortField The column to sort the results on. Default is \&quot;TITLE\&quot;, which will sort the results by the offer title. Possible input values: {CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, RETAILER_ID,RETAILER_LOCATION_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY} 
      * @param descending The order to return the results. Default is false, which will return the results in ascending order. 
      * @param start The index into the record set to start with. Default is 0. 
@@ -5757,12 +5425,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param needsNotificationSent  (optional)
      * @param lastNotificationSent  (optional)
      */
-    @Resource("/api/{version}/retailer/offer/location/search") class getOfferLocationsForRetailers(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val offerType: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val includeRetailerLocation: kotlin.Boolean, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val deviceStatus: kotlin.String? = null, val needsNotificationSent: kotlin.Boolean? = null, val lastNotificationSent: kotlin.Long? = null)
+    @Resource("/retailer/offer/location/search") class getOfferLocationsForRetailers(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val offerType: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val includeRetailerLocation: kotlin.Boolean, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val deviceStatus: kotlin.String? = null, val needsNotificationSent: kotlin.Boolean? = null, val lastNotificationSent: kotlin.Long? = null)
 
     /**
      * Search Offers
      * Searches on offers that the account has access to.
-     * @param version  
      * @param offerVisibility  
      * @param sortField The column to sort the search on. Possible values include: ID, CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, ESTIMATED_VALUE, VOUCHER_PRICE, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY 
      * @param descending The order to return the search results 
@@ -5795,24 +5462,22 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param needsNotificationSent  (optional)
      * @param lastNotificationSent  (optional)
      */
-    @Resource("/api/{version}/retailer/offer/search") class getOffersForRetailers(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val couponType: kotlin.String? = null, val offerType: kotlin.String? = null, val offerTypes: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val offerVisibility: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val availableOnly: kotlin.Boolean, val activeOnly: kotlin.Boolean, val includeCategories: kotlin.Boolean, val includeFilters: kotlin.Boolean, val includeOfferLocations: kotlin.Boolean, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val deviceStatus: kotlin.String? = null, val needsNotificationSent: kotlin.Boolean? = null, val lastNotificationSent: kotlin.Long? = null)
+    @Resource("/retailer/offer/search") class getOffersForRetailers(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val couponType: kotlin.String? = null, val offerType: kotlin.String? = null, val offerTypes: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val offerVisibility: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val availableOnly: kotlin.Boolean, val activeOnly: kotlin.Boolean, val includeCategories: kotlin.Boolean, val includeFilters: kotlin.Boolean, val includeOfferLocations: kotlin.Boolean, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val deviceStatus: kotlin.String? = null, val needsNotificationSent: kotlin.Boolean? = null, val lastNotificationSent: kotlin.Long? = null)
 
     /**
      * Update Offer Transaction
      * Redeems an offer.
-     * @param version  
      * @param offerTransactionId the OfferTransaction ID of the transaction being redeemed 
      * @param status the status to set the offer transaction to - 1 sets it to redeemable and 2 sets it to redeemed 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param offerLocationId the OfferLocation ID where the offer is being redeemed (optional)
      */
-    @Resource("/api/{version}/retailer/offer/transaction/update") class redeemOfferTransaction(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerTransactionId: kotlin.Long, val offerLocationId: kotlin.Long? = null, val status: kotlin.Int)
+    @Resource("/retailer/offer/transaction/update") class redeemOfferTransaction(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerTransactionId: kotlin.Long, val offerLocationId: kotlin.Long? = null, val status: kotlin.Int)
 
     /**
      * Search Offer Transactions
      * Searches on offer transactions for offers that the account has access to.
-     * @param version  
      * @param sortField Determines what to sort the results by {CREATED, UPDATED, SEARCH_TAGS, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, CUSTOMER_ID, CUSTOMER_DISPLAY, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY} 
      * @param descending Determines whether the results are in descending order 
      * @param start The start index for pagination 
@@ -5838,12 +5503,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param i This parameter is deprecated. (optional)
      * @param l This parameter is deprecated. (optional)
      */
-    @Resource("/api/{version}/retailer/offer/transaction/search") class searchOfferTransactionsForRetailers(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val redeemed: kotlin.Boolean? = null, val reservationsOnly: kotlin.Boolean? = null, val couponType: kotlin.String? = null, val offerType: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val customerAccountIds: kotlin.String? = null, val categoryIds: kotlin.String? = null, val redeemableStartDate: kotlin.Long? = null, val redeemableEndDate: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/retailer/offer/transaction/search") class searchOfferTransactionsForRetailers(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val redeemed: kotlin.Boolean? = null, val reservationsOnly: kotlin.Boolean? = null, val couponType: kotlin.String? = null, val offerType: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val customerAccountIds: kotlin.String? = null, val categoryIds: kotlin.String? = null, val redeemableStartDate: kotlin.Long? = null, val redeemableEndDate: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Search Offers
      * Searches for offers as a consumer.
-     * @param version  
      * @param latitude The latitude of where the search will center at 
      * @param longitude The longitude of where the search will center at 
      * @param recommendationType The method to use to gather recommendations: WALLET base relevance on items in users wallets CLICKS base relevance on items users have clicked on BLENDED blend using all methods available 
@@ -5876,21 +5540,19 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param searchExpression  (optional)
      * @param groupBy groups the results by a certain field. For example, if you want to return the closest offer location of an offer, then pass in groupBy&#x3D;OFFER_ID and sortField&#x3D;DISTANCE (to sort by distance). (optional)
      */
-    @Resource("/api/{version}/offer/lists") class searchOffersForConsumer(val version: java.math.BigDecimal, val appKey: kotlin.String? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double, val longitude: kotlin.Double, val searchRange: kotlin.Double? = null, val tags: kotlin.String? = null, val supportedPostalCodes: kotlin.String? = null, val keyword: kotlin.String? = null, val categories: kotlin.String? = null, val filters: kotlin.String? = null, val offerTypes: kotlin.String? = null, val type: kotlin.String? = null, val sortField: kotlin.String? = null, val recommendOfferIds: kotlin.String? = null, val recommendationType: kotlin.String, val locationId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val offerId: kotlin.Long? = null, val includeMission: kotlin.Boolean? = null, val includeCategories: kotlin.Boolean? = null, val includeFilters: kotlin.Boolean? = null, val includeExpired: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val start: kotlin.Int, val limit: kotlin.Int, val maxRecommendations: kotlin.Int, val distanceUnit: kotlin.String, val closestOfferOnly: kotlin.Boolean? = null, val searchExpression: kotlin.String? = null, val groupBy: kotlin.String? = null)
+    @Resource("/offer/lists") class searchOffersForConsumer(val appKey: kotlin.String? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double, val longitude: kotlin.Double, val searchRange: kotlin.Double? = null, val tags: kotlin.String? = null, val supportedPostalCodes: kotlin.String? = null, val keyword: kotlin.String? = null, val categories: kotlin.String? = null, val filters: kotlin.String? = null, val offerTypes: kotlin.String? = null, val type: kotlin.String? = null, val sortField: kotlin.String? = null, val recommendOfferIds: kotlin.String? = null, val recommendationType: kotlin.String, val locationId: kotlin.Long, val retailerLocationIds: kotlin.String? = null, val offerId: kotlin.Long? = null, val includeMission: kotlin.Boolean? = null, val includeCategories: kotlin.Boolean? = null, val includeFilters: kotlin.Boolean? = null, val includeExpired: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val start: kotlin.Int, val limit: kotlin.Int, val maxRecommendations: kotlin.Int, val distanceUnit: kotlin.String, val closestOfferOnly: kotlin.Boolean? = null, val searchExpression: kotlin.String? = null, val groupBy: kotlin.String? = null)
 
     /**
      * Get Offers (Top)
      * Gets the top active offers.
-     * @param version  
      * @param start The index into the record set to start with. Default is 0. (optional, default to 0)
      * @param limit The total number of record to return. Default id 20. (optional, default to 20)
      */
-    @Resource("/api/{version}/offer/top") class topOfferTransactions(val version: java.math.BigDecimal, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/offer/top") class topOfferTransactions(val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Offer
      * Update an offer, must provide a current list of retailer locations or the current offer locations will be marked as deleted.
-     * @param version  
      * @param offerId The offer to update 
      * @param includeOfferLocations If true return all the offer locations associated with the offer 
      * @param deviceId The device id (deviceId or accountId required) (optional)
@@ -5979,23 +5641,21 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param availability  (optional)
      * @param availabilitySummary  (optional)
      */
-    @Resource("/api/{version}/retailer/offer/update") class updateOffer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long, val parentOfferId: kotlin.Long? = null, val includeOfferLocations: kotlin.Boolean, val retailerLocationIds: kotlin.String? = null, val offerLocations: kotlin.String? = null, val tags: kotlin.String? = null, val title: kotlin.String? = null, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val externalId: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean? = null, val availableLimit: kotlin.Int? = null, val availableLimitPerUser: kotlin.Int? = null, val addedLimit: kotlin.Int? = null, val viewLimit: kotlin.Int? = null, val maxPrints: kotlin.Int? = null, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long? = null, val fullPrice: kotlin.Double? = null, val discountPrice: kotlin.Double? = null, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val offerType: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val offerVisibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val brand: kotlin.String? = null, val productType: kotlin.String? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val department: kotlin.String? = null, val features: kotlin.String? = null, val minimumPrice: kotlin.Double? = null, val width: kotlin.Double? = null, val height: kotlin.Double? = null, val depth: kotlin.Double? = null, val weight: kotlin.Double? = null, val unit: kotlin.String? = null, val studio: kotlin.String? = null, val parentalRating: kotlin.String? = null, val publishDate: kotlin.Long? = null, val availabilityDate: kotlin.Long? = null, val sizeId: kotlin.Long? = null, val listingId: kotlin.Long? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val rebootTimeHour: kotlin.Int? = null, val rebootTimeMinute: kotlin.Int? = null, val idleTimeoutInSecond: kotlin.Int? = null, val serialNumber: kotlin.String? = null, val udid: kotlin.String? = null, val deviceType: kotlin.String? = null, val devicePower: kotlin.Double? = null, val deviceInterference: kotlin.Double? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
+    @Resource("/retailer/offer/update") class updateOffer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long, val parentOfferId: kotlin.Long? = null, val includeOfferLocations: kotlin.Boolean, val retailerLocationIds: kotlin.String? = null, val offerLocations: kotlin.String? = null, val tags: kotlin.String? = null, val title: kotlin.String? = null, val subTitle: kotlin.String? = null, val details: kotlin.String? = null, val subDetails: kotlin.String? = null, val finePrint: kotlin.String? = null, val barcodeType: kotlin.String? = null, val barcodeEntry: kotlin.String? = null, val externalRedeemOptions: kotlin.String? = null, val externalUrl: kotlin.String? = null, val externalId: kotlin.String? = null, val ticketsRewardType: kotlin.String? = null, val ticketsReward: kotlin.Long? = null, val activated: kotlin.Long? = null, val expires: kotlin.Long? = null, val noExpiration: kotlin.Boolean? = null, val availableLimit: kotlin.Int? = null, val availableLimitPerUser: kotlin.Int? = null, val addedLimit: kotlin.Int? = null, val viewLimit: kotlin.Int? = null, val maxPrints: kotlin.Int? = null, val ticketPriceType: kotlin.String? = null, val ticketPrice: kotlin.Long? = null, val fullPrice: kotlin.Double? = null, val discountPrice: kotlin.Double? = null, val showRemaining: kotlin.Boolean? = null, val showRedeemed: kotlin.Boolean? = null, val replaced: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val offerType: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val offerVisibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val barcodeAssetId: kotlin.Long? = null, val imageAssetId: kotlin.Long? = null, val imageAssetId1: kotlin.Long? = null, val imageAssetId2: kotlin.Long? = null, val imageAssetId3: kotlin.Long? = null, val imageAssetId4: kotlin.Long? = null, val imageAssetId5: kotlin.Long? = null, val publisher: kotlin.String? = null, val redeemableStart: kotlin.Long? = null, val redeemableEnd: kotlin.Long? = null, val brand: kotlin.String? = null, val productType: kotlin.String? = null, val conditionType: kotlin.String? = null, val isbn: kotlin.String? = null, val asin: kotlin.String? = null, val catalogNumbers: kotlin.String? = null, val department: kotlin.String? = null, val features: kotlin.String? = null, val minimumPrice: kotlin.Double? = null, val width: kotlin.Double? = null, val height: kotlin.Double? = null, val depth: kotlin.Double? = null, val weight: kotlin.Double? = null, val unit: kotlin.String? = null, val studio: kotlin.String? = null, val parentalRating: kotlin.String? = null, val publishDate: kotlin.Long? = null, val availabilityDate: kotlin.Long? = null, val sizeId: kotlin.Long? = null, val listingId: kotlin.Long? = null, val mediaType: kotlin.String? = null, val duration: kotlin.Int? = null, val author: kotlin.String? = null, val releaseDate: kotlin.Long? = null, val collectionIds: kotlin.String? = null, val rebootTimeHour: kotlin.Int? = null, val rebootTimeMinute: kotlin.Int? = null, val idleTimeoutInSecond: kotlin.Int? = null, val serialNumber: kotlin.String? = null, val udid: kotlin.String? = null, val deviceType: kotlin.String? = null, val devicePower: kotlin.Double? = null, val deviceInterference: kotlin.Double? = null, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
 
     /**
      * Activate Offer
      * Sets the activated date on offers. This will make offers visible for consumers.
-     * @param version  
      * @param offerIds Comma separated list of offer ids 
      * @param active Determines whether to make the offer active as well 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account used to perform the activation, must have rights to edit the offer. (optional)
      */
-    @Resource("/api/{version}/retailer/offer/status") class updateOfferStatus(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerIds: kotlin.String, val active: kotlin.Boolean)
+    @Resource("/retailer/offer/status") class updateOfferStatus(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerIds: kotlin.String, val active: kotlin.Boolean)
 
     /**
      * Create Offer Status
      * Create an offer status record
-     * @param version  
      * @param name The name of the status 
      * @param code The status code, must be unique  
      * @param deviceId The device id (deviceId or accountId required) (optional)
@@ -6007,36 +5667,33 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param active The active status (optional, default to true)
      * @param applicationIds The applications to associate the status with, if null then for all. (optional)
      */
-    @Resource("/api/{version}/offer/status/create") class createOfferTransactionStatus(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val name: kotlin.String, val description: kotlin.String? = null, val code: kotlin.Int, val role: kotlin.String? = null, val active: kotlin.Boolean? = null, val applicationIds: kotlin.String? = null)
+    @Resource("/offer/status/create") class createOfferTransactionStatus(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val name: kotlin.String, val description: kotlin.String? = null, val code: kotlin.Int, val role: kotlin.String? = null, val active: kotlin.Boolean? = null, val applicationIds: kotlin.String? = null)
 
     /**
      * Delete Offer Status
      * Mark an offer status record as deleted
-     * @param version  
      * @param statusId The id of the record to delete 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude Used to update the user&#39;s current location (optional)
      * @param longitude Used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/offer/status/delete") class deleteOfferTransactionStatus(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val statusId: kotlin.Long)
+    @Resource("/offer/status/delete") class deleteOfferTransactionStatus(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val statusId: kotlin.Long)
 
     /**
      * Get Offer Status
      * Get an offer status record
-     * @param version  
      * @param statusId The id of the record to get  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude Used to update the user&#39;s current location (optional)
      * @param longitude Used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/offer/status/get") class getOfferTransactionStatus(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val statusId: kotlin.Long)
+    @Resource("/offer/status/get") class getOfferTransactionStatus(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val statusId: kotlin.Long)
 
     /**
      * Search Offer Status
      * Search for the available offer statuses
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude Used to update the user&#39;s current location (optional)
@@ -6050,12 +5707,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param limit The limit for pagination (optional, default to 20)
      * @param includeInactive If true include inactive items (optional, default to false)
      */
-    @Resource("/api/{version}/offer/status/search") class searchOfferTransactionStatuses(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val keyword: kotlin.String? = null, val role: kotlin.String? = null, val appKey: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeInactive: kotlin.Boolean? = null)
+    @Resource("/offer/status/search") class searchOfferTransactionStatuses(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val keyword: kotlin.String? = null, val role: kotlin.String? = null, val appKey: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeInactive: kotlin.Boolean? = null)
 
     /**
      * Update Offer Status
      * Update an offer status record
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param latitude Used to update the user&#39;s current location (optional)
@@ -6068,40 +5724,36 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param active The active status (optional)
      * @param applicationIds The applications to associate the status with, if null then for all. (optional)
      */
-    @Resource("/api/{version}/offer/status/update") class updateOfferTransactionStatus(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val statusId: kotlin.Long? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val code: kotlin.Int? = null, val role: kotlin.String? = null, val active: kotlin.Boolean? = null, val applicationIds: kotlin.String? = null)
+    @Resource("/offer/status/update") class updateOfferTransactionStatus(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val statusId: kotlin.Long? = null, val name: kotlin.String? = null, val description: kotlin.String? = null, val code: kotlin.Int? = null, val role: kotlin.String? = null, val active: kotlin.Boolean? = null, val applicationIds: kotlin.String? = null)
 
     /**
      * Generate images with OpenAI
      * Generate images with OpenAI.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param postBody Post Body Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/openai/v1/images/generations") class imageGeneration(val version: java.math.BigDecimal, val accountId: kotlin.Long, val postBody: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/openai/v1/images/generations") class imageGeneration(val accountId: kotlin.Long, val postBody: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Optimization Result
      * Get the results of the import batch.
-     * @param version  
      * @param batchID The batchID for getting the import status of. 
      * @param start The start index for pagination 
      * @param limit The limit for pagination 
      */
-    @Resource("/api/{version}/optimize/result/{batchID}") class getOptimizationResult(val version: java.math.BigDecimal, val batchID: kotlin.String, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/optimize/result/{batchID}") class getOptimizationResult(val batchID: kotlin.String, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Request Optimization
      * Request and upload of shipment orders and create ShipmentImportBatch for optimization.
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/optimize/request") class requestOptimization(val version: java.math.BigDecimal)
+    @Resource("/optimize/request") class requestOptimization()
 
     /**
      * Add Movie
      * Add a movie to be indexed for Topics. Indexing a movie analyses the content and incorporates it into the topics model for future /topics calls. This does not store the movie file long-term.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param movieName Movie Name 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
@@ -6110,60 +5762,55 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param url A recording file to download and analyze (Size limit: 1GB) (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/addMovie") class addMovie(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val tags: kotlin.String? = null, val movieName: kotlin.String, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/addMovie") class addMovie(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val tags: kotlin.String? = null, val movieName: kotlin.String, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Search Docs
      * Takes in a text string representing one or more sentences and it returns a list of documents which are related to the provided document.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param doc Doc 
      * @param returnTopics Return Topics (optional)
      * @param limit Limit (optional)
      * @param offset Offset (optional)
      */
-    @Resource("/api/{version}/orson/ai/docs") class aiDocs(val version: java.math.BigDecimal, val accountId: kotlin.Long, val doc: kotlin.String, val returnTopics: kotlin.Boolean? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null)
+    @Resource("/orson/ai/docs") class aiDocs(val accountId: kotlin.Long, val doc: kotlin.String, val returnTopics: kotlin.Boolean? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null)
 
     /**
      * Find images
      * Returns a list of URIs of images that match the text.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param text Text 
      * @param parseFlag Parse Flag (optional)
      * @param fetchFlag Fetch Flag (optional)
      * @param size Size (optional)
      */
-    @Resource("/api/{version}/orson/ai/img") class aiFindImages(val version: java.math.BigDecimal, val accountId: kotlin.Long, val text: kotlin.String, val parseFlag: kotlin.String? = null, val fetchFlag: kotlin.String? = null, val size: kotlin.String? = null)
+    @Resource("/orson/ai/img") class aiFindImages(val accountId: kotlin.Long, val text: kotlin.String, val parseFlag: kotlin.String? = null, val fetchFlag: kotlin.String? = null, val size: kotlin.String? = null)
 
     /**
      * Search Tags
      * Search the tags column of user provided tags using this endpoint.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param tags Tags 
      * @param conditional Conditional (optional)
      * @param limit Limit (optional)
      * @param offset Offset (optional)
      */
-    @Resource("/api/{version}/orson/ai/tags") class aiTags(val version: java.math.BigDecimal, val accountId: kotlin.Long, val tags: kotlin.String, val conditional: kotlin.String? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null)
+    @Resource("/orson/ai/tags") class aiTags(val accountId: kotlin.Long, val tags: kotlin.String, val conditional: kotlin.String? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null)
 
     /**
      * Search Text
      * Search the movie text column of movie text using this endpoint.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param terms Terms 
      * @param conditional Conditional (optional)
      * @param limit Limit (optional)
      * @param offset Offset (optional)
      */
-    @Resource("/api/{version}/orson/ai/text") class aiText(val version: java.math.BigDecimal, val accountId: kotlin.Long, val terms: kotlin.String, val conditional: kotlin.String? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null)
+    @Resource("/orson/ai/text") class aiText(val accountId: kotlin.Long, val terms: kotlin.String, val conditional: kotlin.String? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null)
 
     /**
      * Batch Analysis
      * Run several types of analysis on an audio or video file in a single API call, instead of calling several operations for the same file..
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
      * @param limit The number of topics to return (optional)
@@ -6172,21 +5819,19 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param url A recording file to download and analyze (Size limit: 1GB) (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/batch") class batch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val limit: kotlin.Int? = null, val operations: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/batch") class batch(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val limit: kotlin.Int? = null, val operations: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Creates an instant episode
      * Creates an instant episode for a given StoryStrip by providing all necessary inputs, interview recordings, and pictures, kicking off a render immediately.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param &#x60;data&#x60; Request Data String 
      */
-    @Resource("/api/{version}/orson/stories/episodes/instant") class createInstantEpisode(val version: java.math.BigDecimal, val accountId: kotlin.Long, val &#x60;data&#x60;: kotlin.String)
+    @Resource("/orson/stories/episodes/instant") class createInstantEpisode(val accountId: kotlin.Long, val &#x60;data&#x60;: kotlin.String)
 
     /**
      * Create VoiceCanvas images
      * Create VoiceCanvas images for provided text, file upload, or file URL
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param dimensions Enum: \&quot;256x256\&quot; \&quot;512x512\&quot; \&quot;1024x1024\&quot; 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
@@ -6197,123 +5842,110 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param fetchFlag When true, fetches images instead of generating them (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/voiceCanvas") class createVoiceCanvas(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val dimensions: kotlin.String, val text: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val parseFlag: kotlin.Boolean? = null, val fetchFlag: kotlin.Boolean? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/voiceCanvas") class createVoiceCanvas(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val dimensions: kotlin.String, val text: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val parseFlag: kotlin.Boolean? = null, val fetchFlag: kotlin.Boolean? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Detect emotions
      * Detects emotions in an audio or video recording.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
      * @param file An uploaded recording to analyze (Currently limited to 10MB) (optional)
      * @param url A recording file to download and analyze (Size limit: 1GB) (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/emotion") class emotion(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/emotion") class emotion(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Get Add Movie Result
      * Get the result of an in progress Add Movie request from an earlier POST.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/addMovie/{requestId}") class getAddMovieResult(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/addMovie/{requestId}") class getAddMovieResult(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get Batch Analysis Results
      * Gets the completed Video Batch results, if done, or an error or status update if not.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/batch/{requestId}") class getBatch(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/batch/{requestId}") class getBatch(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get Emotion Results
      * Checks the Emotion analysis and returns in progress, results, or error.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/emotion/{requestId}") class getEmotion(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/emotion/{requestId}") class getEmotion(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Check episode status
      * Gets a summary of the episode&#39;s status, including any renders.
-     * @param version  
      * @param episodeId Episode ID 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/stories/episodes/{episodeId}/status") class getEpisodeStatus(val version: java.math.BigDecimal, val episodeId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/orson/stories/episodes/{episodeId}/status") class getEpisodeStatus(val episodeId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Check episode status
      * Gets a summary of the episode&#39;s status, including any renders.
-     * @param version  
      * @param renderId Render ID 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/stories/renders/{renderId}/status") class getRenderStatus(val version: java.math.BigDecimal, val renderId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/stories/renders/{renderId}/status") class getRenderStatus(val renderId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get Speach to Text Result
      * The results of the video transcription and optional translation.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/stt/{requestId}") class getSTT(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/stt/{requestId}") class getSTT(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get Text to Speach Result
      * Check the status of an in progress Text-to-Speech call or download the result.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/tts/{requestId}") class getTTS(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/tts/{requestId}") class getTTS(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get TechTune Results
      * Get a result or continue waiting for a pending request for TechTune analysis.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/techTune/{requestId}") class getTechTune(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/techTune/{requestId}") class getTechTune(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get Topics
      * Get the result of an in progress Topics Analysis from an earlier POST.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/topics/{requestId}") class getTopics(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/topics/{requestId}") class getTopics(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Get VoiceCanvas images
      * Get a result or continue waiting for a pending request for VoiceCanvas Images.
-     * @param version  
      * @param requestId Orson Request Id 
      * @param accountId Sirqul Account Id 
      */
-    @Resource("/api/{version}/orson/ai/voiceCanvas/{requestId}") class getVoiceCanvas(val version: java.math.BigDecimal, val requestId: kotlin.String, val accountId: kotlin.Long)
+    @Resource("/orson/ai/voiceCanvas/{requestId}") class getVoiceCanvas(val requestId: kotlin.String, val accountId: kotlin.Long)
 
     /**
      * Starts a StoryStitch video render
      * Starts a StoryStitch video render to produce your final video, returning the status details.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param &#x60;data&#x60; Request Data String 
      */
-    @Resource("/api/{version}/orson/stories/renders") class startVideoRender(val version: java.math.BigDecimal, val accountId: kotlin.Long, val &#x60;data&#x60;: kotlin.String)
+    @Resource("/orson/stories/renders") class startVideoRender(val accountId: kotlin.Long, val &#x60;data&#x60;: kotlin.String)
 
     /**
      * Speach to Text
      * Accepts a movie URL or uploaded file and transcribes it. You also have the option to translate it into one of our additional supported languages.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
      * @param sourceLanguage Source Language (optional)
@@ -6322,12 +5954,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param url A recording file to download and analyze (Size limit: 1GB) (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/stt") class stt(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val sourceLanguage: kotlin.String? = null, val targetLanguage: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/stt") class stt(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val sourceLanguage: kotlin.String? = null, val targetLanguage: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Summarize Topics
      * Takes in a string of text sentences (also known as a document) and returns a list of associated topics and their proximity score.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
      * @param doc The text to get topics for. (optional)
@@ -6337,12 +5968,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param offset The starting offset into the total result set to start from (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/topics") class summarizeTopics(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val doc: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/topics") class summarizeTopics(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val doc: kotlin.String? = null, val file: java.io.File? = null, val url: kotlin.String? = null, val limit: kotlin.Int? = null, val offset: kotlin.Int? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Detect Technical Issues
      * Analyses a movie file to detect technical issues, such as too few people in frame.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param numFacesExpected Number of expected faces 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
@@ -6350,12 +5980,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param url A recording file to download and analyze (Size limit: 1GB) (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/techTune") class techTune(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val numFacesExpected: kotlin.Int, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/techTune") class techTune(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val numFacesExpected: kotlin.Int, val file: java.io.File? = null, val url: kotlin.String? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Text to Speach
      * Creates an audio file for the given text, with the option of language and voice selection.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param text Text 
      * @param thirdPartyAccountId A third-party account id that is meaningful to your systems (optional)
@@ -6363,12 +5992,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param voice A language-specific voice to use, or picks the language default if not provided (optional)
      * @param paramCallback When provided, Orson will return a 202 and POST the results to this URL when complete instead of holding the Request open (optional)
      */
-    @Resource("/api/{version}/orson/ai/tts") class tts(val version: java.math.BigDecimal, val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val text: kotlin.String, val language: kotlin.String? = null, val voice: kotlin.String? = null, val paramCallback: kotlin.String? = null)
+    @Resource("/orson/ai/tts") class tts(val accountId: kotlin.Long, val thirdPartyAccountId: kotlin.String? = null, val text: kotlin.String, val language: kotlin.String? = null, val voice: kotlin.String? = null, val paramCallback: kotlin.String? = null)
 
     /**
      * Create Pack
      * Create a pack.
-     * @param version  
      * @param accountId The logged in user. 
      * @param title The title of the pack 
      * @param packOrder The order of the pack 
@@ -6394,31 +6022,28 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param ticketType The type of ticket to reward, null means default type (optional)
      * @param points The number of points to award for completing a pack (optional)
      */
-    @Resource("/api/{version}/pack/create") class createPack(val version: java.math.BigDecimal, val accountId: kotlin.Long, val title: kotlin.String, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val active: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val packType: kotlin.String? = null, val packOrder: kotlin.Long, val sequenceType: kotlin.String? = null, val backgroundId: kotlin.Long? = null, val imageId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val authorOverride: kotlin.String? = null, val price: kotlin.Int, val priceType: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val inGame: kotlin.Boolean? = null, val highest: kotlin.Boolean, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
+    @Resource("/pack/create") class createPack(val accountId: kotlin.Long, val title: kotlin.String, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val active: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val packType: kotlin.String? = null, val packOrder: kotlin.Long, val sequenceType: kotlin.String? = null, val backgroundId: kotlin.Long? = null, val imageId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val authorOverride: kotlin.String? = null, val price: kotlin.Int, val priceType: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val inGame: kotlin.Boolean? = null, val highest: kotlin.Boolean, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
 
     /**
      * Delete Pack
      * Delete a pack.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param packId the id of the pack to delete 
      */
-    @Resource("/api/{version}/pack/delete") class deletePack(val version: java.math.BigDecimal, val accountId: kotlin.Long, val packId: kotlin.Long)
+    @Resource("/pack/delete") class deletePack(val accountId: kotlin.Long, val packId: kotlin.Long)
 
     /**
      * Get Pack
      * Get a pack.
-     * @param version  
      * @param accountId The logged in user. 
      * @param packId The id of the pack to return. 
      * @param includeGameData If true include the game level data, otherwise don&#39;t. default is false. 
      */
-    @Resource("/api/{version}/pack/get") class getPack(val version: java.math.BigDecimal, val accountId: kotlin.Long, val packId: kotlin.Long, val includeGameData: kotlin.Boolean)
+    @Resource("/pack/get") class getPack(val accountId: kotlin.Long, val packId: kotlin.Long, val includeGameData: kotlin.Boolean)
 
     /**
      * Search Packs
      * Search on packs.
-     * @param version  
      * @param accountId The logged in user. 
      * @param sortField The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED 
      * @param descending Determines whether the sorted list is in descending or ascending order 
@@ -6430,12 +6055,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param includeInactive Determines whether to include inactive results (optional)
      * @param appKey The application to filter results on (optional)
      */
-    @Resource("/api/{version}/pack/search") class searchPacks(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val packType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val appKey: kotlin.String? = null)
+    @Resource("/pack/search") class searchPacks(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val packType: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val includeGameData: kotlin.Boolean? = null, val includeInactive: kotlin.Boolean? = null, val appKey: kotlin.String? = null)
 
     /**
      * Update Pack
      * Update a pack.
-     * @param version  
      * @param accountId The logged in user. 
      * @param packId The id of the pack to update. 
      * @param allocateTickets Flag to indicate owner should receive tickets for completed packs 
@@ -6462,45 +6086,41 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param ticketType The type of ticket to reward, null means default type (optional)
      * @param points The number of points to award for completing a pack (optional)
      */
-    @Resource("/api/{version}/pack/update") class updatePack(val version: java.math.BigDecimal, val accountId: kotlin.Long, val packId: kotlin.Long, val title: kotlin.String? = null, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val active: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val packType: kotlin.String? = null, val packOrder: kotlin.Long? = null, val sequenceType: kotlin.String? = null, val backgroundId: kotlin.Long? = null, val imageId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val authorOverride: kotlin.String? = null, val price: kotlin.Int? = null, val priceType: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val inGame: kotlin.Boolean? = null, val highest: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
+    @Resource("/pack/update") class updatePack(val accountId: kotlin.Long, val packId: kotlin.Long, val title: kotlin.String? = null, val description: kotlin.String? = null, val searchTags: kotlin.String? = null, val active: kotlin.Boolean? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val packType: kotlin.String? = null, val packOrder: kotlin.Long? = null, val sequenceType: kotlin.String? = null, val backgroundId: kotlin.Long? = null, val imageId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val authorOverride: kotlin.String? = null, val price: kotlin.Int? = null, val priceType: kotlin.String? = null, val gameLevelIds: kotlin.String? = null, val inGame: kotlin.Boolean? = null, val highest: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
 
     /**
      * Process All Participant Feeds
      * Processes all supported participant feeds.
-     * @param version  
      * @param accountId The account id of the user 
      * @param appKey The application key used to identify the application (optional)
      * @param useShortNameAsID Whether to use short name as the participant ID (optional)
      */
-    @Resource("/api/{version}/participant/process/all") class processAllParticipants(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val useShortNameAsID: kotlin.Boolean? = null)
+    @Resource("/participant/process/all") class processAllParticipants(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val useShortNameAsID: kotlin.Boolean? = null)
 
     /**
      * Process Participants Feed
      * Processes a participant feed or uploaded file for a specific league.
-     * @param version  
      * @param accountId The account id of the user 
      * @param league The league identifier to process 
      * @param appKey The application key used to identify the application (optional)
      * @param useShortNameAsID Whether to use short name as the participant ID (optional)
      * @param file Multipart file containing participant feed contents (optional)
      */
-    @Resource("/api/{version}/participant/process") class processParticipants(val version: java.math.BigDecimal, val accountId: kotlin.Long, val league: kotlin.String, val appKey: kotlin.String? = null, val useShortNameAsID: kotlin.Boolean? = null, val file: java.io.File? = null)
+    @Resource("/participant/process") class processParticipants(val accountId: kotlin.Long, val league: kotlin.String, val appKey: kotlin.String? = null, val useShortNameAsID: kotlin.Boolean? = null, val file: java.io.File? = null)
 
     /**
      * Calculate Path
      * Calculates the shortest path from point to point on a grid
-     * @param version  
      * @param &#x60;data&#x60; the data to with start, end point and exclusion points 
      * @param units the system of measurement for directions: {METRIC, IMPERIAL} 
      * @param reducePath determines whether to reduce the path to go in diagonal lines 
      * @param directions determines whether to return text directions 
      */
-    @Resource("/api/{version}/pathing/compute") class computePath(val version: java.math.BigDecimal, val &#x60;data&#x60;: kotlin.String, val units: kotlin.String, val reducePath: kotlin.Boolean, val directions: kotlin.Boolean)
+    @Resource("/pathing/compute") class computePath(val &#x60;data&#x60;: kotlin.String, val units: kotlin.String, val reducePath: kotlin.Boolean, val directions: kotlin.Boolean)
 
     /**
      * Create Postal Code
      * Create a Postal Code
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param code the postal code 
      * @param latitude the latitude of the postal code 
@@ -6509,29 +6129,26 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param city the city that the postal code is located (optional)
      * @param active whether the postal code created should be active or inactive (optional)
      */
-    @Resource("/api/{version}/postalCode/create") class createPostalCode(val version: java.math.BigDecimal, val accountId: kotlin.Long, val code: kotlin.String, val latitude: kotlin.Double, val longitude: kotlin.Double, val stateCode: kotlin.String? = null, val city: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/postalCode/create") class createPostalCode(val accountId: kotlin.Long, val code: kotlin.String, val latitude: kotlin.Double, val longitude: kotlin.Double, val stateCode: kotlin.String? = null, val city: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Postal Code
      * Delete a Postal Code
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param postalCodeId the id of the postal code to delete 
      */
-    @Resource("/api/{version}/postalCode/delete") class deletePostalCode(val version: java.math.BigDecimal, val accountId: kotlin.Long, val postalCodeId: kotlin.Long)
+    @Resource("/postalCode/delete") class deletePostalCode(val accountId: kotlin.Long, val postalCodeId: kotlin.Long)
 
     /**
      * Get Postal Code
      * Get a Postal Code
-     * @param version  
      * @param postalCodeId the id of the postal code to get 
      */
-    @Resource("/api/{version}/postalCode/get") class getPostalCode(val version: java.math.BigDecimal, val postalCodeId: kotlin.Long)
+    @Resource("/postalCode/get") class getPostalCode(val postalCodeId: kotlin.Long)
 
     /**
      * Search Postal Codes
      * Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response.
-     * @param version  
      * @param sortField the field to sort the results on 
      * @param descending whether to order results in ascending or descending order 
      * @param latitude the latitude of the postal code to search on (optional)
@@ -6541,12 +6158,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start of the index and/or pagination (optional)
      * @param limit the limit of the index and/or pagination (optional)
      */
-    @Resource("/api/{version}/postalCode/search") class getPostalCodes(val version: java.math.BigDecimal, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val keyword: kotlin.String? = null, val miles: kotlin.Double? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val sortField: kotlin.String, val descending: kotlin.Boolean)
+    @Resource("/postalCode/search") class getPostalCodes(val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val keyword: kotlin.String? = null, val miles: kotlin.Double? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val sortField: kotlin.String, val descending: kotlin.Boolean)
 
     /**
      * Update Postal Code
      * Update a Postal Code
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param postalCodeId the id of the postal code to update 
      * @param code the postal code to update (optional)
@@ -6556,12 +6172,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param city the city where the postal code is located (optional)
      * @param active whether the postal code is active or inactive (optional)
      */
-    @Resource("/api/{version}/postalCode/update") class updatePostalCode(val version: java.math.BigDecimal, val accountId: kotlin.Long, val postalCodeId: kotlin.Long, val code: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val stateCode: kotlin.String? = null, val city: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/postalCode/update") class updatePostalCode(val accountId: kotlin.Long, val postalCodeId: kotlin.Long, val code: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val stateCode: kotlin.String? = null, val city: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create Persona
      * Creates a new persona. If the given params are null those attributes will be override by null.
-     * @param version  
      * @param accountId the account ID of the user 
      * @param title the title of the persona 
      * @param previewAccounts the accounts that are able to preview from this persona (optional)
@@ -6572,40 +6187,36 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param latitude the specified latitude of the persona (optional)
      * @param longitude the specified longitude of the persona (optional)
      */
-    @Resource("/api/{version}/persona/create") class createPersona(val version: java.math.BigDecimal, val accountId: kotlin.Long, val title: kotlin.String, val previewAccounts: kotlin.String? = null, val date: kotlin.Long? = null, val age: kotlin.Int? = null, val gender: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/persona/create") class createPersona(val accountId: kotlin.Long, val title: kotlin.String, val previewAccounts: kotlin.String? = null, val date: kotlin.Long? = null, val age: kotlin.Int? = null, val gender: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Persona
      * Mark the persona for deletion.
-     * @param version  
      * @param accountId the account id of the user 
      * @param personaId the id of the persona to delete 
      */
-    @Resource("/api/{version}/persona/delete") class deletePersona(val version: java.math.BigDecimal, val accountId: kotlin.Long, val personaId: kotlin.Long)
+    @Resource("/persona/delete") class deletePersona(val accountId: kotlin.Long, val personaId: kotlin.Long)
 
     /**
      * Get Persona
      * Get the persona by the given persona ID. If the persona cannot be found, a invalid response is returned.
-     * @param version  
      * @param accountId the account ID of the user 
      * @param personaId the persona ID of the persona 
      */
-    @Resource("/api/{version}/persona/get") class getPersonaList(val version: java.math.BigDecimal, val accountId: kotlin.Long, val personaId: kotlin.Long)
+    @Resource("/persona/get") class getPersonaList(val accountId: kotlin.Long, val personaId: kotlin.Long)
 
     /**
      * Search Personas
      * Search for persona that the account owns by the given account ID.
-     * @param version  
      * @param accountId the account ID of the user 
      * @param start the start index for pagination 
      * @param limit the limit for pagination (There is a hard limit of 100) 
      */
-    @Resource("/api/{version}/persona/search") class searchPersona(val version: java.math.BigDecimal, val accountId: kotlin.Long, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/persona/search") class searchPersona(val accountId: kotlin.Long, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Update Persona
      * Update the persona by the given personaId. If the given params are null those attributes will be override by null. If active is assigned, all other params will be ignored.
-     * @param version  
      * @param accountId the account ID of the user 
      * @param personaId the persona ID of the persona to update 
      * @param title the title of the persona (optional)
@@ -6618,54 +6229,48 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param latitude the specified latitude of the persona (optional)
      * @param longitude the specified longitude of the persona (optional)
      */
-    @Resource("/api/{version}/persona/update") class updatePersona(val version: java.math.BigDecimal, val accountId: kotlin.Long, val personaId: kotlin.Long, val title: kotlin.String? = null, val previewAccounts: kotlin.String? = null, val active: kotlin.Boolean? = null, val date: kotlin.Long? = null, val age: kotlin.Int? = null, val gender: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/persona/update") class updatePersona(val accountId: kotlin.Long, val personaId: kotlin.Long, val title: kotlin.String? = null, val previewAccounts: kotlin.String? = null, val active: kotlin.Boolean? = null, val date: kotlin.Long? = null, val age: kotlin.Int? = null, val gender: kotlin.String? = null, val gameExperienceLevel: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Program
      * Create a new program
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/program") class createProgram(val version: java.math.BigDecimal)
+    @Resource("/program") class createProgram()
 
     /**
      * Delete Program
      * Delete an existing program
-     * @param version  
      * @param id the id of the program 
      */
-    @Resource("/api/{version}/program/{id}") class deleteProgram(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/program/{id}") class deleteProgram(val id: kotlin.Long)
 
     /**
      * Get Program
      * Get an existing program
-     * @param version  
      * @param id the id of the program 
      */
-    @Resource("/api/{version}/program/{id}") class getProgram(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/program/{id}") class getProgram(val id: kotlin.Long)
 
     /**
      * Update Program
      * Update an existing program
-     * @param version  
      * @param id the id of the program 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/program/{id}") class postProgram(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/program/{id}") class postProgram(val id: kotlin.Long)
 
     /**
      * Update Program
      * Update an existing program
-     * @param version  
      * @param id the id of the program 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/program/{id}") class putProgram(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/program/{id}") class putProgram(val id: kotlin.Long)
 
     /**
      * Search Programs
      * Search for programs
-     * @param version  
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
@@ -6673,12 +6278,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param activeOnly Return only active results 
      * @param keyword The keyword to filter results by (optional)
      */
-    @Resource("/api/{version}/program") class searchPrograms(val version: java.math.BigDecimal, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/program") class searchPrograms(val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Create Purchase
      * Creates a purchase item for in app purchases
-     * @param version  
      * @param appKey The application key that the purchase can be used in 
      * @param name The name of the purchase item 
      * @param purchaseType The purchase provider &lt;ul&gt; &lt;li&gt;SIRQUL - the Sirqul store to make purchases using tickets&lt;/li&gt; &lt;li&gt;IOS - the iTunes store for iPhone, iPod, iPod Touch&lt;/li&gt; &lt;li&gt;GOOGLE - the Google Play store&lt;/li&gt; &lt;li&gt;AMAZON - the Amazon Android store&lt;/li&gt; &lt;li&gt;MAC - the iTunes store for OSX&lt;/li&gt; &lt;li&gt;WP8 - the Windows Phone 8 store&lt;/li&gt; &lt;li&gt;FREE - used for purchase items that are free (can be used for development/testing purposes)&lt;/li&gt; &lt;/ul&gt; 
@@ -6700,32 +6304,29 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param points The number of points to award for completing a mission (optional)
      * @param offerLocationId The offer location that will get added to the user&#39;s wallet after purchase. (optional)
      */
-    @Resource("/api/{version}/purchase/create") class createPurchaseItem(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val description: kotlin.String? = null, val tickets: kotlin.Int? = null, val price: kotlin.Float? = null, val purchaseType: kotlin.String, val purchaseCode: kotlin.String? = null, val secretKey: kotlin.String? = null, val purchaseLimit: kotlin.Int? = null, val serviceAction: kotlin.String? = null, val coverAssetId: kotlin.Long? = null, val promoAssetId: kotlin.Long? = null, val giftable: kotlin.Boolean? = null, val assetable: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null)
+    @Resource("/purchase/create") class createPurchaseItem(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val description: kotlin.String? = null, val tickets: kotlin.Int? = null, val price: kotlin.Float? = null, val purchaseType: kotlin.String, val purchaseCode: kotlin.String? = null, val secretKey: kotlin.String? = null, val purchaseLimit: kotlin.Int? = null, val serviceAction: kotlin.String? = null, val coverAssetId: kotlin.Long? = null, val promoAssetId: kotlin.Long? = null, val giftable: kotlin.Boolean? = null, val assetable: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null)
 
     /**
      * Delete Purchase
      * Marks the purchase item as deleted
-     * @param version  
      * @param purchaseItemId The purchase item id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/purchase/delete") class deletePurchaseItem(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val purchaseItemId: kotlin.Long)
+    @Resource("/purchase/delete") class deletePurchaseItem(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val purchaseItemId: kotlin.Long)
 
     /**
      * Get Purchase
      * Get detailed information about a purchase item
-     * @param version  
      * @param purchaseItemId The purchase item id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/purchase/get") class getPurchaseItem(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val purchaseItemId: kotlin.Long)
+    @Resource("/purchase/get") class getPurchaseItem(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val purchaseItemId: kotlin.Long)
 
     /**
      * Search Purchases
      * Search for purchasable items from the system
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param appKey The application key to filter results by application (optional)
@@ -6739,12 +6340,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param limit The number of records to return (optional, default to 20)
      * @param activeOnly Return only active results (optional, default to false)
      */
-    @Resource("/api/{version}/purchase/search") class searchPurchaseItems(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val filterByBillable: kotlin.Boolean? = null, val purchaseType: kotlin.String? = null, val serviceAction: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/purchase/search") class searchPurchaseItems(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val filterByBillable: kotlin.Boolean? = null, val purchaseType: kotlin.String? = null, val serviceAction: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Update Purchase
      * Updates a purchase item for in app purchases
-     * @param version  
      * @param purchaseItemId The purchase item id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -6767,12 +6367,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param points The number of points to award for completing a mission (optional)
      * @param offerLocationId The offer location that will get added to the user&#39;s wallet after purchase. (optional)
      */
-    @Resource("/api/{version}/purchase/update") class updatePurchaseItem(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val purchaseItemId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val tickets: kotlin.Int? = null, val price: kotlin.Float? = null, val purchaseType: kotlin.String? = null, val purchaseCode: kotlin.String? = null, val secretKey: kotlin.String? = null, val purchaseLimit: kotlin.Int? = null, val serviceAction: kotlin.String? = null, val coverAssetId: kotlin.Long? = null, val promoAssetId: kotlin.Long? = null, val giftable: kotlin.Boolean? = null, val assetable: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null)
+    @Resource("/purchase/update") class updatePurchaseItem(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val purchaseItemId: kotlin.Long, val name: kotlin.String? = null, val description: kotlin.String? = null, val tickets: kotlin.Int? = null, val price: kotlin.Float? = null, val purchaseType: kotlin.String? = null, val purchaseCode: kotlin.String? = null, val secretKey: kotlin.String? = null, val purchaseLimit: kotlin.Int? = null, val serviceAction: kotlin.String? = null, val coverAssetId: kotlin.Long? = null, val promoAssetId: kotlin.Long? = null, val giftable: kotlin.Boolean? = null, val assetable: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null)
 
     /**
      * Create Order
      * Creates a new purchase with some number of items associated with it. The purchase is added to the order that was created
-     * @param version  
      * @param appKey The application requesting the purchase 
      * @param cart &#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60;  
      * @param deviceId The device id (deviceId or accountId required) (optional)
@@ -6786,33 +6385,30 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param externalDate External Date (optional)
      * @param promoCode The Promo Code (optional)
      */
-    @Resource("/api/{version}/order/create") class createOrder(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val description: kotlin.String? = null, val currencyType: kotlin.String? = null, val cart: kotlin.String, val paymentMethodId: kotlin.Long? = null, val externalOrderId: kotlin.String? = null, val externalPaymentId: kotlin.String? = null, val remoteRefType: kotlin.String? = null, val externalDate: kotlin.Long? = null, val promoCode: kotlin.String? = null)
+    @Resource("/order/create") class createOrder(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val description: kotlin.String? = null, val currencyType: kotlin.String? = null, val cart: kotlin.String, val paymentMethodId: kotlin.Long? = null, val externalOrderId: kotlin.String? = null, val externalPaymentId: kotlin.String? = null, val remoteRefType: kotlin.String? = null, val externalDate: kotlin.Long? = null, val promoCode: kotlin.String? = null)
 
     /**
      * Delete Order
      * Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
-     * @param version  
      * @param orderId Order Id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/order/delete") class deleteOrder(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val orderId: kotlin.Long)
+    @Resource("/order/delete") class deleteOrder(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val orderId: kotlin.Long)
 
     /**
      * Get Order
      * Get an order record
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param orderId The order id to get details of, either orderId or externalOrderId must be provided (optional)
      * @param externalOrderId The external order id to get details of, either orderId or externalOrderId must be provided (optional)
      */
-    @Resource("/api/{version}/order/get") class getOrder(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val orderId: kotlin.Long? = null, val externalOrderId: kotlin.String? = null)
+    @Resource("/order/get") class getOrder(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val orderId: kotlin.Long? = null, val externalOrderId: kotlin.String? = null)
 
     /**
      * Preview Order
      * Previews a purchase to see the total cost before making it.
-     * @param version  
      * @param appKey The application requesting the purchase 
      * @param cart A JSON list of items to purchase 
      * @param deviceId The device id (deviceId or accountId required) (optional)
@@ -6826,12 +6422,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param externalDate External Date (optional)
      * @param promoCode The Promo Code (optional)
      */
-    @Resource("/api/{version}/order/preview") class previewOrder(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val description: kotlin.String? = null, val currencyType: kotlin.String? = null, val cart: kotlin.String, val paymentMethodId: kotlin.Long? = null, val externalOrderId: kotlin.String? = null, val externalPaymentId: kotlin.String? = null, val remoteRefType: kotlin.String? = null, val externalDate: kotlin.Long? = null, val promoCode: kotlin.String? = null)
+    @Resource("/order/preview") class previewOrder(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val description: kotlin.String? = null, val currencyType: kotlin.String? = null, val cart: kotlin.String, val paymentMethodId: kotlin.Long? = null, val externalOrderId: kotlin.String? = null, val externalPaymentId: kotlin.String? = null, val remoteRefType: kotlin.String? = null, val externalDate: kotlin.Long? = null, val promoCode: kotlin.String? = null)
 
     /**
      * Search Orders
      * Search on active orders by customer
-     * @param version  
      * @param appKey The application requesting the purchase 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -6864,12 +6459,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param endedSince Filter results by the offer end date (optional)
      * @param endedBefore Filter results by the offer end date (optional)
      */
-    @Resource("/api/{version}/order/search") class searchOrders(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val descending: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val ignoreCustomerFilter: kotlin.Boolean? = null, val orderItemTypes: kotlin.String? = null, val orderItemIds: kotlin.String? = null, val orderCustomTypes: kotlin.String? = null, val orderCustomIds: kotlin.String? = null, val sortField: kotlin.String? = null, val offerTypes: kotlin.String? = null, val specialOfferTypes: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val offerAudienceIds: kotlin.String? = null, val transactionAudienceIds: kotlin.String? = null, val offerIds: kotlin.String? = null, val offerLocationIds: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val statuses: kotlin.String? = null, val keyword: kotlin.String? = null, val redeemableStartDate: kotlin.Long? = null, val redeemableEndDate: kotlin.Long? = null, val startedSince: kotlin.Long? = null, val startedBefore: kotlin.Long? = null, val endedSince: kotlin.Long? = null, val endedBefore: kotlin.Long? = null)
+    @Resource("/order/search") class searchOrders(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val descending: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val ignoreCustomerFilter: kotlin.Boolean? = null, val orderItemTypes: kotlin.String? = null, val orderItemIds: kotlin.String? = null, val orderCustomTypes: kotlin.String? = null, val orderCustomIds: kotlin.String? = null, val sortField: kotlin.String? = null, val offerTypes: kotlin.String? = null, val specialOfferTypes: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val offerAudienceIds: kotlin.String? = null, val transactionAudienceIds: kotlin.String? = null, val offerIds: kotlin.String? = null, val offerLocationIds: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val statuses: kotlin.String? = null, val keyword: kotlin.String? = null, val redeemableStartDate: kotlin.Long? = null, val redeemableEndDate: kotlin.Long? = null, val startedSince: kotlin.Long? = null, val startedBefore: kotlin.Long? = null, val endedSince: kotlin.Long? = null, val endedBefore: kotlin.Long? = null)
 
     /**
      * Update Order
      * Updates new purchase with some number of items associated with it. The orderId provided is used to retrieve the record and the payment is added to it.
-     * @param version  
      * @param orderId The order to add the purchase to, leave null for new order. 
      * @param appKey The application requesting the purchase 
      * @param cart &#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60;  
@@ -6882,12 +6476,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param externalPaymentId Store identifier from external system (optional)
      * @param externalDate External Date (optional)
      */
-    @Resource("/api/{version}/order/update") class updateOrder(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val orderId: kotlin.Long, val paymentTransactionId: kotlin.Long? = null, val appKey: kotlin.String, val description: kotlin.String? = null, val currencyType: kotlin.String? = null, val cart: kotlin.String, val paymentMethodId: kotlin.Long? = null, val externalPaymentId: kotlin.String? = null, val externalDate: kotlin.Long? = null)
+    @Resource("/order/update") class updateOrder(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val orderId: kotlin.Long, val paymentTransactionId: kotlin.Long? = null, val appKey: kotlin.String, val description: kotlin.String? = null, val currencyType: kotlin.String? = null, val cart: kotlin.String, val paymentMethodId: kotlin.Long? = null, val externalPaymentId: kotlin.String? = null, val externalDate: kotlin.Long? = null)
 
     /**
      * Create Question
      * Create a question and related answers by the given params.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param question the text of the question 
      * @param answers &#x60;&#x60;&#x60;json [   {     \&quot;text\&quot;: \&quot;1942\&quot;,     \&quot;image\&quot;: 123,     \&quot;videoURL\&quot;: \&quot;http://www.here.com\&quot;,     \&quot;correct\&quot;: true   },   {     \&quot;text\&quot;: \&quot;1943\&quot;,     \&quot;image\&quot;: 124,     \&quot;videoURL\&quot;: \&quot;http://www.there.com\&quot;,     \&quot;correct\&quot;: false   } ] &#x60;&#x60;&#x60;  
@@ -6900,30 +6493,27 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param ticketType The type of ticket to reward, null means default type (optional)
      * @param points The number of points to award for completing a mission (optional)
      */
-    @Resource("/api/{version}/game/question/create") class createQuestion(val version: java.math.BigDecimal, val accountId: kotlin.Long, val question: kotlin.String, val answers: kotlin.String, val tags: kotlin.String? = null, val videoURL: kotlin.String? = null, val assetId: kotlin.Long? = null, val active: kotlin.Boolean, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
+    @Resource("/game/question/create") class createQuestion(val accountId: kotlin.Long, val question: kotlin.String, val answers: kotlin.String, val tags: kotlin.String? = null, val videoURL: kotlin.String? = null, val assetId: kotlin.Long? = null, val active: kotlin.Boolean, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
 
     /**
      * Delete Question
      * Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete.
-     * @param version  
      * @param questionId the id of the question to delete 
      * @param accountId the id of the account that can execute this request 
      */
-    @Resource("/api/{version}/game/question/delete") class deleteQuestion(val version: java.math.BigDecimal, val questionId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/game/question/delete") class deleteQuestion(val questionId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Get Question
      * Get a question by the given id.
-     * @param version  
      * @param questionId the id of the question to get 
      * @param accountId the id of the account that can make this request 
      */
-    @Resource("/api/{version}/game/question/get") class getQuestion(val version: java.math.BigDecimal, val questionId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/game/question/get") class getQuestion(val questionId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Search Questions
      * Search for questions by the given params.
-     * @param version  
      * @param accountId The logged in user. 
      * @param sortField The column to sort the search on 
      * @param descending The order to return the search results 
@@ -6932,12 +6522,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param limit The number of records to return. 
      * @param keyword The keyword for searching questions with matching tags or question text. (optional)
      */
-    @Resource("/api/{version}/game/question/search") class searchQuestions(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/game/question/search") class searchQuestions(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Update Question
      * Update a question and related answers.
-     * @param version  
      * @param questionId The id of the question to update. 
      * @param accountId The logged in user. 
      * @param ticketCount The number of tickets to reward 
@@ -6951,12 +6540,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param ticketType The type of ticket to reward, null means default type (optional)
      * @param points The number of points to award for completing a mission (optional)
      */
-    @Resource("/api/{version}/game/question/update") class updateQuestion(val version: java.math.BigDecimal, val questionId: kotlin.Long, val accountId: kotlin.Long, val question: kotlin.String? = null, val answers: kotlin.String? = null, val tags: kotlin.String? = null, val videoURL: kotlin.String? = null, val assetId: kotlin.Long? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
+    @Resource("/game/question/update") class updateQuestion(val questionId: kotlin.Long, val accountId: kotlin.Long, val question: kotlin.String? = null, val answers: kotlin.String? = null, val tags: kotlin.String? = null, val videoURL: kotlin.String? = null, val assetId: kotlin.Long? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
 
     /**
      * Search Historical Rankings
      * Get historical leaderboard rankings by time-frame.
-     * @param version  
      * @param appKey the application key for filtering results by application 
      * @param rankType the rank type to return 
      * @param startDate timestamp in milliseconds to filter results with 
@@ -6968,12 +6556,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start index for pagination (optional, default to 0)
      * @param limit the limit for pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/ranking/historical/search") class getHistoricalRankings(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val rankType: kotlin.String, val startDate: kotlin.Long, val endDate: kotlin.Long, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/ranking/historical/search") class getHistoricalRankings(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val rankType: kotlin.String, val startDate: kotlin.Long, val endDate: kotlin.Long, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Rankings
      * Get leader board rankings. This is an all in one endpoint that can return multiple ranking types and also the current user rank.
-     * @param version  
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param gameType This parameter is deprecated. (optional)
@@ -6993,12 +6580,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param l This parameter is deprecated. (optional)
      * @param limit the limit for pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/ranking/search") class getRankings(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val rankType: kotlin.String? = null, val leaderboardMode: kotlin.String? = null, val withinAccountIds: kotlin.String? = null, val returnUserRank: kotlin.Boolean? = null, val albumId: kotlin.Long? = null, val audienceId: kotlin.Long? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/ranking/search") class getRankings(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val rankType: kotlin.String? = null, val leaderboardMode: kotlin.String? = null, val withinAccountIds: kotlin.String? = null, val returnUserRank: kotlin.Boolean? = null, val albumId: kotlin.Long? = null, val audienceId: kotlin.Long? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Get Personal Rankings
      * Returns the user&#39;s ranks for one or more rank types and modes.
-     * @param version  
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (optional)
      * @param appKey the application key for filtering results by application (required) (optional)
@@ -7011,12 +6597,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start index for pagination (optional, default to 0)
      * @param limit the limit for pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/ranking/personal/ranks") class getUserRank(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val rankType: kotlin.String? = null, val returnUserRank: kotlin.Boolean? = null, val leaderboardMode: kotlin.String? = null, val sortField: kotlin.String? = null, val keyword: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/ranking/personal/ranks") class getUserRank(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String? = null, val rankType: kotlin.String? = null, val returnUserRank: kotlin.Boolean? = null, val leaderboardMode: kotlin.String? = null, val sortField: kotlin.String? = null, val keyword: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Override User Rank
      * Allows an admin of an application to override a user&#39;s scores for a leaderboard.
-     * @param version  
      * @param accountId the logged in user&#39;s account id (must have permissions to manage data for the application) 
      * @param ownerAccountId the end user&#39;s account id to override 
      * @param appKey the application key the leaderboard is for 
@@ -7040,12 +6625,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param startDate the start date to update (optional)
      * @param endDate the end date to update (optional)
      */
-    @Resource("/api/{version}/ranking/override") class overrideUserRank(val version: java.math.BigDecimal, val accountId: kotlin.Long, val ownerAccountId: kotlin.Long, val appKey: kotlin.String, val rankType: kotlin.String, val totalScore: kotlin.Long? = null, val totalCount: kotlin.Long? = null, val totalTime: kotlin.Long? = null, val dailyScore: kotlin.Long? = null, val dailyCount: kotlin.Long? = null, val dailyTime: kotlin.Long? = null, val weeklyScore: kotlin.Long? = null, val weeklyCount: kotlin.Long? = null, val weeklyTime: kotlin.Long? = null, val monthlyScore: kotlin.Long? = null, val monthlyCount: kotlin.Long? = null, val monthlyTime: kotlin.Long? = null, val topScore: kotlin.Long? = null, val lowestScore: kotlin.Long? = null, val streakCount: kotlin.Long? = null, val streakBestCount: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null)
+    @Resource("/ranking/override") class overrideUserRank(val accountId: kotlin.Long, val ownerAccountId: kotlin.Long, val appKey: kotlin.String, val rankType: kotlin.String, val totalScore: kotlin.Long? = null, val totalCount: kotlin.Long? = null, val totalTime: kotlin.Long? = null, val dailyScore: kotlin.Long? = null, val dailyCount: kotlin.Long? = null, val dailyTime: kotlin.Long? = null, val weeklyScore: kotlin.Long? = null, val weeklyCount: kotlin.Long? = null, val weeklyTime: kotlin.Long? = null, val monthlyScore: kotlin.Long? = null, val monthlyCount: kotlin.Long? = null, val monthlyTime: kotlin.Long? = null, val topScore: kotlin.Long? = null, val lowestScore: kotlin.Long? = null, val streakCount: kotlin.Long? = null, val streakBestCount: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null)
 
     /**
      * Update Ranking
      * Update the rank value 
-     * @param version  
      * @param accountId the account id of the user 
      * @param appKey the application key for filtering results by application 
      * @param rankType a unique label for identifying the ranking. This can be any alphanumeric string (no spaces or special characters) with a maximum length of 64 characters. There are also default rank types to use which include: POINTS, DOWNLOADS, INVITATIONS, CREATIONS, VOTES, REDEEMED, ACTIONS 
@@ -7057,12 +6641,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param updateGlobal update the global rankings if true, default is false (optional)
      * @param createLeaderboard create the leaderboard if it does not exist (default false) (optional, default to false)
      */
-    @Resource("/api/{version}/ranking/update") class updateRankings(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val rankType: kotlin.String, val increment: kotlin.Long? = null, val timeIncrement: kotlin.Long? = null, val tag: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val updateGlobal: kotlin.Boolean? = null, val createLeaderboard: kotlin.Boolean? = null)
+    @Resource("/ranking/update") class updateRankings(val accountId: kotlin.Long, val appKey: kotlin.String, val rankType: kotlin.String, val increment: kotlin.Long? = null, val timeIncrement: kotlin.Long? = null, val tag: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val updateGlobal: kotlin.Boolean? = null, val createLeaderboard: kotlin.Boolean? = null)
 
     /**
      * Create Rating
      * This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object.
-     * @param version  
      * @param ratableType The ratable object type {RETAILER_LOCATION} 
      * @param ratableId The id of the ratable object 
      * @param ratingValue The integer value of 0-100 
@@ -7075,22 +6658,20 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param latitude The current location of the user (optional)
      * @param longitude The current location of the user (optional)
      */
-    @Resource("/api/{version}/rating/create") class createRating(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ratableType: kotlin.String, val ratableId: kotlin.Long, val ratingValue: kotlin.Int, val categoryId: kotlin.Long? = null, val display: kotlin.String? = null, val description: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/rating/create") class createRating(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ratableType: kotlin.String, val ratableId: kotlin.Long, val ratingValue: kotlin.Int, val categoryId: kotlin.Long? = null, val display: kotlin.String? = null, val description: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Rating
      * Sets a rating as deleted.
-     * @param version  
      * @param ratingId The ID of the rating to delete 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
      */
-    @Resource("/api/{version}/rating/delete") class deleteRating(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ratingId: kotlin.Long)
+    @Resource("/rating/delete") class deleteRating(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ratingId: kotlin.Long)
 
     /**
      * Search Location Rating Indexes
      * Search for retailer locations by averages near you.
-     * @param version  
      * @param categoryIds Comma separated list of category ids to filter the results by (optional)
      * @param keyword The keyword used to search (optional)
      * @param locationType The type of location to filter the results by (optional)
@@ -7109,12 +6690,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param returnCategories whether to return the categories or not (optional)
      * @param returnFilters whether to return the filters or not (optional)
      */
-    @Resource("/api/{version}/location/rating/index/search") class searchLocationRatingIndexes(val version: java.math.BigDecimal, val categoryIds: kotlin.String? = null, val keyword: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchRange: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnOverallRating: kotlin.Boolean? = null, val distanceUnit: kotlin.String? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null)
+    @Resource("/location/rating/index/search") class searchLocationRatingIndexes(val categoryIds: kotlin.String? = null, val keyword: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchRange: kotlin.Double? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnOverallRating: kotlin.Boolean? = null, val distanceUnit: kotlin.String? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null)
 
     /**
      * Search Rating Indexes
      * Search for ratable items by averages.
-     * @param version  
      * @param ratableType Filter results by a ratable type {RETAILER_LOCATION} 
      * @param ratableIds Comma separated list of ratable ids to filter the resuts by (optional)
      * @param categoryIds Comma separated list of category ids to filter the results by (optional)
@@ -7129,12 +6709,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param returnRatable Determines whether to return the ratable object in the response (optional)
      * @param returnOverallRating Determines whether to return the overall rating record instead (optional)
      */
-    @Resource("/api/{version}/rating/index/search") class searchRatingIndexes(val version: java.math.BigDecimal, val ratableType: kotlin.String, val ratableIds: kotlin.String? = null, val categoryIds: kotlin.String? = null, val secondaryType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnRatable: kotlin.Boolean? = null, val returnOverallRating: kotlin.Boolean? = null)
+    @Resource("/rating/index/search") class searchRatingIndexes(val ratableType: kotlin.String, val ratableIds: kotlin.String? = null, val categoryIds: kotlin.String? = null, val secondaryType: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnRatable: kotlin.Boolean? = null, val returnOverallRating: kotlin.Boolean? = null)
 
     /**
      * Search Ratings
      * Search for ratings on a ratable object.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param filterAccountId Filter results for a particular account (optional)
@@ -7147,12 +6726,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start The record to begin the return set on (optional)
      * @param limit The number of records to return (optional)
      */
-    @Resource("/api/{version}/rating/search") class searchRatings(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val filterAccountId: kotlin.Long? = null, val ratableType: kotlin.String? = null, val ratableId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/rating/search") class searchRatings(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val filterAccountId: kotlin.Long? = null, val ratableType: kotlin.String? = null, val ratableId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Rating
      * Update an existing rating. Only the creator of the rating have permission to update.
-     * @param version  
      * @param ratingId The id of the rating (Note: this is not the ratable object id) 
      * @param deviceId The unique device identifier that made the request (either deviceId or accountId must be used) (optional)
      * @param accountId The unique accountId that made the request (either deviceId or accountId must be used) (optional)
@@ -7164,12 +6742,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param latitude The current location of the user (optional)
      * @param longitude The current location of the user (optional)
      */
-    @Resource("/api/{version}/rating/update") class updateRating(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ratingId: kotlin.Long, val ratingValue: kotlin.Int? = null, val categoryId: kotlin.Long? = null, val display: kotlin.String? = null, val description: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/rating/update") class updateRating(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ratingId: kotlin.Long, val ratingValue: kotlin.Int? = null, val categoryId: kotlin.Long? = null, val display: kotlin.String? = null, val description: kotlin.String? = null, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Region
      * Create a region.
-     * @param version  
      * @param accountId The id of the account sending the request 
      * @param regionClass RegionClass of this region 
      * @param shortName Short name of the region. This is optimized for search 
@@ -7192,30 +6769,27 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param root If this is a root region or not. If true means this region has no parent regions (optional)
      * @param active Active or inactive status of the region (optional)
      */
-    @Resource("/api/{version}/region/create") class createRegion(val version: java.math.BigDecimal, val accountId: kotlin.Long, val regionClass: kotlin.String, val shortName: kotlin.String, val fullName: kotlin.String? = null, val parentIds: kotlin.String? = null, val childrenIds: kotlin.String? = null, val postalCodeIds: kotlin.String? = null, val locations: kotlin.String? = null, val retailerLocationId: kotlin.Long? = null, val visibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val polygon: kotlin.String? = null, val metaData: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val versionCode: kotlin.Int? = null, val root: kotlin.Boolean? = null, val active: kotlin.Boolean? = null)
+    @Resource("/region/create") class createRegion(val accountId: kotlin.Long, val regionClass: kotlin.String, val shortName: kotlin.String, val fullName: kotlin.String? = null, val parentIds: kotlin.String? = null, val childrenIds: kotlin.String? = null, val postalCodeIds: kotlin.String? = null, val locations: kotlin.String? = null, val retailerLocationId: kotlin.Long? = null, val visibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val polygon: kotlin.String? = null, val metaData: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val versionCode: kotlin.Int? = null, val root: kotlin.Boolean? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Region
      * Delete a region.
-     * @param version  
      * @param accountId the id of the account logged in 
      * @param regionId the id of the region 
      */
-    @Resource("/api/{version}/region/delete") class deleteRegion(val version: java.math.BigDecimal, val accountId: kotlin.Long, val regionId: kotlin.Long)
+    @Resource("/region/delete") class deleteRegion(val accountId: kotlin.Long, val regionId: kotlin.Long)
 
     /**
      * Get Region
      * Get a region.
-     * @param version  
      * @param regionId the id of the region to get 
      * @param accountId the id of the logged in user (optional)
      */
-    @Resource("/api/{version}/region/get") class getRegion(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val regionId: kotlin.Long)
+    @Resource("/region/get") class getRegion(val accountId: kotlin.Long? = null, val regionId: kotlin.Long)
 
     /**
      * Search Regions
      * Get the list of regions.
-     * @param version  
      * @param accountId the owner account id of the region to be created (optional)
      * @param query This parameter is deprecated. deprecated - use \&quot;keyword\&quot; (optional)
      * @param keyword the keyword to filter results on (optional)
@@ -7239,12 +6813,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start index for pagination (optional)
      * @param limit the limit for pagination (optional)
      */
-    @Resource("/api/{version}/region/search") class searchRegions(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val query: kotlin.String? = null, val keyword: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double? = null, val regionClass: kotlin.String? = null, val visibility: kotlin.String? = null, val searchMode: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val includeParent: kotlin.Boolean? = null, val includeChildren: kotlin.Boolean? = null, val includePostalCodes: kotlin.Boolean? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val versionCode: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val showDeleted: kotlin.Boolean? = null, val lastUpdatedSince: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/region/search") class searchRegions(val accountId: kotlin.Long? = null, val query: kotlin.String? = null, val keyword: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double? = null, val regionClass: kotlin.String? = null, val visibility: kotlin.String? = null, val searchMode: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val includeParent: kotlin.Boolean? = null, val includeChildren: kotlin.Boolean? = null, val includePostalCodes: kotlin.Boolean? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val versionCode: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val showDeleted: kotlin.Boolean? = null, val lastUpdatedSince: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Update Region
      * Update a region.
-     * @param version  
      * @param accountId The id of the account sending the request 
      * @param regionId The id of the region to be updated 
      * @param regionClass RegionClass of this region (optional)
@@ -7269,12 +6842,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param active Active or inactive status of the region (optional)
      * @param clearLists If true clear the children and postal code lists before add new ones, otherwise just append. (optional)
      */
-    @Resource("/api/{version}/region/update") class updateRegion(val version: java.math.BigDecimal, val accountId: kotlin.Long, val regionId: kotlin.Long, val regionClass: kotlin.String? = null, val shortName: kotlin.String? = null, val fullName: kotlin.String? = null, val parentIds: kotlin.String? = null, val childrenIds: kotlin.String? = null, val postalCodeIds: kotlin.String? = null, val locations: kotlin.String? = null, val retailerLocationId: kotlin.Long? = null, val visibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val polygon: kotlin.String? = null, val metaData: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val versionCode: kotlin.Int? = null, val root: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val clearLists: kotlin.Boolean? = null)
+    @Resource("/region/update") class updateRegion(val accountId: kotlin.Long, val regionId: kotlin.Long, val regionClass: kotlin.String? = null, val shortName: kotlin.String? = null, val fullName: kotlin.String? = null, val parentIds: kotlin.String? = null, val childrenIds: kotlin.String? = null, val postalCodeIds: kotlin.String? = null, val locations: kotlin.String? = null, val retailerLocationId: kotlin.Long? = null, val visibility: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null, val polygon: kotlin.String? = null, val metaData: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val versionCode: kotlin.Int? = null, val root: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val clearLists: kotlin.Boolean? = null)
 
     /**
      * Create Offline Report
      * Create an entry for the batch for offline report
-     * @param version  
      * @param accountId The account id of the user for passing account related params 
      * @param status the status of the report 
      * @param previewLimit the limit on how much you can preview of the batch report 
@@ -7287,39 +6859,35 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param description the description of the batch report (optional)
      * @param pageUrl  (optional)
      */
-    @Resource("/api/{version}/report/batch/create") class createBatch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String? = null, val status: kotlin.String, val endpoint: kotlin.String? = null, val parameters: kotlin.String? = null, val name: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val description: kotlin.String? = null, val previewLimit: kotlin.Int, val pageUrl: kotlin.String? = null)
+    @Resource("/report/batch/create") class createBatch(val accountId: kotlin.Long, val appKey: kotlin.String? = null, val status: kotlin.String, val endpoint: kotlin.String? = null, val parameters: kotlin.String? = null, val name: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val description: kotlin.String? = null, val previewLimit: kotlin.Int, val pageUrl: kotlin.String? = null)
 
     /**
      * Create Offline Report
      * Create an entry for the batch for offline report
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/report/region/summary/batch") class createRegionLegSummaryBatch(val version: java.math.BigDecimal)
+    @Resource("/report/region/summary/batch") class createRegionLegSummaryBatch()
 
     /**
      * Delete Offline Report
      * Deletes a batch report.
-     * @param version  
      * @param accountId the id of the account 
      * @param batchId the id of the batch to delete 
      */
-    @Resource("/api/{version}/report/batch/delete") class deleteBatch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val batchId: kotlin.Long)
+    @Resource("/report/batch/delete") class deleteBatch(val accountId: kotlin.Long, val batchId: kotlin.Long)
 
     /**
      * Get Offline Report
      * Checks status of batch report.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param batchId returned by /report/batch/create 
      * @param allResults whether to return all batch results or not 
      */
-    @Resource("/api/{version}/report/batch/get") class getReportBatch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val batchId: kotlin.Long, val allResults: kotlin.Boolean)
+    @Resource("/report/batch/get") class getReportBatch(val accountId: kotlin.Long, val batchId: kotlin.Long, val allResults: kotlin.Boolean)
 
     /**
      * Run Report
      *  This endpoint allows you to run a set of predefined reports that can be used to understand your users&#39; behavior as well as trends within your application.
-     * @param version  
      * @param desc If true then descending order, false is ascending 
      * @param accountId The account id of the user for passing account related params (optional)
      * @param query The named identifier of the query (optional)
@@ -7329,12 +6897,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param limit The limit of the pagination (optional)
      * @param responseFormat Determines what response format to return. Options are: JSON or CSV (optional)
      */
-    @Resource("/api/{version}/report/run") class runReport(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val query: kotlin.String? = null, val parameters: kotlin.String? = null, val order: kotlin.String? = null, val desc: kotlin.Boolean, val start: kotlin.Long? = null, val limit: kotlin.Long? = null, val responseFormat: kotlin.String? = null)
+    @Resource("/report/run") class runReport(val accountId: kotlin.Long? = null, val query: kotlin.String? = null, val parameters: kotlin.String? = null, val order: kotlin.String? = null, val desc: kotlin.Boolean, val start: kotlin.Long? = null, val limit: kotlin.Long? = null, val responseFormat: kotlin.String? = null)
 
     /**
      * Search Offline Reports
      * Retrieves batches for a user..
-     * @param version  
      * @param accountId the id of the account logged in 
      * @param start the start of the index and/or pagination 
      * @param limit the limit of the index and/or pagination 
@@ -7345,12 +6912,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param startDate the start date of the report batch to search on (optional)
      * @param endDate the end date of the report batch to search on (optional)
      */
-    @Resource("/api/{version}/report/batch/search") class searchBatch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val names: kotlin.String? = null, val appKey: kotlin.String? = null, val status: kotlin.String? = null, val globalAppSearch: kotlin.Boolean? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/report/batch/search") class searchBatch(val accountId: kotlin.Long, val names: kotlin.String? = null, val appKey: kotlin.String? = null, val status: kotlin.String? = null, val globalAppSearch: kotlin.Boolean? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Create Reservation
      * Creates a reservation on an offer object
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param startDate The start date (optional)
@@ -7360,22 +6926,20 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param appKey The application requesting the reservation (optional)
      * @param metaData External custom client defined data (optional)
      */
-    @Resource("/api/{version}/reservation/create") class createReservation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val metaData: kotlin.String? = null)
+    @Resource("/reservation/create") class createReservation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val appKey: kotlin.String? = null, val metaData: kotlin.String? = null)
 
     /**
      * Delete Reservation
      * Deleted a reservation on a reservation object
-     * @param version  
      * @param reservationId The reservation id 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/reservation/delete") class deleteReservation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservationId: kotlin.Long)
+    @Resource("/reservation/delete") class deleteReservation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservationId: kotlin.Long)
 
     /**
      * Update Availability
      * 
-     * @param version  
      * @param reservableId the id of the reservation 
      * @param reservableType the type of reservation 
      * @param deviceId the device id of the reservation (optional)
@@ -7383,12 +6947,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param availability Availability (optional)
      * @param availabilitySummary Availability Summary (optional)
      */
-    @Resource("/api/{version}/reservable/availability/update") class reservableAvailability(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservableId: kotlin.Long, val reservableType: kotlin.String, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
+    @Resource("/reservable/availability/update") class reservableAvailability(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservableId: kotlin.Long, val reservableType: kotlin.String, val availability: kotlin.String? = null, val availabilitySummary: kotlin.String? = null)
 
     /**
      * Search Availability
      * 
-     * @param version  
      * @param reservableId the id of the reservation 
      * @param reservableType the reservable type 
      * @param deviceId the device ID that the reservation is on (optional)
@@ -7398,12 +6961,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start of the index and/or pagination (optional, default to 0)
      * @param limit the limit of the index and/or pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/reservable/availability/search") class searchAvailability(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservableId: kotlin.Long, val reservableType: kotlin.String, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/reservable/availability/search") class searchAvailability(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservableId: kotlin.Long, val reservableType: kotlin.String, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Reservations
      * 
-     * @param version  
      * @param deviceId Device Id (optional)
      * @param appKey Appilcation Key (optional)
      * @param accountId the id of the logged in user (optional)
@@ -7416,12 +6978,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start of the index and/or pagination (optional, default to 0)
      * @param limit the limit of the index and/or pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/reservation/search") class searchReservations(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val appKey: kotlin.String? = null, val accountId: kotlin.Long? = null, val filterAccountId: kotlin.Long? = null, val reservableId: kotlin.Long? = null, val reservableType: kotlin.String? = null, val keyword: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/reservation/search") class searchReservations(val deviceId: kotlin.String? = null, val appKey: kotlin.String? = null, val accountId: kotlin.Long? = null, val filterAccountId: kotlin.Long? = null, val reservableId: kotlin.Long? = null, val reservableType: kotlin.String? = null, val keyword: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Schedule
      * 
-     * @param version  
      * @param reservableId the id of the reservation 
      * @param reservableType the reservation type 
      * @param startDate the start date of the reservation 
@@ -7430,12 +6991,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param accountId the id of the logged in user (optional)
      * @param timeBucketMins the length of time in minutes to search on for reservation (optional, default to 30)
      */
-    @Resource("/api/{version}/reservable/schedule/search") class searchSchedule(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservableId: kotlin.Long, val reservableType: kotlin.String, val startDate: kotlin.Long, val endDate: kotlin.Long, val timeBucketMins: kotlin.Int? = null)
+    @Resource("/reservable/schedule/search") class searchSchedule(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val reservableId: kotlin.Long, val reservableType: kotlin.String, val startDate: kotlin.Long, val endDate: kotlin.Long, val timeBucketMins: kotlin.Int? = null)
 
     /**
      * Create Retailer
      * Create a retailer record. A billable entity must be created first before a retailer record can be made.
-     * @param version  
      * @param name The name of the retailer 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -7470,33 +7030,30 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param createDefaultLocation Determines whether to create a default location using the retailer information (optional)
      * @param responseFormat The format of the returned response {JSON // default , HTML // for Dojo support when uploading assets} (optional)
      */
-    @Resource("/api/{version}/retailer/create") class createRetailer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val facebookUrl: kotlin.String? = null, val twitterUrl: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val categoryIdsToAdd: kotlin.String? = null, val categoryIdsToRemove: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null, val retailerType: kotlin.String? = null, val visibility: kotlin.String? = null, val createDefaultLocation: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null)
+    @Resource("/retailer/create") class createRetailer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val name: kotlin.String, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val facebookUrl: kotlin.String? = null, val twitterUrl: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val categoryIdsToAdd: kotlin.String? = null, val categoryIdsToRemove: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null, val retailerType: kotlin.String? = null, val visibility: kotlin.String? = null, val createDefaultLocation: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null)
 
     /**
      * Delete Retailer
      * Set the deleted timestamp to current time.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account used to perform the delete, must have rights to edit the retailer. (optional)
      * @param retailerId The ID of the retailer to be deleted (optional)
      */
-    @Resource("/api/{version}/retailer/delete") class deleteRetailer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long? = null)
+    @Resource("/retailer/delete") class deleteRetailer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long? = null)
 
     /**
      * Get Retailer
      * Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
-     * @param version  
      * @param retailerId the ID of the retailer 
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param includeCounts Determines whether to include counts in the response (default true) (optional)
      */
-    @Resource("/api/{version}/retailer/get") class getRetailer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long, val includeCounts: kotlin.Boolean? = null)
+    @Resource("/retailer/get") class getRetailer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long, val includeCounts: kotlin.Boolean? = null)
 
     /**
      * Search Retailers
      * earches on retailers that the account has access to.
-     * @param version  
      * @param visibility  
      * @param sortField The column to sort the search on 
      * @param descending The order to return the search results 
@@ -7512,12 +7069,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param i This parameter is deprecated. (optional)
      * @param l This parameter is deprecated. (optional)
      */
-    @Resource("/api/{version}/retailer/search") class getRetailers(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val visibility: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/retailer/search") class getRetailers(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val visibility: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Login Retailer
      * Retailer login check.
-     * @param version  
      * @param username the user&#39;s email address they used to sign-up 
      * @param password the password 
      * @param deviceId the device id (optional) (optional)
@@ -7525,12 +7081,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param longitude the current longitude of the user (optional)
      * @param appKey the application key (optional)
      */
-    @Resource("/api/{version}/retailer/login") class retailerLoginCheck(val version: java.math.BigDecimal, val username: kotlin.String, val password: kotlin.String, val deviceId: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val appKey: kotlin.String? = null)
+    @Resource("/retailer/login") class retailerLoginCheck(val username: kotlin.String, val password: kotlin.String, val deviceId: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val appKey: kotlin.String? = null)
 
     /**
      * Update Retailer
      * Update a retailer record. Only the owner and the employees of the retailer have access to update its information.
-     * @param version  
      * @param retailerId The ID of the retailer to update 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -7564,12 +7119,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param active Sets whether the retailer is active or inactive (hidden from consumers) (optional)
      * @param responseFormat The format of the returned response {JSON // default , HTML // for Dojo support when uploading assets} (optional)
      */
-    @Resource("/api/{version}/retailer/update") class updateRetailer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val facebookUrl: kotlin.String? = null, val twitterUrl: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null, val retailerType: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null)
+    @Resource("/retailer/update") class updateRetailer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val facebookUrl: kotlin.String? = null, val twitterUrl: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val searchTags: kotlin.String? = null, val retailerType: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null, val responseFormat: kotlin.String? = null)
 
     /**
      * Create Retailer Location (Consumer)
      * Creates a location record for an application that can support crowd sourced locations.
-     * @param version  
      * @param appKey the application key 
      * @param name The name of the retailer location 
      * @param deviceId The device id (deviceId or accountId required) (optional)
@@ -7600,12 +7154,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param latitude The latitude to center the search on (optional)
      * @param longitude The longitude to center the search on (optional)
      */
-    @Resource("/api/{version}/location/create") class createRetailerLocationConsumer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val detailsHeader: kotlin.String? = null, val detailsBody: kotlin.String? = null, val hours: kotlin.String? = null, val tags: kotlin.String? = null, val logoAssetId: kotlin.Long? = null, val picture1AssetId: kotlin.Long? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val metaData: kotlin.String? = null, val publicLocation: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val locationType: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/location/create") class createRetailerLocationConsumer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val appKey: kotlin.String, val name: kotlin.String, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val detailsHeader: kotlin.String? = null, val detailsBody: kotlin.String? = null, val hours: kotlin.String? = null, val tags: kotlin.String? = null, val logoAssetId: kotlin.Long? = null, val picture1AssetId: kotlin.Long? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val metaData: kotlin.String? = null, val publicLocation: kotlin.Boolean? = null, val active: kotlin.Boolean? = null, val locationType: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Retailer Location
      * Creates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.
-     * @param version  
      * @param retailerId The ID of the retailer 
      * @param name The name of the retailer location 
      * @param streetAddress The street address of the retailer location 
@@ -7646,43 +7199,39 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param responseFormat The format of the returned response {JSON // default , HTML // for Dojo support when uploading assets} (optional)
      * @param responseIncludes Comma separated list of response includes (e.g. RETAILER,ASSETS,OFFERS,CATEGORIES,FILTERS,AUDIENCES,QRCODE) (optional)
      */
-    @Resource("/api/{version}/retailer/location/create") class createRetailerLocations(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long, val name: kotlin.String, val streetAddress: kotlin.String, val streetAddress2: kotlin.String? = null, val city: kotlin.String, val state: kotlin.String, val postalCode: kotlin.String, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val internalId: kotlin.String? = null, val detailsHeader: kotlin.String? = null, val detailsBody: kotlin.String? = null, val hours: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val building: kotlin.String? = null, val googlePlaceId: kotlin.String? = null, val yelpId: kotlin.String? = null, val active: kotlin.Boolean? = null, val publicLocation: kotlin.Boolean? = null, val locationType: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val responseFormat: kotlin.String? = null, val responseIncludes: kotlin.String? = null)
+    @Resource("/retailer/location/create") class createRetailerLocations(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerId: kotlin.Long, val name: kotlin.String, val streetAddress: kotlin.String, val streetAddress2: kotlin.String? = null, val city: kotlin.String, val state: kotlin.String, val postalCode: kotlin.String, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val internalId: kotlin.String? = null, val detailsHeader: kotlin.String? = null, val detailsBody: kotlin.String? = null, val hours: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val building: kotlin.String? = null, val googlePlaceId: kotlin.String? = null, val yelpId: kotlin.String? = null, val active: kotlin.Boolean? = null, val publicLocation: kotlin.Boolean? = null, val locationType: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val responseFormat: kotlin.String? = null, val responseIncludes: kotlin.String? = null)
 
     /**
      * Delete Retailer Location
      * Set the deleted timestamp to current time. This effectively deletes the retailer location since all queries should ignore any records with a deleted time stamp.
-     * @param version  
      * @param deviceId the device id (optional)
      * @param accountId the id of the logged in user (optional)
      * @param retailerLocationId the id of the retailer location to delete (optional)
      */
-    @Resource("/api/{version}/retailer/location/delete") class deleteRetailerLocation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null)
+    @Resource("/retailer/location/delete") class deleteRetailerLocation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long? = null)
 
     /**
      * Get Retailer Location
      * Gets a retailer location. Only the owner and the employees of the retailer have access to view its information.
-     * @param version  
      * @param retailerLocationId The ID of the retailer location 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param retailerLocationToken the unique token of the retailer location (optional)
      */
-    @Resource("/api/{version}/retailer/location/get") class getRetailerLocation(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long, val retailerLocationToken: kotlin.String? = null)
+    @Resource("/retailer/location/get") class getRetailerLocation(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long, val retailerLocationToken: kotlin.String? = null)
 
     /**
      * Get Retailer Location (Consumer)
      * Gets the details of a retailer location as a consumer.
-     * @param version  
      * @param retailerLocationId The retailer location id 
      * @param deviceId The device id for returning account information (i.e. favorites) (optional)
      * @param accountId The account id for returning account information (i.e. favorites) (optional)
      */
-    @Resource("/api/{version}/location/get") class getRetailerLocationConsumer(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long)
+    @Resource("/location/get") class getRetailerLocationConsumer(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long)
 
     /**
      * Distance Search Retailer Locations (Indexed)
      * Retailer location indexed search by distance. This searches on any retailer location with location data and returns the results sorted by distance.
-     * @param version  
      * @param latitude The latitude to center the search on 
      * @param longitude The longitude to center the search on 
      * @param searchRange The search range in the distanceUnit specified; default is MILES. 
@@ -7718,12 +7267,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param includeLiked Include liked flag in response (optional)
      * @param includeRating Include rating info in response (optional)
      */
-    @Resource("/api/{version}/retailer/location/idistancesearch") class indexedRetailerLocationDistanceSearch(val version: java.math.BigDecimal, val latitude: kotlin.Double, val longitude: kotlin.Double, val accountId: kotlin.Long? = null, val address: kotlin.String? = null, val searchRange: kotlin.Double, val start: kotlin.Int, val limit: kotlin.Int, val hasOffers: kotlin.Boolean? = null, val categories: kotlin.String? = null, val filters: kotlin.String? = null, val audiences: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val tags: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val keywordOperator: kotlin.String? = null, val searchExpression: kotlin.String? = null, val distanceUnit: kotlin.String? = null, val returnFavorited: kotlin.Boolean? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null, val returnAudiences: kotlin.Boolean? = null, val returnQrCode: kotlin.Boolean? = null, val returnExternalCategoryData: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val includeLiked: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null)
+    @Resource("/retailer/location/idistancesearch") class indexedRetailerLocationDistanceSearch(val latitude: kotlin.Double, val longitude: kotlin.Double, val accountId: kotlin.Long? = null, val address: kotlin.String? = null, val searchRange: kotlin.Double, val start: kotlin.Int, val limit: kotlin.Int, val hasOffers: kotlin.Boolean? = null, val categories: kotlin.String? = null, val filters: kotlin.String? = null, val audiences: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val tags: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val keywordOperator: kotlin.String? = null, val searchExpression: kotlin.String? = null, val distanceUnit: kotlin.String? = null, val returnFavorited: kotlin.Boolean? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null, val returnAudiences: kotlin.Boolean? = null, val returnQrCode: kotlin.Boolean? = null, val returnExternalCategoryData: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val includeLiked: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null)
 
     /**
      * Keyword Search Retailer Locations (Indexed)
      * Retailer location (faster) indexed search. This searches all retailer locations.
-     * @param version  
      * @param accountId The account id of the user (optional)
      * @param start The start index for pagination (optional)
      * @param limit The limit for pagination (optional)
@@ -7753,12 +7301,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param includeLiked Include liked flag in response (optional)
      * @param includeRating Include rating info in response (optional)
      */
-    @Resource("/api/{version}/retailer/location/isearch") class indexedRetailerLocationSearch(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val hasOffers: kotlin.Boolean? = null, val categories: kotlin.String? = null, val filters: kotlin.String? = null, val audiences: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val tags: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val keywordOperator: kotlin.String? = null, val searchExpression: kotlin.String? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null, val returnAudiences: kotlin.Boolean? = null, val returnQrCode: kotlin.Boolean? = null, val returnExternalCategoryData: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val includeLiked: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null)
+    @Resource("/retailer/location/isearch") class indexedRetailerLocationSearch(val accountId: kotlin.Long? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val hasOffers: kotlin.Boolean? = null, val categories: kotlin.String? = null, val filters: kotlin.String? = null, val audiences: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val tags: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val keywordOperator: kotlin.String? = null, val searchExpression: kotlin.String? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null, val returnAudiences: kotlin.Boolean? = null, val returnQrCode: kotlin.Boolean? = null, val returnExternalCategoryData: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val includeLiked: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null)
 
     /**
      * Search Retailer Locations (Owned)
      * Searches on retailer locations that the account has access to.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param q This parameter is deprecated. (optional)
@@ -7785,12 +7332,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param includeLiked Include liked flag in response (optional)
      * @param includeRating Include rating info in response (optional)
      */
-    @Resource("/api/{version}/retailer/location/search") class searchRetailerLocations(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val showPublicLocations: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null, val returnAudiences: kotlin.Boolean? = null, val returnQrCode: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val includeLiked: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null)
+    @Resource("/retailer/location/search") class searchRetailerLocations(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val retailerIds: kotlin.String? = null, val retailerLocationIds: kotlin.String? = null, val locationType: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val i: kotlin.Int? = null, val start: kotlin.Int? = null, val l: kotlin.Int? = null, val limit: kotlin.Int? = null, val showPublicLocations: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val returnRetailer: kotlin.Boolean? = null, val returnAssets: kotlin.Boolean? = null, val returnOffers: kotlin.Boolean? = null, val returnCategories: kotlin.Boolean? = null, val returnFilters: kotlin.Boolean? = null, val returnAudiences: kotlin.Boolean? = null, val returnQrCode: kotlin.Boolean? = null, val includeFavorite: kotlin.Boolean? = null, val includeLiked: kotlin.Boolean? = null, val includeRating: kotlin.Boolean? = null)
 
     /**
      * Update Retailer Location
      * Updates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.
-     * @param version  
      * @param retailerLocationId The ID of the retailer location 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -7833,12 +7379,11 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param responseFormat The format of the returned response {JSON // default , HTML // for Dojo support when uploading assets} (optional)
      * @param tags Custom string field for doing full-text searches (optional)
      */
-    @Resource("/api/{version}/retailer/location/update") class updateRetailerLocations(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val internalId: kotlin.String? = null, val detailsHeader: kotlin.String? = null, val detailsBody: kotlin.String? = null, val hours: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val building: kotlin.String? = null, val googlePlaceId: kotlin.String? = null, val yelpId: kotlin.String? = null, val metaData: kotlin.String? = null, val paymentProvider: kotlin.String? = null, val active: kotlin.Boolean? = null, val publicLocation: kotlin.Boolean? = null, val locationType: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val responseFormat: kotlin.String? = null, val tags: kotlin.String? = null)
+    @Resource("/retailer/location/update") class updateRetailerLocations(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val retailerLocationId: kotlin.Long, val name: kotlin.String? = null, val streetAddress: kotlin.String? = null, val streetAddress2: kotlin.String? = null, val city: kotlin.String? = null, val state: kotlin.String? = null, val postalCode: kotlin.String? = null, val country: kotlin.String? = null, val businessPhone: kotlin.String? = null, val businessPhoneExt: kotlin.String? = null, val website: kotlin.String? = null, val email: kotlin.String? = null, val internalId: kotlin.String? = null, val detailsHeader: kotlin.String? = null, val detailsBody: kotlin.String? = null, val hours: kotlin.String? = null, val logo: java.io.File? = null, val logoAssetId: kotlin.Long? = null, val picture1: java.io.File? = null, val picture1AssetId: kotlin.Long? = null, val picture2: java.io.File? = null, val picture2AssetId: kotlin.Long? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val building: kotlin.String? = null, val googlePlaceId: kotlin.String? = null, val yelpId: kotlin.String? = null, val metaData: kotlin.String? = null, val paymentProvider: kotlin.String? = null, val active: kotlin.Boolean? = null, val publicLocation: kotlin.Boolean? = null, val locationType: kotlin.String? = null, val audienceIds: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val responseFormat: kotlin.String? = null, val tags: kotlin.String? = null)
 
     /**
      * Get Retailer
      * Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
-     * @param version  
      * @param retailerId the id of the retailer 
      * @param activeOnly whether to return results that are active only or all 
      * @param keyword the keyword to search on to get retailer (optional)
@@ -7846,156 +7391,138 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param start the start of the index and/or pagination (optional, default to 0L)
      * @param limit the limit of the index and/or pagination (optional, default to 20L)
      */
-    @Resource("/api/{version}/retailer") class getRetaokiler(val version: java.math.BigDecimal, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val start: kotlin.Long? = null, val limit: kotlin.Long? = null, val retailerId: kotlin.Long, val activeOnly: kotlin.Boolean)
+    @Resource("/retailer") class getRetaokiler(val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val start: kotlin.Long? = null, val limit: kotlin.Long? = null, val retailerId: kotlin.Long, val activeOnly: kotlin.Boolean)
 
     /**
      * Approve Route
      * Approve a route
-     * @param version  
      * @param routeId the id of the route to approve 
      */
-    @Resource("/api/{version}/route/{routeId}/approve") class approveRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/approve") class approveRoute(val routeId: kotlin.Long)
 
     /**
      * Copy Route
      * Make an copy of the given route with optional overriding properties
-     * @param version  
      * @param routeId the id of the route to duplicate 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/{routeId}/copy") class copyRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/copy") class copyRoute(val routeId: kotlin.Long)
 
     /**
      * Create Route
      * Create new route
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route") class createRoute(val version: java.math.BigDecimal)
+    @Resource("/route") class createRoute()
 
     /**
      * Update Route Directions
      * Regenerate the directions of a route
-     * @param version  
      * @param routeId the id of the route to update directions for 
      */
-    @Resource("/api/{version}/route/{routeId}/directions") class createRouteDirections(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/directions") class createRouteDirections(val routeId: kotlin.Long)
 
     /**
      * Create Route Polyline
      * Update the polyline of the requested route
-     * @param version  
      * @param routeId the id of the route to create a polyline for 
      */
-    @Resource("/api/{version}/route/{routeId}/polyline") class createRoutePolyline(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/polyline") class createRoutePolyline(val routeId: kotlin.Long)
 
     /**
      * Delete Route
      * Delete an existing route
-     * @param version  
      * @param routeId the id of the route 
      */
-    @Resource("/api/{version}/route/{routeId}") class deleteRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}") class deleteRoute(val routeId: kotlin.Long)
 
     /**
      * Disapprove Route
      * Disapprove a route
-     * @param version  
      * @param routeId the id of the route to reject 
      */
-    @Resource("/api/{version}/route/{routeId}/disapprove") class disapproveRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/disapprove") class disapproveRoute(val routeId: kotlin.Long)
 
     /**
      * Get Route
      * Get an existing route
-     * @param version  
      * @param routeId the id of the route to get 
      * @param showInheritedProperties return inherited properties from parent or not 
      */
-    @Resource("/api/{version}/route/{routeId}") class getRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long, val showInheritedProperties: kotlin.Boolean)
+    @Resource("/route/{routeId}") class getRoute(val routeId: kotlin.Long, val showInheritedProperties: kotlin.Boolean)
 
     /**
      * Get Route Directions
      * Get the directions of a route
-     * @param version  
      * @param routeId the id of the route to get directions for 
      */
-    @Resource("/api/{version}/route/{routeId}/directions") class getRouteDirections(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/directions") class getRouteDirections(val routeId: kotlin.Long)
 
     /**
      * Get Route Shipments
      * Get the shipments on the requested route
-     * @param version  
      * @param routeId the id of the route to get shipments for 
      */
-    @Resource("/api/{version}/route/{routeId}/shipments") class getRouteShipments(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/shipments") class getRouteShipments(val routeId: kotlin.Long)
 
     /**
      * Get Route Stop
      * Get the specific stop on a route
-     * @param version  
      * @param routeId the id of the route to get stops for 
      * @param stopId the id of the specific stop on the route 
      */
-    @Resource("/api/{version}/route/{routeId}/stop/{stopId}") class getRouteStop(val version: java.math.BigDecimal, val routeId: kotlin.Long, val stopId: kotlin.Long)
+    @Resource("/route/{routeId}/stop/{stopId}") class getRouteStop(val routeId: kotlin.Long, val stopId: kotlin.Long)
 
     /**
      * Get Route Stops
      * The stops of the route requested
-     * @param version  
      * @param routeId the id of the route 
      * @param confirmedOnly only get stops that have been confirmed or not 
      */
-    @Resource("/api/{version}/route/{routeId}/stops") class getRouteStops(val version: java.math.BigDecimal, val routeId: kotlin.Long, val confirmedOnly: kotlin.Boolean)
+    @Resource("/route/{routeId}/stops") class getRouteStops(val routeId: kotlin.Long, val confirmedOnly: kotlin.Boolean)
 
     /**
      * Get Shipments At Stop
      * Get the list of shipments on the requested route at a stop
-     * @param version  
      * @param routeId the id of the route 
      * @param stopId the id of the stop to get shipments on 
      */
-    @Resource("/api/{version}/route/{routeId}/stop/{stopId}/shipments") class getShipmentsAtStop(val version: java.math.BigDecimal, val routeId: kotlin.Long, val stopId: kotlin.Long)
+    @Resource("/route/{routeId}/stop/{stopId}/shipments") class getShipmentsAtStop(val routeId: kotlin.Long, val stopId: kotlin.Long)
 
     /**
      * Optimize Route
      * Optimize a route. The optimization method based on how the server is configured.
-     * @param version  
      * @param routeId the id of the route to optimize 
      */
-    @Resource("/api/{version}/route/{routeId}/optimize") class optimizeRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/optimize") class optimizeRoute(val routeId: kotlin.Long)
 
     /**
      * Delete Stop
      * Delete a stop on a route
-     * @param version  
      * @param routeId the id of the route 
      * @param stopId the id of the specific stop to delete on the route 
      */
-    @Resource("/api/{version}/route/{routeId}/stop/{stopId}") class removeStop(val version: java.math.BigDecimal, val routeId: kotlin.Long, val stopId: kotlin.Long)
+    @Resource("/route/{routeId}/stop/{stopId}") class removeStop(val routeId: kotlin.Long, val stopId: kotlin.Long)
 
     /**
      * Reorder Route Stops
      * Reordering the stops on the route with and update route distance, time, direction, and polyline
-     * @param version  
      * @param routeId the id of the route 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/{routeId}/stops/reorder") class reorderRouteStopsPatch(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/stops/reorder") class reorderRouteStopsPatch(val routeId: kotlin.Long)
 
     /**
      * Reorder Route Stops
      * Reordering the stops on the route with and update route distance, time, direction, and polyline
-     * @param version  
      * @param routeId the id of the route 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/{routeId}/stops/reorder") class reorderRouteStopsPost(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}/stops/reorder") class reorderRouteStopsPost(val routeId: kotlin.Long)
 
     /**
      * Search Routes
      * Search for routes.
-     * @param version  
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
@@ -8018,64 +7545,57 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param valid Is valid or not (optional)
      * @param parentId If it is a recurring route based on the parent route (optional)
      */
-    @Resource("/api/{version}/route") class searchRoutes(val version: java.math.BigDecimal, val hubId: kotlin.Long? = null, val programId: kotlin.Long? = null, val scheduledStart: kotlin.Long? = null, val scheduledEnd: kotlin.Long? = null, val updatedStart: kotlin.Long? = null, val updatedEnd: kotlin.Long? = null, val featured: kotlin.Boolean? = null, val seatCount: kotlin.Int? = null, val approved: kotlin.Boolean? = null, val started: kotlin.Boolean? = null, val completed: kotlin.Boolean? = null, val valid: kotlin.Boolean? = null, val parentId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val includesEmpty: kotlin.Boolean, val rootOnly: kotlin.Boolean, val showInheritedProperties: kotlin.Boolean)
+    @Resource("/route") class searchRoutes(val hubId: kotlin.Long? = null, val programId: kotlin.Long? = null, val scheduledStart: kotlin.Long? = null, val scheduledEnd: kotlin.Long? = null, val updatedStart: kotlin.Long? = null, val updatedEnd: kotlin.Long? = null, val featured: kotlin.Boolean? = null, val seatCount: kotlin.Int? = null, val approved: kotlin.Boolean? = null, val started: kotlin.Boolean? = null, val completed: kotlin.Boolean? = null, val valid: kotlin.Boolean? = null, val parentId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val includesEmpty: kotlin.Boolean, val rootOnly: kotlin.Boolean, val showInheritedProperties: kotlin.Boolean)
 
     /**
      * Set Driver
      * Update the driver of the route.
-     * @param version  
      * @param id the id of the route 
      * @param driverId the id of the driver 
      */
-    @Resource("/api/{version}/route/{id}/driver/{driverId}") class setDriver(val version: java.math.BigDecimal, val id: kotlin.Long, val driverId: kotlin.Long)
+    @Resource("/route/{id}/driver/{driverId}") class setDriver(val id: kotlin.Long, val driverId: kotlin.Long)
 
     /**
      * Update Route
      * Update an existing route
-     * @param version  
      * @param routeId the id of the route 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/{routeId}") class updateRoute(val version: java.math.BigDecimal, val routeId: kotlin.Long)
+    @Resource("/route/{routeId}") class updateRoute(val routeId: kotlin.Long)
 
     /**
      * Update Route Stop
      * Update a stop on a specified route
-     * @param version  
      * @param routeId the id of the route to update stops for 
      * @param stopId the id of the specific stop to update on the route 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/{routeId}/stop/{stopId}") class updateRouteStop(val version: java.math.BigDecimal, val routeId: kotlin.Long, val stopId: kotlin.Long)
+    @Resource("/route/{routeId}/stop/{stopId}") class updateRouteStop(val routeId: kotlin.Long, val stopId: kotlin.Long)
 
     /**
      * Create Route Setting
      * Create a new route setting
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/setting") class createRouteSettings(val version: java.math.BigDecimal)
+    @Resource("/route/setting") class createRouteSettings()
 
     /**
      * Delete Route Setting
      * Delete an existing route setting
-     * @param version  
      * @param routeSettingsId the id of the route setting to delete 
      */
-    @Resource("/api/{version}/route/setting/{routeSettingsId}") class deleteRouteSettings(val version: java.math.BigDecimal, val routeSettingsId: kotlin.Long)
+    @Resource("/route/setting/{routeSettingsId}") class deleteRouteSettings(val routeSettingsId: kotlin.Long)
 
     /**
      * Get Route Setting
      * Get an existing route settings
-     * @param version  
      * @param routeSettingsId the id of the route settings to get 
      */
-    @Resource("/api/{version}/route/setting/{routeSettingsId}") class getRouteSettings(val version: java.math.BigDecimal, val routeSettingsId: kotlin.Long)
+    @Resource("/route/setting/{routeSettingsId}") class getRouteSettings(val routeSettingsId: kotlin.Long)
 
     /**
      * Search Route Settings
      * Search for route settings
-     * @param version  
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
@@ -8085,29 +7605,26 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param programId The program that the route belongs under (optional)
      * @param keyword The keyword to search for the route (optional)
      */
-    @Resource("/api/{version}/route/setting") class searchRouteSettings(val version: java.math.BigDecimal, val hubId: kotlin.Long? = null, val programId: kotlin.Long? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/route/setting") class searchRouteSettings(val hubId: kotlin.Long? = null, val programId: kotlin.Long? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Update Route Setting
      * Update an existing route setting
-     * @param version  
      * @param routeSettingsId the id of the route settings to update 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/route/setting/{routeSettingsId}") class updateRouteSettings(val version: java.math.BigDecimal, val routeSettingsId: kotlin.Long)
+    @Resource("/route/setting/{routeSettingsId}") class updateRouteSettings(val routeSettingsId: kotlin.Long)
 
     /**
      * Compute Route
      * This service finds the most optimal routes for delivering items between locations (reducing transit time/resources). It can take in a list of vehicles and a list of items (to be transported).All load items have pick-up and drop-off locations with time windows for when the item is expected to be picked-up and dropped-off. 
-     * @param version  
      * @param &#x60;data&#x60; Json object containing inputs for generating the routes. See description for more info. Also see RoutingRequest 
      */
-    @Resource("/api/{version}/routing/compute") class computeRouting(val version: java.math.BigDecimal, val &#x60;data&#x60;: kotlin.String)
+    @Resource("/routing/compute") class computeRouting(val &#x60;data&#x60;: kotlin.String)
 
     /**
      * Create Scheduled Notification
      * This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods
-     * @param version  
      * @param accountId The logged in user. 
      * @param name The name of the scheduled notification 
      * @param type The type of scheduled notification. Supported values include: MOBILE_NOTIFICATION - sends push notifications via APNS and GCM EMAIL - sends email messages SMS - sends text messages 
@@ -8143,31 +7660,28 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param deepLinkURI The payload deep link URI that can be used by the client app to direct users to a screen in the app (optional)
      * @param sendToAll Determines whether to send to all users of the app if set to true for push notifications (appKey is required) (optional)
      */
-    @Resource("/api/{version}/notification/schedule/create") class createScheduledNotification(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val type: kotlin.String, val message: kotlin.String, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val albumIds: kotlin.String? = null, val reportId: kotlin.Long? = null, val reportParams: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val cronType: kotlin.String? = null, val metaData: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val templateType: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null, val sendNow: kotlin.Boolean? = null, val eventType: kotlin.String? = null, val deepLinkURI: kotlin.String? = null, val sendToAll: kotlin.Boolean? = null)
+    @Resource("/notification/schedule/create") class createScheduledNotification(val accountId: kotlin.Long, val name: kotlin.String, val type: kotlin.String, val message: kotlin.String, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val albumIds: kotlin.String? = null, val reportId: kotlin.Long? = null, val reportParams: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val cronType: kotlin.String? = null, val metaData: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val templateType: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null, val sendNow: kotlin.Boolean? = null, val eventType: kotlin.String? = null, val deepLinkURI: kotlin.String? = null, val sendToAll: kotlin.Boolean? = null)
 
     /**
      * Delete Scheduled Notification
      * This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param scheduledNotificationId the id of the scheduled notification to delete 
      * @param deleteByGroupingId If set to true, also deletes Scheduled Notifications under the same account with the same groupingId. (optional)
      */
-    @Resource("/api/{version}/notification/schedule/delete") class deleteScheduledNotification(val version: java.math.BigDecimal, val accountId: kotlin.Long, val scheduledNotificationId: kotlin.Long, val deleteByGroupingId: kotlin.Boolean? = null)
+    @Resource("/notification/schedule/delete") class deleteScheduledNotification(val accountId: kotlin.Long, val scheduledNotificationId: kotlin.Long, val deleteByGroupingId: kotlin.Boolean? = null)
 
     /**
      * Get Scheduled Notification
      * Get a ScheduledNotification
-     * @param version  
      * @param accountId the id of the account logged in 
      * @param scheduledNotificationId the id of the scheduled notification to get 
      */
-    @Resource("/api/{version}/notification/schedule/get") class getScheduledNotification(val version: java.math.BigDecimal, val accountId: kotlin.Long, val scheduledNotificationId: kotlin.Long)
+    @Resource("/notification/schedule/get") class getScheduledNotification(val accountId: kotlin.Long, val scheduledNotificationId: kotlin.Long)
 
     /**
      * Generate Schedule Notifications
      * Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The application to target 
      * @param reportName The name of the report used to identify events. The report must return columns named: id, name, date, params, and type otherwise it will fail 
@@ -8177,14 +7691,13 @@ The following field names   are reserved and cannot be removed from the object: 
      * @param reportParams The parameters of the report used to identify events in a json structure, example: &#x60;&#x60;&#x60;json {   \&quot;string\&quot;: \&quot;value\&quot;,   \&quot;number\&quot;: 3.345,   \&quot;date\&quot;: \&quot;2014-05-01 00:00:00\&quot; } &#x60;&#x60;&#x60;  (optional)
      * @param type The type of scheduled notification; supported values are: MOBILE_NOTIFICATION (optional)
      */
-    @Resource("/api/{version}/notification/schedule/generate") class scheduleNotificationListings(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val reportName: kotlin.String, val reportParams: kotlin.String? = null, val message: kotlin.String, val offset: kotlin.Int, val type: kotlin.String? = null, val recipientReportId: kotlin.Long)
+    @Resource("/notification/schedule/generate") class scheduleNotificationListings(val accountId: kotlin.Long, val appKey: kotlin.String, val reportName: kotlin.String, val reportParams: kotlin.String? = null, val message: kotlin.String, val offset: kotlin.Int, val type: kotlin.String? = null, val recipientReportId: kotlin.Long)
 
     /**
      * Search Scheduled Notifications
      * This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.
 
 In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators.
-     * @param version  
      * @param accountId The logged in user. 
      * @param groupingId Filter results by a grouping identifier defined by the client (optional)
      * @param audienceId Filter results by audience (optional)
@@ -8206,14 +7719,13 @@ In addition, if a PUBLIC Scheduled Notification was created for an application t
      * @param groupByGroupingId Determines whether to group results with the same groupingId together. (optional)
      * @param returnAudienceAccountCount If true, include audience account counts in the response (optional)
      */
-    @Resource("/api/{version}/notification/schedule/search") class searchScheduledNotifications(val version: java.math.BigDecimal, val accountId: kotlin.Long, val groupingId: kotlin.String? = null, val audienceId: kotlin.Long? = null, val filter: kotlin.String? = null, val types: kotlin.String? = null, val contentIds: kotlin.String? = null, val contentTypes: kotlin.String? = null, val parentIds: kotlin.String? = null, val parentTypes: kotlin.String? = null, val statuses: kotlin.String? = null, val templateTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val groupByGroupingId: kotlin.Boolean? = null, val returnAudienceAccountCount: kotlin.Boolean? = null)
+    @Resource("/notification/schedule/search") class searchScheduledNotifications(val accountId: kotlin.Long, val groupingId: kotlin.String? = null, val audienceId: kotlin.Long? = null, val filter: kotlin.String? = null, val types: kotlin.String? = null, val contentIds: kotlin.String? = null, val contentTypes: kotlin.String? = null, val parentIds: kotlin.String? = null, val parentTypes: kotlin.String? = null, val statuses: kotlin.String? = null, val templateTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null, val groupByGroupingId: kotlin.Boolean? = null, val returnAudienceAccountCount: kotlin.Boolean? = null)
 
     /**
      * Update Scheduled Notification
      * This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.
 
 Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi.
-     * @param version  
      * @param scheduledNotificationId The id of scheduled notification to update 
      * @param accountId The logged in user. 
      * @param name The name of the scheduled notification (optional)
@@ -8253,13 +7765,12 @@ Only the original owner of the Scheduled Notification or someone with write perm
      * @param deepLinkURI The payload deep link URI that can be used by the client app to direct users to a screen in the app (optional)
      * @param sendToAll Determines whether to send to all users of the app if set to true for push notifications (appKey is required) (optional)
      */
-    @Resource("/api/{version}/notification/schedule/update") class updateScheduledNotification(val version: java.math.BigDecimal, val scheduledNotificationId: kotlin.Long, val accountId: kotlin.Long, val name: kotlin.String? = null, val type: kotlin.String? = null, val message: kotlin.String? = null, val payload: kotlin.String? = null, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val albumIds: kotlin.String? = null, val reportId: kotlin.Long? = null, val reportParams: kotlin.String? = null, val endpointURL: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val cronType: kotlin.String? = null, val metaData: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val templateType: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null, val errorMessage: kotlin.String? = null, val status: kotlin.String? = null, val updateByGroupingId: kotlin.Boolean? = null, val sendNow: kotlin.Boolean? = null, val eventType: kotlin.String? = null, val deepLinkURI: kotlin.String? = null, val sendToAll: kotlin.Boolean? = null)
+    @Resource("/notification/schedule/update") class updateScheduledNotification(val scheduledNotificationId: kotlin.Long, val accountId: kotlin.Long, val name: kotlin.String? = null, val type: kotlin.String? = null, val message: kotlin.String? = null, val payload: kotlin.String? = null, val contentId: kotlin.Long? = null, val contentName: kotlin.String? = null, val contentType: kotlin.String? = null, val parentId: kotlin.Long? = null, val parentType: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val audienceId: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val albumIds: kotlin.String? = null, val reportId: kotlin.Long? = null, val reportParams: kotlin.String? = null, val endpointURL: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val cronType: kotlin.String? = null, val metaData: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val templateType: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null, val errorMessage: kotlin.String? = null, val status: kotlin.String? = null, val updateByGroupingId: kotlin.Boolean? = null, val sendNow: kotlin.Boolean? = null, val eventType: kotlin.String? = null, val deepLinkURI: kotlin.String? = null, val sendToAll: kotlin.Boolean? = null)
 
     /**
      * Create Score
      * Create a score.  The response object will contain a series of   coded messages detailing what items were completed, the score registered,   and any tickets allocated.  Scoring a  level could complete the pack it   is in, completing that pack could complete the game, which  in turn could   complete the mission.  This completion chain is indicated to the client   via 
 a list of {@link MessageResponse}.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The game application key to save the score for. 
      * @param points The score 
@@ -8271,12 +7782,11 @@ a list of {@link MessageResponse}.
      * @param timeTaken The time taken to complete task (optional)
      * @param highest  (optional)
      */
-    @Resource("/api/{version}/score/create") class createScore(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null, val points: kotlin.Int, val timeTaken: kotlin.Int? = null, val highest: kotlin.Boolean? = null)
+    @Resource("/score/create") class createScore(val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null, val points: kotlin.Int, val timeTaken: kotlin.Int? = null, val highest: kotlin.Boolean? = null)
 
     /**
      * Get Score
      * Get the high score for an item.  Pass in the full path IDs for the score.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The game application key to get the level for. 
      * @param missionId The missionId to score for, null if not playing mission. (optional)
@@ -8287,12 +7797,11 @@ a list of {@link MessageResponse}.
      * @param scoreObjectType The object type to filter scores by (TicketObjectType) (optional)
      * @param scoreStatus The status of the score to filter (ScoreStatus) (optional)
      */
-    @Resource("/api/{version}/score/get") class getScore(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null, val scoreObjectType: kotlin.String? = null, val scoreStatus: kotlin.String? = null)
+    @Resource("/score/get") class getScore(val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null, val scoreObjectType: kotlin.String? = null, val scoreStatus: kotlin.String? = null)
 
     /**
      * Search Score
      * Search the scores for an item.  Pass in the full path IDs for the scores.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The game application key to get the level for. 
      * @param missionId The missionId to score for, null if not playing mission. (optional)
@@ -8301,12 +7810,11 @@ a list of {@link MessageResponse}.
      * @param gameLevelId The gameLevelId to score for. (optional)
      * @param gameObjectId The gameObjectId to score for, null if level based scoring. (optional)
      */
-    @Resource("/api/{version}/score/search") class searchScores(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null)
+    @Resource("/score/search") class searchScores(val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long? = null, val gameId: kotlin.Long? = null, val packId: kotlin.Long? = null, val gameLevelId: kotlin.Long? = null, val gameObjectId: kotlin.Long? = null)
 
     /**
      * Create Secure Application
      * Create a secure application record.
-     * @param version  
      * @param accountId The unique id of the user making the request 
      * @param appKey The application to secure 
      * @param keyCert  
@@ -8318,21 +7826,19 @@ a list of {@link MessageResponse}.
      * @param biometricPosition The position for the biometric file uploaded (optional, default to UNKNOWN)
      * @param biometricPosition2 The position for each the biometric2 file uploaded (optional, default to UNKNOWN)
      */
-    @Resource("/api/{version}/secure/application/create") class createSecureApplication(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val active: kotlin.Boolean? = null, val keyCert: java.io.File, val trustStore: java.io.File, val username: kotlin.String, val password: kotlin.String, val biometricType: kotlin.String? = null, val biometricPosition: kotlin.String? = null, val biometricPosition2: kotlin.String? = null)
+    @Resource("/secure/application/create") class createSecureApplication(val accountId: kotlin.Long, val appKey: kotlin.String, val active: kotlin.Boolean? = null, val keyCert: java.io.File, val trustStore: java.io.File, val username: kotlin.String, val password: kotlin.String, val biometricType: kotlin.String? = null, val biometricPosition: kotlin.String? = null, val biometricPosition2: kotlin.String? = null)
 
     /**
      * Delete Secure Application
      * Delete a secure application record.
-     * @param version  
      * @param accountId The unique id of the user making the request 
      * @param appKey The application to secure 
      */
-    @Resource("/api/{version}/secure/application/delete") class deleteSecureApplication(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/secure/application/delete") class deleteSecureApplication(val accountId: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Login Clear
      * Login via Clear.me. Creates a new account if logging in for the first time.
-     * @param version  
      * @param appKey The application making the request, defines what type and position is required to make a secure login the request. 
      * @param biometricFile The data file used to perform authentication 
      * @param deviceId The unique id of the device making the request (optional)
@@ -8343,29 +7849,26 @@ a list of {@link MessageResponse}.
      * @param latitude Used to update the user&#39;s current location (optional)
      * @param longitude Used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/secure/login") class loginSecure(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val appKey: kotlin.String, val biometricFile: java.io.File, val biometricFile2: java.io.File? = null, val ageRestriction: kotlin.Int? = null, val returnProfile: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/secure/login") class loginSecure(val deviceId: kotlin.String? = null, val appKey: kotlin.String, val biometricFile: java.io.File, val biometricFile2: java.io.File? = null, val ageRestriction: kotlin.Int? = null, val returnProfile: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Purchase Clear
      * Purchase via Clear.me. Creates a new account if purchasing for the first time.
-     * @param version  
      * @param body The payment request object 
      */
-    @Resource("/api/{version}/secure/purchase") class purchaseSecure(val version: java.math.BigDecimal)
+    @Resource("/secure/purchase") class purchaseSecure()
 
     /**
      * Rest Secure Application
      * Reset a secure application client.
-     * @param version  
      * @param accountId The unique id of the user making the request 
      * @param appKey The application to secure 
      */
-    @Resource("/api/{version}/secure/application/reset") class resetSecure(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String)
+    @Resource("/secure/application/reset") class resetSecure(val accountId: kotlin.Long, val appKey: kotlin.String)
 
     /**
      * Update Secure Application
      * Update a secure application record.
-     * @param version  
      * @param accountId The unique id of the user making the request 
      * @param appKey The application to secure 
      * @param active  (optional)
@@ -8377,54 +7880,48 @@ a list of {@link MessageResponse}.
      * @param biometricPosition The position for the biometric file uploaded (optional)
      * @param biometricPosition2 The position for each the biometric2 file uploaded (optional)
      */
-    @Resource("/api/{version}/secure/application/update") class updateSecureApplication(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val active: kotlin.Boolean? = null, val keyCert: java.io.File? = null, val trustStore: java.io.File? = null, val username: kotlin.String? = null, val password: kotlin.String? = null, val biometricType: kotlin.String? = null, val biometricPosition: kotlin.String? = null, val biometricPosition2: kotlin.String? = null)
+    @Resource("/secure/application/update") class updateSecureApplication(val accountId: kotlin.Long, val appKey: kotlin.String, val active: kotlin.Boolean? = null, val keyCert: java.io.File? = null, val trustStore: java.io.File? = null, val username: kotlin.String? = null, val password: kotlin.String? = null, val biometricType: kotlin.String? = null, val biometricPosition: kotlin.String? = null, val biometricPosition2: kotlin.String? = null)
 
     /**
      * Create Service Hub
      * Create new service hub
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/hub") class createServiceHub(val version: java.math.BigDecimal)
+    @Resource("/hub") class createServiceHub()
 
     /**
      * Delete Service Hub
      * Delete an existing service hub
-     * @param version  
      * @param id the id of the service hub to delete 
      */
-    @Resource("/api/{version}/hub/{id}") class deleteServiceHub(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/hub/{id}") class deleteServiceHub(val id: kotlin.Long)
 
     /**
      * Get Service Hub
      * Get an existing service hub
-     * @param version  
      * @param id the id of the service hub to get 
      */
-    @Resource("/api/{version}/hub/{id}") class getServiceHub(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/hub/{id}") class getServiceHub(val id: kotlin.Long)
 
     /**
      * Update Service Hub
      * Update an existing service hub
-     * @param version  
      * @param id the id of the service hub 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/hub/{id}") class postServiceHub(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/hub/{id}") class postServiceHub(val id: kotlin.Long)
 
     /**
      * Update Service Hub
      * Update an existing service hub
-     * @param version  
      * @param id the id of the service hub 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/hub/{id}") class putServiceHub(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/hub/{id}") class putServiceHub(val id: kotlin.Long)
 
     /**
      * Search Service Hubs
      * Search for service hubs.
-     * @param version  
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
@@ -8433,44 +7930,39 @@ a list of {@link MessageResponse}.
      * @param keyword The keyword to search for (optional)
      * @param retailerId The retailer belongs to (optional)
      */
-    @Resource("/api/{version}/hub") class searchServiceHubs(val version: java.math.BigDecimal, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/hub") class searchServiceHubs(val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Cancel Shipment
      * Remove shipment from route
-     * @param version  
      * @param id the id of the shipment to cancel 
      */
-    @Resource("/api/{version}/shipment/{id}/cancel") class cancelShipment(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/shipment/{id}/cancel") class cancelShipment(val id: kotlin.Long)
 
     /**
      * Create Shipment
      * Create new shipment
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/shipment") class createShipment(val version: java.math.BigDecimal)
+    @Resource("/shipment") class createShipment()
 
     /**
      * Delete Shipment
      * Delete an existing shipment
-     * @param version  
      * @param id the id of the shipment to delete 
      */
-    @Resource("/api/{version}/shipment/{id}") class deleteShipment(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/shipment/{id}") class deleteShipment(val id: kotlin.Long)
 
     /**
      * Get Shipment
      * Get an existing shipment
-     * @param version  
      * @param id the id of the shipment to get 
      */
-    @Resource("/api/{version}/shipment/{id}") class getShipment(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/shipment/{id}") class getShipment(val id: kotlin.Long)
 
     /**
      * Search Shipments
      * Search for shipments
-     * @param version  
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
@@ -8480,54 +7972,48 @@ a list of {@link MessageResponse}.
      * @param riderId The rider associate to this shipment (optional)
      * @param routeId The route associate to this shipment (optional)
      */
-    @Resource("/api/{version}/shipment") class searchShipments(val version: java.math.BigDecimal, val ownerId: kotlin.Long? = null, val riderId: kotlin.Long? = null, val routeId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/shipment") class searchShipments(val ownerId: kotlin.Long? = null, val riderId: kotlin.Long? = null, val routeId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Update Shipment
      * Update an existing shipment
-     * @param version  
      * @param id the id of the shipment to update 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/shipment/{id}") class updateShipment(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/shipment/{id}") class updateShipment(val id: kotlin.Long)
 
     /**
      * Uupdate Shipment Status
      * Update status of an existing shipment
-     * @param version  
      * @param id the id of the shipment to update status 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/shipment/{id}/status") class updateShipmentStatus(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/shipment/{id}/status") class updateShipmentStatus(val id: kotlin.Long)
 
     /**
      * Create Shipment Batch
      * Create a new shipment batch
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/shipment/batch") class createShipmentBatch(val version: java.math.BigDecimal)
+    @Resource("/shipment/batch") class createShipmentBatch()
 
     /**
      * Delete Shipment Batch
      * Search for shipment batches
-     * @param version  
      * @param batchId the id of the shipment batch to delete 
      */
-    @Resource("/api/{version}/shipment/batch/{batchId}") class deleteShipmentBatch(val version: java.math.BigDecimal, val batchId: kotlin.Long)
+    @Resource("/shipment/batch/{batchId}") class deleteShipmentBatch(val batchId: kotlin.Long)
 
     /**
      * Get Shipment Batch
      * Get an existing shipment batch
-     * @param version  
      * @param batchId the id of the shipment batch to get 
      */
-    @Resource("/api/{version}/shipment/batch/{batchId}") class getShipmentBatch(val version: java.math.BigDecimal, val batchId: kotlin.Long)
+    @Resource("/shipment/batch/{batchId}") class getShipmentBatch(val batchId: kotlin.Long)
 
     /**
      * Get Shipment Batch Status
      * Get the import status list of the import shipment batch
-     * @param version  
      * @param batchId The id of the requested shipment batch 
      * @param accountId the id of the logged in user 
      * @param sortField The field to sort by 
@@ -8541,124 +8027,111 @@ a list of {@link MessageResponse}.
      * @param hasRoute Has route associate to the status (optional)
      * @param keyword The keyword to search for (optional)
      */
-    @Resource("/api/{version}/shipment/batch/{batchId}/status") class getShipmentBatchStatus(val version: java.math.BigDecimal, val batchId: kotlin.Long, val accountId: kotlin.Long, val valid: kotlin.Boolean? = null, val started: kotlin.Boolean? = null, val completed: kotlin.Boolean? = null, val hasShipment: kotlin.Boolean? = null, val hasRoute: kotlin.Boolean? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/shipment/batch/{batchId}/status") class getShipmentBatchStatus(val batchId: kotlin.Long, val accountId: kotlin.Long, val valid: kotlin.Boolean? = null, val started: kotlin.Boolean? = null, val completed: kotlin.Boolean? = null, val hasShipment: kotlin.Boolean? = null, val hasRoute: kotlin.Boolean? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Search Shipment Batch
      * Search for shipment batches
-     * @param version  
      * @param hubId The associated service hub 
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
      * @param limit The limit for pagination 
      */
-    @Resource("/api/{version}/shipment/batch") class searchShipmentBatch(val version: java.math.BigDecimal, val hubId: kotlin.Long, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/shipment/batch") class searchShipmentBatch(val hubId: kotlin.Long, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Routing Simulation
      * Simulates routing requests.
-     * @param version  
      * @param &#x60;data&#x60; JSON string in the following format: &#x60;&#x60;&#x60;json {   \&quot;startDate\&quot;: 1474268400000,   \&quot;endDate\&quot;: 1474268700000,   \&quot;checkoutStops\&quot;: [     {       \&quot;latitude\&quot;: 25.060453943481615,       \&quot;longitude\&quot;: 121.57487118216957     }   ],   \&quot;requests\&quot;: [     {       \&quot;vehicles\&quot;: [         {           \&quot;id\&quot;: \&quot;customer1\&quot;,           \&quot;name\&quot;: \&quot;Customer 1\&quot;,           \&quot;depot\&quot;: {             \&quot;latitude\&quot;: 25.060453943481615,             \&quot;longitude\&quot;: 121.57487118216957           },           \&quot;startWindow\&quot;: 1474268464537         }       ],       \&quot;items\&quot;: [         {           \&quot;id\&quot;: 152712,           \&quot;name\&quot;: \&quot;Appliance Product\&quot;,           \&quot;pickup\&quot;: {             \&quot;latitude\&quot;: 25.060306635544144,             \&quot;longitude\&quot;: 121.5750770690688           }         },         {           \&quot;id\&quot;: 152711,           \&quot;name\&quot;: \&quot;TV product\&quot;,           \&quot;pickup\&quot;: {             \&quot;latitude\&quot;: 25.060126352576326,             \&quot;longitude\&quot;: 121.57505023621624           }         }       ]     }   ],   \&quot;featuredItems\&quot;: [],   \&quot;floorPlan\&quot;: {     \&quot;metersPerX\&quot;: 0.81493109028875,     \&quot;metersPerY\&quot;: 1.8525267552262,     \&quot;width\&quot;: 75,     \&quot;height\&quot;: 50,     \&quot;exclusions\&quot;: [       { \&quot;x\&quot;: 14, \&quot;y\&quot;: 49 }     ],     \&quot;southwest\&quot;: {       \&quot;x\&quot;: 0,       \&quot;y\&quot;: 0,       \&quot;latitude\&quot;: 25.05961539530497,       \&quot;longitude\&quot;: 121.57487591737885     }   } } &#x60;&#x60;&#x60;  
      * @param realTime determines whether to run the simulation and return the results in the same request 
      */
-    @Resource("/api/{version}/simulation/routing") class simulation(val version: java.math.BigDecimal, val &#x60;data&#x60;: kotlin.String, val realTime: kotlin.Boolean)
+    @Resource("/simulation/routing") class simulation(val &#x60;data&#x60;: kotlin.String, val realTime: kotlin.Boolean)
 
     /**
      * Get Stop
      * Get an existing stop
-     * @param version  
      * @param id the id of the stop to get 
      */
-    @Resource("/api/{version}/stop/{id}") class getStop(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/stop/{id}") class getStop(val id: kotlin.Long)
 
     /**
      * Update Stop
      * Update an existing stop
-     * @param version  
      * @param id the id of the stop to update 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/stop/{id}") class updateStop(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/stop/{id}") class updateStop(val id: kotlin.Long)
 
     /**
      * Create Stripe Checkout Session
      * Create a Stripe checkout session
-     * @param version  
      * @param appKey Sirqul Application Key 
      * @param stripeParameters Stripe Parameters 
      */
-    @Resource("/api/{version}/stripe/checkout/session/create") class createStripeCheckoutSession(val version: java.math.BigDecimal, val appKey: kotlin.String, val stripeParameters: kotlin.String)
+    @Resource("/stripe/checkout/session/create") class createStripeCheckoutSession(val appKey: kotlin.String, val stripeParameters: kotlin.String)
 
     /**
      * Create Subscription
      * Create a subscription for a billable entity.  Provide a planId, if not provided then the base plan will be assigned.
-     * @param version  
      * @param accountId The account used to perform the create, must be the responsible manager 
      * @param planId The plan to subscribe to, if null use default plan (optional)
      * @param promoCode Set a promo code for a discount. (optional)
      */
-    @Resource("/api/{version}/subscription/create") class createSubscription(val version: java.math.BigDecimal, val accountId: kotlin.Long, val planId: kotlin.Long? = null, val promoCode: kotlin.String? = null)
+    @Resource("/subscription/create") class createSubscription(val accountId: kotlin.Long, val planId: kotlin.Long? = null, val promoCode: kotlin.String? = null)
 
     /**
      * Delete Subscription
      * Suspend the current subscription for the billable entity managed by the account.  The account must be the responsible manager to perform this action
-     * @param version  
      * @param accountId The account used to perform the delete, must be the responsible manager 
      */
-    @Resource("/api/{version}/subscription/delete") class deleteSubscription(val version: java.math.BigDecimal, val accountId: kotlin.Long)
+    @Resource("/subscription/delete") class deleteSubscription(val accountId: kotlin.Long)
 
     /**
      * Get Subscription
      * Use the accountId to determine the associated BillableEntity.  Then get the subscription.
-     * @param version  
      * @param accountId The account used to perform the lookup 
      */
-    @Resource("/api/{version}/subscription/get") class getSubscription(val version: java.math.BigDecimal, val accountId: kotlin.Long)
+    @Resource("/subscription/get") class getSubscription(val accountId: kotlin.Long)
 
     /**
      * Get Subscription Plan
      * Get the matched subscription plan
-     * @param version  
      * @param planId The ID of the plan to get 
      */
-    @Resource("/api/{version}/subscription/plan/get") class getSubscriptionPlan(val version: java.math.BigDecimal, val planId: kotlin.Long)
+    @Resource("/subscription/plan/get") class getSubscriptionPlan(val planId: kotlin.Long)
 
     /**
      * List Subscription Plans
      * Get the matched subscription plan
-     * @param version  
      * @param visible Include visible only (true), hidden only (false), or all (null) (optional)
      * @param role The role the plan is targeted for, values are: DEVELOPER, RETAILER, ADVERTISER (optional)
      */
-    @Resource("/api/{version}/subscription/plan/list") class getSubscriptionPlans(val version: java.math.BigDecimal, val visible: kotlin.Boolean? = null, val role: kotlin.String? = null)
+    @Resource("/subscription/plan/list") class getSubscriptionPlans(val visible: kotlin.Boolean? = null, val role: kotlin.String? = null)
 
     /**
      * Get Subscription Usage
      * Use the accountId to determine the associated BillableEntity.  Then get the application usage.
-     * @param version  
      * @param accountId The account used to perform the lookup 
      * @param applicationId Get for just 1 application instead of the BillableEntity (optional)
      * @param start The start time frame (optional)
      * @param end The end time frame (optional)
      */
-    @Resource("/api/{version}/subscription/usage/get") class getSubscriptionUsage(val version: java.math.BigDecimal, val accountId: kotlin.Long, val applicationId: kotlin.Long? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null)
+    @Resource("/subscription/usage/get") class getSubscriptionUsage(val accountId: kotlin.Long, val applicationId: kotlin.Long? = null, val start: kotlin.Long? = null, val end: kotlin.Long? = null)
 
     /**
      * Update Subscription
      * Updates the subscription for the billable entity for an account
-     * @param version  
      * @param accountId The account used to perform the update, must be the responsible manager 
      * @param planId The plan to subscribe to (optional)
      * @param promoCode Set a promo code for a discount. (optional)
      * @param active Set active status (optional)
      */
-    @Resource("/api/{version}/subscription/update") class updateSubscription(val version: java.math.BigDecimal, val accountId: kotlin.Long, val planId: kotlin.Long? = null, val promoCode: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/subscription/update") class updateSubscription(val accountId: kotlin.Long, val planId: kotlin.Long? = null, val promoCode: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create Task
      * Create a Task
-     * @param version  
      * @param accountId The logged in user. 
      * @param name The name of the task 
      * @param appKey The application to target (optional)
@@ -8672,30 +8145,27 @@ a list of {@link MessageResponse}.
      * @param visibility The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional)
      * @param active Sets whether the Task is active or not (inactive Tasks are not processed) (optional, default to true)
      */
-    @Resource("/api/{version}/task/create") class createTask(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/task/create") class createTask(val accountId: kotlin.Long, val name: kotlin.String, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Task
      * Delete a Task
-     * @param version  
      * @param accountId The logged in user. 
      * @param taskId The id of the Task to delete. 
      */
-    @Resource("/api/{version}/task/delete") class deleteTask(val version: java.math.BigDecimal, val accountId: kotlin.Long, val taskId: kotlin.Long)
+    @Resource("/task/delete") class deleteTask(val accountId: kotlin.Long, val taskId: kotlin.Long)
 
     /**
      * Get Task
      * Get a Task
-     * @param version  
      * @param accountId The logged in user. 
      * @param taskId The id of the Task to return. 
      */
-    @Resource("/api/{version}/task/get") class getTask(val version: java.math.BigDecimal, val accountId: kotlin.Long, val taskId: kotlin.Long)
+    @Resource("/task/get") class getTask(val accountId: kotlin.Long, val taskId: kotlin.Long)
 
     /**
      * Search Tasks
      * Search on Tasks
-     * @param version  
      * @param accountId The logged in user. 
      * @param groupingId Filter results by a grouping identifier defined by the client (optional)
      * @param filter A comma separated list of filters:  * MINE - Return tasks that the user has created * SHARED - Return tasks that have been shared to the user * FOLLOWER - Return tasks that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return tasks that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC tasks that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC tasks regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all tasks that the user has liked * FEATURED - Return all tasks that have been featured * PENDING - Return all pending tasks  (optional, default to "MINE")
@@ -8709,12 +8179,11 @@ a list of {@link MessageResponse}.
      * @param limit Limit the result to some number. (optional, default to 20)
      * @param activeOnly Determines whether to return only active results (optional, default to true)
      */
-    @Resource("/api/{version}/task/search") class searchTasks(val version: java.math.BigDecimal, val accountId: kotlin.Long, val groupingId: kotlin.String? = null, val filter: kotlin.String? = null, val statuses: kotlin.String? = null, val templateTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/task/search") class searchTasks(val accountId: kotlin.Long, val groupingId: kotlin.String? = null, val filter: kotlin.String? = null, val statuses: kotlin.String? = null, val templateTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Update Task
      * Update a Task
-     * @param version  
      * @param taskId Task Id 
      * @param accountId The logged in user. 
      * @param name The name of the task (optional)
@@ -8729,62 +8198,56 @@ a list of {@link MessageResponse}.
      * @param visibility The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional)
      * @param active Sets whether the Task is active or not (inactive Tasks are not processed) (optional)
      */
-    @Resource("/api/{version}/task/update") class updateTask(val version: java.math.BigDecimal, val taskId: kotlin.Long, val accountId: kotlin.Long, val name: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/task/update") class updateTask(val taskId: kotlin.Long, val accountId: kotlin.Long, val name: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create Territory
      * Creates a territory.
-     * @param version  
      * @param accountId The logged in user. 
      * @param name The name of the territory 
      * @param active If true set the game level as active. Default is true. (optional)
      */
-    @Resource("/api/{version}/territory/create") class createTerritory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val active: kotlin.Boolean? = null)
+    @Resource("/territory/create") class createTerritory(val accountId: kotlin.Long, val name: kotlin.String, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Territory
      * Deletes a territory.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param territoryId the id of the territory to delete 
      */
-    @Resource("/api/{version}/territory/delete") class deleteTerritory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val territoryId: kotlin.Long)
+    @Resource("/territory/delete") class deleteTerritory(val accountId: kotlin.Long, val territoryId: kotlin.Long)
 
     /**
      * Get Territory
      * Get a territory.
-     * @param version  
      * @param territoryId the id of the territory to get 
      */
-    @Resource("/api/{version}/territory/get") class getTerritory(val version: java.math.BigDecimal, val territoryId: kotlin.Long)
+    @Resource("/territory/get") class getTerritory(val territoryId: kotlin.Long)
 
     /**
      * Search Territories
      * Searches on territories.
-     * @param version  
      * @param sortField the field to sort by. Supported values include: ID, CREATED, UPDATED, NAME 
      * @param descending determines whether the sorted list is in descending or ascending order 
      * @param keyword Return results that match this keyword. (optional)
      * @param start The start index for pagination (optional)
      * @param limit The limit for pagination (optional)
      */
-    @Resource("/api/{version}/territory/search") class searchTerritories(val version: java.math.BigDecimal, val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val sortField: kotlin.String, val descending: kotlin.Boolean)
+    @Resource("/territory/search") class searchTerritories(val keyword: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val sortField: kotlin.String, val descending: kotlin.Boolean)
 
     /**
      * Update Territory
      * Updates a territory.
-     * @param version  
      * @param accountId The logged in user. 
      * @param territoryId the id of the territory to update 
      * @param name The name of the territory (optional)
      * @param active If true set the game level as active. (optional)
      */
-    @Resource("/api/{version}/territory/update") class updateTerritory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val territoryId: kotlin.Long, val name: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/territory/update") class updateTerritory(val accountId: kotlin.Long, val territoryId: kotlin.Long, val name: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create/Update Theme
      * Creates or updates a theme descriptor that can be used to give applications a customized look and feel. The theme can be created by consumers and shared to other users, allowing them to use and/or collaborate on making the theme.
-     * @param version  
      * @param publicRead determines whether the theme&#39;s participants have read permissions 
      * @param publicWrite determines whether the theme&#39;s participants have write permissions 
      * @param publicDelete determines whether the theme&#39;s participants have delete permissions 
@@ -8813,12 +8276,11 @@ a list of {@link MessageResponse}.
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/theme") class addOrUpdateThemeDescriptor(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val themeDescriptorId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val publicRead: kotlin.Boolean, val publicWrite: kotlin.Boolean, val publicDelete: kotlin.Boolean, val publicAdd: kotlin.Boolean, val visibility: kotlin.String, val connectionIdsToAdd: kotlin.String? = null, val connectionGroupIdsToAdd: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean, val appVersion: kotlin.String? = null, val colorValueJson: kotlin.String? = null, val stringReplacerJson: kotlin.String? = null, val customJsonObjects: kotlin.String? = null, val iconImage: java.io.File? = null, val sceneAtlasImage: java.io.File? = null, val bgImage: java.io.File? = null, val bgSound: java.io.File? = null, val musicSelection: kotlin.String? = null, val completeWithDefaultValues: kotlin.Boolean, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/theme") class addOrUpdateThemeDescriptor(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val themeDescriptorId: kotlin.Long? = null, val title: kotlin.String? = null, val description: kotlin.String? = null, val publicRead: kotlin.Boolean, val publicWrite: kotlin.Boolean, val publicDelete: kotlin.Boolean, val publicAdd: kotlin.Boolean, val visibility: kotlin.String, val connectionIdsToAdd: kotlin.String? = null, val connectionGroupIdsToAdd: kotlin.String? = null, val includeFriendGroup: kotlin.Boolean, val appVersion: kotlin.String? = null, val colorValueJson: kotlin.String? = null, val stringReplacerJson: kotlin.String? = null, val customJsonObjects: kotlin.String? = null, val iconImage: java.io.File? = null, val sceneAtlasImage: java.io.File? = null, val bgImage: java.io.File? = null, val bgSound: java.io.File? = null, val musicSelection: kotlin.String? = null, val completeWithDefaultValues: kotlin.Boolean, val locationDescription: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Get Theme
      * Gets a theme.
-     * @param version  
      * @param themeDescriptorId the theme id 
      * @param deviceId a unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId the account ID of the user (deviceId or accountId required) (optional)
@@ -8826,12 +8288,11 @@ a list of {@link MessageResponse}.
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/theme/get") class getThemeDescriptor(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val themeDescriptorId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/theme/get") class getThemeDescriptor(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val themeDescriptorId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Search Themes
      * Searches for themes.
-     * @param version  
      * @param filter a comma separated list of Ownership 
      * @param sortField the field to sort by. See ThemeDescriptorApiMap 
      * @param descending determines whether the sorted list is in descending or ascending order 
@@ -8851,12 +8312,11 @@ a list of {@link MessageResponse}.
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/theme/search") class getThemeDescriptors(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val contestType: kotlin.String? = null, val ownerId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val filter: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val dateCreated: kotlin.Long? = null, val appVersion: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/theme/search") class getThemeDescriptors(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val contestType: kotlin.String? = null, val ownerId: kotlin.Long? = null, val q: kotlin.String? = null, val keyword: kotlin.String? = null, val filter: kotlin.String, val sortField: kotlin.String, val descending: kotlin.Boolean, val i: kotlin.Int? = null, val start: kotlin.Int, val l: kotlin.Int? = null, val limit: kotlin.Int, val dateCreated: kotlin.Long? = null, val appVersion: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Delete Theme
      * Removes a theme.
-     * @param version  
      * @param themeDescriptorId the theme id to remove 
      * @param deviceId a unique id given by the device (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -8864,7 +8324,7 @@ a list of {@link MessageResponse}.
      * @param latitude latitude used to update the user&#39;s current location (optional)
      * @param longitude longitude used to update the user&#39;s current location (optional)
      */
-    @Resource("/api/{version}/consumer/theme/remove") class removeThemeDescriptor(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val themeDescriptorId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/theme/remove") class removeThemeDescriptor(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val themeDescriptorId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Create Credential
@@ -8873,7 +8333,6 @@ a list of {@link MessageResponse}.
 The thirdPartyId parameter is used to determine if the user already exists in Sirqul or not. This parameter needs to be unique for each user in the Third Party Network (identified by the networkUID parameter). Note that subsequent calls will update the user&#39;s third-party login credentials for the user with the same thirdPartyId and networkUID combination. 
 
  The thirdPartyToken parameter acts as a shared secret and used by client applications to log users into Sirqul without providing a Sirqul username and password. 
-     * @param version  
      * @param thirdPartyId the third party user account id 
      * @param thirdPartyToken the access token to authenticate with (ex: username or fb token or phone number) 
      * @param networkUID the access provider to authenticate against 
@@ -8892,12 +8351,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param audienceIdsToAdd audience ids to add to the account (optional)
      * @param audienceIdsToRemove audience ids to remove from the account (optional)
      */
-    @Resource("/api/{version}/thirdparty/credential/create") class createCredential(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val deviceId: kotlin.String? = null, val sessionId: kotlin.String? = null, val thirdPartyId: kotlin.String, val thirdPartyName: kotlin.String? = null, val thirdPartyToken: kotlin.String, val networkUID: kotlin.String, val appKey: kotlin.String, val emailAddress: kotlin.String? = null, val signinOnlyMode: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val thirdPartyRefreshToken: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null)
+    @Resource("/thirdparty/credential/create") class createCredential(val accountId: kotlin.Long? = null, val deviceId: kotlin.String? = null, val sessionId: kotlin.String? = null, val thirdPartyId: kotlin.String, val thirdPartyName: kotlin.String? = null, val thirdPartyToken: kotlin.String, val networkUID: kotlin.String, val appKey: kotlin.String, val emailAddress: kotlin.String? = null, val signinOnlyMode: kotlin.Boolean? = null, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val thirdPartyRefreshToken: kotlin.String? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null)
 
     /**
      * Create Network
      * Creates a custom third party network.
-     * @param version  
      * @param accountId The account id making the request 
      * @param name The name of the network 
      * @param enableIntrospection Whether the network uses introspection calls 
@@ -8916,32 +8374,29 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param oauthSecretKey OAuth secret key (optional)
      * @param body  (optional)
      */
-    @Resource("/api/{version}/thirdparty/network/create") class createNetwork(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val enableIntrospection: kotlin.Boolean, val introspectionMethod: kotlin.String? = null, val introspectionURL: kotlin.String? = null, val introspectionParams: kotlin.String? = null, val requiredRootField: kotlin.String? = null, val enableMFA: kotlin.Boolean? = null, val sizeMFA: kotlin.Int? = null, val shelfLifeMFA: kotlin.Int? = null, val oauthTokenURL: kotlin.String? = null, val oauthPrivateKey: java.io.File? = null, val oauthPublicKey: java.io.File? = null, val oauthClientId: kotlin.String? = null, val oauthSecretKey: kotlin.String? = null)
+    @Resource("/thirdparty/network/create") class createNetwork(val accountId: kotlin.Long, val name: kotlin.String, val description: kotlin.String? = null, val enableIntrospection: kotlin.Boolean, val introspectionMethod: kotlin.String? = null, val introspectionURL: kotlin.String? = null, val introspectionParams: kotlin.String? = null, val requiredRootField: kotlin.String? = null, val enableMFA: kotlin.Boolean? = null, val sizeMFA: kotlin.Int? = null, val shelfLifeMFA: kotlin.Int? = null, val oauthTokenURL: kotlin.String? = null, val oauthPrivateKey: java.io.File? = null, val oauthPublicKey: java.io.File? = null, val oauthClientId: kotlin.String? = null, val oauthSecretKey: kotlin.String? = null)
 
     /**
      * Delete Credential
      * Delete a third party network on a Sirqul account.
-     * @param version  
      * @param accountId The account id of the user 
      * @param networkUID The third party network identifier 
      * @param thirdPartyId The third party user id 
      * @param appKey the application key 
      */
-    @Resource("/api/{version}/thirdparty/credential/delete") class deleteCredential(val version: java.math.BigDecimal, val accountId: kotlin.Long, val networkUID: kotlin.String, val thirdPartyId: kotlin.String, val appKey: kotlin.String)
+    @Resource("/thirdparty/credential/delete") class deleteCredential(val accountId: kotlin.Long, val networkUID: kotlin.String, val thirdPartyId: kotlin.String, val appKey: kotlin.String)
 
     /**
      * Delete Network
      * Marks a custom third party network as deleted. Only the network owners and managers have access to this.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param networkUID The unique identifier for the third party network defined by Sirqul 
      */
-    @Resource("/api/{version}/thirdparty/network/delete") class deleteNetwork(val version: java.math.BigDecimal, val accountId: kotlin.Long, val networkUID: kotlin.String)
+    @Resource("/thirdparty/network/delete") class deleteNetwork(val accountId: kotlin.Long, val networkUID: kotlin.String)
 
     /**
      * Get Credential
      * Gets the account information given a third party token.
-     * @param version  
      * @param networkUID the access provider to authenticate against 
      * @param appKey the application key 
      * @param accountId the unique account id of a specific account that will be bound to the third-party credentials (optional)
@@ -8958,21 +8413,19 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param audienceIdsToRemove audience ids to remove from the account (optional)
      * @param referralAccountId account id of the referrer (inviter-invitee relationship) (optional)
      */
-    @Resource("/api/{version}/thirdparty/credential/get") class getCredential(val version: java.math.BigDecimal, val accountId: kotlin.Long? = null, val deviceId: kotlin.String? = null, val sessionId: kotlin.String? = null, val thirdPartyCredentialId: kotlin.Long? = null, val thirdPartyToken: kotlin.String? = null, val thirdPartySecret: kotlin.String? = null, val createNewAccount: kotlin.Boolean? = null, val networkUID: kotlin.String, val appKey: kotlin.String, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val referralAccountId: kotlin.Long? = null)
+    @Resource("/thirdparty/credential/get") class getCredential(val accountId: kotlin.Long? = null, val deviceId: kotlin.String? = null, val sessionId: kotlin.String? = null, val thirdPartyCredentialId: kotlin.Long? = null, val thirdPartyToken: kotlin.String? = null, val thirdPartySecret: kotlin.String? = null, val createNewAccount: kotlin.Boolean? = null, val networkUID: kotlin.String, val appKey: kotlin.String, val responseFilters: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val audienceIdsToAdd: kotlin.String? = null, val audienceIdsToRemove: kotlin.String? = null, val referralAccountId: kotlin.Long? = null)
 
     /**
      * Get Network
      * Get the details of a third party network. Only the network owners and managers have access to this.
-     * @param version  
      * @param accountId The account id making the request 
      * @param networkUID The unique identifier for the third party network defined by Sirqul 
      */
-    @Resource("/api/{version}/thirdparty/network/get") class getNetwork(val version: java.math.BigDecimal, val accountId: kotlin.Long, val networkUID: kotlin.String)
+    @Resource("/thirdparty/network/get") class getNetwork(val accountId: kotlin.Long, val networkUID: kotlin.String)
 
     /**
      * Search Credentials
      * Search on a user&#39;s linked third party networks.
-     * @param version  
      * @param accountId The account id of the user 
      * @param keyword The keyword used to search on the third party name and network string (optional)
      * @param networkUID The network UID to filter results with (optional)
@@ -8980,12 +8433,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start The start of the pagination (optional, default to 0)
      * @param limit The limit of the pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/thirdparty/credential/search") class searchCredentials(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val networkUID: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/thirdparty/credential/search") class searchCredentials(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val networkUID: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Networks
      * Search on supported third party networks and custom networks from external users.
-     * @param version  
      * @param accountId The account id making the request 
      * @param sortField The column to sort the search on, possible values include: UPDATED (default), CREATED, NAME 
      * @param descending The order to return the search results 
@@ -8995,24 +8447,22 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param keyword The keyword used to search on the network name and description fields (optional)
      * @param filterBillable Determines whether to only return applications that the user has access to (optional)
      */
-    @Resource("/api/{version}/thirdparty/network/search") class searchNetworks(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val filterBillable: kotlin.Boolean? = null)
+    @Resource("/thirdparty/network/search") class searchNetworks(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean, val filterBillable: kotlin.Boolean? = null)
 
     /**
      * Send MFA Challenge
      * Sends an MFA challenge (SMS or Email) for networks with MFA enabled.
-     * @param version  
      * @param networkUID the third party network provider that has MFA enabled 
      * @param appKey the application key 
      * @param thirdPartyToken the access token to authenticate with (optional)
      * @param thirdPartyCredentialId optional id of the existing third party credential (optional)
      * @param deviceId the unique id of the device making the request (optional)
      */
-    @Resource("/api/{version}/thirdparty/credential/mfa/send") class sendMFAChallenge(val version: java.math.BigDecimal, val thirdPartyToken: kotlin.String? = null, val thirdPartyCredentialId: kotlin.Long? = null, val networkUID: kotlin.String, val appKey: kotlin.String, val deviceId: kotlin.String? = null)
+    @Resource("/thirdparty/credential/mfa/send") class sendMFAChallenge(val thirdPartyToken: kotlin.String? = null, val thirdPartyCredentialId: kotlin.Long? = null, val networkUID: kotlin.String, val appKey: kotlin.String, val deviceId: kotlin.String? = null)
 
     /**
      * Update Credential
      * Updates a third-party login for an account.
-     * @param version  
      * @param networkUID the access provider to authenticate against 
      * @param thirdPartyId the third party user account id 
      * @param appKey the application key 
@@ -9023,12 +8473,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param metaData External custom client defined data (optional)
      * @param thirdPartyRefreshToken optional refresh token for the third party (optional)
      */
-    @Resource("/api/{version}/thirdparty/credential/update") class updateCredential(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val networkUID: kotlin.String, val thirdPartyId: kotlin.String, val thirdPartyName: kotlin.String? = null, val thirdPartyToken: kotlin.String? = null, val appKey: kotlin.String, val responseFilters: kotlin.String? = null, val metaData: kotlin.String? = null, val thirdPartyRefreshToken: kotlin.String? = null)
+    @Resource("/thirdparty/credential/update") class updateCredential(val deviceId: kotlin.String? = null, val networkUID: kotlin.String, val thirdPartyId: kotlin.String, val thirdPartyName: kotlin.String? = null, val thirdPartyToken: kotlin.String? = null, val appKey: kotlin.String, val responseFilters: kotlin.String? = null, val metaData: kotlin.String? = null, val thirdPartyRefreshToken: kotlin.String? = null)
 
     /**
      * Update Network
      * Updates a custom third party network. Only the network owners and managers have access to this.
-     * @param version  
      * @param accountId The account id making the request 
      * @param networkUID The unique identifier for the third party network defined by Sirqul 
      * @param name The name of the network (optional)
@@ -9048,24 +8497,22 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param oauthSecretKey OAuth secret key (optional)
      * @param body  (optional)
      */
-    @Resource("/api/{version}/thirdparty/network/update") class updateNetwork(val version: java.math.BigDecimal, val accountId: kotlin.Long, val networkUID: kotlin.String, val name: kotlin.String? = null, val description: kotlin.String? = null, val enableIntrospection: kotlin.Boolean? = null, val introspectionMethod: kotlin.String? = null, val introspectionURL: kotlin.String? = null, val introspectionParams: kotlin.String? = null, val requiredRootField: kotlin.String? = null, val enableMFA: kotlin.Boolean? = null, val sizeMFA: kotlin.Int? = null, val shelfLifeMFA: kotlin.Int? = null, val oauthTokenURL: kotlin.String? = null, val oauthPrivateKey: java.io.File? = null, val oauthPublicKey: java.io.File? = null, val oauthClientId: kotlin.String? = null, val oauthSecretKey: kotlin.String? = null)
+    @Resource("/thirdparty/network/update") class updateNetwork(val accountId: kotlin.Long, val networkUID: kotlin.String, val name: kotlin.String? = null, val description: kotlin.String? = null, val enableIntrospection: kotlin.Boolean? = null, val introspectionMethod: kotlin.String? = null, val introspectionURL: kotlin.String? = null, val introspectionParams: kotlin.String? = null, val requiredRootField: kotlin.String? = null, val enableMFA: kotlin.Boolean? = null, val sizeMFA: kotlin.Int? = null, val shelfLifeMFA: kotlin.Int? = null, val oauthTokenURL: kotlin.String? = null, val oauthPrivateKey: java.io.File? = null, val oauthPublicKey: java.io.File? = null, val oauthClientId: kotlin.String? = null, val oauthSecretKey: kotlin.String? = null)
 
     /**
      * Get Ticket Count
      * Gets the ticket count.
-     * @param version  
      * @param deviceId the id of the device that owns the tickets (optional)
      * @param accountId the id of the account that owns the tickets (optional)
      * @param gameType this is deprecated. (optional)
      * @param appKey the applicationkey (optional)
      * @param ticketType the type of ticket (optional)
      */
-    @Resource("/api/{version}/ticket/count") class getTicketCount(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val ticketType: kotlin.String? = null)
+    @Resource("/ticket/count") class getTicketCount(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val ticketType: kotlin.String? = null)
 
     /**
      * Get Ticket List
      * Gets the list of tickets.
-     * @param version  
      * @param deviceId the id of the device that owns the tickets (optional)
      * @param accountId the id of the account that owns the tickets (optional)
      * @param ticketObjectType comma separated list of TicketObjectType (optional)
@@ -9076,12 +8523,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param gameType  (optional)
      * @param appKey the application key (optional)
      */
-    @Resource("/api/{version}/ticket/getList") class getTicketList(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ticketObjectType: kotlin.String? = null, val actionType: kotlin.String? = null, val ticketIds: kotlin.String? = null, val objectIds: kotlin.String? = null, val receiptTokens: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null)
+    @Resource("/ticket/getList") class getTicketList(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ticketObjectType: kotlin.String? = null, val actionType: kotlin.String? = null, val ticketIds: kotlin.String? = null, val objectIds: kotlin.String? = null, val receiptTokens: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null)
 
     /**
      * Gift Tickets
      * Gift tickets to another user.
-     * @param version  
      * @param receiverAccountId the id of the account receiving the tickets 
      * @param ticketId the id of the tickets 
      * @param deviceId the id of the device (optional)
@@ -9091,12 +8537,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param gameType the type of game associated with the tickets (optional)
      * @param appKey the application key (optional)
      */
-    @Resource("/api/{version}/purchase/gift") class giftPurchase(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val receiverAccountId: kotlin.Long, val ticketId: kotlin.Long, val assetId: kotlin.Long? = null, val customMessage: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null)
+    @Resource("/purchase/gift") class giftPurchase(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val receiverAccountId: kotlin.Long, val ticketId: kotlin.Long, val assetId: kotlin.Long? = null, val customMessage: kotlin.String? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null)
 
     /**
      * Save Ticket
      * Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system.
-     * @param version  
      * @param actionType the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER 
      * @param ticketObjectType the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM 
      * @param returnNulls whether to return nulls or not (optional)
@@ -9116,12 +8561,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param includeProfileResponse if returnProfileResponse is false, will return an AppResponse with profile data if true (optional)
      * @param appVersion the application version (optional)
      */
-    @Resource("/api/{version}/ticket/save") class saveTicket(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val actionType: kotlin.String, val ticketObjectType: kotlin.String, val objectId: kotlin.Long? = null, val purchaseCode: kotlin.String? = null, val receiptToken: kotlin.String? = null, val receiptData: kotlin.String? = null, val count: kotlin.Long? = null, val ticketType: kotlin.String? = null, val purchaseProvider: kotlin.String? = null, val purchaseType: kotlin.String? = null, val returnProfileResponse: kotlin.Boolean? = null, val includeProfileResponse: kotlin.Boolean? = null, val appVersion: kotlin.String? = null)
+    @Resource("/ticket/save") class saveTicket(val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val actionType: kotlin.String, val ticketObjectType: kotlin.String, val objectId: kotlin.Long? = null, val purchaseCode: kotlin.String? = null, val receiptToken: kotlin.String? = null, val receiptData: kotlin.String? = null, val count: kotlin.Long? = null, val ticketType: kotlin.String? = null, val purchaseProvider: kotlin.String? = null, val purchaseType: kotlin.String? = null, val returnProfileResponse: kotlin.Boolean? = null, val includeProfileResponse: kotlin.Boolean? = null, val appVersion: kotlin.String? = null)
 
     /**
      * Save Ticket with Reciept
      * Similar to the Save Ticket endpoint but allows the receiptData to be in binary format. This must be a multi-part post
-     * @param version  
      * @param actionType the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER } 
      * @param ticketObjectType the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM} 
      * @param receiptData the receipt/transaction data for validating a purchase via iTunes/Gooogle/etc. This should be in binary format. 
@@ -9141,19 +8585,17 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param includeProfileResponse if returnProfileResponse is false, will return an AppResponse with profile data if true (optional)
      * @param appVersion the application version (optional)
      */
-    @Resource("/api/{version}/ticket/save/fileUpload") class saveTicketViaFileUpload(val version: java.math.BigDecimal, val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val actionType: kotlin.String, val ticketObjectType: kotlin.String, val objectId: kotlin.Long? = null, val purchaseCode: kotlin.String? = null, val receiptToken: kotlin.String? = null, val receiptData: java.io.File, val count: kotlin.Long? = null, val ticketType: kotlin.String? = null, val purchaseProvider: kotlin.String? = null, val purchaseType: kotlin.String? = null, val returnProfileResponse: kotlin.Boolean? = null, val includeProfileResponse: kotlin.Boolean? = null, val appVersion: kotlin.String? = null)
+    @Resource("/ticket/save/fileUpload") class saveTicketViaFileUpload(val returnNulls: kotlin.Boolean? = null, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val gameType: kotlin.String? = null, val appKey: kotlin.String? = null, val actionType: kotlin.String, val ticketObjectType: kotlin.String, val objectId: kotlin.Long? = null, val purchaseCode: kotlin.String? = null, val receiptToken: kotlin.String? = null, val receiptData: java.io.File, val count: kotlin.Long? = null, val ticketType: kotlin.String? = null, val purchaseProvider: kotlin.String? = null, val purchaseType: kotlin.String? = null, val returnProfileResponse: kotlin.Boolean? = null, val includeProfileResponse: kotlin.Boolean? = null, val appVersion: kotlin.String? = null)
 
     /**
      * Get Ticket Offers
      * Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.
-     * @param version  
      */
-    @Resource("/api/{version}/ticket/ticketoffers") class ticketOffers(val version: java.math.BigDecimal)
+    @Resource("/ticket/ticketoffers") class ticketOffers
 
     /**
      * Create Tournament
      * Create a tournament.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The appKey the tournament is created for. 
      * @param title The title of the tournament 
@@ -9190,33 +8632,30 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param winnerTag This sets what analytic tag is used when a winner is determined (optional)
      * @param tieTag This sets what analytic tag is used when a tie has occurred (optional)
      */
-    @Resource("/api/{version}/tournament/create") class createTournament(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val title: kotlin.String, val subType: kotlin.String? = null, val imageAssetId: kotlin.Long? = null, val secondsBetweenLevels: kotlin.Int? = null, val secondsForTieBreaker: kotlin.Int? = null, val secondsBetweenPacks: kotlin.Int? = null, val maximumLevelLength: kotlin.Int? = null, val costToPlay: kotlin.Int, val costToPlayType: kotlin.String? = null, val minimumToPlay: kotlin.Int? = null, val startingLimit: kotlin.Int? = null, val availableLimit: kotlin.Int? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val startDate: kotlin.Long, val audienceIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val enableBuyBack: kotlin.Boolean? = null, val offerIds: kotlin.String? = null, val offerAssetId: kotlin.Long? = null, val fixedReward: kotlin.Boolean? = null, val splitReward: kotlin.String? = null, val allocateTickets: kotlin.Boolean? = null, val tournamentData: kotlin.String? = null, val missionType: kotlin.String? = null, val visibility: kotlin.String? = null, val preliminaryGroups: kotlin.Int? = null, val preliminaryGroupAdvancements: kotlin.String? = null, val enableMultipleEntries: kotlin.Boolean? = null, val enableMultipleVotes: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val winnerTag: kotlin.String? = null, val tieTag: kotlin.String? = null)
+    @Resource("/tournament/create") class createTournament(val accountId: kotlin.Long, val appKey: kotlin.String, val title: kotlin.String, val subType: kotlin.String? = null, val imageAssetId: kotlin.Long? = null, val secondsBetweenLevels: kotlin.Int? = null, val secondsForTieBreaker: kotlin.Int? = null, val secondsBetweenPacks: kotlin.Int? = null, val maximumLevelLength: kotlin.Int? = null, val costToPlay: kotlin.Int, val costToPlayType: kotlin.String? = null, val minimumToPlay: kotlin.Int? = null, val startingLimit: kotlin.Int? = null, val availableLimit: kotlin.Int? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val startDate: kotlin.Long, val audienceIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val enableBuyBack: kotlin.Boolean? = null, val offerIds: kotlin.String? = null, val offerAssetId: kotlin.Long? = null, val fixedReward: kotlin.Boolean? = null, val splitReward: kotlin.String? = null, val allocateTickets: kotlin.Boolean? = null, val tournamentData: kotlin.String? = null, val missionType: kotlin.String? = null, val visibility: kotlin.String? = null, val preliminaryGroups: kotlin.Int? = null, val preliminaryGroupAdvancements: kotlin.String? = null, val enableMultipleEntries: kotlin.Boolean? = null, val enableMultipleVotes: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val winnerTag: kotlin.String? = null, val tieTag: kotlin.String? = null)
 
     /**
      * Delete Tournament
      * Delete a tournament.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param missionId the id of the mission to delete 
      */
-    @Resource("/api/{version}/tournament/delete") class deleteTournament(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long)
+    @Resource("/tournament/delete") class deleteTournament(val accountId: kotlin.Long, val missionId: kotlin.Long)
 
     /**
      * Get Tournament
      * Get a tournament.
-     * @param version  
      * @param accountId The id of the logged in user 
      * @param missionId The id of the mission to return (either missionId or joinCode is required) (optional)
      * @param joinCode Optional identifier for getting the tournament (either missionId or joinCode is required) (optional)
      * @param includeScores Determines which type of scores are returned. Possible values include: ALL, MINE (optional)
      * @param objectPreviewSize Determines the max number of game objects that will get returned for each game level response (optional, default to 50)
      */
-    @Resource("/api/{version}/tournament/get") class getTournament(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long? = null, val joinCode: kotlin.String? = null, val includeScores: kotlin.String? = null, val objectPreviewSize: kotlin.Int? = null)
+    @Resource("/tournament/get") class getTournament(val accountId: kotlin.Long, val missionId: kotlin.Long? = null, val joinCode: kotlin.String? = null, val includeScores: kotlin.String? = null, val objectPreviewSize: kotlin.Int? = null)
 
     /**
      * Search Tournament Objects
      * Search on game objects of tournaments
-     * @param version  
      * @param accountId the account ID 
      * @param gameLevelId the game level id to filter results by 
      * @param sortField the field to sort by (optional, default to PLAYER_SCORE_COUNT)
@@ -9224,12 +8663,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start the start index for pagination (optional, default to 0)
      * @param limit the limit for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/tournament/object/search") class searchObjects(val version: java.math.BigDecimal, val accountId: kotlin.Long, val gameLevelId: kotlin.Long, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/tournament/object/search") class searchObjects(val accountId: kotlin.Long, val gameLevelId: kotlin.Long, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Tournament Rounds
      * Search for the user&#39;s tournament games.
-     * @param version  
      * @param accountId the account ID 
      * @param appKey the application key 
      * @param status comma separated list of statuses to filter results by (optional, default to "ACCEPTED,ACTIVE")
@@ -9239,12 +8677,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start the start index for pagination (optional, default to 0)
      * @param limit the limit for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/tournament/round/search") class searchRounds(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val status: kotlin.String? = null, val missionType: kotlin.String? = null, val currentOnly: kotlin.Boolean? = null, val visibilities: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/tournament/round/search") class searchRounds(val accountId: kotlin.Long, val appKey: kotlin.String, val status: kotlin.String? = null, val missionType: kotlin.String? = null, val currentOnly: kotlin.Boolean? = null, val visibilities: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Tournaments
      * Search for tournaments
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The application key 
      * @param keyword the keyword to search tournament on (optional)
@@ -9258,12 +8695,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start Start the result set at some index. (optional, default to 0)
      * @param limit Limit the result to some number (optional, default to 20)
      */
-    @Resource("/api/{version}/tournament/search") class searchTournaments(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val subType: kotlin.String? = null, val includeInactive: kotlin.Boolean? = null, val missionTypes: kotlin.String? = null, val filter: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val visibility: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/tournament/search") class searchTournaments(val accountId: kotlin.Long, val appKey: kotlin.String, val keyword: kotlin.String? = null, val subType: kotlin.String? = null, val includeInactive: kotlin.Boolean? = null, val missionTypes: kotlin.String? = null, val filter: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val visibility: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Submit Tournament Score
      * Submit an array of scores for a tournament match. 
-     * @param version  
      * @param accountId The logged in user account ID. 
      * @param appKey The application key. 
      * @param missionId The missionId to score for 
@@ -9272,12 +8708,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param scores a JSON Array of scores to submit for a tournament match &#x60;&#x60;&#x60;json [   {     \&quot;accountId\&quot;: 2,     \&quot;points\&quot;: 3   },   {     \&quot;accountId\&quot;: 1777662,     \&quot;points\&quot;: 7   } ] &#x60;&#x60;&#x60;  
      * @param gameLevelId The gameLevelId to score for (optional)
      */
-    @Resource("/api/{version}/tournament/score") class submitTournamentScore(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long, val gameId: kotlin.Long, val packId: kotlin.Long, val gameLevelId: kotlin.Long? = null, val scores: kotlin.String)
+    @Resource("/tournament/score") class submitTournamentScore(val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long, val gameId: kotlin.Long, val packId: kotlin.Long, val gameLevelId: kotlin.Long? = null, val scores: kotlin.String)
 
     /**
      * Submit a vote for a multi-stage album tournament.
      * Submit a vote for a multi-stage album tournament.
-     * @param version  
      * @param accountId The logged in user. 
      * @param appKey The application to target 
      * @param missionId The tournament&#39;s primary id 
@@ -9285,23 +8720,21 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param deviceId The unique id of the device making the request (optional) (optional)
      * @param checkIfDeviceAlreadyVoted When true, check if the device already voted to prevent duplicate votes from the same device (optional, default to false)
      */
-    @Resource("/api/{version}/tournament/vote") class submitTournamentVote(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long, val gameObjectId: kotlin.Long, val checkIfDeviceAlreadyVoted: kotlin.Boolean? = null)
+    @Resource("/tournament/vote") class submitTournamentVote(val deviceId: kotlin.String? = null, val accountId: kotlin.Long, val appKey: kotlin.String, val missionId: kotlin.Long, val gameObjectId: kotlin.Long, val checkIfDeviceAlreadyVoted: kotlin.Boolean? = null)
 
     /**
      * Substitute Tournament Player
      * Service to replace the user&#39;s opponent in the current level - pack - mission with an AI account.
-     * @param version  
      * @param accountId the id of the logged in user 
      * @param missionId the id of the mission 
      * @param packId the id of the pack 
      * @param gameLevelId the id of the game level 
      */
-    @Resource("/api/{version}/tournament/substitute") class substituteTournamentPlayer(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long, val packId: kotlin.Long, val gameLevelId: kotlin.Long)
+    @Resource("/tournament/substitute") class substituteTournamentPlayer(val accountId: kotlin.Long, val missionId: kotlin.Long, val packId: kotlin.Long, val gameLevelId: kotlin.Long)
 
     /**
      * Update Tournament
      * Update a tournament.
-     * @param version  
      * @param accountId The logged in user. 
      * @param missionId The mission/tournament to update 
      * @param title The title of the tournament (optional)
@@ -9337,12 +8770,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param winnerTag This sets what analytic tag is used when a winner is determined (optional)
      * @param tieTag This sets what analytic tag is used when a winner is determined (optional)
      */
-    @Resource("/api/{version}/tournament/update") class updateTournament(val version: java.math.BigDecimal, val accountId: kotlin.Long, val missionId: kotlin.Long, val title: kotlin.String? = null, val subType: kotlin.String? = null, val imageAssetId: kotlin.Long? = null, val secondsBetweenLevels: kotlin.Int? = null, val secondsForTieBreaker: kotlin.Int? = null, val secondsBetweenPacks: kotlin.Int? = null, val maximumLevelLength: kotlin.Int? = null, val costToPlay: kotlin.Int? = null, val costToPlayType: kotlin.String? = null, val minimumToPlay: kotlin.Int? = null, val startingLimit: kotlin.Int? = null, val availableLimit: kotlin.Int? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val startDate: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val enableBuyBack: kotlin.Boolean? = null, val offerIds: kotlin.String? = null, val offerAssetId: kotlin.Long? = null, val fixedReward: kotlin.Boolean? = null, val splitReward: kotlin.String? = null, val allocateTickets: kotlin.Boolean? = null, val tournamentData: kotlin.String? = null, val visibility: kotlin.String? = null, val preliminaryGroups: kotlin.Int? = null, val preliminaryGroupAdvancements: kotlin.String? = null, val enableMultipleEntries: kotlin.Boolean? = null, val enableMultipleVotes: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val winnerTag: kotlin.String? = null, val tieTag: kotlin.String? = null)
+    @Resource("/tournament/update") class updateTournament(val accountId: kotlin.Long, val missionId: kotlin.Long, val title: kotlin.String? = null, val subType: kotlin.String? = null, val imageAssetId: kotlin.Long? = null, val secondsBetweenLevels: kotlin.Int? = null, val secondsForTieBreaker: kotlin.Int? = null, val secondsBetweenPacks: kotlin.Int? = null, val maximumLevelLength: kotlin.Int? = null, val costToPlay: kotlin.Int? = null, val costToPlayType: kotlin.String? = null, val minimumToPlay: kotlin.Int? = null, val startingLimit: kotlin.Int? = null, val availableLimit: kotlin.Int? = null, val description: kotlin.String? = null, val metaData: kotlin.String? = null, val startDate: kotlin.Long? = null, val audienceIds: kotlin.String? = null, val active: kotlin.Boolean? = null, val enableBuyBack: kotlin.Boolean? = null, val offerIds: kotlin.String? = null, val offerAssetId: kotlin.Long? = null, val fixedReward: kotlin.Boolean? = null, val splitReward: kotlin.String? = null, val allocateTickets: kotlin.Boolean? = null, val tournamentData: kotlin.String? = null, val visibility: kotlin.String? = null, val preliminaryGroups: kotlin.Int? = null, val preliminaryGroupAdvancements: kotlin.String? = null, val enableMultipleEntries: kotlin.Boolean? = null, val enableMultipleVotes: kotlin.Boolean? = null, val featured: kotlin.Boolean? = null, val winnerTag: kotlin.String? = null, val tieTag: kotlin.String? = null)
 
     /**
      * Create Batch Tracking
      * Batch create tracking legs
-     * @param version  
      * @param &#x60;data&#x60; JSON array of tracking legs &#x60;&#x60;&#x60;json [   \&quot;distance\&quot;: \&quot;0.08\&quot;,   \&quot;duration\&quot;: \&quot;10000\&quot;,   \&quot;startLatitude\&quot;: \&quot;47.614603\&quot;,   \&quot;startLongitude\&quot;: \&quot;-122.350518\&quot;,   \&quot;endLatitude\&quot;: \&quot;47.614384\&quot;,   \&quot;endLongitude\&quot;: \&quot;-122.349161\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endDate\&quot;: \&quot;1361924020000\&quot;,   \&quot;steps\&quot;: [     {       \&quot;distance\&quot;: \&quot;0.03\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614603\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,       \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614941\&quot;,       \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;endDate\&quot;: \&quot;1361924015000\&quot;     },{       \&quot;distance\&quot;: \&quot;0.05\&quot;,       \&quot;duration\&quot;: \&quot;5000\&quot;,       \&quot;startLat\&quot;: \&quot;47.614941\&quot;,       \&quot;startLng\&quot;: \&quot;-122.350062\&quot;,       \&quot;startDate\&quot;: \&quot;1361924015000\&quot;,       \&quot;endLat\&quot;: \&quot;47.614384\&quot;,       \&quot;endLng\&quot;: \&quot;-122.349161\&quot;,       \&quot;endDate\&quot;: \&quot;1361924020000\&quot;     }   ] ] &#x60;&#x60;&#x60;  
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
@@ -9351,12 +8783,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param defaultTag The default tag to apply to incoming legs when no tag is provided (optional, default to "PASSIVE")
      * @param slaveUID  (optional)
      */
-    @Resource("/api/{version}/tracking/batch/create") class batchSaveTracking(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val &#x60;data&#x60;: kotlin.String, val generateAccounts: kotlin.Boolean? = null, val updateAccountLocations: kotlin.Boolean? = null, val defaultTag: kotlin.String? = null, val slaveUID: kotlin.String? = null)
+    @Resource("/tracking/batch/create") class batchSaveTracking(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val &#x60;data&#x60;: kotlin.String, val generateAccounts: kotlin.Boolean? = null, val updateAccountLocations: kotlin.Boolean? = null, val defaultTag: kotlin.String? = null, val slaveUID: kotlin.String? = null)
 
     /**
      * Get Predicted Locations
      * Get the predicted location for a customer based on previous behavior.  If a customer resides in a place for a period of time this is marked as a preferred location.  We look back over the previous few days and the previous days of the week from the day specified.  If for instance the day was a Wednesday then this would check the days before, including: Tuesday, Monday, Sunday, etc. It will also check some number of previous Wednesdays in the past few weeks.
-     * @param version  
      * @param accountId The account id of the customer 
      * @param latitude latitude to return a more likely result set based on the user&#39;s current location (optional)
      * @param longitude longitude to return a more likely result set based on the user&#39;s current location (optional)
@@ -9367,22 +8798,20 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param searchRange Filter results so only locations within the specified radius will be returned. The distance can either be in miles or kilometers as specified in the distanceUnit parameter. A value of \&quot;0\&quot; (zero) will ignore the radius restriction. (optional, default to 0.0)
      * @param sortOrder The ordering algorithm for sorting the returned results: {MATCHES, DISTANCE, WEIGHTED} (optional, default to MATCHES)
      */
-    @Resource("/api/{version}/tracking/predicted/get") class getPredictedLocations(val version: java.math.BigDecimal, val accountId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val dateCheck: kotlin.Long? = null, val hourCheck: kotlin.String? = null, val threshold: kotlin.Long? = null, val distanceUnit: kotlin.String? = null, val searchRange: kotlin.Double? = null, val sortOrder: kotlin.String? = null)
+    @Resource("/tracking/predicted/get") class getPredictedLocations(val accountId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val dateCheck: kotlin.Long? = null, val hourCheck: kotlin.String? = null, val threshold: kotlin.Long? = null, val distanceUnit: kotlin.String? = null, val searchRange: kotlin.Double? = null, val sortOrder: kotlin.String? = null)
 
     /**
      * Get Tracking Path
      * Get the path (lat/long coordinates) between 2 steps previously logged for a customer.
-     * @param version  
      * @param accountId The account id of the customer 
      * @param startStepId The stepId to begin from 
      * @param endStepId The stepId to end with 
      */
-    @Resource("/api/{version}/tracking/path/get") class getPredictedPath(val version: java.math.BigDecimal, val accountId: kotlin.Long, val startStepId: kotlin.Long, val endStepId: kotlin.Long)
+    @Resource("/tracking/path/get") class getPredictedPath(val accountId: kotlin.Long, val startStepId: kotlin.Long, val endStepId: kotlin.Long)
 
     /**
      * Search Preferred Locations
      * Search on preferred locations for a user, which is created when a customer resides in a place for a period of time.
-     * @param version  
      * @param accountId The account id of the customer 
      * @param latitude latitude to return a more likely result set based on the user&#39;s current location (optional)
      * @param longitude longitude to return a more likely result set based on the user&#39;s current location (optional)
@@ -9395,12 +8824,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param searchRange Filter results so only locations within the specified radius will be returned. The distance can either be in miles or kilometers as specified in the distanceUnit parameter. A value of \&quot;0\&quot; (zero) will ignore the radius restriction. (optional, default to 0.0)
      * @param distanceUnit Determines which unit of measurement gets returned for distances: {MILES, KILOMETERS} (optional, default to MILES)
      */
-    @Resource("/api/{version}/tracking/preferred/search") class getPreferredLocations(val version: java.math.BigDecimal, val accountId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val dateCheck: kotlin.Long? = null, val hourCheck: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchRange: kotlin.Double? = null, val distanceUnit: kotlin.String? = null)
+    @Resource("/tracking/preferred/search") class getPreferredLocations(val accountId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val dateCheck: kotlin.Long? = null, val hourCheck: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val searchRange: kotlin.Double? = null, val distanceUnit: kotlin.String? = null)
 
     /**
      * Search Tracking
      * Retrieve tracking data to be able to show where a user has been.
-     * @param version  
      * @param deviceId the device id (deviceId or accountId required) (optional)
      * @param accountId the account id of the user (deviceId or accountId required) (optional)
      * @param ownerId the account id of the person the user wants to tracking data for (optional)
@@ -9410,12 +8838,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param tags filter results by tag (optional)
      * @param getLastPoint gets the last known location of the user (optional, default to false)
      */
-    @Resource("/api/{version}/tracking/search") class getTrackingLegs(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val trackingDeviceId: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val getLastPoint: kotlin.Boolean? = null)
+    @Resource("/tracking/search") class getTrackingLegs(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val ownerId: kotlin.Long? = null, val trackingDeviceId: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val getLastPoint: kotlin.Boolean? = null)
 
     /**
      * Create Tracking Leg
      * Send tracking points to be able to generate pathing data
-     * @param version  
      * @param startLat the latitude of the first point 
      * @param startLng the longitude of the first point 
      * @param startDate the start date (in UTC milliseconds) of the first point 
@@ -9429,12 +8856,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param steps JSON array of tracking vectors used for smoother pathing data. If null then the leg data will be used to generate a single step, if an empty array then no steps will be generated. &#x60;&#x60;&#x60;json [{   \&quot;distance\&quot;: \&quot;0.03\&quot;,   \&quot;duration\&quot;: \&quot;5000\&quot;,   \&quot;startLat\&quot;: \&quot;47.614603\&quot;,   \&quot;startLng\&quot;: \&quot;-122.350518\&quot;,   \&quot;startDate\&quot;: \&quot;1361924010000\&quot;,   \&quot;endLat\&quot;: \&quot;47.614941\&quot;,   \&quot;endLng\&quot;: \&quot;-122.350062\&quot;,   \&quot;endDate\&quot;: \&quot;1361924015000\&quot; }] &#x60;&#x60;&#x60;  (optional)
      * @param tags name the leg for searching (optional)
      */
-    @Resource("/api/{version}/tracking/leg/create") class saveTrackingLeg(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val distance: kotlin.Double? = null, val duration: kotlin.Long? = null, val startLat: kotlin.Double, val startLng: kotlin.Double, val startDate: kotlin.Long, val endLat: kotlin.Double, val endLng: kotlin.Double, val endDate: kotlin.Long, val steps: kotlin.String? = null, val tags: kotlin.String? = null)
+    @Resource("/tracking/leg/create") class saveTrackingLeg(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val distance: kotlin.Double? = null, val duration: kotlin.Long? = null, val startLat: kotlin.Double, val startLng: kotlin.Double, val startDate: kotlin.Long, val endLat: kotlin.Double, val endLng: kotlin.Double, val endDate: kotlin.Long, val steps: kotlin.String? = null, val tags: kotlin.String? = null)
 
     /**
      * Create Tracking Step
      * Send tracking points to be able to generate pathing data
-     * @param version  
      * @param legId the leg to add the step to 
      * @param startLat the latitude of the first point 
      * @param startLng the longitude of the first point 
@@ -9447,12 +8873,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param distance the total distance (optional)
      * @param duration the total duration (optional)
      */
-    @Resource("/api/{version}/tracking/step/create") class saveTrackingStep(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val legId: kotlin.Long, val distance: kotlin.Double? = null, val duration: kotlin.Long? = null, val startLat: kotlin.Double, val startLng: kotlin.Double, val startDate: kotlin.Long, val endLat: kotlin.Double, val endLng: kotlin.Double, val endDate: kotlin.Long)
+    @Resource("/tracking/step/create") class saveTrackingStep(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val legId: kotlin.Long, val distance: kotlin.Double? = null, val duration: kotlin.Long? = null, val startLat: kotlin.Double, val startLng: kotlin.Double, val startDate: kotlin.Long, val endLat: kotlin.Double, val endLng: kotlin.Double, val endDate: kotlin.Long)
 
     /**
      * List Tracking
      * Search for all accounts that have tracking legs data by the given constraints.
-     * @param version  
      * @param accountId The account id of the user 
      * @param keyword Used for LIKE search of first or last name on the acocunt (optional)
      * @param startDate Range to begin in UTC milliseconds (optional)
@@ -9468,12 +8893,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param limit The total number of records to return. Default is 20. (optional, default to 20)
      * @param activeOnly Determines whether to return only active results. Default is false. (optional, default to false)
      */
-    @Resource("/api/{version}/tracking/list") class searchAccountsWithTrackingLegs(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val audienceIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/tracking/list") class searchAccountsWithTrackingLegs(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val audienceIds: kotlin.String? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val range: kotlin.Double? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Search Tracking (Billable)
      * Retrieve tracking data for billable/account scoped queries.
-     * @param version  
      * @param accountId The account id to search tracking for 
      * @param appKey The application key 
      * @param trackingDeviceId The id of the tracking device (optional)
@@ -9483,12 +8907,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start The start index for pagination (optional, default to 0)
      * @param limit The limit for pagination (optional, default to 100)
      */
-    @Resource("/api/{version}/tracking/searchByBillable") class searchTrackingLegs(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val trackingDeviceId: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/tracking/searchByBillable") class searchTrackingLegs(val accountId: kotlin.Long, val appKey: kotlin.String, val trackingDeviceId: kotlin.String? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tags: kotlin.String? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Create Trigger
      * Create a trigger
-     * @param version  
      * @param accountId The logged in user 
      * @param name The name of the trigger 
      * @param appKey The application to target (optional)
@@ -9503,30 +8926,27 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param visibility The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional)
      * @param active Sets whether the Trigger is active or not (inactive Triggers are not processed) (optional, default to true)
      */
-    @Resource("/api/{version}/trigger/create") class createTrigger(val version: java.math.BigDecimal, val accountId: kotlin.Long, val name: kotlin.String, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/trigger/create") class createTrigger(val accountId: kotlin.Long, val name: kotlin.String, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Delete Trigger
      * Mark a trigger as deleted.
-     * @param version  
      * @param accountId The logged in user. 
      * @param triggerId The id of the trigger to delete. 
      */
-    @Resource("/api/{version}/trigger/delete") class deleteTrigger(val version: java.math.BigDecimal, val accountId: kotlin.Long, val triggerId: kotlin.Long)
+    @Resource("/trigger/delete") class deleteTrigger(val accountId: kotlin.Long, val triggerId: kotlin.Long)
 
     /**
      * Get Trigger
      * Get a trigger
-     * @param version  
      * @param accountId The logged in user. 
      * @param triggerId The id of the Trigger to return. 
      */
-    @Resource("/api/{version}/trigger/get") class getTrigger(val version: java.math.BigDecimal, val accountId: kotlin.Long, val triggerId: kotlin.Long)
+    @Resource("/trigger/get") class getTrigger(val accountId: kotlin.Long, val triggerId: kotlin.Long)
 
     /**
      * Search Triggers
      * Search for triggers
-     * @param version  
      * @param accountId The logged in user. 
      * @param groupingId Filter results by a grouping identifier defined by the client (optional)
      * @param filter A comma separated list of filters. * MINE - Return triggers that the user has created * SHARED - Return triggers that have been shared to the user * FOLLOWER - Return triggers that have been created by the user&#39;&#39;s followers (the content needs to have been APPROVED or FEATURED) * FOLLOWING - Return triggers that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED) * PUBLIC - Return all PUBLIC triggers that have been APPROVED or FEATURED * ALL_PUBLIC - Return all PUBLIC triggers regardless of whether they are approved or not (ignores the approval status) * LIKED - Return all triggers that the user has liked * FEATURED - Return all triggers that have been featured * PENDING - Return all pending triggers  (optional, default to "MINE")
@@ -9540,12 +8960,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param limit Limit the result to some number. (optional, default to 20)
      * @param activeOnly Determines whether to return only active results (optional, default to true)
      */
-    @Resource("/api/{version}/trigger/search") class searchTriggers(val version: java.math.BigDecimal, val accountId: kotlin.Long, val groupingId: kotlin.String? = null, val filter: kotlin.String? = null, val statuses: kotlin.String? = null, val templateTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
+    @Resource("/trigger/search") class searchTriggers(val accountId: kotlin.Long, val groupingId: kotlin.String? = null, val filter: kotlin.String? = null, val statuses: kotlin.String? = null, val templateTypes: kotlin.String? = null, val appKey: kotlin.String? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val activeOnly: kotlin.Boolean? = null)
 
     /**
      * Update Trigger
      * Update a trigger
-     * @param version  
      * @param triggerId The trigger to update 
      * @param accountId The logged in user 
      * @param name The name of the trigger (optional)
@@ -9561,54 +8980,48 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param visibility The determines the scope of who is able to find and view the scheduled notification (PUBLIC - openly available to all Sirqul users, PRIVATE - only available to users that have been invited) (optional)
      * @param active Sets whether the Trigger is active or not (inactive Triggers are not processed) (optional)
      */
-    @Resource("/api/{version}/trigger/update") class updateTrigger(val version: java.math.BigDecimal, val triggerId: kotlin.Long, val accountId: kotlin.Long, val name: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
+    @Resource("/trigger/update") class updateTrigger(val triggerId: kotlin.Long, val accountId: kotlin.Long, val name: kotlin.String? = null, val appKey: kotlin.String? = null, val groupingId: kotlin.String? = null, val endpointURL: kotlin.String? = null, val payload: kotlin.String? = null, val scheduledDate: kotlin.Long? = null, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val cronExpression: kotlin.String? = null, val conditionalInput: kotlin.String? = null, val visibility: kotlin.String? = null, val active: kotlin.Boolean? = null)
 
     /**
      * Create Trip
      * Create a new trip
-     * @param version  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/trip") class createTrip(val version: java.math.BigDecimal)
+    @Resource("/trip") class createTrip()
 
     /**
      * Delete Trip
      * Delete an existing trip
-     * @param version  
      * @param id the id of the trip to delete 
      */
-    @Resource("/api/{version}/trip/{id}") class delete(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}") class delete(val id: kotlin.Long)
 
     /**
      * Set Trip Preference Driver
      * Update trip preference to drive, also create a route and assign the trip to the route
-     * @param version  
      * @param id the id of the trip 
      * @param recurrence the frequency of the trip (e.g. weekly, until 2018-08-09) 
      */
-    @Resource("/api/{version}/trip/{id}/drive") class driveTrip(val version: java.math.BigDecimal, val id: kotlin.Long, val recurrence: kotlin.Boolean)
+    @Resource("/trip/{id}/drive") class driveTrip(val id: kotlin.Long, val recurrence: kotlin.Boolean)
 
     /**
      * Set Trip Preference Flexible
      * Update trip preference to flexible.
-     * @param version  
      * @param id the id of the trip 
      * @param recurrence the frequency of the trip (e.g. weekly, until 2018-08-09) 
      */
-    @Resource("/api/{version}/trip/{id}/flexible") class flexibleTrip(val version: java.math.BigDecimal, val id: kotlin.Long, val recurrence: kotlin.Boolean)
+    @Resource("/trip/{id}/flexible") class flexibleTrip(val id: kotlin.Long, val recurrence: kotlin.Boolean)
 
     /**
      * Get Trip
      * Get an existing trip
-     * @param version  
      * @param id the id of the trip to get 
      */
-    @Resource("/api/{version}/trip/{id}") class getTrip(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}") class getTrip(val id: kotlin.Long)
 
     /**
      * Get Trip Matches
      * Get matching trips of specific trip
-     * @param version  
      * @param id The id The id of the trip to search for matches for 
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
@@ -9618,31 +9031,28 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param matchedHasRoute Only return matchings that already have route assigned (optional)
      * @param matchedHasDriver Only return matchings that already have driver assigned (optional)
      */
-    @Resource("/api/{version}/trip/{id}/match") class getTripMatches(val version: java.math.BigDecimal, val id: kotlin.Long, val matchedHasRoute: kotlin.Boolean? = null, val matchedHasDriver: kotlin.Boolean? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/trip/{id}/match") class getTripMatches(val id: kotlin.Long, val matchedHasRoute: kotlin.Boolean? = null, val matchedHasDriver: kotlin.Boolean? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Process Trip Matches
      * Process trip matching, assign trips with no route to matched trips with route.
-     * @param version  
      * @param startDate The lower bound date to process matchings (optional)
      * @param endDate The upper bound date to process matchings (optional)
      * @param tripId the id of the trip to process (optional)
      */
-    @Resource("/api/{version}/trip/match/process") class processTripMatches(val version: java.math.BigDecimal, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tripId: kotlin.Long? = null)
+    @Resource("/trip/match/process") class processTripMatches(val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val tripId: kotlin.Long? = null)
 
     /**
      * Set Trip Preference Rider
      * Update trip preference to ride.
-     * @param version  
      * @param id the id of the trip 
      * @param recurrence the frequency of the trip (e.g. weekly, until 2018-08-09) 
      */
-    @Resource("/api/{version}/trip/{id}/ride") class ride(val version: java.math.BigDecimal, val id: kotlin.Long, val recurrence: kotlin.Boolean)
+    @Resource("/trip/{id}/ride") class ride(val id: kotlin.Long, val recurrence: kotlin.Boolean)
 
     /**
      * Search Trips
      * Search for trips
-     * @param version  
      * @param accountId The owner of the trips 
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
@@ -9653,12 +9063,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param endDate The upper bound limit of time (optional)
      * @param hasNotifications whether to search on trips that have notifications or not (optional)
      */
-    @Resource("/api/{version}/trip") class search(val version: java.math.BigDecimal, val accountId: kotlin.Long, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val hasNotifications: kotlin.Boolean? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/trip") class search(val accountId: kotlin.Long, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val hasNotifications: kotlin.Boolean? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Search Trips
      * Search for trips with matching information.
-     * @param version  
      * @param accountId The owner of the trips 
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
@@ -9670,85 +9079,76 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param matchedHasRoute Only return matchings that already have route assigned (optional)
      * @param matchedHasDriver Only return matchings that already have driver assigned (optional)
      */
-    @Resource("/api/{version}/trip/match") class searchTrips(val version: java.math.BigDecimal, val accountId: kotlin.Long, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val matchedHasRoute: kotlin.Boolean? = null, val matchedHasDriver: kotlin.Boolean? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/trip/match") class searchTrips(val accountId: kotlin.Long, val startDate: kotlin.Long? = null, val endDate: kotlin.Long? = null, val matchedHasRoute: kotlin.Boolean? = null, val matchedHasDriver: kotlin.Boolean? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Update Trip Locations
      * 
-     * @param version  
      * @param id the id of the trip to update locations for 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/trip/{id}/locations") class updateLocations(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}/locations") class updateLocations(val id: kotlin.Long)
 
     /**
      * Update Recurrence Locations
      * 
-     * @param version  
      * @param id the id of the trip 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/trip/{id}/locations/recurrence") class updateRecurrenceLocations(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}/locations/recurrence") class updateRecurrenceLocations(val id: kotlin.Long)
 
     /**
      * Update Recurrence Shipments
      * 
-     * @param version  
      * @param id the id of the trip 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/trip/{id}/shipments/recurrence") class updateRecurrenceShipments(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}/shipments/recurrence") class updateRecurrenceShipments(val id: kotlin.Long)
 
     /**
      * Update Trip Shipments
      * 
-     * @param version  
      * @param id the id of the trip shipments to update 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/trip/{id}/shipments") class updateShipments(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}/shipments") class updateShipments(val id: kotlin.Long)
 
     /**
      * Update Trip
      * Update an existing trip. Does not support recurring trip update.
-     * @param version  
      * @param id the id of the trip to update 
      * @param body  (optional)
      */
-    @Resource("/api/{version}/trip/{id}") class updateTrip(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/trip/{id}") class updateTrip(val id: kotlin.Long)
 
     /**
      * Trip Notifications
      * Update the trip notifications
-     * @param version  
      * @param id the id of the trip 
      * @param notifications the notifications to update on the trip (optional)
      */
-    @Resource("/api/{version}/trip/notifications") class updateTripNotifications(val version: java.math.BigDecimal, val id: kotlin.Long, val notifications: kotlin.String? = null)
+    @Resource("/trip/notifications") class updateTripNotifications(val id: kotlin.Long, val notifications: kotlin.String? = null)
 
     /**
      * Buy Offer by SMS
      * Recieve an SMS payload from Twillio to purchase an offer.
-     * @param version  
      * @param appKey the application key 
      * @param body the message of the text 
      * @param from the sender of the sms 
      * @param currencyType the type of currency 
      */
-    @Resource("/api/{version}/sms/buyoffer/{appKey}") class smsBuyOffer(val version: java.math.BigDecimal, val appKey: kotlin.String, val body: kotlin.String, val from: kotlin.String, val currencyType: kotlin.String)
+    @Resource("/sms/buyoffer/{appKey}") class smsBuyOffer(val appKey: kotlin.String, val body: kotlin.String, val from: kotlin.String, val currencyType: kotlin.String)
 
     /**
      * Authorize Twitter
      * Makes an authorization call to twitter for a user to login and allow any app permissions.
-     * @param version  
      * @param appKey the application key 
      */
-    @Resource("/api/{version}/twitter/authorize") class authorizeTwitter(val version: java.math.BigDecimal, val appKey: kotlin.String)
+    @Resource("/twitter/authorize") class authorizeTwitter(val appKey: kotlin.String)
 
     /**
      * Login Twitter
      * Returns the user profile information given an access token and the secret access token. This call verifies the tokens with twitter and creates a Sirqul account for the user if its their first time logging in.
-     * @param version  
      * @param accessToken The access token 
      * @param accessTokenSecret The secret access token 
      * @param appKey The application key 
@@ -9757,12 +9157,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param latitude The current latitude of the user (optional)
      * @param longitude The current longitude of the user (optional)
      */
-    @Resource("/api/{version}/twitter/login") class loginTwitter(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accessToken: kotlin.String, val accessTokenSecret: kotlin.String, val appKey: kotlin.String, val responseFilters: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/twitter/login") class loginTwitter(val deviceId: kotlin.String? = null, val accessToken: kotlin.String, val accessTokenSecret: kotlin.String, val appKey: kotlin.String, val responseFilters: kotlin.String, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Add User
      * Adds a user to a permissionable object.
-     * @param version  
      * @param permissionableType the permissionable type of the object 
      * @param permissionableId the id of the permissionable object 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -9781,24 +9180,22 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param longitude the current longitude of the user (optional)
      * @param audienceIds comma separated list of audience ids. This is a feature only available to the permissionable&#39;s application owner (and its employees). This will add all users from these audiences to the permissionable object. Notifications will not be sent to users if this feature is used. (optional)
      */
-    @Resource("/api/{version}/consumer/permissions/add") class addUsersToPermissionable(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val read: kotlin.Boolean? = null, val write: kotlin.Boolean? = null, val delete: kotlin.Boolean? = null, val add: kotlin.Boolean? = null, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val pending: kotlin.Boolean? = null, val admin: kotlin.Boolean? = null, val includeFriendGroup: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val audienceIds: kotlin.String? = null)
+    @Resource("/consumer/permissions/add") class addUsersToPermissionable(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val read: kotlin.Boolean? = null, val write: kotlin.Boolean? = null, val delete: kotlin.Boolean? = null, val add: kotlin.Boolean? = null, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val pending: kotlin.Boolean? = null, val admin: kotlin.Boolean? = null, val includeFriendGroup: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val audienceIds: kotlin.String? = null)
 
     /**
      * Approve Permissionable
      * Sets the approval status of a permissionable object.
-     * @param version  
      * @param permissionableType The permissionable type of the object 
      * @param permissionableId The id of the permissionable object 
      * @param deviceId A unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId The account ID of the user (deviceId or accountId required) (optional)
      * @param approvalStatus The approval status to set {PENDING, REJECTED, APPROVED, FEATURED} (optional, default to APPROVED)
      */
-    @Resource("/api/{version}/permissionable/approve") class approvePermissionable(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val approvalStatus: kotlin.String? = null)
+    @Resource("/permissionable/approve") class approvePermissionable(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val approvalStatus: kotlin.String? = null)
 
     /**
      * Leave
      * Used when the user wants to leave from someone else&#39;s permissionable object
-     * @param version  
      * @param permissionableType the permissionable type PermissionableType 
      * @param permissionableId the id of the permissionable object 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -9806,12 +9203,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param latitude the current latitude of the user (optional)
      * @param longitude the current longitude of the user (optional)
      */
-    @Resource("/api/{version}/consumer/permissions/leave") class leaveFromPermissionable(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
+    @Resource("/consumer/permissions/leave") class leaveFromPermissionable(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null)
 
     /**
      * Remove User
      * Used to remove someone (assuming they have permission) from a permissionable object
-     * @param version  
      * @param permissionableType the permissionable type of the object 
      * @param permissionableId the id of the permissionable object 
      * @param deviceId the device id (deviceId or accountId required) (optional)
@@ -9824,12 +9220,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param longitude the current longitude of the user (optional)
      * @param audienceIds comma separated list of audience ids. This will remove all users from these audiences from the permissionable object. Notifications will not be sent to users if this feature is used. (optional)
      */
-    @Resource("/api/{version}/consumer/permissions/remove") class removeUsersFromPermissionable(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val removeFriendGroup: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val audienceIds: kotlin.String? = null)
+    @Resource("/consumer/permissions/remove") class removeUsersFromPermissionable(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val permissionableType: kotlin.String, val permissionableId: kotlin.Long, val connectionIds: kotlin.String? = null, val connectionAccountIds: kotlin.String? = null, val connectionGroupIds: kotlin.String? = null, val removeFriendGroup: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val audienceIds: kotlin.String? = null)
 
     /**
      * Search Permissionables
      * Search on UserPermissions
-     * @param version  
      * @param deviceId A unique ID given by the device (deviceId or accountId required) (optional)
      * @param accountId The account ID of the user (deviceId or accountId required) (optional)
      * @param connectionAccountId Filter results for a specific user account (optional)
@@ -9844,12 +9239,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start the start index for pagination (optional, default to 0)
      * @param limit the limit for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/permissions/search") class searchPermissionables(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val connectionAccountIds: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val pending: kotlin.Boolean? = null, val admin: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/permissions/search") class searchPermissionables(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val connectionAccountIds: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val keyword: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val pending: kotlin.Boolean? = null, val admin: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Search Permissionables by Distnace
      * Search on UserPermissions by distance
-     * @param version  
      * @param latitude The latitude of the current account 
      * @param longitude The longitude of the current account 
      * @param deviceId A unique ID given by the device (deviceId or accountId required) (optional)
@@ -9865,500 +9259,453 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param start The start index for pagination (optional, default to 0)
      * @param limit The limit for pagination (optional, default to 20)
      */
-    @Resource("/api/{version}/permissions/distancesearch") class searchPermissionablesFollowingDistance(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val connectionAccountIds: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val latitude: kotlin.Double, val longitude: kotlin.Double, val searchRange: kotlin.Double? = null, val keyword: kotlin.String? = null, val pending: kotlin.Boolean? = null, val admin: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
+    @Resource("/permissions/distancesearch") class searchPermissionablesFollowingDistance(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val connectionAccountId: kotlin.Long? = null, val connectionAccountIds: kotlin.String? = null, val permissionableType: kotlin.String? = null, val permissionableId: kotlin.Long? = null, val latitude: kotlin.Double, val longitude: kotlin.Double, val searchRange: kotlin.Double? = null, val keyword: kotlin.String? = null, val pending: kotlin.Boolean? = null, val admin: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null)
 
     /**
      * Create following
      * Create following.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/rels/following/create") class createFollowing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/rels/following/create") class createFollowing(val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Create Vatom Space
      * Create a Vatom space.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/spaces/create") class createSpace(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/spaces/create") class createSpace(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Create Vatom Event
      * Create a Vatom event.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/create") class createVatomEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/create") class createVatomEvent(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Delete following
      * Delete following.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomRelsKey Vatom Rels Key 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/rels/following/delete") class deleteFollowing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomRelsKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/rels/following/delete") class deleteFollowing(val accountId: kotlin.Long, val vatomRelsKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Reset All Points Balance
      * Reset All Points Balance.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign/points/delete") class deletePointsBalance(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign/points/delete") class deletePointsBalance(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Delete Vatom Space
      * Delete a Vatom space.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomSpaceId Vatom Space Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/spaces/delete") class deleteSpace(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomSpaceId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/spaces/delete") class deleteSpace(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomSpaceId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Delete Vatom Event
      * Delete a Vatom event.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomEventId Vatom Event Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/delete") class deleteVatomEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/delete") class deleteVatomEvent(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Delete Vatom NFT
      * Delete Vatom NFT
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomId Vatom NFT Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/vatoms/delete") class deleteVatomNFT(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/vatoms/delete") class deleteVatomNFT(val accountId: kotlin.Long, val vatomId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Execute Action on NFT
      * Execute Action on NFT.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomId Vatom NFT Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/vatoms/execute-action") class executeActionOnNFT(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/vatoms/execute-action") class executeActionOnNFT(val accountId: kotlin.Long, val vatomId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Search Vatom Geo Map
      * Search Vatom Geo Map
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/vatoms/geo-map/search") class geomapSearch(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/vatoms/geo-map/search") class geomapSearch(val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom Business Behaviors
      * Gets the behaviors of a business.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/behaviors") class getBusinessBehaviors(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/behaviors") class getBusinessBehaviors(val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get the coins for a Business
      * Get the coins for a Businesss.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/coins/get") class getBusinessCoinsBalance(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/coins/get") class getBusinessCoinsBalance(val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get the user business ids
      * Get the business ids the logged in user has access to.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/businesses") class getBusinessIds(val version: java.math.BigDecimal, val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/businesses") class getBusinessIds(val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom Business Info
      * Gets the business info tied to this account.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/get") class getBusinessInfo(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/get") class getBusinessInfo(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom Business Users
      * Gets the users of a business.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/users") class getBusinessUsers(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/users") class getBusinessUsers(val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Campaign Group Entities
      * Get campaign group entities.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign-groups/entities") class getCampaignGroupEntities(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign-groups/entities") class getCampaignGroupEntities(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Campaign Group Rules
      * Get campaign group rules.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign-groups/rules") class getCampaignGroupRules(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign-groups/rules") class getCampaignGroupRules(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Campaign Group Stats
      * Get campaign group stats.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign-groups/stats") class getCampaignGroupStats(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign-groups/stats") class getCampaignGroupStats(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Campaign Info
      * Gets the info on a campaign.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign-groups/get") class getCampaignInfo(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign-groups/get") class getCampaignInfo(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom Event Guest List
      * Gets the guest list of an event.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomEventId Vatom Event Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/guests/get") class getEventGuestList(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/guests/get") class getEventGuestList(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom User&#39;s Inventory
      * Gets the logged in user&#39;s Vatom Inventory.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/inventory") class getInventory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/inventory") class getInventory(val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get following
      * Get following.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/rels/following") class getMyFollowing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/rels/following") class getMyFollowing(val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Points Balance
      * Gets the points balance of a Vatom user.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/u/campaign/points/get") class getPointsBalance(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/u/campaign/points/get") class getPointsBalance(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Points Balance as Business
      * Gets the points balance of a Vatom user.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomUserId Vatom User Id 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign/u/points/get") class getPointsBalanceAsBusiness(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomUserId: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign/u/points/get") class getPointsBalanceAsBusiness(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomUserId: kotlin.String, val vatomCampaignId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom Space
      * Gets the details of a space.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomSpaceId Vatom Space Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/spaces/get") class getSpace(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomSpaceId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/spaces/get") class getSpace(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomSpaceId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get the coins for a user (as a Business)
      * Get the coins for a user (as a Business).
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param appKey Sirqul Application Key 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/users/coins/get") class getUserCoinsAsBusiness(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/users/coins/get") class getUserCoinsAsBusiness(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Gets the coins balance for a Vatom User
      * Gets the coins balance for a Vatom User.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/u/coins/get") class getUserCoinsBalance(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/u/coins/get") class getUserCoinsBalance(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get user followers
      * Get user followers.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/users/rels/followers") class getUserFollowers(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/users/rels/followers") class getUserFollowers(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get user following
      * Get user following.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/users/rels/following") class getUserFollowing(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/users/rels/following") class getUserFollowing(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get User Info
      * Get a User&#39;s Info.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/user/get") class getUserInfo(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/user/get") class getUserInfo(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom User Profile
      * Gets the logged in user&#39;s profile in Vatom.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/get") class getUserProfile(val version: java.math.BigDecimal, val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/get") class getUserProfile(val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom Event
      * Gets the details of a event.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomEventId Vatom Event Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/get") class getVatomEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/get") class getVatomEvent(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Get Vatom NFT Details
      * Get Vatom NFT Details
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomId Vatom NFT Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/vatoms/get") class getVatomNFT(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/vatoms/get") class getVatomNFT(val accountId: kotlin.Long, val vatomId: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * List Vatom Communities
      * Gets the communities tied to a business.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/communities/search") class listCommunities(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/communities/search") class listCommunities(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * List Vatom Events
      * Gets the events tied to a business.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/search") class listEvents(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/search") class listEvents(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * List Vatom Spaces
      * Gets the spaces tied to a business.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/spaces/search") class listSpaces(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/spaces/search") class listSpaces(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * List Coin Transactions for a Vatom User
      * Gets the logged in user&#39;s Vatom coin transactions.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/u/coins/txns/search") class listUserCoinTransactions(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/u/coins/txns/search") class listUserCoinTransactions(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * List coin transactions for a user (as a Business)
      * List coin transactions for a user (as a Business).
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/users/coins/txns/search") class listUserCoinTransactionsAsBusiness(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/users/coins/txns/search") class listUserCoinTransactionsAsBusiness(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Perform Action on NFT
      * Perform Action on NFT.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomId Vatom NFT Id 
      * @param vatomAction Vatom Action 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/vatoms/actions") class performActionOnNFT(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomId: kotlin.String, val vatomAction: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/vatoms/actions") class performActionOnNFT(val accountId: kotlin.Long, val vatomId: kotlin.String, val vatomAction: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Redeem NFT
      * Redeem an NFT.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/redemptions") class redeemNFT(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/redemptions") class redeemNFT(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Redeem the coins for a user (as a Business)
      * Redeem the coins for a user (as a Business).
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/users/coins/redeem") class redeemUserCoinsAsBusiness(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/users/coins/redeem") class redeemUserCoinsAsBusiness(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Search for Vatom Businesses
      * Searches for Vatom businesses.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/search") class searchBusinesses(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/search") class searchBusinesses(val accountId: kotlin.Long, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Search Campaign Groups
      * Search campaign groups.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign-groups/search") class searchCampaignGroups(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign-groups/search") class searchCampaignGroups(val accountId: kotlin.Long, val appKey: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Search User Identities
      * Search User Identities.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/identities/search") class searchIdentities(val version: java.math.BigDecimal, val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/identities/search") class searchIdentities(val accountId: kotlin.Long, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Search Vatom User&#39;s Inventory
      * Searches the logged in user&#39;s Vatom Inventory.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomParameters Vatom Parameters (optional)
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/user-inventory/search") class searchInventory(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/user-inventory/search") class searchInventory(val accountId: kotlin.Long, val vatomParameters: kotlin.String? = null, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Send NFT
      * Send an NFT.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomCampaignId Vatom Campaign Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaigns/send") class sendNFT(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaigns/send") class sendNFT(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomCampaignId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Set Points Balance as Business
      * Sets the points balance of a Vatom user.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomUserId Vatom User Id 
@@ -10366,117 +9713,106 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/campaign/u/points/update") class setPointsBalanceAsBusiness(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomUserId: kotlin.String, val vatomCampaignId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/campaign/u/points/update") class setPointsBalanceAsBusiness(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomUserId: kotlin.String, val vatomCampaignId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Transfer coins from Vatom Users
      * Transfer coins from Vatom Users.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/u/coins/transfer") class transferUserCoins(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/u/coins/transfer") class transferUserCoins(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Fund coins for a Business
      * Fund/update coins for a Businesss.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/coins/update") class updateBusinessCoins(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/coins/update") class updateBusinessCoins(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Update Vatom Event Guest List
      * Update the guest list of an event.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomEventId Vatom Event Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/guests/update") class updateEventGuestList(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/guests/update") class updateEventGuestList(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Update Vatom Space
      * Update a Vatom space.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomSpaceId Vatom Space Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/spaces/update") class updateSpace(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomSpaceId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/spaces/update") class updateSpace(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomSpaceId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Update the coins for a user (as a Business)
      * Update the coins for a user (as a Business).
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomUserId Vatom User Id 
      * @param appKey Sirqul Application Key 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/users/coins/update") class updateUserCoinsAsBusiness(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/users/coins/update") class updateUserCoinsAsBusiness(val accountId: kotlin.Long, val vatomUserId: kotlin.String, val appKey: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Update Vatom User Profile
      * Gets the logged in user&#39;s profile in Vatom.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/me/update") class updateUserProfile(val version: java.math.BigDecimal, val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/me/update") class updateUserProfile(val accountId: kotlin.Long, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Update Vatom Event
      * Update a Vatom event.
-     * @param version  
      * @param accountId Sirqul Account Id 
      * @param appKey Sirqul Application Key 
      * @param vatomEventId Vatom Event Id 
      * @param vatomParameters Vatom Parameters 
      * @param returnRawResponse Return raw response (optional)
      */
-    @Resource("/api/{version}/vatom/b/events/update") class updateVatomEvent(val version: java.math.BigDecimal, val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
+    @Resource("/vatom/b/events/update") class updateVatomEvent(val accountId: kotlin.Long, val appKey: kotlin.String, val vatomEventId: kotlin.String, val vatomParameters: kotlin.String, val returnRawResponse: kotlin.Boolean? = null)
 
     /**
      * Create Vehicle
      * Create new vehicle
-     * @param version  
      * @param vehicle A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60;  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/vehicle") class createVehicle(val version: java.math.BigDecimal, val vehicle: kotlin.String)
+    @Resource("/vehicle") class createVehicle(val vehicle: kotlin.String)
 
     /**
      * Delete Vehicle
      * Delete an existing vehicle
-     * @param version  
      * @param id The id of the vehicle to delete 
      */
-    @Resource("/api/{version}/vehicle/{id}") class deleteVehicle(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/vehicle/{id}") class deleteVehicle(val id: kotlin.Long)
 
     /**
      * Get Vehicle
      * Get an existing vehicle
-     * @param version  
      * @param id The id of the vehicle requested 
      */
-    @Resource("/api/{version}/vehicle/{id}") class getVehicle(val version: java.math.BigDecimal, val id: kotlin.Long)
+    @Resource("/vehicle/{id}") class getVehicle(val id: kotlin.Long)
 
     /**
      * Search Vehicle
      * Search for vehicles
-     * @param version  
      * @param hubId Filter by service hub 
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
@@ -10485,47 +9821,42 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param activeOnly Return only active results 
      * @param keyword The keyword to search for (optional)
      */
-    @Resource("/api/{version}/vehicle") class searchVehicle(val version: java.math.BigDecimal, val hubId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/vehicle") class searchVehicle(val hubId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Update Vehicle
      * Update an existing vehicle
-     * @param version  
      * @param id The id of the vehicle to update 
      * @param vehicle A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;vehicleType\&quot;: { \&quot;id\&quot;: 1 },   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60;  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/vehicle/{id}") class updateVehicle(val version: java.math.BigDecimal, val id: kotlin.Long, val vehicle: kotlin.String)
+    @Resource("/vehicle/{id}") class updateVehicle(val id: kotlin.Long, val vehicle: kotlin.String)
 
     /**
      * Create Vehicle Type
      * Create a new vehicle type
-     * @param version  
      * @param vehicleType A JSON representation of cargo type. &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60;  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/vehicle/type") class createVehicleType(val version: java.math.BigDecimal, val vehicleType: kotlin.String)
+    @Resource("/vehicle/type") class createVehicleType(val vehicleType: kotlin.String)
 
     /**
      * Delete Vehicle Type
      * Delete a vehicle type
-     * @param version  
      * @param vehicleTypeId The id of the requested vehicle type 
      */
-    @Resource("/api/{version}/vehicle/type/{vehicleTypeId}") class deleteVehicleType(val version: java.math.BigDecimal, val vehicleTypeId: kotlin.Long)
+    @Resource("/vehicle/type/{vehicleTypeId}") class deleteVehicleType(val vehicleTypeId: kotlin.Long)
 
     /**
      * Get Vehicle Type
      * Get a vehicle type
-     * @param version  
      * @param vehicleTypeId The id of the requested vehicle type 
      */
-    @Resource("/api/{version}/vehicle/type/{vehicleTypeId}") class getVehicleType(val version: java.math.BigDecimal, val vehicleTypeId: kotlin.Long)
+    @Resource("/vehicle/type/{vehicleTypeId}") class getVehicleType(val vehicleTypeId: kotlin.Long)
 
     /**
      * Search Vehicle Type
      * Search for types of vehicles
-     * @param version  
      * @param sortField The field to sort by 
      * @param descending Determines whether the sorted list is in descending or ascending order 
      * @param start The start index for pagination 
@@ -10534,22 +9865,20 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param retailerId Filter by retailer (optional)
      * @param hubId Filter by service hub (optional)
      */
-    @Resource("/api/{version}/vehicle/type") class searchVehicleTypes(val version: java.math.BigDecimal, val retailerId: kotlin.Long? = null, val hubId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
+    @Resource("/vehicle/type") class searchVehicleTypes(val retailerId: kotlin.Long? = null, val hubId: kotlin.Long? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int, val activeOnly: kotlin.Boolean)
 
     /**
      * Update Vehicle Type
      * Update a vehicle type
-     * @param version  
      * @param vehicleTypeId The id of the vehicle type to update 
      * @param vehicleType The new data for the vehicle type to update to. A JSON representation of cargo type, for example: &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Truck\&quot;,   \&quot;width\&quot;: 100,   \&quot;height\&quot;: 200,   \&quot;depth\&quot;: 200,   \&quot;maxWeight\&quot;: 5000,   \&quot;hub\&quot;: { \&quot;id\&quot;: 1 } } &#x60;&#x60;&#x60;  
      * @param body  (optional)
      */
-    @Resource("/api/{version}/vehicle/type/{vehicleTypeId}") class updateVehicleType(val version: java.math.BigDecimal, val vehicleTypeId: kotlin.Long, val vehicleType: kotlin.String)
+    @Resource("/vehicle/type/{vehicleTypeId}") class updateVehicleType(val vehicleTypeId: kotlin.Long, val vehicleType: kotlin.String)
 
     /**
      * Create Wallet Offers
      * Adds offers to the wallet
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param offerId The id of the offer being added (offerId or offeLocationId required) (optional)
@@ -10562,22 +9891,20 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param appKey The application requesting the purchase, required when currencyType is TICKETS (optional)
      * @param status Custom status value to change to (0 or 1 for redeem, 5 or 6 for membership) (optional)
      */
-    @Resource("/api/{version}/wallet/create") class createOfferTransaction(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val offerCart: kotlin.String? = null, val promoCode: kotlin.String? = null, val currencyType: kotlin.String? = null, val usePoints: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val appKey: kotlin.String? = null, val status: kotlin.Int? = null)
+    @Resource("/wallet/create") class createOfferTransaction(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val offerCart: kotlin.String? = null, val promoCode: kotlin.String? = null, val currencyType: kotlin.String? = null, val usePoints: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val appKey: kotlin.String? = null, val status: kotlin.Int? = null)
 
     /**
      * Delete Wallet Offer
      * Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
-     * @param version  
      * @param transactionId The offer transaction id to remove 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      */
-    @Resource("/api/{version}/wallet/delete") class deleteOfferTransaction(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val transactionId: kotlin.Long)
+    @Resource("/wallet/delete") class deleteOfferTransaction(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val transactionId: kotlin.Long)
 
     /**
      * Get Wallet Offer
      * 
-     * @param version  
      * @param transactionId The offer transaction id to get details of 
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
@@ -10586,12 +9913,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param longitude The latitude location of the user (optional)
      * @param returnFullResponse Determines whether to return a detailed version of the response (optional, default to true)
      */
-    @Resource("/api/{version}/wallet/get") class getOfferTransaction(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val transactionId: kotlin.Long, val includeMission: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnFullResponse: kotlin.Boolean? = null)
+    @Resource("/wallet/get") class getOfferTransaction(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val transactionId: kotlin.Long, val includeMission: kotlin.Boolean? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val returnFullResponse: kotlin.Boolean? = null)
 
     /**
      * Preview Wallet Offers
      * Preview the final cost of a transaction without charging the user
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param offerId The id of the offer being added (offerId or offeLocationId required) (optional)
@@ -10603,12 +9929,11 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param metaData External custom client defined data (optional)
      * @param appKey The application requesting the purchase, required when currencyType is TICKETS (optional)
      */
-    @Resource("/api/{version}/wallet/preview") class previewOfferTransaction(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val offerCart: kotlin.String? = null, val promoCode: kotlin.String? = null, val currencyType: kotlin.String? = null, val usePoints: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val appKey: kotlin.String? = null)
+    @Resource("/wallet/preview") class previewOfferTransaction(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val offerId: kotlin.Long? = null, val offerLocationId: kotlin.Long? = null, val offerCart: kotlin.String? = null, val promoCode: kotlin.String? = null, val currencyType: kotlin.String? = null, val usePoints: kotlin.Boolean? = null, val metaData: kotlin.String? = null, val appKey: kotlin.String? = null)
 
     /**
      * Search Wallet Offers
      * Search on active offers currently in the user&#39;s wallet, or past offers the user has already redeemed.
-     * @param version  
      * @param deviceId The device id (deviceId or accountId required) (optional)
      * @param accountId The account id of the user (deviceId or accountId required) (optional)
      * @param keyword The keyword to search for (optional)
@@ -10651,7 +9976,7 @@ The thirdPartyId parameter is used to determine if the user already exists in Si
      * @param recurringExpirationSince Filter results by the recurring billing expiration date (optional)
      * @param recurringExpirationBefore Filter results by the recurring billing expiration date (optional)
      */
-    @Resource("/api/{version}/wallet/search") class searchOfferTransactions(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerIds: kotlin.String? = null, val retailerLocationId: kotlin.Long? = null, val retailerLocationIds: kotlin.String? = null, val excludeRetailerLocationIds: kotlin.String? = null, val offerId: kotlin.Long? = null, val offerIds: kotlin.String? = null, val offerLocationId: kotlin.Long? = null, val offerLocationIds: kotlin.String? = null, val offerType: kotlin.String? = null, val offerTypes: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val specialOfferTypes: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val offerAudienceIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val redeemableStartDate: kotlin.Long? = null, val redeemableEndDate: kotlin.Long? = null, val filterByParentOffer: kotlin.Boolean? = null, val startedSince: kotlin.Long? = null, val startedBefore: kotlin.Long? = null, val endedSince: kotlin.Long? = null, val endedBefore: kotlin.Long? = null, val redeemed: kotlin.Boolean? = null, val statuses: kotlin.String? = null, val reservationsOnly: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val returnFullResponse: kotlin.Boolean? = null, val recurringStartedSince: kotlin.Long? = null, val recurringStartedBefore: kotlin.Long? = null, val recurringExpirationSince: kotlin.Long? = null, val recurringExpirationBefore: kotlin.Long? = null)
+    @Resource("/wallet/search") class searchOfferTransactions(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val keyword: kotlin.String? = null, val retailerId: kotlin.Long? = null, val retailerIds: kotlin.String? = null, val retailerLocationId: kotlin.Long? = null, val retailerLocationIds: kotlin.String? = null, val excludeRetailerLocationIds: kotlin.String? = null, val offerId: kotlin.Long? = null, val offerIds: kotlin.String? = null, val offerLocationId: kotlin.Long? = null, val offerLocationIds: kotlin.String? = null, val offerType: kotlin.String? = null, val offerTypes: kotlin.String? = null, val specialOfferType: kotlin.String? = null, val specialOfferTypes: kotlin.String? = null, val categoryIds: kotlin.String? = null, val filterIds: kotlin.String? = null, val offerAudienceIds: kotlin.String? = null, val sortField: kotlin.String? = null, val descending: kotlin.Boolean? = null, val start: kotlin.Int? = null, val limit: kotlin.Int? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val redeemableStartDate: kotlin.Long? = null, val redeemableEndDate: kotlin.Long? = null, val filterByParentOffer: kotlin.Boolean? = null, val startedSince: kotlin.Long? = null, val startedBefore: kotlin.Long? = null, val endedSince: kotlin.Long? = null, val endedBefore: kotlin.Long? = null, val redeemed: kotlin.Boolean? = null, val statuses: kotlin.String? = null, val reservationsOnly: kotlin.Boolean? = null, val activeOnly: kotlin.Boolean? = null, val returnFullResponse: kotlin.Boolean? = null, val recurringStartedSince: kotlin.Long? = null, val recurringStartedBefore: kotlin.Long? = null, val recurringExpirationSince: kotlin.Long? = null, val recurringExpirationBefore: kotlin.Long? = null)
 
     /**
      * Update Wallet Offer
@@ -10662,7 +9987,6 @@ Not redeemable means the customer has received the offer but has not decided to 
 Redeemable means the customer has chosen to use the offer and wishes to redeem it.
 
 Redeemed means the merchant has accepted the offer and the given the customer its value, then marked it a used in the system.  This status change is handled by a merchant end point.
-     * @param version  
      * @param transactionId The offer transaction id to remove 
      * @param status The status value to change to (0 or 1) 
      * @param deviceId The device id (deviceId or accountId required) (optional)
@@ -10677,23 +10001,21 @@ Redeemed means the merchant has accepted the offer and the given the customer it
      * @param returnFullResponse Determines whether to return a detailed version of the response (optional, default to false)
      * @param exceptionMembershipOfferIds Exception Offers, transaction audiences of these offers won&#39;t be removed out of the account when up (optional)
      */
-    @Resource("/api/{version}/wallet/update") class updateOfferTransaction(val version: java.math.BigDecimal, val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val transactionId: kotlin.Long, val offerLocationId: kotlin.Long? = null, val currencyType: kotlin.String? = null, val usePoints: kotlin.Boolean? = null, val appKey: kotlin.String? = null, val status: kotlin.Int, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val returnFullResponse: kotlin.Boolean? = null, val exceptionMembershipOfferIds: kotlin.String? = null)
+    @Resource("/wallet/update") class updateOfferTransaction(val deviceId: kotlin.String? = null, val accountId: kotlin.Long? = null, val transactionId: kotlin.Long, val offerLocationId: kotlin.Long? = null, val currencyType: kotlin.String? = null, val usePoints: kotlin.Boolean? = null, val appKey: kotlin.String? = null, val status: kotlin.Int, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val metaData: kotlin.String? = null, val returnFullResponse: kotlin.Boolean? = null, val exceptionMembershipOfferIds: kotlin.String? = null)
 
     /**
      * Search Weather
      * Search the weather forcast for the next 5 days
-     * @param version  
      * @param regionId Region Id (optional)
      * @param latitude Latitude (optional)
      * @param longitude Longitude (optional)
      * @param timezoneOffset Timezone Offset (optional, default to -6L)
      */
-    @Resource("/api/{version}/weather/search") class searchWeather(val version: java.math.BigDecimal, val regionId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val timezoneOffset: kotlin.Long? = null)
+    @Resource("/weather/search") class searchWeather(val regionId: kotlin.Long? = null, val latitude: kotlin.Double? = null, val longitude: kotlin.Double? = null, val timezoneOffset: kotlin.Long? = null)
 
     /**
      * Create Word
      * Create a word by the given params.
-     * @param version  
      * @param accountId The logged in user. 
      * @param word The text of the word. 
      * @param definition The definition of the word. 
@@ -10704,30 +10026,27 @@ Redeemed means the merchant has accepted the offer and the given the customer it
      * @param ticketType The type of ticket to reward, null means default type (optional)
      * @param points The number of points to award for completing a mission (optional)
      */
-    @Resource("/api/{version}/game/word/create") class createWord(val version: java.math.BigDecimal, val accountId: kotlin.Long, val word: kotlin.String, val definition: kotlin.String, val assetId: kotlin.Long? = null, val active: kotlin.Boolean, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
+    @Resource("/game/word/create") class createWord(val accountId: kotlin.Long, val word: kotlin.String, val definition: kotlin.String, val assetId: kotlin.Long? = null, val active: kotlin.Boolean, val allocateTickets: kotlin.Boolean, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
 
     /**
      * Delete Word
      * Delete a word by the given id. The accountId given needs to be the owner or executive to delete.
-     * @param version  
      * @param wordId The id of the word to delete. 
      * @param accountId The account vor validating permission 
      */
-    @Resource("/api/{version}/game/word/delete") class deleteWord(val version: java.math.BigDecimal, val wordId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/game/word/delete") class deleteWord(val wordId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Get Word
      * Get a word by the given id.
-     * @param version  
      * @param wordId The id of the word to get. 
      * @param accountId The logged in user. 
      */
-    @Resource("/api/{version}/game/word/get") class getWord(val version: java.math.BigDecimal, val wordId: kotlin.Long, val accountId: kotlin.Long)
+    @Resource("/game/word/get") class getWord(val wordId: kotlin.Long, val accountId: kotlin.Long)
 
     /**
      * Search Words
      * Search for words by the given params.
-     * @param version  
      * @param accountId The logged in user. 
      * @param sortField The column to sort the search on 
      * @param descending The order to return the search results 
@@ -10736,12 +10055,11 @@ Redeemed means the merchant has accepted the offer and the given the customer it
      * @param limit The number of records to return. 
      * @param keyword The keyword for searching words with matching definition or word text. (optional)
      */
-    @Resource("/api/{version}/game/word/search") class getWords(val version: java.math.BigDecimal, val accountId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
+    @Resource("/game/word/search") class getWords(val accountId: kotlin.Long, val keyword: kotlin.String? = null, val sortField: kotlin.String, val descending: kotlin.Boolean, val activeOnly: kotlin.Boolean, val start: kotlin.Int, val limit: kotlin.Int)
 
     /**
      * Update Word
      * Update a word by the given params.
-     * @param version  
      * @param wordId The id of the word to update. 
      * @param accountId The logged in user. 
      * @param ticketCount The number of tickets to reward 
@@ -10753,18 +10071,17 @@ Redeemed means the merchant has accepted the offer and the given the customer it
      * @param ticketType The type of ticket to reward, null means default type (optional)
      * @param points The number of points to award for completing a mission (optional)
      */
-    @Resource("/api/{version}/game/word/update") class updateWord(val version: java.math.BigDecimal, val wordId: kotlin.Long, val accountId: kotlin.Long, val wordText: kotlin.String? = null, val definition: kotlin.String? = null, val assetId: kotlin.Long? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
+    @Resource("/game/word/update") class updateWord(val wordId: kotlin.Long, val accountId: kotlin.Long, val wordText: kotlin.String? = null, val definition: kotlin.String? = null, val assetId: kotlin.Long? = null, val active: kotlin.Boolean? = null, val allocateTickets: kotlin.Boolean? = null, val ticketCount: kotlin.Long, val ticketType: kotlin.String? = null, val points: kotlin.Long? = null)
 
     /**
      * Run Workflow
      * Runs a published executable workflow
-     * @param version  
      * @param accountId the account ID of the user 
      * @param workflowId the workflow to run 
      * @param skuId this runs a particular sku on the workflow (optional)
      * @param versionCode this runs a particular sku version on the workflow (optional)
      * @param parameters Override parameters in JSON format. Example: &#x60;&#x60;&#x60;json {   \&quot;arguments_81\&quot;: { \&quot;filter\&quot;: \&quot;PUBLIC\&quot; },   \&quot;arguments_87\&quot;: { \&quot;tag\&quot;: \&quot;custom_tag\&quot; } } &#x60;&#x60;&#x60;  (optional)
      */
-    @Resource("/api/{version}/workflow/run") class runWorkflow(val version: java.math.BigDecimal, val accountId: kotlin.Long, val workflowId: kotlin.Long, val skuId: kotlin.Long? = null, val versionCode: kotlin.Int? = null, val parameters: kotlin.String? = null)
+    @Resource("/workflow/run") class runWorkflow(val accountId: kotlin.Long, val workflowId: kotlin.Long, val skuId: kotlin.Long? = null, val versionCode: kotlin.Int? = null, val parameters: kotlin.String? = null)
 
 }

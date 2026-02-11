@@ -34,7 +34,7 @@ import org.openapitools.server.models.SirqulResponse
 fun Route.AchievementApi() {
     val empty = mutableMapOf<String, Any?>()
 
-    post<Paths.apiVersionAchievementTierSearchPost> {
+    post<Paths.achievementTierSearchPost> {
         call.respond(HttpStatusCode.NotImplemented)
         
     }
