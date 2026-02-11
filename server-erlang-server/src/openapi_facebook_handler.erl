@@ -2,11 +2,11 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/facebook/getfbtoken`, OperationId: `getToken`:
+- `GET` to `/facebook/getfbtoken`, OperationId: `getToken`:
 Get Facebook Token.
 Gets a user&#39;s Facebook token.
 
-- `POST` to `/api/:version/facebook/graph`, OperationId: `graphInterface`:
+- `POST` to `/facebook/graph`, OperationId: `graphInterface`:
 Post to Facebook.
 Make Facebook posts on behalf of the user.
 

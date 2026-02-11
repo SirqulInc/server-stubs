@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/entity/reference`, OperationId: `createEntityReference`:
+- `POST` to `/entity/reference`, OperationId: `createEntityReference`:
 Create an entity reference..
 Creates a reference for an entity for syncing data between servers.
 

@@ -2,31 +2,31 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/shipment/:id/cancel`, OperationId: `cancelShipment`:
+- `POST` to `/shipment/:id/cancel`, OperationId: `cancelShipment`:
 Cancel Shipment.
 Remove shipment from route
 
-- `POST` to `/api/:version/shipment`, OperationId: `createShipment`:
+- `POST` to `/shipment`, OperationId: `createShipment`:
 Create Shipment.
 Create new shipment
 
-- `DELETE` to `/api/:version/shipment/:id`, OperationId: `deleteShipment`:
+- `DELETE` to `/shipment/:id`, OperationId: `deleteShipment`:
 Delete Shipment.
 Delete an existing shipment
 
-- `GET` to `/api/:version/shipment/:id`, OperationId: `getShipment`:
+- `GET` to `/shipment/:id`, OperationId: `getShipment`:
 Get Shipment.
 Get an existing shipment
 
-- `GET` to `/api/:version/shipment`, OperationId: `searchShipments`:
+- `GET` to `/shipment`, OperationId: `searchShipments`:
 Search Shipments.
 Search for shipments
 
-- `PUT` to `/api/:version/shipment/:id`, OperationId: `updateShipment`:
+- `PUT` to `/shipment/:id`, OperationId: `updateShipment`:
 Update Shipment.
 Update an existing shipment
 
-- `POST` to `/api/:version/shipment/:id/status`, OperationId: `updateShipmentStatus`:
+- `POST` to `/shipment/:id/status`, OperationId: `updateShipmentStatus`:
 Uupdate Shipment Status.
 Update status of an existing shipment
 

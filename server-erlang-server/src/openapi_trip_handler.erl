@@ -2,67 +2,67 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/trip`, OperationId: `createTrip`:
+- `POST` to `/trip`, OperationId: `createTrip`:
 Create Trip.
 Create a new trip
 
-- `DELETE` to `/api/:version/trip/:id`, OperationId: `delete`:
+- `DELETE` to `/trip/:id`, OperationId: `delete`:
 Delete Trip.
 Delete an existing trip
 
-- `POST` to `/api/:version/trip/:id/drive`, OperationId: `driveTrip`:
+- `POST` to `/trip/:id/drive`, OperationId: `driveTrip`:
 Set Trip Preference Driver.
 Update trip preference to drive, also create a route and assign the trip to the route
 
-- `POST` to `/api/:version/trip/:id/flexible`, OperationId: `flexibleTrip`:
+- `POST` to `/trip/:id/flexible`, OperationId: `flexibleTrip`:
 Set Trip Preference Flexible.
 Update trip preference to flexible.
 
-- `GET` to `/api/:version/trip/:id`, OperationId: `getTrip`:
+- `GET` to `/trip/:id`, OperationId: `getTrip`:
 Get Trip.
 Get an existing trip
 
-- `GET` to `/api/:version/trip/:id/match`, OperationId: `getTripMatches`:
+- `GET` to `/trip/:id/match`, OperationId: `getTripMatches`:
 Get Trip Matches.
 Get matching trips of specific trip
 
-- `POST` to `/api/:version/trip/match/process`, OperationId: `processTripMatches`:
+- `POST` to `/trip/match/process`, OperationId: `processTripMatches`:
 Process Trip Matches.
 Process trip matching, assign trips with no route to matched trips with route.
 
-- `POST` to `/api/:version/trip/:id/ride`, OperationId: `ride`:
+- `POST` to `/trip/:id/ride`, OperationId: `ride`:
 Set Trip Preference Rider.
 Update trip preference to ride.
 
-- `GET` to `/api/:version/trip`, OperationId: `search`:
+- `GET` to `/trip`, OperationId: `search`:
 Search Trips.
 Search for trips
 
-- `GET` to `/api/:version/trip/match`, OperationId: `searchTrips`:
+- `GET` to `/trip/match`, OperationId: `searchTrips`:
 Search Trips.
 Search for trips with matching information.
 
-- `POST` to `/api/:version/trip/:id/locations`, OperationId: `updateLocations`:
+- `POST` to `/trip/:id/locations`, OperationId: `updateLocations`:
 Update Trip Locations.
 
 
-- `POST` to `/api/:version/trip/:id/locations/recurrence`, OperationId: `updateRecurrenceLocations`:
+- `POST` to `/trip/:id/locations/recurrence`, OperationId: `updateRecurrenceLocations`:
 Update Recurrence Locations.
 
 
-- `POST` to `/api/:version/trip/:id/shipments/recurrence`, OperationId: `updateRecurrenceShipments`:
+- `POST` to `/trip/:id/shipments/recurrence`, OperationId: `updateRecurrenceShipments`:
 Update Recurrence Shipments.
 
 
-- `POST` to `/api/:version/trip/:id/shipments`, OperationId: `updateShipments`:
+- `POST` to `/trip/:id/shipments`, OperationId: `updateShipments`:
 Update Trip Shipments.
 
 
-- `PUT` to `/api/:version/trip/:id`, OperationId: `updateTrip`:
+- `PUT` to `/trip/:id`, OperationId: `updateTrip`:
 Update Trip.
 Update an existing trip. Does not support recurring trip update.
 
-- `POST` to `/api/:version/trip/notifications`, OperationId: `updateTripNotifications`:
+- `POST` to `/trip/notifications`, OperationId: `updateTripNotifications`:
 Trip Notifications.
 Update the trip notifications
 

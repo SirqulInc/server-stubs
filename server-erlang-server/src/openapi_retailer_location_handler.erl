@@ -2,39 +2,39 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/location/create`, OperationId: `createRetailerLocationConsumer`:
+- `POST` to `/location/create`, OperationId: `createRetailerLocationConsumer`:
 Create Retailer Location (Consumer).
 Creates a location record for an application that can support crowd sourced locations.
 
-- `POST` to `/api/:version/retailer/location/create`, OperationId: `createRetailerLocations`:
+- `POST` to `/retailer/location/create`, OperationId: `createRetailerLocations`:
 Create Retailer Location.
 Creates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.
 
-- `POST` to `/api/:version/retailer/location/delete`, OperationId: `deleteRetailerLocation`:
+- `POST` to `/retailer/location/delete`, OperationId: `deleteRetailerLocation`:
 Delete Retailer Location.
 Set the deleted timestamp to current time. This effectively deletes the retailer location since all queries should ignore any records with a deleted time stamp.
 
-- `GET` to `/api/:version/retailer/location/get`, OperationId: `getRetailerLocation`:
+- `GET` to `/retailer/location/get`, OperationId: `getRetailerLocation`:
 Get Retailer Location.
 Gets a retailer location. Only the owner and the employees of the retailer have access to view its information.
 
-- `GET` to `/api/:version/location/get`, OperationId: `getRetailerLocationConsumer`:
+- `GET` to `/location/get`, OperationId: `getRetailerLocationConsumer`:
 Get Retailer Location (Consumer).
 Gets the details of a retailer location as a consumer.
 
-- `GET` to `/api/:version/retailer/location/idistancesearch`, OperationId: `indexedRetailerLocationDistanceSearch`:
+- `GET` to `/retailer/location/idistancesearch`, OperationId: `indexedRetailerLocationDistanceSearch`:
 Distance Search Retailer Locations (Indexed).
 Retailer location indexed search by distance. This searches on any retailer location with location data and returns the results sorted by distance.
 
-- `GET` to `/api/:version/retailer/location/isearch`, OperationId: `indexedRetailerLocationSearch`:
+- `GET` to `/retailer/location/isearch`, OperationId: `indexedRetailerLocationSearch`:
 Keyword Search Retailer Locations (Indexed).
 Retailer location (faster) indexed search. This searches all retailer locations.
 
-- `GET` to `/api/:version/retailer/location/search`, OperationId: `searchRetailerLocations`:
+- `GET` to `/retailer/location/search`, OperationId: `searchRetailerLocations`:
 Search Retailer Locations (Owned).
 Searches on retailer locations that the account has access to.
 
-- `POST` to `/api/:version/retailer/location/update`, OperationId: `updateRetailerLocations`:
+- `POST` to `/retailer/location/update`, OperationId: `updateRetailerLocations`:
 Update Retailer Location.
 Updates a location record for a retailer. Only the owner and the employees of the retailer have access to do this.
 

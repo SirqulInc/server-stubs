@@ -2,35 +2,35 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/employee/assign`, OperationId: `assignEmployee`:
+- `POST` to `/employee/assign`, OperationId: `assignEmployee`:
 Assign Employee.
 Assign An existing account to be an employee
 
-- `POST` to `/api/:version/employee/assignToLocation`, OperationId: `assignToLocationEmployee`:
+- `POST` to `/employee/assignToLocation`, OperationId: `assignToLocationEmployee`:
 Assign Employee to Location.
 Assign or unassign the account to a retailer location.
 
-- `POST` to `/api/:version/employee/create`, OperationId: `createEmployee`:
+- `POST` to `/employee/create`, OperationId: `createEmployee`:
 Create Employee.
 Create a new account record with the provided information.
 
-- `POST` to `/api/:version/employee/delete`, OperationId: `deleteEmployee`:
+- `POST` to `/employee/delete`, OperationId: `deleteEmployee`:
 Delete Employee.
 Set the deleted date field which marks the record as deleted.
 
-- `POST` to `/api/:version/employee/get`, OperationId: `getEmployee`:
+- `POST` to `/employee/get`, OperationId: `getEmployee`:
 Get Employee.
 Get the account record for the account id provided.
 
-- `POST` to `/api/:version/employee/search`, OperationId: `searchEmployees`:
+- `POST` to `/employee/search`, OperationId: `searchEmployees`:
 Search Employees.
 Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees.
 
-- `POST` to `/api/:version/employee/unassign`, OperationId: `unassignEmployee`:
+- `POST` to `/employee/unassign`, OperationId: `unassignEmployee`:
 Unassign Employee.
 Unassign An existing account to be an employee
 
-- `POST` to `/api/:version/employee/update`, OperationId: `updateEmployee`:
+- `POST` to `/employee/update`, OperationId: `updateEmployee`:
 Update Employee.
 Update the account record with the provided information.
 

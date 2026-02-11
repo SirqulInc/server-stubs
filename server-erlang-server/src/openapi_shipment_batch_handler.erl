@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/shipment/batch`, OperationId: `createShipmentBatch`:
+- `POST` to `/shipment/batch`, OperationId: `createShipmentBatch`:
 Create Shipment Batch.
 Create a new shipment batch
 
-- `DELETE` to `/api/:version/shipment/batch/:batchId`, OperationId: `deleteShipmentBatch`:
+- `DELETE` to `/shipment/batch/:batchId`, OperationId: `deleteShipmentBatch`:
 Delete Shipment Batch.
 Search for shipment batches
 
-- `GET` to `/api/:version/shipment/batch/:batchId`, OperationId: `getShipmentBatch`:
+- `GET` to `/shipment/batch/:batchId`, OperationId: `getShipmentBatch`:
 Get Shipment Batch.
 Get an existing shipment batch
 
-- `GET` to `/api/:version/shipment/batch/:batchId/status`, OperationId: `getShipmentBatchStatus`:
+- `GET` to `/shipment/batch/:batchId/status`, OperationId: `getShipmentBatchStatus`:
 Get Shipment Batch Status.
 Get the import status list of the import shipment batch
 
-- `GET` to `/api/:version/shipment/batch`, OperationId: `searchShipmentBatch`:
+- `GET` to `/shipment/batch`, OperationId: `searchShipmentBatch`:
 Search Shipment Batch.
 Search for shipment batches
 

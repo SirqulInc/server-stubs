@@ -2,47 +2,47 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/thirdparty/credential/create`, OperationId: `createCredential`:
+- `POST` to `/thirdparty/credential/create`, OperationId: `createCredential`:
 Create Credential.
 This endpoint creates a third-party login for a Sirqul account. A third party login is a way for external systems (Third Party Networks) to link their own user accounts with a Sirqul account.   The thirdPartyId parameter is used to determine if the user already exists in Sirqul or not. This parameter needs to be unique for each user in the Third Party Network (identified by the networkUID parameter). Note that subsequent calls will update the user&#39;s third-party login credentials for the user with the same thirdPartyId and networkUID combination.    The thirdPartyToken parameter acts as a shared secret and used by client applications to log users into Sirqul without providing a Sirqul username and password. 
 
-- `POST` to `/api/:version/thirdparty/network/create`, OperationId: `createNetwork`:
+- `POST` to `/thirdparty/network/create`, OperationId: `createNetwork`:
 Create Network.
 Creates a custom third party network.
 
-- `POST` to `/api/:version/thirdparty/credential/delete`, OperationId: `deleteCredential`:
+- `POST` to `/thirdparty/credential/delete`, OperationId: `deleteCredential`:
 Delete Credential.
 Delete a third party network on a Sirqul account.
 
-- `POST` to `/api/:version/thirdparty/network/delete`, OperationId: `deleteNetwork`:
+- `POST` to `/thirdparty/network/delete`, OperationId: `deleteNetwork`:
 Delete Network.
 Marks a custom third party network as deleted. Only the network owners and managers have access to this.
 
-- `POST` to `/api/:version/thirdparty/credential/get`, OperationId: `getCredential`:
+- `POST` to `/thirdparty/credential/get`, OperationId: `getCredential`:
 Get Credential.
 Gets the account information given a third party token.
 
-- `GET` to `/api/:version/thirdparty/network/get`, OperationId: `getNetwork`:
+- `GET` to `/thirdparty/network/get`, OperationId: `getNetwork`:
 Get Network.
 Get the details of a third party network. Only the network owners and managers have access to this.
 
-- `GET` to `/api/:version/thirdparty/credential/search`, OperationId: `searchCredentials`:
+- `GET` to `/thirdparty/credential/search`, OperationId: `searchCredentials`:
 Search Credentials.
 Search on a user&#39;s linked third party networks.
 
-- `GET` to `/api/:version/thirdparty/network/search`, OperationId: `searchNetworks`:
+- `GET` to `/thirdparty/network/search`, OperationId: `searchNetworks`:
 Search Networks.
 Search on supported third party networks and custom networks from external users.
 
-- `POST` to `/api/:version/thirdparty/credential/mfa/send`, OperationId: `sendMFAChallenge`:
+- `POST` to `/thirdparty/credential/mfa/send`, OperationId: `sendMFAChallenge`:
 Send MFA Challenge.
 Sends an MFA challenge (SMS or Email) for networks with MFA enabled.
 
-- `POST` to `/api/:version/thirdparty/credential/update`, OperationId: `updateCredential`:
+- `POST` to `/thirdparty/credential/update`, OperationId: `updateCredential`:
 Update Credential.
 Updates a third-party login for an account.
 
-- `POST` to `/api/:version/thirdparty/network/update`, OperationId: `updateNetwork`:
+- `POST` to `/thirdparty/network/update`, OperationId: `updateNetwork`:
 Update Network.
 Updates a custom third party network. Only the network owners and managers have access to this.
 

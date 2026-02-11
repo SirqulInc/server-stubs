@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/purchase/create`, OperationId: `createPurchaseItem`:
+- `POST` to `/purchase/create`, OperationId: `createPurchaseItem`:
 Create Purchase.
 Creates a purchase item for in app purchases
 
-- `POST` to `/api/:version/purchase/delete`, OperationId: `deletePurchaseItem`:
+- `POST` to `/purchase/delete`, OperationId: `deletePurchaseItem`:
 Delete Purchase.
 Marks the purchase item as deleted
 
-- `GET` to `/api/:version/purchase/get`, OperationId: `getPurchaseItem`:
+- `GET` to `/purchase/get`, OperationId: `getPurchaseItem`:
 Get Purchase.
 Get detailed information about a purchase item
 
-- `GET` to `/api/:version/purchase/search`, OperationId: `searchPurchaseItems`:
+- `GET` to `/purchase/search`, OperationId: `searchPurchaseItems`:
 Search Purchases.
 Search for purchasable items from the system
 
-- `POST` to `/api/:version/purchase/update`, OperationId: `updatePurchaseItem`:
+- `POST` to `/purchase/update`, OperationId: `updatePurchaseItem`:
 Update Purchase.
 Updates a purchase item for in app purchases
 

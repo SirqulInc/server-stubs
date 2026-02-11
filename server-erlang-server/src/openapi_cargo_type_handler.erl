@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/cargo/type`, OperationId: `createCargoType`:
+- `POST` to `/cargo/type`, OperationId: `createCargoType`:
 Create Cargo Type.
 Create new cargo type
 
-- `DELETE` to `/api/:version/cargo/type/:cargoTypeId`, OperationId: `deleteCargoType`:
+- `DELETE` to `/cargo/type/:cargoTypeId`, OperationId: `deleteCargoType`:
 Delete Cargo Type.
 Delete a type of cargo
 
-- `GET` to `/api/:version/cargo/type/:cargoTypeId`, OperationId: `getCargoType`:
+- `GET` to `/cargo/type/:cargoTypeId`, OperationId: `getCargoType`:
 Get Cargo Type.
 Get an existing cargo type
 
-- `GET` to `/api/:version/cargo/type`, OperationId: `searchCargoTypes`:
+- `GET` to `/cargo/type`, OperationId: `searchCargoTypes`:
 Search Cargo Type.
 Search for types of cargo
 
-- `PUT` to `/api/:version/cargo/type/:cargoTypeId`, OperationId: `updateCargoType`:
+- `PUT` to `/cargo/type/:cargoTypeId`, OperationId: `updateCargoType`:
 Update Cargo Type.
 Update an existing cargo type
 

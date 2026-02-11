@@ -2,31 +2,31 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/event/attend`, OperationId: `attendEvent`:
+- `POST` to `/event/attend`, OperationId: `attendEvent`:
 Attend Event.
  Specify whether the user is attending an event at a particular location. This can also be used as a \&quot;check-in\&quot; action.
 
-- `POST` to `/api/:version/event/create`, OperationId: `createEvent`:
+- `POST` to `/event/create`, OperationId: `createEvent`:
 Create Event.
 Create a private event to share with associates.
 
-- `POST` to `/api/:version/event/delete`, OperationId: `deleteEvent`:
+- `POST` to `/event/delete`, OperationId: `deleteEvent`:
 Delete Event.
 Delete an event that the user has permissions to.
 
-- `GET` to `/api/:version/event/get`, OperationId: `getEvent`:
+- `GET` to `/event/get`, OperationId: `getEvent`:
 Get Event.
 Get an event.
 
-- `GET` to `/api/:version/event/attendance/search`, OperationId: `searchEventTransactions`:
+- `GET` to `/event/attendance/search`, OperationId: `searchEventTransactions`:
 Search Event Attendance.
 Searches on event type transactions. This can be used to see who is attending an event.
 
-- `GET` to `/api/:version/event/search`, OperationId: `searchEvents`:
+- `GET` to `/event/search`, OperationId: `searchEvents`:
 Search Events.
 Searches on events that the account has access to.
 
-- `POST` to `/api/:version/event/update`, OperationId: `updateEvent`:
+- `POST` to `/event/update`, OperationId: `updateEvent`:
 Update Event.
 Update a private event to share with associates.
 

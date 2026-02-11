@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/openai/v1/images/generations`, OperationId: `imageGeneration`:
+- `POST` to `/openai/v1/images/generations`, OperationId: `imageGeneration`:
 Generate images with OpenAI.
 Generate images with OpenAI.
 

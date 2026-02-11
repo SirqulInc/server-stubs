@@ -2,39 +2,39 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/tracking/batch/create`, OperationId: `batchSaveTracking`:
+- `POST` to `/tracking/batch/create`, OperationId: `batchSaveTracking`:
 Create Batch Tracking.
 Batch create tracking legs
 
-- `GET` to `/api/:version/tracking/predicted/get`, OperationId: `getPredictedLocations`:
+- `GET` to `/tracking/predicted/get`, OperationId: `getPredictedLocations`:
 Get Predicted Locations.
 Get the predicted location for a customer based on previous behavior.  If a customer resides in a place for a period of time this is marked as a preferred location.  We look back over the previous few days and the previous days of the week from the day specified.  If for instance the day was a Wednesday then this would check the days before, including: Tuesday, Monday, Sunday, etc. It will also check some number of previous Wednesdays in the past few weeks.
 
-- `GET` to `/api/:version/tracking/path/get`, OperationId: `getPredictedPath`:
+- `GET` to `/tracking/path/get`, OperationId: `getPredictedPath`:
 Get Tracking Path.
 Get the path (lat/long coordinates) between 2 steps previously logged for a customer.
 
-- `GET` to `/api/:version/tracking/preferred/search`, OperationId: `getPreferredLocations`:
+- `GET` to `/tracking/preferred/search`, OperationId: `getPreferredLocations`:
 Search Preferred Locations.
 Search on preferred locations for a user, which is created when a customer resides in a place for a period of time.
 
-- `GET` to `/api/:version/tracking/search`, OperationId: `getTrackingLegs`:
+- `GET` to `/tracking/search`, OperationId: `getTrackingLegs`:
 Search Tracking.
 Retrieve tracking data to be able to show where a user has been.
 
-- `POST` to `/api/:version/tracking/leg/create`, OperationId: `saveTrackingLeg`:
+- `POST` to `/tracking/leg/create`, OperationId: `saveTrackingLeg`:
 Create Tracking Leg.
 Send tracking points to be able to generate pathing data
 
-- `POST` to `/api/:version/tracking/step/create`, OperationId: `saveTrackingStep`:
+- `POST` to `/tracking/step/create`, OperationId: `saveTrackingStep`:
 Create Tracking Step.
 Send tracking points to be able to generate pathing data
 
-- `GET` to `/api/:version/tracking/list`, OperationId: `searchAccountsWithTrackingLegs`:
+- `GET` to `/tracking/list`, OperationId: `searchAccountsWithTrackingLegs`:
 List Tracking.
 Search for all accounts that have tracking legs data by the given constraints.
 
-- `GET` to `/api/:version/tracking/searchByBillable`, OperationId: `searchTrackingLegs`:
+- `GET` to `/tracking/searchByBillable`, OperationId: `searchTrackingLegs`:
 Search Tracking (Billable).
 Retrieve tracking data for billable/account scoped queries.
 

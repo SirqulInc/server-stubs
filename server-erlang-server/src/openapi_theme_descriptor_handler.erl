@@ -2,19 +2,19 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/consumer/theme`, OperationId: `addOrUpdateThemeDescriptor`:
+- `POST` to `/consumer/theme`, OperationId: `addOrUpdateThemeDescriptor`:
 Create/Update Theme.
 Creates or updates a theme descriptor that can be used to give applications a customized look and feel. The theme can be created by consumers and shared to other users, allowing them to use and/or collaborate on making the theme.
 
-- `GET` to `/api/:version/consumer/theme/get`, OperationId: `getThemeDescriptor`:
+- `GET` to `/consumer/theme/get`, OperationId: `getThemeDescriptor`:
 Get Theme.
 Gets a theme.
 
-- `GET` to `/api/:version/consumer/theme/search`, OperationId: `getThemeDescriptors`:
+- `GET` to `/consumer/theme/search`, OperationId: `getThemeDescriptors`:
 Search Themes.
 Searches for themes.
 
-- `POST` to `/api/:version/consumer/theme/remove`, OperationId: `removeThemeDescriptor`:
+- `POST` to `/consumer/theme/remove`, OperationId: `removeThemeDescriptor`:
 Delete Theme.
 Removes a theme.
 

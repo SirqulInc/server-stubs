@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/simulation/routing`, OperationId: `simulation`:
+- `POST` to `/simulation/routing`, OperationId: `simulation`:
 Routing Simulation.
 Simulates routing requests.
 

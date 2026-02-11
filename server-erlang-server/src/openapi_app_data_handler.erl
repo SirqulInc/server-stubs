@@ -2,15 +2,15 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/app/get`, OperationId: `getAppData`:
+- `GET` to `/app/get`, OperationId: `getAppData`:
 Get App Data.
 Get the application data structure.  The basic structure is a   node tree, with the root node being a AppResponse.  The response contains   the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.     Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application.
 
-- `POST` to `/api/:version/app/post`, OperationId: `postAppData`:
+- `POST` to `/app/post`, OperationId: `postAppData`:
 Create App Data.
 Publish the application data structure.  Can be used to save levels   and scores.  It then returns the application data structure.  The basic   structure is a node tree, with the root node being a AppResponse.  The response   contains the user&#39;s profile, messages from the system, and a list of MissionResponse.    A mission can have any number of GameResponses but typically is a single   game type.  A game then has any number of PackResponses which help group   the game levels. Packs are then composed of any number of GameLevelResponses.      Using the various parameters can return the applications default mission   (built-in packs to play), the list of community levels published, the user&#39;s   saved levels, or explicity levels desired.  You can choose to include the   profile or not, or just return parts of the profile.  You can also filter   out game levels that have been published with a higher version of the application
 
-- `POST` to `/api/:version/app/regen`, OperationId: `regenAppData`:
+- `POST` to `/app/regen`, OperationId: `regenAppData`:
 Regenerate App Data.
 Regenerate the app data cache for apps
 

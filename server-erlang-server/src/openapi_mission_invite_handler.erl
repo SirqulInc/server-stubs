@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/mission/invite/create`, OperationId: `createMissionInvite`:
+- `POST` to `/mission/invite/create`, OperationId: `createMissionInvite`:
 Create Mission Invite.
 Create the mission invite. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
 
-- `POST` to `/api/:version/mission/invite/delete`, OperationId: `deleteMissionInvite`:
+- `POST` to `/mission/invite/delete`, OperationId: `deleteMissionInvite`:
 Delete Mission Invite.
 Update the mission invite status to quit.
 
-- `GET` to `/api/:version/mission/invite/get`, OperationId: `getMissionInvite`:
+- `GET` to `/mission/invite/get`, OperationId: `getMissionInvite`:
 Get Mission Invite.
 Get the mission invite. An account can only be invited to a mission one time.
 
-- `GET` to `/api/:version/mission/invite/search`, OperationId: `searchMissionInvites`:
+- `GET` to `/mission/invite/search`, OperationId: `searchMissionInvites`:
 Search Mission Invites.
 Get a list of mission invites that the account has.
 
-- `POST` to `/api/:version/mission/invite/update`, OperationId: `updateMissionInvite`:
+- `POST` to `/mission/invite/update`, OperationId: `updateMissionInvite`:
 Update Mission Invite.
 Update the mission invite status. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided.
 

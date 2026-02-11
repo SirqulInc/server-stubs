@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/consumer/permissions/add`, OperationId: `addUsersToPermissionable`:
+- `POST` to `/consumer/permissions/add`, OperationId: `addUsersToPermissionable`:
 Add User.
 Adds a user to a permissionable object.
 
-- `POST` to `/api/:version/permissionable/approve`, OperationId: `approvePermissionable`:
+- `POST` to `/permissionable/approve`, OperationId: `approvePermissionable`:
 Approve Permissionable.
 Sets the approval status of a permissionable object.
 
-- `POST` to `/api/:version/consumer/permissions/leave`, OperationId: `leaveFromPermissionable`:
+- `POST` to `/consumer/permissions/leave`, OperationId: `leaveFromPermissionable`:
 Leave.
 Used when the user wants to leave from someone else&#39;s permissionable object
 
-- `POST` to `/api/:version/consumer/permissions/remove`, OperationId: `removeUsersFromPermissionable`:
+- `POST` to `/consumer/permissions/remove`, OperationId: `removeUsersFromPermissionable`:
 Remove User.
 Used to remove someone (assuming they have permission) from a permissionable object
 
-- `GET` to `/api/:version/permissions/search`, OperationId: `searchPermissionables`:
+- `GET` to `/permissions/search`, OperationId: `searchPermissionables`:
 Search Permissionables.
 Search on UserPermissions
 
-- `GET` to `/api/:version/permissions/distancesearch`, OperationId: `searchPermissionablesFollowingDistance`:
+- `GET` to `/permissions/distancesearch`, OperationId: `searchPermissionablesFollowingDistance`:
 Search Permissionables by Distnace.
 Search on UserPermissions by distance
 

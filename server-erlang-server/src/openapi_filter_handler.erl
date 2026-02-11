@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/filter/create`, OperationId: `createFilter`:
+- `POST` to `/filter/create`, OperationId: `createFilter`:
 Create Filter.
 Create a filter
 
-- `POST` to `/api/:version/filter/delete`, OperationId: `deleteFilter`:
+- `POST` to `/filter/delete`, OperationId: `deleteFilter`:
 Delete Filter.
 Delete a filter.
 
-- `GET` to `/api/:version/filter/get`, OperationId: `getFilter`:
+- `GET` to `/filter/get`, OperationId: `getFilter`:
 Get Filter.
 Get the details of a specific filter. Recursively include all child filters and their children.
 
-- `GET` to `/api/:version/filter/search`, OperationId: `searchFilters`:
+- `GET` to `/filter/search`, OperationId: `searchFilters`:
 Search Filters.
 Search for filters.
 
-- `POST` to `/api/:version/filter/update`, OperationId: `updateFilter`:
+- `POST` to `/filter/update`, OperationId: `updateFilter`:
 Update Filter.
 Update a filter.
 

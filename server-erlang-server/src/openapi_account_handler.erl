@@ -2,111 +2,111 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/account/search`, OperationId: `accountLocationSearch`:
+- `GET` to `/account/search`, OperationId: `accountLocationSearch`:
 Search Accounts by Location.
 Search accounts by their location. This only searches on users that have location data. Use ConnectionApi to perform a regular search on accounts.
 
-- `POST` to `/api/:version/account/block`, OperationId: `blockAccount`:
+- `POST` to `/account/block`, OperationId: `blockAccount`:
 Block Account.
 Moves or removes an account into the user&#39;s blocked group.
 
-- `POST` to `/api/:version/account/create`, OperationId: `createAccount`:
+- `POST` to `/account/create`, OperationId: `createAccount`:
 Create Account.
 Create a new account by role.
 
-- `POST` to `/api/:version/account/profile/update`, OperationId: `editAccount`:
+- `POST` to `/account/profile/update`, OperationId: `editAccount`:
 Update Account.
 Edit the user&#39;s profile information
 
-- `POST` to `/api/:version/account/username/update`, OperationId: `editUsername`:
+- `POST` to `/account/username/update`, OperationId: `editUsername`:
 Update Username and Email.
 Update account&#39;s own username and/or emailAddress
 
-- `GET` to `/api/:version/account/profile/get`, OperationId: `getAccount`:
+- `GET` to `/account/profile/get`, OperationId: `getAccount`:
 Get Account.
 Gets a user&#39;s account profile. Application settings and account settings will also be returned for the owner of the account.
 
-- `GET` to `/api/:version/account/profile/assets`, OperationId: `getProfileAssets`:
+- `GET` to `/account/profile/assets`, OperationId: `getProfileAssets`:
 Get Profile Assets.
 Get a list of assets a person has ever uploaded. Filters the list based on parameters.
 
-- `GET` to `/api/:version/account/referral/list`, OperationId: `getReferralList`:
+- `GET` to `/account/referral/list`, OperationId: `getReferralList`:
 Search Accounts.
 Gets a user&#39;s account profile and their referral List.
 
-- `GET` to `/api/:version/account/settings/get`, OperationId: `getSettings`:
+- `GET` to `/account/settings/get`, OperationId: `getSettings`:
 Get Account Settings.
 Get the account settings for a user
 
-- `POST` to `/api/:version/account/login/delegate`, OperationId: `loginDelegate`:
+- `POST` to `/account/login/delegate`, OperationId: `loginDelegate`:
 Login as Account.
 A login service that supports logging in as someone else (accounts that the user manages). Intended for internal use for now.
 
-- `POST` to `/api/:version/account/login`, OperationId: `loginGeneral`:
+- `POST` to `/account/login`, OperationId: `loginGeneral`:
 Login Account.
 General login service that supports various authentication methods. Currently supports Facebook, Twitter, Sirqul Username, and Sirqul Phone by default. Can also support custom networks created using the {@link ThirdPartyApi}
 
-- `POST` to `/api/:version/account/get`, OperationId: `loginUsername`:
+- `POST` to `/account/get`, OperationId: `loginUsername`:
 Login Account (Username).
 Login to system with an account
 
-- `POST` to `/api/:version/account/logout`, OperationId: `logout`:
+- `POST` to `/account/logout`, OperationId: `logout`:
 Logout Account.
 Cleans up the users data for logging out.
 
-- `POST` to `/api/:version/account/merge`, OperationId: `mergeAccount`:
+- `POST` to `/account/merge`, OperationId: `mergeAccount`:
 Merge Account.
 Merges the analytics, achievements, leaderboards of two accounts.
 
-- `POST` to `/api/:version/account/passwordchange`, OperationId: `passwordChange`:
+- `POST` to `/account/passwordchange`, OperationId: `passwordChange`:
 Update Password.
 Update the account password.
 
-- `POST` to `/api/:version/account/passwordreset`, OperationId: `passwordReset`:
+- `POST` to `/account/passwordreset`, OperationId: `passwordReset`:
 Reset Password.
 Reset the account password. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token.
 
-- `POST` to `/api/:version/account/requestpasswordreset`, OperationId: `requestPasswordReset`:
+- `POST` to `/account/requestpasswordreset`, OperationId: `requestPasswordReset`:
 Request Password Reset.
 Request that an account password be reset. The account is looked up by email address and then a link is sent via email to that account with a reset token. The token is valid for 24 hours.
 
-- `POST` to `/api/:version/account/requestValidateAccount`, OperationId: `requestValidateAccount`:
+- `POST` to `/account/requestValidateAccount`, OperationId: `requestValidateAccount`:
 Send Validation Request.
 Send an email to validate a user&#39;s account.
 
-- `GET` to `/api/:version/account/profile/search`, OperationId: `searchAccounts`:
+- `GET` to `/account/profile/search`, OperationId: `searchAccounts`:
 Search Accounts.
 Search for account profiles.
 
-- `POST` to `/api/:version/account/login/validate`, OperationId: `secureLogin`:
+- `POST` to `/account/login/validate`, OperationId: `secureLogin`:
 Login Account (Encrypted Username).
 ogin with encrypted user-name and password.
 
-- `POST` to `/api/:version/account/create/validate`, OperationId: `secureSignup`:
+- `POST` to `/account/create/validate`, OperationId: `secureSignup`:
 Create Account (Encrypted Username).
 Create a new account by role (with encrypted user-name and password)
 
-- `POST` to `/api/:version/consumer/profile/matchToken`, OperationId: `setMatchToken`:
+- `POST` to `/consumer/profile/matchToken`, OperationId: `setMatchToken`:
 Save Match Token.
 Save user&#39;s match token to be used for profile match making
 
-- `POST` to `/api/:version/account/active/update`, OperationId: `updateActveStatus`:
+- `POST` to `/account/active/update`, OperationId: `updateActveStatus`:
 Update Account Active Status.
 Activate or deactivate an account (requires appropriate permissions).
 
-- `POST` to `/api/:version/account/location/update`, OperationId: `updateLocation`:
+- `POST` to `/account/location/update`, OperationId: `updateLocation`:
 Update Location.
 Update the account location
 
-- `POST` to `/api/:version/account/settings/update`, OperationId: `updateSettings`:
+- `POST` to `/account/settings/update`, OperationId: `updateSettings`:
 Update Account Settings.
 Update the account settings for a user
 
-- `POST` to `/api/:version/account/validateAccountSignup`, OperationId: `validateAccountSignup`:
+- `POST` to `/account/validateAccountSignup`, OperationId: `validateAccountSignup`:
 Save Validation Status.
 Validate the account&#39;s email address. The token must be valid and not expired. Use the RequestValidateAccount end point to request a new token.
 
-- `POST` to `/api/:version/account/validatepasswordreset`, OperationId: `validatePasswordReset`:
+- `POST` to `/account/validatepasswordreset`, OperationId: `validatePasswordReset`:
 Validate Password Reset Token.
 Validate the password reset token. The token must be valid and not expired. Use the RequestPasswordReset end point to request a token. The user receives and email with the reset page, therefore it should be validated before bwing used to reset the password.
 

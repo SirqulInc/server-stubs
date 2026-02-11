@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/trigger/create`, OperationId: `createTrigger`:
+- `POST` to `/trigger/create`, OperationId: `createTrigger`:
 Create Trigger.
 Create a trigger
 
-- `POST` to `/api/:version/trigger/delete`, OperationId: `deleteTrigger`:
+- `POST` to `/trigger/delete`, OperationId: `deleteTrigger`:
 Delete Trigger.
 Mark a trigger as deleted.
 
-- `GET` to `/api/:version/trigger/get`, OperationId: `getTrigger`:
+- `GET` to `/trigger/get`, OperationId: `getTrigger`:
 Get Trigger.
 Get a trigger
 
-- `GET` to `/api/:version/trigger/search`, OperationId: `searchTriggers`:
+- `GET` to `/trigger/search`, OperationId: `searchTriggers`:
 Search Triggers.
 Search for triggers
 
-- `POST` to `/api/:version/trigger/update`, OperationId: `updateTrigger`:
+- `POST` to `/trigger/update`, OperationId: `updateTrigger`:
 Update Trigger.
 Update a trigger
 

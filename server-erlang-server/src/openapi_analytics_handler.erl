@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/analytics/useractivity`, OperationId: `activities`:
+- `GET` to `/analytics/useractivity`, OperationId: `activities`:
 Get User Activity.
 Get an activity feed by user.
 
-- `GET` to `/api/:version/analytics/aggregatedFilteredUsage`, OperationId: `aggregatedFilteredUsage`:
+- `GET` to `/analytics/aggregatedFilteredUsage`, OperationId: `aggregatedFilteredUsage`:
 Get Aggregated Filtered Usage.
 Query analytics to get data used for nested graphs and charts
 
-- `GET` to `/api/:version/analytics/filteredUsage`, OperationId: `filteredUsage`:
+- `GET` to `/analytics/filteredUsage`, OperationId: `filteredUsage`:
 Get Filtered Usage.
 Query analytics to get data used for graphs and charts
 
-- `POST` to `/api/:version/analytics/usage`, OperationId: `usage`:
+- `POST` to `/analytics/usage`, OperationId: `usage`:
 Create Usage Record.
 Record an analytic record for a known state within the application.
 
-- `POST` to `/api/:version/analytics/usage/batch`, OperationId: `usageBatch`:
+- `POST` to `/analytics/usage/batch`, OperationId: `usageBatch`:
 Create Multiple Usage Records.
 Sends multiple analytics. Can be used to send in the user&#39;s stored usage when they did not have internet access. Should not include more than 100 items per batch.
 

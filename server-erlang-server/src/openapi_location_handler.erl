@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/location/trilaterate/cache`, OperationId: `cacheTrilaterationData`:
+- `POST` to `/location/trilaterate/cache`, OperationId: `cacheTrilaterationData`:
 Create Trilateration Data with File.
 Creates trilateration samples for a source device (i.e. a router).
 
-- `POST` to `/api/:version/location/trilaterate/cache/submit`, OperationId: `cacheTrilaterationDataGzip`:
+- `POST` to `/location/trilaterate/cache/submit`, OperationId: `cacheTrilaterationDataGzip`:
 Create Trilateration Data with Rest.
 Creates trilateration samples for a source device (i.e. a router).
 
-- `GET` to `/api/:version/location/ip`, OperationId: `getLocationByIp`:
+- `GET` to `/location/ip`, OperationId: `getLocationByIp`:
 Get Location by IP.
 Get location information based on an IP address.
 
-- `GET` to `/api/:version/account/location/trilaterate`, OperationId: `getLocationByTrilateration`:
+- `GET` to `/account/location/trilaterate`, OperationId: `getLocationByTrilateration`:
 Get Location by Trilateration.
 Send in device data and calculate a position based on signal strengths.
 
-- `GET` to `/api/:version/location/search`, OperationId: `getLocations`:
+- `GET` to `/location/search`, OperationId: `getLocations`:
 Search Regions or Postal Codes.
 Searches geographic locations by proximity via address or keyword.
 

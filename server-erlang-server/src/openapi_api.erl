@@ -2274,7 +2274,6 @@ validate_response(_OperationID, _Code, _Body, _ValidatorState) ->
 -spec request_params(OperationID :: operation_id()) -> [Param :: request_param()].
 request_params('consumerCreate') ->
     [
-        'version',
         'appKey',
         'name',
         'hostname',
@@ -2292,7 +2291,6 @@ request_params('consumerCreate') ->
     ];
 request_params('consumerUpdate') ->
     [
-        'version',
         'appKey',
         'queueId',
         'dataMapping',
@@ -2302,7 +2300,6 @@ request_params('consumerUpdate') ->
     ];
 request_params('queueCreate') ->
     [
-        'version',
         'appKey',
         'name',
         'deviceId',
@@ -2318,14 +2315,12 @@ request_params('queueCreate') ->
     ];
 request_params('queueDelete') ->
     [
-        'version',
         'queueId',
         'deviceId',
         'accountId'
     ];
 request_params('queueGet') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'queueId',
@@ -2336,7 +2331,6 @@ request_params('queueGet') ->
     ];
 request_params('queuePublish') ->
     [
-        'version',
         'message',
         'queueId',
         'appKey',
@@ -2346,7 +2340,6 @@ request_params('queuePublish') ->
     ];
 request_params('queueSearch') ->
     [
-        'version',
         'queueId',
         'deviceId',
         'accountId',
@@ -2356,7 +2349,6 @@ request_params('queueSearch') ->
     ];
 request_params('queueUpdate') ->
     [
-        'version',
         'queueId',
         'deviceId',
         'accountId',
@@ -2372,7 +2364,6 @@ request_params('queueUpdate') ->
     ];
 request_params('accountLocationSearch') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'q',
@@ -2410,7 +2401,6 @@ request_params('accountLocationSearch') ->
     ];
 request_params('blockAccount') ->
     [
-        'version',
         'accountIdBeingBlocked',
         'deviceId',
         'accountId',
@@ -2421,7 +2411,6 @@ request_params('blockAccount') ->
     ];
 request_params('createAccount') ->
     [
-        'version',
         'username',
         'password',
         'name',
@@ -2497,7 +2486,6 @@ request_params('createAccount') ->
     ];
 request_params('editAccount') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'connectionAccountId',
@@ -2583,7 +2571,6 @@ request_params('editAccount') ->
     ];
 request_params('editUsername') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'emailAddress',
@@ -2591,7 +2578,6 @@ request_params('editUsername') ->
     ];
 request_params('getAccount') ->
     [
-        'version',
         'returnNulls',
         'deviceId',
         'accountId',
@@ -2607,7 +2593,6 @@ request_params('getAccount') ->
     ];
 request_params('getProfileAssets') ->
     [
-        'version',
         'returnNulls',
         'deviceId',
         'accountId',
@@ -2625,7 +2610,6 @@ request_params('getProfileAssets') ->
     ];
 request_params('getReferralList') ->
     [
-        'version',
         'accountId',
         'appKey',
         'retrieveType',
@@ -2640,7 +2624,6 @@ request_params('getReferralList') ->
     ];
 request_params('getSettings') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'latitude',
@@ -2648,7 +2631,6 @@ request_params('getSettings') ->
     ];
 request_params('loginDelegate') ->
     [
-        'version',
         'accessToken',
         'appKey',
         'deviceId',
@@ -2663,7 +2645,6 @@ request_params('loginDelegate') ->
     ];
 request_params('loginGeneral') ->
     [
-        'version',
         'accessToken',
         'networkUID',
         'appKey',
@@ -2680,7 +2661,6 @@ request_params('loginGeneral') ->
     ];
 request_params('loginUsername') ->
     [
-        'version',
         'username',
         'password',
         'deviceId',
@@ -2694,7 +2674,6 @@ request_params('loginUsername') ->
     ];
 request_params('logout') ->
     [
-        'version',
         'deviceId',
         'deviceIdType',
         'accountId',
@@ -2703,7 +2682,6 @@ request_params('logout') ->
     ];
 request_params('mergeAccount') ->
     [
-        'version',
         'mergeAccountId',
         'appKey',
         'deviceId',
@@ -2711,7 +2689,6 @@ request_params('mergeAccount') ->
     ];
 request_params('passwordChange') ->
     [
-        'version',
         'accountId',
         'oldPassword',
         'newPassword',
@@ -2719,14 +2696,12 @@ request_params('passwordChange') ->
     ];
 request_params('passwordReset') ->
     [
-        'version',
         'token',
         'password',
         'confirm'
     ];
 request_params('requestPasswordReset') ->
     [
-        'version',
         'email',
         'from',
         'domain',
@@ -2735,12 +2710,10 @@ request_params('requestPasswordReset') ->
     ];
 request_params('requestValidateAccount') ->
     [
-        'version',
         'accountId'
     ];
 request_params('searchAccounts') ->
     [
-        'version',
         'accountId',
         'appKey',
         'keyword',
@@ -2762,7 +2735,6 @@ request_params('searchAccounts') ->
     ];
 request_params('secureLogin') ->
     [
-        'version',
         'username',
         'password',
         'gameType',
@@ -2775,7 +2747,6 @@ request_params('secureLogin') ->
     ];
 request_params('secureSignup') ->
     [
-        'version',
         'deviceId',
         'username',
         'password',
@@ -2840,7 +2811,6 @@ request_params('secureSignup') ->
     ];
 request_params('setMatchToken') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'matchToken',
@@ -2851,7 +2821,6 @@ request_params('setMatchToken') ->
     ];
 request_params('updateActveStatus') ->
     [
-        'version',
         'accountId',
         'connectionAccountId',
         'active',
@@ -2860,7 +2829,6 @@ request_params('updateActveStatus') ->
     ];
 request_params('updateLocation') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'latitude',
@@ -2869,7 +2837,6 @@ request_params('updateLocation') ->
     ];
 request_params('updateSettings') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'blockedNotifications',
@@ -2885,17 +2852,14 @@ request_params('updateSettings') ->
     ];
 request_params('validateAccountSignup') ->
     [
-        'version',
         'token'
     ];
 request_params('validatePasswordReset') ->
     [
-        'version',
         'token'
     ];
 request_params('') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -2910,7 +2874,6 @@ request_params('') ->
     ];
 request_params('createAchievement') ->
     [
-        'version',
         'appKey',
         'title',
         'deviceId',
@@ -2927,7 +2890,6 @@ request_params('createAchievement') ->
     ];
 request_params('createAchievementTier') ->
     [
-        'version',
         'achievementId',
         'scoreAllInstances',
         'deviceId',
@@ -2945,19 +2907,16 @@ request_params('createAchievementTier') ->
     ];
 request_params('deleteAchievement') ->
     [
-        'version',
         'achievementId',
         'accountId'
     ];
 request_params('deleteAchievementTier') ->
     [
-        'version',
         'achievementTierId',
         'accountId'
     ];
 request_params('getAchievement') ->
     [
-        'version',
         'achievementId',
         'deviceId',
         'accountId',
@@ -2965,13 +2924,11 @@ request_params('getAchievement') ->
     ];
 request_params('getAchievementTier') ->
     [
-        'version',
         'accountId',
         'achievementTierId'
     ];
 request_params('getUserAchievements') ->
     [
-        'version',
         'returnNulls',
         'appKey',
         'includeUndiscovered',
@@ -2986,12 +2943,10 @@ request_params('getUserAchievements') ->
     ];
 request_params('listAchievementTags') ->
     [
-        'version',
         'appKey'
     ];
 request_params('listAchievements') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -3006,7 +2961,6 @@ request_params('listAchievements') ->
     ];
 request_params('searchAchievements') ->
     [
-        'version',
         'appKey',
         'sortField',
         'descending',
@@ -3022,7 +2976,6 @@ request_params('searchAchievements') ->
     ];
 request_params('updateAchievement') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'achievementId',
@@ -3041,7 +2994,6 @@ request_params('updateAchievement') ->
     ];
 request_params('updateAchievementTier') ->
     [
-        'version',
         'achievementTierId',
         'deviceId',
         'accountId',
@@ -3059,7 +3011,6 @@ request_params('updateAchievementTier') ->
     ];
 request_params('updateUserAchievement') ->
     [
-        'version',
         'accountId',
         'achievementId',
         'tag',
@@ -3071,12 +3022,10 @@ request_params('updateUserAchievement') ->
     ];
 request_params('createEntityReference') ->
     [
-        'version',
         'EntityReference'
     ];
 request_params('addAlbumCollection') ->
     [
-        'version',
         'title',
         'coverAssetNullable',
         'includeCoverInAssetList',
@@ -3126,7 +3075,6 @@ request_params('addAlbumCollection') ->
     ];
 request_params('addAlbumUsers') ->
     [
-        'version',
         'albumId',
         'includeFriendGroup',
         'deviceId',
@@ -3140,7 +3088,6 @@ request_params('addAlbumUsers') ->
     ];
 request_params('approveAlbum') ->
     [
-        'version',
         'albumId',
         'deviceId',
         'accountId',
@@ -3149,7 +3096,6 @@ request_params('approveAlbum') ->
     ];
 request_params('getAlbumCollection') ->
     [
-        'version',
         'returnNulls',
         'albumId',
         'deviceId',
@@ -3162,21 +3108,18 @@ request_params('getAlbumCollection') ->
     ];
 request_params('leaveAlbum') ->
     [
-        'version',
         'albumId',
         'deviceId',
         'accountId'
     ];
 request_params('removeAlbum') ->
     [
-        'version',
         'albumId',
         'deviceId',
         'accountId'
     ];
 request_params('removeAlbumUsers') ->
     [
-        'version',
         'albumId',
         'removeFriendGroup',
         'deviceId',
@@ -3186,7 +3129,6 @@ request_params('removeAlbumUsers') ->
     ];
 request_params('searchAlbums') ->
     [
-        'version',
         'filter',
         'albumTypeId',
         'subType',
@@ -3250,7 +3192,6 @@ request_params('searchAlbums') ->
     ];
 request_params('updateAlbumCollection') ->
     [
-        'version',
         'albumId',
         'deviceId',
         'accountId',
@@ -3299,14 +3240,12 @@ request_params('updateAlbumCollection') ->
     ];
 request_params('activities') ->
     [
-        'version',
         'start',
         'limit',
         'accountId'
     ];
 request_params('aggregatedFilteredUsage') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'applicationId',
@@ -3341,7 +3280,6 @@ request_params('aggregatedFilteredUsage') ->
     ];
 request_params('filteredUsage') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'applicationId',
@@ -3384,7 +3322,6 @@ request_params('filteredUsage') ->
     ];
 request_params('usage') ->
     [
-        'version',
         'tag',
         'deviceId',
         'accountId',
@@ -3419,7 +3356,6 @@ request_params('usage') ->
     ];
 request_params('usageBatch') ->
     [
-        'version',
         'appKey',
         'device',
         'data',
@@ -3434,7 +3370,6 @@ request_params('usageBatch') ->
     ];
 request_params('getAppData') ->
     [
-        'version',
         'start',
         'limit',
         'deviceId',
@@ -3463,7 +3398,6 @@ request_params('getAppData') ->
     ];
 request_params('postAppData') ->
     [
-        'version',
         'gameType',
         'start',
         'limit',
@@ -3493,7 +3427,6 @@ request_params('postAppData') ->
     ];
 request_params('regenAppData') ->
     [
-        'version',
         'accountId',
         'appKey',
         'buildVersion',
@@ -3501,7 +3434,6 @@ request_params('regenAppData') ->
     ];
 request_params('createApplication') ->
     [
-        'version',
         'appName',
         'deviceId',
         'accountId',
@@ -3584,7 +3516,6 @@ request_params('createApplication') ->
     ];
 request_params('createApplicationPlacement') ->
     [
-        'version',
         'appKey',
         'size',
         'deviceId',
@@ -3599,37 +3530,31 @@ request_params('createApplicationPlacement') ->
     ];
 request_params('deleteApplication') ->
     [
-        'version',
         'accountId',
         'appKey'
     ];
 request_params('deleteApplicationPlacement') ->
     [
-        'version',
         'placementId',
         'deviceId',
         'accountId'
     ];
 request_params('getApplication') ->
     [
-        'version',
         'appKey',
         'applicationId'
     ];
 request_params('getApplicationPlacement') ->
     [
-        'version',
         'placementId',
         'deviceId',
         'accountId'
     ];
 request_params('getApplicationVersions') ->
     [
-        'version'
     ];
 request_params('getUniqueUsersByApp') ->
     [
-        'version',
         'appKey',
         'q',
         'keyword',
@@ -3641,7 +3566,6 @@ request_params('getUniqueUsersByApp') ->
     ];
 request_params('listApplications') ->
     [
-        'version',
         'accountId',
         'q',
         'keyword',
@@ -3665,7 +3589,6 @@ request_params('listApplications') ->
     ];
 request_params('searchApplicationPlacement') ->
     [
-        'version',
         'appKey',
         'deviceId',
         'accountId',
@@ -3674,7 +3597,6 @@ request_params('searchApplicationPlacement') ->
     ];
 request_params('searchApplicationSettings') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'connectionAccountId',
@@ -3686,7 +3608,6 @@ request_params('searchApplicationSettings') ->
     ];
 request_params('searchApplications') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'latitude',
@@ -3706,7 +3627,6 @@ request_params('searchApplications') ->
     ];
 request_params('updateApplication') ->
     [
-        'version',
         'appKey',
         'appName',
         'deviceId',
@@ -3790,14 +3710,12 @@ request_params('updateApplication') ->
     ];
 request_params('updateApplicationActive') ->
     [
-        'version',
         'accountId',
         'appKey',
         'active'
     ];
 request_params('updateApplicationPlacement') ->
     [
-        'version',
         'placementId',
         'deviceId',
         'accountId',
@@ -3812,7 +3730,6 @@ request_params('updateApplicationPlacement') ->
     ];
 request_params('uploadApplicationCertificate') ->
     [
-        'version',
         'appKey',
         'deviceId',
         'accountId',
@@ -3820,7 +3737,6 @@ request_params('uploadApplicationCertificate') ->
     ];
 request_params('createApplicationConfig') ->
     [
-        'version',
         'accountId',
         'appKey',
         'configVersion',
@@ -3831,19 +3747,16 @@ request_params('createApplicationConfig') ->
     ];
 request_params('deleteApplicationConfig') ->
     [
-        'version',
         'accountId',
         'configId'
     ];
 request_params('getApplicationConfig') ->
     [
-        'version',
         'accountId',
         'configId'
     ];
 request_params('getApplicationConfigByConfigVersion') ->
     [
-        'version',
         'appKey',
         'configVersion',
         'retailerId',
@@ -3853,7 +3766,6 @@ request_params('getApplicationConfigByConfigVersion') ->
     ];
 request_params('searchApplicationConfig') ->
     [
-        'version',
         'accountId',
         'appKey',
         'retailerId',
@@ -3867,7 +3779,6 @@ request_params('searchApplicationConfig') ->
     ];
 request_params('updateApplicationConfig') ->
     [
-        'version',
         'accountId',
         'configId',
         'appKey',
@@ -3879,12 +3790,10 @@ request_params('updateApplicationConfig') ->
     ];
 request_params('assetDownload') ->
     [
-        'version',
         'filename'
     ];
 request_params('assetMorph') ->
     [
-        'version',
         'offerId',
         'adSize',
         'creativeId',
@@ -3895,7 +3804,6 @@ request_params('assetMorph') ->
     ];
 request_params('createAsset') ->
     [
-        'version',
         'returnNulls',
         'deviceId',
         'accountId',
@@ -3933,7 +3841,6 @@ request_params('createAsset') ->
     ];
 request_params('deleteAsset') ->
     [
-        'version',
         'assetId',
         'deviceId',
         'accountId',
@@ -3942,7 +3849,6 @@ request_params('deleteAsset') ->
     ];
 request_params('getAsset') ->
     [
-        'version',
         'assetId',
         'deviceId',
         'accountId',
@@ -3950,7 +3856,6 @@ request_params('getAsset') ->
     ];
 request_params('removeAsset') ->
     [
-        'version',
         'assetId',
         'deviceId',
         'accountId',
@@ -3962,7 +3867,6 @@ request_params('removeAsset') ->
     ];
 request_params('searchAssets') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'albumIds',
@@ -3990,7 +3894,6 @@ request_params('searchAssets') ->
     ];
 request_params('updateAsset') ->
     [
-        'version',
         'assetId',
         'deviceId',
         'accountId',
@@ -4025,13 +3928,11 @@ request_params('updateAsset') ->
     ];
 request_params('assigmentAssigneeAccountSearch') ->
     [
-        'version',
         'accountId',
         'keyword'
     ];
 request_params('assignmentCreate') ->
     [
-        'version',
         'accountId',
         'name',
         'assigneeAccountId',
@@ -4042,19 +3943,16 @@ request_params('assignmentCreate') ->
     ];
 request_params('assignmentDelete') ->
     [
-        'version',
         'accountId',
         'assignmentId'
     ];
 request_params('assignmentGet') ->
     [
-        'version',
         'accountId',
         'assignmentId'
     ];
 request_params('assignmentSearch') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -4069,7 +3967,6 @@ request_params('assignmentSearch') ->
     ];
 request_params('assignmentStatusCreate') ->
     [
-        'version',
         'accountId',
         'assignmentId',
         'scheduledNotificationId',
@@ -4084,19 +3981,16 @@ request_params('assignmentStatusCreate') ->
     ];
 request_params('assignmentStatusDelete') ->
     [
-        'version',
         'accountId',
         'assignmentStatusId'
     ];
 request_params('assignmentStatusGet') ->
     [
-        'version',
         'accountId',
         'assignmentStatusId'
     ];
 request_params('assignmentStatusSearch') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -4112,7 +4006,6 @@ request_params('assignmentStatusSearch') ->
     ];
 request_params('assignmentStatusUpdate') ->
     [
-        'version',
         'accountId',
         'assignmentStatusId',
         'scheduledNotificationId',
@@ -4127,7 +4020,6 @@ request_params('assignmentStatusUpdate') ->
     ];
 request_params('assignmentUpdate') ->
     [
-        'version',
         'accountId',
         'assignmentId',
         'name',
@@ -4139,7 +4031,6 @@ request_params('assignmentUpdate') ->
     ];
 request_params('createAudience') ->
     [
-        'version',
         'accountId',
         'name',
         'description',
@@ -4172,17 +4063,14 @@ request_params('createAudience') ->
     ];
 request_params('deleteAudience') ->
     [
-        'version',
         'accountId',
         'audienceId'
     ];
 request_params('getAgeGroups') ->
     [
-        'version'
     ];
 request_params('getAudience') ->
     [
-        'version',
         'accountId',
         'audienceId',
         'appKey',
@@ -4192,7 +4080,6 @@ request_params('getAudience') ->
     ];
 request_params('getAudienceList') ->
     [
-        'version',
         'accountId',
         'albumIds',
         'keyword',
@@ -4215,29 +4102,24 @@ request_params('getAudienceList') ->
     ];
 request_params('getDevices') ->
     [
-        'version',
         'includeInactive'
     ];
 request_params('getExperiences') ->
     [
-        'version'
     ];
 request_params('getGroupedAudiences') ->
     [
-        'version',
         'accountId',
         'audienceGroupingId'
     ];
 request_params('listByAccount') ->
     [
-        'version',
         'accountId',
         'limit',
         'suggestionType'
     ];
 request_params('listByAudience') ->
     [
-        'version',
         'limit',
         'gender',
         'age',
@@ -4247,21 +4129,18 @@ request_params('listByAudience') ->
     ];
 request_params('listLastestByAccount') ->
     [
-        'version',
         'accountId',
         'timeframe',
         'suggestionType'
     ];
 request_params('sendByAccount') ->
     [
-        'version',
         'accountId',
         'latitude',
         'longitude'
     ];
 request_params('updateAudience') ->
     [
-        'version',
         'accountId',
         'audienceId',
         'name',
@@ -4296,7 +4175,6 @@ request_params('updateAudience') ->
     ];
 request_params('createBid') ->
     [
-        'version',
         'biddableType',
         'biddableId',
         'amountPerView',
@@ -4308,21 +4186,18 @@ request_params('createBid') ->
     ];
 request_params('deleteBid') ->
     [
-        'version',
         'bidId',
         'deviceId',
         'accountId'
     ];
 request_params('getBid') ->
     [
-        'version',
         'bidId',
         'deviceId',
         'accountId'
     ];
 request_params('updateBid') ->
     [
-        'version',
         'bidId',
         'deviceId',
         'accountId',
@@ -4333,7 +4208,6 @@ request_params('updateBid') ->
     ];
 request_params('createBillableEntity') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'name',
@@ -4349,13 +4223,11 @@ request_params('createBillableEntity') ->
     ];
 request_params('deleteBillableEntity') ->
     [
-        'version',
         'deviceId',
         'accountId'
     ];
 request_params('getBillableEntity') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'includeCounts',
@@ -4363,7 +4235,6 @@ request_params('getBillableEntity') ->
     ];
 request_params('updateBillableEntity') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'name',
@@ -4379,7 +4250,6 @@ request_params('updateBillableEntity') ->
     ];
 request_params('addPaymentMethod') ->
     [
-        'version',
         'accountId',
         'paymentMethodId',
         'accountName',
@@ -4406,7 +4276,6 @@ request_params('addPaymentMethod') ->
     ];
 request_params('createPaymentMethod') ->
     [
-        'version',
         'accountId',
         'accountName',
         'firstName',
@@ -4435,7 +4304,6 @@ request_params('createPaymentMethod') ->
     ];
 request_params('createSmartContract') ->
     [
-        'version',
         'accountId',
         'tokenName',
         'tokenSymbol',
@@ -4443,21 +4311,18 @@ request_params('createSmartContract') ->
     ];
 request_params('getCryptoBalance') ->
     [
-        'version',
         'accountId',
         'ownerAccountId',
         'paymentMethodId'
     ];
 request_params('getPaymentMethod') ->
     [
-        'version',
         'accountId',
         'paymentMethodId',
         'getCurrentBalance'
     ];
 request_params('searchPaymentMethod') ->
     [
-        'version',
         'accountId',
         'provider',
         'type',
@@ -4469,7 +4334,6 @@ request_params('searchPaymentMethod') ->
     ];
 request_params('getStatusCSV') ->
     [
-        'version',
         'accountId',
         'batchId',
         'responseGroup',
@@ -4478,20 +4342,17 @@ request_params('getStatusCSV') ->
     ];
 request_params('listStatusCSV') ->
     [
-        'version',
         'accountId',
         'start',
         'limit'
     ];
 request_params('statusCSV') ->
     [
-        'version',
         'accountId',
         'batchId'
     ];
 request_params('uploadCSV') ->
     [
-        'version',
         'accountId',
         'uploadType',
         'importFile',
@@ -4500,22 +4361,18 @@ request_params('uploadCSV') ->
     ];
 request_params('createCargoType') ->
     [
-        'version',
         'CargoType'
     ];
 request_params('deleteCargoType') ->
     [
-        'version',
         'cargoTypeId'
     ];
 request_params('getCargoType') ->
     [
-        'version',
         'cargoTypeId'
     ];
 request_params('searchCargoTypes') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -4526,13 +4383,11 @@ request_params('searchCargoTypes') ->
     ];
 request_params('updateCargoType') ->
     [
-        'version',
         'cargoTypeId',
         'CargoType'
     ];
 request_params('searchCarriers') ->
     [
-        'version',
         'keyword',
         'descending',
         'start',
@@ -4541,7 +4396,6 @@ request_params('searchCarriers') ->
     ];
 request_params('categoryDistanceSearch') ->
     [
-        'version',
         'accountId',
         'keyword',
         'appKey',
@@ -4565,7 +4419,6 @@ request_params('categoryDistanceSearch') ->
     ];
 request_params('createCategory') ->
     [
-        'version',
         'accountId',
         'name',
         'appKey',
@@ -4583,13 +4436,11 @@ request_params('createCategory') ->
     ];
 request_params('deleteCategory') ->
     [
-        'version',
         'accountId',
         'categoryId'
     ];
 request_params('duplicateCategory') ->
     [
-        'version',
         'accountId',
         'categoryId',
         'appKey',
@@ -4597,13 +4448,11 @@ request_params('duplicateCategory') ->
     ];
 request_params('getCategory') ->
     [
-        'version',
         'categoryId',
         'returnExternal'
     ];
 request_params('searchCategories') ->
     [
-        'version',
         'accountId',
         'keyword',
         'appKey',
@@ -4628,7 +4477,6 @@ request_params('searchCategories') ->
     ];
 request_params('updateCategory') ->
     [
-        'version',
         'accountId',
         'categoryId',
         'parentCategoryId',
@@ -4646,7 +4494,6 @@ request_params('updateCategory') ->
     ];
 request_params('addConnectionToGroup') ->
     [
-        'version',
         'returnNulls',
         'groupId',
         'deviceId',
@@ -4659,7 +4506,6 @@ request_params('addConnectionToGroup') ->
     ];
 request_params('addConnectionsToGroup') ->
     [
-        'version',
         'connectionGroupId',
         'deviceId',
         'accountId',
@@ -4670,7 +4516,6 @@ request_params('addConnectionsToGroup') ->
     ];
 request_params('addSubGroups') ->
     [
-        'version',
         'returnNulls',
         'groupId',
         'subGroupIds',
@@ -4681,7 +4526,6 @@ request_params('addSubGroups') ->
     ];
 request_params('createOrUpdateConnection') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'connectionId',
@@ -4699,7 +4543,6 @@ request_params('createOrUpdateConnection') ->
     ];
 request_params('createOrUpdateGroup') ->
     [
-        'version',
         'returnNulls',
         'deviceId',
         'accountId',
@@ -4717,28 +4560,24 @@ request_params('createOrUpdateGroup') ->
     ];
 request_params('followAccept') ->
     [
-        'version',
         'accountId',
         'connectionAccountId',
         'appKey'
     ];
 request_params('followReject') ->
     [
-        'version',
         'accountId',
         'connectionAccountId',
         'appKey'
     ];
 request_params('followRemove') ->
     [
-        'version',
         'accountId',
         'connectionAccountId',
         'appKey'
     ];
 request_params('followRequest') ->
     [
-        'version',
         'accountId',
         'connectionAccountId',
         'appKey',
@@ -4746,7 +4585,6 @@ request_params('followRequest') ->
     ];
 request_params('friendAccept') ->
     [
-        'version',
         'friendAccountId',
         'notifyFriend',
         'deviceId',
@@ -4757,7 +4595,6 @@ request_params('friendAccept') ->
     ];
 request_params('friendReject') ->
     [
-        'version',
         'friendAccountId',
         'deviceId',
         'accountId',
@@ -4768,7 +4605,6 @@ request_params('friendReject') ->
     ];
 request_params('friendRemove') ->
     [
-        'version',
         'friendAccountId',
         'deviceId',
         'accountId',
@@ -4777,7 +4613,6 @@ request_params('friendRemove') ->
     ];
 request_params('friendRequest') ->
     [
-        'version',
         'friendAccountId',
         'deviceId',
         'accountId',
@@ -4787,13 +4622,11 @@ request_params('friendRequest') ->
     ];
 request_params('getConnectionSentFriendRequests') ->
     [
-        'version',
         'deviceId',
         'accountId'
     ];
 request_params('getConnections') ->
     [
-        'version',
         'returnNulls',
         'filter',
         'sortField',
@@ -4812,7 +4645,6 @@ request_params('getConnections') ->
     ];
 request_params('getGroupDetails') ->
     [
-        'version',
         'combineConnections',
         'deviceId',
         'accountId',
@@ -4822,7 +4654,6 @@ request_params('getGroupDetails') ->
     ];
 request_params('groupSearch') ->
     [
-        'version',
         'sortField',
         'descending',
         'activeOnly',
@@ -4836,7 +4667,6 @@ request_params('groupSearch') ->
     ];
 request_params('removeConnectionFromGroup') ->
     [
-        'version',
         'returnNulls',
         'groupId',
         'deviceId',
@@ -4849,7 +4679,6 @@ request_params('removeConnectionFromGroup') ->
     ];
 request_params('removeConnectionsFromGroup') ->
     [
-        'version',
         'connectionGroupId',
         'deviceId',
         'accountId',
@@ -4860,7 +4689,6 @@ request_params('removeConnectionsFromGroup') ->
     ];
 request_params('removeGroup') ->
     [
-        'version',
         'returnNulls',
         'groupId',
         'deviceId',
@@ -4870,7 +4698,6 @@ request_params('removeGroup') ->
     ];
 request_params('removeSubGroups') ->
     [
-        'version',
         'returnNulls',
         'groupId',
         'subGroupIds',
@@ -4881,7 +4708,6 @@ request_params('removeSubGroups') ->
     ];
 request_params('searchConnections') ->
     [
-        'version',
         'returnNulls',
         'start',
         'limit',
@@ -4900,7 +4726,6 @@ request_params('searchConnections') ->
     ];
 request_params('addOrUpdateAlbumContest') ->
     [
-        'version',
         'publicRead',
         'publicWrite',
         'publicDelete',
@@ -4929,7 +4754,6 @@ request_params('addOrUpdateAlbumContest') ->
     ];
 request_params('approveAlbumContest') ->
     [
-        'version',
         'albumContestId',
         'approvalStatus',
         'deviceId',
@@ -4937,7 +4761,6 @@ request_params('approveAlbumContest') ->
     ];
 request_params('deleteContest') ->
     [
-        'version',
         'albumContestId',
         'deviceId',
         'accountId',
@@ -4946,7 +4769,6 @@ request_params('deleteContest') ->
     ];
 request_params('getAlbumContest') ->
     [
-        'version',
         'albumContestId',
         'deviceId',
         'accountId',
@@ -4955,7 +4777,6 @@ request_params('getAlbumContest') ->
     ];
 request_params('getAlbumContests') ->
     [
-        'version',
         'filter',
         'sortField',
         'descending',
@@ -4978,7 +4799,6 @@ request_params('getAlbumContests') ->
     ];
 request_params('voteOnAlbumContest') ->
     [
-        'version',
         'albumContestId',
         'albumId',
         'deviceId',
@@ -4989,13 +4809,11 @@ request_params('voteOnAlbumContest') ->
     ];
 request_params('addPreview') ->
     [
-        'version',
         'accountId',
         'creativeId'
     ];
 request_params('adsFind') ->
     [
-        'version',
         'appKey',
         'randomize',
         'targetedAdsOnly',
@@ -5015,7 +4833,6 @@ request_params('adsFind') ->
     ];
 request_params('createCreative') ->
     [
-        'version',
         'accountId',
         'name',
         'active',
@@ -5034,19 +4851,16 @@ request_params('createCreative') ->
     ];
 request_params('deleteCreative') ->
     [
-        'version',
         'accountId',
         'creativeId'
     ];
 request_params('getCreative') ->
     [
-        'version',
         'accountId',
         'creativeId'
     ];
 request_params('getCreativesByApplication') ->
     [
-        'version',
         'accountId',
         'appKey',
         'start',
@@ -5056,13 +4870,11 @@ request_params('getCreativesByApplication') ->
     ];
 request_params('removePreview') ->
     [
-        'version',
         'accountId',
         'creativeId'
     ];
 request_params('updateCreative') ->
     [
-        'version',
         'accountId',
         'creativeId',
         'name',
@@ -5080,29 +4892,24 @@ request_params('updateCreative') ->
     ];
 request_params('create') ->
     [
-        'version',
         'accountId',
         'Account'
     ];
 request_params('getDependents') ->
     [
-        'version',
         'accountId'
     ];
 request_params('removeDependent') ->
     [
-        'version',
         'accountId',
         'dependentId'
     ];
 request_params('checkDisbursements') ->
     [
-        'version',
         'disbursementId'
     ];
 request_params('createDisbursement') ->
     [
-        'version',
         'accountId',
         'receiverAccountId',
         'originalSenderAccountId',
@@ -5116,13 +4923,11 @@ request_params('createDisbursement') ->
     ];
 request_params('getDisbursement') ->
     [
-        'version',
         'accountId',
         'disbursementId'
     ];
 request_params('searchDisbursements') ->
     [
-        'version',
         'accountId',
         'receiverAccountId',
         'statuses',
@@ -5136,7 +4941,6 @@ request_params('searchDisbursements') ->
     ];
 request_params('updateDisbursement') ->
     [
-        'version',
         'accountId',
         'disbursementId',
         'amount',
@@ -5150,7 +4954,6 @@ request_params('updateDisbursement') ->
     ];
 request_params('assignEmployee') ->
     [
-        'version',
         'accountId',
         'managerAccountId',
         'employeeAccountId',
@@ -5158,7 +4961,6 @@ request_params('assignEmployee') ->
     ];
 request_params('assignToLocationEmployee') ->
     [
-        'version',
         'accountId',
         'retailerLocationId',
         'employeeAccountId',
@@ -5166,7 +4968,6 @@ request_params('assignToLocationEmployee') ->
     ];
 request_params('createEmployee') ->
     [
-        'version',
         'accountId',
         'managerAccountId',
         'username',
@@ -5200,20 +5001,17 @@ request_params('createEmployee') ->
     ];
 request_params('deleteEmployee') ->
     [
-        'version',
         'accountId',
         'employeeAccountId'
     ];
 request_params('getEmployee') ->
     [
-        'version',
         'accountId',
         'employeeAccountId',
         'settingsAppKey'
     ];
 request_params('searchEmployees') ->
     [
-        'version',
         'accountId',
         'role',
         'retailerId',
@@ -5234,13 +5032,11 @@ request_params('searchEmployees') ->
     ];
 request_params('unassignEmployee') ->
     [
-        'version',
         'accountId',
         'employeeAccountId'
     ];
 request_params('updateEmployee') ->
     [
-        'version',
         'accountId',
         'employeeAccountId',
         'managerAccountId',
@@ -5274,7 +5070,6 @@ request_params('updateEmployee') ->
     ];
 request_params('attendEvent') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -5288,7 +5083,6 @@ request_params('attendEvent') ->
     ];
 request_params('createEvent') ->
     [
-        'version',
         'accountId',
         'title',
         'retailerLocationIds',
@@ -5304,19 +5098,16 @@ request_params('createEvent') ->
     ];
 request_params('deleteEvent') ->
     [
-        'version',
         'accountId',
         'eventId'
     ];
 request_params('getEvent') ->
     [
-        'version',
         'accountId',
         'eventId'
     ];
 request_params('searchEventTransactions') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -5339,7 +5130,6 @@ request_params('searchEventTransactions') ->
     ];
 request_params('searchEvents') ->
     [
-        'version',
         'accountId',
         'keyword',
         'activeOnly',
@@ -5356,7 +5146,6 @@ request_params('searchEvents') ->
     ];
 request_params('updateEvent') ->
     [
-        'version',
         'accountId',
         'eventId',
         'retailerLocationIds',
@@ -5372,7 +5161,6 @@ request_params('updateEvent') ->
     ];
 request_params('getToken') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'latitude',
@@ -5380,7 +5168,6 @@ request_params('getToken') ->
     ];
 request_params('graphInterface') ->
     [
-        'version',
         'event',
         'deviceId',
         'accountId',
@@ -5394,7 +5181,6 @@ request_params('graphInterface') ->
     ];
 request_params('addFavorite') ->
     [
-        'version',
         'favoritableId',
         'favoritableType',
         'deviceId',
@@ -5404,7 +5190,6 @@ request_params('addFavorite') ->
     ];
 request_params('deleteFavorite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'favoriteId',
@@ -5413,7 +5198,6 @@ request_params('deleteFavorite') ->
     ];
 request_params('getFavorite') ->
     [
-        'version',
         'favoriteId',
         'deviceId',
         'accountId',
@@ -5422,7 +5206,6 @@ request_params('getFavorite') ->
     ];
 request_params('searchFavorites') ->
     [
-        'version',
         'favoritableType',
         'sortField',
         'descending',
@@ -5440,7 +5223,6 @@ request_params('searchFavorites') ->
     ];
 request_params('whoHasFavorited') ->
     [
-        'version',
         'favoritableId',
         'favoritableType',
         'start',
@@ -5453,7 +5235,6 @@ request_params('whoHasFavorited') ->
     ];
 request_params('createFilter') ->
     [
-        'version',
         'accountId',
         'name',
         'appKey',
@@ -5466,18 +5247,15 @@ request_params('createFilter') ->
     ];
 request_params('deleteFilter') ->
     [
-        'version',
         'accountId',
         'filterId'
     ];
 request_params('getFilter') ->
     [
-        'version',
         'filterId'
     ];
 request_params('searchFilters') ->
     [
-        'version',
         'accountId',
         'keyword',
         'appKey',
@@ -5491,7 +5269,6 @@ request_params('searchFilters') ->
     ];
 request_params('updateFilter') ->
     [
-        'version',
         'accountId',
         'filterId',
         'parentFilterId',
@@ -5504,7 +5281,6 @@ request_params('updateFilter') ->
     ];
 request_params('createFlag') ->
     [
-        'version',
         'flagableType',
         'flagableId',
         'deviceId',
@@ -5515,7 +5291,6 @@ request_params('createFlag') ->
     ];
 request_params('deleteFlag') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'itemBeingFlaggedType',
@@ -5525,7 +5300,6 @@ request_params('deleteFlag') ->
     ];
 request_params('getFlag') ->
     [
-        'version',
         'flagableType',
         'flagableId',
         'deviceId',
@@ -5535,13 +5309,11 @@ request_params('getFlag') ->
     ];
 request_params('getFlagThreshold') ->
     [
-        'version',
         'itemBeingFlaggedType',
         'appKey'
     ];
 request_params('updateFlagThreshold') ->
     [
-        'version',
         'itemBeingFlaggedType',
         'threshold',
         'appKey',
@@ -5550,7 +5322,6 @@ request_params('updateFlagThreshold') ->
     ];
 request_params('createGame') ->
     [
-        'version',
         'accountId',
         'appKey',
         'title',
@@ -5561,20 +5332,17 @@ request_params('createGame') ->
     ];
 request_params('deleteGame') ->
     [
-        'version',
         'accountId',
         'gameId'
     ];
 request_params('getGame') ->
     [
-        'version',
         'accountId',
         'gameId',
         'includeGameData'
     ];
 request_params('searchGames') ->
     [
-        'version',
         'accountId',
         'appKey',
         'start',
@@ -5586,7 +5354,6 @@ request_params('searchGames') ->
     ];
 request_params('updateGame') ->
     [
-        'version',
         'accountId',
         'gameId',
         'appKey',
@@ -5598,7 +5365,6 @@ request_params('updateGame') ->
     ];
 request_params('createGameLevel') ->
     [
-        'version',
         'accountId',
         'name',
         'gameData',
@@ -5628,20 +5394,17 @@ request_params('createGameLevel') ->
     ];
 request_params('deleteGameLevel') ->
     [
-        'version',
         'accountId',
         'levelId'
     ];
 request_params('getGameLevel') ->
     [
-        'version',
         'accountId',
         'levelId',
         'includeGameData'
     ];
 request_params('getGameLevelsByApplication') ->
     [
-        'version',
         'accountId',
         'appKey',
         'keyword',
@@ -5655,7 +5418,6 @@ request_params('getGameLevelsByApplication') ->
     ];
 request_params('getGameLevelsByBillableEntity') ->
     [
-        'version',
         'accountId',
         'appKey',
         'keyword',
@@ -5667,19 +5429,16 @@ request_params('getGameLevelsByBillableEntity') ->
     ];
 request_params('getQuestionsInLevel') ->
     [
-        'version',
         'levelId',
         'accountId'
     ];
 request_params('getWordsInLevel') ->
     [
-        'version',
         'levelId',
         'accountId'
     ];
 request_params('updateGameLevel') ->
     [
-        'version',
         'accountId',
         'levelId',
         'appKey',
@@ -5710,21 +5469,18 @@ request_params('updateGameLevel') ->
     ];
 request_params('updateQuestionsInLevel') ->
     [
-        'version',
         'levelId',
         'accountId',
         'questionIds'
     ];
 request_params('updateWordsInLevel') ->
     [
-        'version',
         'levelId',
         'accountId',
         'wordIds'
     ];
 request_params('acceptInvite') ->
     [
-        'version',
         'token',
         'accountId',
         'albumId',
@@ -5742,7 +5498,6 @@ request_params('acceptInvite') ->
     ];
 request_params('albumContestInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appId',
@@ -5753,7 +5508,6 @@ request_params('albumContestInvite') ->
     ];
 request_params('albumInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appId',
@@ -5764,7 +5518,6 @@ request_params('albumInvite') ->
     ];
 request_params('eventInvite') ->
     [
-        'version',
         'accountId',
         'appKey',
         'listingId',
@@ -5773,7 +5526,6 @@ request_params('eventInvite') ->
     ];
 request_params('gameInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appId',
@@ -5784,7 +5536,6 @@ request_params('gameInvite') ->
     ];
 request_params('getInvite') ->
     [
-        'version',
         'accountId',
         'token',
         'albumId',
@@ -5797,7 +5548,6 @@ request_params('getInvite') ->
     ];
 request_params('missionInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appId',
@@ -5808,21 +5558,18 @@ request_params('missionInvite') ->
     ];
 request_params('offerInvite') ->
     [
-        'version',
         'accountId',
         'appKey',
         'offerId'
     ];
 request_params('offerLocationInvite') ->
     [
-        'version',
         'accountId',
         'appKey',
         'offerLocationId'
     ];
 request_params('retailerLocationInvite') ->
     [
-        'version',
         'accountId',
         'appKey',
         'retailerLocationId',
@@ -5830,7 +5577,6 @@ request_params('retailerLocationInvite') ->
     ];
 request_params('createLeaderboard') ->
     [
-        'version',
         'accountId',
         'appKey',
         'rankType',
@@ -5847,20 +5593,17 @@ request_params('createLeaderboard') ->
     ];
 request_params('deleteLeaderboard') ->
     [
-        'version',
         'leaderboardId',
         'accountId'
     ];
 request_params('getLeaderboard') ->
     [
-        'version',
         'leaderboardId',
         'accountId',
         'includeFullRankingList'
     ];
 request_params('searchLeaderboards') ->
     [
-        'version',
         'accountId',
         'appKey',
         'globalOnly',
@@ -5876,7 +5619,6 @@ request_params('searchLeaderboards') ->
     ];
 request_params('updateLeaderboard') ->
     [
-        'version',
         'leaderboardId',
         'accountId',
         'appKey',
@@ -5895,7 +5637,6 @@ request_params('updateLeaderboard') ->
     ];
 request_params('registerLike') ->
     [
-        'version',
         'likableType',
         'likableId',
         'deviceId',
@@ -5911,7 +5652,6 @@ request_params('registerLike') ->
     ];
 request_params('removeLike') ->
     [
-        'version',
         'likableType',
         'likableId',
         'deviceId',
@@ -5921,7 +5661,6 @@ request_params('removeLike') ->
     ];
 request_params('searchLikes') ->
     [
-        'version',
         'likableType',
         'likableId',
         'deviceId',
@@ -5936,7 +5675,6 @@ request_params('searchLikes') ->
     ];
 request_params('createListing') ->
     [
-        'version',
         'accountId',
         'name',
         'filterIds',
@@ -5954,18 +5692,15 @@ request_params('createListing') ->
     ];
 request_params('deleteListing') ->
     [
-        'version',
         'accountId',
         'listingId'
     ];
 request_params('getListing') ->
     [
-        'version',
         'listingId'
     ];
 request_params('searchListing') ->
     [
-        'version',
         'accountId',
         'keyword',
         'start',
@@ -5984,7 +5719,6 @@ request_params('searchListing') ->
     ];
 request_params('summaryListing') ->
     [
-        'version',
         'accountId',
         'startDate',
         'categoryIds',
@@ -5993,7 +5727,6 @@ request_params('summaryListing') ->
     ];
 request_params('updateListing') ->
     [
-        'version',
         'accountId',
         'listingId',
         'filterIds',
@@ -6012,7 +5745,6 @@ request_params('updateListing') ->
     ];
 request_params('cacheTrilaterationData') ->
     [
-        'version',
         'udid',
         'sourceTime',
         'minimumSampleSize',
@@ -6021,17 +5753,14 @@ request_params('cacheTrilaterationData') ->
     ];
 request_params('cacheTrilaterationDataGzip') ->
     [
-        'version',
         'TrilatCacheRequest'
     ];
 request_params('getLocationByIp') ->
     [
-        'version',
         'ip'
     ];
 request_params('getLocationByTrilateration') ->
     [
-        'version',
         'accountId',
         'latitude',
         'longitude',
@@ -6040,7 +5769,6 @@ request_params('getLocationByTrilateration') ->
     ];
 request_params('getLocations') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'currentlatitude',
@@ -6063,18 +5791,15 @@ request_params('getLocations') ->
     ];
 request_params('createLocationV2') ->
     [
-        'version',
         'Location'
     ];
 request_params('updateLocationV2') ->
     [
-        'version',
         'id',
         'Location'
     ];
 request_params('createMedia') ->
     [
-        'version',
         'accountId',
         'title',
         'barcodeType',
@@ -6135,19 +5860,16 @@ request_params('createMedia') ->
     ];
 request_params('deleteMedia') ->
     [
-        'version',
         'accountId',
         'mediaId'
     ];
 request_params('getMedia') ->
     [
-        'version',
         'accountId',
         'mediaId'
     ];
 request_params('searchMedia') ->
     [
-        'version',
         'accountId',
         'activeOnly',
         'sortField',
@@ -6160,7 +5882,6 @@ request_params('searchMedia') ->
     ];
 request_params('updateMedia') ->
     [
-        'version',
         'accountId',
         'mediaId',
         'retailerLocationIds',
@@ -6223,7 +5944,6 @@ request_params('updateMedia') ->
     ];
 request_params('createMission') ->
     [
-        'version',
         'accountId',
         'title',
         'description',
@@ -6253,13 +5973,11 @@ request_params('createMission') ->
     ];
 request_params('deleteMission') ->
     [
-        'version',
         'accountId',
         'missionId'
     ];
 request_params('findMissions') ->
     [
-        'version',
         'appKey',
         'suffix',
         'type',
@@ -6282,14 +6000,12 @@ request_params('findMissions') ->
     ];
 request_params('getMission') ->
     [
-        'version',
         'accountId',
         'missionId',
         'returnCreative'
     ];
 request_params('importMission') ->
     [
-        'version',
         'accountId',
         'latitude',
         'longitude',
@@ -6301,14 +6017,12 @@ request_params('importMission') ->
     ];
 request_params('searchMissionFormats') ->
     [
-        'version',
         'start',
         'limit',
         'activeOnly'
     ];
 request_params('searchMissions') ->
     [
-        'version',
         'accountId',
         'keyword',
         'subType',
@@ -6323,7 +6037,6 @@ request_params('searchMissions') ->
     ];
 request_params('searchMissionsByBillableEntity') ->
     [
-        'version',
         'accountId',
         'keyword',
         'start',
@@ -6337,7 +6050,6 @@ request_params('searchMissionsByBillableEntity') ->
     ];
 request_params('updateMission') ->
     [
-        'version',
         'accountId',
         'missionId',
         'title',
@@ -6366,7 +6078,6 @@ request_params('updateMission') ->
     ];
 request_params('createMissionInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'missionId',
@@ -6375,7 +6086,6 @@ request_params('createMissionInvite') ->
     ];
 request_params('deleteMissionInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'missionId',
@@ -6384,7 +6094,6 @@ request_params('deleteMissionInvite') ->
     ];
 request_params('getMissionInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'missionId',
@@ -6394,7 +6103,6 @@ request_params('getMissionInvite') ->
     ];
 request_params('searchMissionInvites') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -6411,7 +6119,6 @@ request_params('searchMissionInvites') ->
     ];
 request_params('updateMissionInvite') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -6426,7 +6133,6 @@ request_params('updateMissionInvite') ->
     ];
 request_params('batchOperation') ->
     [
-        'version',
         'notableId',
         'notableType',
         'deviceId',
@@ -6435,7 +6141,6 @@ request_params('batchOperation') ->
     ];
 request_params('createNote') ->
     [
-        'version',
         'comment',
         'deviceId',
         'accountId',
@@ -6481,7 +6186,6 @@ request_params('createNote') ->
     ];
 request_params('deleteNote') ->
     [
-        'version',
         'noteId',
         'deviceId',
         'accountId',
@@ -6491,7 +6195,6 @@ request_params('deleteNote') ->
     ];
 request_params('getNote') ->
     [
-        'version',
         'noteId',
         'deviceId',
         'accountId',
@@ -6499,7 +6202,6 @@ request_params('getNote') ->
     ];
 request_params('searchNotes') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'notableType',
@@ -6520,7 +6222,6 @@ request_params('searchNotes') ->
     ];
 request_params('updateNote') ->
     [
-        'version',
         'noteId',
         'deviceId',
         'accountId',
@@ -6565,7 +6266,6 @@ request_params('updateNote') ->
     ];
 request_params('createNotificationTemplate') ->
     [
-        'version',
         'accountId',
         'conduit',
         'title',
@@ -6576,26 +6276,22 @@ request_params('createNotificationTemplate') ->
     ];
 request_params('createOrUpdateBlockedNotifications') ->
     [
-        'version',
         'appKey',
         'data',
         'accountId'
     ];
 request_params('deleteNotificationTemplate') ->
     [
-        'version',
         'accountId',
         'notificationTemplateId'
     ];
 request_params('getNotificationTemplate') ->
     [
-        'version',
         'accountId',
         'notificationTemplateId'
     ];
 request_params('getNotifications') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'connectionAccountId',
@@ -6620,7 +6316,6 @@ request_params('getNotifications') ->
     ];
 request_params('registerNotificationToken') ->
     [
-        'version',
         'token',
         'pushType',
         'deviceId',
@@ -6634,7 +6329,6 @@ request_params('registerNotificationToken') ->
     ];
 request_params('searchBlockedNotifications') ->
     [
-        'version',
         'appKey',
         'accountId',
         'searchTags',
@@ -6650,7 +6344,6 @@ request_params('searchBlockedNotifications') ->
     ];
 request_params('searchNotificationTemplate') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -6665,7 +6358,6 @@ request_params('searchNotificationTemplate') ->
     ];
 request_params('searchRecipients') ->
     [
-        'version',
         'sortField',
         'deviceId',
         'accountId',
@@ -6682,7 +6374,6 @@ request_params('searchRecipients') ->
     ];
 request_params('searchRecipientsCount') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -6698,7 +6389,6 @@ request_params('searchRecipientsCount') ->
     ];
 request_params('sendBatchNotifications') ->
     [
-        'version',
         'accountId',
         'appKey',
         'customMessage',
@@ -6711,7 +6401,6 @@ request_params('sendBatchNotifications') ->
     ];
 request_params('sendCustomNotifications') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'receiverAccountIds',
@@ -6733,7 +6422,6 @@ request_params('sendCustomNotifications') ->
     ];
 request_params('updateNotificationTemplate') ->
     [
-        'version',
         'accountId',
         'notificationTemplateId',
         'title',
@@ -6742,7 +6430,6 @@ request_params('updateNotificationTemplate') ->
     ];
 request_params('addField') ->
     [
-        'version',
         'accountId',
         'appKey',
         'objectName',
@@ -6751,28 +6438,24 @@ request_params('addField') ->
     ];
 request_params('createData') ->
     [
-        'version',
         'objectName',
         'accountId',
         'binary'
     ];
 request_params('createObject') ->
     [
-        'version',
         'accountId',
         'appKey',
         'objectName'
     ];
 request_params('deleteData') ->
     [
-        'version',
         'objectName',
         'objectId',
         'accountId'
     ];
 request_params('deleteField') ->
     [
-        'version',
         'accountId',
         'appKey',
         'objectName',
@@ -6780,14 +6463,12 @@ request_params('deleteField') ->
     ];
 request_params('deleteObject') ->
     [
-        'version',
         'accountId',
         'appKey',
         'objectName'
     ];
 request_params('getData') ->
     [
-        'version',
         'objectName',
         'objectId',
         'accountId',
@@ -6795,14 +6476,12 @@ request_params('getData') ->
     ];
 request_params('getObject') ->
     [
-        'version',
         'accountId',
         'appKey',
         'objectName'
     ];
 request_params('searchData') ->
     [
-        'version',
         'objectName',
         'count',
         'start',
@@ -6814,7 +6493,6 @@ request_params('searchData') ->
     ];
 request_params('searchObject') ->
     [
-        'version',
         'accountId',
         'appKey',
         'start',
@@ -6823,7 +6501,6 @@ request_params('searchObject') ->
     ];
 request_params('updateData') ->
     [
-        'version',
         'objectName',
         'objectId',
         'accountId',
@@ -6831,14 +6508,12 @@ request_params('updateData') ->
     ];
 request_params('batchUpdateOfferLocations') ->
     [
-        'version',
         'data',
         'deviceId',
         'accountId'
     ];
 request_params('createOffer') ->
     [
-        'version',
         'includeOfferLocations',
         'title',
         'barcodeType',
@@ -6928,21 +6603,18 @@ request_params('createOffer') ->
     ];
 request_params('deleteOffer') ->
     [
-        'version',
         'offerId',
         'deviceId',
         'accountId'
     ];
 request_params('deleteOfferLocation') ->
     [
-        'version',
         'offerLocationId',
         'deviceId',
         'accountId'
     ];
 request_params('getOffer') ->
     [
-        'version',
         'offerId',
         'includeOfferLocations',
         'deviceId',
@@ -6950,7 +6622,6 @@ request_params('getOffer') ->
     ];
 request_params('getOfferDetails') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'offerId',
@@ -6964,7 +6635,6 @@ request_params('getOfferDetails') ->
     ];
 request_params('getOfferListCounts') ->
     [
-        'version',
         'latitude',
         'longitude',
         'searchRange',
@@ -6972,13 +6642,11 @@ request_params('getOfferListCounts') ->
     ];
 request_params('getOfferLocation') ->
     [
-        'version',
         'offerLocationId',
         'udid'
     ];
 request_params('getOfferLocationsForRetailers') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -7002,7 +6670,6 @@ request_params('getOfferLocationsForRetailers') ->
     ];
 request_params('getOffersForRetailers') ->
     [
-        'version',
         'offerVisibility',
         'sortField',
         'descending',
@@ -7037,7 +6704,6 @@ request_params('getOffersForRetailers') ->
     ];
 request_params('redeemOfferTransaction') ->
     [
-        'version',
         'offerTransactionId',
         'status',
         'deviceId',
@@ -7046,7 +6712,6 @@ request_params('redeemOfferTransaction') ->
     ];
 request_params('searchOfferTransactionsForRetailers') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -7074,7 +6739,6 @@ request_params('searchOfferTransactionsForRetailers') ->
     ];
 request_params('searchOffersForConsumer') ->
     [
-        'version',
         'latitude',
         'longitude',
         'recommendationType',
@@ -7109,13 +6773,11 @@ request_params('searchOffersForConsumer') ->
     ];
 request_params('topOfferTransactions') ->
     [
-        'version',
         'start',
         'limit'
     ];
 request_params('updateOffer') ->
     [
-        'version',
         'offerId',
         'includeOfferLocations',
         'deviceId',
@@ -7206,7 +6868,6 @@ request_params('updateOffer') ->
     ];
 request_params('updateOfferStatus') ->
     [
-        'version',
         'offerIds',
         'active',
         'deviceId',
@@ -7214,7 +6875,6 @@ request_params('updateOfferStatus') ->
     ];
 request_params('createOfferTransactionStatus') ->
     [
-        'version',
         'name',
         'code',
         'deviceId',
@@ -7228,7 +6888,6 @@ request_params('createOfferTransactionStatus') ->
     ];
 request_params('deleteOfferTransactionStatus') ->
     [
-        'version',
         'statusId',
         'deviceId',
         'accountId',
@@ -7237,7 +6896,6 @@ request_params('deleteOfferTransactionStatus') ->
     ];
 request_params('getOfferTransactionStatus') ->
     [
-        'version',
         'statusId',
         'deviceId',
         'accountId',
@@ -7246,7 +6904,6 @@ request_params('getOfferTransactionStatus') ->
     ];
 request_params('searchOfferTransactionStatuses') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'latitude',
@@ -7262,7 +6919,6 @@ request_params('searchOfferTransactionStatuses') ->
     ];
 request_params('updateOfferTransactionStatus') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'latitude',
@@ -7277,26 +6933,22 @@ request_params('updateOfferTransactionStatus') ->
     ];
 request_params('imageGeneration') ->
     [
-        'version',
         'accountId',
         'postBody',
         'returnRawResponse'
     ];
 request_params('getOptimizationResult') ->
     [
-        'version',
         'batchID',
         'start',
         'limit'
     ];
 request_params('requestOptimization') ->
     [
-        'version',
         'Orders'
     ];
 request_params('addMovie') ->
     [
-        'version',
         'accountId',
         'movieName',
         'thirdPartyAccountId',
@@ -7307,7 +6959,6 @@ request_params('addMovie') ->
     ];
 request_params('aiDocs') ->
     [
-        'version',
         'accountId',
         'doc',
         'return_topics',
@@ -7316,7 +6967,6 @@ request_params('aiDocs') ->
     ];
 request_params('aiFindImages') ->
     [
-        'version',
         'accountId',
         'text',
         'parse_flag',
@@ -7325,7 +6975,6 @@ request_params('aiFindImages') ->
     ];
 request_params('aiTags') ->
     [
-        'version',
         'accountId',
         'tags',
         'conditional',
@@ -7334,7 +6983,6 @@ request_params('aiTags') ->
     ];
 request_params('aiText') ->
     [
-        'version',
         'accountId',
         'terms',
         'conditional',
@@ -7343,7 +6991,6 @@ request_params('aiText') ->
     ];
 request_params('batch') ->
     [
-        'version',
         'accountId',
         'thirdPartyAccountId',
         'limit',
@@ -7354,13 +7001,11 @@ request_params('batch') ->
     ];
 request_params('createInstantEpisode') ->
     [
-        'version',
         'accountId',
         'data'
     ];
 request_params('createVoiceCanvas') ->
     [
-        'version',
         'accountId',
         'dimensions',
         'thirdPartyAccountId',
@@ -7373,7 +7018,6 @@ request_params('createVoiceCanvas') ->
     ];
 request_params('emotion') ->
     [
-        'version',
         'accountId',
         'thirdPartyAccountId',
         'file',
@@ -7382,73 +7026,61 @@ request_params('emotion') ->
     ];
 request_params('getAddMovieResult') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getBatch') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getEmotion') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getEpisodeStatus') ->
     [
-        'version',
         'episodeId',
         'accountId'
     ];
 request_params('getRenderStatus') ->
     [
-        'version',
         'renderId',
         'accountId'
     ];
 request_params('getSTT') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getTTS') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getTechTune') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getTopics') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('getVoiceCanvas') ->
     [
-        'version',
         'requestId',
         'accountId'
     ];
 request_params('startVideoRender') ->
     [
-        'version',
         'accountId',
         'data'
     ];
 request_params('stt') ->
     [
-        'version',
         'accountId',
         'thirdPartyAccountId',
         'sourceLanguage',
@@ -7459,7 +7091,6 @@ request_params('stt') ->
     ];
 request_params('summarizeTopics') ->
     [
-        'version',
         'accountId',
         'thirdPartyAccountId',
         'doc',
@@ -7471,7 +7102,6 @@ request_params('summarizeTopics') ->
     ];
 request_params('techTune') ->
     [
-        'version',
         'accountId',
         'numFacesExpected',
         'thirdPartyAccountId',
@@ -7481,7 +7111,6 @@ request_params('techTune') ->
     ];
 request_params('tts') ->
     [
-        'version',
         'accountId',
         'text',
         'thirdPartyAccountId',
@@ -7491,7 +7120,6 @@ request_params('tts') ->
     ];
 request_params('createPack') ->
     [
-        'version',
         'accountId',
         'title',
         'packOrder',
@@ -7519,20 +7147,17 @@ request_params('createPack') ->
     ];
 request_params('deletePack') ->
     [
-        'version',
         'accountId',
         'packId'
     ];
 request_params('getPack') ->
     [
-        'version',
         'accountId',
         'packId',
         'includeGameData'
     ];
 request_params('searchPacks') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -7546,7 +7171,6 @@ request_params('searchPacks') ->
     ];
 request_params('updatePack') ->
     [
-        'version',
         'accountId',
         'packId',
         'allocateTickets',
@@ -7575,14 +7199,12 @@ request_params('updatePack') ->
     ];
 request_params('processAllParticipants') ->
     [
-        'version',
         'accountId',
         'appKey',
         'useShortNameAsID'
     ];
 request_params('processParticipants') ->
     [
-        'version',
         'accountId',
         'league',
         'appKey',
@@ -7591,7 +7213,6 @@ request_params('processParticipants') ->
     ];
 request_params('computePath') ->
     [
-        'version',
         'data',
         'units',
         'reducePath',
@@ -7599,7 +7220,6 @@ request_params('computePath') ->
     ];
 request_params('createPostalCode') ->
     [
-        'version',
         'accountId',
         'code',
         'latitude',
@@ -7610,18 +7230,15 @@ request_params('createPostalCode') ->
     ];
 request_params('deletePostalCode') ->
     [
-        'version',
         'accountId',
         'postalCodeId'
     ];
 request_params('getPostalCode') ->
     [
-        'version',
         'postalCodeId'
     ];
 request_params('getPostalCodes') ->
     [
-        'version',
         'sortField',
         'descending',
         'latitude',
@@ -7633,7 +7250,6 @@ request_params('getPostalCodes') ->
     ];
 request_params('updatePostalCode') ->
     [
-        'version',
         'accountId',
         'postalCodeId',
         'code',
@@ -7645,7 +7261,6 @@ request_params('updatePostalCode') ->
     ];
 request_params('createPersona') ->
     [
-        'version',
         'accountId',
         'title',
         'previewAccounts',
@@ -7658,26 +7273,22 @@ request_params('createPersona') ->
     ];
 request_params('deletePersona') ->
     [
-        'version',
         'accountId',
         'personaId'
     ];
 request_params('getPersonaList') ->
     [
-        'version',
         'accountId',
         'personaId'
     ];
 request_params('searchPersona') ->
     [
-        'version',
         'accountId',
         'start',
         'limit'
     ];
 request_params('updatePersona') ->
     [
-        'version',
         'accountId',
         'personaId',
         'title',
@@ -7692,34 +7303,28 @@ request_params('updatePersona') ->
     ];
 request_params('createProgram') ->
     [
-        'version',
         'Program'
     ];
 request_params('deleteProgram') ->
     [
-        'version',
         'id'
     ];
 request_params('getProgram') ->
     [
-        'version',
         'id'
     ];
 request_params('postProgram') ->
     [
-        'version',
         'id',
         'Program'
     ];
 request_params('putProgram') ->
     [
-        'version',
         'id',
         'Program'
     ];
 request_params('searchPrograms') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -7729,7 +7334,6 @@ request_params('searchPrograms') ->
     ];
 request_params('createPurchaseItem') ->
     [
-        'version',
         'appKey',
         'name',
         'purchaseType',
@@ -7753,21 +7357,18 @@ request_params('createPurchaseItem') ->
     ];
 request_params('deletePurchaseItem') ->
     [
-        'version',
         'purchaseItemId',
         'deviceId',
         'accountId'
     ];
 request_params('getPurchaseItem') ->
     [
-        'version',
         'purchaseItemId',
         'deviceId',
         'accountId'
     ];
 request_params('searchPurchaseItems') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -7783,7 +7384,6 @@ request_params('searchPurchaseItems') ->
     ];
 request_params('updatePurchaseItem') ->
     [
-        'version',
         'purchaseItemId',
         'deviceId',
         'accountId',
@@ -7808,7 +7408,6 @@ request_params('updatePurchaseItem') ->
     ];
 request_params('createOrder') ->
     [
-        'version',
         'appKey',
         'cart',
         'deviceId',
@@ -7824,14 +7423,12 @@ request_params('createOrder') ->
     ];
 request_params('deleteOrder') ->
     [
-        'version',
         'orderId',
         'deviceId',
         'accountId'
     ];
 request_params('getOrder') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'orderId',
@@ -7839,7 +7436,6 @@ request_params('getOrder') ->
     ];
 request_params('previewOrder') ->
     [
-        'version',
         'appKey',
         'cart',
         'deviceId',
@@ -7855,7 +7451,6 @@ request_params('previewOrder') ->
     ];
 request_params('searchOrders') ->
     [
-        'version',
         'appKey',
         'deviceId',
         'accountId',
@@ -7890,7 +7485,6 @@ request_params('searchOrders') ->
     ];
 request_params('updateOrder') ->
     [
-        'version',
         'orderId',
         'appKey',
         'cart',
@@ -7905,7 +7499,6 @@ request_params('updateOrder') ->
     ];
 request_params('createQuestion') ->
     [
-        'version',
         'accountId',
         'question',
         'answers',
@@ -7920,19 +7513,16 @@ request_params('createQuestion') ->
     ];
 request_params('deleteQuestion') ->
     [
-        'version',
         'questionId',
         'accountId'
     ];
 request_params('getQuestion') ->
     [
-        'version',
         'questionId',
         'accountId'
     ];
 request_params('searchQuestions') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -7943,7 +7533,6 @@ request_params('searchQuestions') ->
     ];
 request_params('updateQuestion') ->
     [
-        'version',
         'questionId',
         'accountId',
         'ticketCount',
@@ -7959,7 +7548,6 @@ request_params('updateQuestion') ->
     ];
 request_params('getHistoricalRankings') ->
     [
-        'version',
         'appKey',
         'rankType',
         'startDate',
@@ -7973,7 +7561,6 @@ request_params('getHistoricalRankings') ->
     ];
 request_params('getRankings') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'gameType',
@@ -7995,7 +7582,6 @@ request_params('getRankings') ->
     ];
 request_params('getUserRank') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'appKey',
@@ -8010,7 +7596,6 @@ request_params('getUserRank') ->
     ];
 request_params('overrideUserRank') ->
     [
-        'version',
         'accountId',
         'ownerAccountId',
         'appKey',
@@ -8036,7 +7621,6 @@ request_params('overrideUserRank') ->
     ];
 request_params('updateRankings') ->
     [
-        'version',
         'accountId',
         'appKey',
         'rankType',
@@ -8050,7 +7634,6 @@ request_params('updateRankings') ->
     ];
 request_params('createRating') ->
     [
-        'version',
         'ratableType',
         'ratableId',
         'ratingValue',
@@ -8065,14 +7648,12 @@ request_params('createRating') ->
     ];
 request_params('deleteRating') ->
     [
-        'version',
         'ratingId',
         'deviceId',
         'accountId'
     ];
 request_params('searchLocationRatingIndexes') ->
     [
-        'version',
         'categoryIds',
         'keyword',
         'locationType',
@@ -8093,7 +7674,6 @@ request_params('searchLocationRatingIndexes') ->
     ];
 request_params('searchRatingIndexes') ->
     [
-        'version',
         'ratableType',
         'ratableIds',
         'categoryIds',
@@ -8110,7 +7690,6 @@ request_params('searchRatingIndexes') ->
     ];
 request_params('searchRatings') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'filterAccountId',
@@ -8125,7 +7704,6 @@ request_params('searchRatings') ->
     ];
 request_params('updateRating') ->
     [
-        'version',
         'ratingId',
         'deviceId',
         'accountId',
@@ -8139,7 +7717,6 @@ request_params('updateRating') ->
     ];
 request_params('createRegion') ->
     [
-        'version',
         'accountId',
         'regionClass',
         'shortName',
@@ -8164,19 +7741,16 @@ request_params('createRegion') ->
     ];
 request_params('deleteRegion') ->
     [
-        'version',
         'accountId',
         'regionId'
     ];
 request_params('getRegion') ->
     [
-        'version',
         'regionId',
         'accountId'
     ];
 request_params('searchRegions') ->
     [
-        'version',
         'accountId',
         'query',
         'keyword',
@@ -8202,7 +7776,6 @@ request_params('searchRegions') ->
     ];
 request_params('updateRegion') ->
     [
-        'version',
         'accountId',
         'regionId',
         'regionClass',
@@ -8229,7 +7802,6 @@ request_params('updateRegion') ->
     ];
 request_params('createBatch') ->
     [
-        'version',
         'accountId',
         'status',
         'previewLimit',
@@ -8244,25 +7816,21 @@ request_params('createBatch') ->
     ];
 request_params('createRegionLegSummaryBatch') ->
     [
-        'version',
         'list'
     ];
 request_params('deleteBatch') ->
     [
-        'version',
         'accountId',
         'batchId'
     ];
 request_params('getReportBatch') ->
     [
-        'version',
         'accountId',
         'batchId',
         'allResults'
     ];
 request_params('runReport') ->
     [
-        'version',
         'desc',
         'accountId',
         'query',
@@ -8274,7 +7842,6 @@ request_params('runReport') ->
     ];
 request_params('searchBatch') ->
     [
-        'version',
         'accountId',
         'start',
         'limit',
@@ -8287,7 +7854,6 @@ request_params('searchBatch') ->
     ];
 request_params('createReservation') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'startDate',
@@ -8299,14 +7865,12 @@ request_params('createReservation') ->
     ];
 request_params('deleteReservation') ->
     [
-        'version',
         'reservationId',
         'deviceId',
         'accountId'
     ];
 request_params('reservableAvailability') ->
     [
-        'version',
         'reservableId',
         'reservableType',
         'deviceId',
@@ -8316,7 +7880,6 @@ request_params('reservableAvailability') ->
     ];
 request_params('searchAvailability') ->
     [
-        'version',
         'reservableId',
         'reservableType',
         'deviceId',
@@ -8328,7 +7891,6 @@ request_params('searchAvailability') ->
     ];
 request_params('searchReservations') ->
     [
-        'version',
         'deviceId',
         'appKey',
         'accountId',
@@ -8343,7 +7905,6 @@ request_params('searchReservations') ->
     ];
 request_params('searchSchedule') ->
     [
-        'version',
         'reservableId',
         'reservableType',
         'startDate',
@@ -8354,7 +7915,6 @@ request_params('searchSchedule') ->
     ];
 request_params('createRetailer') ->
     [
-        'version',
         'name',
         'deviceId',
         'accountId',
@@ -8391,14 +7951,12 @@ request_params('createRetailer') ->
     ];
 request_params('deleteRetailer') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'retailerId'
     ];
 request_params('getRetailer') ->
     [
-        'version',
         'retailerId',
         'deviceId',
         'accountId',
@@ -8406,7 +7964,6 @@ request_params('getRetailer') ->
     ];
 request_params('getRetailers') ->
     [
-        'version',
         'visibility',
         'sortField',
         'descending',
@@ -8424,7 +7981,6 @@ request_params('getRetailers') ->
     ];
 request_params('retailerLoginCheck') ->
     [
-        'version',
         'username',
         'password',
         'deviceId',
@@ -8434,7 +7990,6 @@ request_params('retailerLoginCheck') ->
     ];
 request_params('updateRetailer') ->
     [
-        'version',
         'retailerId',
         'deviceId',
         'accountId',
@@ -8470,7 +8025,6 @@ request_params('updateRetailer') ->
     ];
 request_params('createRetailerLocationConsumer') ->
     [
-        'version',
         'appKey',
         'name',
         'deviceId',
@@ -8503,7 +8057,6 @@ request_params('createRetailerLocationConsumer') ->
     ];
 request_params('createRetailerLocations') ->
     [
-        'version',
         'retailerId',
         'name',
         'streetAddress',
@@ -8546,14 +8099,12 @@ request_params('createRetailerLocations') ->
     ];
 request_params('deleteRetailerLocation') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'retailerLocationId'
     ];
 request_params('getRetailerLocation') ->
     [
-        'version',
         'retailerLocationId',
         'deviceId',
         'accountId',
@@ -8561,14 +8112,12 @@ request_params('getRetailerLocation') ->
     ];
 request_params('getRetailerLocationConsumer') ->
     [
-        'version',
         'retailerLocationId',
         'deviceId',
         'accountId'
     ];
 request_params('indexedRetailerLocationDistanceSearch') ->
     [
-        'version',
         'latitude',
         'longitude',
         'searchRange',
@@ -8606,7 +8155,6 @@ request_params('indexedRetailerLocationDistanceSearch') ->
     ];
 request_params('indexedRetailerLocationSearch') ->
     [
-        'version',
         'accountId',
         'start',
         'limit',
@@ -8638,7 +8186,6 @@ request_params('indexedRetailerLocationSearch') ->
     ];
 request_params('searchRetailerLocations') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'q',
@@ -8667,7 +8214,6 @@ request_params('searchRetailerLocations') ->
     ];
 request_params('updateRetailerLocations') ->
     [
-        'version',
         'retailerLocationId',
         'deviceId',
         'accountId',
@@ -8712,7 +8258,6 @@ request_params('updateRetailerLocations') ->
     ];
 request_params('getRetaokiler') ->
     [
-        'version',
         'retailerId',
         'activeOnly',
         'keyword',
@@ -8722,100 +8267,82 @@ request_params('getRetaokiler') ->
     ];
 request_params('approveRoute') ->
     [
-        'version',
         'routeId'
     ];
 request_params('copyRoute') ->
     [
-        'version',
         'routeId',
         'Route'
     ];
 request_params('createRoute') ->
     [
-        'version',
         'Route'
     ];
 request_params('createRouteDirections') ->
     [
-        'version',
         'routeId'
     ];
 request_params('createRoutePolyline') ->
     [
-        'version',
         'routeId'
     ];
 request_params('deleteRoute') ->
     [
-        'version',
         'routeId'
     ];
 request_params('disapproveRoute') ->
     [
-        'version',
         'routeId'
     ];
 request_params('getRoute') ->
     [
-        'version',
         'routeId',
         'showInheritedProperties'
     ];
 request_params('getRouteDirections') ->
     [
-        'version',
         'routeId'
     ];
 request_params('getRouteShipments') ->
     [
-        'version',
         'routeId'
     ];
 request_params('getRouteStop') ->
     [
-        'version',
         'routeId',
         'stopId'
     ];
 request_params('getRouteStops') ->
     [
-        'version',
         'routeId',
         'confirmedOnly'
     ];
 request_params('getShipmentsAtStop') ->
     [
-        'version',
         'routeId',
         'stopId'
     ];
 request_params('optimizeRoute') ->
     [
-        'version',
         'routeId'
     ];
 request_params('removeStop') ->
     [
-        'version',
         'routeId',
         'stopId'
     ];
 request_params('reorderRouteStopsPatch') ->
     [
-        'version',
         'routeId',
         'list'
     ];
 request_params('reorderRouteStopsPost') ->
     [
-        'version',
         'routeId',
         'list'
     ];
 request_params('searchRoutes') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -8840,41 +8367,34 @@ request_params('searchRoutes') ->
     ];
 request_params('setDriver') ->
     [
-        'version',
         'id',
         'driverId'
     ];
 request_params('updateRoute') ->
     [
-        'version',
         'routeId',
         'Route'
     ];
 request_params('updateRouteStop') ->
     [
-        'version',
         'routeId',
         'stopId',
         'Stop'
     ];
 request_params('createRouteSettings') ->
     [
-        'version',
         'RouteSettings'
     ];
 request_params('deleteRouteSettings') ->
     [
-        'version',
         'routeSettingsId'
     ];
 request_params('getRouteSettings') ->
     [
-        'version',
         'routeSettingsId'
     ];
 request_params('searchRouteSettings') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -8886,18 +8406,15 @@ request_params('searchRouteSettings') ->
     ];
 request_params('updateRouteSettings') ->
     [
-        'version',
         'routeSettingsId',
         'RouteSettings'
     ];
 request_params('computeRouting') ->
     [
-        'version',
         'data'
     ];
 request_params('createScheduledNotification') ->
     [
-        'version',
         'accountId',
         'name',
         'type',
@@ -8935,20 +8452,17 @@ request_params('createScheduledNotification') ->
     ];
 request_params('deleteScheduledNotification') ->
     [
-        'version',
         'accountId',
         'scheduledNotificationId',
         'deleteByGroupingId'
     ];
 request_params('getScheduledNotification') ->
     [
-        'version',
         'accountId',
         'scheduledNotificationId'
     ];
 request_params('scheduleNotificationListings') ->
     [
-        'version',
         'accountId',
         'appKey',
         'reportName',
@@ -8960,7 +8474,6 @@ request_params('scheduleNotificationListings') ->
     ];
 request_params('searchScheduledNotifications') ->
     [
-        'version',
         'accountId',
         'groupingId',
         'audienceId',
@@ -8984,7 +8497,6 @@ request_params('searchScheduledNotifications') ->
     ];
 request_params('updateScheduledNotification') ->
     [
-        'version',
         'scheduledNotificationId',
         'accountId',
         'name',
@@ -9026,7 +8538,6 @@ request_params('updateScheduledNotification') ->
     ];
 request_params('createScore') ->
     [
-        'version',
         'accountId',
         'appKey',
         'points',
@@ -9040,7 +8551,6 @@ request_params('createScore') ->
     ];
 request_params('getScore') ->
     [
-        'version',
         'accountId',
         'appKey',
         'missionId',
@@ -9053,7 +8563,6 @@ request_params('getScore') ->
     ];
 request_params('searchScores') ->
     [
-        'version',
         'accountId',
         'appKey',
         'missionId',
@@ -9064,7 +8573,6 @@ request_params('searchScores') ->
     ];
 request_params('createSecureApplication') ->
     [
-        'version',
         'accountId',
         'appKey',
         'keyCert',
@@ -9078,13 +8586,11 @@ request_params('createSecureApplication') ->
     ];
 request_params('deleteSecureApplication') ->
     [
-        'version',
         'accountId',
         'appKey'
     ];
 request_params('loginSecure') ->
     [
-        'version',
         'appKey',
         'biometricFile',
         'deviceId',
@@ -9097,18 +8603,15 @@ request_params('loginSecure') ->
     ];
 request_params('purchaseSecure') ->
     [
-        'version',
         'PaymentRequest'
     ];
 request_params('resetSecure') ->
     [
-        'version',
         'accountId',
         'appKey'
     ];
 request_params('updateSecureApplication') ->
     [
-        'version',
         'accountId',
         'appKey',
         'active',
@@ -9122,34 +8625,28 @@ request_params('updateSecureApplication') ->
     ];
 request_params('createServiceHub') ->
     [
-        'version',
         'ServiceHub'
     ];
 request_params('deleteServiceHub') ->
     [
-        'version',
         'id'
     ];
 request_params('getServiceHub') ->
     [
-        'version',
         'id'
     ];
 request_params('postServiceHub') ->
     [
-        'version',
         'id',
         'ServiceHub'
     ];
 request_params('putServiceHub') ->
     [
-        'version',
         'id',
         'ServiceHub'
     ];
 request_params('searchServiceHubs') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -9160,27 +8657,22 @@ request_params('searchServiceHubs') ->
     ];
 request_params('cancelShipment') ->
     [
-        'version',
         'id'
     ];
 request_params('createShipment') ->
     [
-        'version',
         'Shipment'
     ];
 request_params('deleteShipment') ->
     [
-        'version',
         'id'
     ];
 request_params('getShipment') ->
     [
-        'version',
         'id'
     ];
 request_params('searchShipments') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -9192,34 +8684,28 @@ request_params('searchShipments') ->
     ];
 request_params('updateShipment') ->
     [
-        'version',
         'id',
         'Shipment'
     ];
 request_params('updateShipmentStatus') ->
     [
-        'version',
         'id',
         'map'
     ];
 request_params('createShipmentBatch') ->
     [
-        'version',
         'ShipmentBatch'
     ];
 request_params('deleteShipmentBatch') ->
     [
-        'version',
         'batchId'
     ];
 request_params('getShipmentBatch') ->
     [
-        'version',
         'batchId'
     ];
 request_params('getShipmentBatchStatus') ->
     [
-        'version',
         'batchId',
         'accountId',
         'sortField',
@@ -9235,7 +8721,6 @@ request_params('getShipmentBatchStatus') ->
     ];
 request_params('searchShipmentBatch') ->
     [
-        'version',
         'hubId',
         'sortField',
         'descending',
@@ -9244,58 +8729,48 @@ request_params('searchShipmentBatch') ->
     ];
 request_params('simulation') ->
     [
-        'version',
         'data',
         'realTime'
     ];
 request_params('getStop') ->
     [
-        'version',
         'id'
     ];
 request_params('updateStop') ->
     [
-        'version',
         'id',
         'Stop'
     ];
 request_params('createStripeCheckoutSession') ->
     [
-        'version',
         'appKey',
         'stripeParameters'
     ];
 request_params('createSubscription') ->
     [
-        'version',
         'accountId',
         'planId',
         'promoCode'
     ];
 request_params('deleteSubscription') ->
     [
-        'version',
         'accountId'
     ];
 request_params('getSubscription') ->
     [
-        'version',
         'accountId'
     ];
 request_params('getSubscriptionPlan') ->
     [
-        'version',
         'planId'
     ];
 request_params('getSubscriptionPlans') ->
     [
-        'version',
         'visible',
         'role'
     ];
 request_params('getSubscriptionUsage') ->
     [
-        'version',
         'accountId',
         'applicationId',
         'start',
@@ -9303,7 +8778,6 @@ request_params('getSubscriptionUsage') ->
     ];
 request_params('updateSubscription') ->
     [
-        'version',
         'accountId',
         'planId',
         'promoCode',
@@ -9311,7 +8785,6 @@ request_params('updateSubscription') ->
     ];
 request_params('createTask') ->
     [
-        'version',
         'accountId',
         'name',
         'appKey',
@@ -9327,19 +8800,16 @@ request_params('createTask') ->
     ];
 request_params('deleteTask') ->
     [
-        'version',
         'accountId',
         'taskId'
     ];
 request_params('getTask') ->
     [
-        'version',
         'accountId',
         'taskId'
     ];
 request_params('searchTasks') ->
     [
-        'version',
         'accountId',
         'groupingId',
         'filter',
@@ -9355,7 +8825,6 @@ request_params('searchTasks') ->
     ];
 request_params('updateTask') ->
     [
-        'version',
         'taskId',
         'accountId',
         'name',
@@ -9372,25 +8841,21 @@ request_params('updateTask') ->
     ];
 request_params('createTerritory') ->
     [
-        'version',
         'accountId',
         'name',
         'active'
     ];
 request_params('deleteTerritory') ->
     [
-        'version',
         'accountId',
         'territoryId'
     ];
 request_params('getTerritory') ->
     [
-        'version',
         'territoryId'
     ];
 request_params('searchTerritories') ->
     [
-        'version',
         'sortField',
         'descending',
         'keyword',
@@ -9399,7 +8864,6 @@ request_params('searchTerritories') ->
     ];
 request_params('updateTerritory') ->
     [
-        'version',
         'accountId',
         'territoryId',
         'name',
@@ -9407,7 +8871,6 @@ request_params('updateTerritory') ->
     ];
 request_params('addOrUpdateThemeDescriptor') ->
     [
-        'version',
         'publicRead',
         'publicWrite',
         'publicDelete',
@@ -9438,7 +8901,6 @@ request_params('addOrUpdateThemeDescriptor') ->
     ];
 request_params('getThemeDescriptor') ->
     [
-        'version',
         'themeDescriptorId',
         'deviceId',
         'accountId',
@@ -9448,7 +8910,6 @@ request_params('getThemeDescriptor') ->
     ];
 request_params('getThemeDescriptors') ->
     [
-        'version',
         'filter',
         'sortField',
         'descending',
@@ -9470,7 +8931,6 @@ request_params('getThemeDescriptors') ->
     ];
 request_params('removeThemeDescriptor') ->
     [
-        'version',
         'themeDescriptorId',
         'deviceId',
         'accountId',
@@ -9480,7 +8940,6 @@ request_params('removeThemeDescriptor') ->
     ];
 request_params('createCredential') ->
     [
-        'version',
         'thirdPartyId',
         'thirdPartyToken',
         'networkUID',
@@ -9501,7 +8960,6 @@ request_params('createCredential') ->
     ];
 request_params('createNetwork') ->
     [
-        'version',
         'accountId',
         'name',
         'enableIntrospection',
@@ -9522,7 +8980,6 @@ request_params('createNetwork') ->
     ];
 request_params('deleteCredential') ->
     [
-        'version',
         'accountId',
         'networkUID',
         'thirdPartyId',
@@ -9530,13 +8987,11 @@ request_params('deleteCredential') ->
     ];
 request_params('deleteNetwork') ->
     [
-        'version',
         'accountId',
         'networkUID'
     ];
 request_params('getCredential') ->
     [
-        'version',
         'networkUID',
         'appKey',
         'accountId',
@@ -9555,13 +9010,11 @@ request_params('getCredential') ->
     ];
 request_params('getNetwork') ->
     [
-        'version',
         'accountId',
         'networkUID'
     ];
 request_params('searchCredentials') ->
     [
-        'version',
         'accountId',
         'keyword',
         'networkUID',
@@ -9571,7 +9024,6 @@ request_params('searchCredentials') ->
     ];
 request_params('searchNetworks') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -9583,7 +9035,6 @@ request_params('searchNetworks') ->
     ];
 request_params('sendMFAChallenge') ->
     [
-        'version',
         'networkUID',
         'appKey',
         'thirdPartyToken',
@@ -9592,7 +9043,6 @@ request_params('sendMFAChallenge') ->
     ];
 request_params('updateCredential') ->
     [
-        'version',
         'networkUID',
         'thirdPartyId',
         'appKey',
@@ -9605,7 +9055,6 @@ request_params('updateCredential') ->
     ];
 request_params('updateNetwork') ->
     [
-        'version',
         'accountId',
         'networkUID',
         'name',
@@ -9627,7 +9076,6 @@ request_params('updateNetwork') ->
     ];
 request_params('getTicketCount') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'gameType',
@@ -9636,7 +9084,6 @@ request_params('getTicketCount') ->
     ];
 request_params('getTicketList') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'ticketObjectType',
@@ -9649,7 +9096,6 @@ request_params('getTicketList') ->
     ];
 request_params('giftPurchase') ->
     [
-        'version',
         'receiverAccountId',
         'ticketId',
         'deviceId',
@@ -9661,7 +9107,6 @@ request_params('giftPurchase') ->
     ];
 request_params('saveTicket') ->
     [
-        'version',
         'actionType',
         'ticketObjectType',
         'returnNulls',
@@ -9683,7 +9128,6 @@ request_params('saveTicket') ->
     ];
 request_params('saveTicketViaFileUpload') ->
     [
-        'version',
         'actionType',
         'ticketObjectType',
         'receiptData',
@@ -9705,11 +9149,9 @@ request_params('saveTicketViaFileUpload') ->
     ];
 request_params('ticketOffers') ->
     [
-        'version'
     ];
 request_params('createTournament') ->
     [
-        'version',
         'accountId',
         'appKey',
         'title',
@@ -9748,13 +9190,11 @@ request_params('createTournament') ->
     ];
 request_params('deleteTournament') ->
     [
-        'version',
         'accountId',
         'missionId'
     ];
 request_params('getTournament') ->
     [
-        'version',
         'accountId',
         'missionId',
         'joinCode',
@@ -9763,7 +9203,6 @@ request_params('getTournament') ->
     ];
 request_params('searchObjects') ->
     [
-        'version',
         'accountId',
         'gameLevelId',
         'sortField',
@@ -9773,7 +9212,6 @@ request_params('searchObjects') ->
     ];
 request_params('searchRounds') ->
     [
-        'version',
         'accountId',
         'appKey',
         'status',
@@ -9785,7 +9223,6 @@ request_params('searchRounds') ->
     ];
 request_params('searchTournaments') ->
     [
-        'version',
         'accountId',
         'appKey',
         'keyword',
@@ -9801,7 +9238,6 @@ request_params('searchTournaments') ->
     ];
 request_params('submitTournamentScore') ->
     [
-        'version',
         'accountId',
         'appKey',
         'missionId',
@@ -9812,7 +9248,6 @@ request_params('submitTournamentScore') ->
     ];
 request_params('submitTournamentVote') ->
     [
-        'version',
         'accountId',
         'appKey',
         'missionId',
@@ -9822,7 +9257,6 @@ request_params('submitTournamentVote') ->
     ];
 request_params('substituteTournamentPlayer') ->
     [
-        'version',
         'accountId',
         'missionId',
         'packId',
@@ -9830,7 +9264,6 @@ request_params('substituteTournamentPlayer') ->
     ];
 request_params('updateTournament') ->
     [
-        'version',
         'accountId',
         'missionId',
         'title',
@@ -9868,7 +9301,6 @@ request_params('updateTournament') ->
     ];
 request_params('batchSaveTracking') ->
     [
-        'version',
         'data',
         'deviceId',
         'accountId',
@@ -9879,7 +9311,6 @@ request_params('batchSaveTracking') ->
     ];
 request_params('getPredictedLocations') ->
     [
-        'version',
         'accountId',
         'latitude',
         'longitude',
@@ -9892,14 +9323,12 @@ request_params('getPredictedLocations') ->
     ];
 request_params('getPredictedPath') ->
     [
-        'version',
         'accountId',
         'startStepId',
         'endStepId'
     ];
 request_params('getPreferredLocations') ->
     [
-        'version',
         'accountId',
         'latitude',
         'longitude',
@@ -9914,7 +9343,6 @@ request_params('getPreferredLocations') ->
     ];
 request_params('getTrackingLegs') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'ownerId',
@@ -9926,7 +9354,6 @@ request_params('getTrackingLegs') ->
     ];
 request_params('saveTrackingLeg') ->
     [
-        'version',
         'startLat',
         'startLng',
         'startDate',
@@ -9942,7 +9369,6 @@ request_params('saveTrackingLeg') ->
     ];
 request_params('saveTrackingStep') ->
     [
-        'version',
         'legId',
         'startLat',
         'startLng',
@@ -9957,7 +9383,6 @@ request_params('saveTrackingStep') ->
     ];
 request_params('searchAccountsWithTrackingLegs') ->
     [
-        'version',
         'accountId',
         'keyword',
         'startDate',
@@ -9975,7 +9400,6 @@ request_params('searchAccountsWithTrackingLegs') ->
     ];
 request_params('searchTrackingLegs') ->
     [
-        'version',
         'accountId',
         'appKey',
         'trackingDeviceId',
@@ -9987,7 +9411,6 @@ request_params('searchTrackingLegs') ->
     ];
 request_params('createTrigger') ->
     [
-        'version',
         'accountId',
         'name',
         'appKey',
@@ -10004,19 +9427,16 @@ request_params('createTrigger') ->
     ];
 request_params('deleteTrigger') ->
     [
-        'version',
         'accountId',
         'triggerId'
     ];
 request_params('getTrigger') ->
     [
-        'version',
         'accountId',
         'triggerId'
     ];
 request_params('searchTriggers') ->
     [
-        'version',
         'accountId',
         'groupingId',
         'filter',
@@ -10032,7 +9452,6 @@ request_params('searchTriggers') ->
     ];
 request_params('updateTrigger') ->
     [
-        'version',
         'triggerId',
         'accountId',
         'name',
@@ -10050,34 +9469,28 @@ request_params('updateTrigger') ->
     ];
 request_params('createTrip') ->
     [
-        'version',
         'Trip'
     ];
 request_params('delete') ->
     [
-        'version',
         'id'
     ];
 request_params('driveTrip') ->
     [
-        'version',
         'id',
         'recurrence'
     ];
 request_params('flexibleTrip') ->
     [
-        'version',
         'id',
         'recurrence'
     ];
 request_params('getTrip') ->
     [
-        'version',
         'id'
     ];
 request_params('getTripMatches') ->
     [
-        'version',
         'id',
         'sortField',
         'descending',
@@ -10089,20 +9502,17 @@ request_params('getTripMatches') ->
     ];
 request_params('processTripMatches') ->
     [
-        'version',
         'startDate',
         'endDate',
         'tripId'
     ];
 request_params('ride') ->
     [
-        'version',
         'id',
         'recurrence'
     ];
 request_params('search') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -10115,7 +9525,6 @@ request_params('search') ->
     ];
 request_params('searchTrips') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -10129,43 +9538,36 @@ request_params('searchTrips') ->
     ];
 request_params('updateLocations') ->
     [
-        'version',
         'id',
         'Trip'
     ];
 request_params('updateRecurrenceLocations') ->
     [
-        'version',
         'id',
         'Trip'
     ];
 request_params('updateRecurrenceShipments') ->
     [
-        'version',
         'id',
         'Trip'
     ];
 request_params('updateShipments') ->
     [
-        'version',
         'id',
         'Trip'
     ];
 request_params('updateTrip') ->
     [
-        'version',
         'id',
         'Trip'
     ];
 request_params('updateTripNotifications') ->
     [
-        'version',
         'id',
         'notifications'
     ];
 request_params('smsBuyOffer') ->
     [
-        'version',
         'appKey',
         'Body',
         'From',
@@ -10173,12 +9575,10 @@ request_params('smsBuyOffer') ->
     ];
 request_params('authorizeTwitter') ->
     [
-        'version',
         'appKey'
     ];
 request_params('loginTwitter') ->
     [
-        'version',
         'accessToken',
         'accessTokenSecret',
         'appKey',
@@ -10189,7 +9589,6 @@ request_params('loginTwitter') ->
     ];
 request_params('addUsersToPermissionable') ->
     [
-        'version',
         'permissionableType',
         'permissionableId',
         'deviceId',
@@ -10210,7 +9609,6 @@ request_params('addUsersToPermissionable') ->
     ];
 request_params('approvePermissionable') ->
     [
-        'version',
         'permissionableType',
         'permissionableId',
         'deviceId',
@@ -10219,7 +9617,6 @@ request_params('approvePermissionable') ->
     ];
 request_params('leaveFromPermissionable') ->
     [
-        'version',
         'permissionableType',
         'permissionableId',
         'deviceId',
@@ -10229,7 +9626,6 @@ request_params('leaveFromPermissionable') ->
     ];
 request_params('removeUsersFromPermissionable') ->
     [
-        'version',
         'permissionableType',
         'permissionableId',
         'deviceId',
@@ -10244,7 +9640,6 @@ request_params('removeUsersFromPermissionable') ->
     ];
 request_params('searchPermissionables') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'connectionAccountId',
@@ -10261,7 +9656,6 @@ request_params('searchPermissionables') ->
     ];
 request_params('searchPermissionablesFollowingDistance') ->
     [
-        'version',
         'latitude',
         'longitude',
         'deviceId',
@@ -10279,14 +9673,12 @@ request_params('searchPermissionablesFollowingDistance') ->
     ];
 request_params('createFollowing') ->
     [
-        'version',
         'accountId',
         'vatomParameters',
         'returnRawResponse'
     ];
 request_params('createSpace') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10294,7 +9686,6 @@ request_params('createSpace') ->
     ];
 request_params('createVatomEvent') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10302,14 +9693,12 @@ request_params('createVatomEvent') ->
     ];
 request_params('deleteFollowing') ->
     [
-        'version',
         'accountId',
         'vatomRelsKey',
         'returnRawResponse'
     ];
 request_params('deletePointsBalance') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomCampaignId',
@@ -10317,7 +9706,6 @@ request_params('deletePointsBalance') ->
     ];
 request_params('deleteSpace') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomSpaceId',
@@ -10325,7 +9713,6 @@ request_params('deleteSpace') ->
     ];
 request_params('deleteVatomEvent') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomEventId',
@@ -10333,14 +9720,12 @@ request_params('deleteVatomEvent') ->
     ];
 request_params('deleteVatomNFT') ->
     [
-        'version',
         'accountId',
         'vatomId',
         'returnRawResponse'
     ];
 request_params('executeActionOnNFT') ->
     [
-        'version',
         'accountId',
         'vatomId',
         'vatomParameters',
@@ -10348,34 +9733,29 @@ request_params('executeActionOnNFT') ->
     ];
 request_params('geomapSearch') ->
     [
-        'version',
         'accountId',
         'vatomParameters',
         'returnRawResponse'
     ];
 request_params('getBusinessBehaviors') ->
     [
-        'version',
         'accountId',
         'appKey',
         'returnRawResponse'
     ];
 request_params('getBusinessCoinsBalance') ->
     [
-        'version',
         'accountId',
         'appKey',
         'returnRawResponse'
     ];
 request_params('getBusinessIds') ->
     [
-        'version',
         'accountId',
         'returnRawResponse'
     ];
 request_params('getBusinessInfo') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10383,14 +9763,12 @@ request_params('getBusinessInfo') ->
     ];
 request_params('getBusinessUsers') ->
     [
-        'version',
         'accountId',
         'appKey',
         'returnRawResponse'
     ];
 request_params('getCampaignGroupEntities') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomCampaignId',
@@ -10398,7 +9776,6 @@ request_params('getCampaignGroupEntities') ->
     ];
 request_params('getCampaignGroupRules') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomCampaignId',
@@ -10406,7 +9783,6 @@ request_params('getCampaignGroupRules') ->
     ];
 request_params('getCampaignGroupStats') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomCampaignId',
@@ -10414,7 +9790,6 @@ request_params('getCampaignGroupStats') ->
     ];
 request_params('getCampaignInfo') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomCampaignId',
@@ -10422,7 +9797,6 @@ request_params('getCampaignInfo') ->
     ];
 request_params('getEventGuestList') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomEventId',
@@ -10430,20 +9804,17 @@ request_params('getEventGuestList') ->
     ];
 request_params('getInventory') ->
     [
-        'version',
         'accountId',
         'vatomParameters',
         'returnRawResponse'
     ];
 request_params('getMyFollowing') ->
     [
-        'version',
         'accountId',
         'returnRawResponse'
     ];
 request_params('getPointsBalance') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'vatomCampaignId',
@@ -10451,7 +9822,6 @@ request_params('getPointsBalance') ->
     ];
 request_params('getPointsBalanceAsBusiness') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomUserId',
@@ -10460,7 +9830,6 @@ request_params('getPointsBalanceAsBusiness') ->
     ];
 request_params('getSpace') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomSpaceId',
@@ -10468,7 +9837,6 @@ request_params('getSpace') ->
     ];
 request_params('getUserCoinsAsBusiness') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'appKey',
@@ -10476,7 +9844,6 @@ request_params('getUserCoinsAsBusiness') ->
     ];
 request_params('getUserCoinsBalance') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'vatomParameters',
@@ -10484,34 +9851,29 @@ request_params('getUserCoinsBalance') ->
     ];
 request_params('getUserFollowers') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'returnRawResponse'
     ];
 request_params('getUserFollowing') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'returnRawResponse'
     ];
 request_params('getUserInfo') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'returnRawResponse'
     ];
 request_params('getUserProfile') ->
     [
-        'version',
         'accountId',
         'returnRawResponse'
     ];
 request_params('getVatomEvent') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomEventId',
@@ -10519,14 +9881,12 @@ request_params('getVatomEvent') ->
     ];
 request_params('getVatomNFT') ->
     [
-        'version',
         'accountId',
         'vatomId',
         'returnRawResponse'
     ];
 request_params('listCommunities') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10534,7 +9894,6 @@ request_params('listCommunities') ->
     ];
 request_params('listEvents') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10542,7 +9901,6 @@ request_params('listEvents') ->
     ];
 request_params('listSpaces') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10550,7 +9908,6 @@ request_params('listSpaces') ->
     ];
 request_params('listUserCoinTransactions') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'vatomParameters',
@@ -10558,7 +9915,6 @@ request_params('listUserCoinTransactions') ->
     ];
 request_params('listUserCoinTransactionsAsBusiness') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'appKey',
@@ -10567,7 +9923,6 @@ request_params('listUserCoinTransactionsAsBusiness') ->
     ];
 request_params('performActionOnNFT') ->
     [
-        'version',
         'accountId',
         'vatomId',
         'vatomAction',
@@ -10576,7 +9931,6 @@ request_params('performActionOnNFT') ->
     ];
 request_params('redeemNFT') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10584,7 +9938,6 @@ request_params('redeemNFT') ->
     ];
 request_params('redeemUserCoinsAsBusiness') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'appKey',
@@ -10593,34 +9946,29 @@ request_params('redeemUserCoinsAsBusiness') ->
     ];
 request_params('searchBusinesses') ->
     [
-        'version',
         'accountId',
         'vatomParameters',
         'returnRawResponse'
     ];
 request_params('searchCampaignGroups') ->
     [
-        'version',
         'accountId',
         'appKey',
         'returnRawResponse'
     ];
 request_params('searchIdentities') ->
     [
-        'version',
         'accountId',
         'returnRawResponse'
     ];
 request_params('searchInventory') ->
     [
-        'version',
         'accountId',
         'vatomParameters',
         'returnRawResponse'
     ];
 request_params('sendNFT') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomCampaignId',
@@ -10629,7 +9977,6 @@ request_params('sendNFT') ->
     ];
 request_params('setPointsBalanceAsBusiness') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomUserId',
@@ -10639,7 +9986,6 @@ request_params('setPointsBalanceAsBusiness') ->
     ];
 request_params('transferUserCoins') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'vatomParameters',
@@ -10647,7 +9993,6 @@ request_params('transferUserCoins') ->
     ];
 request_params('updateBusinessCoins') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomParameters',
@@ -10655,7 +10000,6 @@ request_params('updateBusinessCoins') ->
     ];
 request_params('updateEventGuestList') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomEventId',
@@ -10664,7 +10008,6 @@ request_params('updateEventGuestList') ->
     ];
 request_params('updateSpace') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomSpaceId',
@@ -10673,7 +10016,6 @@ request_params('updateSpace') ->
     ];
 request_params('updateUserCoinsAsBusiness') ->
     [
-        'version',
         'accountId',
         'vatomUserId',
         'appKey',
@@ -10682,14 +10024,12 @@ request_params('updateUserCoinsAsBusiness') ->
     ];
 request_params('updateUserProfile') ->
     [
-        'version',
         'accountId',
         'vatomParameters',
         'returnRawResponse'
     ];
 request_params('updateVatomEvent') ->
     [
-        'version',
         'accountId',
         'appKey',
         'vatomEventId',
@@ -10698,23 +10038,19 @@ request_params('updateVatomEvent') ->
     ];
 request_params('createVehicle') ->
     [
-        'version',
         'vehicle',
         'Vehicle'
     ];
 request_params('deleteVehicle') ->
     [
-        'version',
         'id'
     ];
 request_params('getVehicle') ->
     [
-        'version',
         'id'
     ];
 request_params('searchVehicle') ->
     [
-        'version',
         'hubId',
         'sortField',
         'descending',
@@ -10725,30 +10061,25 @@ request_params('searchVehicle') ->
     ];
 request_params('updateVehicle') ->
     [
-        'version',
         'id',
         'vehicle',
         'Vehicle'
     ];
 request_params('createVehicleType') ->
     [
-        'version',
         'vehicleType',
         'VehicleType'
     ];
 request_params('deleteVehicleType') ->
     [
-        'version',
         'vehicleTypeId'
     ];
 request_params('getVehicleType') ->
     [
-        'version',
         'vehicleTypeId'
     ];
 request_params('searchVehicleTypes') ->
     [
-        'version',
         'sortField',
         'descending',
         'start',
@@ -10759,14 +10090,12 @@ request_params('searchVehicleTypes') ->
     ];
 request_params('updateVehicleType') ->
     [
-        'version',
         'vehicleTypeId',
         'vehicleType',
         'VehicleType'
     ];
 request_params('createOfferTransaction') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'offerId',
@@ -10781,14 +10110,12 @@ request_params('createOfferTransaction') ->
     ];
 request_params('deleteOfferTransaction') ->
     [
-        'version',
         'transactionId',
         'deviceId',
         'accountId'
     ];
 request_params('getOfferTransaction') ->
     [
-        'version',
         'transactionId',
         'deviceId',
         'accountId',
@@ -10799,7 +10126,6 @@ request_params('getOfferTransaction') ->
     ];
 request_params('previewOfferTransaction') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'offerId',
@@ -10813,7 +10139,6 @@ request_params('previewOfferTransaction') ->
     ];
 request_params('searchOfferTransactions') ->
     [
-        'version',
         'deviceId',
         'accountId',
         'keyword',
@@ -10858,7 +10183,6 @@ request_params('searchOfferTransactions') ->
     ];
 request_params('updateOfferTransaction') ->
     [
-        'version',
         'transactionId',
         'status',
         'deviceId',
@@ -10875,7 +10199,6 @@ request_params('updateOfferTransaction') ->
     ];
 request_params('searchWeather') ->
     [
-        'version',
         'regionId',
         'latitude',
         'longitude',
@@ -10883,7 +10206,6 @@ request_params('searchWeather') ->
     ];
 request_params('createWord') ->
     [
-        'version',
         'accountId',
         'word',
         'definition',
@@ -10896,19 +10218,16 @@ request_params('createWord') ->
     ];
 request_params('deleteWord') ->
     [
-        'version',
         'wordId',
         'accountId'
     ];
 request_params('getWord') ->
     [
-        'version',
         'wordId',
         'accountId'
     ];
 request_params('getWords') ->
     [
-        'version',
         'accountId',
         'sortField',
         'descending',
@@ -10919,7 +10238,6 @@ request_params('getWords') ->
     ];
 request_params('updateWord') ->
     [
-        'version',
         'wordId',
         'accountId',
         'ticketCount',
@@ -10933,7 +10251,6 @@ request_params('updateWord') ->
     ];
 request_params('runWorkflow') ->
     [
-        'version',
         'accountId',
         'workflowId',
         'skuId',
@@ -10945,13 +10262,6 @@ request_params(_) ->
 
 -spec request_param_info(OperationID :: operation_id(), Name :: request_param()) ->
     #{source => qs_val | binding | header | body, rules => [rule()]}.
-request_param_info('consumerCreate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('consumerCreate', 'appKey') ->
     #{
         source => qs_val,
@@ -11064,13 +10374,6 @@ request_param_info('consumerCreate', 'useSSL') ->
             not_required
         ]
     };
-request_param_info('consumerUpdate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('consumerUpdate', 'appKey') ->
     #{
         source => qs_val,
@@ -11117,13 +10420,6 @@ request_param_info('consumerUpdate', 'useSSL') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('queueCreate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('queueCreate', 'appKey') ->
@@ -11222,13 +10518,6 @@ request_param_info('queueCreate', 'useSSL') ->
             not_required
         ]
     };
-request_param_info('queueDelete', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('queueDelete', 'queueId') ->
     #{
         source => qs_val,
@@ -11251,13 +10540,6 @@ request_param_info('queueDelete', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('queueGet', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('queueGet', 'deviceId') ->
@@ -11316,13 +10598,6 @@ request_param_info('queueGet', 'virtualHost') ->
             not_required
         ]
     };
-request_param_info('queuePublish', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('queuePublish', 'message') ->
     #{
         source => qs_val,
@@ -11371,13 +10646,6 @@ request_param_info('queuePublish', 'virtualHost') ->
             not_required
         ]
     };
-request_param_info('queueSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('queueSearch', 'queueId') ->
     #{
         source => qs_val,
@@ -11424,13 +10692,6 @@ request_param_info('queueSearch', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('queueUpdate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('queueUpdate', 'queueId') ->
@@ -11527,13 +10788,6 @@ request_param_info('queueUpdate', 'useSSL') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('accountLocationSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('accountLocationSearch', 'deviceId') ->
@@ -11808,13 +11062,6 @@ request_param_info('accountLocationSearch', 'contentAdminOnly') ->
             not_required
         ]
     };
-request_param_info('blockAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('blockAccount', 'accountIdBeingBlocked') ->
     #{
         source => qs_val,
@@ -11869,13 +11116,6 @@ request_param_info('blockAccount', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('createAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createAccount', 'username') ->
@@ -12452,13 +11692,6 @@ request_param_info('createAccount', 'personalAudienceId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('editAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('editAccount', 'deviceId') ->
@@ -13117,13 +12350,6 @@ request_param_info('editAccount', 'nonGuestUsername') ->
             not_required
         ]
     };
-request_param_info('editUsername', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('editUsername', 'deviceId') ->
     #{
         source => qs_val,
@@ -13154,13 +12380,6 @@ request_param_info('editUsername', 'username') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getAccount', 'returnNulls') ->
@@ -13257,13 +12476,6 @@ request_param_info('getAccount', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('getProfileAssets', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getProfileAssets', 'returnNulls') ->
@@ -13378,13 +12590,6 @@ request_param_info('getProfileAssets', 'limit') ->
             not_required
         ]
     };
-request_param_info('getReferralList', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getReferralList', 'accountId') ->
     #{
         source => qs_val,
@@ -13466,13 +12671,6 @@ request_param_info('getReferralList', 'childrenChildren') ->
             not_required
         ]
     };
-request_param_info('getSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getSettings', 'deviceId') ->
     #{
         source => qs_val,
@@ -13503,13 +12701,6 @@ request_param_info('getSettings', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('loginDelegate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('loginDelegate', 'accessToken') ->
@@ -13598,13 +12789,6 @@ request_param_info('loginDelegate', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('loginGeneral', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('loginGeneral', 'accessToken') ->
@@ -13711,13 +12895,6 @@ request_param_info('loginGeneral', 'thirdPartyCredentialId') ->
             not_required
         ]
     };
-request_param_info('loginUsername', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('loginUsername', 'username') ->
     #{
         source => qs_val,
@@ -13798,13 +12975,6 @@ request_param_info('loginUsername', 'responseFilters') ->
             not_required
         ]
     };
-request_param_info('logout', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('logout', 'deviceId') ->
     #{
         source => qs_val,
@@ -13845,13 +13015,6 @@ request_param_info('logout', 'longitude') ->
             not_required
         ]
     };
-request_param_info('mergeAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('mergeAccount', 'mergeAccountId') ->
     #{
         source => qs_val,
@@ -13882,13 +13045,6 @@ request_param_info('mergeAccount', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('passwordChange', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('passwordChange', 'accountId') ->
@@ -13923,13 +13079,6 @@ request_param_info('passwordChange', 'confirmPassword') ->
             required
         ]
     };
-request_param_info('passwordReset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('passwordReset', 'token') ->
     #{
         source => qs_val,
@@ -13951,13 +13100,6 @@ request_param_info('passwordReset', 'confirm') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('requestPasswordReset', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -14001,25 +13143,11 @@ request_param_info('requestPasswordReset', 'referer') ->
             not_required
         ]
     };
-request_param_info('requestValidateAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('requestValidateAccount', 'accountId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchAccounts', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -14169,13 +13297,6 @@ request_param_info('searchAccounts', 'activeOnly') ->
             not_required
         ]
     };
-request_param_info('secureLogin', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('secureLogin', 'username') ->
     #{
         source => qs_val,
@@ -14246,13 +13367,6 @@ request_param_info('secureLogin', 'responseFilters') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('secureSignup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('secureSignup', 'deviceId') ->
@@ -14743,13 +13857,6 @@ request_param_info('secureSignup', 'responseType') ->
             not_required
         ]
     };
-request_param_info('setMatchToken', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('setMatchToken', 'deviceId') ->
     #{
         source => qs_val,
@@ -14806,13 +13913,6 @@ request_param_info('setMatchToken', 'longitude') ->
             not_required
         ]
     };
-request_param_info('updateActveStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateActveStatus', 'accountId') ->
     #{
         source => qs_val,
@@ -14853,13 +13953,6 @@ request_param_info('updateActveStatus', 'appKey') ->
             not_required
         ]
     };
-request_param_info('updateLocation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateLocation', 'deviceId') ->
     #{
         source => qs_val,
@@ -14898,13 +13991,6 @@ request_param_info('updateLocation', 'clientTime') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateSettings', 'deviceId') ->
@@ -15003,13 +14089,6 @@ request_param_info('updateSettings', 'longitude') ->
             not_required
         ]
     };
-request_param_info('validateAccountSignup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('validateAccountSignup', 'token') ->
     #{
         source => qs_val,
@@ -15018,25 +14097,11 @@ request_param_info('validateAccountSignup', 'token') ->
             required
         ]
     };
-request_param_info('validatePasswordReset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('validatePasswordReset', 'token') ->
     #{
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -15126,13 +14191,6 @@ request_param_info('', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createAchievement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createAchievement', 'appKey') ->
@@ -15237,13 +14295,6 @@ request_param_info('createAchievement', 'triggerDefinition') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createAchievementTier', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createAchievementTier', 'achievementId') ->
@@ -15358,13 +14409,6 @@ request_param_info('createAchievementTier', 'gameObjectId') ->
             not_required
         ]
     };
-request_param_info('deleteAchievement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteAchievement', 'achievementId') ->
     #{
         source => qs_val,
@@ -15381,13 +14425,6 @@ request_param_info('deleteAchievement', 'accountId') ->
             not_required
         ]
     };
-request_param_info('deleteAchievementTier', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteAchievementTier', 'achievementTierId') ->
     #{
         source => qs_val,
@@ -15402,13 +14439,6 @@ request_param_info('deleteAchievementTier', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getAchievement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getAchievement', 'achievementId') ->
@@ -15443,13 +14473,6 @@ request_param_info('getAchievement', 'achievementType') ->
             not_required
         ]
     };
-request_param_info('getAchievementTier', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getAchievementTier', 'accountId') ->
     #{
         source => qs_val,
@@ -15463,13 +14486,6 @@ request_param_info('getAchievementTier', 'achievementTierId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getUserAchievements', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -15561,26 +14577,12 @@ request_param_info('getUserAchievements', 'longitude') ->
             not_required
         ]
     };
-request_param_info('listAchievementTags', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('listAchievementTags', 'appKey') ->
     #{
         source => qs_val,
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('listAchievements', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('listAchievements', 'sortField') ->
@@ -15670,13 +14672,6 @@ request_param_info('listAchievements', 'rankType') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchAchievements', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchAchievements', 'appKey') ->
@@ -15774,13 +14769,6 @@ request_param_info('searchAchievements', 'rankType') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updateAchievement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateAchievement', 'deviceId') ->
@@ -15903,13 +14891,6 @@ request_param_info('updateAchievement', 'triggerDefinition') ->
             not_required
         ]
     };
-request_param_info('updateAchievementTier', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateAchievementTier', 'achievementTierId') ->
     #{
         source => qs_val,
@@ -16022,13 +15003,6 @@ request_param_info('updateAchievementTier', 'scoreAllInstances') ->
             not_required
         ]
     };
-request_param_info('updateUserAchievement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateUserAchievement', 'accountId') ->
     #{
         source => qs_val,
@@ -16093,25 +15067,11 @@ request_param_info('updateUserAchievement', 'returnProgress') ->
             not_required
         ]
     };
-request_param_info('createEntityReference', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createEntityReference', 'EntityReference') ->
     #{
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/EntityReference">>},
-            required
-        ]
-    };
-request_param_info('addAlbumCollection', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -16485,13 +15445,6 @@ request_param_info('addAlbumCollection', 'linkedObjectId') ->
             not_required
         ]
     };
-request_param_info('addAlbumUsers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('addAlbumUsers', 'albumId') ->
     #{
         source => qs_val,
@@ -16572,13 +15525,6 @@ request_param_info('addAlbumUsers', 'connectionGroups') ->
             not_required
         ]
     };
-request_param_info('approveAlbum', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('approveAlbum', 'albumId') ->
     #{
         source => qs_val,
@@ -16618,13 +15564,6 @@ request_param_info('approveAlbum', 'verified') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getAlbumCollection', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getAlbumCollection', 'returnNulls') ->
@@ -16699,13 +15638,6 @@ request_param_info('getAlbumCollection', 'audiencePreviewSize') ->
             not_required
         ]
     };
-request_param_info('leaveAlbum', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('leaveAlbum', 'albumId') ->
     #{
         source => qs_val,
@@ -16730,13 +15662,6 @@ request_param_info('leaveAlbum', 'accountId') ->
             not_required
         ]
     };
-request_param_info('removeAlbum', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removeAlbum', 'albumId') ->
     #{
         source => qs_val,
@@ -16759,13 +15684,6 @@ request_param_info('removeAlbum', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('removeAlbumUsers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('removeAlbumUsers', 'albumId') ->
@@ -16814,13 +15732,6 @@ request_param_info('removeAlbumUsers', 'connectionGroups') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchAlbums', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchAlbums', 'filter') ->
@@ -17303,13 +16214,6 @@ request_param_info('searchAlbums', 'generateAlbums') ->
             not_required
         ]
     };
-request_param_info('updateAlbumCollection', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateAlbumCollection', 'albumId') ->
     #{
         source => qs_val,
@@ -17671,13 +16575,6 @@ request_param_info('updateAlbumCollection', 'indexNow') ->
             not_required
         ]
     };
-request_param_info('activities', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('activities', 'start') ->
     #{
         source => qs_val,
@@ -17699,13 +16596,6 @@ request_param_info('activities', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('aggregatedFilteredUsage', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -17960,13 +16850,6 @@ request_param_info('aggregatedFilteredUsage', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('filteredUsage', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('filteredUsage', 'deviceId') ->
@@ -18286,13 +17169,6 @@ request_param_info('filteredUsage', 'longitude') ->
             not_required
         ]
     };
-request_param_info('usage', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('usage', 'tag') ->
     #{
         source => qs_val,
@@ -18541,13 +17417,6 @@ request_param_info('usage', 'customLong2') ->
             not_required
         ]
     };
-request_param_info('usageBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('usageBatch', 'appKey') ->
     #{
         source => qs_val,
@@ -18634,13 +17503,6 @@ request_param_info('usageBatch', 'returnSummaryResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getAppData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getAppData', 'start') ->
@@ -18841,13 +17703,6 @@ request_param_info('getAppData', 'purchaseType') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('postAppData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('postAppData', 'gameType') ->
@@ -19058,13 +17913,6 @@ request_param_info('postAppData', 'purchaseType') ->
             not_required
         ]
     };
-request_param_info('regenAppData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('regenAppData', 'accountId') ->
     #{
         source => qs_val,
@@ -19095,13 +17943,6 @@ request_param_info('regenAppData', 'apiVersion') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createApplication', 'appName') ->
@@ -19739,13 +18580,6 @@ request_param_info('createApplication', 'openAISecretKey') ->
             not_required
         ]
     };
-request_param_info('createApplicationPlacement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createApplicationPlacement', 'appKey') ->
     #{
         source => qs_val,
@@ -19835,13 +18669,6 @@ request_param_info('createApplicationPlacement', 'active') ->
             not_required
         ]
     };
-request_param_info('deleteApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteApplication', 'accountId') ->
     #{
         source => qs_val,
@@ -19856,13 +18683,6 @@ request_param_info('deleteApplication', 'appKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('deleteApplicationPlacement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteApplicationPlacement', 'placementId') ->
@@ -19889,13 +18709,6 @@ request_param_info('deleteApplicationPlacement', 'accountId') ->
             not_required
         ]
     };
-request_param_info('getApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getApplication', 'appKey') ->
     #{
         source => qs_val,
@@ -19910,13 +18723,6 @@ request_param_info('getApplication', 'applicationId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getApplicationPlacement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getApplicationPlacement', 'placementId') ->
@@ -19941,20 +18747,6 @@ request_param_info('getApplicationPlacement', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getApplicationVersions', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
-request_param_info('getUniqueUsersByApp', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getUniqueUsersByApp', 'appKey') ->
@@ -20019,13 +18811,6 @@ request_param_info('getUniqueUsersByApp', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('listApplications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('listApplications', 'accountId') ->
@@ -20189,13 +18974,6 @@ request_param_info('listApplications', 'activeOnly') ->
             not_required
         ]
     };
-request_param_info('searchApplicationPlacement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchApplicationPlacement', 'appKey') ->
     #{
         source => qs_val,
@@ -20234,13 +19012,6 @@ request_param_info('searchApplicationPlacement', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchApplicationSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchApplicationSettings', 'deviceId') ->
@@ -20305,13 +19076,6 @@ request_param_info('searchApplicationSettings', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchApplications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchApplications', 'deviceId') ->
@@ -20441,13 +19205,6 @@ request_param_info('searchApplications', 'activeOnly') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateApplication', 'appKey') ->
@@ -21093,13 +19850,6 @@ request_param_info('updateApplication', 'openAISecretKey') ->
             not_required
         ]
     };
-request_param_info('updateApplicationActive', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateApplicationActive', 'accountId') ->
     #{
         source => qs_val,
@@ -21121,13 +19871,6 @@ request_param_info('updateApplicationActive', 'active') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('updateApplicationPlacement', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -21220,13 +19963,6 @@ request_param_info('updateApplicationPlacement', 'active') ->
             not_required
         ]
     };
-request_param_info('uploadApplicationCertificate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('uploadApplicationCertificate', 'appKey') ->
     #{
         source => qs_val,
@@ -21257,13 +19993,6 @@ request_param_info('uploadApplicationCertificate', 'certificate') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createApplicationConfig', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createApplicationConfig', 'accountId') ->
@@ -21322,13 +20051,6 @@ request_param_info('createApplicationConfig', 'udid') ->
             not_required
         ]
     };
-request_param_info('deleteApplicationConfig', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteApplicationConfig', 'accountId') ->
     #{
         source => qs_val,
@@ -21345,13 +20067,6 @@ request_param_info('deleteApplicationConfig', 'configId') ->
             required
         ]
     };
-request_param_info('getApplicationConfig', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getApplicationConfig', 'accountId') ->
     #{
         source => qs_val,
@@ -21365,13 +20080,6 @@ request_param_info('getApplicationConfig', 'configId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getApplicationConfigByConfigVersion', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -21421,13 +20129,6 @@ request_param_info('getApplicationConfigByConfigVersion', 'allowOlderVersions') 
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchApplicationConfig', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchApplicationConfig', 'accountId') ->
@@ -21510,13 +20211,6 @@ request_param_info('searchApplicationConfig', 'limit') ->
             not_required
         ]
     };
-request_param_info('updateApplicationConfig', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateApplicationConfig', 'accountId') ->
     #{
         source => qs_val,
@@ -21581,26 +20275,12 @@ request_param_info('updateApplicationConfig', 'udid') ->
             not_required
         ]
     };
-request_param_info('assetDownload', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assetDownload', 'filename') ->
     #{
         source => binding,
         rules => [
             {type, binary},
             {pattern, ".+"},
-            required
-        ]
-    };
-request_param_info('assetMorph', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -21659,13 +20339,6 @@ request_param_info('assetMorph', 'template') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createAsset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createAsset', 'returnNulls') ->
@@ -21940,13 +20613,6 @@ request_param_info('createAsset', 'longitude') ->
             not_required
         ]
     };
-request_param_info('deleteAsset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteAsset', 'assetId') ->
     #{
         source => qs_val,
@@ -21987,13 +20653,6 @@ request_param_info('deleteAsset', 'longitude') ->
             not_required
         ]
     };
-request_param_info('getAsset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getAsset', 'assetId') ->
     #{
         source => qs_val,
@@ -22024,13 +20683,6 @@ request_param_info('getAsset', 'noteDescending') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('removeAsset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('removeAsset', 'assetId') ->
@@ -22095,13 +20747,6 @@ request_param_info('removeAsset', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('searchAssets', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchAssets', 'deviceId') ->
@@ -22294,13 +20939,6 @@ request_param_info('searchAssets', 'assignedAccountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateAsset', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateAsset', 'assetId') ->
@@ -22551,13 +21189,6 @@ request_param_info('updateAsset', 'longitude') ->
             not_required
         ]
     };
-request_param_info('assigmentAssigneeAccountSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assigmentAssigneeAccountSearch', 'accountId') ->
     #{
         source => qs_val,
@@ -22572,13 +21203,6 @@ request_param_info('assigmentAssigneeAccountSearch', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('assignmentCreate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('assignmentCreate', 'accountId') ->
@@ -22637,13 +21261,6 @@ request_param_info('assignmentCreate', 'active') ->
             not_required
         ]
     };
-request_param_info('assignmentDelete', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignmentDelete', 'accountId') ->
     #{
         source => qs_val,
@@ -22660,13 +21277,6 @@ request_param_info('assignmentDelete', 'assignmentId') ->
             required
         ]
     };
-request_param_info('assignmentGet', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignmentGet', 'accountId') ->
     #{
         source => qs_val,
@@ -22680,13 +21290,6 @@ request_param_info('assignmentGet', 'assignmentId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('assignmentSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -22778,13 +21381,6 @@ request_param_info('assignmentSearch', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('assignmentStatusCreate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('assignmentStatusCreate', 'accountId') ->
@@ -22880,13 +21476,6 @@ request_param_info('assignmentStatusCreate', 'active') ->
             not_required
         ]
     };
-request_param_info('assignmentStatusDelete', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignmentStatusDelete', 'accountId') ->
     #{
         source => qs_val,
@@ -22903,13 +21492,6 @@ request_param_info('assignmentStatusDelete', 'assignmentStatusId') ->
             required
         ]
     };
-request_param_info('assignmentStatusGet', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignmentStatusGet', 'accountId') ->
     #{
         source => qs_val,
@@ -22923,13 +21505,6 @@ request_param_info('assignmentStatusGet', 'assignmentStatusId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('assignmentStatusSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -23031,13 +21606,6 @@ request_param_info('assignmentStatusSearch', 'keyword') ->
             not_required
         ]
     };
-request_param_info('assignmentStatusUpdate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignmentStatusUpdate', 'accountId') ->
     #{
         source => qs_val,
@@ -23131,13 +21699,6 @@ request_param_info('assignmentStatusUpdate', 'active') ->
             not_required
         ]
     };
-request_param_info('assignmentUpdate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignmentUpdate', 'accountId') ->
     #{
         source => qs_val,
@@ -23200,13 +21761,6 @@ request_param_info('assignmentUpdate', 'active') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createAudience', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createAudience', 'accountId') ->
@@ -23441,13 +21995,6 @@ request_param_info('createAudience', 'uniqueName') ->
             not_required
         ]
     };
-request_param_info('deleteAudience', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteAudience', 'accountId') ->
     #{
         source => qs_val,
@@ -23461,20 +22008,6 @@ request_param_info('deleteAudience', 'audienceId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getAgeGroups', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
-request_param_info('getAudience', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -23524,13 +22057,6 @@ request_param_info('getAudience', 'albumTypesForCount') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getAudienceList', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getAudienceList', 'accountId') ->
@@ -23686,32 +22212,11 @@ request_param_info('getAudienceList', 'albumTypesForCount') ->
             not_required
         ]
     };
-request_param_info('getDevices', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getDevices', 'includeInactive') ->
     #{
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('getExperiences', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
-request_param_info('getGroupedAudiences', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -23728,13 +22233,6 @@ request_param_info('getGroupedAudiences', 'audienceGroupingId') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('listByAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -23759,13 +22257,6 @@ request_param_info('listByAccount', 'suggestionType') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('listByAudience', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -23817,13 +22308,6 @@ request_param_info('listByAudience', 'longitude') ->
             not_required
         ]
     };
-request_param_info('listLastestByAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('listLastestByAccount', 'accountId') ->
     #{
         source => qs_val,
@@ -23848,13 +22332,6 @@ request_param_info('listLastestByAccount', 'suggestionType') ->
             required
         ]
     };
-request_param_info('sendByAccount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('sendByAccount', 'accountId') ->
     #{
         source => qs_val,
@@ -23876,13 +22353,6 @@ request_param_info('sendByAccount', 'longitude') ->
         source => qs_val,
         rules => [
             {type, float},
-            required
-        ]
-    };
-request_param_info('updateAudience', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -24134,13 +22604,6 @@ request_param_info('updateAudience', 'uniqueName') ->
             not_required
         ]
     };
-request_param_info('createBid', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createBid', 'biddableType') ->
     #{
         source => qs_val,
@@ -24205,13 +22668,6 @@ request_param_info('createBid', 'accountId') ->
             not_required
         ]
     };
-request_param_info('deleteBid', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteBid', 'bidId') ->
     #{
         source => qs_val,
@@ -24236,13 +22692,6 @@ request_param_info('deleteBid', 'accountId') ->
             not_required
         ]
     };
-request_param_info('getBid', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getBid', 'bidId') ->
     #{
         source => qs_val,
@@ -24265,13 +22714,6 @@ request_param_info('getBid', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateBid', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateBid', 'bidId') ->
@@ -24328,13 +22770,6 @@ request_param_info('updateBid', 'budgetSchedule') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createBillableEntity', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createBillableEntity', 'deviceId') ->
@@ -24433,13 +22868,6 @@ request_param_info('createBillableEntity', 'authorizeNetTransactionKey') ->
             not_required
         ]
     };
-request_param_info('deleteBillableEntity', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteBillableEntity', 'deviceId') ->
     #{
         source => qs_val,
@@ -24454,13 +22882,6 @@ request_param_info('deleteBillableEntity', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getBillableEntity', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getBillableEntity', 'deviceId') ->
@@ -24493,13 +22914,6 @@ request_param_info('getBillableEntity', 'includePayments') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateBillableEntity', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateBillableEntity', 'deviceId') ->
@@ -24596,13 +23010,6 @@ request_param_info('updateBillableEntity', 'authorizeNetTransactionKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('addPaymentMethod', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('addPaymentMethod', 'accountId') ->
@@ -24787,13 +23194,6 @@ request_param_info('addPaymentMethod', 'metaData') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createPaymentMethod', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createPaymentMethod', 'accountId') ->
@@ -24996,13 +23396,6 @@ request_param_info('createPaymentMethod', 'appKey') ->
             not_required
         ]
     };
-request_param_info('createSmartContract', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createSmartContract', 'accountId') ->
     #{
         source => qs_val,
@@ -25035,13 +23428,6 @@ request_param_info('createSmartContract', 'paymentMethodId') ->
             not_required
         ]
     };
-request_param_info('getCryptoBalance', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getCryptoBalance', 'accountId') ->
     #{
         source => qs_val,
@@ -25066,13 +23452,6 @@ request_param_info('getCryptoBalance', 'paymentMethodId') ->
             not_required
         ]
     };
-request_param_info('getPaymentMethod', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getPaymentMethod', 'accountId') ->
     #{
         source => qs_val,
@@ -25095,13 +23474,6 @@ request_param_info('getPaymentMethod', 'getCurrentBalance') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchPaymentMethod', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchPaymentMethod', 'accountId') ->
@@ -25168,13 +23540,6 @@ request_param_info('searchPaymentMethod', 'limit') ->
             not_required
         ]
     };
-request_param_info('getStatusCSV', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getStatusCSV', 'accountId') ->
     #{
         source => qs_val,
@@ -25216,13 +23581,6 @@ request_param_info('getStatusCSV', 'limit') ->
             required
         ]
     };
-request_param_info('listStatusCSV', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('listStatusCSV', 'accountId') ->
     #{
         source => qs_val,
@@ -25247,13 +23605,6 @@ request_param_info('listStatusCSV', 'limit') ->
             required
         ]
     };
-request_param_info('statusCSV', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('statusCSV', 'accountId') ->
     #{
         source => qs_val,
@@ -25267,13 +23618,6 @@ request_param_info('statusCSV', 'batchId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('uploadCSV', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -25319,25 +23663,11 @@ request_param_info('uploadCSV', 'appKey') ->
             not_required
         ]
     };
-request_param_info('createCargoType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createCargoType', 'CargoType') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('deleteCargoType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteCargoType', 'cargoTypeId') ->
@@ -25348,25 +23678,11 @@ request_param_info('deleteCargoType', 'cargoTypeId') ->
             required
         ]
     };
-request_param_info('getCargoType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getCargoType', 'cargoTypeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchCargoTypes', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -25426,13 +23742,6 @@ request_param_info('searchCargoTypes', 'hubId') ->
             not_required
         ]
     };
-request_param_info('updateCargoType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateCargoType', 'cargoTypeId') ->
     #{
         source => binding,
@@ -25446,13 +23755,6 @@ request_param_info('updateCargoType', 'CargoType') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('searchCarriers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchCarriers', 'keyword') ->
@@ -25493,13 +23795,6 @@ request_param_info('searchCarriers', 'activeOnly') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('categoryDistanceSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('categoryDistanceSearch', 'accountId') ->
@@ -25664,13 +23959,6 @@ request_param_info('categoryDistanceSearch', 'range') ->
             not_required
         ]
     };
-request_param_info('createCategory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createCategory', 'accountId') ->
     #{
         source => qs_val,
@@ -25783,13 +24071,6 @@ request_param_info('createCategory', 'searchTags') ->
             not_required
         ]
     };
-request_param_info('deleteCategory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteCategory', 'accountId') ->
     #{
         source => qs_val,
@@ -25803,13 +24084,6 @@ request_param_info('deleteCategory', 'categoryId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('duplicateCategory', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -25845,13 +24119,6 @@ request_param_info('duplicateCategory', 'parentCategoryId') ->
             not_required
         ]
     };
-request_param_info('getCategory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getCategory', 'categoryId') ->
     #{
         source => qs_val,
@@ -25866,13 +24133,6 @@ request_param_info('getCategory', 'returnExternal') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchCategories', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchCategories', 'accountId') ->
@@ -26045,13 +24305,6 @@ request_param_info('searchCategories', 'searchMode') ->
             not_required
         ]
     };
-request_param_info('updateCategory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateCategory', 'accountId') ->
     #{
         source => qs_val,
@@ -26164,13 +24417,6 @@ request_param_info('updateCategory', 'searchTags') ->
             not_required
         ]
     };
-request_param_info('addConnectionToGroup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('addConnectionToGroup', 'returnNulls') ->
     #{
         source => qs_val,
@@ -26243,13 +24489,6 @@ request_param_info('addConnectionToGroup', 'longitude') ->
             not_required
         ]
     };
-request_param_info('addConnectionsToGroup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('addConnectionsToGroup', 'connectionGroupId') ->
     #{
         source => qs_val,
@@ -26306,13 +24545,6 @@ request_param_info('addConnectionsToGroup', 'longitude') ->
             not_required
         ]
     };
-request_param_info('addSubGroups', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('addSubGroups', 'returnNulls') ->
     #{
         source => qs_val,
@@ -26367,13 +24599,6 @@ request_param_info('addSubGroups', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('createOrUpdateConnection', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createOrUpdateConnection', 'deviceId') ->
@@ -26488,13 +24713,6 @@ request_param_info('createOrUpdateConnection', 'connectionResponse') ->
             not_required
         ]
     };
-request_param_info('createOrUpdateGroup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createOrUpdateGroup', 'returnNulls') ->
     #{
         source => qs_val,
@@ -26607,13 +24825,6 @@ request_param_info('createOrUpdateGroup', 'longitude') ->
             not_required
         ]
     };
-request_param_info('followAccept', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('followAccept', 'accountId') ->
     #{
         source => qs_val,
@@ -26635,13 +24846,6 @@ request_param_info('followAccept', 'appKey') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('followReject', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -26669,13 +24873,6 @@ request_param_info('followReject', 'appKey') ->
             required
         ]
     };
-request_param_info('followRemove', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('followRemove', 'accountId') ->
     #{
         source => qs_val,
@@ -26697,13 +24894,6 @@ request_param_info('followRemove', 'appKey') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('followRequest', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -26737,13 +24927,6 @@ request_param_info('followRequest', 'approvalNeeded') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('friendAccept', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('friendAccept', 'friendAccountId') ->
@@ -26802,13 +24985,6 @@ request_param_info('friendAccept', 'notificationMessage') ->
             not_required
         ]
     };
-request_param_info('friendReject', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('friendReject', 'friendAccountId') ->
     #{
         source => qs_val,
@@ -26865,13 +25041,6 @@ request_param_info('friendReject', 'notificationMessage') ->
             not_required
         ]
     };
-request_param_info('friendRemove', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('friendRemove', 'friendAccountId') ->
     #{
         source => qs_val,
@@ -26910,13 +25079,6 @@ request_param_info('friendRemove', 'removeFromGroups') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('friendRequest', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('friendRequest', 'friendAccountId') ->
@@ -26967,13 +25129,6 @@ request_param_info('friendRequest', 'notificationMessage') ->
             not_required
         ]
     };
-request_param_info('getConnectionSentFriendRequests', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getConnectionSentFriendRequests', 'deviceId') ->
     #{
         source => qs_val,
@@ -26988,13 +25143,6 @@ request_param_info('getConnectionSentFriendRequests', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getConnections', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getConnections', 'returnNulls') ->
@@ -27117,13 +25265,6 @@ request_param_info('getConnections', 'longitude') ->
             not_required
         ]
     };
-request_param_info('getGroupDetails', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getGroupDetails', 'combineConnections') ->
     #{
         source => qs_val,
@@ -27170,13 +25311,6 @@ request_param_info('getGroupDetails', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('groupSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('groupSearch', 'sortField') ->
@@ -27260,13 +25394,6 @@ request_param_info('groupSearch', 'keyword') ->
             not_required
         ]
     };
-request_param_info('removeConnectionFromGroup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removeConnectionFromGroup', 'returnNulls') ->
     #{
         source => qs_val,
@@ -27339,13 +25466,6 @@ request_param_info('removeConnectionFromGroup', 'longitude') ->
             not_required
         ]
     };
-request_param_info('removeConnectionsFromGroup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removeConnectionsFromGroup', 'connectionGroupId') ->
     #{
         source => qs_val,
@@ -27402,13 +25522,6 @@ request_param_info('removeConnectionsFromGroup', 'longitude') ->
             not_required
         ]
     };
-request_param_info('removeGroup', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removeGroup', 'returnNulls') ->
     #{
         source => qs_val,
@@ -27455,13 +25568,6 @@ request_param_info('removeGroup', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('removeSubGroups', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('removeSubGroups', 'returnNulls') ->
@@ -27518,13 +25624,6 @@ request_param_info('removeSubGroups', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('searchConnections', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchConnections', 'returnNulls') ->
@@ -27645,13 +25744,6 @@ request_param_info('searchConnections', 'hasLocation') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('addOrUpdateAlbumContest', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('addOrUpdateAlbumContest', 'publicRead') ->
@@ -27855,13 +25947,6 @@ request_param_info('addOrUpdateAlbumContest', 'longitude') ->
             not_required
         ]
     };
-request_param_info('approveAlbumContest', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('approveAlbumContest', 'albumContestId') ->
     #{
         source => qs_val,
@@ -27893,13 +25978,6 @@ request_param_info('approveAlbumContest', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('deleteContest', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteContest', 'albumContestId') ->
@@ -27942,13 +26020,6 @@ request_param_info('deleteContest', 'longitude') ->
             not_required
         ]
     };
-request_param_info('getAlbumContest', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getAlbumContest', 'albumContestId') ->
     #{
         source => qs_val,
@@ -27987,13 +26058,6 @@ request_param_info('getAlbumContest', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('getAlbumContests', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getAlbumContests', 'filter') ->
@@ -28148,13 +26212,6 @@ request_param_info('getAlbumContests', 'longitude') ->
             not_required
         ]
     };
-request_param_info('voteOnAlbumContest', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('voteOnAlbumContest', 'albumContestId') ->
     #{
         source => qs_val,
@@ -28211,13 +26268,6 @@ request_param_info('voteOnAlbumContest', 'longitude') ->
             not_required
         ]
     };
-request_param_info('addPreview', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('addPreview', 'accountId') ->
     #{
         source => qs_val,
@@ -28231,13 +26281,6 @@ request_param_info('addPreview', 'creativeId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('adsFind', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -28369,13 +26412,6 @@ request_param_info('adsFind', 'missionIds') ->
             not_required
         ]
     };
-request_param_info('createCreative', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createCreative', 'accountId') ->
     #{
         source => qs_val,
@@ -28496,13 +26532,6 @@ request_param_info('createCreative', 'offerId') ->
             not_required
         ]
     };
-request_param_info('deleteCreative', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteCreative', 'accountId') ->
     #{
         source => qs_val,
@@ -28519,13 +26548,6 @@ request_param_info('deleteCreative', 'creativeId') ->
             required
         ]
     };
-request_param_info('getCreative', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getCreative', 'accountId') ->
     #{
         source => qs_val,
@@ -28539,13 +26561,6 @@ request_param_info('getCreative', 'creativeId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getCreativesByApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -28597,13 +26612,6 @@ request_param_info('getCreativesByApplication', 'keyword') ->
             not_required
         ]
     };
-request_param_info('removePreview', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removePreview', 'accountId') ->
     #{
         source => qs_val,
@@ -28617,13 +26625,6 @@ request_param_info('removePreview', 'creativeId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('updateCreative', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -28739,13 +26740,6 @@ request_param_info('updateCreative', 'missionId') ->
             not_required
         ]
     };
-request_param_info('create', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('create', 'accountId') ->
     #{
         source => binding,
@@ -28761,25 +26755,11 @@ request_param_info('create', 'Account') ->
             not_required
         ]
     };
-request_param_info('getDependents', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getDependents', 'accountId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('removeDependent', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -28799,25 +26779,11 @@ request_param_info('removeDependent', 'dependentId') ->
             required
         ]
     };
-request_param_info('checkDisbursements', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('checkDisbursements', 'disbursementId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('createDisbursement', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -28901,13 +26867,6 @@ request_param_info('createDisbursement', 'introspectionParams') ->
             not_required
         ]
     };
-request_param_info('getDisbursement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getDisbursement', 'accountId') ->
     #{
         source => qs_val,
@@ -28921,13 +26880,6 @@ request_param_info('getDisbursement', 'disbursementId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchDisbursements', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -29011,13 +26963,6 @@ request_param_info('searchDisbursements', 'externalId') ->
             not_required
         ]
     };
-request_param_info('updateDisbursement', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateDisbursement', 'accountId') ->
     #{
         source => qs_val,
@@ -29098,13 +27043,6 @@ request_param_info('updateDisbursement', 'introspectionParams') ->
             not_required
         ]
     };
-request_param_info('assignEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignEmployee', 'accountId') ->
     #{
         source => qs_val,
@@ -29137,13 +27075,6 @@ request_param_info('assignEmployee', 'role') ->
             not_required
         ]
     };
-request_param_info('assignToLocationEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('assignToLocationEmployee', 'accountId') ->
     #{
         source => qs_val,
@@ -29174,13 +27105,6 @@ request_param_info('assignToLocationEmployee', 'assign') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createEmployee', 'accountId') ->
@@ -29424,13 +27348,6 @@ request_param_info('createEmployee', 'assignedDeviceId') ->
             not_required
         ]
     };
-request_param_info('deleteEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteEmployee', 'accountId') ->
     #{
         source => qs_val,
@@ -29444,13 +27361,6 @@ request_param_info('deleteEmployee', 'employeeAccountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -29476,13 +27386,6 @@ request_param_info('getEmployee', 'settingsAppKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchEmployees', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchEmployees', 'accountId') ->
@@ -29622,13 +27525,6 @@ request_param_info('searchEmployees', 'query') ->
             not_required
         ]
     };
-request_param_info('unassignEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('unassignEmployee', 'accountId') ->
     #{
         source => qs_val,
@@ -29642,13 +27538,6 @@ request_param_info('unassignEmployee', 'employeeAccountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('updateEmployee', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -29893,13 +27782,6 @@ request_param_info('updateEmployee', 'assignedDeviceId') ->
             not_required
         ]
     };
-request_param_info('attendEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('attendEvent', 'deviceId') ->
     #{
         source => qs_val,
@@ -29978,13 +27860,6 @@ request_param_info('attendEvent', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('createEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createEvent', 'accountId') ->
@@ -30083,13 +27958,6 @@ request_param_info('createEvent', 'metaData') ->
             not_required
         ]
     };
-request_param_info('deleteEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteEvent', 'accountId') ->
     #{
         source => qs_val,
@@ -30106,13 +27974,6 @@ request_param_info('deleteEvent', 'eventId') ->
             required
         ]
     };
-request_param_info('getEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getEvent', 'accountId') ->
     #{
         source => qs_val,
@@ -30126,13 +27987,6 @@ request_param_info('getEvent', 'eventId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchEventTransactions', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -30289,13 +28143,6 @@ request_param_info('searchEventTransactions', 'limit') ->
             not_required
         ]
     };
-request_param_info('searchEvents', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchEvents', 'accountId') ->
     #{
         source => qs_val,
@@ -30401,13 +28248,6 @@ request_param_info('searchEvents', 'limit') ->
             not_required
         ]
     };
-request_param_info('updateEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateEvent', 'accountId') ->
     #{
         source => qs_val,
@@ -30504,13 +28344,6 @@ request_param_info('updateEvent', 'redeemableEnd') ->
             not_required
         ]
     };
-request_param_info('getToken', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getToken', 'deviceId') ->
     #{
         source => qs_val,
@@ -30541,13 +28374,6 @@ request_param_info('getToken', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('graphInterface', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('graphInterface', 'event') ->
@@ -30630,13 +28456,6 @@ request_param_info('graphInterface', 'longitude') ->
             not_required
         ]
     };
-request_param_info('addFavorite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('addFavorite', 'favoritableId') ->
     #{
         source => qs_val,
@@ -30685,13 +28504,6 @@ request_param_info('addFavorite', 'longitude') ->
             not_required
         ]
     };
-request_param_info('deleteFavorite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteFavorite', 'deviceId') ->
     #{
         source => qs_val,
@@ -30732,13 +28544,6 @@ request_param_info('deleteFavorite', 'favoritableType') ->
             not_required
         ]
     };
-request_param_info('getFavorite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getFavorite', 'favoriteId') ->
     #{
         source => qs_val,
@@ -30777,13 +28582,6 @@ request_param_info('getFavorite', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('searchFavorites', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchFavorites', 'favoritableType') ->
@@ -30899,13 +28697,6 @@ request_param_info('searchFavorites', 'longitude') ->
             not_required
         ]
     };
-request_param_info('whoHasFavorited', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('whoHasFavorited', 'favoritableId') ->
     #{
         source => qs_val,
@@ -30976,13 +28767,6 @@ request_param_info('whoHasFavorited', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createFilter', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createFilter', 'accountId') ->
@@ -31057,13 +28841,6 @@ request_param_info('createFilter', 'metaData') ->
             not_required
         ]
     };
-request_param_info('deleteFilter', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteFilter', 'accountId') ->
     #{
         source => qs_val,
@@ -31080,25 +28857,11 @@ request_param_info('deleteFilter', 'filterId') ->
             required
         ]
     };
-request_param_info('getFilter', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getFilter', 'filterId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchFilters', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -31184,13 +28947,6 @@ request_param_info('searchFilters', 'activeOnly') ->
             not_required
         ]
     };
-request_param_info('updateFilter', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateFilter', 'accountId') ->
     #{
         source => qs_val,
@@ -31263,13 +29019,6 @@ request_param_info('updateFilter', 'metaData') ->
             not_required
         ]
     };
-request_param_info('createFlag', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createFlag', 'flagableType') ->
     #{
         source => qs_val,
@@ -31326,13 +29075,6 @@ request_param_info('createFlag', 'longitude') ->
             not_required
         ]
     };
-request_param_info('deleteFlag', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteFlag', 'deviceId') ->
     #{
         source => qs_val,
@@ -31379,13 +29121,6 @@ request_param_info('deleteFlag', 'flagableId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getFlag', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getFlag', 'flagableType') ->
@@ -31436,13 +29171,6 @@ request_param_info('getFlag', 'longitude') ->
             not_required
         ]
     };
-request_param_info('getFlagThreshold', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getFlagThreshold', 'itemBeingFlaggedType') ->
     #{
         source => qs_val,
@@ -31456,13 +29184,6 @@ request_param_info('getFlagThreshold', 'appKey') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('updateFlagThreshold', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -31504,13 +29225,6 @@ request_param_info('updateFlagThreshold', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createGame', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createGame', 'accountId') ->
@@ -31569,13 +29283,6 @@ request_param_info('createGame', 'includeGameData') ->
             not_required
         ]
     };
-request_param_info('deleteGame', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteGame', 'accountId') ->
     #{
         source => qs_val,
@@ -31589,13 +29296,6 @@ request_param_info('deleteGame', 'gameId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getGame', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -31621,13 +29321,6 @@ request_param_info('getGame', 'includeGameData') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchGames', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchGames', 'accountId') ->
@@ -31694,13 +29387,6 @@ request_param_info('searchGames', 'includeInactive') ->
             not_required
         ]
     };
-request_param_info('updateGame', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateGame', 'accountId') ->
     #{
         source => qs_val,
@@ -31763,13 +29449,6 @@ request_param_info('updateGame', 'includeGameData') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createGameLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createGameLevel', 'accountId') ->
@@ -31980,13 +29659,6 @@ request_param_info('createGameLevel', 'metaData') ->
             not_required
         ]
     };
-request_param_info('deleteGameLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteGameLevel', 'accountId') ->
     #{
         source => qs_val,
@@ -32000,13 +29672,6 @@ request_param_info('deleteGameLevel', 'levelId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getGameLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -32032,13 +29697,6 @@ request_param_info('getGameLevel', 'includeGameData') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getGameLevelsByApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getGameLevelsByApplication', 'accountId') ->
@@ -32121,13 +29779,6 @@ request_param_info('getGameLevelsByApplication', 'filters') ->
             not_required
         ]
     };
-request_param_info('getGameLevelsByBillableEntity', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getGameLevelsByBillableEntity', 'accountId') ->
     #{
         source => qs_val,
@@ -32193,13 +29844,6 @@ request_param_info('getGameLevelsByBillableEntity', 'limit') ->
             not_required
         ]
     };
-request_param_info('getQuestionsInLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getQuestionsInLevel', 'levelId') ->
     #{
         source => qs_val,
@@ -32216,13 +29860,6 @@ request_param_info('getQuestionsInLevel', 'accountId') ->
             required
         ]
     };
-request_param_info('getWordsInLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getWordsInLevel', 'levelId') ->
     #{
         source => qs_val,
@@ -32236,13 +29873,6 @@ request_param_info('getWordsInLevel', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('updateGameLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -32462,13 +30092,6 @@ request_param_info('updateGameLevel', 'metaData') ->
             not_required
         ]
     };
-request_param_info('updateQuestionsInLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateQuestionsInLevel', 'levelId') ->
     #{
         source => qs_val,
@@ -32493,13 +30116,6 @@ request_param_info('updateQuestionsInLevel', 'questionIds') ->
             required
         ]
     };
-request_param_info('updateWordsInLevel', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateWordsInLevel', 'levelId') ->
     #{
         source => qs_val,
@@ -32521,13 +30137,6 @@ request_param_info('updateWordsInLevel', 'wordIds') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('acceptInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -32643,13 +30252,6 @@ request_param_info('acceptInvite', 'autoFavoriteRetailerLocation') ->
             not_required
         ]
     };
-request_param_info('albumContestInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('albumContestInvite', 'deviceId') ->
     #{
         source => qs_val,
@@ -32704,13 +30306,6 @@ request_param_info('albumContestInvite', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('albumInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('albumInvite', 'deviceId') ->
@@ -32769,13 +30364,6 @@ request_param_info('albumInvite', 'longitude') ->
             not_required
         ]
     };
-request_param_info('eventInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('eventInvite', 'accountId') ->
     #{
         source => qs_val,
@@ -32814,13 +30402,6 @@ request_param_info('eventInvite', 'retailerLocationId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('gameInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('gameInvite', 'deviceId') ->
@@ -32877,13 +30458,6 @@ request_param_info('gameInvite', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('getInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getInvite', 'accountId') ->
@@ -32958,13 +30532,6 @@ request_param_info('getInvite', 'appKey') ->
             not_required
         ]
     };
-request_param_info('missionInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('missionInvite', 'deviceId') ->
     #{
         source => qs_val,
@@ -33021,13 +30588,6 @@ request_param_info('missionInvite', 'longitude') ->
             not_required
         ]
     };
-request_param_info('offerInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('offerInvite', 'accountId') ->
     #{
         source => qs_val,
@@ -33052,13 +30612,6 @@ request_param_info('offerInvite', 'offerId') ->
             required
         ]
     };
-request_param_info('offerLocationInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('offerLocationInvite', 'accountId') ->
     #{
         source => qs_val,
@@ -33080,13 +30633,6 @@ request_param_info('offerLocationInvite', 'offerLocationId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('retailerLocationInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -33120,13 +30666,6 @@ request_param_info('retailerLocationInvite', 'albumId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createLeaderboard', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createLeaderboard', 'accountId') ->
@@ -33233,13 +30772,6 @@ request_param_info('createLeaderboard', 'metaData') ->
             not_required
         ]
     };
-request_param_info('deleteLeaderboard', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteLeaderboard', 'leaderboardId') ->
     #{
         source => qs_val,
@@ -33254,13 +30786,6 @@ request_param_info('deleteLeaderboard', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getLeaderboard', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getLeaderboard', 'leaderboardId') ->
@@ -33285,13 +30810,6 @@ request_param_info('getLeaderboard', 'includeFullRankingList') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchLeaderboards', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchLeaderboards', 'accountId') ->
@@ -33388,13 +30906,6 @@ request_param_info('searchLeaderboards', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateLeaderboard', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateLeaderboard', 'leaderboardId') ->
@@ -33517,13 +31028,6 @@ request_param_info('updateLeaderboard', 'metaData') ->
             not_required
         ]
     };
-request_param_info('registerLike', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('registerLike', 'likableType') ->
     #{
         source => qs_val,
@@ -33620,13 +31124,6 @@ request_param_info('registerLike', 'longitude') ->
             not_required
         ]
     };
-request_param_info('removeLike', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removeLike', 'likableType') ->
     #{
         source => qs_val,
@@ -33673,13 +31170,6 @@ request_param_info('removeLike', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('searchLikes', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchLikes', 'likableType') ->
@@ -33768,13 +31258,6 @@ request_param_info('searchLikes', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createListing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createListing', 'accountId') ->
@@ -33889,13 +31372,6 @@ request_param_info('createListing', 'metaData') ->
             not_required
         ]
     };
-request_param_info('deleteListing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteListing', 'accountId') ->
     #{
         source => qs_val,
@@ -33912,25 +31388,11 @@ request_param_info('deleteListing', 'listingId') ->
             required
         ]
     };
-request_param_info('getListing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getListing', 'listingId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchListing', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -34054,13 +31516,6 @@ request_param_info('searchListing', 'externalGroupId') ->
             not_required
         ]
     };
-request_param_info('summaryListing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('summaryListing', 'accountId') ->
     #{
         source => qs_val,
@@ -34099,13 +31554,6 @@ request_param_info('summaryListing', 'useListingOrderIds') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateListing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateListing', 'accountId') ->
@@ -34228,13 +31676,6 @@ request_param_info('updateListing', 'metaData') ->
             not_required
         ]
     };
-request_param_info('cacheTrilaterationData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('cacheTrilaterationData', 'udid') ->
     #{
         source => qs_val,
@@ -34275,25 +31716,11 @@ request_param_info('cacheTrilaterationData', 'dataFile') ->
             not_required
         ]
     };
-request_param_info('cacheTrilaterationDataGzip', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('cacheTrilaterationDataGzip', 'TrilatCacheRequest') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('getLocationByIp', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getLocationByIp', 'ip') ->
@@ -34302,13 +31729,6 @@ request_param_info('getLocationByIp', 'ip') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getLocationByTrilateration', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getLocationByTrilateration', 'accountId') ->
@@ -34349,13 +31769,6 @@ request_param_info('getLocationByTrilateration', 'responseFilters') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getLocations', 'deviceId') ->
@@ -34510,25 +31923,11 @@ request_param_info('getLocations', 'limit') ->
             not_required
         ]
     };
-request_param_info('createLocationV2', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createLocationV2', 'Location') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('updateLocationV2', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateLocationV2', 'id') ->
@@ -34544,13 +31943,6 @@ request_param_info('updateLocationV2', 'Location') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('createMedia', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createMedia', 'accountId') ->
@@ -35014,13 +32406,6 @@ request_param_info('createMedia', 'availabilitySummary') ->
             not_required
         ]
     };
-request_param_info('deleteMedia', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteMedia', 'accountId') ->
     #{
         source => qs_val,
@@ -35037,13 +32422,6 @@ request_param_info('deleteMedia', 'mediaId') ->
             required
         ]
     };
-request_param_info('getMedia', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getMedia', 'accountId') ->
     #{
         source => qs_val,
@@ -35057,13 +32435,6 @@ request_param_info('getMedia', 'mediaId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchMedia', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -35138,13 +32509,6 @@ request_param_info('searchMedia', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateMedia', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateMedia', 'accountId') ->
@@ -35624,13 +32988,6 @@ request_param_info('updateMedia', 'availabilitySummary') ->
             not_required
         ]
     };
-request_param_info('createMission', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createMission', 'accountId') ->
     #{
         source => qs_val,
@@ -35839,13 +33196,6 @@ request_param_info('createMission', 'radius') ->
             not_required
         ]
     };
-request_param_info('deleteMission', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteMission', 'accountId') ->
     #{
         source => qs_val,
@@ -35859,13 +33209,6 @@ request_param_info('deleteMission', 'missionId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('findMissions', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -36021,13 +33364,6 @@ request_param_info('findMissions', 'audienceOperator') ->
             not_required
         ]
     };
-request_param_info('getMission', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getMission', 'accountId') ->
     #{
         source => qs_val,
@@ -36050,13 +33386,6 @@ request_param_info('getMission', 'returnCreative') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('importMission', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('importMission', 'accountId') ->
@@ -36124,13 +33453,6 @@ request_param_info('importMission', 'adSize') ->
             not_required
         ]
     };
-request_param_info('searchMissionFormats', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchMissionFormats', 'start') ->
     #{
         source => qs_val,
@@ -36152,13 +33474,6 @@ request_param_info('searchMissionFormats', 'activeOnly') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('searchMissions', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -36250,13 +33565,6 @@ request_param_info('searchMissions', 'descending') ->
             not_required
         ]
     };
-request_param_info('searchMissionsByBillableEntity', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchMissionsByBillableEntity', 'accountId') ->
     #{
         source => qs_val,
@@ -36335,13 +33643,6 @@ request_param_info('searchMissionsByBillableEntity', 'descending') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateMission', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateMission', 'accountId') ->
@@ -36544,13 +33845,6 @@ request_param_info('updateMission', 'radius') ->
             not_required
         ]
     };
-request_param_info('createMissionInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createMissionInvite', 'deviceId') ->
     #{
         source => qs_val,
@@ -36591,13 +33885,6 @@ request_param_info('createMissionInvite', 'includeGameData') ->
             not_required
         ]
     };
-request_param_info('deleteMissionInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteMissionInvite', 'deviceId') ->
     #{
         source => qs_val,
@@ -36636,13 +33923,6 @@ request_param_info('deleteMissionInvite', 'includeGameData') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getMissionInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getMissionInvite', 'deviceId') ->
@@ -36691,13 +33971,6 @@ request_param_info('getMissionInvite', 'includeScores') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchMissionInvites', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchMissionInvites', 'deviceId') ->
@@ -36804,13 +34077,6 @@ request_param_info('searchMissionInvites', 'includeGameData') ->
             not_required
         ]
     };
-request_param_info('updateMissionInvite', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateMissionInvite', 'deviceId') ->
     #{
         source => qs_val,
@@ -36899,13 +34165,6 @@ request_param_info('updateMissionInvite', 'includeGameData') ->
             not_required
         ]
     };
-request_param_info('batchOperation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('batchOperation', 'notableId') ->
     #{
         source => qs_val,
@@ -36944,13 +34203,6 @@ request_param_info('batchOperation', 'batchOperation') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createNote', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createNote', 'comment') ->
@@ -37288,13 +34540,6 @@ request_param_info('createNote', 'assetLongitude') ->
             not_required
         ]
     };
-request_param_info('deleteNote', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteNote', 'noteId') ->
     #{
         source => qs_val,
@@ -37343,13 +34588,6 @@ request_param_info('deleteNote', 'appKey') ->
             not_required
         ]
     };
-request_param_info('getNote', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getNote', 'noteId') ->
     #{
         source => qs_val,
@@ -37380,13 +34618,6 @@ request_param_info('getNote', 'returnFullResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchNotes', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchNotes', 'deviceId') ->
@@ -37524,13 +34755,6 @@ request_param_info('searchNotes', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateNote', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateNote', 'noteId') ->
@@ -37861,13 +35085,6 @@ request_param_info('updateNote', 'assetLongitude') ->
             not_required
         ]
     };
-request_param_info('createNotificationTemplate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createNotificationTemplate', 'accountId') ->
     #{
         source => qs_val,
@@ -37924,13 +35141,6 @@ request_param_info('createNotificationTemplate', 'tags') ->
             not_required
         ]
     };
-request_param_info('createOrUpdateBlockedNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createOrUpdateBlockedNotifications', 'appKey') ->
     #{
         source => qs_val,
@@ -37955,13 +35165,6 @@ request_param_info('createOrUpdateBlockedNotifications', 'accountId') ->
             not_required
         ]
     };
-request_param_info('deleteNotificationTemplate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteNotificationTemplate', 'accountId') ->
     #{
         source => qs_val,
@@ -37978,13 +35181,6 @@ request_param_info('deleteNotificationTemplate', 'notificationTemplateId') ->
             required
         ]
     };
-request_param_info('getNotificationTemplate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getNotificationTemplate', 'accountId') ->
     #{
         source => qs_val,
@@ -37998,13 +35194,6 @@ request_param_info('getNotificationTemplate', 'notificationTemplateId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -38176,13 +35365,6 @@ request_param_info('getNotifications', 'limit') ->
             not_required
         ]
     };
-request_param_info('registerNotificationToken', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('registerNotificationToken', 'token') ->
     #{
         source => qs_val,
@@ -38262,13 +35444,6 @@ request_param_info('registerNotificationToken', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('searchBlockedNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchBlockedNotifications', 'appKey') ->
@@ -38367,13 +35542,6 @@ request_param_info('searchBlockedNotifications', 'limit') ->
             not_required
         ]
     };
-request_param_info('searchNotificationTemplate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchNotificationTemplate', 'accountId') ->
     #{
         source => qs_val,
@@ -38460,13 +35628,6 @@ request_param_info('searchNotificationTemplate', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchRecipients', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchRecipients', 'sortField') ->
@@ -38574,13 +35735,6 @@ request_param_info('searchRecipients', 'limit') ->
             not_required
         ]
     };
-request_param_info('searchRecipientsCount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchRecipientsCount', 'deviceId') ->
     #{
         source => qs_val,
@@ -38677,13 +35831,6 @@ request_param_info('searchRecipientsCount', 'limit') ->
             not_required
         ]
     };
-request_param_info('sendBatchNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('sendBatchNotifications', 'accountId') ->
     #{
         source => qs_val,
@@ -38754,13 +35901,6 @@ request_param_info('sendBatchNotifications', 'parentType') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('sendCustomNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('sendCustomNotifications', 'deviceId') ->
@@ -38907,13 +36047,6 @@ request_param_info('sendCustomNotifications', 'longitude') ->
             not_required
         ]
     };
-request_param_info('updateNotificationTemplate', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateNotificationTemplate', 'accountId') ->
     #{
         source => qs_val,
@@ -38952,13 +36085,6 @@ request_param_info('updateNotificationTemplate', 'tags') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('addField', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('addField', 'accountId') ->
@@ -39001,13 +36127,6 @@ request_param_info('addField', 'fieldType') ->
             required
         ]
     };
-request_param_info('createData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createData', 'objectName') ->
     #{
         source => binding,
@@ -39030,13 +36149,6 @@ request_param_info('createData', 'binary') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createObject', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createObject', 'accountId') ->
@@ -39063,13 +36175,6 @@ request_param_info('createObject', 'objectName') ->
             required
         ]
     };
-request_param_info('deleteData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteData', 'objectName') ->
     #{
         source => binding,
@@ -39092,13 +36197,6 @@ request_param_info('deleteData', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('deleteField', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteField', 'accountId') ->
@@ -39133,13 +36231,6 @@ request_param_info('deleteField', 'fieldName') ->
             required
         ]
     };
-request_param_info('deleteObject', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteObject', 'accountId') ->
     #{
         source => qs_val,
@@ -39161,13 +36252,6 @@ request_param_info('deleteObject', 'objectName') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('getData', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -39203,13 +36287,6 @@ request_param_info('getData', 'include') ->
             not_required
         ]
     };
-request_param_info('getObject', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getObject', 'accountId') ->
     #{
         source => qs_val,
@@ -39231,13 +36308,6 @@ request_param_info('getObject', 'objectName') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('searchData', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -39305,13 +36375,6 @@ request_param_info('searchData', 'include') ->
             not_required
         ]
     };
-request_param_info('searchObject', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchObject', 'accountId') ->
     #{
         source => qs_val,
@@ -39352,13 +36415,6 @@ request_param_info('searchObject', 'keyword') ->
             not_required
         ]
     };
-request_param_info('updateData', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateData', 'objectName') ->
     #{
         source => binding,
@@ -39391,13 +36447,6 @@ request_param_info('updateData', 'binary') ->
             not_required
         ]
     };
-request_param_info('batchUpdateOfferLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('batchUpdateOfferLocations', 'data') ->
     #{
         source => qs_val,
@@ -39420,13 +36469,6 @@ request_param_info('batchUpdateOfferLocations', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createOffer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createOffer', 'includeOfferLocations') ->
@@ -40125,13 +37167,6 @@ request_param_info('createOffer', 'availabilitySummary') ->
             not_required
         ]
     };
-request_param_info('deleteOffer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteOffer', 'offerId') ->
     #{
         source => qs_val,
@@ -40156,13 +37191,6 @@ request_param_info('deleteOffer', 'accountId') ->
             not_required
         ]
     };
-request_param_info('deleteOfferLocation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteOfferLocation', 'offerLocationId') ->
     #{
         source => qs_val,
@@ -40185,13 +37213,6 @@ request_param_info('deleteOfferLocation', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getOffer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOffer', 'offerId') ->
@@ -40224,13 +37245,6 @@ request_param_info('getOffer', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getOfferDetails', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOfferDetails', 'deviceId') ->
@@ -40313,13 +37327,6 @@ request_param_info('getOfferDetails', 'includeChildOffers') ->
             not_required
         ]
     };
-request_param_info('getOfferListCounts', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getOfferListCounts', 'latitude') ->
     #{
         source => qs_val,
@@ -40352,13 +37359,6 @@ request_param_info('getOfferListCounts', 'distanceUnit') ->
             not_required
         ]
     };
-request_param_info('getOfferLocation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getOfferLocation', 'offerLocationId') ->
     #{
         source => qs_val,
@@ -40373,13 +37373,6 @@ request_param_info('getOfferLocation', 'udid') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getOfferLocationsForRetailers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOfferLocationsForRetailers', 'sortField') ->
@@ -40544,13 +37537,6 @@ request_param_info('getOfferLocationsForRetailers', 'lastNotificationSent') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getOffersForRetailers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOffersForRetailers', 'offerVisibility') ->
@@ -40807,13 +37793,6 @@ request_param_info('getOffersForRetailers', 'lastNotificationSent') ->
             not_required
         ]
     };
-request_param_info('redeemOfferTransaction', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('redeemOfferTransaction', 'offerTransactionId') ->
     #{
         source => qs_val,
@@ -40852,13 +37831,6 @@ request_param_info('redeemOfferTransaction', 'offerLocationId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchOfferTransactionsForRetailers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchOfferTransactionsForRetailers', 'sortField') ->
@@ -41055,13 +38027,6 @@ request_param_info('searchOfferTransactionsForRetailers', '_l') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchOffersForConsumer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchOffersForConsumer', 'latitude') ->
@@ -41315,13 +38280,6 @@ request_param_info('searchOffersForConsumer', 'groupBy') ->
             not_required
         ]
     };
-request_param_info('topOfferTransactions', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('topOfferTransactions', 'start') ->
     #{
         source => qs_val,
@@ -41336,13 +38294,6 @@ request_param_info('topOfferTransactions', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateOffer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateOffer', 'offerId') ->
@@ -42049,13 +39000,6 @@ request_param_info('updateOffer', 'availabilitySummary') ->
             not_required
         ]
     };
-request_param_info('updateOfferStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateOfferStatus', 'offerIds') ->
     #{
         source => qs_val,
@@ -42086,13 +39030,6 @@ request_param_info('updateOfferStatus', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createOfferTransactionStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createOfferTransactionStatus', 'name') ->
@@ -42175,13 +39112,6 @@ request_param_info('createOfferTransactionStatus', 'applicationIds') ->
             not_required
         ]
     };
-request_param_info('deleteOfferTransactionStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteOfferTransactionStatus', 'statusId') ->
     #{
         source => qs_val,
@@ -42222,13 +39152,6 @@ request_param_info('deleteOfferTransactionStatus', 'longitude') ->
             not_required
         ]
     };
-request_param_info('getOfferTransactionStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getOfferTransactionStatus', 'statusId') ->
     #{
         source => qs_val,
@@ -42267,13 +39190,6 @@ request_param_info('getOfferTransactionStatus', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('searchOfferTransactionStatuses', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchOfferTransactionStatuses', 'deviceId') ->
@@ -42373,13 +39289,6 @@ request_param_info('searchOfferTransactionStatuses', 'includeInactive') ->
             not_required
         ]
     };
-request_param_info('updateOfferTransactionStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateOfferTransactionStatus', 'deviceId') ->
     #{
         source => qs_val,
@@ -42468,13 +39377,6 @@ request_param_info('updateOfferTransactionStatus', 'applicationIds') ->
             not_required
         ]
     };
-request_param_info('imageGeneration', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('imageGeneration', 'accountId') ->
     #{
         source => qs_val,
@@ -42497,13 +39399,6 @@ request_param_info('imageGeneration', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getOptimizationResult', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOptimizationResult', 'batchID') ->
@@ -42530,25 +39425,11 @@ request_param_info('getOptimizationResult', 'limit') ->
             required
         ]
     };
-request_param_info('requestOptimization', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('requestOptimization', 'Orders') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('addMovie', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('addMovie', 'accountId') ->
@@ -42607,13 +39488,6 @@ request_param_info('addMovie', 'callback') ->
             not_required
         ]
     };
-request_param_info('aiDocs', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('aiDocs', 'accountId') ->
     #{
         source => qs_val,
@@ -42652,13 +39526,6 @@ request_param_info('aiDocs', 'offset') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('aiFindImages', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('aiFindImages', 'accountId') ->
@@ -42701,13 +39568,6 @@ request_param_info('aiFindImages', 'size') ->
             not_required
         ]
     };
-request_param_info('aiTags', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('aiTags', 'accountId') ->
     #{
         source => qs_val,
@@ -42748,13 +39608,6 @@ request_param_info('aiTags', 'offset') ->
             not_required
         ]
     };
-request_param_info('aiText', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('aiText', 'accountId') ->
     #{
         source => qs_val,
@@ -42793,13 +39646,6 @@ request_param_info('aiText', 'offset') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('batch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('batch', 'accountId') ->
@@ -42858,13 +39704,6 @@ request_param_info('batch', 'callback') ->
             not_required
         ]
     };
-request_param_info('createInstantEpisode', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createInstantEpisode', 'accountId') ->
     #{
         source => qs_val,
@@ -42878,13 +39717,6 @@ request_param_info('createInstantEpisode', 'data') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('createVoiceCanvas', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -42960,13 +39792,6 @@ request_param_info('createVoiceCanvas', 'callback') ->
             not_required
         ]
     };
-request_param_info('emotion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('emotion', 'accountId') ->
     #{
         source => qs_val,
@@ -43007,13 +39832,6 @@ request_param_info('emotion', 'callback') ->
             not_required
         ]
     };
-request_param_info('getAddMovieResult', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getAddMovieResult', 'requestId') ->
     #{
         source => binding,
@@ -43027,13 +39845,6 @@ request_param_info('getAddMovieResult', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43053,13 +39864,6 @@ request_param_info('getBatch', 'accountId') ->
             required
         ]
     };
-request_param_info('getEmotion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getEmotion', 'requestId') ->
     #{
         source => binding,
@@ -43073,13 +39877,6 @@ request_param_info('getEmotion', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getEpisodeStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43099,13 +39896,6 @@ request_param_info('getEpisodeStatus', 'accountId') ->
             required
         ]
     };
-request_param_info('getRenderStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRenderStatus', 'renderId') ->
     #{
         source => binding,
@@ -43119,13 +39909,6 @@ request_param_info('getRenderStatus', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getSTT', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43145,13 +39928,6 @@ request_param_info('getSTT', 'accountId') ->
             required
         ]
     };
-request_param_info('getTTS', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTTS', 'requestId') ->
     #{
         source => binding,
@@ -43165,13 +39941,6 @@ request_param_info('getTTS', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getTechTune', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43191,13 +39960,6 @@ request_param_info('getTechTune', 'accountId') ->
             required
         ]
     };
-request_param_info('getTopics', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTopics', 'requestId') ->
     #{
         source => binding,
@@ -43211,13 +39973,6 @@ request_param_info('getTopics', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getVoiceCanvas', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43237,13 +39992,6 @@ request_param_info('getVoiceCanvas', 'accountId') ->
             required
         ]
     };
-request_param_info('startVideoRender', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('startVideoRender', 'accountId') ->
     #{
         source => qs_val,
@@ -43257,13 +40005,6 @@ request_param_info('startVideoRender', 'data') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('stt', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43321,13 +40062,6 @@ request_param_info('stt', 'callback') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('summarizeTopics', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('summarizeTopics', 'accountId') ->
@@ -43394,13 +40128,6 @@ request_param_info('summarizeTopics', 'callback') ->
             not_required
         ]
     };
-request_param_info('techTune', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('techTune', 'accountId') ->
     #{
         source => qs_val,
@@ -43449,13 +40176,6 @@ request_param_info('techTune', 'callback') ->
             not_required
         ]
     };
-request_param_info('tts', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('tts', 'accountId') ->
     #{
         source => qs_val,
@@ -43502,13 +40222,6 @@ request_param_info('tts', 'callback') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createPack', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createPack', 'accountId') ->
@@ -43705,13 +40418,6 @@ request_param_info('createPack', 'points') ->
             not_required
         ]
     };
-request_param_info('deletePack', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deletePack', 'accountId') ->
     #{
         source => qs_val,
@@ -43725,13 +40431,6 @@ request_param_info('deletePack', 'packId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getPack', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43756,13 +40455,6 @@ request_param_info('getPack', 'includeGameData') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('searchPacks', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -43846,13 +40538,6 @@ request_param_info('searchPacks', 'appKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updatePack', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updatePack', 'accountId') ->
@@ -44057,13 +40742,6 @@ request_param_info('updatePack', 'points') ->
             not_required
         ]
     };
-request_param_info('processAllParticipants', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('processAllParticipants', 'accountId') ->
     #{
         source => qs_val,
@@ -44086,13 +40764,6 @@ request_param_info('processAllParticipants', 'useShortNameAsID') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('processParticipants', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('processParticipants', 'accountId') ->
@@ -44135,13 +40806,6 @@ request_param_info('processParticipants', 'file') ->
             not_required
         ]
     };
-request_param_info('computePath', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('computePath', 'data') ->
     #{
         source => qs_val,
@@ -44172,13 +40836,6 @@ request_param_info('computePath', 'directions') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('createPostalCode', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -44238,13 +40895,6 @@ request_param_info('createPostalCode', 'active') ->
             not_required
         ]
     };
-request_param_info('deletePostalCode', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deletePostalCode', 'accountId') ->
     #{
         source => qs_val,
@@ -44261,25 +40911,11 @@ request_param_info('deletePostalCode', 'postalCodeId') ->
             required
         ]
     };
-request_param_info('getPostalCode', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getPostalCode', 'postalCodeId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getPostalCodes', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -44347,13 +40983,6 @@ request_param_info('getPostalCodes', 'limit') ->
             not_required
         ]
     };
-request_param_info('updatePostalCode', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updatePostalCode', 'accountId') ->
     #{
         source => qs_val,
@@ -44416,13 +41045,6 @@ request_param_info('updatePostalCode', 'active') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createPersona', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createPersona', 'accountId') ->
@@ -44497,13 +41119,6 @@ request_param_info('createPersona', 'longitude') ->
             not_required
         ]
     };
-request_param_info('deletePersona', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deletePersona', 'accountId') ->
     #{
         source => qs_val,
@@ -44520,13 +41135,6 @@ request_param_info('deletePersona', 'personaId') ->
             required
         ]
     };
-request_param_info('getPersonaList', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getPersonaList', 'accountId') ->
     #{
         source => qs_val,
@@ -44540,13 +41148,6 @@ request_param_info('getPersonaList', 'personaId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchPersona', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -44571,13 +41172,6 @@ request_param_info('searchPersona', 'limit') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('updatePersona', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -44669,25 +41263,11 @@ request_param_info('updatePersona', 'longitude') ->
             not_required
         ]
     };
-request_param_info('createProgram', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createProgram', 'Program') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('deleteProgram', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteProgram', 'id') ->
@@ -44698,25 +41278,11 @@ request_param_info('deleteProgram', 'id') ->
             required
         ]
     };
-request_param_info('getProgram', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getProgram', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('postProgram', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -44735,13 +41301,6 @@ request_param_info('postProgram', 'Program') ->
             not_required
         ]
     };
-request_param_info('putProgram', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('putProgram', 'id') ->
     #{
         source => binding,
@@ -44755,13 +41314,6 @@ request_param_info('putProgram', 'Program') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('searchPrograms', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchPrograms', 'sortField') ->
@@ -44810,13 +41362,6 @@ request_param_info('searchPrograms', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('createPurchaseItem', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createPurchaseItem', 'appKey') ->
@@ -44981,13 +41526,6 @@ request_param_info('createPurchaseItem', 'offerLocationId') ->
             not_required
         ]
     };
-request_param_info('deletePurchaseItem', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deletePurchaseItem', 'purchaseItemId') ->
     #{
         source => qs_val,
@@ -45012,13 +41550,6 @@ request_param_info('deletePurchaseItem', 'accountId') ->
             not_required
         ]
     };
-request_param_info('getPurchaseItem', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getPurchaseItem', 'purchaseItemId') ->
     #{
         source => qs_val,
@@ -45041,13 +41572,6 @@ request_param_info('getPurchaseItem', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchPurchaseItems', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchPurchaseItems', 'deviceId') ->
@@ -45145,13 +41669,6 @@ request_param_info('searchPurchaseItems', 'activeOnly') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updatePurchaseItem', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updatePurchaseItem', 'purchaseItemId') ->
@@ -45324,13 +41841,6 @@ request_param_info('updatePurchaseItem', 'offerLocationId') ->
             not_required
         ]
     };
-request_param_info('createOrder', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createOrder', 'appKey') ->
     #{
         source => qs_val,
@@ -45428,13 +41938,6 @@ request_param_info('createOrder', 'promoCode') ->
             not_required
         ]
     };
-request_param_info('deleteOrder', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteOrder', 'orderId') ->
     #{
         source => qs_val,
@@ -45457,13 +41960,6 @@ request_param_info('deleteOrder', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getOrder', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOrder', 'deviceId') ->
@@ -45496,13 +41992,6 @@ request_param_info('getOrder', 'externalOrderId') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('previewOrder', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('previewOrder', 'appKey') ->
@@ -45600,13 +42089,6 @@ request_param_info('previewOrder', 'promoCode') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchOrders', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchOrders', 'appKey') ->
@@ -45857,13 +42339,6 @@ request_param_info('searchOrders', 'endedBefore') ->
             not_required
         ]
     };
-request_param_info('updateOrder', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateOrder', 'orderId') ->
     #{
         source => qs_val,
@@ -45951,13 +42426,6 @@ request_param_info('updateOrder', 'externalDate') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createQuestion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createQuestion', 'accountId') ->
@@ -46048,13 +42516,6 @@ request_param_info('createQuestion', 'points') ->
             not_required
         ]
     };
-request_param_info('deleteQuestion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteQuestion', 'questionId') ->
     #{
         source => qs_val,
@@ -46071,13 +42532,6 @@ request_param_info('deleteQuestion', 'accountId') ->
             required
         ]
     };
-request_param_info('getQuestion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getQuestion', 'questionId') ->
     #{
         source => qs_val,
@@ -46091,13 +42545,6 @@ request_param_info('getQuestion', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchQuestions', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -46155,13 +42602,6 @@ request_param_info('searchQuestions', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updateQuestion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateQuestion', 'questionId') ->
@@ -46260,13 +42700,6 @@ request_param_info('updateQuestion', 'points') ->
             not_required
         ]
     };
-request_param_info('getHistoricalRankings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getHistoricalRankings', 'appKey') ->
     #{
         source => qs_val,
@@ -46345,13 +42778,6 @@ request_param_info('getHistoricalRankings', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getRankings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getRankings', 'deviceId') ->
@@ -46498,13 +42924,6 @@ request_param_info('getRankings', 'limit') ->
             not_required
         ]
     };
-request_param_info('getUserRank', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getUserRank', 'deviceId') ->
     #{
         source => qs_val,
@@ -46591,13 +43010,6 @@ request_param_info('getUserRank', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('overrideUserRank', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('overrideUserRank', 'accountId') ->
@@ -46776,13 +43188,6 @@ request_param_info('overrideUserRank', 'endDate') ->
             not_required
         ]
     };
-request_param_info('updateRankings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateRankings', 'accountId') ->
     #{
         source => qs_val,
@@ -46861,13 +43266,6 @@ request_param_info('updateRankings', 'createLeaderboard') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createRating', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createRating', 'ratableType') ->
@@ -46958,13 +43356,6 @@ request_param_info('createRating', 'longitude') ->
             not_required
         ]
     };
-request_param_info('deleteRating', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteRating', 'ratingId') ->
     #{
         source => qs_val,
@@ -46987,13 +43378,6 @@ request_param_info('deleteRating', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchLocationRatingIndexes', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchLocationRatingIndexes', 'categoryIds') ->
@@ -47134,13 +43518,6 @@ request_param_info('searchLocationRatingIndexes', 'returnFilters') ->
             not_required
         ]
     };
-request_param_info('searchRatingIndexes', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchRatingIndexes', 'ratableType') ->
     #{
         source => qs_val,
@@ -47247,13 +43624,6 @@ request_param_info('searchRatingIndexes', 'returnOverallRating') ->
             not_required
         ]
     };
-request_param_info('searchRatings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchRatings', 'deviceId') ->
     #{
         source => qs_val,
@@ -47343,13 +43713,6 @@ request_param_info('searchRatings', 'limit') ->
             not_required
         ]
     };
-request_param_info('updateRating', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateRating', 'ratingId') ->
     #{
         source => qs_val,
@@ -47428,13 +43791,6 @@ request_param_info('updateRating', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('createRegion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createRegion', 'accountId') ->
@@ -47606,13 +43962,6 @@ request_param_info('createRegion', 'active') ->
             not_required
         ]
     };
-request_param_info('deleteRegion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteRegion', 'accountId') ->
     #{
         source => qs_val,
@@ -47626,13 +43975,6 @@ request_param_info('deleteRegion', 'regionId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getRegion', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -47650,13 +43992,6 @@ request_param_info('getRegion', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchRegions', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchRegions', 'accountId') ->
@@ -47837,13 +44172,6 @@ request_param_info('searchRegions', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('updateRegion', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateRegion', 'accountId') ->
@@ -48031,13 +44359,6 @@ request_param_info('updateRegion', 'clearLists') ->
             not_required
         ]
     };
-request_param_info('createBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createBatch', 'accountId') ->
     #{
         source => qs_val,
@@ -48127,25 +44448,11 @@ request_param_info('createBatch', 'pageUrl') ->
             not_required
         ]
     };
-request_param_info('createRegionLegSummaryBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createRegionLegSummaryBatch', 'list') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('deleteBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteBatch', 'accountId') ->
@@ -48161,13 +44468,6 @@ request_param_info('deleteBatch', 'batchId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getReportBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -48192,13 +44492,6 @@ request_param_info('getReportBatch', 'allResults') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('runReport', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -48265,13 +44558,6 @@ request_param_info('runReport', 'responseFormat') ->
             {type, binary},
             {enum, ['HTML', 'XML', 'JSON', 'CSV'] },
             not_required
-        ]
-    };
-request_param_info('searchBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchBatch', 'accountId') ->
@@ -48347,13 +44633,6 @@ request_param_info('searchBatch', 'endDate') ->
             not_required
         ]
     };
-request_param_info('createReservation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createReservation', 'deviceId') ->
     #{
         source => qs_val,
@@ -48418,13 +44697,6 @@ request_param_info('createReservation', 'metaData') ->
             not_required
         ]
     };
-request_param_info('deleteReservation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteReservation', 'reservationId') ->
     #{
         source => qs_val,
@@ -48447,13 +44719,6 @@ request_param_info('deleteReservation', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('reservableAvailability', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('reservableAvailability', 'reservableId') ->
@@ -48503,13 +44768,6 @@ request_param_info('reservableAvailability', 'availabilitySummary') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchAvailability', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchAvailability', 'reservableId') ->
@@ -48575,13 +44833,6 @@ request_param_info('searchAvailability', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchReservations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchReservations', 'deviceId') ->
@@ -48673,13 +44924,6 @@ request_param_info('searchReservations', 'limit') ->
             not_required
         ]
     };
-request_param_info('searchSchedule', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchSchedule', 'reservableId') ->
     #{
         source => qs_val,
@@ -48735,13 +44979,6 @@ request_param_info('searchSchedule', 'timeBucketMins') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createRetailer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createRetailer', 'name') ->
@@ -49010,13 +45247,6 @@ request_param_info('createRetailer', 'responseFormat') ->
             not_required
         ]
     };
-request_param_info('deleteRetailer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteRetailer', 'deviceId') ->
     #{
         source => qs_val,
@@ -49039,13 +45269,6 @@ request_param_info('deleteRetailer', 'retailerId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getRetailer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getRetailer', 'retailerId') ->
@@ -49078,13 +45301,6 @@ request_param_info('getRetailer', 'includeCounts') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getRetailers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getRetailers', 'visibility') ->
@@ -49201,13 +45417,6 @@ request_param_info('getRetailers', '_l') ->
             not_required
         ]
     };
-request_param_info('retailerLoginCheck', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('retailerLoginCheck', 'username') ->
     #{
         source => qs_val,
@@ -49254,13 +45463,6 @@ request_param_info('retailerLoginCheck', 'appKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updateRetailer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateRetailer', 'retailerId') ->
@@ -49521,13 +45723,6 @@ request_param_info('updateRetailer', 'responseFormat') ->
             not_required
         ]
     };
-request_param_info('createRetailerLocationConsumer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createRetailerLocationConsumer', 'appKey') ->
     #{
         source => qs_val,
@@ -49758,13 +45953,6 @@ request_param_info('createRetailerLocationConsumer', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('createRetailerLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createRetailerLocations', 'retailerId') ->
@@ -50080,13 +46268,6 @@ request_param_info('createRetailerLocations', 'responseIncludes') ->
             not_required
         ]
     };
-request_param_info('deleteRetailerLocation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteRetailerLocation', 'deviceId') ->
     #{
         source => qs_val,
@@ -50109,13 +46290,6 @@ request_param_info('deleteRetailerLocation', 'retailerLocationId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getRetailerLocation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getRetailerLocation', 'retailerLocationId') ->
@@ -50150,13 +46324,6 @@ request_param_info('getRetailerLocation', 'retailerLocationToken') ->
             not_required
         ]
     };
-request_param_info('getRetailerLocationConsumer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRetailerLocationConsumer', 'retailerLocationId') ->
     #{
         source => qs_val,
@@ -50179,13 +46346,6 @@ request_param_info('getRetailerLocationConsumer', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('indexedRetailerLocationDistanceSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('indexedRetailerLocationDistanceSearch', 'latitude') ->
@@ -50461,13 +46621,6 @@ request_param_info('indexedRetailerLocationDistanceSearch', 'includeRating') ->
             not_required
         ]
     };
-request_param_info('indexedRetailerLocationSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('indexedRetailerLocationSearch', 'accountId') ->
     #{
         source => qs_val,
@@ -50692,13 +46845,6 @@ request_param_info('indexedRetailerLocationSearch', 'includeRating') ->
             not_required
         ]
     };
-request_param_info('searchRetailerLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchRetailerLocations', 'deviceId') ->
     #{
         source => qs_val,
@@ -50898,13 +47044,6 @@ request_param_info('searchRetailerLocations', 'includeRating') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateRetailerLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateRetailerLocations', 'retailerLocationId') ->
@@ -51236,13 +47375,6 @@ request_param_info('updateRetailerLocations', 'tags') ->
             not_required
         ]
     };
-request_param_info('getRetaokiler', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRetaokiler', 'retailerId') ->
     #{
         source => qs_val,
@@ -51291,25 +47423,11 @@ request_param_info('getRetaokiler', 'limit') ->
             not_required
         ]
     };
-request_param_info('approveRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('approveRoute', 'routeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('copyRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51328,13 +47446,6 @@ request_param_info('copyRoute', 'Route') ->
             not_required
         ]
     };
-request_param_info('createRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createRoute', 'Route') ->
     #{
         source => body,
@@ -51342,25 +47453,11 @@ request_param_info('createRoute', 'Route') ->
             not_required
         ]
     };
-request_param_info('createRouteDirections', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createRouteDirections', 'routeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('createRoutePolyline', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51372,13 +47469,6 @@ request_param_info('createRoutePolyline', 'routeId') ->
             required
         ]
     };
-request_param_info('deleteRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteRoute', 'routeId') ->
     #{
         source => binding,
@@ -51387,25 +47477,11 @@ request_param_info('deleteRoute', 'routeId') ->
             required
         ]
     };
-request_param_info('disapproveRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('disapproveRoute', 'routeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51425,13 +47501,6 @@ request_param_info('getRoute', 'showInheritedProperties') ->
             required
         ]
     };
-request_param_info('getRouteDirections', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRouteDirections', 'routeId') ->
     #{
         source => binding,
@@ -51440,25 +47509,11 @@ request_param_info('getRouteDirections', 'routeId') ->
             required
         ]
     };
-request_param_info('getRouteShipments', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRouteShipments', 'routeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getRouteStop', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51478,13 +47533,6 @@ request_param_info('getRouteStop', 'stopId') ->
             required
         ]
     };
-request_param_info('getRouteStops', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRouteStops', 'routeId') ->
     #{
         source => binding,
@@ -51498,13 +47546,6 @@ request_param_info('getRouteStops', 'confirmedOnly') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('getShipmentsAtStop', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51524,25 +47565,11 @@ request_param_info('getShipmentsAtStop', 'stopId') ->
             required
         ]
     };
-request_param_info('optimizeRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('optimizeRoute', 'routeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('removeStop', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51562,13 +47589,6 @@ request_param_info('removeStop', 'stopId') ->
             required
         ]
     };
-request_param_info('reorderRouteStopsPatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('reorderRouteStopsPatch', 'routeId') ->
     #{
         source => binding,
@@ -51584,13 +47604,6 @@ request_param_info('reorderRouteStopsPatch', 'list') ->
             not_required
         ]
     };
-request_param_info('reorderRouteStopsPost', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('reorderRouteStopsPost', 'routeId') ->
     #{
         source => binding,
@@ -51604,13 +47617,6 @@ request_param_info('reorderRouteStopsPost', 'list') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('searchRoutes', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchRoutes', 'sortField') ->
@@ -51781,13 +47787,6 @@ request_param_info('searchRoutes', 'parentId') ->
             not_required
         ]
     };
-request_param_info('setDriver', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('setDriver', 'id') ->
     #{
         source => binding,
@@ -51804,13 +47803,6 @@ request_param_info('setDriver', 'driverId') ->
             required
         ]
     };
-request_param_info('updateRoute', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateRoute', 'routeId') ->
     #{
         source => binding,
@@ -51824,13 +47816,6 @@ request_param_info('updateRoute', 'Route') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('updateRouteStop', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateRouteStop', 'routeId') ->
@@ -51856,25 +47841,11 @@ request_param_info('updateRouteStop', 'Stop') ->
             not_required
         ]
     };
-request_param_info('createRouteSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createRouteSettings', 'RouteSettings') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('deleteRouteSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteRouteSettings', 'routeSettingsId') ->
@@ -51885,25 +47856,11 @@ request_param_info('deleteRouteSettings', 'routeSettingsId') ->
             required
         ]
     };
-request_param_info('getRouteSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getRouteSettings', 'routeSettingsId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchRouteSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -51971,13 +47928,6 @@ request_param_info('searchRouteSettings', 'keyword') ->
             not_required
         ]
     };
-request_param_info('updateRouteSettings', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateRouteSettings', 'routeSettingsId') ->
     #{
         source => binding,
@@ -51993,25 +47943,11 @@ request_param_info('updateRouteSettings', 'RouteSettings') ->
             not_required
         ]
     };
-request_param_info('computeRouting', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('computeRouting', 'data') ->
     #{
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('createScheduledNotification', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -52288,13 +48224,6 @@ request_param_info('createScheduledNotification', 'sendToAll') ->
             not_required
         ]
     };
-request_param_info('deleteScheduledNotification', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteScheduledNotification', 'accountId') ->
     #{
         source => qs_val,
@@ -52319,13 +48248,6 @@ request_param_info('deleteScheduledNotification', 'deleteByGroupingId') ->
             not_required
         ]
     };
-request_param_info('getScheduledNotification', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getScheduledNotification', 'accountId') ->
     #{
         source => qs_val,
@@ -52339,13 +48261,6 @@ request_param_info('getScheduledNotification', 'scheduledNotificationId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('scheduleNotificationListings', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -52411,13 +48326,6 @@ request_param_info('scheduleNotificationListings', 'type') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchScheduledNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchScheduledNotifications', 'accountId') ->
@@ -52578,13 +48486,6 @@ request_param_info('searchScheduledNotifications', 'returnAudienceAccountCount')
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateScheduledNotification', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateScheduledNotification', 'scheduledNotificationId') ->
@@ -52892,13 +48793,6 @@ request_param_info('updateScheduledNotification', 'sendToAll') ->
             not_required
         ]
     };
-request_param_info('createScore', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createScore', 'accountId') ->
     #{
         source => qs_val,
@@ -52979,13 +48873,6 @@ request_param_info('createScore', 'highest') ->
             not_required
         ]
     };
-request_param_info('getScore', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getScore', 'accountId') ->
     #{
         source => qs_val,
@@ -53058,13 +48945,6 @@ request_param_info('getScore', 'scoreStatus') ->
             not_required
         ]
     };
-request_param_info('searchScores', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchScores', 'accountId') ->
     #{
         source => qs_val,
@@ -53119,13 +48999,6 @@ request_param_info('searchScores', 'gameObjectId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createSecureApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createSecureApplication', 'accountId') ->
@@ -53211,13 +49084,6 @@ request_param_info('createSecureApplication', 'biometricPosition2') ->
             not_required
         ]
     };
-request_param_info('deleteSecureApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteSecureApplication', 'accountId') ->
     #{
         source => qs_val,
@@ -53231,13 +49097,6 @@ request_param_info('deleteSecureApplication', 'appKey') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('loginSecure', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53313,25 +49172,11 @@ request_param_info('loginSecure', 'longitude') ->
             not_required
         ]
     };
-request_param_info('purchaseSecure', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('purchaseSecure', 'PaymentRequest') ->
     #{
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/PaymentRequest">>},
-            required
-        ]
-    };
-request_param_info('resetSecure', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53348,13 +49193,6 @@ request_param_info('resetSecure', 'appKey') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('updateSecureApplication', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53441,25 +49279,11 @@ request_param_info('updateSecureApplication', 'biometricPosition2') ->
             not_required
         ]
     };
-request_param_info('createServiceHub', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createServiceHub', 'ServiceHub') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('deleteServiceHub', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteServiceHub', 'id') ->
@@ -53470,25 +49294,11 @@ request_param_info('deleteServiceHub', 'id') ->
             required
         ]
     };
-request_param_info('getServiceHub', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getServiceHub', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('postServiceHub', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53507,13 +49317,6 @@ request_param_info('postServiceHub', 'ServiceHub') ->
             not_required
         ]
     };
-request_param_info('putServiceHub', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('putServiceHub', 'id') ->
     #{
         source => binding,
@@ -53527,13 +49330,6 @@ request_param_info('putServiceHub', 'ServiceHub') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('searchServiceHubs', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchServiceHubs', 'sortField') ->
@@ -53592,25 +49388,11 @@ request_param_info('searchServiceHubs', 'retailerId') ->
             not_required
         ]
     };
-request_param_info('cancelShipment', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('cancelShipment', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('createShipment', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53621,13 +49403,6 @@ request_param_info('createShipment', 'Shipment') ->
             not_required
         ]
     };
-request_param_info('deleteShipment', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteShipment', 'id') ->
     #{
         source => binding,
@@ -53636,25 +49411,11 @@ request_param_info('deleteShipment', 'id') ->
             required
         ]
     };
-request_param_info('getShipment', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getShipment', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchShipments', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53722,13 +49483,6 @@ request_param_info('searchShipments', 'routeId') ->
             not_required
         ]
     };
-request_param_info('updateShipment', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateShipment', 'id') ->
     #{
         source => binding,
@@ -53742,13 +49496,6 @@ request_param_info('updateShipment', 'Shipment') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('updateShipmentStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateShipmentStatus', 'id') ->
@@ -53766,25 +49513,11 @@ request_param_info('updateShipmentStatus', 'map') ->
             not_required
         ]
     };
-request_param_info('createShipmentBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createShipmentBatch', 'ShipmentBatch') ->
     #{
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('deleteShipmentBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteShipmentBatch', 'batchId') ->
@@ -53795,25 +49528,11 @@ request_param_info('deleteShipmentBatch', 'batchId') ->
             required
         ]
     };
-request_param_info('getShipmentBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getShipmentBatch', 'batchId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getShipmentBatchStatus', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -53913,13 +49632,6 @@ request_param_info('getShipmentBatchStatus', 'keyword') ->
             not_required
         ]
     };
-request_param_info('searchShipmentBatch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchShipmentBatch', 'hubId') ->
     #{
         source => qs_val,
@@ -53960,13 +49672,6 @@ request_param_info('searchShipmentBatch', 'limit') ->
             required
         ]
     };
-request_param_info('simulation', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('simulation', 'data') ->
     #{
         source => qs_val,
@@ -53983,25 +49688,11 @@ request_param_info('simulation', 'realTime') ->
             required
         ]
     };
-request_param_info('getStop', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getStop', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('updateStop', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -54020,13 +49711,6 @@ request_param_info('updateStop', 'Stop') ->
             not_required
         ]
     };
-request_param_info('createStripeCheckoutSession', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createStripeCheckoutSession', 'appKey') ->
     #{
         source => qs_val,
@@ -54040,13 +49724,6 @@ request_param_info('createStripeCheckoutSession', 'stripeParameters') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('createSubscription', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -54074,25 +49751,11 @@ request_param_info('createSubscription', 'promoCode') ->
             not_required
         ]
     };
-request_param_info('deleteSubscription', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteSubscription', 'accountId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getSubscription', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -54104,25 +49767,11 @@ request_param_info('getSubscription', 'accountId') ->
             required
         ]
     };
-request_param_info('getSubscriptionPlan', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getSubscriptionPlan', 'planId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getSubscriptionPlans', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -54140,13 +49789,6 @@ request_param_info('getSubscriptionPlans', 'role') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getSubscriptionUsage', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getSubscriptionUsage', 'accountId') ->
@@ -54181,13 +49823,6 @@ request_param_info('getSubscriptionUsage', 'end') ->
             not_required
         ]
     };
-request_param_info('updateSubscription', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateSubscription', 'accountId') ->
     #{
         source => qs_val,
@@ -54218,13 +49853,6 @@ request_param_info('updateSubscription', 'active') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createTask', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createTask', 'accountId') ->
@@ -54324,13 +49952,6 @@ request_param_info('createTask', 'active') ->
             not_required
         ]
     };
-request_param_info('deleteTask', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteTask', 'accountId') ->
     #{
         source => qs_val,
@@ -54347,13 +49968,6 @@ request_param_info('deleteTask', 'taskId') ->
             required
         ]
     };
-request_param_info('getTask', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTask', 'accountId') ->
     #{
         source => qs_val,
@@ -54367,13 +49981,6 @@ request_param_info('getTask', 'taskId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchTasks', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -54471,13 +50078,6 @@ request_param_info('searchTasks', 'activeOnly') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateTask', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateTask', 'taskId') ->
@@ -54585,13 +50185,6 @@ request_param_info('updateTask', 'active') ->
             not_required
         ]
     };
-request_param_info('createTerritory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createTerritory', 'accountId') ->
     #{
         source => qs_val,
@@ -54616,13 +50209,6 @@ request_param_info('createTerritory', 'active') ->
             not_required
         ]
     };
-request_param_info('deleteTerritory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteTerritory', 'accountId') ->
     #{
         source => qs_val,
@@ -54639,25 +50225,11 @@ request_param_info('deleteTerritory', 'territoryId') ->
             required
         ]
     };
-request_param_info('getTerritory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTerritory', 'territoryId') ->
     #{
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchTerritories', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -54702,13 +50274,6 @@ request_param_info('searchTerritories', 'limit') ->
             not_required
         ]
     };
-request_param_info('updateTerritory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateTerritory', 'accountId') ->
     #{
         source => qs_val,
@@ -54739,13 +50304,6 @@ request_param_info('updateTerritory', 'active') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('addOrUpdateThemeDescriptor', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('addOrUpdateThemeDescriptor', 'publicRead') ->
@@ -54965,13 +50523,6 @@ request_param_info('addOrUpdateThemeDescriptor', 'longitude') ->
             not_required
         ]
     };
-request_param_info('getThemeDescriptor', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getThemeDescriptor', 'themeDescriptorId') ->
     #{
         source => qs_val,
@@ -55018,13 +50569,6 @@ request_param_info('getThemeDescriptor', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('getThemeDescriptors', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getThemeDescriptors', 'filter') ->
@@ -55171,13 +50715,6 @@ request_param_info('getThemeDescriptors', 'longitude') ->
             not_required
         ]
     };
-request_param_info('removeThemeDescriptor', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('removeThemeDescriptor', 'themeDescriptorId') ->
     #{
         source => qs_val,
@@ -55224,13 +50761,6 @@ request_param_info('removeThemeDescriptor', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('createCredential', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createCredential', 'thirdPartyId') ->
@@ -55369,13 +50899,6 @@ request_param_info('createCredential', 'audienceIdsToRemove') ->
             not_required
         ]
     };
-request_param_info('createNetwork', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createNetwork', 'accountId') ->
     #{
         source => qs_val,
@@ -55512,13 +51035,6 @@ request_param_info('createNetwork', 'binary') ->
             not_required
         ]
     };
-request_param_info('deleteCredential', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteCredential', 'accountId') ->
     #{
         source => qs_val,
@@ -55551,13 +51067,6 @@ request_param_info('deleteCredential', 'appKey') ->
             required
         ]
     };
-request_param_info('deleteNetwork', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteNetwork', 'accountId') ->
     #{
         source => qs_val,
@@ -55571,13 +51080,6 @@ request_param_info('deleteNetwork', 'networkUID') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('getCredential', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -55701,13 +51203,6 @@ request_param_info('getCredential', 'referralAccountId') ->
             not_required
         ]
     };
-request_param_info('getNetwork', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getNetwork', 'accountId') ->
     #{
         source => qs_val,
@@ -55721,13 +51216,6 @@ request_param_info('getNetwork', 'networkUID') ->
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('searchCredentials', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -55777,13 +51265,6 @@ request_param_info('searchCredentials', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchNetworks', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchNetworks', 'accountId') ->
@@ -55851,13 +51332,6 @@ request_param_info('searchNetworks', 'filterBillable') ->
             not_required
         ]
     };
-request_param_info('sendMFAChallenge', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('sendMFAChallenge', 'networkUID') ->
     #{
         source => qs_val,
@@ -55896,13 +51370,6 @@ request_param_info('sendMFAChallenge', 'deviceId') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updateCredential', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateCredential', 'networkUID') ->
@@ -55975,13 +51442,6 @@ request_param_info('updateCredential', 'thirdPartyRefreshToken') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updateNetwork', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateNetwork', 'accountId') ->
@@ -56128,13 +51588,6 @@ request_param_info('updateNetwork', 'binary') ->
             not_required
         ]
     };
-request_param_info('getTicketCount', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTicketCount', 'deviceId') ->
     #{
         source => qs_val,
@@ -56173,13 +51626,6 @@ request_param_info('getTicketCount', 'ticketType') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getTicketList', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getTicketList', 'deviceId') ->
@@ -56254,13 +51700,6 @@ request_param_info('getTicketList', 'appKey') ->
             not_required
         ]
     };
-request_param_info('giftPurchase', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('giftPurchase', 'receiverAccountId') ->
     #{
         source => qs_val,
@@ -56323,13 +51762,6 @@ request_param_info('giftPurchase', 'appKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('saveTicket', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('saveTicket', 'actionType') ->
@@ -56476,13 +51908,6 @@ request_param_info('saveTicket', 'appVersion') ->
             not_required
         ]
     };
-request_param_info('saveTicketViaFileUpload', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('saveTicketViaFileUpload', 'actionType') ->
     #{
         source => qs_val,
@@ -56625,20 +52050,6 @@ request_param_info('saveTicketViaFileUpload', 'appVersion') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('ticketOffers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
-request_param_info('createTournament', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createTournament', 'accountId') ->
@@ -56924,13 +52335,6 @@ request_param_info('createTournament', 'tieTag') ->
             not_required
         ]
     };
-request_param_info('deleteTournament', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteTournament', 'accountId') ->
     #{
         source => qs_val,
@@ -56944,13 +52348,6 @@ request_param_info('deleteTournament', 'missionId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getTournament', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -56993,13 +52390,6 @@ request_param_info('getTournament', 'objectPreviewSize') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchObjects', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchObjects', 'accountId') ->
@@ -57049,13 +52439,6 @@ request_param_info('searchObjects', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchRounds', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchRounds', 'accountId') ->
@@ -57121,13 +52504,6 @@ request_param_info('searchRounds', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchTournaments', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchTournaments', 'accountId') ->
@@ -57228,13 +52604,6 @@ request_param_info('searchTournaments', 'limit') ->
             not_required
         ]
     };
-request_param_info('submitTournamentScore', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('submitTournamentScore', 'accountId') ->
     #{
         source => qs_val,
@@ -57291,13 +52660,6 @@ request_param_info('submitTournamentScore', 'gameLevelId') ->
             not_required
         ]
     };
-request_param_info('submitTournamentVote', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('submitTournamentVote', 'accountId') ->
     #{
         source => qs_val,
@@ -57346,13 +52708,6 @@ request_param_info('submitTournamentVote', 'checkIfDeviceAlreadyVoted') ->
             not_required
         ]
     };
-request_param_info('substituteTournamentPlayer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('substituteTournamentPlayer', 'accountId') ->
     #{
         source => qs_val,
@@ -57382,13 +52737,6 @@ request_param_info('substituteTournamentPlayer', 'gameLevelId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('updateTournament', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -57666,13 +53014,6 @@ request_param_info('updateTournament', 'tieTag') ->
             not_required
         ]
     };
-request_param_info('batchSaveTracking', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('batchSaveTracking', 'data') ->
     #{
         source => qs_val,
@@ -57727,13 +53068,6 @@ request_param_info('batchSaveTracking', 'slaveUID') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('getPredictedLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getPredictedLocations', 'accountId') ->
@@ -57810,13 +53144,6 @@ request_param_info('getPredictedLocations', 'sortOrder') ->
             not_required
         ]
     };
-request_param_info('getPredictedPath', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getPredictedPath', 'accountId') ->
     #{
         source => qs_val,
@@ -57838,13 +53165,6 @@ request_param_info('getPredictedPath', 'endStepId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getPreferredLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -57937,13 +53257,6 @@ request_param_info('getPreferredLocations', 'distanceUnit') ->
             not_required
         ]
     };
-request_param_info('getTrackingLegs', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTrackingLegs', 'deviceId') ->
     #{
         source => qs_val,
@@ -58006,13 +53319,6 @@ request_param_info('getTrackingLegs', 'getLastPoint') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('saveTrackingLeg', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('saveTrackingLeg', 'startLat') ->
@@ -58111,13 +53417,6 @@ request_param_info('saveTrackingLeg', 'tags') ->
             not_required
         ]
     };
-request_param_info('saveTrackingStep', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('saveTrackingStep', 'legId') ->
     #{
         source => qs_val,
@@ -58204,13 +53503,6 @@ request_param_info('saveTrackingStep', 'duration') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchAccountsWithTrackingLegs', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchAccountsWithTrackingLegs', 'accountId') ->
@@ -58325,13 +53617,6 @@ request_param_info('searchAccountsWithTrackingLegs', 'activeOnly') ->
             not_required
         ]
     };
-request_param_info('searchTrackingLegs', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchTrackingLegs', 'accountId') ->
     #{
         source => qs_val,
@@ -58394,13 +53679,6 @@ request_param_info('searchTrackingLegs', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createTrigger', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createTrigger', 'accountId') ->
@@ -58508,13 +53786,6 @@ request_param_info('createTrigger', 'active') ->
             not_required
         ]
     };
-request_param_info('deleteTrigger', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteTrigger', 'accountId') ->
     #{
         source => qs_val,
@@ -58531,13 +53802,6 @@ request_param_info('deleteTrigger', 'triggerId') ->
             required
         ]
     };
-request_param_info('getTrigger', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTrigger', 'accountId') ->
     #{
         source => qs_val,
@@ -58551,13 +53815,6 @@ request_param_info('getTrigger', 'triggerId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchTriggers', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -58655,13 +53912,6 @@ request_param_info('searchTriggers', 'activeOnly') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateTrigger', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateTrigger', 'triggerId') ->
@@ -58777,13 +54027,6 @@ request_param_info('updateTrigger', 'active') ->
             not_required
         ]
     };
-request_param_info('createTrip', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createTrip', 'Trip') ->
     #{
         source => body,
@@ -58791,25 +54034,11 @@ request_param_info('createTrip', 'Trip') ->
             not_required
         ]
     };
-request_param_info('delete', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('delete', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('driveTrip', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -58829,13 +54058,6 @@ request_param_info('driveTrip', 'recurrence') ->
             required
         ]
     };
-request_param_info('flexibleTrip', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('flexibleTrip', 'id') ->
     #{
         source => binding,
@@ -58852,25 +54074,11 @@ request_param_info('flexibleTrip', 'recurrence') ->
             required
         ]
     };
-request_param_info('getTrip', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getTrip', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getTripMatches', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -58938,13 +54146,6 @@ request_param_info('getTripMatches', 'matchedHasDriver') ->
             not_required
         ]
     };
-request_param_info('processTripMatches', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('processTripMatches', 'startDate') ->
     #{
         source => qs_val,
@@ -58969,13 +54170,6 @@ request_param_info('processTripMatches', 'tripId') ->
             not_required
         ]
     };
-request_param_info('ride', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('ride', 'id') ->
     #{
         source => binding,
@@ -58989,13 +54183,6 @@ request_param_info('ride', 'recurrence') ->
         source => qs_val,
         rules => [
             {type, boolean},
-            required
-        ]
-    };
-request_param_info('search', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -59069,13 +54256,6 @@ request_param_info('search', 'hasNotifications') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchTrips', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchTrips', 'accountId') ->
@@ -59158,13 +54338,6 @@ request_param_info('searchTrips', 'matchedHasDriver') ->
             not_required
         ]
     };
-request_param_info('updateLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateLocations', 'id') ->
     #{
         source => binding,
@@ -59178,13 +54351,6 @@ request_param_info('updateLocations', 'Trip') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('updateRecurrenceLocations', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateRecurrenceLocations', 'id') ->
@@ -59202,13 +54368,6 @@ request_param_info('updateRecurrenceLocations', 'Trip') ->
             not_required
         ]
     };
-request_param_info('updateRecurrenceShipments', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateRecurrenceShipments', 'id') ->
     #{
         source => binding,
@@ -59222,13 +54381,6 @@ request_param_info('updateRecurrenceShipments', 'Trip') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('updateShipments', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateShipments', 'id') ->
@@ -59246,13 +54398,6 @@ request_param_info('updateShipments', 'Trip') ->
             not_required
         ]
     };
-request_param_info('updateTrip', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateTrip', 'id') ->
     #{
         source => binding,
@@ -59266,13 +54411,6 @@ request_param_info('updateTrip', 'Trip') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('updateTripNotifications', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateTripNotifications', 'id') ->
@@ -59289,13 +54427,6 @@ request_param_info('updateTripNotifications', 'notifications') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('smsBuyOffer', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('smsBuyOffer', 'appKey') ->
@@ -59330,25 +54461,11 @@ request_param_info('smsBuyOffer', 'currencyType') ->
             required
         ]
     };
-request_param_info('authorizeTwitter', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('authorizeTwitter', 'appKey') ->
     #{
         source => qs_val,
         rules => [
             {type, binary},
-            required
-        ]
-    };
-request_param_info('loginTwitter', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -59406,13 +54523,6 @@ request_param_info('loginTwitter', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('addUsersToPermissionable', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('addUsersToPermissionable', 'permissionableType') ->
@@ -59552,13 +54662,6 @@ request_param_info('addUsersToPermissionable', 'audienceIds') ->
             not_required
         ]
     };
-request_param_info('approvePermissionable', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('approvePermissionable', 'permissionableType') ->
     #{
         source => qs_val,
@@ -59599,13 +54702,6 @@ request_param_info('approvePermissionable', 'approvalStatus') ->
             {type, binary},
             {enum, ['PENDING', 'REJECTED', 'APPROVED', 'FEATURED'] },
             not_required
-        ]
-    };
-request_param_info('leaveFromPermissionable', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('leaveFromPermissionable', 'permissionableType') ->
@@ -59654,13 +54750,6 @@ request_param_info('leaveFromPermissionable', 'longitude') ->
         rules => [
             {type, float},
             not_required
-        ]
-    };
-request_param_info('removeUsersFromPermissionable', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('removeUsersFromPermissionable', 'permissionableType') ->
@@ -59750,13 +54839,6 @@ request_param_info('removeUsersFromPermissionable', 'audienceIds') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchPermissionables', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchPermissionables', 'deviceId') ->
@@ -59862,13 +54944,6 @@ request_param_info('searchPermissionables', 'limit') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('searchPermissionablesFollowingDistance', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchPermissionablesFollowingDistance', 'latitude') ->
@@ -59984,13 +55059,6 @@ request_param_info('searchPermissionablesFollowingDistance', 'limit') ->
             not_required
         ]
     };
-request_param_info('createFollowing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createFollowing', 'accountId') ->
     #{
         source => qs_val,
@@ -60013,13 +55081,6 @@ request_param_info('createFollowing', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('createSpace', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createSpace', 'accountId') ->
@@ -60054,13 +55115,6 @@ request_param_info('createSpace', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('createVatomEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createVatomEvent', 'accountId') ->
     #{
         source => qs_val,
@@ -60093,13 +55147,6 @@ request_param_info('createVatomEvent', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('deleteFollowing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteFollowing', 'accountId') ->
     #{
         source => qs_val,
@@ -60122,13 +55169,6 @@ request_param_info('deleteFollowing', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('deletePointsBalance', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deletePointsBalance', 'accountId') ->
@@ -60163,13 +55203,6 @@ request_param_info('deletePointsBalance', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('deleteSpace', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteSpace', 'accountId') ->
     #{
         source => qs_val,
@@ -60200,13 +55233,6 @@ request_param_info('deleteSpace', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('deleteVatomEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('deleteVatomEvent', 'accountId') ->
@@ -60241,13 +55267,6 @@ request_param_info('deleteVatomEvent', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('deleteVatomNFT', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteVatomNFT', 'accountId') ->
     #{
         source => qs_val,
@@ -60270,13 +55289,6 @@ request_param_info('deleteVatomNFT', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('executeActionOnNFT', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('executeActionOnNFT', 'accountId') ->
@@ -60311,13 +55323,6 @@ request_param_info('executeActionOnNFT', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('geomapSearch', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('geomapSearch', 'accountId') ->
     #{
         source => qs_val,
@@ -60340,13 +55345,6 @@ request_param_info('geomapSearch', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getBusinessBehaviors', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getBusinessBehaviors', 'accountId') ->
@@ -60373,13 +55371,6 @@ request_param_info('getBusinessBehaviors', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getBusinessCoinsBalance', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getBusinessCoinsBalance', 'accountId') ->
     #{
         source => qs_val,
@@ -60404,13 +55395,6 @@ request_param_info('getBusinessCoinsBalance', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getBusinessIds', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getBusinessIds', 'accountId') ->
     #{
         source => qs_val,
@@ -60425,13 +55409,6 @@ request_param_info('getBusinessIds', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getBusinessInfo', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getBusinessInfo', 'accountId') ->
@@ -60466,13 +55443,6 @@ request_param_info('getBusinessInfo', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getBusinessUsers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getBusinessUsers', 'accountId') ->
     #{
         source => qs_val,
@@ -60495,13 +55465,6 @@ request_param_info('getBusinessUsers', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getCampaignGroupEntities', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getCampaignGroupEntities', 'accountId') ->
@@ -60536,13 +55499,6 @@ request_param_info('getCampaignGroupEntities', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getCampaignGroupRules', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getCampaignGroupRules', 'accountId') ->
     #{
         source => qs_val,
@@ -60573,13 +55529,6 @@ request_param_info('getCampaignGroupRules', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getCampaignGroupStats', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getCampaignGroupStats', 'accountId') ->
@@ -60614,13 +55563,6 @@ request_param_info('getCampaignGroupStats', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getCampaignInfo', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getCampaignInfo', 'accountId') ->
     #{
         source => qs_val,
@@ -60651,13 +55593,6 @@ request_param_info('getCampaignInfo', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getEventGuestList', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getEventGuestList', 'accountId') ->
@@ -60692,13 +55627,6 @@ request_param_info('getEventGuestList', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getInventory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getInventory', 'accountId') ->
     #{
         source => qs_val,
@@ -60723,13 +55651,6 @@ request_param_info('getInventory', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getMyFollowing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getMyFollowing', 'accountId') ->
     #{
         source => qs_val,
@@ -60744,13 +55665,6 @@ request_param_info('getMyFollowing', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getPointsBalance', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getPointsBalance', 'accountId') ->
@@ -60783,13 +55697,6 @@ request_param_info('getPointsBalance', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getPointsBalanceAsBusiness', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getPointsBalanceAsBusiness', 'accountId') ->
@@ -60832,13 +55739,6 @@ request_param_info('getPointsBalanceAsBusiness', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getSpace', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getSpace', 'accountId') ->
     #{
         source => qs_val,
@@ -60869,13 +55769,6 @@ request_param_info('getSpace', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getUserCoinsAsBusiness', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getUserCoinsAsBusiness', 'accountId') ->
@@ -60910,13 +55803,6 @@ request_param_info('getUserCoinsAsBusiness', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getUserCoinsBalance', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getUserCoinsBalance', 'accountId') ->
     #{
         source => qs_val,
@@ -60949,13 +55835,6 @@ request_param_info('getUserCoinsBalance', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getUserFollowers', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getUserFollowers', 'accountId') ->
     #{
         source => qs_val,
@@ -60978,13 +55857,6 @@ request_param_info('getUserFollowers', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getUserFollowing', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getUserFollowing', 'accountId') ->
@@ -61011,13 +55883,6 @@ request_param_info('getUserFollowing', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getUserInfo', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getUserInfo', 'accountId') ->
     #{
         source => qs_val,
@@ -61042,13 +55907,6 @@ request_param_info('getUserInfo', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getUserProfile', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getUserProfile', 'accountId') ->
     #{
         source => qs_val,
@@ -61063,13 +55921,6 @@ request_param_info('getUserProfile', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('getVatomEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getVatomEvent', 'accountId') ->
@@ -61104,13 +55955,6 @@ request_param_info('getVatomEvent', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('getVatomNFT', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getVatomNFT', 'accountId') ->
     #{
         source => qs_val,
@@ -61133,13 +55977,6 @@ request_param_info('getVatomNFT', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('listCommunities', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('listCommunities', 'accountId') ->
@@ -61174,13 +56011,6 @@ request_param_info('listCommunities', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('listEvents', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('listEvents', 'accountId') ->
     #{
         source => qs_val,
@@ -61211,13 +56041,6 @@ request_param_info('listEvents', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('listSpaces', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('listSpaces', 'accountId') ->
@@ -61252,13 +56075,6 @@ request_param_info('listSpaces', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('listUserCoinTransactions', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('listUserCoinTransactions', 'accountId') ->
     #{
         source => qs_val,
@@ -61289,13 +56105,6 @@ request_param_info('listUserCoinTransactions', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('listUserCoinTransactionsAsBusiness', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('listUserCoinTransactionsAsBusiness', 'accountId') ->
@@ -61338,13 +56147,6 @@ request_param_info('listUserCoinTransactionsAsBusiness', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('performActionOnNFT', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('performActionOnNFT', 'accountId') ->
     #{
         source => qs_val,
@@ -61385,13 +56187,6 @@ request_param_info('performActionOnNFT', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('redeemNFT', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('redeemNFT', 'accountId') ->
     #{
         source => qs_val,
@@ -61422,13 +56217,6 @@ request_param_info('redeemNFT', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('redeemUserCoinsAsBusiness', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('redeemUserCoinsAsBusiness', 'accountId') ->
@@ -61471,13 +56259,6 @@ request_param_info('redeemUserCoinsAsBusiness', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('searchBusinesses', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchBusinesses', 'accountId') ->
     #{
         source => qs_val,
@@ -61500,13 +56281,6 @@ request_param_info('searchBusinesses', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchCampaignGroups', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchCampaignGroups', 'accountId') ->
@@ -61533,13 +56307,6 @@ request_param_info('searchCampaignGroups', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('searchIdentities', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchIdentities', 'accountId') ->
     #{
         source => qs_val,
@@ -61554,13 +56321,6 @@ request_param_info('searchIdentities', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('searchInventory', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchInventory', 'accountId') ->
@@ -61585,13 +56345,6 @@ request_param_info('searchInventory', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('sendNFT', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('sendNFT', 'accountId') ->
@@ -61632,13 +56385,6 @@ request_param_info('sendNFT', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('setPointsBalanceAsBusiness', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('setPointsBalanceAsBusiness', 'accountId') ->
@@ -61689,13 +56435,6 @@ request_param_info('setPointsBalanceAsBusiness', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('transferUserCoins', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('transferUserCoins', 'accountId') ->
     #{
         source => qs_val,
@@ -61728,13 +56467,6 @@ request_param_info('transferUserCoins', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('updateBusinessCoins', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateBusinessCoins', 'accountId') ->
     #{
         source => qs_val,
@@ -61765,13 +56497,6 @@ request_param_info('updateBusinessCoins', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateEventGuestList', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateEventGuestList', 'accountId') ->
@@ -61814,13 +56539,6 @@ request_param_info('updateEventGuestList', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('updateSpace', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateSpace', 'accountId') ->
     #{
         source => qs_val,
@@ -61859,13 +56577,6 @@ request_param_info('updateSpace', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateUserCoinsAsBusiness', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateUserCoinsAsBusiness', 'accountId') ->
@@ -61908,13 +56619,6 @@ request_param_info('updateUserCoinsAsBusiness', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('updateUserProfile', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateUserProfile', 'accountId') ->
     #{
         source => qs_val,
@@ -61937,13 +56641,6 @@ request_param_info('updateUserProfile', 'returnRawResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('updateVatomEvent', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateVatomEvent', 'accountId') ->
@@ -61986,13 +56683,6 @@ request_param_info('updateVatomEvent', 'returnRawResponse') ->
             not_required
         ]
     };
-request_param_info('createVehicle', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createVehicle', 'vehicle') ->
     #{
         source => qs_val,
@@ -62008,13 +56698,6 @@ request_param_info('createVehicle', 'Vehicle') ->
             not_required
         ]
     };
-request_param_info('deleteVehicle', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteVehicle', 'id') ->
     #{
         source => binding,
@@ -62023,25 +56706,11 @@ request_param_info('deleteVehicle', 'id') ->
             required
         ]
     };
-request_param_info('getVehicle', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getVehicle', 'id') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchVehicle', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -62101,13 +56770,6 @@ request_param_info('searchVehicle', 'keyword') ->
             not_required
         ]
     };
-request_param_info('updateVehicle', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateVehicle', 'id') ->
     #{
         source => binding,
@@ -62131,13 +56793,6 @@ request_param_info('updateVehicle', 'Vehicle') ->
             not_required
         ]
     };
-request_param_info('createVehicleType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('createVehicleType', 'vehicleType') ->
     #{
         source => qs_val,
@@ -62153,13 +56808,6 @@ request_param_info('createVehicleType', 'VehicleType') ->
             not_required
         ]
     };
-request_param_info('deleteVehicleType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteVehicleType', 'vehicleTypeId') ->
     #{
         source => binding,
@@ -62168,25 +56816,11 @@ request_param_info('deleteVehicleType', 'vehicleTypeId') ->
             required
         ]
     };
-request_param_info('getVehicleType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getVehicleType', 'vehicleTypeId') ->
     #{
         source => binding,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('searchVehicleTypes', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -62246,13 +56880,6 @@ request_param_info('searchVehicleTypes', 'hubId') ->
             not_required
         ]
     };
-request_param_info('updateVehicleType', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateVehicleType', 'vehicleTypeId') ->
     #{
         source => binding,
@@ -62274,13 +56901,6 @@ request_param_info('updateVehicleType', 'VehicleType') ->
         source => body,
         rules => [
             not_required
-        ]
-    };
-request_param_info('createOfferTransaction', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createOfferTransaction', 'deviceId') ->
@@ -62371,13 +56991,6 @@ request_param_info('createOfferTransaction', 'status') ->
             not_required
         ]
     };
-request_param_info('deleteOfferTransaction', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteOfferTransaction', 'transactionId') ->
     #{
         source => qs_val,
@@ -62400,13 +57013,6 @@ request_param_info('deleteOfferTransaction', 'accountId') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('getOfferTransaction', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('getOfferTransaction', 'transactionId') ->
@@ -62463,13 +57069,6 @@ request_param_info('getOfferTransaction', 'returnFullResponse') ->
         rules => [
             {type, boolean},
             not_required
-        ]
-    };
-request_param_info('previewOfferTransaction', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('previewOfferTransaction', 'deviceId') ->
@@ -62550,13 +57149,6 @@ request_param_info('previewOfferTransaction', 'appKey') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('searchOfferTransactions', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('searchOfferTransactions', 'deviceId') ->
@@ -62889,13 +57481,6 @@ request_param_info('searchOfferTransactions', 'recurringExpirationBefore') ->
             not_required
         ]
     };
-request_param_info('updateOfferTransaction', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('updateOfferTransaction', 'transactionId') ->
     #{
         source => qs_val,
@@ -63000,13 +57585,6 @@ request_param_info('updateOfferTransaction', 'exceptionMembershipOfferIds') ->
             not_required
         ]
     };
-request_param_info('searchWeather', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('searchWeather', 'regionId') ->
     #{
         source => qs_val,
@@ -63037,13 +57615,6 @@ request_param_info('searchWeather', 'timezoneOffset') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('createWord', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('createWord', 'accountId') ->
@@ -63118,13 +57689,6 @@ request_param_info('createWord', 'points') ->
             not_required
         ]
     };
-request_param_info('deleteWord', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('deleteWord', 'wordId') ->
     #{
         source => qs_val,
@@ -63141,13 +57705,6 @@ request_param_info('deleteWord', 'accountId') ->
             required
         ]
     };
-request_param_info('getWord', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
-        ]
-    };
 request_param_info('getWord', 'wordId') ->
     #{
         source => qs_val,
@@ -63161,13 +57718,6 @@ request_param_info('getWord', 'accountId') ->
         source => qs_val,
         rules => [
             {type, integer},
-            required
-        ]
-    };
-request_param_info('getWords', 'version') ->
-    #{
-        source => binding,
-        rules => [
             required
         ]
     };
@@ -63225,13 +57775,6 @@ request_param_info('getWords', 'keyword') ->
         rules => [
             {type, binary},
             not_required
-        ]
-    };
-request_param_info('updateWord', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('updateWord', 'wordId') ->
@@ -63312,13 +57855,6 @@ request_param_info('updateWord', 'points') ->
         rules => [
             {type, integer},
             not_required
-        ]
-    };
-request_param_info('runWorkflow', 'version') ->
-    #{
-        source => binding,
-        rules => [
-            required
         ]
     };
 request_param_info('runWorkflow', 'accountId') ->

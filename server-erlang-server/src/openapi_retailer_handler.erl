@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/retailer/create`, OperationId: `createRetailer`:
+- `POST` to `/retailer/create`, OperationId: `createRetailer`:
 Create Retailer.
 Create a retailer record. A billable entity must be created first before a retailer record can be made.
 
-- `POST` to `/api/:version/retailer/delete`, OperationId: `deleteRetailer`:
+- `POST` to `/retailer/delete`, OperationId: `deleteRetailer`:
 Delete Retailer.
 Set the deleted timestamp to current time.
 
-- `GET` to `/api/:version/retailer/get`, OperationId: `getRetailer`:
+- `GET` to `/retailer/get`, OperationId: `getRetailer`:
 Get Retailer.
 Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
 
-- `GET` to `/api/:version/retailer/search`, OperationId: `getRetailers`:
+- `GET` to `/retailer/search`, OperationId: `getRetailers`:
 Search Retailers.
 earches on retailers that the account has access to.
 
-- `POST` to `/api/:version/retailer/login`, OperationId: `retailerLoginCheck`:
+- `POST` to `/retailer/login`, OperationId: `retailerLoginCheck`:
 Login Retailer.
 Retailer login check.
 
-- `POST` to `/api/:version/retailer/update`, OperationId: `updateRetailer`:
+- `POST` to `/retailer/update`, OperationId: `updateRetailer`:
 Update Retailer.
 Update a retailer record. Only the owner and the employees of the retailer have access to update its information.
 

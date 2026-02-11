@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/reservation/create`, OperationId: `createReservation`:
+- `POST` to `/reservation/create`, OperationId: `createReservation`:
 Create Reservation.
 Creates a reservation on an offer object
 
-- `POST` to `/api/:version/reservation/delete`, OperationId: `deleteReservation`:
+- `POST` to `/reservation/delete`, OperationId: `deleteReservation`:
 Delete Reservation.
 Deleted a reservation on a reservation object
 
-- `POST` to `/api/:version/reservable/availability/update`, OperationId: `reservableAvailability`:
+- `POST` to `/reservable/availability/update`, OperationId: `reservableAvailability`:
 Update Availability.
 
 
-- `GET` to `/api/:version/reservable/availability/search`, OperationId: `searchAvailability`:
+- `GET` to `/reservable/availability/search`, OperationId: `searchAvailability`:
 Search Availability.
 
 
-- `GET` to `/api/:version/reservation/search`, OperationId: `searchReservations`:
+- `GET` to `/reservation/search`, OperationId: `searchReservations`:
 Search Reservations.
 
 
-- `GET` to `/api/:version/reservable/schedule/search`, OperationId: `searchSchedule`:
+- `GET` to `/reservable/schedule/search`, OperationId: `searchSchedule`:
 Search Schedule.
 
 

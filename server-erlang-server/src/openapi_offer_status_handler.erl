@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/offer/status/create`, OperationId: `createOfferTransactionStatus`:
+- `POST` to `/offer/status/create`, OperationId: `createOfferTransactionStatus`:
 Create Offer Status.
 Create an offer status record
 
-- `POST` to `/api/:version/offer/status/delete`, OperationId: `deleteOfferTransactionStatus`:
+- `POST` to `/offer/status/delete`, OperationId: `deleteOfferTransactionStatus`:
 Delete Offer Status.
 Mark an offer status record as deleted
 
-- `GET` to `/api/:version/offer/status/get`, OperationId: `getOfferTransactionStatus`:
+- `GET` to `/offer/status/get`, OperationId: `getOfferTransactionStatus`:
 Get Offer Status.
 Get an offer status record
 
-- `GET` to `/api/:version/offer/status/search`, OperationId: `searchOfferTransactionStatuses`:
+- `GET` to `/offer/status/search`, OperationId: `searchOfferTransactionStatuses`:
 Search Offer Status.
 Search for the available offer statuses
 
-- `POST` to `/api/:version/offer/status/update`, OperationId: `updateOfferTransactionStatus`:
+- `POST` to `/offer/status/update`, OperationId: `updateOfferTransactionStatus`:
 Update Offer Status.
 Update an offer status record
 

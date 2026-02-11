@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/game/word/create`, OperationId: `createWord`:
+- `POST` to `/game/word/create`, OperationId: `createWord`:
 Create Word.
 Create a word by the given params.
 
-- `DELETE` to `/api/:version/game/word/delete`, OperationId: `deleteWord`:
+- `DELETE` to `/game/word/delete`, OperationId: `deleteWord`:
 Delete Word.
 Delete a word by the given id. The accountId given needs to be the owner or executive to delete.
 
-- `GET` to `/api/:version/game/word/get`, OperationId: `getWord`:
+- `GET` to `/game/word/get`, OperationId: `getWord`:
 Get Word.
 Get a word by the given id.
 
-- `GET` to `/api/:version/game/word/search`, OperationId: `getWords`:
+- `GET` to `/game/word/search`, OperationId: `getWords`:
 Search Words.
 Search for words by the given params.
 
-- `POST` to `/api/:version/game/word/update`, OperationId: `updateWord`:
+- `POST` to `/game/word/update`, OperationId: `updateWord`:
 Update Word.
 Update a word by the given params.
 

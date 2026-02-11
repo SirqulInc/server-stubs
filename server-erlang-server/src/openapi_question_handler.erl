@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/game/question/create`, OperationId: `createQuestion`:
+- `POST` to `/game/question/create`, OperationId: `createQuestion`:
 Create Question.
 Create a question and related answers by the given params.
 
-- `POST` to `/api/:version/game/question/delete`, OperationId: `deleteQuestion`:
+- `POST` to `/game/question/delete`, OperationId: `deleteQuestion`:
 Delete Question.
 Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete.
 
-- `GET` to `/api/:version/game/question/get`, OperationId: `getQuestion`:
+- `GET` to `/game/question/get`, OperationId: `getQuestion`:
 Get Question.
 Get a question by the given id.
 
-- `GET` to `/api/:version/game/question/search`, OperationId: `searchQuestions`:
+- `GET` to `/game/question/search`, OperationId: `searchQuestions`:
 Search Questions.
 Search for questions by the given params.
 
-- `POST` to `/api/:version/game/question/update`, OperationId: `updateQuestion`:
+- `POST` to `/game/question/update`, OperationId: `updateQuestion`:
 Update Question.
 Update a question and related answers.
 

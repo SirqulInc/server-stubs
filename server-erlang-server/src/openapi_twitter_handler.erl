@@ -2,11 +2,11 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/twitter/authorize`, OperationId: `authorizeTwitter`:
+- `POST` to `/twitter/authorize`, OperationId: `authorizeTwitter`:
 Authorize Twitter.
 Makes an authorization call to twitter for a user to login and allow any app permissions.
 
-- `POST` to `/api/:version/twitter/login`, OperationId: `loginTwitter`:
+- `POST` to `/twitter/login`, OperationId: `loginTwitter`:
 Login Twitter.
 Returns the user profile information given an access token and the secret access token. This call verifies the tokens with twitter and creates a Sirqul account for the user if its their first time logging in.
 

@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/task/create`, OperationId: `createTask`:
+- `POST` to `/task/create`, OperationId: `createTask`:
 Create Task.
 Create a Task
 
-- `POST` to `/api/:version/task/delete`, OperationId: `deleteTask`:
+- `POST` to `/task/delete`, OperationId: `deleteTask`:
 Delete Task.
 Delete a Task
 
-- `GET` to `/api/:version/task/get`, OperationId: `getTask`:
+- `GET` to `/task/get`, OperationId: `getTask`:
 Get Task.
 Get a Task
 
-- `GET` to `/api/:version/task/search`, OperationId: `searchTasks`:
+- `GET` to `/task/search`, OperationId: `searchTasks`:
 Search Tasks.
 Search on Tasks
 
-- `POST` to `/api/:version/task/update`, OperationId: `updateTask`:
+- `POST` to `/task/update`, OperationId: `updateTask`:
 Update Task.
 Update a Task
 

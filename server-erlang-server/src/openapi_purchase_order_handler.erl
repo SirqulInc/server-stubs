@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/order/create`, OperationId: `createOrder`:
+- `POST` to `/order/create`, OperationId: `createOrder`:
 Create Order.
 Creates a new purchase with some number of items associated with it. The purchase is added to the order that was created
 
-- `POST` to `/api/:version/order/delete`, OperationId: `deleteOrder`:
+- `POST` to `/order/delete`, OperationId: `deleteOrder`:
 Delete Order.
 Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
 
-- `GET` to `/api/:version/order/get`, OperationId: `getOrder`:
+- `GET` to `/order/get`, OperationId: `getOrder`:
 Get Order.
 Get an order record
 
-- `POST` to `/api/:version/order/preview`, OperationId: `previewOrder`:
+- `POST` to `/order/preview`, OperationId: `previewOrder`:
 Preview Order.
 Previews a purchase to see the total cost before making it.
 
-- `GET` to `/api/:version/order/search`, OperationId: `searchOrders`:
+- `GET` to `/order/search`, OperationId: `searchOrders`:
 Search Orders.
 Search on active orders by customer
 
-- `POST` to `/api/:version/order/update`, OperationId: `updateOrder`:
+- `POST` to `/order/update`, OperationId: `updateOrder`:
 Update Order.
 Updates new purchase with some number of items associated with it. The orderId provided is used to retrieve the record and the payment is added to it.
 

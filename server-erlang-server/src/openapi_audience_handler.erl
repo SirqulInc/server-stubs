@@ -2,55 +2,55 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/audience/create`, OperationId: `createAudience`:
+- `POST` to `/audience/create`, OperationId: `createAudience`:
 Create Audience.
 Create a user defined audience.
 
-- `POST` to `/api/:version/audience/delete`, OperationId: `deleteAudience`:
+- `POST` to `/audience/delete`, OperationId: `deleteAudience`:
 Delete Audience.
 Delete an audience. The audience and account must be valid and have the appropirate permissions to view the content.
 
-- `GET` to `/api/:version/audience/ageGroups`, OperationId: `getAgeGroups`:
+- `GET` to `/audience/ageGroups`, OperationId: `getAgeGroups`:
 Get Age Groups.
 Gets the list of available age groups that can be selected by consumers and retailers targeting offers.
 
-- `GET` to `/api/:version/audience/get`, OperationId: `getAudience`:
+- `GET` to `/audience/get`, OperationId: `getAudience`:
 Get Audience.
 Get an audience. The audience and account must be valid and have the appropriate permissions to view the content.
 
-- `GET` to `/api/:version/audience/search`, OperationId: `getAudienceList`:
+- `GET` to `/audience/search`, OperationId: `getAudienceList`:
 Search Audiences.
 Get the list audiences owned by the account
 
-- `GET` to `/api/:version/audience/devices`, OperationId: `getDevices`:
+- `GET` to `/audience/devices`, OperationId: `getDevices`:
 Get Devices.
 Gets the list of available devices that can be selected by consumers and retailers.
 
-- `GET` to `/api/:version/audience/experiences`, OperationId: `getExperiences`:
+- `GET` to `/audience/experiences`, OperationId: `getExperiences`:
 Get Experiences.
 Gets the list of available experiences that can be selected by consumers and retailers.
 
-- `GET` to `/api/:version/audience/grouped/get`, OperationId: `getGroupedAudiences`:
+- `GET` to `/audience/grouped/get`, OperationId: `getGroupedAudiences`:
 Get GroupedAudiences.
 Get a group of audiences. The audience and account must be valid and have the appropriate permissions to view the content.
 
-- `POST` to `/api/:version/audience/suggestion/list`, OperationId: `listByAccount`:
+- `POST` to `/audience/suggestion/list`, OperationId: `listByAccount`:
 List Suggestions by Audience.
 List either Missions or Offers that the user matches the assigned audience.
 
-- `GET` to `/api/:version/audience/suggestion/offersByAudience`, OperationId: `listByAudience`:
+- `GET` to `/audience/suggestion/offersByAudience`, OperationId: `listByAudience`:
 List Offers by Audience.
 Get a list of offer locations based on audience information provided.
 
-- `GET` to `/api/:version/audience/suggestion/latest`, OperationId: `listLastestByAccount`:
+- `GET` to `/audience/suggestion/latest`, OperationId: `listLastestByAccount`:
 List Sent Suggestions .
 Return list of recent trigger suggestions that have been sent to the user.
 
-- `POST` to `/api/:version/audience/suggestion/send`, OperationId: `sendByAccount`:
+- `POST` to `/audience/suggestion/send`, OperationId: `sendByAccount`:
 Send Suggestions.
 Use the accountId to determine the associated BillableEntity. From there get a list of all triggers associated with the BillableEntity.
 
-- `POST` to `/api/:version/audience/update`, OperationId: `updateAudience`:
+- `POST` to `/audience/update`, OperationId: `updateAudience`:
 Update Audience.
 Update a user defined audience.
 

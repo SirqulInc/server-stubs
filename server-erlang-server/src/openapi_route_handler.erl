@@ -2,87 +2,87 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/route/:routeId/approve`, OperationId: `approveRoute`:
+- `POST` to `/route/:routeId/approve`, OperationId: `approveRoute`:
 Approve Route.
 Approve a route
 
-- `POST` to `/api/:version/route/:routeId/copy`, OperationId: `copyRoute`:
+- `POST` to `/route/:routeId/copy`, OperationId: `copyRoute`:
 Copy Route.
 Make an copy of the given route with optional overriding properties
 
-- `POST` to `/api/:version/route`, OperationId: `createRoute`:
+- `POST` to `/route`, OperationId: `createRoute`:
 Create Route.
 Create new route
 
-- `PUT` to `/api/:version/route/:routeId/directions`, OperationId: `createRouteDirections`:
+- `PUT` to `/route/:routeId/directions`, OperationId: `createRouteDirections`:
 Update Route Directions.
 Regenerate the directions of a route
 
-- `PUT` to `/api/:version/route/:routeId/polyline`, OperationId: `createRoutePolyline`:
+- `PUT` to `/route/:routeId/polyline`, OperationId: `createRoutePolyline`:
 Create Route Polyline.
 Update the polyline of the requested route
 
-- `DELETE` to `/api/:version/route/:routeId`, OperationId: `deleteRoute`:
+- `DELETE` to `/route/:routeId`, OperationId: `deleteRoute`:
 Delete Route.
 Delete an existing route
 
-- `POST` to `/api/:version/route/:routeId/disapprove`, OperationId: `disapproveRoute`:
+- `POST` to `/route/:routeId/disapprove`, OperationId: `disapproveRoute`:
 Disapprove Route.
 Disapprove a route
 
-- `GET` to `/api/:version/route/:routeId`, OperationId: `getRoute`:
+- `GET` to `/route/:routeId`, OperationId: `getRoute`:
 Get Route.
 Get an existing route
 
-- `GET` to `/api/:version/route/:routeId/directions`, OperationId: `getRouteDirections`:
+- `GET` to `/route/:routeId/directions`, OperationId: `getRouteDirections`:
 Get Route Directions.
 Get the directions of a route
 
-- `GET` to `/api/:version/route/:routeId/shipments`, OperationId: `getRouteShipments`:
+- `GET` to `/route/:routeId/shipments`, OperationId: `getRouteShipments`:
 Get Route Shipments.
 Get the shipments on the requested route
 
-- `GET` to `/api/:version/route/:routeId/stop/:stopId`, OperationId: `getRouteStop`:
+- `GET` to `/route/:routeId/stop/:stopId`, OperationId: `getRouteStop`:
 Get Route Stop.
 Get the specific stop on a route
 
-- `GET` to `/api/:version/route/:routeId/stops`, OperationId: `getRouteStops`:
+- `GET` to `/route/:routeId/stops`, OperationId: `getRouteStops`:
 Get Route Stops.
 The stops of the route requested
 
-- `GET` to `/api/:version/route/:routeId/stop/:stopId/shipments`, OperationId: `getShipmentsAtStop`:
+- `GET` to `/route/:routeId/stop/:stopId/shipments`, OperationId: `getShipmentsAtStop`:
 Get Shipments At Stop.
 Get the list of shipments on the requested route at a stop
 
-- `POST` to `/api/:version/route/:routeId/optimize`, OperationId: `optimizeRoute`:
+- `POST` to `/route/:routeId/optimize`, OperationId: `optimizeRoute`:
 Optimize Route.
 Optimize a route. The optimization method based on how the server is configured.
 
-- `DELETE` to `/api/:version/route/:routeId/stop/:stopId`, OperationId: `removeStop`:
+- `DELETE` to `/route/:routeId/stop/:stopId`, OperationId: `removeStop`:
 Delete Stop.
 Delete a stop on a route
 
-- `PATCH` to `/api/:version/route/:routeId/stops/reorder`, OperationId: `reorderRouteStopsPatch`:
+- `PATCH` to `/route/:routeId/stops/reorder`, OperationId: `reorderRouteStopsPatch`:
 Reorder Route Stops.
 Reordering the stops on the route with and update route distance, time, direction, and polyline
 
-- `POST` to `/api/:version/route/:routeId/stops/reorder`, OperationId: `reorderRouteStopsPost`:
+- `POST` to `/route/:routeId/stops/reorder`, OperationId: `reorderRouteStopsPost`:
 Reorder Route Stops.
 Reordering the stops on the route with and update route distance, time, direction, and polyline
 
-- `GET` to `/api/:version/route`, OperationId: `searchRoutes`:
+- `GET` to `/route`, OperationId: `searchRoutes`:
 Search Routes.
 Search for routes.
 
-- `POST` to `/api/:version/route/:id/driver/:driverId`, OperationId: `setDriver`:
+- `POST` to `/route/:id/driver/:driverId`, OperationId: `setDriver`:
 Set Driver.
 Update the driver of the route.
 
-- `PUT` to `/api/:version/route/:routeId`, OperationId: `updateRoute`:
+- `PUT` to `/route/:routeId`, OperationId: `updateRoute`:
 Update Route.
 Update an existing route
 
-- `PUT` to `/api/:version/route/:routeId/stop/:stopId`, OperationId: `updateRouteStop`:
+- `PUT` to `/route/:routeId/stop/:stopId`, OperationId: `updateRouteStop`:
 Update Route Stop.
 Update a stop on a specified route
 

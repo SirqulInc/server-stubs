@@ -2,43 +2,43 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/tournament/create`, OperationId: `createTournament`:
+- `POST` to `/tournament/create`, OperationId: `createTournament`:
 Create Tournament.
 Create a tournament.
 
-- `POST` to `/api/:version/tournament/delete`, OperationId: `deleteTournament`:
+- `POST` to `/tournament/delete`, OperationId: `deleteTournament`:
 Delete Tournament.
 Delete a tournament.
 
-- `GET` to `/api/:version/tournament/get`, OperationId: `getTournament`:
+- `GET` to `/tournament/get`, OperationId: `getTournament`:
 Get Tournament.
 Get a tournament.
 
-- `GET` to `/api/:version/tournament/object/search`, OperationId: `searchObjects`:
+- `GET` to `/tournament/object/search`, OperationId: `searchObjects`:
 Search Tournament Objects.
 Search on game objects of tournaments
 
-- `GET` to `/api/:version/tournament/round/search`, OperationId: `searchRounds`:
+- `GET` to `/tournament/round/search`, OperationId: `searchRounds`:
 Search Tournament Rounds.
 Search for the user&#39;s tournament games.
 
-- `GET` to `/api/:version/tournament/search`, OperationId: `searchTournaments`:
+- `GET` to `/tournament/search`, OperationId: `searchTournaments`:
 Search Tournaments.
 Search for tournaments
 
-- `POST` to `/api/:version/tournament/score`, OperationId: `submitTournamentScore`:
+- `POST` to `/tournament/score`, OperationId: `submitTournamentScore`:
 Submit Tournament Score.
 Submit an array of scores for a tournament match. 
 
-- `POST` to `/api/:version/tournament/vote`, OperationId: `submitTournamentVote`:
+- `POST` to `/tournament/vote`, OperationId: `submitTournamentVote`:
 Submit a vote for a multi-stage album tournament..
 Submit a vote for a multi-stage album tournament.
 
-- `POST` to `/api/:version/tournament/substitute`, OperationId: `substituteTournamentPlayer`:
+- `POST` to `/tournament/substitute`, OperationId: `substituteTournamentPlayer`:
 Substitute Tournament Player.
 Service to replace the user&#39;s opponent in the current level - pack - mission with an AI account.
 
-- `POST` to `/api/:version/tournament/update`, OperationId: `updateTournament`:
+- `POST` to `/tournament/update`, OperationId: `updateTournament`:
 Update Tournament.
 Update a tournament.
 

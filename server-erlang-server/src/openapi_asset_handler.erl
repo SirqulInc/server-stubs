@@ -2,35 +2,35 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/asset/download/:filename`, OperationId: `assetDownload`:
+- `GET` to `/asset/download/:filename`, OperationId: `assetDownload`:
 Download Asset.
 Downloads an asset from the server for assets that have been uploaded to the server.
 
-- `POST` to `/api/:version/asset/morph`, OperationId: `assetMorph`:
+- `POST` to `/asset/morph`, OperationId: `assetMorph`:
 Convert Offer to Creative.
 Converts an offer image + text into a creative image.
 
-- `POST` to `/api/:version/asset/create`, OperationId: `createAsset`:
+- `POST` to `/asset/create`, OperationId: `createAsset`:
 Create Asset.
 Uploads an asset to server and returns an asset id which can be used to assign to various objects.
 
-- `POST` to `/api/:version/asset/delete`, OperationId: `deleteAsset`:
+- `POST` to `/asset/delete`, OperationId: `deleteAsset`:
 Delete Asset.
 Delete an asset.
 
-- `GET` to `/api/:version/asset/get`, OperationId: `getAsset`:
+- `GET` to `/asset/get`, OperationId: `getAsset`:
 Get Asset.
 Gets the full asset response including attached likes and notes.
 
-- `POST` to `/api/:version/asset/remove`, OperationId: `removeAsset`:
+- `POST` to `/asset/remove`, OperationId: `removeAsset`:
 Remove Asset from Collection.
 Remove assets from collections
 
-- `GET` to `/api/:version/asset/search`, OperationId: `searchAssets`:
+- `GET` to `/asset/search`, OperationId: `searchAssets`:
 Search Assets.
 Searches for assets
 
-- `POST` to `/api/:version/asset/update`, OperationId: `updateAsset`:
+- `POST` to `/asset/update`, OperationId: `updateAsset`:
 Update Asset.
 Updates an asset&#39;s meta data. If an album reference is passed in, the participants with write permissions are allowed to edit the asset. Otherwise, only the asset up-loader has permission to edit the data.
 

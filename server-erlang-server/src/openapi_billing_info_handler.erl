@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/billing/update`, OperationId: `addPaymentMethod`:
+- `POST` to `/billing/update`, OperationId: `addPaymentMethod`:
 Update Payment Method.
 Update a method of payment. If the paymentMethodId is not passed in then will update their default payment method.
 
-- `POST` to `/api/:version/billing/create`, OperationId: `createPaymentMethod`:
+- `POST` to `/billing/create`, OperationId: `createPaymentMethod`:
 Create Payment Method.
 Add a new method of payment.
 
-- `POST` to `/api/:version/billing/crypto/transfer`, OperationId: `createSmartContract`:
+- `POST` to `/billing/crypto/transfer`, OperationId: `createSmartContract`:
 Create Smart Contract.
 Adds a smart contract.
 
-- `GET` to `/api/:version/billing/crypto/get`, OperationId: `getCryptoBalance`:
+- `GET` to `/billing/crypto/get`, OperationId: `getCryptoBalance`:
 Get Crypto Balances.
 Get the cypto balance details for a user
 
-- `GET` to `/api/:version/billing/get`, OperationId: `getPaymentMethod`:
+- `GET` to `/billing/get`, OperationId: `getPaymentMethod`:
 Get Payment Method.
 Get the details of the user&#39;s payment method or their current default method of payment
 
-- `GET` to `/api/:version/billing/search`, OperationId: `searchPaymentMethod`:
+- `GET` to `/billing/search`, OperationId: `searchPaymentMethod`:
 Search Payment Methods.
 Search the payment methods of an account
 

@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/workflow/run`, OperationId: `runWorkflow`:
+- `POST` to `/workflow/run`, OperationId: `runWorkflow`:
 Run Workflow.
 Runs a published executable workflow
 

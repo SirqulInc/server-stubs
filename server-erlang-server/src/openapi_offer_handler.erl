@@ -2,67 +2,67 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/retailer/offer/location/batchUpdate`, OperationId: `batchUpdateOfferLocations`:
+- `POST` to `/retailer/offer/location/batchUpdate`, OperationId: `batchUpdateOfferLocations`:
 Update Offer Locations.
 Batch update offer locations.
 
-- `POST` to `/api/:version/retailer/offer/create`, OperationId: `createOffer`:
+- `POST` to `/retailer/offer/create`, OperationId: `createOffer`:
 Create Offer.
 Create an offer and assign it to the provided retailer locations.
 
-- `POST` to `/api/:version/retailer/offer/delete`, OperationId: `deleteOffer`:
+- `POST` to `/retailer/offer/delete`, OperationId: `deleteOffer`:
 Delete Offer.
 Set the deleted timestamp to current time. This effectively deletes the offer since all queries should ignore any records with a deleted time stamp.
 
-- `POST` to `/api/:version/retailer/offer/location/delete`, OperationId: `deleteOfferLocation`:
+- `POST` to `/retailer/offer/location/delete`, OperationId: `deleteOfferLocation`:
 Delete Offer Location.
 Set the deleted timestamp to current time. This effectively deletes the offer location since all queries should ignore any records with a deleted time stamp.
 
-- `GET` to `/api/:version/retailer/offer/get`, OperationId: `getOffer`:
+- `GET` to `/retailer/offer/get`, OperationId: `getOffer`:
 Get Offer.
 Gets the details of an offer that the user has access to.
 
-- `GET` to `/api/:version/offer/get`, OperationId: `getOfferDetails`:
+- `GET` to `/offer/get`, OperationId: `getOfferDetails`:
 Get Offer.
 Gets offer or offer location details as a consumer.  Will check if it is a favorite if the deviceId/accountId is provided.  If the offerId is provided it will look up the main offer and ignore the the offerLocationId. If no offerId is provided then an offerLocationId must be specified.
 
-- `GET` to `/api/:version/offer/lists/count`, OperationId: `getOfferListCounts`:
+- `GET` to `/offer/lists/count`, OperationId: `getOfferListCounts`:
 Get Offers (Counts).
 Gets the offer list counts.
 
-- `GET` to `/api/:version/offer/location/get`, OperationId: `getOfferLocation`:
+- `GET` to `/offer/location/get`, OperationId: `getOfferLocation`:
 Get Offer Location.
 Gets the offer location by offer location id or udid (of a device)
 
-- `GET` to `/api/:version/retailer/offer/location/search`, OperationId: `getOfferLocationsForRetailers`:
+- `GET` to `/retailer/offer/location/search`, OperationId: `getOfferLocationsForRetailers`:
 Search Offer Locations.
 Searches on offer locations, which are records that represent an offer that has been assigned to a retailer location. If an offer does not have any locations assigned, then it will NOT be returned.
 
-- `GET` to `/api/:version/retailer/offer/search`, OperationId: `getOffersForRetailers`:
+- `GET` to `/retailer/offer/search`, OperationId: `getOffersForRetailers`:
 Search Offers.
 Searches on offers that the account has access to.
 
-- `POST` to `/api/:version/retailer/offer/transaction/update`, OperationId: `redeemOfferTransaction`:
+- `POST` to `/retailer/offer/transaction/update`, OperationId: `redeemOfferTransaction`:
 Update Offer Transaction.
 Redeems an offer.
 
-- `GET` to `/api/:version/retailer/offer/transaction/search`, OperationId: `searchOfferTransactionsForRetailers`:
+- `GET` to `/retailer/offer/transaction/search`, OperationId: `searchOfferTransactionsForRetailers`:
 Search Offer Transactions.
 Searches on offer transactions for offers that the account has access to.
 
-- `GET` to `/api/:version/offer/lists`, OperationId: `searchOffersForConsumer`:
+- `GET` to `/offer/lists`, OperationId: `searchOffersForConsumer`:
 Search Offers.
 Searches for offers as a consumer.
 
-- `GET` to `/api/:version/offer/top`, OperationId: `topOfferTransactions`:
+- `GET` to `/offer/top`, OperationId: `topOfferTransactions`:
 Get Offers (Top).
 Gets the top active offers.
 
-- `POST` to `/api/:version/retailer/offer/update`, OperationId: `updateOffer`:
+- `POST` to `/retailer/offer/update`, OperationId: `updateOffer`:
 Update Offer.
 Update an offer, must provide a current list of retailer locations or the current offer locations will be marked as deleted.
 
-- `POST` to `/api/:version/retailer/offer/status`, OperationId: `updateOfferStatus`:
+- `POST` to `/retailer/offer/status`, OperationId: `updateOfferStatus`:
 Activate Offer.
 Sets the activated date on offers. This will make offers visible for consumers.
 

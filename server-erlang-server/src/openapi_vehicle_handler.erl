@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/vehicle`, OperationId: `createVehicle`:
+- `POST` to `/vehicle`, OperationId: `createVehicle`:
 Create Vehicle.
 Create new vehicle
 
-- `DELETE` to `/api/:version/vehicle/:id`, OperationId: `deleteVehicle`:
+- `DELETE` to `/vehicle/:id`, OperationId: `deleteVehicle`:
 Delete Vehicle.
 Delete an existing vehicle
 
-- `GET` to `/api/:version/vehicle/:id`, OperationId: `getVehicle`:
+- `GET` to `/vehicle/:id`, OperationId: `getVehicle`:
 Get Vehicle.
 Get an existing vehicle
 
-- `GET` to `/api/:version/vehicle`, OperationId: `searchVehicle`:
+- `GET` to `/vehicle`, OperationId: `searchVehicle`:
 Search Vehicle.
 Search for vehicles
 
-- `PUT` to `/api/:version/vehicle/:id`, OperationId: `updateVehicle`:
+- `PUT` to `/vehicle/:id`, OperationId: `updateVehicle`:
 Update Vehicle.
 Update an existing vehicle
 

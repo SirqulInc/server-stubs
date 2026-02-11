@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/routing/compute`, OperationId: `computeRouting`:
+- `POST` to `/routing/compute`, OperationId: `computeRouting`:
 Compute Route.
 This service finds the most optimal routes for delivering items between locations (reducing transit time/resources). It can take in a list of vehicles and a list of items (to be transported).All load items have pick-up and drop-off locations with time windows for when the item is expected to be picked-up and dropped-off. 
 

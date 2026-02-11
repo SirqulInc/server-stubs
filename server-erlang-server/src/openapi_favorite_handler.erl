@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/favorite/create`, OperationId: `addFavorite`:
+- `POST` to `/favorite/create`, OperationId: `addFavorite`:
 Create Favorite.
 Adds an offer, offer location, retailer location, or category to your favorites.
 
-- `POST` to `/api/:version/favorite/delete`, OperationId: `deleteFavorite`:
+- `POST` to `/favorite/delete`, OperationId: `deleteFavorite`:
 Delete Favorite.
 Removes a favorited item from the user&#39;s favorites list.
 
-- `GET` to `/api/:version/favorite/get`, OperationId: `getFavorite`:
+- `GET` to `/favorite/get`, OperationId: `getFavorite`:
 Get Favorite.
 Retrieves a single favorited item.
 
-- `GET` to `/api/:version/favorite/search`, OperationId: `searchFavorites`:
+- `GET` to `/favorite/search`, OperationId: `searchFavorites`:
 Search Favorites.
 Searches on the user&#39;s favorites.
 
-- `GET` to `/api/:version/favorite/whois`, OperationId: `whoHasFavorited`:
+- `GET` to `/favorite/whois`, OperationId: `whoHasFavorited`:
 Who has Favorited.
 Searches for everyone that has favorited an item
 

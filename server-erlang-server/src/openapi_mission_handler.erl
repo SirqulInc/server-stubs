@@ -2,39 +2,39 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/mission/create`, OperationId: `createMission`:
+- `POST` to `/mission/create`, OperationId: `createMission`:
 Create Mission.
 Create a user defined mission.
 
-- `POST` to `/api/:version/mission/delete`, OperationId: `deleteMission`:
+- `POST` to `/mission/delete`, OperationId: `deleteMission`:
 Delete Mission.
 Delete a mission.
 
-- `GET` to `/api/:version/mission/find`, OperationId: `findMissions`:
+- `GET` to `/mission/find`, OperationId: `findMissions`:
 Find Missions.
 Get a set of ad filtered by the parameters provided.
 
-- `GET` to `/api/:version/mission/get`, OperationId: `getMission`:
+- `GET` to `/mission/get`, OperationId: `getMission`:
 Get Mission.
 Get a mission.
 
-- `POST` to `/api/:version/mission/import`, OperationId: `importMission`:
+- `POST` to `/mission/import`, OperationId: `importMission`:
 Import Mission.
 Create a mission using a source item such as an offer location.
 
-- `GET` to `/api/:version/mission/format/search`, OperationId: `searchMissionFormats`:
+- `GET` to `/mission/format/search`, OperationId: `searchMissionFormats`:
 Search Mission Formats.
 Searches on pre-defined mission formats
 
-- `GET` to `/api/:version/mission/search`, OperationId: `searchMissions`:
+- `GET` to `/mission/search`, OperationId: `searchMissions`:
 Search Missions.
 Get the list missions available to the account.  
 
-- `GET` to `/api/:version/mission/searchByBillableEntity`, OperationId: `searchMissionsByBillableEntity`:
+- `GET` to `/mission/searchByBillableEntity`, OperationId: `searchMissionsByBillableEntity`:
 Search Missions by Billable Entity.
 Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers.
 
-- `POST` to `/api/:version/mission/update`, OperationId: `updateMission`:
+- `POST` to `/mission/update`, OperationId: `updateMission`:
 Update Mission.
 Update a mission.
 

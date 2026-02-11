@@ -2,219 +2,219 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/vatom/me/rels/following/create`, OperationId: `createFollowing`:
+- `POST` to `/vatom/me/rels/following/create`, OperationId: `createFollowing`:
 Create following.
 Create following.
 
-- `POST` to `/api/:version/vatom/b/spaces/create`, OperationId: `createSpace`:
+- `POST` to `/vatom/b/spaces/create`, OperationId: `createSpace`:
 Create Vatom Space.
 Create a Vatom space.
 
-- `POST` to `/api/:version/vatom/b/events/create`, OperationId: `createVatomEvent`:
+- `POST` to `/vatom/b/events/create`, OperationId: `createVatomEvent`:
 Create Vatom Event.
 Create a Vatom event.
 
-- `POST` to `/api/:version/vatom/me/rels/following/delete`, OperationId: `deleteFollowing`:
+- `POST` to `/vatom/me/rels/following/delete`, OperationId: `deleteFollowing`:
 Delete following.
 Delete following.
 
-- `POST` to `/api/:version/vatom/b/campaign/points/delete`, OperationId: `deletePointsBalance`:
+- `POST` to `/vatom/b/campaign/points/delete`, OperationId: `deletePointsBalance`:
 Reset All Points Balance.
 Reset All Points Balance.
 
-- `POST` to `/api/:version/vatom/b/spaces/delete`, OperationId: `deleteSpace`:
+- `POST` to `/vatom/b/spaces/delete`, OperationId: `deleteSpace`:
 Delete Vatom Space.
 Delete a Vatom space.
 
-- `POST` to `/api/:version/vatom/b/events/delete`, OperationId: `deleteVatomEvent`:
+- `POST` to `/vatom/b/events/delete`, OperationId: `deleteVatomEvent`:
 Delete Vatom Event.
 Delete a Vatom event.
 
-- `POST` to `/api/:version/vatom/vatoms/delete`, OperationId: `deleteVatomNFT`:
+- `POST` to `/vatom/vatoms/delete`, OperationId: `deleteVatomNFT`:
 Delete Vatom NFT.
 Delete Vatom NFT
 
-- `POST` to `/api/:version/vatom/vatoms/execute-action`, OperationId: `executeActionOnNFT`:
+- `POST` to `/vatom/vatoms/execute-action`, OperationId: `executeActionOnNFT`:
 Execute Action on NFT.
 Execute Action on NFT.
 
-- `GET` to `/api/:version/vatom/vatoms/geo-map/search`, OperationId: `geomapSearch`:
+- `GET` to `/vatom/vatoms/geo-map/search`, OperationId: `geomapSearch`:
 Search Vatom Geo Map.
 Search Vatom Geo Map
 
-- `GET` to `/api/:version/vatom/b/behaviors`, OperationId: `getBusinessBehaviors`:
+- `GET` to `/vatom/b/behaviors`, OperationId: `getBusinessBehaviors`:
 Get Vatom Business Behaviors.
 Gets the behaviors of a business.
 
-- `GET` to `/api/:version/vatom/b/coins/get`, OperationId: `getBusinessCoinsBalance`:
+- `GET` to `/vatom/b/coins/get`, OperationId: `getBusinessCoinsBalance`:
 Get the coins for a Business.
 Get the coins for a Businesss.
 
-- `GET` to `/api/:version/vatom/me/businesses`, OperationId: `getBusinessIds`:
+- `GET` to `/vatom/me/businesses`, OperationId: `getBusinessIds`:
 Get the user business ids.
 Get the business ids the logged in user has access to.
 
-- `GET` to `/api/:version/vatom/b/get`, OperationId: `getBusinessInfo`:
+- `GET` to `/vatom/b/get`, OperationId: `getBusinessInfo`:
 Get Vatom Business Info.
 Gets the business info tied to this account.
 
-- `GET` to `/api/:version/vatom/b/users`, OperationId: `getBusinessUsers`:
+- `GET` to `/vatom/b/users`, OperationId: `getBusinessUsers`:
 Get Vatom Business Users.
 Gets the users of a business.
 
-- `GET` to `/api/:version/vatom/b/campaign-groups/entities`, OperationId: `getCampaignGroupEntities`:
+- `GET` to `/vatom/b/campaign-groups/entities`, OperationId: `getCampaignGroupEntities`:
 Get Campaign Group Entities.
 Get campaign group entities.
 
-- `GET` to `/api/:version/vatom/b/campaign-groups/rules`, OperationId: `getCampaignGroupRules`:
+- `GET` to `/vatom/b/campaign-groups/rules`, OperationId: `getCampaignGroupRules`:
 Get Campaign Group Rules.
 Get campaign group rules.
 
-- `GET` to `/api/:version/vatom/b/campaign-groups/stats`, OperationId: `getCampaignGroupStats`:
+- `GET` to `/vatom/b/campaign-groups/stats`, OperationId: `getCampaignGroupStats`:
 Get Campaign Group Stats.
 Get campaign group stats.
 
-- `GET` to `/api/:version/vatom/b/campaign-groups/get`, OperationId: `getCampaignInfo`:
+- `GET` to `/vatom/b/campaign-groups/get`, OperationId: `getCampaignInfo`:
 Get Campaign Info.
 Gets the info on a campaign.
 
-- `GET` to `/api/:version/vatom/b/events/guests/get`, OperationId: `getEventGuestList`:
+- `GET` to `/vatom/b/events/guests/get`, OperationId: `getEventGuestList`:
 Get Vatom Event Guest List.
 Gets the guest list of an event.
 
-- `GET` to `/api/:version/vatom/me/inventory`, OperationId: `getInventory`:
+- `GET` to `/vatom/me/inventory`, OperationId: `getInventory`:
 Get Vatom User&#39;s Inventory.
 Gets the logged in user&#39;s Vatom Inventory.
 
-- `GET` to `/api/:version/vatom/me/rels/following`, OperationId: `getMyFollowing`:
+- `GET` to `/vatom/me/rels/following`, OperationId: `getMyFollowing`:
 Get following.
 Get following.
 
-- `GET` to `/api/:version/vatom/u/campaign/points/get`, OperationId: `getPointsBalance`:
+- `GET` to `/vatom/u/campaign/points/get`, OperationId: `getPointsBalance`:
 Get Points Balance.
 Gets the points balance of a Vatom user.
 
-- `GET` to `/api/:version/vatom/b/campaign/u/points/get`, OperationId: `getPointsBalanceAsBusiness`:
+- `GET` to `/vatom/b/campaign/u/points/get`, OperationId: `getPointsBalanceAsBusiness`:
 Get Points Balance as Business.
 Gets the points balance of a Vatom user.
 
-- `GET` to `/api/:version/vatom/b/spaces/get`, OperationId: `getSpace`:
+- `GET` to `/vatom/b/spaces/get`, OperationId: `getSpace`:
 Get Vatom Space.
 Gets the details of a space.
 
-- `GET` to `/api/:version/vatom/b/users/coins/get`, OperationId: `getUserCoinsAsBusiness`:
+- `GET` to `/vatom/b/users/coins/get`, OperationId: `getUserCoinsAsBusiness`:
 Get the coins for a user (as a Business).
 Get the coins for a user (as a Business).
 
-- `GET` to `/api/:version/vatom/u/coins/get`, OperationId: `getUserCoinsBalance`:
+- `GET` to `/vatom/u/coins/get`, OperationId: `getUserCoinsBalance`:
 Gets the coins balance for a Vatom User.
 Gets the coins balance for a Vatom User.
 
-- `GET` to `/api/:version/vatom/users/rels/followers`, OperationId: `getUserFollowers`:
+- `GET` to `/vatom/users/rels/followers`, OperationId: `getUserFollowers`:
 Get user followers.
 Get user followers.
 
-- `GET` to `/api/:version/vatom/users/rels/following`, OperationId: `getUserFollowing`:
+- `GET` to `/vatom/users/rels/following`, OperationId: `getUserFollowing`:
 Get user following.
 Get user following.
 
-- `GET` to `/api/:version/vatom/user/get`, OperationId: `getUserInfo`:
+- `GET` to `/vatom/user/get`, OperationId: `getUserInfo`:
 Get User Info.
 Get a User&#39;s Info.
 
-- `GET` to `/api/:version/vatom/me/get`, OperationId: `getUserProfile`:
+- `GET` to `/vatom/me/get`, OperationId: `getUserProfile`:
 Get Vatom User Profile.
 Gets the logged in user&#39;s profile in Vatom.
 
-- `GET` to `/api/:version/vatom/b/events/get`, OperationId: `getVatomEvent`:
+- `GET` to `/vatom/b/events/get`, OperationId: `getVatomEvent`:
 Get Vatom Event.
 Gets the details of a event.
 
-- `GET` to `/api/:version/vatom/vatoms/get`, OperationId: `getVatomNFT`:
+- `GET` to `/vatom/vatoms/get`, OperationId: `getVatomNFT`:
 Get Vatom NFT Details.
 Get Vatom NFT Details
 
-- `GET` to `/api/:version/vatom/b/communities/search`, OperationId: `listCommunities`:
+- `GET` to `/vatom/b/communities/search`, OperationId: `listCommunities`:
 List Vatom Communities.
 Gets the communities tied to a business.
 
-- `GET` to `/api/:version/vatom/b/events/search`, OperationId: `listEvents`:
+- `GET` to `/vatom/b/events/search`, OperationId: `listEvents`:
 List Vatom Events.
 Gets the events tied to a business.
 
-- `GET` to `/api/:version/vatom/b/spaces/search`, OperationId: `listSpaces`:
+- `GET` to `/vatom/b/spaces/search`, OperationId: `listSpaces`:
 List Vatom Spaces.
 Gets the spaces tied to a business.
 
-- `GET` to `/api/:version/vatom/u/coins/txns/search`, OperationId: `listUserCoinTransactions`:
+- `GET` to `/vatom/u/coins/txns/search`, OperationId: `listUserCoinTransactions`:
 List Coin Transactions for a Vatom User.
 Gets the logged in user&#39;s Vatom coin transactions.
 
-- `GET` to `/api/:version/vatom/b/users/coins/txns/search`, OperationId: `listUserCoinTransactionsAsBusiness`:
+- `GET` to `/vatom/b/users/coins/txns/search`, OperationId: `listUserCoinTransactionsAsBusiness`:
 List coin transactions for a user (as a Business).
 List coin transactions for a user (as a Business).
 
-- `POST` to `/api/:version/vatom/me/vatoms/actions`, OperationId: `performActionOnNFT`:
+- `POST` to `/vatom/me/vatoms/actions`, OperationId: `performActionOnNFT`:
 Perform Action on NFT.
 Perform Action on NFT.
 
-- `POST` to `/api/:version/vatom/b/redemptions`, OperationId: `redeemNFT`:
+- `POST` to `/vatom/b/redemptions`, OperationId: `redeemNFT`:
 Redeem NFT.
 Redeem an NFT.
 
-- `POST` to `/api/:version/vatom/b/users/coins/redeem`, OperationId: `redeemUserCoinsAsBusiness`:
+- `POST` to `/vatom/b/users/coins/redeem`, OperationId: `redeemUserCoinsAsBusiness`:
 Redeem the coins for a user (as a Business).
 Redeem the coins for a user (as a Business).
 
-- `GET` to `/api/:version/vatom/b/search`, OperationId: `searchBusinesses`:
+- `GET` to `/vatom/b/search`, OperationId: `searchBusinesses`:
 Search for Vatom Businesses.
 Searches for Vatom businesses.
 
-- `GET` to `/api/:version/vatom/b/campaign-groups/search`, OperationId: `searchCampaignGroups`:
+- `GET` to `/vatom/b/campaign-groups/search`, OperationId: `searchCampaignGroups`:
 Search Campaign Groups.
 Search campaign groups.
 
-- `GET` to `/api/:version/vatom/me/identities/search`, OperationId: `searchIdentities`:
+- `GET` to `/vatom/me/identities/search`, OperationId: `searchIdentities`:
 Search User Identities.
 Search User Identities.
 
-- `GET` to `/api/:version/vatom/user-inventory/search`, OperationId: `searchInventory`:
+- `GET` to `/vatom/user-inventory/search`, OperationId: `searchInventory`:
 Search Vatom User&#39;s Inventory.
 Searches the logged in user&#39;s Vatom Inventory.
 
-- `POST` to `/api/:version/vatom/b/campaigns/send`, OperationId: `sendNFT`:
+- `POST` to `/vatom/b/campaigns/send`, OperationId: `sendNFT`:
 Send NFT.
 Send an NFT.
 
-- `POST` to `/api/:version/vatom/b/campaign/u/points/update`, OperationId: `setPointsBalanceAsBusiness`:
+- `POST` to `/vatom/b/campaign/u/points/update`, OperationId: `setPointsBalanceAsBusiness`:
 Set Points Balance as Business.
 Sets the points balance of a Vatom user.
 
-- `POST` to `/api/:version/vatom/u/coins/transfer`, OperationId: `transferUserCoins`:
+- `POST` to `/vatom/u/coins/transfer`, OperationId: `transferUserCoins`:
 Transfer coins from Vatom Users.
 Transfer coins from Vatom Users.
 
-- `POST` to `/api/:version/vatom/b/coins/update`, OperationId: `updateBusinessCoins`:
+- `POST` to `/vatom/b/coins/update`, OperationId: `updateBusinessCoins`:
 Fund coins for a Business.
 Fund/update coins for a Businesss.
 
-- `POST` to `/api/:version/vatom/b/events/guests/update`, OperationId: `updateEventGuestList`:
+- `POST` to `/vatom/b/events/guests/update`, OperationId: `updateEventGuestList`:
 Update Vatom Event Guest List.
 Update the guest list of an event.
 
-- `POST` to `/api/:version/vatom/b/spaces/update`, OperationId: `updateSpace`:
+- `POST` to `/vatom/b/spaces/update`, OperationId: `updateSpace`:
 Update Vatom Space.
 Update a Vatom space.
 
-- `POST` to `/api/:version/vatom/b/users/coins/update`, OperationId: `updateUserCoinsAsBusiness`:
+- `POST` to `/vatom/b/users/coins/update`, OperationId: `updateUserCoinsAsBusiness`:
 Update the coins for a user (as a Business).
 Update the coins for a user (as a Business).
 
-- `POST` to `/api/:version/vatom/me/update`, OperationId: `updateUserProfile`:
+- `POST` to `/vatom/me/update`, OperationId: `updateUserProfile`:
 Update Vatom User Profile.
 Gets the logged in user&#39;s profile in Vatom.
 
-- `POST` to `/api/:version/vatom/b/events/update`, OperationId: `updateVatomEvent`:
+- `POST` to `/vatom/b/events/update`, OperationId: `updateVatomEvent`:
 Update Vatom Event.
 Update a Vatom event.
 

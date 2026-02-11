@@ -2,91 +2,91 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/consumer/connection/group/addConnection`, OperationId: `addConnectionToGroup`:
+- `POST` to `/consumer/connection/group/addConnection`, OperationId: `addConnectionToGroup`:
 Add Connection.
 Adds a connection to a group.
 
-- `POST` to `/api/:version/connection/group/addConnections`, OperationId: `addConnectionsToGroup`:
+- `POST` to `/connection/group/addConnections`, OperationId: `addConnectionsToGroup`:
 Add Connections.
 Adds a list of connections to a group.
 
-- `POST` to `/api/:version/consumer/connection/group/addSubGroup`, OperationId: `addSubGroups`:
+- `POST` to `/consumer/connection/group/addSubGroup`, OperationId: `addSubGroups`:
 Add Connection Groups.
 Add sub groups to a group.
 
-- `POST` to `/api/:version/consumer/connection/add`, OperationId: `createOrUpdateConnection`:
+- `POST` to `/consumer/connection/add`, OperationId: `createOrUpdateConnection`:
 Create or Update Connection.
 Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group.
 
-- `POST` to `/api/:version/consumer/connection/group`, OperationId: `createOrUpdateGroup`:
+- `POST` to `/consumer/connection/group`, OperationId: `createOrUpdateGroup`:
 Create or Update Connection Group.
 Creates a new private group.
 
-- `POST` to `/api/:version/consumer/follow/accept`, OperationId: `followAccept`:
+- `POST` to `/consumer/follow/accept`, OperationId: `followAccept`:
 Accept Follow Request.
 Accept someone&#39;s follow request.
 
-- `POST` to `/api/:version/consumer/follow/reject`, OperationId: `followReject`:
+- `POST` to `/consumer/follow/reject`, OperationId: `followReject`:
 Reject Follow Request.
 Reject someone&#39;s follow request or remove them as a follower.
 
-- `POST` to `/api/:version/consumer/follow/remove`, OperationId: `followRemove`:
+- `POST` to `/consumer/follow/remove`, OperationId: `followRemove`:
 Remove Follower / Unfollow.
 Unfollow someone you are following or remove them as a follower.
 
-- `POST` to `/api/:version/consumer/follow/request`, OperationId: `followRequest`:
+- `POST` to `/consumer/follow/request`, OperationId: `followRequest`:
 Send Follow Request.
 Send a request to follow someone.
 
-- `POST` to `/api/:version/consumer/friend/accept`, OperationId: `friendAccept`:
+- `POST` to `/consumer/friend/accept`, OperationId: `friendAccept`:
 Accept Friend.
 Accept a friend request and optionally sends a notification.
 
-- `POST` to `/api/:version/consumer/friend/reject`, OperationId: `friendReject`:
+- `POST` to `/consumer/friend/reject`, OperationId: `friendReject`:
 Decline Friend.
 Request a friend request and optionally sends a notification.
 
-- `POST` to `/api/:version/consumer/friend/remove`, OperationId: `friendRemove`:
+- `POST` to `/consumer/friend/remove`, OperationId: `friendRemove`:
 Delete Friend.
 Removes a friend from the user&#39;s friends list.
 
-- `POST` to `/api/:version/consumer/friend/request`, OperationId: `friendRequest`:
+- `POST` to `/consumer/friend/request`, OperationId: `friendRequest`:
 Request Friend.
 Sends a friend request notification to another user.
 
-- `GET` to `/api/:version/consumer/connection/getRequested`, OperationId: `getConnectionSentFriendRequests`:
+- `GET` to `/consumer/connection/getRequested`, OperationId: `getConnectionSentFriendRequests`:
 Get Sent Friend Requests.
 Gets the connection sent friend requests.
 
-- `GET` to `/api/:version/consumer/connection/get`, OperationId: `getConnections`:
+- `GET` to `/consumer/connection/get`, OperationId: `getConnections`:
 Search Connections.
 Gets the connections.
 
-- `GET` to `/api/:version/consumer/connection/group/details/get`, OperationId: `getGroupDetails`:
+- `GET` to `/consumer/connection/group/details/get`, OperationId: `getGroupDetails`:
 Get Connection Group.
 
 
-- `GET` to `/api/:version/connection/group/search`, OperationId: `groupSearch`:
+- `GET` to `/connection/group/search`, OperationId: `groupSearch`:
 Search Connection Groups.
 Gets a user&#39;s private groups and default groups.
 
-- `POST` to `/api/:version/consumer/connection/group/removeConnection`, OperationId: `removeConnectionFromGroup`:
+- `POST` to `/consumer/connection/group/removeConnection`, OperationId: `removeConnectionFromGroup`:
 Delete Connection.
 Removes the connection from group.
 
-- `POST` to `/api/:version/connection/group/removeConnections`, OperationId: `removeConnectionsFromGroup`:
+- `POST` to `/connection/group/removeConnections`, OperationId: `removeConnectionsFromGroup`:
 Remove Connections.
 Remove a list of connections from a group.
 
-- `POST` to `/api/:version/consumer/connection/group/remove`, OperationId: `removeGroup`:
+- `POST` to `/consumer/connection/group/remove`, OperationId: `removeGroup`:
 Delete Connection Group.
 Remove a user&#39;s group.
 
-- `POST` to `/api/:version/consumer/connection/group/removeSubGroup`, OperationId: `removeSubGroups`:
+- `POST` to `/consumer/connection/group/removeSubGroup`, OperationId: `removeSubGroups`:
 Remove Connection Groups.
 Remove sub groups from a group
 
-- `GET` to `/api/:version/connection/search`, OperationId: `searchConnections`:
+- `GET` to `/connection/search`, OperationId: `searchConnections`:
 Search Possible Connections.
 Search for accounts that the user may not have a connection with.
 

@@ -2,11 +2,11 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/optimize/result/:batchID`, OperationId: `getOptimizationResult`:
+- `GET` to `/optimize/result/:batchID`, OperationId: `getOptimizationResult`:
 Get Optimization Result.
 Get the results of the import batch.
 
-- `POST` to `/api/:version/optimize/request`, OperationId: `requestOptimization`:
+- `POST` to `/optimize/request`, OperationId: `requestOptimization`:
 Request Optimization.
 Request and upload of shipment orders and create ShipmentImportBatch for optimization.
 

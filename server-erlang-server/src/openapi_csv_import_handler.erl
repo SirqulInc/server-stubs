@@ -2,19 +2,19 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/csvimport/batch/status/details`, OperationId: `getStatusCSV`:
+- `GET` to `/csvimport/batch/status/details`, OperationId: `getStatusCSV`:
 Detail Status.
 
 
-- `GET` to `/api/:version/csvimport/batch/list`, OperationId: `listStatusCSV`:
+- `GET` to `/csvimport/batch/list`, OperationId: `listStatusCSV`:
 Search Status.
 Retrieves batches for a user.
 
-- `GET` to `/api/:version/csvimport/batch/status`, OperationId: `statusCSV`:
+- `GET` to `/csvimport/batch/status`, OperationId: `statusCSV`:
 Batch Status.
 Checks status of batch upload.
 
-- `POST` to `/api/:version/csvimport/upload`, OperationId: `uploadCSV`:
+- `POST` to `/csvimport/upload`, OperationId: `uploadCSV`:
 Upload CSV.
 Uploads a CSV import file.
 

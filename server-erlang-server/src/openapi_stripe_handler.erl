@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/stripe/checkout/session/create`, OperationId: `createStripeCheckoutSession`:
+- `POST` to `/stripe/checkout/session/create`, OperationId: `createStripeCheckoutSession`:
 Create Stripe Checkout Session.
 Create a Stripe checkout session
 

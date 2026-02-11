@@ -2,47 +2,47 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/assignment/assignee/search`, OperationId: `assigmentAssigneeAccountSearch`:
+- `GET` to `/assignment/assignee/search`, OperationId: `assigmentAssigneeAccountSearch`:
 Search Assignment Assignees.
 Search for avaiable users for creating or updating assignment.
 
-- `POST` to `/api/:version/assignment/create`, OperationId: `assignmentCreate`:
+- `POST` to `/assignment/create`, OperationId: `assignmentCreate`:
 Create Assignment.
 Create an assignment.
 
-- `POST` to `/api/:version/assignment/delete`, OperationId: `assignmentDelete`:
+- `POST` to `/assignment/delete`, OperationId: `assignmentDelete`:
 Delete Assignment.
 Delete an assignment.
 
-- `GET` to `/api/:version/assignment/get`, OperationId: `assignmentGet`:
+- `GET` to `/assignment/get`, OperationId: `assignmentGet`:
 Get Assignment.
 Get the details of an assignment.
 
-- `GET` to `/api/:version/assignment/search`, OperationId: `assignmentSearch`:
+- `GET` to `/assignment/search`, OperationId: `assignmentSearch`:
 Search Assignments.
 Search for assignments by the given parameters.
 
-- `POST` to `/api/:version/assignment/status/create`, OperationId: `assignmentStatusCreate`:
+- `POST` to `/assignment/status/create`, OperationId: `assignmentStatusCreate`:
 Create Assignment Status.
 Create an assignment status.
 
-- `POST` to `/api/:version/assignment/status/delete`, OperationId: `assignmentStatusDelete`:
+- `POST` to `/assignment/status/delete`, OperationId: `assignmentStatusDelete`:
 Deletes Assignment Status.
 Deletes an assignment status.
 
-- `GET` to `/api/:version/assignment/status/get`, OperationId: `assignmentStatusGet`:
+- `GET` to `/assignment/status/get`, OperationId: `assignmentStatusGet`:
 Get Assignment Status.
 Get an assignment status.
 
-- `GET` to `/api/:version/assignment/status/search`, OperationId: `assignmentStatusSearch`:
+- `GET` to `/assignment/status/search`, OperationId: `assignmentStatusSearch`:
 Search Assignment Statuses.
 Search on assignment statuses.
 
-- `POST` to `/api/:version/assignment/status/update`, OperationId: `assignmentStatusUpdate`:
+- `POST` to `/assignment/status/update`, OperationId: `assignmentStatusUpdate`:
 Update Assignment Status.
 Updates an assignment status.
 
-- `POST` to `/api/:version/assignment/update`, OperationId: `assignmentUpdate`:
+- `POST` to `/assignment/update`, OperationId: `assignmentUpdate`:
 Update Assignment.
 Updates an assignment.
 

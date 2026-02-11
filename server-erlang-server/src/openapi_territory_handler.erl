@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/territory/create`, OperationId: `createTerritory`:
+- `POST` to `/territory/create`, OperationId: `createTerritory`:
 Create Territory.
 Creates a territory.
 
-- `POST` to `/api/:version/territory/delete`, OperationId: `deleteTerritory`:
+- `POST` to `/territory/delete`, OperationId: `deleteTerritory`:
 Delete Territory.
 Deletes a territory.
 
-- `GET` to `/api/:version/territory/get`, OperationId: `getTerritory`:
+- `GET` to `/territory/get`, OperationId: `getTerritory`:
 Get Territory.
 Get a territory.
 
-- `GET` to `/api/:version/territory/search`, OperationId: `searchTerritories`:
+- `GET` to `/territory/search`, OperationId: `searchTerritories`:
 Search Territories.
 Searches on territories.
 
-- `POST` to `/api/:version/territory/update`, OperationId: `updateTerritory`:
+- `POST` to `/territory/update`, OperationId: `updateTerritory`:
 Update Territory.
 Updates a territory.
 

@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/pathing/compute`, OperationId: `computePath`:
+- `GET` to `/pathing/compute`, OperationId: `computePath`:
 Calculate Path.
 Calculates the shortest path from point to point on a grid
 

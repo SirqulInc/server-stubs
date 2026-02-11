@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/carrier/search`, OperationId: `searchCarriers`:
+- `GET` to `/carrier/search`, OperationId: `searchCarriers`:
 Search Carriers.
 Search on supported mobile telephone carriers that can be used to send SMS notifications via email.
 

@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/report/batch/create`, OperationId: `createBatch`:
+- `POST` to `/report/batch/create`, OperationId: `createBatch`:
 Create Offline Report.
 Create an entry for the batch for offline report
 
-- `POST` to `/api/:version/report/region/summary/batch`, OperationId: `createRegionLegSummaryBatch`:
+- `POST` to `/report/region/summary/batch`, OperationId: `createRegionLegSummaryBatch`:
 Create Offline Report.
 Create an entry for the batch for offline report
 
-- `POST` to `/api/:version/report/batch/delete`, OperationId: `deleteBatch`:
+- `POST` to `/report/batch/delete`, OperationId: `deleteBatch`:
 Delete Offline Report.
 Deletes a batch report.
 
-- `GET` to `/api/:version/report/batch/get`, OperationId: `getReportBatch`:
+- `GET` to `/report/batch/get`, OperationId: `getReportBatch`:
 Get Offline Report.
 Checks status of batch report.
 
-- `POST` to `/api/:version/report/run`, OperationId: `runReport`:
+- `POST` to `/report/run`, OperationId: `runReport`:
 Run Report.
  This endpoint allows you to run a set of predefined reports that can be used to understand your users&#39; behavior as well as trends within your application.
 
-- `GET` to `/api/:version/report/batch/search`, OperationId: `searchBatch`:
+- `GET` to `/report/batch/search`, OperationId: `searchBatch`:
 Search Offline Reports.
 Retrieves batches for a user..
 

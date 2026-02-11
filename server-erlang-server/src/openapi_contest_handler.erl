@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/consumer/album/contest`, OperationId: `addOrUpdateAlbumContest`:
+- `POST` to `/consumer/album/contest`, OperationId: `addOrUpdateAlbumContest`:
 Create or Update Contest.
 Creates or updates a contest.
 
-- `POST` to `/api/:version/consumer/album/contest/approve`, OperationId: `approveAlbumContest`:
+- `POST` to `/consumer/album/contest/approve`, OperationId: `approveAlbumContest`:
 Approve Contest.
 Sets the approval status of a contest.
 
-- `POST` to `/api/:version/consumer/album/contest/remove`, OperationId: `deleteContest`:
+- `POST` to `/consumer/album/contest/remove`, OperationId: `deleteContest`:
 Delete Contest.
 Deletes a contest.
 
-- `GET` to `/api/:version/consumer/album/contest/get`, OperationId: `getAlbumContest`:
+- `GET` to `/consumer/album/contest/get`, OperationId: `getAlbumContest`:
 Get Contest.
 Gets the contest object including the likes and notes
 
-- `GET` to `/api/:version/consumer/album/contest/search`, OperationId: `getAlbumContests`:
+- `GET` to `/consumer/album/contest/search`, OperationId: `getAlbumContests`:
 Search Contests.
 Searches on contests.
 
-- `POST` to `/api/:version/consumer/album/contest/vote`, OperationId: `voteOnAlbumContest`:
+- `POST` to `/consumer/album/contest/vote`, OperationId: `voteOnAlbumContest`:
 Vote on Contest.
 Vote on a collection in a contest.
 

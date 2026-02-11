@@ -2,31 +2,31 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/category/distancesearch`, OperationId: `categoryDistanceSearch`:
+- `GET` to `/category/distancesearch`, OperationId: `categoryDistanceSearch`:
 Search Categories by Distance.
 Search for categories by distance.
 
-- `POST` to `/api/:version/category/create`, OperationId: `createCategory`:
+- `POST` to `/category/create`, OperationId: `createCategory`:
 Create Category.
 Create a new category.
 
-- `POST` to `/api/:version/category/delete`, OperationId: `deleteCategory`:
+- `POST` to `/category/delete`, OperationId: `deleteCategory`:
 Delete Category.
 Delete a category.
 
-- `POST` to `/api/:version/category/duplicate`, OperationId: `duplicateCategory`:
+- `POST` to `/category/duplicate`, OperationId: `duplicateCategory`:
 Duplicate Category.
 Duplicate a category, including all its children.
 
-- `GET` to `/api/:version/category/get`, OperationId: `getCategory`:
+- `GET` to `/category/get`, OperationId: `getCategory`:
 Get Category.
 Get the details of a specific category. Recursively include all child categories and their children.
 
-- `GET` to `/api/:version/category/search`, OperationId: `searchCategories`:
+- `GET` to `/category/search`, OperationId: `searchCategories`:
 Search Categories.
 Search for categories.
 
-- `POST` to `/api/:version/category/update`, OperationId: `updateCategory`:
+- `POST` to `/category/update`, OperationId: `updateCategory`:
 Update Category.
 Update a category.
 

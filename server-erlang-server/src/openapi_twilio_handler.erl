@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/sms/buyoffer/:appKey`, OperationId: `smsBuyOffer`:
+- `POST` to `/sms/buyoffer/:appKey`, OperationId: `smsBuyOffer`:
 Buy Offer by SMS.
 Recieve an SMS payload from Twillio to purchase an offer.
 

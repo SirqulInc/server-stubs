@@ -2,59 +2,59 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/achievement/tier/search`, OperationId: ``:
+- `POST` to `/achievement/tier/search`, OperationId: ``:
 Searches an Achievement Tier.
 Searches a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `POST` to `/api/:version/achievement/create`, OperationId: `createAchievement`:
+- `POST` to `/achievement/create`, OperationId: `createAchievement`:
 Create Achievement.
 Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `POST` to `/api/:version/achievement/tier/create`, OperationId: `createAchievementTier`:
+- `POST` to `/achievement/tier/create`, OperationId: `createAchievementTier`:
 Create Achievement Tier.
 Create a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `POST` to `/api/:version/achievement/delete`, OperationId: `deleteAchievement`:
+- `POST` to `/achievement/delete`, OperationId: `deleteAchievement`:
 Delete Achievement.
 Deletes an achievement (for developer/retailer use). User must have permissions to the application the achievement was created for.
 
-- `POST` to `/api/:version/achievement/tier/delete`, OperationId: `deleteAchievementTier`:
+- `POST` to `/achievement/tier/delete`, OperationId: `deleteAchievementTier`:
 Delete Achievement Tier.
 Deletes an achievement tier (for developer/retailer use). User must have permissions to the application the achievement was created for.
 
-- `GET` to `/api/:version/achievement/get`, OperationId: `getAchievement`:
+- `GET` to `/achievement/get`, OperationId: `getAchievement`:
 Get Achievement.
 Get an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `POST` to `/api/:version/achievement/tier/get`, OperationId: `getAchievementTier`:
+- `POST` to `/achievement/tier/get`, OperationId: `getAchievementTier`:
 Gets an achievement tier.
 Gets an achievement tier (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `GET` to `/api/:version/achievement/progress/get`, OperationId: `getUserAchievements`:
+- `GET` to `/achievement/progress/get`, OperationId: `getUserAchievements`:
 Get Achievement Progress.
 Gets a list of user achievements.
 
-- `GET` to `/api/:version/achievement/tag/list`, OperationId: `listAchievementTags`:
+- `GET` to `/achievement/tag/list`, OperationId: `listAchievementTags`:
 List Achievement Tags.
 List achievement tags by application
 
-- `GET` to `/api/:version/achievement/list`, OperationId: `listAchievements`:
+- `GET` to `/achievement/list`, OperationId: `listAchievements`:
 List Achievements.
 List achievements by billable.
 
-- `GET` to `/api/:version/achievement/search`, OperationId: `searchAchievements`:
+- `GET` to `/achievement/search`, OperationId: `searchAchievements`:
 Search Achievements.
 Searches achievements by application for consumers.
 
-- `POST` to `/api/:version/achievement/update`, OperationId: `updateAchievement`:
+- `POST` to `/achievement/update`, OperationId: `updateAchievement`:
 Update Achievement.
 Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `POST` to `/api/:version/achievement/tier/update`, OperationId: `updateAchievementTier`:
+- `POST` to `/achievement/tier/update`, OperationId: `updateAchievementTier`:
 Update Achievement Tier.
 Updates a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for.
 
-- `POST` to `/api/:version/achievement/progress/update`, OperationId: `updateUserAchievement`:
+- `POST` to `/achievement/progress/update`, OperationId: `updateUserAchievement`:
 Update Achievement Progress.
 Update user achievement progress.
 

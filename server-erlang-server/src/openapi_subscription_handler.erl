@@ -2,31 +2,31 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/subscription/create`, OperationId: `createSubscription`:
+- `POST` to `/subscription/create`, OperationId: `createSubscription`:
 Create Subscription.
 Create a subscription for a billable entity.  Provide a planId, if not provided then the base plan will be assigned.
 
-- `POST` to `/api/:version/subscription/delete`, OperationId: `deleteSubscription`:
+- `POST` to `/subscription/delete`, OperationId: `deleteSubscription`:
 Delete Subscription.
 Suspend the current subscription for the billable entity managed by the account.  The account must be the responsible manager to perform this action
 
-- `GET` to `/api/:version/subscription/get`, OperationId: `getSubscription`:
+- `GET` to `/subscription/get`, OperationId: `getSubscription`:
 Get Subscription.
 Use the accountId to determine the associated BillableEntity.  Then get the subscription.
 
-- `GET` to `/api/:version/subscription/plan/get`, OperationId: `getSubscriptionPlan`:
+- `GET` to `/subscription/plan/get`, OperationId: `getSubscriptionPlan`:
 Get Subscription Plan.
 Get the matched subscription plan
 
-- `GET` to `/api/:version/subscription/plan/list`, OperationId: `getSubscriptionPlans`:
+- `GET` to `/subscription/plan/list`, OperationId: `getSubscriptionPlans`:
 List Subscription Plans.
 Get the matched subscription plan
 
-- `GET` to `/api/:version/subscription/usage/get`, OperationId: `getSubscriptionUsage`:
+- `GET` to `/subscription/usage/get`, OperationId: `getSubscriptionUsage`:
 Get Subscription Usage.
 Use the accountId to determine the associated BillableEntity.  Then get the application usage.
 
-- `POST` to `/api/:version/subscription/update`, OperationId: `updateSubscription`:
+- `POST` to `/subscription/update`, OperationId: `updateSubscription`:
 Update Subscription.
 Updates the subscription for the billable entity for an account
 

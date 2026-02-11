@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/region/create`, OperationId: `createRegion`:
+- `POST` to `/region/create`, OperationId: `createRegion`:
 Create Region.
 Create a region.
 
-- `POST` to `/api/:version/region/delete`, OperationId: `deleteRegion`:
+- `POST` to `/region/delete`, OperationId: `deleteRegion`:
 Delete Region.
 Delete a region.
 
-- `GET` to `/api/:version/region/get`, OperationId: `getRegion`:
+- `GET` to `/region/get`, OperationId: `getRegion`:
 Get Region.
 Get a region.
 
-- `GET` to `/api/:version/region/search`, OperationId: `searchRegions`:
+- `GET` to `/region/search`, OperationId: `searchRegions`:
 Search Regions.
 Get the list of regions.
 
-- `POST` to `/api/:version/region/update`, OperationId: `updateRegion`:
+- `POST` to `/region/update`, OperationId: `updateRegion`:
 Update Region.
 Update a region.
 

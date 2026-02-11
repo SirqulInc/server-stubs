@@ -2,11 +2,11 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/participant/process/all`, OperationId: `processAllParticipants`:
+- `POST` to `/participant/process/all`, OperationId: `processAllParticipants`:
 Process All Participant Feeds.
 Processes all supported participant feeds.
 
-- `POST` to `/api/:version/participant/process`, OperationId: `processParticipants`:
+- `POST` to `/participant/process`, OperationId: `processParticipants`:
 Process Participants Feed.
 Processes a participant feed or uploaded file for a specific league.
 

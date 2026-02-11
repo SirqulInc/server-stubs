@@ -2,55 +2,55 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/notification/template/create`, OperationId: `createNotificationTemplate`:
+- `POST` to `/notification/template/create`, OperationId: `createNotificationTemplate`:
 Create Notification Template.
 Create a notification template. Developers will only be able to create notification templates for their own applications.
 
-- `POST` to `/api/:version/notification/blocked/batch`, OperationId: `createOrUpdateBlockedNotifications`:
+- `POST` to `/notification/blocked/batch`, OperationId: `createOrUpdateBlockedNotifications`:
 Create or update blocked notification settings.
 Create or update blocked notification settings
 
-- `POST` to `/api/:version/notification/template/delete`, OperationId: `deleteNotificationTemplate`:
+- `POST` to `/notification/template/delete`, OperationId: `deleteNotificationTemplate`:
 Delete Notification Template.
 Deletes a notification template. Developers will only be able to delete notification templates for their own applications.
 
-- `GET` to `/api/:version/notification/template/get`, OperationId: `getNotificationTemplate`:
+- `GET` to `/notification/template/get`, OperationId: `getNotificationTemplate`:
 Get Notification Template.
 Get the details of a notification template. Developers will only be able to see notification templates for their own applications.
 
-- `GET` to `/api/:version/notification/search`, OperationId: `getNotifications`:
+- `GET` to `/notification/search`, OperationId: `getNotifications`:
 Get Notifications.
 Get a list of notifications for a user. If the \&quot;markAsRead\&quot; parameter is set to true, the returned notifications will be marked as \&quot;read\&quot; after the response has been sent. By default, read messages will not be returned, so to see read messages, set \&quot;returnReadMessages\&quot; to true.
 
-- `POST` to `/api/:version/notification/token`, OperationId: `registerNotificationToken`:
+- `POST` to `/notification/token`, OperationId: `registerNotificationToken`:
 Register Notification Token.
 Register a token to send application dependent notifications like Google Cloud Messaging, or Apple Push Notifications.
 
-- `GET` to `/api/:version/notification/blocked/search`, OperationId: `searchBlockedNotifications`:
+- `GET` to `/notification/blocked/search`, OperationId: `searchBlockedNotifications`:
 Search on the user&#39;s blocked notification settings.
 Search on the user&#39;s blocked notification settings
 
-- `GET` to `/api/:version/notification/template/search`, OperationId: `searchNotificationTemplate`:
+- `GET` to `/notification/template/search`, OperationId: `searchNotificationTemplate`:
 Search Notification Templates.
 Search for notification templates on owned applications.
 
-- `GET` to `/api/:version/notification/recipient/search`, OperationId: `searchRecipients`:
+- `GET` to `/notification/recipient/search`, OperationId: `searchRecipients`:
 Search for Recipients.
 Search for application users to send notifications.
 
-- `GET` to `/api/:version/notification/recipient/search/count`, OperationId: `searchRecipientsCount`:
+- `GET` to `/notification/recipient/search/count`, OperationId: `searchRecipientsCount`:
 Search for Recipients (Counts/Grouped).
 Search for application users to send notifications (count/grouped variant).
 
-- `POST` to `/api/:version/notification/batch`, OperationId: `sendBatchNotifications`:
+- `POST` to `/notification/batch`, OperationId: `sendBatchNotifications`:
 Send Batch Notifications.
 Send notifications to all users of an application. Only someone with permissions to the application can do this.
 
-- `POST` to `/api/:version/notification/custom`, OperationId: `sendCustomNotifications`:
+- `POST` to `/notification/custom`, OperationId: `sendCustomNotifications`:
 Send Custom Notifications.
 Send your own custom notification to a user. NOTE: the EventType of these notifications will be CUSTOM. Notifications sent to yourself will currently be ignored.
 
-- `POST` to `/api/:version/notification/template/update`, OperationId: `updateNotificationTemplate`:
+- `POST` to `/notification/template/update`, OperationId: `updateNotificationTemplate`:
 Update Notification Template.
 Update a notification template. Developers will only be able to update notification templates for their own applications.
 

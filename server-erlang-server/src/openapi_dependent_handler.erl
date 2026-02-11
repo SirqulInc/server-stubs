@@ -2,15 +2,15 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `PUT` to `/api/:version/cargo/dependent/:accountId`, OperationId: `create`:
+- `PUT` to `/cargo/dependent/:accountId`, OperationId: `create`:
 Create Dependent.
 Create dependent of the account
 
-- `GET` to `/api/:version/cargo/dependent/:accountId`, OperationId: `getDependents`:
+- `GET` to `/cargo/dependent/:accountId`, OperationId: `getDependents`:
 Get dependent list of an account.
 Get the dependent list of an account
 
-- `DELETE` to `/api/:version/cargo/dependent/:accountId`, OperationId: `removeDependent`:
+- `DELETE` to `/cargo/dependent/:accountId`, OperationId: `removeDependent`:
 Delete Dependent.
 Delete the Dependent
 

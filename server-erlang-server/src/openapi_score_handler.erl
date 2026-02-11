@@ -2,15 +2,15 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/score/create`, OperationId: `createScore`:
+- `POST` to `/score/create`, OperationId: `createScore`:
 Create Score.
 Create a score.  The response object will contain a series of   coded messages detailing what items were completed, the score registered,   and any tickets allocated.  Scoring a  level could complete the pack it   is in, completing that pack could complete the game, which  in turn could   complete the mission.  This completion chain is indicated to the client   via  a list of {@link MessageResponse}.
 
-- `GET` to `/api/:version/score/get`, OperationId: `getScore`:
+- `GET` to `/score/get`, OperationId: `getScore`:
 Get Score.
 Get the high score for an item.  Pass in the full path IDs for the score.
 
-- `GET` to `/api/:version/score/search`, OperationId: `searchScores`:
+- `GET` to `/score/search`, OperationId: `searchScores`:
 Search Score.
 Search the scores for an item.  Pass in the full path IDs for the scores.
 

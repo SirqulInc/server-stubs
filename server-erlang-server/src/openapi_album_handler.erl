@@ -2,39 +2,39 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/album/create`, OperationId: `addAlbumCollection`:
+- `POST` to `/album/create`, OperationId: `addAlbumCollection`:
 Create Album.
 Create an Album.
 
-- `POST` to `/api/:version/album/user/add`, OperationId: `addAlbumUsers`:
+- `POST` to `/album/user/add`, OperationId: `addAlbumUsers`:
 Add Album Users.
 Add users to an album as participants.
 
-- `POST` to `/api/:version/album/approve`, OperationId: `approveAlbum`:
+- `POST` to `/album/approve`, OperationId: `approveAlbum`:
 Approve Album.
 Sets the approval status of an Album.
 
-- `GET` to `/api/:version/album/get`, OperationId: `getAlbumCollection`:
+- `GET` to `/album/get`, OperationId: `getAlbumCollection`:
  Get Album.
 Get an Album.
 
-- `POST` to `/api/:version/album/user/leave`, OperationId: `leaveAlbum`:
+- `POST` to `/album/user/leave`, OperationId: `leaveAlbum`:
 Leave Album.
  Allows a user to leave an album (they are no longer considered a participant). The album creator cannot leave their own albums.
 
-- `POST` to `/api/:version/album/delete`, OperationId: `removeAlbum`:
+- `POST` to `/album/delete`, OperationId: `removeAlbum`:
 Delete Album.
 Deletes an Album
 
-- `POST` to `/api/:version/album/user/delete`, OperationId: `removeAlbumUsers`:
+- `POST` to `/album/user/delete`, OperationId: `removeAlbumUsers`:
 Remove Album Users.
 Remove participants of an album.
 
-- `GET` to `/api/:version/album/search`, OperationId: `searchAlbums`:
+- `GET` to `/album/search`, OperationId: `searchAlbums`:
 Search Albums.
 Searches on Albums.
 
-- `POST` to `/api/:version/album/update`, OperationId: `updateAlbumCollection`:
+- `POST` to `/album/update`, OperationId: `updateAlbumCollection`:
 Update Album.
 Update an Album.
 

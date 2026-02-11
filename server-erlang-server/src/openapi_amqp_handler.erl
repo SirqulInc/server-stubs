@@ -2,35 +2,35 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/queue/consumer/create`, OperationId: `consumerCreate`:
+- `POST` to `/queue/consumer/create`, OperationId: `consumerCreate`:
 Create Consumer.
 Create a connection to an existing amqp queue and register as a consumer.
 
-- `POST` to `/api/:version/queue/consumer/update`, OperationId: `consumerUpdate`:
+- `POST` to `/queue/consumer/update`, OperationId: `consumerUpdate`:
 Update Consumer.
 Update an existing amqp queue&#39;s data mapping.
 
-- `POST` to `/api/:version/queue/create`, OperationId: `queueCreate`:
+- `POST` to `/queue/create`, OperationId: `queueCreate`:
 Create Queue.
 Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application.
 
-- `POST` to `/api/:version/queue/delete`, OperationId: `queueDelete`:
+- `POST` to `/queue/delete`, OperationId: `queueDelete`:
 Delete Queue.
 Delete the stored queue record and close any active connections to the AMQP servers.
 
-- `GET` to `/api/:version/queue/get`, OperationId: `queueGet`:
+- `GET` to `/queue/get`, OperationId: `queueGet`:
 Get Queue.
 Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
 
-- `POST` to `/api/:version/queue/publish`, OperationId: `queuePublish`:
+- `POST` to `/queue/publish`, OperationId: `queuePublish`:
 Publish Queue.
 Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record.
 
-- `GET` to `/api/:version/queue/search`, OperationId: `queueSearch`:
+- `GET` to `/queue/search`, OperationId: `queueSearch`:
 Search Queue.
 Get the queues setup for the BillableEntity&#39;s applications.
 
-- `POST` to `/api/:version/queue/update`, OperationId: `queueUpdate`:
+- `POST` to `/queue/update`, OperationId: `queueUpdate`:
 Update Queue.
 Update the basic AMQP queue.
 

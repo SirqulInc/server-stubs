@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/ticket/count`, OperationId: `getTicketCount`:
+- `GET` to `/ticket/count`, OperationId: `getTicketCount`:
 Get Ticket Count.
 Gets the ticket count.
 
-- `GET` to `/api/:version/ticket/getList`, OperationId: `getTicketList`:
+- `GET` to `/ticket/getList`, OperationId: `getTicketList`:
 Get Ticket List.
 Gets the list of tickets.
 
-- `POST` to `/api/:version/purchase/gift`, OperationId: `giftPurchase`:
+- `POST` to `/purchase/gift`, OperationId: `giftPurchase`:
 Gift Tickets.
 Gift tickets to another user.
 
-- `POST` to `/api/:version/ticket/save`, OperationId: `saveTicket`:
+- `POST` to `/ticket/save`, OperationId: `saveTicket`:
 Save Ticket.
 Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system.
 
-- `POST` to `/api/:version/ticket/save/fileUpload`, OperationId: `saveTicketViaFileUpload`:
+- `POST` to `/ticket/save/fileUpload`, OperationId: `saveTicketViaFileUpload`:
 Save Ticket with Reciept.
 Similar to the Save Ticket endpoint but allows the receiptData to be in binary format. This must be a multi-part post
 
-- `GET` to `/api/:version/ticket/ticketoffers`, OperationId: `ticketOffers`:
+- `GET` to `/ticket/ticketoffers`, OperationId: `ticketOffers`:
 Get Ticket Offers.
 Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer.
 

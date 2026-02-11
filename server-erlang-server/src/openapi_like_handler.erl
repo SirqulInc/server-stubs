@@ -2,15 +2,15 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/like`, OperationId: `registerLike`:
+- `POST` to `/like`, OperationId: `registerLike`:
 Create Like.
 Allows a user to like or dislike accounts, albums, album contests, assets, game levels, notes, and theme descriptors. Multiple likes\\dislikes on the same object will replace the previous one.
 
-- `POST` to `/api/:version/like/delete`, OperationId: `removeLike`:
+- `POST` to `/like/delete`, OperationId: `removeLike`:
 Delete Like.
 Removes a like. This will make the user \&quot;neutral\&quot;.
 
-- `GET` to `/api/:version/like/search`, OperationId: `searchLikes`:
+- `GET` to `/like/search`, OperationId: `searchLikes`:
 Search Likes.
 Search for likes on a likable object.
 

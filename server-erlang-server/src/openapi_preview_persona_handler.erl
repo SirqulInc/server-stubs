@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/persona/create`, OperationId: `createPersona`:
+- `POST` to `/persona/create`, OperationId: `createPersona`:
 Create Persona.
 Creates a new persona. If the given params are null those attributes will be override by null.
 
-- `POST` to `/api/:version/persona/delete`, OperationId: `deletePersona`:
+- `POST` to `/persona/delete`, OperationId: `deletePersona`:
 Delete Persona.
 Mark the persona for deletion.
 
-- `GET` to `/api/:version/persona/get`, OperationId: `getPersonaList`:
+- `GET` to `/persona/get`, OperationId: `getPersonaList`:
 Get Persona.
 Get the persona by the given persona ID. If the persona cannot be found, a invalid response is returned.
 
-- `GET` to `/api/:version/persona/search`, OperationId: `searchPersona`:
+- `GET` to `/persona/search`, OperationId: `searchPersona`:
 Search Personas.
 Search for persona that the account owns by the given account ID.
 
-- `POST` to `/api/:version/persona/update`, OperationId: `updatePersona`:
+- `POST` to `/persona/update`, OperationId: `updatePersona`:
 Update Persona.
 Update the persona by the given personaId. If the given params are null those attributes will be override by null. If active is assigned, all other params will be ignored.
 

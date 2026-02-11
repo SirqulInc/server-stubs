@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/appconfig/create`, OperationId: `createApplicationConfig`:
+- `POST` to `/appconfig/create`, OperationId: `createApplicationConfig`:
 Create AppConfig.
 Creates a new application configuration. If the configVersion provided already exists for the given app, an invalid response is returned and the application configuration won&#39;t be created.
 
-- `POST` to `/api/:version/appconfig/delete`, OperationId: `deleteApplicationConfig`:
+- `POST` to `/appconfig/delete`, OperationId: `deleteApplicationConfig`:
 Delete AppConfig.
 Mark the application configuration for deletion.
 
-- `GET` to `/api/:version/appconfig/get`, OperationId: `getApplicationConfig`:
+- `GET` to `/appconfig/get`, OperationId: `getApplicationConfig`:
 Get AppConfig.
 Gets the appConfig data by the given configId. If appConfig cannot be found, it returns an invalid response.
 
-- `GET` to `/api/:version/appconfig/getbyversion`, OperationId: `getApplicationConfigByConfigVersion`:
+- `GET` to `/appconfig/getbyversion`, OperationId: `getApplicationConfigByConfigVersion`:
 Get AppConfig by Version.
 Gets the appConfig data by the given appKey and app configVersion number.If the appKey is is invalid or appConfig is not found, it returns an invalid response. 
 
-- `GET` to `/api/:version/appconfig/search`, OperationId: `searchApplicationConfig`:
+- `GET` to `/appconfig/search`, OperationId: `searchApplicationConfig`:
 Search AppConfigs.
 Gets all versions of application configurations in a particular app by the given appKey.
 
-- `POST` to `/api/:version/appconfig/update`, OperationId: `updateApplicationConfig`:
+- `POST` to `/appconfig/update`, OperationId: `updateApplicationConfig`:
 Update AppConfig.
 pdates an existing application configuration. If the configVersion provided already exists for the given app the application configuration won&#39;t be updated.
 

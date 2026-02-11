@@ -2,35 +2,35 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/creative/addpreview`, OperationId: `addPreview`:
+- `POST` to `/creative/addpreview`, OperationId: `addPreview`:
 Add Preview.
 Enable this ad for preview for this account.
 
-- `GET` to `/api/:version/ads/find`, OperationId: `adsFind`:
+- `GET` to `/ads/find`, OperationId: `adsFind`:
 Find Missions.
 Get a set of ad filtered by the parameters provided.
 
-- `POST` to `/api/:version/creative/create`, OperationId: `createCreative`:
+- `POST` to `/creative/create`, OperationId: `createCreative`:
 Create Creative.
 Create a creative
 
-- `POST` to `/api/:version/creative/delete`, OperationId: `deleteCreative`:
+- `POST` to `/creative/delete`, OperationId: `deleteCreative`:
 Delete Creative.
 Delete a creative
 
-- `GET` to `/api/:version/creative/get`, OperationId: `getCreative`:
+- `GET` to `/creative/get`, OperationId: `getCreative`:
 Get Creative.
 Get a creative
 
-- `GET` to `/api/:version/creative/search`, OperationId: `getCreativesByApplication`:
+- `GET` to `/creative/search`, OperationId: `getCreativesByApplication`:
 Search Creatives.
 Get a list of levels for an application, just those the account has permissions to view.
 
-- `POST` to `/api/:version/creative/removepreview`, OperationId: `removePreview`:
+- `POST` to `/creative/removepreview`, OperationId: `removePreview`:
 Remove Preview.
 Remove this ad for preview for this account.
 
-- `POST` to `/api/:version/creative/update`, OperationId: `updateCreative`:
+- `POST` to `/creative/update`, OperationId: `updateCreative`:
 Update Creative.
 Update a creative
 

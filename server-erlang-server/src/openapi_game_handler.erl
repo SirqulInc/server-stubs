@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/game/create`, OperationId: `createGame`:
+- `POST` to `/game/create`, OperationId: `createGame`:
 Create a Game.
 Create a Game.
 
-- `POST` to `/api/:version/game/delete`, OperationId: `deleteGame`:
+- `POST` to `/game/delete`, OperationId: `deleteGame`:
 Delete a Game.
 Delete a game.
 
-- `GET` to `/api/:version/game/get`, OperationId: `getGame`:
+- `GET` to `/game/get`, OperationId: `getGame`:
 Get a Game by id.
 Get a Game by id.
 
-- `GET` to `/api/:version/game/search`, OperationId: `searchGames`:
+- `GET` to `/game/search`, OperationId: `searchGames`:
 Search a Game.
 Get a list of games for an application, just those the account has permissions to view.
 
-- `POST` to `/api/:version/game/update`, OperationId: `updateGame`:
+- `POST` to `/game/update`, OperationId: `updateGame`:
 Update a Game.
 Update a Game
 

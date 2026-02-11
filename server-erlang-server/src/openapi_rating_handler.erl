@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/rating/create`, OperationId: `createRating`:
+- `POST` to `/rating/create`, OperationId: `createRating`:
 Create Rating.
 This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object.
 
-- `POST` to `/api/:version/rating/delete`, OperationId: `deleteRating`:
+- `POST` to `/rating/delete`, OperationId: `deleteRating`:
 Delete Rating.
 Sets a rating as deleted.
 
-- `GET` to `/api/:version/location/rating/index/search`, OperationId: `searchLocationRatingIndexes`:
+- `GET` to `/location/rating/index/search`, OperationId: `searchLocationRatingIndexes`:
 Search Location Rating Indexes.
 Search for retailer locations by averages near you.
 
-- `GET` to `/api/:version/rating/index/search`, OperationId: `searchRatingIndexes`:
+- `GET` to `/rating/index/search`, OperationId: `searchRatingIndexes`:
 Search Rating Indexes.
 Search for ratable items by averages.
 
-- `GET` to `/api/:version/rating/search`, OperationId: `searchRatings`:
+- `GET` to `/rating/search`, OperationId: `searchRatings`:
 Search Ratings.
 Search for ratings on a ratable object.
 
-- `POST` to `/api/:version/rating/update`, OperationId: `updateRating`:
+- `POST` to `/rating/update`, OperationId: `updateRating`:
 Update Rating.
 Update an existing rating. Only the creator of the rating have permission to update.
 

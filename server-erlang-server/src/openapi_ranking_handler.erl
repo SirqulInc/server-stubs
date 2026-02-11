@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/ranking/historical/search`, OperationId: `getHistoricalRankings`:
+- `GET` to `/ranking/historical/search`, OperationId: `getHistoricalRankings`:
 Search Historical Rankings.
 Get historical leaderboard rankings by time-frame.
 
-- `GET` to `/api/:version/ranking/search`, OperationId: `getRankings`:
+- `GET` to `/ranking/search`, OperationId: `getRankings`:
 Search Rankings.
 Get leader board rankings. This is an all in one endpoint that can return multiple ranking types and also the current user rank.
 
-- `POST` to `/api/:version/ranking/personal/ranks`, OperationId: `getUserRank`:
+- `POST` to `/ranking/personal/ranks`, OperationId: `getUserRank`:
 Get Personal Rankings.
 Returns the user&#39;s ranks for one or more rank types and modes.
 
-- `POST` to `/api/:version/ranking/override`, OperationId: `overrideUserRank`:
+- `POST` to `/ranking/override`, OperationId: `overrideUserRank`:
 Override User Rank.
 Allows an admin of an application to override a user&#39;s scores for a leaderboard.
 
-- `POST` to `/api/:version/ranking/update`, OperationId: `updateRankings`:
+- `POST` to `/ranking/update`, OperationId: `updateRankings`:
 Update Ranking.
 Update the rank value 
 

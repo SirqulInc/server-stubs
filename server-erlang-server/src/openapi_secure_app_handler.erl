@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/secure/application/create`, OperationId: `createSecureApplication`:
+- `POST` to `/secure/application/create`, OperationId: `createSecureApplication`:
 Create Secure Application.
 Create a secure application record.
 
-- `POST` to `/api/:version/secure/application/delete`, OperationId: `deleteSecureApplication`:
+- `POST` to `/secure/application/delete`, OperationId: `deleteSecureApplication`:
 Delete Secure Application.
 Delete a secure application record.
 
-- `POST` to `/api/:version/secure/login`, OperationId: `loginSecure`:
+- `POST` to `/secure/login`, OperationId: `loginSecure`:
 Login Clear.
 Login via Clear.me. Creates a new account if logging in for the first time.
 
-- `POST` to `/api/:version/secure/purchase`, OperationId: `purchaseSecure`:
+- `POST` to `/secure/purchase`, OperationId: `purchaseSecure`:
 Purchase Clear.
 Purchase via Clear.me. Creates a new account if purchasing for the first time.
 
-- `POST` to `/api/:version/secure/application/reset`, OperationId: `resetSecure`:
+- `POST` to `/secure/application/reset`, OperationId: `resetSecure`:
 Rest Secure Application.
 Reset a secure application client.
 
-- `POST` to `/api/:version/secure/application/update`, OperationId: `updateSecureApplication`:
+- `POST` to `/secure/application/update`, OperationId: `updateSecureApplication`:
 Update Secure Application.
 Update a secure application record.
 

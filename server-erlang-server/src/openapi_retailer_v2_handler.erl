@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/retailer`, OperationId: `getRetaokiler`:
+- `GET` to `/retailer`, OperationId: `getRetaokiler`:
 Get Retailer.
 Gets a retailer. Only the owner and the employees of a retailer have access to view its information.
 

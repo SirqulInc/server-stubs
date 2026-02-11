@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/note/batch`, OperationId: `batchOperation`:
+- `POST` to `/note/batch`, OperationId: `batchOperation`:
 Batch Note Operation.
 Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE). 
 
-- `POST` to `/api/:version/note/create`, OperationId: `createNote`:
+- `POST` to `/note/create`, OperationId: `createNote`:
 Create Note.
 This is used to leave a comment (note) on a notable object (i.e. albums, album contests, assets, game levels, offers, offer locations, retailers, retailer locations, and theme descriptors). Leaving a comment on a notable object will be visiable to everyone who has access to view the object.
 
-- `POST` to `/api/:version/note/delete`, OperationId: `deleteNote`:
+- `POST` to `/note/delete`, OperationId: `deleteNote`:
 Delete Note.
 Sets a comment (note) as deleted.
 
-- `POST` to `/api/:version/note/get`, OperationId: `getNote`:
+- `POST` to `/note/get`, OperationId: `getNote`:
 Get Note.
 Get for a note based on its Id.
 
-- `POST` to `/api/:version/note/search`, OperationId: `searchNotes`:
+- `POST` to `/note/search`, OperationId: `searchNotes`:
 Search Notes.
 Search for notes on a notable object.
 
-- `POST` to `/api/:version/note/update`, OperationId: `updateNote`:
+- `POST` to `/note/update`, OperationId: `updateNote`:
 Update Note.
 Update an existing comment (note). Only the creator of the note have permission to update.
 

@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/program`, OperationId: `createProgram`:
+- `POST` to `/program`, OperationId: `createProgram`:
 Create Program.
 Create a new program
 
-- `DELETE` to `/api/:version/program/:id`, OperationId: `deleteProgram`:
+- `DELETE` to `/program/:id`, OperationId: `deleteProgram`:
 Delete Program.
 Delete an existing program
 
-- `GET` to `/api/:version/program/:id`, OperationId: `getProgram`:
+- `GET` to `/program/:id`, OperationId: `getProgram`:
 Get Program.
 Get an existing program
 
-- `POST` to `/api/:version/program/:id`, OperationId: `postProgram`:
+- `POST` to `/program/:id`, OperationId: `postProgram`:
 Update Program.
 Update an existing program
 
-- `PUT` to `/api/:version/program/:id`, OperationId: `putProgram`:
+- `PUT` to `/program/:id`, OperationId: `putProgram`:
 Update Program.
 Update an existing program
 
-- `GET` to `/api/:version/program`, OperationId: `searchPrograms`:
+- `GET` to `/program`, OperationId: `searchPrograms`:
 Search Programs.
 Search for programs
 

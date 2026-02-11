@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/pack/create`, OperationId: `createPack`:
+- `POST` to `/pack/create`, OperationId: `createPack`:
 Create Pack.
 Create a pack.
 
-- `POST` to `/api/:version/pack/delete`, OperationId: `deletePack`:
+- `POST` to `/pack/delete`, OperationId: `deletePack`:
 Delete Pack.
 Delete a pack.
 
-- `GET` to `/api/:version/pack/get`, OperationId: `getPack`:
+- `GET` to `/pack/get`, OperationId: `getPack`:
 Get Pack.
 Get a pack.
 
-- `GET` to `/api/:version/pack/search`, OperationId: `searchPacks`:
+- `GET` to `/pack/search`, OperationId: `searchPacks`:
 Search Packs.
 Search on packs.
 
-- `POST` to `/api/:version/pack/update`, OperationId: `updatePack`:
+- `POST` to `/pack/update`, OperationId: `updatePack`:
 Update Pack.
 Update a pack.
 

@@ -2,43 +2,43 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/invite/accept`, OperationId: `acceptInvite`:
+- `POST` to `/invite/accept`, OperationId: `acceptInvite`:
 Accept Invite.
 Allows a user to accept an invite. The user could also become the inviter&#39;s friend.
 
-- `POST` to `/api/:version/invite/albumContest`, OperationId: `albumContestInvite`:
+- `POST` to `/invite/albumContest`, OperationId: `albumContestInvite`:
 Invite to Contest.
 Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-- `POST` to `/api/:version/invite/album`, OperationId: `albumInvite`:
+- `POST` to `/invite/album`, OperationId: `albumInvite`:
 Invite to Collection.
 Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-- `POST` to `/api/:version/invite/event`, OperationId: `eventInvite`:
+- `POST` to `/invite/event`, OperationId: `eventInvite`:
 Invite to Event.
 Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet.
 
-- `POST` to `/api/:version/invite/gameLevel`, OperationId: `gameInvite`:
+- `POST` to `/invite/gameLevel`, OperationId: `gameInvite`:
 Invite to Game Level.
 Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-- `GET` to `/api/:version/invite/get`, OperationId: `getInvite`:
+- `GET` to `/invite/get`, OperationId: `getInvite`:
 Get Invite.
 This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to.
 
-- `POST` to `/api/:version/invite/mission`, OperationId: `missionInvite`:
+- `POST` to `/invite/mission`, OperationId: `missionInvite`:
 Invite to Mission.
 Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted.
 
-- `POST` to `/api/:version/invite/offer`, OperationId: `offerInvite`:
+- `POST` to `/invite/offer`, OperationId: `offerInvite`:
 Invite to Offer.
 Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite&#39;s list.
 
-- `POST` to `/api/:version/invite/offerLocation`, OperationId: `offerLocationInvite`:
+- `POST` to `/invite/offerLocation`, OperationId: `offerLocationInvite`:
 Invite to Offer Location.
 Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite&#39;s list.
 
-- `POST` to `/api/:version/invite/retailerLocation`, OperationId: `retailerLocationInvite`:
+- `POST` to `/invite/retailerLocation`, OperationId: `retailerLocationInvite`:
 Invite to Retailer Location.
 Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite&#39;s list.
 

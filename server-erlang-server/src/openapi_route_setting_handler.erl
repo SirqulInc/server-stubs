@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/route/setting`, OperationId: `createRouteSettings`:
+- `POST` to `/route/setting`, OperationId: `createRouteSettings`:
 Create Route Setting.
 Create a new route setting
 
-- `DELETE` to `/api/:version/route/setting/:routeSettingsId`, OperationId: `deleteRouteSettings`:
+- `DELETE` to `/route/setting/:routeSettingsId`, OperationId: `deleteRouteSettings`:
 Delete Route Setting.
 Delete an existing route setting
 
-- `GET` to `/api/:version/route/setting/:routeSettingsId`, OperationId: `getRouteSettings`:
+- `GET` to `/route/setting/:routeSettingsId`, OperationId: `getRouteSettings`:
 Get Route Setting.
 Get an existing route settings
 
-- `GET` to `/api/:version/route/setting`, OperationId: `searchRouteSettings`:
+- `GET` to `/route/setting`, OperationId: `searchRouteSettings`:
 Search Route Settings.
 Search for route settings
 
-- `PUT` to `/api/:version/route/setting/:routeSettingsId`, OperationId: `updateRouteSettings`:
+- `PUT` to `/route/setting/:routeSettingsId`, OperationId: `updateRouteSettings`:
 Update Route Setting.
 Update an existing route setting
 

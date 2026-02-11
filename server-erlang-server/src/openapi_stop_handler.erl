@@ -2,11 +2,11 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/stop/:id`, OperationId: `getStop`:
+- `GET` to `/stop/:id`, OperationId: `getStop`:
 Get Stop.
 Get an existing stop
 
-- `PUT` to `/api/:version/stop/:id`, OperationId: `updateStop`:
+- `PUT` to `/stop/:id`, OperationId: `updateStop`:
 Update Stop.
 Update an existing stop
 

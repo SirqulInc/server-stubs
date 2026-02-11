@@ -2,67 +2,67 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/application/create`, OperationId: `createApplication`:
+- `POST` to `/application/create`, OperationId: `createApplication`:
 Create Application.
 Create an application record and one placement record for that application. You can create more placements for this application by using {@link createApplicationPlacement}.
 
-- `POST` to `/api/:version/application/placement/create`, OperationId: `createApplicationPlacement`:
+- `POST` to `/application/placement/create`, OperationId: `createApplicationPlacement`:
 Create Ad Placement.
 Creates a new ad placement for an application.
 
-- `POST` to `/api/:version/application/delete`, OperationId: `deleteApplication`:
+- `POST` to `/application/delete`, OperationId: `deleteApplication`:
 Delete Application.
 Set the deleted timestamp to current time. This effectively deletes the application since all queries should ignore any records with a deleted timestamp
 
-- `POST` to `/api/:version/application/placement/delete`, OperationId: `deleteApplicationPlacement`:
+- `POST` to `/application/placement/delete`, OperationId: `deleteApplicationPlacement`:
 Delete Ad Placement.
 Deletes an ad placement for an application.
 
-- `GET` to `/api/:version/application/get`, OperationId: `getApplication`:
+- `GET` to `/application/get`, OperationId: `getApplication`:
 Get Application.
 Get a specific application by appKey
 
-- `GET` to `/api/:version/application/placement/get`, OperationId: `getApplicationPlacement`:
+- `GET` to `/application/placement/get`, OperationId: `getApplicationPlacement`:
 Get Ad Placement.
 Get details of an ad placement
 
-- `GET` to `/api/:version/application/versions`, OperationId: `getApplicationVersions`:
+- `GET` to `/application/versions`, OperationId: `getApplicationVersions`:
 Get API versions.
 Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8
 
-- `GET` to `/api/:version/application/users`, OperationId: `getUniqueUsersByApp`:
+- `GET` to `/application/users`, OperationId: `getUniqueUsersByApp`:
 Search Application Users.
 Get a list of users per application
 
-- `GET` to `/api/:version/application/list`, OperationId: `listApplications`:
+- `GET` to `/application/list`, OperationId: `listApplications`:
 List Applications.
 List active applications matching the criteria (as a consumer)
 
-- `GET` to `/api/:version/application/placement/search`, OperationId: `searchApplicationPlacement`:
+- `GET` to `/application/placement/search`, OperationId: `searchApplicationPlacement`:
 Search for Ad Placements.
 Searches placements for an application.
 
-- `GET` to `/api/:version/application/settings/search`, OperationId: `searchApplicationSettings`:
+- `GET` to `/application/settings/search`, OperationId: `searchApplicationSettings`:
 Search for Application Settings.
 Returns a list of applications that the user has logged into before, and returns specific settings for that application and user
 
-- `GET` to `/api/:version/application/search`, OperationId: `searchApplications`:
+- `GET` to `/application/search`, OperationId: `searchApplications`:
 Search Applications.
 Search for applications matching the criteria that the logged in user has access to
 
-- `POST` to `/api/:version/application/update`, OperationId: `updateApplication`:
+- `POST` to `/application/update`, OperationId: `updateApplication`:
 Update Application.
 Update an application record
 
-- `POST` to `/api/:version/application/active`, OperationId: `updateApplicationActive`:
+- `POST` to `/application/active`, OperationId: `updateApplicationActive`:
 Change Appliation Status.
 Set the application&#39;s active flag to true/false. This effectively activates or deactivates the application.
 
-- `POST` to `/api/:version/application/placement/update`, OperationId: `updateApplicationPlacement`:
+- `POST` to `/application/placement/update`, OperationId: `updateApplicationPlacement`:
 Update Ad Placement.
 Updates an ad placement for an application.
 
-- `POST` to `/api/:version/application/certificate/create`, OperationId: `uploadApplicationCertificate`:
+- `POST` to `/application/certificate/create`, OperationId: `uploadApplicationCertificate`:
 Create Application Certificate.
 Uploads a certificate for an application that the user has access to.
 

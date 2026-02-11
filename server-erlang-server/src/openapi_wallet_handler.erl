@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/wallet/create`, OperationId: `createOfferTransaction`:
+- `POST` to `/wallet/create`, OperationId: `createOfferTransaction`:
 Create Wallet Offers.
 Adds offers to the wallet
 
-- `POST` to `/api/:version/wallet/delete`, OperationId: `deleteOfferTransaction`:
+- `POST` to `/wallet/delete`, OperationId: `deleteOfferTransaction`:
 Delete Wallet Offer.
 Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId.
 
-- `GET` to `/api/:version/wallet/get`, OperationId: `getOfferTransaction`:
+- `GET` to `/wallet/get`, OperationId: `getOfferTransaction`:
 Get Wallet Offer.
 
 
-- `POST` to `/api/:version/wallet/preview`, OperationId: `previewOfferTransaction`:
+- `POST` to `/wallet/preview`, OperationId: `previewOfferTransaction`:
 Preview Wallet Offers.
 Preview the final cost of a transaction without charging the user
 
-- `GET` to `/api/:version/wallet/search`, OperationId: `searchOfferTransactions`:
+- `GET` to `/wallet/search`, OperationId: `searchOfferTransactions`:
 Search Wallet Offers.
 Search on active offers currently in the user&#39;s wallet, or past offers the user has already redeemed.
 
-- `POST` to `/api/:version/wallet/update`, OperationId: `updateOfferTransaction`:
+- `POST` to `/wallet/update`, OperationId: `updateOfferTransaction`:
 Update Wallet Offer.
 Update offer status. The status values are: 0 - not redeemable, 1 - redeemable.  Not redeemable means the customer has received the offer but has not decided to use (or print) it yet.  Until they choose to do this the merchant cannot redeem the offer (has not been given permission yet).   Redeemable means the customer has chosen to use the offer and wishes to redeem it.  Redeemed means the merchant has accepted the offer and the given the customer its value, then marked it a used in the system.  This status change is handled by a merchant end point.
 

@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/leaderboard/create`, OperationId: `createLeaderboard`:
+- `POST` to `/leaderboard/create`, OperationId: `createLeaderboard`:
 Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation.
 Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 
-- `POST` to `/api/:version/leaderboard/delete`, OperationId: `deleteLeaderboard`:
+- `POST` to `/leaderboard/delete`, OperationId: `deleteLeaderboard`:
 Delete the Leader Board.
 Removes a leader board id.
 
-- `GET` to `/api/:version/leaderboard/get`, OperationId: `getLeaderboard`:
+- `GET` to `/leaderboard/get`, OperationId: `getLeaderboard`:
 Read a leaderboard by id and retrieve the matching ranking list.
 Read a leaderboard by id and retrieve the matching ranking list
 
-- `GET` to `/api/:version/leaderboard/search`, OperationId: `searchLeaderboards`:
+- `GET` to `/leaderboard/search`, OperationId: `searchLeaderboards`:
 Search leaderboard and retrieve the matching ranking list.
 Search leaderboard and retrieve the matching ranking list
 
-- `POST` to `/api/:version/leaderboard/update`, OperationId: `updateLeaderboard`:
+- `POST` to `/leaderboard/update`, OperationId: `updateLeaderboard`:
 Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation.
 Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 

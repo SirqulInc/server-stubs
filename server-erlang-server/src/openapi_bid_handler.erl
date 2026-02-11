@@ -2,19 +2,19 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/bid/create`, OperationId: `createBid`:
+- `POST` to `/bid/create`, OperationId: `createBid`:
 Create Bid.
 Creates a bid on a biddable object
 
-- `POST` to `/api/:version/bid/delete`, OperationId: `deleteBid`:
+- `POST` to `/bid/delete`, OperationId: `deleteBid`:
 Delete Bid.
 Deleted a bid on a biddable object
 
-- `GET` to `/api/:version/bid/get`, OperationId: `getBid`:
+- `GET` to `/bid/get`, OperationId: `getBid`:
 Get Bid.
 Get the bid details of a biddable object
 
-- `POST` to `/api/:version/bid/update`, OperationId: `updateBid`:
+- `POST` to `/bid/update`, OperationId: `updateBid`:
 Update Bid.
 Updates a bid on a biddable object
 

@@ -2,11 +2,11 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/location`, OperationId: `createLocationV2`:
+- `POST` to `/location`, OperationId: `createLocationV2`:
 Create new location.
 Create a new location from a real object location.
 
-- `POST` to `/api/:version/location/:id`, OperationId: `updateLocationV2`:
+- `POST` to `/location/:id`, OperationId: `updateLocationV2`:
 Update an existing location.
 Update an existing location
 

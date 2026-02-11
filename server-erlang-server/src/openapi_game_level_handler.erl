@@ -2,43 +2,43 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/level/create`, OperationId: `createGameLevel`:
+- `POST` to `/level/create`, OperationId: `createGameLevel`:
 Create Game Level.
 Create a game level. Currently does NOT support game objects.
 
-- `POST` to `/api/:version/level/delete`, OperationId: `deleteGameLevel`:
+- `POST` to `/level/delete`, OperationId: `deleteGameLevel`:
 Delete Game Level.
 Delete a game level. The level and account must be valid and have the appropirate permissions to view the content.
 
-- `GET` to `/api/:version/level/get`, OperationId: `getGameLevel`:
+- `GET` to `/level/get`, OperationId: `getGameLevel`:
 Get Game Level.
 Get a game level. The level and account must be valid and have the appropirate permissions to view the content.
 
-- `GET` to `/api/:version/level/search`, OperationId: `getGameLevelsByApplication`:
+- `GET` to `/level/search`, OperationId: `getGameLevelsByApplication`:
 Search Game Levels.
 Get a list of levels for an application, just those the account has permissions to view.
 
-- `GET` to `/api/:version/level/searchByBillableEntity`, OperationId: `getGameLevelsByBillableEntity`:
+- `GET` to `/level/searchByBillableEntity`, OperationId: `getGameLevelsByBillableEntity`:
 Search Game Level by Billable Entity.
 Searches on game levels that the logged in user has access to. A user would have access if the creator of the game level is managed under the same BillableEntity.
 
-- `GET` to `/api/:version/level/questions/get`, OperationId: `getQuestionsInLevel`:
+- `GET` to `/level/questions/get`, OperationId: `getQuestionsInLevel`:
 Get Level Questions.
 Get questions within a level.
 
-- `GET` to `/api/:version/level/words/get`, OperationId: `getWordsInLevel`:
+- `GET` to `/level/words/get`, OperationId: `getWordsInLevel`:
 Get Level Words.
 Get words within a level.
 
-- `POST` to `/api/:version/level/update`, OperationId: `updateGameLevel`:
+- `POST` to `/level/update`, OperationId: `updateGameLevel`:
 Update Game Level.
 Update a game level. Currently does NOT support game objects.
 
-- `POST` to `/api/:version/level/questions/update`, OperationId: `updateQuestionsInLevel`:
+- `POST` to `/level/questions/update`, OperationId: `updateQuestionsInLevel`:
 Update Level Questions.
 Updates a level with question game objects.
 
-- `POST` to `/api/:version/level/words/update`, OperationId: `updateWordsInLevel`:
+- `POST` to `/level/words/update`, OperationId: `updateWordsInLevel`:
 Update Level Words.
 Updates a level with word game objects.
 

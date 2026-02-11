@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/postalCode/create`, OperationId: `createPostalCode`:
+- `POST` to `/postalCode/create`, OperationId: `createPostalCode`:
 Create Postal Code.
 Create a Postal Code
 
-- `POST` to `/api/:version/postalCode/delete`, OperationId: `deletePostalCode`:
+- `POST` to `/postalCode/delete`, OperationId: `deletePostalCode`:
 Delete Postal Code.
 Delete a Postal Code
 
-- `GET` to `/api/:version/postalCode/get`, OperationId: `getPostalCode`:
+- `GET` to `/postalCode/get`, OperationId: `getPostalCode`:
 Get Postal Code.
 Get a Postal Code
 
-- `GET` to `/api/:version/postalCode/search`, OperationId: `getPostalCodes`:
+- `GET` to `/postalCode/search`, OperationId: `getPostalCodes`:
 Search Postal Codes.
 Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response.
 
-- `POST` to `/api/:version/postalCode/update`, OperationId: `updatePostalCode`:
+- `POST` to `/postalCode/update`, OperationId: `updatePostalCode`:
 Update Postal Code.
 Update a Postal Code
 

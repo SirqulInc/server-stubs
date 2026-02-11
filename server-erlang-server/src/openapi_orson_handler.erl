@@ -2,99 +2,99 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/orson/ai/addMovie`, OperationId: `addMovie`:
+- `POST` to `/orson/ai/addMovie`, OperationId: `addMovie`:
 Add Movie.
 Add a movie to be indexed for Topics. Indexing a movie analyses the content and incorporates it into the topics model for future /topics calls. This does not store the movie file long-term.
 
-- `GET` to `/api/:version/orson/ai/docs`, OperationId: `aiDocs`:
+- `GET` to `/orson/ai/docs`, OperationId: `aiDocs`:
 Search Docs.
 Takes in a text string representing one or more sentences and it returns a list of documents which are related to the provided document.
 
-- `GET` to `/api/:version/orson/ai/img`, OperationId: `aiFindImages`:
+- `GET` to `/orson/ai/img`, OperationId: `aiFindImages`:
 Find images.
 Returns a list of URIs of images that match the text.
 
-- `GET` to `/api/:version/orson/ai/tags`, OperationId: `aiTags`:
+- `GET` to `/orson/ai/tags`, OperationId: `aiTags`:
 Search Tags.
 Search the tags column of user provided tags using this endpoint.
 
-- `GET` to `/api/:version/orson/ai/text`, OperationId: `aiText`:
+- `GET` to `/orson/ai/text`, OperationId: `aiText`:
 Search Text.
 Search the movie text column of movie text using this endpoint.
 
-- `POST` to `/api/:version/orson/ai/batch`, OperationId: `batch`:
+- `POST` to `/orson/ai/batch`, OperationId: `batch`:
 Batch Analysis.
 Run several types of analysis on an audio or video file in a single API call, instead of calling several operations for the same file..
 
-- `POST` to `/api/:version/orson/stories/episodes/instant`, OperationId: `createInstantEpisode`:
+- `POST` to `/orson/stories/episodes/instant`, OperationId: `createInstantEpisode`:
 Creates an instant episode.
 Creates an instant episode for a given StoryStrip by providing all necessary inputs, interview recordings, and pictures, kicking off a render immediately.
 
-- `POST` to `/api/:version/orson/ai/voiceCanvas`, OperationId: `createVoiceCanvas`:
+- `POST` to `/orson/ai/voiceCanvas`, OperationId: `createVoiceCanvas`:
 Create VoiceCanvas images.
 Create VoiceCanvas images for provided text, file upload, or file URL
 
-- `POST` to `/api/:version/orson/ai/emotion`, OperationId: `emotion`:
+- `POST` to `/orson/ai/emotion`, OperationId: `emotion`:
 Detect emotions.
 Detects emotions in an audio or video recording.
 
-- `GET` to `/api/:version/orson/ai/addMovie/:requestId`, OperationId: `getAddMovieResult`:
+- `GET` to `/orson/ai/addMovie/:requestId`, OperationId: `getAddMovieResult`:
 Get Add Movie Result.
 Get the result of an in progress Add Movie request from an earlier POST.
 
-- `GET` to `/api/:version/orson/ai/batch/:requestId`, OperationId: `getBatch`:
+- `GET` to `/orson/ai/batch/:requestId`, OperationId: `getBatch`:
 Get Batch Analysis Results.
 Gets the completed Video Batch results, if done, or an error or status update if not.
 
-- `GET` to `/api/:version/orson/ai/emotion/:requestId`, OperationId: `getEmotion`:
+- `GET` to `/orson/ai/emotion/:requestId`, OperationId: `getEmotion`:
 Get Emotion Results.
 Checks the Emotion analysis and returns in progress, results, or error.
 
-- `GET` to `/api/:version/orson/stories/episodes/:episodeId/status`, OperationId: `getEpisodeStatus`:
+- `GET` to `/orson/stories/episodes/:episodeId/status`, OperationId: `getEpisodeStatus`:
 Check episode status.
 Gets a summary of the episode&#39;s status, including any renders.
 
-- `GET` to `/api/:version/orson/stories/renders/:renderId/status`, OperationId: `getRenderStatus`:
+- `GET` to `/orson/stories/renders/:renderId/status`, OperationId: `getRenderStatus`:
 Check episode status.
 Gets a summary of the episode&#39;s status, including any renders.
 
-- `GET` to `/api/:version/orson/ai/stt/:requestId`, OperationId: `getSTT`:
+- `GET` to `/orson/ai/stt/:requestId`, OperationId: `getSTT`:
 Get Speach to Text Result.
 The results of the video transcription and optional translation.
 
-- `GET` to `/api/:version/orson/ai/tts/:requestId`, OperationId: `getTTS`:
+- `GET` to `/orson/ai/tts/:requestId`, OperationId: `getTTS`:
 Get Text to Speach Result.
 Check the status of an in progress Text-to-Speech call or download the result.
 
-- `GET` to `/api/:version/orson/ai/techTune/:requestId`, OperationId: `getTechTune`:
+- `GET` to `/orson/ai/techTune/:requestId`, OperationId: `getTechTune`:
 Get TechTune Results.
 Get a result or continue waiting for a pending request for TechTune analysis.
 
-- `GET` to `/api/:version/orson/ai/topics/:requestId`, OperationId: `getTopics`:
+- `GET` to `/orson/ai/topics/:requestId`, OperationId: `getTopics`:
 Get Topics.
 Get the result of an in progress Topics Analysis from an earlier POST.
 
-- `GET` to `/api/:version/orson/ai/voiceCanvas/:requestId`, OperationId: `getVoiceCanvas`:
+- `GET` to `/orson/ai/voiceCanvas/:requestId`, OperationId: `getVoiceCanvas`:
 Get VoiceCanvas images.
 Get a result or continue waiting for a pending request for VoiceCanvas Images.
 
-- `POST` to `/api/:version/orson/stories/renders`, OperationId: `startVideoRender`:
+- `POST` to `/orson/stories/renders`, OperationId: `startVideoRender`:
 Starts a StoryStitch video render.
 Starts a StoryStitch video render to produce your final video, returning the status details.
 
-- `POST` to `/api/:version/orson/ai/stt`, OperationId: `stt`:
+- `POST` to `/orson/ai/stt`, OperationId: `stt`:
 Speach to Text.
 Accepts a movie URL or uploaded file and transcribes it. You also have the option to translate it into one of our additional supported languages.
 
-- `POST` to `/api/:version/orson/ai/topics`, OperationId: `summarizeTopics`:
+- `POST` to `/orson/ai/topics`, OperationId: `summarizeTopics`:
 Summarize Topics.
 Takes in a string of text sentences (also known as a document) and returns a list of associated topics and their proximity score.
 
-- `POST` to `/api/:version/orson/ai/techTune`, OperationId: `techTune`:
+- `POST` to `/orson/ai/techTune`, OperationId: `techTune`:
 Detect Technical Issues.
 Analyses a movie file to detect technical issues, such as too few people in frame.
 
-- `POST` to `/api/:version/orson/ai/tts`, OperationId: `tts`:
+- `POST` to `/orson/ai/tts`, OperationId: `tts`:
 Text to Speach.
 Creates an audio file for the given text, with the option of language and voice selection.
 

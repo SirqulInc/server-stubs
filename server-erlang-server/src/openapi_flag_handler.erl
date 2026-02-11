@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/flag/create`, OperationId: `createFlag`:
+- `POST` to `/flag/create`, OperationId: `createFlag`:
 Create Flag.
 Allows a user to flag an object that the user deems inappropriate or offensive. Flagable objects include accounts, albums, album contests, assets, game levels, and theme descriptors
 
-- `POST` to `/api/:version/flag/delete`, OperationId: `deleteFlag`:
+- `POST` to `/flag/delete`, OperationId: `deleteFlag`:
 Delete Flag.
 Deletes a flag.
 
-- `GET` to `/api/:version/flag/get`, OperationId: `getFlag`:
+- `GET` to `/flag/get`, OperationId: `getFlag`:
 Get Flag.
 Gets the details on whether the user has flagged a particular flagable object.
 
-- `GET` to `/api/:version/flag/threshold/get`, OperationId: `getFlagThreshold`:
+- `GET` to `/flag/threshold/get`, OperationId: `getFlagThreshold`:
 Get Flag Threshold.
 Get the flag threshold value on an object type for a particular application.
 
-- `POST` to `/api/:version/flag/threshold/update`, OperationId: `updateFlagThreshold`:
+- `POST` to `/flag/threshold/update`, OperationId: `updateFlagThreshold`:
 Update Flag Threshold.
 Update the flag threshold on an object type for a particular application.
 

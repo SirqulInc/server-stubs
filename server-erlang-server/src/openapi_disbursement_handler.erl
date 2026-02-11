@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/disbursement/check`, OperationId: `checkDisbursements`:
+- `GET` to `/disbursement/check`, OperationId: `checkDisbursements`:
 Check Disbursements.
 Checks the status of a captured disbrusement to see if it has been settled.
 
-- `POST` to `/api/:version/disbursement/create`, OperationId: `createDisbursement`:
+- `POST` to `/disbursement/create`, OperationId: `createDisbursement`:
 Create Disbursement.
 Creates a Disbursement for sending money to a retailer
 
-- `GET` to `/api/:version/disbursement/get`, OperationId: `getDisbursement`:
+- `GET` to `/disbursement/get`, OperationId: `getDisbursement`:
 Get Disbursement.
 Get Disbursement details
 
-- `GET` to `/api/:version/disbursement/search`, OperationId: `searchDisbursements`:
+- `GET` to `/disbursement/search`, OperationId: `searchDisbursements`:
 Search Disbursements.
 Search Disbursements
 
-- `POST` to `/api/:version/disbursement/update`, OperationId: `updateDisbursement`:
+- `POST` to `/disbursement/update`, OperationId: `updateDisbursement`:
 Update Disbursement.
 Update Disbursement
 

@@ -2,23 +2,23 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/media/create`, OperationId: `createMedia`:
+- `POST` to `/media/create`, OperationId: `createMedia`:
 Create Media.
 Create a media offering.
 
-- `POST` to `/api/:version/media/delete`, OperationId: `deleteMedia`:
+- `POST` to `/media/delete`, OperationId: `deleteMedia`:
 Delete Media.
 Delete a media offering that the user has permissions to.
 
-- `GET` to `/api/:version/media/get`, OperationId: `getMedia`:
+- `GET` to `/media/get`, OperationId: `getMedia`:
 Media Get.
 Get a media offering.
 
-- `GET` to `/api/:version/media/search`, OperationId: `searchMedia`:
+- `GET` to `/media/search`, OperationId: `searchMedia`:
 Search Media.
 Searches on events that the account has access to.
 
-- `POST` to `/api/:version/media/update`, OperationId: `updateMedia`:
+- `POST` to `/media/update`, OperationId: `updateMedia`:
 Update Media.
 Update a media offering.
 

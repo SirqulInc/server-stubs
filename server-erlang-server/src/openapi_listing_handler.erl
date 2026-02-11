@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/listing/create`, OperationId: `createListing`:
+- `POST` to `/listing/create`, OperationId: `createListing`:
 Create Listing.
 Creates a listing.
 
-- `POST` to `/api/:version/listing/delete`, OperationId: `deleteListing`:
+- `POST` to `/listing/delete`, OperationId: `deleteListing`:
 Delete Listing.
 Delete a listing.
 
-- `GET` to `/api/:version/listing/get`, OperationId: `getListing`:
+- `GET` to `/listing/get`, OperationId: `getListing`:
 Get Listing.
 Get a listing by id.
 
-- `GET` to `/api/:version/listing/search`, OperationId: `searchListing`:
+- `GET` to `/listing/search`, OperationId: `searchListing`:
 Search Listings.
 Search for event listings from the start time to end time
 
-- `GET` to `/api/:version/listing/summary`, OperationId: `summaryListing`:
+- `GET` to `/listing/summary`, OperationId: `summaryListing`:
 Summary Listing.
 Search for a list of summary listings from the start time up to 8 days out.
 
-- `POST` to `/api/:version/listing/update`, OperationId: `updateListing`:
+- `POST` to `/listing/update`, OperationId: `updateListing`:
 Update Listing.
 Updates a listing.
 

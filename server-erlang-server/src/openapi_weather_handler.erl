@@ -2,7 +2,7 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `GET` to `/api/:version/weather/search`, OperationId: `searchWeather`:
+- `GET` to `/weather/search`, OperationId: `searchWeather`:
 Search Weather.
 Search the weather forcast for the next 5 days
 

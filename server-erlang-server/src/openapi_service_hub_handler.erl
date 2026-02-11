@@ -2,27 +2,27 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/hub`, OperationId: `createServiceHub`:
+- `POST` to `/hub`, OperationId: `createServiceHub`:
 Create Service Hub.
 Create new service hub
 
-- `DELETE` to `/api/:version/hub/:id`, OperationId: `deleteServiceHub`:
+- `DELETE` to `/hub/:id`, OperationId: `deleteServiceHub`:
 Delete Service Hub.
 Delete an existing service hub
 
-- `GET` to `/api/:version/hub/:id`, OperationId: `getServiceHub`:
+- `GET` to `/hub/:id`, OperationId: `getServiceHub`:
 Get Service Hub.
 Get an existing service hub
 
-- `POST` to `/api/:version/hub/:id`, OperationId: `postServiceHub`:
+- `POST` to `/hub/:id`, OperationId: `postServiceHub`:
 Update Service Hub.
 Update an existing service hub
 
-- `PUT` to `/api/:version/hub/:id`, OperationId: `putServiceHub`:
+- `PUT` to `/hub/:id`, OperationId: `putServiceHub`:
 Update Service Hub.
 Update an existing service hub
 
-- `GET` to `/api/:version/hub`, OperationId: `searchServiceHubs`:
+- `GET` to `/hub`, OperationId: `searchServiceHubs`:
 Search Service Hubs.
 Search for service hubs.
 

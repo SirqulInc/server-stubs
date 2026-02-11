@@ -2,19 +2,19 @@
 -moduledoc """
 Exposes the following operation IDs:
 
-- `POST` to `/api/:version/billable/create`, OperationId: `createBillableEntity`:
+- `POST` to `/billable/create`, OperationId: `createBillableEntity`:
 Create Billable.
 reate a billable entity for an account. The creator is assumed to be the responsible account. An account can only have one billable entity
 
-- `POST` to `/api/:version/billable/delete`, OperationId: `deleteBillableEntity`:
+- `POST` to `/billable/delete`, OperationId: `deleteBillableEntity`:
 Delete Billable.
 Mark the billable as deleted
 
-- `GET` to `/api/:version/billable/get`, OperationId: `getBillableEntity`:
+- `GET` to `/billable/get`, OperationId: `getBillableEntity`:
 Get Billable.
 Used to determine the associated BillableEntity of an account
 
-- `POST` to `/api/:version/billable/update`, OperationId: `updateBillableEntity`:
+- `POST` to `/billable/update`, OperationId: `updateBillableEntity`:
 Update Billable.
 Updates the billable record for an account
 
